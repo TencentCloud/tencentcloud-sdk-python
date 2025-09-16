@@ -342,6 +342,135 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryHunyuanTo3DRapidJobRequest(AbstractModel):
+    r"""QueryHunyuanTo3DRapidJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryHunyuanTo3DRapidJobResponse(AbstractModel):
+    r"""QueryHunyuanTo3DRapidJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type Status: str
+        :param _ErrorCode: 错误码
+        :type ErrorCode: str
+        :param _ErrorMessage: 错误信息
+        :type ErrorMessage: str
+        :param _ResultFile3Ds: 生成的3D文件数组。
+        :type ResultFile3Ds: list of File3D
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultFile3Ds = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""错误码
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultFile3Ds(self):
+        r"""生成的3D文件数组。
+        :rtype: list of File3D
+        """
+        return self._ResultFile3Ds
+
+    @ResultFile3Ds.setter
+    def ResultFile3Ds(self, ResultFile3Ds):
+        self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        if params.get("ResultFile3Ds") is not None:
+            self._ResultFile3Ds = []
+            for item in params.get("ResultFile3Ds"):
+                obj = File3D()
+                obj._deserialize(item)
+                self._ResultFile3Ds.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class SubmitHunyuanTo3DJobRequest(AbstractModel):
     r"""SubmitHunyuanTo3DJob请求参数结构体
 
@@ -712,6 +841,165 @@ Sketch：可输入草图或线稿图生成模型。
 
 class SubmitHunyuanTo3DProJobResponse(AbstractModel):
     r"""SubmitHunyuanTo3DProJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID（有效期24小时）
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID（有效期24小时）
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitHunyuanTo3DRapidJobRequest(AbstractModel):
+    r"""SubmitHunyuanTo3DRapidJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 文生3D，3D内容的描述，中文正向提示词。
+最多支持200个 utf-8 字符。
+文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+        :type Prompt: str
+        :param _ImageBase64: 输入图 Base64 数据。
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+格式：jpg，png，jpeg，webp。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+        :type ImageBase64: str
+        :param _ImageUrl: 输入图Url。
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+格式：jpg，png，jpeg，webp。
+ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+        :type ImageUrl: str
+        :param _ResultFormat: 生成模型的格式，仅限制生成一种格式。
+生成模型文件组默认返回obj格式。
+可选值：OBJ，GLB，STL，USDZ，FBX，MP4。
+        :type ResultFormat: str
+        :param _EnablePBR: 是否开启 PBR材质生成，默认 false。
+        :type EnablePBR: bool
+        """
+        self._Prompt = None
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._ResultFormat = None
+        self._EnablePBR = None
+
+    @property
+    def Prompt(self):
+        r"""文生3D，3D内容的描述，中文正向提示词。
+最多支持200个 utf-8 字符。
+文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ImageBase64(self):
+        r"""输入图 Base64 数据。
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+格式：jpg，png，jpeg，webp。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""输入图Url。
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+格式：jpg，png，jpeg，webp。
+ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ResultFormat(self):
+        r"""生成模型的格式，仅限制生成一种格式。
+生成模型文件组默认返回obj格式。
+可选值：OBJ，GLB，STL，USDZ，FBX，MP4。
+        :rtype: str
+        """
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
+    @property
+    def EnablePBR(self):
+        r"""是否开启 PBR材质生成，默认 false。
+        :rtype: bool
+        """
+        return self._EnablePBR
+
+    @EnablePBR.setter
+    def EnablePBR(self, EnablePBR):
+        self._EnablePBR = EnablePBR
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ResultFormat = params.get("ResultFormat")
+        self._EnablePBR = params.get("EnablePBR")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitHunyuanTo3DRapidJobResponse(AbstractModel):
+    r"""SubmitHunyuanTo3DRapidJob返回参数结构体
 
     """
 

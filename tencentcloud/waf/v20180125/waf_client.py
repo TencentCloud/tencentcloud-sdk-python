@@ -279,6 +279,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchIpAccessControl(self, request):
+        r"""批量IP黑白名单新增接口
+
+        :param request: Request instance for CreateBatchIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateBatchIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateBatchIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeals(self, request):
         r"""计费资源购买、续费下单接口
 
@@ -546,6 +569,29 @@ class WafClient(AbstractClient):
             body = self.call("DeleteAttackWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAttackWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBatchIpAccessControl(self, request):
+        r"""批量黑白名单删除接口
+
+        :param request: Request instance for DeleteBatchIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteBatchIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteBatchIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBatchIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBatchIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3009,6 +3055,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyAttackWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAttackWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBatchIpAccessControl(self, request):
+        r"""批量IP黑白名单新增接口
+
+        :param request: Request instance for ModifyBatchIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBatchIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBatchIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBatchIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBatchIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

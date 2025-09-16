@@ -789,6 +789,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DistributeAndroidInstanceImageToHosts(self, request):
+        r"""分发安卓实例镜像至宿主机
+
+        :param request: Request instance for DistributeAndroidInstanceImageToHosts.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DistributeAndroidInstanceImageToHostsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DistributeAndroidInstanceImageToHostsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DistributeAndroidInstanceImageToHosts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DistributeAndroidInstanceImageToHostsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DistributeFileToAndroidInstances(self, request):
         r"""将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 

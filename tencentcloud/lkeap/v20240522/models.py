@@ -246,6 +246,8 @@ class ChatCompletionsRequest(AbstractModel):
         :type MaxTokens: int
         :param _EnableSearch: 是否启用联网搜索
         :type EnableSearch: bool
+        :param _Thinking: 思维链开关，本参数仅在deepseek v3.1时生效
+        :type Thinking: :class:`tencentcloud.lkeap.v20240522.models.Thinking`
         """
         self._Model = None
         self._Messages = None
@@ -253,6 +255,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Temperature = None
         self._MaxTokens = None
         self._EnableSearch = None
+        self._Thinking = None
 
     @property
     def Model(self):
@@ -325,6 +328,17 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableSearch(self, EnableSearch):
         self._EnableSearch = EnableSearch
 
+    @property
+    def Thinking(self):
+        r"""思维链开关，本参数仅在deepseek v3.1时生效
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Thinking`
+        """
+        return self._Thinking
+
+    @Thinking.setter
+    def Thinking(self, Thinking):
+        self._Thinking = Thinking
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -338,6 +352,9 @@ class ChatCompletionsRequest(AbstractModel):
         self._Temperature = params.get("Temperature")
         self._MaxTokens = params.get("MaxTokens")
         self._EnableSearch = params.get("EnableSearch")
+        if params.get("Thinking") is not None:
+            self._Thinking = Thinking()
+            self._Thinking._deserialize(params.get("Thinking"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5252,6 +5269,48 @@ class SplitDocumentFailedPage(AbstractModel):
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Thinking(AbstractModel):
+    r"""思维链开关类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 控制开启思维链，默认disabled
+
+enabled：开启思维链
+disabled：关闭思维链
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""控制开启思维链，默认disabled
+
+enabled：开启思维链
+disabled：关闭思维链
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

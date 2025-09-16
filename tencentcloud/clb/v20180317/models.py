@@ -5240,6 +5240,8 @@ class CreateTargetGroupRequest(AbstractModel):
         :type KeepaliveEnable: bool
         :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
         :type SessionExpireTime: int
+        :param _IpVersion: IP版本类型。
+        :type IpVersion: str
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -5254,6 +5256,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._FullListenSwitch = None
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
+        self._IpVersion = None
 
     @property
     def TargetGroupName(self):
@@ -5401,6 +5404,17 @@ class CreateTargetGroupRequest(AbstractModel):
     def SessionExpireTime(self, SessionExpireTime):
         self._SessionExpireTime = SessionExpireTime
 
+    @property
+    def IpVersion(self):
+        r"""IP版本类型。
+        :rtype: str
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -5428,6 +5442,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._FullListenSwitch = params.get("FullListenSwitch")
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19608,7 +19623,7 @@ class RsTagRule(AbstractModel):
         :type Targets: list of Target
         :param _LocationId: 转发规则的ID，七层规则时需要此参数，4层规则不需要。
         :type LocationId: str
-        :param _Tag: 后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Weight参数为空时，才以RsTagRule中的Tag参数为准。
+        :param _Tag: 后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Tag参数为空时，才以RsTagRule中的Tag参数为准。
         :type Tag: str
         """
         self._ListenerId = None
@@ -19651,7 +19666,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def Tag(self):
-        r"""后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Weight参数为空时，才以RsTagRule中的Tag参数为准。
+        r"""后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Tag参数为空时，才以RsTagRule中的Tag参数为准。
         :rtype: str
         """
         return self._Tag
@@ -22289,6 +22304,8 @@ class TargetGroupInfo(AbstractModel):
         :type KeepaliveEnable: bool
         :param _SessionExpireTime: 会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
         :type SessionExpireTime: int
+        :param _IpVersion: IP版本。
+        :type IpVersion: str
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -22308,6 +22325,7 @@ class TargetGroupInfo(AbstractModel):
         self._FullListenSwitch = None
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
+        self._IpVersion = None
 
     @property
     def TargetGroupId(self):
@@ -22519,6 +22537,17 @@ class TargetGroupInfo(AbstractModel):
     def SessionExpireTime(self, SessionExpireTime):
         self._SessionExpireTime = SessionExpireTime
 
+    @property
+    def IpVersion(self):
+        r"""IP版本。
+        :rtype: str
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -22551,6 +22580,7 @@ class TargetGroupInfo(AbstractModel):
         self._FullListenSwitch = params.get("FullListenSwitch")
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

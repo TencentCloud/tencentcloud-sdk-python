@@ -4202,6 +4202,57 @@ class AutoDenyDetail(AbstractModel):
         
 
 
+class BatchDomainResult(AbstractModel):
+    r"""批量防护失败的域名以及对应的原因。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 批量操作中失败的域名
+        :type Domain: str
+        :param _Message: 操作失败的原因
+        :type Message: str
+        """
+        self._Domain = None
+        self._Message = None
+
+    @property
+    def Domain(self):
+        r"""批量操作中失败的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Message(self):
+        r"""操作失败的原因
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchIpAccessControlData(AbstractModel):
     r"""多域名黑白名单describe返回
 
@@ -8407,6 +8458,197 @@ class CreateAreaBanRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBatchIpAccessControlRequest(AbstractModel):
+    r"""CreateBatchIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpList: IP参数列表
+        :type IpList: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ActionType: 42为黑名单，40为白名单
+        :type ActionType: int
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :type GroupIds: list of int non-negative
+        :param _Domains: 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :type Domains: list of str
+        :param _Note: 备注
+        :type Note: str
+        """
+        self._IpList = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ActionType = None
+        self._GroupIds = None
+        self._Domains = None
+        self._Note = None
+
+    @property
+    def IpList(self):
+        r"""IP参数列表
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ActionType(self):
+        r"""42为黑名单，40为白名单
+        :rtype: int
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def Domains(self):
+        r"""域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Note(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+
+    def _deserialize(self, params):
+        self._IpList = params.get("IpList")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ActionType = params.get("ActionType")
+        self._GroupIds = params.get("GroupIds")
+        self._Domains = params.get("Domains")
+        self._Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchIpAccessControlResponse(AbstractModel):
+    r"""CreateBatchIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Failed: 添加失败的域名列表，如果非空则表示有域名添加失败，整个批量规则添加失败，否则则表示批量规则添加成功。
+        :type Failed: list of BatchDomainResult
+        :param _RuleId: 添加成功的批量规则ID
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Failed = None
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def Failed(self):
+        r"""添加失败的域名列表，如果非空则表示有域名添加失败，整个批量规则添加失败，否则则表示批量规则添加成功。
+        :rtype: list of BatchDomainResult
+        """
+        return self._Failed
+
+    @Failed.setter
+    def Failed(self, Failed):
+        self._Failed = Failed
+
+    @property
+    def RuleId(self):
+        r"""添加成功的批量规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Failed") is not None:
+            self._Failed = []
+            for item in params.get("Failed"):
+                obj = BatchDomainResult()
+                obj._deserialize(item)
+                self._Failed.append(obj)
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDealsGoods(AbstractModel):
     r"""计费下单接口出入参Goods
 
@@ -10508,6 +10750,70 @@ class DeleteAttackWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailIds = params.get("FailIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBatchIpAccessControlRequest(AbstractModel):
+    r"""DeleteBatchIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 规则ID列表，支持批量删除
+        :type Ids: list of int non-negative
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""规则ID列表，支持批量删除
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBatchIpAccessControlResponse(AbstractModel):
+    r"""DeleteBatchIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -34195,6 +34501,197 @@ class ModifyAttackWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBatchIpAccessControlRequest(AbstractModel):
+    r"""ModifyBatchIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 编辑的批量规则ID
+        :type RuleId: int
+        :param _IpList: IP参数列表
+        :type IpList: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ActionType: 42为黑名单，40为白名单
+        :type ActionType: int
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :type GroupIds: list of int non-negative
+        :param _Domains: 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :type Domains: list of str
+        :param _Note: 备注
+        :type Note: str
+        """
+        self._RuleId = None
+        self._IpList = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ActionType = None
+        self._GroupIds = None
+        self._Domains = None
+        self._Note = None
+
+    @property
+    def RuleId(self):
+        r"""编辑的批量规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def IpList(self):
+        r"""IP参数列表
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ActionType(self):
+        r"""42为黑名单，40为白名单
+        :rtype: int
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def Domains(self):
+        r"""域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Note(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._IpList = params.get("IpList")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ActionType = params.get("ActionType")
+        self._GroupIds = params.get("GroupIds")
+        self._Domains = params.get("Domains")
+        self._Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBatchIpAccessControlResponse(AbstractModel):
+    r"""ModifyBatchIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Failed: 编辑失败的域名列表，如果非空则表示有域名编辑失败，整个批量规则编辑失败，否则则表示批量规则编辑成功。
+        :type Failed: list of BatchDomainResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Failed = None
+        self._RequestId = None
+
+    @property
+    def Failed(self):
+        r"""编辑失败的域名列表，如果非空则表示有域名编辑失败，整个批量规则编辑失败，否则则表示批量规则编辑成功。
+        :rtype: list of BatchDomainResult
+        """
+        return self._Failed
+
+    @Failed.setter
+    def Failed(self, Failed):
+        self._Failed = Failed
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Failed") is not None:
+            self._Failed = []
+            for item in params.get("Failed"):
+                obj = BatchDomainResult()
+                obj._deserialize(item)
+                self._Failed.append(obj)
         self._RequestId = params.get("RequestId")
 
 
