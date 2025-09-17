@@ -372,7 +372,9 @@ class ApplyParamsTemplateRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例 ID 列表，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _TemplateId: 应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
+        :param _TemplateId: 应用的参数模板ID。
+- 请通过接口 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748) 的返回参数 **TemplateId** 获取参数模板 ID。
+- 仅当参数模板版本与目标实例的架构版本一致时，操作才能成功执行。版本不匹配将触发执行错误。
         :type TemplateId: str
         """
         self._InstanceIds = None
@@ -391,7 +393,9 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
+        r"""应用的参数模板ID。
+- 请通过接口 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748) 的返回参数 **TemplateId** 获取参数模板 ID。
+- 仅当参数模板版本与目标实例的架构版本一致时，操作才能成功执行。版本不匹配将触发执行错误。
         :rtype: str
         """
         return self._TemplateId
@@ -5731,9 +5735,13 @@ class DescribeInstanceEventsRequest(AbstractModel):
         :type ExecutionEndDate: str
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _PageSize: 输出每页显示事件的数量，默认：10，最大100。
+        :param _PageSize: 输出每页显示事件的数量。
+- 默认值：10。
+- 取值范围：[1,100]。
         :type PageSize: int
-        :param _PageNo: 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
+        :param _PageNo: 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。
+- 默认值：1。
+- 取值范围：大于0 的正整数。
         :type PageNo: int
         :param _Status: 事件当前状态。
 - Waiting：未到达执行日期或不在维护时间窗内的事件。
@@ -5794,7 +5802,9 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""输出每页显示事件的数量，默认：10，最大100。
+        r"""输出每页显示事件的数量。
+- 默认值：10。
+- 取值范围：[1,100]。
         :rtype: int
         """
         return self._PageSize
@@ -5805,7 +5815,9 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
+        r"""配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。
+- 默认值：1。
+- 取值范围：大于0 的正整数。
         :rtype: int
         """
         return self._PageNo
@@ -9911,14 +9923,14 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10062,9 +10074,11 @@ class DescribeSecondLevelBackupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+        :param _InstanceId: 指定实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _BackupTimestamp: 秒级备份时间戳，7天内
+        :param _BackupTimestamp: 秒级备份时间戳。
+- 设置范围：支持7天内任意秒级时间点。
+-  时间戳格式：Unix 时间戳。
         :type BackupTimestamp: int
         """
         self._InstanceId = None
@@ -10072,7 +10086,7 @@ class DescribeSecondLevelBackupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+        r"""指定实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10083,7 +10097,9 @@ class DescribeSecondLevelBackupInfoRequest(AbstractModel):
 
     @property
     def BackupTimestamp(self):
-        r"""秒级备份时间戳，7天内
+        r"""秒级备份时间戳。
+- 设置范围：支持7天内任意秒级时间点。
+-  时间戳格式：Unix 时间戳。
         :rtype: int
         """
         return self._BackupTimestamp
@@ -10113,14 +10129,14 @@ class DescribeSecondLevelBackupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupId: 备份记录ID 
+        :param _BackupId: 备份记录ID。
         :type BackupId: str
-        :param _BackupTimestamp: 备份时间戳
+        :param _BackupTimestamp: 备份时间戳。
         :type BackupTimestamp: int
-        :param _MissingTimestamps: 备份不存在的时间戳范围
+        :param _MissingTimestamps: 备份不存在的时间戳范围。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MissingTimestamps: list of SecondLevelBackupMissingTimestamps
-        :param _StartTimestamp: 实例开启秒级备份的时间戳
+        :param _StartTimestamp: 实例开启秒级备份的时间戳。
         :type StartTimestamp: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10133,7 +10149,7 @@ class DescribeSecondLevelBackupInfoResponse(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份记录ID 
+        r"""备份记录ID。
         :rtype: str
         """
         return self._BackupId
@@ -10144,7 +10160,7 @@ class DescribeSecondLevelBackupInfoResponse(AbstractModel):
 
     @property
     def BackupTimestamp(self):
-        r"""备份时间戳
+        r"""备份时间戳。
         :rtype: int
         """
         return self._BackupTimestamp
@@ -10155,7 +10171,7 @@ class DescribeSecondLevelBackupInfoResponse(AbstractModel):
 
     @property
     def MissingTimestamps(self):
-        r"""备份不存在的时间戳范围
+        r"""备份不存在的时间戳范围。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecondLevelBackupMissingTimestamps
         """
@@ -10167,7 +10183,7 @@ class DescribeSecondLevelBackupInfoResponse(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        r"""实例开启秒级备份的时间戳
+        r"""实例开启秒级备份的时间戳。
         :rtype: int
         """
         return self._StartTimestamp

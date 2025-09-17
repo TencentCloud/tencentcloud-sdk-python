@@ -22789,6 +22789,8 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
         :type Query: str
         :param _Reasons: 错误类型检索
         :type Reasons: list of str
+        :param _Status: 操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+        :type Status: int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -22797,6 +22799,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
         self._LoginSubAccountUin = None
         self._Query = None
         self._Reasons = None
+        self._Status = None
 
     @property
     def BotBizId(self):
@@ -22875,6 +22878,17 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
     def Reasons(self, Reasons):
         self._Reasons = Reasons
 
+    @property
+    def Status(self):
+        r"""操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -22884,6 +22898,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         self._Query = params.get("Query")
         self._Reasons = params.get("Reasons")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28128,10 +28143,10 @@ class RateMsgRecordRequest(AbstractModel):
         :type BotAppKey: str
         :param _RecordId: 消息ID 【大模型回复答案的RecordID】
         :type RecordId: str
-        :param _Score: 1: 点赞;  2: 点踩;   
+        :param _Score: 1: 点赞;   2: 点踩;   
 注：
-1) 评测端不支持点赞、点踩
-2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
+(1) 评测端不支持点赞、点踩
+(2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
         :type Score: int
         :param _Reasons: 原因，只有Score参数为2即点踩的时候才需要输入
         :type Reasons: list of str
@@ -28165,10 +28180,10 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def Score(self):
-        r"""1: 点赞;  2: 点踩;   
+        r"""1: 点赞;   2: 点踩;   
 注：
-1) 评测端不支持点赞、点踩
-2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
+(1) 评测端不支持点赞、点踩
+(2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
         :rtype: int
         """
         return self._Score
@@ -28619,13 +28634,13 @@ class RejectedQuestion(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Question: str
-        :param _Status: 状态
+        :param _Status: 发布状态(1 待发布 2 发布中 3 已发布 4 发布失败)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StatusDesc: 状态描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间, 秒级时间戳
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
@@ -28637,6 +28652,9 @@ class RejectedQuestion(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowDelete: bool
+        :param _Operator: 操作人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
         """
         self._RejectedBizId = None
         self._Question = None
@@ -28645,6 +28663,7 @@ class RejectedQuestion(AbstractModel):
         self._UpdateTime = None
         self._IsAllowEdit = None
         self._IsAllowDelete = None
+        self._Operator = None
 
     @property
     def RejectedBizId(self):
@@ -28675,7 +28694,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""发布状态(1 待发布 2 发布中 3 已发布 4 发布失败)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28699,7 +28718,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""更新时间, 秒级时间戳
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -28736,6 +28755,18 @@ class RejectedQuestion(AbstractModel):
     def IsAllowDelete(self, IsAllowDelete):
         self._IsAllowDelete = IsAllowDelete
 
+    @property
+    def Operator(self):
+        r"""操作人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
 
     def _deserialize(self, params):
         self._RejectedBizId = params.get("RejectedBizId")
@@ -28745,6 +28776,7 @@ class RejectedQuestion(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._IsAllowEdit = params.get("IsAllowEdit")
         self._IsAllowDelete = params.get("IsAllowDelete")
+        self._Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32074,18 +32106,31 @@ class UnsatisfiedReply(AbstractModel):
         :param _Question: 用户问题
 注意：此字段可能返回 null，表示取不到有效值。
         :type Question: str
-        :param _Answer: 应用回复
+        :param _Answer: 问题回复
 注意：此字段可能返回 null，表示取不到有效值。
         :type Answer: str
         :param _Reasons: 错误类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reasons: list of str
+        :param _Status: 处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreateTime: 创建时间，秒级时间戳
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间,秒级时间戳
+        :type UpdateTime: str
+        :param _Operator: 操作人
+        :type Operator: str
         """
         self._ReplyBizId = None
         self._RecordBizId = None
         self._Question = None
         self._Answer = None
         self._Reasons = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Operator = None
 
     @property
     def ReplyBizId(self):
@@ -32125,7 +32170,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Answer(self):
-        r"""应用回复
+        r"""问题回复
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32147,6 +32192,51 @@ class UnsatisfiedReply(AbstractModel):
     def Reasons(self, Reasons):
         self._Reasons = Reasons
 
+    @property
+    def Status(self):
+        r"""处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，秒级时间戳
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间,秒级时间戳
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Operator(self):
+        r"""操作人
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
 
     def _deserialize(self, params):
         self._ReplyBizId = params.get("ReplyBizId")
@@ -32154,6 +32244,10 @@ class UnsatisfiedReply(AbstractModel):
         self._Question = params.get("Question")
         self._Answer = params.get("Answer")
         self._Reasons = params.get("Reasons")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

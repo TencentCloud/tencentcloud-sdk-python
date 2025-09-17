@@ -2023,6 +2023,7 @@ class AiAnalysisResult(AbstractModel):
 <li>Highlight：智能精彩集锦</li>
 <li>DeLogo：智能擦除</li>
 <li>Description：大模型摘要</li>
+<li>Dubbing：智能译制</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2054,6 +2055,9 @@ class AiAnalysisResult(AbstractModel):
         :param _HorizontalToVerticalTask: 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
+        :param _DubbingTask: 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2066,6 +2070,7 @@ class AiAnalysisResult(AbstractModel):
         self._HeadTailTask = None
         self._DescriptionTask = None
         self._HorizontalToVerticalTask = None
+        self._DubbingTask = None
 
     @property
     def Type(self):
@@ -2077,6 +2082,7 @@ class AiAnalysisResult(AbstractModel):
 <li>Highlight：智能精彩集锦</li>
 <li>DeLogo：智能擦除</li>
 <li>Description：大模型摘要</li>
+<li>Dubbing：智能译制</li>
         :rtype: str
         """
         return self._Type
@@ -2205,6 +2211,18 @@ class AiAnalysisResult(AbstractModel):
     def HorizontalToVerticalTask(self, HorizontalToVerticalTask):
         self._HorizontalToVerticalTask = HorizontalToVerticalTask
 
+    @property
+    def DubbingTask(self):
+        r"""视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
+        """
+        return self._DubbingTask
+
+    @DubbingTask.setter
+    def DubbingTask(self, DubbingTask):
+        self._DubbingTask = DubbingTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2238,6 +2256,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("HorizontalToVerticalTask") is not None:
             self._HorizontalToVerticalTask = AiAnalysisTaskHorizontalToVerticalResult()
             self._HorizontalToVerticalTask._deserialize(params.get("HorizontalToVerticalTask"))
+        if params.get("DubbingTask") is not None:
+            self._DubbingTask = AiAnalysisTaskDubbingResult()
+            self._DubbingTask._deserialize(params.get("DubbingTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2707,12 +2728,20 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _SubtitlePos: 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        :param _VoiceClonedVideo: 音色克隆后的视频文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceClonedVideo: str
+        :param _VoiceClonedMarkFile: 音色克隆的标注文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceClonedMarkFile: str
         """
         self._Path = None
         self._OutputStorage = None
         self._OriginSubtitlePath = None
         self._TranslateSubtitlePath = None
         self._SubtitlePos = None
+        self._VoiceClonedVideo = None
+        self._VoiceClonedMarkFile = None
 
     @property
     def Path(self):
@@ -2770,6 +2799,30 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     def SubtitlePos(self, SubtitlePos):
         self._SubtitlePos = SubtitlePos
 
+    @property
+    def VoiceClonedVideo(self):
+        r"""音色克隆后的视频文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VoiceClonedVideo
+
+    @VoiceClonedVideo.setter
+    def VoiceClonedVideo(self, VoiceClonedVideo):
+        self._VoiceClonedVideo = VoiceClonedVideo
+
+    @property
+    def VoiceClonedMarkFile(self):
+        r"""音色克隆的标注文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VoiceClonedMarkFile
+
+    @VoiceClonedMarkFile.setter
+    def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
+        self._VoiceClonedMarkFile = VoiceClonedMarkFile
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -2781,6 +2834,8 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         if params.get("SubtitlePos") is not None:
             self._SubtitlePos = SubtitlePosition()
             self._SubtitlePos._deserialize(params.get("SubtitlePos"))
+        self._VoiceClonedVideo = params.get("VoiceClonedVideo")
+        self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3061,6 +3116,214 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskDescriptionOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingInput(AbstractModel):
+    r"""智能译制任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频译制模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""视频译制模板 ID。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingOutput(AbstractModel):
+    r"""智能译制结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoPath: 译制视频路径。
+        :type VideoPath: str
+        :param _SpeakerPath: 标记文件路径
+
+        :type SpeakerPath: str
+        :param _OutputStorage: 译制视频存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._VideoPath = None
+        self._SpeakerPath = None
+        self._OutputStorage = None
+
+    @property
+    def VideoPath(self):
+        r"""译制视频路径。
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def SpeakerPath(self):
+        r"""标记文件路径
+
+        :rtype: str
+        """
+        return self._SpeakerPath
+
+    @SpeakerPath.setter
+    def SpeakerPath(self, SpeakerPath):
+        self._SpeakerPath = SpeakerPath
+
+    @property
+    def OutputStorage(self):
+        r"""译制视频存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._VideoPath = params.get("VideoPath")
+        self._SpeakerPath = params.get("SpeakerPath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingResult(AbstractModel):
+    r"""智能译制结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 智能译制任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
+        :param _Output: 智能译制任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""智能译制任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""智能译制任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDubbingInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDubbingOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13139,17 +13402,15 @@ class BeautyFilterItemConfig(AbstractModel):
         :param _Type: 类型名称。取值如下：
 
 <li>Dongjing：东京</li>
-<li>QingJiaopian：轻胶片</li>
+<li>Qingjiaopian：轻胶片</li>
 <li>Meiwei：美味</li>
-
-
         :type Type: str
         :param _Switch: 能力配置开关，可选值：
 <li>ON：开启；</li>
 <li>OFF：关闭。</li>
 默认值：ON。
         :type Switch: str
-        :param _Value: 效果强度，值范围：[0, 100]。
+        :param _Value: 效果强度，值范围：[-100, 100]。
         :type Value: int
         """
         self._Type = None
@@ -13161,10 +13422,8 @@ class BeautyFilterItemConfig(AbstractModel):
         r"""类型名称。取值如下：
 
 <li>Dongjing：东京</li>
-<li>QingJiaopian：轻胶片</li>
+<li>Qingjiaopian：轻胶片</li>
 <li>Meiwei：美味</li>
-
-
         :rtype: str
         """
         return self._Type
@@ -13189,7 +13448,7 @@ class BeautyFilterItemConfig(AbstractModel):
 
     @property
     def Value(self):
-        r"""效果强度，值范围：[0, 100]。
+        r"""效果强度，值范围：[-100, 100]。
         :rtype: int
         """
         return self._Value
@@ -31161,6 +31420,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _LiveStreamProcessTask: 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
+        :param _ExtractBlindWatermarkTask: 提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+        :type ExtractBlindWatermarkTask: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         :param _TaskNotifyConfig: 任务的事件通知信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -31189,6 +31450,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._EditMediaTask = None
         self._WorkflowTask = None
         self._LiveStreamProcessTask = None
+        self._ExtractBlindWatermarkTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -31291,6 +31553,17 @@ class DescribeTaskDetailResponse(AbstractModel):
     @LiveStreamProcessTask.setter
     def LiveStreamProcessTask(self, LiveStreamProcessTask):
         self._LiveStreamProcessTask = LiveStreamProcessTask
+
+    @property
+    def ExtractBlindWatermarkTask(self):
+        r"""提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkTask
+
+    @ExtractBlindWatermarkTask.setter
+    def ExtractBlindWatermarkTask(self, ExtractBlindWatermarkTask):
+        self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask
 
     @property
     def TaskNotifyConfig(self):
@@ -31399,6 +31672,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("LiveStreamProcessTask") is not None:
             self._LiveStreamProcessTask = LiveStreamProcessTask()
             self._LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
+        if params.get("ExtractBlindWatermarkTask") is not None:
+            self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -34737,6 +35013,212 @@ class ExtractBlindWatermarkConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkTask(AbstractModel):
+    r"""提取视频数字水印任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 媒体处理任务 ID。
+        :type TaskId: str
+        :param _Status: 任务流状态，取值：
+<li>WAITING：等待中；</li>
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _InputInfo: 媒体处理的目标文件信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+        :type Type: str
+        :param _IsDetected: 标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+        :type IsDetected: bool
+        :param _Result: 提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+        :type Result: str
+        :param _ExtractBlindWatermarkConfig: 提取数字水印配置。
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._InputInfo = None
+        self._Type = None
+        self._IsDetected = None
+        self._Result = None
+        self._ExtractBlindWatermarkConfig = None
+
+    @property
+    def TaskId(self):
+        r"""媒体处理任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""任务流状态，取值：
+<li>WAITING：等待中；</li>
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0 表示成功，其他值表示失败。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InputInfo(self):
+        r"""媒体处理的目标文件信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsDetected(self):
+        r"""标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+        :rtype: bool
+        """
+        return self._IsDetected
+
+    @IsDetected.setter
+    def IsDetected(self, IsDetected):
+        self._IsDetected = IsDetected
+
+    @property
+    def Result(self):
+        r"""提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""提取数字水印配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Type = params.get("Type")
+        self._IsDetected = params.get("IsDetected")
+        self._Result = params.get("Result")
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkTaskConfig(AbstractModel):
+    r"""提取视频转码数字水印任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentDuration: 当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+如果不填默认切片时长为5秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentDuration: int
+        """
+        self._SegmentDuration = None
+
+    @property
+    def SegmentDuration(self):
+        r"""当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+如果不填默认切片时长为5秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
+
+
+    def _deserialize(self, params):
+        self._SegmentDuration = params.get("SegmentDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

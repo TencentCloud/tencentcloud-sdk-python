@@ -1430,7 +1430,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSecondLevelBackupInfo(self, request):
-        r"""查询实例秒级备份信息
+        r"""本接口（DescribeSecondLevelBackupInfo）用于查询实例秒级备份信息。
 
         :param request: Request instance for DescribeSecondLevelBackupInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoRequest`

@@ -35036,12 +35036,12 @@ class RegisterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LegalName: <font color="red">字段不再使用</font>，法人姓名
+        :param _LegalName: 法人姓名
         :type LegalName: str
         :param _Uscc: 社会统一信用代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uscc: str
-        :param _UnifiedSocialCreditCode: <font color="red">字段不再使用</font>，社会统一信用代码
+        :param _UnifiedSocialCreditCode: 社会统一信用代码
         :type UnifiedSocialCreditCode: str
         :param _OrganizationAddress: 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。
         :type OrganizationAddress: str
@@ -35069,7 +35069,7 @@ class RegisterInfo(AbstractModel):
 
     @property
     def LegalName(self):
-        r"""<font color="red">字段不再使用</font>，法人姓名
+        r"""法人姓名
         :rtype: str
         """
         return self._LegalName
@@ -35096,7 +35096,7 @@ class RegisterInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCode(self):
-        r"""<font color="red">字段不再使用</font>，社会统一信用代码
+        r"""社会统一信用代码
         :rtype: str
         """
         return self._UnifiedSocialCreditCode

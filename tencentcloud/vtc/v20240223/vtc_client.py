@@ -50,7 +50,7 @@ class VtcClient(AbstractClient):
 
 
     def DescribeVideoTranslateJob(self, request):
-        r"""查询视频翻译任务
+        r"""查询视频转译任务
 
         :param request: Request instance for DescribeVideoTranslateJob.
         :type request: :class:`tencentcloud.vtc.v20240223.models.DescribeVideoTranslateJobRequest`
