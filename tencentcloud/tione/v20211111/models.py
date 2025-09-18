@@ -2345,7 +2345,7 @@ GooseFSx：GooseFSx存储
         :type AutomaticStopTime: int
         :param _Tags: 标签配置
         :type Tags: list of Tag
-        :param _DataConfigs: 数据配置，只支持WEDATA_HDFS存储类型
+        :param _DataConfigs: 数据存储挂载配置
         :type DataConfigs: list of DataConfig
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
@@ -2600,7 +2600,7 @@ GooseFSx：GooseFSx存储
 
     @property
     def DataConfigs(self):
-        r"""数据配置，只支持WEDATA_HDFS存储类型
+        r"""数据存储挂载配置
         :rtype: list of DataConfig
         """
         return self._DataConfigs

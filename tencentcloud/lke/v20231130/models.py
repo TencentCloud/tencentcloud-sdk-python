@@ -141,7 +141,7 @@ class Agent(AbstractModel):
         :type WorkflowId: str
         :param _Name: Agent名称，同一个应用内，Agent名称不能重复
         :type Name: str
-        :param _IconUrl: 插件图标url
+        :param _IconUrl: Agent图标url
         :type IconUrl: str
         :param _Instructions: Agent指令；当该Agent被调用时，将作为“系统提示词”使用，描述Agent应执行的操作和响应方式
         :type Instructions: str
@@ -161,6 +161,8 @@ class Agent(AbstractModel):
         :type AgentType: int
         :param _AgentMode: 0 自由转交，1 计划与执行
         :type AgentMode: int
+        :param _AdvancedConfig: 高级设置
+        :type AdvancedConfig: :class:`tencentcloud.lke.v20231130.models.AgentAdvancedConfig`
         """
         self._AgentId = None
         self._WorkflowId = None
@@ -175,6 +177,7 @@ class Agent(AbstractModel):
         self._IsStartingAgent = None
         self._AgentType = None
         self._AgentMode = None
+        self._AdvancedConfig = None
 
     @property
     def AgentId(self):
@@ -211,7 +214,7 @@ class Agent(AbstractModel):
 
     @property
     def IconUrl(self):
-        r"""插件图标url
+        r"""Agent图标url
         :rtype: str
         """
         return self._IconUrl
@@ -319,6 +322,17 @@ class Agent(AbstractModel):
     def AgentMode(self, AgentMode):
         self._AgentMode = AgentMode
 
+    @property
+    def AdvancedConfig(self):
+        r"""高级设置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentAdvancedConfig`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -346,6 +360,122 @@ class Agent(AbstractModel):
         self._IsStartingAgent = params.get("IsStartingAgent")
         self._AgentType = params.get("AgentType")
         self._AgentMode = params.get("AgentMode")
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AgentAdvancedConfig()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentAdvancedConfig(AbstractModel):
+    r"""Agent高级设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableClarification: 是否开启澄清询问
+        :type EnableClarification: bool
+        :param _ThinkingMode: 思考模式，0为效果优先，1为速度优先
+        :type ThinkingMode: int
+        :param _MaxReasoningRound: 最大推理轮数
+        :type MaxReasoningRound: int
+        :param _HistoryLimit: 上下文轮数
+        :type HistoryLimit: int
+        :param _EnableStructuredOutput: 是否开启结构化输出
+        :type EnableStructuredOutput: bool
+        :param _StructuredOutputConfig: 结构化输出配置
+        :type StructuredOutputConfig: :class:`tencentcloud.lke.v20231130.models.StructuredOutputConfig`
+        """
+        self._EnableClarification = None
+        self._ThinkingMode = None
+        self._MaxReasoningRound = None
+        self._HistoryLimit = None
+        self._EnableStructuredOutput = None
+        self._StructuredOutputConfig = None
+
+    @property
+    def EnableClarification(self):
+        r"""是否开启澄清询问
+        :rtype: bool
+        """
+        return self._EnableClarification
+
+    @EnableClarification.setter
+    def EnableClarification(self, EnableClarification):
+        self._EnableClarification = EnableClarification
+
+    @property
+    def ThinkingMode(self):
+        r"""思考模式，0为效果优先，1为速度优先
+        :rtype: int
+        """
+        return self._ThinkingMode
+
+    @ThinkingMode.setter
+    def ThinkingMode(self, ThinkingMode):
+        self._ThinkingMode = ThinkingMode
+
+    @property
+    def MaxReasoningRound(self):
+        r"""最大推理轮数
+        :rtype: int
+        """
+        return self._MaxReasoningRound
+
+    @MaxReasoningRound.setter
+    def MaxReasoningRound(self, MaxReasoningRound):
+        self._MaxReasoningRound = MaxReasoningRound
+
+    @property
+    def HistoryLimit(self):
+        r"""上下文轮数
+        :rtype: int
+        """
+        return self._HistoryLimit
+
+    @HistoryLimit.setter
+    def HistoryLimit(self, HistoryLimit):
+        self._HistoryLimit = HistoryLimit
+
+    @property
+    def EnableStructuredOutput(self):
+        r"""是否开启结构化输出
+        :rtype: bool
+        """
+        return self._EnableStructuredOutput
+
+    @EnableStructuredOutput.setter
+    def EnableStructuredOutput(self, EnableStructuredOutput):
+        self._EnableStructuredOutput = EnableStructuredOutput
+
+    @property
+    def StructuredOutputConfig(self):
+        r"""结构化输出配置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.StructuredOutputConfig`
+        """
+        return self._StructuredOutputConfig
+
+    @StructuredOutputConfig.setter
+    def StructuredOutputConfig(self, StructuredOutputConfig):
+        self._StructuredOutputConfig = StructuredOutputConfig
+
+
+    def _deserialize(self, params):
+        self._EnableClarification = params.get("EnableClarification")
+        self._ThinkingMode = params.get("ThinkingMode")
+        self._MaxReasoningRound = params.get("MaxReasoningRound")
+        self._HistoryLimit = params.get("HistoryLimit")
+        self._EnableStructuredOutput = params.get("EnableStructuredOutput")
+        if params.get("StructuredOutputConfig") is not None:
+            self._StructuredOutputConfig = StructuredOutputConfig()
+            self._StructuredOutputConfig._deserialize(params.get("StructuredOutputConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4923,6 +5053,166 @@ class CateInfo(AbstractModel):
         
 
 
+class ChannelListInfo(AbstractModel):
+    r"""渠道详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelType: 渠道类型 10000 微信订阅号 10001 微信服务号 10002 企微应用
+        :type ChannelType: int
+        :param _ChannelStatus: 渠道状态 1未发布 2运行中 3已下线
+        :type ChannelStatus: int
+        :param _ChannelName: 渠道名称
+        :type ChannelName: str
+        :param _ChannelId: 渠道id 数据库主键
+        :type ChannelId: str
+        :param _Comment: 备注
+        :type Comment: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdatedUser: 最后更新人
+        :type UpdatedUser: str
+        :param _YuanQiInfo: 智能体应用可见范围，public-所有人可见 private-仅自己可见 share-通过分享可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YuanQiInfo: :class:`tencentcloud.lke.v20231130.models.YuanQi`
+        """
+        self._ChannelType = None
+        self._ChannelStatus = None
+        self._ChannelName = None
+        self._ChannelId = None
+        self._Comment = None
+        self._UpdateTime = None
+        self._CreateTime = None
+        self._UpdatedUser = None
+        self._YuanQiInfo = None
+
+    @property
+    def ChannelType(self):
+        r"""渠道类型 10000 微信订阅号 10001 微信服务号 10002 企微应用
+        :rtype: int
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def ChannelStatus(self):
+        r"""渠道状态 1未发布 2运行中 3已下线
+        :rtype: int
+        """
+        return self._ChannelStatus
+
+    @ChannelStatus.setter
+    def ChannelStatus(self, ChannelStatus):
+        self._ChannelStatus = ChannelStatus
+
+    @property
+    def ChannelName(self):
+        r"""渠道名称
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def ChannelId(self):
+        r"""渠道id 数据库主键
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Comment(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdatedUser(self):
+        r"""最后更新人
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def YuanQiInfo(self):
+        r"""智能体应用可见范围，public-所有人可见 private-仅自己可见 share-通过分享可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.YuanQi`
+        """
+        return self._YuanQiInfo
+
+    @YuanQiInfo.setter
+    def YuanQiInfo(self, YuanQiInfo):
+        self._YuanQiInfo = YuanQiInfo
+
+
+    def _deserialize(self, params):
+        self._ChannelType = params.get("ChannelType")
+        self._ChannelStatus = params.get("ChannelStatus")
+        self._ChannelName = params.get("ChannelName")
+        self._ChannelId = params.get("ChannelId")
+        self._Comment = params.get("Comment")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdatedUser = params.get("UpdatedUser")
+        if params.get("YuanQiInfo") is not None:
+            self._YuanQiInfo = YuanQi()
+            self._YuanQiInfo._deserialize(params.get("YuanQiInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckAttributeLabelExistRequest(AbstractModel):
     r"""CheckAttributeLabelExist请求参数结构体
 
@@ -6651,7 +6941,7 @@ class CreateReleaseRequest(AbstractModel):
         :type BotBizId: str
         :param _Desc: 发布描述
         :type Desc: str
-        :param _ChannelBizIds: 渠道业务ID
+        :param _ChannelBizIds: 渠道业务ID，从ListChannel接口的响应字段ChannelId获取
         :type ChannelBizIds: list of str
         """
         self._BotBizId = None
@@ -6682,7 +6972,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def ChannelBizIds(self):
-        r"""渠道业务ID
+        r"""渠道业务ID，从ListChannel接口的响应字段ChannelId获取
         :rtype: list of str
         """
         return self._ChannelBizIds
@@ -19201,6 +19491,184 @@ class ListAttributeLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListChannelRequest(AbstractModel):
+    r"""ListChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 分页数量
+        :type PageSize: int
+        :param _ChannelType: 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+        :type ChannelType: list of int non-negative
+        :param _ChannelStatus: 渠道状态 1未发布 2运行中 3已下线
+        :type ChannelStatus: list of int non-negative
+        """
+        self._AppBizId = None
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._ChannelType = None
+        self._ChannelStatus = None
+
+    @property
+    def AppBizId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def BotBizId(self):
+        warnings.warn("parameter `BotBizId` is deprecated", DeprecationWarning) 
+
+        r"""应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        warnings.warn("parameter `BotBizId` is deprecated", DeprecationWarning) 
+
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ChannelType(self):
+        r"""渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+        :rtype: list of int non-negative
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def ChannelStatus(self):
+        r"""渠道状态 1未发布 2运行中 3已下线
+        :rtype: list of int non-negative
+        """
+        return self._ChannelStatus
+
+    @ChannelStatus.setter
+    def ChannelStatus(self, ChannelStatus):
+        self._ChannelStatus = ChannelStatus
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ChannelType = params.get("ChannelType")
+        self._ChannelStatus = params.get("ChannelStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListChannelResponse(AbstractModel):
+    r"""ListChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 返回总数
+        :type Total: int
+        :param _ListChannel: 渠道信息列表
+        :type ListChannel: list of ChannelListInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._ListChannel = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""返回总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ListChannel(self):
+        r"""渠道信息列表
+        :rtype: list of ChannelListInfo
+        """
+        return self._ListChannel
+
+    @ListChannel.setter
+    def ListChannel(self, ListChannel):
+        self._ListChannel = ListChannel
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("ListChannel") is not None:
+            self._ListChannel = []
+            for item in params.get("ListChannel"):
+                obj = ChannelListInfo()
+                obj._deserialize(item)
+                self._ListChannel.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListDocCateRequest(AbstractModel):
     r"""ListDocCate请求参数结构体
 
@@ -27104,6 +27572,147 @@ class OptionCardIndex(AbstractModel):
         
 
 
+class ParameterConfig(AbstractModel):
+    r"""参数配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+        :type Name: str
+        :param _Description: 字段描述
+        :type Description: str
+        :param _Type: 字段类型
+        :type Type: int
+        :param _IsRequired: 是否必填
+        :type IsRequired: bool
+        :param _SubParams: 子参数
+        :type SubParams: list of ParameterConfig
+        :param _OneOf: OneOf类型的参数
+        :type OneOf: list of ParameterConfig
+        :param _AnyOf: AnyOf类型的参数
+        :type AnyOf: list of ParameterConfig
+        """
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._IsRequired = None
+        self._SubParams = None
+        self._OneOf = None
+        self._AnyOf = None
+
+    @property
+    def Name(self):
+        r"""字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""字段描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""字段类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsRequired(self):
+        r"""是否必填
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def SubParams(self):
+        r"""子参数
+        :rtype: list of ParameterConfig
+        """
+        return self._SubParams
+
+    @SubParams.setter
+    def SubParams(self, SubParams):
+        self._SubParams = SubParams
+
+    @property
+    def OneOf(self):
+        r"""OneOf类型的参数
+        :rtype: list of ParameterConfig
+        """
+        return self._OneOf
+
+    @OneOf.setter
+    def OneOf(self, OneOf):
+        self._OneOf = OneOf
+
+    @property
+    def AnyOf(self):
+        r"""AnyOf类型的参数
+        :rtype: list of ParameterConfig
+        """
+        return self._AnyOf
+
+    @AnyOf.setter
+    def AnyOf(self, AnyOf):
+        self._AnyOf = AnyOf
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._IsRequired = params.get("IsRequired")
+        if params.get("SubParams") is not None:
+            self._SubParams = []
+            for item in params.get("SubParams"):
+                obj = ParameterConfig()
+                obj._deserialize(item)
+                self._SubParams.append(obj)
+        if params.get("OneOf") is not None:
+            self._OneOf = []
+            for item in params.get("OneOf"):
+                obj = ParameterConfig()
+                obj._deserialize(item)
+                self._OneOf.append(obj)
+        if params.get("AnyOf") is not None:
+            self._AnyOf = []
+            for item in params.get("AnyOf"):
+                obj = ParameterConfig()
+                obj._deserialize(item)
+                self._AnyOf.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PluginToolReqParam(AbstractModel):
     r"""插件参数请求结构
 
@@ -31329,6 +31938,47 @@ class StrValue(AbstractModel):
         
 
 
+class StructuredOutputConfig(AbstractModel):
+    r"""结构化输出的配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StructuredOutputParams: 参数列表
+        :type StructuredOutputParams: list of ParameterConfig
+        """
+        self._StructuredOutputParams = None
+
+    @property
+    def StructuredOutputParams(self):
+        r"""参数列表
+        :rtype: list of ParameterConfig
+        """
+        return self._StructuredOutputParams
+
+    @StructuredOutputParams.setter
+    def StructuredOutputParams(self, StructuredOutputParams):
+        self._StructuredOutputParams = StructuredOutputParams
+
+
+    def _deserialize(self, params):
+        if params.get("StructuredOutputParams") is not None:
+            self._StructuredOutputParams = []
+            for item in params.get("StructuredOutputParams"):
+                obj = ParameterConfig()
+                obj._deserialize(item)
+                self._StructuredOutputParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SummaryConfig(AbstractModel):
     r"""知识摘要应用配置
 
@@ -34205,6 +34855,42 @@ class WorkflowRunNodeInfo(AbstractModel):
                 obj = StatisticInfo()
                 obj._deserialize(item)
                 self._StatisticInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class YuanQi(AbstractModel):
+    r"""//智能体应用可见范围，public-所有人可见 private-仅自己可见 share-通过分享可见
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VisibleRange: public-所有人可见
+        :type VisibleRange: str
+        """
+        self._VisibleRange = None
+
+    @property
+    def VisibleRange(self):
+        r"""public-所有人可见
+        :rtype: str
+        """
+        return self._VisibleRange
+
+    @VisibleRange.setter
+    def VisibleRange(self, VisibleRange):
+        self._VisibleRange = VisibleRange
+
+
+    def _deserialize(self, params):
+        self._VisibleRange = params.get("VisibleRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

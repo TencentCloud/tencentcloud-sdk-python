@@ -7334,6 +7334,132 @@ class DescribeHealthScoreResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHealthScoreTimeSeriesRequest(AbstractModel):
+    r"""DescribeHealthScoreTimeSeries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type EndTime: str
+        :param _InstanceId: 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :type Product: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHealthScoreTimeSeriesResponse(AbstractModel):
+    r"""DescribeHealthScoreTimeSeries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 健康得分趋势数据
+        :type Data: :class:`tencentcloud.dbbrain.v20210527.models.HealthScoreTimeSeriesData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""健康得分趋势数据
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.HealthScoreTimeSeriesData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = HealthScoreTimeSeriesData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
     r"""DescribeIndexRecommendAggregationSlowLogs请求参数结构体
 
@@ -9726,6 +9852,150 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TopKeys.append(obj)
         self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisTopCostCommandsRequest(AbstractModel):
+    r"""DescribeRedisTopCostCommands请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type EndTime: str
+        :param _InstanceId: 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :type Product: str
+        :param _Limit: 默认前20条
+        :type Limit: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._Product = None
+        self._Limit = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Limit(self):
+        r"""默认前20条
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisTopCostCommandsResponse(AbstractModel):
+    r"""DescribeRedisTopCostCommands返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopCostCmdList: 命令列表
+        :type TopCostCmdList: list of RedisCostCmd
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopCostCmdList = None
+        self._RequestId = None
+
+    @property
+    def TopCostCmdList(self):
+        r"""命令列表
+        :rtype: list of RedisCostCmd
+        """
+        return self._TopCostCmdList
+
+    @TopCostCmdList.setter
+    def TopCostCmdList(self, TopCostCmdList):
+        self._TopCostCmdList = TopCostCmdList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TopCostCmdList") is not None:
+            self._TopCostCmdList = []
+            for item in params.get("TopCostCmdList"):
+                obj = RedisCostCmd()
+                obj._deserialize(item)
+                self._TopCostCmdList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13410,6 +13680,123 @@ class HealthScoreInfo(AbstractModel):
         
 
 
+class HealthScoreTimeSeriesData(AbstractModel):
+    r"""健康得分趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Avg: 平均得分
+        :type Avg: float
+        :param _HealthStatus: 健康状态
+1-health
+2-warning
+3-critical
+        :type HealthStatus: int
+        :param _Metric: 指标名称
+        :type Metric: str
+        :param _Series: 得分序列
+        :type Series: list of int non-negative
+        :param _Timestamp: 时间序列，单位：毫秒数
+        :type Timestamp: list of int non-negative
+        :param _Unit: 单位
+        :type Unit: str
+        """
+        self._Avg = None
+        self._HealthStatus = None
+        self._Metric = None
+        self._Series = None
+        self._Timestamp = None
+        self._Unit = None
+
+    @property
+    def Avg(self):
+        r"""平均得分
+        :rtype: float
+        """
+        return self._Avg
+
+    @Avg.setter
+    def Avg(self, Avg):
+        self._Avg = Avg
+
+    @property
+    def HealthStatus(self):
+        r"""健康状态
+1-health
+2-warning
+3-critical
+        :rtype: int
+        """
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def Metric(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Series(self):
+        r"""得分序列
+        :rtype: list of int non-negative
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def Timestamp(self):
+        r"""时间序列，单位：毫秒数
+        :rtype: list of int non-negative
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Unit(self):
+        r"""单位
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._Avg = params.get("Avg")
+        self._HealthStatus = params.get("HealthStatus")
+        self._Metric = params.get("Metric")
+        self._Series = params.get("Series")
+        self._Timestamp = params.get("Timestamp")
+        self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HealthStatus(AbstractModel):
     r"""实例健康详情。
 
@@ -17055,6 +17442,57 @@ class RedisCmdInfo(AbstractModel):
     def _deserialize(self, params):
         self._Cmd = params.get("Cmd")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisCostCmd(AbstractModel):
+    r"""redis命令cost详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cmd: 命令
+        :type Cmd: str
+        :param _MaxCost: 最大cost
+        :type MaxCost: int
+        """
+        self._Cmd = None
+        self._MaxCost = None
+
+    @property
+    def Cmd(self):
+        r"""命令
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def MaxCost(self):
+        r"""最大cost
+        :rtype: int
+        """
+        return self._MaxCost
+
+    @MaxCost.setter
+    def MaxCost(self, MaxCost):
+        self._MaxCost = MaxCost
+
+
+    def _deserialize(self, params):
+        self._Cmd = params.get("Cmd")
+        self._MaxCost = params.get("MaxCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

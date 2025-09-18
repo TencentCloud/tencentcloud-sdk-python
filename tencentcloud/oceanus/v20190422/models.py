@@ -84,6 +84,85 @@ class CCN(AbstractModel):
         
 
 
+class CheckConnectorNameRequest(AbstractModel):
+    r"""CheckConnectorName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 资源名
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""资源名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckConnectorNameResponse(AbstractModel):
+    r"""CheckConnectorName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Exists: 是否存在
+        :type Exists: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Exists = None
+        self._RequestId = None
+
+    @property
+    def Exists(self):
+        r"""是否存在
+        :rtype: bool
+        """
+        return self._Exists
+
+    @Exists.setter
+    def Exists(self, Exists):
+        self._Exists = Exists
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Exists = params.get("Exists")
+        self._RequestId = params.get("RequestId")
+
+
 class CheckSavepointRequest(AbstractModel):
     r"""CheckSavepoint请求参数结构体
 
@@ -2093,6 +2172,72 @@ class ClusterVersion(AbstractModel):
         
 
 
+class Connectors(AbstractModel):
+    r"""解析Connector
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConnectionMethod: 连接方式
+        :type ConnectionMethod: str
+        :param _Connector: 连接器名称
+        :type Connector: str
+        :param _Existed: 是否已经被使用
+        :type Existed: bool
+        """
+        self._ConnectionMethod = None
+        self._Connector = None
+        self._Existed = None
+
+    @property
+    def ConnectionMethod(self):
+        r"""连接方式
+        :rtype: str
+        """
+        return self._ConnectionMethod
+
+    @ConnectionMethod.setter
+    def ConnectionMethod(self, ConnectionMethod):
+        self._ConnectionMethod = ConnectionMethod
+
+    @property
+    def Connector(self):
+        r"""连接器名称
+        :rtype: str
+        """
+        return self._Connector
+
+    @Connector.setter
+    def Connector(self, Connector):
+        self._Connector = Connector
+
+    @property
+    def Existed(self):
+        r"""是否已经被使用
+        :rtype: bool
+        """
+        return self._Existed
+
+    @Existed.setter
+    def Existed(self, Existed):
+        self._Existed = Existed
+
+
+    def _deserialize(self, params):
+        self._ConnectionMethod = params.get("ConnectionMethod")
+        self._Connector = params.get("Connector")
+        self._Existed = params.get("Existed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CopyJobItem(AbstractModel):
     r"""复制作业单条明细
 
@@ -2530,6 +2675,130 @@ class CopyJobsResponse(AbstractModel):
                 obj = CopyJobResult()
                 obj._deserialize(item)
                 self._CopyJobsResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConnectorRequest(AbstractModel):
+    r"""CreateConnector请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _WorkSpaceId: 空间
+        :type WorkSpaceId: str
+        :param _VersionId: 资源版本
+        :type VersionId: int
+        :param _Connector: 连接器名称
+        :type Connector: str
+        :param _ConnectionMethod: 连接方式
+        :type ConnectionMethod: str
+        """
+        self._ResourceId = None
+        self._WorkSpaceId = None
+        self._VersionId = None
+        self._Connector = None
+        self._ConnectionMethod = None
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def WorkSpaceId(self):
+        r"""空间
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def VersionId(self):
+        r"""资源版本
+        :rtype: int
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Connector(self):
+        r"""连接器名称
+        :rtype: str
+        """
+        return self._Connector
+
+    @Connector.setter
+    def Connector(self, Connector):
+        self._Connector = Connector
+
+    @property
+    def ConnectionMethod(self):
+        r"""连接方式
+        :rtype: str
+        """
+        return self._ConnectionMethod
+
+    @ConnectionMethod.setter
+    def ConnectionMethod(self, ConnectionMethod):
+        self._ConnectionMethod = ConnectionMethod
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._VersionId = params.get("VersionId")
+        self._Connector = params.get("Connector")
+        self._ConnectionMethod = params.get("ConnectionMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConnectorResponse(AbstractModel):
+    r"""CreateConnector返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10647,6 +10916,145 @@ class LogicalType(AbstractModel):
         
 
 
+class ModifyConnectorRequest(AbstractModel):
+    r"""ModifyConnector请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 空间
+        :type WorkSpaceId: str
+        :param _ConnectorResourceId: connector ID
+        :type ConnectorResourceId: str
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _VersionId: 资源版本
+        :type VersionId: int
+        :param _Connector: 连接器名称
+        :type Connector: str
+        :param _ConnectionMethod: 连接方式
+        :type ConnectionMethod: str
+        """
+        self._WorkSpaceId = None
+        self._ConnectorResourceId = None
+        self._ResourceId = None
+        self._VersionId = None
+        self._Connector = None
+        self._ConnectionMethod = None
+
+    @property
+    def WorkSpaceId(self):
+        r"""空间
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def ConnectorResourceId(self):
+        r"""connector ID
+        :rtype: str
+        """
+        return self._ConnectorResourceId
+
+    @ConnectorResourceId.setter
+    def ConnectorResourceId(self, ConnectorResourceId):
+        self._ConnectorResourceId = ConnectorResourceId
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def VersionId(self):
+        r"""资源版本
+        :rtype: int
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Connector(self):
+        r"""连接器名称
+        :rtype: str
+        """
+        return self._Connector
+
+    @Connector.setter
+    def Connector(self, Connector):
+        self._Connector = Connector
+
+    @property
+    def ConnectionMethod(self):
+        r"""连接方式
+        :rtype: str
+        """
+        return self._ConnectionMethod
+
+    @ConnectionMethod.setter
+    def ConnectionMethod(self, ConnectionMethod):
+        self._ConnectionMethod = ConnectionMethod
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._ConnectorResourceId = params.get("ConnectorResourceId")
+        self._ResourceId = params.get("ResourceId")
+        self._VersionId = params.get("VersionId")
+        self._Connector = params.get("Connector")
+        self._ConnectionMethod = params.get("ConnectionMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConnectorResponse(AbstractModel):
+    r"""ModifyConnector返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyFolderRequest(AbstractModel):
     r"""ModifyFolder请求参数结构体
 
@@ -11249,6 +11657,120 @@ class Order(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ParseConnectorRequest(AbstractModel):
+    r"""ParseConnector请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _VersionId: 资源版本
+        :type VersionId: int
+        :param _WorkSpaceId: 空间
+        :type WorkSpaceId: str
+        """
+        self._ResourceId = None
+        self._VersionId = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def VersionId(self):
+        r"""资源版本
+        :rtype: int
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def WorkSpaceId(self):
+        r"""空间
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._VersionId = params.get("VersionId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParseConnectorResponse(AbstractModel):
+    r"""ParseConnector返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Connectors: 连接器
+        :type Connectors: list of Connectors
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Connectors = None
+        self._RequestId = None
+
+    @property
+    def Connectors(self):
+        r"""连接器
+        :rtype: list of Connectors
+        """
+        return self._Connectors
+
+    @Connectors.setter
+    def Connectors(self, Connectors):
+        self._Connectors = Connectors
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Connectors") is not None:
+            self._Connectors = []
+            for item in params.get("Connectors"):
+                obj = Connectors()
+                obj._deserialize(item)
+                self._Connectors.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Property(AbstractModel):

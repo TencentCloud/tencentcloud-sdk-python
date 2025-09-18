@@ -26,6 +26,29 @@ class OceanusClient(AbstractClient):
     _service = 'oceanus'
 
 
+    def CheckConnectorName(self, request):
+        r"""查询资源名是否重复
+
+        :param request: Request instance for CheckConnectorName.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CheckConnectorNameRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CheckConnectorNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckConnectorName", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckConnectorNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckSavepoint(self, request):
         r"""检查快照是否可用
 
@@ -63,6 +86,29 @@ class OceanusClient(AbstractClient):
             body = self.call("CopyJobs", params, headers=headers)
             response = json.loads(body)
             model = models.CopyJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateConnector(self, request):
+        r"""创建Connector
+
+        :param request: Request instance for CreateConnector.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateConnectorRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateConnectorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConnector", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConnectorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +808,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConnector(self, request):
+        r"""修改Connector
+
+        :param request: Request instance for ModifyConnector.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyConnectorRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ModifyConnectorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConnector", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConnectorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFolder(self, request):
         r"""自定义树状结构页面拖拽文件夹
 
@@ -830,6 +899,29 @@ class OceanusClient(AbstractClient):
             body = self.call("ModifyWorkSpace", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyWorkSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ParseConnector(self, request):
+        r"""解析用户上传connector
+
+        :param request: Request instance for ParseConnector.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ParseConnectorRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ParseConnectorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ParseConnector", params, headers=headers)
+            response = json.loads(body)
+            model = models.ParseConnectorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

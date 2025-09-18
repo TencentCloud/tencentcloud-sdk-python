@@ -1185,11 +1185,20 @@ es类型示例:
         :type TargetDescription: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
         :param _RuleId: 事件规则ID
         :type RuleId: str
+        :param _BatchTimeout: 批量投递最长等待时间
+        :type BatchTimeout: int
+        :param _BatchEventCount: 批量投递最大事件条数
+        :type BatchEventCount: int
+        :param _EnableBatchDelivery: 开启批量投递使能
+        :type EnableBatchDelivery: bool
         """
         self._EventBusId = None
         self._Type = None
         self._TargetDescription = None
         self._RuleId = None
+        self._BatchTimeout = None
+        self._BatchEventCount = None
+        self._EnableBatchDelivery = None
 
     @property
     def EventBusId(self):
@@ -1244,6 +1253,39 @@ es类型示例:
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def BatchTimeout(self):
+        r"""批量投递最长等待时间
+        :rtype: int
+        """
+        return self._BatchTimeout
+
+    @BatchTimeout.setter
+    def BatchTimeout(self, BatchTimeout):
+        self._BatchTimeout = BatchTimeout
+
+    @property
+    def BatchEventCount(self):
+        r"""批量投递最大事件条数
+        :rtype: int
+        """
+        return self._BatchEventCount
+
+    @BatchEventCount.setter
+    def BatchEventCount(self, BatchEventCount):
+        self._BatchEventCount = BatchEventCount
+
+    @property
+    def EnableBatchDelivery(self):
+        r"""开启批量投递使能
+        :rtype: bool
+        """
+        return self._EnableBatchDelivery
+
+    @EnableBatchDelivery.setter
+    def EnableBatchDelivery(self, EnableBatchDelivery):
+        self._EnableBatchDelivery = EnableBatchDelivery
+
 
     def _deserialize(self, params):
         self._EventBusId = params.get("EventBusId")
@@ -1252,6 +1294,9 @@ es类型示例:
             self._TargetDescription = TargetDescription()
             self._TargetDescription._deserialize(params.get("TargetDescription"))
         self._RuleId = params.get("RuleId")
+        self._BatchTimeout = params.get("BatchTimeout")
+        self._BatchEventCount = params.get("BatchEventCount")
+        self._EnableBatchDelivery = params.get("EnableBatchDelivery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -832,6 +832,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportIpTraceLog(self, request):
+        r"""查询IP溯源日志原始数据
+
+        :param request: Request instance for ExportIpTraceLog.
+        :type request: :class:`tencentcloud.es.v20180416.models.ExportIpTraceLogRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.ExportIpTraceLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportIpTraceLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportIpTraceLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDiagnoseSettings(self, request):
         r"""查看智能运维配置
 

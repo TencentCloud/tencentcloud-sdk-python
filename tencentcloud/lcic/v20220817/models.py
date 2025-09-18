@@ -2229,6 +2229,8 @@ class CreateRoomRequest(AbstractModel):
         :type WhiteBoardSnapshotMode: int
         :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
         :type SubtitlesTranscription: int
+        :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :type RecordMerge: int
         """
         self._Name = None
         self._StartTime = None
@@ -2263,6 +2265,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordStream = None
         self._WhiteBoardSnapshotMode = None
         self._SubtitlesTranscription = None
+        self._RecordMerge = None
 
     @property
     def Name(self):
@@ -2654,6 +2657,17 @@ class CreateRoomRequest(AbstractModel):
     def SubtitlesTranscription(self, SubtitlesTranscription):
         self._SubtitlesTranscription = SubtitlesTranscription
 
+    @property
+    def RecordMerge(self):
+        r"""录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :rtype: int
+        """
+        return self._RecordMerge
+
+    @RecordMerge.setter
+    def RecordMerge(self, RecordMerge):
+        self._RecordMerge = RecordMerge
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2689,6 +2703,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordStream = params.get("RecordStream")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         self._SubtitlesTranscription = params.get("SubtitlesTranscription")
+        self._RecordMerge = params.get("RecordMerge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6311,6 +6326,8 @@ class DescribeRoomResponse(AbstractModel):
         :type SubtitlesTranscription: int
         :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :type Guests: list of str
+        :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :type RecordMerge: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6349,6 +6366,7 @@ class DescribeRoomResponse(AbstractModel):
         self._WhiteBoardSnapshotMode = None
         self._SubtitlesTranscription = None
         self._Guests = None
+        self._RecordMerge = None
         self._RequestId = None
 
     @property
@@ -6749,6 +6767,17 @@ class DescribeRoomResponse(AbstractModel):
         self._Guests = Guests
 
     @property
+    def RecordMerge(self):
+        r"""录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :rtype: int
+        """
+        return self._RecordMerge
+
+    @RecordMerge.setter
+    def RecordMerge(self, RecordMerge):
+        self._RecordMerge = RecordMerge
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6796,6 +6825,7 @@ class DescribeRoomResponse(AbstractModel):
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         self._Guests = params.get("Guests")
+        self._RecordMerge = params.get("RecordMerge")
         self._RequestId = params.get("RequestId")
 
 
@@ -10700,6 +10730,10 @@ video 纯视频
         :type WhiteBoardSnapshotMode: int
         :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
         :type SubtitlesTranscription: int
+        :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        :type Guests: list of str
+        :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :type RecordMerge: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -10729,6 +10763,8 @@ video 纯视频
         self._RecordLang = None
         self._WhiteBoardSnapshotMode = None
         self._SubtitlesTranscription = None
+        self._Guests = None
+        self._RecordMerge = None
 
     @property
     def RoomId(self):
@@ -11061,6 +11097,28 @@ video 纯视频
     def SubtitlesTranscription(self, SubtitlesTranscription):
         self._SubtitlesTranscription = SubtitlesTranscription
 
+    @property
+    def Guests(self):
+        r"""嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        :rtype: list of str
+        """
+        return self._Guests
+
+    @Guests.setter
+    def Guests(self, Guests):
+        self._Guests = Guests
+
+    @property
+    def RecordMerge(self):
+        r"""录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :rtype: int
+        """
+        return self._RecordMerge
+
+    @RecordMerge.setter
+    def RecordMerge(self, RecordMerge):
+        self._RecordMerge = RecordMerge
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -11091,6 +11149,8 @@ video 纯视频
         self._RecordLang = params.get("RecordLang")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         self._SubtitlesTranscription = params.get("SubtitlesTranscription")
+        self._Guests = params.get("Guests")
+        self._RecordMerge = params.get("RecordMerge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11700,6 +11760,8 @@ class RoomInfo(AbstractModel):
         :type SubtitlesTranscription: int
         :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :type Guests: list of str
+        :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :type RecordMerge: int
         """
         self._Name = None
         self._StartTime = None
@@ -11733,6 +11795,7 @@ class RoomInfo(AbstractModel):
         self._WhiteBoardSnapshotMode = None
         self._SubtitlesTranscription = None
         self._Guests = None
+        self._RecordMerge = None
 
     @property
     def Name(self):
@@ -12097,6 +12160,17 @@ class RoomInfo(AbstractModel):
     def Guests(self, Guests):
         self._Guests = Guests
 
+    @property
+    def RecordMerge(self):
+        r"""录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :rtype: int
+        """
+        return self._RecordMerge
+
+    @RecordMerge.setter
+    def RecordMerge(self, RecordMerge):
+        self._RecordMerge = RecordMerge
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12131,6 +12205,7 @@ class RoomInfo(AbstractModel):
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         self._Guests = params.get("Guests")
+        self._RecordMerge = params.get("RecordMerge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

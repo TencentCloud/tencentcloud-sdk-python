@@ -227,6 +227,9 @@ RESOURCEINUSE = 'ResourceInUse'
 # 集群有其他操作。
 RESOURCEINUSE_INSTANCEINPROCESS = 'ResourceInUse.InstanceInProcess'
 
+# Connector重复
+RESOURCEINUSE_RESOURCECONNECTORDUPLICATENAME = 'ResourceInUse.ResourceConnectorDuplicateName'
+
 # 资源名称已存在。
 RESOURCEINUSE_RESOURCENAMEALREADYEXISTS = 'ResourceInUse.ResourceNameAlreadyExists'
 
@@ -253,6 +256,9 @@ RESOURCENOTFOUND_JOBID = 'ResourceNotFound.JobId'
 
 # 找不到日志。
 RESOURCENOTFOUND_LOGTOPIC = 'ResourceNotFound.LogTopic'
+
+# 没有集群支持解析connector
+RESOURCENOTFOUND_PARSECONNECTORCLUSTERNOTFOUND = 'ResourceNotFound.ParseConnectorClusterNotFound'
 
 # 程序包不存在。
 RESOURCENOTFOUND_RESOURCE = 'ResourceNotFound.Resource'

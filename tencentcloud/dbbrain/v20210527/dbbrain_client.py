@@ -923,6 +923,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHealthScoreTimeSeries(self, request):
+        r"""获取指定时间段内的健康得分趋势
+
+        :param request: Request instance for DescribeHealthScoreTimeSeries.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeHealthScoreTimeSeriesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeHealthScoreTimeSeriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHealthScoreTimeSeries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHealthScoreTimeSeriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIndexRecommendAggregationSlowLogs(self, request):
         r"""查询某张表的慢查模板概览，这个接口是对用户点击对应的推荐索引后，展示慢日志用的
 
@@ -1236,6 +1259,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeRedisTopBigKeys", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRedisTopBigKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisTopCostCommands(self, request):
+        r"""获取指定时间段内Redis 访问命令 cost top N
+
+        :param request: Request instance for DescribeRedisTopCostCommands.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopCostCommandsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopCostCommandsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisTopCostCommands", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisTopCostCommandsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

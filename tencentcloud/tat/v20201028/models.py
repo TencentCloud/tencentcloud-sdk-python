@@ -4237,6 +4237,8 @@ class InvocationTask(AbstractModel):
 - USER：来源于用户调用。
 - INVOKER：来源于定时执行。
         :type InvocationSource: str
+        :param _CommandName: 执行的命令的名称。
+        :type CommandName: str
         """
         self._InvocationId = None
         self._InvocationTaskId = None
@@ -4251,6 +4253,7 @@ class InvocationTask(AbstractModel):
         self._CommandDocument = None
         self._ErrorInfo = None
         self._InvocationSource = None
+        self._CommandName = None
 
     @property
     def InvocationId(self):
@@ -4414,6 +4417,17 @@ class InvocationTask(AbstractModel):
     def InvocationSource(self, InvocationSource):
         self._InvocationSource = InvocationSource
 
+    @property
+    def CommandName(self):
+        r"""执行的命令的名称。
+        :rtype: str
+        """
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
 
     def _deserialize(self, params):
         self._InvocationId = params.get("InvocationId")
@@ -4433,6 +4447,7 @@ class InvocationTask(AbstractModel):
             self._CommandDocument._deserialize(params.get("CommandDocument"))
         self._ErrorInfo = params.get("ErrorInfo")
         self._InvocationSource = params.get("InvocationSource")
+        self._CommandName = params.get("CommandName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

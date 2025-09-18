@@ -29,6 +29,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnAuthorizedOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 数据格式异常
+FAILEDOPERATION_ABNORMALDATAFORMAT = 'FailedOperation.AbnormalDataFormat'
+
 # 更新ACL失败
 FAILEDOPERATION_ACCESSCONTROLLIST = 'FailedOperation.AccessControlList'
 
@@ -526,6 +529,9 @@ RESOURCENOTFOUND_DISKINFONOTFOUND = 'ResourceNotFound.DiskInfoNotFound'
 
 # 集群信息获取失败
 RESOURCENOTFOUND_ESINFONOTFOUND = 'ResourceNotFound.EsInfoNotFound'
+
+# 索引信息不存在
+RESOURCENOTFOUND_INDEXINFONOTFOUND = 'ResourceNotFound.IndexInfoNotFound'
 
 # 密钥管理系统资源获取失败。
 RESOURCENOTFOUND_KMSNOTFOUND = 'ResourceNotFound.KMSNotFound'

@@ -23370,6 +23370,8 @@ class DspaInstance(AbstractModel):
         :type InsAuthCount: int
         :param _InsTotalQuota: 已购买的实例数量
         :type InsTotalQuota: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._DspaId = None
         self._DspaName = None
@@ -23389,6 +23391,7 @@ class DspaInstance(AbstractModel):
         self._Channel = None
         self._InsAuthCount = None
         self._InsTotalQuota = None
+        self._Tags = None
 
     @property
     def DspaId(self):
@@ -23590,6 +23593,17 @@ class DspaInstance(AbstractModel):
     def InsTotalQuota(self, InsTotalQuota):
         self._InsTotalQuota = InsTotalQuota
 
+    @property
+    def Tags(self):
+        r"""标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -23610,6 +23624,12 @@ class DspaInstance(AbstractModel):
         self._Channel = params.get("Channel")
         self._InsAuthCount = params.get("InsAuthCount")
         self._InsTotalQuota = params.get("InsTotalQuota")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26857,6 +26877,8 @@ Status支持的可选值：enabled、disabled。
 Version支持的可选值：trial、official。
 Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
         :type Filters: list of DspaDataSourceMngFilter
+        :param _TagFilter: Tag键值过滤
+        :type TagFilter: list of Tag
         :param _ListMode: 展示模式。
 
 目前只有两个值的处理逻辑：
@@ -26869,6 +26891,7 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
         self._Limit = None
         self._Offset = None
         self._Filters = None
+        self._TagFilter = None
         self._ListMode = None
 
     @property
@@ -26910,6 +26933,17 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
         self._Filters = Filters
 
     @property
+    def TagFilter(self):
+        r"""Tag键值过滤
+        :rtype: list of Tag
+        """
+        return self._TagFilter
+
+    @TagFilter.setter
+    def TagFilter(self, TagFilter):
+        self._TagFilter = TagFilter
+
+    @property
     def ListMode(self):
         r"""展示模式。
 
@@ -26936,6 +26970,12 @@ Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_
                 obj = DspaDataSourceMngFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        if params.get("TagFilter") is not None:
+            self._TagFilter = []
+            for item in params.get("TagFilter"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagFilter.append(obj)
         self._ListMode = params.get("ListMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -32897,6 +32937,72 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
             self._VulnerabilityLevel._deserialize(params.get("VulnerabilityLevel"))
         self._RiskName = params.get("RiskName")
         self._RiskScore = params.get("RiskScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签键/值和所属类别
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        :param _Category: 标签所属类别
+        :type Category: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+        self._Category = None
+
+    @property
+    def TagKey(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def Category(self):
+        r"""标签所属类别
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

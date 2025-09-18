@@ -3245,6 +3245,23 @@ class TargetGroupInfo(AbstractModel):
         :type RegisteredInstancesCount: int
         :param _Tag: 目标组的标签。
         :type Tag: list of TagInfo
+        :param _ForwardingMode: 流量分发方式
+
+- STATELESS：无状态
+- STATEFUL： 有状态
+        :type ForwardingMode: str
+        :param _TcpIdleConnectTimeout: TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+        :type TcpIdleConnectTimeout: int
+        :param _OthersIdleConnectTimeout: 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+        :type OthersIdleConnectTimeout: int
+        :param _RescheduleUnbindRs: 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+        :type RescheduleUnbindRs: bool
+        :param _RescheduleUnbindRsStartTime: 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+        :type RescheduleUnbindRsStartTime: int
+        :param _RescheduleUnhealthy: 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+        :type RescheduleUnhealthy: bool
+        :param _RescheduleUnhealthyStartTime: 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+        :type RescheduleUnhealthyStartTime: int
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -3260,6 +3277,13 @@ class TargetGroupInfo(AbstractModel):
         self._AssociatedRuleCount = None
         self._RegisteredInstancesCount = None
         self._Tag = None
+        self._ForwardingMode = None
+        self._TcpIdleConnectTimeout = None
+        self._OthersIdleConnectTimeout = None
+        self._RescheduleUnbindRs = None
+        self._RescheduleUnbindRsStartTime = None
+        self._RescheduleUnhealthy = None
+        self._RescheduleUnhealthyStartTime = None
 
     @property
     def TargetGroupId(self):
@@ -3426,6 +3450,86 @@ class TargetGroupInfo(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def ForwardingMode(self):
+        r"""流量分发方式
+
+- STATELESS：无状态
+- STATEFUL： 有状态
+        :rtype: str
+        """
+        return self._ForwardingMode
+
+    @ForwardingMode.setter
+    def ForwardingMode(self, ForwardingMode):
+        self._ForwardingMode = ForwardingMode
+
+    @property
+    def TcpIdleConnectTimeout(self):
+        r"""TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+        :rtype: int
+        """
+        return self._TcpIdleConnectTimeout
+
+    @TcpIdleConnectTimeout.setter
+    def TcpIdleConnectTimeout(self, TcpIdleConnectTimeout):
+        self._TcpIdleConnectTimeout = TcpIdleConnectTimeout
+
+    @property
+    def OthersIdleConnectTimeout(self):
+        r"""其他协议连接空闲超时时间，可配置5s-180s，默认120s
+        :rtype: int
+        """
+        return self._OthersIdleConnectTimeout
+
+    @OthersIdleConnectTimeout.setter
+    def OthersIdleConnectTimeout(self, OthersIdleConnectTimeout):
+        self._OthersIdleConnectTimeout = OthersIdleConnectTimeout
+
+    @property
+    def RescheduleUnbindRs(self):
+        r"""重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+        :rtype: bool
+        """
+        return self._RescheduleUnbindRs
+
+    @RescheduleUnbindRs.setter
+    def RescheduleUnbindRs(self, RescheduleUnbindRs):
+        self._RescheduleUnbindRs = RescheduleUnbindRs
+
+    @property
+    def RescheduleUnbindRsStartTime(self):
+        r"""解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+        :rtype: int
+        """
+        return self._RescheduleUnbindRsStartTime
+
+    @RescheduleUnbindRsStartTime.setter
+    def RescheduleUnbindRsStartTime(self, RescheduleUnbindRsStartTime):
+        self._RescheduleUnbindRsStartTime = RescheduleUnbindRsStartTime
+
+    @property
+    def RescheduleUnhealthy(self):
+        r"""重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+        :rtype: bool
+        """
+        return self._RescheduleUnhealthy
+
+    @RescheduleUnhealthy.setter
+    def RescheduleUnhealthy(self, RescheduleUnhealthy):
+        self._RescheduleUnhealthy = RescheduleUnhealthy
+
+    @property
+    def RescheduleUnhealthyStartTime(self):
+        r"""后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+        :rtype: int
+        """
+        return self._RescheduleUnhealthyStartTime
+
+    @RescheduleUnhealthyStartTime.setter
+    def RescheduleUnhealthyStartTime(self, RescheduleUnhealthyStartTime):
+        self._RescheduleUnhealthyStartTime = RescheduleUnhealthyStartTime
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -3454,6 +3558,13 @@ class TargetGroupInfo(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tag.append(obj)
+        self._ForwardingMode = params.get("ForwardingMode")
+        self._TcpIdleConnectTimeout = params.get("TcpIdleConnectTimeout")
+        self._OthersIdleConnectTimeout = params.get("OthersIdleConnectTimeout")
+        self._RescheduleUnbindRs = params.get("RescheduleUnbindRs")
+        self._RescheduleUnbindRsStartTime = params.get("RescheduleUnbindRsStartTime")
+        self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
+        self._RescheduleUnhealthyStartTime = params.get("RescheduleUnhealthyStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

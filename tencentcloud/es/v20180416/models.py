@@ -9248,6 +9248,255 @@ class EsPublicAcl(AbstractModel):
         
 
 
+class ExportIpTraceLogRequest(AbstractModel):
+    r"""ExportIpTraceLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES集群ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Offset: 起始偏移量
+        :type Offset: int
+        :param _Limit: 数据条数
+        :type Limit: int
+        :param _RemoteIp: 访问IP
+        :type RemoteIp: list of str
+        :param _TraceType: Request/Response 请求/返回, 非必填
+        :type TraceType: list of str
+        :param _NetType: Public/Private 公网访问/内网访问, 非必填
+        :type NetType: list of str
+        :param _ReqTypeOrRspStatus: POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :type ReqTypeOrRspStatus: list of str
+        :param _SearchKey: 关键字模糊查询，支持Lucene Query String
+        :type SearchKey: str
+        :param _Uri: uri搜索
+        :type Uri: str
+        :param _NodeIp: 集群节点IP
+        :type NodeIp: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._RemoteIp = None
+        self._TraceType = None
+        self._NetType = None
+        self._ReqTypeOrRspStatus = None
+        self._SearchKey = None
+        self._Uri = None
+        self._NodeIp = None
+
+    @property
+    def InstanceId(self):
+        r"""ES集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""起始偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""数据条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RemoteIp(self):
+        r"""访问IP
+        :rtype: list of str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
+    @property
+    def TraceType(self):
+        r"""Request/Response 请求/返回, 非必填
+        :rtype: list of str
+        """
+        return self._TraceType
+
+    @TraceType.setter
+    def TraceType(self, TraceType):
+        self._TraceType = TraceType
+
+    @property
+    def NetType(self):
+        r"""Public/Private 公网访问/内网访问, 非必填
+        :rtype: list of str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def ReqTypeOrRspStatus(self):
+        r"""POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :rtype: list of str
+        """
+        return self._ReqTypeOrRspStatus
+
+    @ReqTypeOrRspStatus.setter
+    def ReqTypeOrRspStatus(self, ReqTypeOrRspStatus):
+        self._ReqTypeOrRspStatus = ReqTypeOrRspStatus
+
+    @property
+    def SearchKey(self):
+        r"""关键字模糊查询，支持Lucene Query String
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Uri(self):
+        r"""uri搜索
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def NodeIp(self):
+        r"""集群节点IP
+        :rtype: list of str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._RemoteIp = params.get("RemoteIp")
+        self._TraceType = params.get("TraceType")
+        self._NetType = params.get("NetType")
+        self._ReqTypeOrRspStatus = params.get("ReqTypeOrRspStatus")
+        self._SearchKey = params.get("SearchKey")
+        self._Uri = params.get("Uri")
+        self._NodeIp = params.get("NodeIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportIpTraceLogResponse(AbstractModel):
+    r"""ExportIpTraceLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpTraceList: IP时间列表
+        :type IpTraceList: list of IpTimePair
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IpTraceList = None
+        self._RequestId = None
+
+    @property
+    def IpTraceList(self):
+        r"""IP时间列表
+        :rtype: list of IpTimePair
+        """
+        return self._IpTraceList
+
+    @IpTraceList.setter
+    def IpTraceList(self, IpTraceList):
+        self._IpTraceList = IpTraceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IpTraceList") is not None:
+            self._IpTraceList = []
+            for item in params.get("IpTraceList"):
+                obj = IpTimePair()
+                obj._deserialize(item)
+                self._IpTraceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class Failures(AbstractModel):
     r"""索引备份失败的数据结构
 
@@ -12251,6 +12500,72 @@ class InstanceLog(AbstractModel):
         self._Ip = params.get("Ip")
         self._Message = params.get("Message")
         self._NodeID = params.get("NodeID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTimePair(AbstractModel):
+    r"""节点IP、访问IP、访问时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: IP地址
+        :type Ip: str
+        :param _Timestamp: 时间戳，毫秒
+        :type Timestamp: int
+        :param _NodeIp: 集群节点IP
+        :type NodeIp: str
+        """
+        self._Ip = None
+        self._Timestamp = None
+        self._NodeIp = None
+
+    @property
+    def Ip(self):
+        r"""IP地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Timestamp(self):
+        r"""时间戳，毫秒
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def NodeIp(self):
+        r"""集群节点IP
+        :rtype: str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Timestamp = params.get("Timestamp")
+        self._NodeIp = params.get("NodeIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -31,10 +31,13 @@ class AddCustomizedConfigRequest(AbstractModel):
         :type ConfigType: str
         :param _ConfigContent: 配置内容
         :type ConfigContent: str
+        :param _Tags: 标签
+        :type Tags: list of TagInfo
         """
         self._ConfigName = None
         self._ConfigType = None
         self._ConfigContent = None
+        self._Tags = None
 
     @property
     def ConfigName(self):
@@ -69,11 +72,28 @@ class AddCustomizedConfigRequest(AbstractModel):
     def ConfigContent(self, ConfigContent):
         self._ConfigContent = ConfigContent
 
+    @property
+    def Tags(self):
+        r"""标签
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ConfigName = params.get("ConfigName")
         self._ConfigType = params.get("ConfigType")
         self._ConfigContent = params.get("ConfigContent")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

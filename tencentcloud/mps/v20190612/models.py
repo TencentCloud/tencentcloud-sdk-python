@@ -38168,9 +38168,12 @@ class ImageProcessTaskOutput(AbstractModel):
         :param _OutputStorage: 输出文件的存储位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _SignedUrl: 输出文件的URL。
+        :type SignedUrl: str
         """
         self._Path = None
         self._OutputStorage = None
+        self._SignedUrl = None
 
     @property
     def Path(self):
@@ -38196,12 +38199,24 @@ class ImageProcessTaskOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def SignedUrl(self):
+        r"""输出文件的URL。
+        :rtype: str
+        """
+        return self._SignedUrl
+
+    @SignedUrl.setter
+    def SignedUrl(self, SignedUrl):
+        self._SignedUrl = SignedUrl
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._SignedUrl = params.get("SignedUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53458,12 +53473,22 @@ class ProcessImageRequest(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: 图片处理生成的文件输出的路径。如果不填表示与 InputInfo 中文件所在的目录一致。如果是目录，如`/image/201907/`，表示继承原文件名输出到该目录。
         :type OutputDir: str
+        :param _OutputPath: 输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：{inputName}.{format}。
+        :type OutputPath: str
         :param _ImageTask: 图片处理参数。
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
         """
         self._InputInfo = None
         self._OutputStorage = None
         self._OutputDir = None
+        self._OutputPath = None
         self._ImageTask = None
 
     @property
@@ -53500,6 +53525,24 @@ class ProcessImageRequest(AbstractModel):
         self._OutputDir = OutputDir
 
     @property
+    def OutputPath(self):
+        r"""输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：{inputName}.{format}。
+        :rtype: str
+        """
+        return self._OutputPath
+
+    @OutputPath.setter
+    def OutputPath(self, OutputPath):
+        self._OutputPath = OutputPath
+
+    @property
     def ImageTask(self):
         r"""图片处理参数。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
@@ -53519,6 +53562,7 @@ class ProcessImageRequest(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputDir = params.get("OutputDir")
+        self._OutputPath = params.get("OutputPath")
         if params.get("ImageTask") is not None:
             self._ImageTask = ImageTaskInput()
             self._ImageTask._deserialize(params.get("ImageTask"))

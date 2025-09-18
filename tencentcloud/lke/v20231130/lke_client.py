@@ -73,7 +73,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateAgent(self, request):
-        r"""你创建一个Agent
+        r"""创建一个Agent
 
         :param request: Request instance for CreateAgent.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAgentRequest`
@@ -1537,6 +1537,29 @@ class LkeClient(AbstractClient):
             body = self.call("ListAttributeLabel", params, headers=headers)
             response = json.loads(body)
             model = models.ListAttributeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListChannel(self, request):
+        r"""获取发布渠道列表
+
+        :param request: Request instance for ListChannel.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListChannelRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

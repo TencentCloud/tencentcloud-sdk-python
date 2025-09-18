@@ -205,11 +205,14 @@ class AddCLSTopicDomainsRequest(AbstractModel):
         :type DomainAreaConfigs: list of DomainAreaConfig
         :param _Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
+        :param _InheritDomainTags: 是否继承域名标签, 默认保留上一次更改的值
+        :type InheritDomainTags: bool
         """
         self._LogsetId = None
         self._TopicId = None
         self._DomainAreaConfigs = None
         self._Channel = None
+        self._InheritDomainTags = None
 
     @property
     def LogsetId(self):
@@ -255,6 +258,17 @@ class AddCLSTopicDomainsRequest(AbstractModel):
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def InheritDomainTags(self):
+        r"""是否继承域名标签, 默认保留上一次更改的值
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -266,6 +280,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
         self._Channel = params.get("Channel")
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5571,11 +5586,14 @@ class CreateClsLogTopicRequest(AbstractModel):
         :type Channel: str
         :param _DomainAreaConfigs: 域名区域信息
         :type DomainAreaConfigs: list of DomainAreaConfig
+        :param _InheritDomainTags: 是否继承域名标签，默认为false
+        :type InheritDomainTags: bool
         """
         self._TopicName = None
         self._LogsetId = None
         self._Channel = None
         self._DomainAreaConfigs = None
+        self._InheritDomainTags = None
 
     @property
     def TopicName(self):
@@ -5621,6 +5639,17 @@ class CreateClsLogTopicRequest(AbstractModel):
     def DomainAreaConfigs(self, DomainAreaConfigs):
         self._DomainAreaConfigs = DomainAreaConfigs
 
+    @property
+    def InheritDomainTags(self):
+        r"""是否继承域名标签，默认为false
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -5632,6 +5661,7 @@ class CreateClsLogTopicRequest(AbstractModel):
                 obj = DomainAreaConfig()
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8607,10 +8637,7 @@ edge：表示边缘节点
 last：表示回源层节点
 不填充情况下，默认返回边缘节点信息
         :type Layer: str
-        :param _Area: 查询区域：
-mainland: 国内节点
-overseas: 海外节点
-global: 全球节点
+        :param _Area: 查询区域：mainland: 中国境内节点overseas: 海外节点global: 全球节点
         :type Area: str
         :param _Segment: 是否以IP段的格式返回。
         :type Segment: bool
@@ -8653,10 +8680,7 @@ last：表示回源层节点
 
     @property
     def Area(self):
-        r"""查询区域：
-mainland: 国内节点
-overseas: 海外节点
-global: 全球节点
+        r"""查询区域：mainland: 中国境内节点overseas: 海外节点global: 全球节点
         :rtype: str
         """
         return self._Area
@@ -15671,7 +15695,7 @@ blacklist：黑名单
 最多可填充 200 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of str
-        :param _FilterRules: IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
+        :param _FilterRules: IP 黑白名单分路径配置。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
         :param _ReturnCode: IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
@@ -15727,7 +15751,7 @@ blacklist：黑名单
 
     @property
     def FilterRules(self):
-        r"""IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
+        r"""IP 黑白名单分路径配置。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpFilterPathRule
         """
@@ -16520,6 +16544,8 @@ class ListClsTopicDomainsResponse(AbstractModel):
         :type TopicName: str
         :param _UpdateTime: 日志主题最近更新时间
         :type UpdateTime: str
+        :param _InheritDomainTags: 是否继承域名标签
+        :type InheritDomainTags: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16530,6 +16556,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
         self._DomainAreaConfigs = None
         self._TopicName = None
         self._UpdateTime = None
+        self._InheritDomainTags = None
         self._RequestId = None
 
     @property
@@ -16610,6 +16637,17 @@ class ListClsTopicDomainsResponse(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def InheritDomainTags(self):
+        r"""是否继承域名标签
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16634,6 +16672,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
                 self._DomainAreaConfigs.append(obj)
         self._TopicName = params.get("TopicName")
         self._UpdateTime = params.get("UpdateTime")
+        self._InheritDomainTags = params.get("InheritDomainTags")
         self._RequestId = params.get("RequestId")
 
 
@@ -18047,11 +18086,14 @@ class ManageClsTopicDomainsRequest(AbstractModel):
         :type Channel: str
         :param _DomainAreaConfigs: 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
         :type DomainAreaConfigs: list of DomainAreaConfig
+        :param _InheritDomainTags: 是否继承域名标签
+        :type InheritDomainTags: bool
         """
         self._LogsetId = None
         self._TopicId = None
         self._Channel = None
         self._DomainAreaConfigs = None
+        self._InheritDomainTags = None
 
     @property
     def LogsetId(self):
@@ -18097,6 +18139,17 @@ class ManageClsTopicDomainsRequest(AbstractModel):
     def DomainAreaConfigs(self, DomainAreaConfigs):
         self._DomainAreaConfigs = DomainAreaConfigs
 
+    @property
+    def InheritDomainTags(self):
+        r"""是否继承域名标签
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -18108,6 +18161,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
                 obj = DomainAreaConfig()
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18761,7 +18815,6 @@ ip：IP 列表作为源站
 以下备源源站类型尚未全量支持，需要申请试用：
 ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
-ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupOriginType: str
@@ -18925,7 +18978,6 @@ ip：IP 列表作为源站
 以下备源源站类型尚未全量支持，需要申请试用：
 ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
-ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
