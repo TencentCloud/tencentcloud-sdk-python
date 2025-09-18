@@ -23,6 +23,8 @@ import uuid
 from datetime import datetime
 from typing import Dict, Type, Union, List, Callable, Awaitable, Optional
 
+import httpx
+
 import tencentcloud
 from tencentcloud.common.abstract_client import logger, urlparse, urlencode
 from tencentcloud.common.circuit_breaker import CircuitBreaker
@@ -72,9 +74,11 @@ class AbstractClient(object):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
+        # todo
         # if self.profile.httpProfile.keepAlive:
         #     self.request.set_keep_alive()
         self.circuit_breaker = None
+        self.http_client = httpx.AsyncClient()
         if not self.profile.disable_region_breaker:
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
@@ -178,7 +182,7 @@ class AbstractClient(object):
         return inter
 
     async def _inter_send_request(self, chain: RequestChain):
-        pass
+        return await self.http_client.send(chain.request, stream=True)
 
     def _get_service_domain(self):
         rootDomain = self.profile.httpProfile.rootDomain
