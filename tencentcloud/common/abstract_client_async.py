@@ -1,0 +1,456 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2017-2021 Tencent Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+import copy
+import hashlib
+import json
+import random
+import sys
+import time
+import uuid
+from datetime import datetime
+from typing import Dict, Type, Union, List, Callable, Awaitable, Optional
+
+import tencentcloud
+from tencentcloud.common.abstract_client import logger, urlparse, urlencode
+from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.exception import TencentCloudSDKException
+from tencentcloud.common.http.request_async import ApiRequest
+from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
+from tencentcloud.common.retry_async import NoopRetryer
+from tencentcloud.common.sign import Sign
+
+_json_content = 'application/json'
+_multipart_content = 'multipart/form-data'
+_form_urlencoded_content = 'application/x-www-form-urlencoded'
+_octet_stream = "application/octet-stream"
+
+InterceptorType = Callable[["RequestChain"], Awaitable]
+ParamsType = Union[Dict, str, bytes]
+
+
+class RequestChain(object):
+    def __init__(self):
+        self.request: Optional[ApiRequest] = None
+
+        self._inters: List[InterceptorType] = []
+        self._idx = 0
+
+    async def proceed(self):
+        self._idx += 1
+        interceptor = self._inters[self._idx]
+        return await interceptor(self)
+
+    def add_interceptor(self, inter: InterceptorType, idx=sys.maxsize):
+        self._inters.insert(idx, inter)
+        return self
+
+
+class AbstractClient(object):
+    _requestPath = '/'
+    _params = {}
+    _apiVersion = ''
+    _endpoint = ''
+    _service = ''
+    _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
+    _default_content_type = _form_urlencoded_content
+    FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
+
+    def __init__(self, credential, region, profile=None):
+        self.credential = credential
+        self.region = region
+        self.profile = ClientProfile() if profile is None else profile
+        # if self.profile.httpProfile.keepAlive:
+        #     self.request.set_keep_alive()
+        self.circuit_breaker = None
+        if not self.profile.disable_region_breaker:
+            if self.profile.region_breaker_profile is None:
+                self.profile.region_breaker_profile = RegionBreakerProfile()
+            self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
+        if self.profile.request_client:
+            self.request_client = self._sdkVersion + "; " + self.profile.request_client
+        else:
+            self.request_client = self._sdkVersion
+
+    async def call_and_deserialize_async(
+            self,
+            action: str,
+            params: ParamsType,
+            resp_type: Type = dict,
+            headers: Dict[str, str] = None,
+            opts: Dict = None,
+    ):
+        opts = opts or {}
+        headers = headers or {}
+        chain = self._create_default_chain(action, params, resp_type, headers, opts)
+        return await chain.proceed()
+
+    def _create_default_chain(
+            self,
+            action: str,
+            params: ParamsType,
+            resp_type: Type,
+            headers: Dict[str, str],
+            opts: Dict,
+    ):
+        chain = RequestChain()
+        chain.add_interceptor(self._inter_retry)
+        chain.add_interceptor(self._inter_build_request(action, params, headers, opts))
+        if self.circuit_breaker:
+            chain.add_interceptor(self._inter_breaker(opts))
+        chain.add_interceptor(self._inter_deserialize_resp(resp_type))
+        chain.add_interceptor(self._inter_send_request)
+        return chain
+
+    async def _inter_retry(self, chain: RequestChain):
+        retryer = self.profile.retryer or NoopRetryer()
+        return retryer.send_request_async(chain.proceed)
+
+    def _inter_build_request(
+            self,
+            action: str,
+            params: ParamsType,
+            headers: Dict[str, str],
+            opts: Dict,
+    ):
+        async def inter(chain: RequestChain):
+            nonlocal action, params, opts, headers
+
+            if headers is None:
+                headers = {}
+
+            if not isinstance(headers, dict):
+                raise TencentCloudSDKException("ClientError", "headers must be a dict.")
+
+            if "x-tc-traceid" not in {k.lower() for k in headers.keys()}:
+                headers["X-TC-TraceId"] = str(uuid.uuid4())
+
+            req = self._build_req(action, params, opts)
+
+            if self.profile.httpProfile.apigw_endpoint:
+                req.host = self.profile.httpProfile.apigw_endpoint
+                req.headers["Host"] = req.host
+
+            return await chain.proceed()
+
+        return inter
+
+    async def _inter_sign(self, chain: RequestChain):
+        pass
+
+    def _inter_breaker(self, opts: Dict):
+        async def inter(chain: RequestChain):
+            generation, need_break = self.circuit_breaker.before_requests()
+
+            endpoint = self._get_endpoint(opts=opts)
+            if need_break:
+                endpoint = self._service + "." + self.profile.region_breaker_profile.backup_endpoint
+
+            url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+            chain.request.url = url
+
+            try:
+                resp = await chain.proceed()
+                self.circuit_breaker.after_requests(generation, True)
+                return resp
+            except TencentCloudSDKException as e:
+                success = resp and "RequestId" in resp.content and e.code != "InternalError"
+                self.circuit_breaker.after_requests(generation, success)
+
+        return inter
+
+    def _inter_deserialize_resp(self, resp_type: Type):
+        async def inter(chain: RequestChain):
+            pass
+
+        return inter
+
+    async def _inter_send_request(self, chain: RequestChain):
+        pass
+
+    def _get_service_domain(self):
+        rootDomain = self.profile.httpProfile.rootDomain
+        return self._service + "." + rootDomain
+
+    def _get_endpoint(self, opts=None):
+        endpoint = self.profile.httpProfile.endpoint
+        if not endpoint and opts:
+            endpoint = urlparse(opts.get("Endpoint", "")).hostname
+        if endpoint is None:
+            endpoint = self._get_service_domain()
+        return endpoint
+
+    def _build_req(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+        if opts.get('SkipSign'):
+            return self._build_req_without_signature(action, params, opts)
+        elif self.profile.signMethod == "TC3-HMAC-SHA256" or opts.get("IsMultipart") is True:
+            return self._build_req_with_tc3_signature(action, params, opts)
+        elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
+            return self._build_req_with_old_signature(action, params, opts)
+        else:
+            raise TencentCloudSDKException("ClientError", "Invalid signature method.")
+
+    def _build_req_without_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+        method = self.profile.httpProfile.reqMethod
+        endpoint = self._get_endpoint(opts=opts)
+        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        query = {}
+        headers = {}
+        body = ""
+
+        content_type = self._default_content_type
+        if method == 'GET':
+            content_type = _form_urlencoded_content
+        elif method == 'POST':
+            content_type = _json_content
+        if opts.get("IsMultipart"):
+            content_type = _multipart_content
+        if opts.get("IsOctetStream"):
+            content_type = _octet_stream
+        headers["Content-Type"] = content_type
+
+        if method == "GET" and content_type == _multipart_content:
+            raise TencentCloudSDKException("ClientError", "Invalid request method GET for multipart.")
+
+        endpoint = self._get_endpoint(opts=opts)
+        timestamp = int(time.time())
+        headers["Host"] = endpoint
+        headers["X-TC-Action"] = action[0].upper() + action[1:]
+        headers["X-TC-RequestClient"] = self.request_client
+        headers["X-TC-Timestamp"] = str(timestamp)
+        headers["X-TC-Version"] = self._apiVersion
+        if self.profile.unsignedPayload is True:
+            headers["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
+        if self.region:
+            headers['X-TC-Region'] = self.region
+        if self.profile.language:
+            headers['X-TC-Language'] = self.profile.language
+
+        if method == 'GET':
+            params = copy.deepcopy(self._fix_params(params))
+            url += "?" + urlencode(params)
+        elif content_type == _json_content:
+            body = json.dumps(params)
+        elif content_type == _multipart_content:
+            boundary = uuid.uuid4().hex
+            headers["Content-Type"] = content_type + "; boundary=" + boundary
+            body = self._get_multipart_body(params, boundary, opts)
+
+        headers["Authorization"] = "SKIP"
+        return ApiRequest(method, url, params=query, content=body, headers=headers)
+
+    def _build_req_with_tc3_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+        method = self.profile.httpProfile.reqMethod
+        endpoint = self._get_endpoint(opts=opts)
+        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        query = {}
+        headers = {}
+        body = ""
+
+        content_type = self._default_content_type
+        if method == 'GET':
+            content_type = _form_urlencoded_content
+        elif method == 'POST':
+            content_type = _json_content
+        opts = opts or {}
+        if opts.get("IsMultipart"):
+            content_type = _multipart_content
+        if opts.get("IsOctetStream"):
+            content_type = _octet_stream
+        headers["Content-Type"] = content_type
+
+        if method == "GET" and content_type == _multipart_content:
+            raise TencentCloudSDKException("ClientError", "Invalid request method GET for multipart.")
+
+        endpoint = self._get_endpoint(opts=opts)
+        timestamp = int(time.time())
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
+        headers["Host"] = endpoint
+        headers["X-TC-Action"] = action[0].upper() + action[1:]
+        headers["X-TC-RequestClient"] = self.request_client
+        headers["X-TC-Timestamp"] = str(timestamp)
+        headers["X-TC-Version"] = self._apiVersion
+        if self.profile.unsignedPayload is True:
+            headers["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
+        if self.region:
+            headers['X-TC-Region'] = self.region
+        if cred_token:
+            headers['X-TC-Token'] = cred_token
+        if self.profile.language:
+            headers['X-TC-Language'] = self.profile.language
+
+        if method == 'GET':
+            query = copy.deepcopy(self._fix_params(params))
+        elif content_type == _json_content:
+            body = json.dumps(params)
+        elif content_type == _multipart_content:
+            boundary = uuid.uuid4().hex
+            headers["Content-Type"] = content_type + "; boundary=" + boundary
+            body = self._get_multipart_body(params, boundary, opts)
+
+        service = self._service
+        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
+        signature = self._get_tc3_signature(params, req, date, service, cred_secret_key, opts)
+
+        auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
+            cred_secret_id, date, service, signature)
+        headers["Authorization"] = auth
+        return ApiRequest(method, url, params=query, content=body, headers=headers)
+
+    def _build_req_with_old_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+        method = self.profile.httpProfile.reqMethod
+        endpoint = self._get_endpoint(opts=opts)
+        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        headers = {}
+        body = ""
+
+        params = copy.deepcopy(self._fix_params(params))
+        params['Action'] = action[0].upper() + action[1:]
+        params['RequestClient'] = self.request_client
+        params['Nonce'] = random.randint(1, sys.maxsize)
+        params['Timestamp'] = int(time.time())
+        params['Version'] = self._apiVersion
+
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
+
+        if self.region:
+            params['Region'] = self.region
+
+        if cred_token:
+            params['Token'] = cred_token
+
+        if cred_secret_id:
+            params['SecretId'] = cred_secret_id
+
+        if self.profile.signMethod:
+            params['SignatureMethod'] = self.profile.signMethod
+
+        if self.profile.language:
+            params['Language'] = self.profile.language
+
+        signInParam = self._format_sign_string(params, opts)
+        params['Signature'] = Sign.sign(str(cred_secret_key),
+                                        str(signInParam),
+                                        str(self.profile.signMethod))
+        query = params
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+        return ApiRequest(method, url, params=query, content=body, headers=headers)
+
+    def _format_sign_string(self, params, opts=None):
+        formatParam = {}
+        for k in params:
+            formatParam[k.replace('_', '.')] = params[k]
+        strParam = '&'.join('%s=%s' % (k, formatParam[k]) for k in sorted(formatParam))
+        msg = '%s%s%s?%s' % (
+            self.profile.httpProfile.reqMethod, self._get_endpoint(opts=opts), self._requestPath, strParam)
+        return msg
+
+    def _fix_params(self, params):
+        if not isinstance(params, (dict,)):
+            return params
+        return self._format_params(None, params)
+
+    def _format_params(self, prefix, params):
+        d = {}
+        if params is None:
+            return d
+
+        if not isinstance(params, (tuple, list, dict)):
+            d[prefix] = params
+            return d
+
+        if isinstance(params, (list, tuple)):
+            for idx, item in enumerate(params):
+                if prefix:
+                    key = "{0}.{1}".format(prefix, idx)
+                else:
+                    key = "{0}".format(idx)
+                d.update(self._format_params(key, item))
+            return d
+
+        if isinstance(params, dict):
+            for k, v in params.items():
+                if prefix:
+                    key = '{0}.{1}'.format(prefix, k)
+                else:
+                    key = '{0}'.format(k)
+                d.update(self._format_params(key, v))
+            return d
+
+        raise TencentCloudSDKException("ClientParamsError", "some params type error")
+
+    def _get_multipart_body(self, params, boundary, options=None):
+        if options is None:
+            options = {}
+        # boundary and params key will never contain unicode characters
+        boundary = boundary.encode()
+        binparas = options.get("BinaryParams", [])
+        body = b''
+        for k, v in params.items():
+            kbytes = k.encode()
+            body += b'--%s\r\n' % boundary
+            body += b'Content-Disposition: form-data; name="%s"' % kbytes
+            if k in binparas:
+                body += b'; filename="%s"\r\n' % kbytes
+            else:
+                body += b"\r\n"
+                if isinstance(v, list) or isinstance(v, dict):
+                    v = json.dumps(v)
+                    body += b'Content-Type: application/json\r\n'
+            if sys.version_info[0] == 3 and isinstance(v, type("")):
+                v = v.encode()
+            body += b'\r\n%s\r\n' % v
+        if body != b'':
+            body += b'--%s--\r\n' % boundary
+        return body
+
+    def _get_tc3_signature(self, method, params, headers, date, service, secret_key, opts):
+        canonical_uri = req.uri
+        canonical_querystring = ""
+        payload = req.data
+
+        if method == 'GET':
+            canonical_querystring = req.data
+            payload = ""
+
+        if headers.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
+            payload = "UNSIGNED-PAYLOAD"
+
+        if sys.version_info[0] == 3 and isinstance(payload, type("")):
+            payload = payload.encode("utf8")
+
+        payload_hash = hashlib.sha256(payload).hexdigest()
+
+        canonical_headers = 'content-type:%s\nhost:%s\n' % (
+            headers["Content-Type"], headers["Host"])
+        signed_headers = 'content-type;host'
+        canonical_request = '%s\n%s\n%s\n%s\n%s\n%s' % (method,
+                                                        canonical_uri,
+                                                        canonical_querystring,
+                                                        canonical_headers,
+                                                        signed_headers,
+                                                        payload_hash)
+
+        algorithm = 'TC3-HMAC-SHA256'
+        credential_scope = date + '/' + service + '/tc3_request'
+        if sys.version_info[0] == 3:
+            canonical_request = canonical_request.encode("utf8")
+        digest = hashlib.sha256(canonical_request).hexdigest()
+        string2sign = '%s\n%s\n%s\n%s' % (algorithm,
+                                          headers["X-TC-Timestamp"],
+                                          credential_scope,
+                                          digest)
+        return Sign.sign_tc3(secret_key, date, service, string2sign)
