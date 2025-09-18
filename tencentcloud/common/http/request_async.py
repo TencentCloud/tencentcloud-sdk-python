@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import httpx
 
-__all__ = ["ApiRequest", "ResponsePrettyFormatter"]
+__all__ = ["ApiRequest", "ApiResponse", "ResponsePrettyFormatter"]
 
 ApiRequest = httpx.Request
 ApiResponse = httpx.Response

@@ -27,9 +27,10 @@ import httpx
 
 import tencentcloud
 from tencentcloud.common.abstract_client import logger, urlparse, urlencode
+from tencentcloud.common.abstract_model import AbstractModel
 from tencentcloud.common.circuit_breaker import CircuitBreaker
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.http.request_async import ApiRequest
+from tencentcloud.common.http.request_async import ApiRequest, ApiResponse
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.retry_async import NoopRetryer
 from tencentcloud.common.sign import Sign
@@ -51,8 +52,8 @@ class RequestChain(object):
         self._idx = 0
 
     async def proceed(self):
-        self._idx += 1
         interceptor = self._inters[self._idx]
+        self._idx += 1
         return await interceptor(self)
 
     def add_interceptor(self, inter: InterceptorType, idx=sys.maxsize):
@@ -92,35 +93,35 @@ class AbstractClient(object):
             self,
             action: str,
             params: ParamsType,
-            resp_type: Type = dict,
+            resp_cls: Type = dict,
             headers: Dict[str, str] = None,
             opts: Dict = None,
     ):
         opts = opts or {}
         headers = headers or {}
-        chain = self._create_default_chain(action, params, resp_type, headers, opts)
+        chain = self._create_default_chain(action, params, resp_cls, headers, opts)
         return await chain.proceed()
 
     def _create_default_chain(
             self,
             action: str,
             params: ParamsType,
-            resp_type: Type,
+            resp_cls: Type,
             headers: Dict[str, str],
             opts: Dict,
     ):
         chain = RequestChain()
         chain.add_interceptor(self._inter_retry)
-        chain.add_interceptor(self._inter_build_request(action, params, headers, opts))
+        chain.add_interceptor(self._inter_deserialize_resp(resp_cls))
         if self.circuit_breaker:
             chain.add_interceptor(self._inter_breaker(opts))
-        chain.add_interceptor(self._inter_deserialize_resp(resp_type))
+        chain.add_interceptor(self._inter_build_request(action, params, headers, opts))
         chain.add_interceptor(self._inter_send_request)
         return chain
 
     async def _inter_retry(self, chain: RequestChain):
         retryer = self.profile.retryer or NoopRetryer()
-        return retryer.send_request_async(chain.proceed)
+        return await retryer.send_request_async(chain.proceed)
 
     def _inter_build_request(
             self,
@@ -138,7 +139,7 @@ class AbstractClient(object):
             if not isinstance(headers, dict):
                 raise TencentCloudSDKException("ClientError", "headers must be a dict.")
 
-            if "x-tc-traceid" not in {k.lower() for k in headers.keys()}:
+            if "x-tc-traceid" not in (k.lower() for k in headers.keys()):
                 headers["X-TC-TraceId"] = str(uuid.uuid4())
 
             req = self._build_req(action, params, opts)
@@ -147,12 +148,14 @@ class AbstractClient(object):
                 req.host = self.profile.httpProfile.apigw_endpoint
                 req.headers["Host"] = req.host
 
+            chain.request = req
+
             return await chain.proceed()
 
         return inter
 
     async def _inter_sign(self, chain: RequestChain):
-        pass
+        return await chain.proceed()
 
     def _inter_breaker(self, opts: Dict):
         async def inter(chain: RequestChain):
@@ -165,6 +168,7 @@ class AbstractClient(object):
             url = self.profile.httpProfile.scheme + endpoint + self._requestPath
             chain.request.url = url
 
+            resp = None
             try:
                 resp = await chain.proceed()
                 self.circuit_breaker.after_requests(generation, True)
@@ -175,8 +179,29 @@ class AbstractClient(object):
 
         return inter
 
-    def _inter_deserialize_resp(self, resp_type: Type):
+    def _inter_deserialize_resp(self, resp_cls: Type):
         async def inter(chain: RequestChain):
+            resp = await chain.proceed()
+
+            content_type = resp.headers["Content-Type"]
+            if content_type == "text/event-stream":
+                return await deserialize_sse(resp)
+
+            return await deserialize_json(resp)
+
+        async def deserialize_json(resp: ApiResponse):
+            content = await resp.aread()
+            if resp_cls == dict:
+                return json.loads(content)["Response"]
+
+            if issubclass(resp_cls, AbstractModel):
+                resp_model = resp_cls()
+                resp_model._deserialize(json.loads(content)["Response"])
+                return resp_model
+
+            raise TencentCloudSDKException("ClientParamsError", "invalid resp_cls %s" % resp_cls)
+
+        async def deserialize_sse(resp: ApiResponse):
             pass
 
         return inter
@@ -185,8 +210,8 @@ class AbstractClient(object):
         return await self.http_client.send(chain.request, stream=True)
 
     def _get_service_domain(self):
-        rootDomain = self.profile.httpProfile.rootDomain
-        return self._service + "." + rootDomain
+        root_domain = self.profile.httpProfile.rootDomain
+        return self._service + "." + root_domain
 
     def _get_endpoint(self, opts=None):
         endpoint = self.profile.httpProfile.endpoint
@@ -209,7 +234,7 @@ class AbstractClient(object):
     def _build_req_without_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
-        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = {}
         headers = {}
         body = ""
@@ -258,7 +283,7 @@ class AbstractClient(object):
     def _build_req_with_tc3_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
-        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = {}
         headers = {}
         body = ""
@@ -304,9 +329,12 @@ class AbstractClient(object):
             headers["Content-Type"] = content_type + "; boundary=" + boundary
             body = self._get_multipart_body(params, boundary, opts)
 
+        req = ApiRequest(method, url, params=query, content=body, headers=headers)
+
         service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
-        signature = self._get_tc3_signature(params, req, date, service, cred_secret_key, opts)
+        signature = self._get_tc3_signature(req.method, req.url.path, req.url.params, req.content, req.headers, date,
+                                            service, cred_secret_key, opts)
 
         auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
             cred_secret_id, date, service, signature)
@@ -316,7 +344,7 @@ class AbstractClient(object):
     def _build_req_with_old_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
-        url = self.profile.httpProfile.scheme + endpoint + self._requestPath
+        url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         headers = {}
         body = ""
 
@@ -421,20 +449,15 @@ class AbstractClient(object):
             body += b'--%s--\r\n' % boundary
         return body
 
-    def _get_tc3_signature(self, method, params, headers, date, service, secret_key, opts):
-        canonical_uri = req.uri
-        canonical_querystring = ""
-        payload = req.data
-
-        if method == 'GET':
-            canonical_querystring = req.data
-            payload = ""
+    @staticmethod
+    def _get_tc3_signature(method: str, path: str, query: str, body: bytes, headers: Dict, date: str, service: str,
+                           secret_key: str, opts: Dict):
+        canonical_uri = path
+        canonical_querystring = query
+        payload = body
 
         if headers.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
             payload = "UNSIGNED-PAYLOAD"
-
-        if sys.version_info[0] == 3 and isinstance(payload, type("")):
-            payload = payload.encode("utf8")
 
         payload_hash = hashlib.sha256(payload).hexdigest()
 
