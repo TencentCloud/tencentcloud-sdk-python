@@ -2,21 +2,20 @@ import asyncio
 import logging
 
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.retry import NoopRetryer as SyncNoopRetryer, StandardRetryer as SyncStandardRetryer
 
 
-class NoopRetryer(SyncNoopRetryer):
+class NoopRetryer(object):
     """configuration without retry
 
     NoopRetryer is a retry policy that does nothing.
     It is useful when you don't want to retry.
     """
 
-    async def send_request_async(self, fn):
+    async def send_request(self, fn):
         return await fn()
 
 
-class StandardRetryer(SyncStandardRetryer):
+class StandardRetryer(object):
     """Retry configuration
 
     StandardRetryer is a retry policy that retries on network errors or frequency limitation.
@@ -34,7 +33,7 @@ class StandardRetryer(SyncStandardRetryer):
         self._backoff_fn = backoff_fn or self.backoff
         self._logger = logger
 
-    async def send_request_async(self, fn):
+    async def send_request(self, fn):
         resp = None
         err = None
 
@@ -44,16 +43,37 @@ class StandardRetryer(SyncStandardRetryer):
             except TencentCloudSDKException as e:
                 err = e
 
-            if not self.should_retry(resp, err):
+            if not await self.should_retry(resp, err):
                 if err:
                     raise err
                 return resp
 
-            sleep = self._backoff_fn(n)
+            sleep = await self._backoff_fn(n)
             await self.on_retry(n, sleep, resp, err)
             await asyncio.sleep(sleep)
 
         raise err
+
+    @staticmethod
+    async def should_retry(resp, err):
+        if not err:
+            return False
+
+        if not isinstance(err, TencentCloudSDKException):
+            return False
+
+        ec = err.get_code()
+        if ec in (
+                "ClientNetworkError", "ServerNetworkError", "RequestLimitExceeded",
+                "RequestLimitExceeded.UinLimitExceeded", "RequestLimitExceeded.GlobalRegionUinLimitExceeded"
+        ):
+            return True
+
+        return False
+
+    @staticmethod
+    async def backoff(n):
+        return 2 ** n
 
     async def on_retry(self, n, sleep, resp, err):
         if self._logger:

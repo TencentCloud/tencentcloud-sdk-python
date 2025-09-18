@@ -89,7 +89,7 @@ class AbstractClient(object):
         else:
             self.request_client = self._sdkVersion
 
-    async def call_and_deserialize_async(
+    async def call_and_deserialize(
             self,
             action: str,
             params: ParamsType,
@@ -121,7 +121,7 @@ class AbstractClient(object):
 
     async def _inter_retry(self, chain: RequestChain):
         retryer = self.profile.retryer or NoopRetryer()
-        return await retryer.send_request_async(chain.proceed)
+        return await retryer.send_request(chain.proceed)
 
     def _inter_build_request(
             self,
@@ -154,9 +154,6 @@ class AbstractClient(object):
 
         return inter
 
-    async def _inter_sign(self, chain: RequestChain):
-        return await chain.proceed()
-
     def _inter_breaker(self, opts: Dict):
         async def inter(chain: RequestChain):
             generation, need_break = self.circuit_breaker.before_requests()
@@ -185,24 +182,61 @@ class AbstractClient(object):
 
             content_type = resp.headers["Content-Type"]
             if content_type == "text/event-stream":
-                return await deserialize_sse(resp)
+                return deserialize_sse(resp)
 
             return await deserialize_json(resp)
 
         async def deserialize_json(resp: ApiResponse):
-            content = await resp.aread()
-            if resp_cls == dict:
-                return json.loads(content)["Response"]
+            try:
+                content = await resp.aread()
+                if resp_cls == dict:
+                    return json.loads(content)["Response"]
 
-            if issubclass(resp_cls, AbstractModel):
-                resp_model = resp_cls()
-                resp_model._deserialize(json.loads(content)["Response"])
-                return resp_model
+                if issubclass(resp_cls, AbstractModel):
+                    resp_model = resp_cls()
+                    resp_model._deserialize(json.loads(content)["Response"])
+                    return resp_model
 
-            raise TencentCloudSDKException("ClientParamsError", "invalid resp_cls %s" % resp_cls)
+                raise TencentCloudSDKException("ClientParamsError", "invalid resp_cls %s" % resp_cls)
+            finally:
+                await resp.aclose()
 
         async def deserialize_sse(resp: ApiResponse):
-            pass
+            # todo: logger
+            # logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
+            e = {}
+
+            try:
+                async for line in resp.aiter_lines():
+                    if not line:
+                        yield e
+                        e = {}
+                        continue
+
+                    logger.debug("GetResponse: %s", line)
+
+                    # comment
+                    if line[0] == ':':
+                        continue
+
+                    colon_idx = line.find(':')
+                    key = line[:colon_idx]
+                    val = line[colon_idx + 1:]
+                    # If value starts with a U+0020 SPACE character, remove it from value.
+                    if val and val[0] == " ":
+                        val = val[1:]
+                    if key == 'data':
+                        # The spec allows for multiple data fields per event, concatenated them with "\n".
+                        if 'data' not in e:
+                            e['data'] = val
+                        else:
+                            e['data'] += '\n' + val
+                    elif key in ('event', 'id'):
+                        e[key] = val
+                    elif key == 'retry':
+                        e[key] = int(val)
+            finally:
+                await resp.aclose()
 
         return inter
 
