@@ -16,6 +16,7 @@ def test_describe_instances():
     hp = HttpProfile()
     hp.scheme = "http"
     hp.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"
+    hp.reqTimeout = 5
 
     cp = ClientProfile()
     cp.httpProfile = hp
