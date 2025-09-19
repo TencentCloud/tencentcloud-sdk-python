@@ -25,11 +25,11 @@ except ImportError:
     lz4 = None
 
 try:
-    compressType = "xxx" # 压缩方式, 目前只支持lz4, 客户根据需要填写(空字符串意味不压缩)
-    region = "xxxx" # 需要根据客户的实际地域自行填写
-    topicId = "xxxxxx-xxxxxx-xxxxxx-xxxxxx" # 这里需要使用客户实际的topicId，不能输入topicname
-    hashKey = "" # 可选参数，具体参考官方文档：https://cloud.tencent.com/document/product/614/59470
-    credential = credential.Credential(
+    compressType = "xxx"  # 压缩方式, 目前只支持lz4, 客户根据需要填写(空字符串意味不压缩)
+    region = "xxxx"  # 需要根据客户的实际地域自行填写
+    topicId = "xxxxxx-xxxxxx-xxxxxx-xxxxxx"  # 这里需要使用客户实际的topicId，不能输入topicname
+    hashKey = ""  # 可选参数，具体参考官方文档：https://cloud.tencent.com/document/product/614/59470
+    cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
         os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
