@@ -1,11 +1,11 @@
 # -*- coding: utf8 -*-
 import os
 
+import httpx
 import pytest
 
 from tencentcloud.common import credential
-from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.retry import StandardRetryer, NoopRetryer
+from tencentcloud.common.retry_async import StandardRetryer, NoopRetryer
 from tencentcloud.cvm.v20170312 import cvm_client_async, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
@@ -102,10 +102,9 @@ async def test_standard_retryer_attempts():
     err = None
     try:
         resp = await client.DescribeInstances(req)
-    except TencentCloudSDKException as e:
+    except httpx.TransportError as e:
         err = e
 
     assert resp is None
     assert err is not None
-    assert isinstance(err, TencentCloudSDKException)
     assert retryer.attempts == max_attempts

@@ -14,5 +14,5 @@ async def test_describe_instances():
         os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
     client = CommonClient("cvm", '2017-03-12', cred, "ap-shanghai")
-    rsp = await client.call_json("DescribeInstances", {"Limit": 10})
+    rsp = await client.call_and_deserialize("DescribeInstances", {"Limit": 10})
     assert rsp["Response"]["TotalCount"] <= 10

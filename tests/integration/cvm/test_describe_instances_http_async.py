@@ -28,7 +28,6 @@ async def test_describe_instances():
     req = models.DescribeInstancesRequest()
     try:
         resp = await client.DescribeInstances(req)
-        assert "" == "exception is not captured"
     except (httpx.TransportError, TencentCloudSDKException) as e:
         """
         预期返回403 forbidden
@@ -37,3 +36,4 @@ async def test_describe_instances():
         因此只要捕获到了异常都算pass
         """
         return
+    assert "" == "exception is not captured"

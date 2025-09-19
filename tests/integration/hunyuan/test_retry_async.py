@@ -6,8 +6,7 @@ import httpx
 import pytest
 
 from tencentcloud.common import credential
-from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.retry import StandardRetryer, NoopRetryer
+from tencentcloud.common.retry_async import StandardRetryer, NoopRetryer
 from tencentcloud.hunyuan.v20230901 import hunyuan_client_async, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
