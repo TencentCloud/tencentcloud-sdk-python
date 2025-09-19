@@ -22,6 +22,7 @@ import random
 import sys
 import time
 import uuid
+import warnings
 from datetime import datetime
 from typing import Dict, Type, Union, List, Callable, Awaitable, Optional
 
@@ -37,6 +38,8 @@ from tencentcloud.common.http.request_async import ApiRequest, ApiResponse, Resp
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.retry_async import NoopRetryer
 from tencentcloud.common.sign import Sign
+
+warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
 
 _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
@@ -192,11 +195,38 @@ class AbstractClient(object):
         async def inter(chain: RequestChain):
             resp = await chain.proceed()
 
+            await check_err(resp)
+
             content_type = resp.headers["Content-Type"]
             if content_type == "text/event-stream":
                 return deserialize_sse(resp)
 
             return await deserialize_json(resp)
+
+        async def check_err(resp: ApiResponse):
+            if resp.status_code != 200:
+                if logger.isEnabledFor(logging.DEBUG):
+                    logger.debug("GetResponse: %s", await ResponsePrettyFormatter(resp, format_body=True).astr())
+                raise TencentCloudSDKException("ServerNetworkError", resp.content)
+
+            ct = resp.headers.get('Content-Type')
+            if ct not in ('text/plain', _json_content):
+                return
+
+            content = await resp.aread()
+            data = json.loads(content)
+            if "Error" in data["Response"]:
+                code = data["Response"]["Error"]["Code"]
+                message = data["Response"]["Error"]["Message"]
+                reqid = data["Response"]["RequestId"]
+                if logger.isEnabledFor(logging.DEBUG):
+                    logger.debug("GetResponse: %s", await ResponsePrettyFormatter(resp, format_body=True).astr())
+                raise TencentCloudSDKException(code, message, reqid)
+            if "DeprecatedWarning" in data["Response"]:
+                import warnings
+                warnings.filterwarnings("default")
+                warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
+                              DeprecationWarning)
 
         async def deserialize_json(resp: ApiResponse):
             try:
@@ -573,6 +603,4 @@ class AbstractClient(object):
 
     def set_default_logger(self):
         """Set default log handler"""
-        log = logging.getLogger(LOGGER_NAME)
-        log.handlers = []
-        logger.addHandler(EmptyHandler())
+        pass

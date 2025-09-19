@@ -21,6 +21,7 @@
 import asyncio
 import json
 import os
+import sys
 
 from tencentcloud.common.common_client_async import CommonClient
 from tencentcloud.common import credential
@@ -42,6 +43,8 @@ async def main():
         # 2. 创建客户端配置（ClientProfile）
         # 这里使用默认配置，你也可以根据需要进行自定义，如设置超时时间。
         cpf = ClientProfile()
+        # 流式接口可能耗时较长，因此将请求超时时间设置为 400 秒。
+        cpf.httpProfile.reqTimeout = 400
 
         # 3. 设置自定义请求头（Headers）
         # 通用客户端支持在请求中指定自定义 HTTP Headers。
@@ -60,7 +63,7 @@ async def main():
             # "Messages": 定义对话内容，"Role" 为 "user" 表示用户输入，"Content" 为具体文本。
             # "Stream": 设置为 False 表示以非流式方式获取完整结果。
             req = {
-                "Model": "hunyuan-standard2",
+                "Model": "hunyuan-standard",
                 "Messages": [{
                     "Role": "user",
                     "Content": "你好，可以讲个笑话吗",
