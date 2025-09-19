@@ -14,11 +14,11 @@ from tencentcloud.cvm.v20170312 import models as cvm_models
 
 class CvmTestAsync(cvm_client_async.CvmClient):
 
-    async def DescribeZones(self, request):
+    async def DescribeZones(self, request, opts=None):
         try:
             params = request._serialize()
-            options = {'IsMultipart': True}
-            body = await self.call("DescribeZones", params, options=options)
+            opts = {'IsMultipart': True}
+            body = await self.call_and_deserialize("DescribeZones", params, opts=opts)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = cvm_models.DescribeZonesResponse()
@@ -33,7 +33,7 @@ class CvmTestAsync(cvm_client_async.CvmClient):
             if isinstance(e, TencentCloudSDKException):
                 raise
             else:
-                raise TencentCloudSDKException(e.message, e.message)
+                raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
 @pytest.mark.asyncio

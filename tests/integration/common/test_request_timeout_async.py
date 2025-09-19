@@ -2,6 +2,7 @@
 import json
 import os
 
+import httpx
 import pytest
 
 from tencentcloud.common import credential
@@ -51,5 +52,5 @@ async def test_request_timeout_min():
     try:
         resp = await client.DescribeZones(req)
         assert False, "request should fail because timeout"
-    except TencentCloudSDKException as err:
+    except httpx.ConnectTimeout:
         pass

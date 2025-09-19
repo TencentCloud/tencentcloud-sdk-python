@@ -30,6 +30,6 @@ async def test_common_interface():
             "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
         }
         client = CommonClient(service, version, cred, region, clientProfile)
-        resp = await client.call_json("DescribeZones", {}, headers=headers)
+        resp = await client.call_and_deserialize("DescribeZones", {}, headers=headers)
     except TencentCloudSDKException as err:
         assert False

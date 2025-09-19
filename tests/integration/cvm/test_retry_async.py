@@ -67,7 +67,7 @@ class StandardRetryCounter(StandardRetryer):
         super(StandardRetryCounter, self).__init__(*args, **kwargs)
         self.attempts = 0
 
-    def on_retry(self, n, sleep, resp, err):
+    async def on_retry(self, n, sleep, resp, err):
         self.attempts += 1
 
 
@@ -83,7 +83,9 @@ async def test_standard_retryer_attempts():
 
     clientProfile = ClientProfile()
     clientProfile.httpProfile = httpProfile
-    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=lambda _: 0)
+    async def backoff_fn(n):
+        return 0
+    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=backoff_fn)
     clientProfile.retryer = retryer
 
     client = cvm_client_async.CvmClient(cred, "ap-guangzhou", clientProfile)

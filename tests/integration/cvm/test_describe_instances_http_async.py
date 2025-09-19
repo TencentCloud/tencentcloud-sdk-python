@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 import os
 
+import httpx
 import pytest
 
 from tencentcloud.common import credential
@@ -27,7 +28,8 @@ async def test_describe_instances():
     req = models.DescribeInstancesRequest()
     try:
         resp = await client.DescribeInstances(req)
-    except TencentCloudSDKException as e:
+        assert "" == "exception is not captured"
+    except (httpx.TransportError, TencentCloudSDKException) as e:
         """
         预期返回403 forbidden
         但是不同的网络环境中不一定返回的都是403 forbidden
@@ -35,4 +37,3 @@ async def test_describe_instances():
         因此只要捕获到了异常都算pass
         """
         return
-    assert "" == "exception is not captured"

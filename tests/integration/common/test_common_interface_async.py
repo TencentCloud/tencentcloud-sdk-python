@@ -21,6 +21,6 @@ async def test_common_interface():
             os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
         client = CommonClient(service, version, cred, region)
-        resp = await client.call_json("DescribeZones", {})
+        resp = await client.call_and_deserialize("DescribeZones", {})
     except TencentCloudSDKException as err:
         assert False

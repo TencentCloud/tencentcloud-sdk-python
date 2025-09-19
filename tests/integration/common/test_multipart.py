@@ -21,7 +21,7 @@ class CvmTest(cvm_client.CvmClient):
             body = self.call("DescribeZones", params, options=options)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZonesResponse()
+                model = cvm_models.DescribeZonesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -33,7 +33,7 @@ class CvmTest(cvm_client.CvmClient):
             if isinstance(e, TencentCloudSDKException):
                 raise
             else:
-                raise TencentCloudSDKException(e.message, e.message)
+                raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
 def test_json_action_with_multipart():

@@ -2,11 +2,12 @@
 import json
 import os
 
+import httpx
 import pytest
 
 from tencentcloud.common import credential, common_client_async
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.retry import StandardRetryer
+from tencentcloud.common.retry_async import StandardRetryer
 from tencentcloud.common.profile.client_profile import ClientProfile
 
 
@@ -15,7 +16,7 @@ class StandardRetryCounter(StandardRetryer):
         super(StandardRetryCounter, self).__init__(*args, **kwargs)
         self.attempts = 0
 
-    def on_retry(self, n, sleep, resp, err):
+    async def on_retry(self, n, sleep, resp, err):
         self.attempts += 1
 
 
@@ -33,7 +34,7 @@ async def test_standard_retryer_call_json():
 
     client = common_client_async.CommonClient(service, version, cred, region, cpf)
 
-    resp = await client.call_json(action, body)
+    resp = await client.call_and_deserialize(action, body)
     assert resp["Response"]["TotalCount"] >= 0
 
 
@@ -48,7 +49,9 @@ async def test_standard_retryer_call_json_err():
 
     cred = credential.Credential(os.environ.get("TENCENTCLOUD_SECRET_ID"), os.environ.get("TENCENTCLOUD_SECRET_KEY"))
     cpf = ClientProfile()
-    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=lambda _: 0)
+    async def backoff_fn(n):
+        return 0
+    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=backoff_fn)
     cpf.retryer = retryer
     cpf.httpProfile.endpoint = "non-exist"
 
@@ -57,13 +60,12 @@ async def test_standard_retryer_call_json_err():
     resp = None
     err = None
     try:
-        resp = await client.call_json(action, body)
-    except TencentCloudSDKException as e:
+        resp = await client.call_and_deserialize(action, body)
+    except httpx.TransportError as e:
         err = e
 
     assert resp is None
     assert err is not None
-    assert isinstance(err, TencentCloudSDKException)
     assert retryer.attempts == max_attempts
 
 
@@ -81,7 +83,7 @@ async def test_standard_retryer_call_sse():
 
     client = common_client_async.CommonClient(service, version, cred, region, cpf)
 
-    resp = client.call_sse(action, body)
+    resp = await client.call_and_deserialize(action, body)
     full_content = ""
     async for event in resp:
         data = json.loads(event['data'])
@@ -101,7 +103,9 @@ async def test_standard_retryer_call_sse_err():
 
     cred = credential.Credential(os.environ.get("TENCENTCLOUD_SECRET_ID"), os.environ.get("TENCENTCLOUD_SECRET_KEY"))
     cpf = ClientProfile()
-    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=lambda _: 0)
+    async def backoff_fn(n):
+        return 0
+    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=backoff_fn)
     cpf.retryer = retryer
     cpf.httpProfile.endpoint = "non-exist"
 
@@ -110,11 +114,10 @@ async def test_standard_retryer_call_sse_err():
     resp = None
     err = None
     try:
-        resp = client.call_sse(action, body)
-    except TencentCloudSDKException as e:
+        resp = await client.call_and_deserialize(action, body)
+    except httpx.TransportError as e:
         err = e
 
     assert resp is None
     assert err is not None
-    assert isinstance(err, TencentCloudSDKException)
     assert retryer.attempts == max_attempts

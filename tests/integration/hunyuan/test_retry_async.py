@@ -2,6 +2,7 @@
 import json
 import os
 
+import httpx
 import pytest
 
 from tencentcloud.common import credential
@@ -32,7 +33,7 @@ async def test_noop_retryer():
     msg.Content = "hi, tell me a joke !"
     req.Messages = [msg]
     req.Stream = True
-    resp = client.ChatCompletions(req)
+    resp = await client.ChatCompletions(req)
 
     full_content = ""
     async for event in resp:
@@ -62,7 +63,7 @@ async def test_standard_retryer():
     msg.Content = "hi, tell me a joke about AI !"
     req.Messages = [msg]
     req.Stream = True
-    resp = client.ChatCompletions(req)
+    resp = await client.ChatCompletions(req)
 
     full_content = ""
     async for event in resp:
@@ -77,7 +78,7 @@ class StandardRetryCounter(StandardRetryer):
         super(StandardRetryCounter, self).__init__(*args, **kwargs)
         self.attempts = 0
 
-    def on_retry(self, n, sleep, resp, err):
+    async def on_retry(self, n, sleep, resp, err):
         self.attempts += 1
 
 
@@ -93,7 +94,9 @@ async def test_standard_retryer_err():
     clientProfile = ClientProfile()
     clientProfile.httpProfile = httpProfile
     clientProfile.httpProfile.endpoint = "non-exist"
-    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=lambda _: 0)
+    async def backoff_fn(n):
+        return 0
+    retryer = StandardRetryCounter(max_attempts=max_attempts, backoff_fn=backoff_fn)
     clientProfile.retryer = retryer
 
     client = hunyuan_client_async.HunyuanClient(cred, "ap-guangzhou", clientProfile)
@@ -108,11 +111,10 @@ async def test_standard_retryer_err():
     resp = None
     err = None
     try:
-        resp = client.ChatCompletions(req)
-    except TencentCloudSDKException as e:
+        resp = await client.ChatCompletions(req)
+    except httpx.TransportError as e:
         err = e
 
     assert resp is None
     assert err is not None
-    assert isinstance(err, TencentCloudSDKException)
     assert retryer.attempts == max_attempts

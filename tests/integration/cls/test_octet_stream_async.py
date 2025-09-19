@@ -72,4 +72,7 @@ async def _test_octet_stream_req(profile):
         "X-CLS-HashKey": "0fffffffffffffffffffffffffffffff",
         "X-CLS-CompressType": "",
     }
-    rsp = await client.call_octet_stream("UploadLog", headers, body)
+    opts = {
+        "IsOctetStream": True,
+    }
+    await client.call_and_deserialize("UploadLog", body, headers=headers, opts=opts)
