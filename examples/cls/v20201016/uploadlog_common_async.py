@@ -24,7 +24,7 @@ import sys
 
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-from tencentcloud.cls.v20201016 import cls_client_async, models
+from tencentcloud.common import common_client_async
 from tencentcloud.common.profile.client_profile import ClientProfile
 import pb
 
@@ -43,29 +43,52 @@ async def main():
         # Hash Key 是一个可选参数，用于指定日志分发到 CLS 的哪个分区。
         hash_key = ""
 
+        # 2. 创建认证凭证（Credential）
+        # 优先从环境变量中获取密钥，以确保安全。
         cred = credential.Credential(
             os.environ.get("TENCENTCLOUD_SECRET_ID"),
             os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
-
+        # 3. 创建客户端配置（ClientProfile）
         cpf = ClientProfile()
 
-        async with cls_client_async.ClsClient(cred, region, cpf) as client:
+        # 4. 实例化通用客户端（CommonClient）
+        # 指定服务（"cls"）、版本（"2020-10-16"）、凭证、地域和客户端配置。
+        # 使用 'async with' 语法可以确保客户端在使用完毕后自动关闭连接。
+        async with common_client_async.CommonClient("cls", '2020-10-16', cred, region, cpf) as client:
+            # 5. 开启调试日志
             client.set_stream_logger(sys.stdout)
 
-            req = models.UploadLogRequest()
-            req.TopicId = topic_id
-            req.HashKey = hash_key
-            req.CompressType = compress_type
+            # 6. 生成请求正文
             # 使用 pb 库生成二进制格式的日志数据。
             body = pb.pb_gen(1, 1)
 
+            # 7. 处理数据压缩
+            # 如果配置了 compress_type 为 "lz4"，则对正文进行压缩。
             if compress_type == "lz4":
                 from lz4.block import compress
                 body = compress(body)
 
-            resp = await client.UploadLog(req, body=body)
+            # 8. 设置协议头
+            # CLS 的自定义协议需要特定的请求头来处理 Topic ID、Hash Key 和压缩类型。
+            headers = {
+                "X-CLS-TopicId": topic_id,
+                "X-CLS-HashKey": hash_key,
+                "X-CLS-CompressType": compress_type,
+            }
 
+            # 9. 设置上传选项
+            # 日志上传接口是一个二进制流协议，需要指定 IsOctetStream=True。
+            opts = {
+                "IsOctetStream": True,
+            }
+
+            # 10. 发起 API 调用
+            # 调用 "UploadLog" 接口，并传入请求正文、协议头和上传选项。
+            resp = await client.call_and_deserialize("UploadLog", params=body, headers=headers, opts=opts)
+
+            # 11. 打印回包
+            # 输出服务器返回的 JSON 格式字符串，用于确认日志上传结果。
             print("%s" % resp)
 
     except TencentCloudSDKException as err:
@@ -73,4 +96,6 @@ async def main():
         print("%s" % err)
 
 
+# 12. 运行主函数
+# 使用 asyncio.run() 启动异步事件循环。
 asyncio.run(main())
