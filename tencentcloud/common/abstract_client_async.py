@@ -62,12 +62,20 @@ class RequestChain(object):
 
     async def proceed(self):
         interceptor = self._inters[self._idx]
-        self._idx += 1
-        return await interceptor(self)
+        snapshot = self._new_snapshot()
+        snapshot._idx += 1
+        return await interceptor(snapshot)
 
     def add_interceptor(self, inter: InterceptorType, idx=sys.maxsize):
         self._inters.insert(idx, inter)
         return self
+
+    def _new_snapshot(self) -> 'RequestChain':
+        new_chain = RequestChain()
+        new_chain.request = self.request
+        new_chain._inters = self._inters
+        new_chain._idx = self._idx
+        return new_chain
 
 
 class AbstractClient(object):
@@ -85,7 +93,7 @@ class AbstractClient(object):
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
         self.circuit_breaker = None
-        self.http_client = httpx.AsyncClient(timeout=profile.httpProfile.reqTimeout)
+        self.http_client = httpx.AsyncClient(timeout=self.profile.httpProfile.reqTimeout)
         if not self.profile.disable_region_breaker:
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
@@ -187,9 +195,13 @@ class AbstractClient(object):
                 resp = await chain.proceed()
                 self.circuit_breaker.after_requests(generation, True)
                 return resp
+            except httpx.TransportError:
+                self.circuit_breaker.after_requests(generation, False)
+                raise
             except TencentCloudSDKException as e:
-                success = resp and "RequestId" in resp.content and e.code != "InternalError"
+                success = resp and "RequestId" in (await resp.aread()) and e.code != "InternalError"
                 self.circuit_breaker.after_requests(generation, success)
+                raise
 
         return inter
 
@@ -210,7 +222,7 @@ class AbstractClient(object):
             if resp.status_code != 200:
                 if logger.isEnabledFor(logging.DEBUG):
                     logger.debug("GetResponse: %s", await ResponsePrettyFormatter(resp, format_body=True).astr())
-                raise TencentCloudSDKException("ServerNetworkError", resp.content)
+                raise TencentCloudSDKException("ServerNetworkError", await resp.aread())
 
             ct = resp.headers.get('Content-Type')
             if ct not in ('text/plain', _json_content):
@@ -238,7 +250,7 @@ class AbstractClient(object):
 
                 content = await resp.aread()
                 if resp_cls == dict:
-                    return json.loads(content)["Response"]
+                    return json.loads(content)
 
                 if issubclass(resp_cls, AbstractModel):
                     resp_model = resp_cls()

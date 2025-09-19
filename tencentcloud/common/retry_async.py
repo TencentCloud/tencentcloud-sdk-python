@@ -1,6 +1,8 @@
 import asyncio
 import logging
 
+import httpx
+
 from tencentcloud.common.exception import TencentCloudSDKException
 
 
@@ -42,6 +44,8 @@ class StandardRetryer(object):
                 resp = await fn()
             except TencentCloudSDKException as e:
                 err = e
+            except httpx.TransportError as e:
+                err = e
 
             if not await self.should_retry(resp, err):
                 if err:
@@ -58,6 +62,9 @@ class StandardRetryer(object):
     async def should_retry(resp, err):
         if not err:
             return False
+
+        if isinstance(err, httpx.TransportError):
+            return True
 
         if not isinstance(err, TencentCloudSDKException):
             return False
