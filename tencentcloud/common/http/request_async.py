@@ -15,13 +15,20 @@ class ResponsePrettyFormatter(object):
         self._delimiter = delimiter
 
     def __str__(self):
-        # todo
-        lines = ['%s %d %s' % (self.str_ver(self._resp.raw.version), self._resp.status_code, self._resp.reason)]
+        lines = ['%s %d %s' % (self.str_ver(self._resp.http_version), self._resp.status_code, self._resp.reason_phrase)]
+        for k, v in self._resp.headers.items():
+            lines.append('%s: %s' % (k, v))
+        return self._delimiter.join(lines)
+
+    async def astr(self):
+        lines = ['%s %d %s' % (self.str_ver(self._resp.http_version), self._resp.status_code, self._resp.reason_phrase)]
         for k, v in self._resp.headers.items():
             lines.append('%s: %s' % (k, v))
         if self._format_body:
             lines.append('')
-            lines.append(self._resp.text)
+            lines.append((await self._resp.aread()).decode("utf-8"))
+            # async for line in self._resp.aiter_lines():
+            #     lines.append(line)
         return self._delimiter.join(lines)
 
     @staticmethod

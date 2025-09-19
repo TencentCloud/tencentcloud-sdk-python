@@ -16,6 +16,8 @@
 import copy
 import hashlib
 import json
+import logging
+import logging.handlers
 import random
 import sys
 import time
@@ -29,8 +31,9 @@ import tencentcloud
 from tencentcloud.common.abstract_client import logger, urlparse, urlencode
 from tencentcloud.common.abstract_model import AbstractModel
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.credential import Credential
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.http.request_async import ApiRequest, ApiResponse
+from tencentcloud.common.http.request_async import ApiRequest, ApiResponse, ResponsePrettyFormatter
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.retry_async import NoopRetryer
 from tencentcloud.common.sign import Sign
@@ -39,6 +42,8 @@ _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
 _octet_stream = "application/octet-stream"
+
+LOGGER_NAME = "tencentcloud_sdk_common"
 
 InterceptorType = Callable[["RequestChain"], Awaitable]
 ParamsType = Union[Dict, str, bytes]
@@ -71,15 +76,12 @@ class AbstractClient(object):
     _default_content_type = _form_urlencoded_content
     FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
 
-    def __init__(self, credential, region, profile=None):
+    def __init__(self, credential: Credential, region: str, profile: ClientProfile = None):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
-        # todo
-        # if self.profile.httpProfile.keepAlive:
-        #     self.request.set_keep_alive()
         self.circuit_breaker = None
-        self.http_client = httpx.AsyncClient()
+        self.http_client = httpx.AsyncClient(timeout=profile.httpProfile.reqTimeout)
         if not self.profile.disable_region_breaker:
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
@@ -88,6 +90,15 @@ class AbstractClient(object):
             self.request_client = self._sdkVersion + "; " + self.profile.request_client
         else:
             self.request_client = self._sdkVersion
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.close()
+
+    async def close(self):
+        await self.http_client.aclose()
 
     async def call_and_deserialize(
             self,
@@ -176,7 +187,8 @@ class AbstractClient(object):
 
         return inter
 
-    def _inter_deserialize_resp(self, resp_cls: Type):
+    @staticmethod
+    def _inter_deserialize_resp(resp_cls: Type):
         async def inter(chain: RequestChain):
             resp = await chain.proceed()
 
@@ -188,6 +200,9 @@ class AbstractClient(object):
 
         async def deserialize_json(resp: ApiResponse):
             try:
+                if logger.isEnabledFor(logging.DEBUG):
+                    logger.debug("GetResponse: %s", await ResponsePrettyFormatter(resp, format_body=True).astr())
+
                 content = await resp.aread()
                 if resp_cls == dict:
                     return json.loads(content)["Response"]
@@ -202,8 +217,7 @@ class AbstractClient(object):
                 await resp.aclose()
 
         async def deserialize_sse(resp: ApiResponse):
-            # todo: logger
-            # logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
+            logger.debug("GetResponse:\n%s", ResponsePrettyFormatter(resp, format_body=False))
             e = {}
 
             try:
@@ -213,7 +227,7 @@ class AbstractClient(object):
                         e = {}
                         continue
 
-                    logger.debug("GetResponse: %s", line)
+                    logger.debug("GetResponse.Readline: %s", line)
 
                     # comment
                     if line[0] == ':':
@@ -515,3 +529,50 @@ class AbstractClient(object):
                                           credential_scope,
                                           digest)
         return Sign.sign_tc3(secret_key, date, service, string2sign)
+
+    def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
+        """Add a stream handler
+
+        :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
+        :type stream: IO[str]
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type level: int
+        :param log_format: Log message format
+        :type log_format: str
+        """
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        sh = logging.StreamHandler(stream)
+        sh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        sh.setFormatter(formatter)
+        log.addHandler(sh)
+
+    def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
+        """Add a file handler
+
+        :param file_path: path of log file
+        :type file_path: str
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type level: int
+        :param log_format: Log message format
+        :type log_format: str
+        """
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        mb = 1024 * 1024
+        fh = logging.handlers.RotatingFileHandler(file_path, maxBytes=512 * mb, backupCount=10)
+        fh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        fh.setFormatter(formatter)
+        log.addHandler(fh)
+
+    def set_default_logger(self):
+        """Set default log handler"""
+        log = logging.getLogger(LOGGER_NAME)
+        log.handlers = []
+        logger.addHandler(EmptyHandler())
