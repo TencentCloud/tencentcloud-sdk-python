@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-这是一个使用腾讯云通用客户端（CommonClient）异步 API 的示例。
-它演示了如何使用通用客户端调用混元大模型的 ChatCompletions 接口，
-以非流式（non-stream）方式进行对话，并获取完整的响应内容。
-"""
 # Copyright 2017-2021 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+"""
+这是一个使用腾讯云通用客户端（CommonClient）异步 API 的示例。
+它演示了如何使用通用客户端调用混元大模型的 ChatCompletions 接口，
+以非流式（non-stream）方式进行对话，并获取完整的响应内容。
+"""
 
 import asyncio
 import json
