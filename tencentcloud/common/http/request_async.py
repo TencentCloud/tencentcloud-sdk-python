@@ -15,11 +15,17 @@ class RequestPrettyFormatter(object):
         self._delimiter = delimiter
 
     def __str__(self):
-        lines = ['%s %s' % (self._req.method, self._req.url)]
+        lines = ["%s %s" % (self._req.method, self._req.url)]
         for k, v in self._req.headers.items():
-            lines.append('%s: %s' % (k, v))
+            lines.append("%s: %s" % (k, v))
+        lines.append("")
         if self._format_body:
-            lines.append(self._req.content.decode("utf-8"))
+            try:
+                lines.append(self._req.content.decode("utf-8"))
+            except UnicodeDecodeError:
+                # binary body
+                import base64
+                lines.append("base64_body:" + base64.standard_b64encode(self._req.content).decode())
         return self._delimiter.join(lines)
 
 
@@ -42,8 +48,6 @@ class ResponsePrettyFormatter(object):
         if self._format_body:
             lines.append('')
             lines.append((await self._resp.aread()).decode("utf-8"))
-            # async for line in self._resp.aiter_lines():
-            #     lines.append(line)
         return self._delimiter.join(lines)
 
     @staticmethod

@@ -157,7 +157,7 @@ class AbstractClient(object):
             if "x-tc-traceid" not in (k.lower() for k in headers.keys()):
                 headers["X-TC-TraceId"] = str(uuid.uuid4())
 
-            req = self._build_req(action, params, opts)
+            req = self._build_req(action, params, headers, opts)
 
             if self.profile.httpProfile.apigw_endpoint:
                 req.host = self.profile.httpProfile.apigw_endpoint
@@ -302,22 +302,22 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
-    def _build_req(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+    def _build_req(self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
         if opts.get('SkipSign'):
-            return self._build_req_without_signature(action, params, opts)
+            return self._build_req_without_signature(action, params, headers, opts)
         elif self.profile.signMethod == "TC3-HMAC-SHA256" or opts.get("IsMultipart") is True:
-            return self._build_req_with_tc3_signature(action, params, opts)
+            return self._build_req_with_tc3_signature(action, params, headers, opts)
         elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
-            return self._build_req_with_old_signature(action, params, opts)
+            return self._build_req_with_old_signature(action, params, headers, opts)
         else:
             raise TencentCloudSDKException("ClientError", "Invalid signature method.")
 
-    def _build_req_without_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+    def _build_req_without_signature(
+            self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = {}
-        headers = {}
         body = ""
 
         content_type = self._default_content_type
@@ -361,12 +361,12 @@ class AbstractClient(object):
         headers["Authorization"] = "SKIP"
         return ApiRequest(method, url, params=query, content=body, headers=headers)
 
-    def _build_req_with_tc3_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+    def _build_req_with_tc3_signature(
+            self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = {}
-        headers = {}
         body = ""
 
         content_type = self._default_content_type
@@ -374,10 +374,9 @@ class AbstractClient(object):
             content_type = _form_urlencoded_content
         elif method == 'POST':
             content_type = _json_content
-        opts = opts or {}
         if opts.get("IsMultipart"):
             content_type = _multipart_content
-        if opts.get("IsOctetStream"):
+        elif opts.get("IsOctetStream"):
             content_type = _octet_stream
         headers["Content-Type"] = content_type
 
@@ -409,6 +408,8 @@ class AbstractClient(object):
             boundary = uuid.uuid4().hex
             headers["Content-Type"] = content_type + "; boundary=" + boundary
             body = self._get_multipart_body(params, boundary, opts)
+        elif content_type == _octet_stream:
+            body = params
 
         req = ApiRequest(method, url, params=query, content=body, headers=headers)
 
@@ -422,12 +423,12 @@ class AbstractClient(object):
         headers["Authorization"] = auth
         return ApiRequest(method, url, params=query, content=body, headers=headers)
 
-    def _build_req_with_old_signature(self, action: str, params: ParamsType, opts: Dict) -> ApiRequest:
+    def _build_req_with_old_signature(
+            self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = {}
-        headers = {}
         body = ""
 
         params = copy.deepcopy(self._fix_params(params))
