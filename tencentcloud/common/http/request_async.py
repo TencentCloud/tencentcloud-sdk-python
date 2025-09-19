@@ -2,10 +2,25 @@
 # -*- coding: utf-8 -*-
 import httpx
 
-__all__ = ["ApiRequest", "ApiResponse", "ResponsePrettyFormatter"]
+__all__ = ["ApiRequest", "ApiResponse", "RequestPrettyFormatter", "ResponsePrettyFormatter"]
 
 ApiRequest = httpx.Request
 ApiResponse = httpx.Response
+
+
+class RequestPrettyFormatter(object):
+    def __init__(self, req: ApiRequest, format_body=True, delimiter="\n"):
+        self._req = req
+        self._format_body = format_body
+        self._delimiter = delimiter
+
+    def __str__(self):
+        lines = ['%s %s' % (self._req.method, self._req.url)]
+        for k, v in self._req.headers.items():
+            lines.append('%s: %s' % (k, v))
+        if self._format_body:
+            lines.append(self._req.content.decode("utf-8"))
+        return self._delimiter.join(lines)
 
 
 class ResponsePrettyFormatter(object):

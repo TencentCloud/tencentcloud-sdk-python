@@ -34,7 +34,8 @@ from tencentcloud.common.abstract_model import AbstractModel
 from tencentcloud.common.circuit_breaker import CircuitBreaker
 from tencentcloud.common.credential import Credential
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.http.request_async import ApiRequest, ApiResponse, ResponsePrettyFormatter
+from tencentcloud.common.http.request_async import ApiRequest, ApiResponse, ResponsePrettyFormatter, \
+    RequestPrettyFormatter
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.retry_async import NoopRetryer
 from tencentcloud.common.sign import Sign
@@ -163,6 +164,8 @@ class AbstractClient(object):
                 req.headers["Host"] = req.host
 
             chain.request = req
+
+            logger.debug("SendRequest:\n%s", RequestPrettyFormatter(req))
 
             return await chain.proceed()
 
@@ -423,6 +426,7 @@ class AbstractClient(object):
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
+        query = {}
         headers = {}
         body = ""
 
@@ -454,7 +458,10 @@ class AbstractClient(object):
         params['Signature'] = Sign.sign(str(cred_secret_key),
                                         str(signInParam),
                                         str(self.profile.signMethod))
-        query = params
+        if method == "GET":
+            query = params
+        else:
+            body = urlencode(params)
 
         headers["Content-Type"] = "application/x-www-form-urlencoded"
         return ApiRequest(method, url, params=query, content=body, headers=headers)
@@ -535,7 +542,7 @@ class AbstractClient(object):
         payload = body
 
         if headers.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
-            payload = "UNSIGNED-PAYLOAD"
+            payload = b"UNSIGNED-PAYLOAD"
 
         payload_hash = hashlib.sha256(payload).hexdigest()
 
