@@ -377,6 +377,8 @@ class AbstractClient(object):
         if opts.get("IsMultipart"):
             content_type = _multipart_content
         elif opts.get("IsOctetStream"):
+            if method != "POST":
+                raise TencentCloudSDKException("ClientError", "Invalid request method.")
             content_type = _octet_stream
         headers["Content-Type"] = content_type
 
@@ -425,6 +427,10 @@ class AbstractClient(object):
 
     def _build_req_with_old_signature(
             self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
+
+        if opts.get("IsOctetStream"):
+            raise TencentCloudSDKException("ClientError", "Invalid signature method.")
+
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
