@@ -4,9 +4,9 @@ import os
 import pytest
 
 from tencentcloud.common import credential
+from tencentcloud.cvm.v20170312 import cvm_client_async, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
-from tencentcloud.cvm.v20170312 import cvm_client_async, models
 
 
 async def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
@@ -24,6 +24,11 @@ async def _test_describe_instances(http_method, sign_method, unsigned_payload=Fa
 
     client = cvm_client_async.CvmClient(cred, "ap-guangzhou", clientProfile)
     req = models.DescribeInstancesRequest()
+    headers = {
+        "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
+    }
+    req.headers = headers
+
     fzone = models.Filter()
     fzone.Name = "zone"
     fzone.Values = ["ap-guangzhou-1", "ap-guangzhou-2"]
