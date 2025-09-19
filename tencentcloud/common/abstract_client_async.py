@@ -171,6 +171,8 @@ class AbstractClient(object):
                 req.host = self.profile.httpProfile.apigw_endpoint
                 req.headers["Host"] = req.host
 
+            # 低版本的 httpx 不会使用 Client.timeout, 需要 per request setup
+            req.extensions["timeout"] = self.http_client.timeout.as_dict()
             chain.request = req
 
             logger.debug("SendRequest:\n%s", RequestPrettyFormatter(req))
