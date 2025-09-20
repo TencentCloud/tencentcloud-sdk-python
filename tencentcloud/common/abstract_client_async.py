@@ -91,21 +91,21 @@ class AbstractClient(object):
     def __init__(self, credential: Credential, region: str, profile: ClientProfile = None):
         self.credential = credential
         self.region = region
-        self.profile = ClientProfile() if profile is None else profile
+        self.profile = profile or ClientProfile()
         self.circuit_breaker = None
 
         kwargs: Dict = {"timeout": self.profile.httpProfile.reqTimeout}
 
-        if not profile.httpProfile.keepAlive:
+        if not self.profile.httpProfile.keepAlive:
             kwargs["limits"] = httpx.Limits(max_keepalive_connections=0)
 
-        if profile.httpProfile.proxy:
-            kwargs["proxies"] = profile.httpProfile.proxy
+        if self.profile.httpProfile.proxy:
+            kwargs["proxies"] = self.profile.httpProfile.proxy
 
-        if profile.httpProfile.certification is False:
+        if self.profile.httpProfile.certification is False:
             kwargs["verify"] = False
-        elif isinstance(profile.httpProfile.certification, str) and profile.httpProfile.certification != "":
-            kwargs["cert"] = profile.httpProfile.certification
+        elif isinstance(self.profile.httpProfile.certification, str) and self.profile.httpProfile.certification != "":
+            kwargs["cert"] = self.profile.httpProfile.certification
 
         self.http_client = httpx.AsyncClient(**kwargs)
 
