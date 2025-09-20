@@ -134,12 +134,7 @@ def mk_config_file(temp_dir, mod):
             'extras_require': extras_require,
         })
     with open(os.path.join(temp_dir, 'README.rst'), 'w') as f:
-        f.write(SETUP % {
-            'mod': mod,
-            'mod_cap': mod.capitalize(),
-            'install_requires': install_requires,
-            'extras_require': extras_require,
-        })
+        f.write(README % (mod.capitalize(), mod, mod))
     with open(os.path.join(temp_dir, 'setup.cfg'), 'w') as f:
         f.write(SETUPCFG)
 
