@@ -212,7 +212,7 @@ async def main():
         print(err)
 
 # 运行异步函数
-asyncio.run(main())
+asyncio.get_event_loop().run_until_complete(main())
 ```
 
 ### 更多示例
