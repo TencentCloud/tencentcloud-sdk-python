@@ -44,9 +44,11 @@ import tencentcloud
 ROOT = os.path.dirname(__file__)
 
 setup(
-    name='tencentcloud-sdk-python-%s',%s
+    name='tencentcloud-sdk-python-%(mod)s',
+    %(install_requires)s
+    %(extras_require)s
     version=tencentcloud.__version__,
-    description='Tencent Cloud %s SDK for Python',
+    description='Tencent Cloud %(mod_cap)s SDK for Python',
     long_description=open('README.rst').read(),
     author='Tencent Cloud',
     url='https://github.com/TencentCloud/tencentcloud-sdk-python',
@@ -119,13 +121,25 @@ def get_highest_version():
 
 def mk_config_file(temp_dir, mod):
     if mod == 'common':
-        required = '\n    install_requires=["requests>=2.16.0"],'
+        install_requires = 'install_requires=["requests>=2.16.0"],'
+        extras_require = 'extras_require={"async": ["httpx>=0.22.0"]},'
     else:
-        required = '\n    install_requires=["tencentcloud-sdk-python-common>=%s,<%s"],' % (__version__, highest_version)
+        install_requires = 'install_requires=["tencentcloud-sdk-python-common>=%s,<%s"],' % (__version__, highest_version)
+        extras_require = ''
     with open(os.path.join(temp_dir, 'setup.py'), 'w') as f:
-        f.write(SETUP % (mod, required, mod.capitalize()))
+        f.write(SETUP % {
+            'mod': mod,
+            'mod_cap': mod.capitalize(),
+            'install_requires': install_requires,
+            'extras_require': extras_require,
+        })
     with open(os.path.join(temp_dir, 'README.rst'), 'w') as f:
-        f.write(README % (mod.capitalize(), mod, mod))
+        f.write(SETUP % {
+            'mod': mod,
+            'mod_cap': mod.capitalize(),
+            'install_requires': install_requires,
+            'extras_require': extras_require,
+        })
     with open(os.path.join(temp_dir, 'setup.cfg'), 'w') as f:
         f.write(SETUPCFG)
 
