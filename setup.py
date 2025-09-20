@@ -11,14 +11,10 @@ import tencentcloud
 
 ROOT = os.path.dirname(__file__)
 
-extras_require = {
-    'async': ['httpx>=0.22.0'],
-}
-
 setup(
     name='tencentcloud-sdk-python',
     install_requires=["requests>=2.16.0"],
-    extras_require=extras_require,
+    extras_require={"async": ["httpx>=0.22.0"]},
     version=tencentcloud.__version__,
     description='Tencent Cloud SDK for Python',
     long_description=open('README.rst').read(),
