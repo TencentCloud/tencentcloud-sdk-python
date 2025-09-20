@@ -395,6 +395,7 @@ class AbstractClient(object):
             self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
+        host = headers.get("Host", endpoint)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
         query = ""
         body = ""
@@ -415,10 +416,9 @@ class AbstractClient(object):
         if method == "GET" and content_type == _multipart_content:
             raise TencentCloudSDKException("ClientError", "Invalid request method GET for multipart.")
 
-        endpoint = self._get_endpoint(opts=opts)
         timestamp = int(time.time())
         cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
-        headers["Host"] = endpoint
+        headers["Host"] = host
         headers["X-TC-Action"] = action[0].upper() + action[1:]
         headers["X-TC-RequestClient"] = self.request_client
         headers["X-TC-Timestamp"] = str(timestamp)
