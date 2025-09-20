@@ -98,5 +98,5 @@ async def main():
 
 
 # 12. 运行主函数
-# 使用 asyncio.run() 启动异步事件循环。
-asyncio.run(main())
+# 使用 asyncio.get_event_loop().run_until_complete(main()) 启动异步事件循环。
+asyncio.get_event_loop().run_until_complete(main())

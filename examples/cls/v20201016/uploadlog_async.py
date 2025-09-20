@@ -74,4 +74,4 @@ async def main():
         print("%s" % err)
 
 
-asyncio.run(main())
+asyncio.get_event_loop().run_until_complete(main())
