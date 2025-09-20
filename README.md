@@ -25,8 +25,8 @@
 ### 安装指定产品 SDK（推荐）
 例如：安装指定产品包
 ```bash
-# 安装公共包, 必选, 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择普通版本
-pip install --upgrade tencentcloud-sdk-python-common # 普通版本
+# 安装公共包, 必选, 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
+pip install --upgrade tencentcloud-sdk-python-common # 同步版本
 pip install --upgrade tencentcloud-sdk-python-common[async] # 异步版本
 
 pip install --upgrade tencentcloud-sdk-python-指定产品包名缩写  # 如 CVM 产品包：tencentcloud-sdk-python-cvm
@@ -35,7 +35,9 @@ pip install --upgrade tencentcloud-sdk-python-指定产品包名缩写  # 如 CV
 
 ### 安装全产品 SDK
 ```bash
-pip install --upgrade tencentcloud-sdk-python
+# 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
+pip install --upgrade tencentcloud-sdk-python # 同步版本
+pip install --upgrade tencentcloud-sdk-python[async] # 异步版本
 ```
 全产品 SDK 包含了所有云产品的调用代码，体积偏大，对体积敏感的场景，推荐安装指定产品 SDK。
 
