@@ -93,7 +93,22 @@ class AbstractClient(object):
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
         self.circuit_breaker = None
-        self.http_client = httpx.AsyncClient(timeout=self.profile.httpProfile.reqTimeout)
+
+        kwargs: Dict = {"timeout": self.profile.httpProfile.reqTimeout}
+
+        if not profile.httpProfile.keepAlive:
+            kwargs["limits"] = httpx.Limits(max_keepalive_connections=0)
+
+        if profile.httpProfile.proxy:
+            kwargs["proxies"] = profile.httpProfile.proxy
+
+        if profile.httpProfile.certification is False:
+            kwargs["verify"] = False
+        elif isinstance(profile.httpProfile.certification, str) and profile.httpProfile.certification != "":
+            kwargs["cert"] = profile.httpProfile.certification
+
+        self.http_client = httpx.AsyncClient(**kwargs)
+
         if not self.profile.disable_region_breaker:
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
