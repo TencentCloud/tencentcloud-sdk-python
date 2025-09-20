@@ -269,6 +269,7 @@ class AbstractClient(object):
 
             try:
                 async for line in resp.aiter_lines():
+                    line = line.strip()
                     if not line:
                         yield e
                         e = {}
@@ -380,7 +381,7 @@ class AbstractClient(object):
         method = self.profile.httpProfile.reqMethod
         endpoint = self._get_endpoint(opts=opts)
         url = "%s://%s%s" % (self.profile.httpProfile.scheme, endpoint, self._requestPath)
-        query = {}
+        query = ""
         body = ""
 
         content_type = self._default_content_type
@@ -417,7 +418,7 @@ class AbstractClient(object):
             headers['X-TC-Language'] = self.profile.language
 
         if method == 'GET':
-            query = copy.deepcopy(self._fix_params(params))
+            query = urlencode(copy.deepcopy(self._fix_params(params)))
         elif content_type == _json_content:
             body = json.dumps(params)
         elif content_type == _multipart_content:
@@ -427,17 +428,18 @@ class AbstractClient(object):
         elif content_type == _octet_stream:
             body = params
 
-        req = ApiRequest(method, url, params=query, content=body, headers=headers)
-
         service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
-        signature = self._get_tc3_signature(req.method, req.url.path, req.url.params, req.content, req.headers, date,
-                                            service, cred_secret_key, opts)
+        signature = self._get_tc3_signature(
+            method, self._requestPath, query, body, headers, date, service, cred_secret_key, opts)
 
         auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
             cred_secret_id, date, service, signature)
         headers["Authorization"] = auth
-        return ApiRequest(method, url, params=query, content=body, headers=headers)
+        # httpx 0.22.0 版本会过滤掉空 value 的 params 如 "a=&b=2"
+        # 不能使用 params 参数, 需要用 url 绕过, 后续版本已经修复, 但是 py36 最高只能安装 0.22.0
+        url += "?" + query
+        return ApiRequest(method, url, content=body, headers=headers)
 
     def _build_req_with_old_signature(
             self, action: str, params: ParamsType, headers: Dict[str, str], opts: Dict) -> ApiRequest:
