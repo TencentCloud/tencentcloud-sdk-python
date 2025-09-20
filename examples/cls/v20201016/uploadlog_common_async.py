@@ -66,6 +66,7 @@ async def main():
             # 7. 处理数据压缩
             # 如果配置了 compress_type 为 "lz4"，则对正文进行压缩。
             if compress_type == "lz4":
+                # pip install lz4
                 from lz4.block import compress
                 body = compress(body)
 

@@ -61,6 +61,7 @@ async def main():
             body = pb.pb_gen(1, 1)
 
             if compress_type == "lz4":
+                # pip install lz4
                 from lz4.block import compress
                 body = compress(body)
 
