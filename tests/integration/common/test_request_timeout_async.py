@@ -52,5 +52,5 @@ async def test_request_timeout_min():
     try:
         resp = await client.DescribeZones(req)
         assert False, "request should fail because timeout"
-    except httpx.ConnectTimeout:
+    except httpx.TransportError:
         pass

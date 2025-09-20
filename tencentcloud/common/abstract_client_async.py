@@ -428,6 +428,9 @@ class AbstractClient(object):
         elif content_type == _octet_stream:
             body = params
 
+        if isinstance(body, str):
+            body = body.encode("utf-8")
+
         service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
         signature = self._get_tc3_signature(
