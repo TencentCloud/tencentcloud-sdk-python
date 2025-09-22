@@ -95,6 +95,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBudget(self, request):
+        r"""创建预算信息
+
+        :param request: Request instance for CreateBudget.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateBudgetRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBudgetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGatherRule(self, request):
         r"""创建归集规则
 
@@ -178,6 +201,29 @@ class BillingClient(AbstractClient):
             body = self.call("DeleteAllocationUnit", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBudget(self, request):
+        r"""依据预算ID删除对应预算项目
+
+        :param request: Request instance for DeleteBudget.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteBudgetRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBudgetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -858,6 +904,75 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBudget(self, request):
+        r"""获取预算详细信息
+
+        :param request: Request instance for DescribeBudget.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBudgetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBudgetOperationLog(self, request):
+        r"""查询预算修改记录
+
+        :param request: Request instance for DescribeBudgetOperationLog.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetOperationLogRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetOperationLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBudgetOperationLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBudgetOperationLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBudgetRemindRecordList(self, request):
+        r"""返回预算提醒记录，包括预算周期、检测时间、提醒时间、提醒类型、提醒内容
+
+        :param request: Request instance for DescribeBudgetRemindRecordList.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetRemindRecordListRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBudgetRemindRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBudgetRemindRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBudgetRemindRecordListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCostDetail(self, request):
         r"""查询消耗明细
 
@@ -1266,6 +1381,29 @@ class BillingClient(AbstractClient):
             body = self.call("ModifyAllocationUnit", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBudget(self, request):
+        r"""更新预算信息
+
+        :param request: Request instance for ModifyBudget.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyBudgetRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBudgetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

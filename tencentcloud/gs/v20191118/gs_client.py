@@ -26,6 +26,29 @@ class GsClient(AbstractClient):
     _service = 'gs'
 
 
+    def BackUpAndroidInstance(self, request):
+        r"""备份安卓实例。该接口需要联系我们开通内网存储才能使用。
+
+        :param request: Request instance for BackUpAndroidInstance.
+        :type request: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BackUpAndroidInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.BackUpAndroidInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BackUpAndroidInstanceToStorage(self, request):
         r"""备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 
@@ -467,6 +490,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAndroidInstanceBackups(self, request):
+        r"""批量删除安卓实例备份
+
+        :param request: Request instance for DeleteAndroidInstanceBackups.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceBackupsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAndroidInstanceBackups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAndroidInstanceBackupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAndroidInstanceImages(self, request):
         r"""删除安卓实例镜像
 
@@ -550,6 +596,29 @@ class GsClient(AbstractClient):
             body = self.call("DescribeAndroidInstanceApps", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAndroidInstanceAppsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAndroidInstanceBackups(self, request):
+        r"""查询安卓实例备份列表
+
+        :param request: Request instance for DescribeAndroidInstanceBackups.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceBackupsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAndroidInstanceBackups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAndroidInstanceBackupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1358,6 +1427,29 @@ class GsClient(AbstractClient):
             body = self.call("RestartAndroidInstancesApp", params, headers=headers)
             response = json.loads(body)
             model = models.RestartAndroidInstancesAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestoreAndroidInstance(self, request):
+        r"""还原安卓实例。该接口需要联系我们开通内网存储才能使用。
+
+        :param request: Request instance for RestoreAndroidInstance.
+        :type request: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreAndroidInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreAndroidInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

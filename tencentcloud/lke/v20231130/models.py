@@ -19132,7 +19132,7 @@ class ListAppRequest(AbstractModel):
         :type LoginSubAccountUin: str
         :param _AgentType: 智能体类型 dialogue：对话智能体，wechat：公众号智能体
         :type AgentType: str
-        :param _AppStatus: 应用状态 1:未上线 2：运行中
+        :param _AppStatus: 应用状态 1:未上线   2：运行中
         :type AppStatus: str
         """
         self._AppType = None
@@ -19211,7 +19211,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def AppStatus(self):
-        r"""应用状态 1:未上线 2：运行中
+        r"""应用状态 1:未上线   2：运行中
         :rtype: str
         """
         return self._AppStatus
@@ -23947,6 +23947,10 @@ class ModelInfo(AbstractModel):
         :type ProviderAliasName: str
         :param _ProviderType: 提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
         :type ProviderType: str
+        :param _IsCloseModelParams: 是否关闭模型超参
+        :type IsCloseModelParams: bool
+        :param _IsDeepThinking: 是否支持深度思考
+        :type IsDeepThinking: bool
         """
         self._ModelName = None
         self._ModelDesc = None
@@ -23972,6 +23976,8 @@ class ModelInfo(AbstractModel):
         self._ProviderName = None
         self._ProviderAliasName = None
         self._ProviderType = None
+        self._IsCloseModelParams = None
+        self._IsDeepThinking = None
 
     @property
     def ModelName(self):
@@ -24249,6 +24255,28 @@ class ModelInfo(AbstractModel):
     def ProviderType(self, ProviderType):
         self._ProviderType = ProviderType
 
+    @property
+    def IsCloseModelParams(self):
+        r"""是否关闭模型超参
+        :rtype: bool
+        """
+        return self._IsCloseModelParams
+
+    @IsCloseModelParams.setter
+    def IsCloseModelParams(self, IsCloseModelParams):
+        self._IsCloseModelParams = IsCloseModelParams
+
+    @property
+    def IsDeepThinking(self):
+        r"""是否支持深度思考
+        :rtype: bool
+        """
+        return self._IsDeepThinking
+
+    @IsDeepThinking.setter
+    def IsDeepThinking(self, IsDeepThinking):
+        self._IsDeepThinking = IsDeepThinking
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -24286,6 +24314,8 @@ class ModelInfo(AbstractModel):
         self._ProviderName = params.get("ProviderName")
         self._ProviderAliasName = params.get("ProviderAliasName")
         self._ProviderType = params.get("ProviderType")
+        self._IsCloseModelParams = params.get("IsCloseModelParams")
+        self._IsDeepThinking = params.get("IsDeepThinking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34706,6 +34736,9 @@ class WorkflowRunNodeInfo(AbstractModel):
         :param _StatisticInfos: 大模型输出信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticInfos: list of StatisticInfo
+        :param _FailCode: 错误代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailCode: str
         """
         self._NodeId = None
         self._NodeType = None
@@ -34717,6 +34750,7 @@ class WorkflowRunNodeInfo(AbstractModel):
         self._FailMessage = None
         self._CostMilliSeconds = None
         self._StatisticInfos = None
+        self._FailCode = None
 
     @property
     def NodeId(self):
@@ -34838,6 +34872,18 @@ class WorkflowRunNodeInfo(AbstractModel):
     def StatisticInfos(self, StatisticInfos):
         self._StatisticInfos = StatisticInfos
 
+    @property
+    def FailCode(self):
+        r"""错误代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailCode
+
+    @FailCode.setter
+    def FailCode(self, FailCode):
+        self._FailCode = FailCode
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -34855,6 +34901,7 @@ class WorkflowRunNodeInfo(AbstractModel):
                 obj = StatisticInfo()
                 obj._deserialize(item)
                 self._StatisticInfos.append(obj)
+        self._FailCode = params.get("FailCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2699,14 +2699,18 @@ class ControlAIConversationRequest(AbstractModel):
         :param _Command: 控制命令，目前支持命令如下：
 
 - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+- InvokeLLM，服务端发送文本给大模型，触发对话
         :type Command: str
         :param _ServerPushText: 服务端发送播报文本命令，当Command为ServerPushText时必填
         :type ServerPushText: :class:`tencentcloud.ccc.v20200210.models.ServerPushText`
+        :param _InvokeLLM: 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        :type InvokeLLM: :class:`tencentcloud.ccc.v20200210.models.InvokeLLM`
         """
         self._SessionId = None
         self._SdkAppId = None
         self._Command = None
         self._ServerPushText = None
+        self._InvokeLLM = None
 
     @property
     def SessionId(self):
@@ -2735,6 +2739,7 @@ class ControlAIConversationRequest(AbstractModel):
         r"""控制命令，目前支持命令如下：
 
 - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+- InvokeLLM，服务端发送文本给大模型，触发对话
         :rtype: str
         """
         return self._Command
@@ -2754,6 +2759,17 @@ class ControlAIConversationRequest(AbstractModel):
     def ServerPushText(self, ServerPushText):
         self._ServerPushText = ServerPushText
 
+    @property
+    def InvokeLLM(self):
+        r"""服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.InvokeLLM`
+        """
+        return self._InvokeLLM
+
+    @InvokeLLM.setter
+    def InvokeLLM(self, InvokeLLM):
+        self._InvokeLLM = InvokeLLM
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -2762,6 +2778,9 @@ class ControlAIConversationRequest(AbstractModel):
         if params.get("ServerPushText") is not None:
             self._ServerPushText = ServerPushText()
             self._ServerPushText._deserialize(params.get("ServerPushText"))
+        if params.get("InvokeLLM") is not None:
+            self._InvokeLLM = InvokeLLM()
+            self._InvokeLLM._deserialize(params.get("InvokeLLM"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4242,9 +4261,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type NotAfter: int
         :param _Tries: 最大尝试次数，1-3 次
         :type Tries: int
-        :param _Variables: 自定义变量（仅高级版支持）
+        :param _Variables: 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
         :type Variables: list of Variable
-        :param _UUI: UUI
+        :param _UUI: 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
         :type UUI: str
         :param _CalleeAttributes: 被叫属性
         :type CalleeAttributes: list of CalleeAttribute
@@ -4372,7 +4391,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Variables(self):
-        r"""自定义变量（仅高级版支持）
+        r"""自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
         :rtype: list of Variable
         """
         return self._Variables
@@ -4383,7 +4402,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def UUI(self):
-        r"""UUI
+        r"""用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
         :rtype: str
         """
         return self._UUI
@@ -5338,11 +5357,17 @@ class CreateOwnNumberApplyRequest(AbstractModel):
         :type DetailList: list of OwnNumberApplyDetailItem
         :param _Prefix: 送号前缀
         :type Prefix: str
+        :param _MobileNddPrefix: 国内长途手机前缀码
+        :type MobileNddPrefix: str
+        :param _LocalNumberTrimAC: 同市固话去掉区号
+        :type LocalNumberTrimAC: bool
         """
         self._SdkAppId = None
         self._SipTrunkId = None
         self._DetailList = None
         self._Prefix = None
+        self._MobileNddPrefix = None
+        self._LocalNumberTrimAC = None
 
     @property
     def SdkAppId(self):
@@ -5388,6 +5413,28 @@ class CreateOwnNumberApplyRequest(AbstractModel):
     def Prefix(self, Prefix):
         self._Prefix = Prefix
 
+    @property
+    def MobileNddPrefix(self):
+        r"""国内长途手机前缀码
+        :rtype: str
+        """
+        return self._MobileNddPrefix
+
+    @MobileNddPrefix.setter
+    def MobileNddPrefix(self, MobileNddPrefix):
+        self._MobileNddPrefix = MobileNddPrefix
+
+    @property
+    def LocalNumberTrimAC(self):
+        r"""同市固话去掉区号
+        :rtype: bool
+        """
+        return self._LocalNumberTrimAC
+
+    @LocalNumberTrimAC.setter
+    def LocalNumberTrimAC(self, LocalNumberTrimAC):
+        self._LocalNumberTrimAC = LocalNumberTrimAC
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -5399,6 +5446,8 @@ class CreateOwnNumberApplyRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DetailList.append(obj)
         self._Prefix = params.get("Prefix")
+        self._MobileNddPrefix = params.get("MobileNddPrefix")
+        self._LocalNumberTrimAC = params.get("LocalNumberTrimAC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13332,6 +13381,57 @@ class Interface(AbstractModel):
         
 
 
+class InvokeLLM(AbstractModel):
+    r"""调用服务端主动发起请求到LLM
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 请求LLM的内容
+        :type Content: str
+        :param _Interrupt: 是否允许该文本打断机器人说话
+        :type Interrupt: bool
+        """
+        self._Content = None
+        self._Interrupt = None
+
+    @property
+    def Content(self):
+        r"""请求LLM的内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Interrupt(self):
+        r"""是否允许该文本打断机器人说话
+        :rtype: bool
+        """
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Interrupt = params.get("Interrupt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Message(AbstractModel):
     r"""单条消息
 
@@ -13674,11 +13774,17 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
         :type ApplyId: int
         :param _Prefix: 送号前缀
         :type Prefix: str
+        :param _MobileNddPrefix: 国内长途手机前缀码
+        :type MobileNddPrefix: str
+        :param _LocalNumberTrimAC: 同市固话去掉区号
+        :type LocalNumberTrimAC: bool
         """
         self._SdkAppId = None
         self._DetailList = None
         self._ApplyId = None
         self._Prefix = None
+        self._MobileNddPrefix = None
+        self._LocalNumberTrimAC = None
 
     @property
     def SdkAppId(self):
@@ -13724,6 +13830,28 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
     def Prefix(self, Prefix):
         self._Prefix = Prefix
 
+    @property
+    def MobileNddPrefix(self):
+        r"""国内长途手机前缀码
+        :rtype: str
+        """
+        return self._MobileNddPrefix
+
+    @MobileNddPrefix.setter
+    def MobileNddPrefix(self, MobileNddPrefix):
+        self._MobileNddPrefix = MobileNddPrefix
+
+    @property
+    def LocalNumberTrimAC(self):
+        r"""同市固话去掉区号
+        :rtype: bool
+        """
+        return self._LocalNumberTrimAC
+
+    @LocalNumberTrimAC.setter
+    def LocalNumberTrimAC(self, LocalNumberTrimAC):
+        self._LocalNumberTrimAC = LocalNumberTrimAC
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -13735,6 +13863,8 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
                 self._DetailList.append(obj)
         self._ApplyId = params.get("ApplyId")
         self._Prefix = params.get("Prefix")
+        self._MobileNddPrefix = params.get("MobileNddPrefix")
+        self._LocalNumberTrimAC = params.get("LocalNumberTrimAC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14166,12 +14296,15 @@ class OwnNumberApplyDetailItem(AbstractModel):
         :type MaxCallPSec: int
         :param _OutboundCalleeFormat: 呼出被叫格式，使用 {+E.164} 或 {E.164}, 
         :type OutboundCalleeFormat: str
+        :param _CarrierPhoneNumber: 运营商号码
+        :type CarrierPhoneNumber: str
         """
         self._CallType = None
         self._PhoneNumber = None
         self._MaxCallCount = None
         self._MaxCallPSec = None
         self._OutboundCalleeFormat = None
+        self._CarrierPhoneNumber = None
 
     @property
     def CallType(self):
@@ -14228,6 +14361,17 @@ class OwnNumberApplyDetailItem(AbstractModel):
     def OutboundCalleeFormat(self, OutboundCalleeFormat):
         self._OutboundCalleeFormat = OutboundCalleeFormat
 
+    @property
+    def CarrierPhoneNumber(self):
+        r"""运营商号码
+        :rtype: str
+        """
+        return self._CarrierPhoneNumber
+
+    @CarrierPhoneNumber.setter
+    def CarrierPhoneNumber(self, CarrierPhoneNumber):
+        self._CarrierPhoneNumber = CarrierPhoneNumber
+
 
     def _deserialize(self, params):
         self._CallType = params.get("CallType")
@@ -14235,6 +14379,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
         self._MaxCallCount = params.get("MaxCallCount")
         self._MaxCallPSec = params.get("MaxCallPSec")
         self._OutboundCalleeFormat = params.get("OutboundCalleeFormat")
+        self._CarrierPhoneNumber = params.get("CarrierPhoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

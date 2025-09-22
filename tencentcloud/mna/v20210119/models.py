@@ -3135,6 +3135,8 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
         :type AccessRegion: str
         :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :type GatewayType: int
+        :param _MpApplicationId: 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+        :type MpApplicationId: str
         """
         self._GroupId = None
         self._BeginTime = None
@@ -3143,6 +3145,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
         self._TimeGranularity = None
         self._AccessRegion = None
         self._GatewayType = None
+        self._MpApplicationId = None
 
     @property
     def GroupId(self):
@@ -3221,6 +3224,17 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
     def GatewayType(self, GatewayType):
         self._GatewayType = GatewayType
 
+    @property
+    def MpApplicationId(self):
+        r"""应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -3230,6 +3244,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
         self._TimeGranularity = params.get("TimeGranularity")
         self._AccessRegion = params.get("AccessRegion")
         self._GatewayType = params.get("GatewayType")
+        self._MpApplicationId = params.get("MpApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

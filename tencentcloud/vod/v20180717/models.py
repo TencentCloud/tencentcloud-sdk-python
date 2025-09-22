@@ -28701,7 +28701,6 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
         :type EndTime: str
         :param _LicenseType: License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
 <li> CommercialDRMLicense: 商业级 DRM License</li>
-<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :type LicenseType: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
@@ -28737,7 +28736,6 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
     def LicenseType(self):
         r"""License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
 <li> CommercialDRMLicense: 商业级 DRM License</li>
-<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :rtype: str
         """
         return self._LicenseType

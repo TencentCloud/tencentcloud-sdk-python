@@ -1666,6 +1666,90 @@ class ApmMetricRecord(AbstractModel):
         
 
 
+class ApmServiceMetric(AbstractModel):
+    r"""apm应用指标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fields: filed数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fields: list of ApmField
+        :param _Tags: tag数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApmTag
+        :param _ServiceDetail: 应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDetail: :class:`tencentcloud.apm.v20210622.models.ServiceDetail`
+        """
+        self._Fields = None
+        self._Tags = None
+        self._ServiceDetail = None
+
+    @property
+    def Fields(self):
+        r"""filed数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApmField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def Tags(self):
+        r"""tag数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ServiceDetail(self):
+        r"""应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ServiceDetail`
+        """
+        return self._ServiceDetail
+
+    @ServiceDetail.setter
+    def ServiceDetail(self, ServiceDetail):
+        self._ServiceDetail = ServiceDetail
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = ApmField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ServiceDetail") is not None:
+            self._ServiceDetail = ServiceDetail()
+            self._ServiceDetail._deserialize(params.get("ServiceDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApmTag(AbstractModel):
     r"""维度（标签）对象
 
@@ -2377,6 +2461,372 @@ class DescribeApmInstancesResponse(AbstractModel):
                 obj = ApmInstanceDetail()
                 obj._deserialize(item)
                 self._Instances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApmServiceMetricRequest(AbstractModel):
+    r"""DescribeApmServiceMetric请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 业务系统ID
+        :type InstanceId: str
+        :param _ServiceName: 应用名
+        :type ServiceName: str
+        :param _ServiceID: 应用ID
+        :type ServiceID: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _OrderBy: 排序
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param _Demo: 是否demo模式
+        :type Demo: bool
+        :param _ServiceStatus: 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+        :type ServiceStatus: str
+        :param _Tags: 标签列表
+        :type Tags: list of ApmTag
+        :param _Page: 页码
+        :type Page: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._ServiceID = None
+        self._StartTime = None
+        self._EndTime = None
+        self._OrderBy = None
+        self._Demo = None
+        self._ServiceStatus = None
+        self._Tags = None
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+
+    @property
+    def InstanceId(self):
+        r"""业务系统ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceID(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def OrderBy(self):
+        r"""排序
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Demo(self):
+        r"""是否demo模式
+        :rtype: bool
+        """
+        return self._Demo
+
+    @Demo.setter
+    def Demo(self, Demo):
+        self._Demo = Demo
+
+    @property
+    def ServiceStatus(self):
+        r"""应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+        :rtype: str
+        """
+        return self._ServiceStatus
+
+    @ServiceStatus.setter
+    def ServiceStatus(self, ServiceStatus):
+        self._ServiceStatus = ServiceStatus
+
+    @property
+    def Tags(self):
+        r"""标签列表
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Page(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceID = params.get("ServiceID")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
+        self._Demo = params.get("Demo")
+        self._ServiceStatus = params.get("ServiceStatus")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmServiceMetricResponse(AbstractModel):
+    r"""DescribeApmServiceMetric返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceMetricList: 应用指标列表
+        :type ServiceMetricList: list of ApmServiceMetric
+        :param _TotalCount: 符合筛选条件的应用数
+        :type TotalCount: int
+        :param _WarningErrorCount: 警示异常应用数
+        :type WarningErrorCount: int
+        :param _ApplicationCount: 应用总数
+        :type ApplicationCount: int
+        :param _Page: 页码
+        :type Page: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _ErrorCount: 异常应用数
+        :type ErrorCount: int
+        :param _WarningCount: 警示应用数
+        :type WarningCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceMetricList = None
+        self._TotalCount = None
+        self._WarningErrorCount = None
+        self._ApplicationCount = None
+        self._Page = None
+        self._PageSize = None
+        self._ErrorCount = None
+        self._WarningCount = None
+        self._RequestId = None
+
+    @property
+    def ServiceMetricList(self):
+        r"""应用指标列表
+        :rtype: list of ApmServiceMetric
+        """
+        return self._ServiceMetricList
+
+    @ServiceMetricList.setter
+    def ServiceMetricList(self, ServiceMetricList):
+        self._ServiceMetricList = ServiceMetricList
+
+    @property
+    def TotalCount(self):
+        r"""符合筛选条件的应用数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def WarningErrorCount(self):
+        r"""警示异常应用数
+        :rtype: int
+        """
+        return self._WarningErrorCount
+
+    @WarningErrorCount.setter
+    def WarningErrorCount(self, WarningErrorCount):
+        self._WarningErrorCount = WarningErrorCount
+
+    @property
+    def ApplicationCount(self):
+        r"""应用总数
+        :rtype: int
+        """
+        return self._ApplicationCount
+
+    @ApplicationCount.setter
+    def ApplicationCount(self, ApplicationCount):
+        self._ApplicationCount = ApplicationCount
+
+    @property
+    def Page(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ErrorCount(self):
+        r"""异常应用数
+        :rtype: int
+        """
+        return self._ErrorCount
+
+    @ErrorCount.setter
+    def ErrorCount(self, ErrorCount):
+        self._ErrorCount = ErrorCount
+
+    @property
+    def WarningCount(self):
+        r"""警示应用数
+        :rtype: int
+        """
+        return self._WarningCount
+
+    @WarningCount.setter
+    def WarningCount(self, WarningCount):
+        self._WarningCount = WarningCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceMetricList") is not None:
+            self._ServiceMetricList = []
+            for item in params.get("ServiceMetricList"):
+                obj = ApmServiceMetric()
+                obj._deserialize(item)
+                self._ServiceMetricList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._WarningErrorCount = params.get("WarningErrorCount")
+        self._ApplicationCount = params.get("ApplicationCount")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._ErrorCount = params.get("ErrorCount")
+        self._WarningCount = params.get("WarningCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5108,6 +5558,183 @@ class QueryMetricItem(AbstractModel):
         self._MetricName = params.get("MetricName")
         self._Compares = params.get("Compares")
         self._Compare = params.get("Compare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceDetail(AbstractModel):
+    r"""应用详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceID: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceID: str
+        :param _InstanceKey: 业务系统ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceKey: str
+        :param _AppID: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: int
+        :param _CreateUIN: 主账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUIN: str
+        :param _ServiceName: 应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _ServiceDescription: 应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDescription: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApmTag
+        :param _InstanceName: 业务系统名称
+        :type InstanceName: str
+        """
+        self._ServiceID = None
+        self._InstanceKey = None
+        self._AppID = None
+        self._CreateUIN = None
+        self._ServiceName = None
+        self._ServiceDescription = None
+        self._Region = None
+        self._Tags = None
+        self._InstanceName = None
+
+    @property
+    def ServiceID(self):
+        r"""应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def InstanceKey(self):
+        r"""业务系统ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def AppID(self):
+        r"""用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def CreateUIN(self):
+        r"""主账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUIN
+
+    @CreateUIN.setter
+    def CreateUIN(self, CreateUIN):
+        self._CreateUIN = CreateUIN
+
+    @property
+    def ServiceName(self):
+        r"""应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDescription(self):
+        r"""应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceDescription
+
+    @ServiceDescription.setter
+    def ServiceDescription(self, ServiceDescription):
+        self._ServiceDescription = ServiceDescription
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Tags(self):
+        r"""标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceName(self):
+        r"""业务系统名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._ServiceID = params.get("ServiceID")
+        self._InstanceKey = params.get("InstanceKey")
+        self._AppID = params.get("AppID")
+        self._CreateUIN = params.get("CreateUIN")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDescription = params.get("ServiceDescription")
+        self._Region = params.get("Region")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

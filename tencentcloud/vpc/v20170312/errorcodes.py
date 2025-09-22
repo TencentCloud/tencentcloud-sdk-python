@@ -1049,6 +1049,9 @@ UNSUPPORTEDOPERATION_INSTANCEORDINARYACCOUNTREFUSEATTACH = 'UnsupportedOperation
 # 该地址绑定的实例状态不支持此操作。
 UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = 'UnsupportedOperation.InstanceStateNotSupported'
 
+# 子机在关机不收费状态下不支持绑定EIP。
+UNSUPPORTEDOPERATION_INSTANCESTATUSNOTPERMIT = 'UnsupportedOperation.InstanceStatusNotPermit'
+
 # 账户余额不足。
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
 

@@ -110,6 +110,12 @@ FAILEDOPERATION_SERVICELISTEXCEEDINGLIMITNUMBER = 'FailedOperation.ServiceListEx
 # 应用列表为空
 FAILEDOPERATION_SERVICELISTNULL = 'FailedOperation.ServiceListNull'
 
+# 没有找到应用资源
+FAILEDOPERATION_SERVICENOTFOUND = 'FailedOperation.ServiceNotFound'
+
+# serviceId 与 appId 不匹配
+FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = 'FailedOperation.ServiceNotMatchAppIdErr'
+
 # 视图名不存在或非法。
 FAILEDOPERATION_VIEWNAMENOTEXISTORILLEGAL = 'FailedOperation.ViewNameNotExistOrIllegal'
 

@@ -1640,6 +1640,115 @@ class AndroidInstanceUploadFile(AbstractModel):
         
 
 
+class BackUpAndroidInstanceRequest(AbstractModel):
+    r"""BackUpAndroidInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例ID
+        :type AndroidInstanceId: str
+        :param _Includes: 包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :type Includes: list of str
+        :param _Excludes: 需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :type Excludes: list of str
+        """
+        self._AndroidInstanceId = None
+        self._Includes = None
+        self._Excludes = None
+
+    @property
+    def AndroidInstanceId(self):
+        r"""安卓实例ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def Includes(self):
+        r"""包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :rtype: list of str
+        """
+        return self._Includes
+
+    @Includes.setter
+    def Includes(self, Includes):
+        self._Includes = Includes
+
+    @property
+    def Excludes(self):
+        r"""需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :rtype: list of str
+        """
+        return self._Excludes
+
+    @Excludes.setter
+    def Excludes(self, Excludes):
+        self._Excludes = Excludes
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._Includes = params.get("Includes")
+        self._Excludes = params.get("Excludes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackUpAndroidInstanceResponse(AbstractModel):
+    r"""BackUpAndroidInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 备份 ID
+        :type BackupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupId = None
+        self._RequestId = None
+
+    @property
+    def BackupId(self):
+        r"""备份 ID
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._RequestId = params.get("RequestId")
+
+
 class BackUpAndroidInstanceToStorageRequest(AbstractModel):
     r"""BackUpAndroidInstanceToStorage请求参数结构体
 
@@ -4315,6 +4424,70 @@ class DeleteAndroidInstanceBackupFilesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAndroidInstanceBackupsRequest(AbstractModel):
+    r"""DeleteAndroidInstanceBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupIds: 备份ID列表
+        :type BackupIds: list of str
+        """
+        self._BackupIds = None
+
+    @property
+    def BackupIds(self):
+        r"""备份ID列表
+        :rtype: list of str
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAndroidInstanceBackupsResponse(AbstractModel):
+    r"""DeleteAndroidInstanceBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAndroidInstanceImagesRequest(AbstractModel):
     r"""DeleteAndroidInstanceImages请求参数结构体
 
@@ -4688,6 +4861,100 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
                 obj = AndroidInstanceAppInfo()
                 obj._deserialize(item)
                 self._Apps.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAndroidInstanceBackupsRequest(AbstractModel):
+    r"""DescribeAndroidInstanceBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupIds: 备份ID列表
+        :type BackupIds: list of str
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Limit: 每页数量
+        :type Limit: int
+        """
+        self._BackupIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def BackupIds(self):
+        r"""备份ID列表
+        :rtype: list of str
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._BackupIds = params.get("BackupIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAndroidInstanceBackupsResponse(AbstractModel):
+    r"""DescribeAndroidInstanceBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9020,6 +9287,100 @@ class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
 
 class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
     r"""RestoreAndroidInstanceFromStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 实例任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""实例任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class RestoreAndroidInstanceRequest(AbstractModel):
+    r"""RestoreAndroidInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例 ID
+        :type AndroidInstanceId: str
+        :param _BackupId: 备份 ID
+        :type BackupId: str
+        """
+        self._AndroidInstanceId = None
+        self._BackupId = None
+
+    @property
+    def AndroidInstanceId(self):
+        r"""安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def BackupId(self):
+        r"""备份 ID
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreAndroidInstanceResponse(AbstractModel):
+    r"""RestoreAndroidInstance返回参数结构体
 
     """
 

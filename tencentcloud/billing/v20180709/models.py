@@ -9956,6 +9956,1754 @@ class BillZoneId(AbstractModel):
         
 
 
+class BudgetConditionsForm(AbstractModel):
+    r"""预算管理自定义费用范围参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: 产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: list of str
+        :param _PayMode: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: list of str
+        :param _ProductCodes: 子产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodes: list of str
+        :param _ComponentCodes: 组件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCodes: list of str
+        :param _ZoneIds: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of str
+        :param _RegionIds: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionIds: list of str
+        :param _ProjectIds: 项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectIds: list of str
+        :param _ActionTypes: 交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypes: list of str
+        :param _ConsumptionTypes: 消耗类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumptionTypes: list of str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagsForm
+        :param _PayerUins:  末级分账单元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUins: list of str
+        :param _OwnerUins: 主用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUins: list of str
+        :param _TreeNodeUniqKeys:  末级分账单元唯一键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeys: list of str
+        """
+        self._Business = None
+        self._PayMode = None
+        self._ProductCodes = None
+        self._ComponentCodes = None
+        self._ZoneIds = None
+        self._RegionIds = None
+        self._ProjectIds = None
+        self._ActionTypes = None
+        self._ConsumptionTypes = None
+        self._Tags = None
+        self._PayerUins = None
+        self._OwnerUins = None
+        self._TreeNodeUniqKeys = None
+
+    @property
+    def Business(self):
+        r"""产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def PayMode(self):
+        r"""计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProductCodes(self):
+        r"""子产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ComponentCodes(self):
+        r"""组件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ZoneIds(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RegionIds(self):
+        r"""可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ProjectIds(self):
+        r"""项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ActionTypes(self):
+        r"""交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ConsumptionTypes(self):
+        r"""消耗类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ConsumptionTypes
+
+    @ConsumptionTypes.setter
+    def ConsumptionTypes(self, ConsumptionTypes):
+        self._ConsumptionTypes = ConsumptionTypes
+
+    @property
+    def Tags(self):
+        r"""标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagsForm
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PayerUins(self):
+        r""" 末级分账单元
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PayerUins
+
+    @PayerUins.setter
+    def PayerUins(self, PayerUins):
+        self._PayerUins = PayerUins
+
+    @property
+    def OwnerUins(self):
+        r"""主用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r""" 末级分账单元唯一键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+
+    def _deserialize(self, params):
+        self._Business = params.get("Business")
+        self._PayMode = params.get("PayMode")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ZoneIds = params.get("ZoneIds")
+        self._RegionIds = params.get("RegionIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ConsumptionTypes = params.get("ConsumptionTypes")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagsForm()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._PayerUins = params.get("PayerUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetExtend(AbstractModel):
+    r"""查询返回预算完整信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetName: 预算名称
+        :type BudgetName: str
+        :param _BudgetQuota: 预算额度
+        :type BudgetQuota: str
+        :param _CycleType: DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :type CycleType: str
+        :param _BillType: BILL  系统账单，CONSUMPTION  消耗账单
+        :type BillType: str
+        :param _FeeType: COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :type FeeType: str
+        :param _PeriodBegin: 有效期起始时间 2025-01-01
+        :type PeriodBegin: str
+        :param _PeriodEnd: 有效期结束时间  2025-12-01
+        :type PeriodEnd: str
+        :param _Dimensions: COST，USAGE，RI，SP
+        :type Dimensions: str
+        :param _PlanType: FIX 固定值，CYCLE 不同值
+        :type PlanType: str
+        :param _WarnJson: 阈值提醒
+        :type WarnJson: list of BudgetWarn
+        :param _PayerUin: 用户Uin
+        :type PayerUin: int
+        :param _WaveThresholdJson: 波动提醒
+        :type WaveThresholdJson: list of WaveThresholdForm
+        :param _BudgetNote: 预算备注
+        :type BudgetNote: str
+        :param _SendDetail: 自定义发送对象信息
+        :type SendDetail: str
+        :param _DefaultMode: 0:默认uin发送
+        :type DefaultMode: int
+        :param _TemplateType: CUS 自定义预算，ZERO_COST 零支出预算模板，BY_MONTH 按月费用预算模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateType: str
+        :param _MoneyStatus: (1, "未超支"),
+(2, "超支")
+        :type MoneyStatus: int
+        :param _RemindTimes: 提醒次数
+        :type RemindTimes: int
+        :param _CreateTime: 创建预算时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新预算时间
+        :type UpdateTime: str
+        :param _BudgetId: 预算关联Id
+        :type BudgetId: str
+        :param _HasForecast: NO_FORECAST(没有设置预测),
+ FORECAST_NO_DATA(设置了预测,但是没有数据),
+FORECAST_HAS_DATA(设置了预测,且有预测数据)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasForecast: str
+        :param _ForecastCost: 预测费用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForecastCost: str
+        :param _ForecastProgress: 预测进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForecastProgress: str
+        :param _RealCost: 实际费用
+        :type RealCost: str
+        :param _BudgetSendInfoForm: 自定义发送
+        :type BudgetSendInfoForm: list of BudgetSendInfoDto
+        :param _CurDateDesc: 当前周期
+        :type CurDateDesc: str
+        :param _BudgetStatus:  EXPIRED  已过期
+ACTIVE 生效中
+UNACTIVATED 已失效
+ACTIVATED 待生效
+        :type BudgetStatus: str
+        :param _DimensionsRange: 预算维度范围条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _BudgetProgress: 预算进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetProgress: str
+        :param _BudgetQuotaJson: 预算类型设置为计划预算时返回预算额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetQuotaJson: list of BudgetPlan
+        """
+        self._BudgetName = None
+        self._BudgetQuota = None
+        self._CycleType = None
+        self._BillType = None
+        self._FeeType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._Dimensions = None
+        self._PlanType = None
+        self._WarnJson = None
+        self._PayerUin = None
+        self._WaveThresholdJson = None
+        self._BudgetNote = None
+        self._SendDetail = None
+        self._DefaultMode = None
+        self._TemplateType = None
+        self._MoneyStatus = None
+        self._RemindTimes = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._BudgetId = None
+        self._HasForecast = None
+        self._ForecastCost = None
+        self._ForecastProgress = None
+        self._RealCost = None
+        self._BudgetSendInfoForm = None
+        self._CurDateDesc = None
+        self._BudgetStatus = None
+        self._DimensionsRange = None
+        self._BudgetProgress = None
+        self._BudgetQuotaJson = None
+
+    @property
+    def BudgetName(self):
+        r"""预算名称
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def BudgetQuota(self):
+        r"""预算额度
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def CycleType(self):
+        r"""DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def BillType(self):
+        r"""BILL  系统账单，CONSUMPTION  消耗账单
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PeriodBegin(self):
+        r"""有效期起始时间 2025-01-01
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""有效期结束时间  2025-12-01
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def Dimensions(self):
+        r"""COST，USAGE，RI，SP
+        :rtype: str
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def PlanType(self):
+        r"""FIX 固定值，CYCLE 不同值
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def WarnJson(self):
+        r"""阈值提醒
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def PayerUin(self):
+        r"""用户Uin
+        :rtype: int
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def WaveThresholdJson(self):
+        r"""波动提醒
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+    @property
+    def BudgetNote(self):
+        r"""预算备注
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def SendDetail(self):
+        r"""自定义发送对象信息
+        :rtype: str
+        """
+        return self._SendDetail
+
+    @SendDetail.setter
+    def SendDetail(self, SendDetail):
+        self._SendDetail = SendDetail
+
+    @property
+    def DefaultMode(self):
+        r"""0:默认uin发送
+        :rtype: int
+        """
+        return self._DefaultMode
+
+    @DefaultMode.setter
+    def DefaultMode(self, DefaultMode):
+        self._DefaultMode = DefaultMode
+
+    @property
+    def TemplateType(self):
+        r"""CUS 自定义预算，ZERO_COST 零支出预算模板，BY_MONTH 按月费用预算模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MoneyStatus(self):
+        r"""(1, "未超支"),
+(2, "超支")
+        :rtype: int
+        """
+        return self._MoneyStatus
+
+    @MoneyStatus.setter
+    def MoneyStatus(self, MoneyStatus):
+        self._MoneyStatus = MoneyStatus
+
+    @property
+    def RemindTimes(self):
+        r"""提醒次数
+        :rtype: int
+        """
+        return self._RemindTimes
+
+    @RemindTimes.setter
+    def RemindTimes(self, RemindTimes):
+        self._RemindTimes = RemindTimes
+
+    @property
+    def CreateTime(self):
+        r"""创建预算时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新预算时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def BudgetId(self):
+        r"""预算关联Id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def HasForecast(self):
+        r"""NO_FORECAST(没有设置预测),
+ FORECAST_NO_DATA(设置了预测,但是没有数据),
+FORECAST_HAS_DATA(设置了预测,且有预测数据)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HasForecast
+
+    @HasForecast.setter
+    def HasForecast(self, HasForecast):
+        self._HasForecast = HasForecast
+
+    @property
+    def ForecastCost(self):
+        r"""预测费用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ForecastCost
+
+    @ForecastCost.setter
+    def ForecastCost(self, ForecastCost):
+        self._ForecastCost = ForecastCost
+
+    @property
+    def ForecastProgress(self):
+        r"""预测进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ForecastProgress
+
+    @ForecastProgress.setter
+    def ForecastProgress(self, ForecastProgress):
+        self._ForecastProgress = ForecastProgress
+
+    @property
+    def RealCost(self):
+        r"""实际费用
+        :rtype: str
+        """
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def BudgetSendInfoForm(self):
+        r"""自定义发送
+        :rtype: list of BudgetSendInfoDto
+        """
+        return self._BudgetSendInfoForm
+
+    @BudgetSendInfoForm.setter
+    def BudgetSendInfoForm(self, BudgetSendInfoForm):
+        self._BudgetSendInfoForm = BudgetSendInfoForm
+
+    @property
+    def CurDateDesc(self):
+        r"""当前周期
+        :rtype: str
+        """
+        return self._CurDateDesc
+
+    @CurDateDesc.setter
+    def CurDateDesc(self, CurDateDesc):
+        self._CurDateDesc = CurDateDesc
+
+    @property
+    def BudgetStatus(self):
+        r""" EXPIRED  已过期
+ACTIVE 生效中
+UNACTIVATED 已失效
+ACTIVATED 待生效
+        :rtype: str
+        """
+        return self._BudgetStatus
+
+    @BudgetStatus.setter
+    def BudgetStatus(self, BudgetStatus):
+        self._BudgetStatus = BudgetStatus
+
+    @property
+    def DimensionsRange(self):
+        r"""预算维度范围条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def BudgetProgress(self):
+        r"""预算进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BudgetProgress
+
+    @BudgetProgress.setter
+    def BudgetProgress(self, BudgetProgress):
+        self._BudgetProgress = BudgetProgress
+
+    @property
+    def BudgetQuotaJson(self):
+        r"""预算类型设置为计划预算时返回预算额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BudgetPlan
+        """
+        return self._BudgetQuotaJson
+
+    @BudgetQuotaJson.setter
+    def BudgetQuotaJson(self, BudgetQuotaJson):
+        self._BudgetQuotaJson = BudgetQuotaJson
+
+
+    def _deserialize(self, params):
+        self._BudgetName = params.get("BudgetName")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._CycleType = params.get("CycleType")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._Dimensions = params.get("Dimensions")
+        self._PlanType = params.get("PlanType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._PayerUin = params.get("PayerUin")
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        self._SendDetail = params.get("SendDetail")
+        self._DefaultMode = params.get("DefaultMode")
+        self._TemplateType = params.get("TemplateType")
+        self._MoneyStatus = params.get("MoneyStatus")
+        self._RemindTimes = params.get("RemindTimes")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._BudgetId = params.get("BudgetId")
+        self._HasForecast = params.get("HasForecast")
+        self._ForecastCost = params.get("ForecastCost")
+        self._ForecastProgress = params.get("ForecastProgress")
+        self._RealCost = params.get("RealCost")
+        if params.get("BudgetSendInfoForm") is not None:
+            self._BudgetSendInfoForm = []
+            for item in params.get("BudgetSendInfoForm"):
+                obj = BudgetSendInfoDto()
+                obj._deserialize(item)
+                self._BudgetSendInfoForm.append(obj)
+        self._CurDateDesc = params.get("CurDateDesc")
+        self._BudgetStatus = params.get("BudgetStatus")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        self._BudgetProgress = params.get("BudgetProgress")
+        if params.get("BudgetQuotaJson") is not None:
+            self._BudgetQuotaJson = []
+            for item in params.get("BudgetQuotaJson"):
+                obj = BudgetPlan()
+                obj._deserialize(item)
+                self._BudgetQuotaJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetInfoApiResponse(AbstractModel):
+    r"""预算操作后返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetId: 预算项目id
+        :type BudgetId: str
+        :param _UpdateTime: 更新预算时间
+        :type UpdateTime: str
+        """
+        self._BudgetId = None
+        self._UpdateTime = None
+
+    @property
+    def BudgetId(self):
+        r"""预算项目id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def UpdateTime(self):
+        r"""更新预算时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._BudgetId = params.get("BudgetId")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetInfoDiffEntity(AbstractModel):
+    r"""记录预算项目相关字段的变更信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Property: 变更属性
+        :type Property: str
+        :param _Before: 变更前内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Before: str
+        :param _After: 变更后内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type After: str
+        """
+        self._Property = None
+        self._Before = None
+        self._After = None
+
+    @property
+    def Property(self):
+        r"""变更属性
+        :rtype: str
+        """
+        return self._Property
+
+    @Property.setter
+    def Property(self, Property):
+        self._Property = Property
+
+    @property
+    def Before(self):
+        r"""变更前内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Before
+
+    @Before.setter
+    def Before(self, Before):
+        self._Before = Before
+
+    @property
+    def After(self):
+        r"""变更后内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._After
+
+    @After.setter
+    def After(self, After):
+        self._After = After
+
+
+    def _deserialize(self, params):
+        self._Property = params.get("Property")
+        self._Before = params.get("Before")
+        self._After = params.get("After")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetOperationLogEntity(AbstractModel):
+    r"""预算修改记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: Uin
+        :type PayerUin: int
+        :param _OwnerUin: 主用户Uin
+
+        :type OwnerUin: int
+        :param _OperateUin: 操作用户Uin
+        :type OperateUin: int
+        :param _BillDay: 日期
+        :type BillDay: int
+        :param _BillMonth: 月份
+        :type BillMonth: str
+        :param _Action: 修改类型：ADD(新增)、UPDATE(更新)
+        :type Action: str
+        :param _DiffValue: 变更信息
+        :type DiffValue: list of BudgetInfoDiffEntity
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 修改时间
+        :type UpdateTime: str
+        :param _OperationChannel: 修改渠道：官网修改/API修改
+        :type OperationChannel: str
+        :param _BudgetId: 预算项目id
+        :type BudgetId: str
+        """
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BillDay = None
+        self._BillMonth = None
+        self._Action = None
+        self._DiffValue = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._OperationChannel = None
+        self._BudgetId = None
+
+    @property
+    def PayerUin(self):
+        r"""Uin
+        :rtype: int
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""主用户Uin
+
+        :rtype: int
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""操作用户Uin
+        :rtype: int
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BillDay(self):
+        r"""日期
+        :rtype: int
+        """
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def BillMonth(self):
+        r"""月份
+        :rtype: str
+        """
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def Action(self):
+        r"""修改类型：ADD(新增)、UPDATE(更新)
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def DiffValue(self):
+        r"""变更信息
+        :rtype: list of BudgetInfoDiffEntity
+        """
+        return self._DiffValue
+
+    @DiffValue.setter
+    def DiffValue(self, DiffValue):
+        self._DiffValue = DiffValue
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""修改时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperationChannel(self):
+        r"""修改渠道：官网修改/API修改
+        :rtype: str
+        """
+        return self._OperationChannel
+
+    @OperationChannel.setter
+    def OperationChannel(self, OperationChannel):
+        self._OperationChannel = OperationChannel
+
+    @property
+    def BudgetId(self):
+        r"""预算项目id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BillDay = params.get("BillDay")
+        self._BillMonth = params.get("BillMonth")
+        self._Action = params.get("Action")
+        if params.get("DiffValue") is not None:
+            self._DiffValue = []
+            for item in params.get("DiffValue"):
+                obj = BudgetInfoDiffEntity()
+                obj._deserialize(item)
+                self._DiffValue.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperationChannel = params.get("OperationChannel")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetPlan(AbstractModel):
+    r"""预算计算复杂数据类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DateDesc: 前端页面日期显示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateDesc: str
+        :param _Quota: 预算额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quota: str
+        """
+        self._DateDesc = None
+        self._Quota = None
+
+    @property
+    def DateDesc(self):
+        r"""前端页面日期显示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DateDesc
+
+    @DateDesc.setter
+    def DateDesc(self, DateDesc):
+        self._DateDesc = DateDesc
+
+    @property
+    def Quota(self):
+        r"""预算额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+
+    def _deserialize(self, params):
+        self._DateDesc = params.get("DateDesc")
+        self._Quota = params.get("Quota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetRemindRecordList(AbstractModel):
+    r"""预算管理的分页数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OptimizeCountSql: 自动优化 COUNT SQL 如果遇到 jSqlParser 无法解析情况，设置该参数为 false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptimizeCountSql: bool
+        :param _Pages: 分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pages: int
+        :param _Orders: 排序字段信息，允许前端传入的时候，注意 SQL 注入问题，可以使用 SqlInjectionUtils.check(...) 检查文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Orders: list of OrderDto
+        :param _CountId: xml 自定义 count 查询的 statementId 也可以不用指定在分页 statementId 后面加上 _mpCount 例如分页 selectPageById 指定 count 的查询 statementId 设置为 selectPageById_mpCount 即可默认找到该 SQL 执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountId: str
+        :param _Size: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _Total: 总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _MaxLimit: 单页分页条数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxLimit: str
+        :param _Records: 查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of BudgetRemindRecords
+        :param _Current: 当前页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: int
+        :param _SearchCount: 是否进行 count 查询，如果只想查询到列表不要查询总记录数，设置该参数为 false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchCount: bool
+        """
+        self._OptimizeCountSql = None
+        self._Pages = None
+        self._Orders = None
+        self._CountId = None
+        self._Size = None
+        self._Total = None
+        self._MaxLimit = None
+        self._Records = None
+        self._Current = None
+        self._SearchCount = None
+
+    @property
+    def OptimizeCountSql(self):
+        r"""自动优化 COUNT SQL 如果遇到 jSqlParser 无法解析情况，设置该参数为 false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OptimizeCountSql
+
+    @OptimizeCountSql.setter
+    def OptimizeCountSql(self, OptimizeCountSql):
+        self._OptimizeCountSql = OptimizeCountSql
+
+    @property
+    def Pages(self):
+        r"""分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Orders(self):
+        r"""排序字段信息，允许前端传入的时候，注意 SQL 注入问题，可以使用 SqlInjectionUtils.check(...) 检查文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrderDto
+        """
+        return self._Orders
+
+    @Orders.setter
+    def Orders(self, Orders):
+        self._Orders = Orders
+
+    @property
+    def CountId(self):
+        r"""xml 自定义 count 查询的 statementId 也可以不用指定在分页 statementId 后面加上 _mpCount 例如分页 selectPageById 指定 count 的查询 statementId 设置为 selectPageById_mpCount 即可默认找到该 SQL 执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CountId
+
+    @CountId.setter
+    def CountId(self, CountId):
+        self._CountId = CountId
+
+    @property
+    def Size(self):
+        r"""分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def MaxLimit(self):
+        r"""单页分页条数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MaxLimit
+
+    @MaxLimit.setter
+    def MaxLimit(self, MaxLimit):
+        self._MaxLimit = MaxLimit
+
+    @property
+    def Records(self):
+        r"""查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BudgetRemindRecords
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""当前页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+    @property
+    def SearchCount(self):
+        r"""是否进行 count 查询，如果只想查询到列表不要查询总记录数，设置该参数为 false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
+
+    def _deserialize(self, params):
+        self._OptimizeCountSql = params.get("OptimizeCountSql")
+        self._Pages = params.get("Pages")
+        if params.get("Orders") is not None:
+            self._Orders = []
+            for item in params.get("Orders"):
+                obj = OrderDto()
+                obj._deserialize(item)
+                self._Orders.append(obj)
+        self._CountId = params.get("CountId")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        self._MaxLimit = params.get("MaxLimit")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetRemindRecords()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        self._SearchCount = params.get("SearchCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetRemindRecords(AbstractModel):
+    r"""预算历史详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DateDesc: 预算周期
+        :type DateDesc: str
+        :param _RealCost: 实际费用
+        :type RealCost: str
+        :param _BudgetQuota: 预算值额度
+        :type BudgetQuota: str
+        :param _AlarmType: 提醒类型。
+枚举值:
+BUDGET 预算提醒,
+WAVE 波动提醒.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmType: str
+        :param _MessageContent: 消息内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageContent: str
+        :param _SendTime: 发送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendTime: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        """
+        self._DateDesc = None
+        self._RealCost = None
+        self._BudgetQuota = None
+        self._AlarmType = None
+        self._MessageContent = None
+        self._SendTime = None
+        self._CreateTime = None
+
+    @property
+    def DateDesc(self):
+        r"""预算周期
+        :rtype: str
+        """
+        return self._DateDesc
+
+    @DateDesc.setter
+    def DateDesc(self, DateDesc):
+        self._DateDesc = DateDesc
+
+    @property
+    def RealCost(self):
+        r"""实际费用
+        :rtype: str
+        """
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def BudgetQuota(self):
+        r"""预算值额度
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def AlarmType(self):
+        r"""提醒类型。
+枚举值:
+BUDGET 预算提醒,
+WAVE 波动提醒.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmType
+
+    @AlarmType.setter
+    def AlarmType(self, AlarmType):
+        self._AlarmType = AlarmType
+
+    @property
+    def MessageContent(self):
+        r"""消息内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MessageContent
+
+    @MessageContent.setter
+    def MessageContent(self, MessageContent):
+        self._MessageContent = MessageContent
+
+    @property
+    def SendTime(self):
+        r"""发送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._DateDesc = params.get("DateDesc")
+        self._RealCost = params.get("RealCost")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._AlarmType = params.get("AlarmType")
+        self._MessageContent = params.get("MessageContent")
+        self._SendTime = params.get("SendTime")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetSendInfoDto(AbstractModel):
+    r"""预算提醒
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeekDays: 通知周期,逗号隔开。
+枚举值:
+周一:1,
+周二:2,
+周天:7
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeekDays: list of int non-negative
+        :param _ReceiverType: 接收类型。
+枚举值:
+UIN 默认模式,
+USER 用户,
+GROUP 用户组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverType: str
+        :param _EndTime: 发送接收窗口HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _BudgetId: 预算配置id（预算名称）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetId: int
+        :param _NoticeWays: 接收渠道,逗号隔开;
+枚举值:
+TITLE 标题，
+SITE 站内信,
+EMAIL 邮件,
+SMS 短信,
+WECHAT 微信,
+VOICE 语音,
+QYWX 企业微信;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeWays: list of str
+        :param _StartTime: 发送开始窗口HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _ReceiverIds: 用户id,用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverIds: list of int non-negative
+        """
+        self._WeekDays = None
+        self._ReceiverType = None
+        self._EndTime = None
+        self._BudgetId = None
+        self._NoticeWays = None
+        self._StartTime = None
+        self._Id = None
+        self._ReceiverIds = None
+
+    @property
+    def WeekDays(self):
+        r"""通知周期,逗号隔开。
+枚举值:
+周一:1,
+周二:2,
+周天:7
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ReceiverType(self):
+        r"""接收类型。
+枚举值:
+UIN 默认模式,
+USER 用户,
+GROUP 用户组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReceiverType
+
+    @ReceiverType.setter
+    def ReceiverType(self, ReceiverType):
+        self._ReceiverType = ReceiverType
+
+    @property
+    def EndTime(self):
+        r"""发送接收窗口HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BudgetId(self):
+        r"""预算配置id（预算名称）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def NoticeWays(self):
+        r"""接收渠道,逗号隔开;
+枚举值:
+TITLE 标题，
+SITE 站内信,
+EMAIL 邮件,
+SMS 短信,
+WECHAT 微信,
+VOICE 语音,
+QYWX 企业微信;
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._NoticeWays
+
+    @NoticeWays.setter
+    def NoticeWays(self, NoticeWays):
+        self._NoticeWays = NoticeWays
+
+    @property
+    def StartTime(self):
+        r"""发送开始窗口HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Id(self):
+        r"""id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ReceiverIds(self):
+        r"""用户id,用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._ReceiverIds
+
+    @ReceiverIds.setter
+    def ReceiverIds(self, ReceiverIds):
+        self._ReceiverIds = ReceiverIds
+
+
+    def _deserialize(self, params):
+        self._WeekDays = params.get("WeekDays")
+        self._ReceiverType = params.get("ReceiverType")
+        self._EndTime = params.get("EndTime")
+        self._BudgetId = params.get("BudgetId")
+        self._NoticeWays = params.get("NoticeWays")
+        self._StartTime = params.get("StartTime")
+        self._Id = params.get("Id")
+        self._ReceiverIds = params.get("ReceiverIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetWarn(AbstractModel):
+    r"""预算阈值提醒信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarnType: ACTUAL 实际金额，
+FORECAST 预测金额
+        :type WarnType: str
+        :param _CalType: PERCENTAGE 预算金额的百分比，ABS 固定值
+        :type CalType: str
+        :param _ThresholdValue: 阈值（大于等于0）
+        :type ThresholdValue: str
+        """
+        self._WarnType = None
+        self._CalType = None
+        self._ThresholdValue = None
+
+    @property
+    def WarnType(self):
+        r"""ACTUAL 实际金额，
+FORECAST 预测金额
+        :rtype: str
+        """
+        return self._WarnType
+
+    @WarnType.setter
+    def WarnType(self, WarnType):
+        self._WarnType = WarnType
+
+    @property
+    def CalType(self):
+        r"""PERCENTAGE 预算金额的百分比，ABS 固定值
+        :rtype: str
+        """
+        return self._CalType
+
+    @CalType.setter
+    def CalType(self, CalType):
+        self._CalType = CalType
+
+    @property
+    def ThresholdValue(self):
+        r"""阈值（大于等于0）
+        :rtype: str
+        """
+        return self._ThresholdValue
+
+    @ThresholdValue.setter
+    def ThresholdValue(self, ThresholdValue):
+        self._ThresholdValue = ThresholdValue
+
+
+    def _deserialize(self, params):
+        self._WarnType = params.get("WarnType")
+        self._CalType = params.get("CalType")
+        self._ThresholdValue = params.get("ThresholdValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryInfo(AbstractModel):
     r"""产品汇总信息
 
@@ -13061,6 +14809,298 @@ class CreateAllocationUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBudgetRequest(AbstractModel):
+    r"""CreateBudget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetName: 预算名称
+        :type BudgetName: str
+        :param _CycleType: DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :type CycleType: str
+        :param _PeriodBegin: 有效期起始时间 2025-01-01(周期: 天) / 2025-01（周期: 月）
+        :type PeriodBegin: str
+        :param _PeriodEnd: 有效期结束时间  2025-12-01(周期：天)  / 2025-12（周期：月）
+        :type PeriodEnd: str
+        :param _PlanType: FIX 固定预算，CYCLE 计划预算
+        :type PlanType: str
+        :param _BudgetQuota: 预算值额度
+预算计划类型为FIX(固定预算)时传定值；
+预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+        :type BudgetQuota: str
+        :param _BillType: BILL  系统账单，CONSUMPTION  消耗账单
+        :type BillType: str
+        :param _FeeType: COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :type FeeType: str
+        :param _WarnJson: 阈值提醒
+        :type WarnJson: list of BudgetWarn
+        :param _BudgetNote: 预算备注
+        :type BudgetNote: str
+        :param _DimensionsRange: 预算维度范围条件
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _WaveThresholdJson: 波动提醒
+        :type WaveThresholdJson: list of WaveThresholdForm
+        """
+        self._BudgetName = None
+        self._CycleType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._PlanType = None
+        self._BudgetQuota = None
+        self._BillType = None
+        self._FeeType = None
+        self._WarnJson = None
+        self._BudgetNote = None
+        self._DimensionsRange = None
+        self._WaveThresholdJson = None
+
+    @property
+    def BudgetName(self):
+        r"""预算名称
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def CycleType(self):
+        r"""DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def PeriodBegin(self):
+        r"""有效期起始时间 2025-01-01(周期: 天) / 2025-01（周期: 月）
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""有效期结束时间  2025-12-01(周期：天)  / 2025-12（周期：月）
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def PlanType(self):
+        r"""FIX 固定预算，CYCLE 计划预算
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def BudgetQuota(self):
+        r"""预算值额度
+预算计划类型为FIX(固定预算)时传定值；
+预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def BillType(self):
+        r"""BILL  系统账单，CONSUMPTION  消耗账单
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def WarnJson(self):
+        r"""阈值提醒
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def BudgetNote(self):
+        r"""预算备注
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def DimensionsRange(self):
+        r"""预算维度范围条件
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def WaveThresholdJson(self):
+        r"""波动提醒
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+
+    def _deserialize(self, params):
+        self._BudgetName = params.get("BudgetName")
+        self._CycleType = params.get("CycleType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._PlanType = params.get("PlanType")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBudgetResponse(AbstractModel):
+    r"""CreateBudget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建预算返回信息
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        :param _Message: create success
+        :type Message: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""创建预算返回信息
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""create success
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetInfoApiResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGatherRuleRequest(AbstractModel):
     r"""CreateGatherRule请求参数结构体
 
@@ -13170,6 +15210,212 @@ class CreateGatherRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
+
+
+class DataForBudgetInfoPage(AbstractModel):
+    r"""获取预算管理的基础信息分页数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pages: 分页
+        :type Pages: int
+        :param _Size: 分页大小
+        :type Size: int
+        :param _Total: 总量
+        :type Total: int
+        :param _Records: 查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of BudgetExtend
+        :param _Current: 当前页
+        :type Current: int
+        """
+        self._Pages = None
+        self._Size = None
+        self._Total = None
+        self._Records = None
+        self._Current = None
+
+    @property
+    def Pages(self):
+        r"""分页
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Size(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""总量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Records(self):
+        r"""查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BudgetExtend
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""当前页
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._Pages = params.get("Pages")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetExtend()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataForBudgetOperationLogPage(AbstractModel):
+    r"""预算修改记录信息分页数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pages: 分页
+        :type Pages: int
+        :param _Size: 分页大小
+        :type Size: int
+        :param _Total: 总量
+        :type Total: int
+        :param _Records: 查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of BudgetOperationLogEntity
+        :param _Current: 当前页
+        :type Current: int
+        """
+        self._Pages = None
+        self._Size = None
+        self._Total = None
+        self._Records = None
+        self._Current = None
+
+    @property
+    def Pages(self):
+        r"""分页
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Size(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""总量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Records(self):
+        r"""查询数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BudgetOperationLogEntity
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""当前页
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._Pages = params.get("Pages")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetOperationLogEntity()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Deal(AbstractModel):
@@ -13833,6 +16079,115 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBudgetRequest(AbstractModel):
+    r"""DeleteBudget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetIds: 预算项目id
+        :type BudgetIds: list of str
+        """
+        self._BudgetIds = None
+
+    @property
+    def BudgetIds(self):
+        r"""预算项目id
+        :rtype: list of str
+        """
+        return self._BudgetIds
+
+    @BudgetIds.setter
+    def BudgetIds(self, BudgetIds):
+        self._BudgetIds = BudgetIds
+
+
+    def _deserialize(self, params):
+        self._BudgetIds = params.get("BudgetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBudgetResponse(AbstractModel):
+    r"""DeleteBudget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回删除预算项目id
+        :type Data: list of str
+        :param _Message: 信息提示
+        :type Message: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回删除预算项目id
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""信息提示
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
         self._RequestId = params.get("RequestId")
 
 
@@ -21033,6 +23388,478 @@ class DescribeBillSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBudgetOperationLogRequest(AbstractModel):
+    r"""DescribeBudgetOperationLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 每页数目
+        :type PageSize: int
+        :param _BudgetId: 预算项目id
+        :type BudgetId: str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+
+    @property
+    def PageNo(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""每页数目
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""预算项目id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetOperationLogResponse(AbstractModel):
+    r"""DescribeBudgetOperationLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 预算修改记录详情
+        :type Data: :class:`tencentcloud.billing.v20180709.models.DataForBudgetOperationLogPage`
+        :param _Message: 信息提示
+        :type Message: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""预算修改记录详情
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DataForBudgetOperationLogPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""信息提示
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataForBudgetOperationLogPage()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBudgetRemindRecordListRequest(AbstractModel):
+    r"""DescribeBudgetRemindRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: 页码，整型
+        :type PageNo: int
+        :param _PageSize: 每页数目，整型
+        :type PageSize: int
+        :param _BudgetId: 预算基础信息关联id
+        :type BudgetId: str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+
+    @property
+    def PageNo(self):
+        r"""页码，整型
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""每页数目，整型
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""预算基础信息关联id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetRemindRecordListResponse(AbstractModel):
+    r"""DescribeBudgetRemindRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 预算配置属性
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetRemindRecordList`
+        :param _Message: 错误信息提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Code: 错误响应码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""预算配置属性
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetRemindRecordList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""错误信息提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""错误响应码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetRemindRecordList()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBudgetRequest(AbstractModel):
+    r"""DescribeBudget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: 页码，整型
+        :type PageNo: int
+        :param _PageSize: 每页数目，整型
+        :type PageSize: int
+        :param _BudgetId: 预算项目id
+        :type BudgetId: str
+        :param _BudgetName: 预算名称
+        :type BudgetName: str
+        :param _BudgetStatus: EXPIRED失效，ACTIVE生效中， ACTIVATED待生效
+        :type BudgetStatus: str
+        :param _CycleTypes: DAY天 MONTH月度 QUARTER季度 YEAR年度
+        :type CycleTypes: list of str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+        self._BudgetName = None
+        self._BudgetStatus = None
+        self._CycleTypes = None
+
+    @property
+    def PageNo(self):
+        r"""页码，整型
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""每页数目，整型
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""预算项目id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""预算名称
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def BudgetStatus(self):
+        r"""EXPIRED失效，ACTIVE生效中， ACTIVATED待生效
+        :rtype: str
+        """
+        return self._BudgetStatus
+
+    @BudgetStatus.setter
+    def BudgetStatus(self, BudgetStatus):
+        self._BudgetStatus = BudgetStatus
+
+    @property
+    def CycleTypes(self):
+        r"""DAY天 MONTH月度 QUARTER季度 YEAR年度
+        :rtype: list of str
+        """
+        return self._CycleTypes
+
+    @CycleTypes.setter
+    def CycleTypes(self, CycleTypes):
+        self._CycleTypes = CycleTypes
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        self._BudgetStatus = params.get("BudgetStatus")
+        self._CycleTypes = params.get("CycleTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetResponse(AbstractModel):
+    r"""DescribeBudget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 预算项目详情
+        :type Data: :class:`tencentcloud.billing.v20180709.models.DataForBudgetInfoPage`
+        :param _Message: 信息提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""预算项目详情
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DataForBudgetInfoPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""信息提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataForBudgetInfoPage()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCostDetailRequest(AbstractModel):
     r"""DescribeCostDetail请求参数结构体
 
@@ -26636,6 +29463,315 @@ class ModifyAllocationUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBudgetRequest(AbstractModel):
+    r"""ModifyBudget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetId: 预算项目id
+        :type BudgetId: str
+        :param _BudgetName: 预算名称
+        :type BudgetName: str
+        :param _CycleType: DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :type CycleType: str
+        :param _PeriodBegin: 有效期起始时间 2025-01-01
+        :type PeriodBegin: str
+        :param _PeriodEnd: 有效期结束时间  2025-12-01
+        :type PeriodEnd: str
+        :param _PlanType: FIX 固定值，CYCLE 不同值
+        :type PlanType: str
+        :param _BudgetQuota: 预算值额度 
+预算计划类型固定预算时设为定值；
+预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+        :type BudgetQuota: str
+        :param _BillType: BILL  系统账单，CONSUMPTION  消耗账单
+        :type BillType: str
+        :param _FeeType: COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :type FeeType: str
+        :param _WarnJson: 阈值提醒
+        :type WarnJson: list of BudgetWarn
+        :param _BudgetNote: 预算备注
+        :type BudgetNote: str
+        :param _DimensionsRange: 预算维度范围条件
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _WaveThresholdJson: 波动提醒
+        :type WaveThresholdJson: list of WaveThresholdForm
+        """
+        self._BudgetId = None
+        self._BudgetName = None
+        self._CycleType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._PlanType = None
+        self._BudgetQuota = None
+        self._BillType = None
+        self._FeeType = None
+        self._WarnJson = None
+        self._BudgetNote = None
+        self._DimensionsRange = None
+        self._WaveThresholdJson = None
+
+    @property
+    def BudgetId(self):
+        r"""预算项目id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""预算名称
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def CycleType(self):
+        r"""DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def PeriodBegin(self):
+        r"""有效期起始时间 2025-01-01
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""有效期结束时间  2025-12-01
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def PlanType(self):
+        r"""FIX 固定值，CYCLE 不同值
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def BudgetQuota(self):
+        r"""预算值额度 
+预算计划类型固定预算时设为定值；
+预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def BillType(self):
+        r"""BILL  系统账单，CONSUMPTION  消耗账单
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def WarnJson(self):
+        r"""阈值提醒
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def BudgetNote(self):
+        r"""预算备注
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def DimensionsRange(self):
+        r"""预算维度范围条件
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def WaveThresholdJson(self):
+        r"""波动提醒
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+
+    def _deserialize(self, params):
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        self._CycleType = params.get("CycleType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._PlanType = params.get("PlanType")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBudgetResponse(AbstractModel):
+    r"""ModifyBudget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 更新预算返回信息
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        :param _Message: update success
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""更新预算返回信息
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""update success
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetInfoApiResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGatherRuleRequest(AbstractModel):
     r"""ModifyGatherRule请求参数结构体
 
@@ -26730,6 +29866,61 @@ class ModifyGatherRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class OrderDto(AbstractModel):
+    r"""字段排序
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Column: 字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Column: str
+        :param _Asc: 是否升序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Asc: bool
+        """
+        self._Column = None
+        self._Asc = None
+
+    @property
+    def Column(self):
+        r"""字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Column
+
+    @Column.setter
+    def Column(self, Column):
+        self._Column = Column
+
+    @property
+    def Asc(self):
+        r"""是否升序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+
+    def _deserialize(self, params):
+        self._Column = params.get("Column")
+        self._Asc = params.get("Asc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PayDealsRequest(AbstractModel):
@@ -27904,6 +31095,61 @@ class TagSummaryOverviewItem(AbstractModel):
         
 
 
+class TagsForm(AbstractModel):
+    r"""预算管理自定义费用范围，tag 参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UsageDetails(AbstractModel):
     r"""购买商品信息
 
@@ -28419,6 +31665,99 @@ class VoucherInfos(AbstractModel):
                 self._ExcludedProducts.append(obj)
         self._PolicyRemark = params.get("PolicyRemark")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaveThresholdForm(AbstractModel):
+    r"""阈值波动预警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarnType: ACTUAL 实际金额，FORECAST 预测金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnType: str
+        :param _Threshold: 波动阈值（大于等于0）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: str
+        :param _MetaType: 告警类型：chain 环比，yoy 同比，fix 固定值
+（支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaType: str
+        :param _PeriodType: 告警维度：day 日，month 月，weekday 周
+（支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodType: str
+        """
+        self._WarnType = None
+        self._Threshold = None
+        self._MetaType = None
+        self._PeriodType = None
+
+    @property
+    def WarnType(self):
+        r"""ACTUAL 实际金额，FORECAST 预测金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WarnType
+
+    @WarnType.setter
+    def WarnType(self, WarnType):
+        self._WarnType = WarnType
+
+    @property
+    def Threshold(self):
+        r"""波动阈值（大于等于0）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def MetaType(self):
+        r"""告警类型：chain 环比，yoy 同比，fix 固定值
+（支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def PeriodType(self):
+        r"""告警维度：day 日，month 月，weekday 周
+（支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+
+    def _deserialize(self, params):
+        self._WarnType = params.get("WarnType")
+        self._Threshold = params.get("Threshold")
+        self._MetaType = params.get("MetaType")
+        self._PeriodType = params.get("PeriodType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -39153,7 +39153,6 @@ class ImageRepositoryResult(AbstractModel):
         :param _TotalCount: 总记录数
         :type TotalCount: int
         :param _Server: 镜像服务器地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Server: str
         :param _Content: 列表信息
         :type Content: list of ImageRepository
@@ -39176,7 +39175,6 @@ class ImageRepositoryResult(AbstractModel):
     @property
     def Server(self):
         r"""镜像服务器地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Server

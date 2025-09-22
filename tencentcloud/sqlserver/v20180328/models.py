@@ -12083,6 +12083,9 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type IsSafetyLimited: int
         :param _IsSupportSA: 是否支持创建SA权限账号，0-不支持，1-支持
         :type IsSupportSA: int
+        :param _SlowLogThreshold: 慢SQL阈值，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowLogThreshold: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12103,6 +12106,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._IsDiskEncryptFlag = None
         self._IsSafetyLimited = None
         self._IsSupportSA = None
+        self._SlowLogThreshold = None
         self._RequestId = None
 
     @property
@@ -12293,6 +12297,18 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._IsSupportSA = IsSupportSA
 
     @property
+    def SlowLogThreshold(self):
+        r"""慢SQL阈值，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SlowLogThreshold
+
+    @SlowLogThreshold.setter
+    def SlowLogThreshold(self, SlowLogThreshold):
+        self._SlowLogThreshold = SlowLogThreshold
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12338,6 +12354,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._IsDiskEncryptFlag = params.get("IsDiskEncryptFlag")
         self._IsSafetyLimited = params.get("IsSafetyLimited")
         self._IsSupportSA = params.get("IsSupportSA")
+        self._SlowLogThreshold = params.get("SlowLogThreshold")
         self._RequestId = params.get("RequestId")
 
 

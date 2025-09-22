@@ -118,6 +118,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmServiceMetric(self, request):
+        r"""获取 APM 应用指标列表
+
+        :param request: Request instance for DescribeApmServiceMetric.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmServiceMetricRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmServiceMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmServiceMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmServiceMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGeneralApmApplicationConfig(self, request):
         r"""查询应用配置信息
 
