@@ -5009,7 +5009,7 @@ class DescribeInstanceAccountRequest(AbstractModel):
         r"""
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Limit: 分页大小。
+        :param _Limit: 分页大小。默认值为20，最小值为1，最大值为100。
         :type Limit: int
         :param _Offset: 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
@@ -5031,7 +5031,7 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小。
+        r"""分页大小。默认值为20，最小值为1，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -16900,11 +16900,11 @@ class ModifyInstanceBackupModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例的ID，长度在12-36之间。
+        :param _InstanceId: 实例的ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _BackupMode: 备份模式：
-- SecondLevelBackup   秒级备份
-- NormalLevelBackup    普通备份
+- SecondLevelBackup   秒级备份。
+- NormalLevelBackup    普通备份。
         :type BackupMode: str
         """
         self._InstanceId = None
@@ -16912,7 +16912,7 @@ class ModifyInstanceBackupModeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例的ID，长度在12-36之间。
+        r"""实例的ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -16924,8 +16924,8 @@ class ModifyInstanceBackupModeRequest(AbstractModel):
     @property
     def BackupMode(self):
         r"""备份模式：
-- SecondLevelBackup   秒级备份
-- NormalLevelBackup    普通备份
+- SecondLevelBackup   秒级备份。
+- NormalLevelBackup    普通备份。
         :rtype: str
         """
         return self._BackupMode
@@ -16955,7 +16955,7 @@ class ModifyInstanceBackupModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务 ID。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16965,7 +16965,7 @@ class ModifyInstanceBackupModeResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""任务 ID。
         :rtype: int
         """
         return self._TaskId
@@ -17000,7 +17000,7 @@ class ModifyInstanceEventRequest(AbstractModel):
         r"""
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _EventId: 事件 ID。请通过 DescribeInstanceEvents 获取需修改的事件 ID。
+        :param _EventId: 事件 ID。请通过 [DescribeInstanceEvents](https://cloud.tencent.com/document/product/239/104779) 获取需修改的事件 ID。
         :type EventId: int
         :param _StartTime: 修改事件执行的计划开始时间。
         :type StartTime: str
@@ -17033,7 +17033,7 @@ class ModifyInstanceEventRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件 ID。请通过 DescribeInstanceEvents 获取需修改的事件 ID。
+        r"""事件 ID。请通过 [DescribeInstanceEvents](https://cloud.tencent.com/document/product/239/104779) 获取需修改的事件 ID。
         :rtype: int
         """
         return self._EventId

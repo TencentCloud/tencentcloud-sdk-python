@@ -89,6 +89,9 @@ FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = 'FailedOperation.DockerContainers
 # 指定Docker环境操作失败, 请检查Docker环境。
 FAILEDOPERATION_DOCKEROPERATIONFAILED = 'FailedOperation.DockerOperationFailed'
 
+# 防火墙操作失败。
+FAILEDOPERATION_FIREWALLOPERATIONFAILED = 'FailedOperation.FirewallOperationFailed'
+
 # 对防火墙规则的操作失败。
 FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = 'FailedOperation.FirewallRulesOperationFailed'
 

@@ -707,6 +707,8 @@ NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（�
         :type DockerVersion: str
         :param _BlueprintShared: 镜像是否已共享。
         :type BlueprintShared: bool
+        :param _Tags: 镜像绑定的标签列表。
+        :type Tags: list of Tag
         """
         self._BlueprintId = None
         self._DisplayTitle = None
@@ -729,6 +731,7 @@ NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（�
         self._SceneIdSet = None
         self._DockerVersion = None
         self._BlueprintShared = None
+        self._Tags = None
 
     @property
     def BlueprintId(self):
@@ -967,6 +970,17 @@ NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（�
     def BlueprintShared(self, BlueprintShared):
         self._BlueprintShared = BlueprintShared
 
+    @property
+    def Tags(self):
+        r"""镜像绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._BlueprintId = params.get("BlueprintId")
@@ -990,6 +1004,12 @@ NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（�
         self._SceneIdSet = params.get("SceneIdSet")
         self._DockerVersion = params.get("DockerVersion")
         self._BlueprintShared = params.get("BlueprintShared")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1802,11 +1822,14 @@ False：表示开机状态制作镜像
 默认取值：True
 开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
         :type ForcePowerOff: bool
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._BlueprintName = None
         self._Description = None
         self._InstanceId = None
         self._ForcePowerOff = None
+        self._Tags = None
 
     @property
     def BlueprintName(self):
@@ -1857,12 +1880,29 @@ False：表示开机状态制作镜像
     def ForcePowerOff(self, ForcePowerOff):
         self._ForcePowerOff = ForcePowerOff
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._BlueprintName = params.get("BlueprintName")
         self._Description = params.get("Description")
         self._InstanceId = params.get("InstanceId")
         self._ForcePowerOff = params.get("ForcePowerOff")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1927,9 +1967,12 @@ class CreateDiskBackupRequest(AbstractModel):
         :type DiskId: str
         :param _DiskBackupName: 云硬盘备份点名称，最大长度为 90 。
         :type DiskBackupName: str
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._DiskId = None
         self._DiskBackupName = None
+        self._Tags = None
 
     @property
     def DiskId(self):
@@ -1953,10 +1996,27 @@ class CreateDiskBackupRequest(AbstractModel):
     def DiskBackupName(self, DiskBackupName):
         self._DiskBackupName = DiskBackupName
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
         self._DiskBackupName = params.get("DiskBackupName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2035,6 +2095,8 @@ class CreateDisksRequest(AbstractModel):
         :type AutoVoucher: bool
         :param _AutoMountConfiguration: 自动挂载并初始化数据盘。
         :type AutoMountConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.AutoMountConfiguration`
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._Zone = None
         self._DiskSize = None
@@ -2045,6 +2107,7 @@ class CreateDisksRequest(AbstractModel):
         self._DiskBackupQuota = None
         self._AutoVoucher = None
         self._AutoMountConfiguration = None
+        self._Tags = None
 
     @property
     def Zone(self):
@@ -2145,6 +2208,17 @@ class CreateDisksRequest(AbstractModel):
     def AutoMountConfiguration(self, AutoMountConfiguration):
         self._AutoMountConfiguration = AutoMountConfiguration
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2160,6 +2234,12 @@ class CreateDisksRequest(AbstractModel):
         if params.get("AutoMountConfiguration") is not None:
             self._AutoMountConfiguration = AutoMountConfiguration()
             self._AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2525,9 +2605,12 @@ class CreateInstanceSnapshotRequest(AbstractModel):
         :type InstanceId: str
         :param _SnapshotName: 快照名称，最长为 60 个字符。
         :type SnapshotName: str
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._InstanceId = None
         self._SnapshotName = None
+        self._Tags = None
 
     @property
     def InstanceId(self):
@@ -2551,10 +2634,27 @@ class CreateInstanceSnapshotRequest(AbstractModel):
     def SnapshotName(self, SnapshotName):
         self._SnapshotName = SnapshotName
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SnapshotName = params.get("SnapshotName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2965,8 +3065,11 @@ class CreateKeyPairRequest(AbstractModel):
         r"""
         :param _KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
         :type KeyName: str
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._KeyName = None
+        self._Tags = None
 
     @property
     def KeyName(self):
@@ -2979,9 +3082,26 @@ class CreateKeyPairRequest(AbstractModel):
     def KeyName(self, KeyName):
         self._KeyName = KeyName
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._KeyName = params.get("KeyName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4123,7 +4243,12 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
         :type Filters: list of Filter
         """
@@ -4191,7 +4316,12 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
         :rtype: list of Filter
         """
@@ -4746,7 +4876,12 @@ class DescribeDiskBackupsRequest(AbstractModel):
 取值：
 - SYSTEM_DISK - 系统盘
 - DATA_DISK - 数据盘
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -4789,7 +4924,12 @@ class DescribeDiskBackupsRequest(AbstractModel):
 取值：
 - SYSTEM_DISK - 系统盘
 - DATA_DISK - 数据盘
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
         :rtype: list of Filter
         """
@@ -5249,6 +5389,12 @@ disk-state
 类型：String
 必选：否
 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+tag-key
+按照【标签键】进行过滤。 类型：String 必选：否
+tag-value
+按照【标签值】进行过滤。 类型：String 必选：否
+tag:tag-key
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。
@@ -5307,6 +5453,12 @@ disk-state
 类型：String
 必选：否
 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+tag-key
+按照【标签键】进行过滤。 类型：String 必选：否
+tag-value
+按照【标签值】进行过滤。 类型：String 必选：否
+tag:tag-key
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
         :rtype: list of Filter
         """
@@ -7976,6 +8128,12 @@ class DescribeKeyPairsRequest(AbstractModel):
 <li>key-name</li>按照【密钥对名称】进行过滤（支持模糊匹配）。
 类型：String
 必选：否
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
         :type Filters: list of Filter
         """
@@ -8026,6 +8184,12 @@ class DescribeKeyPairsRequest(AbstractModel):
 <li>key-name</li>按照【密钥对名称】进行过滤（支持模糊匹配）。
 类型：String
 必选：否
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
         :rtype: list of Filter
         """
@@ -9109,12 +9273,10 @@ class DescribeSnapshotsRequest(AbstractModel):
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotId 获取。
-
 <li>disk-id</li>按照【磁盘 ID】进行过滤。
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/66093">DescribeDisks</a> 接口返回值中的 DiskId 获取。
-
 <li>snapshot-name</li>按照【快照名称】进行过滤。
 类型：String
 必选：否
@@ -9123,7 +9285,12 @@ class DescribeSnapshotsRequest(AbstractModel):
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为 0。
@@ -9156,12 +9323,10 @@ class DescribeSnapshotsRequest(AbstractModel):
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotId 获取。
-
 <li>disk-id</li>按照【磁盘 ID】进行过滤。
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/66093">DescribeDisks</a> 接口返回值中的 DiskId 获取。
-
 <li>snapshot-name</li>按照【快照名称】进行过滤。
 类型：String
 必选：否
@@ -9170,7 +9335,12 @@ class DescribeSnapshotsRequest(AbstractModel):
 类型：String
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
-
+<li>tag-key</li>
+按照【标签键】进行过滤。 类型：String 必选：否
+<li>tag-value</li>
+按照【标签值】进行过滤。 类型：String 必选：否
+<li>tag:tag-key</li>
+按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
         :rtype: list of Filter
         """
@@ -9915,6 +10085,8 @@ class Disk(AbstractModel):
         :type DiskBackupCount: int
         :param _DiskBackupQuota: 云硬盘的备份点配额数量。
         :type DiskBackupQuota: int
+        :param _Tags: 云硬盘绑定的标签列表。
+        :type Tags: list of Tag
         """
         self._DiskId = None
         self._InstanceId = None
@@ -9936,6 +10108,7 @@ class Disk(AbstractModel):
         self._IsolatedTime = None
         self._DiskBackupCount = None
         self._DiskBackupQuota = None
+        self._Tags = None
 
     @property
     def DiskId(self):
@@ -10183,6 +10356,17 @@ class Disk(AbstractModel):
     def DiskBackupQuota(self, DiskBackupQuota):
         self._DiskBackupQuota = DiskBackupQuota
 
+    @property
+    def Tags(self):
+        r"""云硬盘绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
@@ -10205,6 +10389,12 @@ class Disk(AbstractModel):
         self._IsolatedTime = params.get("IsolatedTime")
         self._DiskBackupCount = params.get("DiskBackupCount")
         self._DiskBackupQuota = params.get("DiskBackupQuota")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10249,6 +10439,8 @@ class DiskBackup(AbstractModel):
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
         :type CreatedTime: str
+        :param _Tags: 云硬盘备份点绑定的标签列表。
+        :type Tags: list of Tag
         """
         self._DiskBackupId = None
         self._DiskUsage = None
@@ -10261,6 +10453,7 @@ class DiskBackup(AbstractModel):
         self._LatestOperationState = None
         self._LatestOperationRequestId = None
         self._CreatedTime = None
+        self._Tags = None
 
     @property
     def DiskBackupId(self):
@@ -10388,6 +10581,17 @@ class DiskBackup(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def Tags(self):
+        r"""云硬盘备份点绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DiskBackupId = params.get("DiskBackupId")
@@ -10401,6 +10605,12 @@ class DiskBackup(AbstractModel):
         self._LatestOperationState = params.get("LatestOperationState")
         self._LatestOperationRequestId = params.get("LatestOperationRequestId")
         self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12584,9 +12794,12 @@ class ImportKeyPairRequest(AbstractModel):
         :type KeyName: str
         :param _PublicKey: 密钥对的公钥内容， OpenSSH RSA 格式。
         :type PublicKey: str
+        :param _Tags: 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._KeyName = None
         self._PublicKey = None
+        self._Tags = None
 
     @property
     def KeyName(self):
@@ -12610,10 +12823,27 @@ class ImportKeyPairRequest(AbstractModel):
     def PublicKey(self, PublicKey):
         self._PublicKey = PublicKey
 
+    @property
+    def Tags(self):
+        r"""标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._KeyName = params.get("KeyName")
         self._PublicKey = params.get("PublicKey")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14687,6 +14917,8 @@ class KeyPair(AbstractModel):
         :param _PrivateKey: 密钥对私钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateKey: str
+        :param _Tags: 密钥对绑定的标签列表。
+        :type Tags: list of Tag
         """
         self._KeyId = None
         self._KeyName = None
@@ -14694,6 +14926,7 @@ class KeyPair(AbstractModel):
         self._AssociatedInstanceIds = None
         self._CreatedTime = None
         self._PrivateKey = None
+        self._Tags = None
 
     @property
     def KeyId(self):
@@ -14763,6 +14996,17 @@ class KeyPair(AbstractModel):
     def PrivateKey(self, PrivateKey):
         self._PrivateKey = PrivateKey
 
+    @property
+    def Tags(self):
+        r"""密钥对绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -14771,6 +15015,12 @@ class KeyPair(AbstractModel):
         self._AssociatedInstanceIds = params.get("AssociatedInstanceIds")
         self._CreatedTime = params.get("CreatedTime")
         self._PrivateKey = params.get("PrivateKey")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19113,6 +19363,8 @@ class Snapshot(AbstractModel):
         :type LatestOperationRequestId: str
         :param _CreatedTime: 快照的创建时间。
         :type CreatedTime: str
+        :param _Tags: 快照绑定的标签列表。
+        :type Tags: list of Tag
         """
         self._SnapshotId = None
         self._DiskUsage = None
@@ -19125,6 +19377,7 @@ class Snapshot(AbstractModel):
         self._LatestOperationState = None
         self._LatestOperationRequestId = None
         self._CreatedTime = None
+        self._Tags = None
 
     @property
     def SnapshotId(self):
@@ -19255,6 +19508,17 @@ class Snapshot(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def Tags(self):
+        r"""快照绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SnapshotId = params.get("SnapshotId")
@@ -19268,6 +19532,12 @@ class Snapshot(AbstractModel):
         self._LatestOperationState = params.get("LatestOperationState")
         self._LatestOperationRequestId = params.get("LatestOperationRequestId")
         self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10974,11 +10974,44 @@ class DisplayLeakageCode(AbstractModel):
         r"""
         :param _Id: 主键ID
         :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Name: 事件名称
+        :type Name: str
+        :param _Description: 事件描述
+        :type Description: str
+        :param _Source: 数据源
+        :type Source: str
+        :param _RiskLevel: 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :type RiskLevel: int
+        :param _HubName: 仓库名称
+        :type HubName: str
         :param _Url: 链接
         :type Url: str
+        :param _Screenshot: 截图
+        :type Screenshot: str
+        :param _Suggestion: 建议
+        :type Suggestion: str
+        :param _Keyword: 关键词
+        :type Keyword: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._Id = None
+        self._DisplayToolCommon = None
+        self._Name = None
+        self._Description = None
+        self._Source = None
+        self._RiskLevel = None
+        self._HubName = None
         self._Url = None
+        self._Screenshot = None
+        self._Suggestion = None
+        self._Keyword = None
+        self._HandlingStatus = None
+        self._Remark = None
 
     @property
     def Id(self):
@@ -10992,6 +11025,72 @@ class DisplayLeakageCode(AbstractModel):
         self._Id = Id
 
     @property
+    def DisplayToolCommon(self):
+        r"""公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def Name(self):
+        r"""事件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""事件描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Source(self):
+        r"""数据源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def HubName(self):
+        r"""仓库名称
+        :rtype: str
+        """
+        return self._HubName
+
+    @HubName.setter
+    def HubName(self, HubName):
+        self._HubName = HubName
+
+    @property
     def Url(self):
         r"""链接
         :rtype: str
@@ -11002,10 +11101,78 @@ class DisplayLeakageCode(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Screenshot(self):
+        r"""截图
+        :rtype: str
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def Suggestion(self):
+        r"""建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Keyword(self):
+        r"""关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def HandlingStatus(self):
+        r"""处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Source = params.get("Source")
+        self._RiskLevel = params.get("RiskLevel")
+        self._HubName = params.get("HubName")
         self._Url = params.get("Url")
+        self._Screenshot = params.get("Screenshot")
+        self._Suggestion = params.get("Suggestion")
+        self._Keyword = params.get("Keyword")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11025,11 +11192,41 @@ class DisplayLeakageData(AbstractModel):
         r"""
         :param _Id: 主键ID
         :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Name: 事件名称
+        :type Name: str
+        :param _Description: 事件描述
+        :type Description: str
+        :param _Source: 数据源
+        :type Source: str
+        :param _RiskLevel: 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :type RiskLevel: int
         :param _Url: 链接
         :type Url: str
+        :param _Screenshot: 截图
+        :type Screenshot: str
+        :param _Suggestion: 建议
+        :type Suggestion: str
+        :param _Keyword: 关键词
+        :type Keyword: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._Id = None
+        self._DisplayToolCommon = None
+        self._Name = None
+        self._Description = None
+        self._Source = None
+        self._RiskLevel = None
         self._Url = None
+        self._Screenshot = None
+        self._Suggestion = None
+        self._Keyword = None
+        self._HandlingStatus = None
+        self._Remark = None
 
     @property
     def Id(self):
@@ -11043,6 +11240,61 @@ class DisplayLeakageData(AbstractModel):
         self._Id = Id
 
     @property
+    def DisplayToolCommon(self):
+        r"""公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def Name(self):
+        r"""事件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""事件描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Source(self):
+        r"""数据源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
     def Url(self):
         r"""链接
         :rtype: str
@@ -11053,10 +11305,77 @@ class DisplayLeakageData(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Screenshot(self):
+        r"""截图
+        :rtype: str
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def Suggestion(self):
+        r"""建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Keyword(self):
+        r"""关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def HandlingStatus(self):
+        r"""处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Source = params.get("Source")
+        self._RiskLevel = params.get("RiskLevel")
         self._Url = params.get("Url")
+        self._Screenshot = params.get("Screenshot")
+        self._Suggestion = params.get("Suggestion")
+        self._Keyword = params.get("Keyword")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11076,11 +11395,35 @@ class DisplayLeakageEmail(AbstractModel):
         r"""
         :param _Id: 主键ID
         :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         :param _Email: 邮箱
         :type Email: str
+        :param _Username: 用户名
+        :type Username: str
+        :param _Source: 数据源
+        :type Source: str
+        :param _RiskLevel: 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :type RiskLevel: int
+        :param _Suggestion: 建议
+        :type Suggestion: str
+        :param _Keyword: 关键词
+        :type Keyword: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._Id = None
+        self._DisplayToolCommon = None
         self._Email = None
+        self._Username = None
+        self._Source = None
+        self._RiskLevel = None
+        self._Suggestion = None
+        self._Keyword = None
+        self._HandlingStatus = None
+        self._Remark = None
 
     @property
     def Id(self):
@@ -11094,6 +11437,17 @@ class DisplayLeakageEmail(AbstractModel):
         self._Id = Id
 
     @property
+    def DisplayToolCommon(self):
+        r"""公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
     def Email(self):
         r"""邮箱
         :rtype: str
@@ -11104,10 +11458,97 @@ class DisplayLeakageEmail(AbstractModel):
     def Email(self, Email):
         self._Email = Email
 
+    @property
+    def Username(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Source(self):
+        r"""数据源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Suggestion(self):
+        r"""建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Keyword(self):
+        r"""关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def HandlingStatus(self):
+        r"""处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
         self._Email = params.get("Email")
+        self._Username = params.get("Username")
+        self._Source = params.get("Source")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Suggestion = params.get("Suggestion")
+        self._Keyword = params.get("Keyword")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

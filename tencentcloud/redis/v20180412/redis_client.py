@@ -625,7 +625,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceAccount(self, request):
-        r"""本接口（DescribeInstanceAccount）用于查看实例子账号信息。
+        r"""本接口（DescribeInstanceAccount）用于查看实例账号信息。
 
         :param request: Request instance for DescribeInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountRequest`
@@ -1961,7 +1961,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceBackupMode(self, request):
-        r"""修改实例的备份模式
+        r"""本接口（ModifyInstanceBackupMode）用于修改实例的备份模式。
 
         :param request: Request instance for ModifyInstanceBackupMode.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeRequest`

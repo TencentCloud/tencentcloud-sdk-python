@@ -20204,6 +20204,19 @@ serverless  :serverless版
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         :param _InstanceChargeType: 实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
         :type InstanceChargeType: str
+        :param _ElasticBandwidthSwitch: 是否开启弹性带宽白名单   
+1:已开启弹性带宽白名单;
+0:未开启弹性带宽白名单;
+        :type ElasticBandwidthSwitch: int
+        :param _ElasticBandwidthOpenStatus: 弹性带宽开通状态
+1:未开启弹性带宽;
+16: 开启弹性带宽中;
+32:开启弹性带宽成功;
+33:关闭弹性带宽中;
+34:关闭弹性带宽成功;
+64:开启弹性带宽失败;
+65:关闭弹性带宽失败;
+        :type ElasticBandwidthOpenStatus: int
         :param _ClusterType: 集群类型  
 CLOUD_IDC IDC集群
 CLOUD_CVM_SHARE CVM共享集群
@@ -20259,6 +20272,8 @@ CLOUD_EKS_TSE EKS集群
         self._RemainingTopics = None
         self._DynamicDiskConfig = None
         self._InstanceChargeType = None
+        self._ElasticBandwidthSwitch = None
+        self._ElasticBandwidthOpenStatus = None
         self._ClusterType = None
         self._FreePartitionNumber = None
         self._ElasticFloatBandwidth = None
@@ -20667,6 +20682,37 @@ serverless  :serverless版
         self._InstanceChargeType = InstanceChargeType
 
     @property
+    def ElasticBandwidthSwitch(self):
+        r"""是否开启弹性带宽白名单   
+1:已开启弹性带宽白名单;
+0:未开启弹性带宽白名单;
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
+    @property
+    def ElasticBandwidthOpenStatus(self):
+        r"""弹性带宽开通状态
+1:未开启弹性带宽;
+16: 开启弹性带宽中;
+32:开启弹性带宽成功;
+33:关闭弹性带宽中;
+34:关闭弹性带宽成功;
+64:开启弹性带宽失败;
+65:关闭弹性带宽失败;
+        :rtype: int
+        """
+        return self._ElasticBandwidthOpenStatus
+
+    @ElasticBandwidthOpenStatus.setter
+    def ElasticBandwidthOpenStatus(self, ElasticBandwidthOpenStatus):
+        self._ElasticBandwidthOpenStatus = ElasticBandwidthOpenStatus
+
+    @property
     def ClusterType(self):
         r"""集群类型  
 CLOUD_IDC IDC集群
@@ -20792,6 +20838,8 @@ CLOUD_EKS_TSE EKS集群
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
+        self._ElasticBandwidthOpenStatus = params.get("ElasticBandwidthOpenStatus")
         self._ClusterType = params.get("ClusterType")
         self._FreePartitionNumber = params.get("FreePartitionNumber")
         self._ElasticFloatBandwidth = params.get("ElasticFloatBandwidth")

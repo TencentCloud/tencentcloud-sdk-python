@@ -632,6 +632,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIAnalysisResult(self, request):
+        r"""获取 AI 会话分析结果
+
+        :param request: Request instance for DescribeAIAnalysisResult.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAnalysisResultRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAnalysisResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIAnalysisResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIAnalysisResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAICallExtractResult(self, request):
         r"""获取 AI 通话内容提取结果。
 

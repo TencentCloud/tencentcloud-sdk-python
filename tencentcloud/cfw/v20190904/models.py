@@ -3258,7 +3258,7 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
         :type Rules: list of BanAndAllowRule
         :param _RuleType: RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
         :type RuleType: int
-        :param _CoverDuplicate: 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+        :param _CoverDuplicate: 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
         :type CoverDuplicate: int
         """
         self._Rules = None
@@ -3289,7 +3289,7 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
     @property
     def CoverDuplicate(self):
-        r"""是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+        r"""删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
         :rtype: int
         """
         return self._CoverDuplicate
@@ -6160,6 +6160,10 @@ class DescAcItem(AbstractModel):
         :type CountryKey: str
         :param _CityKey: 省份、城市简称
         :type CityKey: str
+        :param _CreateTime: 规则创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 规则最近更新时间
+        :type UpdateTime: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -6196,6 +6200,8 @@ class DescAcItem(AbstractModel):
         self._LastHitTime = None
         self._CountryKey = None
         self._CityKey = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def SourceContent(self):
@@ -6583,6 +6589,28 @@ class DescAcItem(AbstractModel):
     def CityKey(self, CityKey):
         self._CityKey = CityKey
 
+    @property
+    def CreateTime(self):
+        r"""规则创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""规则最近更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -6625,6 +6653,8 @@ class DescAcItem(AbstractModel):
         self._LastHitTime = params.get("LastHitTime")
         self._CountryKey = params.get("CountryKey")
         self._CityKey = params.get("CityKey")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10160,6 +10190,12 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
         :type TimeHistogramShow: :class:`tencentcloud.cfw.v20190904.models.StorageHistogramShow`
         :param _ArrearsStopWriting: 后付费模式存储状态，0正常，1欠费停止写入
         :type ArrearsStopWriting: int
+        :param _NDRNetFlowSize: NDR流量日志存储量，单位B
+        :type NDRNetFlowSize: int
+        :param _NDRRiskSize: NDR风险日志存储量，单位B
+        :type NDRRiskSize: int
+        :param _NDRStorageDay: NDR日志存储天数
+        :type NDRStorageDay: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10177,6 +10213,9 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
         self._TimeHistogram = None
         self._TimeHistogramShow = None
         self._ArrearsStopWriting = None
+        self._NDRNetFlowSize = None
+        self._NDRRiskSize = None
+        self._NDRStorageDay = None
         self._RequestId = None
 
     @property
@@ -10334,6 +10373,39 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
         self._ArrearsStopWriting = ArrearsStopWriting
 
     @property
+    def NDRNetFlowSize(self):
+        r"""NDR流量日志存储量，单位B
+        :rtype: int
+        """
+        return self._NDRNetFlowSize
+
+    @NDRNetFlowSize.setter
+    def NDRNetFlowSize(self, NDRNetFlowSize):
+        self._NDRNetFlowSize = NDRNetFlowSize
+
+    @property
+    def NDRRiskSize(self):
+        r"""NDR风险日志存储量，单位B
+        :rtype: int
+        """
+        return self._NDRRiskSize
+
+    @NDRRiskSize.setter
+    def NDRRiskSize(self, NDRRiskSize):
+        self._NDRRiskSize = NDRRiskSize
+
+    @property
+    def NDRStorageDay(self):
+        r"""NDR日志存储天数
+        :rtype: int
+        """
+        return self._NDRStorageDay
+
+    @NDRStorageDay.setter
+    def NDRStorageDay(self, NDRStorageDay):
+        self._NDRStorageDay = NDRStorageDay
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10367,6 +10439,9 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
             self._TimeHistogramShow = StorageHistogramShow()
             self._TimeHistogramShow._deserialize(params.get("TimeHistogramShow"))
         self._ArrearsStopWriting = params.get("ArrearsStopWriting")
+        self._NDRNetFlowSize = params.get("NDRNetFlowSize")
+        self._NDRRiskSize = params.get("NDRRiskSize")
+        self._NDRStorageDay = params.get("NDRStorageDay")
         self._RequestId = params.get("RequestId")
 
 
@@ -14238,6 +14313,10 @@ ANY:表示所有
         :type Id: int
         :param _DnsParseCount: 域名解析的IP统计
         :type DnsParseCount: :class:`tencentcloud.cfw.v20190904.models.SgDnsParseCount`
+        :param _CreateTime: 规则创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 规则最近更新时间
+        :type UpdateTime: str
         """
         self._OrderIndex = None
         self._RuleUuid = None
@@ -14270,6 +14349,8 @@ ANY:表示所有
         self._BetaList = None
         self._Id = None
         self._DnsParseCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def OrderIndex(self):
@@ -14650,6 +14731,28 @@ ANY:表示所有
     def DnsParseCount(self, DnsParseCount):
         self._DnsParseCount = DnsParseCount
 
+    @property
+    def CreateTime(self):
+        r"""规则创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""规则最近更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
@@ -14690,6 +14793,8 @@ ANY:表示所有
         if params.get("DnsParseCount") is not None:
             self._DnsParseCount = SgDnsParseCount()
             self._DnsParseCount._deserialize(params.get("DnsParseCount"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24632,12 +24737,18 @@ class StorageHistogram(AbstractModel):
         :param _Time: 统计时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
+        :param _NDRNetflowSize: NDR流量日志存储量，单位B
+        :type NDRNetflowSize: int
+        :param _NDRRiskSize: NDR风险日志存储量，单位B
+        :type NDRRiskSize: int
         """
         self._AclSize = None
         self._IdsSize = None
         self._NetFlowSize = None
         self._OperateSize = None
         self._Time = None
+        self._NDRNetflowSize = None
+        self._NDRRiskSize = None
 
     @property
     def AclSize(self):
@@ -24699,6 +24810,28 @@ class StorageHistogram(AbstractModel):
     def Time(self, Time):
         self._Time = Time
 
+    @property
+    def NDRNetflowSize(self):
+        r"""NDR流量日志存储量，单位B
+        :rtype: int
+        """
+        return self._NDRNetflowSize
+
+    @NDRNetflowSize.setter
+    def NDRNetflowSize(self, NDRNetflowSize):
+        self._NDRNetflowSize = NDRNetflowSize
+
+    @property
+    def NDRRiskSize(self):
+        r"""NDR风险日志存储量，单位B
+        :rtype: int
+        """
+        return self._NDRRiskSize
+
+    @NDRRiskSize.setter
+    def NDRRiskSize(self, NDRRiskSize):
+        self._NDRRiskSize = NDRRiskSize
+
 
     def _deserialize(self, params):
         self._AclSize = params.get("AclSize")
@@ -24706,6 +24839,8 @@ class StorageHistogram(AbstractModel):
         self._NetFlowSize = params.get("NetFlowSize")
         self._OperateSize = params.get("OperateSize")
         self._Time = params.get("Time")
+        self._NDRNetflowSize = params.get("NDRNetflowSize")
+        self._NDRRiskSize = params.get("NDRRiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26936,6 +27071,10 @@ log：观察
         :type IpVersion: int
         :param _Invalid: 是否是无效规则，0 表示有效规则，1 表示无效规则，出参场景返回使用
         :type Invalid: int
+        :param _CreateTime: 规则创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 规则最近更新时间
+        :type UpdateTime: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -26962,6 +27101,8 @@ log：观察
         self._SourceName = None
         self._IpVersion = None
         self._Invalid = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def SourceContent(self):
@@ -27259,6 +27400,28 @@ log：观察
     def Invalid(self, Invalid):
         self._Invalid = Invalid
 
+    @property
+    def CreateTime(self):
+        r"""规则创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""规则最近更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -27291,6 +27454,8 @@ log：观察
         self._SourceName = params.get("SourceName")
         self._IpVersion = params.get("IpVersion")
         self._Invalid = params.get("Invalid")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

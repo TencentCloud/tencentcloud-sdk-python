@@ -2346,7 +2346,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param _PolicyType: 关系策略。取值：Financial
         :type PolicyType: str
-        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :type PermissionIds: list of int non-negative
         :param _NodeId: 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: int
@@ -2401,7 +2401,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
-        r"""成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        r"""成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :rtype: list of int non-negative
         """
         return self._PermissionIds
@@ -10167,7 +10167,7 @@ class InviteOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param _PolicyType: 关系策略。取值：Financial
         :type PolicyType: str
-        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :type PermissionIds: list of int non-negative
         :param _NodeId: 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: int
@@ -10231,7 +10231,7 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
-        r"""成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        r"""成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :rtype: list of int non-negative
         """
         return self._PermissionIds
@@ -20636,7 +20636,7 @@ class UpdateOrganizationMemberRequest(AbstractModel):
         :param _PolicyType: 关系策略类型。PolicyType不为空，PermissionIds不能为空。取值：Financial
         :type PolicyType: str
         :param _PermissionIds: 成员财务权限ID列表。PermissionIds不为空，PolicyType不能为空。
-取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析，如果有值，1、2 默认必须
+取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :type PermissionIds: list of int non-negative
         :param _IsAllowQuit: 是否允许成员退出组织。取值：Allow-允许、Denied-不允许
         :type IsAllowQuit: str
@@ -20701,7 +20701,7 @@ class UpdateOrganizationMemberRequest(AbstractModel):
     @property
     def PermissionIds(self):
         r"""成员财务权限ID列表。PermissionIds不为空，PolicyType不能为空。
-取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析，如果有值，1、2 默认必须
+取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
         :rtype: list of int non-negative
         """
         return self._PermissionIds

@@ -15820,6 +15820,105 @@ class DescribeStudioProductResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSubscribedTopicPolicyRequest(AbstractModel):
+    r"""DescribeSubscribedTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscribedTopicPolicyResponse(AbstractModel):
+    r"""DescribeSubscribedTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topics: 已订阅Topic信息
+        :type Topics: list of SubscribedTopicItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def Topics(self):
+        r"""已订阅Topic信息
+        :rtype: list of SubscribedTopicItem
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = SubscribedTopicItem()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTWeSeeConfigRequest(AbstractModel):
     r"""DescribeTWeSeeConfig请求参数结构体
 
@@ -31013,6 +31112,42 @@ class SearchTopicRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class SubscribedTopicItem(AbstractModel):
+    r"""已订阅Topic信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: Topic名称
+        :type TopicName: str
+        """
+        self._TopicName = None
+
+    @property
+    def TopicName(self):
+        r"""Topic名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TRTCParams(AbstractModel):

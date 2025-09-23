@@ -1049,6 +1049,7 @@ class AutoScaleGroupAdvanceAttrs(AbstractModel):
     def __init__(self):
         r"""
         :param _ComputeResourceAdvanceParams: 计算资源高级设置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeResourceAdvanceParams: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
         """
         self._ComputeResourceAdvanceParams = None
@@ -1056,6 +1057,7 @@ class AutoScaleGroupAdvanceAttrs(AbstractModel):
     @property
     def ComputeResourceAdvanceParams(self):
         r"""计算资源高级设置
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
         """
         return self._ComputeResourceAdvanceParams
@@ -1358,6 +1360,8 @@ class AutoScaleResourceConf(AbstractModel):
         :type GroupName: str
         :param _YarnNodeLabel: 标签
         :type YarnNodeLabel: str
+        :param _WarehouseName: 对应的计算组
+        :type WarehouseName: str
         :param _GroupStatus: 伸缩组状态
         :type GroupStatus: int
         :param _Parallel: 并行伸缩 0关闭；1开启
@@ -1365,6 +1369,7 @@ class AutoScaleResourceConf(AbstractModel):
         :param _EnableMNode: 是否支持MNode
         :type EnableMNode: int
         :param _ExtraAdvanceAttrs: 伸缩组更多设置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAdvanceAttrs: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
         """
         self._Id = None
@@ -1380,6 +1385,7 @@ class AutoScaleResourceConf(AbstractModel):
         self._ChangeToPod = None
         self._GroupName = None
         self._YarnNodeLabel = None
+        self._WarehouseName = None
         self._GroupStatus = None
         self._Parallel = None
         self._EnableMNode = None
@@ -1529,6 +1535,17 @@ class AutoScaleResourceConf(AbstractModel):
         self._YarnNodeLabel = YarnNodeLabel
 
     @property
+    def WarehouseName(self):
+        r"""对应的计算组
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
+    @property
     def GroupStatus(self):
         r"""伸缩组状态
         :rtype: int
@@ -1564,6 +1581,7 @@ class AutoScaleResourceConf(AbstractModel):
     @property
     def ExtraAdvanceAttrs(self):
         r"""伸缩组更多设置
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
         """
         return self._ExtraAdvanceAttrs
@@ -1587,6 +1605,7 @@ class AutoScaleResourceConf(AbstractModel):
         self._ChangeToPod = params.get("ChangeToPod")
         self._GroupName = params.get("GroupName")
         self._YarnNodeLabel = params.get("YarnNodeLabel")
+        self._WarehouseName = params.get("WarehouseName")
         self._GroupStatus = params.get("GroupStatus")
         self._Parallel = params.get("Parallel")
         self._EnableMNode = params.get("EnableMNode")
@@ -32487,6 +32506,8 @@ class ScaleOutClusterRequest(AbstractModel):
         :type ScaleOutServiceConfGroupsInfo: list of ScaleOutServiceConfGroupsInfo
         :param _NodeMarks: 节点标记信息，当前只提供给tf平台使用
         :type NodeMarks: :class:`tencentcloud.emr.v20190103.models.NodeMark`
+        :param _WarehouseName: 扩容指定计算组名称
+        :type WarehouseName: str
         """
         self._InstanceChargeType = None
         self._InstanceId = None
@@ -32509,6 +32530,7 @@ class ScaleOutClusterRequest(AbstractModel):
         self._SubnetId = None
         self._ScaleOutServiceConfGroupsInfo = None
         self._NodeMarks = None
+        self._WarehouseName = None
 
     @property
     def InstanceChargeType(self):
@@ -32747,6 +32769,17 @@ class ScaleOutClusterRequest(AbstractModel):
     def NodeMarks(self, NodeMarks):
         self._NodeMarks = NodeMarks
 
+    @property
+    def WarehouseName(self):
+        r"""扩容指定计算组名称
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -32795,6 +32828,7 @@ class ScaleOutClusterRequest(AbstractModel):
         if params.get("NodeMarks") is not None:
             self._NodeMarks = NodeMark()
             self._NodeMarks._deserialize(params.get("NodeMarks"))
+        self._WarehouseName = params.get("WarehouseName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33003,6 +33037,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ComputeResourceAdvanceParams: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
         :param _NodeMarks: 节点标记信息，目前只提供tf平台使用
         :type NodeMarks: :class:`tencentcloud.emr.v20190103.models.NodeMark`
+        :param _WarehouseName: 扩容指定计算组
+        :type WarehouseName: str
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -33034,6 +33070,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self._ComputeResourceId = None
         self._ComputeResourceAdvanceParams = None
         self._NodeMarks = None
+        self._WarehouseName = None
 
     @property
     def TimeUnit(self):
@@ -33376,6 +33413,17 @@ class ScaleOutInstanceRequest(AbstractModel):
     def NodeMarks(self, NodeMarks):
         self._NodeMarks = NodeMarks
 
+    @property
+    def WarehouseName(self):
+        r"""扩容指定计算组
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
 
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
@@ -33426,6 +33474,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         if params.get("NodeMarks") is not None:
             self._NodeMarks = NodeMark()
             self._NodeMarks._deserialize(params.get("NodeMarks"))
+        self._WarehouseName = params.get("WarehouseName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

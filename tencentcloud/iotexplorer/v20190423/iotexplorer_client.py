@@ -2330,6 +2330,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSubscribedTopicPolicy(self, request):
+        r"""本接口（DescribeSubscribedTopicPolicy）用于获取设备已订阅Topic列表
+
+        :param request: Request instance for DescribeSubscribedTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSubscribedTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSubscribedTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubscribedTopicPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubscribedTopicPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTWeSeeConfig(self, request):
         r"""拉取 TWeSee 配置
 
