@@ -2145,6 +2145,7 @@ class CreateRoomRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 课堂名称。
+字符数不超过256
         :type Name: str
         :param _StartTime: 预定的课堂开始时间，unix时间戳（秒）。
         :type StartTime: int
@@ -2227,7 +2228,9 @@ class CreateRoomRequest(AbstractModel):
         :type RecordStream: int
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
-        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :param _SubtitlesTranscription: 字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :type SubtitlesTranscription: int
         :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
         :type RecordMerge: int
@@ -2270,6 +2273,7 @@ class CreateRoomRequest(AbstractModel):
     @property
     def Name(self):
         r"""课堂名称。
+字符数不超过256
         :rtype: str
         """
         return self._Name
@@ -2648,7 +2652,9 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        r"""字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -10656,6 +10662,7 @@ class ModifyRoomRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _RoomId: 房间ID。
+字符数不超过256
         :type RoomId: int
         :param _SdkAppId: 低代码互动课堂的SdkAppId
         :type SdkAppId: int
@@ -10728,7 +10735,9 @@ video 纯视频
         :type RecordLang: str
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
-        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :param _SubtitlesTranscription: 字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :type SubtitlesTranscription: int
         :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :type Guests: list of str
@@ -10769,6 +10778,7 @@ video 纯视频
     @property
     def RoomId(self):
         r"""房间ID。
+字符数不超过256
         :rtype: int
         """
         return self._RoomId
@@ -11088,7 +11098,9 @@ video 纯视频
 
     @property
     def SubtitlesTranscription(self):
-        r"""字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -11694,6 +11706,7 @@ class RoomInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 房间名称。
+字符数不超过256
         :type Name: str
         :param _StartTime: 预定的房间开始时间，unix时间戳。
         :type StartTime: int
@@ -11756,7 +11769,9 @@ class RoomInfo(AbstractModel):
         :type RecordStream: int
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
-        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :param _SubtitlesTranscription: 字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :type SubtitlesTranscription: int
         :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
         :type Guests: list of str
@@ -11800,6 +11815,7 @@ class RoomInfo(AbstractModel):
     @property
     def Name(self):
         r"""房间名称。
+字符数不超过256
         :rtype: str
         """
         return self._Name
@@ -12140,7 +12156,9 @@ class RoomInfo(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        r"""字幕转写功能开关：0关闭，1开启，默认关闭
+        r"""字幕转写功能开关。可以有以下取值：
+0 不开启字幕转写功能（默认值）
+1 自动转写模式：上课自动开启，下课自动停止
         :rtype: int
         """
         return self._SubtitlesTranscription

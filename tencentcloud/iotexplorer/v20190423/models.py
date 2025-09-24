@@ -6556,6 +6556,8 @@ class CreateTWeTalkProductConfigRequest(AbstractModel):
         :type GreetingMessage: str
         :param _VoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
         :type VoiceType: int
+        :param _FastVoiceType: 复刻音色
+        :type FastVoiceType: str
         :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
         :type TargetLanguage: str
         """
@@ -6563,6 +6565,7 @@ class CreateTWeTalkProductConfigRequest(AbstractModel):
         self._SystemPrompt = None
         self._GreetingMessage = None
         self._VoiceType = None
+        self._FastVoiceType = None
         self._TargetLanguage = None
 
     @property
@@ -6610,6 +6613,17 @@ class CreateTWeTalkProductConfigRequest(AbstractModel):
         self._VoiceType = VoiceType
 
     @property
+    def FastVoiceType(self):
+        r"""复刻音色
+        :rtype: str
+        """
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
+    @property
     def TargetLanguage(self):
         r"""支持的语言，zh-中文；en-英文；默认zh
         :rtype: str
@@ -6626,6 +6640,7 @@ class CreateTWeTalkProductConfigRequest(AbstractModel):
         self._SystemPrompt = params.get("SystemPrompt")
         self._GreetingMessage = params.get("GreetingMessage")
         self._VoiceType = params.get("VoiceType")
+        self._FastVoiceType = params.get("FastVoiceType")
         self._TargetLanguage = params.get("TargetLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -27260,6 +27275,8 @@ class ModifyTWeTalkProductConfigRequest(AbstractModel):
         :type GreetingMessage: str
         :param _VoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
         :type VoiceType: int
+        :param _FastVoiceType: 复刻音色
+        :type FastVoiceType: str
         :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
         :type TargetLanguage: str
         """
@@ -27267,6 +27284,7 @@ class ModifyTWeTalkProductConfigRequest(AbstractModel):
         self._SystemPrompt = None
         self._GreetingMessage = None
         self._VoiceType = None
+        self._FastVoiceType = None
         self._TargetLanguage = None
 
     @property
@@ -27314,6 +27332,17 @@ class ModifyTWeTalkProductConfigRequest(AbstractModel):
         self._VoiceType = VoiceType
 
     @property
+    def FastVoiceType(self):
+        r"""复刻音色
+        :rtype: str
+        """
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
+    @property
     def TargetLanguage(self):
         r"""支持的语言，zh-中文；en-英文；默认zh
         :rtype: str
@@ -27330,6 +27359,7 @@ class ModifyTWeTalkProductConfigRequest(AbstractModel):
         self._SystemPrompt = params.get("SystemPrompt")
         self._GreetingMessage = params.get("GreetingMessage")
         self._VoiceType = params.get("VoiceType")
+        self._FastVoiceType = params.get("FastVoiceType")
         self._TargetLanguage = params.get("TargetLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

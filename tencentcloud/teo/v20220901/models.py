@@ -40915,6 +40915,8 @@ class MultiPathGateway(AbstractModel):
         :type RegionId: str
         :param _Lines: 线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
         :type Lines: list of MultiPathGatewayLine
+        :param _NeedConfirm: 网关回源 IP 列表发生了变化是否需要重新确认，取值有：<li>true：回源 IP 列表发生了变化，需要确认；</li><li>false：回源 IP 列表未发生变化，无需确认。</li>
+        :type NeedConfirm: str
         """
         self._GatewayId = None
         self._GatewayName = None
@@ -40924,6 +40926,7 @@ class MultiPathGateway(AbstractModel):
         self._GatewayIP = None
         self._RegionId = None
         self._Lines = None
+        self._NeedConfirm = None
 
     @property
     def GatewayId(self):
@@ -41019,6 +41022,17 @@ class MultiPathGateway(AbstractModel):
     def Lines(self, Lines):
         self._Lines = Lines
 
+    @property
+    def NeedConfirm(self):
+        r"""网关回源 IP 列表发生了变化是否需要重新确认，取值有：<li>true：回源 IP 列表发生了变化，需要确认；</li><li>false：回源 IP 列表未发生变化，无需确认。</li>
+        :rtype: str
+        """
+        return self._NeedConfirm
+
+    @NeedConfirm.setter
+    def NeedConfirm(self, NeedConfirm):
+        self._NeedConfirm = NeedConfirm
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -41034,6 +41048,7 @@ class MultiPathGateway(AbstractModel):
                 obj = MultiPathGatewayLine()
                 obj._deserialize(item)
                 self._Lines.append(obj)
+        self._NeedConfirm = params.get("NeedConfirm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1400,6 +1400,8 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         :type NetworkId: str
         :param _IPV6FullChain: 是否为新 ipv6 CLB
         :type IPV6FullChain: bool
+        :param _CustomizedConfigContent: 负载均衡个性化配置内容
+        :type CustomizedConfigContent: str
         """
         self._ConsoleType = None
         self._HttpUrl = None
@@ -1423,6 +1425,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._SlaveZoneName = None
         self._NetworkId = None
         self._IPV6FullChain = None
+        self._CustomizedConfigContent = None
 
     @property
     def ConsoleType(self):
@@ -1667,6 +1670,17 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
     def IPV6FullChain(self, IPV6FullChain):
         self._IPV6FullChain = IPV6FullChain
 
+    @property
+    def CustomizedConfigContent(self):
+        r"""负载均衡个性化配置内容
+        :rtype: str
+        """
+        return self._CustomizedConfigContent
+
+    @CustomizedConfigContent.setter
+    def CustomizedConfigContent(self, CustomizedConfigContent):
+        self._CustomizedConfigContent = CustomizedConfigContent
+
 
     def _deserialize(self, params):
         self._ConsoleType = params.get("ConsoleType")
@@ -1693,6 +1707,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._SlaveZoneName = params.get("SlaveZoneName")
         self._NetworkId = params.get("NetworkId")
         self._IPV6FullChain = params.get("IPV6FullChain")
+        self._CustomizedConfigContent = params.get("CustomizedConfigContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8170,10 +8185,13 @@ class CreateNativeGatewayServiceSourceResponse(AbstractModel):
         r"""
         :param _Result: 创建是否成功
         :type Result: bool
+        :param _SourceID: 服务来源ID
+        :type SourceID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._SourceID = None
         self._RequestId = None
 
     @property
@@ -8186,6 +8204,17 @@ class CreateNativeGatewayServiceSourceResponse(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def SourceID(self):
+        r"""服务来源ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
 
     @property
     def RequestId(self):
@@ -8201,6 +8230,7 @@ class CreateNativeGatewayServiceSourceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._SourceID = params.get("SourceID")
         self._RequestId = params.get("RequestId")
 
 
@@ -16661,6 +16691,8 @@ class DescribeNativeGatewayServiceSourcesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页偏移量
         :type Offset: int
+        :param _SourceID: 服务来源ID
+        :type SourceID: str
         :param _SourceName: 服务来源实例名称，模糊搜索
         :type SourceName: str
         :param _SourceTypes: 微服务引擎类型：TSE-Nacos｜TSE-Consul｜TSE-PolarisMesh｜Customer-Nacos｜Customer-Consul｜Customer-PolarisMesh
@@ -16673,6 +16705,7 @@ class DescribeNativeGatewayServiceSourcesRequest(AbstractModel):
         self._GatewayID = None
         self._Limit = None
         self._Offset = None
+        self._SourceID = None
         self._SourceName = None
         self._SourceTypes = None
         self._OrderField = None
@@ -16710,6 +16743,17 @@ class DescribeNativeGatewayServiceSourcesRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def SourceID(self):
+        r"""服务来源ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
 
     @property
     def SourceName(self):
@@ -16760,6 +16804,7 @@ class DescribeNativeGatewayServiceSourcesRequest(AbstractModel):
         self._GatewayID = params.get("GatewayID")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._SourceID = params.get("SourceID")
         self._SourceName = params.get("SourceName")
         self._SourceTypes = params.get("SourceTypes")
         self._OrderField = params.get("OrderField")
@@ -26815,6 +26860,16 @@ class ModifyNetworkBasicInfoRequest(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param _Description: 负载均衡描述
         :type Description: str
+        :param _SlaType: 负载均衡的规格类型，支持：
+- 不传为共享型。
+- clb.c2.medium：标准型规格
+- clb.c3.small：高阶型1规格
+- clb.c3.medium：高阶型2规格
+- clb.c4.small：超强型1规格
+- clb.c4.medium：超强型2规格
+- clb.c4.large：超强型3规格
+- clb.c4.xlarge：超强型4规格
+        :type SlaType: str
         """
         self._GatewayId = None
         self._GroupId = None
@@ -26822,6 +26877,7 @@ class ModifyNetworkBasicInfoRequest(AbstractModel):
         self._Vip = None
         self._InternetMaxBandwidthOut = None
         self._Description = None
+        self._SlaType = None
 
     @property
     def GatewayId(self):
@@ -26892,6 +26948,25 @@ class ModifyNetworkBasicInfoRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def SlaType(self):
+        r"""负载均衡的规格类型，支持：
+- 不传为共享型。
+- clb.c2.medium：标准型规格
+- clb.c3.small：高阶型1规格
+- clb.c3.medium：高阶型2规格
+- clb.c4.small：超强型1规格
+- clb.c4.medium：超强型2规格
+- clb.c4.large：超强型3规格
+- clb.c4.xlarge：超强型4规格
+        :rtype: str
+        """
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -26900,6 +26975,7 @@ class ModifyNetworkBasicInfoRequest(AbstractModel):
         self._Vip = params.get("Vip")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._Description = params.get("Description")
+        self._SlaType = params.get("SlaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

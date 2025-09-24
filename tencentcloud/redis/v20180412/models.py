@@ -14014,6 +14014,8 @@ class InstanceSet(AbstractModel):
         :param _CloseTime: 实例隔离开始的时间。
         :type CloseTime: str
         :param _SlaveReadWeight: 从节点读取权重。
+- 0：表示关闭副本只读。
+- 100：表示开启副本只读。
         :type SlaveReadWeight: int
         :param _InstanceTags: 实例关联的标签信息。
         :type InstanceTags: list of InstanceTagInfo
@@ -14510,6 +14512,8 @@ class InstanceSet(AbstractModel):
     @property
     def SlaveReadWeight(self):
         r"""从节点读取权重。
+- 0：表示关闭副本只读。
+- 100：表示开启副本只读。
         :rtype: int
         """
         return self._SlaveReadWeight

@@ -3295,7 +3295,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainWhiteRule(self, request):
-        r"""更改某一条规则
+        r"""修改域名规则白名单
 
         :param request: Request instance for ModifyDomainWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleRequest`

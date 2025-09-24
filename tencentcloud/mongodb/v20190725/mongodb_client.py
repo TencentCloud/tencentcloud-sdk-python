@@ -1091,7 +1091,7 @@ class MongodbClient(AbstractClient):
 
 
     def ResetDBInstancePassword(self, request):
-        r"""修改实例用户的密码
+        r"""本接口（ResetDBInstancePassword）用于重置实例访问密码。
 
         :param request: Request instance for ResetDBInstancePassword.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ResetDBInstancePasswordRequest`

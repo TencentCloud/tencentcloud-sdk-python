@@ -2511,7 +2511,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNetworkBasicInfo(self, request):
-        r"""修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
+        r"""修改云原生API网关实例网络基本信息，例如带宽以及描述、规格升级，只支持修改客户端公网/内网的信息。
 
         :param request: Request instance for ModifyNetworkBasicInfo.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkBasicInfoRequest`

@@ -79519,6 +79519,10 @@ class VulInfo(AbstractModel):
         :type DefenceHostCount: int
         :param _DefendedCount: 已防御攻击次数
         :type DefendedCount: int
+        :param _RaspOpenNodeCount: 漏洞对应机器的应用防护开启数量
+        :type RaspOpenNodeCount: int
+        :param _RaspClosedNodeCount: 漏洞对应机器的应用防护关闭数量
+        :type RaspClosedNodeCount: int
         """
         self._Name = None
         self._Tags = None
@@ -79537,6 +79541,8 @@ class VulInfo(AbstractModel):
         self._DefenceScope = None
         self._DefenceHostCount = None
         self._DefendedCount = None
+        self._RaspOpenNodeCount = None
+        self._RaspClosedNodeCount = None
 
     @property
     def Name(self):
@@ -79725,6 +79731,28 @@ class VulInfo(AbstractModel):
     def DefendedCount(self, DefendedCount):
         self._DefendedCount = DefendedCount
 
+    @property
+    def RaspOpenNodeCount(self):
+        r"""漏洞对应机器的应用防护开启数量
+        :rtype: int
+        """
+        return self._RaspOpenNodeCount
+
+    @RaspOpenNodeCount.setter
+    def RaspOpenNodeCount(self, RaspOpenNodeCount):
+        self._RaspOpenNodeCount = RaspOpenNodeCount
+
+    @property
+    def RaspClosedNodeCount(self):
+        r"""漏洞对应机器的应用防护关闭数量
+        :rtype: int
+        """
+        return self._RaspClosedNodeCount
+
+    @RaspClosedNodeCount.setter
+    def RaspClosedNodeCount(self, RaspClosedNodeCount):
+        self._RaspClosedNodeCount = RaspClosedNodeCount
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -79744,6 +79772,8 @@ class VulInfo(AbstractModel):
         self._DefenceScope = params.get("DefenceScope")
         self._DefenceHostCount = params.get("DefenceHostCount")
         self._DefendedCount = params.get("DefendedCount")
+        self._RaspOpenNodeCount = params.get("RaspOpenNodeCount")
+        self._RaspClosedNodeCount = params.get("RaspClosedNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

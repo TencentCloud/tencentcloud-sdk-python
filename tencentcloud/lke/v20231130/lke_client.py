@@ -72,29 +72,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateAgent(self, request):
-        r"""创建一个Agent
-
-        :param request: Request instance for CreateAgent.
-        :type request: :class:`tencentcloud.lke.v20231130.models.CreateAgentRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateAgentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateApp(self, request):
         r"""创建知识引擎应用。
 
@@ -1951,29 +1928,6 @@ class LkeClient(AbstractClient):
             body = self.call("ListWorkflowRuns", params, headers=headers)
             response = json.loads(body)
             model = models.ListWorkflowRunsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyAgent(self, request):
-        r"""修改Agent信息
-
-        :param request: Request instance for ModifyAgent.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAgentRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ModifyAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyAgentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

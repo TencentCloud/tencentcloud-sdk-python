@@ -88,7 +88,7 @@ class AssignProjectRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _ProjectId: 项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
+        :param _ProjectId: 项目ID，用户已创建项目的唯一ID。请在控制台账号中心的[项目管理](https://console.cloud.tencent.com/project)中复制项目 ID。
         :type ProjectId: int
         """
         self._InstanceIds = None
@@ -107,7 +107,7 @@ class AssignProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
+        r"""项目ID，用户已创建项目的唯一ID。请在控制台账号中心的[项目管理](https://console.cloud.tencent.com/project)中复制项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -180,11 +180,15 @@ class Auth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mask: 当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
+        :param _Mask: 当前账号具有的权限信息。
+- 0：无权限。
+- 1：只读。
+- 3：读写。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mask: int
         :param _NameSpace: 指具有当前账号权限的数据库名。
-<ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+- \* ：表示所有数据库。
+- db.name：表示特定 name 的数据库。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NameSpace: str
         """
@@ -193,7 +197,10 @@ class Auth(AbstractModel):
 
     @property
     def Mask(self):
-        r"""当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
+        r"""当前账号具有的权限信息。
+- 0：无权限。
+- 1：只读。
+- 3：读写。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -206,7 +213,8 @@ class Auth(AbstractModel):
     @property
     def NameSpace(self):
         r"""指具有当前账号权限的数据库名。
-<ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+- \* ：表示所有数据库。
+- db.name：表示特定 name 的数据库。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -690,11 +698,11 @@ class ClientConnection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IP: 连接的客户端IP
+        :param _IP: 连接的客户端 IP。
         :type IP: str
-        :param _Count: 对应客户端IP的连接数
+        :param _Count: 对应客户端 IP 的连接数。
         :type Count: int
-        :param _InternalService: 是否为内部ip
+        :param _InternalService: 是否为内部 IP。
         :type InternalService: bool
         """
         self._IP = None
@@ -703,7 +711,7 @@ class ClientConnection(AbstractModel):
 
     @property
     def IP(self):
-        r"""连接的客户端IP
+        r"""连接的客户端 IP。
         :rtype: str
         """
         return self._IP
@@ -714,7 +722,7 @@ class ClientConnection(AbstractModel):
 
     @property
     def Count(self):
-        r"""对应客户端IP的连接数
+        r"""对应客户端 IP 的连接数。
         :rtype: int
         """
         return self._Count
@@ -725,7 +733,7 @@ class ClientConnection(AbstractModel):
 
     @property
     def InternalService(self):
-        r"""是否为内部ip
+        r"""是否为内部 IP。
         :rtype: bool
         """
         return self._InternalService
@@ -758,9 +766,13 @@ class CreateAccountUserRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _UserName: 新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
+        :param _UserName: 新账号名称。其格式要求如下：
+- 字符范围[1,64]。
+- 可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“\_”与短划线“-”。
         :type UserName: str
-        :param _Password: 新账号密码。密码复杂度要求如下：<ul><li>字符长度范围[8,32]。</li><li>至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“*”、小括号“()”、下划线“_”）中的两种。</li></ul>
+        :param _Password: 新账号密码。密码复杂度要求如下：
+- 字符长度范围[8,32]。
+- 至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“\*”、小括号“()”、下划线“\_”）中的两种。
         :type Password: str
         :param _MongoUserPassword: mongouser 账号对应的密码。mongouser 为系统默认账号，即为创建实例时，设置的密码。
         :type MongoUserPassword: str
@@ -789,7 +801,9 @@ class CreateAccountUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
+        r"""新账号名称。其格式要求如下：
+- 字符范围[1,64]。
+- 可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“\_”与短划线“-”。
         :rtype: str
         """
         return self._UserName
@@ -800,7 +814,9 @@ class CreateAccountUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""新账号密码。密码复杂度要求如下：<ul><li>字符长度范围[8,32]。</li><li>至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“*”、小括号“()”、下划线“_”）中的两种。</li></ul>
+        r"""新账号密码。密码复杂度要求如下：
+- 字符长度范围[8,32]。
+- 至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“\*”、小括号“()”、下划线“\_”）中的两种。
         :rtype: str
         """
         return self._Password
@@ -2687,11 +2703,11 @@ class DBInstancePrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: 单价
+        :param _UnitPrice: 实例单价。单位：元。
         :type UnitPrice: float
-        :param _OriginalPrice: 原价
+        :param _OriginalPrice: 实例原价。单位：元。
         :type OriginalPrice: float
-        :param _DiscountPrice: 折扣价
+        :param _DiscountPrice: 实例折扣价。单位：元。
         :type DiscountPrice: float
         """
         self._UnitPrice = None
@@ -2700,7 +2716,7 @@ class DBInstancePrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        r"""单价
+        r"""实例单价。单位：元。
         :rtype: float
         """
         return self._UnitPrice
@@ -2711,7 +2727,7 @@ class DBInstancePrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""原价
+        r"""实例原价。单位：元。
         :rtype: float
         """
         return self._OriginalPrice
@@ -2722,7 +2738,7 @@ class DBInstancePrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""折扣价
+        r"""实例折扣价。单位：元。
         :rtype: float
         """
         return self._DiscountPrice
@@ -6790,7 +6806,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 实例所属区域及可用区信息。格式：ap-guangzhou-2。
+        :param _Zone: 实例所属区域及可用区信息。具体信息，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
         :type Zone: str
         :param _NodeNum: - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
@@ -6804,12 +6820,12 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 - 取值范围：请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinStorage与MaxStorage分别对应其最小磁盘规格与最大磁盘规格。
         :type Volume: int
         :param _MongoVersion: 实例版本信息。具体支持的版本，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _MachineCode: 产品规格类型。
 - HIO10G：通用高HIO万兆型。
@@ -6864,7 +6880,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""实例所属区域及可用区信息。格式：ap-guangzhou-2。
+        r"""实例所属区域及可用区信息。具体信息，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
         :rtype: str
         """
         return self._Zone
@@ -6914,12 +6930,12 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
     @property
     def MongoVersion(self):
         r"""实例版本信息。具体支持的版本，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -7149,15 +7165,19 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Memory: 变更配置后实例内存大小，单位：GB。
+        :param _Memory: 变更配置后实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type Memory: int
-        :param _Volume: 变更配置后实例磁盘大小，单位：GB。
+        :param _Volume: 变更配置后实例磁盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type Volume: int
-        :param _NodeNum: 实例节点数。默认为不变更节点数，暂不支持变更。
+        :param _NodeNum: 实例节点数量。请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- 副本集实例，指变更配置后实例的主从节点数量。
+- 分片集群实例，指变更配置后实例每一个分片的主从节点数。
+**说明**：切勿同时发起调整节点数、调整分片数、调整节点规格的任务。
         :type NodeNum: int
-        :param _ReplicateSetNum: 实例分片数。默认为不变更分片数，暂不支持变更。
+        :param _ReplicateSetNum: 分片集群实例，指变更配置后实例的分片数量。取值范围：[2,36] 。
+**说明**：变更后的分片数量不能小于当前现有的数量。切勿同时发起调整节点数、调整分片数与调整节点规格的任务。
         :type ReplicateSetNum: int
         """
         self._InstanceId = None
@@ -7168,7 +7188,7 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
+        r"""实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -7179,7 +7199,7 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""变更配置后实例内存大小，单位：GB。
+        r"""变更配置后实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :rtype: int
         """
         return self._Memory
@@ -7190,7 +7210,7 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""变更配置后实例磁盘大小，单位：GB。
+        r"""变更配置后实例磁盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :rtype: int
         """
         return self._Volume
@@ -7201,7 +7221,10 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""实例节点数。默认为不变更节点数，暂不支持变更。
+        r"""实例节点数量。请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- 副本集实例，指变更配置后实例的主从节点数量。
+- 分片集群实例，指变更配置后实例每一个分片的主从节点数。
+**说明**：切勿同时发起调整节点数、调整分片数、调整节点规格的任务。
         :rtype: int
         """
         return self._NodeNum
@@ -7212,7 +7235,8 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def ReplicateSetNum(self):
-        r"""实例分片数。默认为不变更分片数，暂不支持变更。
+        r"""分片集群实例，指变更配置后实例的分片数量。取值范围：[2,36] 。
+**说明**：变更后的分片数量不能小于当前现有的数量。切勿同时发起调整节点数、调整分片数与调整节点规格的任务。
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -10846,11 +10870,13 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _UserName: 实例账号名
+        :param _UserName: 指定需修改密码的账号名称。可通过接口 [DescribeAccountUsers](https://cloud.tencent.com/document/product/240/80800) 获取账号列表，复制需修改密码的账号。
         :type UserName: str
-        :param _Password: 新密码，新密码长度不能少于8位
+        :param _Password: 指定账户的新密码。密码复杂度要求：
+- 8-32个字符长度。
+- 至少包含字母、数字和字符（!@#%^\*()\_）中的两种。
         :type Password: str
         """
         self._InstanceId = None
@@ -10859,7 +10885,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10870,7 +10896,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""实例账号名
+        r"""指定需修改密码的账号名称。可通过接口 [DescribeAccountUsers](https://cloud.tencent.com/document/product/240/80800) 获取账号列表，复制需修改密码的账号。
         :rtype: str
         """
         return self._UserName
@@ -10881,7 +10907,9 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""新密码，新密码长度不能少于8位
+        r"""指定账户的新密码。密码复杂度要求：
+- 8-32个字符长度。
+- 至少包含字母、数字和字符（!@#%^\*()\_）中的两种。
         :rtype: str
         """
         return self._Password
@@ -10912,7 +10940,7 @@ class ResetDBInstancePasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步请求Id，用户查询该流程的运行状态
+        :param _AsyncRequestId: 任务请求 ID。
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10922,7 +10950,7 @@ class ResetDBInstancePasswordResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步请求Id，用户查询该流程的运行状态
+        r"""任务请求 ID。
         :rtype: str
         """
         return self._AsyncRequestId
@@ -11328,7 +11356,7 @@ class SetAccountUserPrivilegeRequest(AbstractModel):
         r"""
         :param _InstanceId: 指定待设置账号的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _UserName: 设置账号名称。
+        :param _UserName: 设置访问实例的账号名称。设置要求为：字母开头的1-64个字符，只可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。
         :type UserName: str
         :param _AuthRole: 设置权限信息。
         :type AuthRole: list of Auth
@@ -11350,7 +11378,7 @@ class SetAccountUserPrivilegeRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""设置账号名称。
+        r"""设置访问实例的账号名称。设置要求为：字母开头的1-64个字符，只可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。
         :rtype: str
         """
         return self._UserName
@@ -12569,14 +12597,14 @@ class TerminateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定预隔离实例ID。格式如：cmgo-p8vnipr5。
+        :param _InstanceId: 指定预隔离实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制预隔离实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""指定预隔离实例ID。格式如：cmgo-p8vnipr5。
+        r"""指定预隔离实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制预隔离实例 ID。
         :rtype: str
         """
         return self._InstanceId

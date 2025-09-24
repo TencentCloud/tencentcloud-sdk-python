@@ -435,6 +435,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSmartEraseTemplate(self, request):
+        r"""创建自定义智能擦除模板
+
+        :param request: Request instance for CreateSmartEraseTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSmartEraseTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSmartEraseTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSmartEraseTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSmartEraseTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSmartSubtitleTemplate(self, request):
         r"""创建自定义智能字幕模板
 
@@ -1015,6 +1038,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSmartEraseTemplate(self, request):
+        r"""删除用户自定义智能擦除模板。
+
+        :param request: Request instance for DeleteSmartEraseTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSmartEraseTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSmartEraseTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSmartEraseTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSmartEraseTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +1682,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeSchedules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSmartEraseTemplates(self, request):
+        r"""根据智能擦除模板唯一标识，获取智能擦除模板详情列表。返回结果包含符合条件的所有用户自定义智能擦除模板及系统预置智能擦除模板
+
+        :param request: Request instance for DescribeSmartEraseTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSmartEraseTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSmartEraseTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSmartEraseTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSmartEraseTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2641,6 +2710,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySchedule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySmartEraseTemplate(self, request):
+        r"""修改用户自定义智能擦除模板。
+
+        :param request: Request instance for ModifySmartEraseTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySmartEraseTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySmartEraseTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySmartEraseTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySmartEraseTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
