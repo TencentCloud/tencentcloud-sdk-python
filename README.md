@@ -167,11 +167,11 @@ except TencentCloudSDKException as err:
 
 **注意，您必须明确知道您调用的接口所需参数，否则可能会调用失败。**
 
-Common Client参考[example](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/common_client/describe_instances.py)
+Common Client 参考[示例](./examples/common_client/describe_instances.py)
 
 ## 更多示例
 
-您可以在[github](https://github.com/tencentcloud/tencentcloud-sdk-python)中examples目录下找到更详细的示例。
+您可以在 [examples](./examples) 目录下找到更详细的示例。
 
 # 相关配置
 
@@ -179,7 +179,7 @@ Common Client参考[example](https://github.com/TencentCloud/tencentcloud-sdk-py
 
 如果是有代理的环境下，可通过两种方式设置代理
 
-1. 在初始化HttpProfile时指定proxy，参考[example](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/cvm/v20170312/describe_zones.py)
+1. 在初始化HttpProfile时指定proxy，参考[示例](./examples/cvm/v20170312/describe_zones.py)
 2. 需要设置系统环境变量 `https_proxy`
 
 否则可能无法正常调用，抛出连接超时的异常。
@@ -247,7 +247,7 @@ from tencentcloud.common import credential
 cred = credential.STSAssumeRoleCredential("SecretId", "SecretKey", "RoleArn", "RoleSessionName")
 ```
 
-有关角色扮演的详细使用方式可以参考示例：[使用角色](https://github.com/TencentCloud/tencentcloud-sdk-python/tree/master/examples/cvm/v20170312/describe_instances_sts.py)
+有关角色扮演的详细使用方式可以参考示例：[使用角色](examples/cvm/v20170312/describe_instances_sts.py)
 
 4. 实例角色
 
@@ -264,7 +264,7 @@ cred = credential.CVMRoleCredential().get_credential()
 
 腾讯云 Python SDK 提供了凭证提供链，它会默认以`环境变量->配置文件->实例角色->TKE OIDC凭证`的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
 
-示例代码参考[credential_providers.py](examples/cvm/v20170312/credential_providers.py)
+示例代码参考[credential_providers.py](./examples/cvm/v20170312/credential_providers.py)
 ```python
 # 使用默认凭证提供链
 from tencentcloud.common import credential
