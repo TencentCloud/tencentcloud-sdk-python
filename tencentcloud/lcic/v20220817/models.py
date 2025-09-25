@@ -10662,7 +10662,6 @@ class ModifyRoomRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _RoomId: 房间ID。
-字符数不超过256
         :type RoomId: int
         :param _SdkAppId: 低代码互动课堂的SdkAppId
         :type SdkAppId: int
@@ -10673,6 +10672,7 @@ class ModifyRoomRequest(AbstractModel):
         :param _TeacherId: 老师ID。直播开始后不允许修改。
         :type TeacherId: str
         :param _Name: 房间名称。
+字符数不超过256
         :type Name: str
         :param _Resolution: 分辨率。可以有如下取值：
 1 标清
@@ -10778,7 +10778,6 @@ video 纯视频
     @property
     def RoomId(self):
         r"""房间ID。
-字符数不超过256
         :rtype: int
         """
         return self._RoomId
@@ -10834,6 +10833,7 @@ video 纯视频
     @property
     def Name(self):
         r"""房间名称。
+字符数不超过256
         :rtype: str
         """
         return self._Name

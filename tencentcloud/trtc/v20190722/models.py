@@ -16801,6 +16801,57 @@ class TencentVod(AbstractModel):
         
 
 
+class Terminology(AbstractModel):
+    r"""翻译术语
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: 源术语
+        :type Source: str
+        :param _Target: 目标术语翻译结果
+        :type Target: str
+        """
+        self._Source = None
+        self._Target = None
+
+    @property
+    def Source(self):
+        r"""源术语
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""目标术语翻译结果
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextToSpeechRequest(AbstractModel):
     r"""TextToSpeech请求参数结构体
 
@@ -17325,10 +17376,13 @@ class TranslationConfig(AbstractModel):
         :type Mode: int
         :param _TTSConfig: 语音同传配置，开启同传时，需要传递
         :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
+        :param _Terminology: 翻译术语集合
+        :type Terminology: list of Terminology
         """
         self._TargetLanguages = None
         self._Mode = None
         self._TTSConfig = None
+        self._Terminology = None
 
     @property
     def TargetLanguages(self):
@@ -17365,6 +17419,17 @@ class TranslationConfig(AbstractModel):
     def TTSConfig(self, TTSConfig):
         self._TTSConfig = TTSConfig
 
+    @property
+    def Terminology(self):
+        r"""翻译术语集合
+        :rtype: list of Terminology
+        """
+        return self._Terminology
+
+    @Terminology.setter
+    def Terminology(self, Terminology):
+        self._Terminology = Terminology
+
 
     def _deserialize(self, params):
         self._TargetLanguages = params.get("TargetLanguages")
@@ -17372,6 +17437,12 @@ class TranslationConfig(AbstractModel):
         if params.get("TTSConfig") is not None:
             self._TTSConfig = TTSConfig()
             self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("Terminology") is not None:
+            self._Terminology = []
+            for item in params.get("Terminology"):
+                obj = Terminology()
+                obj._deserialize(item)
+                self._Terminology.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

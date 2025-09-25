@@ -25932,7 +25932,7 @@ class DescribeGroupsRequest(AbstractModel):
         :type GroupResourceTypeList: list of str
         :param _Status: 部署组状态过滤字段
         :type Status: str
-        :param _GroupIdList: 无
+        :param _GroupIdList: 部署组ID列表
         :type GroupIdList: list of str
         """
         self._SearchWord = None
@@ -26059,7 +26059,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        r"""无
+        r"""部署组ID列表
         :rtype: list of str
         """
         return self._GroupIdList
