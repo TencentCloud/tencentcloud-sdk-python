@@ -3784,6 +3784,57 @@ class CommonMetrics(AbstractModel):
         
 
 
+class CoreInfo(AbstractModel):
+    r"""任务 core 用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 时间戳(毫秒)数组
+        :type Timestamp: list of int
+        :param _CoreUsage: core 用量
+        :type CoreUsage: list of int
+        """
+        self._Timestamp = None
+        self._CoreUsage = None
+
+    @property
+    def Timestamp(self):
+        r"""时间戳(毫秒)数组
+        :rtype: list of int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def CoreUsage(self):
+        r"""core 用量
+        :rtype: list of int
+        """
+        return self._CoreUsage
+
+    @CoreUsage.setter
+    def CoreUsage(self, CoreUsage):
+        self._CoreUsage = CoreUsage
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._CoreUsage = params.get("CoreUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosPermission(AbstractModel):
     r"""cos权限描述
 
@@ -5059,10 +5110,24 @@ class CreateDataMaskStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _StrategyId: 策略id
+        :type StrategyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._StrategyId = None
         self._RequestId = None
+
+    @property
+    def StrategyId(self):
+        r"""策略id
+        :rtype: str
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
 
     @property
     def RequestId(self):
@@ -5077,6 +5142,7 @@ class CreateDataMaskStrategyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7690,6 +7756,16 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
         :type SparkSpecMode: str
         :param _SparkSize: 仅SQL资源组资源上限，仅用于快速模块
         :type SparkSize: int
+        :param _DriverGPUSpec: GPUDriver规格
+        :type DriverGPUSpec: int
+        :param _ExecutorGPUSpec: GPUExecutor规格
+        :type ExecutorGPUSpec: int
+        :param _GPULimitSize: GPU上限
+        :type GPULimitSize: int
+        :param _GPUSize: GPU规格
+        :type GPUSize: int
+        :param _PythonGPUSpec: Pod GPU规格上限
+        :type PythonGPUSpec: int
         """
         self._EngineResourceGroupName = None
         self._DataEngineName = None
@@ -7717,6 +7793,11 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
         self._PythonCuSpec = None
         self._SparkSpecMode = None
         self._SparkSize = None
+        self._DriverGPUSpec = None
+        self._ExecutorGPUSpec = None
+        self._GPULimitSize = None
+        self._GPUSize = None
+        self._PythonGPUSpec = None
 
     @property
     def EngineResourceGroupName(self):
@@ -8006,6 +8087,61 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
     def SparkSize(self, SparkSize):
         self._SparkSize = SparkSize
 
+    @property
+    def DriverGPUSpec(self):
+        r"""GPUDriver规格
+        :rtype: int
+        """
+        return self._DriverGPUSpec
+
+    @DriverGPUSpec.setter
+    def DriverGPUSpec(self, DriverGPUSpec):
+        self._DriverGPUSpec = DriverGPUSpec
+
+    @property
+    def ExecutorGPUSpec(self):
+        r"""GPUExecutor规格
+        :rtype: int
+        """
+        return self._ExecutorGPUSpec
+
+    @ExecutorGPUSpec.setter
+    def ExecutorGPUSpec(self, ExecutorGPUSpec):
+        self._ExecutorGPUSpec = ExecutorGPUSpec
+
+    @property
+    def GPULimitSize(self):
+        r"""GPU上限
+        :rtype: int
+        """
+        return self._GPULimitSize
+
+    @GPULimitSize.setter
+    def GPULimitSize(self, GPULimitSize):
+        self._GPULimitSize = GPULimitSize
+
+    @property
+    def GPUSize(self):
+        r"""GPU规格
+        :rtype: int
+        """
+        return self._GPUSize
+
+    @GPUSize.setter
+    def GPUSize(self, GPUSize):
+        self._GPUSize = GPUSize
+
+    @property
+    def PythonGPUSpec(self):
+        r"""Pod GPU规格上限
+        :rtype: int
+        """
+        return self._PythonGPUSpec
+
+    @PythonGPUSpec.setter
+    def PythonGPUSpec(self, PythonGPUSpec):
+        self._PythonGPUSpec = PythonGPUSpec
+
 
     def _deserialize(self, params):
         self._EngineResourceGroupName = params.get("EngineResourceGroupName")
@@ -8044,6 +8180,11 @@ class CreateStandardEngineResourceGroupRequest(AbstractModel):
         self._PythonCuSpec = params.get("PythonCuSpec")
         self._SparkSpecMode = params.get("SparkSpecMode")
         self._SparkSize = params.get("SparkSize")
+        self._DriverGPUSpec = params.get("DriverGPUSpec")
+        self._ExecutorGPUSpec = params.get("ExecutorGPUSpec")
+        self._GPULimitSize = params.get("GPULimitSize")
+        self._GPUSize = params.get("GPUSize")
+        self._PythonGPUSpec = params.get("PythonGPUSpec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23297,6 +23438,87 @@ class DescribeTaskMonitorInfosResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TaskMonitorInfoList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskResourceUsageRequest(AbstractModel):
+    r"""DescribeTaskResourceUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInstanceId: 任务 id
+        :type TaskInstanceId: str
+        """
+        self._TaskInstanceId = None
+
+    @property
+    def TaskInstanceId(self):
+        r"""任务 id
+        :rtype: str
+        """
+        return self._TaskInstanceId
+
+    @TaskInstanceId.setter
+    def TaskInstanceId(self, TaskInstanceId):
+        self._TaskInstanceId = TaskInstanceId
+
+
+    def _deserialize(self, params):
+        self._TaskInstanceId = params.get("TaskInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskResourceUsageResponse(AbstractModel):
+    r"""DescribeTaskResourceUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CoreInfo: core 用量信息
+        :type CoreInfo: :class:`tencentcloud.dlc.v20210125.models.CoreInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CoreInfo = None
+        self._RequestId = None
+
+    @property
+    def CoreInfo(self):
+        r"""core 用量信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CoreInfo`
+        """
+        return self._CoreInfo
+
+    @CoreInfo.setter
+    def CoreInfo(self, CoreInfo):
+        self._CoreInfo = CoreInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CoreInfo") is not None:
+            self._CoreInfo = CoreInfo()
+            self._CoreInfo._deserialize(params.get("CoreInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -40530,6 +40752,8 @@ class TaskResultInfo(AbstractModel):
         :type TotalTime: int
         :param _QueryResultTime: 获取结果消耗的时间
         :type QueryResultTime: float
+        :param _ResultSetEncode: base64 编码结果集
+        :type ResultSetEncode: str
         """
         self._TaskId = None
         self._DatasourceConnectionName = None
@@ -40551,6 +40775,7 @@ class TaskResultInfo(AbstractModel):
         self._DisplayFormat = None
         self._TotalTime = None
         self._QueryResultTime = None
+        self._ResultSetEncode = None
 
     @property
     def TaskId(self):
@@ -40773,6 +40998,17 @@ class TaskResultInfo(AbstractModel):
     def QueryResultTime(self, QueryResultTime):
         self._QueryResultTime = QueryResultTime
 
+    @property
+    def ResultSetEncode(self):
+        r"""base64 编码结果集
+        :rtype: str
+        """
+        return self._ResultSetEncode
+
+    @ResultSetEncode.setter
+    def ResultSetEncode(self, ResultSetEncode):
+        self._ResultSetEncode = ResultSetEncode
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -40800,6 +41036,7 @@ class TaskResultInfo(AbstractModel):
         self._DisplayFormat = params.get("DisplayFormat")
         self._TotalTime = params.get("TotalTime")
         self._QueryResultTime = params.get("QueryResultTime")
+        self._ResultSetEncode = params.get("ResultSetEncode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42499,6 +42736,16 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
         :type SparkSpecMode: str
         :param _SparkSize: 仅SQL资源组资源上限，仅用于快速模式
         :type SparkSize: int
+        :param _DriverGPUSpec: gpuDriver规格
+        :type DriverGPUSpec: int
+        :param _ExecutorGPUSpec: gpuExcutor 规格
+        :type ExecutorGPUSpec: int
+        :param _GPULimitSize: gpu 上限
+        :type GPULimitSize: int
+        :param _GPUSize: gpu 规格
+        :type GPUSize: int
+        :param _PythonGPUSpec: gpupod 规格
+        :type PythonGPUSpec: int
         """
         self._EngineResourceGroupName = None
         self._DriverCuSpec = None
@@ -42517,6 +42764,11 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
         self._PythonCuSpec = None
         self._SparkSpecMode = None
         self._SparkSize = None
+        self._DriverGPUSpec = None
+        self._ExecutorGPUSpec = None
+        self._GPULimitSize = None
+        self._GPUSize = None
+        self._PythonGPUSpec = None
 
     @property
     def EngineResourceGroupName(self):
@@ -42707,6 +42959,61 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
     def SparkSize(self, SparkSize):
         self._SparkSize = SparkSize
 
+    @property
+    def DriverGPUSpec(self):
+        r"""gpuDriver规格
+        :rtype: int
+        """
+        return self._DriverGPUSpec
+
+    @DriverGPUSpec.setter
+    def DriverGPUSpec(self, DriverGPUSpec):
+        self._DriverGPUSpec = DriverGPUSpec
+
+    @property
+    def ExecutorGPUSpec(self):
+        r"""gpuExcutor 规格
+        :rtype: int
+        """
+        return self._ExecutorGPUSpec
+
+    @ExecutorGPUSpec.setter
+    def ExecutorGPUSpec(self, ExecutorGPUSpec):
+        self._ExecutorGPUSpec = ExecutorGPUSpec
+
+    @property
+    def GPULimitSize(self):
+        r"""gpu 上限
+        :rtype: int
+        """
+        return self._GPULimitSize
+
+    @GPULimitSize.setter
+    def GPULimitSize(self, GPULimitSize):
+        self._GPULimitSize = GPULimitSize
+
+    @property
+    def GPUSize(self):
+        r"""gpu 规格
+        :rtype: int
+        """
+        return self._GPUSize
+
+    @GPUSize.setter
+    def GPUSize(self, GPUSize):
+        self._GPUSize = GPUSize
+
+    @property
+    def PythonGPUSpec(self):
+        r"""gpupod 规格
+        :rtype: int
+        """
+        return self._PythonGPUSpec
+
+    @PythonGPUSpec.setter
+    def PythonGPUSpec(self, PythonGPUSpec):
+        self._PythonGPUSpec = PythonGPUSpec
+
 
     def _deserialize(self, params):
         self._EngineResourceGroupName = params.get("EngineResourceGroupName")
@@ -42726,6 +43033,11 @@ class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
         self._PythonCuSpec = params.get("PythonCuSpec")
         self._SparkSpecMode = params.get("SparkSpecMode")
         self._SparkSize = params.get("SparkSize")
+        self._DriverGPUSpec = params.get("DriverGPUSpec")
+        self._ExecutorGPUSpec = params.get("ExecutorGPUSpec")
+        self._GPULimitSize = params.get("GPULimitSize")
+        self._GPUSize = params.get("GPUSize")
+        self._PythonGPUSpec = params.get("PythonGPUSpec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

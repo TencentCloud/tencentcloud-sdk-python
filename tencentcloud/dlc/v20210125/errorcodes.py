@@ -173,6 +173,9 @@ INVALIDPARAMETER_BATCHSQLFILTERSKEYTYPENOTMATH = 'InvalidParameter.BatchSQLFilte
 # 交互式SQL任务指定SortBy类型不匹配，当前仅支持: create-time/resource-usage
 INVALIDPARAMETER_BATCHSQLTASKSORTBYTYPENOTMATCH = 'InvalidParameter.BatchSQLTaskSortByTypeNotMatch'
 
+# 当前配置不被允许
+INVALIDPARAMETER_CONFIGKEYPROHIBITED = 'InvalidParameter.ConfigKeyProhibited'
+
 # 指定集群资源类型不匹配，当前仅支持: spark_cu（对应Spark集群）,presto_cu(对应Presto集群)
 INVALIDPARAMETER_DATAENGINECLUSTERTYPENOTMATCH = 'InvalidParameter.DataEngineClusterTypeNotMatch'
 
@@ -365,6 +368,9 @@ INVALIDPARAMETER_INVALIDMINCLUSTERS = 'InvalidParameter.InvalidMinClusters'
 # 无效的Offset值。
 INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
 
+# 排序列不合法
+INVALIDPARAMETER_INVALIDPARAMETER_SQLTASKANALYSISSORTBYTYPENOTMATCH = 'InvalidParameter.InvalidParameter_SQLTaskAnalysisSortByTypeNotMatch'
+
 # 无效的计费模式。
 INVALIDPARAMETER_INVALIDPAYMODE = 'InvalidParameter.InvalidPayMode'
 
@@ -476,6 +482,9 @@ INVALIDPARAMETER_SQLBASE64DECODEFAIL = 'InvalidParameter.SQLBase64DecodeFail'
 # SQL参数预处理失败
 INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = 'InvalidParameter.SQLParameterPreprocessingFailed'
 
+# 不支持的过滤类型或者参数不合法
+INVALIDPARAMETER_SQLTASKANALYSISFILTERSKEYTYPENOTMATH = 'InvalidParameter.SQLTaskAnalysisFiltersKeyTypeNotMath'
+
 # 指定的Filter.Key不匹配，当前仅支持: task-id/task-sql-keyword/task-kind/task-operator/batch-id/session-id/task-state
 INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = 'InvalidParameter.SQLTaskFiltersKeyTypeNotMath'
 
@@ -508,6 +517,9 @@ INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = 'InvalidParameter.SparkJobSortByTy
 
 # 任务已经结束，不能取消。
 INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
+
+# 任务不存在。
+INVALIDPARAMETER_TASKNOTFOUND = 'InvalidParameter.TaskNotFound'
 
 # 指定的任务状态不匹配，当前仅支持: 0:初始化, 1:运行中, 2:成功, 3:数据写入中, 4:排队中, -1:失败, -3:删除
 INVALIDPARAMETER_TASKSTATETYPENOTMATH = 'InvalidParameter.TaskStateTypeNotMath'

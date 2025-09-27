@@ -2673,6 +2673,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskResourceUsage(self, request):
+        r"""返回任务洞察资源用量
+
+        :param request: Request instance for DescribeTaskResourceUsage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskResourceUsageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskResourceUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskResourceUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskResourceUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskResult(self, request):
         r"""查询任务结果，仅支持30天以内的任务查询结果，且返回数据大小超过近50M会进行截断。
 
