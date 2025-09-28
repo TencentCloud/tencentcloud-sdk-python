@@ -6086,7 +6086,7 @@ class ClusterNodeInfo(AbstractModel):
 
 
 class ClusterTopology(AbstractModel):
-    r"""集群版的节点拓扑配置。
+    r"""云盘版的节点拓扑配置。
 
     """
 
@@ -14296,14 +14296,14 @@ class DescribeBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        :param _Product: 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        r"""需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :rtype: str
         """
         return self._Product
@@ -14465,7 +14465,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        :param _Product: 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :type Product: str
         :param _Offset: 分页查询数据的偏移量，默认为0。
         :type Offset: int
@@ -14484,7 +14484,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        r"""需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :rtype: str
         """
         return self._Product
@@ -14753,14 +14753,14 @@ class DescribeBinlogBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        :param _Product: 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        r"""需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :rtype: str
         """
         return self._Product
@@ -18153,14 +18153,14 @@ class DescribeDataBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        :param _Product: 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+        r"""需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
         :rtype: str
         """
         return self._Product
@@ -29194,6 +29194,115 @@ class ModifyDBInstanceLogToCLSResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceModesRequest(AbstractModel):
+    r"""ModifyDBInstanceModes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param _Mode: 云数据库的模式，目前仅支持传入 "protectMode" 表示修改主从同步方式。
+        :type Mode: str
+        :param _ProtectMode: 数据同步方式，可选值：0-异步复制，1-半同步复制，2-强同步复制。
+        :type ProtectMode: int
+        """
+        self._InstanceId = None
+        self._Mode = None
+        self._ProtectMode = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Mode(self):
+        r"""云数据库的模式，目前仅支持传入 "protectMode" 表示修改主从同步方式。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ProtectMode(self):
+        r"""数据同步方式，可选值：0-异步复制，1-半同步复制，2-强同步复制。
+        :rtype: int
+        """
+        return self._ProtectMode
+
+    @ProtectMode.setter
+    def ProtectMode(self, ProtectMode):
+        self._ProtectMode = ProtectMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Mode = params.get("Mode")
+        self._ProtectMode = params.get("ProtectMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceModesResponse(AbstractModel):
+    r"""ModifyDBInstanceModes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        r"""异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :rtype: str
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     r"""ModifyDBInstanceName请求参数结构体
 
@@ -29457,7 +29566,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _ForReadonlyInstance: 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组， 需要将该入参置为 True。默认为 False。
         :type ForReadonlyInstance: bool
-        :param _OpResourceId: 变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :param _OpResourceId: 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
         :type OpResourceId: str
         """
         self._InstanceId = None
@@ -29501,7 +29610,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def OpResourceId(self):
-        r"""变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        r"""变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
         :rtype: str
         """
         return self._OpResourceId
@@ -33356,7 +33465,7 @@ class ProxyNodeCustom(AbstractModel):
 
 
 class ReadWriteNode(AbstractModel):
-    r"""集群版 RW 节点的配置。
+    r"""云盘版 RW 节点的配置。
 
     """
 
@@ -33364,7 +33473,7 @@ class ReadWriteNode(AbstractModel):
         r"""
         :param _Zone: RW 节点所在可用区。
         :type Zone: str
-        :param _NodeId: 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        :param _NodeId: 升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
         :type NodeId: str
         """
         self._Zone = None
@@ -33383,7 +33492,7 @@ class ReadWriteNode(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        r"""升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
         :rtype: str
         """
         return self._NodeId
@@ -33407,7 +33516,7 @@ class ReadWriteNode(AbstractModel):
 
 
 class ReadonlyNode(AbstractModel):
-    r"""集群版的 RO 节点配置。
+    r"""云盘版的 RO 节点配置。
 
     """
 
@@ -33417,7 +33526,7 @@ class ReadonlyNode(AbstractModel):
         :type IsRandomZone: str
         :param _Zone: 指定该节点分布在哪个可用区。
         :type Zone: str
-        :param _NodeId: 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        :param _NodeId: 升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
         :type NodeId: str
         """
         self._IsRandomZone = None
@@ -33448,7 +33557,7 @@ class ReadonlyNode(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        r"""升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
         :rtype: str
         """
         return self._NodeId
@@ -38915,7 +39024,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type ZoneId: str
         :param _RoTransType: 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
         :type RoTransType: str
-        :param _ClusterTopology: 集群版节点拓扑配置。
+        :param _ClusterTopology: 云盘版节点拓扑配置。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _CheckFastUpgradeReboot: 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
         :type CheckFastUpgradeReboot: int
@@ -39142,7 +39251,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def ClusterTopology(self):
-        r"""集群版节点拓扑配置。
+        r"""云盘版节点拓扑配置。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         return self._ClusterTopology

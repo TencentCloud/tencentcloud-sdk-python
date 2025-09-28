@@ -118,6 +118,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfirmMultiPathGatewayOriginACL(self, request):
+        r"""本接口用于多通道安全加速网关回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。
+
+        :param request: Request instance for ConfirmMultiPathGatewayOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmMultiPathGatewayOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ConfirmMultiPathGatewayOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfirmMultiPathGatewayOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfirmMultiPathGatewayOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConfirmOriginACLUpdate(self, request):
         r"""本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
 
@@ -2325,6 +2348,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMultiPathGatewayOriginACL(self, request):
+        r"""本接口用于查询多通道安全加速网关实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。若 MultiPathGatewayNextOriginACL 字段有返回值，则需要将最新的回源 IP 网段同步到源站防火墙配置中。
+
+        :param request: Request instance for DescribeMultiPathGatewayOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMultiPathGatewayRegions(self, request):
         r"""通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
 
@@ -4004,6 +4050,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyMultiPathGatewaySecretKey", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewayStatus(self, request):
+        r"""更新多通道安全网关状态。
+
+        :param request: Request instance for ModifyMultiPathGatewayStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewayStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

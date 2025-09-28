@@ -181,7 +181,8 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
         :type CompleteMode: str
@@ -191,7 +192,8 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -4146,14 +4148,16 @@ class StartMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId

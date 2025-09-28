@@ -9133,9 +9133,9 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(废弃)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
@@ -9145,6 +9145,10 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         :type AppType: str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -9157,6 +9161,8 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._SubScenes = None
         self._AppType = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def UinAccount(self):
@@ -9215,7 +9221,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -9226,7 +9232,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -9279,6 +9285,28 @@ class DescribeCallStatsGraphRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -9292,6 +9320,8 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._SubScenes = params.get("SubScenes")
         self._AppType = params.get("AppType")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9361,9 +9391,9 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         r"""
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(废弃)
         :type EndTime: str
         :param _UinAccount: uin
         :type UinAccount: list of str
@@ -9377,6 +9407,10 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._ModelName = None
         self._StartTime = None
@@ -9387,6 +9421,8 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         self._SubBizType = None
         self._AppBizIds = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def ModelName(self):
@@ -9401,7 +9437,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -9412,7 +9448,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -9487,6 +9523,28 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -9498,6 +9556,8 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         self._SubBizType = params.get("SubBizType")
         self._AppBizIds = params.get("AppBizIds")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9590,20 +9650,26 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
         r"""
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(废弃)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._ModelName = None
         self._StartTime = None
         self._EndTime = None
         self._AppBizIds = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def ModelName(self):
@@ -9618,7 +9684,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -9629,7 +9695,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -9660,6 +9726,28 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -9667,6 +9755,8 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11617,14 +11707,18 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(废弃)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._LoginUin = None
         self._LoginSubAccountUin = None
@@ -11635,6 +11729,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         self._EndTime = None
         self._AppBizIds = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def LoginUin(self):
@@ -11693,7 +11789,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -11704,7 +11800,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -11735,6 +11831,28 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._LoginUin = params.get("LoginUin")
@@ -11746,6 +11864,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12266,9 +12386,9 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(废弃)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
@@ -12276,6 +12396,10 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type AppType: str
         :param _SubScenes: 筛选子场景
         :type SubScenes: list of str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._UinAccount = None
         self._SubBizType = None
@@ -12285,6 +12409,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._AppBizIds = None
         self._AppType = None
         self._SubScenes = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def UinAccount(self):
@@ -12321,7 +12447,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -12332,7 +12458,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -12374,6 +12500,28 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -12384,6 +12532,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._AppBizIds = params.get("AppBizIds")
         self._AppType = params.get("AppType")
         self._SubScenes = params.get("SubScenes")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12499,9 +12649,9 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒(默认值0)
+        :param _StartTime: 开始时间戳, 单位为秒(默认值0)(废弃)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
+        :param _EndTime: 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)(废弃)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
@@ -12511,6 +12661,10 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type AppType: str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 结束时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -12523,6 +12677,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._SubScenes = None
         self._AppType = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def UinAccount(self):
@@ -12581,7 +12737,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间戳, 单位为秒(默认值0)
+        r"""开始时间戳, 单位为秒(默认值0)(废弃)
         :rtype: str
         """
         return self._StartTime
@@ -12592,7 +12748,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
+        r"""结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)(废弃)
         :rtype: str
         """
         return self._EndTime
@@ -12645,6 +12801,28 @@ class DescribeTokenUsageRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""结束时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -12658,6 +12836,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._SubScenes = params.get("SubScenes")
         self._AppType = params.get("AppType")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23355,14 +23535,14 @@ class ListUsageCallDetailRequest(AbstractModel):
         r"""
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间
-        :type StartTime: str
-        :param _EndTime: 结束时间
-        :type EndTime: str
         :param _PageNumber: 页码（从1开始）
         :type PageNumber: int
         :param _PageSize: 分页数量(最大值1000)
         :type PageSize: int
+        :param _StartTime: 开始时间(废弃)
+        :type StartTime: str
+        :param _EndTime: 结束时间(废弃)
+        :type EndTime: str
         :param _UinAccount: uin列表
         :type UinAccount: list of str
         :param _AppBizIds: 应用ID列表
@@ -23377,12 +23557,16 @@ class ListUsageCallDetailRequest(AbstractModel):
         :type BillingTag: str
         :param _SpaceId: 空间id
         :type SpaceId: str
+        :param _StatStartTime: 开始时间戳, 单位为秒
+        :type StatStartTime: int
+        :param _StatEndTime: 开始时间戳, 单位为秒
+        :type StatEndTime: int
         """
         self._ModelName = None
-        self._StartTime = None
-        self._EndTime = None
         self._PageNumber = None
         self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
         self._UinAccount = None
         self._AppBizIds = None
         self._CallType = None
@@ -23390,6 +23574,8 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._AppType = None
         self._BillingTag = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def ModelName(self):
@@ -23401,28 +23587,6 @@ class ListUsageCallDetailRequest(AbstractModel):
     @ModelName.setter
     def ModelName(self, ModelName):
         self._ModelName = ModelName
-
-    @property
-    def StartTime(self):
-        r"""开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
 
     @property
     def PageNumber(self):
@@ -23445,6 +23609,28 @@ class ListUsageCallDetailRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""开始时间(废弃)
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间(废弃)
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
     @property
     def UinAccount(self):
@@ -23523,13 +23709,35 @@ class ListUsageCallDetailRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def StatStartTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""开始时间戳, 单位为秒
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._UinAccount = params.get("UinAccount")
         self._AppBizIds = params.get("AppBizIds")
         self._CallType = params.get("CallType")
@@ -23537,6 +23745,8 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._AppType = params.get("AppType")
         self._BillingTag = params.get("BillingTag")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

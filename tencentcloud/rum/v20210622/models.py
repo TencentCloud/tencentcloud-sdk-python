@@ -8637,7 +8637,7 @@ class DescribeReleaseFileSignRequest(AbstractModel):
         :type Timeout: int
         :param _FileType: bucket类型，不填默认1:web，2:app
         :type FileType: int
-        :param _Site: 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+        :param _Site: 获取临时签名的bucket是境内还是境外（1表示境外，其它表示境内）
         :type Site: int
         :param _ID: ProjectID
         :type ID: int
@@ -8671,7 +8671,7 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
     @property
     def Site(self):
-        r"""获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+        r"""获取临时签名的bucket是境内还是境外（1表示境外，其它表示境内）
         :rtype: int
         """
         return self._Site

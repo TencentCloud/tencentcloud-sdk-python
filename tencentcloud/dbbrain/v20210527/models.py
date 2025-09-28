@@ -248,7 +248,7 @@ class AlarmProfileList(AbstractModel):
         :type ReceiveType: list of int
         :param _ReceiveInfo: 接收用户信息
         :type ReceiveInfo: list of ReceiveInfo
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间，格式: "yyyy-MM-dd HH:mm:ss"
         :type UpdateTime: str
         :param _TemplateName: 模板名
         :type TemplateName: str
@@ -375,7 +375,7 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""更新时间，格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._UpdateTime
@@ -969,9 +969,9 @@ class AuditLogFile(AbstractModel):
         :type DownloadUrl: str
         :param _ErrMsg: 错误信息。
         :type ErrMsg: str
-        :param _Progress: 文件生成进度。
+        :param _Progress: 文件生成进度。（单位：%）
         :type Progress: float
-        :param _FinishTime: 文件生成成功时间。
+        :param _FinishTime: 文件生成成功时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type FinishTime: str
         """
         self._AsyncRequestId = None
@@ -1066,7 +1066,7 @@ class AuditLogFile(AbstractModel):
 
     @property
     def Progress(self):
-        r"""文件生成进度。
+        r"""文件生成进度。（单位：%）
         :rtype: float
         """
         return self._Progress
@@ -1077,7 +1077,7 @@ class AuditLogFile(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""文件生成成功时间。
+        r"""文件生成成功时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._FinishTime
@@ -1231,19 +1231,25 @@ class AutonomyActionVo(AbstractModel):
         :type EventId: int
         :param _Type: 类型：支持RedisAutoScaleUp
         :type Type: str
-        :param _TriggerTime: 自治任务触发时间。
+        :param _TriggerTime: 自治任务触发时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type TriggerTime: str
-        :param _CreateTime: 自治任务创建时间。
+        :param _CreateTime: 自治任务创建时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type CreateTime: str
-        :param _UpdateTime: 自治任务更新时间
+        :param _UpdateTime: 自治任务更新时间，格式: "yyyy-MM-dd HH:mm:ss"
         :type UpdateTime: str
-        :param _FinishTime: 自治任务完成时间。
+        :param _FinishTime: 自治任务完成时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type FinishTime: str
         :param _ExpireTime: 剩余时间，单位：秒。
         :type ExpireTime: int
         :param _Reason: 触发原因。
         :type Reason: str
-        :param _Status: 自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        :param _Status: 自治任务状态：RUNNING，FINISHED，TERMINATED，CANCELLED
+其中：
+RUNNING    - 运行中  
+FINISHED   - 已完成  
+TERMINATED - 已终止  
+CANCELLED  - 已取消  
+
         :type Status: str
         """
         self._ActionId = None
@@ -1292,7 +1298,7 @@ class AutonomyActionVo(AbstractModel):
 
     @property
     def TriggerTime(self):
-        r"""自治任务触发时间。
+        r"""自治任务触发时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._TriggerTime
@@ -1303,7 +1309,7 @@ class AutonomyActionVo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""自治任务创建时间。
+        r"""自治任务创建时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._CreateTime
@@ -1314,7 +1320,7 @@ class AutonomyActionVo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""自治任务更新时间
+        r"""自治任务更新时间，格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._UpdateTime
@@ -1325,7 +1331,7 @@ class AutonomyActionVo(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""自治任务完成时间。
+        r"""自治任务完成时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._FinishTime
@@ -1358,7 +1364,13 @@ class AutonomyActionVo(AbstractModel):
 
     @property
     def Status(self):
-        r"""自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        r"""自治任务状态：RUNNING，FINISHED，TERMINATED，CANCELLED
+其中：
+RUNNING    - 运行中  
+FINISHED   - 已完成  
+TERMINATED - 已终止  
+CANCELLED  - 已取消  
+
         :rtype: str
         """
         return self._Status
@@ -1552,7 +1564,10 @@ class AutonomyUserProfileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: 是否开启自治。
+        :param _Enabled: 是否开启自治。枚举值：true，false。
+其中：
+true - 开启
+false - 关闭
         :type Enabled: bool
         :param _Uin: 用户Uin。
         :type Uin: str
@@ -1571,7 +1586,10 @@ class AutonomyUserProfileInfo(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""是否开启自治。
+        r"""是否开启自治。枚举值：true，false。
+其中：
+true - 开启
+false - 关闭
         :rtype: bool
         """
         return self._Enabled
@@ -2043,9 +2061,9 @@ class CloseAuditServiceRequest(AbstractModel):
         r"""
         :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
-        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :param _NodeRequestType: NodeRequestType主要标识数据库产品类型，与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
-        :param _InstanceId: 实例Id。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         """
         self._Product = None
@@ -2065,7 +2083,7 @@ class CloseAuditServiceRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
-        r"""与Product保持一致。如："dcdb" ,"mariadb"。
+        r"""NodeRequestType主要标识数据库产品类型，与Product保持一致。如："dcdb" ,"mariadb"。
         :rtype: str
         """
         return self._NodeRequestType
@@ -2076,7 +2094,7 @@ class CloseAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例Id。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -2354,11 +2372,11 @@ class CreateAuditLogFileRequest(AbstractModel):
         :type Product: str
         :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
         :type NodeRequestType: str
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。	
+        :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。
         :type StartTime: str
-        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”。
+        :param _EndTime: 结束时间，如“2025-03-17T01:00:00+00:00”。
         :type EndTime: str
         :param _Filter: 过滤条件。可按设置的过滤条件过滤日志。
         :type Filter: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogFilter`
@@ -2394,7 +2412,7 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -2405,7 +2423,7 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，如“2019-09-10 12:13:14”。	
+        r"""开始时间，如“2025-03-17T00:00:00+00:00”。
         :rtype: str
         """
         return self._StartTime
@@ -2416,7 +2434,7 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""截止时间，如“2019-09-11 10:13:14”。
+        r"""结束时间，如“2025-03-17T01:00:00+00:00”。
         :rtype: str
         """
         return self._EndTime
@@ -2506,7 +2524,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
         :type StartTime: str
@@ -2518,7 +2536,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
         :type ContactPerson: list of int
         :param _ContactGroup: 接收邮件的联系组ID数组。
         :type ContactGroup: list of int
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2531,7 +2549,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -2597,7 +2615,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -2675,11 +2693,12 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+示例值：cdb-dctw4edd
         :type InstanceId: str
-        :param _AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+        :param _AsyncRequestId: 健康报告相应的任务ID，可通过[DescribeDBDiagReportTasks](https://cloud.tencent.com/document/product/1130/54873)查询。
         :type AsyncRequestId: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2688,7 +2707,8 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+示例值：cdb-dctw4edd
         :rtype: str
         """
         return self._InstanceId
@@ -2699,7 +2719,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+        r"""健康报告相应的任务ID，可通过[DescribeDBDiagReportTasks](https://cloud.tencent.com/document/product/1130/54873)查询。
         :rtype: int
         """
         return self._AsyncRequestId
@@ -2710,7 +2730,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -3017,13 +3037,13 @@ class CreateMailProfileRequest(AbstractModel):
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
         :param _ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
         :type ProfileLevel: str
-        :param _ProfileName: 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :param _ProfileName: 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
         :type ProfileName: str
         :param _ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
         :type ProfileType: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :type Product: str
-        :param _BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+        :param _BindInstanceIds: 配置绑定的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
         :type BindInstanceIds: list of str
         """
         self._ProfileInfo = None
@@ -3057,7 +3077,7 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
-        r"""配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        r"""配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
         :rtype: str
         """
         return self._ProfileName
@@ -3079,7 +3099,7 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -3090,7 +3110,7 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceIds(self):
-        r"""配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+        r"""配置绑定的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
         :rtype: list of str
         """
         return self._BindInstanceIds
@@ -3263,7 +3283,7 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
@@ -3280,7 +3300,7 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3393,11 +3413,11 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
         :type WeekConfiguration: list of int
         :param _ProfileInfo: 邮件配置内容。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
-        :param _ProfileName: 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :param _ProfileName: 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
         :type ProfileName: str
-        :param _BindInstanceId: 配置订阅的实例ID。
+        :param _BindInstanceId: 配置订阅的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type BindInstanceId: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :type Product: str
         """
         self._WeekConfiguration = None
@@ -3430,7 +3450,7 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
-        r"""配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        r"""配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
         :rtype: str
         """
         return self._ProfileName
@@ -3441,7 +3461,7 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceId(self):
-        r"""配置订阅的实例ID。
+        r"""配置订阅的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._BindInstanceId
@@ -3452,7 +3472,7 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -3654,9 +3674,15 @@ class CreateSqlFilterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :param _SqlType: SQL语句的类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+其中：
+SELECT   - 查询  
+UPDATE   - 更新  
+DELETE   - 删除  
+INSERT   - 插入  
+REPLACE  - 替换
         :type SqlType: str
         :param _FilterKey: 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
         :type FilterKey: str
@@ -3664,7 +3690,7 @@ class CreateSqlFilterRequest(AbstractModel):
         :type MaxConcurrency: int
         :param _Duration: 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
         :type Duration: int
-        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
         :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -3679,7 +3705,7 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3690,7 +3716,13 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def SqlType(self):
-        r"""SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        r"""SQL语句的类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+其中：
+SELECT   - 查询  
+UPDATE   - 更新  
+DELETE   - 删除  
+INSERT   - 插入  
+REPLACE  - 替换
         :rtype: str
         """
         return self._SqlType
@@ -3734,7 +3766,7 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def SessionToken(self):
-        r"""通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        r"""通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :rtype: str
         """
         return self._SessionToken
@@ -3823,9 +3855,9 @@ class CreateUserAutonomyProfileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含以下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
         :type ProfileType: str
-        :param _InstanceId: 实列ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
@@ -3839,7 +3871,7 @@ class CreateUserAutonomyProfileRequest(AbstractModel):
 
     @property
     def ProfileType(self):
-        r"""配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        r"""配置类型，为需要配置的功能枚举值，目前包含以下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
         :rtype: str
         """
         return self._ProfileType
@@ -3850,7 +3882,7 @@ class CreateUserAutonomyProfileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实列ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3932,13 +3964,13 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB， "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "postgres" - 云数据库 PostgreSQL。
         :type Product: str
-        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"	
+        :param _NodeRequestType: NodeRequestType主要标识数据库产品类型，与Product保持一致。该字段规则如下： 当product为"dcdb"则输入"dcdb"， 当product为"mariadb"则输入"mariadb"， 当product为"mysql"则输入"mysql"， 当product为"cynosdb"则输入"mysql"， 当product为"postgres"则输入"postgres"。
         :type NodeRequestType: str
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _AsyncRequestId: 审计日志文件生成异步任务ID。
+        :param _AsyncRequestId: 审计日志文件生成异步任务ID。可通过[查询审计日志文件](https://cloud.tencent.com/document/product/1130/90371)获得。
         :type AsyncRequestId: int
         """
         self._Product = None
@@ -3948,7 +3980,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        r"""服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB， "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "postgres" - 云数据库 PostgreSQL。
         :rtype: str
         """
         return self._Product
@@ -3959,7 +3991,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
-        r"""与Product保持一致。如："dcdb" ,"mariadb"	
+        r"""NodeRequestType主要标识数据库产品类型，与Product保持一致。该字段规则如下： 当product为"dcdb"则输入"dcdb"， 当product为"mariadb"则输入"mariadb"， 当product为"mysql"则输入"mysql"， 当product为"cynosdb"则输入"mysql"， 当product为"postgres"则输入"postgres"。
         :rtype: str
         """
         return self._NodeRequestType
@@ -3970,7 +4002,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3981,7 +4013,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""审计日志文件生成异步任务ID。
+        r"""审计日志文件生成异步任务ID。可通过[查询审计日志文件](https://cloud.tencent.com/document/product/1130/90371)获得。
         :rtype: int
         """
         return self._AsyncRequestId
@@ -4041,11 +4073,11 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestIds: 需要删除的任务id列表
+        :param _AsyncRequestIds: 需要删除的任务id列表。可通过[查询健康报告生成任务列表](https://cloud.tencent.com/document/product/1130/57805)获取
         :type AsyncRequestIds: list of int
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._AsyncRequestIds = None
@@ -4054,7 +4086,7 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
-        r"""需要删除的任务id列表
+        r"""需要删除的任务id列表。可通过[查询健康报告生成任务列表](https://cloud.tencent.com/document/product/1130/57805)获取
         :rtype: list of int
         """
         return self._AsyncRequestIds
@@ -4065,7 +4097,7 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -4076,7 +4108,7 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -4353,11 +4385,11 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _FilterIds: 限流任务ID列表。
+        :param _FilterIds: 限流任务ID列表。通过接口[创建实例SQL限流任务](https://cloud.tencent.com/document/product/1130/72835)获得。
         :type FilterIds: list of int
-        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
         :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -4369,7 +4401,7 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -4380,7 +4412,7 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def FilterIds(self):
-        r"""限流任务ID列表。
+        r"""限流任务ID列表。通过接口[创建实例SQL限流任务](https://cloud.tencent.com/document/product/1130/72835)获得。
         :rtype: list of int
         """
         return self._FilterIds
@@ -4391,7 +4423,7 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def SessionToken(self):
-        r"""通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        r"""通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :rtype: str
         """
         return self._SessionToken
@@ -4464,12 +4496,11 @@ class DescribeAlarmTemplateRequest(AbstractModel):
         r"""
         :param _TemplateNameRegexp: 搜索字段
         :type TemplateNameRegexp: str
-        :param _Limit: 返回限制长度
+        :param _Limit: 返回限制长度，最大值: 50，默认值: 50
         :type Limit: int
-        :param _Offset: 偏置
+        :param _Offset: 偏置，最大值: 无限制，默认值: 0
         :type Offset: int
-        :param _Product: mysql -  mysql
-cynosdb -  tdsql-c
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL
         :type Product: str
         """
         self._TemplateNameRegexp = None
@@ -4490,7 +4521,7 @@ cynosdb -  tdsql-c
 
     @property
     def Limit(self):
-        r"""返回限制长度
+        r"""返回限制长度，最大值: 50，默认值: 50
         :rtype: int
         """
         return self._Limit
@@ -4501,7 +4532,7 @@ cynosdb -  tdsql-c
 
     @property
     def Offset(self):
-        r"""偏置
+        r"""偏置，最大值: 无限制，默认值: 0
         :rtype: int
         """
         return self._Offset
@@ -4512,8 +4543,7 @@ cynosdb -  tdsql-c
 
     @property
     def Product(self):
-        r"""mysql -  mysql
-cynosdb -  tdsql-c
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL
         :rtype: str
         """
         return self._Product
@@ -4838,7 +4868,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
         r"""
         :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
-        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :param _NodeRequestType: NodeRequestType主要标识数据库产品类型，与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
         :param _AuditSwitch: 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
         :type AuditSwitch: int
@@ -4846,7 +4876,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询数目，默认为20，最大为100。
         :type Limit: int
-        :param _Filters: 查询实例的搜索条件。
+        :param _Filters: 查询实例的搜索条件。Name包括：InstanceId， InstanceName。
         :type Filters: list of AuditInstanceFilter
         """
         self._Product = None
@@ -4869,7 +4899,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
-        r"""与Product保持一致。如："dcdb" ,"mariadb"。
+        r"""NodeRequestType主要标识数据库产品类型，与Product保持一致。如："dcdb" ,"mariadb"。
         :rtype: str
         """
         return self._NodeRequestType
@@ -4913,7 +4943,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询实例的搜索条件。
+        r"""查询实例的搜索条件。Name包括：InstanceId， InstanceName。
         :rtype: list of AuditInstanceFilter
         """
         return self._Filters
@@ -5019,7 +5049,7 @@ class DescribeAuditLogFilesRequest(AbstractModel):
         :type Product: str
         :param _NodeRequestType: 该字段规则如下： 当product为"dcdb"则输入"dcdb"， 当product为"mariadb"则输入"mariadb"， 当product为"mysql"则输入"mysql"， 当product为"cynosdb"则输入"mysql"， 当product为"postgres"则输入"postgres"。
         :type NodeRequestType: str
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -5056,7 +5086,7 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5174,9 +5204,9 @@ class DescribeDBAutonomyActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionId: 自治任务ID。
+        :param _ActionId: 自治任务ID。可通过 [DescribeDBAutonomyActions](https://cloud.tencent.com/document/product/1130/116974) 接口获取。
         :type ActionId: int
-        :param _InstanceId: 实列ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
@@ -5187,7 +5217,7 @@ class DescribeDBAutonomyActionRequest(AbstractModel):
 
     @property
     def ActionId(self):
-        r"""自治任务ID。
+        r"""自治任务ID。可通过 [DescribeDBAutonomyActions](https://cloud.tencent.com/document/product/1130/116974) 接口获取。
         :rtype: int
         """
         return self._ActionId
@@ -5198,7 +5228,7 @@ class DescribeDBAutonomyActionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实列ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5248,19 +5278,25 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
         :type TaskId: int
         :param _Type: 类型：支持RedisAutoScaleUp
         :type Type: str
-        :param _TriggerTime: 自治任务触发时间。
+        :param _TriggerTime: 自治任务触发时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type TriggerTime: str
-        :param _CreateTime: 自治任务创建时间。
+        :param _CreateTime: 自治任务创建时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type CreateTime: str
-        :param _UpdateTime: 自治任务更新时间。
+        :param _UpdateTime: 自治任务更新时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type UpdateTime: str
-        :param _FinishTime: 自治任务完成时间。
+        :param _FinishTime: 自治任务完成时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type FinishTime: str
         :param _ExpireTime: 剩余时间，单位：秒。
         :type ExpireTime: int
         :param _Reason: 触发原因。
         :type Reason: str
         :param _Status: 自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+其中：
+RUNNING    - 运行中  
+FINISHED   - 已完成  
+TERMINATED - 已终止  
+CANCELLED  - 已取消  
+
         :type Status: str
         :param _Info: 任务相关的图表等信息。
         :type Info: str
@@ -5327,7 +5363,7 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
 
     @property
     def TriggerTime(self):
-        r"""自治任务触发时间。
+        r"""自治任务触发时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._TriggerTime
@@ -5338,7 +5374,7 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""自治任务创建时间。
+        r"""自治任务创建时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._CreateTime
@@ -5349,7 +5385,7 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""自治任务更新时间。
+        r"""自治任务更新时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._UpdateTime
@@ -5360,7 +5396,7 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""自治任务完成时间。
+        r"""自治任务完成时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._FinishTime
@@ -5394,6 +5430,12 @@ class DescribeDBAutonomyActionResponse(AbstractModel):
     @property
     def Status(self):
         r"""自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+其中：
+RUNNING    - 运行中  
+FINISHED   - 已完成  
+TERMINATED - 已终止  
+CANCELLED  - 已取消  
+
         :rtype: str
         """
         return self._Status
@@ -5448,9 +5490,9 @@ class DescribeDBAutonomyActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventId: 事件ID。
+        :param _EventId: 事件ID。可通过 [DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) 接口获取。
         :type EventId: int
-        :param _InstanceId: 实列ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
@@ -5461,7 +5503,7 @@ class DescribeDBAutonomyActionsRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件ID。
+        r"""事件ID。可通过 [DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) 接口获取。
         :rtype: int
         """
         return self._EventId
@@ -5472,7 +5514,7 @@ class DescribeDBAutonomyActionsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实列ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5751,9 +5793,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+        :param _EventId: 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
         :type EventId: int
         :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
@@ -5764,7 +5806,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5775,7 +5817,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+        r"""事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
         :rtype: int
         """
         return self._EventId
@@ -5819,7 +5861,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
         r"""
         :param _DiagItem: 诊断项。
         :type DiagItem: str
-        :param _DiagType: 诊断类型。
+        :param _DiagType: 诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
         :type DiagType: str
         :param _EventId: 事件 ID 。
         :type EventId: int
@@ -5831,13 +5873,13 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :type Problem: str
         :param _Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type StartTime: str
         :param _Suggestions: 诊断建议，若无建议则输出为空。
         :type Suggestions: str
         :param _Metric: 保留字段。
         :type Metric: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。格式: "yyyy-MM-dd HH:mm:ss"
         :type EndTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5868,7 +5910,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def DiagType(self):
-        r"""诊断类型。
+        r"""诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
         :rtype: str
         """
         return self._DiagType
@@ -5934,7 +5976,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._StartTime
@@ -5967,7 +6009,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。
+        r"""结束时间。格式: "yyyy-MM-dd HH:mm:ss"
         :rtype: str
         """
         return self._EndTime
@@ -6199,9 +6241,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。结束时间与开始时间的间隔最大可为2天。
         :type StartTime: str
         :param _EndTime: 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
         :type EndTime: str
@@ -6215,7 +6257,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -6226,7 +6268,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，如“2019-09-10 12:13:14”。
+        r"""开始时间，如“2019-09-10 12:13:14”。结束时间与开始时间的间隔最大可为2天。
         :rtype: str
         """
         return self._StartTime
@@ -7469,13 +7511,13 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
         r"""
         :param _Product: 服务产品类型，支持值包括："mongodb" - 云数据库 。
         :type Product: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Db: 数据库名称。
         :type Db: str
         :param _Collection: 表名。
         :type Collection: str
-        :param _Signs: 签名。这个值是DescribelndexRecommendInfo接口返回
+        :param _Signs: 签名。这个值是 [DescribeIndexRecommendInfo](https://cloud.tencent.com/document/product/1130/98911) 接口返回
         :type Signs: list of str
         """
         self._Product = None
@@ -7497,7 +7539,7 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -7530,7 +7572,7 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Signs(self):
-        r"""签名。这个值是DescribelndexRecommendInfo接口返回
+        r"""签名。这个值是 [DescribeIndexRecommendInfo](https://cloud.tencent.com/document/product/1130/98911) 接口返回
         :rtype: list of str
         """
         return self._Signs
@@ -7610,7 +7652,7 @@ class DescribeIndexRecommendInfoRequest(AbstractModel):
         r"""
         :param _Product: 服务产品类型，支持值包括："mongodb" - 云数据库 。
         :type Product: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         """
         self._Product = None
@@ -7629,7 +7671,7 @@ class DescribeIndexRecommendInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -7934,6 +7976,165 @@ class DescribeMailProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMetricTopProxiesRequest(AbstractModel):
+    r"""DescribeMetricTopProxies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type EndTime: str
+        :param _InstanceId: 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :type Product: str
+        :param _Metric: 指标 eg: cpu_util, connections
+        :type Metric: str
+        :param _Limit: 默认前20条
+        :type Limit: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._Product = None
+        self._Metric = None
+        self._Limit = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Metric(self):
+        r"""指标 eg: cpu_util, connections
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Limit(self):
+        r"""默认前20条
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Metric = params.get("Metric")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetricTopProxiesResponse(AbstractModel):
+    r"""DescribeMetricTopProxies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 命令列表
+        :type Data: list of RedisMetricTopProxiesData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""命令列表
+        :rtype: list of RedisMetricTopProxiesData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = RedisMetricTopProxiesData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMySqlProcessListRequest(AbstractModel):
     r"""DescribeMySqlProcessList请求参数结构体
 
@@ -7941,7 +8142,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _ID: 线程的ID，用于筛选线程列表。
         :type ID: int
@@ -7951,9 +8152,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
         :type Host: str
         :param _DB: 线程的操作数据库，用于筛选线程列表。
         :type DB: str
-        :param _State: 线程的操作状态，用于筛选线程列表。
+        :param _State: 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
         :type State: str
-        :param _Command: 线程的执行类型，用于筛选线程列表。
+        :param _Command: 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
         :type Command: str
         :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
         :type Time: int
@@ -7981,7 +8182,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8036,7 +8237,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def State(self):
-        r"""线程的操作状态，用于筛选线程列表。
+        r"""线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
         :rtype: str
         """
         return self._State
@@ -8047,7 +8248,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Command(self):
-        r"""线程的执行类型，用于筛选线程列表。
+        r"""线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
         :rtype: str
         """
         return self._Command
@@ -8215,7 +8416,7 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Date: 查询日期，如2021-05-27，最早为30天前的日期。
         :type Date: str
@@ -8234,7 +8435,7 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8863,7 +9064,7 @@ class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
         :type Product: str
@@ -8873,9 +9074,15 @@ class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
         :type EndTime: str
         :param _CommandList: 需要分析的redis命令
         :type CommandList: list of str
-        :param _Metric: 监控指标，以逗号分隔
+        :param _Metric: 监控指标，包括：qps,latency_p99,latency_avg,latency_max，以逗号分隔
+其中：
+qps          - 每秒查询率  
+latency_p99  - 99分位延迟  
+latency_avg  - 平均延迟  
+latency_max  - 最大延迟  
+
         :type Metric: str
-        :param _Period: 监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+        :param _Period: Period，监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
         :type Period: int
         """
         self._InstanceId = None
@@ -8888,7 +9095,7 @@ class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8943,7 +9150,13 @@ class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
 
     @property
     def Metric(self):
-        r"""监控指标，以逗号分隔
+        r"""监控指标，包括：qps,latency_p99,latency_avg,latency_max，以逗号分隔
+其中：
+qps          - 每秒查询率  
+latency_p99  - 99分位延迟  
+latency_avg  - 平均延迟  
+latency_max  - 最大延迟  
+
         :rtype: str
         """
         return self._Metric
@@ -8954,7 +9167,7 @@ class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+        r"""Period，监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
         :rtype: int
         """
         return self._Period
@@ -9037,7 +9250,7 @@ class DescribeRedisCommandCostStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
         :type StartTime: str
@@ -9053,7 +9266,7 @@ class DescribeRedisCommandCostStatisticsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9166,7 +9379,7 @@ class DescribeRedisCommandOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
         :type StartTime: str
@@ -9182,7 +9395,7 @@ class DescribeRedisCommandOverviewRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9295,7 +9508,7 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Redis 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
@@ -9311,7 +9524,7 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Redis 实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9658,7 +9871,7 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Date: 查询日期，如2021-05-27，最早可为前30天的日期。
         :type Date: str
@@ -9686,7 +9899,7 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -10006,7 +10219,7 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _StartTime: 开始时间，如“2024-09-22T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
         :type StartTime: str
@@ -10031,7 +10244,7 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -10607,9 +10820,9 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。
         :type StartTime: str
         :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
         :type EndTime: str
@@ -10617,9 +10830,12 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
         :type Product: str
         :param _InstanceProxyId: Proxy节点ID。
         :type InstanceProxyId: str
-        :param _InstanceNodeId: 实列节点ID。
+        :param _InstanceNodeId: 实例节点ID。
         :type InstanceNodeId: str
         :param _Type: 查询类型，目前支持值：mongod，mongos。
+其中：
+mongod - MongoDB的数据存储节点
+mongos - MongoDB的路由节点
         :type Type: str
         """
         self._InstanceId = None
@@ -10632,7 +10848,7 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -10643,7 +10859,7 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，如“2019-09-10 12:13:14”。
+        r"""开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。
         :rtype: str
         """
         return self._StartTime
@@ -10687,7 +10903,7 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
 
     @property
     def InstanceNodeId(self):
-        r"""实列节点ID。
+        r"""实例节点ID。
         :rtype: str
         """
         return self._InstanceNodeId
@@ -10699,6 +10915,9 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
     @property
     def Type(self):
         r"""查询类型，目前支持值：mongod，mongos。
+其中：
+mongod - MongoDB的数据存储节点
+mongos - MongoDB的路由节点
         :rtype: str
         """
         return self._Type
@@ -11684,7 +11903,7 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _FilterIds: 任务ID列表，用于筛选任务列表。
         :type FilterIds: list of int
@@ -11706,7 +11925,7 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -11858,7 +12077,7 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Schema: 数据库名。
         :type Schema: str
@@ -11874,7 +12093,7 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -11945,9 +12164,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
         :type SqlText: str
         :param _SqlType: SQL类型。
         :type SqlType: str
-        :param _SqlTemplate: SQL模版内容。
+        :param _SqlTemplate: SQL模板内容。
         :type SqlTemplate: str
-        :param _SqlId: SQL模版ID。
+        :param _SqlId: SQL模板ID。
         :type SqlId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11994,7 +12213,7 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlTemplate(self):
-        r"""SQL模版内容。
+        r"""SQL模板内容。
         :rtype: str
         """
         return self._SqlTemplate
@@ -12005,7 +12224,7 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlId(self):
-        r"""SQL模版ID。
+        r"""SQL模板ID。
         :rtype: int
         """
         return self._SqlId
@@ -12201,11 +12420,19 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Limit: 返回的Top库数量，最大值为100，默认为20。
         :type Limit: int
         :param _SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+其中：
+DataLength       - 数据长度  
+IndexLength      - 索引长度  
+TotalLength      - 总长度  
+DataFree         - 空闲空间  
+FragRatio        - 碎片率  
+TableRows        - 表行数  
+PhysicalFileSize - 物理文件大小
         :type SortBy: str
         :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
@@ -12217,7 +12444,7 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -12240,6 +12467,14 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
     @property
     def SortBy(self):
         r"""筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+其中：
+DataLength       - 数据长度  
+IndexLength      - 索引长度  
+TotalLength      - 总长度  
+DataFree         - 空闲空间  
+FragRatio        - 碎片率  
+TableRows        - 表行数  
+PhysicalFileSize - 物理文件大小
         :rtype: str
         """
         return self._SortBy
@@ -12504,11 +12739,19 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Limit: 返回的Top表数量，最大值为100，默认为20。
         :type Limit: int
         :param _SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+其中：
+DataLength       - 数据长度  
+IndexLength      - 索引长度  
+TotalLength      - 总长度  
+DataFree         - 空闲空间  
+FragRatio        - 碎片率  
+TableRows        - 表行数  
+PhysicalFileSize - 物理文件大小
         :type SortBy: str
         :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
@@ -12520,7 +12763,7 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -12543,6 +12786,14 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
     @property
     def SortBy(self):
         r"""筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+其中：
+DataLength       - 数据长度  
+IndexLength      - 索引长度  
+TotalLength      - 总长度  
+DataFree         - 空闲空间  
+FragRatio        - 碎片率  
+TableRows        - 表行数  
+PhysicalFileSize - 物理文件大小
         :rtype: str
         """
         return self._SortBy
@@ -12789,7 +13040,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _SqlText: SQL语句。
         :type SqlText: str
@@ -12805,7 +13056,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -15126,11 +15377,12 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Stage: kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
         :type Stage: str
-        :param _Threads: 需要kill的sql会话ID列表，此参数用于Prepare阶段。
+        :param _Threads: 需要kill的sql会话ID列表，通过接口[查询实时线程列表](https://cloud.tencent.com/document/product/1130/57824)
+此参数用于Prepare阶段。
         :type Threads: list of int
         :param _SqlExecId: 执行ID，此参数用于Commit阶段。
         :type SqlExecId: str
@@ -15148,7 +15400,7 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -15170,7 +15422,8 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def Threads(self):
-        r"""需要kill的sql会话ID列表，此参数用于Prepare阶段。
+        r"""需要kill的sql会话ID列表，通过接口[查询实时线程列表](https://cloud.tencent.com/document/product/1130/57824)
+此参数用于Prepare阶段。
         :rtype: list of int
         """
         return self._Threads
@@ -15299,7 +15552,7 @@ class MailConfiguration(AbstractModel):
         :type SendMail: int
         :param _Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
         :type Region: list of str
-        :param _HealthStatus: 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+        :param _HealthStatus: 包含的健康等级，包括值：HEALTH-健康，SUB_HEALTH-亚健康，RISK-风险，HIGH_RISK-高危。
         :type HealthStatus: list of str
         :param _ContactPerson: 联系人id, 联系人/联系组不能都为空。
         :type ContactPerson: list of int
@@ -15336,7 +15589,7 @@ class MailConfiguration(AbstractModel):
 
     @property
     def HealthStatus(self):
-        r"""发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+        r"""包含的健康等级，包括值：HEALTH-健康，SUB_HEALTH-亚健康，RISK-风险，HIGH_RISK-高危。
         :rtype: list of str
         """
         return self._HealthStatus
@@ -15457,20 +15710,20 @@ class ModifyAlarmPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplyType: 类型
+        :param _ApplyType: 策略类型，固定值：instance， instance-代表实例类型策略
         :type ApplyType: str
-        :param _Enable: 开启策略
+        :param _Enable: 策略是否开启，0-代表开启，1-代表关闭
         :type Enable: int
-        :param _InstanceIds: 列表
+        :param _InstanceIds: 实例id列表，可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceIds: list of InstanceID
         :param _NewProfileLevel: User-动态关联该用户所有实例
 Instance-关联实例列表的实例
         :type NewProfileLevel: str
-        :param _NewProfileName: 新策略名
+        :param _NewProfileName: 新策略名，包含中文英文数字，长度在60个字符以内，不能以“_”开头。
         :type NewProfileName: str
-        :param _ProfileName: 旧策略名
+        :param _ProfileName: 旧策略名，包含中文英文数字，长度在60个字符以内，不能以“_”开头。
         :type ProfileName: str
-        :param _ProfileType: 策略类型
+        :param _ProfileType: 策略类型，固定值：alarm_policy
         :type ProfileType: str
         :param _Remark: 备注
         :type Remark: str
@@ -15480,9 +15733,9 @@ Instance-关联实例列表的实例
         :type TemplateInfo: list of TemplateInfo
         :param _QuickRule: 快速规则  支持包括fatal-致命, critical-严重,
 warning-告警,
-information-通知
+information-通知，与Rules互斥
         :type QuickRule: str
-        :param _Rules: 自定义规则
+        :param _Rules: 自定义规则，与QuickRule互斥。
         :type Rules: list of AlarmsRules
         """
         self._ApplyType = None
@@ -15500,7 +15753,7 @@ information-通知
 
     @property
     def ApplyType(self):
-        r"""类型
+        r"""策略类型，固定值：instance， instance-代表实例类型策略
         :rtype: str
         """
         return self._ApplyType
@@ -15511,7 +15764,7 @@ information-通知
 
     @property
     def Enable(self):
-        r"""开启策略
+        r"""策略是否开启，0-代表开启，1-代表关闭
         :rtype: int
         """
         return self._Enable
@@ -15522,7 +15775,7 @@ information-通知
 
     @property
     def InstanceIds(self):
-        r"""列表
+        r"""实例id列表，可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: list of InstanceID
         """
         return self._InstanceIds
@@ -15545,7 +15798,7 @@ Instance-关联实例列表的实例
 
     @property
     def NewProfileName(self):
-        r"""新策略名
+        r"""新策略名，包含中文英文数字，长度在60个字符以内，不能以“_”开头。
         :rtype: str
         """
         return self._NewProfileName
@@ -15556,7 +15809,7 @@ Instance-关联实例列表的实例
 
     @property
     def ProfileName(self):
-        r"""旧策略名
+        r"""旧策略名，包含中文英文数字，长度在60个字符以内，不能以“_”开头。
         :rtype: str
         """
         return self._ProfileName
@@ -15567,7 +15820,7 @@ Instance-关联实例列表的实例
 
     @property
     def ProfileType(self):
-        r"""策略类型
+        r"""策略类型，固定值：alarm_policy
         :rtype: str
         """
         return self._ProfileType
@@ -15613,7 +15866,7 @@ Instance-关联实例列表的实例
     def QuickRule(self):
         r"""快速规则  支持包括fatal-致命, critical-严重,
 warning-告警,
-information-通知
+information-通知，与Rules互斥
         :rtype: str
         """
         return self._QuickRule
@@ -15624,7 +15877,7 @@ information-通知
 
     @property
     def Rules(self):
-        r"""自定义规则
+        r"""自定义规则，与QuickRule互斥。
         :rtype: list of AlarmsRules
         """
         return self._Rules
@@ -15848,11 +16101,13 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
         r"""
         :param _InstanceConfs: 实例配置，包括巡检、概览开关等。
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
-        :param _Regions: 生效实例地域，取值为"All"，代表全地域。
+        :param _Regions: 生效实例地域，固定为"All"，代表全地域。
         :type Regions: str
         :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis。
         :type Product: str
         :param _InstanceIds: 指定更改巡检状态的实例ID。
+可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
         :type InstanceIds: list of str
         """
         self._InstanceConfs = None
@@ -15873,7 +16128,7 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def Regions(self):
-        r"""生效实例地域，取值为"All"，代表全地域。
+        r"""生效实例地域，固定为"All"，代表全地域。
         :rtype: str
         """
         return self._Regions
@@ -15896,6 +16151,8 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
     @property
     def InstanceIds(self):
         r"""指定更改巡检状态的实例ID。
+可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
         :rtype: list of str
         """
         return self._InstanceIds
@@ -15957,13 +16214,14 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _FilterIds: SQL限流任务ID列表。
+        :param _FilterIds: SQL限流任务ID列表。可通过接口[查询实例SQL限流任务列表
+](https://cloud.tencent.com/document/product/1130/72831)获得。
         :type FilterIds: list of int
-        :param _Status: 限流任务状态，取值支持TERMINATED - 终止。
+        :param _Status: 限流任务状态，仅支持传参TERMINATED - 终止。
         :type Status: str
-        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
         :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -15976,7 +16234,7 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -15987,7 +16245,8 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def FilterIds(self):
-        r"""SQL限流任务ID列表。
+        r"""SQL限流任务ID列表。可通过接口[查询实例SQL限流任务列表
+](https://cloud.tencent.com/document/product/1130/72831)获得。
         :rtype: list of int
         """
         return self._FilterIds
@@ -15998,7 +16257,7 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""限流任务状态，取值支持TERMINATED - 终止。
+        r"""限流任务状态，仅支持传参TERMINATED - 终止。
         :rtype: str
         """
         return self._Status
@@ -16009,7 +16268,7 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def SessionToken(self):
-        r"""通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        r"""通过 [VerifyUserAccount](https://cloud.tencent.com/document/product/1130/72828) 获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :rtype: str
         """
         return self._SessionToken
@@ -16083,7 +16342,7 @@ class ModifyUserAutonomyProfileRequest(AbstractModel):
         r"""
         :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
         :type ProfileType: str
-        :param _InstanceId: 实列ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
@@ -16108,7 +16367,7 @@ class ModifyUserAutonomyProfileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实列ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -16516,7 +16775,7 @@ class MonitorMetricSeriesData(AbstractModel):
         r"""
         :param _Series: 监控指标。
         :type Series: list of MonitorMetric
-        :param _Timestamp: 监控指标对应的时间戳。
+        :param _Timestamp: 监控指标对应的时间戳。（精度：秒）
         :type Timestamp: list of int
         """
         self._Series = None
@@ -16535,7 +16794,7 @@ class MonitorMetricSeriesData(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""监控指标对应的时间戳。
+        r"""监控指标对应的时间戳。（精度：秒）
         :rtype: list of int
         """
         return self._Timestamp
@@ -16853,6 +17112,7 @@ class Process(AbstractModel):
         :param _Id: 会话 ID。
         :type Id: int
         :param _Address: 访问来源，IP 地址和端口号。
+格式：IP:Port
         :type Address: str
         :param _FileDescriptor: 文件描述符。
         :type FileDescriptor: int
@@ -16890,6 +17150,7 @@ class Process(AbstractModel):
     @property
     def Address(self):
         r"""访问来源，IP 地址和端口号。
+格式：IP:Port
         :rtype: str
         """
         return self._Address
@@ -17062,7 +17323,7 @@ class ProfileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Language: 语言, 如"zh"。
+        :param _Language: 语言类型, 包含“zh”-中文，“en”-英文。
         :type Language: str
         :param _MailConfiguration: 邮件模板的内容。
         :type MailConfiguration: :class:`tencentcloud.dbbrain.v20210527.models.MailConfiguration`
@@ -17072,7 +17333,7 @@ class ProfileInfo(AbstractModel):
 
     @property
     def Language(self):
-        r"""语言, 如"zh"。
+        r"""语言类型, 包含“zh”-中文，“en”-英文。
         :rtype: str
         """
         return self._Language
@@ -17117,13 +17378,13 @@ class ReceiveInfo(AbstractModel):
         r"""
         :param _ReceiveGroup: 接收组
         :type ReceiveGroup: list of int
-        :param _EndReceiveTime: 最后接收时间
+        :param _EndReceiveTime: 最后接收时间，格式: "HH:mm:ss"
         :type EndReceiveTime: str
         :param _ReceiveName: 接收名
         :type ReceiveName: str
         :param _SendChannel: 推送渠道
         :type SendChannel: list of int
-        :param _StartReceiveTime: 开始时间
+        :param _StartReceiveTime: 开始时间，格式: "HH:mm:ss"
         :type StartReceiveTime: str
         :param _ReceiveUin: 接收用户列表
         :type ReceiveUin: list of ReceiveUin
@@ -17148,7 +17409,7 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def EndReceiveTime(self):
-        r"""最后接收时间
+        r"""最后接收时间，格式: "HH:mm:ss"
         :rtype: str
         """
         return self._EndReceiveTime
@@ -17181,7 +17442,7 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def StartReceiveTime(self):
-        r"""开始时间
+        r"""开始时间，格式: "HH:mm:ss"
         :rtype: str
         """
         return self._StartReceiveTime
@@ -17715,6 +17976,134 @@ class RedisKeySpaceData(AbstractModel):
         self._MaxElementSize = params.get("MaxElementSize")
         self._AveElementSize = params.get("AveElementSize")
         self._ShardId = params.get("ShardId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisMetricTopProxiesData(AbstractModel):
+    r"""Redis  DescribeMetricTopProxies 接口返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: host
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _InstanceProxyId: Proxy Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceProxyId: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _Value: 最新的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param _Timestamp: 时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: list of int non-negative
+        :param _Series: 序列数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Series: list of MonitorFloatMetric
+        """
+        self._Host = None
+        self._InstanceProxyId = None
+        self._Port = None
+        self._Value = None
+        self._Timestamp = None
+        self._Series = None
+
+    @property
+    def Host(self):
+        r"""host
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def InstanceProxyId(self):
+        r"""Proxy Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def Port(self):
+        r"""端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Value(self):
+        r"""最新的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Timestamp(self):
+        r"""时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Series(self):
+        r"""序列数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MonitorFloatMetric
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._Port = params.get("Port")
+        self._Value = params.get("Value")
+        self._Timestamp = params.get("Timestamp")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = MonitorFloatMetric()
+                obj._deserialize(item)
+                self._Series.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19509,7 +19898,7 @@ class SqlCostDistribution(AbstractModel):
         :type From: float
         :param _To: 分段耗时上边界，单位是秒。
         :type To: float
-        :param _Ratio: 耗时占比。
+        :param _Ratio: 耗时占比。单位（%）
         :type Ratio: float
         """
         self._Count = None
@@ -19552,7 +19941,7 @@ class SqlCostDistribution(AbstractModel):
 
     @property
     def Ratio(self):
-        r"""耗时占比。
+        r"""耗时占比。单位（%）
         :rtype: float
         """
         return self._Ratio
@@ -20318,9 +20707,9 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板id
+        :param _TemplateId: 模板id,通过接口[通知模板查询](https://cloud.tencent.com/document/product/1130/97726)获得。
         :type TemplateId: str
-        :param _TemplateName: 模板名
+        :param _TemplateName: 模板名,通过接口[通知模板查询](https://cloud.tencent.com/document/product/1130/97726)获得。
         :type TemplateName: str
         """
         self._TemplateId = None
@@ -20328,7 +20717,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板id
+        r"""模板id,通过接口[通知模板查询](https://cloud.tencent.com/document/product/1130/97726)获得。
         :rtype: str
         """
         return self._TemplateId
@@ -20339,7 +20728,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名
+        r"""模板名,通过接口[通知模板查询](https://cloud.tencent.com/document/product/1130/97726)获得。
         :rtype: str
         """
         return self._TemplateName
@@ -20516,7 +20905,7 @@ class UpdateAgentSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentId: Agent标识。
+        :param _AgentId: Agent标识。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type AgentId: str
         :param _Switch: 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
         :type Switch: str
@@ -20529,7 +20918,7 @@ class UpdateAgentSwitchRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""Agent标识。
+        r"""Agent标识。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._AgentId
@@ -20612,7 +21001,7 @@ class UpdateMonitorSwitchRequest(AbstractModel):
         r"""
         :param _Switch: 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
         :type Switch: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _Product: 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
         :type Product: str
@@ -20634,7 +21023,7 @@ class UpdateMonitorSwitchRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -20802,7 +21191,7 @@ class VerifyUserAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _User: 数据库账号名。
         :type User: str
@@ -20818,7 +21207,7 @@ class VerifyUserAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId

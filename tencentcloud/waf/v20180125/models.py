@@ -20281,6 +20281,8 @@ class DescribeModuleStatusResponse(AbstractModel):
         :type ApiProtection: int
         :param _RateLimit: 限流模块开关
         :type RateLimit: int
+        :param _GzipAnalysis: gzip 开关
+        :type GzipAnalysis: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20291,6 +20293,7 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiLeakage = None
         self._ApiProtection = None
         self._RateLimit = None
+        self._GzipAnalysis = None
         self._RequestId = None
 
     @property
@@ -20371,6 +20374,17 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._RateLimit = RateLimit
 
     @property
+    def GzipAnalysis(self):
+        r"""gzip 开关
+        :rtype: int
+        """
+        return self._GzipAnalysis
+
+    @GzipAnalysis.setter
+    def GzipAnalysis(self, GzipAnalysis):
+        self._GzipAnalysis = GzipAnalysis
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -20390,6 +20404,7 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiLeakage = params.get("AntiLeakage")
         self._ApiProtection = params.get("ApiProtection")
         self._RateLimit = params.get("RateLimit")
+        self._GzipAnalysis = params.get("GzipAnalysis")
         self._RequestId = params.get("RequestId")
 
 
@@ -38050,6 +38065,8 @@ class ModifyModuleStatusRequest(AbstractModel):
         :type AntiLeakage: int
         :param _RateLimit: 限流模块开关，0或1
         :type RateLimit: int
+        :param _GzipAnalysis: gzip 开关
+        :type GzipAnalysis: int
         """
         self._Domain = None
         self._WebSecurity = None
@@ -38059,6 +38076,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._AntiTamper = None
         self._AntiLeakage = None
         self._RateLimit = None
+        self._GzipAnalysis = None
 
     @property
     def Domain(self):
@@ -38148,6 +38166,17 @@ class ModifyModuleStatusRequest(AbstractModel):
     def RateLimit(self, RateLimit):
         self._RateLimit = RateLimit
 
+    @property
+    def GzipAnalysis(self):
+        r"""gzip 开关
+        :rtype: int
+        """
+        return self._GzipAnalysis
+
+    @GzipAnalysis.setter
+    def GzipAnalysis(self, GzipAnalysis):
+        self._GzipAnalysis = GzipAnalysis
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -38158,6 +38187,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._AntiTamper = params.get("AntiTamper")
         self._AntiLeakage = params.get("AntiLeakage")
         self._RateLimit = params.get("RateLimit")
+        self._GzipAnalysis = params.get("GzipAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

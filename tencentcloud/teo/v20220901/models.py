@@ -7253,6 +7253,100 @@ class ConfigGroupVersionInfo(AbstractModel):
         
 
 
+class ConfirmMultiPathGatewayOriginACLRequest(AbstractModel):
+    r"""ConfirmMultiPathGatewayOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _OriginACLVersion: 回源 IP 版本号。
+        :type OriginACLVersion: int
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._OriginACLVersion = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        r"""网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def OriginACLVersion(self):
+        r"""回源 IP 版本号。
+        :rtype: int
+        """
+        return self._OriginACLVersion
+
+    @OriginACLVersion.setter
+    def OriginACLVersion(self, OriginACLVersion):
+        self._OriginACLVersion = OriginACLVersion
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._OriginACLVersion = params.get("OriginACLVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfirmMultiPathGatewayOriginACLResponse(AbstractModel):
+    r"""ConfirmMultiPathGatewayOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ConfirmOriginACLUpdateRequest(AbstractModel):
     r"""ConfirmOriginACLUpdate请求参数结构体
 
@@ -7315,6 +7409,48 @@ class ConfirmOriginACLUpdateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ContentCompressionParameters(AbstractModel):
+    r"""内容压缩配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 内容压缩配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+当 Switch 为 on 时，将同时支持 brotli 和 gzip 压缩算法。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""内容压缩配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+当 Switch 为 on 时，将同时支持 brotli 和 gzip 压缩算法。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ContentIdentifier(AbstractModel):
@@ -21219,6 +21355,102 @@ class DescribeMultiPathGatewayLineResponse(AbstractModel):
         if params.get("Line") is not None:
             self._Line = MultiPathGatewayLine()
             self._Line._deserialize(params.get("Line"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayOriginACLRequest(AbstractModel):
+    r"""DescribeMultiPathGatewayOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        r"""网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayOriginACLResponse(AbstractModel):
+    r"""DescribeMultiPathGatewayOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MultiPathGatewayOriginACLInfo: 多通道网关实例与回源 IP 网段的绑定关系详情。
+        :type MultiPathGatewayOriginACLInfo: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayOriginACLInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MultiPathGatewayOriginACLInfo = None
+        self._RequestId = None
+
+    @property
+    def MultiPathGatewayOriginACLInfo(self):
+        r"""多通道网关实例与回源 IP 网段的绑定关系详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayOriginACLInfo`
+        """
+        return self._MultiPathGatewayOriginACLInfo
+
+    @MultiPathGatewayOriginACLInfo.setter
+    def MultiPathGatewayOriginACLInfo(self, MultiPathGatewayOriginACLInfo):
+        self._MultiPathGatewayOriginACLInfo = MultiPathGatewayOriginACLInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MultiPathGatewayOriginACLInfo") is not None:
+            self._MultiPathGatewayOriginACLInfo = MultiPathGatewayOriginACLInfo()
+            self._MultiPathGatewayOriginACLInfo._deserialize(params.get("MultiPathGatewayOriginACLInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -38526,6 +38758,100 @@ class ModifyMultiPathGatewaySecretKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMultiPathGatewayStatusRequest(AbstractModel):
+    r"""ModifyMultiPathGatewayStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayStatus: 修改网关的启用停用状态，取值有：<li> offline：停用；</li><li> online：启用。</li>
+        :type GatewayStatus: str
+        """
+        self._GatewayId = None
+        self._ZoneId = None
+        self._GatewayStatus = None
+
+    @property
+    def GatewayId(self):
+        r"""网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayStatus(self):
+        r"""修改网关的启用停用状态，取值有：<li> offline：停用；</li><li> online：启用。</li>
+        :rtype: str
+        """
+        return self._GatewayStatus
+
+    @GatewayStatus.setter
+    def GatewayStatus(self, GatewayStatus):
+        self._GatewayStatus = GatewayStatus
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayStatus = params.get("GatewayStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewayStatusResponse(AbstractModel):
+    r"""ModifyMultiPathGatewayStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginACLRequest(AbstractModel):
     r"""ModifyOriginACL请求参数结构体
 
@@ -41059,6 +41385,80 @@ class MultiPathGateway(AbstractModel):
         
 
 
+class MultiPathGatewayCurrentOriginACL(AbstractModel):
+    r"""当前生效的回源 IP 网段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntireAddresses: 回源 IP 网段详情。
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _Version: 版本号。
+        :type Version: int
+        :param _IsPlaned: 本参数用于记录当前版本生效前是否完成「我已更新至最新回源 IP 网段」的确认。取值有：
+<li>true：已完成更新至最新回源 IP 的确认；</li>
+<li>false：未完成更新至最新回源 IP 的确认；</li>
+注意：本参数返回 false 时，请及时确认您的源站防火墙配置是否已更新至最新的回源 IP 网段，以避免出现回源失败。
+        :type IsPlaned: str
+        """
+        self._EntireAddresses = None
+        self._Version = None
+        self._IsPlaned = None
+
+    @property
+    def EntireAddresses(self):
+        r"""回源 IP 网段详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def Version(self):
+        r"""版本号。
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def IsPlaned(self):
+        r"""本参数用于记录当前版本生效前是否完成「我已更新至最新回源 IP 网段」的确认。取值有：
+<li>true：已完成更新至最新回源 IP 的确认；</li>
+<li>false：未完成更新至最新回源 IP 的确认；</li>
+注意：本参数返回 false 时，请及时确认您的源站防火墙配置是否已更新至最新的回源 IP 网段，以避免出现回源失败。
+        :rtype: str
+        """
+        return self._IsPlaned
+
+    @IsPlaned.setter
+    def IsPlaned(self, IsPlaned):
+        self._IsPlaned = IsPlaned
+
+
+    def _deserialize(self, params):
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        self._Version = params.get("Version")
+        self._IsPlaned = params.get("IsPlaned")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MultiPathGatewayLine(AbstractModel):
     r"""多通道安全网关线路信息
 
@@ -41157,6 +41557,165 @@ class MultiPathGatewayLine(AbstractModel):
         self._LineAddress = params.get("LineAddress")
         self._ProxyId = params.get("ProxyId")
         self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiPathGatewayNextOriginACL(AbstractModel):
+    r"""当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前生效的回源 IP 网段的对比。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 版本号。
+        :type Version: int
+        :param _EntireAddresses: 回源 IP 网段详情。
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _AddedAddresses: 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段新增的部分。
+        :type AddedAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _RemovedAddresses: 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段删减的部分。
+        :type RemovedAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _NoChangeAddresses: 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段无变化的部分。
+        :type NoChangeAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        self._Version = None
+        self._EntireAddresses = None
+        self._AddedAddresses = None
+        self._RemovedAddresses = None
+        self._NoChangeAddresses = None
+
+    @property
+    def Version(self):
+        r"""版本号。
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def EntireAddresses(self):
+        r"""回源 IP 网段详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def AddedAddresses(self):
+        r"""最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段新增的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._AddedAddresses
+
+    @AddedAddresses.setter
+    def AddedAddresses(self, AddedAddresses):
+        self._AddedAddresses = AddedAddresses
+
+    @property
+    def RemovedAddresses(self):
+        r"""最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段删减的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._RemovedAddresses
+
+    @RemovedAddresses.setter
+    def RemovedAddresses(self, RemovedAddresses):
+        self._RemovedAddresses = RemovedAddresses
+
+    @property
+    def NoChangeAddresses(self):
+        r"""最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段无变化的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._NoChangeAddresses
+
+    @NoChangeAddresses.setter
+    def NoChangeAddresses(self, NoChangeAddresses):
+        self._NoChangeAddresses = NoChangeAddresses
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        if params.get("AddedAddresses") is not None:
+            self._AddedAddresses = Addresses()
+            self._AddedAddresses._deserialize(params.get("AddedAddresses"))
+        if params.get("RemovedAddresses") is not None:
+            self._RemovedAddresses = Addresses()
+            self._RemovedAddresses._deserialize(params.get("RemovedAddresses"))
+        if params.get("NoChangeAddresses") is not None:
+            self._NoChangeAddresses = Addresses()
+            self._NoChangeAddresses._deserialize(params.get("NoChangeAddresses"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiPathGatewayOriginACLInfo(AbstractModel):
+    r"""多通道网关示例实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MultiPathGatewayCurrentOriginACL: 当前生效的回源 IP 网段。
+        :type MultiPathGatewayCurrentOriginACL: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayCurrentOriginACL`
+        :param _MultiPathGatewayNextOriginACL: 当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新时该字段为空。
+        :type MultiPathGatewayNextOriginACL: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayNextOriginACL`
+        """
+        self._MultiPathGatewayCurrentOriginACL = None
+        self._MultiPathGatewayNextOriginACL = None
+
+    @property
+    def MultiPathGatewayCurrentOriginACL(self):
+        r"""当前生效的回源 IP 网段。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayCurrentOriginACL`
+        """
+        return self._MultiPathGatewayCurrentOriginACL
+
+    @MultiPathGatewayCurrentOriginACL.setter
+    def MultiPathGatewayCurrentOriginACL(self, MultiPathGatewayCurrentOriginACL):
+        self._MultiPathGatewayCurrentOriginACL = MultiPathGatewayCurrentOriginACL
+
+    @property
+    def MultiPathGatewayNextOriginACL(self):
+        r"""当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新时该字段为空。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayNextOriginACL`
+        """
+        return self._MultiPathGatewayNextOriginACL
+
+    @MultiPathGatewayNextOriginACL.setter
+    def MultiPathGatewayNextOriginACL(self, MultiPathGatewayNextOriginACL):
+        self._MultiPathGatewayNextOriginACL = MultiPathGatewayNextOriginACL
+
+
+    def _deserialize(self, params):
+        if params.get("MultiPathGatewayCurrentOriginACL") is not None:
+            self._MultiPathGatewayCurrentOriginACL = MultiPathGatewayCurrentOriginACL()
+            self._MultiPathGatewayCurrentOriginACL._deserialize(params.get("MultiPathGatewayCurrentOriginACL"))
+        if params.get("MultiPathGatewayNextOriginACL") is not None:
+            self._MultiPathGatewayNextOriginACL = MultiPathGatewayNextOriginACL()
+            self._MultiPathGatewayNextOriginACL._deserialize(params.get("MultiPathGatewayNextOriginACL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43159,6 +43718,48 @@ class OriginProtectionInfo(AbstractModel):
         if params.get("DiffIPWhitelist") is not None:
             self._DiffIPWhitelist = DiffIPWhitelist()
             self._DiffIPWhitelist._deserialize(params.get("DiffIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginPullProtocolParameters(AbstractModel):
+    r"""回源 HTTPS 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 回源协议配置，取值有：
+<li>http：使用 HTTP 协议回源；</li>
+<li>https：使用 HTTPS 协议回源；</li>
+<li>follow：协议跟随。</li>
+        :type Protocol: str
+        """
+        self._Protocol = None
+
+    @property
+    def Protocol(self):
+        r"""回源协议配置，取值有：
+<li>http：使用 HTTP 协议回源；</li>
+<li>https：使用 HTTPS 协议回源；</li>
+<li>follow：协议跟随。</li>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47330,6 +47931,9 @@ class RuleEngineAction(AbstractModel):
         :param _ForceRedirectHTTPSParameters: 访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _OriginPullProtocolParameters: 回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         :param _CompressionParameters: 智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
@@ -47387,6 +47991,8 @@ class RuleEngineAction(AbstractModel):
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
         :param _VaryParameters: Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
         :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
+        :param _ContentCompressionParameters: 内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :type ContentCompressionParameters: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
         """
         self._Name = None
         self._CacheParameters = None
@@ -47405,6 +48011,7 @@ class RuleEngineAction(AbstractModel):
         self._UpstreamHTTP2Parameters = None
         self._HostHeaderParameters = None
         self._ForceRedirectHTTPSParameters = None
+        self._OriginPullProtocolParameters = None
         self._CompressionParameters = None
         self._HSTSParameters = None
         self._ClientIPHeaderParameters = None
@@ -47424,6 +48031,7 @@ class RuleEngineAction(AbstractModel):
         self._ResponseSpeedLimitParameters = None
         self._SetContentIdentifierParameters = None
         self._VaryParameters = None
+        self._ContentCompressionParameters = None
 
     @property
     def Name(self):
@@ -47665,6 +48273,18 @@ class RuleEngineAction(AbstractModel):
         self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters
 
     @property
+    def OriginPullProtocolParameters(self):
+        r"""回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
+        """
+        return self._OriginPullProtocolParameters
+
+    @OriginPullProtocolParameters.setter
+    def OriginPullProtocolParameters(self, OriginPullProtocolParameters):
+        self._OriginPullProtocolParameters = OriginPullProtocolParameters
+
+    @property
     def CompressionParameters(self):
         r"""智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -47892,6 +48512,17 @@ class RuleEngineAction(AbstractModel):
     def VaryParameters(self, VaryParameters):
         self._VaryParameters = VaryParameters
 
+    @property
+    def ContentCompressionParameters(self):
+        r"""内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
+        """
+        return self._ContentCompressionParameters
+
+    @ContentCompressionParameters.setter
+    def ContentCompressionParameters(self, ContentCompressionParameters):
+        self._ContentCompressionParameters = ContentCompressionParameters
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -47943,6 +48574,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("ForceRedirectHTTPSParameters") is not None:
             self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters()
             self._ForceRedirectHTTPSParameters._deserialize(params.get("ForceRedirectHTTPSParameters"))
+        if params.get("OriginPullProtocolParameters") is not None:
+            self._OriginPullProtocolParameters = OriginPullProtocolParameters()
+            self._OriginPullProtocolParameters._deserialize(params.get("OriginPullProtocolParameters"))
         if params.get("CompressionParameters") is not None:
             self._CompressionParameters = CompressionParameters()
             self._CompressionParameters._deserialize(params.get("CompressionParameters"))
@@ -48000,6 +48634,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("VaryParameters") is not None:
             self._VaryParameters = VaryParameters()
             self._VaryParameters._deserialize(params.get("VaryParameters"))
+        if params.get("ContentCompressionParameters") is not None:
+            self._ContentCompressionParameters = ContentCompressionParameters()
+            self._ContentCompressionParameters._deserialize(params.get("ContentCompressionParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

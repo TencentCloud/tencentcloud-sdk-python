@@ -1015,6 +1015,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMetricTopProxies(self, request):
+        r"""获取指定时间段内Redis 访问命令 cost top N
+
+        :param request: Request instance for DescribeMetricTopProxies.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMetricTopProxiesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMetricTopProxiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMetricTopProxies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMetricTopProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMySqlProcessList(self, request):
         r"""查询关系型数据库的实时线程列表。
 

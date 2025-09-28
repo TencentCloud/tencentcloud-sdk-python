@@ -1088,6 +1088,8 @@ class BackupStorageLocation(AbstractModel):
         :param _Path: 对象存储桶路径
         :type Path: str
         :param _State: 存储仓库状态
+- Available: 可用
+- Unavailable: 不可用
         :type State: str
         :param _Message: 详细状态信息	
         :type Message: str
@@ -1161,6 +1163,8 @@ class BackupStorageLocation(AbstractModel):
     @property
     def State(self):
         r"""存储仓库状态
+- Available: 可用
+- Unavailable: 不可用
         :rtype: str
         """
         return self._State
@@ -2324,7 +2328,10 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 1. 集群版本必须为1.14及以上；
 2. 系统镜像必须是: Tencent Linux 2.4；
         :type KubeProxyMode: str
-        :param _NetworkType: 集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
+        :param _NetworkType: 集群网络类型，默认为GR。
+- GR: 全局路由
+- VPC-CNI: VPC-CNI模式
+- CiliumOverlay: CiliumOverlay模式
         :type NetworkType: str
         :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
         :type NodeNameType: str
@@ -2541,7 +2548,10 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def NetworkType(self):
-        r"""集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
+        r"""集群网络类型，默认为GR。
+- GR: 全局路由
+- VPC-CNI: VPC-CNI模式
+- CiliumOverlay: CiliumOverlay模式
         :rtype: str
         """
         return self._NetworkType
@@ -18863,6 +18873,10 @@ class DescribeEncryptionStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 加密状态
+- Opening: 开启中
+- Opened: 已开启
+- Closing: 关闭中
+- Closed: 已关闭
         :type Status: str
         :param _ErrorMsg: 加密错误信息
         :type ErrorMsg: str
@@ -18876,6 +18890,10 @@ class DescribeEncryptionStatusResponse(AbstractModel):
     @property
     def Status(self):
         r"""加密状态
+- Opening: 开启中
+- Opened: 已开启
+- Closing: 关闭中
+- Closed: 已关闭
         :rtype: str
         """
         return self._Status
@@ -31905,7 +31923,7 @@ class KMSConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: kms id
+        :param _KeyId: kms id，可以在密钥管理控制台获取
         :type KeyId: str
         :param _KmsRegion: kms 地域
         :type KmsRegion: str
@@ -31915,7 +31933,7 @@ class KMSConfiguration(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""kms id
+        r"""kms id，可以在密钥管理控制台获取
         :rtype: str
         """
         return self._KeyId
@@ -41927,7 +41945,7 @@ class RegionInstance(AbstractModel):
         :type RegionName: str
         :param _RegionId: 地域ID
         :type RegionId: int
-        :param _Status: 地域状态
+        :param _Status: 地域状态\n- alluser: 所有用户可见
         :type Status: str
         :param _FeatureGates: 地域特性开关(按照JSON的形式返回所有属性)
         :type FeatureGates: str
@@ -41967,7 +41985,7 @@ class RegionInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""地域状态
+        r"""地域状态\n- alluser: 所有用户可见
         :rtype: str
         """
         return self._Status
@@ -48314,7 +48332,7 @@ class VersionInstance(AbstractModel):
         :type Name: str
         :param _Version: 版本信息
         :type Version: str
-        :param _Remark: Remark
+        :param _Remark: 备注
         :type Remark: str
         """
         self._Name = None
@@ -48345,7 +48363,7 @@ class VersionInstance(AbstractModel):
 
     @property
     def Remark(self):
-        r"""Remark
+        r"""备注
         :rtype: str
         """
         return self._Remark

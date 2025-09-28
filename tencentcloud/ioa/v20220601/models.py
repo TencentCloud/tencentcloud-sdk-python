@@ -1391,6 +1391,8 @@ class DescribeAccountGroupsData(AbstractModel):
         :type LatestSyncResult: str
         :param _LatestSyncTime: 最新一次同步任务的结束时间
         :type LatestSyncTime: str
+        :param _NamePathArr: 分组名称数组
+        :type NamePathArr: list of str
         """
         self._NamePath = None
         self._IdPathArr = None
@@ -1412,6 +1414,7 @@ class DescribeAccountGroupsData(AbstractModel):
         self._ReadOnly = None
         self._LatestSyncResult = None
         self._LatestSyncTime = None
+        self._NamePathArr = None
 
     @property
     def NamePath(self):
@@ -1633,6 +1636,17 @@ class DescribeAccountGroupsData(AbstractModel):
     def LatestSyncTime(self, LatestSyncTime):
         self._LatestSyncTime = LatestSyncTime
 
+    @property
+    def NamePathArr(self):
+        r"""分组名称数组
+        :rtype: list of str
+        """
+        return self._NamePathArr
+
+    @NamePathArr.setter
+    def NamePathArr(self, NamePathArr):
+        self._NamePathArr = NamePathArr
+
 
     def _deserialize(self, params):
         self._NamePath = params.get("NamePath")
@@ -1655,6 +1669,7 @@ class DescribeAccountGroupsData(AbstractModel):
         self._ReadOnly = params.get("ReadOnly")
         self._LatestSyncResult = params.get("LatestSyncResult")
         self._LatestSyncTime = params.get("LatestSyncTime")
+        self._NamePathArr = params.get("NamePathArr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

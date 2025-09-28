@@ -1743,11 +1743,12 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
-        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
+        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
         :type SrcAccessType: str
-        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
+        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
         :type DstAccessType: str
         :param _Objects: 同步库表对象信息
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
@@ -1798,7 +1799,8 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23
+        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -1809,7 +1811,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        r"""源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
+        r"""源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
         :rtype: str
         """
         return self._SrcAccessType
@@ -1820,7 +1822,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        r"""目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
+        r"""目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
         :rtype: str
         """
         return self._DstAccessType
@@ -2161,14 +2163,16 @@ class ContinueMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -2225,14 +2229,16 @@ class ContinueSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -2289,14 +2295,16 @@ class CreateCheckSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -2496,7 +2504,8 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例id
+        :param _SubscribeId: 订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :type SubscribeId: str
         :param _ConsumerGroupName: 消费组名称，以数字、字母(大小写)或者_ - .开头，以数字、字母(大小写)结尾。实际生成的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
         :type ConsumerGroupName: str
@@ -2515,7 +2524,8 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例id
+        r"""订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :rtype: str
         """
         return self._SubscribeId
@@ -2620,14 +2630,16 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -2875,14 +2887,14 @@ class CreateModifyCheckSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -2939,14 +2951,14 @@ class CreateSubscribeCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -4835,13 +4847,14 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :type SubscribeId: str
         :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
-请务必保证消费组名称正确。
+请务必保证消费组名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type ConsumerGroupName: str
         :param _AccountName: 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
-请务必保证账户名称正确。
+请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type AccountName: str
         """
         self._SubscribeId = None
@@ -4850,7 +4863,8 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :rtype: str
         """
         return self._SubscribeId
@@ -4862,7 +4876,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
     @property
     def ConsumerGroupName(self):
         r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
-请务必保证消费组名称正确。
+请务必保证消费组名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -4874,7 +4888,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
     @property
     def AccountName(self):
         r"""账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
-请务必保证账户名称正确。
+请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._AccountName
@@ -4933,14 +4947,16 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
+        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -5079,9 +5095,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :type JobId: str
-        :param _CompareTaskId: 校验任务 Id
+        :param _CompareTaskId: 校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :type CompareTaskId: str
         :param _DifferenceLimit: 校验不一致结果的 limit
         :type DifferenceLimit: int
@@ -5113,7 +5129,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -5124,7 +5140,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 Id
+        r"""校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :rtype: str
         """
         return self._CompareTaskId
@@ -5471,7 +5487,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例id
+        :param _SubscribeId: 订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _Offset: 返回记录的起始偏移量。默认0
         :type Offset: int
@@ -5484,7 +5500,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例id
+        r"""订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -5834,14 +5850,16 @@ class DescribeMigrationCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -6718,14 +6736,16 @@ class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -6864,7 +6884,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _Time: 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
         :type Time: str
@@ -6874,7 +6894,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -7137,14 +7157,14 @@ class DescribeSubscribeDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""订阅实例ID
+        r"""订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -8003,14 +8023,14 @@ class DescribeSubscribeReturnableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID
+        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -8396,14 +8416,14 @@ class DestroyIsolatedSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID
+        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -8460,14 +8480,16 @@ class DestroyMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -8524,14 +8546,16 @@ class DestroySyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -10699,14 +10723,14 @@ class IsolateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""订阅实例ID
+        r"""订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -10763,14 +10787,14 @@ class IsolateSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -12013,13 +12037,13 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
-请务必保证消费组名称正确。
+请务必保证消费组名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type ConsumerGroupName: str
         :param _AccountName: 账户名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
-请务必保证账户名称正确。
+请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type AccountName: str
         :param _Description: 修改之后的消费组描述
         :type Description: str
@@ -12031,7 +12055,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -12043,7 +12067,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
     @property
     def ConsumerGroupName(self):
         r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。
-请务必保证消费组名称正确。
+请务必保证消费组名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -12055,7 +12079,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
     @property
     def AccountName(self):
         r"""账户名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
-请务必保证账户名称正确。
+请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._AccountName
@@ -12126,11 +12150,12 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :type SubscribeId: str
-        :param _AccountName: 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}
+        :param _AccountName: 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type AccountName: str
-        :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+        :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type ConsumerGroupName: str
         :param _NewPassword: 新密码。字符长度不小于3，不大于32
         :type NewPassword: str
@@ -12142,7 +12167,8 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :rtype: str
         """
         return self._SubscribeId
@@ -12153,7 +12179,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}
+        r"""账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._AccountName
@@ -12164,7 +12190,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+        r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -12811,7 +12837,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
         :type AutoRenewFlag: int
@@ -12821,7 +12847,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例ID
+        r"""订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -12890,7 +12916,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _SubscribeName: 修改后的数据订阅实例的名称，长度限制为[1,60]
         :type SubscribeName: str
@@ -12900,7 +12926,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID
+        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -12969,11 +12995,11 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         :param _SubscribeObjectType: 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
         :type SubscribeObjectType: int
-        :param _Objects: 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则改字段必填。
+        :param _Objects: 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
         :type Objects: list of ModifiedSubscribeObject
         :param _DistributeRules: kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
         :type DistributeRules: list of DistributeRule
@@ -12993,7 +13019,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID
+        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -13015,7 +13041,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def Objects(self):
-        r"""修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则改字段必填。
+        r"""修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
         :rtype: list of ModifiedSubscribeObject
         """
         return self._Objects
@@ -13906,14 +13932,16 @@ class PauseMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -13970,14 +13998,16 @@ class PauseSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -14453,14 +14483,16 @@ class RecoverMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -14517,14 +14549,16 @@ class RecoverSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23
+        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -14720,14 +14754,16 @@ class ResetSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID
+        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+
         :rtype: str
         """
         return self._SubscribeId
@@ -15006,14 +15042,14 @@ class ResumeSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -15070,14 +15106,16 @@ class ResumeSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15734,14 +15772,16 @@ class StartModifySyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15798,14 +15838,14 @@ class StartSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -16501,14 +16541,16 @@ class StopSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId

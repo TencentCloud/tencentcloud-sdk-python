@@ -3444,14 +3444,14 @@ class DeleteParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板 ID。
+        :param _TemplateId: 参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        r"""参数模板 ID。
+        r"""参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
         :rtype: str
         """
         return self._TemplateId
@@ -7471,9 +7471,9 @@ class DescribeInstanceShardsRequest(AbstractModel):
         r"""
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _FilterSlave: 是否过滤掉从节信息。
+        :param _FilterSlave: 指定是否过滤掉从节信息。
 - true；过滤从节点。
-- false：不过滤。
+- false：不过滤。默认为 false。
         :type FilterSlave: bool
         """
         self._InstanceId = None
@@ -7492,9 +7492,9 @@ class DescribeInstanceShardsRequest(AbstractModel):
 
     @property
     def FilterSlave(self):
-        r"""是否过滤掉从节信息。
+        r"""指定是否过滤掉从节信息。
 - true；过滤从节点。
-- false：不过滤。
+- false：不过滤。默认为 false。
         :rtype: bool
         """
         return self._FilterSlave
@@ -10615,11 +10615,11 @@ class DescribeTaskListRequest(AbstractModel):
         r"""
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: 实例名称。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例名称。
         :type InstanceName: str
         :param _Limit: 每页输出的任务列表大小。默认为 20，最多输出100条。
         :type Limit: int
-        :param _Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        :param _Offset: 分页偏移量。取值需为 Limit 的整数倍：offset=limit*(页码-1)，默认值为0。
         :type Offset: int
         :param _ProjectIds: 该字段已废弃, 请忽略, 项目 ID
         :type ProjectIds: list of int
@@ -10724,7 +10724,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""实例名称。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例名称。
         :rtype: str
         """
         return self._InstanceName
@@ -10746,7 +10746,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        r"""分页偏移量。取值需为 Limit 的整数倍：offset=limit*(页码-1)，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -12043,17 +12043,21 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 - 0：按量计费。
 - 1：包年包月。
         :type BillingMode: int
-        :param _ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+        :param _ZoneId: 实例所属的可用区 ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+**说明**：请在 **ZoneId** 与 **ZoneName** 中至少指定一个参数。
         :type ZoneId: int
-        :param _RedisShardNum: 实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
+        :param _RedisShardNum: 实例分片数量。
+- 标准架构需要配置分片数量为1。
+- 集群架构分片数量支持设置为1、3、5、8、12、16、24、32、40、48、64、80、96、128。
         :type RedisShardNum: int
-        :param _RedisReplicasNum: 实例副本数量。2.8 标准架构无需配置副本数量。
+        :param _RedisReplicasNum: 实例副本数量。取值范围为：1、2、3、4、5。
         :type RedisReplicasNum: int
         :param _ReplicasReadonly: 是否支持副本只读。Redis2.8标准架构、CKV标准架构无需填写。
 - true：无需支持副本只读。
 - false：需支持。
         :type ReplicasReadonly: bool
         :param _ZoneName: 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+**说明**：请在 **ZoneId** 与 **ZoneName** 中至少指定一个参数。
         :type ZoneName: str
         :param _ProductVersion: 部署方式。
 - local：本地盘版，默认为 local。
@@ -12143,7 +12147,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 
     @property
     def ZoneId(self):
-        r"""实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+        r"""实例所属的可用区 ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+**说明**：请在 **ZoneId** 与 **ZoneName** 中至少指定一个参数。
         :rtype: int
         """
         return self._ZoneId
@@ -12154,7 +12159,9 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 
     @property
     def RedisShardNum(self):
-        r"""实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
+        r"""实例分片数量。
+- 标准架构需要配置分片数量为1。
+- 集群架构分片数量支持设置为1、3、5、8、12、16、24、32、40、48、64、80、96、128。
         :rtype: int
         """
         return self._RedisShardNum
@@ -12165,7 +12172,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 
     @property
     def RedisReplicasNum(self):
-        r"""实例副本数量。2.8 标准架构无需配置副本数量。
+        r"""实例副本数量。取值范围为：1、2、3、4、5。
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -12190,6 +12197,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
     @property
     def ZoneName(self):
         r"""实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+**说明**：请在 **ZoneId** 与 **ZoneName** 中至少指定一个参数。
         :rtype: str
         """
         return self._ZoneName

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddNodeList(AbstractModel):
-    r"""修改实例节点详情
+    r"""修改实例节点详情。
 
     """
 
@@ -30,7 +30,7 @@ class AddNodeList(AbstractModel):
 - READONLY：只读节点。
 - MONGOS：Mongos 节点。
         :type Role: str
-        :param _Zone: 节点所对应的可用区。
+        :param _Zone: 节点所对应的可用区。当前支持的可用区，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 - 单可用区，所有节点在同一可用区。
 - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置新增节点对应的可用区，且新增后必须满足任意2个可用区节点数大于第3个可用区原则。
         :type Zone: str
@@ -54,7 +54,7 @@ class AddNodeList(AbstractModel):
 
     @property
     def Zone(self):
-        r"""节点所对应的可用区。
+        r"""节点所对应的可用区。当前支持的可用区，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 - 单可用区，所有节点在同一可用区。
 - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置新增节点对应的可用区，且新增后必须满足任意2个可用区节点数大于第3个可用区原则。
         :rtype: str
@@ -245,25 +245,36 @@ class BackupDownloadTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: 任务创建时间。
         :type CreateTime: str
-        :param _BackupName: 备份文件名
+        :param _BackupName: 备份文件名。
         :type BackupName: str
-        :param _ReplicaSetId: 分片名称
+        :param _ReplicaSetId: 分片名称。
         :type ReplicaSetId: str
-        :param _BackupSize: 备份数据大小，单位为字节
+        :param _BackupSize: 备份数据大小，单位：字节。
         :type BackupSize: int
-        :param _Status: 任务状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        :param _Status: 任务状态。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :type Status: int
-        :param _Percent: 任务进度百分比
+        :param _Percent: 任务进度百分比。
         :type Percent: int
-        :param _TimeSpend: 耗时，单位为秒
+        :param _TimeSpend: 耗时，单位为秒。
         :type TimeSpend: int
-        :param _Url: 备份数据下载链接
+        :param _Url: 备份数据下载链接。
         :type Url: str
-        :param _BackupMethod: 备份文件备份类型，0-逻辑备份，1-物理备份
+        :param _BackupMethod: 备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
-        :param _BackupDesc: 发起备份时指定的备注信息
+        :param _BackupDesc: 发起备份时指定的备注信息。
         :type BackupDesc: str
         :param _Region: 地区信息。
         :type Region: str
@@ -285,7 +296,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间
+        r"""任务创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -296,7 +307,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份文件名
+        r"""备份文件名。
         :rtype: str
         """
         return self._BackupName
@@ -307,7 +318,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def ReplicaSetId(self):
-        r"""分片名称
+        r"""分片名称。
         :rtype: str
         """
         return self._ReplicaSetId
@@ -318,7 +329,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""备份数据大小，单位为字节
+        r"""备份数据大小，单位：字节。
         :rtype: int
         """
         return self._BackupSize
@@ -329,7 +340,12 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        r"""任务状态。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :rtype: int
         """
         return self._Status
@@ -340,7 +356,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def Percent(self):
-        r"""任务进度百分比
+        r"""任务进度百分比。
         :rtype: int
         """
         return self._Percent
@@ -351,7 +367,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def TimeSpend(self):
-        r"""耗时，单位为秒
+        r"""耗时，单位为秒。
         :rtype: int
         """
         return self._TimeSpend
@@ -362,7 +378,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def Url(self):
-        r"""备份数据下载链接
+        r"""备份数据下载链接。
         :rtype: str
         """
         return self._Url
@@ -373,7 +389,13 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份文件备份类型，0-逻辑备份，1-物理备份
+        r"""备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -384,7 +406,7 @@ class BackupDownloadTask(AbstractModel):
 
     @property
     def BackupDesc(self):
-        r"""发起备份时指定的备注信息
+        r"""发起备份时指定的备注信息。
         :rtype: str
         """
         return self._BackupDesc
@@ -440,15 +462,20 @@ class BackupDownloadTask(AbstractModel):
 
 
 class BackupDownloadTaskStatus(AbstractModel):
-    r"""创建备份下载任务结果
+    r"""创建备份下载任务结果。
 
     """
 
     def __init__(self):
         r"""
-        :param _ReplicaSetId: 分片名
+        :param _ReplicaSetId: 分片名。
         :type ReplicaSetId: str
-        :param _Status: 任务当前状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        :param _Status: 任务当前状态。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :type Status: int
         """
         self._ReplicaSetId = None
@@ -456,7 +483,7 @@ class BackupDownloadTaskStatus(AbstractModel):
 
     @property
     def ReplicaSetId(self):
-        r"""分片名
+        r"""分片名。
         :rtype: str
         """
         return self._ReplicaSetId
@@ -467,7 +494,12 @@ class BackupDownloadTaskStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务当前状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        r"""任务当前状态。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :rtype: int
         """
         return self._Status
@@ -491,7 +523,7 @@ class BackupDownloadTaskStatus(AbstractModel):
 
 
 class BackupInfo(AbstractModel):
-    r"""备份信息
+    r"""备份信息。
 
     """
 
@@ -499,28 +531,40 @@ class BackupInfo(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _BackupType: 备份方式，0-自动备份，1-手动备份
+        :param _BackupType: 备份方式。
+- 0：自动备份。
+- 1：手动备份。
         :type BackupType: int
-        :param _BackupName: 备份名称
+        :param _BackupName: 备份文件名称。
         :type BackupName: str
-        :param _BackupDesc: 备份备注
+        :param _BackupDesc: 备份任务备注信息。
         :type BackupDesc: str
-        :param _BackupSize: 备份文件大小，单位KB
+        :param _BackupSize: 备份文件大小，单位：KB。
         :type BackupSize: int
-        :param _StartTime: 备份开始时间
+        :param _StartTime: 备份开始时间。
         :type StartTime: str
-        :param _EndTime: 备份结束时间
+        :param _EndTime: 备份结束时间。
         :type EndTime: str
-        :param _Status: 备份状态，1-备份中，2-备份成功
+        :param _Status: 备份状态。
+- 1：备份中。
+- 2：备份成功。
         :type Status: int
-        :param _BackupMethod: 备份方法，0-逻辑备份，1-物理备份
+        :param _BackupMethod: 备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明:**
+- 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+- 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
-        :param _BackId: 备份记录id
+        :param _BackId: 备份记录 ID。
         :type BackId: int
-        :param _DeleteTime: 备份删除时间
+        :param _DeleteTime: 备份删除时间。
         :type DeleteTime: str
-        :param _BackupRegion: 异地备份地域
+        :param _BackupRegion: 异地备份地域。
         :type BackupRegion: str
+        :param _RestoreTime: 备份支持的回档时间。
+        :type RestoreTime: str
         """
         self._InstanceId = None
         self._BackupType = None
@@ -534,6 +578,7 @@ class BackupInfo(AbstractModel):
         self._BackId = None
         self._DeleteTime = None
         self._BackupRegion = None
+        self._RestoreTime = None
 
     @property
     def InstanceId(self):
@@ -548,7 +593,9 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份方式，0-自动备份，1-手动备份
+        r"""备份方式。
+- 0：自动备份。
+- 1：手动备份。
         :rtype: int
         """
         return self._BackupType
@@ -559,7 +606,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份名称
+        r"""备份文件名称。
         :rtype: str
         """
         return self._BackupName
@@ -570,7 +617,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupDesc(self):
-        r"""备份备注
+        r"""备份任务备注信息。
         :rtype: str
         """
         return self._BackupDesc
@@ -581,7 +628,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""备份文件大小，单位KB
+        r"""备份文件大小，单位：KB。
         :rtype: int
         """
         return self._BackupSize
@@ -592,7 +639,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""备份开始时间
+        r"""备份开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -603,7 +650,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""备份结束时间
+        r"""备份结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -614,7 +661,9 @@ class BackupInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份状态，1-备份中，2-备份成功
+        r"""备份状态。
+- 1：备份中。
+- 2：备份成功。
         :rtype: int
         """
         return self._Status
@@ -625,7 +674,13 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方法，0-逻辑备份，1-物理备份
+        r"""备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明:**
+- 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+- 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -636,7 +691,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackId(self):
-        r"""备份记录id
+        r"""备份记录 ID。
         :rtype: int
         """
         return self._BackId
@@ -647,7 +702,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""备份删除时间
+        r"""备份删除时间。
         :rtype: str
         """
         return self._DeleteTime
@@ -658,7 +713,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupRegion(self):
-        r"""异地备份地域
+        r"""异地备份地域。
         :rtype: str
         """
         return self._BackupRegion
@@ -666,6 +721,17 @@ class BackupInfo(AbstractModel):
     @BackupRegion.setter
     def BackupRegion(self, BackupRegion):
         self._BackupRegion = BackupRegion
+
+    @property
+    def RestoreTime(self):
+        r"""备份支持的回档时间。
+        :rtype: str
+        """
+        return self._RestoreTime
+
+    @RestoreTime.setter
+    def RestoreTime(self, RestoreTime):
+        self._RestoreTime = RestoreTime
 
 
     def _deserialize(self, params):
@@ -681,6 +747,7 @@ class BackupInfo(AbstractModel):
         self._BackId = params.get("BackId")
         self._DeleteTime = params.get("DeleteTime")
         self._BackupRegion = params.get("BackupRegion")
+        self._RestoreTime = params.get("RestoreTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -936,6 +1003,10 @@ class CreateBackupDBInstanceRequest(AbstractModel):
         :param _BackupMethod: 设置备份方式。
 - 0：逻辑备份。
 - 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
         :param _BackupRemark: 备份备注信息。
         :type BackupRemark: str
@@ -960,6 +1031,10 @@ class CreateBackupDBInstanceRequest(AbstractModel):
         r"""设置备份方式。
 - 0：逻辑备份。
 - 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -1044,13 +1119,13 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _BackupName: 要下载的备份文件名，可通过DescribeDBBackups接口获取。
+        :param _BackupName: 要下载的备份文件名。请通过 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 接口获取。
         :type BackupName: str
-        :param _BackupSets: 指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
-如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
-如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
+        :param _BackupSets: 指定要下载的副本集节点 ID 或分片集群的分片节点 ID 列表。
+- 如副本集实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+- 如分片集群实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据。分片集群如需全量下载，请按示例方式传入全部分片名称。
         :type BackupSets: list of ReplicaSetInfo
         """
         self._InstanceId = None
@@ -1059,7 +1134,7 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        r"""实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1070,7 +1145,7 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""要下载的备份文件名，可通过DescribeDBBackups接口获取。
+        r"""要下载的备份文件名。请通过 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 接口获取。
         :rtype: str
         """
         return self._BackupName
@@ -1081,9 +1156,9 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def BackupSets(self):
-        r"""指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
-如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
-如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
+        r"""指定要下载的副本集节点 ID 或分片集群的分片节点 ID 列表。
+- 如副本集实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+- 如分片集群实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据。分片集群如需全量下载，请按示例方式传入全部分片名称。
         :rtype: list of ReplicaSetInfo
         """
         return self._BackupSets
@@ -1119,7 +1194,7 @@ class CreateBackupDownloadTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tasks: 下载任务状态
+        :param _Tasks: 下载任务状态。
         :type Tasks: list of BackupDownloadTaskStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1129,7 +1204,7 @@ class CreateBackupDownloadTaskResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""下载任务状态
+        r"""下载任务状态。
         :rtype: list of BackupDownloadTaskStatus
         """
         return self._Tasks
@@ -1178,18 +1253,18 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type NodeNum: int
         :param _MongoVersion: 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _MachineCode: 产品规格类型。
 - HIO10G：通用高HIO万兆型。
 - HCD：云盘版类型。
         :type MachineCode: str
-        :param _GoodsNum: 实例数量，最小值1，最大值为10。
+        :param _GoodsNum: 实例数量，最小值1，最大值为30。
         :type GoodsNum: int
         :param _Zone: 可用区信息，输入格式如：ap-guangzhou-2。
 - 具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
@@ -1199,9 +1274,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - REPLSET：副本集。
 - SHARD：分片集群。
         :type ClusterType: str
-        :param _VpcId: 私有网络ID。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询确认正确的ID。 示例值：vpc-pxyzim13
+        :param _VpcId: 私有网络ID。
+- 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+- 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :type VpcId: str
-        :param _SubnetId: 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+        :param _SubnetId: 私有网络 VPC 的子网 ID。
+- 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+- 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :type SubnetId: str
         :param _Password: 实例密码。设置要求如下：
 - 字符个数为[8,32]。
@@ -1215,32 +1294,37 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param _Tags: 实例标签信息。
         :type Tags: list of TagInfo
-        :param _Clone: 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
+        :param _Clone: 实例类型。
+- 1：正式实例。
+- 3：只读实例。
+- 4：灾备实例。
+- 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
         :type Clone: int
-        :param _Father: 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+        :param _Father: 父实例 ID。
+- 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
         :type Father: str
-        :param _SecurityGroup: 安全组 ID。
+        :param _SecurityGroup: 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
         :type SecurityGroup: list of str
         :param _RestoreTime: 克隆实例回档时间。
 - 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。
 - 回档时间范围：仅能回档7天内时间点的数据。
         :type RestoreTime: str
-        :param _InstanceName: 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+        :param _InstanceName: 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+- 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+- 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+- 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
         :type InstanceName: str
         :param _AvailabilityZoneList: 若多可用区部署云数据库实例，指定多可用区列表。
 - 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
 - 通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 可获取云数据库不同地域规划的可用区信息，以便指定有效的可用区。
 - 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
-
         :type AvailabilityZoneList: list of str
         :param _MongosCpu: Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
-
         :type MongosCpu: int
         :param _MongosMemory: Mongos 内存大小。
 -  购买分片集群时，必须填写。
 - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
-
-
         :type MongosMemory: int
         :param _MongosNodeNum: Mongos 数量。购买分片集群时，必须填写。
 - 单可用区部署实例，其数量范围为[3,32]。
@@ -1252,7 +1336,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ReadonlyNodeAvailabilityZoneList: list of str
         :param _HiddenZone: Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
         :type HiddenZone: str
-        :param _ParamTemplateId: 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+        :param _ParamTemplateId: 参数模板 ID。
+- 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+- 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
         :type ParamTemplateId: str
         """
         self._Memory = None
@@ -1332,12 +1418,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @property
     def MongoVersion(self):
         r"""指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -1361,7 +1447,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""实例数量，最小值1，最大值为10。
+        r"""实例数量，最小值1，最大值为30。
         :rtype: int
         """
         return self._GoodsNum
@@ -1398,7 +1484,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询确认正确的ID。 示例值：vpc-pxyzim13
+        r"""私有网络ID。
+- 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+- 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :rtype: str
         """
         return self._VpcId
@@ -1409,7 +1497,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+        r"""私有网络 VPC 的子网 ID。
+- 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+- 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :rtype: str
         """
         return self._SubnetId
@@ -1459,7 +1549,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Clone(self):
-        r"""实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
+        r"""实例类型。
+- 1：正式实例。
+- 3：只读实例。
+- 4：灾备实例。
+- 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
         :rtype: int
         """
         return self._Clone
@@ -1470,7 +1564,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Father(self):
-        r"""父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+        r"""父实例 ID。
+- 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
         :rtype: str
         """
         return self._Father
@@ -1481,7 +1577,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""安全组 ID。
+        r"""安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -1505,7 +1601,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+        r"""实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+- 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+- 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+- 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
         :rtype: str
         """
         return self._InstanceName
@@ -1520,7 +1619,6 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
 - 通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 可获取云数据库不同地域规划的可用区信息，以便指定有效的可用区。
 - 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
-
         :rtype: list of str
         """
         return self._AvailabilityZoneList
@@ -1532,7 +1630,6 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @property
     def MongosCpu(self):
         r"""Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
-
         :rtype: int
         """
         return self._MongosCpu
@@ -1546,8 +1643,6 @@ class CreateDBInstanceHourRequest(AbstractModel):
         r"""Mongos 内存大小。
 -  购买分片集群时，必须填写。
 - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
-
-
         :rtype: int
         """
         return self._MongosMemory
@@ -1604,7 +1699,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+        r"""参数模板 ID。
+- 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+- 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
         :rtype: str
         """
         return self._ParamTemplateId
@@ -1724,16 +1821,26 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
         r"""
         :param _TplName: 参数模板名称。
         :type TplName: str
-        :param _MongoVersion: 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+        :param _MongoVersion: 参数模板版本号。当**MirrorTplId**为空时，该字段必填。参数模板支持的售卖版本，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
-当MirrorTplId为空时，该字段必填。
+        :param _ClusterType: 实例类型。当 MirrorTplId 为空值时，该参数必填。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :type ClusterType: str
         :param _TplDesc: 模板描述信息。
         :type TplDesc: str
-        :param _Params: 模板参数，若为空，则以系统默认模板作为新版本参数。
+        :param _Params: 模板参数，若不配置该参数，则以系统默认模板作为新版本参数。
         :type Params: list of ParamType
-        :param _MirrorTplId: 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+        :param _MirrorTplId: 镜像模板 ID。若指定镜像模板，则以该模板为镜像，克隆出一个新的模板。
+**注意**：MirrorTplId 不为空值时，MongoVersion 及 ClusterType 将以 MirrorTpl 模板的版本及实例类型为准。
         :type MirrorTplId: str
         """
         self._TplName = None
@@ -1756,7 +1863,14 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+        r"""参数模板版本号。当**MirrorTplId**为空时，该字段必填。参数模板支持的售卖版本，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -1767,8 +1881,10 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
-当MirrorTplId为空时，该字段必填。
+        r"""实例类型。当 MirrorTplId 为空值时，该参数必填。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :rtype: str
         """
         return self._ClusterType
@@ -1790,7 +1906,7 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def Params(self):
-        r"""模板参数，若为空，则以系统默认模板作为新版本参数。
+        r"""模板参数，若不配置该参数，则以系统默认模板作为新版本参数。
         :rtype: list of ParamType
         """
         return self._Params
@@ -1801,7 +1917,8 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def MirrorTplId(self):
-        r"""镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+        r"""镜像模板 ID。若指定镜像模板，则以该模板为镜像，克隆出一个新的模板。
+**注意**：MirrorTplId 不为空值时，MongoVersion 及 ClusterType 将以 MirrorTpl 模板的版本及实例类型为准。
         :rtype: str
         """
         return self._MirrorTplId
@@ -1891,21 +2008,20 @@ class CreateDBInstanceRequest(AbstractModel):
         :param _Volume: 实例硬盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type Volume: int
         :param _MongoVersion: 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _GoodsNum: 实例数量, 最小值1，最大值为10。
+        :param _GoodsNum: 实例数量, 最小值1，最大值为30。
         :type GoodsNum: int
         :param _Zone: 可用区信息，输入格式如：ap-guangzhou-2。
 - 具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 - 该参数为主可用区，如果多可用区部署，Zone必须是AvailabilityZoneList中的一个。
         :type Zone: str
         :param _Period: 指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
-
         :type Period: int
         :param _MachineCode: 产品规格类型。
 - HIO10G：通用高HIO万兆型。
@@ -1922,9 +2038,13 @@ class CreateDBInstanceRequest(AbstractModel):
 - 若不设置该参数，则为默认项目。
 - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
         :type ProjectId: int
-        :param _VpcId: 私有网络ID。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)查询确认正确的ID。 示例值：vpc-pxyzim13
+        :param _VpcId: 私有网络 ID。
+- 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+- 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :type VpcId: str
-        :param _SubnetId: 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+        :param _SubnetId: 私有网络 VPC 的子网 ID。
+- 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+- 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :type SubnetId: str
         :param _Password: 实例密码。设置要求如下：
 - 字符个数为[8,32]。
@@ -1942,15 +2062,24 @@ class CreateDBInstanceRequest(AbstractModel):
 - 1：是。
 - 0：否。默认为0。
         :type AutoVoucher: int
-        :param _Clone: 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
+        :param _Clone: 实例类型。
+- 1：正式实例。
+- 3：只读实例。
+- 4：灾备实例。
+- 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
         :type Clone: int
-        :param _Father: 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+        :param _Father: 父实例 ID。
+- 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
         :type Father: str
-        :param _SecurityGroup: 安全组 ID。 
+        :param _SecurityGroup: 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
         :type SecurityGroup: list of str
         :param _RestoreTime: 克隆实例回档时间，当Clone取值为5或6时为必填。- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。- 回档时间范围：仅能回档7天内时间点的数据。
         :type RestoreTime: str
-        :param _InstanceName: 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+        :param _InstanceName: 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+- 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+- 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+- 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
         :type InstanceName: str
         :param _AvailabilityZoneList: 若多可用区部署云数据库实例，指定多可用区列表。
 - 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
@@ -1973,7 +2102,9 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ReadonlyNodeAvailabilityZoneList: list of str
         :param _HiddenZone: Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
         :type HiddenZone: str
-        :param _ParamTemplateId: 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+        :param _ParamTemplateId: 参数模板 ID。
+- 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+- 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
         :type ParamTemplateId: str
         """
         self._NodeNum = None
@@ -2044,12 +2175,12 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def MongoVersion(self):
         r"""指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -2060,7 +2191,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""实例数量, 最小值1，最大值为10。
+        r"""实例数量, 最小值1，最大值为30。
         :rtype: int
         """
         return self._GoodsNum
@@ -2085,7 +2216,6 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def Period(self):
         r"""指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
-
         :rtype: int
         """
         return self._Period
@@ -2147,7 +2277,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)查询确认正确的ID。 示例值：vpc-pxyzim13
+        r"""私有网络 ID。
+- 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+- 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :rtype: str
         """
         return self._VpcId
@@ -2158,7 +2290,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+        r"""私有网络 VPC 的子网 ID。
+- 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+- 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
         :rtype: str
         """
         return self._SubnetId
@@ -2221,7 +2355,11 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Clone(self):
-        r"""实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
+        r"""实例类型。
+- 1：正式实例。
+- 3：只读实例。
+- 4：灾备实例。
+- 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
         :rtype: int
         """
         return self._Clone
@@ -2232,7 +2370,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Father(self):
-        r"""父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+        r"""父实例 ID。
+- 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
         :rtype: str
         """
         return self._Father
@@ -2243,7 +2383,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""安全组 ID。 
+        r"""安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -2265,7 +2405,10 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+        r"""实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+- 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+- 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+- 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
         :rtype: str
         """
         return self._InstanceName
@@ -2360,7 +2503,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+        r"""参数模板 ID。
+- 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+- 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
         :rtype: str
         """
         return self._ParamTemplateId
@@ -2487,7 +2632,15 @@ class CurrentOp(AbstractModel):
         :type Ns: str
         :param _Query: 操作执行语句。
         :type Query: str
-        :param _Op: 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
+        :param _Op: 操作类型。
+- none：特殊状态，空闲连接或内部任务等。
+- update：更新数据。
+- insert：插入操作。
+- query：查询操作。
+- command：命令操作。
+- getmore：获取更多数据。
+- remove：删除操作。
+- killcursors：释放查询游标的操作。
         :type Op: str
         :param _ReplicaSetName: 操作所在的分片名称。
         :type ReplicaSetName: str
@@ -2495,7 +2648,9 @@ class CurrentOp(AbstractModel):
         :type NodeName: str
         :param _Operation: 操作详细信息。
         :type Operation: str
-        :param _State: 筛选条件，节点状态，可能的取值为：Primary、Secondary。
+        :param _State: 节点角色。
+- primary：主节点。
+- secondary：从节点。
         :type State: str
         :param _MicrosecsRunning: 操作已执行时间（ms）。
         :type MicrosecsRunning: int
@@ -2548,7 +2703,15 @@ class CurrentOp(AbstractModel):
 
     @property
     def Op(self):
-        r"""操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
+        r"""操作类型。
+- none：特殊状态，空闲连接或内部任务等。
+- update：更新数据。
+- insert：插入操作。
+- query：查询操作。
+- command：命令操作。
+- getmore：获取更多数据。
+- remove：删除操作。
+- killcursors：释放查询游标的操作。
         :rtype: str
         """
         return self._Op
@@ -2592,7 +2755,9 @@ class CurrentOp(AbstractModel):
 
     @property
     def State(self):
-        r"""筛选条件，节点状态，可能的取值为：Primary、Secondary。
+        r"""节点角色。
+- primary：主节点。
+- secondary：从节点。
         :rtype: str
         """
         return self._State
@@ -3114,23 +3279,32 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _BackupName: 备份文件名，用来过滤指定文件的下载任务
+        :param _BackupName: 指定备份文件名，用于过滤指定文件的下载任务。请通过接口 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 获取备份文件名。
         :type BackupName: str
-        :param _StartTime: 指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
+        :param _StartTime: 指定查询时间范围内的任务，StartTime 指定开始时间。若不指定开始时间，则默认不限制开始时间。
         :type StartTime: str
-        :param _EndTime: 指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
+        :param _EndTime: 指定查询时间范围内的任务，EndTime 指定截止时间。若不指定截止时间，则默认不限制截止时间。
         :type EndTime: str
-        :param _Limit: 此次查询返回的条数，取值范围为1-100，默认为20
+        :param _Limit: 此次查询返回的条数，取值范围为1-100，默认为20。
         :type Limit: int
-        :param _Offset: 指定此次查询返回的页数，默认为0
+        :param _Offset: 指定此次查询返回的页数，默认为0。
         :type Offset: int
-        :param _OrderBy: 排序字段，取值为createTime，finishTime两种，默认为createTime
+        :param _OrderBy: 排序字段。
+- createTime：按照备份下载任务的创建时间排序。默认为 createTime。
+- finishTime：按照备份下载任务的完成时间排序。
         :type OrderBy: str
-        :param _OrderByType: 排序方式，取值为asc，desc两种，默认desc
+        :param _OrderByType: 排序方式。
+- asc：升序排列。
+- desc：降序排列。默认为 desc。
         :type OrderByType: str
-        :param _Status: 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试。不填默认返回所有类型
+        :param _Status: 指定任务状态，用于过滤下载任务。若不配置该参数，则返回所有状态类型的任务。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :type Status: list of int
         """
         self._InstanceId = None
@@ -3145,7 +3319,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3156,7 +3330,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份文件名，用来过滤指定文件的下载任务
+        r"""指定备份文件名，用于过滤指定文件的下载任务。请通过接口 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 获取备份文件名。
         :rtype: str
         """
         return self._BackupName
@@ -3167,7 +3341,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
+        r"""指定查询时间范围内的任务，StartTime 指定开始时间。若不指定开始时间，则默认不限制开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -3178,7 +3352,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
+        r"""指定查询时间范围内的任务，EndTime 指定截止时间。若不指定截止时间，则默认不限制截止时间。
         :rtype: str
         """
         return self._EndTime
@@ -3189,7 +3363,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""此次查询返回的条数，取值范围为1-100，默认为20
+        r"""此次查询返回的条数，取值范围为1-100，默认为20。
         :rtype: int
         """
         return self._Limit
@@ -3200,7 +3374,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""指定此次查询返回的页数，默认为0
+        r"""指定此次查询返回的页数，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3211,7 +3385,9 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，取值为createTime，finishTime两种，默认为createTime
+        r"""排序字段。
+- createTime：按照备份下载任务的创建时间排序。默认为 createTime。
+- finishTime：按照备份下载任务的完成时间排序。
         :rtype: str
         """
         return self._OrderBy
@@ -3222,7 +3398,9 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序方式，取值为asc，desc两种，默认desc
+        r"""排序方式。
+- asc：升序排列。
+- desc：降序排列。默认为 desc。
         :rtype: str
         """
         return self._OrderByType
@@ -3233,7 +3411,12 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试。不填默认返回所有类型
+        r"""指定任务状态，用于过滤下载任务。若不配置该参数，则返回所有状态类型的任务。
+- 0：等待执行。
+- 1：正在下载。
+- 2：下载完成。
+- 3：下载失败。
+- 4：等待重试。
         :rtype: list of int
         """
         return self._Status
@@ -3270,9 +3453,9 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 满足查询条件的所有条数
+        :param _TotalCount: 满足查询条件的所有条数。
         :type TotalCount: int
-        :param _Tasks: 下载任务列表
+        :param _Tasks: 下载任务列表。
         :type Tasks: list of BackupDownloadTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3283,7 +3466,7 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""满足查询条件的所有条数
+        r"""满足查询条件的所有条数。
         :rtype: int
         """
         return self._TotalCount
@@ -3294,7 +3477,7 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""下载任务列表
+        r"""下载任务列表。
         :rtype: list of BackupDownloadTask
         """
         return self._Tasks
@@ -3577,7 +3760,7 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: 指定要查询的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _Ns: 操作所属的命名空间 namespace，格式为 db.collection。
         :type Ns: str
@@ -3585,7 +3768,15 @@ class DescribeCurrentOpRequest(AbstractModel):
 - 默认值为0，取值范围为[0, 3600000]，单位：毫秒。
 - 结果将返回超过设置时间的操作。
         :type MillisecondRunning: int
-        :param _Op: 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
+        :param _Op: 设置查询筛选条件为操作任务类型。取值包括：
+- none：特殊状态，空闲连接或内部任务等。
+- update：更新数据。
+- insert：插入操作。
+- query：查询操作。
+- command：命令操作。
+- getmore：获取更多数据。
+- remove：删除操作。
+- killcursors：释放查询游标的操作。
         :type Op: str
         :param _ReplicaSetName: 筛选条件，分片名称。
         :type ReplicaSetName: str
@@ -3593,13 +3784,15 @@ class DescribeCurrentOpRequest(AbstractModel):
 - primary：主节点。
 - secondary：从节点。
         :type State: str
-        :param _Limit: 单次请求返回的数量，默认值为100，取值范围为[0,100]
+        :param _Limit: 单次请求返回的数量，默认值为100，取值范围为[0,100]。
         :type Limit: int
-        :param _Offset: 偏移量，默认值为0，取值范围为[0,10000]
+        :param _Offset: 偏移量，默认值为0，取值范围为[0,10000]。
         :type Offset: int
-        :param _OrderBy: 返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+        :param _OrderBy: 返回结果集排序的字段，目前支持按照 MicrosecsRunning（操作任务已执行的时间）排序。
         :type OrderBy: str
-        :param _OrderByType: 返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+        :param _OrderByType: 返回结果集排序方式。
+- ASC：升序。默认为 ASC，按照升序排序。
+- DESC：降序。
         :type OrderByType: str
         """
         self._InstanceId = None
@@ -3615,7 +3808,7 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""指定要查询的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3650,7 +3843,15 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def Op(self):
-        r"""设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
+        r"""设置查询筛选条件为操作任务类型。取值包括：
+- none：特殊状态，空闲连接或内部任务等。
+- update：更新数据。
+- insert：插入操作。
+- query：查询操作。
+- command：命令操作。
+- getmore：获取更多数据。
+- remove：删除操作。
+- killcursors：释放查询游标的操作。
         :rtype: str
         """
         return self._Op
@@ -3685,7 +3886,7 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次请求返回的数量，默认值为100，取值范围为[0,100]
+        r"""单次请求返回的数量，默认值为100，取值范围为[0,100]。
         :rtype: int
         """
         return self._Limit
@@ -3696,7 +3897,7 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为0，取值范围为[0,10000]
+        r"""偏移量，默认值为0，取值范围为[0,10000]。
         :rtype: int
         """
         return self._Offset
@@ -3707,7 +3908,7 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+        r"""返回结果集排序的字段，目前支持按照 MicrosecsRunning（操作任务已执行的时间）排序。
         :rtype: str
         """
         return self._OrderBy
@@ -3718,7 +3919,9 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+        r"""返回结果集排序方式。
+- ASC：升序。默认为 ASC，按照升序排序。
+- DESC：降序。
         :rtype: str
         """
         return self._OrderByType
@@ -3819,9 +4022,15 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _BackupMethod: 备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+        :param _BackupMethod: 备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
         :param _Limit: 分页大小，最大值为100，不设置默认查询所有。
         :type Limit: int
@@ -3835,7 +4044,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3846,7 +4055,13 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+        r"""备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -3900,9 +4115,9 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupList: 备份列表
+        :param _BackupList: 备份列表。
         :type BackupList: list of BackupInfo
-        :param _TotalCount: 备份总数
+        :param _TotalCount: 备份总数。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3913,7 +4128,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     @property
     def BackupList(self):
-        r"""备份列表
+        r"""备份列表。
         :rtype: list of BackupInfo
         """
         return self._BackupList
@@ -3924,7 +4139,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""备份总数
+        r"""备份总数。
         :rtype: int
         """
         return self._TotalCount
@@ -3963,14 +4178,18 @@ class DescribeDBInstanceDealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: 订单ID，通过CreateDBInstance等接口返回
+        :param _DealId: 订单 ID。
+- 按量计费实例，请通过 [CreateDBInstanceHour](https://cloud.tencent.com/document/product/240/38570) 接口输出的参数**DealId**获取。。
+- 包年包月计费实例，请通过 [CreateDBInstance](https://cloud.tencent.com/document/product/240/38571) 接口输出的参数**DealId**获取。
         :type DealId: str
         """
         self._DealId = None
 
     @property
     def DealId(self):
-        r"""订单ID，通过CreateDBInstance等接口返回
+        r"""订单 ID。
+- 按量计费实例，请通过 [CreateDBInstanceHour](https://cloud.tencent.com/document/product/240/38570) 接口输出的参数**DealId**获取。。
+- 包年包月计费实例，请通过 [CreateDBInstance](https://cloud.tencent.com/document/product/240/38571) 接口输出的参数**DealId**获取。
         :rtype: str
         """
         return self._DealId
@@ -3999,15 +4218,28 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 订单状态，1：未支付，2：已支付，3：发货中，4：发货成功，5：发货失败，6：退款，7：订单关闭，8：超时未支付关闭。
+        :param _Status: 订单状态。
+- 1：未支付。
+- 2：已支付。
+- 3：发货中。
+- 4：发货成功。
+- 5：发货失败。
+- 6：退款。
+- 7：订单关闭。
+- 8：超时未支付关闭。
         :type Status: int
-        :param _OriginalPrice: 订单原价。
+        :param _OriginalPrice: 订单原价。单位：元。
         :type OriginalPrice: float
-        :param _DiscountPrice: 订单折扣价格。
+        :param _DiscountPrice: 订单折扣价格。单位：元。
         :type DiscountPrice: float
-        :param _Action: 订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
+        :param _Action: 订单操作行为。
+- purchase：新购。
+- renew：续费。
+- upgrade：升配.
+- downgrade：降配.
+- refund：退货退款。
         :type Action: str
-        :param _InstanceId: 当前订单的资源Id。
+        :param _InstanceId: 当前订单的实例 ID。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4021,7 +4253,15 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""订单状态，1：未支付，2：已支付，3：发货中，4：发货成功，5：发货失败，6：退款，7：订单关闭，8：超时未支付关闭。
+        r"""订单状态。
+- 1：未支付。
+- 2：已支付。
+- 3：发货中。
+- 4：发货成功。
+- 5：发货失败。
+- 6：退款。
+- 7：订单关闭。
+- 8：超时未支付关闭。
         :rtype: int
         """
         return self._Status
@@ -4032,7 +4272,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""订单原价。
+        r"""订单原价。单位：元。
         :rtype: float
         """
         return self._OriginalPrice
@@ -4043,7 +4283,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""订单折扣价格。
+        r"""订单折扣价格。单位：元。
         :rtype: float
         """
         return self._DiscountPrice
@@ -4054,7 +4294,12 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     @property
     def Action(self):
-        r"""订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
+        r"""订单操作行为。
+- purchase：新购。
+- renew：续费。
+- upgrade：升配.
+- downgrade：降配.
+- refund：退货退款。
         :rtype: str
         """
         return self._Action
@@ -4065,7 +4310,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""当前订单的资源Id。
+        r"""当前订单的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -4211,19 +4456,23 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _NodeIds: 节点ID。
+        :param _NodeIds: 节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
         :type NodeIds: list of str
         :param _Roles: 节点角色。可选值包括：
-<ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+- PRIMARY：主节点。
+- SECONDARY：从节点。
+- READONLY：只读节点。
+- ARBITER：仲裁节点。
         :type Roles: list of str
-        :param _OnlyHidden: 该参数指定节点是否为Hidden节点，默认为false。
+        :param _OnlyHidden: 该参数指定节点是否为 Hidden 节点，默认为 false。
         :type OnlyHidden: bool
         :param _Priority: 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
         :type Priority: int
         :param _Votes: 该参数指定节点投票权。
-<ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+- 1：具有投票权。
+- 0：无投票权。
         :type Votes: int
         :param _Tags: 节点标签。
         :type Tags: list of NodeTag
@@ -4238,7 +4487,7 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -4249,7 +4498,7 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
 
     @property
     def NodeIds(self):
-        r"""节点ID。
+        r"""节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
         :rtype: list of str
         """
         return self._NodeIds
@@ -4261,7 +4510,10 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
     @property
     def Roles(self):
         r"""节点角色。可选值包括：
-<ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+- PRIMARY：主节点。
+- SECONDARY：从节点。
+- READONLY：只读节点。
+- ARBITER：仲裁节点。
         :rtype: list of str
         """
         return self._Roles
@@ -4272,7 +4524,7 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
 
     @property
     def OnlyHidden(self):
-        r"""该参数指定节点是否为Hidden节点，默认为false。
+        r"""该参数指定节点是否为 Hidden 节点，默认为 false。
         :rtype: bool
         """
         return self._OnlyHidden
@@ -4295,7 +4547,8 @@ class DescribeDBInstanceNodePropertyRequest(AbstractModel):
     @property
     def Votes(self):
         r"""该参数指定节点投票权。
-<ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+- 1：具有投票权。
+- 0：无投票权。
         :rtype: int
         """
         return self._Votes
@@ -4414,7 +4667,7 @@ class DescribeDBInstanceParamTplDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplId: 参数模板 ID。
+        :param _TplId: 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :type TplId: str
         :param _ParamName: 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
         :type ParamName: str
@@ -4424,7 +4677,7 @@ class DescribeDBInstanceParamTplDetailRequest(AbstractModel):
 
     @property
     def TplId(self):
-        r"""参数模板 ID。
+        r"""参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :rtype: str
         """
         return self._TplId
@@ -4475,9 +4728,19 @@ class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
         :type InstanceMultiParams: list of InstanceMultiParam
         :param _TotalCount: 参数总个数。
         :type TotalCount: int
-        :param _MongoVersion: 模板适配实例版本。
+        :param _MongoVersion: 模板适配的实例版本。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _ClusterType: 模板适配集群类型，副本集或分片。。
+        :param _ClusterType: 模板适配集群类型。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :type ClusterType: str
         :param _TplName: 参数模板名称。
         :type TplName: str
@@ -4551,7 +4814,14 @@ class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""模板适配实例版本。
+        r"""模板适配的实例版本。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -4562,7 +4832,10 @@ class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""模板适配集群类型，副本集或分片。。
+        r"""模板适配集群类型。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :rtype: str
         """
         return self._ClusterType
@@ -4633,16 +4906,22 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplIds: 参数模板 ID 查询条件。
+        :param _TplIds: 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :type TplIds: list of str
-        :param _TplNames: 模板名称，查询条件。
+        :param _TplNames: 指定查询的模板名称。
         :type TplNames: list of str
-        :param _MongoVersion: 根据版本号查询参数模板，具体支持的售卖版本，请参见[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询云数据库的售卖规格的返回结果。参数与版本对应关系如下所示：
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
-- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+        :param _MongoVersion: 指定所需查询的参数模板的数据库版本号。具体支持的版本信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: list of str
-        :param _TplType: 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+        :param _TplType: 指定查询的模板类型。
+- DEFAULT：系统默认模板。
+- CUSTOMIZE：自定义模板。
         :type TplType: str
         """
         self._TplIds = None
@@ -4652,7 +4931,7 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def TplIds(self):
-        r"""参数模板 ID 查询条件。
+        r"""参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :rtype: list of str
         """
         return self._TplIds
@@ -4663,7 +4942,7 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def TplNames(self):
-        r"""模板名称，查询条件。
+        r"""指定查询的模板名称。
         :rtype: list of str
         """
         return self._TplNames
@@ -4674,10 +4953,14 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""根据版本号查询参数模板，具体支持的售卖版本，请参见[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询云数据库的售卖规格的返回结果。参数与版本对应关系如下所示：
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
-- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+        r"""指定所需查询的参数模板的数据库版本号。具体支持的版本信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: list of str
         """
         return self._MongoVersion
@@ -4688,7 +4971,9 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def TplType(self):
-        r"""根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+        r"""指定查询的模板类型。
+- DEFAULT：系统默认模板。
+- CUSTOMIZE：自定义模板。
         :rtype: str
         """
         return self._TplType
@@ -4867,13 +5152,26 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceIds: 实例 ID 列表。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _InstanceType: 指定查询的实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>3：只读实例。</li><li>4：灾备实例。</li></ul>
+        :param _InstanceType: 指定查询的实例类型。取值范围如下：
+- 0：所有实例。
+- 1：正式实例。
+- 2：临时实例
+- 3：只读实例。
+- -1：查询同时包括正式实例、只读实例与灾备实例。
         :type InstanceType: int
-        :param _ClusterType: 指定所查询实例的集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：副本集与分片实例。</li></ul>
+        :param _ClusterType: 指定所查询实例的集群类型，取值范围如下：
+- 0：副本集实例。
+- 1：分片实例。
+- -1：副本集与分片实例。
         :type ClusterType: int
-        :param _Status: 指定所查询实例的当前状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程处理中，例如：变更规格、参数修改等。</li><li>2：实例正常运行中。</li><li>-2：实例已过期。</li></ul>
+        :param _Status: 指定所查询实例的当前状态，取值范围如下所示：
+- 0：待初始化。
+- 1：流程处理中，例如：变更规格、参数修改等。
+- 2：实例正常运行中。
+- -2：已隔离（包年包月）。
+- -3：已隔离（按量计费）。
         :type Status: list of int
         :param _VpcId: 私有网络的 ID。
 - 基础网络则无需配置该参数。
@@ -4883,9 +5181,12 @@ class DescribeDBInstancesRequest(AbstractModel):
 - 基础网络则无需配置该参数。
 - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其子网 ID。
         :type SubnetId: str
-        :param _PayMode: 指定所查询实例的付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
+        :param _PayMode: 指定所查询实例的付费类型。
+- 0：查询按量计费实例。
+- 1：查询包年包月实例。
+- -1：查询按量计费与包年包月实例。
         :type PayMode: int
-        :param _Limit: 单次请求返回的数量。默认值为20，取值范围为[1,100]。
+        :param _Limit: 单次请求返回的数量。默认值为20，取值范围为(1,100]。
         :type Limit: int
         :param _Offset: 偏移量，默认值为0。
         :type Offset: int
@@ -4919,7 +5220,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""实例 ID 列表。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -4930,7 +5231,12 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""指定查询的实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>3：只读实例。</li><li>4：灾备实例。</li></ul>
+        r"""指定查询的实例类型。取值范围如下：
+- 0：所有实例。
+- 1：正式实例。
+- 2：临时实例
+- 3：只读实例。
+- -1：查询同时包括正式实例、只读实例与灾备实例。
         :rtype: int
         """
         return self._InstanceType
@@ -4941,7 +5247,10 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""指定所查询实例的集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：副本集与分片实例。</li></ul>
+        r"""指定所查询实例的集群类型，取值范围如下：
+- 0：副本集实例。
+- 1：分片实例。
+- -1：副本集与分片实例。
         :rtype: int
         """
         return self._ClusterType
@@ -4952,7 +5261,12 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""指定所查询实例的当前状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程处理中，例如：变更规格、参数修改等。</li><li>2：实例正常运行中。</li><li>-2：实例已过期。</li></ul>
+        r"""指定所查询实例的当前状态，取值范围如下所示：
+- 0：待初始化。
+- 1：流程处理中，例如：变更规格、参数修改等。
+- 2：实例正常运行中。
+- -2：已隔离（包年包月）。
+- -3：已隔离（按量计费）。
         :rtype: list of int
         """
         return self._Status
@@ -4989,7 +5303,10 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""指定所查询实例的付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
+        r"""指定所查询实例的付费类型。
+- 0：查询按量计费实例。
+- 1：查询包年包月实例。
+- -1：查询按量计费与包年包月实例。
         :rtype: int
         """
         return self._PayMode
@@ -5000,7 +5317,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次请求返回的数量。默认值为20，取值范围为[1,100]。
+        r"""单次请求返回的数量。默认值为20，取值范围为(1,100]。
         :rtype: int
         """
         return self._Limit
@@ -5178,29 +5495,36 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _StartTime: 待查询慢日志的开始时间
+        :param _StartTime: 指定查询慢日志的开始时间。- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type StartTime: str
-        :param _EndTime: 待慢日志的结束时间
+        :param _EndTime: 指定查询慢日志的结束时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type EndTime: str
-        :param _ExecTime: 过滤执行时间大于此值的慢日志，单位ms，默认值100
+        :param _ExecTime: 指定慢日志查询阈值，即查询执行时间大于此值的慢日志。单位：ms，默认值：100。
         :type ExecTime: int
-        :param _Commands: 过滤慢日志的命令类型
+        :param _Commands: 指定查询慢日志的命令类型。
         :type Commands: list of str
-        :param _Texts: 全文搜索关键字，多个关键字间为或关系
+        :param _Texts: 全文搜索关键字，多个关键字间为或关系。
         :type Texts: list of str
-        :param _NodeNames: 根据节点名过滤
+        :param _NodeNames: 指定查询慢日志的节点名称。请通过接口 [DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/product/240/82022) 查询节点名称。
         :type NodeNames: list of str
-        :param _QueryHash: 根据queryHash过滤
+        :param _QueryHash: 指定查询 queryHash 值。
         :type QueryHash: list of str
-        :param _Offset: 分页偏移量
+        :param _Offset: 分页偏移量。默认值：0。取值范围：[0,100]。
+
         :type Offset: int
-        :param _Limit: 返回条数
+        :param _Limit: 返回条数。默认值：20。取值范围：[0,10000]
         :type Limit: int
-        :param _OrderBy: 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+        :param _OrderBy: 指定慢日志排序条件。
+- StartTime：按照慢日志生成时间排序。
+- ExecTime：按照慢日志执行时间排序。
         :type OrderBy: str
-        :param _OrderByType: 排序。desc倒排，asc正排
+        :param _OrderByType: 指定排序方式。
+- desc：倒序。
+- asc：顺序。
         :type OrderByType: str
         """
         self._InstanceId = None
@@ -5218,7 +5542,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5229,7 +5553,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""待查询慢日志的开始时间
+        r"""指定查询慢日志的开始时间。- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._StartTime
@@ -5240,7 +5564,9 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""待慢日志的结束时间
+        r"""指定查询慢日志的结束时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._EndTime
@@ -5251,7 +5577,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def ExecTime(self):
-        r"""过滤执行时间大于此值的慢日志，单位ms，默认值100
+        r"""指定慢日志查询阈值，即查询执行时间大于此值的慢日志。单位：ms，默认值：100。
         :rtype: int
         """
         return self._ExecTime
@@ -5262,7 +5588,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def Commands(self):
-        r"""过滤慢日志的命令类型
+        r"""指定查询慢日志的命令类型。
         :rtype: list of str
         """
         return self._Commands
@@ -5273,7 +5599,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def Texts(self):
-        r"""全文搜索关键字，多个关键字间为或关系
+        r"""全文搜索关键字，多个关键字间为或关系。
         :rtype: list of str
         """
         return self._Texts
@@ -5284,7 +5610,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def NodeNames(self):
-        r"""根据节点名过滤
+        r"""指定查询慢日志的节点名称。请通过接口 [DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/product/240/82022) 查询节点名称。
         :rtype: list of str
         """
         return self._NodeNames
@@ -5295,7 +5621,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def QueryHash(self):
-        r"""根据queryHash过滤
+        r"""指定查询 queryHash 值。
         :rtype: list of str
         """
         return self._QueryHash
@@ -5306,7 +5632,8 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量
+        r"""分页偏移量。默认值：0。取值范围：[0,100]。
+
         :rtype: int
         """
         return self._Offset
@@ -5317,7 +5644,7 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回条数
+        r"""返回条数。默认值：20。取值范围：[0,10000]
         :rtype: int
         """
         return self._Limit
@@ -5328,7 +5655,9 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+        r"""指定慢日志排序条件。
+- StartTime：按照慢日志生成时间排序。
+- ExecTime：按照慢日志执行时间排序。
         :rtype: str
         """
         return self._OrderBy
@@ -5339,7 +5668,9 @@ class DescribeDetailedSlowLogsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序。desc倒排，asc正排
+        r"""指定排序方式。
+- desc：倒序。
+- asc：顺序。
         :rtype: str
         """
         return self._OrderByType
@@ -5379,9 +5710,9 @@ class DescribeDetailedSlowLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 满足条件的慢日志数量
+        :param _TotalCount: 满足条件的慢日志数量。
         :type TotalCount: int
-        :param _DetailedSlowLogs: 慢日志详情
+        :param _DetailedSlowLogs: 慢日志详情。
         :type DetailedSlowLogs: list of SlowLogItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5392,7 +5723,7 @@ class DescribeDetailedSlowLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""满足条件的慢日志数量
+        r"""满足条件的慢日志数量。
         :rtype: int
         """
         return self._TotalCount
@@ -5403,7 +5734,7 @@ class DescribeDetailedSlowLogsResponse(AbstractModel):
 
     @property
     def DetailedSlowLogs(self):
-        r"""慢日志详情
+        r"""慢日志详情。
         :rtype: list of SlowLogItem
         """
         return self._DetailedSlowLogs
@@ -5601,14 +5932,14 @@ class DescribeSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。例如：cmgo-p8vn****。
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。例如：cmgo-p8vn****。
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5685,11 +6016,15 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _StartTime: 慢日志起始时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type StartTime: str
-        :param _EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _EndTime: 慢日志终止时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type EndTime: str
         :param _SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
         :type SlowMS: int
@@ -5710,7 +6045,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5721,7 +6056,9 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志起始时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._StartTime
@@ -5732,7 +6069,9 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志终止时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._EndTime
@@ -5874,11 +6213,15 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _StartTime: 慢日志起始时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type StartTime: str
-        :param _EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _EndTime: 慢日志终止时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type EndTime: str
         :param _SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
         :type SlowMS: int
@@ -5899,7 +6242,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5910,7 +6253,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志起始时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._StartTime
@@ -5921,7 +6266,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        r"""慢日志终止时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :rtype: str
         """
         return self._EndTime
@@ -6000,9 +6347,9 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: 慢日志总数
+        :param _Count: 慢日志总数。
         :type Count: int
-        :param _SlowLogs: 慢日志详情
+        :param _SlowLogs: 慢日志详情。
         :type SlowLogs: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6013,7 +6360,7 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     @property
     def Count(self):
-        r"""慢日志总数
+        r"""慢日志总数。
         :rtype: int
         """
         return self._Count
@@ -6024,7 +6371,7 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     @property
     def SlowLogs(self):
-        r"""慢日志详情
+        r"""慢日志详情。
         :rtype: list of str
         """
         return self._SlowLogs
@@ -6058,14 +6405,14 @@ class DescribeSpecInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 待查询可用区
+        :param _Zone: 待查询可用区。当前支持的可用区，请参见[地域与可用区](https://cloud.tencent.com/document/product/240/3637)。
         :type Zone: str
         """
         self._Zone = None
 
     @property
     def Zone(self):
-        r"""待查询可用区
+        r"""待查询可用区。当前支持的可用区，请参见[地域与可用区](https://cloud.tencent.com/document/product/240/3637)。
         :rtype: str
         """
         return self._Zone
@@ -6094,7 +6441,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecInfoList: 实例售卖规格信息列表
+        :param _SpecInfoList: 实例售卖规格信息列表。
         :type SpecInfoList: list of SpecificationInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6104,7 +6451,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        r"""实例售卖规格信息列表
+        r"""实例售卖规格信息列表。
         :rtype: list of SpecificationInfo
         """
         return self._SpecInfoList
@@ -6142,14 +6489,14 @@ class DescribeTransparentDataEncryptionStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: 指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6247,14 +6594,14 @@ class DropDBInstanceParamTplRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplId: 参数模板 ID。
+        :param _TplId: 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :type TplId: str
         """
         self._TplId = None
 
     @property
     def TplId(self):
-        r"""参数模板 ID。
+        r"""参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :rtype: str
         """
         return self._TplId
@@ -6414,15 +6761,15 @@ class EnableTransparentDataEncryptionResponse(AbstractModel):
 
 
 class FBKeyValue(AbstractModel):
-    r"""按key回档，用于筛选数据的键值对
+    r"""按 Key 闪回键值对
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: 用于按key回档过滤的key
+        :param _Key: 指定按 Key 闪回的目标 Key （键） 。
         :type Key: str
-        :param _Value: 用于按key回档过滤的value
+        :param _Value: 指定按 Key 闪回的目标 Key 所对应的 Value（值）。
         :type Value: str
         """
         self._Key = None
@@ -6430,7 +6777,7 @@ class FBKeyValue(AbstractModel):
 
     @property
     def Key(self):
-        r"""用于按key回档过滤的key
+        r"""指定按 Key 闪回的目标 Key （键） 。
         :rtype: str
         """
         return self._Key
@@ -6441,7 +6788,7 @@ class FBKeyValue(AbstractModel):
 
     @property
     def Value(self):
-        r"""用于按key回档过滤的value
+        r"""指定按 Key 闪回的目标 Key 所对应的 Value（值）。
         :rtype: str
         """
         return self._Value
@@ -6594,19 +6941,19 @@ class FlashBackDBInstanceResponse(AbstractModel):
 
 
 class FlashbackCollection(AbstractModel):
-    r"""按key回档，源数据所在的表
+    r"""按 Key 闪回数据表
 
     """
 
     def __init__(self):
         r"""
-        :param _CollectionName: 按key回档指定的集合名
+        :param _CollectionName: 指定按 Key 闪回源数据库集合名。
         :type CollectionName: str
-        :param _TargetResultCollectionName: 按key回档到的目标集合名
+        :param _TargetResultCollectionName: 指定按 Key 闪回目标数据库集合名。
         :type TargetResultCollectionName: str
-        :param _FilterKey: 上传到cos的文件的value所对应的key值
+        :param _FilterKey: 指定用于过滤按 Key 闪回的 Key（键）。
         :type FilterKey: str
-        :param _KeyValues: 用于按key回档过滤的键值对
+        :param _KeyValues: 指定用于按 Key 闪回的键值对。数组元素最大限制为 50000。
         :type KeyValues: list of FBKeyValue
         """
         self._CollectionName = None
@@ -6616,7 +6963,7 @@ class FlashbackCollection(AbstractModel):
 
     @property
     def CollectionName(self):
-        r"""按key回档指定的集合名
+        r"""指定按 Key 闪回源数据库集合名。
         :rtype: str
         """
         return self._CollectionName
@@ -6627,7 +6974,7 @@ class FlashbackCollection(AbstractModel):
 
     @property
     def TargetResultCollectionName(self):
-        r"""按key回档到的目标集合名
+        r"""指定按 Key 闪回目标数据库集合名。
         :rtype: str
         """
         return self._TargetResultCollectionName
@@ -6638,7 +6985,7 @@ class FlashbackCollection(AbstractModel):
 
     @property
     def FilterKey(self):
-        r"""上传到cos的文件的value所对应的key值
+        r"""指定用于过滤按 Key 闪回的 Key（键）。
         :rtype: str
         """
         return self._FilterKey
@@ -6649,7 +6996,7 @@ class FlashbackCollection(AbstractModel):
 
     @property
     def KeyValues(self):
-        r"""用于按key回档过滤的键值对
+        r"""指定用于按 Key 闪回的键值对。数组元素最大限制为 50000。
         :rtype: list of FBKeyValue
         """
         return self._KeyValues
@@ -6680,15 +7027,15 @@ class FlashbackCollection(AbstractModel):
 
 
 class FlashbackDatabase(AbstractModel):
-    r"""按key回档，源数据所在的库表
+    r"""按 Key 闪回的数据库及集合信息
 
     """
 
     def __init__(self):
         r"""
-        :param _DBName: 按key回档源数据所在库
+        :param _DBName: 按 Key 闪回目标数据所在库。
         :type DBName: str
-        :param _Collections: 按key回档的集群数组
+        :param _Collections: 按 Key 闪回的数据库集合。
         :type Collections: list of FlashbackCollection
         """
         self._DBName = None
@@ -6696,7 +7043,7 @@ class FlashbackDatabase(AbstractModel):
 
     @property
     def DBName(self):
-        r"""按key回档源数据所在库
+        r"""按 Key 闪回目标数据所在库。
         :rtype: str
         """
         return self._DBName
@@ -6707,7 +7054,7 @@ class FlashbackDatabase(AbstractModel):
 
     @property
     def Collections(self):
-        r"""按key回档的集群数组
+        r"""按 Key 闪回的数据库集合。
         :rtype: list of FlashbackCollection
         """
         return self._Collections
@@ -7463,33 +7810,44 @@ class InstanceChargePrepaid(AbstractModel):
 
 
 class InstanceDetail(AbstractModel):
-    r"""实例详情
+    r"""实例详情。
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         :param _InstanceName: 实例名称。
         :type InstanceName: str
-        :param _PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费
+        :param _PayMode: 付费类型。
+- 1：包年包月。
+- 0：按量计费。
         :type PayMode: int
-        :param _ProjectId: 项目ID。
+        :param _ProjectId: 项目 ID。
         :type ProjectId: int
-        :param _ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例。
+        :param _ClusterType: 集群类型。
+- 0：副本集实例。
+- 1：分片实例。
         :type ClusterType: int
         :param _Region: 地域信息。
         :type Region: str
         :param _Zone: 可用区信息。
         :type Zone: str
-        :param _NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络
+        :param _NetType: 网络类型。
+- 0：基础网络。
+- 1：私有网络。
         :type NetType: int
         :param _VpcId: 私有网络的ID。
         :type VpcId: str
         :param _SubnetId: 私有网络的子网ID。
         :type SubnetId: str
-        :param _Status: 实例状态，可能的返回值：0-创建中，1-流程处理中，2-运行中，-2-实例已过期。
+        :param _Status: 实例状态。
+- 0：待初始化。
+- 1：流程处理中，例如：变更规格、参数修改等。
+- 2：实例正常运行中。
+- -2：已隔离（包年包月）。
+- -3：已隔离（按量计费）。
         :type Status: int
         :param _Vip: 实例IP。
         :type Vip: str
@@ -7499,23 +7857,35 @@ class InstanceDetail(AbstractModel):
         :type CreateTime: str
         :param _DeadLine: 实例到期时间。
         :type DeadLine: str
-        :param _MongoVersion: 实例版本信息。
+        :param _MongoVersion: 实例存储引擎版本信息。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _Memory: 实例内存规格，单位为MB。
+        :param _Memory: 实例内存规格，单位：MB。
         :type Memory: int
-        :param _Volume: 实例磁盘规格，单位为MB。
+        :param _Volume: 实例磁盘规格，单位：MB。
         :type Volume: int
-        :param _CpuNum: 实例CPU核心数。
+        :param _CpuNum: 实例 CPU 核心数。
         :type CpuNum: int
         :param _MachineType: 实例机器类型。
+- HIO10G：通用高 HIO 万兆型。
+- HCD：云盘版类型。
         :type MachineType: str
         :param _SecondaryNum: 实例从节点数。
         :type SecondaryNum: int
         :param _ReplicationSetNum: 实例分片数。
         :type ReplicationSetNum: int
-        :param _AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费。
+        :param _AutoRenewFlag: 实例自动续费标志。
+- 0：手动续费。
+- 1：自动续费。
+- 2：确认不续费。
         :type AutoRenewFlag: int
-        :param _UsedVolume: 已用容量，单位MB。
+        :param _UsedVolume: 已用容量，单位：MB。
         :type UsedVolume: int
         :param _MaintenanceStart: 维护窗口起始时间。
         :type MaintenanceStart: str
@@ -7537,29 +7907,34 @@ class InstanceDetail(AbstractModel):
         :type InstanceVer: int
         :param _ClusterVer: 实例版本标记。
         :type ClusterVer: int
-        :param _Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb。
+        :param _Protocol: 协议信息：mongodb。
         :type Protocol: int
-        :param _InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+        :param _InstanceType: 实例类型。
+- 0：所有实例。
+- 1：正式实例。
+- 2：临时实例
+- 3：只读实例。
+- -1：同时包括正式实例、只读实例与灾备实例。
         :type InstanceType: int
-        :param _InstanceStatusDesc: 实例状态描述
+        :param _InstanceStatusDesc: 实例状态描述。
         :type InstanceStatusDesc: str
-        :param _RealInstanceId: 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        :param _RealInstanceId: 实例对应的物理实例 ID。回档并替换过的实例有不同的 InstanceId 和 RealInstanceId，从 barad 获取监控数据等场景下需要用物理 ID 获取。
         :type RealInstanceId: str
         :param _ZoneList: 实例当前可用区信息。
         :type ZoneList: list of str
-        :param _MongosNodeNum: mongos节点个数。
+        :param _MongosNodeNum: mongos 节点个数。
         :type MongosNodeNum: int
-        :param _MongosMemory: mongos节点内存。
+        :param _MongosMemory: mongos 节点内存。单位：MB。
         :type MongosMemory: int
-        :param _MongosCpuNum: mongos节点CPU核数。
+        :param _MongosCpuNum: mongos 节点 CPU 核数。
         :type MongosCpuNum: int
         :param _ConfigServerNodeNum: Config Server节点个数。
         :type ConfigServerNodeNum: int
-        :param _ConfigServerMemory: Config Server节点内存。
+        :param _ConfigServerMemory: Config Server节点内存。单位：MB。
         :type ConfigServerMemory: int
-        :param _ConfigServerVolume: Config Server节点磁盘大小。
+        :param _ConfigServerVolume: Config Server节点磁盘大小。单位：MB。
         :type ConfigServerVolume: int
-        :param _ConfigServerCpuNum: Config Server节点CPU核数。
+        :param _ConfigServerCpuNum: Config Server 节点 CPU 核数。
         :type ConfigServerCpuNum: int
         :param _ReadonlyNodeNum: readonly节点个数。
         :type ReadonlyNodeNum: int
@@ -7614,7 +7989,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -7636,7 +8011,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费类型，可能的返回值：1-包年包月；0-按量计费
+        r"""付费类型。
+- 1：包年包月。
+- 0：按量计费。
         :rtype: int
         """
         return self._PayMode
@@ -7647,7 +8024,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID。
+        r"""项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -7658,7 +8035,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型，可能的返回值：0-副本集实例，1-分片实例。
+        r"""集群类型。
+- 0：副本集实例。
+- 1：分片实例。
         :rtype: int
         """
         return self._ClusterType
@@ -7691,7 +8070,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型，可能的返回值：0-基础网络，1-私有网络
+        r"""网络类型。
+- 0：基础网络。
+- 1：私有网络。
         :rtype: int
         """
         return self._NetType
@@ -7724,7 +8105,12 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，可能的返回值：0-创建中，1-流程处理中，2-运行中，-2-实例已过期。
+        r"""实例状态。
+- 0：待初始化。
+- 1：流程处理中，例如：变更规格、参数修改等。
+- 2：实例正常运行中。
+- -2：已隔离（包年包月）。
+- -3：已隔离（按量计费）。
         :rtype: int
         """
         return self._Status
@@ -7779,7 +8165,14 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""实例版本信息。
+        r"""实例存储引擎版本信息。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -7790,7 +8183,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存规格，单位为MB。
+        r"""实例内存规格，单位：MB。
         :rtype: int
         """
         return self._Memory
@@ -7801,7 +8194,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Volume(self):
-        r"""实例磁盘规格，单位为MB。
+        r"""实例磁盘规格，单位：MB。
         :rtype: int
         """
         return self._Volume
@@ -7812,7 +8205,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def CpuNum(self):
-        r"""实例CPU核心数。
+        r"""实例 CPU 核心数。
         :rtype: int
         """
         return self._CpuNum
@@ -7824,6 +8217,8 @@ class InstanceDetail(AbstractModel):
     @property
     def MachineType(self):
         r"""实例机器类型。
+- HIO10G：通用高 HIO 万兆型。
+- HCD：云盘版类型。
         :rtype: str
         """
         return self._MachineType
@@ -7856,7 +8251,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费。
+        r"""实例自动续费标志。
+- 0：手动续费。
+- 1：自动续费。
+- 2：确认不续费。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7867,7 +8265,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def UsedVolume(self):
-        r"""已用容量，单位MB。
+        r"""已用容量，单位：MB。
         :rtype: int
         """
         return self._UsedVolume
@@ -7988,7 +8386,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议信息，可能的返回值：1-mongodb，2-dynamodb。
+        r"""协议信息：mongodb。
         :rtype: int
         """
         return self._Protocol
@@ -7999,7 +8397,12 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+        r"""实例类型。
+- 0：所有实例。
+- 1：正式实例。
+- 2：临时实例
+- 3：只读实例。
+- -1：同时包括正式实例、只读实例与灾备实例。
         :rtype: int
         """
         return self._InstanceType
@@ -8010,7 +8413,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceStatusDesc(self):
-        r"""实例状态描述
+        r"""实例状态描述。
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -8021,7 +8424,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RealInstanceId(self):
-        r"""实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        r"""实例对应的物理实例 ID。回档并替换过的实例有不同的 InstanceId 和 RealInstanceId，从 barad 获取监控数据等场景下需要用物理 ID 获取。
         :rtype: str
         """
         return self._RealInstanceId
@@ -8043,7 +8446,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MongosNodeNum(self):
-        r"""mongos节点个数。
+        r"""mongos 节点个数。
         :rtype: int
         """
         return self._MongosNodeNum
@@ -8054,7 +8457,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MongosMemory(self):
-        r"""mongos节点内存。
+        r"""mongos 节点内存。单位：MB。
         :rtype: int
         """
         return self._MongosMemory
@@ -8065,7 +8468,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MongosCpuNum(self):
-        r"""mongos节点CPU核数。
+        r"""mongos 节点 CPU 核数。
         :rtype: int
         """
         return self._MongosCpuNum
@@ -8087,7 +8490,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ConfigServerMemory(self):
-        r"""Config Server节点内存。
+        r"""Config Server节点内存。单位：MB。
         :rtype: int
         """
         return self._ConfigServerMemory
@@ -8098,7 +8501,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ConfigServerVolume(self):
-        r"""Config Server节点磁盘大小。
+        r"""Config Server节点磁盘大小。单位：MB。
         :rtype: int
         """
         return self._ConfigServerVolume
@@ -8109,7 +8512,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ConfigServerCpuNum(self):
-        r"""Config Server节点CPU核数。
+        r"""Config Server 节点 CPU 核数。
         :rtype: int
         """
         return self._ConfigServerCpuNum
@@ -8844,14 +9247,14 @@ class IsolateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需隔离的实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需隔离的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -8930,6 +9333,8 @@ class KMSInfoDetail(AbstractModel):
         :param _CreateTime: 实例与密钥绑定时间。
         :type CreateTime: str
         :param _Status: 密钥状态。
+- Enabled：开启。
+- Disabled：不开启。
         :type Status: str
         :param _KeyUsage: 密钥用途。
         :type KeyUsage: str
@@ -8982,6 +9387,8 @@ class KMSInfoDetail(AbstractModel):
     @property
     def Status(self):
         r"""密钥状态。
+- Enabled：开启。
+- Disabled：不开启。
         :rtype: str
         """
         return self._Status
@@ -9049,9 +9456,9 @@ class KillOpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Operations: 待终止的操作
+        :param _Operations: 待终止的操作。
         :type Operations: list of Operation
         """
         self._InstanceId = None
@@ -9059,7 +9466,7 @@ class KillOpsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9070,7 +9477,7 @@ class KillOpsRequest(AbstractModel):
 
     @property
     def Operations(self):
-        r"""待终止的操作
+        r"""待终止的操作。
         :rtype: list of Operation
         """
         return self._Operations
@@ -9285,7 +9692,7 @@ class ModifyDBInstanceParamTplRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplId: 待修改的参数模板 ID，示例：tpl-jglr91vew。
+        :param _TplId: 待修改的参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :type TplId: str
         :param _TplName: 待修改参数模板名称，为空时，保持原有名称。
         :type TplName: str
@@ -9301,7 +9708,7 @@ class ModifyDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def TplId(self):
-        r"""待修改的参数模板 ID，示例：tpl-jglr91vew。
+        r"""待修改的参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
         :rtype: str
         """
         return self._TplId
@@ -9480,12 +9887,12 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Memory: 实例配置变更后的内存大小。- 单位：GB。为空时，默认取实例当前的内存大小。<br>  注意：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
+        :param _Memory: 实例配置变更后的内存大小。单位：GB。该参数为空值时，默认取实例当前的内存大小。当前所支持的内存规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
+**注意**：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
         :type Memory: int
-        :param _Volume: 实例配置变更后的硬盘大小，单位：GB。为空时，默认取当前实例的磁盘大小。
+        :param _Volume: 实例配置变更后的硬盘大小，单位：GB。该参数为空值时，默认取当前实例的磁盘大小。当前所支持的磁盘容量，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 - 降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。
         :type Volume: int
@@ -9495,26 +9902,26 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 - 单位：GB。
 - 默认 Oplog 占用容量为磁盘空间的10%。系统允许设置的 Oplog 容量范围为磁盘空间的[10%,90%]。
         :type OplogSize: int
-        :param _NodeNum: 实例变更后mongod的节点数（不包含readonly节点数）。
-- 变更mongod CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
--  变更 mongos CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
--  节点变更时(全部类型)，该参数可不配置或输入变更后的 mongod(不包含readonly) 节点数量。
--  副本集节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。
--  分片集群每个分片节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。
+        :param _NodeNum: 实例变更后 mongod 的节点数（不包含 readonly 只读节点数）。
+-  副本集节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取节点数量取值范围。
+-  分片集群每个分片节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取节点数量取值范围。
+**说明**：变更 mongod 或 mongos 的 CPU 与内存规格时，该参数可以不配置或者输入当前 mongod 或 mongos（不包含readonly）节点数量。
         :type NodeNum: int
         :param _ReplicateSetNum: 实例变更后的分片数。
-- 取值范围请通过云数据库的售卖规格[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取。- 该参数只能增加不能减少。
+- 请通过 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取实例分片数取值范围。
+- 实例分片数量只允许增加不允许减少。
         :type ReplicateSetNum: int
         :param _InMaintenance: 实例配置变更的切换时间。
 - 0：调整完成时，立即执行变配任务。默认为0。
 - 1：在维护时间窗内，执行变配任务。
 **说明**：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。
         :type InMaintenance: int
-        :param _MongosMemory: 分片实例配置变更后的mongos内存大小。单位：GB。
+        :param _MongosMemory: 分片实例配置变更后的 mongos 内存大小。单位：GB。实例支持的规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
         :type MongosMemory: str
         :param _AddNodeList: 新增节点列表，节点类型及可用区信息。
         :type AddNodeList: list of AddNodeList
-        :param _RemoveNodeList: 删除节点列表，注意：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
+        :param _RemoveNodeList: 删除节点列表。
+**注意**：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
         :type RemoveNodeList: list of RemoveNodeList
         """
         self._InstanceId = None
@@ -9530,8 +9937,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9542,7 +9948,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例配置变更后的内存大小。- 单位：GB。为空时，默认取实例当前的内存大小。<br>  注意：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
+        r"""实例配置变更后的内存大小。单位：GB。该参数为空值时，默认取实例当前的内存大小。当前所支持的内存规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
+**注意**：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
         :rtype: int
         """
         return self._Memory
@@ -9553,7 +9960,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""实例配置变更后的硬盘大小，单位：GB。为空时，默认取当前实例的磁盘大小。
+        r"""实例配置变更后的硬盘大小，单位：GB。该参数为空值时，默认取当前实例的磁盘大小。当前所支持的磁盘容量，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 - 降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。
         :rtype: int
@@ -9585,12 +9992,10 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""实例变更后mongod的节点数（不包含readonly节点数）。
-- 变更mongod CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
--  变更 mongos CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
--  节点变更时(全部类型)，该参数可不配置或输入变更后的 mongod(不包含readonly) 节点数量。
--  副本集节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。
--  分片集群每个分片节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。
+        r"""实例变更后 mongod 的节点数（不包含 readonly 只读节点数）。
+-  副本集节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取节点数量取值范围。
+-  分片集群每个分片节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取节点数量取值范围。
+**说明**：变更 mongod 或 mongos 的 CPU 与内存规格时，该参数可以不配置或者输入当前 mongod 或 mongos（不包含readonly）节点数量。
         :rtype: int
         """
         return self._NodeNum
@@ -9602,7 +10007,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
     @property
     def ReplicateSetNum(self):
         r"""实例变更后的分片数。
-- 取值范围请通过云数据库的售卖规格[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取。- 该参数只能增加不能减少。
+- 请通过 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取实例分片数取值范围。
+- 实例分片数量只允许增加不允许减少。
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -9627,7 +10033,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def MongosMemory(self):
-        r"""分片实例配置变更后的mongos内存大小。单位：GB。
+        r"""分片实例配置变更后的 mongos 内存大小。单位：GB。实例支持的规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
         :rtype: str
         """
         return self._MongosMemory
@@ -9649,7 +10055,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def RemoveNodeList(self):
-        r"""删除节点列表，注意：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
+        r"""删除节点列表。
+**注意**：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
         :rtype: list of RemoveNodeList
         """
         return self._RemoveNodeList
@@ -9991,21 +10398,38 @@ class NodeProperty(AbstractModel):
         :type Address: str
         :param _WanServiceAddress: 节点公网访问外网地址(IP或域名，示例为IP方式)。
         :type WanServiceAddress: str
-        :param _Role: 角色。
+        :param _Role: 节点角色。
+- PRIMARY：主节点。
+- SECONDARY：从节点。
+- READONLY：只读节点。
+- ARBITER：仲裁节点。
         :type Role: str
-        :param _Hidden: 是否为Hidden节点
+        :param _Hidden: 节点是否为 Hidden 节点。
+- true：Hidden 节点。
+- false：非 Hidden 节点。
         :type Hidden: bool
-        :param _Status: 节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
+        :param _Status: 节点状态。
+- NORMAL：正常运行中。
+- STARTUP：正在启动。
+- STARTUP2：正在启动，处理中间数据。
+- RECOVERING：恢复中，暂不可用。
+- DOWN：已掉线。
+- UNKNOWN：未知状态。
+- ROLLBACK：回滚中。
+- REMOVED：已移除。
         :type Status: str
-        :param _SlaveDelay: 主从延迟，单位秒。
+        :param _SlaveDelay: 主从同步延迟时间，单位：秒。
         :type SlaveDelay: int
-        :param _Priority: 节点优先级。
+        :param _Priority: 节点优先级。其取值范围为[0,100]，数值越高，优先级越高。
         :type Priority: int
         :param _Votes: 节点投票权。
+- 1：具有投票权。
+- 0：无投票权。
         :type Votes: int
         :param _Tags: 节点标签。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of NodeTag
-        :param _ReplicateSetId: 副本集Id。
+        :param _ReplicateSetId: 副本集 ID。
         :type ReplicateSetId: str
         """
         self._Zone = None
@@ -10067,7 +10491,11 @@ class NodeProperty(AbstractModel):
 
     @property
     def Role(self):
-        r"""角色。
+        r"""节点角色。
+- PRIMARY：主节点。
+- SECONDARY：从节点。
+- READONLY：只读节点。
+- ARBITER：仲裁节点。
         :rtype: str
         """
         return self._Role
@@ -10078,7 +10506,9 @@ class NodeProperty(AbstractModel):
 
     @property
     def Hidden(self):
-        r"""是否为Hidden节点
+        r"""节点是否为 Hidden 节点。
+- true：Hidden 节点。
+- false：非 Hidden 节点。
         :rtype: bool
         """
         return self._Hidden
@@ -10089,7 +10519,15 @@ class NodeProperty(AbstractModel):
 
     @property
     def Status(self):
-        r"""节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
+        r"""节点状态。
+- NORMAL：正常运行中。
+- STARTUP：正在启动。
+- STARTUP2：正在启动，处理中间数据。
+- RECOVERING：恢复中，暂不可用。
+- DOWN：已掉线。
+- UNKNOWN：未知状态。
+- ROLLBACK：回滚中。
+- REMOVED：已移除。
         :rtype: str
         """
         return self._Status
@@ -10100,7 +10538,7 @@ class NodeProperty(AbstractModel):
 
     @property
     def SlaveDelay(self):
-        r"""主从延迟，单位秒。
+        r"""主从同步延迟时间，单位：秒。
         :rtype: int
         """
         return self._SlaveDelay
@@ -10111,7 +10549,7 @@ class NodeProperty(AbstractModel):
 
     @property
     def Priority(self):
-        r"""节点优先级。
+        r"""节点优先级。其取值范围为[0,100]，数值越高，优先级越高。
         :rtype: int
         """
         return self._Priority
@@ -10123,6 +10561,8 @@ class NodeProperty(AbstractModel):
     @property
     def Votes(self):
         r"""节点投票权。
+- 1：具有投票权。
+- 0：无投票权。
         :rtype: int
         """
         return self._Votes
@@ -10134,6 +10574,7 @@ class NodeProperty(AbstractModel):
     @property
     def Tags(self):
         r"""节点标签。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeTag
         """
         return self._Tags
@@ -10144,7 +10585,7 @@ class NodeProperty(AbstractModel):
 
     @property
     def ReplicateSetId(self):
-        r"""副本集Id。
+        r"""副本集 ID。
         :rtype: str
         """
         return self._ReplicateSetId
@@ -10240,14 +10681,14 @@ class OfflineIsolatedDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID。请登录 [MongoDB 控制台回收站](https://console.cloud.tencent.com/mongodb/recycle)在实例列表复制需下线的实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""实例ID。请登录 [MongoDB 控制台回收站](https://console.cloud.tencent.com/mongodb/recycle)在实例列表复制需下线的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10313,17 +10754,17 @@ class OfflineIsolatedDBInstanceResponse(AbstractModel):
 
 
 class Operation(AbstractModel):
-    r"""需要终止的操作
+    r"""需要终止的操作。
 
     """
 
     def __init__(self):
         r"""
-        :param _ReplicaSetName: 操作所在的分片名
+        :param _ReplicaSetName: 操作所在的分片名称。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询分片名称。
         :type ReplicaSetName: str
-        :param _NodeName: 操作所在的节点名
+        :param _NodeName: 操作所在的节点名。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询节点名称。
         :type NodeName: str
-        :param _OpId: 操作序号
+        :param _OpId: 操作序号。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询操作序号。
         :type OpId: int
         """
         self._ReplicaSetName = None
@@ -10332,7 +10773,7 @@ class Operation(AbstractModel):
 
     @property
     def ReplicaSetName(self):
-        r"""操作所在的分片名
+        r"""操作所在的分片名称。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询分片名称。
         :rtype: str
         """
         return self._ReplicaSetName
@@ -10343,7 +10784,7 @@ class Operation(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""操作所在的节点名
+        r"""操作所在的节点名。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询节点名称。
         :rtype: str
         """
         return self._NodeName
@@ -10354,7 +10795,7 @@ class Operation(AbstractModel):
 
     @property
     def OpId(self):
-        r"""操作序号
+        r"""操作序号。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询操作序号。
         :rtype: int
         """
         return self._OpId
@@ -10385,17 +10826,29 @@ class ParamTpl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplName: 参数模板名称
+        :param _TplName: 参数模板名称。
         :type TplName: str
-        :param _TplId: 参数模板ID
+        :param _TplId: 参数模板 ID。
         :type TplId: str
-        :param _MongoVersion: 适用数据库版本
+        :param _MongoVersion: 参数模板适用的数据库版本。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _ClusterType: 适用数据库类型
+        :param _ClusterType: 参数模板适用的数据库类型。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :type ClusterType: str
-        :param _TplDesc: 参数模板描述
+        :param _TplDesc: 参数模板描述。
         :type TplDesc: str
-        :param _TplType: 模板类型，包括DEFAULT（默认模板）及CUSTOMIZE（定制模板）两种类型
+        :param _TplType: 模板类型。
+- DEFAULT：系统默认模板。
+- CUSTOMIZE：自定义模板。
         :type TplType: str
         """
         self._TplName = None
@@ -10407,7 +10860,7 @@ class ParamTpl(AbstractModel):
 
     @property
     def TplName(self):
-        r"""参数模板名称
+        r"""参数模板名称。
         :rtype: str
         """
         return self._TplName
@@ -10418,7 +10871,7 @@ class ParamTpl(AbstractModel):
 
     @property
     def TplId(self):
-        r"""参数模板ID
+        r"""参数模板 ID。
         :rtype: str
         """
         return self._TplId
@@ -10429,7 +10882,14 @@ class ParamTpl(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""适用数据库版本
+        r"""参数模板适用的数据库版本。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -10440,7 +10900,10 @@ class ParamTpl(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""适用数据库类型
+        r"""参数模板适用的数据库类型。
+- REPLSET：副本集实例。
+- SHARD：分片实例。
+- STANDALONE：单节点实例。
         :rtype: str
         """
         return self._ClusterType
@@ -10451,7 +10914,7 @@ class ParamTpl(AbstractModel):
 
     @property
     def TplDesc(self):
-        r"""参数模板描述
+        r"""参数模板描述。
         :rtype: str
         """
         return self._TplDesc
@@ -10462,7 +10925,9 @@ class ParamTpl(AbstractModel):
 
     @property
     def TplType(self):
-        r"""模板类型，包括DEFAULT（默认模板）及CUSTOMIZE（定制模板）两种类型
+        r"""模板类型。
+- DEFAULT：系统默认模板。
+- CUSTOMIZE：自定义模板。
         :rtype: str
         """
         return self._TplType
@@ -10541,7 +11006,7 @@ class ParamType(AbstractModel):
 
 
 class RemoveNodeList(AbstractModel):
-    r"""修改实例节点详情
+    r"""修改实例节点详情。
 
     """
 
@@ -10552,12 +11017,11 @@ class RemoveNodeList(AbstractModel):
 - READONLY：只读节点。
 - MONGOS：Mongos 节点。
         :type Role: str
-        :param _NodeName: 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对改组对齐。
-
-- 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/)，在**节点管理**页签，可获取**节点 ID**。
-- 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk****_0-node-primary。
+        :param _NodeName: 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对该组对齐。
+- 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/mongodb)，在**节点管理**页签，可获取**节点 ID**。
+- 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk\*\*\*\*\_0-node-primary。
         :type NodeName: str
-        :param _Zone: 节点所对应的可用区。
+        :param _Zone: 节点所对应的可用区。当前支持可用区信息，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 - 单可用区，所有节点在同一可用区。
 - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置所删除节点对应的可用区，且删除后必须满足任意2个可用区节点数大于第3个可用区原则。
         :type Zone: str
@@ -10582,10 +11046,9 @@ class RemoveNodeList(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对改组对齐。
-
-- 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/)，在**节点管理**页签，可获取**节点 ID**。
-- 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk****_0-node-primary。
+        r"""要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对该组对齐。
+- 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/mongodb)，在**节点管理**页签，可获取**节点 ID**。
+- 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk\*\*\*\*\_0-node-primary。
         :rtype: str
         """
         return self._NodeName
@@ -10596,7 +11059,7 @@ class RemoveNodeList(AbstractModel):
 
     @property
     def Zone(self):
-        r"""节点所对应的可用区。
+        r"""节点所对应的可用区。当前支持可用区信息，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 - 单可用区，所有节点在同一可用区。
 - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置所删除节点对应的可用区，且删除后必须满足任意2个可用区节点数大于第3个可用区原则。
         :rtype: str
@@ -10709,7 +11172,7 @@ class RenewDBInstancesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceIds: 指定续费的一个或多个待操作的实例ID。
-- 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+- 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceId**获取。
 - 每次续费请求的实例数量上限为100。
         :type InstanceIds: list of str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。
@@ -10721,7 +11184,7 @@ class RenewDBInstancesRequest(AbstractModel):
     @property
     def InstanceIds(self):
         r"""指定续费的一个或多个待操作的实例ID。
-- 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+- 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceId**获取。
 - 每次续费请求的实例数量上限为100。
         :rtype: list of str
         """
@@ -10787,20 +11250,20 @@ class RenewDBInstancesResponse(AbstractModel):
 
 
 class ReplicaSetInfo(AbstractModel):
-    r"""分片信息
+    r"""分片信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _ReplicaSetId: 副本集ID
+        :param _ReplicaSetId: 副本集 ID。
         :type ReplicaSetId: str
         """
         self._ReplicaSetId = None
 
     @property
     def ReplicaSetId(self):
-        r"""副本集ID
+        r"""副本集 ID。
         :rtype: str
         """
         return self._ReplicaSetId
@@ -10983,9 +11446,11 @@ class RestartNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _NodeIds: 节点Id。
+        :param _NodeIds: 需要重启的节点 ID 列表。
+- 支持重启的节点类型包含：mongod节点、只读节点、mongos节点。
+- 节点 ID，请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在**节点管理**页面复制，或者通过 [DescribeDBInstanceNodeProperty ](https://cloud.tencent.com/document/product/240/82022)接口获取。
         :type NodeIds: list of str
         """
         self._InstanceId = None
@@ -10993,7 +11458,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -11004,7 +11469,9 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
-        r"""节点Id。
+        r"""需要重启的节点 ID 列表。
+- 支持重启的节点类型包含：mongod节点、只读节点、mongos节点。
+- 节点 ID，请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在**节点管理**页面复制，或者通过 [DescribeDBInstanceNodeProperty ](https://cloud.tencent.com/document/product/240/82022)接口获取。
         :rtype: list of str
         """
         return self._NodeIds
@@ -11034,7 +11501,7 @@ class RestartNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程Id。
+        :param _FlowId: 流程 ID。
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11044,7 +11511,7 @@ class RestartNodesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程Id。
+        r"""流程 ID。
         :rtype: int
         """
         return self._FlowId
@@ -11077,19 +11544,19 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 所属项目id
+        :param _ProjectId: 所属项目 ID。
         :type ProjectId: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 安全组创建时间。
         :type CreateTime: str
-        :param _Inbound: 入站规则
+        :param _Inbound: 安全组入站规则。
         :type Inbound: list of SecurityGroupBound
-        :param _Outbound: 出站规则
+        :param _Outbound: 安全组出站规则。
         :type Outbound: list of SecurityGroupBound
-        :param _SecurityGroupId: 安全组id
+        :param _SecurityGroupId: 安全组 ID。
         :type SecurityGroupId: str
-        :param _SecurityGroupName: 安全组名称
+        :param _SecurityGroupName: 安全组名称。
         :type SecurityGroupName: str
-        :param _SecurityGroupRemark: 安全组备注
+        :param _SecurityGroupRemark: 安全组备注信息。
         :type SecurityGroupRemark: str
         """
         self._ProjectId = None
@@ -11102,7 +11569,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""所属项目id
+        r"""所属项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -11113,7 +11580,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""安全组创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -11124,7 +11591,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Inbound(self):
-        r"""入站规则
+        r"""安全组入站规则。
         :rtype: list of SecurityGroupBound
         """
         return self._Inbound
@@ -11135,7 +11602,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Outbound(self):
-        r"""出站规则
+        r"""安全组出站规则。
         :rtype: list of SecurityGroupBound
         """
         return self._Outbound
@@ -11146,7 +11613,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""安全组id
+        r"""安全组 ID。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -11157,7 +11624,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        r"""安全组名称
+        r"""安全组名称。
         :rtype: str
         """
         return self._SecurityGroupName
@@ -11168,7 +11635,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
-        r"""安全组备注
+        r"""安全组备注信息。
         :rtype: str
         """
         return self._SecurityGroupRemark
@@ -11213,21 +11680,23 @@ class SecurityGroupBound(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: 执行规则。ACCEPT或DROP
+        :param _Action: 执行策略。
+- ACCEPT：允许，放行该端口相应的访问请求。
+- DROP：拒绝，直接丢弃数据包，不返回任何回应信息。
         :type Action: str
-        :param _CidrIp: ip段。
+        :param _CidrIp: 访问数据库的入站 IP 或 IP 段。
         :type CidrIp: str
-        :param _PortRange: 端口范围
+        :param _PortRange: 访问数据库的端口。
         :type PortRange: str
-        :param _IpProtocol: 传输层协议。tcp，udp或ALL
+        :param _IpProtocol: 传输层协议：tcp。
         :type IpProtocol: str
-        :param _Id: 安全组id代表的地址集合
+        :param _Id: 安全组 ID。
         :type Id: str
-        :param _AddressModule: 地址组id代表的地址集合
+        :param _AddressModule: IP 地址或 IP 地址组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/ip)获取参数模板 IP 地址详情。
         :type AddressModule: str
-        :param _ServiceModule: 服务组id代表的协议和端口集合
+        :param _ServiceModule: 协议端口或协议端口组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/protoport)获取参数模板协议端口详情。
         :type ServiceModule: str
-        :param _Desc: 描述
+        :param _Desc: 安全组描述信息。
         :type Desc: str
         """
         self._Action = None
@@ -11241,7 +11710,9 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def Action(self):
-        r"""执行规则。ACCEPT或DROP
+        r"""执行策略。
+- ACCEPT：允许，放行该端口相应的访问请求。
+- DROP：拒绝，直接丢弃数据包，不返回任何回应信息。
         :rtype: str
         """
         return self._Action
@@ -11252,7 +11723,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def CidrIp(self):
-        r"""ip段。
+        r"""访问数据库的入站 IP 或 IP 段。
         :rtype: str
         """
         return self._CidrIp
@@ -11263,7 +11734,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def PortRange(self):
-        r"""端口范围
+        r"""访问数据库的端口。
         :rtype: str
         """
         return self._PortRange
@@ -11274,7 +11745,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def IpProtocol(self):
-        r"""传输层协议。tcp，udp或ALL
+        r"""传输层协议：tcp。
         :rtype: str
         """
         return self._IpProtocol
@@ -11285,7 +11756,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def Id(self):
-        r"""安全组id代表的地址集合
+        r"""安全组 ID。
         :rtype: str
         """
         return self._Id
@@ -11296,7 +11767,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def AddressModule(self):
-        r"""地址组id代表的地址集合
+        r"""IP 地址或 IP 地址组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/ip)获取参数模板 IP 地址详情。
         :rtype: str
         """
         return self._AddressModule
@@ -11307,7 +11778,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def ServiceModule(self):
-        r"""服务组id代表的协议和端口集合
+        r"""协议端口或协议端口组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/protoport)获取参数模板协议端口详情。
         :rtype: str
         """
         return self._ServiceModule
@@ -11318,7 +11789,7 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def Desc(self):
-        r"""描述
+        r"""安全组描述信息。
         :rtype: str
         """
         return self._Desc
@@ -11470,7 +11941,13 @@ class SetBackupRulesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _BackupMethod: 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+        :param _BackupMethod: 备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
         :param _BackupTime: 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
         :type BackupTime: int
@@ -11500,7 +11977,13 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+        r"""备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -11916,11 +12399,11 @@ class SlowLogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Log: 慢日志
+        :param _Log: 慢日志详情。
         :type Log: str
-        :param _NodeName: 节点名称
+        :param _NodeName: 节点名称。
         :type NodeName: str
-        :param _QueryHash: queryHash
+        :param _QueryHash: 查询哈希值。
         :type QueryHash: str
         """
         self._Log = None
@@ -11929,7 +12412,7 @@ class SlowLogItem(AbstractModel):
 
     @property
     def Log(self):
-        r"""慢日志
+        r"""慢日志详情。
         :rtype: str
         """
         return self._Log
@@ -11940,7 +12423,7 @@ class SlowLogItem(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""节点名称
+        r"""节点名称。
         :rtype: str
         """
         return self._NodeName
@@ -11951,7 +12434,7 @@ class SlowLogItem(AbstractModel):
 
     @property
     def QueryHash(self):
-        r"""queryHash
+        r"""查询哈希值。
         :rtype: str
         """
         return self._QueryHash
@@ -11982,15 +12465,15 @@ class SlowLogPattern(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Pattern: 慢日志模式
+        :param _Pattern: 慢日志输出格式：库名.表名.命令。
         :type Pattern: str
-        :param _QueryHash: queryHash
+        :param _QueryHash: 记录慢日志时所带的queryHash 值，标识一类查询。
         :type QueryHash: str
-        :param _MaxTime: 最大执行时间
+        :param _MaxTime: 最大执行时间。单位：毫秒。
         :type MaxTime: int
-        :param _AverageTime: 平均执行时间
+        :param _AverageTime: 平均执行时间。单位：毫秒。
         :type AverageTime: int
-        :param _Total: 该模式慢日志条数
+        :param _Total: 慢日志条数。
         :type Total: int
         """
         self._Pattern = None
@@ -12001,7 +12484,7 @@ class SlowLogPattern(AbstractModel):
 
     @property
     def Pattern(self):
-        r"""慢日志模式
+        r"""慢日志输出格式：库名.表名.命令。
         :rtype: str
         """
         return self._Pattern
@@ -12012,7 +12495,7 @@ class SlowLogPattern(AbstractModel):
 
     @property
     def QueryHash(self):
-        r"""queryHash
+        r"""记录慢日志时所带的queryHash 值，标识一类查询。
         :rtype: str
         """
         return self._QueryHash
@@ -12023,7 +12506,7 @@ class SlowLogPattern(AbstractModel):
 
     @property
     def MaxTime(self):
-        r"""最大执行时间
+        r"""最大执行时间。单位：毫秒。
         :rtype: int
         """
         return self._MaxTime
@@ -12034,7 +12517,7 @@ class SlowLogPattern(AbstractModel):
 
     @property
     def AverageTime(self):
-        r"""平均执行时间
+        r"""平均执行时间。单位：毫秒。
         :rtype: int
         """
         return self._AverageTime
@@ -12045,7 +12528,7 @@ class SlowLogPattern(AbstractModel):
 
     @property
     def Total(self):
-        r"""该模式慢日志条数
+        r"""慢日志条数。
         :rtype: int
         """
         return self._Total
@@ -12072,23 +12555,16 @@ class SlowLogPattern(AbstractModel):
 
 
 class SpecItem(AbstractModel):
-    r"""mongodb售卖规格
+    r"""mongodb售卖规格。
 
     """
 
     def __init__(self):
         r"""
         :param _SpecCode: 规格信息标识。格式如：mongo.HIO10G.128g。由节点类型、规格类型、内存规格三部分组成。
-- 节点类型，如下所示。
-  - mongo：Mongod 节点。
- - mongos：Mongos 节点。
- - cfgstr：Configserver 节点。
-- 规格类型，如下所示。
- - HIO10G：通用高HIO万兆型。
- - HCD：云盘版类型。
-- 内存规格，如下所示：
- - 支持4、8、16、32、64、128、240、512。
- - 单位g：表示GB。128g则表示128GB。
+- 节点类型：**mongo**，指 Mongod 节点；**mongos**，指 Mongos 节点；**cfgstr**，指 Configserver 节点。
+- 规格类型：**HIO10G**，指通用高HIO万兆型；**HCD**：指云盘版类型。
+- 内存规格：支持4、8、16、32、64、128、240、512。单位g：表示GB。128g 则表示128GB。
         :type SpecCode: str
         :param _Status: 售卖规格有效标志，取值范围如下：
 - 0：停止售卖，
@@ -12109,17 +12585,16 @@ class SpecItem(AbstractModel):
         :param _Conns: 规格所支持的最大连接数限制。
         :type Conns: int
         :param _MongoVersionCode: 实例存储引擎版本信息。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :type MongoVersionCode: str
         :param _MongoVersionValue: 实例版本对应的数字版本。
         :type MongoVersionValue: int
-        :param _Version: 实例版本信息。支持：3.6、4.2、4.4、5.0、6.0。
-
+        :param _Version: 实例版本信息。支持：4.2、4.4、5.0、6.0、7.0。
         :type Version: str
         :param _EngineName: 存储引擎。
         :type EngineName: str
@@ -12169,16 +12644,9 @@ class SpecItem(AbstractModel):
     @property
     def SpecCode(self):
         r"""规格信息标识。格式如：mongo.HIO10G.128g。由节点类型、规格类型、内存规格三部分组成。
-- 节点类型，如下所示。
-  - mongo：Mongod 节点。
- - mongos：Mongos 节点。
- - cfgstr：Configserver 节点。
-- 规格类型，如下所示。
- - HIO10G：通用高HIO万兆型。
- - HCD：云盘版类型。
-- 内存规格，如下所示：
- - 支持4、8、16、32、64、128、240、512。
- - 单位g：表示GB。128g则表示128GB。
+- 节点类型：**mongo**，指 Mongod 节点；**mongos**，指 Mongos 节点；**cfgstr**，指 Configserver 节点。
+- 规格类型：**HIO10G**，指通用高HIO万兆型；**HCD**：指云盘版类型。
+- 内存规格：支持4、8、16、32、64、128、240、512。单位g：表示GB。128g 则表示128GB。
         :rtype: str
         """
         return self._SpecCode
@@ -12280,12 +12748,12 @@ class SpecItem(AbstractModel):
     @property
     def MongoVersionCode(self):
         r"""实例存储引擎版本信息。
-- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+- MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersionCode
@@ -12307,8 +12775,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Version(self):
-        r"""实例版本信息。支持：3.6、4.2、4.4、5.0、6.0。
-
+        r"""实例版本信息。支持：4.2、4.4、5.0、6.0、7.0。
         :rtype: str
         """
         return self._Version
@@ -12454,19 +12921,21 @@ class SpecItem(AbstractModel):
 
 
 class SpecificationInfo(AbstractModel):
-    r"""实例规格信息
+    r"""实例规格信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _Region: 地域信息
+        :param _Region: 地域信息。
         :type Region: str
-        :param _Zone: 可用区信息
+        :param _Zone: 可用区信息。
         :type Zone: str
-        :param _SpecItems: 售卖规格信息
+        :param _SpecItems: 售卖规格信息。
         :type SpecItems: list of SpecItem
-        :param _SupportMultiAZ: 是否支持跨可用区部署 1-支持，0-不支持
+        :param _SupportMultiAZ: 是否支持跨可用区部署。
+- 1：支持。
+- 0：不支持。
         :type SupportMultiAZ: int
         """
         self._Region = None
@@ -12476,7 +12945,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""地域信息。
         :rtype: str
         """
         return self._Region
@@ -12487,7 +12956,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息
+        r"""可用区信息。
         :rtype: str
         """
         return self._Zone
@@ -12498,7 +12967,7 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def SpecItems(self):
-        r"""售卖规格信息
+        r"""售卖规格信息。
         :rtype: list of SpecItem
         """
         return self._SpecItems
@@ -12509,7 +12978,9 @@ class SpecificationInfo(AbstractModel):
 
     @property
     def SupportMultiAZ(self):
-        r"""是否支持跨可用区部署 1-支持，0-不支持
+        r"""是否支持跨可用区部署。
+- 1：支持。
+- 0：不支持。
         :rtype: int
         """
         return self._SupportMultiAZ

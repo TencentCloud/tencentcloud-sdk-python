@@ -3052,6 +3052,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceModes(self, request):
+        r"""该接口（ModifyDBInstanceModes）用于更改云数据库的模式。
+
+        :param request: Request instance for ModifyDBInstanceModes.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceModesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceModesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceModes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceModesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceName(self, request):
         r"""本接口(ModifyDBInstanceName)用于修改云数据库实例的名称。
 

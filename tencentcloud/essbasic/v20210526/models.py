@@ -7991,12 +7991,15 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _Organization: 企业机构信息，不用传
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param _Options: 个性化配置字段，默认不传。
+        :type Options: list of Option
         """
         self._Agent = None
         self._SealId = None
         self._UserIds = None
         self._Operator = None
         self._Organization = None
+        self._Options = None
 
     @property
     def Agent(self):
@@ -8076,6 +8079,17 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
 
         self._Organization = Organization
 
+    @property
+    def Options(self):
+        r"""个性化配置字段，默认不传。
+        :rtype: list of Option
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -8089,6 +8103,12 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
         if params.get("Organization") is not None:
             self._Organization = OrganizationInfo()
             self._Organization._deserialize(params.get("Organization"))
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = Option()
+                obj._deserialize(item)
+                self._Options.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8109,10 +8129,16 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
         :param _UserIds: 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
 请求参数填写OpenId时，返回授权成功的 Openid。
         :type UserIds: list of str
+        :param _SealOperatorVerifyPath: 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :type SealOperatorVerifyPath: str
+        :param _SealOperatorVerifyQrcodeUrl: 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :type SealOperatorVerifyQrcodeUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserIds = None
+        self._SealOperatorVerifyPath = None
+        self._SealOperatorVerifyQrcodeUrl = None
         self._RequestId = None
 
     @property
@@ -8128,6 +8154,28 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
         self._UserIds = UserIds
 
     @property
+    def SealOperatorVerifyPath(self):
+        r"""人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyPath
+
+    @SealOperatorVerifyPath.setter
+    def SealOperatorVerifyPath(self, SealOperatorVerifyPath):
+        self._SealOperatorVerifyPath = SealOperatorVerifyPath
+
+    @property
+    def SealOperatorVerifyQrcodeUrl(self):
+        r"""人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyQrcodeUrl
+
+    @SealOperatorVerifyQrcodeUrl.setter
+    def SealOperatorVerifyQrcodeUrl(self, SealOperatorVerifyQrcodeUrl):
+        self._SealOperatorVerifyQrcodeUrl = SealOperatorVerifyQrcodeUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8141,6 +8189,8 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._UserIds = params.get("UserIds")
+        self._SealOperatorVerifyPath = params.get("SealOperatorVerifyPath")
+        self._SealOperatorVerifyQrcodeUrl = params.get("SealOperatorVerifyQrcodeUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -11898,12 +11948,15 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
         :type Reason: str
         :param _Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _Options: 个性化配置字段，默认不传。
+        :type Options: list of Option
         """
         self._Agent = None
         self._Status = None
         self._SealId = None
         self._Reason = None
         self._Operator = None
+        self._Options = None
 
     @property
     def Agent(self):
@@ -11965,6 +12018,17 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def Options(self):
+        r"""个性化配置字段，默认不传。
+        :rtype: list of Option
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -11976,6 +12040,12 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = Option()
+                obj._deserialize(item)
+                self._Options.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11993,10 +12063,38 @@ class ChannelUpdateSealStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SealOperatorVerifyPath: 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :type SealOperatorVerifyPath: str
+        :param _SealOperatorVerifyQrcodeUrl: 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :type SealOperatorVerifyQrcodeUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SealOperatorVerifyPath = None
+        self._SealOperatorVerifyQrcodeUrl = None
         self._RequestId = None
+
+    @property
+    def SealOperatorVerifyPath(self):
+        r"""人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyPath
+
+    @SealOperatorVerifyPath.setter
+    def SealOperatorVerifyPath(self, SealOperatorVerifyPath):
+        self._SealOperatorVerifyPath = SealOperatorVerifyPath
+
+    @property
+    def SealOperatorVerifyQrcodeUrl(self):
+        r"""人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyQrcodeUrl
+
+    @SealOperatorVerifyQrcodeUrl.setter
+    def SealOperatorVerifyQrcodeUrl(self, SealOperatorVerifyQrcodeUrl):
+        self._SealOperatorVerifyQrcodeUrl = SealOperatorVerifyQrcodeUrl
 
     @property
     def RequestId(self):
@@ -12011,6 +12109,8 @@ class ChannelUpdateSealStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SealOperatorVerifyPath = params.get("SealOperatorVerifyPath")
+        self._SealOperatorVerifyQrcodeUrl = params.get("SealOperatorVerifyQrcodeUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -17719,6 +17819,8 @@ class CreateSealByImageRequest(AbstractModel):
         :type TaxIdentifyCode: str
         :param _SealDescription: 印章描述内容
         :type SealDescription: str
+        :param _Options: 个性化配置字段，默认不传。
+        :type Options: list of Option
         """
         self._Agent = None
         self._SealName = None
@@ -17731,6 +17833,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealSize = None
         self._TaxIdentifyCode = None
         self._SealDescription = None
+        self._Options = None
 
     @property
     def Agent(self):
@@ -17886,6 +17989,17 @@ class CreateSealByImageRequest(AbstractModel):
     def SealDescription(self, SealDescription):
         self._SealDescription = SealDescription
 
+    @property
+    def Options(self):
+        r"""个性化配置字段，默认不传。
+        :rtype: list of Option
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -17903,6 +18017,12 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
         self._SealDescription = params.get("SealDescription")
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = Option()
+                obj._deserialize(item)
+                self._Options.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17927,11 +18047,17 @@ class CreateSealByImageResponse(AbstractModel):
 
 注:`图片上传生成的电子印章无预览链接地址`
         :type ImageUrl: str
+        :param _SealOperatorVerifyPath: 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :type SealOperatorVerifyPath: str
+        :param _SealOperatorVerifyQrcodeUrl: 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :type SealOperatorVerifyQrcodeUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealId = None
         self._ImageUrl = None
+        self._SealOperatorVerifyPath = None
+        self._SealOperatorVerifyQrcodeUrl = None
         self._RequestId = None
 
     @property
@@ -17960,6 +18086,28 @@ class CreateSealByImageResponse(AbstractModel):
         self._ImageUrl = ImageUrl
 
     @property
+    def SealOperatorVerifyPath(self):
+        r"""人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyPath
+
+    @SealOperatorVerifyPath.setter
+    def SealOperatorVerifyPath(self, SealOperatorVerifyPath):
+        self._SealOperatorVerifyPath = SealOperatorVerifyPath
+
+    @property
+    def SealOperatorVerifyQrcodeUrl(self):
+        r"""人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :rtype: str
+        """
+        return self._SealOperatorVerifyQrcodeUrl
+
+    @SealOperatorVerifyQrcodeUrl.setter
+    def SealOperatorVerifyQrcodeUrl(self, SealOperatorVerifyQrcodeUrl):
+        self._SealOperatorVerifyQrcodeUrl = SealOperatorVerifyQrcodeUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17974,6 +18122,8 @@ class CreateSealByImageResponse(AbstractModel):
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
         self._ImageUrl = params.get("ImageUrl")
+        self._SealOperatorVerifyPath = params.get("SealOperatorVerifyPath")
+        self._SealOperatorVerifyQrcodeUrl = params.get("SealOperatorVerifyQrcodeUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -27245,6 +27395,59 @@ class OperateTemplateResponse(AbstractModel):
         self._TemplateId = params.get("TemplateId")
         self._TemplateName = params.get("TemplateName")
         self._RequestId = params.get("RequestId")
+
+
+class Option(AbstractModel):
+    r"""业务逻辑个性化配置字段，默认不传
+
+    注: `配置前请联系对接的客户经理沟通确认。`
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 个性化配置参数Key字段，对应传入字段的字段名
+        :type Key: str
+        :param _Value: 个性化配置参数Value字段，对应传入字段的字段值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""个性化配置参数Key字段，对应传入字段的字段名
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""个性化配置参数Value字段，对应传入字段的字段值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OrganizationAuthUrl(AbstractModel):

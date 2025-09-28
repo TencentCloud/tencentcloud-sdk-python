@@ -17002,11 +17002,20 @@ class StaffStatus(AbstractModel):
         :type Status: str
         :param _SessionId: 状态关联的会话 Id
         :type SessionId: str
+        :param _Reason: 小休原因
+        :type Reason: str
+        :param _StaffEmail: 座席邮箱
+        :type StaffEmail: str
+        :param _StaffNo: 座席工号
+        :type StaffNo: str
         """
         self._Cursor = None
         self._Timestamp = None
         self._Status = None
         self._SessionId = None
+        self._Reason = None
+        self._StaffEmail = None
+        self._StaffNo = None
 
     @property
     def Cursor(self):
@@ -17052,12 +17061,48 @@ class StaffStatus(AbstractModel):
     def SessionId(self, SessionId):
         self._SessionId = SessionId
 
+    @property
+    def Reason(self):
+        r"""小休原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def StaffEmail(self):
+        r"""座席邮箱
+        :rtype: str
+        """
+        return self._StaffEmail
+
+    @StaffEmail.setter
+    def StaffEmail(self, StaffEmail):
+        self._StaffEmail = StaffEmail
+
+    @property
+    def StaffNo(self):
+        r"""座席工号
+        :rtype: str
+        """
+        return self._StaffNo
+
+    @StaffNo.setter
+    def StaffNo(self, StaffNo):
+        self._StaffNo = StaffNo
+
 
     def _deserialize(self, params):
         self._Cursor = params.get("Cursor")
         self._Timestamp = params.get("Timestamp")
         self._Status = params.get("Status")
         self._SessionId = params.get("SessionId")
+        self._Reason = params.get("Reason")
+        self._StaffEmail = params.get("StaffEmail")
+        self._StaffNo = params.get("StaffNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

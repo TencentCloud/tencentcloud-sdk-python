@@ -1007,11 +1007,14 @@ class DescribeAccountsResponse(AbstractModel):
         :type TotalCount: int
         :param _Accounts: 账号数组
         :type Accounts: list of AccountInfo
+        :param _ErrorMsg: error:...
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Accounts = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -1037,6 +1040,17 @@ class DescribeAccountsResponse(AbstractModel):
         self._Accounts = Accounts
 
     @property
+    def ErrorMsg(self):
+        r"""error:...
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1056,6 +1070,7 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self._Accounts.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
