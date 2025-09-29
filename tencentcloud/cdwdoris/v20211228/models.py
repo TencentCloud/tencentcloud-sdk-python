@@ -6572,7 +6572,11 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceState: 集群状态，例如：Serving
+        :param _InstanceState: 集群状态 
+ Init  创建中 
+Serving   运行中 
+Isolated   已隔离 
+Changing  变更中
         :type InstanceState: str
         :param _FlowCreateTime: 集群操作创建时间
         :type FlowCreateTime: str
@@ -6603,7 +6607,11 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def InstanceState(self):
-        r"""集群状态，例如：Serving
+        r"""集群状态 
+ Init  创建中 
+Serving   运行中 
+Isolated   已隔离 
+Changing  变更中
         :rtype: str
         """
         return self._InstanceState
@@ -9127,14 +9135,15 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID, "cdw-xxxx" 字符串类型
+        :param _InstanceId: 集群实例ID, "cdwdoris-xxxx" 字符串类型
         :type InstanceId: str
         :param _InstanceName: 集群实例名称
         :type InstanceName: str
         :param _Status: 状态,
-Init 创建中; Serving 运行中； 
-Deleted已销毁；Deleting 销毁中；
-Modify 集群变更中；
+Init  创建中
+Serving   运行中
+Isolated   已隔离
+Changing  变更中
         :type Status: str
         :param _Version: 版本
         :type Version: str
@@ -9169,7 +9178,7 @@ Modify 集群变更中；
         :type Id: int
         :param _RegionId: regionId, 表示地域
         :type RegionId: int
-        :param _ZoneDesc: 可用区说明，例如 "广州二区"
+        :param _ZoneDesc: 可用区说明，例如 "广州三区"
         :type ZoneDesc: str
         :param _FlowMsg: 错误流程说明信息
         :type FlowMsg: str
@@ -9245,6 +9254,10 @@ Modify 集群变更中；
         :type CosStorageSize: float
         :param _IsMasterNonVM: 存算分离的指标 当是true 不支持新建计算组
         :type IsMasterNonVM: bool
+        :param _CosPkgCapacity: Cos容量包大小
+        :type CosPkgCapacity: int
+        :param _UseManagedBucket: 集群是否使用托管桶
+        :type UseManagedBucket: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9301,10 +9314,12 @@ Modify 集群变更中；
         self._ComputeGroupCount = None
         self._CosStorageSize = None
         self._IsMasterNonVM = None
+        self._CosPkgCapacity = None
+        self._UseManagedBucket = None
 
     @property
     def InstanceId(self):
-        r"""集群实例ID, "cdw-xxxx" 字符串类型
+        r"""集群实例ID, "cdwdoris-xxxx" 字符串类型
         :rtype: str
         """
         return self._InstanceId
@@ -9327,9 +9342,10 @@ Modify 集群变更中；
     @property
     def Status(self):
         r"""状态,
-Init 创建中; Serving 运行中； 
-Deleted已销毁；Deleting 销毁中；
-Modify 集群变更中；
+Init  创建中
+Serving   运行中
+Isolated   已隔离
+Changing  变更中
         :rtype: str
         """
         return self._Status
@@ -9508,7 +9524,7 @@ Modify 集群变更中；
 
     @property
     def ZoneDesc(self):
-        r"""可用区说明，例如 "广州二区"
+        r"""可用区说明，例如 "广州三区"
         :rtype: str
         """
         return self._ZoneDesc
@@ -9919,6 +9935,28 @@ Modify 集群变更中；
     def IsMasterNonVM(self, IsMasterNonVM):
         self._IsMasterNonVM = IsMasterNonVM
 
+    @property
+    def CosPkgCapacity(self):
+        r"""Cos容量包大小
+        :rtype: int
+        """
+        return self._CosPkgCapacity
+
+    @CosPkgCapacity.setter
+    def CosPkgCapacity(self, CosPkgCapacity):
+        self._CosPkgCapacity = CosPkgCapacity
+
+    @property
+    def UseManagedBucket(self):
+        r"""集群是否使用托管桶
+        :rtype: bool
+        """
+        return self._UseManagedBucket
+
+    @UseManagedBucket.setter
+    def UseManagedBucket(self, UseManagedBucket):
+        self._UseManagedBucket = UseManagedBucket
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9989,6 +10027,8 @@ Modify 集群变更中；
         self._ComputeGroupCount = params.get("ComputeGroupCount")
         self._CosStorageSize = params.get("CosStorageSize")
         self._IsMasterNonVM = params.get("IsMasterNonVM")
+        self._CosPkgCapacity = params.get("CosPkgCapacity")
+        self._UseManagedBucket = params.get("UseManagedBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

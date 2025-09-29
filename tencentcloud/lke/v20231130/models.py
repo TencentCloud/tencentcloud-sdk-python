@@ -7247,30 +7247,19 @@ class CreateWorkflowRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
-        :type RunEnv: int
         :param _AppBizId: 应用ID
         :type AppBizId: str
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
         :param _Query: 用户输入的内容
         :type Query: str
         :param _CustomVariables: API参数配置
         :type CustomVariables: list of CustomVariable
         """
-        self._RunEnv = None
         self._AppBizId = None
+        self._RunEnv = None
         self._Query = None
         self._CustomVariables = None
-
-    @property
-    def RunEnv(self):
-        r"""运行环境。0: 测试环境； 1: 正式环境
-        :rtype: int
-        """
-        return self._RunEnv
-
-    @RunEnv.setter
-    def RunEnv(self, RunEnv):
-        self._RunEnv = RunEnv
 
     @property
     def AppBizId(self):
@@ -7282,6 +7271,17 @@ class CreateWorkflowRunRequest(AbstractModel):
     @AppBizId.setter
     def AppBizId(self, AppBizId):
         self._AppBizId = AppBizId
+
+    @property
+    def RunEnv(self):
+        r"""运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
 
     @property
     def Query(self):
@@ -7307,8 +7307,8 @@ class CreateWorkflowRunRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RunEnv = params.get("RunEnv")
         self._AppBizId = params.get("AppBizId")
+        self._RunEnv = params.get("RunEnv")
         self._Query = params.get("Query")
         if params.get("CustomVariables") is not None:
             self._CustomVariables = []
@@ -16613,6 +16613,42 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InputBoxConfig(AbstractModel):
+    r"""输入框配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputBoxButtons: 输入框按钮，1：上传图片、2：上传文档，3：腾讯文档，4：联网搜索
+        :type InputBoxButtons: list of int non-negative
+        """
+        self._InputBoxButtons = None
+
+    @property
+    def InputBoxButtons(self):
+        r"""输入框按钮，1：上传图片、2：上传文档，3：腾讯文档，4：联网搜索
+        :rtype: list of int non-negative
+        """
+        return self._InputBoxButtons
+
+    @InputBoxButtons.setter
+    def InputBoxButtons(self, InputBoxButtons):
+        self._InputBoxButtons = InputBoxButtons
+
+
+    def _deserialize(self, params):
+        self._InputBoxButtons = params.get("InputBoxButtons")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntentAchievement(AbstractModel):
     r"""意图达成方式
 
@@ -18123,6 +18159,8 @@ class KnowledgeQaOutput(AbstractModel):
         :param _RecommendedPromptMode: 推荐问模式，0.结合知识库&对话历史推荐问题Prompt(默认) 1.仅结合知识库输出推荐问的prompt
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecommendedPromptMode: int
+        :param _InputBoxConfig: 输入框按钮配置
+        :type InputBoxConfig: :class:`tencentcloud.lke.v20231130.models.InputBoxConfig`
         """
         self._Method = None
         self._UseGeneralKnowledge = None
@@ -18132,6 +18170,7 @@ class KnowledgeQaOutput(AbstractModel):
         self._QuestionClarifyKeywords = None
         self._UseRecommended = None
         self._RecommendedPromptMode = None
+        self._InputBoxConfig = None
 
     @property
     def Method(self):
@@ -18229,6 +18268,17 @@ class KnowledgeQaOutput(AbstractModel):
     def RecommendedPromptMode(self, RecommendedPromptMode):
         self._RecommendedPromptMode = RecommendedPromptMode
 
+    @property
+    def InputBoxConfig(self):
+        r"""输入框按钮配置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.InputBoxConfig`
+        """
+        return self._InputBoxConfig
+
+    @InputBoxConfig.setter
+    def InputBoxConfig(self, InputBoxConfig):
+        self._InputBoxConfig = InputBoxConfig
+
 
     def _deserialize(self, params):
         self._Method = params.get("Method")
@@ -18239,6 +18289,9 @@ class KnowledgeQaOutput(AbstractModel):
         self._QuestionClarifyKeywords = params.get("QuestionClarifyKeywords")
         self._UseRecommended = params.get("UseRecommended")
         self._RecommendedPromptMode = params.get("RecommendedPromptMode")
+        if params.get("InputBoxConfig") is not None:
+            self._InputBoxConfig = InputBoxConfig()
+            self._InputBoxConfig._deserialize(params.get("InputBoxConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23827,36 +23880,25 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
-        :type RunEnv: int
         :param _AppBizId: 应用ID
         :type AppBizId: str
-        :param _Page: 页码
-        :type Page: int
         :param _PageSize: 每页数量
         :type PageSize: int
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _Page: 页码
+        :type Page: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
         """
-        self._RunEnv = None
         self._AppBizId = None
-        self._Page = None
         self._PageSize = None
+        self._RunEnv = None
+        self._Page = None
         self._LoginUin = None
         self._LoginSubAccountUin = None
-
-    @property
-    def RunEnv(self):
-        r"""运行环境。0: 测试环境； 1: 正式环境
-        :rtype: int
-        """
-        return self._RunEnv
-
-    @RunEnv.setter
-    def RunEnv(self, RunEnv):
-        self._RunEnv = RunEnv
 
     @property
     def AppBizId(self):
@@ -23870,17 +23912,6 @@ class ListWorkflowRunsRequest(AbstractModel):
         self._AppBizId = AppBizId
 
     @property
-    def Page(self):
-        r"""页码
-        :rtype: int
-        """
-        return self._Page
-
-    @Page.setter
-    def Page(self, Page):
-        self._Page = Page
-
-    @property
     def PageSize(self):
         r"""每页数量
         :rtype: int
@@ -23890,6 +23921,28 @@ class ListWorkflowRunsRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def RunEnv(self):
+        r"""运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def Page(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
 
     @property
     def LoginUin(self):
@@ -23915,10 +23968,10 @@ class ListWorkflowRunsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RunEnv = params.get("RunEnv")
         self._AppBizId = params.get("AppBizId")
-        self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
+        self._RunEnv = params.get("RunEnv")
+        self._Page = params.get("Page")
         self._LoginUin = params.get("LoginUin")
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         memeber_set = set(params.keys())
@@ -30229,11 +30282,14 @@ class RetryDocParseRequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID
         :type BotBizId: str
-        :param _DocBizId: 文档ID
+        :param _DocBizId: 废弃
         :type DocBizId: str
+        :param _DocBizIds: 集合最大上限50个，DocBizIds有值使用DocBizIds，为空时则使用DocBizId(兼容废弃字段)
+        :type DocBizIds: list of str
         """
         self._BotBizId = None
         self._DocBizId = None
+        self._DocBizIds = None
 
     @property
     def BotBizId(self):
@@ -30248,7 +30304,7 @@ class RetryDocParseRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档ID
+        r"""废弃
         :rtype: str
         """
         return self._DocBizId
@@ -30257,10 +30313,22 @@ class RetryDocParseRequest(AbstractModel):
     def DocBizId(self, DocBizId):
         self._DocBizId = DocBizId
 
+    @property
+    def DocBizIds(self):
+        r"""集合最大上限50个，DocBizIds有值使用DocBizIds，为空时则使用DocBizId(兼容废弃字段)
+        :rtype: list of str
+        """
+        return self._DocBizIds
+
+    @DocBizIds.setter
+    def DocBizIds(self, DocBizIds):
+        self._DocBizIds = DocBizIds
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._DocBizId = params.get("DocBizId")
+        self._DocBizIds = params.get("DocBizIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

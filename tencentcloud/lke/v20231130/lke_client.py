@@ -741,7 +741,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeNodeRun(self, request):
-        r"""通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
+        r"""通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通过本接口可查看节点的运行详情（包括输入、输出、日志等）。
 
         :param request: Request instance for DescribeNodeRun.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeNodeRunRequest`

@@ -1946,10 +1946,18 @@ class AddOnSubtitle(AbstractModel):
 注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleName: str
+        :param _OutputFormat: 字幕输出格式。取值{"WebVTT","TTML"}。
+默认值："WebVTT"
+        :type OutputFormat: str
+        :param _DefaultTrack: 默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
+默认值：false
+        :type DefaultTrack: bool
         """
         self._Type = None
         self._Subtitle = None
         self._SubtitleName = None
+        self._OutputFormat = None
+        self._DefaultTrack = None
 
     @property
     def Type(self):
@@ -1991,6 +1999,30 @@ class AddOnSubtitle(AbstractModel):
     def SubtitleName(self, SubtitleName):
         self._SubtitleName = SubtitleName
 
+    @property
+    def OutputFormat(self):
+        r"""字幕输出格式。取值{"WebVTT","TTML"}。
+默认值："WebVTT"
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
+    @property
+    def DefaultTrack(self):
+        r"""默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
+默认值：false
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1998,6 +2030,8 @@ class AddOnSubtitle(AbstractModel):
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
         self._SubtitleName = params.get("SubtitleName")
+        self._OutputFormat = params.get("OutputFormat")
+        self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32091,8 +32125,13 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        :param _Status: 任务状态过滤条件，可选值：
+- WAITING（等待中）
+- PROCESSING（处理中）
+- FINISH（已完成）。
         :type Status: str
+        :param _SubTaskHasFailed: 任务结束时子任务是否有失败。
+        :type SubTaskHasFailed: bool
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
         :param _ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
@@ -32103,6 +32142,7 @@ class DescribeTasksRequest(AbstractModel):
         :type EndTime: str
         """
         self._Status = None
+        self._SubTaskHasFailed = None
         self._Limit = None
         self._ScrollToken = None
         self._StartTime = None
@@ -32110,7 +32150,10 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        r"""任务状态过滤条件，可选值：
+- WAITING（等待中）
+- PROCESSING（处理中）
+- FINISH（已完成）。
         :rtype: str
         """
         return self._Status
@@ -32118,6 +32161,17 @@ class DescribeTasksRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""任务结束时子任务是否有失败。
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
 
     @property
     def Limit(self):
@@ -32166,6 +32220,7 @@ class DescribeTasksRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
         self._Limit = params.get("Limit")
         self._ScrollToken = params.get("ScrollToken")
         self._StartTime = params.get("StartTime")
@@ -55701,7 +55756,9 @@ BarCode：条形码，
 LowVoice：低音，
 HighVoice：爆音，
 NoVoice：静音，
-LowEvaluation：无参考打分低于阈值。
+LowEvaluation：视频无参考评分（MOS）低于阈值，
+AudioEvaluation：音频无参考评分（MOS）低于阈值，
+AudioNoise：音频噪声。
         :type Type: str
         :param _QualityControlItems: 质检结果项。
         :type QualityControlItems: list of QualityControlItem
@@ -55727,7 +55784,9 @@ BarCode：条形码，
 LowVoice：低音，
 HighVoice：爆音，
 NoVoice：静音，
-LowEvaluation：无参考打分低于阈值。
+LowEvaluation：视频无参考评分（MOS）低于阈值，
+AudioEvaluation：音频无参考评分（MOS）低于阈值，
+AudioNoise：音频噪声。
         :rtype: str
         """
         return self._Type

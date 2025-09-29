@@ -22098,12 +22098,30 @@ class KafkaConnectParam(AbstractModel):
         :type BrokerAddress: str
         :param _Region: CKafka连接源的实例资源地域, 跨地域时必填
         :type Region: str
+        :param _NetworkType: 网络类型：PUBLIC公网；VPC
+        :type NetworkType: str
+        :param _UniqVpcId: vpcId，NetworkType=VPC时必传
+        :type UniqVpcId: str
+        :param _ServiceVip: vip，NetworkType=VPC时必传
+        :type ServiceVip: str
+        :param _Port: 端口，NetworkType=VPC时必传
+        :type Port: int
+        :param _CrossNetResourceUniqueId: 跨云同步下需要客户传递唯一Id标志一组资源
+        :type CrossNetResourceUniqueId: str
+        :param _CrossNetVpcSubNetId: 跨云子网ID
+        :type CrossNetVpcSubNetId: str
         """
         self._Resource = None
         self._SelfBuilt = None
         self._IsUpdate = None
         self._BrokerAddress = None
         self._Region = None
+        self._NetworkType = None
+        self._UniqVpcId = None
+        self._ServiceVip = None
+        self._Port = None
+        self._CrossNetResourceUniqueId = None
+        self._CrossNetVpcSubNetId = None
 
     @property
     def Resource(self):
@@ -22161,6 +22179,72 @@ class KafkaConnectParam(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def NetworkType(self):
+        r"""网络类型：PUBLIC公网；VPC
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def UniqVpcId(self):
+        r"""vpcId，NetworkType=VPC时必传
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def ServiceVip(self):
+        r"""vip，NetworkType=VPC时必传
+        :rtype: str
+        """
+        return self._ServiceVip
+
+    @ServiceVip.setter
+    def ServiceVip(self, ServiceVip):
+        self._ServiceVip = ServiceVip
+
+    @property
+    def Port(self):
+        r"""端口，NetworkType=VPC时必传
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def CrossNetResourceUniqueId(self):
+        r"""跨云同步下需要客户传递唯一Id标志一组资源
+        :rtype: str
+        """
+        return self._CrossNetResourceUniqueId
+
+    @CrossNetResourceUniqueId.setter
+    def CrossNetResourceUniqueId(self, CrossNetResourceUniqueId):
+        self._CrossNetResourceUniqueId = CrossNetResourceUniqueId
+
+    @property
+    def CrossNetVpcSubNetId(self):
+        r"""跨云子网ID
+        :rtype: str
+        """
+        return self._CrossNetVpcSubNetId
+
+    @CrossNetVpcSubNetId.setter
+    def CrossNetVpcSubNetId(self, CrossNetVpcSubNetId):
+        self._CrossNetVpcSubNetId = CrossNetVpcSubNetId
+
 
     def _deserialize(self, params):
         self._Resource = params.get("Resource")
@@ -22168,6 +22252,12 @@ class KafkaConnectParam(AbstractModel):
         self._IsUpdate = params.get("IsUpdate")
         self._BrokerAddress = params.get("BrokerAddress")
         self._Region = params.get("Region")
+        self._NetworkType = params.get("NetworkType")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._ServiceVip = params.get("ServiceVip")
+        self._Port = params.get("Port")
+        self._CrossNetResourceUniqueId = params.get("CrossNetResourceUniqueId")
+        self._CrossNetVpcSubNetId = params.get("CrossNetVpcSubNetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

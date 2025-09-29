@@ -2485,7 +2485,7 @@ class DescribeApmServiceMetricRequest(AbstractModel):
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         :param _Demo: 是否demo模式
         :type Demo: bool
-        :param _ServiceStatus: 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+        :param _ServiceStatus: 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，例如："warning,error"
         :type ServiceStatus: str
         :param _Tags: 标签列表
         :type Tags: list of ApmTag
@@ -2588,7 +2588,7 @@ class DescribeApmServiceMetricRequest(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        r"""应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+        r"""应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，例如："warning,error"
         :rtype: str
         """
         return self._ServiceStatus

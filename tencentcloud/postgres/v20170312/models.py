@@ -4308,6 +4308,8 @@ mssql_compatible引擎：
 <li>1：是</li>
 默认值：0
         :type SupportIpv6: int
+        :param _ExpandedCpu: 实例已经弹性扩容的cpu核数
+        :type ExpandedCpu: int
         """
         self._Region = None
         self._Zone = None
@@ -4348,6 +4350,7 @@ mssql_compatible引擎：
         self._DBEngineConfig = None
         self._NetworkAccessList = None
         self._SupportIpv6 = None
+        self._ExpandedCpu = None
 
     @property
     def Region(self):
@@ -4808,6 +4811,17 @@ mssql_compatible引擎：
     def SupportIpv6(self, SupportIpv6):
         self._SupportIpv6 = SupportIpv6
 
+    @property
+    def ExpandedCpu(self):
+        r"""实例已经弹性扩容的cpu核数
+        :rtype: int
+        """
+        return self._ExpandedCpu
+
+    @ExpandedCpu.setter
+    def ExpandedCpu(self, ExpandedCpu):
+        self._ExpandedCpu = ExpandedCpu
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -4869,6 +4883,7 @@ mssql_compatible引擎：
                 obj._deserialize(item)
                 self._NetworkAccessList.append(obj)
         self._SupportIpv6 = params.get("SupportIpv6")
+        self._ExpandedCpu = params.get("ExpandedCpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10716,14 +10731,15 @@ class DescribeReadOnlyGroupsRequest(AbstractModel):
         :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-master-instance-id：按照主实例过滤，类型为string。
 read-only-group-id：按照只读组ID过滤，类型为string。
+注：该参数的过滤条件中，db-master-instance-id为必须指定项。
         :type Filters: list of Filter
-        :param _PageSize: 查询每一页的条数，默认为10
+        :param _PageSize: 查询每一页的条数，默认为10，最大值99。
         :type PageSize: int
         :param _PageNumber: 查询的页码，默认为1
         :type PageNumber: int
-        :param _OrderBy: 查询排序依据，目前支持:ROGroupId,CreateTime,Name
+        :param _OrderBy: 查询排序依据，目前支持:ROGroupId,CreateTime,Name。默认值CreateTime
         :type OrderBy: str
-        :param _OrderByType: 查询排序依据类型，目前支持:desc,asc
+        :param _OrderByType: 查询排序依据类型，目前支持:desc,asc。默认值asc。
         :type OrderByType: str
         """
         self._Filters = None
@@ -10737,6 +10753,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
         r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-master-instance-id：按照主实例过滤，类型为string。
 read-only-group-id：按照只读组ID过滤，类型为string。
+注：该参数的过滤条件中，db-master-instance-id为必须指定项。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10747,7 +10764,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def PageSize(self):
-        r"""查询每一页的条数，默认为10
+        r"""查询每一页的条数，默认为10，最大值99。
         :rtype: int
         """
         return self._PageSize
@@ -10769,7 +10786,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def OrderBy(self):
-        r"""查询排序依据，目前支持:ROGroupId,CreateTime,Name
+        r"""查询排序依据，目前支持:ROGroupId,CreateTime,Name。默认值CreateTime
         :rtype: str
         """
         return self._OrderBy
@@ -10780,7 +10797,7 @@ read-only-group-id：按照只读组ID过滤，类型为string。
 
     @property
     def OrderByType(self):
-        r"""查询排序依据类型，目前支持:desc,asc
+        r"""查询排序依据类型，目前支持:desc,asc。默认值asc。
         :rtype: str
         """
         return self._OrderByType
@@ -17184,13 +17201,13 @@ class ReadOnlyGroup(AbstractModel):
         :type MasterDBInstanceId: str
         :param _MinDelayEliminateReserve: 最小保留实例数
         :type MinDelayEliminateReserve: int
-        :param _MaxReplayLatency: 延迟空间大小阈值
+        :param _MaxReplayLatency: 延迟空间大小阈值。单位MB。
         :type MaxReplayLatency: int
-        :param _ReplayLatencyEliminate: 延迟大小开关
+        :param _ReplayLatencyEliminate: 延迟大小开关。0 - 关闭； 1 - 开启。
         :type ReplayLatencyEliminate: int
-        :param _MaxReplayLag: 延迟时间大小阈值
+        :param _MaxReplayLag: 延迟时间大小阈值，单位：秒。
         :type MaxReplayLag: float
-        :param _ReplayLagEliminate: 延迟时间开关
+        :param _ReplayLagEliminate: 延迟时间开关。0 - 关闭； 1 - 开启。
         :type ReplayLagEliminate: int
         :param _VpcId: 虚拟网络id
         :type VpcId: str
@@ -17200,7 +17217,7 @@ class ReadOnlyGroup(AbstractModel):
         :type Region: str
         :param _Zone: 地区id
         :type Zone: str
-        :param _Status: 状态
+        :param _Status: 状态。枚举值：creating、ok、modifying、deleting、deleted
         :type Status: str
         :param _ReadOnlyDBInstanceList: 实例详细信息
         :type ReadOnlyDBInstanceList: list of DBInstance
@@ -17288,7 +17305,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MaxReplayLatency(self):
-        r"""延迟空间大小阈值
+        r"""延迟空间大小阈值。单位MB。
         :rtype: int
         """
         return self._MaxReplayLatency
@@ -17299,7 +17316,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReplayLatencyEliminate(self):
-        r"""延迟大小开关
+        r"""延迟大小开关。0 - 关闭； 1 - 开启。
         :rtype: int
         """
         return self._ReplayLatencyEliminate
@@ -17310,7 +17327,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MaxReplayLag(self):
-        r"""延迟时间大小阈值
+        r"""延迟时间大小阈值，单位：秒。
         :rtype: float
         """
         return self._MaxReplayLag
@@ -17321,7 +17338,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReplayLagEliminate(self):
-        r"""延迟时间开关
+        r"""延迟时间开关。0 - 关闭； 1 - 开启。
         :rtype: int
         """
         return self._ReplayLagEliminate
@@ -17376,7 +17393,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态。枚举值：creating、ok、modifying、deleting、deleted
         :rtype: str
         """
         return self._Status

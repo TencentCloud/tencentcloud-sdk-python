@@ -700,7 +700,7 @@ back：后视图；
         :param _EnablePBR: 是否开启 PBR材质生成，默认 false。
         :type EnablePBR: bool
         :param _FaceCount: 生成3D模型的面数，默认值为500000。
-可支持生成面数范围，参考值：40000-500000。
+可支持生成面数范围，参考值：40000-1500000。
         :type FaceCount: int
         :param _GenerateType: 生成任务类型，默认Normal，参考值：
 Normal：可生成带纹理的几何模型。
@@ -708,6 +708,12 @@ LowPoly：可生成智能减面后的模型。
 Geometry：可生成不带纹理的几何模型（白模），选择此任务时，EnablePBR参数不生效。
 Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。
         :type GenerateType: str
+        :param _PolygonType: 该参数仅在GenerateType中选择LowPoly模式可生效。
+
+多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+triangle: 三角形面。
+quadrilateral: 四边形面与三角形面混合生成。
+        :type PolygonType: str
         """
         self._Prompt = None
         self._ImageBase64 = None
@@ -716,6 +722,7 @@ Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl
         self._EnablePBR = None
         self._FaceCount = None
         self._GenerateType = None
+        self._PolygonType = None
 
     @property
     def Prompt(self):
@@ -791,7 +798,7 @@ back：后视图；
     @property
     def FaceCount(self):
         r"""生成3D模型的面数，默认值为500000。
-可支持生成面数范围，参考值：40000-500000。
+可支持生成面数范围，参考值：40000-1500000。
         :rtype: int
         """
         return self._FaceCount
@@ -815,6 +822,21 @@ Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl
     def GenerateType(self, GenerateType):
         self._GenerateType = GenerateType
 
+    @property
+    def PolygonType(self):
+        r"""该参数仅在GenerateType中选择LowPoly模式可生效。
+
+多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+triangle: 三角形面。
+quadrilateral: 四边形面与三角形面混合生成。
+        :rtype: str
+        """
+        return self._PolygonType
+
+    @PolygonType.setter
+    def PolygonType(self, PolygonType):
+        self._PolygonType = PolygonType
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -829,6 +851,7 @@ Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl
         self._EnablePBR = params.get("EnablePBR")
         self._FaceCount = params.get("FaceCount")
         self._GenerateType = params.get("GenerateType")
+        self._PolygonType = params.get("PolygonType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1053,9 +1076,12 @@ class ViewImage(AbstractModel):
         :type ViewType: str
         :param _ViewImageUrl: 图片Url地址
         :type ViewImageUrl: str
+        :param _ViewImageBase64: 图片base64地址
+        :type ViewImageBase64: str
         """
         self._ViewType = None
         self._ViewImageUrl = None
+        self._ViewImageBase64 = None
 
     @property
     def ViewType(self):
@@ -1080,10 +1106,22 @@ class ViewImage(AbstractModel):
     def ViewImageUrl(self, ViewImageUrl):
         self._ViewImageUrl = ViewImageUrl
 
+    @property
+    def ViewImageBase64(self):
+        r"""图片base64地址
+        :rtype: str
+        """
+        return self._ViewImageBase64
+
+    @ViewImageBase64.setter
+    def ViewImageBase64(self, ViewImageBase64):
+        self._ViewImageBase64 = ViewImageBase64
+
 
     def _deserialize(self, params):
         self._ViewType = params.get("ViewType")
         self._ViewImageUrl = params.get("ViewImageUrl")
+        self._ViewImageBase64 = params.get("ViewImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

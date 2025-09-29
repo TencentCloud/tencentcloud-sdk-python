@@ -734,7 +734,7 @@ class BatchCreateRoomRequest(AbstractModel):
         r"""
         :param _SdkAppId: 低代码平台的SdkAppId。
         :type SdkAppId: int
-        :param _RoomInfos: 创建课堂ID列表
+        :param _RoomInfos: 批量创建课堂的配置信息
         :type RoomInfos: list of RoomInfo
         """
         self._SdkAppId = None
@@ -753,7 +753,7 @@ class BatchCreateRoomRequest(AbstractModel):
 
     @property
     def RoomInfos(self):
-        r"""创建课堂ID列表
+        r"""批量创建课堂的配置信息
         :rtype: list of RoomInfo
         """
         return self._RoomInfos
