@@ -25,14 +25,19 @@
 ### 安装指定产品 SDK（推荐）
 例如：安装指定产品包
 ```bash
-pip install --upgrade tencentcloud-sdk-python-common  # 安装公共包，必选
+# 安装公共包, 必选, 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
+pip install --upgrade tencentcloud-sdk-python-common # 同步版本
+pip install --upgrade tencentcloud-sdk-python-common[async] # 异步版本
+
 pip install --upgrade tencentcloud-sdk-python-指定产品包名缩写  # 如 CVM 产品包：tencentcloud-sdk-python-cvm
 ```
 具体产品的包名缩写请参考 [products.md](./products.md) 中的包名字段。
 
 ### 安装全产品 SDK
 ```bash
-pip install --upgrade tencentcloud-sdk-python
+# 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
+pip install --upgrade tencentcloud-sdk-python # 同步版本
+pip install --upgrade tencentcloud-sdk-python[async] # 异步版本
 ```
 全产品 SDK 包含了所有云产品的调用代码，体积偏大，对体积敏感的场景，推荐安装指定产品 SDK。
 
@@ -168,6 +173,56 @@ except TencentCloudSDKException as err:
 **注意，您必须明确知道您调用的接口所需参数，否则可能会调用失败。**
 
 Common Client 参考[示例](./examples/common_client/describe_instances.py)
+
+## 异步调用
+
+从 `3.1.0` 版本开始，腾讯云 Python SDK 支持异步调用方式。异步 SDK 基于 `httpx` 库，适用于高并发场景。
+
+使用异步功能需要安装 async 版本公共包 `pip install tencentcloud-sdk-python-common[async]`。
+
+**注意事项**:
+
+- 异步客户端需要使用 `*_client_async` 模块 (如 `cvm_client_async`)
+- 建议使用 `async with` 语句确保 client 正确释放
+- 异步 SDK 与同步 SDK 的 API 接口保持一致，只需在调用前加 `await`
+- 支持所有同步 SDK 的配置选项，包括代理、重试、签名等
+
+### 异步调用示例
+
+```python
+import asyncio
+import os
+from tencentcloud.common import credential
+from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.cvm.v20170312 import cvm_client_async, models
+
+async def main():
+    try:
+        cred = credential.Credential(
+            os.environ.get("TENCENTCLOUD_SECRET_ID"),
+            os.environ.get("TENCENTCLOUD_SECRET_KEY"))
+
+        # 使用异步客户端，支持 async context manager
+        async with cvm_client_async.CvmClient(cred, "ap-shanghai") as client:
+            req = models.DescribeInstancesRequest()
+            resp = await client.DescribeInstances(req)
+            print(resp.to_json_string())
+
+    except TencentCloudSDKException as err:
+        print(err)
+
+# 运行异步函数
+asyncio.get_event_loop().run_until_complete(main())
+```
+
+### 更多示例
+- [常见 JSON 格式接口](examples/cvm/v20170312/describe_instances_async.py)
+- [常见 JSON 格式接口(CommonClient)](examples/common_client/describe_instances_async.py)
+- [AI 流式接口](examples/hunyuan/v20230901/chat_completions_async.py)
+- [AI 流式接口(CommonClient)](examples/common_client/chat_completions_async.py)
+- [CLS上传日志](examples/cls/v20201016/uploadlog_async.py)
+- [CLS上传日志(CommonClient)](examples/cls/v20201016/uploadlog_common_async.py)
+
 
 ## 更多示例
 
