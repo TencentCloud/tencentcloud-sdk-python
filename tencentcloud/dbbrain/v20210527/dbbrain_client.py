@@ -1016,7 +1016,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMetricTopProxies(self, request):
-        r"""获取指定时间段内Redis 访问命令 cost top N
+        r"""获取指定时间段内Redis Proxy 指标
 
         :param request: Request instance for DescribeMetricTopProxies.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMetricTopProxiesRequest`

@@ -649,6 +649,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateClusterAccess(self, request):
+        r"""创建集群接入
+
+        :param request: Request instance for CreateClusterAccess.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateClusterAccessRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateClusterAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClusterCheckTask(self, request):
         r"""创建集群检查任务，用户检查用户的集群相关风险项
 
@@ -6784,6 +6807,29 @@ class TcssClient(AbstractClient):
             body = self.call("ModifyContainerNetStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyContainerNetStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDefendStatus(self, request):
+        r"""修改防护状态
+
+        :param request: Request instance for ModifyDefendStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyDefendStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyDefendStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDefendStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDefendStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

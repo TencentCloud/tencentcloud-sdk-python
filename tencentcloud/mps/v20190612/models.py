@@ -2058,6 +2058,7 @@ class AiAnalysisResult(AbstractModel):
 <li>DeLogo：智能擦除</li>
 <li>Description：大模型摘要</li>
 <li>Dubbing：智能译制</li>
+<li>VideoRemake: 视频去重</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2092,6 +2093,9 @@ class AiAnalysisResult(AbstractModel):
         :param _DubbingTask: 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
+        :param _VideoRemakeTask: 视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoRemakeTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2105,6 +2109,7 @@ class AiAnalysisResult(AbstractModel):
         self._DescriptionTask = None
         self._HorizontalToVerticalTask = None
         self._DubbingTask = None
+        self._VideoRemakeTask = None
 
     @property
     def Type(self):
@@ -2117,6 +2122,7 @@ class AiAnalysisResult(AbstractModel):
 <li>DeLogo：智能擦除</li>
 <li>Description：大模型摘要</li>
 <li>Dubbing：智能译制</li>
+<li>VideoRemake: 视频去重</li>
         :rtype: str
         """
         return self._Type
@@ -2257,6 +2263,18 @@ class AiAnalysisResult(AbstractModel):
     def DubbingTask(self, DubbingTask):
         self._DubbingTask = DubbingTask
 
+    @property
+    def VideoRemakeTask(self):
+        r"""视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
+        """
+        return self._VideoRemakeTask
+
+    @VideoRemakeTask.setter
+    def VideoRemakeTask(self, VideoRemakeTask):
+        self._VideoRemakeTask = VideoRemakeTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2293,6 +2311,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("DubbingTask") is not None:
             self._DubbingTask = AiAnalysisTaskDubbingResult()
             self._DubbingTask._deserialize(params.get("DubbingTask"))
+        if params.get("VideoRemakeTask") is not None:
+            self._VideoRemakeTask = AiAnalysisTaskVideoRemakeResult()
+            self._VideoRemakeTask._deserialize(params.get("VideoRemakeTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4618,6 +4639,197 @@ class AiAnalysisTaskTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeInput(AbstractModel):
+    r"""视频去重任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频智能去重模板 ID
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""视频智能去重模板 ID
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeOutput(AbstractModel):
+    r"""视频去重结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 视频智能去重文件路径
+        :type Path: str
+        :param _OutputStorage: 智能视频去重的存储位置
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        r"""视频智能去重文件路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        r"""智能视频去重的存储位置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeResult(AbstractModel):
+    r"""视频去重结果数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败
+        :type ErrCode: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Input: 去重任务输入
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
+        :param _Output: 去重任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0：成功，其他值：失败
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""去重任务输入
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""去重任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskVideoRemakeInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskVideoRemakeOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -52643,6 +52855,9 @@ class ParseNotificationResponse(AbstractModel):
         :type Timestamp: int
         :param _Sign: 事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
         :type Sign: str
+        :param _BatchTaskEvent: 批量处理任务信息，仅当 EventType 为 BatchTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchTaskEvent: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -52654,6 +52869,7 @@ class ParseNotificationResponse(AbstractModel):
         self._ScheduleTaskEvent = None
         self._Timestamp = None
         self._Sign = None
+        self._BatchTaskEvent = None
         self._RequestId = None
 
     @property
@@ -52754,6 +52970,18 @@ class ParseNotificationResponse(AbstractModel):
         self._Sign = Sign
 
     @property
+    def BatchTaskEvent(self):
+        r"""批量处理任务信息，仅当 EventType 为 BatchTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        """
+        return self._BatchTaskEvent
+
+    @BatchTaskEvent.setter
+    def BatchTaskEvent(self, BatchTaskEvent):
+        self._BatchTaskEvent = BatchTaskEvent
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -52780,6 +53008,9 @@ class ParseNotificationResponse(AbstractModel):
             self._ScheduleTaskEvent._deserialize(params.get("ScheduleTaskEvent"))
         self._Timestamp = params.get("Timestamp")
         self._Sign = params.get("Sign")
+        if params.get("BatchTaskEvent") is not None:
+            self._BatchTaskEvent = BatchSubTaskResult()
+            self._BatchTaskEvent._deserialize(params.get("BatchTaskEvent"))
         self._RequestId = params.get("RequestId")
 
 
@@ -61233,10 +61464,11 @@ class SmartEraseWatermarkConfig(AbstractModel):
         :type WatermarkModel: str
         :param _AutoAreas: 自动擦除自定义区域。
 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-注意，当擦除方式为custom时，此参数将不会生效。
+注意，当擦除方式为custom时，此参数将不会生效。修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
         :type AutoAreas: list of EraseArea
         :param _CustomAreas: 指定擦除自定义区域。
 对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
         :type CustomAreas: list of EraseTimeArea
         """
         self._WatermarkEraseMethod = None
@@ -61281,7 +61513,7 @@ class SmartEraseWatermarkConfig(AbstractModel):
     def AutoAreas(self):
         r"""自动擦除自定义区域。
 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-注意，当擦除方式为custom时，此参数将不会生效。
+注意，当擦除方式为custom时，此参数将不会生效。修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -61294,6 +61526,7 @@ class SmartEraseWatermarkConfig(AbstractModel):
     def CustomAreas(self):
         r"""指定擦除自定义区域。
 对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas

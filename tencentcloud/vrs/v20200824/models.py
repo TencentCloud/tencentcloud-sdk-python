@@ -166,13 +166,12 @@ class CreateVRSTaskRequest(AbstractModel):
         :type SampleRate: int
         :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
         :type Codec: str
-        :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式目前仅支持轻量版声音复刻）
+        :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :type CallbackUrl: str
         :param _ModelType: 模型类型 1:在线 2:离线  默认为1
         :type ModelType: int
         :param _TaskType: 复刻类型。
-0 - 轻量版声音复刻（默认）；
 5 - 一句话声音复刻。
         :type TaskType: int
         :param _VPRAudioId: 校验音频ID。（仅基础版声音复刻使用）
@@ -281,7 +280,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        r"""回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式目前仅支持轻量版声音复刻）
+        r"""回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :rtype: str
         """
@@ -305,7 +304,6 @@ class CreateVRSTaskRequest(AbstractModel):
     @property
     def TaskType(self):
         r"""复刻类型。
-0 - 轻量版声音复刻（默认）；
 5 - 一句话声音复刻。
         :rtype: int
         """
@@ -686,9 +684,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 24000：24k（仅一句话声音复刻支持）；
 48000：48k（仅一句话声音复刻支持）。
         :type SampleRate: int
-        :param _TaskType: 复刻类型。
-0 - 轻量版声音复刻（默认）;
-5 - 一句话声音复刻。
+        :param _TaskType: 复刻类型。5 - 一句话声音复刻。
         :type TaskType: int
         """
         self._TextId = None
@@ -758,9 +754,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""复刻类型。
-0 - 轻量版声音复刻（默认）;
-5 - 一句话声音复刻。
+        r"""复刻类型。5 - 一句话声音复刻。
         :rtype: int
         """
         return self._TaskType
@@ -1135,7 +1129,6 @@ class GetTrainingTextRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskType: 复刻类型。
-0 - 轻量版声音复刻（默认）;
 5 - 一句话声音复刻。
         :type TaskType: int
         :param _Domain: 音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
@@ -1155,7 +1148,6 @@ class GetTrainingTextRequest(AbstractModel):
     @property
     def TaskType(self):
         r"""复刻类型。
-0 - 轻量版声音复刻（默认）;
 5 - 一句话声音复刻。
         :rtype: int
         """
@@ -1561,7 +1553,7 @@ class VoiceTypeInfo(AbstractModel):
         :type VoiceName: str
         :param _VoiceGender: 音色性别: 1-male 2-female
         :type VoiceGender: int
-        :param _TaskType: 复刻类型: 0-轻量版复刻 1-基础版复刻
+        :param _TaskType: 复刻类型: 1-基础版复刻
         :type TaskType: int
         :param _TaskID: 复刻任务 ID
         :type TaskID: str
@@ -1622,7 +1614,7 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""复刻类型: 0-轻量版复刻 1-基础版复刻
+        r"""复刻类型: 1-基础版复刻
         :rtype: int
         """
         return self._TaskType

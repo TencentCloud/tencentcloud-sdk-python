@@ -17259,6 +17259,174 @@ class CreateSealResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSingleSignOnEmployeesRequest(AbstractModel):
+    r"""CreateSingleSignOnEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Employees: 待创建员工的信息最多不超过200个。
+
+注意：
+1. 传递的 openId 不能重复， 且字符不能超过64位。
+2. 传递的手机号不能重复。
+3. 绑定的角色必须存在且不能超过 10 个。
+        :type Employees: list of SingleSignOnEmployees
+        :param _SsoApplicationId: 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :type SsoApplicationId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._Employees = None
+        self._SsoApplicationId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Employees(self):
+        r"""待创建员工的信息最多不超过200个。
+
+注意：
+1. 传递的 openId 不能重复， 且字符不能超过64位。
+2. 传递的手机号不能重复。
+3. 绑定的角色必须存在且不能超过 10 个。
+        :rtype: list of SingleSignOnEmployees
+        """
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def SsoApplicationId(self):
+        r"""单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :rtype: str
+        """
+        return self._SsoApplicationId
+
+    @SsoApplicationId.setter
+    def SsoApplicationId(self, SsoApplicationId):
+        self._SsoApplicationId = SsoApplicationId
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Employees") is not None:
+            self._Employees = []
+            for item in params.get("Employees"):
+                obj = SingleSignOnEmployees()
+                obj._deserialize(item)
+                self._Employees.append(obj)
+        self._SsoApplicationId = params.get("SsoApplicationId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSingleSignOnEmployeesResponse(AbstractModel):
+    r"""CreateSingleSignOnEmployees返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMessages: 导入员工返回的错误信息，信息数组的顺序跟导入的保持一致
+        :type ErrorMessages: list of str
+        :param _Status: 导入员工返回的状态码
+0-全部成功
+1-部分成功
+2-全部失败
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMessages = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ErrorMessages(self):
+        r"""导入员工返回的错误信息，信息数组的顺序跟导入的保持一致
+        :rtype: list of str
+        """
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def Status(self):
+        r"""导入员工返回的状态码
+0-全部成功
+1-部分成功
+2-全部失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMessages = params.get("ErrorMessages")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateStaffResult(AbstractModel):
     r"""创建员工的结果
 
@@ -19650,6 +19818,123 @@ class DeleteSealPoliciesRequest(AbstractModel):
 
 class DeleteSealPoliciesResponse(AbstractModel):
     r"""DeleteSealPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSingleSignOnEmployeesRequest(AbstractModel):
+    r"""DeleteSingleSignOnEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SsoApplicationId: 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :type SsoApplicationId: str
+        :param _OpenId: 需要删除的单点登录员工的唯一Id 值
+        :type OpenId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._SsoApplicationId = None
+        self._OpenId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SsoApplicationId(self):
+        r"""单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :rtype: str
+        """
+        return self._SsoApplicationId
+
+    @SsoApplicationId.setter
+    def SsoApplicationId(self, SsoApplicationId):
+        self._SsoApplicationId = SsoApplicationId
+
+    @property
+    def OpenId(self):
+        r"""需要删除的单点登录员工的唯一Id 值
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SsoApplicationId = params.get("SsoApplicationId")
+        self._OpenId = params.get("OpenId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSingleSignOnEmployeesResponse(AbstractModel):
+    r"""DeleteSingleSignOnEmployees返回参数结构体
 
     """
 
@@ -24718,6 +25003,175 @@ class DescribeSignFaceVideoResponse(AbstractModel):
         if params.get("IntentionActionResult") is not None:
             self._IntentionActionResult = IntentionActionResult()
             self._IntentionActionResult._deserialize(params.get("IntentionActionResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSingleSignOnEmployeesRequest(AbstractModel):
+    r"""DescribeSingleSignOnEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SsoApplicationId: 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :type SsoApplicationId: str
+        :param _OpenIds: 需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+如果传递了 openIds，limit 和 offset 参数无效，
+        :type OpenIds: list of str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。如果不传， 则默认是 20.
+        :type Limit: int
+        :param _Offset: OFFSET 用于指定查询结果的偏移量，如果不传默认偏移为0,最大20000。 分页参数, 需要limit, offset 配合使用 例如: 您希望得到第三页的数据, 且每页限制最多10条 您可以使用 LIMIT 10 OFFSET 20	
+        :type Offset: int
+        """
+        self._Operator = None
+        self._SsoApplicationId = None
+        self._OpenIds = None
+        self._Agent = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SsoApplicationId(self):
+        r"""单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :rtype: str
+        """
+        return self._SsoApplicationId
+
+    @SsoApplicationId.setter
+    def SsoApplicationId(self, SsoApplicationId):
+        self._SsoApplicationId = SsoApplicationId
+
+    @property
+    def OpenIds(self):
+        r"""需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+如果传递了 openIds，limit 和 offset 参数无效，
+        :rtype: list of str
+        """
+        return self._OpenIds
+
+    @OpenIds.setter
+    def OpenIds(self, OpenIds):
+        self._OpenIds = OpenIds
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Limit(self):
+        r"""指定分页每页返回的数据条数，单页最大支持 200。如果不传， 则默认是 20.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""OFFSET 用于指定查询结果的偏移量，如果不传默认偏移为0,最大20000。 分页参数, 需要limit, offset 配合使用 例如: 您希望得到第三页的数据, 且每页限制最多10条 您可以使用 LIMIT 10 OFFSET 20	
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SsoApplicationId = params.get("SsoApplicationId")
+        self._OpenIds = params.get("OpenIds")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSingleSignOnEmployeesResponse(AbstractModel):
+    r"""DescribeSingleSignOnEmployees返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Employees: 单点登录企业员工信息
+        :type Employees: list of SingleSignOnEmployees
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Employees = None
+        self._RequestId = None
+
+    @property
+    def Employees(self):
+        r"""单点登录企业员工信息
+        :rtype: list of SingleSignOnEmployees
+        """
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Employees") is not None:
+            self._Employees = []
+            for item in params.get("Employees"):
+                obj = SingleSignOnEmployees()
+                obj._deserialize(item)
+                self._Employees.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -32553,6 +33007,125 @@ class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySingleSignOnEmployeesRequest(AbstractModel):
+    r"""ModifySingleSignOnEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SsoApplicationId: 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :type SsoApplicationId: str
+        :param _Employee: 待修改员工的信息。
+        :type Employee: :class:`tencentcloud.ess.v20201111.models.SingleSignOnEmployees`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._SsoApplicationId = None
+        self._Employee = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SsoApplicationId(self):
+        r"""单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+        :rtype: str
+        """
+        return self._SsoApplicationId
+
+    @SsoApplicationId.setter
+    def SsoApplicationId(self, SsoApplicationId):
+        self._SsoApplicationId = SsoApplicationId
+
+    @property
+    def Employee(self):
+        r"""待修改员工的信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SingleSignOnEmployees`
+        """
+        return self._Employee
+
+    @Employee.setter
+    def Employee(self, Employee):
+        self._Employee = Employee
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SsoApplicationId = params.get("SsoApplicationId")
+        if params.get("Employee") is not None:
+            self._Employee = SingleSignOnEmployees()
+            self._Employee._deserialize(params.get("Employee"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySingleSignOnEmployeesResponse(AbstractModel):
+    r"""ModifySingleSignOnEmployees返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class NeedReviewApproverInfo(AbstractModel):
     r"""需要进行签署审核的签署人信息
 
@@ -36503,6 +37076,153 @@ class SignUrl(AbstractModel):
         self._AppSignUrl = params.get("AppSignUrl")
         self._EffectiveTime = params.get("EffectiveTime")
         self._HttpSignUrl = params.get("HttpSignUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SingleSignOnEmployees(AbstractModel):
+    r"""单点登录企业员工信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpenId: 用户在idp分配的唯一值，需要保持跟在电子签应用集成->单点登录配置->端点配置中配置的。
+如下图配置![image](https://qcloudimg.tencent-cloud.cn/raw/6ff22248c930b2a7684322cac9401a9c.png)。
+        :type OpenId: str
+        :param _Name: 企业员工姓名。 员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。	
+        :type Name: str
+        :param _Mobile: 用户手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
+        :type Mobile: str
+        :param _UserId: 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+注：`创建和更新场景无需填写。`
+        :type UserId: str
+        :param _Email: 用户邮箱。
+        :type Email: str
+        :param _RoleIds: 员工角色信息。
+此处roleId为电子签配置的 RoleId，可通过接口[查询企业角色列表](https://qian.tencent.com/developers/companyApis/roles/DescribeIntegrationRoles) 获取
+        :type RoleIds: list of str
+        :param _IsVerified: 员工是否实名。
+        :type IsVerified: bool
+        :param _CreatedOn: 员工创建时间戳，单位秒。
+        :type CreatedOn: int
+        """
+        self._OpenId = None
+        self._Name = None
+        self._Mobile = None
+        self._UserId = None
+        self._Email = None
+        self._RoleIds = None
+        self._IsVerified = None
+        self._CreatedOn = None
+
+    @property
+    def OpenId(self):
+        r"""用户在idp分配的唯一值，需要保持跟在电子签应用集成->单点登录配置->端点配置中配置的。
+如下图配置![image](https://qcloudimg.tencent-cloud.cn/raw/6ff22248c930b2a7684322cac9401a9c.png)。
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Name(self):
+        r"""企业员工姓名。 员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。	
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        r"""用户手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def UserId(self):
+        r"""员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+注：`创建和更新场景无需填写。`
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Email(self):
+        r"""用户邮箱。
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def RoleIds(self):
+        r"""员工角色信息。
+此处roleId为电子签配置的 RoleId，可通过接口[查询企业角色列表](https://qian.tencent.com/developers/companyApis/roles/DescribeIntegrationRoles) 获取
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+    @property
+    def IsVerified(self):
+        r"""员工是否实名。
+        :rtype: bool
+        """
+        return self._IsVerified
+
+    @IsVerified.setter
+    def IsVerified(self, IsVerified):
+        self._IsVerified = IsVerified
+
+    @property
+    def CreatedOn(self):
+        r"""员工创建时间戳，单位秒。
+        :rtype: int
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+
+    def _deserialize(self, params):
+        self._OpenId = params.get("OpenId")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._UserId = params.get("UserId")
+        self._Email = params.get("Email")
+        self._RoleIds = params.get("RoleIds")
+        self._IsVerified = params.get("IsVerified")
+        self._CreatedOn = params.get("CreatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

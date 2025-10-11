@@ -3200,14 +3200,14 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
+        :param _AsyncRequestId: 指定需查询的异步请求 ID。当接口操作涉及异步流程时（如 [CreateBackupDBInstance](https://cloud.tencent.com/document/product/240/46599)），其返回值中的 AsyncRequestId 即为本参数所需填入的 ID。
         :type AsyncRequestId: str
         """
         self._AsyncRequestId = None
 
     @property
     def AsyncRequestId(self):
-        r"""异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
+        r"""指定需查询的异步请求 ID。当接口操作涉及异步流程时（如 [CreateBackupDBInstance](https://cloud.tencent.com/document/product/240/46599)），其返回值中的 AsyncRequestId 即为本参数所需填入的 ID。
         :rtype: str
         """
         return self._AsyncRequestId
@@ -3238,10 +3238,16 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
         r"""
         :param _Status: 状态。返回参数有：initial-初始化、running-运行中、paused-任务执行失败，已暂停、undoed-任务执行失败，已回滚、failed-任务执行失败, 已终止、success-成功
         :type Status: str
+        :param _StartTime: 任务执行开始时间。
+        :type StartTime: str
+        :param _EndTime: 任务执行结束时间。
+        :type EndTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._StartTime = None
+        self._EndTime = None
         self._RequestId = None
 
     @property
@@ -3254,6 +3260,28 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""任务执行开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""任务执行结束时间。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
     @property
     def RequestId(self):
@@ -3269,6 +3297,8 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -6818,13 +6848,13 @@ class FlashBackDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 开启按 Key 回档的实例 ID。
+        :param _InstanceId: 开启按 Key 回档的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需开启按 Key 回档的实例 ID。
         :type InstanceId: str
-        :param _TargetFlashbackTime: 源数据想恢复到的时间。
+        :param _TargetFlashbackTime: 指定数据回档的具体时间点，即将数据恢复到指定时间点的状态。
         :type TargetFlashbackTime: str
-        :param _TargetDatabases: 源数据所在的库表信息。
+        :param _TargetDatabases: 指定回档数据的目标库表。
         :type TargetDatabases: list of FlashbackDatabase
-        :param _TargetInstanceId: 数据最终写入的实例 ID。
+        :param _TargetInstanceId: 数据回档的目标实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制目标实例 ID。
         :type TargetInstanceId: str
         """
         self._InstanceId = None
@@ -6834,7 +6864,7 @@ class FlashBackDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""开启按 Key 回档的实例 ID。
+        r"""开启按 Key 回档的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需开启按 Key 回档的实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6845,7 +6875,7 @@ class FlashBackDBInstanceRequest(AbstractModel):
 
     @property
     def TargetFlashbackTime(self):
-        r"""源数据想恢复到的时间。
+        r"""指定数据回档的具体时间点，即将数据恢复到指定时间点的状态。
         :rtype: str
         """
         return self._TargetFlashbackTime
@@ -6856,7 +6886,7 @@ class FlashBackDBInstanceRequest(AbstractModel):
 
     @property
     def TargetDatabases(self):
-        r"""源数据所在的库表信息。
+        r"""指定回档数据的目标库表。
         :rtype: list of FlashbackDatabase
         """
         return self._TargetDatabases
@@ -6867,7 +6897,7 @@ class FlashBackDBInstanceRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        r"""数据最终写入的实例 ID。
+        r"""数据回档的目标实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制目标实例 ID。
         :rtype: str
         """
         return self._TargetInstanceId
@@ -9548,9 +9578,9 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
 
         :type OldIpExpiredTime: int
-        :param _NewUniqVpcId: 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
+        :param _NewUniqVpcId: 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
         :type NewUniqVpcId: str
-        :param _NewUniqSubnetId: 切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
+        :param _NewUniqSubnetId: 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
         :type NewUniqSubnetId: str
         :param _NetworkAddresses: IP 地址信息，包含新 IP 地址与 原 IP 地址。
         :type NetworkAddresses: list of ModifyNetworkAddress
@@ -9589,7 +9619,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def NewUniqVpcId(self):
-        r"""切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
+        r"""切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
         :rtype: str
         """
         return self._NewUniqVpcId
@@ -9600,7 +9630,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def NewUniqSubnetId(self):
-        r"""切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
+        r"""切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
         :rtype: str
         """
         return self._NewUniqSubnetId
@@ -9806,9 +9836,9 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。例如：cmgo-7pje****。
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _SecurityGroupIds: 目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+        :param _SecurityGroupIds: 目标安全组 ID。请登录[安全组控制台页面](https://console.cloud.tencent.com/vpc/security-group)复制目标安全组 ID。
 **注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :type SecurityGroupIds: list of str
         """
@@ -9817,7 +9847,7 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。例如：cmgo-7pje****。
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9828,7 +9858,7 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+        r"""目标安全组 ID。请登录[安全组控制台页面](https://console.cloud.tencent.com/vpc/security-group)复制目标安全组 ID。
 **注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """

@@ -1,126 +1,56 @@
-# Release 3.0.1471
+# Release 3.0.1472
 
-## 腾讯混元生3D(ai3d) 版本：2025-05-13
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 4 次发布
+### 第 249 次发布
 
-发布时间：2025-09-30 01:07:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SubmitHunyuanTo3DProJob](https://cloud.tencent.com/document/api/1804/123447)
-
-	* 新增入参：PolygonType
-
-
-修改数据结构：
-
-* [ViewImage](https://cloud.tencent.com/document/api/1804/120828#ViewImage)
-
-	* 新增成员：ViewImageBase64
-
-
-
-
-## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
-
-### 第 56 次发布
-
-发布时间：2025-09-30 01:18:23
+发布时间：2025-10-10 01:20:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [InstanceInfo](https://cloud.tencent.com/document/api/1387/102385#InstanceInfo)
-
-	* 新增成员：CosPkgCapacity, UseManagedBucket
-
-
-
-
-## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
-
-### 第 132 次发布
-
-发布时间：2025-09-30 01:21:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [KafkaConnectParam](https://cloud.tencent.com/document/api/597/40861#KafkaConnectParam)
-
-	* 新增成员：NetworkType, UniqVpcId, ServiceVip, Port, CrossNetResourceUniqueId, CrossNetVpcSubNetId
-
-
-
-
-## 腾讯云智能体开发平台(lke) 版本：2023-11-30
-
-### 第 68 次发布
-
-发布时间：2025-09-30 01:55:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateWorkflowRun](https://cloud.tencent.com/document/api/1759/119570)
-
-	* <font color="#dd0000">**修改入参**：</font>AppBizId
-
-* [DescribeNodeRun](https://cloud.tencent.com/document/api/1759/119569)
-
-	* <font color="#dd0000">**修改入参**：</font>AppBizId, NodeRunId
-
-* [DescribeWorkflowRun](https://cloud.tencent.com/document/api/1759/119568)
-
-	* <font color="#dd0000">**修改入参**：</font>AppBizId, WorkflowRunId
-
-* [ListWorkflowRuns](https://cloud.tencent.com/document/api/1759/119567)
-
-	* <font color="#dd0000">**修改入参**：</font>AppBizId, PageSize
-
-* [RetryDocParse](https://cloud.tencent.com/document/api/1759/105055)
-
-	* 新增入参：DocBizIds
-
-	* <font color="#dd0000">**修改入参**：</font>DocBizId
-
-* [StopWorkflowRun](https://cloud.tencent.com/document/api/1759/119566)
-
-	* <font color="#dd0000">**修改入参**：</font>AppBizId, WorkflowRunId
-
+* [CreateSingleSignOnEmployees](https://cloud.tencent.com/document/api/1323/123923)
+* [DeleteSingleSignOnEmployees](https://cloud.tencent.com/document/api/1323/123922)
+* [DescribeSingleSignOnEmployees](https://cloud.tencent.com/document/api/1323/123921)
+* [ModifySingleSignOnEmployees](https://cloud.tencent.com/document/api/1323/123920)
 
 新增数据结构：
 
-* [InputBoxConfig](https://cloud.tencent.com/document/api/1759/105104#InputBoxConfig)
+* [SingleSignOnEmployees](https://cloud.tencent.com/document/api/1323/70369#SingleSignOnEmployees)
 
-修改数据结构：
 
-* [KnowledgeQaOutput](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaOutput)
 
-	* 新增成员：InputBoxConfig
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 58 次发布
+
+发布时间：2025-10-01 02:02:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/240/46601)
+
+	* 新增出参：StartTime, EndTime
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
 
 
 ## 媒体处理(mps) 版本：2019-06-12
 
-### 第 146 次发布
+### 第 147 次发布
 
-发布时间：2025-09-30 02:06:37
+发布时间：2025-10-01 02:06:17
 
 本次发布包含了以下内容：
 
@@ -128,36 +58,40 @@
 
 修改接口：
 
-* [DescribeTasks](https://cloud.tencent.com/document/api/862/37613)
+* [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
 
-	* 新增入参：SubTaskHasFailed
+	* 新增出参：BatchTaskEvent
 
+
+新增数据结构：
+
+* [AiAnalysisTaskVideoRemakeInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskVideoRemakeInput)
+* [AiAnalysisTaskVideoRemakeOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskVideoRemakeOutput)
+* [AiAnalysisTaskVideoRemakeResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskVideoRemakeResult)
 
 修改数据结构：
 
-* [AddOnSubtitle](https://cloud.tencent.com/document/api/862/37615#AddOnSubtitle)
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
 
-	* 新增成员：OutputFormat, DefaultTrack
-
-
+	* 新增成员：VideoRemakeTask
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 60 次发布
 
-发布时间：2025-09-30 02:19:01
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 81 次发布
+
+发布时间：2025-10-01 02:41:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
-
-	* 新增成员：ExpandedCpu
-
+* [CreateClusterAccess](https://cloud.tencent.com/document/api/1285/123910)
+* [ModifyDefendStatus](https://cloud.tencent.com/document/api/1285/123911)
 
 
 

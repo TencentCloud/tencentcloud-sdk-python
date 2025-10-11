@@ -230,6 +230,9 @@ INVALIDPARAMETER_DATANOTFOUND = 'InvalidParameter.DataNotFound'
 # 部门用户Id不正确
 INVALIDPARAMETER_DEPARTUSERID = 'InvalidParameter.DepartUserId'
 
+# 邮箱格式不正确
+INVALIDPARAMETER_EMAIL = 'InvalidParameter.Email'
+
 # 参数为空，请检查参数修改后重试。
 INVALIDPARAMETER_EMPTYPARAMS = 'InvalidParameter.EmptyParams'
 
@@ -287,6 +290,9 @@ INVALIDPARAMETER_INVALIDNAME = 'InvalidParameter.InvalidName'
 # 参数Offset不正确。
 INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
 
+# OpenId不正确。
+INVALIDPARAMETER_INVALIDOPENID = 'InvalidParameter.InvalidOpenId'
+
 # 操作人ID不正确。
 INVALIDPARAMETER_INVALIDOPERATORID = 'InvalidParameter.InvalidOperatorId'
 
@@ -331,6 +337,9 @@ INVALIDPARAMETER_NOTIFYTYPE = 'InvalidParameter.NotifyType'
 
 # 参数Offset不正确
 INVALIDPARAMETER_OFFSET = 'InvalidParameter.Offset'
+
+# OpenId不正确。
+INVALIDPARAMETER_OPENID = 'InvalidParameter.OpenId'
 
 # 不合法的企业名称，请修改后重试。
 INVALIDPARAMETER_ORGANIZATIONNAME = 'InvalidParameter.OrganizationName'
@@ -397,6 +406,9 @@ INVALIDPARAMETERVALUE_MASK = 'InvalidParameterValue.Mask'
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 导入的员工数量超过最大限制。
+LIMITEXCEEDED_PROXYORGANIZATIONOPERATOR = 'LimitExceeded.ProxyOrganizationOperator'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

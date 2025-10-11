@@ -2052,6 +2052,36 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSingleSignOnEmployees(self, request):
+        r"""此接口（CreateSingleSignOnEmployees）用于创建单点登录企业员工。
+        创建好的员工，可以通过腾讯电子签提供的链接， 如下图位置，进行登录。
+        此操作的功能：
+        1. 可以绑定已经实名的员工，然后 sso 登录实名绑定。
+        2. 可以提前导入员工，在 sso 登录的时候进行实名。
+        3. 如果已经绑定过，可以直接通过 sso 链接登录腾讯电子签。
+
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/0cd98ca2cc49ea1472a2397cea9a3ef6.png)
+
+        :param request: Request instance for CreateSingleSignOnEmployees.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateSingleSignOnEmployeesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateSingleSignOnEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSingleSignOnEmployees", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSingleSignOnEmployeesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUserAutoSignEnableUrl(self, request):
         r"""获取个人用户自动签的开通链接。
 
@@ -2359,6 +2389,33 @@ class EssClient(AbstractClient):
             body = self.call("DeleteSealPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSealPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSingleSignOnEmployees(self, request):
+        r"""此接口（DeleteSingleSignOnEmployees）用于删除单点登录企业员工。
+        注意：
+        此接口只能删除未跟腾讯电子签绑定的单点登录企业员工，
+        如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要企业的超级管理员或者组织管理员在腾讯电子签控制台对当前企业员工进行离职操作，如下图操作。
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/5e69f6e11859972d466900040f68c105.png)
+
+        :param request: Request instance for DeleteSingleSignOnEmployees.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DeleteSingleSignOnEmployeesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DeleteSingleSignOnEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSingleSignOnEmployees", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSingleSignOnEmployeesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3120,6 +3177,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSingleSignOnEmployees(self, request):
+        r"""此接口（DescribeSingleSignOnEmployees）用于查询单点登录企业员工。
+
+        :param request: Request instance for DescribeSingleSignOnEmployees.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeSingleSignOnEmployeesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeSingleSignOnEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSingleSignOnEmployees", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSingleSignOnEmployeesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeThirdPartyAuthCode(self, request):
         r"""通过AuthCode查询个人用户是否实名
 
@@ -3465,6 +3545,30 @@ class EssClient(AbstractClient):
             body = self.call("ModifyPartnerAutoSignAuthUrl", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPartnerAutoSignAuthUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySingleSignOnEmployees(self, request):
+        r"""此接口（ModifySingleSignOnEmployees）用于修改单点登录企业员工。
+         注意： 此接口只能修改未跟腾讯电子签绑定的单点登录企业员工， 如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要在腾讯电子签小程序进行个人信息变更操作。
+
+        :param request: Request instance for ModifySingleSignOnEmployees.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ModifySingleSignOnEmployeesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ModifySingleSignOnEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySingleSignOnEmployees", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySingleSignOnEmployeesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

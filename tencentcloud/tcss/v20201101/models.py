@@ -12996,6 +12996,70 @@ class CreateCheckComponentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateClusterAccessRequest(AbstractModel):
+    r"""CreateClusterAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIDs: 集群ID
+        :type ClusterIDs: list of str
+        """
+        self._ClusterIDs = None
+
+    @property
+    def ClusterIDs(self):
+        r"""集群ID
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+
+    def _deserialize(self, params):
+        self._ClusterIDs = params.get("ClusterIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterAccessResponse(AbstractModel):
+    r"""CreateClusterAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateClusterCheckTaskRequest(AbstractModel):
     r"""CreateClusterCheckTask请求参数结构体
 
@@ -61881,6 +61945,115 @@ class ModifyContainerNetStatusRequest(AbstractModel):
 
 class ModifyContainerNetStatusResponse(AbstractModel):
     r"""ModifyContainerNetStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDefendStatusRequest(AbstractModel):
+    r"""ModifyDefendStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SwitchOn: 开关是否开启
+        :type SwitchOn: bool
+        :param _InstanceType: 实例类型 <li> Cluster: 集群</li> <li> Node: 节点</li>
+        :type InstanceType: str
+        :param _IsAll: 是否是全部实例
+        :type IsAll: bool
+        :param _InstanceIDs: 实例id列表
+        :type InstanceIDs: list of str
+        """
+        self._SwitchOn = None
+        self._InstanceType = None
+        self._IsAll = None
+        self._InstanceIDs = None
+
+    @property
+    def SwitchOn(self):
+        r"""开关是否开启
+        :rtype: bool
+        """
+        return self._SwitchOn
+
+    @SwitchOn.setter
+    def SwitchOn(self, SwitchOn):
+        self._SwitchOn = SwitchOn
+
+    @property
+    def InstanceType(self):
+        r"""实例类型 <li> Cluster: 集群</li> <li> Node: 节点</li>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def IsAll(self):
+        r"""是否是全部实例
+        :rtype: bool
+        """
+        return self._IsAll
+
+    @IsAll.setter
+    def IsAll(self, IsAll):
+        self._IsAll = IsAll
+
+    @property
+    def InstanceIDs(self):
+        r"""实例id列表
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+
+    def _deserialize(self, params):
+        self._SwitchOn = params.get("SwitchOn")
+        self._InstanceType = params.get("InstanceType")
+        self._IsAll = params.get("IsAll")
+        self._InstanceIDs = params.get("InstanceIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDefendStatusResponse(AbstractModel):
+    r"""ModifyDefendStatus返回参数结构体
 
     """
 
