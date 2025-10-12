@@ -11457,6 +11457,8 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         :type UpdateComputeGroups: list of str
         :param _DefaultComputeGroup: 默认计算组
         :type DefaultComputeGroup: str
+        :param _ComputeGroupType: 0: 灵活场景 1: 固定场景
+        :type ComputeGroupType: int
         """
         self._InstanceId = None
         self._UserName = None
@@ -11465,6 +11467,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._UpdateType = None
         self._UpdateComputeGroups = None
         self._DefaultComputeGroup = None
+        self._ComputeGroupType = None
 
     @property
     def InstanceId(self):
@@ -11543,6 +11546,17 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
     def DefaultComputeGroup(self, DefaultComputeGroup):
         self._DefaultComputeGroup = DefaultComputeGroup
 
+    @property
+    def ComputeGroupType(self):
+        r"""0: 灵活场景 1: 固定场景
+        :rtype: int
+        """
+        return self._ComputeGroupType
+
+    @ComputeGroupType.setter
+    def ComputeGroupType(self, ComputeGroupType):
+        self._ComputeGroupType = ComputeGroupType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11554,6 +11568,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._UpdateType = params.get("UpdateType")
         self._UpdateComputeGroups = params.get("UpdateComputeGroups")
         self._DefaultComputeGroup = params.get("DefaultComputeGroup")
+        self._ComputeGroupType = params.get("ComputeGroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

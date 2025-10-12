@@ -22538,6 +22538,100 @@ class DescribeAddressQuotaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAddressTemplateGroupInstancesRequest(AbstractModel):
+    r"""DescribeAddressTemplateGroupInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressTemplateGroupId: IP地址组实例ID。例如：ipmg-12345678。
+        :type AddressTemplateGroupId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._AddressTemplateGroupId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AddressTemplateGroupId(self):
+        r"""IP地址组实例ID。例如：ipmg-12345678。
+        :rtype: str
+        """
+        return self._AddressTemplateGroupId
+
+    @AddressTemplateGroupId.setter
+    def AddressTemplateGroupId(self, AddressTemplateGroupId):
+        self._AddressTemplateGroupId = AddressTemplateGroupId
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._AddressTemplateGroupId = params.get("AddressTemplateGroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddressTemplateGroupInstancesResponse(AbstractModel):
+    r"""DescribeAddressTemplateGroupInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAddressTemplateGroupsRequest(AbstractModel):
     r"""DescribeAddressTemplateGroups请求参数结构体
 
@@ -22748,6 +22842,100 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
                 obj = AddressTemplateGroup()
                 obj._deserialize(item)
                 self._AddressTemplateGroupSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAddressTemplateInstancesRequest(AbstractModel):
+    r"""DescribeAddressTemplateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressTemplateId: IP地址实例ID。例如：ipm-12345678。
+        :type AddressTemplateId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._AddressTemplateId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AddressTemplateId(self):
+        r"""IP地址实例ID。例如：ipm-12345678。
+        :rtype: str
+        """
+        return self._AddressTemplateId
+
+    @AddressTemplateId.setter
+    def AddressTemplateId(self, AddressTemplateId):
+        self._AddressTemplateId = AddressTemplateId
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._AddressTemplateId = params.get("AddressTemplateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddressTemplateInstancesResponse(AbstractModel):
+    r"""DescribeAddressTemplateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -33447,6 +33635,100 @@ class DescribeSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServiceTemplateGroupInstancesRequest(AbstractModel):
+    r"""DescribeServiceTemplateGroupInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceTemplateGroupId: 协议端口实例ID。例如：ppmg-12345678。
+        :type ServiceTemplateGroupId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._ServiceTemplateGroupId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ServiceTemplateGroupId(self):
+        r"""协议端口实例ID。例如：ppmg-12345678。
+        :rtype: str
+        """
+        return self._ServiceTemplateGroupId
+
+    @ServiceTemplateGroupId.setter
+    def ServiceTemplateGroupId(self, ServiceTemplateGroupId):
+        self._ServiceTemplateGroupId = ServiceTemplateGroupId
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ServiceTemplateGroupId = params.get("ServiceTemplateGroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceTemplateGroupInstancesResponse(AbstractModel):
+    r"""DescribeServiceTemplateGroupInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServiceTemplateGroupsRequest(AbstractModel):
     r"""DescribeServiceTemplateGroups请求参数结构体
 
@@ -33657,6 +33939,100 @@ class DescribeServiceTemplateGroupsResponse(AbstractModel):
                 obj = ServiceTemplateGroup()
                 obj._deserialize(item)
                 self._ServiceTemplateGroupSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServiceTemplateInstancesRequest(AbstractModel):
+    r"""DescribeServiceTemplateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceTemplateId: 协议端口实例ID。例如：ppm-12345678。
+        :type ServiceTemplateId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._ServiceTemplateId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ServiceTemplateId(self):
+        r"""协议端口实例ID。例如：ppm-12345678。
+        :rtype: str
+        """
+        return self._ServiceTemplateId
+
+    @ServiceTemplateId.setter
+    def ServiceTemplateId(self, ServiceTemplateId):
+        self._ServiceTemplateId = ServiceTemplateId
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ServiceTemplateId = params.get("ServiceTemplateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceTemplateInstancesResponse(AbstractModel):
+    r"""DescribeServiceTemplateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -37037,7 +37413,7 @@ class DescribeVpcPrivateIpAddressesRequest(AbstractModel):
         r"""
         :param _VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
         :type VpcId: str
-        :param _PrivateIpAddresses: 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+        :param _PrivateIpAddresses: 内网`IP`地址列表，批量查询单次请求最多支持`100`个。
         :type PrivateIpAddresses: list of str
         """
         self._VpcId = None
@@ -37056,7 +37432,7 @@ class DescribeVpcPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        r"""内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+        r"""内网`IP`地址列表，批量查询单次请求最多支持`100`个。
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -51799,9 +52175,12 @@ class ModifyPrivateNatGatewayAttributeRequest(AbstractModel):
         :type NatGatewayId: str
         :param _NatGatewayName: 私网网关名称，可任意命名，但不得超过60个字符。
         :type NatGatewayName: str
+        :param _DeletionProtectionEnabled: 私网NAT实例是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayId(self):
@@ -51825,10 +52204,22 @@ class ModifyPrivateNatGatewayAttributeRequest(AbstractModel):
     def NatGatewayName(self, NatGatewayName):
         self._NatGatewayName = NatGatewayName
 
+    @property
+    def DeletionProtectionEnabled(self):
+        r"""私网NAT实例是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
         self._NatGatewayName = params.get("NatGatewayName")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

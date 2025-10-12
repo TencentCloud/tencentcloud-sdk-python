@@ -12341,6 +12341,8 @@ class DescribeAuditConfigResponse(AbstractModel):
         :type LogType: str
         :param _IsClosing: 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
         :type IsClosing: str
+        :param _IsOpening: 是否正在开启审计。目前支持的值包括："false"-否，"true"-是
+        :type IsOpening: str
         :param _CreateTime: 审计服务开通时间。
         :type CreateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12349,6 +12351,7 @@ class DescribeAuditConfigResponse(AbstractModel):
         self._LogExpireDay = None
         self._LogType = None
         self._IsClosing = None
+        self._IsOpening = None
         self._CreateTime = None
         self._RequestId = None
 
@@ -12386,6 +12389,17 @@ class DescribeAuditConfigResponse(AbstractModel):
         self._IsClosing = IsClosing
 
     @property
+    def IsOpening(self):
+        r"""是否正在开启审计。目前支持的值包括："false"-否，"true"-是
+        :rtype: str
+        """
+        return self._IsOpening
+
+    @IsOpening.setter
+    def IsOpening(self, IsOpening):
+        self._IsOpening = IsOpening
+
+    @property
     def CreateTime(self):
         r"""审计服务开通时间。
         :rtype: str
@@ -12412,6 +12426,7 @@ class DescribeAuditConfigResponse(AbstractModel):
         self._LogExpireDay = params.get("LogExpireDay")
         self._LogType = params.get("LogType")
         self._IsClosing = params.get("IsClosing")
+        self._IsOpening = params.get("IsOpening")
         self._CreateTime = params.get("CreateTime")
         self._RequestId = params.get("RequestId")
 
@@ -24777,6 +24792,16 @@ class InstanceDbAuditStatus(AbstractModel):
         :type OldRule: bool
         :param _RuleTemplateIds: 实例所应用的规则模板。
         :type RuleTemplateIds: list of str
+        :param _TrialStatus: 限免状态
+        :type TrialStatus: str
+        :param _TrialStartTime: 限免开启时间
+        :type TrialStartTime: int
+        :param _TrialDuration: 限免持续时间
+        :type TrialDuration: int
+        :param _TrialCloseTime: 限免关闭时间
+        :type TrialCloseTime: int
+        :param _TrialDescribeLogHours: 限免期查询日志时长
+        :type TrialDescribeLogHours: int
         """
         self._InstanceId = None
         self._AuditStatus = None
@@ -24793,6 +24818,11 @@ class InstanceDbAuditStatus(AbstractModel):
         self._RealStorage = None
         self._OldRule = None
         self._RuleTemplateIds = None
+        self._TrialStatus = None
+        self._TrialStartTime = None
+        self._TrialDuration = None
+        self._TrialCloseTime = None
+        self._TrialDescribeLogHours = None
 
     @property
     def InstanceId(self):
@@ -24974,6 +25004,61 @@ class InstanceDbAuditStatus(AbstractModel):
     def RuleTemplateIds(self, RuleTemplateIds):
         self._RuleTemplateIds = RuleTemplateIds
 
+    @property
+    def TrialStatus(self):
+        r"""限免状态
+        :rtype: str
+        """
+        return self._TrialStatus
+
+    @TrialStatus.setter
+    def TrialStatus(self, TrialStatus):
+        self._TrialStatus = TrialStatus
+
+    @property
+    def TrialStartTime(self):
+        r"""限免开启时间
+        :rtype: int
+        """
+        return self._TrialStartTime
+
+    @TrialStartTime.setter
+    def TrialStartTime(self, TrialStartTime):
+        self._TrialStartTime = TrialStartTime
+
+    @property
+    def TrialDuration(self):
+        r"""限免持续时间
+        :rtype: int
+        """
+        return self._TrialDuration
+
+    @TrialDuration.setter
+    def TrialDuration(self, TrialDuration):
+        self._TrialDuration = TrialDuration
+
+    @property
+    def TrialCloseTime(self):
+        r"""限免关闭时间
+        :rtype: int
+        """
+        return self._TrialCloseTime
+
+    @TrialCloseTime.setter
+    def TrialCloseTime(self, TrialCloseTime):
+        self._TrialCloseTime = TrialCloseTime
+
+    @property
+    def TrialDescribeLogHours(self):
+        r"""限免期查询日志时长
+        :rtype: int
+        """
+        return self._TrialDescribeLogHours
+
+    @TrialDescribeLogHours.setter
+    def TrialDescribeLogHours(self, TrialDescribeLogHours):
+        self._TrialDescribeLogHours = TrialDescribeLogHours
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24993,6 +25078,11 @@ class InstanceDbAuditStatus(AbstractModel):
         self._RealStorage = params.get("RealStorage")
         self._OldRule = params.get("OldRule")
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._TrialStatus = params.get("TrialStatus")
+        self._TrialStartTime = params.get("TrialStartTime")
+        self._TrialDuration = params.get("TrialDuration")
+        self._TrialCloseTime = params.get("TrialCloseTime")
+        self._TrialDescribeLogHours = params.get("TrialDescribeLogHours")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

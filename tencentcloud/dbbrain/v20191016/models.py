@@ -2478,7 +2478,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
         :type Info: str
         :param _Limit: 返回数量，默认20。
         :type Limit: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2605,7 +2605,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -6472,6 +6472,9 @@ class MySqlProcess(AbstractModel):
         :type Time: str
         :param _Info: 线程的操作语句。
         :type Info: str
+        :param _SqlType: sql类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlType: str
         """
         self._ID = None
         self._User = None
@@ -6481,6 +6484,7 @@ class MySqlProcess(AbstractModel):
         self._Command = None
         self._Time = None
         self._Info = None
+        self._SqlType = None
 
     @property
     def ID(self):
@@ -6570,6 +6574,18 @@ class MySqlProcess(AbstractModel):
     def Info(self, Info):
         self._Info = Info
 
+    @property
+    def SqlType(self):
+        r"""sql类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -6580,6 +6596,7 @@ class MySqlProcess(AbstractModel):
         self._Command = params.get("Command")
         self._Time = params.get("Time")
         self._Info = params.get("Info")
+        self._SqlType = params.get("SqlType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

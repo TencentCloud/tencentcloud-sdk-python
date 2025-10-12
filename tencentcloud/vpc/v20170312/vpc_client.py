@@ -3577,6 +3577,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAddressTemplateGroupInstances(self, request):
+        r"""本接口（DescribeAddressTemplateGroupInstances）用于查询参数模板IP地址组口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+
+        :param request: Request instance for DescribeAddressTemplateGroupInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAddressTemplateGroupInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAddressTemplateGroupInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAddressTemplateGroups(self, request):
         r"""本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合。
 
@@ -3591,6 +3614,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeAddressTemplateGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAddressTemplateGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAddressTemplateInstances(self, request):
+        r"""本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+
+        :param request: Request instance for DescribeAddressTemplateInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAddressTemplateInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAddressTemplateInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5321,6 +5367,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServiceTemplateGroupInstances(self, request):
+        r"""本接口（DescribeServiceTemplateGroupInstances）用于查询参数模板协议端口组关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+
+        :param request: Request instance for DescribeServiceTemplateGroupInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceTemplateGroupInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceTemplateGroupInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServiceTemplateGroups(self, request):
         r"""本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合。
 
@@ -5335,6 +5404,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeServiceTemplateGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServiceTemplateGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServiceTemplateInstances(self, request):
+        r"""本接口（DescribeServiceTemplateInstances）用于查询参数模板协议端口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+
+        :param request: Request instance for DescribeServiceTemplateInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceTemplateInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceTemplateInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -117,6 +117,10 @@ class AccessPoint(AbstractModel):
         :type Address: str
         :param _IsMacSec: 是否MACsec
         :type IsMacSec: bool
+        :param _Version: 版本号
+        :type Version: str
+        :param _AccessPointServiceType: 接入点业务类型，枚举值：NORMAL-标准接入点，CDZ：EZ/CDZ接入点，COOPERATIVE-合作POP
+        :type AccessPointServiceType: str
         """
         self._AccessPointName = None
         self._AccessPointId = None
@@ -132,6 +136,8 @@ class AccessPoint(AbstractModel):
         self._AvailablePortInfo = None
         self._Address = None
         self._IsMacSec = None
+        self._Version = None
+        self._AccessPointServiceType = None
 
     @property
     def AccessPointName(self):
@@ -287,6 +293,28 @@ class AccessPoint(AbstractModel):
     def IsMacSec(self, IsMacSec):
         self._IsMacSec = IsMacSec
 
+    @property
+    def Version(self):
+        r"""版本号
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def AccessPointServiceType(self):
+        r"""接入点业务类型，枚举值：NORMAL-标准接入点，CDZ：EZ/CDZ接入点，COOPERATIVE-合作POP
+        :rtype: str
+        """
+        return self._AccessPointServiceType
+
+    @AccessPointServiceType.setter
+    def AccessPointServiceType(self, AccessPointServiceType):
+        self._AccessPointServiceType = AccessPointServiceType
+
 
     def _deserialize(self, params):
         self._AccessPointName = params.get("AccessPointName")
@@ -310,6 +338,8 @@ class AccessPoint(AbstractModel):
                 self._AvailablePortInfo.append(obj)
         self._Address = params.get("Address")
         self._IsMacSec = params.get("IsMacSec")
+        self._Version = params.get("Version")
+        self._AccessPointServiceType = params.get("AccessPointServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -444,13 +474,27 @@ class BFDInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnableBfdMultiHop: 使能BFD多跳，0:未开启，2-255:BFD跳数
+        :type EnableBfdMultiHop: int
         :param _ProbeFailedTimes: 健康检查次数
         :type ProbeFailedTimes: int
         :param _Interval: 健康检查间隔
         :type Interval: int
         """
+        self._EnableBfdMultiHop = None
         self._ProbeFailedTimes = None
         self._Interval = None
+
+    @property
+    def EnableBfdMultiHop(self):
+        r"""使能BFD多跳，0:未开启，2-255:BFD跳数
+        :rtype: int
+        """
+        return self._EnableBfdMultiHop
+
+    @EnableBfdMultiHop.setter
+    def EnableBfdMultiHop(self, EnableBfdMultiHop):
+        self._EnableBfdMultiHop = EnableBfdMultiHop
 
     @property
     def ProbeFailedTimes(self):
@@ -476,6 +520,7 @@ class BFDInfo(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnableBfdMultiHop = params.get("EnableBfdMultiHop")
         self._ProbeFailedTimes = params.get("ProbeFailedTimes")
         self._Interval = params.get("Interval")
         memeber_set = set(params.keys())
@@ -661,6 +706,12 @@ cross-region：跨地域
         :type BUpdateBandwidth: bool
         :param _ArRegion: 接入地域
         :type ArRegion: str
+        :param _IapCode: 运营商代码
+        :type IapCode: str
+        :param _IdcPointType: IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :type IdcPointType: str
+        :param _BIapLinkProtected: 运营商链路是否有保护
+        :type BIapLinkProtected: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -682,6 +733,9 @@ cross-region：跨地域
         self._CloudAttachServiceGatewaysSupport = None
         self._BUpdateBandwidth = None
         self._ArRegion = None
+        self._IapCode = None
+        self._IdcPointType = None
+        self._BIapLinkProtected = None
 
     @property
     def InstanceId(self):
@@ -912,6 +966,39 @@ cross-region：跨地域
     def ArRegion(self, ArRegion):
         self._ArRegion = ArRegion
 
+    @property
+    def IapCode(self):
+        r"""运营商代码
+        :rtype: str
+        """
+        return self._IapCode
+
+    @IapCode.setter
+    def IapCode(self, IapCode):
+        self._IapCode = IapCode
+
+    @property
+    def IdcPointType(self):
+        r"""IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :rtype: str
+        """
+        return self._IdcPointType
+
+    @IdcPointType.setter
+    def IdcPointType(self, IdcPointType):
+        self._IdcPointType = IdcPointType
+
+    @property
+    def BIapLinkProtected(self):
+        r"""运营商链路是否有保护
+        :rtype: bool
+        """
+        return self._BIapLinkProtected
+
+    @BIapLinkProtected.setter
+    def BIapLinkProtected(self, BIapLinkProtected):
+        self._BIapLinkProtected = BIapLinkProtected
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -934,6 +1021,9 @@ cross-region：跨地域
         self._CloudAttachServiceGatewaysSupport = params.get("CloudAttachServiceGatewaysSupport")
         self._BUpdateBandwidth = params.get("BUpdateBandwidth")
         self._ArRegion = params.get("ArRegion")
+        self._IapCode = params.get("IapCode")
+        self._IdcPointType = params.get("IdcPointType")
+        self._BIapLinkProtected = params.get("BIapLinkProtected")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1016,6 +1106,10 @@ class CreateCasInput(AbstractModel):
         :type Remarks: str
         :param _ArRegion: 接入地域
         :type ArRegion: str
+        :param _IdcPointType: IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :type IdcPointType: str
+        :param _BIapLinkProtected: 运营商链路是否有保护
+        :type BIapLinkProtected: bool
         """
         self._Name = None
         self._IdcAddress = None
@@ -1024,6 +1118,8 @@ class CreateCasInput(AbstractModel):
         self._Telephone = None
         self._Remarks = None
         self._ArRegion = None
+        self._IdcPointType = None
+        self._BIapLinkProtected = None
 
     @property
     def Name(self):
@@ -1102,6 +1198,28 @@ class CreateCasInput(AbstractModel):
     def ArRegion(self, ArRegion):
         self._ArRegion = ArRegion
 
+    @property
+    def IdcPointType(self):
+        r"""IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :rtype: str
+        """
+        return self._IdcPointType
+
+    @IdcPointType.setter
+    def IdcPointType(self, IdcPointType):
+        self._IdcPointType = IdcPointType
+
+    @property
+    def BIapLinkProtected(self):
+        r"""运营商链路是否有保护
+        :rtype: bool
+        """
+        return self._BIapLinkProtected
+
+    @BIapLinkProtected.setter
+    def BIapLinkProtected(self, BIapLinkProtected):
+        self._BIapLinkProtected = BIapLinkProtected
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1111,6 +1229,8 @@ class CreateCasInput(AbstractModel):
         self._Telephone = params.get("Telephone")
         self._Remarks = params.get("Remarks")
         self._ArRegion = params.get("ArRegion")
+        self._IdcPointType = params.get("IdcPointType")
+        self._BIapLinkProtected = params.get("BIapLinkProtected")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3199,6 +3319,8 @@ class DirectConnect(AbstractModel):
         :type FaultReportContactPerson: str
         :param _FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
+        :param _FaultReportContactEmail: 报障联系邮箱。
+        :type FaultReportContactEmail: str
         :param _TagSet: 标签键值对
         :type TagSet: list of Tag
         :param _AccessPointType: 物理专线的接入点类型。
@@ -3252,6 +3374,7 @@ class DirectConnect(AbstractModel):
         self._ChargeType = None
         self._FaultReportContactPerson = None
         self._FaultReportContactNumber = None
+        self._FaultReportContactEmail = None
         self._TagSet = None
         self._AccessPointType = None
         self._IdcCity = None
@@ -3519,6 +3642,17 @@ class DirectConnect(AbstractModel):
         self._FaultReportContactNumber = FaultReportContactNumber
 
     @property
+    def FaultReportContactEmail(self):
+        r"""报障联系邮箱。
+        :rtype: str
+        """
+        return self._FaultReportContactEmail
+
+    @FaultReportContactEmail.setter
+    def FaultReportContactEmail(self, FaultReportContactEmail):
+        self._FaultReportContactEmail = FaultReportContactEmail
+
+    @property
     def TagSet(self):
         r"""标签键值对
         :rtype: list of Tag
@@ -3707,6 +3841,7 @@ class DirectConnect(AbstractModel):
         self._ChargeType = params.get("ChargeType")
         self._FaultReportContactPerson = params.get("FaultReportContactPerson")
         self._FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._FaultReportContactEmail = params.get("FaultReportContactEmail")
         if params.get("TagSet") is not None:
             self._TagSet = []
             for item in params.get("TagSet"):
@@ -6008,6 +6143,8 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         :type TencentBackupIPv6Address: str
         :param _CustomerIPv6Address: 用户侧互联IPv6。
         :type CustomerIPv6Address: str
+        :param _ImportDirectRoute: 互联IP重分布状态
+        :type ImportDirectRoute: bool
         """
         self._DirectConnectTunnelId = None
         self._Vlan = None
@@ -6028,6 +6165,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self._TencentIPv6Address = None
         self._TencentBackupIPv6Address = None
         self._CustomerIPv6Address = None
+        self._ImportDirectRoute = None
 
     @property
     def DirectConnectTunnelId(self):
@@ -6238,6 +6376,17 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
     def CustomerIPv6Address(self, CustomerIPv6Address):
         self._CustomerIPv6Address = CustomerIPv6Address
 
+    @property
+    def ImportDirectRoute(self):
+        r"""互联IP重分布状态
+        :rtype: bool
+        """
+        return self._ImportDirectRoute
+
+    @ImportDirectRoute.setter
+    def ImportDirectRoute(self, ImportDirectRoute):
+        self._ImportDirectRoute = ImportDirectRoute
+
 
     def _deserialize(self, params):
         self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
@@ -6272,6 +6421,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self._TencentIPv6Address = params.get("TencentIPv6Address")
         self._TencentBackupIPv6Address = params.get("TencentBackupIPv6Address")
         self._CustomerIPv6Address = params.get("CustomerIPv6Address")
+        self._ImportDirectRoute = params.get("ImportDirectRoute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -8234,14 +8234,14 @@ class DescribeDBInstanceHAConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -8271,16 +8271,16 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SyncMode: 主从同步方式：
-<li>Semi-sync：半同步
-<li>Async：异步
+<li>Semi-sync：半同步</li>
+<li>Async：异步</li>
         :type SyncMode: str
         :param _MaxStandbyLatency: 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
-<li>单位：byte
-<li>参数范围：[1073741824, 322122547200]
+<li>单位：byte</li>
+<li>参数范围：[1073741824, 322122547200]</li>
         :type MaxStandbyLatency: int
         :param _MaxStandbyLag: 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
-<li>单位：s
-<li>参数范围：[5, 10]
+<li>单位：s</li>
+<li>参数范围：[5, 10]</li>
         :type MaxStandbyLag: int
         :param _MaxSyncStandbyLatency: 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
 该参数值针对SyncMode设置为Semi-sync的实例有效。
@@ -8307,8 +8307,8 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
     @property
     def SyncMode(self):
         r"""主从同步方式：
-<li>Semi-sync：半同步
-<li>Async：异步
+<li>Semi-sync：半同步</li>
+<li>Async：异步</li>
         :rtype: str
         """
         return self._SyncMode
@@ -8320,8 +8320,8 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
     @property
     def MaxStandbyLatency(self):
         r"""高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
-<li>单位：byte
-<li>参数范围：[1073741824, 322122547200]
+<li>单位：byte</li>
+<li>参数范围：[1073741824, 322122547200]</li>
         :rtype: int
         """
         return self._MaxStandbyLatency
@@ -8333,8 +8333,8 @@ class DescribeDBInstanceHAConfigResponse(AbstractModel):
     @property
     def MaxStandbyLag(self):
         r"""高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
-<li>单位：s
-<li>参数范围：[5, 10]
+<li>单位：s</li>
+<li>参数范围：[5, 10]</li>
         :rtype: int
         """
         return self._MaxStandbyLag

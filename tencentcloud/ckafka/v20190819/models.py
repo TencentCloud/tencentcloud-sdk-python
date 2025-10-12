@@ -25644,12 +25644,16 @@ class MqttConnectParam(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Port: MQTT的连接port
+        :type Port: int
         :param _UserName: MQTT连接源的用户名
         :type UserName: str
         :param _Password: MQTT连接源的密码
         :type Password: str
         :param _Resource: MQTT连接源的实例资源
         :type Resource: str
+        :param _ServiceVip: MQTT的连接ip
+        :type ServiceVip: str
         :param _UniqVpcId: MQTT Instance vpc-id
         :type UniqVpcId: str
         :param _SelfBuilt: 是否为自建集群
@@ -25658,14 +25662,30 @@ class MqttConnectParam(AbstractModel):
         :type IsUpdate: bool
         :param _Region: MQTT连接源的实例资源地域, 跨地域时必填
         :type Region: str
+        :param _Ip: IP
+        :type Ip: str
         """
+        self._Port = None
         self._UserName = None
         self._Password = None
         self._Resource = None
+        self._ServiceVip = None
         self._UniqVpcId = None
         self._SelfBuilt = None
         self._IsUpdate = None
         self._Region = None
+        self._Ip = None
+
+    @property
+    def Port(self):
+        r"""MQTT的连接port
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
     @property
     def UserName(self):
@@ -25699,6 +25719,17 @@ class MqttConnectParam(AbstractModel):
     @Resource.setter
     def Resource(self, Resource):
         self._Resource = Resource
+
+    @property
+    def ServiceVip(self):
+        r"""MQTT的连接ip
+        :rtype: str
+        """
+        return self._ServiceVip
+
+    @ServiceVip.setter
+    def ServiceVip(self, ServiceVip):
+        self._ServiceVip = ServiceVip
 
     @property
     def UniqVpcId(self):
@@ -25744,15 +25775,29 @@ class MqttConnectParam(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Ip(self):
+        r"""IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
 
     def _deserialize(self, params):
+        self._Port = params.get("Port")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._Resource = params.get("Resource")
+        self._ServiceVip = params.get("ServiceVip")
         self._UniqVpcId = params.get("UniqVpcId")
         self._SelfBuilt = params.get("SelfBuilt")
         self._IsUpdate = params.get("IsUpdate")
         self._Region = params.get("Region")
+        self._Ip = params.get("Ip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

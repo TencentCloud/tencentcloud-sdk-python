@@ -468,6 +468,10 @@ class SaleParam(AbstractModel):
         :param _ParamKeyName: 售卖参数的展示名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamKeyName: str
+        :param _ParamId: 参数 Id
+        :type ParamId: str
+        :param _ParamValueId: 参数值 Id
+        :type ParamValueId: str
         :param _ParamValue: 售卖参数值，当ParamType=Quant时，该值有可能为Null
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamValue: str
@@ -477,12 +481,23 @@ class SaleParam(AbstractModel):
         :param _ParamType: 售卖参数的类型，目前支持枚举类Enum/数量类Quant
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamType: str
+        :param _ModuleId: 模块ID
+        :type ModuleId: str
+        :param _ModuleKey: 模块key
+        :type ModuleKey: str
+        :param _ModuleName: 模块名称
+        :type ModuleName: str
         """
         self._ParamKey = None
         self._ParamKeyName = None
+        self._ParamId = None
+        self._ParamValueId = None
         self._ParamValue = None
         self._ParamValueName = None
         self._ParamType = None
+        self._ModuleId = None
+        self._ModuleKey = None
+        self._ModuleName = None
 
     @property
     def ParamKey(self):
@@ -506,6 +521,28 @@ class SaleParam(AbstractModel):
     @ParamKeyName.setter
     def ParamKeyName(self, ParamKeyName):
         self._ParamKeyName = ParamKeyName
+
+    @property
+    def ParamId(self):
+        r"""参数 Id
+        :rtype: str
+        """
+        return self._ParamId
+
+    @ParamId.setter
+    def ParamId(self, ParamId):
+        self._ParamId = ParamId
+
+    @property
+    def ParamValueId(self):
+        r"""参数值 Id
+        :rtype: str
+        """
+        return self._ParamValueId
+
+    @ParamValueId.setter
+    def ParamValueId(self, ParamValueId):
+        self._ParamValueId = ParamValueId
 
     @property
     def ParamValue(self):
@@ -543,13 +580,51 @@ class SaleParam(AbstractModel):
     def ParamType(self, ParamType):
         self._ParamType = ParamType
 
+    @property
+    def ModuleId(self):
+        r"""模块ID
+        :rtype: str
+        """
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def ModuleKey(self):
+        r"""模块key
+        :rtype: str
+        """
+        return self._ModuleKey
+
+    @ModuleKey.setter
+    def ModuleKey(self, ModuleKey):
+        self._ModuleKey = ModuleKey
+
+    @property
+    def ModuleName(self):
+        r"""模块名称
+        :rtype: str
+        """
+        return self._ModuleName
+
+    @ModuleName.setter
+    def ModuleName(self, ModuleName):
+        self._ModuleName = ModuleName
+
 
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
         self._ParamKeyName = params.get("ParamKeyName")
+        self._ParamId = params.get("ParamId")
+        self._ParamValueId = params.get("ParamValueId")
         self._ParamValue = params.get("ParamValue")
         self._ParamValueName = params.get("ParamValueName")
         self._ParamType = params.get("ParamType")
+        self._ModuleId = params.get("ModuleId")
+        self._ModuleKey = params.get("ModuleKey")
+        self._ModuleName = params.get("ModuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

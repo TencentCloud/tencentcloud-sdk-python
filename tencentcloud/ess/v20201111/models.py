@@ -20851,6 +20851,281 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractComparisonTaskRequest(AbstractModel):
+    r"""DescribeContractComparisonTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractComparisonTaskResponse(AbstractModel):
+    r"""DescribeContractComparisonTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 合同对比任务ID。
+        :type TaskId: str
+        :param _Status: 合同对比任务状态。
+状态如下：
+<ul><li> **0**：待创建（未执行）</li>
+<li> **1**：对比中</li>
+<li> **2**：对比成功</li>
+<li> **3**：对比失败</li>
+</ul>
+        :type Status: int
+        :param _Message: 对比失败的具体原因描述，仅当状态为失败时返回此字段。
+        :type Message: str
+        :param _OriginalFileResourceId: 原版文件ID，对比基准的旧版本文件唯一标识。
+        :type OriginalFileResourceId: str
+        :param _DiffFileResourceId: 新版文件ID，与旧版进行对比的新版本文件唯一标识。
+        :type DiffFileResourceId: str
+        :param _Comment: 对比任务备注，长度不能超过50个字符。
+        :type Comment: str
+        :param _TotalDiffCount: 合同对比差异点总数。
+        :type TotalDiffCount: int
+        :param _AddDiffCount: 合同对比新增点数量。
+        :type AddDiffCount: int
+        :param _ChangeDiffCount: 合同对比修改点数量。
+        :type ChangeDiffCount: int
+        :param _DeleteDiffCount: 合同对比删除点数量。
+        :type DeleteDiffCount: int
+        :param _Operator: 提交人，提交此任务或请求的用户唯一标识。
+        :type Operator: str
+        :param _CreateTime: 合同对比任务创建时间，时间戳。
+        :type CreateTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._Message = None
+        self._OriginalFileResourceId = None
+        self._DiffFileResourceId = None
+        self._Comment = None
+        self._TotalDiffCount = None
+        self._AddDiffCount = None
+        self._ChangeDiffCount = None
+        self._DeleteDiffCount = None
+        self._Operator = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""合同对比任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""合同对比任务状态。
+状态如下：
+<ul><li> **0**：待创建（未执行）</li>
+<li> **1**：对比中</li>
+<li> **2**：对比成功</li>
+<li> **3**：对比失败</li>
+</ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""对比失败的具体原因描述，仅当状态为失败时返回此字段。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def OriginalFileResourceId(self):
+        r"""原版文件ID，对比基准的旧版本文件唯一标识。
+        :rtype: str
+        """
+        return self._OriginalFileResourceId
+
+    @OriginalFileResourceId.setter
+    def OriginalFileResourceId(self, OriginalFileResourceId):
+        self._OriginalFileResourceId = OriginalFileResourceId
+
+    @property
+    def DiffFileResourceId(self):
+        r"""新版文件ID，与旧版进行对比的新版本文件唯一标识。
+        :rtype: str
+        """
+        return self._DiffFileResourceId
+
+    @DiffFileResourceId.setter
+    def DiffFileResourceId(self, DiffFileResourceId):
+        self._DiffFileResourceId = DiffFileResourceId
+
+    @property
+    def Comment(self):
+        r"""对比任务备注，长度不能超过50个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TotalDiffCount(self):
+        r"""合同对比差异点总数。
+        :rtype: int
+        """
+        return self._TotalDiffCount
+
+    @TotalDiffCount.setter
+    def TotalDiffCount(self, TotalDiffCount):
+        self._TotalDiffCount = TotalDiffCount
+
+    @property
+    def AddDiffCount(self):
+        r"""合同对比新增点数量。
+        :rtype: int
+        """
+        return self._AddDiffCount
+
+    @AddDiffCount.setter
+    def AddDiffCount(self, AddDiffCount):
+        self._AddDiffCount = AddDiffCount
+
+    @property
+    def ChangeDiffCount(self):
+        r"""合同对比修改点数量。
+        :rtype: int
+        """
+        return self._ChangeDiffCount
+
+    @ChangeDiffCount.setter
+    def ChangeDiffCount(self, ChangeDiffCount):
+        self._ChangeDiffCount = ChangeDiffCount
+
+    @property
+    def DeleteDiffCount(self):
+        r"""合同对比删除点数量。
+        :rtype: int
+        """
+        return self._DeleteDiffCount
+
+    @DeleteDiffCount.setter
+    def DeleteDiffCount(self, DeleteDiffCount):
+        self._DeleteDiffCount = DeleteDiffCount
+
+    @property
+    def Operator(self):
+        r"""提交人，提交此任务或请求的用户唯一标识。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def CreateTime(self):
+        r"""合同对比任务创建时间，时间戳。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._OriginalFileResourceId = params.get("OriginalFileResourceId")
+        self._DiffFileResourceId = params.get("DiffFileResourceId")
+        self._Comment = params.get("Comment")
+        self._TotalDiffCount = params.get("TotalDiffCount")
+        self._AddDiffCount = params.get("AddDiffCount")
+        self._ChangeDiffCount = params.get("ChangeDiffCount")
+        self._DeleteDiffCount = params.get("DeleteDiffCount")
+        self._Operator = params.get("Operator")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContractDiffTaskWebUrlRequest(AbstractModel):
     r"""DescribeContractDiffTaskWebUrl请求参数结构体
 

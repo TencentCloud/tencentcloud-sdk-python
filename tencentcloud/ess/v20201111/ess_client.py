@@ -2544,6 +2544,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContractComparisonTask(self, request):
+        r"""本接口（DescribeContractComparisonTask）用于查询合同对比任务结果详情。
+
+        :param request: Request instance for DescribeContractComparisonTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractComparisonTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractComparisonTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractComparisonTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractComparisonTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContractDiffTaskWebUrl(self, request):
         r"""接口（DescribeContractDiffTaskWebUrl）用于获取合同对比结果可嵌入的web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
         注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
