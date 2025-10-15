@@ -10836,6 +10836,8 @@ class DescribeInstancesListRequest(AbstractModel):
         :type Asc: int
         :param _Filters: 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
         :type Filters: list of Filters
+        :param _ClusterType: 默认0为普通集群，2为tke集群
+        :type ClusterType: int
         """
         self._DisplayStrategy = None
         self._Offset = None
@@ -10843,6 +10845,7 @@ class DescribeInstancesListRequest(AbstractModel):
         self._OrderField = None
         self._Asc = None
         self._Filters = None
+        self._ClusterType = None
 
     @property
     def DisplayStrategy(self):
@@ -10911,6 +10914,17 @@ class DescribeInstancesListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def ClusterType(self):
+        r"""默认0为普通集群，2为tke集群
+        :rtype: int
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._DisplayStrategy = params.get("DisplayStrategy")
@@ -10924,6 +10938,7 @@ class DescribeInstancesListRequest(AbstractModel):
                 obj = Filters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

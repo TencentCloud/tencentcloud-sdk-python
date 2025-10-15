@@ -23175,6 +23175,109 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
+    r"""DescribePrometheusScrapeStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobType: job 类型
+        :type JobType: str
+        """
+        self._JobType = None
+
+    @property
+    def JobType(self):
+        r"""job 类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+
+    def _deserialize(self, params):
+        self._JobType = params.get("JobType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusScrapeStatisticsResponse(AbstractModel):
+    r"""DescribePrometheusScrapeStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _InstanceResults: 实例指标抓取速率详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceResults: list of PrometheusInstanceScrapeStatistics
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._InstanceResults = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def InstanceResults(self):
+        r"""实例指标抓取速率详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusInstanceScrapeStatistics
+        """
+        return self._InstanceResults
+
+    @InstanceResults.setter
+    def InstanceResults(self, InstanceResults):
+        self._InstanceResults = InstanceResults
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("InstanceResults") is not None:
+            self._InstanceResults = []
+            for item in params.get("InstanceResults"):
+                obj = PrometheusInstanceScrapeStatistics()
+                obj._deserialize(item)
+                self._InstanceResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusTargetsTMPRequest(AbstractModel):
     r"""DescribePrometheusTargetsTMP请求参数结构体
 
@@ -33446,6 +33549,98 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
         
 
 
+class PrometheusClusterScrapeStatistics(AbstractModel):
+    r"""集群指标抓取统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _ScrapedRate: 被采集的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrapedRate: float
+        :param _Jobs: Job列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Jobs: list of PrometheusJobScrapeStatistics
+        :param _SamplesRate: 过滤前的指标采集速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplesRate: float
+        """
+        self._ClusterID = None
+        self._ScrapedRate = None
+        self._Jobs = None
+        self._SamplesRate = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ScrapedRate(self):
+        r"""被采集的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ScrapedRate
+
+    @ScrapedRate.setter
+    def ScrapedRate(self, ScrapedRate):
+        self._ScrapedRate = ScrapedRate
+
+    @property
+    def Jobs(self):
+        r"""Job列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusJobScrapeStatistics
+        """
+        return self._Jobs
+
+    @Jobs.setter
+    def Jobs(self, Jobs):
+        self._Jobs = Jobs
+
+    @property
+    def SamplesRate(self):
+        r"""过滤前的指标采集速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._SamplesRate
+
+    @SamplesRate.setter
+    def SamplesRate(self, SamplesRate):
+        self._SamplesRate = SamplesRate
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._ScrapedRate = params.get("ScrapedRate")
+        if params.get("Jobs") is not None:
+            self._Jobs = []
+            for item in params.get("Jobs"):
+                obj = PrometheusJobScrapeStatistics()
+                obj._deserialize(item)
+                self._Jobs.append(obj)
+        self._SamplesRate = params.get("SamplesRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusConfigItem(AbstractModel):
     r"""prometheus配置
 
@@ -33634,6 +33829,114 @@ class PrometheusInstanceGrantInfo(AbstractModel):
         self._HasAgentManage = params.get("HasAgentManage")
         self._HasTkeManage = params.get("HasTkeManage")
         self._HasApiOperation = params.get("HasApiOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstanceScrapeStatistics(AbstractModel):
+    r"""实例抓取指标统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ScrapedRate: 被采集的点数
+        :type ScrapedRate: float
+        :param _Clusters: 集群指标列表
+        :type Clusters: list of PrometheusClusterScrapeStatistics
+        :param _Global: 非容器指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Global: list of PrometheusClusterScrapeStatistics
+        :param _SamplesRate: 过滤前的指标采集速率
+        :type SamplesRate: float
+        """
+        self._InstanceId = None
+        self._ScrapedRate = None
+        self._Clusters = None
+        self._Global = None
+        self._SamplesRate = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ScrapedRate(self):
+        r"""被采集的点数
+        :rtype: float
+        """
+        return self._ScrapedRate
+
+    @ScrapedRate.setter
+    def ScrapedRate(self, ScrapedRate):
+        self._ScrapedRate = ScrapedRate
+
+    @property
+    def Clusters(self):
+        r"""集群指标列表
+        :rtype: list of PrometheusClusterScrapeStatistics
+        """
+        return self._Clusters
+
+    @Clusters.setter
+    def Clusters(self, Clusters):
+        self._Clusters = Clusters
+
+    @property
+    def Global(self):
+        r"""非容器指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusClusterScrapeStatistics
+        """
+        return self._Global
+
+    @Global.setter
+    def Global(self, Global):
+        self._Global = Global
+
+    @property
+    def SamplesRate(self):
+        r"""过滤前的指标采集速率
+        :rtype: float
+        """
+        return self._SamplesRate
+
+    @SamplesRate.setter
+    def SamplesRate(self, SamplesRate):
+        self._SamplesRate = SamplesRate
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ScrapedRate = params.get("ScrapedRate")
+        if params.get("Clusters") is not None:
+            self._Clusters = []
+            for item in params.get("Clusters"):
+                obj = PrometheusClusterScrapeStatistics()
+                obj._deserialize(item)
+                self._Clusters.append(obj)
+        if params.get("Global") is not None:
+            self._Global = []
+            for item in params.get("Global"):
+                obj = PrometheusClusterScrapeStatistics()
+                obj._deserialize(item)
+                self._Global.append(obj)
+        self._SamplesRate = params.get("SamplesRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34644,6 +34947,94 @@ class PrometheusInstancesOverview(AbstractModel):
         
 
 
+class PrometheusJobScrapeStatistics(AbstractModel):
+    r"""Job抓取统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobName: Job 名
+        :type JobName: str
+        :param _ScrapedRate: 被采集的点数
+        :type ScrapedRate: float
+        :param _Metrics: 指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of PrometheusMetricScrapeStatistics
+        :param _JobType: Job 类型
+        :type JobType: str
+        """
+        self._JobName = None
+        self._ScrapedRate = None
+        self._Metrics = None
+        self._JobType = None
+
+    @property
+    def JobName(self):
+        r"""Job 名
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def ScrapedRate(self):
+        r"""被采集的点数
+        :rtype: float
+        """
+        return self._ScrapedRate
+
+    @ScrapedRate.setter
+    def ScrapedRate(self, ScrapedRate):
+        self._ScrapedRate = ScrapedRate
+
+    @property
+    def Metrics(self):
+        r"""指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusMetricScrapeStatistics
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def JobType(self):
+        r"""Job 类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+
+    def _deserialize(self, params):
+        self._JobName = params.get("JobName")
+        self._ScrapedRate = params.get("ScrapedRate")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = PrometheusMetricScrapeStatistics()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        self._JobType = params.get("JobType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusJobTargets(AbstractModel):
     r"""prometheus一个job的targets
 
@@ -34720,6 +35111,95 @@ class PrometheusJobTargets(AbstractModel):
         self._JobName = params.get("JobName")
         self._Total = params.get("Total")
         self._Up = params.get("Up")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusMetricScrapeStatistics(AbstractModel):
+    r"""指标抓取统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param _SamplesRate: 原始数据中的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplesRate: float
+        :param _ScrapedRate: 被采集的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrapedRate: float
+        :param _IsRecommended: 是否推荐采集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRecommended: bool
+        """
+        self._MetricName = None
+        self._SamplesRate = None
+        self._ScrapedRate = None
+        self._IsRecommended = None
+
+    @property
+    def MetricName(self):
+        r"""指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def SamplesRate(self):
+        r"""原始数据中的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._SamplesRate
+
+    @SamplesRate.setter
+    def SamplesRate(self, SamplesRate):
+        self._SamplesRate = SamplesRate
+
+    @property
+    def ScrapedRate(self):
+        r"""被采集的点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ScrapedRate
+
+    @ScrapedRate.setter
+    def ScrapedRate(self, ScrapedRate):
+        self._ScrapedRate = ScrapedRate
+
+    @property
+    def IsRecommended(self):
+        r"""是否推荐采集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsRecommended
+
+    @IsRecommended.setter
+    def IsRecommended(self, IsRecommended):
+        self._IsRecommended = IsRecommended
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._SamplesRate = params.get("SamplesRate")
+        self._ScrapedRate = params.get("ScrapedRate")
+        self._IsRecommended = params.get("IsRecommended")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

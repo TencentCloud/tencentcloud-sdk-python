@@ -191,6 +191,29 @@ class GwlbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGatewayLoadBalancersResources(self, request):
+        r"""查询用户在当前地域支持可用区列表
+
+        :param request: Request instance for DescribeGatewayLoadBalancersResources.
+        :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeGatewayLoadBalancersResourcesRequest`
+        :rtype: :class:`tencentcloud.gwlb.v20240906.models.DescribeGatewayLoadBalancersResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatewayLoadBalancersResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatewayLoadBalancersResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTargetGroupInstanceStatus(self, request):
         r"""查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
 

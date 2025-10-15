@@ -18752,19 +18752,19 @@ class VoiceCloneRequest(AbstractModel):
         r"""
         :param _SdkAppId: TRTC的SdkAppId
         :type SdkAppId: int
-        :param _APIKey: TTS的API密钥
-        :type APIKey: str
         :param _VoiceName: 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
         :type VoiceName: str
         :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
         :type PromptAudio: str
+        :param _APIKey: TTS的API密钥
+        :type APIKey: str
         :param _PromptText: 声音克隆的参考文本，为参考音频对应的文字。
         :type PromptText: str
         """
         self._SdkAppId = None
-        self._APIKey = None
         self._VoiceName = None
         self._PromptAudio = None
+        self._APIKey = None
         self._PromptText = None
 
     @property
@@ -18777,17 +18777,6 @@ class VoiceCloneRequest(AbstractModel):
     @SdkAppId.setter
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
-
-    @property
-    def APIKey(self):
-        r"""TTS的API密钥
-        :rtype: str
-        """
-        return self._APIKey
-
-    @APIKey.setter
-    def APIKey(self, APIKey):
-        self._APIKey = APIKey
 
     @property
     def VoiceName(self):
@@ -18812,6 +18801,17 @@ class VoiceCloneRequest(AbstractModel):
         self._PromptAudio = PromptAudio
 
     @property
+    def APIKey(self):
+        r"""TTS的API密钥
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
     def PromptText(self):
         r"""声音克隆的参考文本，为参考音频对应的文字。
         :rtype: str
@@ -18825,9 +18825,9 @@ class VoiceCloneRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
-        self._APIKey = params.get("APIKey")
         self._VoiceName = params.get("VoiceName")
         self._PromptAudio = params.get("PromptAudio")
+        self._APIKey = params.get("APIKey")
         self._PromptText = params.get("PromptText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

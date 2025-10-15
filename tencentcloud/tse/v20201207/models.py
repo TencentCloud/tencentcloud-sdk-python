@@ -15743,6 +15743,8 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         :type OnlyExistHealthyInstance: bool
         :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
         :type SyncToGlobalRegistry: str
+        :param _StatusFilter: 过滤筛选条件
+        :type StatusFilter: list of Filter
         """
         self._Name = None
         self._Namespace = None
@@ -15755,6 +15757,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         self._Host = None
         self._OnlyExistHealthyInstance = None
         self._SyncToGlobalRegistry = None
+        self._StatusFilter = None
 
     @property
     def Name(self):
@@ -15877,6 +15880,17 @@ class DescribeGovernanceServicesRequest(AbstractModel):
     def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
         self._SyncToGlobalRegistry = SyncToGlobalRegistry
 
+    @property
+    def StatusFilter(self):
+        r"""过滤筛选条件
+        :rtype: list of Filter
+        """
+        return self._StatusFilter
+
+    @StatusFilter.setter
+    def StatusFilter(self, StatusFilter):
+        self._StatusFilter = StatusFilter
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15895,6 +15909,12 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         self._Host = params.get("Host")
         self._OnlyExistHealthyInstance = params.get("OnlyExistHealthyInstance")
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
+        if params.get("StatusFilter") is not None:
+            self._StatusFilter = []
+            for item in params.get("StatusFilter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._StatusFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20732,6 +20752,10 @@ class GovernanceService(AbstractModel):
         :type Revision: str
         :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心
         :type SyncToGlobalRegistry: bool
+        :param _IsolateInstanceCount: 隔离实例数
+        :type IsolateInstanceCount: int
+        :param _ServiceStatus: 服务健康状态
+        :type ServiceStatus: int
         """
         self._Name = None
         self._Namespace = None
@@ -20752,6 +20776,8 @@ class GovernanceService(AbstractModel):
         self._ExportTo = None
         self._Revision = None
         self._SyncToGlobalRegistry = None
+        self._IsolateInstanceCount = None
+        self._ServiceStatus = None
 
     @property
     def Name(self):
@@ -20962,6 +20988,28 @@ class GovernanceService(AbstractModel):
     def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
         self._SyncToGlobalRegistry = SyncToGlobalRegistry
 
+    @property
+    def IsolateInstanceCount(self):
+        r"""隔离实例数
+        :rtype: int
+        """
+        return self._IsolateInstanceCount
+
+    @IsolateInstanceCount.setter
+    def IsolateInstanceCount(self, IsolateInstanceCount):
+        self._IsolateInstanceCount = IsolateInstanceCount
+
+    @property
+    def ServiceStatus(self):
+        r"""服务健康状态
+        :rtype: int
+        """
+        return self._ServiceStatus
+
+    @ServiceStatus.setter
+    def ServiceStatus(self, ServiceStatus):
+        self._ServiceStatus = ServiceStatus
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20988,6 +21036,8 @@ class GovernanceService(AbstractModel):
         self._ExportTo = params.get("ExportTo")
         self._Revision = params.get("Revision")
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
+        self._IsolateInstanceCount = params.get("IsolateInstanceCount")
+        self._ServiceStatus = params.get("ServiceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

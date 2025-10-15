@@ -4142,6 +4142,145 @@ class CreateResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVariableRequest(AbstractModel):
+    r"""CreateVariable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 变量名
+        :type Name: str
+        :param _Value: 变量值
+        :type Value: str
+        :param _Type: 变量类型  1：显式   2：隐藏
+        :type Type: int
+        :param _Remark: 描述信息
+        :type Remark: str
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._Name = None
+        self._Value = None
+        self._Type = None
+        self._Remark = None
+        self._WorkSpaceId = None
+
+    @property
+    def Name(self):
+        r"""变量名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""变量值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        r"""变量类型  1：显式   2：隐藏
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Remark(self):
+        r"""描述信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def WorkSpaceId(self):
+        r"""工作空间 SerialId
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Remark = params.get("Remark")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVariableResponse(AbstractModel):
+    r"""CreateVariable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VariableId: 变量Id
+        :type VariableId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VariableId = None
+        self._RequestId = None
+
+    @property
+    def VariableId(self):
+        r"""变量Id
+        :rtype: str
+        """
+        return self._VariableId
+
+    @VariableId.setter
+    def VariableId(self, VariableId):
+        self._VariableId = VariableId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VariableId = params.get("VariableId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWorkSpaceRequest(AbstractModel):
     r"""CreateWorkSpace请求参数结构体
 
@@ -7895,6 +8034,70 @@ class DescribeTreeResourcesRsp(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeVariablesRequest(AbstractModel):
+    r"""DescribeVariables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._WorkSpaceId = None
+
+    @property
+    def WorkSpaceId(self):
+        r"""工作空间 SerialId
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVariablesResponse(AbstractModel):
+    r"""DescribeVariables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeWorkSpacesRequest(AbstractModel):

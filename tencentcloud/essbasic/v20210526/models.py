@@ -2773,7 +2773,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
         :type CacheApproverInfo: bool
-        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
         :type CanBatchReject: bool
         :param _PresetApproverInfo: 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
         :type PresetApproverInfo: :class:`tencentcloud.essbasic.v20210526.models.PresetApproverInfo`
@@ -2950,7 +2950,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def CanBatchReject(self):
-        r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
         :rtype: bool
         """
         return self._CanBatchReject
@@ -3158,7 +3158,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :type UrlUseEnv: str
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
         :type CanBatchReject: bool
         :param _CanSkipReadFlow: 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
@@ -3430,7 +3430,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
     @property
     def CanBatchReject(self):
         r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
         :rtype: bool
         """
         return self._CanBatchReject
@@ -6496,6 +6496,8 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         :type Mobile: str
         :param _FlowGroupId: 合同组Id，传入此参数则可以不传FlowIds
         :type FlowGroupId: str
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+        :type CanBatchReject: bool
         """
         self._Agent = None
         self._FlowIds = None
@@ -6503,6 +6505,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         self._Name = None
         self._Mobile = None
         self._FlowGroupId = None
+        self._CanBatchReject = None
 
     @property
     def Agent(self):
@@ -6578,6 +6581,17 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
     def FlowGroupId(self, FlowGroupId):
         self._FlowGroupId = FlowGroupId
 
+    @property
+    def CanBatchReject(self):
+        r"""是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+        :rtype: bool
+        """
+        return self._CanBatchReject
+
+    @CanBatchReject.setter
+    def CanBatchReject(self, CanBatchReject):
+        self._CanBatchReject = CanBatchReject
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -6588,6 +6602,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
         self._FlowGroupId = params.get("FlowGroupId")
+        self._CanBatchReject = params.get("CanBatchReject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

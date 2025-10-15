@@ -233,6 +233,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVariable(self, request):
+        r"""创建变量
+
+        :param request: Request instance for CreateVariable.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateVariableRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateVariableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVariable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVariableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkSpace(self, request):
         r"""创建工作空间
 
@@ -730,6 +753,29 @@ class OceanusClient(AbstractClient):
             body = self.call("DescribeTreeResources", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTreeResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVariables(self, request):
+        r"""变量列表展示
+
+        :param request: Request instance for DescribeVariables.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeVariablesRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeVariablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVariables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVariablesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

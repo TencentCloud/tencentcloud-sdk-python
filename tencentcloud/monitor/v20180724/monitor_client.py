@@ -2433,6 +2433,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePrometheusScrapeStatistics(self, request):
+        r"""获取实例采集速率信息
+
+        :param request: Request instance for DescribePrometheusScrapeStatistics.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeStatisticsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusScrapeStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusScrapeStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrometheusTargetsTMP(self, request):
         r"""获取targets信息，在过滤条件中指定job名称时返回targets详情，否则仅返回数量
 

@@ -5284,6 +5284,8 @@ API：通过API手动注册
         :type TopicPrefixSlashLimit: int
         :param _MessageRate: 单客户端发送消息限速，单位 条/秒
         :type MessageRate: int
+        :param _TransportLayerSecurity: 服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
+        :type TransportLayerSecurity: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5320,6 +5322,7 @@ API：通过API手动注册
         self._ServerCertLimit = None
         self._TopicPrefixSlashLimit = None
         self._MessageRate = None
+        self._TransportLayerSecurity = None
         self._RequestId = None
 
     @property
@@ -5691,6 +5694,17 @@ API：通过API手动注册
         self._MessageRate = MessageRate
 
     @property
+    def TransportLayerSecurity(self):
+        r"""服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
+        :rtype: str
+        """
+        return self._TransportLayerSecurity
+
+    @TransportLayerSecurity.setter
+    def TransportLayerSecurity(self, TransportLayerSecurity):
+        self._TransportLayerSecurity = TransportLayerSecurity
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5736,6 +5750,7 @@ API：通过API手动注册
         self._ServerCertLimit = params.get("ServerCertLimit")
         self._TopicPrefixSlashLimit = params.get("TopicPrefixSlashLimit")
         self._MessageRate = params.get("MessageRate")
+        self._TransportLayerSecurity = params.get("TransportLayerSecurity")
         self._RequestId = params.get("RequestId")
 
 

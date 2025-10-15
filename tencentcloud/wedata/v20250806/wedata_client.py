@@ -854,6 +854,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetCodeFolder(self, request):
+        r"""获取sql文件夹详情
+
+        :param request: Request instance for GetCodeFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetCodeFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetCodeFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetCodeFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetCodeFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetDataBackfillPlan(self, request):
+        r"""获取补录计划详情
+
+        :param request: Request instance for GetDataBackfillPlan.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetDataBackfillPlanRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetDataBackfillPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDataBackfillPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDataBackfillPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDataSource(self, request):
         r"""该接口用于查看指定数据源的详细信息
 
@@ -1075,6 +1121,29 @@ class WedataClient(AbstractClient):
             body = self.call("GetResourceGroupMetrics", params, headers=headers)
             response = json.loads(body)
             model = models.GetResourceGroupMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetSQLFolder(self, request):
+        r"""获取sql文件夹详情
+
+        :param request: Request instance for GetSQLFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetSQLFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetSQLFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetSQLFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetSQLFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2271,6 +2340,29 @@ class WedataClient(AbstractClient):
             body = self.call("SetSuccessTaskInstancesAsync", params, headers=headers)
             response = json.loads(body)
             model = models.SetSuccessTaskInstancesAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartOpsTasks(self, request):
+        r"""异步批量启动任务
+
+        :param request: Request instance for StartOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.StartOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.StartOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartOpsTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

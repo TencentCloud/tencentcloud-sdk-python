@@ -1652,6 +1652,9 @@ class CodeFile(AbstractModel):
         :param _Path: 节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
+        :param _ParentFolderPath: 父文件夹路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentFolderPath: str
         """
         self._CodeFileId = None
         self._CodeFileName = None
@@ -1664,6 +1667,7 @@ class CodeFile(AbstractModel):
         self._CreateTime = None
         self._AccessScope = None
         self._Path = None
+        self._ParentFolderPath = None
 
     @property
     def CodeFileId(self):
@@ -1797,6 +1801,18 @@ class CodeFile(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def ParentFolderPath(self):
+        r"""父文件夹路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
 
     def _deserialize(self, params):
         self._CodeFileId = params.get("CodeFileId")
@@ -1812,6 +1828,7 @@ class CodeFile(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._AccessScope = params.get("AccessScope")
         self._Path = params.get("Path")
+        self._ParentFolderPath = params.get("ParentFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1912,6 +1929,9 @@ class CodeFolderNode(AbstractModel):
         :param _Children: 子节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of CodeFolderNode
+        :param _ParentFolderPath: 父文件夹路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentFolderPath: str
         """
         self._Id = None
         self._Title = None
@@ -1924,6 +1944,7 @@ class CodeFolderNode(AbstractModel):
         self._CreateUserUin = None
         self._NodePermission = None
         self._Children = None
+        self._ParentFolderPath = None
 
     @property
     def Id(self):
@@ -2050,6 +2071,18 @@ class CodeFolderNode(AbstractModel):
     def Children(self, Children):
         self._Children = Children
 
+    @property
+    def ParentFolderPath(self):
+        r"""父文件夹路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2068,6 +2101,7 @@ class CodeFolderNode(AbstractModel):
                 obj = CodeFolderNode()
                 obj._deserialize(item)
                 self._Children.append(obj)
+        self._ParentFolderPath = params.get("ParentFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6310,6 +6344,344 @@ class DLCClusterInfo(AbstractModel):
         
 
 
+class DataBackfill(AbstractModel):
+    r"""补录计划详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _DataBackfillPlanId: 数据补录计划id
+        :type DataBackfillPlanId: str
+        :param _DataBackfillPlanName: 数据补录计划名称
+        :type DataBackfillPlanName: str
+        :param _TaskIds: 补录任务集合
+        :type TaskIds: list of str
+        :param _DataBackfillRangeList: 补录任务的数据配置列表
+        :type DataBackfillRangeList: list of DataBackfillRange
+        :param _CheckParentType: 检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckParentType: str
+        :param _SkipEventListening: 补录是否忽略事件依赖	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipEventListening: bool
+        :param _RedefineParallelNum: 自定义实例运行并发度, 返回为null或者不返回，则表示任务原有自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedefineParallelNum: int
+        :param _RedefineSelfWorkflowDependency: 自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedefineSelfWorkflowDependency: str
+        :param _SchedulerResourceGroupId: 调度资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerResourceGroupId: str
+        :param _IntegrationResourceGroupId: 集成资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntegrationResourceGroupId: str
+        :param _RedefineCycleType: 补录自定义的生成周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedefineCycleType: str
+        :param _RedefineParamList: 自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedefineParamList: list of KVPair
+        :param _StartTime: 补录任务的执行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 补录任务的执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CreateUserUin: 创建用户id
+        :type CreateUserUin: str
+        :param _CompletePercent: 补录计划实例完成百分数
+        :type CompletePercent: int
+        :param _SuccessPercent: 补录计划实例成功百分数
+        :type SuccessPercent: int
+        :param _DataTimeOrder: 补录是实例数据时间顺序，生效必须满足2个条件:1. 必须同周期任务2. 优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行 可选值- NORMAL: 不设置- ORDER: 顺序- REVERSE: 逆序不设置默认为NORMAL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataTimeOrder: str
+        """
+        self._ProjectId = None
+        self._DataBackfillPlanId = None
+        self._DataBackfillPlanName = None
+        self._TaskIds = None
+        self._DataBackfillRangeList = None
+        self._CheckParentType = None
+        self._SkipEventListening = None
+        self._RedefineParallelNum = None
+        self._RedefineSelfWorkflowDependency = None
+        self._SchedulerResourceGroupId = None
+        self._IntegrationResourceGroupId = None
+        self._RedefineCycleType = None
+        self._RedefineParamList = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreateUserUin = None
+        self._CompletePercent = None
+        self._SuccessPercent = None
+        self._DataTimeOrder = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DataBackfillPlanId(self):
+        r"""数据补录计划id
+        :rtype: str
+        """
+        return self._DataBackfillPlanId
+
+    @DataBackfillPlanId.setter
+    def DataBackfillPlanId(self, DataBackfillPlanId):
+        self._DataBackfillPlanId = DataBackfillPlanId
+
+    @property
+    def DataBackfillPlanName(self):
+        r"""数据补录计划名称
+        :rtype: str
+        """
+        return self._DataBackfillPlanName
+
+    @DataBackfillPlanName.setter
+    def DataBackfillPlanName(self, DataBackfillPlanName):
+        self._DataBackfillPlanName = DataBackfillPlanName
+
+    @property
+    def TaskIds(self):
+        r"""补录任务集合
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def DataBackfillRangeList(self):
+        r"""补录任务的数据配置列表
+        :rtype: list of DataBackfillRange
+        """
+        return self._DataBackfillRangeList
+
+    @DataBackfillRangeList.setter
+    def DataBackfillRangeList(self, DataBackfillRangeList):
+        self._DataBackfillRangeList = DataBackfillRangeList
+
+    @property
+    def CheckParentType(self):
+        r"""检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CheckParentType
+
+    @CheckParentType.setter
+    def CheckParentType(self, CheckParentType):
+        self._CheckParentType = CheckParentType
+
+    @property
+    def SkipEventListening(self):
+        r"""补录是否忽略事件依赖	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SkipEventListening
+
+    @SkipEventListening.setter
+    def SkipEventListening(self, SkipEventListening):
+        self._SkipEventListening = SkipEventListening
+
+    @property
+    def RedefineParallelNum(self):
+        r"""自定义实例运行并发度, 返回为null或者不返回，则表示任务原有自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RedefineParallelNum
+
+    @RedefineParallelNum.setter
+    def RedefineParallelNum(self, RedefineParallelNum):
+        self._RedefineParallelNum = RedefineParallelNum
+
+    @property
+    def RedefineSelfWorkflowDependency(self):
+        r"""自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RedefineSelfWorkflowDependency
+
+    @RedefineSelfWorkflowDependency.setter
+    def RedefineSelfWorkflowDependency(self, RedefineSelfWorkflowDependency):
+        self._RedefineSelfWorkflowDependency = RedefineSelfWorkflowDependency
+
+    @property
+    def SchedulerResourceGroupId(self):
+        r"""调度资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerResourceGroupId
+
+    @SchedulerResourceGroupId.setter
+    def SchedulerResourceGroupId(self, SchedulerResourceGroupId):
+        self._SchedulerResourceGroupId = SchedulerResourceGroupId
+
+    @property
+    def IntegrationResourceGroupId(self):
+        r"""集成资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IntegrationResourceGroupId
+
+    @IntegrationResourceGroupId.setter
+    def IntegrationResourceGroupId(self, IntegrationResourceGroupId):
+        self._IntegrationResourceGroupId = IntegrationResourceGroupId
+
+    @property
+    def RedefineCycleType(self):
+        r"""补录自定义的生成周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RedefineCycleType
+
+    @RedefineCycleType.setter
+    def RedefineCycleType(self, RedefineCycleType):
+        self._RedefineCycleType = RedefineCycleType
+
+    @property
+    def RedefineParamList(self):
+        r"""自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KVPair
+        """
+        return self._RedefineParamList
+
+    @RedefineParamList.setter
+    def RedefineParamList(self, RedefineParamList):
+        self._RedefineParamList = RedefineParamList
+
+    @property
+    def StartTime(self):
+        r"""补录任务的执行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""补录任务的执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreateUserUin(self):
+        r"""创建用户id
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def CompletePercent(self):
+        r"""补录计划实例完成百分数
+        :rtype: int
+        """
+        return self._CompletePercent
+
+    @CompletePercent.setter
+    def CompletePercent(self, CompletePercent):
+        self._CompletePercent = CompletePercent
+
+    @property
+    def SuccessPercent(self):
+        r"""补录计划实例成功百分数
+        :rtype: int
+        """
+        return self._SuccessPercent
+
+    @SuccessPercent.setter
+    def SuccessPercent(self, SuccessPercent):
+        self._SuccessPercent = SuccessPercent
+
+    @property
+    def DataTimeOrder(self):
+        r"""补录是实例数据时间顺序，生效必须满足2个条件:1. 必须同周期任务2. 优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行 可选值- NORMAL: 不设置- ORDER: 顺序- REVERSE: 逆序不设置默认为NORMAL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataTimeOrder
+
+    @DataTimeOrder.setter
+    def DataTimeOrder(self, DataTimeOrder):
+        self._DataTimeOrder = DataTimeOrder
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._DataBackfillPlanId = params.get("DataBackfillPlanId")
+        self._DataBackfillPlanName = params.get("DataBackfillPlanName")
+        self._TaskIds = params.get("TaskIds")
+        if params.get("DataBackfillRangeList") is not None:
+            self._DataBackfillRangeList = []
+            for item in params.get("DataBackfillRangeList"):
+                obj = DataBackfillRange()
+                obj._deserialize(item)
+                self._DataBackfillRangeList.append(obj)
+        self._CheckParentType = params.get("CheckParentType")
+        self._SkipEventListening = params.get("SkipEventListening")
+        self._RedefineParallelNum = params.get("RedefineParallelNum")
+        self._RedefineSelfWorkflowDependency = params.get("RedefineSelfWorkflowDependency")
+        self._SchedulerResourceGroupId = params.get("SchedulerResourceGroupId")
+        self._IntegrationResourceGroupId = params.get("IntegrationResourceGroupId")
+        self._RedefineCycleType = params.get("RedefineCycleType")
+        if params.get("RedefineParamList") is not None:
+            self._RedefineParamList = []
+            for item in params.get("RedefineParamList"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._RedefineParamList.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._CompletePercent = params.get("CompletePercent")
+        self._SuccessPercent = params.get("SuccessPercent")
+        self._DataTimeOrder = params.get("DataTimeOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataBackfillRange(AbstractModel):
     r"""补录计划日期范围
 
@@ -10140,6 +10512,213 @@ class GetCodeFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetCodeFolderRequest(AbstractModel):
+    r"""GetCodeFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _FolderId: 文件夹id
+        :type FolderId: str
+        """
+        self._ProjectId = None
+        self._FolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        r"""文件夹id
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetCodeFolderResponse(AbstractModel):
+    r"""GetCodeFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: codestudio文件夹
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CodeFolderNode`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""codestudio文件夹
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CodeFolderNode`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CodeFolderNode()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetDataBackfillPlanRequest(AbstractModel):
+    r"""GetDataBackfillPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DataBackfillPlanId: 补录计划id
+        :type DataBackfillPlanId: str
+        :param _TimeZone: 展示时区，默认UTC+8
+        :type TimeZone: str
+        """
+        self._ProjectId = None
+        self._DataBackfillPlanId = None
+        self._TimeZone = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DataBackfillPlanId(self):
+        r"""补录计划id
+        :rtype: str
+        """
+        return self._DataBackfillPlanId
+
+    @DataBackfillPlanId.setter
+    def DataBackfillPlanId(self, DataBackfillPlanId):
+        self._DataBackfillPlanId = DataBackfillPlanId
+
+    @property
+    def TimeZone(self):
+        r"""展示时区，默认UTC+8
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._DataBackfillPlanId = params.get("DataBackfillPlanId")
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDataBackfillPlanResponse(AbstractModel):
+    r"""GetDataBackfillPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 补录详情
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DataBackfill`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""补录详情
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DataBackfill`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataBackfill()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetDataSourceRelatedTasksRequest(AbstractModel):
     r"""GetDataSourceRelatedTasks请求参数结构体
 
@@ -11134,6 +11713,102 @@ class GetResourceGroupMetricsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetSQLFolderRequest(AbstractModel):
+    r"""GetSQLFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _FolderId: 文件夹id
+        :type FolderId: str
+        """
+        self._ProjectId = None
+        self._FolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        r"""文件夹id
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSQLFolderResponse(AbstractModel):
+    r"""GetSQLFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: sql文件夹
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.SQLFolderNode`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""sql文件夹
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.SQLFolderNode`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = SQLFolderNode()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetSQLScriptRequest(AbstractModel):
     r"""GetSQLScript请求参数结构体
 
@@ -12069,12 +12744,16 @@ class GrantMemberProjectRoleRequest(AbstractModel):
         :type ProjectId: str
         :param _UserUin: 用户id
         :type UserUin: str
-        :param _RoleId: 角色id
-        :type RoleId: str
+        :param _RoleIds: 角色id列表，目前支持的项目角色有
+- 308335260274237440 (项目管理员)
+- 308335260676890624 (数据工程师)
+- 308335260844662784 (运维工程师)
+- 308335260945326080 (普通成员)
+        :type RoleIds: list of str
         """
         self._ProjectId = None
         self._UserUin = None
-        self._RoleId = None
+        self._RoleIds = None
 
     @property
     def ProjectId(self):
@@ -12099,21 +12778,25 @@ class GrantMemberProjectRoleRequest(AbstractModel):
         self._UserUin = UserUin
 
     @property
-    def RoleId(self):
-        r"""角色id
-        :rtype: str
+    def RoleIds(self):
+        r"""角色id列表，目前支持的项目角色有
+- 308335260274237440 (项目管理员)
+- 308335260676890624 (数据工程师)
+- 308335260844662784 (运维工程师)
+- 308335260945326080 (普通成员)
+        :rtype: list of str
         """
-        return self._RoleId
+        return self._RoleIds
 
-    @RoleId.setter
-    def RoleId(self, RoleId):
-        self._RoleId = RoleId
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
 
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._UserUin = params.get("UserUin")
-        self._RoleId = params.get("RoleId")
+        self._RoleIds = params.get("RoleIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25049,12 +25732,16 @@ class RemoveMemberProjectRoleRequest(AbstractModel):
         :type ProjectId: str
         :param _UserUin: 用户id
         :type UserUin: str
-        :param _RoleId: 角色id
-        :type RoleId: str
+        :param _RoleIds: 角色id列表，目前支持的项目角色有
+- 308335260274237440 (项目管理员)
+- 308335260676890624 (数据工程师)
+- 308335260844662784 (运维工程师)
+- 308335260945326080 (普通成员)
+        :type RoleIds: list of str
         """
         self._ProjectId = None
         self._UserUin = None
-        self._RoleId = None
+        self._RoleIds = None
 
     @property
     def ProjectId(self):
@@ -25079,21 +25766,25 @@ class RemoveMemberProjectRoleRequest(AbstractModel):
         self._UserUin = UserUin
 
     @property
-    def RoleId(self):
-        r"""角色id
-        :rtype: str
+    def RoleIds(self):
+        r"""角色id列表，目前支持的项目角色有
+- 308335260274237440 (项目管理员)
+- 308335260676890624 (数据工程师)
+- 308335260844662784 (运维工程师)
+- 308335260945326080 (普通成员)
+        :rtype: list of str
         """
-        return self._RoleId
+        return self._RoleIds
 
-    @RoleId.setter
-    def RoleId(self, RoleId):
-        self._RoleId = RoleId
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
 
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._UserUin = params.get("UserUin")
-        self._RoleId = params.get("RoleId")
+        self._RoleIds = params.get("RoleIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27481,6 +28172,153 @@ class SqlCreateResult(AbstractModel):
 
     def _deserialize(self, params):
         self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartOpsTasksRequest(AbstractModel):
+    r"""StartOpsTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 所属项目Id
+        :type ProjectId: str
+        :param _TaskIds: 任务Id列表
+        :type TaskIds: list of str
+        :param _EnableDataBackfill: 启动时是否补录上次暂停到当前的中间实例，默认false即不补录
+        :type EnableDataBackfill: bool
+        """
+        self._ProjectId = None
+        self._TaskIds = None
+        self._EnableDataBackfill = None
+
+    @property
+    def ProjectId(self):
+        r"""所属项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskIds(self):
+        r"""任务Id列表
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def EnableDataBackfill(self):
+        r"""启动时是否补录上次暂停到当前的中间实例，默认false即不补录
+        :rtype: bool
+        """
+        return self._EnableDataBackfill
+
+    @EnableDataBackfill.setter
+    def EnableDataBackfill(self, EnableDataBackfill):
+        self._EnableDataBackfill = EnableDataBackfill
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskIds = params.get("TaskIds")
+        self._EnableDataBackfill = params.get("EnableDataBackfill")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartOpsTasksResponse(AbstractModel):
+    r"""StartOpsTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 异步操作结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.StartTasks`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""异步操作结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.StartTasks`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = StartTasks()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class StartTasks(AbstractModel):
+    r"""批量启动任务返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务启动是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""任务启动是否成功
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

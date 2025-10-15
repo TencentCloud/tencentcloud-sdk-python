@@ -49718,11 +49718,14 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
         :type FlowLogName: str
         :param _FlowLogDescription: 流日志实例描述。长度为不超过512个字符。
         :type FlowLogDescription: str
+        :param _Period: 流日志采集周期，只支持CCN类型流日志。 取值范围（单位s）：60， 300， 600。
+        :type Period: int
         """
         self._FlowLogId = None
         self._VpcId = None
         self._FlowLogName = None
         self._FlowLogDescription = None
+        self._Period = None
 
     @property
     def FlowLogId(self):
@@ -49768,12 +49771,24 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
     def FlowLogDescription(self, FlowLogDescription):
         self._FlowLogDescription = FlowLogDescription
 
+    @property
+    def Period(self):
+        r"""流日志采集周期，只支持CCN类型流日志。 取值范围（单位s）：60， 300， 600。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._FlowLogId = params.get("FlowLogId")
         self._VpcId = params.get("VpcId")
         self._FlowLogName = params.get("FlowLogName")
         self._FlowLogDescription = params.get("FlowLogDescription")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

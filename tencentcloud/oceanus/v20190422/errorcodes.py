@@ -104,6 +104,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # AppId资源不匹配。
 INVALIDPARAMETER_APPIDRESOURCENOTMATCH = 'InvalidParameter.AppIdResourceNotMatch'
 
+# 该变量名称已存在。
+INVALIDPARAMETER_CREATEVARIABLEEXISTS = 'InvalidParameter.CreateVariableExists'
+
 # 空间命名重复。
 INVALIDPARAMETER_DUPLICATEDSPACENAME = 'InvalidParameter.DuplicatedSpaceName'
 
@@ -206,6 +209,9 @@ INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = 'InvalidParameterValue.UnSupportedC
 # 未知停止类型错误。
 INVALIDPARAMETERVALUE_UNKNOWNSTOPTYPE = 'InvalidParameterValue.UnknownStopType'
 
+# 变量参数异常。
+INVALIDPARAMETERVALUE_VARIABLENAME = 'InvalidParameterValue.VariableName'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
@@ -217,6 +223,9 @@ LIMITEXCEEDED_JOB = 'LimitExceeded.Job'
 
 # 作业配置超出限制。
 LIMITEXCEEDED_JOBCONFIG = 'LimitExceeded.JobConfig'
+
+# 变量数超过限制。
+LIMITEXCEEDED_VARIABLES = 'LimitExceeded.Variables'
 
 # 工作空间超阈值。
 LIMITEXCEEDED_WORKSPACELIMITEXCEEDED = 'LimitExceeded.WorkSpaceLimitExceeded'

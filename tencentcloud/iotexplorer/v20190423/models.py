@@ -6680,6 +6680,200 @@ class CreateTWeTalkProductConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeTalkProductConfigV2Request(AbstractModel):
+    r"""CreateTWeTalkProductConfigV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _ConfigName: 名称
+        :type ConfigName: str
+        :param _BasicConfig: 系统基础配置，当需要使用系统三段式配置时配置。
+        :type BasicConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        :param _STTConfig: 自定义语音识别配置
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        :param _LLMConfig: 自定义大模型配置
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        :param _TTSConfig: 语音合成配置
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        :param _ConversationConfig: 会话配置
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._TargetLanguage = None
+        self._ConfigName = None
+        self._BasicConfig = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._ConversationConfig = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def TargetLanguage(self):
+        r"""支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def ConfigName(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def BasicConfig(self):
+        r"""系统基础配置，当需要使用系统三段式配置时配置。
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        """
+        return self._BasicConfig
+
+    @BasicConfig.setter
+    def BasicConfig(self, BasicConfig):
+        self._BasicConfig = BasicConfig
+
+    @property
+    def STTConfig(self):
+        r"""自定义语音识别配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""自定义大模型配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""语音合成配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def ConversationConfig(self):
+        r"""会话配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._ConfigName = params.get("ConfigName")
+        if params.get("BasicConfig") is not None:
+            self._BasicConfig = TalkBasicConfigInfo()
+            self._BasicConfig._deserialize(params.get("BasicConfig"))
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfigInfo()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfigInfo()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfigInfo()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfigInfo()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeTalkProductConfigV2Response(AbstractModel):
+    r"""CreateTWeTalkProductConfigV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicPolicyRequest(AbstractModel):
     r"""CreateTopicPolicy请求参数结构体
 
@@ -16284,6 +16478,132 @@ class DescribeTWeTalkProductConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeTalkProductConfigV2Request(AbstractModel):
+    r"""DescribeTWeTalkProductConfigV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _IncludeCredentials: 是否脱敏
+        :type IncludeCredentials: bool
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._TargetLanguage = None
+        self._IncludeCredentials = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def TargetLanguage(self):
+        r"""支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def IncludeCredentials(self):
+        r"""是否脱敏
+        :rtype: bool
+        """
+        return self._IncludeCredentials
+
+    @IncludeCredentials.setter
+    def IncludeCredentials(self, IncludeCredentials):
+        self._IncludeCredentials = IncludeCredentials
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._IncludeCredentials = params.get("IncludeCredentials")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeTalkProductConfigV2Response(AbstractModel):
+    r"""DescribeTWeTalkProductConfigV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 配置信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.TalkProductConfigV2Info`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""配置信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkProductConfigV2Info`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TalkProductConfigV2Info()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicPolicyRequest(AbstractModel):
     r"""DescribeTopicPolicy请求参数结构体
 
@@ -21715,6 +22035,180 @@ class GetTWeTalkProductConfigListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetTWeTalkProductConfigListV2Request(AbstractModel):
+    r"""GetTWeTalkProductConfigListV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _IncludeCredentials: 是否脱敏
+        :type IncludeCredentials: bool
+        :param _Offset: 页码
+        :type Offset: int
+        :param _Limit: 每页数据大小， 10-100
+        :type Limit: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._TargetLanguage = None
+        self._IncludeCredentials = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def TargetLanguage(self):
+        r"""支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def IncludeCredentials(self):
+        r"""是否脱敏
+        :rtype: bool
+        """
+        return self._IncludeCredentials
+
+    @IncludeCredentials.setter
+    def IncludeCredentials(self, IncludeCredentials):
+        self._IncludeCredentials = IncludeCredentials
+
+    @property
+    def Offset(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页数据大小， 10-100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._IncludeCredentials = params.get("IncludeCredentials")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeTalkProductConfigListV2Response(AbstractModel):
+    r"""GetTWeTalkProductConfigListV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 配置信息
+        :type Data: list of TalkProductConfigV2Info
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""配置信息
+        :rtype: list of TalkProductConfigV2Info
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TalkProductConfigV2Info()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class GetTopicRuleListRequest(AbstractModel):
     r"""GetTopicRuleList请求参数结构体
 
@@ -21968,6 +22462,57 @@ class GetWechatDeviceTicketResponse(AbstractModel):
             self._WXDeviceInfo = WXDeviceInfo()
             self._WXDeviceInfo._deserialize(params.get("WXDeviceInfo"))
         self._RequestId = params.get("RequestId")
+
+
+class IdleResponseInfo(AbstractModel):
+    r"""空闲检测配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetryCount: 重试次数（1-3）
+        :type RetryCount: int
+        :param _Message: 响应信息
+        :type Message: str
+        """
+        self._RetryCount = None
+        self._Message = None
+
+    @property
+    def RetryCount(self):
+        r"""重试次数（1-3）
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def Message(self):
+        r"""响应信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._RetryCount = params.get("RetryCount")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InheritCloudStorageUserRequest(AbstractModel):
@@ -27399,6 +27944,200 @@ class ModifyTWeTalkProductConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTWeTalkProductConfigV2Request(AbstractModel):
+    r"""ModifyTWeTalkProductConfigV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _ConfigName: 名称
+        :type ConfigName: str
+        :param _BasicConfig: 系统基础配置，当需要使用系统三段式配置时配置。
+        :type BasicConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        :param _STTConfig: 自定义语音识别配置
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        :param _LLMConfig: 自定义大模型配置
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        :param _TTSConfig: 语音合成配置
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        :param _ConversationConfig: 会话配置
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._TargetLanguage = None
+        self._ConfigName = None
+        self._BasicConfig = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._ConversationConfig = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def TargetLanguage(self):
+        r"""支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def ConfigName(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def BasicConfig(self):
+        r"""系统基础配置，当需要使用系统三段式配置时配置。
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        """
+        return self._BasicConfig
+
+    @BasicConfig.setter
+    def BasicConfig(self, BasicConfig):
+        self._BasicConfig = BasicConfig
+
+    @property
+    def STTConfig(self):
+        r"""自定义语音识别配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""自定义大模型配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""语音合成配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def ConversationConfig(self):
+        r"""会话配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._ConfigName = params.get("ConfigName")
+        if params.get("BasicConfig") is not None:
+            self._BasicConfig = TalkBasicConfigInfo()
+            self._BasicConfig._deserialize(params.get("BasicConfig"))
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfigInfo()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfigInfo()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfigInfo()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfigInfo()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeTalkProductConfigV2Response(AbstractModel):
+    r"""ModifyTWeTalkProductConfigV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTopicPolicyRequest(AbstractModel):
     r"""ModifyTopicPolicy请求参数结构体
 
@@ -31507,6 +32246,517 @@ class TWeCallLicenseInfo(AbstractModel):
         
 
 
+class TalkBasicConfigInfo(AbstractModel):
+    r"""基础配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SystemPrompt: 系统提示词
+        :type SystemPrompt: str
+        :param _GreetingMessage: 欢迎语，支持多个欢迎语随机切换，格式：字符串数组，JSON字符串。
+        :type GreetingMessage: str
+        :param _DefaultVoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :type DefaultVoiceType: int
+        """
+        self._SystemPrompt = None
+        self._GreetingMessage = None
+        self._DefaultVoiceType = None
+
+    @property
+    def SystemPrompt(self):
+        r"""系统提示词
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def GreetingMessage(self):
+        r"""欢迎语，支持多个欢迎语随机切换，格式：字符串数组，JSON字符串。
+        :rtype: str
+        """
+        return self._GreetingMessage
+
+    @GreetingMessage.setter
+    def GreetingMessage(self, GreetingMessage):
+        self._GreetingMessage = GreetingMessage
+
+    @property
+    def DefaultVoiceType(self):
+        r"""音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :rtype: int
+        """
+        return self._DefaultVoiceType
+
+    @DefaultVoiceType.setter
+    def DefaultVoiceType(self, DefaultVoiceType):
+        self._DefaultVoiceType = DefaultVoiceType
+
+
+    def _deserialize(self, params):
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._GreetingMessage = params.get("GreetingMessage")
+        self._DefaultVoiceType = params.get("DefaultVoiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkConversationConfigInfo(AbstractModel):
+    r"""TTS配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionTimeout: 会话超时（秒）
+        :type SessionTimeout: int
+        :param _InterruptionEnabled: 允许打断
+        :type InterruptionEnabled: bool
+        :param _MaxContextTokens: 最大上下文
+        :type MaxContextTokens: int
+        :param _IdleDetection: 空闲检测配置
+        :type IdleDetection: :class:`tencentcloud.iotexplorer.v20190423.models.TalkIdleDetectionConfigInfo`
+        :param _EmotionEnabled: 是否启用情绪识别
+        :type EmotionEnabled: bool
+        """
+        self._SessionTimeout = None
+        self._InterruptionEnabled = None
+        self._MaxContextTokens = None
+        self._IdleDetection = None
+        self._EmotionEnabled = None
+
+    @property
+    def SessionTimeout(self):
+        r"""会话超时（秒）
+        :rtype: int
+        """
+        return self._SessionTimeout
+
+    @SessionTimeout.setter
+    def SessionTimeout(self, SessionTimeout):
+        self._SessionTimeout = SessionTimeout
+
+    @property
+    def InterruptionEnabled(self):
+        r"""允许打断
+        :rtype: bool
+        """
+        return self._InterruptionEnabled
+
+    @InterruptionEnabled.setter
+    def InterruptionEnabled(self, InterruptionEnabled):
+        self._InterruptionEnabled = InterruptionEnabled
+
+    @property
+    def MaxContextTokens(self):
+        r"""最大上下文
+        :rtype: int
+        """
+        return self._MaxContextTokens
+
+    @MaxContextTokens.setter
+    def MaxContextTokens(self, MaxContextTokens):
+        self._MaxContextTokens = MaxContextTokens
+
+    @property
+    def IdleDetection(self):
+        r"""空闲检测配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkIdleDetectionConfigInfo`
+        """
+        return self._IdleDetection
+
+    @IdleDetection.setter
+    def IdleDetection(self, IdleDetection):
+        self._IdleDetection = IdleDetection
+
+    @property
+    def EmotionEnabled(self):
+        r"""是否启用情绪识别
+        :rtype: bool
+        """
+        return self._EmotionEnabled
+
+    @EmotionEnabled.setter
+    def EmotionEnabled(self, EmotionEnabled):
+        self._EmotionEnabled = EmotionEnabled
+
+
+    def _deserialize(self, params):
+        self._SessionTimeout = params.get("SessionTimeout")
+        self._InterruptionEnabled = params.get("InterruptionEnabled")
+        self._MaxContextTokens = params.get("MaxContextTokens")
+        if params.get("IdleDetection") is not None:
+            self._IdleDetection = TalkIdleDetectionConfigInfo()
+            self._IdleDetection._deserialize(params.get("IdleDetection"))
+        self._EmotionEnabled = params.get("EmotionEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkIdleDetectionConfigInfo(AbstractModel):
+    r"""空闲检测信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        :param _TimeoutSeconds: 用户沉默多少秒后触发空闲回调
+        :type TimeoutSeconds: float
+        :param _MaxRetries: 最大重试次数（1-3）
+        :type MaxRetries: int
+        :param _IdleResponses: 空闲响应
+        :type IdleResponses: list of IdleResponseInfo
+        """
+        self._Enabled = None
+        self._TimeoutSeconds = None
+        self._MaxRetries = None
+        self._IdleResponses = None
+
+    @property
+    def Enabled(self):
+        r"""是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def TimeoutSeconds(self):
+        r"""用户沉默多少秒后触发空闲回调
+        :rtype: float
+        """
+        return self._TimeoutSeconds
+
+    @TimeoutSeconds.setter
+    def TimeoutSeconds(self, TimeoutSeconds):
+        self._TimeoutSeconds = TimeoutSeconds
+
+    @property
+    def MaxRetries(self):
+        r"""最大重试次数（1-3）
+        :rtype: int
+        """
+        return self._MaxRetries
+
+    @MaxRetries.setter
+    def MaxRetries(self, MaxRetries):
+        self._MaxRetries = MaxRetries
+
+    @property
+    def IdleResponses(self):
+        r"""空闲响应
+        :rtype: list of IdleResponseInfo
+        """
+        return self._IdleResponses
+
+    @IdleResponses.setter
+    def IdleResponses(self, IdleResponses):
+        self._IdleResponses = IdleResponses
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._TimeoutSeconds = params.get("TimeoutSeconds")
+        self._MaxRetries = params.get("MaxRetries")
+        if params.get("IdleResponses") is not None:
+            self._IdleResponses = []
+            for item in params.get("IdleResponses"):
+                obj = IdleResponseInfo()
+                obj._deserialize(item)
+                self._IdleResponses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkLLMConfigInfo(AbstractModel):
+    r"""LLM配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LLMType: 支持的LLM类型，tencent-腾讯；openai-OPENAI格式；anthropic-ANTHROPIC；gemini-GEMINI;gemini-GEMINI;coze-扣子;dify-DIFY；tencent_lke-腾讯智能体平台；系统默认-openai。
+        :type LLMType: str
+        :param _Enabled: 是否开启
+        :type Enabled: bool
+        :param _Model: 模型
+        :type Model: str
+        :param _Streaming: 是否开启
+        :type Streaming: bool
+        :param _Config: 配置信息JSON字符串，根据`LLMType`进行不同的值匹配。例如`LLMType`是`openai`，`Config`值是`{\"ApiKey\":\"sk-09***\",\"ApiUrl\":\"base_url\",\"SystemPrompt\":\"你是一个语音助手\",\"Timeout\":30,\"History\":0,\"MetaInfo\":{\"productID\":\"test\"}}`
+
+## openai
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemPrompt": "一个小小助手",
+  "Timeout":20,
+  "History":10,
+  "MetaInfo":{}
+}
+```
+
+## anthropic
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemPrompt": "一个小小助手"
+}
+```
+## gemini
+```
+{
+  "AppId": 123456,
+  "AccessToken": "*****",
+  "ResourceId": "SecretKey****",
+  "ModelName": "16k_zh",
+  "Language":""
+}
+```
+## coze
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "BotId": "v1",
+   "UserId": "xxx",
+  "ApiUrl": "https://api.coze.cn/v3/chat"
+}
+```
+## dify
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "User": "xxx",
+  "Inputs":{},
+  "ConversationId":"c1"
+}
+```
+## tencent_lke
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemRole": "一个小小助手",
+  "SessionId":"123456"
+}
+```
+
+        :type Config: str
+        :param _Temperature: 温度
+        :type Temperature: float
+        :param _MaxTokens: 最大token数
+        :type MaxTokens: int
+        :param _TopP: topP
+        :type TopP: float
+        """
+        self._LLMType = None
+        self._Enabled = None
+        self._Model = None
+        self._Streaming = None
+        self._Config = None
+        self._Temperature = None
+        self._MaxTokens = None
+        self._TopP = None
+
+    @property
+    def LLMType(self):
+        r"""支持的LLM类型，tencent-腾讯；openai-OPENAI格式；anthropic-ANTHROPIC；gemini-GEMINI;gemini-GEMINI;coze-扣子;dify-DIFY；tencent_lke-腾讯智能体平台；系统默认-openai。
+        :rtype: str
+        """
+        return self._LLMType
+
+    @LLMType.setter
+    def LLMType(self, LLMType):
+        self._LLMType = LLMType
+
+    @property
+    def Enabled(self):
+        r"""是否开启
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Model(self):
+        r"""模型
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Streaming(self):
+        r"""是否开启
+        :rtype: bool
+        """
+        return self._Streaming
+
+    @Streaming.setter
+    def Streaming(self, Streaming):
+        self._Streaming = Streaming
+
+    @property
+    def Config(self):
+        r"""配置信息JSON字符串，根据`LLMType`进行不同的值匹配。例如`LLMType`是`openai`，`Config`值是`{\"ApiKey\":\"sk-09***\",\"ApiUrl\":\"base_url\",\"SystemPrompt\":\"你是一个语音助手\",\"Timeout\":30,\"History\":0,\"MetaInfo\":{\"productID\":\"test\"}}`
+
+## openai
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemPrompt": "一个小小助手",
+  "Timeout":20,
+  "History":10,
+  "MetaInfo":{}
+}
+```
+
+## anthropic
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemPrompt": "一个小小助手"
+}
+```
+## gemini
+```
+{
+  "AppId": 123456,
+  "AccessToken": "*****",
+  "ResourceId": "SecretKey****",
+  "ModelName": "16k_zh",
+  "Language":""
+}
+```
+## coze
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "BotId": "v1",
+   "UserId": "xxx",
+  "ApiUrl": "https://api.coze.cn/v3/chat"
+}
+```
+## dify
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "User": "xxx",
+  "Inputs":{},
+  "ConversationId":"c1"
+}
+```
+## tencent_lke
+```
+{
+   "ApiKey": "sk-XXXXXXXXXXXX",
+   "ApiUrl": "https://api.openai.com/v1",
+   "SystemRole": "一个小小助手",
+  "SessionId":"123456"
+}
+```
+
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Temperature(self):
+        r"""温度
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def MaxTokens(self):
+        r"""最大token数
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def TopP(self):
+        r"""topP
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+
+    def _deserialize(self, params):
+        self._LLMType = params.get("LLMType")
+        self._Enabled = params.get("Enabled")
+        self._Model = params.get("Model")
+        self._Streaming = params.get("Streaming")
+        self._Config = params.get("Config")
+        self._Temperature = params.get("Temperature")
+        self._MaxTokens = params.get("MaxTokens")
+        self._TopP = params.get("TopP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TalkProductConfigInfo(AbstractModel):
     r"""Talk配置信息描述。
 
@@ -31623,6 +32873,632 @@ class TalkProductConfigInfo(AbstractModel):
         self._VoiceType = params.get("VoiceType")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkProductConfigV2Info(AbstractModel):
+    r"""twetalk连接配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: UIN
+        :type Uin: int
+        :param _AppId: APPID
+        :type AppId: int
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ConfigName: 配置名称
+        :type ConfigName: str
+        :param _TargetLanguage: 语言，默认zh；zh-中文；en-英文
+        :type TargetLanguage: str
+        :param _BasicConfig: 基础配置
+        :type BasicConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        :param _STTConfig: 语音识别配置
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        :param _LLMConfig: 大模型配置
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        :param _TTSConfig: 语音合成配置
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        :param _ConversationConfig: 会话配置
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        :param _Version: 版本号
+        :type Version: int
+        :param _CreateTime: 创建时间，秒级时间戳
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间，秒级时间戳
+        :type UpdateTime: int
+        """
+        self._Uin = None
+        self._AppId = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ConfigName = None
+        self._TargetLanguage = None
+        self._BasicConfig = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._ConversationConfig = None
+        self._Version = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Uin(self):
+        r"""UIN
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""APPID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ConfigName(self):
+        r"""配置名称
+        :rtype: str
+        """
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def TargetLanguage(self):
+        r"""语言，默认zh；zh-中文；en-英文
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def BasicConfig(self):
+        r"""基础配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkBasicConfigInfo`
+        """
+        return self._BasicConfig
+
+    @BasicConfig.setter
+    def BasicConfig(self, BasicConfig):
+        self._BasicConfig = BasicConfig
+
+    @property
+    def STTConfig(self):
+        r"""语音识别配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfigInfo`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""大模型配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfigInfo`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""语音合成配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def ConversationConfig(self):
+        r"""会话配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfigInfo`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+    @property
+    def Version(self):
+        r"""版本号
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，秒级时间戳
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，秒级时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ConfigName = params.get("ConfigName")
+        self._TargetLanguage = params.get("TargetLanguage")
+        if params.get("BasicConfig") is not None:
+            self._BasicConfig = TalkBasicConfigInfo()
+            self._BasicConfig._deserialize(params.get("BasicConfig"))
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfigInfo()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfigInfo()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfigInfo()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfigInfo()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        self._Version = params.get("Version")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkSTTConfigInfo(AbstractModel):
+    r"""STT配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _STTType: 支持的STT类型，tencent-腾讯；azure-亚马逊；volcengine-火山引擎；deepgram-Deepgram;系统默认-tencent。
+        :type STTType: str
+        :param _Enabled: 是否开启
+        :type Enabled: bool
+        :param _Config: 配置信息JSON字符串，根据STTType进行不同的值匹配。例如`STTType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"EngineType\":\"16k_zh\"}`
+
+## tencent
+```
+{
+  "AppId": 123456,
+  "SecretId": "secretId*****",
+  "SecretKey": "SecretKey****",
+  "EngineType": "16k_zh"
+}
+```
+
+## azure
+```
+{
+  "Region": "",
+  "EndpointId": "id",
+  "Language": "zh-CN",
+  "SubscriptionKey": "*****"
+}
+```
+## volcengine
+```
+{
+  "AppId": 123456,
+  "AccessToken": "*****",
+  "ResourceId": "SecretKey****",
+  "ModelName": "16k_zh",
+  "Language":""
+}
+```
+## deepgram
+```
+{
+  "Model": "nova-2",
+  "Language": "zh",
+   "BaseUrl":"http://www.deepgram.com",
+  "ApiKey": "SecretKey****"
+}
+```
+
+        :type Config: str
+        """
+        self._STTType = None
+        self._Enabled = None
+        self._Config = None
+
+    @property
+    def STTType(self):
+        r"""支持的STT类型，tencent-腾讯；azure-亚马逊；volcengine-火山引擎；deepgram-Deepgram;系统默认-tencent。
+        :rtype: str
+        """
+        return self._STTType
+
+    @STTType.setter
+    def STTType(self, STTType):
+        self._STTType = STTType
+
+    @property
+    def Enabled(self):
+        r"""是否开启
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Config(self):
+        r"""配置信息JSON字符串，根据STTType进行不同的值匹配。例如`STTType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"EngineType\":\"16k_zh\"}`
+
+## tencent
+```
+{
+  "AppId": 123456,
+  "SecretId": "secretId*****",
+  "SecretKey": "SecretKey****",
+  "EngineType": "16k_zh"
+}
+```
+
+## azure
+```
+{
+  "Region": "",
+  "EndpointId": "id",
+  "Language": "zh-CN",
+  "SubscriptionKey": "*****"
+}
+```
+## volcengine
+```
+{
+  "AppId": 123456,
+  "AccessToken": "*****",
+  "ResourceId": "SecretKey****",
+  "ModelName": "16k_zh",
+  "Language":""
+}
+```
+## deepgram
+```
+{
+  "Model": "nova-2",
+  "Language": "zh",
+   "BaseUrl":"http://www.deepgram.com",
+  "ApiKey": "SecretKey****"
+}
+```
+
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._STTType = params.get("STTType")
+        self._Enabled = params.get("Enabled")
+        self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkTTSConfigInfo(AbstractModel):
+    r"""TTS配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TTSType: 支持的LLM类型，支持tencent-腾讯；azure-亚马逊；volcengine-火山引擎；elevenlabs-ELEVENLABS；minimax-MINIMAX；cartesia-CARTESIA；aliyun-阿里；系统默认-tencent。
+        :type TTSType: str
+        :param _Enabled: 是否开启
+        :type Enabled: bool
+        :param _Config: 配置信息JSON字符串，根据`TTSType`进行不同的值匹配。例如`TTSType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"VoiceType\":10001}`
+
+## tencent
+```
+{
+   "AppId": 100203,
+   "SecretId": "XXXX",
+   "SecretKey": "XXXXX",
+  "VoiceType":123456
+}
+```
+
+## azure
+```
+{
+   "SubscriptionKey": 100203,
+   "Region": "ch-zn",
+   "VoiceName": "XXXXX",
+  "Language":"zh"
+}
+```
+## elevenlabs
+```
+{
+   "ModelId": 100203,
+   "VoiceId": "ch-zn",
+   "ApiKey": "XXXXX"
+}
+```
+## minimax
+```
+{  
+  "Model":"xxxx",
+   "ApiUrl": "346w34",
+   "ApiKey": "xxx",
+   "GroupId": "ion",
+  "VoiceType":"xioawei"
+}
+```
+## cartesia
+```
+{  
+  "Model":"xxxx",
+   "ApiKey": "xxx",
+  "VoiceId":"xioawei"
+}
+```
+## aliyun
+```
+{
+   "VoiceType": 100203,
+   "RegionId": "XXXX",
+   "ApiKey": "XXXXX"
+}
+```
+## volcengine
+```
+{
+   "AppId": "346w34",
+   "AccessToken": "xxx",
+   "ResourceId": "volc.bigasr.sauc.duration",
+  "VoiceType":"xioawei"
+}
+```
+
+        :type Config: str
+        :param _Speed: 温度
+        :type Speed: float
+        :param _Volume: 最大token数
+        :type Volume: float
+        :param _Pitch: PITCH
+        :type Pitch: float
+        """
+        self._TTSType = None
+        self._Enabled = None
+        self._Config = None
+        self._Speed = None
+        self._Volume = None
+        self._Pitch = None
+
+    @property
+    def TTSType(self):
+        r"""支持的LLM类型，支持tencent-腾讯；azure-亚马逊；volcengine-火山引擎；elevenlabs-ELEVENLABS；minimax-MINIMAX；cartesia-CARTESIA；aliyun-阿里；系统默认-tencent。
+        :rtype: str
+        """
+        return self._TTSType
+
+    @TTSType.setter
+    def TTSType(self, TTSType):
+        self._TTSType = TTSType
+
+    @property
+    def Enabled(self):
+        r"""是否开启
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Config(self):
+        r"""配置信息JSON字符串，根据`TTSType`进行不同的值匹配。例如`TTSType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"VoiceType\":10001}`
+
+## tencent
+```
+{
+   "AppId": 100203,
+   "SecretId": "XXXX",
+   "SecretKey": "XXXXX",
+  "VoiceType":123456
+}
+```
+
+## azure
+```
+{
+   "SubscriptionKey": 100203,
+   "Region": "ch-zn",
+   "VoiceName": "XXXXX",
+  "Language":"zh"
+}
+```
+## elevenlabs
+```
+{
+   "ModelId": 100203,
+   "VoiceId": "ch-zn",
+   "ApiKey": "XXXXX"
+}
+```
+## minimax
+```
+{  
+  "Model":"xxxx",
+   "ApiUrl": "346w34",
+   "ApiKey": "xxx",
+   "GroupId": "ion",
+  "VoiceType":"xioawei"
+}
+```
+## cartesia
+```
+{  
+  "Model":"xxxx",
+   "ApiKey": "xxx",
+  "VoiceId":"xioawei"
+}
+```
+## aliyun
+```
+{
+   "VoiceType": 100203,
+   "RegionId": "XXXX",
+   "ApiKey": "XXXXX"
+}
+```
+## volcengine
+```
+{
+   "AppId": "346w34",
+   "AccessToken": "xxx",
+   "ResourceId": "volc.bigasr.sauc.duration",
+  "VoiceType":"xioawei"
+}
+```
+
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Speed(self):
+        r"""温度
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""最大token数
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Pitch(self):
+        r"""PITCH
+        :rtype: float
+        """
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
+
+    def _deserialize(self, params):
+        self._TTSType = params.get("TTSType")
+        self._Enabled = params.get("Enabled")
+        self._Config = params.get("Config")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
+        self._Pitch = params.get("Pitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

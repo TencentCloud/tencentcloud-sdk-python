@@ -1319,6 +1319,149 @@ class GetDocumentParseResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetMultiModalEmbeddingRequest(AbstractModel):
+    r"""GetMultiModalEmbedding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称，支持WeCLIPv2-Base和WeCLIPv2-Large
+        :type ModelName: str
+        :param _Texts: 需进行向量化的文本集，一次输入限10条，单条文本长度限72
+        :type Texts: list of str
+        :param _ImageData: 输入图片，base64编码格式，一次输入限制8个，单张图片限制1M
+        :type ImageData: list of str
+        :param _ImageUrl: 输入图片url，一次输入限8个，推荐cos地址，速度更快
+        :type ImageUrl: list of str
+        """
+        self._ModelName = None
+        self._Texts = None
+        self._ImageData = None
+        self._ImageUrl = None
+
+    @property
+    def ModelName(self):
+        r"""模型名称，支持WeCLIPv2-Base和WeCLIPv2-Large
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Texts(self):
+        r"""需进行向量化的文本集，一次输入限10条，单条文本长度限72
+        :rtype: list of str
+        """
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def ImageData(self):
+        r"""输入图片，base64编码格式，一次输入限制8个，单张图片限制1M
+        :rtype: list of str
+        """
+        return self._ImageData
+
+    @ImageData.setter
+    def ImageData(self, ImageData):
+        self._ImageData = ImageData
+
+    @property
+    def ImageUrl(self):
+        r"""输入图片url，一次输入限8个，推荐cos地址，速度更快
+        :rtype: list of str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._Texts = params.get("Texts")
+        self._ImageData = params.get("ImageData")
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMultiModalEmbeddingResponse(AbstractModel):
+    r"""GetMultiModalEmbedding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 多模态特征向量输出
+        :type Data: :class:`tencentcloud.es.v20250101.models.MultiModalEmbeddingData`
+        :param _Usage: 消耗的tokens和输入图片数量
+        :type Usage: :class:`tencentcloud.es.v20250101.models.MultiModalUsage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""多模态特征向量输出
+        :rtype: :class:`tencentcloud.es.v20250101.models.MultiModalEmbeddingData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Usage(self):
+        r"""消耗的tokens和输入图片数量
+        :rtype: :class:`tencentcloud.es.v20250101.models.MultiModalUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = MultiModalEmbeddingData()
+            self._Data._deserialize(params.get("Data"))
+        if params.get("Usage") is not None:
+            self._Usage = MultiModalUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetTextEmbeddingRequest(AbstractModel):
     r"""GetTextEmbedding请求参数结构体
 
@@ -1511,6 +1654,122 @@ class Message(AbstractModel):
                 obj = ToolCall()
                 obj._deserialize(item)
                 self._ToolCalls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiModalEmbeddingData(AbstractModel):
+    r"""多模态特征向量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TextEmbeddings: 文本特征向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextEmbeddings: list of EmbeddingData
+        :param _ImageEmbeddings: 图片特征向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageEmbeddings: list of EmbeddingData
+        """
+        self._TextEmbeddings = None
+        self._ImageEmbeddings = None
+
+    @property
+    def TextEmbeddings(self):
+        r"""文本特征向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EmbeddingData
+        """
+        return self._TextEmbeddings
+
+    @TextEmbeddings.setter
+    def TextEmbeddings(self, TextEmbeddings):
+        self._TextEmbeddings = TextEmbeddings
+
+    @property
+    def ImageEmbeddings(self):
+        r"""图片特征向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EmbeddingData
+        """
+        return self._ImageEmbeddings
+
+    @ImageEmbeddings.setter
+    def ImageEmbeddings(self, ImageEmbeddings):
+        self._ImageEmbeddings = ImageEmbeddings
+
+
+    def _deserialize(self, params):
+        if params.get("TextEmbeddings") is not None:
+            self._TextEmbeddings = []
+            for item in params.get("TextEmbeddings"):
+                obj = EmbeddingData()
+                obj._deserialize(item)
+                self._TextEmbeddings.append(obj)
+        if params.get("ImageEmbeddings") is not None:
+            self._ImageEmbeddings = []
+            for item in params.get("ImageEmbeddings"):
+                obj = EmbeddingData()
+                obj._deserialize(item)
+                self._ImageEmbeddings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiModalUsage(AbstractModel):
+    r"""多模态向量化消耗tokens和images数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalTokens: 消耗tokens
+        :type TotalTokens: int
+        :param _TotalImages: 输入图片数量
+        :type TotalImages: int
+        """
+        self._TotalTokens = None
+        self._TotalImages = None
+
+    @property
+    def TotalTokens(self):
+        r"""消耗tokens
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def TotalImages(self):
+        r"""输入图片数量
+        :rtype: int
+        """
+        return self._TotalImages
+
+    @TotalImages.setter
+    def TotalImages(self, TotalImages):
+        self._TotalImages = TotalImages
+
+
+    def _deserialize(self, params):
+        self._TotalTokens = params.get("TotalTokens")
+        self._TotalImages = params.get("TotalImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

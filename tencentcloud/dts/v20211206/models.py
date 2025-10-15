@@ -8823,6 +8823,8 @@ class DifferenceData(AbstractModel):
         :type SrcItem: str
         :param _DstItem: 目标端值
         :type DstItem: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
         :param _UpdatedAt: 更新时间
         :type UpdatedAt: str
         """
@@ -8832,6 +8834,7 @@ class DifferenceData(AbstractModel):
         self._DstChunk = None
         self._SrcItem = None
         self._DstItem = None
+        self._CreatedAt = None
         self._UpdatedAt = None
 
     @property
@@ -8901,6 +8904,17 @@ class DifferenceData(AbstractModel):
         self._DstItem = DstItem
 
     @property
+    def CreatedAt(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
     def UpdatedAt(self):
         r"""更新时间
         :rtype: str
@@ -8919,6 +8933,7 @@ class DifferenceData(AbstractModel):
         self._DstChunk = params.get("DstChunk")
         self._SrcItem = params.get("SrcItem")
         self._DstItem = params.get("DstItem")
+        self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

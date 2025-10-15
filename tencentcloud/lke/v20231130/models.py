@@ -13230,7 +13230,7 @@ class DescribeWorkflowRunResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowRun: 总数
+        :param _WorkflowRun: 工作流的详情
         :type WorkflowRun: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
         :param _NodeRuns: 节点列表
         :type NodeRuns: list of NodeRunBase
@@ -13243,7 +13243,7 @@ class DescribeWorkflowRunResponse(AbstractModel):
 
     @property
     def WorkflowRun(self):
-        r"""总数
+        r"""工作流的详情
         :rtype: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
         """
         return self._WorkflowRun

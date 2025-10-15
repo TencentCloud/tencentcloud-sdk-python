@@ -3444,14 +3444,14 @@ class DeleteParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
+        :param _TemplateId: 参数模板 ID。请登录 [Redis 控制台的参数模板](https://console.cloud.tencent.com/redis/templates)页面获取模板 ID。
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        r"""参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
+        r"""参数模板 ID。请登录 [Redis 控制台的参数模板](https://console.cloud.tencent.com/redis/templates)页面获取模板 ID。
         :rtype: str
         """
         return self._TemplateId

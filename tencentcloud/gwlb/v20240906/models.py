@@ -965,6 +965,120 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
         
 
 
+class DescribeGatewayLoadBalancersResourcesRequest(AbstractModel):
+    r"""DescribeGatewayLoadBalancersResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回可用区资源列表数目，默认20，最大值100。
+        :type Limit: int
+        :param _Offset: 返回可用区资源列表起始偏移量，默认0。
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""返回可用区资源列表数目，默认20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""返回可用区资源列表起始偏移量，默认0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayLoadBalancersResourcesResponse(AbstractModel):
+    r"""DescribeGatewayLoadBalancersResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneResourceSet: 可用区支持的资源列表。
+        :type ZoneResourceSet: list of ZoneResource
+        :param _TotalCount: 可用区资源列表数目。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneResourceSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ZoneResourceSet(self):
+        r"""可用区支持的资源列表。
+        :rtype: list of ZoneResource
+        """
+        return self._ZoneResourceSet
+
+    @ZoneResourceSet.setter
+    def ZoneResourceSet(self, ZoneResourceSet):
+        self._ZoneResourceSet = ZoneResourceSet
+
+    @property
+    def TotalCount(self):
+        r"""可用区资源列表数目。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneResourceSet") is not None:
+            self._ZoneResourceSet = []
+            for item in params.get("ZoneResourceSet"):
+                obj = ZoneResource()
+                obj._deserialize(item)
+                self._ZoneResourceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGatewayLoadBalancersResponse(AbstractModel):
     r"""DescribeGatewayLoadBalancers返回参数结构体
 
@@ -3690,6 +3804,42 @@ class TargetGroupInstanceStatus(AbstractModel):
     def _deserialize(self, params):
         self._InstanceIp = params.get("InstanceIp")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResource(AbstractModel):
+    r"""可用区资源列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MasterZone: 主可用区
+        :type MasterZone: str
+        """
+        self._MasterZone = None
+
+    @property
+    def MasterZone(self):
+        r"""主可用区
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
+
+
+    def _deserialize(self, params):
+        self._MasterZone = params.get("MasterZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

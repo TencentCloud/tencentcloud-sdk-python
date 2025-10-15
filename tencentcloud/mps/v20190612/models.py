@@ -32342,7 +32342,9 @@ class DescribeTasksRequest(AbstractModel):
 - PROCESSING（处理中）
 - FINISH（已完成）。
         :type Status: str
-        :param _SubTaskHasFailed: 任务结束时子任务是否有失败。
+        :param _SubTaskHasFailed: 任务结束时子任务是否有失败。如果不传则忽略。
+<li>false: 过滤子任务没有失败的任务；</li>
+<li>true: 过滤子任务有失败的任务。</li>
         :type SubTaskHasFailed: bool
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
@@ -32376,7 +32378,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def SubTaskHasFailed(self):
-        r"""任务结束时子任务是否有失败。
+        r"""任务结束时子任务是否有失败。如果不传则忽略。
+<li>false: 过滤子任务没有失败的任务；</li>
+<li>true: 过滤子任务有失败的任务。</li>
         :rtype: bool
         """
         return self._SubTaskHasFailed

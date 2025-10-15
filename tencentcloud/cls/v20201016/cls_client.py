@@ -609,7 +609,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        r"""本接口用于创建日志主题。
+        r"""本接口用于创建日志或指标主题。
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateTopicRequest`
@@ -1138,7 +1138,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        r"""本接口用于删除日志主题。
+        r"""本接口用于删除日志或指标主题。
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteTopicRequest`
@@ -1898,7 +1898,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        r"""本接口用于获取日志主题列表，支持分页
+        r"""本接口用于获取日志或指标主题列表，支持分页
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeTopicsRequest`
@@ -2451,7 +2451,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        r"""本接口用于修改日志主题。
+        r"""本接口用于修改日志或指标主题。
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyTopicRequest`

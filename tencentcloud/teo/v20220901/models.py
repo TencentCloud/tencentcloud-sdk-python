@@ -331,59 +331,61 @@ class AccelerationDomain(AbstractModel):
 <li>process：部署中；</li>
 <li>offline：已停用；</li>
 <li>forbidden：已封禁；</li>
-<li>init：未生效，待激活站点；</li>
+<li>init：未生效，待激活站点。</li>
         :type DomainStatus: str
-        :param _OriginDetail: 源站信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _OriginProtocol: 回源协议，取值有：
-<li>FOLLOW: 协议跟随；</li>
-<li>HTTP: HTTP协议回源；</li>
-<li>HTTPS: HTTPS协议回源。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginProtocol: str
-        :param _Certificate: 域名证书信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
-        :param _HttpOriginPort: HTTP回源端口。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HttpOriginPort: int
-        :param _HttpsOriginPort: HTTPS回源端口。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HttpsOriginPort: int
-        :param _IPv6Status: IPv6状态，取值有：
+        :param _Cname: CNAME 地址。
+        :type Cname: str
+        :param _IPv6Status: IPv6 状态，取值有：
 <li>follow：遵循站点IPv6配置；</li>
 <li>on：开启状态；</li>
 <li>off：关闭状态。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6Status: str
-        :param _Cname: CNAME 地址。
-        :type Cname: str
-        :param _IdentificationStatus: 加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
+        :param _IdentificationStatus: 加速域名归属权验证状态，取值有： 
+<li>pending：待验证；</li>
+<li>finished：已完成验证。</li>	
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentificationStatus: str
+        :param _OwnershipVerification: 加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _OriginDetail: 源站信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
+        :param _OriginProtocol: 回源协议，取值有：
+<li>FOLLOW：协议跟随；</li>
+<li>HTTP：HTTP协议回源；</li>
+<li>HTTPS：HTTPS协议回源。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginProtocol: str
+        :param _HttpOriginPort: HTTP 回源端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: HTTPS 回源端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsOriginPort: int
+        :param _Certificate: 加速域名证书信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         :param _CreatedOn: 创建时间。
         :type CreatedOn: str
         :param _ModifiedOn: 修改时间。
         :type ModifiedOn: str
-        :param _OwnershipVerification: 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         self._ZoneId = None
         self._DomainName = None
         self._DomainStatus = None
+        self._Cname = None
+        self._IPv6Status = None
+        self._IdentificationStatus = None
+        self._OwnershipVerification = None
         self._OriginDetail = None
         self._OriginProtocol = None
-        self._Certificate = None
         self._HttpOriginPort = None
         self._HttpsOriginPort = None
-        self._IPv6Status = None
-        self._Cname = None
-        self._IdentificationStatus = None
+        self._Certificate = None
         self._CreatedOn = None
         self._ModifiedOn = None
-        self._OwnershipVerification = None
 
     @property
     def ZoneId(self):
@@ -414,7 +416,7 @@ class AccelerationDomain(AbstractModel):
 <li>process：部署中；</li>
 <li>offline：已停用；</li>
 <li>forbidden：已封禁；</li>
-<li>init：未生效，待激活站点；</li>
+<li>init：未生效，待激活站点。</li>
         :rtype: str
         """
         return self._DomainStatus
@@ -422,6 +424,58 @@ class AccelerationDomain(AbstractModel):
     @DomainStatus.setter
     def DomainStatus(self, DomainStatus):
         self._DomainStatus = DomainStatus
+
+    @property
+    def Cname(self):
+        r"""CNAME 地址。
+        :rtype: str
+        """
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def IPv6Status(self):
+        r"""IPv6 状态，取值有：
+<li>follow：遵循站点IPv6配置；</li>
+<li>on：开启状态；</li>
+<li>off：关闭状态。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
+    @property
+    def IdentificationStatus(self):
+        r"""加速域名归属权验证状态，取值有： 
+<li>pending：待验证；</li>
+<li>finished：已完成验证。</li>	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdentificationStatus
+
+    @IdentificationStatus.setter
+    def IdentificationStatus(self, IdentificationStatus):
+        self._IdentificationStatus = IdentificationStatus
+
+    @property
+    def OwnershipVerification(self):
+        r"""加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def OriginDetail(self):
@@ -438,9 +492,9 @@ class AccelerationDomain(AbstractModel):
     @property
     def OriginProtocol(self):
         r"""回源协议，取值有：
-<li>FOLLOW: 协议跟随；</li>
-<li>HTTP: HTTP协议回源；</li>
-<li>HTTPS: HTTPS协议回源。</li>
+<li>FOLLOW：协议跟随；</li>
+<li>HTTP：HTTP协议回源；</li>
+<li>HTTPS：HTTPS协议回源。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -451,20 +505,8 @@ class AccelerationDomain(AbstractModel):
         self._OriginProtocol = OriginProtocol
 
     @property
-    def Certificate(self):
-        r"""域名证书信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
-        """
-        return self._Certificate
-
-    @Certificate.setter
-    def Certificate(self, Certificate):
-        self._Certificate = Certificate
-
-    @property
     def HttpOriginPort(self):
-        r"""HTTP回源端口。
+        r"""HTTP 回源端口。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -476,7 +518,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def HttpsOriginPort(self):
-        r"""HTTPS回源端口。
+        r"""HTTPS 回源端口。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -487,42 +529,16 @@ class AccelerationDomain(AbstractModel):
         self._HttpsOriginPort = HttpsOriginPort
 
     @property
-    def IPv6Status(self):
-        r"""IPv6状态，取值有：
-<li>follow：遵循站点IPv6配置；</li>
-<li>on：开启状态；</li>
-<li>off：关闭状态。</li>
+    def Certificate(self):
+        r"""加速域名证书信息。
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
-        return self._IPv6Status
+        return self._Certificate
 
-    @IPv6Status.setter
-    def IPv6Status(self, IPv6Status):
-        self._IPv6Status = IPv6Status
-
-    @property
-    def Cname(self):
-        r"""CNAME 地址。
-        :rtype: str
-        """
-        return self._Cname
-
-    @Cname.setter
-    def Cname(self, Cname):
-        self._Cname = Cname
-
-    @property
-    def IdentificationStatus(self):
-        r"""加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._IdentificationStatus
-
-    @IdentificationStatus.setter
-    def IdentificationStatus(self, IdentificationStatus):
-        self._IdentificationStatus = IdentificationStatus
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
 
     @property
     def CreatedOn(self):
@@ -546,40 +562,28 @@ class AccelerationDomain(AbstractModel):
     def ModifiedOn(self, ModifiedOn):
         self._ModifiedOn = ModifiedOn
 
-    @property
-    def OwnershipVerification(self):
-        r"""当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
-        """
-        return self._OwnershipVerification
-
-    @OwnershipVerification.setter
-    def OwnershipVerification(self, OwnershipVerification):
-        self._OwnershipVerification = OwnershipVerification
-
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._DomainName = params.get("DomainName")
         self._DomainStatus = params.get("DomainStatus")
+        self._Cname = params.get("Cname")
+        self._IPv6Status = params.get("IPv6Status")
+        self._IdentificationStatus = params.get("IdentificationStatus")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         if params.get("OriginDetail") is not None:
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
         self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
         if params.get("Certificate") is not None:
             self._Certificate = AccelerationDomainCertificate()
             self._Certificate._deserialize(params.get("Certificate"))
-        self._HttpOriginPort = params.get("HttpOriginPort")
-        self._HttpsOriginPort = params.get("HttpsOriginPort")
-        self._IPv6Status = params.get("IPv6Status")
-        self._Cname = params.get("Cname")
-        self._IdentificationStatus = params.get("IdentificationStatus")
         self._CreatedOn = params.get("CreatedOn")
         self._ModifiedOn = params.get("ModifiedOn")
-        if params.get("OwnershipVerification") is not None:
-            self._OwnershipVerification = OwnershipVerification()
-            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

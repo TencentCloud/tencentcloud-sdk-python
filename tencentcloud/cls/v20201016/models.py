@@ -9695,42 +9695,47 @@ class CreateTopicRequest(AbstractModel):
         :param _LogsetId: 日志集ID
 - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _TopicName: 日志主题名称
+        :param _TopicName: 主题名称
 名称限制
 - 不能为空字符串
 - 不能包含字符'|'
 - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
 
         :type TopicName: str
-        :param _PartitionCount: 日志主题分区个数。默认创建1个，最大支持创建10个分区。
+        :param _PartitionCount: 主题分区个数。默认创建1个，最大支持创建10个分区。
         :type PartitionCount: int
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
         :type Tags: list of Tag
         :param _AutoSplit: 是否开启自动分裂，默认值为true
         :type AutoSplit: bool
         :param _MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
         :type MaxSplitPartitions: int
-        :param _StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
+        :param _StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
         :type StorageType: str
         :param _Period: 存储时间，单位天。
-- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+- 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+- 指标主题：支持1至3600天，值为3640时代表永久保存。
         :type Period: int
-        :param _Describes: 日志主题描述
+        :param _Describes: 主题描述
         :type Describes: str
-        :param _HotPeriod: 0：关闭日志沉降。
-非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效。
+        :param _HotPeriod: 0：日志主题关闭日志沉降。
+非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
+仅在StorageType为 hot 时生效，指标主题不支持该配置。
         :type HotPeriod: int
+        :param _BizType: 主题类型
+- 0:日志主题，默认值
+- 1:指标主题
+        :type BizType: int
         :param _TopicId: 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
 - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
 - 如果指定该字段，需保证全地域唯一
         :type TopicId: str
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
         :type IsWebTracking: bool
-        :param _Extends: 日志主题扩展信息
+        :param _Extends: 主题扩展信息
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._LogsetId = None
@@ -9743,6 +9748,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = None
         self._Describes = None
         self._HotPeriod = None
+        self._BizType = None
         self._TopicId = None
         self._IsWebTracking = None
         self._Extends = None
@@ -9761,7 +9767,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""日志主题名称
+        r"""主题名称
 名称限制
 - 不能为空字符串
 - 不能包含字符'|'
@@ -9777,7 +9783,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        r"""日志主题分区个数。默认创建1个，最大支持创建10个分区。
+        r"""主题分区个数。默认创建1个，最大支持创建10个分区。
         :rtype: int
         """
         return self._PartitionCount
@@ -9788,7 +9794,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
         :rtype: list of Tag
         """
         return self._Tags
@@ -9821,7 +9827,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
+        r"""日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
         :rtype: str
         """
         return self._StorageType
@@ -9833,8 +9839,9 @@ class CreateTopicRequest(AbstractModel):
     @property
     def Period(self):
         r"""存储时间，单位天。
-- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+- 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+- 指标主题：支持1至3600天，值为3640时代表永久保存。
         :rtype: int
         """
         return self._Period
@@ -9845,7 +9852,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
-        r"""日志主题描述
+        r"""主题描述
         :rtype: str
         """
         return self._Describes
@@ -9856,9 +9863,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
-        r"""0：关闭日志沉降。
-非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效。
+        r"""0：日志主题关闭日志沉降。
+非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
+仅在StorageType为 hot 时生效，指标主题不支持该配置。
         :rtype: int
         """
         return self._HotPeriod
@@ -9866,6 +9873,19 @@ class CreateTopicRequest(AbstractModel):
     @HotPeriod.setter
     def HotPeriod(self, HotPeriod):
         self._HotPeriod = HotPeriod
+
+    @property
+    def BizType(self):
+        r"""主题类型
+- 0:日志主题，默认值
+- 1:指标主题
+        :rtype: int
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
 
     @property
     def TopicId(self):
@@ -9884,7 +9904,7 @@ class CreateTopicRequest(AbstractModel):
     @property
     def IsWebTracking(self):
         r"""免鉴权开关。 false：关闭； true：开启。默认为false。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
         :rtype: bool
         """
         return self._IsWebTracking
@@ -9895,7 +9915,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
-        r"""日志主题扩展信息
+        r"""主题扩展信息
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -9921,6 +9941,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = params.get("Period")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
+        self._BizType = params.get("BizType")
         self._TopicId = params.get("TopicId")
         self._IsWebTracking = params.get("IsWebTracking")
         if params.get("Extends") is not None:
@@ -9943,7 +9964,7 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 主题ID
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9953,7 +9974,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""主题ID
         :rtype: str
         """
         return self._TopicId
@@ -12913,16 +12934,14 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: 主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        r"""日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -18247,13 +18266,13 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+        :param _Filters: <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
 <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-<li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+<li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -18279,13 +18298,13 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+        r"""<ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
 <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-<li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+<li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
         :rtype: list of Filter
         """
@@ -18374,7 +18393,7 @@ class DescribeTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Topics: 日志主题列表
+        :param _Topics: 主题列表
         :type Topics: list of TopicInfo
         :param _TotalCount: 总数目
         :type TotalCount: int
@@ -18387,7 +18406,7 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def Topics(self):
-        r"""日志主题列表
+        r"""主题列表
         :rtype: list of TopicInfo
         """
         return self._Topics
@@ -26716,38 +26735,39 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: 主题ID
+- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
         :type TopicId: str
-        :param _TopicName: 日志主题名称
+        :param _TopicName: 主题名称
 输入限制：
 - 不能为空字符串
 - 不能包含字符'|'
 - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
         :type TopicName: str
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
         :param _Status: 主题是否开启采集，true：开启采集；false：关闭采集。
 控制台目前不支持修改此参数。
         :type Status: bool
         :param _AutoSplit: 是否开启自动分裂
         :type AutoSplit: bool
-        :param _MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数；
+        :param _MaxSplitPartitions: 若开启最大分裂，该主题能够允许的最大分区数；
 默认为50；必须为正数
         :type MaxSplitPartitions: int
         :param _Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
         :type Period: int
-        :param _Describes: 日志主题描述
+        :param _Describes: 主题描述
         :type Describes: str
-        :param _HotPeriod: 0：关闭日志沉降。
-非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+        :param _HotPeriod: 0：日志主题关闭日志沉降。
+非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
+仅在StorageType为 hot 时生效，指标主题不支持该配置。
         :type HotPeriod: int
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
-        :param _Extends: 日志主题扩展信息
+        :param _Extends: 主题扩展信息
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
-        :param _PartitionCount: 日志主题分区数量。
+        :param _PartitionCount: 主题分区数量。
 默认为1；
 取值范围及约束：
 - 当输入值<=0，系统自动调整为1。
@@ -26774,8 +26794,8 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""主题ID
+- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -26786,7 +26806,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""日志主题名称
+        r"""主题名称
 输入限制：
 - 不能为空字符串
 - 不能包含字符'|'
@@ -26801,7 +26821,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
         :rtype: list of Tag
         """
         return self._Tags
@@ -26835,7 +26855,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
-        r"""若开启最大分裂，该主题能够能够允许的最大分区数；
+        r"""若开启最大分裂，该主题能够允许的最大分区数；
 默认为50；必须为正数
         :rtype: int
         """
@@ -26858,7 +26878,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
-        r"""日志主题描述
+        r"""主题描述
         :rtype: str
         """
         return self._Describes
@@ -26869,8 +26889,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
-        r"""0：关闭日志沉降。
-非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+        r"""0：日志主题关闭日志沉降。
+非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
+仅在StorageType为 hot 时生效，指标主题不支持该配置。
         :rtype: int
         """
         return self._HotPeriod
@@ -26893,7 +26914,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
-        r"""日志主题扩展信息
+        r"""主题扩展信息
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -26904,7 +26925,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        r"""日志主题分区数量。
+        r"""主题分区数量。
 默认为1；
 取值范围及约束：
 - 当输入值<=0，系统自动调整为1。
