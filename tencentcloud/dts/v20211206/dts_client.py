@@ -1512,7 +1512,7 @@ class DtsClient(AbstractClient):
 
 
     def StartCompare(self, request):
-        r"""启动一致性校验任务，启动之前需要先通过接口`CreateCompareTask` 创建一致性校验任务，启动后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态
+        r"""启动一致性校验任务，启动之前需要先通过接口 [CreateCompareTask](https://cloud.tencent.com/document/product/571/82093) 创建一致性校验任务，启动后可通过接口 [DescribeCompareTasks](https://cloud.tencent.com/document/product/571/82088) 查询一致性校验任务列表来获得启动后的状态
 
         :param request: Request instance for StartCompare.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartCompareRequest`

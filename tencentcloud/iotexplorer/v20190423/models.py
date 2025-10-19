@@ -32313,7 +32313,7 @@ class TalkBasicConfigInfo(AbstractModel):
 
 
 class TalkConversationConfigInfo(AbstractModel):
-    r"""TTS配置信息。
+    r"""会话配置信息。
 
     """
 
@@ -32329,12 +32329,18 @@ class TalkConversationConfigInfo(AbstractModel):
         :type IdleDetection: :class:`tencentcloud.iotexplorer.v20190423.models.TalkIdleDetectionConfigInfo`
         :param _EmotionEnabled: 是否启用情绪识别
         :type EmotionEnabled: bool
+        :param _SemanticVADEnabled: 是否启用语义vad
+        :type SemanticVADEnabled: bool
+        :param _NoiseFilterEnabled: 是否启用噪声过滤
+        :type NoiseFilterEnabled: bool
         """
         self._SessionTimeout = None
         self._InterruptionEnabled = None
         self._MaxContextTokens = None
         self._IdleDetection = None
         self._EmotionEnabled = None
+        self._SemanticVADEnabled = None
+        self._NoiseFilterEnabled = None
 
     @property
     def SessionTimeout(self):
@@ -32391,6 +32397,28 @@ class TalkConversationConfigInfo(AbstractModel):
     def EmotionEnabled(self, EmotionEnabled):
         self._EmotionEnabled = EmotionEnabled
 
+    @property
+    def SemanticVADEnabled(self):
+        r"""是否启用语义vad
+        :rtype: bool
+        """
+        return self._SemanticVADEnabled
+
+    @SemanticVADEnabled.setter
+    def SemanticVADEnabled(self, SemanticVADEnabled):
+        self._SemanticVADEnabled = SemanticVADEnabled
+
+    @property
+    def NoiseFilterEnabled(self):
+        r"""是否启用噪声过滤
+        :rtype: bool
+        """
+        return self._NoiseFilterEnabled
+
+    @NoiseFilterEnabled.setter
+    def NoiseFilterEnabled(self, NoiseFilterEnabled):
+        self._NoiseFilterEnabled = NoiseFilterEnabled
+
 
     def _deserialize(self, params):
         self._SessionTimeout = params.get("SessionTimeout")
@@ -32400,6 +32428,8 @@ class TalkConversationConfigInfo(AbstractModel):
             self._IdleDetection = TalkIdleDetectionConfigInfo()
             self._IdleDetection._deserialize(params.get("IdleDetection"))
         self._EmotionEnabled = params.get("EmotionEnabled")
+        self._SemanticVADEnabled = params.get("SemanticVADEnabled")
+        self._NoiseFilterEnabled = params.get("NoiseFilterEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

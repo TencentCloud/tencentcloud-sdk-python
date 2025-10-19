@@ -399,7 +399,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateFunctionRule(self, request):
-        r"""创建边缘函数的触发规则。
+        r"""创建边缘函数的触发规则。支持通过自定义过滤条件来决定是否需要执行函数，当需要执行函数时，提供了多种选择目标函数的方式，包括：直接指定，基于客户端归属地区选择和基于权重选择。
 
         :param request: Request instance for CreateFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRuleRequest`
@@ -3736,7 +3736,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunctionRule(self, request):
-        r"""修改边缘函数触发规则，支持修改规则条件、执行函数以及描述信息。
+        r"""修改边缘函数触发规则，支持修改规则条件、执行函数以及描述信息。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
 
         :param request: Request instance for ModifyFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRuleRequest`

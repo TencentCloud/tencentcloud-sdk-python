@@ -9234,14 +9234,27 @@ class CreateFunctionRuleRequest(AbstractModel):
         :type ZoneId: str
         :param _FunctionRuleConditions: 规则条件列表，相同触发规则的不同条件匹配项之间为或关系。
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数。
+        :param _TriggerType: 函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+不填时默认为 direct 。
+        :type TriggerType: str
+        :param _FunctionId: 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
         :type FunctionId: str
+        :param _RegionMappingSelections: 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Remark: 规则描述，最大支持 60 个字符。
         :type Remark: str
         """
         self._ZoneId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Remark = None
 
     @property
@@ -9267,8 +9280,23 @@ class CreateFunctionRuleRequest(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+不填时默认为 direct 。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""函数 ID，命中触发规则条件后执行的函数。
+        r"""指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
         :rtype: str
         """
         return self._FunctionId
@@ -9276,6 +9304,28 @@ class CreateFunctionRuleRequest(AbstractModel):
     @FunctionId.setter
     def FunctionId(self, FunctionId):
         self._FunctionId = FunctionId
+
+    @property
+    def RegionMappingSelections(self):
+        r"""基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Remark(self):
@@ -9297,7 +9347,20 @@ class CreateFunctionRuleRequest(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30488,6 +30551,57 @@ class FunctionEnvironmentVariable(AbstractModel):
         
 
 
+class FunctionRegionSelection(AbstractModel):
+    r"""地区策略配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: 函数 ID 。
+        :type FunctionId: str
+        :param _Regions: 国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：[国家/地区及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :type Regions: list of str
+        """
+        self._FunctionId = None
+        self._Regions = None
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID 。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Regions(self):
+        r"""国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：[国家/地区及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionRule(AbstractModel):
     r"""边缘函数触发规则。
 
@@ -30499,14 +30613,24 @@ class FunctionRule(AbstractModel):
         :type RuleId: str
         :param _FunctionRuleConditions: 规则条件列表，列表项之间为或关系。
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数。
+        :param _TriggerType: 函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+
+        :type TriggerType: str
+        :param _FunctionId: 指定执行的函数 ID。当 TriggerType 为 direct 时有效。
         :type FunctionId: str
-        :param _Remark: 规则描述。
-        :type Remark: str
-        :param _FunctionName: 函数名称。
+        :param _FunctionName: 指定执行的函数名称。
         :type FunctionName: str
+        :param _RegionMappingSelections: 基于客户端 IP 国家/地区的函数选择配置。
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: 基于权重的函数选择配置。
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Priority: 函数触发规则优先级，数值越大，优先级越高。
         :type Priority: int
+        :param _Remark: 规则描述。
+        :type Remark: str
         :param _CreateTime: 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
@@ -30514,10 +30638,13 @@ class FunctionRule(AbstractModel):
         """
         self._RuleId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
-        self._Remark = None
         self._FunctionName = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Priority = None
+        self._Remark = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -30544,8 +30671,23 @@ class FunctionRule(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""函数 ID，命中触发规则条件后执行的函数。
+        r"""指定执行的函数 ID。当 TriggerType 为 direct 时有效。
         :rtype: str
         """
         return self._FunctionId
@@ -30555,19 +30697,8 @@ class FunctionRule(AbstractModel):
         self._FunctionId = FunctionId
 
     @property
-    def Remark(self):
-        r"""规则描述。
-        :rtype: str
-        """
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def FunctionName(self):
-        r"""函数名称。
+        r"""指定执行的函数名称。
         :rtype: str
         """
         return self._FunctionName
@@ -30575,6 +30706,28 @@ class FunctionRule(AbstractModel):
     @FunctionName.setter
     def FunctionName(self, FunctionName):
         self._FunctionName = FunctionName
+
+    @property
+    def RegionMappingSelections(self):
+        r"""基于客户端 IP 国家/地区的函数选择配置。
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""基于权重的函数选择配置。
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Priority(self):
@@ -30586,6 +30739,17 @@ class FunctionRule(AbstractModel):
     @Priority.setter
     def Priority(self, Priority):
         self._Priority = Priority
+
+    @property
+    def Remark(self):
+        r"""规则描述。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def CreateTime(self):
@@ -30618,10 +30782,23 @@ class FunctionRule(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
-        self._Remark = params.get("Remark")
         self._FunctionName = params.get("FunctionName")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Priority = params.get("Priority")
+        self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -30665,6 +30842,61 @@ class FunctionRuleCondition(AbstractModel):
                 obj = RuleCondition()
                 obj._deserialize(item)
                 self._RuleConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionWeightedSelection(AbstractModel):
+    r"""权重策略配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: 函数 ID 。
+        :type FunctionId: str
+        :param _Weight: 选中权重。取值范围0-100，所有的权重之和需要为100。
+选中概率计算方式为：
+weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。
+        :type Weight: int
+        """
+        self._FunctionId = None
+        self._Weight = None
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID 。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Weight(self):
+        r"""选中权重。取值范围0-100，所有的权重之和需要为100。
+选中概率计算方式为：
+weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37253,19 +37485,32 @@ class ModifyFunctionRuleRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _RuleId: 规则 ID。
+        :param _RuleId: 规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
         :type RuleId: str
         :param _FunctionRuleConditions: 规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数，不填写保持原有配置。
+        :param _TriggerType: 函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+不填时默认为 direct 。
+        :type TriggerType: str
+        :param _FunctionId: 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
         :type FunctionId: str
+        :param _RegionMappingSelections: 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Remark: 规则描述，最大支持 60 个字符，不填写保持原有配置。
         :type Remark: str
         """
         self._ZoneId = None
         self._RuleId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Remark = None
 
     @property
@@ -37281,7 +37526,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则 ID。
+        r"""规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
         :rtype: str
         """
         return self._RuleId
@@ -37302,8 +37547,23 @@ class ModifyFunctionRuleRequest(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""函数选择配置类型：
+<li> direct：直接指定执行函数；</li>
+<li> weight：基于权重比选择函数；</li>
+<li> region：基于客户端 IP 的国家/地区选择函数。</li>
+不填时默认为 direct 。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""函数 ID，命中触发规则条件后执行的函数，不填写保持原有配置。
+        r"""指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
         :rtype: str
         """
         return self._FunctionId
@@ -37311,6 +37571,28 @@ class ModifyFunctionRuleRequest(AbstractModel):
     @FunctionId.setter
     def FunctionId(self, FunctionId):
         self._FunctionId = FunctionId
+
+    @property
+    def RegionMappingSelections(self):
+        r"""基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Remark(self):
@@ -37333,7 +37615,20 @@ class ModifyFunctionRuleRequest(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

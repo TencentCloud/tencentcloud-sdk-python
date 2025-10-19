@@ -1790,20 +1790,20 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         :type TimeSpan: str
         :param _TimeUnit: 商品的时间单位，m表示月，y表示年
         :type TimeUnit: str
-        :param _Currency: 货币类型，默认为CNY
-        :type Currency: str
         :param _Type: 默认为CREATE，可选RENEW
         :type Type: str
         :param _HsmType: Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
         :type HsmType: str
+        :param _Currency: 货币类型，默认为CNY
+        :type Currency: str
         """
         self._GoodsNum = None
         self._PayMode = None
         self._TimeSpan = None
         self._TimeUnit = None
-        self._Currency = None
         self._Type = None
         self._HsmType = None
+        self._Currency = None
 
     @property
     def GoodsNum(self):
@@ -1850,17 +1850,6 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         self._TimeUnit = TimeUnit
 
     @property
-    def Currency(self):
-        r"""货币类型，默认为CNY
-        :rtype: str
-        """
-        return self._Currency
-
-    @Currency.setter
-    def Currency(self, Currency):
-        self._Currency = Currency
-
-    @property
     def Type(self):
         r"""默认为CREATE，可选RENEW
         :rtype: str
@@ -1882,15 +1871,26 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
     def HsmType(self, HsmType):
         self._HsmType = HsmType
 
+    @property
+    def Currency(self):
+        r"""货币类型，默认为CNY
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
         self._PayMode = params.get("PayMode")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
-        self._Currency = params.get("Currency")
         self._Type = params.get("Type")
         self._HsmType = params.get("HsmType")
+        self._Currency = params.get("Currency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

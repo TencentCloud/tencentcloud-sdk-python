@@ -8423,12 +8423,15 @@ class ExtractDocBasicResponse(AbstractModel):
         :type StructuralList: list of GroupInfo
         :param _WordList: 还原文本信息
         :type WordList: list of WordItem
+        :param _SealInfos: 全部印章信息
+        :type SealInfos: list of SealInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Angle = None
         self._StructuralList = None
         self._WordList = None
+        self._SealInfos = None
         self._RequestId = None
 
     @property
@@ -8466,6 +8469,17 @@ class ExtractDocBasicResponse(AbstractModel):
         self._WordList = WordList
 
     @property
+    def SealInfos(self):
+        r"""全部印章信息
+        :rtype: list of SealInfo
+        """
+        return self._SealInfos
+
+    @SealInfos.setter
+    def SealInfos(self, SealInfos):
+        self._SealInfos = SealInfos
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8491,6 +8505,12 @@ class ExtractDocBasicResponse(AbstractModel):
                 obj = WordItem()
                 obj._deserialize(item)
                 self._WordList.append(obj)
+        if params.get("SealInfos") is not None:
+            self._SealInfos = []
+            for item in params.get("SealInfos"):
+                obj = SealInfo()
+                obj._deserialize(item)
+                self._SealInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

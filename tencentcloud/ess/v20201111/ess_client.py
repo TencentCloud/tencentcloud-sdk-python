@@ -435,6 +435,30 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateContractComparisonTask(self, request):
+        r"""此接口（CreateContractComparisonTask）用于创建合同对比任务。
+        适用场景：对比两份合同中字段（如：金额、日期、甲方名称等）的内容差异。
+
+        :param request: Request instance for CreateContractComparisonTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateContractComparisonTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateContractComparisonTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateContractComparisonTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateContractComparisonTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContractDiffTaskWebUrl(self, request):
         r"""接口（CreateContractDiffTaskWebUrl）用于创建合同对比的可嵌入web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
         注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
@@ -1289,6 +1313,33 @@ class EssClient(AbstractClient):
             body = self.call("CreateFlowSignUrl", params, headers=headers)
             response = json.loads(body)
             model = models.CreateFlowSignUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateInformationExtractionWebUrl(self, request):
+        r"""此接口（CreateInformationExtractionWebUrl）用来创建合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        注:
+        1. pdf、word格式限制大小为10M以下
+        2. pdg、jpeg、jpg格式限制大小为5M以下
+
+        :param request: Request instance for CreateInformationExtractionWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateInformationExtractionWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateInformationExtractionWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInformationExtractionWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInformationExtractionWebUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2968,6 +3019,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInformationExtractionWebUrl(self, request):
+        r"""此接口（DescribeInformationExtractionWebUrl）用来获取合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        :param request: Request instance for DescribeInformationExtractionWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInformationExtractionWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInformationExtractionWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIntegrationDepartments(self, request):
         r"""此接口（DescribeIntegrationDepartments）用于查询企业的部门信息列表，支持查询单个部门节点或单个部门节点及一级子节点部门列表。
 
@@ -3356,6 +3430,29 @@ class EssClient(AbstractClient):
             body = self.call("DisableUserAutoSign", params, headers=headers)
             response = json.loads(body)
             model = models.DisableUserAutoSignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportContractComparisonTask(self, request):
+        r"""本接口（ExportContractComparisonTask）用于导出指定的合同对比任务的结果文件。任务完成后，用户可根据不同的使用场景，选择导出可视化对比报告（PDF）或结构化差异明细（EXCEL）。
+
+        :param request: Request instance for ExportContractComparisonTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ExportContractComparisonTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ExportContractComparisonTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportContractComparisonTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportContractComparisonTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

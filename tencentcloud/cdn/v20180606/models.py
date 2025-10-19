@@ -15241,7 +15241,12 @@ blacklist：黑名单
         :param _FilterRules: IP 黑白名单分路径配置。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
-        :param _ReturnCode: IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
+        :param _ReturnCode: IP 黑白名单验证失败时返回的状态码。
+注意：
+请求拒绝时，平台默认响应514状态。
+支持自定义为403，404，609状态码，空值时或自定义的不在范围内，均默认为514.
+非514状态码将计入HTTPS计费统计，最终账单将按您的计费规则生成。
+若您开启了自定义状态码，则默认您认同<a href="https://cloud.tencent.com/document/product/228/75563">HTTPS计费规则</a>。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: int
         """
@@ -15306,7 +15311,12 @@ blacklist：黑名单
 
     @property
     def ReturnCode(self):
-        r"""IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
+        r"""IP 黑白名单验证失败时返回的状态码。
+注意：
+请求拒绝时，平台默认响应514状态。
+支持自定义为403，404，609状态码，空值时或自定义的不在范围内，均默认为514.
+非514状态码将计入HTTPS计费统计，最终账单将按您的计费规则生成。
+若您开启了自定义状态码，则默认您认同<a href="https://cloud.tencent.com/document/product/228/75563">HTTPS计费规则</a>。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

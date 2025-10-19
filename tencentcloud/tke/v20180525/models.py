@@ -9682,12 +9682,16 @@ class CreateReservedInstancesRequest(AbstractModel):
         :type InstanceName: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
+        :param _DryRun: 是否只预检此次请求。
+true：只预检，不会创建实例。默认值为：false。
+        :type DryRun: bool
         """
         self._ReservedInstanceSpec = None
         self._InstanceCount = None
         self._InstanceChargePrepaid = None
         self._InstanceName = None
         self._ClientToken = None
+        self._DryRun = None
 
     @property
     def ReservedInstanceSpec(self):
@@ -9744,6 +9748,18 @@ class CreateReservedInstancesRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def DryRun(self):
+        r"""是否只预检此次请求。
+true：只预检，不会创建实例。默认值为：false。
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
 
     def _deserialize(self, params):
         if params.get("ReservedInstanceSpec") is not None:
@@ -9755,6 +9771,7 @@ class CreateReservedInstancesRequest(AbstractModel):
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._InstanceName = params.get("InstanceName")
         self._ClientToken = params.get("ClientToken")
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

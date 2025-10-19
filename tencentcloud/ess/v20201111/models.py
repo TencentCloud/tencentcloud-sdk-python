@@ -3040,6 +3040,103 @@ class CcInfo(AbstractModel):
         
 
 
+class ComparisonDetail(AbstractModel):
+    r"""合同对比差异结果详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComparisonType: 对比前后差异类型，具体如下：
+<ul><li> **add**：新增</li>
+<li> **change**：变更</li>
+<li> **delete**：删除</li>
+</ul>
+        :type ComparisonType: str
+        :param _ContentType: 对比内容类型，具体如下：
+<ul><li> **text**：文本</li>
+<li> **table**：表格</li>
+<li> **picture**：图片</li>
+</ul>
+        :type ContentType: str
+        :param _OriginText: 原文文本。
+        :type OriginText: str
+        :param _DiffText: 对比文本。
+        :type DiffText: str
+        """
+        self._ComparisonType = None
+        self._ContentType = None
+        self._OriginText = None
+        self._DiffText = None
+
+    @property
+    def ComparisonType(self):
+        r"""对比前后差异类型，具体如下：
+<ul><li> **add**：新增</li>
+<li> **change**：变更</li>
+<li> **delete**：删除</li>
+</ul>
+        :rtype: str
+        """
+        return self._ComparisonType
+
+    @ComparisonType.setter
+    def ComparisonType(self, ComparisonType):
+        self._ComparisonType = ComparisonType
+
+    @property
+    def ContentType(self):
+        r"""对比内容类型，具体如下：
+<ul><li> **text**：文本</li>
+<li> **table**：表格</li>
+<li> **picture**：图片</li>
+</ul>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def OriginText(self):
+        r"""原文文本。
+        :rtype: str
+        """
+        return self._OriginText
+
+    @OriginText.setter
+    def OriginText(self, OriginText):
+        self._OriginText = OriginText
+
+    @property
+    def DiffText(self):
+        r"""对比文本。
+        :rtype: str
+        """
+        return self._DiffText
+
+    @DiffText.setter
+    def DiffText(self, DiffText):
+        self._DiffText = DiffText
+
+
+    def _deserialize(self, params):
+        self._ComparisonType = params.get("ComparisonType")
+        self._ContentType = params.get("ContentType")
+        self._OriginText = params.get("OriginText")
+        self._DiffText = params.get("DiffText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Component(AbstractModel):
     r"""此结构体 (Component) 用于描述控件属性。
 
@@ -6082,6 +6179,188 @@ class CreateBatchSignUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateContractComparisonTaskRequest(AbstractModel):
+    r"""CreateContractComparisonTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _OriginFileResourceId: 原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :type OriginFileResourceId: str
+        :param _DiffFileResourceId: 新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :type DiffFileResourceId: str
+        :param _Comment: 对比任务备注，长度不能超过50个字符。
+        :type Comment: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :type UserData: str
+        :param _Tags: 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        :type Tags: list of Tag
+        """
+        self._Operator = None
+        self._OriginFileResourceId = None
+        self._DiffFileResourceId = None
+        self._Comment = None
+        self._UserData = None
+        self._Tags = None
+
+    @property
+    def Operator(self):
+        r"""执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OriginFileResourceId(self):
+        r"""原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :rtype: str
+        """
+        return self._OriginFileResourceId
+
+    @OriginFileResourceId.setter
+    def OriginFileResourceId(self, OriginFileResourceId):
+        self._OriginFileResourceId = OriginFileResourceId
+
+    @property
+    def DiffFileResourceId(self):
+        r"""新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :rtype: str
+        """
+        return self._DiffFileResourceId
+
+    @DiffFileResourceId.setter
+    def DiffFileResourceId(self, DiffFileResourceId):
+        self._DiffFileResourceId = DiffFileResourceId
+
+    @property
+    def Comment(self):
+        r"""对比任务备注，长度不能超过50个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def Tags(self):
+        r"""标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OriginFileResourceId = params.get("OriginFileResourceId")
+        self._DiffFileResourceId = params.get("DiffFileResourceId")
+        self._Comment = params.get("Comment")
+        self._UserData = params.get("UserData")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateContractComparisonTaskResponse(AbstractModel):
+    r"""CreateContractComparisonTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        :type UserData: str
+        :param _TaskId: 合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserData = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def TaskId(self):
+        r"""合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserData = params.get("UserData")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateContractDiffTaskWebUrlRequest(AbstractModel):
     r"""CreateContractDiffTaskWebUrl请求参数结构体
 
@@ -6101,11 +6380,19 @@ class CreateContractDiffTaskWebUrlRequest(AbstractModel):
         :type OriginalFileResourceId: str
         :param _DiffFileResourceId: 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
         :type DiffFileResourceId: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :type UserData: str
+        :param _Tags: 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        :type Tags: list of Tag
         """
         self._Operator = None
         self._SkipFileUpload = None
         self._OriginalFileResourceId = None
         self._DiffFileResourceId = None
+        self._UserData = None
+        self._Tags = None
 
     @property
     def Operator(self):
@@ -6155,6 +6442,30 @@ class CreateContractDiffTaskWebUrlRequest(AbstractModel):
     def DiffFileResourceId(self, DiffFileResourceId):
         self._DiffFileResourceId = DiffFileResourceId
 
+    @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def Tags(self):
+        r"""标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6163,6 +6474,13 @@ class CreateContractDiffTaskWebUrlRequest(AbstractModel):
         self._SkipFileUpload = params.get("SkipFileUpload")
         self._OriginalFileResourceId = params.get("OriginalFileResourceId")
         self._DiffFileResourceId = params.get("DiffFileResourceId")
+        self._UserData = params.get("UserData")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6186,11 +6504,14 @@ class CreateContractDiffTaskWebUrlResponse(AbstractModel):
         :param _WebUrl: 合同对比嵌入式web页面链接，有效期：5分钟
 链接仅能使用一次
         :type WebUrl: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        :type UserData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._WebUrl = None
+        self._UserData = None
         self._RequestId = None
 
     @property
@@ -6218,6 +6539,17 @@ class CreateContractDiffTaskWebUrlResponse(AbstractModel):
         self._WebUrl = WebUrl
 
     @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6232,6 +6564,7 @@ class CreateContractDiffTaskWebUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._WebUrl = params.get("WebUrl")
+        self._UserData = params.get("UserData")
         self._RequestId = params.get("RequestId")
 
 
@@ -11294,6 +11627,154 @@ class CreateFlowSignUrlResponse(AbstractModel):
                 obj = FlowApproverUrlInfo()
                 obj._deserialize(item)
                 self._FlowApproverUrlInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateInformationExtractionWebUrlRequest(AbstractModel):
+    r"""CreateInformationExtractionWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceIds: 需要提取的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+
+注: 
+-  `word、pdf文件每个文件限制在10M以下`
+-  `png、jpg、jpeg文件每个限制在5M以下`
+        :type ResourceIds: list of str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :type UserData: str
+        :param _Option: 个性化参数，用于控制页面展示内容
+        :type Option: :class:`tencentcloud.ess.v20201111.models.WebUrlOption`
+        """
+        self._Operator = None
+        self._ResourceIds = None
+        self._UserData = None
+        self._Option = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceIds(self):
+        r"""需要提取的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+
+注: 
+-  `word、pdf文件每个文件限制在10M以下`
+-  `png、jpg、jpeg文件每个限制在5M以下`
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def Option(self):
+        r"""个性化参数，用于控制页面展示内容
+        :rtype: :class:`tencentcloud.ess.v20201111.models.WebUrlOption`
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceIds = params.get("ResourceIds")
+        self._UserData = params.get("UserData")
+        if params.get("Option") is not None:
+            self._Option = WebUrlOption()
+            self._Option._deserialize(params.get("Option"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInformationExtractionWebUrlResponse(AbstractModel):
+    r"""CreateInformationExtractionWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 合同信息提取嵌入式web页面链接。
+
+注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""合同信息提取嵌入式web页面链接。
+
+注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         self._RequestId = params.get("RequestId")
 
 
@@ -20878,9 +21359,13 @@ class DescribeContractComparisonTaskRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _TaskId: 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
         :type TaskId: str
+        :param _ShowDetail: 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
+注：`详细结果数据量可能较大，请按需开启。`
+        :type ShowDetail: bool
         """
         self._Operator = None
         self._TaskId = None
+        self._ShowDetail = None
 
     @property
     def Operator(self):
@@ -20905,12 +21390,25 @@ class DescribeContractComparisonTaskRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def ShowDetail(self):
+        r"""是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
+注：`详细结果数据量可能较大，请按需开启。`
+        :rtype: bool
+        """
+        return self._ShowDetail
+
+    @ShowDetail.setter
+    def ShowDetail(self, ShowDetail):
+        self._ShowDetail = ShowDetail
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._TaskId = params.get("TaskId")
+        self._ShowDetail = params.get("ShowDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20958,6 +21456,8 @@ class DescribeContractComparisonTaskResponse(AbstractModel):
         :type Operator: str
         :param _CreateTime: 合同对比任务创建时间，时间戳。
         :type CreateTime: int
+        :param _ComparisonDetail: 对比差异详情，请求参数ShowDetail为true时返回。
+        :type ComparisonDetail: list of ComparisonDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20973,6 +21473,7 @@ class DescribeContractComparisonTaskResponse(AbstractModel):
         self._DeleteDiffCount = None
         self._Operator = None
         self._CreateTime = None
+        self._ComparisonDetail = None
         self._RequestId = None
 
     @property
@@ -21114,6 +21615,17 @@ class DescribeContractComparisonTaskResponse(AbstractModel):
         self._CreateTime = CreateTime
 
     @property
+    def ComparisonDetail(self):
+        r"""对比差异详情，请求参数ShowDetail为true时返回。
+        :rtype: list of ComparisonDetail
+        """
+        return self._ComparisonDetail
+
+    @ComparisonDetail.setter
+    def ComparisonDetail(self, ComparisonDetail):
+        self._ComparisonDetail = ComparisonDetail
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -21138,6 +21650,12 @@ class DescribeContractComparisonTaskResponse(AbstractModel):
         self._DeleteDiffCount = params.get("DeleteDiffCount")
         self._Operator = params.get("Operator")
         self._CreateTime = params.get("CreateTime")
+        if params.get("ComparisonDetail") is not None:
+            self._ComparisonDetail = []
+            for item in params.get("ComparisonDetail"):
+                obj = ComparisonDetail()
+                obj._deserialize(item)
+                self._ComparisonDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23563,6 +24081,112 @@ class DescribeInformationExtractionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInformationExtractionWebUrlRequest(AbstractModel):
+    r"""DescribeInformationExtractionWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同信息提取任务ID，该参数可通过回调事件[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)获取或者从控制台信息提取任务列表获取。
+
+注意：`不填写任务ID时返回信息提取任务列表URL，填写任务ID时返回信息提取任务详情URL`
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同信息提取任务ID，该参数可通过回调事件[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)获取或者从控制台信息提取任务列表获取。
+
+注意：`不填写任务ID时返回信息提取任务列表URL，填写任务ID时返回信息提取任务详情URL`
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInformationExtractionWebUrlResponse(AbstractModel):
+    r"""DescribeInformationExtractionWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 合同信息提取嵌入式web页面链接。
+注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""合同信息提取嵌入式web页面链接。
+注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIntegrationDepartmentsRequest(AbstractModel):
     r"""DescribeIntegrationDepartments请求参数结构体
 
@@ -24660,7 +25284,7 @@ class DescribeOrganizationSealsRequest(AbstractModel):
         :type InfoType: int
         :param _SealId: 印章id，是否查询特定的印章（没有输入返回所有）
         :type SealId: str
-        :param _SealTypes: 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
+        :param _SealTypes: 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
         :type SealTypes: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -24748,7 +25372,7 @@ class DescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        r"""印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
+        r"""印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
         :rtype: list of str
         """
         return self._SealTypes
@@ -26478,6 +27102,167 @@ class EmbedUrlOption(AbstractModel):
         
 
 
+class ExportContractComparisonTaskRequest(AbstractModel):
+    r"""ExportContractComparisonTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        :type TaskId: str
+        :param _ExportType: 导出对比结果文件类型。
+类型如下：
+<ul>
+<li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
+<li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
+</ul>
+        :type ExportType: int
+        :param _Ignore: 是否忽略，适用于PDF。
+<ul>
+<li> **true**：导出文件标注去掉忽略项。</li>
+<li> **false**：导出文件包含所有对比点。</li>
+</ul>
+        :type Ignore: bool
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._ExportType = None
+        self._Ignore = None
+
+    @property
+    def Operator(self):
+        r"""执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ExportType(self):
+        r"""导出对比结果文件类型。
+类型如下：
+<ul>
+<li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
+<li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
+</ul>
+        :rtype: int
+        """
+        return self._ExportType
+
+    @ExportType.setter
+    def ExportType(self, ExportType):
+        self._ExportType = ExportType
+
+    @property
+    def Ignore(self):
+        r"""是否忽略，适用于PDF。
+<ul>
+<li> **true**：导出文件标注去掉忽略项。</li>
+<li> **false**：导出文件包含所有对比点。</li>
+</ul>
+        :rtype: bool
+        """
+        return self._Ignore
+
+    @Ignore.setter
+    def Ignore(self, Ignore):
+        self._Ignore = Ignore
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        self._ExportType = params.get("ExportType")
+        self._Ignore = params.get("Ignore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportContractComparisonTaskResponse(AbstractModel):
+    r"""ExportContractComparisonTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceUrl: 对比任务详情下载链接。
+        :type ResourceUrl: str
+        :param _ExpireTime: 下载链接有效截止时间。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceUrl = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def ResourceUrl(self):
+        r"""对比任务详情下载链接。
+        :rtype: str
+        """
+        return self._ResourceUrl
+
+    @ResourceUrl.setter
+    def ResourceUrl(self, ResourceUrl):
+        self._ResourceUrl = ResourceUrl
+
+    @property
+    def ExpireTime(self):
+        r"""下载链接有效截止时间。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceUrl = params.get("ResourceUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class ExtendAuthInfo(AbstractModel):
     r"""扩展服务开通和授权的详细信息
 
@@ -26712,16 +27497,18 @@ class ExtractionField(AbstractModel):
         :param _Description: 用于描述字段信息。
 
 注意：
-1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
-2、描述字段不能超过100个字符
+1、描述字段不能超过100个字符
         :type Description: str
         :param _Values: 提取出合同中的字段信息。
         :type Values: list of str
+        :param _ChoiceList: 当字段类型`Type`为OPTION时为必输项，输入选项值
+        :type ChoiceList: list of str
         """
         self._Name = None
         self._Type = None
         self._Description = None
         self._Values = None
+        self._ChoiceList = None
 
     @property
     def Name(self):
@@ -26758,8 +27545,7 @@ class ExtractionField(AbstractModel):
         r"""用于描述字段信息。
 
 注意：
-1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
-2、描述字段不能超过100个字符
+1、描述字段不能超过100个字符
         :rtype: str
         """
         return self._Description
@@ -26779,12 +27565,24 @@ class ExtractionField(AbstractModel):
     def Values(self, Values):
         self._Values = Values
 
+    @property
+    def ChoiceList(self):
+        r"""当字段类型`Type`为OPTION时为必输项，输入选项值
+        :rtype: list of str
+        """
+        return self._ChoiceList
+
+    @ChoiceList.setter
+    def ChoiceList(self, ChoiceList):
+        self._ChoiceList = ChoiceList
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._Description = params.get("Description")
         self._Values = params.get("Values")
+        self._ChoiceList = params.get("ChoiceList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38401,6 +39199,57 @@ class SuccessUpdateStaffData(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键，最大长度不超过50字符。
+        :type TagKey: str
+        :param _TagValue: 标签值，最大长度不超过50字符。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键，最大长度不超过50字符。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值，最大长度不超过50字符。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemplateInfo(AbstractModel):
     r"""此结构体 (TemplateInfo) 用于描述模板的信息。
 
@@ -40455,6 +41304,72 @@ class WebThemeConfig(AbstractModel):
     def _deserialize(self, params):
         self._DisplaySignBrandLogo = params.get("DisplaySignBrandLogo")
         self._WebEmbedThemeColor = params.get("WebEmbedThemeColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebUrlOption(AbstractModel):
+    r"""提取web嵌入页面个性化设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisableLinkPreview: 禁用链接预览
+        :type DisableLinkPreview: bool
+        :param _DisableTaskEditing: 禁用任务编辑
+        :type DisableTaskEditing: bool
+        :param _DisableTaskResultEditing: 禁用任务结果编辑
+        :type DisableTaskResultEditing: bool
+        """
+        self._DisableLinkPreview = None
+        self._DisableTaskEditing = None
+        self._DisableTaskResultEditing = None
+
+    @property
+    def DisableLinkPreview(self):
+        r"""禁用链接预览
+        :rtype: bool
+        """
+        return self._DisableLinkPreview
+
+    @DisableLinkPreview.setter
+    def DisableLinkPreview(self, DisableLinkPreview):
+        self._DisableLinkPreview = DisableLinkPreview
+
+    @property
+    def DisableTaskEditing(self):
+        r"""禁用任务编辑
+        :rtype: bool
+        """
+        return self._DisableTaskEditing
+
+    @DisableTaskEditing.setter
+    def DisableTaskEditing(self, DisableTaskEditing):
+        self._DisableTaskEditing = DisableTaskEditing
+
+    @property
+    def DisableTaskResultEditing(self):
+        r"""禁用任务结果编辑
+        :rtype: bool
+        """
+        return self._DisableTaskResultEditing
+
+    @DisableTaskResultEditing.setter
+    def DisableTaskResultEditing(self, DisableTaskResultEditing):
+        self._DisableTaskResultEditing = DisableTaskResultEditing
+
+
+    def _deserialize(self, params):
+        self._DisableLinkPreview = params.get("DisableLinkPreview")
+        self._DisableTaskEditing = params.get("DisableTaskEditing")
+        self._DisableTaskResultEditing = params.get("DisableTaskResultEditing")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

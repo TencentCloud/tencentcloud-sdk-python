@@ -1223,7 +1223,7 @@ class WedataClient(AbstractClient):
 
 
     def GetTask(self, request):
-        r"""创建任务接口
+        r"""获取任务详情接口
 
         :param request: Request instance for GetTask.
         :type request: :class:`tencentcloud.wedata.v20250806.models.GetTaskRequest`
@@ -2695,7 +2695,7 @@ class WedataClient(AbstractClient):
 
 
     def UpdateTask(self, request):
-        r"""创建任务接口
+        r"""更新任务接口
 
         :param request: Request instance for UpdateTask.
         :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskRequest`
@@ -2741,7 +2741,7 @@ class WedataClient(AbstractClient):
 
 
     def UpdateWorkflowFolder(self, request):
-        r"""创建文件夹
+        r"""更新工作流文件夹
 
         :param request: Request instance for UpdateWorkflowFolder.
         :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateWorkflowFolderRequest`

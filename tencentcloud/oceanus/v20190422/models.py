@@ -10293,9 +10293,11 @@ class JobV1(AbstractModel):
         :param _ClusterName: 集群名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param _LatestJobConfigVersion: 最新配置版本号
+        :param _LatestJobConfigVersion: 最新配置版本号，包括已经删除的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestJobConfigVersion: int
+        :param _LatestValidJobConfigVersion: 最新的版本号，不包括已经删除的版本号
+        :type LatestValidJobConfigVersion: int
         :param _PublishedJobConfigVersion: 已发布的配置版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedJobConfigVersion: int
@@ -10362,6 +10364,8 @@ class JobV1(AbstractModel):
         :type ProgressDesc: str
         :param _ContinueAlarm: 停止持续告警
         :type ContinueAlarm: int
+        :param _RestartCount: 作业重启次数
+        :type RestartCount: int
         """
         self._JobId = None
         self._Region = None
@@ -10381,6 +10385,7 @@ class JobV1(AbstractModel):
         self._LastOpResult = None
         self._ClusterName = None
         self._LatestJobConfigVersion = None
+        self._LatestValidJobConfigVersion = None
         self._PublishedJobConfigVersion = None
         self._RunningCuNum = None
         self._CuMem = None
@@ -10403,6 +10408,7 @@ class JobV1(AbstractModel):
         self._OpenJobDefaultAlarm = None
         self._ProgressDesc = None
         self._ContinueAlarm = None
+        self._RestartCount = None
 
     @property
     def JobId(self):
@@ -10610,7 +10616,7 @@ class JobV1(AbstractModel):
 
     @property
     def LatestJobConfigVersion(self):
-        r"""最新配置版本号
+        r"""最新配置版本号，包括已经删除的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10619,6 +10625,17 @@ class JobV1(AbstractModel):
     @LatestJobConfigVersion.setter
     def LatestJobConfigVersion(self, LatestJobConfigVersion):
         self._LatestJobConfigVersion = LatestJobConfigVersion
+
+    @property
+    def LatestValidJobConfigVersion(self):
+        r"""最新的版本号，不包括已经删除的版本号
+        :rtype: int
+        """
+        return self._LatestValidJobConfigVersion
+
+    @LatestValidJobConfigVersion.setter
+    def LatestValidJobConfigVersion(self, LatestValidJobConfigVersion):
+        self._LatestValidJobConfigVersion = LatestValidJobConfigVersion
 
     @property
     def PublishedJobConfigVersion(self):
@@ -10884,6 +10901,17 @@ class JobV1(AbstractModel):
     def ContinueAlarm(self, ContinueAlarm):
         self._ContinueAlarm = ContinueAlarm
 
+    @property
+    def RestartCount(self):
+        r"""作业重启次数
+        :rtype: int
+        """
+        return self._RestartCount
+
+    @RestartCount.setter
+    def RestartCount(self, RestartCount):
+        self._RestartCount = RestartCount
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10904,6 +10932,7 @@ class JobV1(AbstractModel):
         self._LastOpResult = params.get("LastOpResult")
         self._ClusterName = params.get("ClusterName")
         self._LatestJobConfigVersion = params.get("LatestJobConfigVersion")
+        self._LatestValidJobConfigVersion = params.get("LatestValidJobConfigVersion")
         self._PublishedJobConfigVersion = params.get("PublishedJobConfigVersion")
         self._RunningCuNum = params.get("RunningCuNum")
         self._CuMem = params.get("CuMem")
@@ -10933,6 +10962,7 @@ class JobV1(AbstractModel):
         self._OpenJobDefaultAlarm = params.get("OpenJobDefaultAlarm")
         self._ProgressDesc = params.get("ProgressDesc")
         self._ContinueAlarm = params.get("ContinueAlarm")
+        self._RestartCount = params.get("RestartCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15867,6 +15897,8 @@ class TreeJobSets(AbstractModel):
         :param _DecodeSqlCode: sql
 注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeSqlCode: str
+        :param _PublishedJobConfigId: 发布版本配置id
+        :type PublishedJobConfigId: int
         """
         self._JobId = None
         self._Name = None
@@ -15877,6 +15909,7 @@ class TreeJobSets(AbstractModel):
         self._RunningCpu = None
         self._RunningMem = None
         self._DecodeSqlCode = None
+        self._PublishedJobConfigId = None
 
     @property
     def JobId(self):
@@ -15987,6 +16020,17 @@ class TreeJobSets(AbstractModel):
     def DecodeSqlCode(self, DecodeSqlCode):
         self._DecodeSqlCode = DecodeSqlCode
 
+    @property
+    def PublishedJobConfigId(self):
+        r"""发布版本配置id
+        :rtype: int
+        """
+        return self._PublishedJobConfigId
+
+    @PublishedJobConfigId.setter
+    def PublishedJobConfigId(self, PublishedJobConfigId):
+        self._PublishedJobConfigId = PublishedJobConfigId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -15998,6 +16042,7 @@ class TreeJobSets(AbstractModel):
         self._RunningCpu = params.get("RunningCpu")
         self._RunningMem = params.get("RunningMem")
         self._DecodeSqlCode = params.get("DecodeSqlCode")
+        self._PublishedJobConfigId = params.get("PublishedJobConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

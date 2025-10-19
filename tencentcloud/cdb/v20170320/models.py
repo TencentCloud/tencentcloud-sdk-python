@@ -4535,7 +4535,13 @@ class CdbSellType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeName: 售卖实例名称。Z3是高可用类型对应规格中的DeviceType包含UNIVERSAL,EXCLUSIVE；CVM是基础版类型对应规格中的DeviceType是BASIC；TKE是基础型v2类型对应规格中的DeviceType是BASIC_V2。
+        :param _TypeName: 售卖实例名称。
+Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。
+CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。
+TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。
+CLOUD_NATIVE_CLUSTER：表示云盘版标准型。
+CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。
+ECONOMICAL：表示经济型。
         :type TypeName: str
         :param _EngineVersion: 引擎版本号
         :type EngineVersion: list of str
@@ -4548,7 +4554,13 @@ class CdbSellType(AbstractModel):
 
     @property
     def TypeName(self):
-        r"""售卖实例名称。Z3是高可用类型对应规格中的DeviceType包含UNIVERSAL,EXCLUSIVE；CVM是基础版类型对应规格中的DeviceType是BASIC；TKE是基础型v2类型对应规格中的DeviceType是BASIC_V2。
+        r"""售卖实例名称。
+Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。
+CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。
+TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。
+CLOUD_NATIVE_CLUSTER：表示云盘版标准型。
+CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。
+ECONOMICAL：表示经济型。
         :rtype: str
         """
         return self._TypeName
@@ -4706,9 +4718,9 @@ class CdbZoneSellConf(AbstractModel):
         :type IsSupportIpv6: bool
         :param _EngineType: 可支持的售卖数据库引擎类型
         :type EngineType: list of str
-        :param _CloudNativeClusterStatus: 集群版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
+        :param _CloudNativeClusterStatus: 云盘版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
         :type CloudNativeClusterStatus: int
-        :param _DiskTypeConf: 集群版或者单节点基础型支持的磁盘类型。
+        :param _DiskTypeConf: 云盘版或者单节点基础型支持的磁盘类型。
         :type DiskTypeConf: list of DiskTypeConfigItem
         """
         self._Status = None
@@ -4980,7 +4992,7 @@ class CdbZoneSellConf(AbstractModel):
 
     @property
     def CloudNativeClusterStatus(self):
-        r"""集群版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
+        r"""云盘版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
         :rtype: int
         """
         return self._CloudNativeClusterStatus
@@ -4991,7 +5003,7 @@ class CdbZoneSellConf(AbstractModel):
 
     @property
     def DiskTypeConf(self):
-        r"""集群版或者单节点基础型支持的磁盘类型。
+        r"""云盘版或者单节点基础型支持的磁盘类型。
         :rtype: list of DiskTypeConfigItem
         """
         return self._DiskTypeConf
@@ -5262,7 +5274,7 @@ class CheckMigrateClusterResponse(AbstractModel):
 
 
 class CheckMigrateResult(AbstractModel):
-    r"""迁移集群版校验结果
+    r"""迁移云盘版校验结果
 
     """
 
@@ -5924,7 +5936,7 @@ class CloseWanServiceResponse(AbstractModel):
 
 
 class ClusterInfo(AbstractModel):
-    r"""集群版节点信息
+    r"""云盘版节点信息
 
     """
 
@@ -5990,7 +6002,7 @@ class ClusterInfo(AbstractModel):
 
 
 class ClusterNodeInfo(AbstractModel):
-    r"""集群版实例节点信息
+    r"""云盘版实例节点信息
 
     """
 
@@ -23601,7 +23613,7 @@ class DiskTypeConfigItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceType: 磁盘对应的实例类型。仅支持单节点基础型和集群版。
+        :param _DeviceType: 磁盘对应的实例类型。仅支持单节点（云盘）和云盘版。
         :type DeviceType: str
         :param _DiskType: 可以选择的磁盘类型列表。
         :type DiskType: list of str
@@ -23611,7 +23623,7 @@ class DiskTypeConfigItem(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""磁盘对应的实例类型。仅支持单节点基础型和集群版。
+        r"""磁盘对应的实例类型。仅支持单节点（云盘）和云盘版。
         :rtype: str
         """
         return self._DeviceType
@@ -25190,16 +25202,22 @@ class InstanceInfo(AbstractModel):
         :type EngineType: str
         :param _MaxDelayTime: 最大延迟阈值
         :type MaxDelayTime: int
-        :param _DiskType: 实例磁盘类型，仅云盘版实例才返回该值。可能的值为 CLOUD_SSD：SSD云硬盘， CLOUD_HSSD：增强型SSD云硬盘
+        :param _DiskType: 实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。
+说明：
+1. 若返回："DiskType": "CLOUD_HSSD"，则表示该实例磁盘类型为增强型 SSD 云硬盘。
+2. 若返回："DiskType": "CLOUD_SSD"，则表示该实例磁盘类型为 SSD 云硬盘。
+3. 若返回："DiskType": ""，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。
         :type DiskType: str
         :param _ExpandCpu: 当前扩容的CPU核心数。
         :type ExpandCpu: int
-        :param _ClusterInfo: 实例集群版节点信息
+        :param _ClusterInfo: 云盘版实例节点信息
         :type ClusterInfo: list of ClusterInfo
         :param _AnalysisNodeInfos: 分析引擎节点列表
         :type AnalysisNodeInfos: list of AnalysisNodeInfo
         :param _DeviceBandwidth: 设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
         :type DeviceBandwidth: int
+        :param _DestroyProtect: 实例销毁保护状态，on表示开启保护，否则为关闭保护
+        :type DestroyProtect: str
         """
         self._WanStatus = None
         self._Zone = None
@@ -25251,6 +25269,7 @@ class InstanceInfo(AbstractModel):
         self._ClusterInfo = None
         self._AnalysisNodeInfos = None
         self._DeviceBandwidth = None
+        self._DestroyProtect = None
 
     @property
     def WanStatus(self):
@@ -25749,7 +25768,11 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""实例磁盘类型，仅云盘版实例才返回该值。可能的值为 CLOUD_SSD：SSD云硬盘， CLOUD_HSSD：增强型SSD云硬盘
+        r"""实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。
+说明：
+1. 若返回："DiskType": "CLOUD_HSSD"，则表示该实例磁盘类型为增强型 SSD 云硬盘。
+2. 若返回："DiskType": "CLOUD_SSD"，则表示该实例磁盘类型为 SSD 云硬盘。
+3. 若返回："DiskType": ""，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。
         :rtype: str
         """
         return self._DiskType
@@ -25771,7 +25794,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClusterInfo(self):
-        r"""实例集群版节点信息
+        r"""云盘版实例节点信息
         :rtype: list of ClusterInfo
         """
         return self._ClusterInfo
@@ -25801,6 +25824,17 @@ class InstanceInfo(AbstractModel):
     @DeviceBandwidth.setter
     def DeviceBandwidth(self, DeviceBandwidth):
         self._DeviceBandwidth = DeviceBandwidth
+
+    @property
+    def DestroyProtect(self):
+        r"""实例销毁保护状态，on表示开启保护，否则为关闭保护
+        :rtype: str
+        """
+        return self._DestroyProtect
+
+    @DestroyProtect.setter
+    def DestroyProtect(self, DestroyProtect):
+        self._DestroyProtect = DestroyProtect
 
 
     def _deserialize(self, params):
@@ -25885,6 +25919,7 @@ class InstanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AnalysisNodeInfos.append(obj)
         self._DeviceBandwidth = params.get("DeviceBandwidth")
+        self._DestroyProtect = params.get("DestroyProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26671,7 +26706,7 @@ class MasterInfo(AbstractModel):
 
 
 class MigrateClusterRoInfo(AbstractModel):
-    r"""一键迁移集群版只读实例信息
+    r"""一键迁移云盘版只读实例信息
 
     """
 
@@ -26689,7 +26724,7 @@ class MigrateClusterRoInfo(AbstractModel):
         :type DiskType: str
         :param _Zone: 可用区
         :type Zone: str
-        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 云盘版标准型实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型实例。
         :type DeviceType: str
         :param _RoGroupId: 只读实例所在ro组，例：cdbrg-xxx
         :type RoGroupId: str
@@ -26774,7 +26809,7 @@ class MigrateClusterRoInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        r"""迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 云盘版标准型实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型实例。
         :rtype: str
         """
         return self._DeviceType

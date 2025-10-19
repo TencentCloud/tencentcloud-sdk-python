@@ -15644,9 +15644,11 @@ class StartCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 ID，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :type JobId: str
-        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :type CompareTaskId: str
         """
         self._JobId = None
@@ -15654,7 +15656,8 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 ID，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15665,7 +15668,8 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :rtype: str
         """
         return self._CompareTaskId
@@ -16398,11 +16402,13 @@ class StopCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
-        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type CompareTaskId: str
-        :param _ForceStop: 是否强制停止。如果填true，同步任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+        :param _ForceStop: 是否强制停止。默认值为false，表示不强制停止；如果填true，同步任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
         :type ForceStop: bool
         """
         self._JobId = None
@@ -16411,7 +16417,8 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -16422,7 +16429,8 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._CompareTaskId
@@ -16433,7 +16441,7 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        r"""是否强制停止。如果填true，同步任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+        r"""是否强制停止。默认值为false，表示不强制停止；如果填true，同步任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
         :rtype: bool
         """
         return self._ForceStop

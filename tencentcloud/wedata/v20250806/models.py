@@ -3080,6 +3080,7 @@ class CreateDataSourceRequest(AbstractModel):
 - GDB
 - TDENGINE
 - TDSQLC
+- FileSystem
 
         :type Type: str
         :param _ProdConProperties: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -3300,6 +3301,7 @@ cos:
 - GDB
 - TDENGINE
 - TDSQLC
+- FileSystem
 
         :rtype: str
         """
@@ -3823,13 +3825,13 @@ class CreateProjectMemberRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _UseUins: 用户id
-        :type UseUins: list of str
+        :param _UserUins: 用户id
+        :type UserUins: list of str
         :param _RoleIds: 角色id
         :type RoleIds: list of str
         """
         self._ProjectId = None
-        self._UseUins = None
+        self._UserUins = None
         self._RoleIds = None
 
     @property
@@ -3844,15 +3846,15 @@ class CreateProjectMemberRequest(AbstractModel):
         self._ProjectId = ProjectId
 
     @property
-    def UseUins(self):
+    def UserUins(self):
         r"""用户id
         :rtype: list of str
         """
-        return self._UseUins
+        return self._UserUins
 
-    @UseUins.setter
-    def UseUins(self, UseUins):
-        self._UseUins = UseUins
+    @UserUins.setter
+    def UserUins(self, UserUins):
+        self._UserUins = UserUins
 
     @property
     def RoleIds(self):
@@ -3868,7 +3870,7 @@ class CreateProjectMemberRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
-        self._UseUins = params.get("UseUins")
+        self._UserUins = params.get("UserUins")
         self._RoleIds = params.get("RoleIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19261,7 +19263,7 @@ class ListResourceGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 执行资源组类型，不能为空
+        :param _Type: 执行资源组类型
 
 - Schedule --- 调度资源组
 - Integration --- 集成资源组
@@ -19287,7 +19289,7 @@ class ListResourceGroupsRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""执行资源组类型，不能为空
+        r"""执行资源组类型
 
 - Schedule --- 调度资源组
 - Integration --- 集成资源组

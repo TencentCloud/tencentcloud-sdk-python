@@ -13227,6 +13227,10 @@ class DisplayWechatApplet(AbstractModel):
         :type QrCode: str
         :param _Description: 描述
         :type Description: str
+        :param _RecordSubject: 认证主体
+        :type RecordSubject: str
+        :param _AccountAppid: 账号Appid
+        :type AccountAppid: str
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -13235,6 +13239,8 @@ class DisplayWechatApplet(AbstractModel):
         self._AccountId = None
         self._QrCode = None
         self._Description = None
+        self._RecordSubject = None
+        self._AccountAppid = None
 
     @property
     def Id(self):
@@ -13313,6 +13319,28 @@ class DisplayWechatApplet(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def RecordSubject(self):
+        r"""认证主体
+        :rtype: str
+        """
+        return self._RecordSubject
+
+    @RecordSubject.setter
+    def RecordSubject(self, RecordSubject):
+        self._RecordSubject = RecordSubject
+
+    @property
+    def AccountAppid(self):
+        r"""账号Appid
+        :rtype: str
+        """
+        return self._AccountAppid
+
+    @AccountAppid.setter
+    def AccountAppid(self, AccountAppid):
+        self._AccountAppid = AccountAppid
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13324,6 +13352,8 @@ class DisplayWechatApplet(AbstractModel):
         self._AccountId = params.get("AccountId")
         self._QrCode = params.get("QrCode")
         self._Description = params.get("Description")
+        self._RecordSubject = params.get("RecordSubject")
+        self._AccountAppid = params.get("AccountAppid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13355,6 +13385,8 @@ class DisplayWechatOfficialAccount(AbstractModel):
         :type QrCode: str
         :param _Description: 描述
         :type Description: str
+        :param _RecordSubject: 认证主体
+        :type RecordSubject: str
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -13363,6 +13395,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
         self._AccountId = None
         self._QrCode = None
         self._Description = None
+        self._RecordSubject = None
 
     @property
     def Id(self):
@@ -13441,6 +13474,17 @@ class DisplayWechatOfficialAccount(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def RecordSubject(self):
+        r"""认证主体
+        :rtype: str
+        """
+        return self._RecordSubject
+
+    @RecordSubject.setter
+    def RecordSubject(self, RecordSubject):
+        self._RecordSubject = RecordSubject
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13452,6 +13496,7 @@ class DisplayWechatOfficialAccount(AbstractModel):
         self._AccountId = params.get("AccountId")
         self._QrCode = params.get("QrCode")
         self._Description = params.get("Description")
+        self._RecordSubject = params.get("RecordSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

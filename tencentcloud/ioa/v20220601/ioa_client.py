@@ -26,6 +26,29 @@ class IoaClient(AbstractClient):
     _service = 'ioa'
 
 
+    def CreateDLPFileDetectTask(self, request):
+        r"""创建文件鉴定任务，私有化调用path为：capi/DlpOpenApi/CreateDLPFileDetectTask
+
+        :param request: Request instance for CreateDLPFileDetectTask.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectTaskRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDLPFileDetectTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDLPFileDetectTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDLPFileDetectionTask(self, request):
         r"""提交送检任务
 
@@ -210,6 +233,52 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDLPEdgeNodeGroups(self, request):
+        r"""查询边缘节点分组，私有化调用path为：capi/Connectors/DescribeDLPEdgeNodeGroups
+
+        :param request: Request instance for DescribeDLPEdgeNodeGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPEdgeNodeGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPEdgeNodeGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLPEdgeNodeGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLPEdgeNodeGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLPEdgeNodes(self, request):
+        r"""查询边缘节点列表，私有化调用path为：capi/DlpOpenApi/DescribeDLPEdgeNodes
+
+        :param request: Request instance for DescribeDLPEdgeNodes.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPEdgeNodesRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPEdgeNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLPEdgeNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLPEdgeNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDLPFileDetectResult(self, request):
         r"""webservice查询文件检测结果
 
@@ -224,6 +293,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeDLPFileDetectResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDLPFileDetectResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLPFileDetectTaskResult(self, request):
+        r"""查询文件鉴定任务结果
+
+        :param request: Request instance for DescribeDLPFileDetectTaskResult.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectTaskResultRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLPFileDetectTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLPFileDetectTaskResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

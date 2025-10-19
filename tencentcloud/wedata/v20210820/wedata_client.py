@@ -3339,7 +3339,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeReportTaskDetail(self, request):
-        r"""查询上报任务详情
+        r"""查询上报任务详情，注意：任务执行完后，任务详情上报存在10分钟的延迟，使用接口查询任务详情时需等待任务运行完10分钟后查询
 
         :param request: Request instance for DescribeReportTaskDetail.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailRequest`
