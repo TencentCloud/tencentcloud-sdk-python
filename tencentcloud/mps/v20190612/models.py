@@ -12529,7 +12529,8 @@ class AudioTemplateInfo(AbstractModel):
 
 
         :type Bitrate: int
-        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。填0代表使用源音频的采样率数值。
+详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
         :type SampleRate: int
@@ -12600,7 +12601,8 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+        r"""音频流的采样率，不同编码标准支持的采样率选项不同。填0代表使用源音频的采样率数值。
+详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
         :rtype: int
@@ -12688,7 +12690,8 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         :param _Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
-        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。填0代表使用源音频的采样率数值。
+详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12752,7 +12755,8 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+        r"""音频流的采样率，不同编码标准支持的采样率选项不同。填0代表使用源音频的采样率数值。
+详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13801,8 +13805,12 @@ class BeautyEffectItemConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 类型名称。取值如下：
-
 <li>Whiten：美白</li>
+<li>BlackAlpha1：美黑</li>
+<li>BlackAlpha2：较强美黑</li>
+<li>FoundationAlpha2：美白-粉白</li>
+<li>Clear：清晰度</li>
+<li>Sharpen：锐化</li>
 <li>Smooth：磨皮</li>
 <li>BeautyThinFace：瘦脸</li>
 <li>NatureFace：自然脸型</li>
@@ -13812,9 +13820,11 @@ class BeautyEffectItemConfig(AbstractModel):
 <li>RemoveEyeBags：祛眼袋</li>
 <li>ThinNose：瘦鼻</li>
 <li>RemoveLawLine：祛法令纹</li>
+<li>CheekboneThin：瘦颧骨</li>
+<li>FaceFeatureLipsLut：口红</li>
 <li>ToothWhiten：牙齿美白</li>
-
-
+<li>FaceFeatureSoftlight：柔光</li>
+<li>Makeup：美妆</li>
         :type Type: str
         :param _Switch: 能力配置开关，可选值：
 <li>ON：开启；</li>
@@ -13823,16 +13833,26 @@ class BeautyEffectItemConfig(AbstractModel):
         :type Switch: str
         :param _Value: 效果强度，值范围：[0, 100]。
         :type Value: int
+        :param _ResourcePath: 附加资源路径。
+        :type ResourcePath: str
+        :param _ExtInfo: 自定义参数。
+        :type ExtInfo: str
         """
         self._Type = None
         self._Switch = None
         self._Value = None
+        self._ResourcePath = None
+        self._ExtInfo = None
 
     @property
     def Type(self):
         r"""类型名称。取值如下：
-
 <li>Whiten：美白</li>
+<li>BlackAlpha1：美黑</li>
+<li>BlackAlpha2：较强美黑</li>
+<li>FoundationAlpha2：美白-粉白</li>
+<li>Clear：清晰度</li>
+<li>Sharpen：锐化</li>
 <li>Smooth：磨皮</li>
 <li>BeautyThinFace：瘦脸</li>
 <li>NatureFace：自然脸型</li>
@@ -13842,9 +13862,11 @@ class BeautyEffectItemConfig(AbstractModel):
 <li>RemoveEyeBags：祛眼袋</li>
 <li>ThinNose：瘦鼻</li>
 <li>RemoveLawLine：祛法令纹</li>
+<li>CheekboneThin：瘦颧骨</li>
+<li>FaceFeatureLipsLut：口红</li>
 <li>ToothWhiten：牙齿美白</li>
-
-
+<li>FaceFeatureSoftlight：柔光</li>
+<li>Makeup：美妆</li>
         :rtype: str
         """
         return self._Type
@@ -13878,11 +13900,35 @@ class BeautyEffectItemConfig(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def ResourcePath(self):
+        r"""附加资源路径。
+        :rtype: str
+        """
+        return self._ResourcePath
+
+    @ResourcePath.setter
+    def ResourcePath(self, ResourcePath):
+        self._ResourcePath = ResourcePath
+
+    @property
+    def ExtInfo(self):
+        r"""自定义参数。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Switch = params.get("Switch")
         self._Value = params.get("Value")
+        self._ResourcePath = params.get("ResourcePath")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

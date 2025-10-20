@@ -758,6 +758,8 @@ class AlarmRuleDetail(AbstractModel):
         :param _ReconciliationExtInfo: 离线集成对账告警配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReconciliationExtInfo: list of ReconciliationStrategyInfo
+        :param _MonitorWhiteTasks: 监控对象的白名单配置
+        :type MonitorWhiteTasks: list of MonitorWhiteTask
         """
         self._Trigger = None
         self._DataBackfillOrRerunTrigger = None
@@ -765,6 +767,7 @@ class AlarmRuleDetail(AbstractModel):
         self._DataBackfillOrRerunTimeOutExtInfo = None
         self._ProjectInstanceStatisticsAlarmInfoList = None
         self._ReconciliationExtInfo = None
+        self._MonitorWhiteTasks = None
 
     @property
     def Trigger(self):
@@ -844,6 +847,17 @@ class AlarmRuleDetail(AbstractModel):
     def ReconciliationExtInfo(self, ReconciliationExtInfo):
         self._ReconciliationExtInfo = ReconciliationExtInfo
 
+    @property
+    def MonitorWhiteTasks(self):
+        r"""监控对象的白名单配置
+        :rtype: list of MonitorWhiteTask
+        """
+        return self._MonitorWhiteTasks
+
+    @MonitorWhiteTasks.setter
+    def MonitorWhiteTasks(self, MonitorWhiteTasks):
+        self._MonitorWhiteTasks = MonitorWhiteTasks
+
 
     def _deserialize(self, params):
         self._Trigger = params.get("Trigger")
@@ -872,6 +886,12 @@ class AlarmRuleDetail(AbstractModel):
                 obj = ReconciliationStrategyInfo()
                 obj._deserialize(item)
                 self._ReconciliationExtInfo.append(obj)
+        if params.get("MonitorWhiteTasks") is not None:
+            self._MonitorWhiteTasks = []
+            for item in params.get("MonitorWhiteTasks"):
+                obj = MonitorWhiteTask()
+                obj._deserialize(item)
+                self._MonitorWhiteTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22557,6 +22577,57 @@ class ModifyAlarmRuleResult(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MonitorWhiteTask(AbstractModel):
+    r"""告警规则监控白名单配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorObjectId: 配置白名单的对应的工作流/项目的id
+        :type MonitorObjectId: str
+        :param _TaskIds: 白名单任务列表
+        :type TaskIds: list of str
+        """
+        self._MonitorObjectId = None
+        self._TaskIds = None
+
+    @property
+    def MonitorObjectId(self):
+        r"""配置白名单的对应的工作流/项目的id
+        :rtype: str
+        """
+        return self._MonitorObjectId
+
+    @MonitorObjectId.setter
+    def MonitorObjectId(self, MonitorObjectId):
+        self._MonitorObjectId = MonitorObjectId
+
+    @property
+    def TaskIds(self):
+        r"""白名单任务列表
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._MonitorObjectId = params.get("MonitorObjectId")
+        self._TaskIds = params.get("TaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

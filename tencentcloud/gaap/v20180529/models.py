@@ -18319,7 +18319,7 @@ class RuleInfo(AbstractModel):
         :param _RealServerSet: 已绑定的源站相关信息
         :type RealServerSet: list of BindRealServer
         :param _BindStatus: 源站的服务状态，0表示异常，1表示正常。
-未开启健康检查时，该状态始终未正常。
+未开启健康检查时，该状态始终为正常。
 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
         :type BindStatus: int
         :param _ForwardHost: 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
@@ -18333,6 +18333,8 @@ class RuleInfo(AbstractModel):
         :param _ForcedRedirect: 强转HTTPS指示，当传递值为https:时表示强转为https
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForcedRedirect: str
+        :param _ForwardProtocol: 七层转发规则的回源协议类型
+        :type ForwardProtocol: str
         """
         self._RuleId = None
         self._ListenerId = None
@@ -18349,6 +18351,7 @@ class RuleInfo(AbstractModel):
         self._ServerNameIndicationSwitch = None
         self._ServerNameIndication = None
         self._ForcedRedirect = None
+        self._ForwardProtocol = None
 
     @property
     def RuleId(self):
@@ -18463,7 +18466,7 @@ class RuleInfo(AbstractModel):
     @property
     def BindStatus(self):
         r"""源站的服务状态，0表示异常，1表示正常。
-未开启健康检查时，该状态始终未正常。
+未开启健康检查时，该状态始终为正常。
 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
         :rtype: int
         """
@@ -18520,6 +18523,17 @@ class RuleInfo(AbstractModel):
     def ForcedRedirect(self, ForcedRedirect):
         self._ForcedRedirect = ForcedRedirect
 
+    @property
+    def ForwardProtocol(self):
+        r"""七层转发规则的回源协议类型
+        :rtype: str
+        """
+        return self._ForwardProtocol
+
+    @ForwardProtocol.setter
+    def ForwardProtocol(self, ForwardProtocol):
+        self._ForwardProtocol = ForwardProtocol
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -18544,6 +18558,7 @@ class RuleInfo(AbstractModel):
         self._ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self._ServerNameIndication = params.get("ServerNameIndication")
         self._ForcedRedirect = params.get("ForcedRedirect")
+        self._ForwardProtocol = params.get("ForwardProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

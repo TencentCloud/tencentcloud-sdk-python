@@ -99,6 +99,57 @@ class BoundingBox(AbstractModel):
         
 
 
+class Coord(AbstractModel):
+    r"""坐标详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: X坐标
+        :type X: int
+        :param _Y: Y坐标
+        :type Y: int
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        r"""X坐标
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""Y坐标
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileTranslateRequest(AbstractModel):
     r"""FileTranslate请求参数结构体
 
@@ -1284,6 +1335,77 @@ class LanguageDetectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RotateParagraphRect(AbstractModel):
+    r"""段落文本旋转信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Coord: 段落文本坐标
+        :type Coord: list of Coord
+        :param _TiltAngle: 旋转角度
+        :type TiltAngle: float
+        :param _Valid: 段落文本信息是否有效
+        :type Valid: bool
+        """
+        self._Coord = None
+        self._TiltAngle = None
+        self._Valid = None
+
+    @property
+    def Coord(self):
+        r"""段落文本坐标
+        :rtype: list of Coord
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+    @property
+    def TiltAngle(self):
+        r"""旋转角度
+        :rtype: float
+        """
+        return self._TiltAngle
+
+    @TiltAngle.setter
+    def TiltAngle(self, TiltAngle):
+        self._TiltAngle = TiltAngle
+
+    @property
+    def Valid(self):
+        r"""段落文本信息是否有效
+        :rtype: bool
+        """
+        return self._Valid
+
+    @Valid.setter
+    def Valid(self, Valid):
+        self._Valid = Valid
+
+
+    def _deserialize(self, params):
+        if params.get("Coord") is not None:
+            self._Coord = []
+            for item in params.get("Coord"):
+                obj = Coord()
+                obj._deserialize(item)
+                self._Coord.append(obj)
+        self._TiltAngle = params.get("TiltAngle")
+        self._Valid = params.get("Valid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpeechTranslateRequest(AbstractModel):
     r"""SpeechTranslate请求参数结构体
 
@@ -2231,6 +2353,8 @@ class TransDetail(AbstractModel):
         :type LineHeight: int
         :param _SpamCode: 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
         :type SpamCode: int
+        :param _RotateParagraphRect: 段落文本旋转信息，只在valid为true时表示坐标有效
+        :type RotateParagraphRect: :class:`tencentcloud.tmt.v20180321.models.RotateParagraphRect`
         """
         self._SourceLineText = None
         self._TargetLineText = None
@@ -2238,6 +2362,7 @@ class TransDetail(AbstractModel):
         self._LinesCount = None
         self._LineHeight = None
         self._SpamCode = None
+        self._RotateParagraphRect = None
 
     @property
     def SourceLineText(self):
@@ -2305,6 +2430,17 @@ class TransDetail(AbstractModel):
     def SpamCode(self, SpamCode):
         self._SpamCode = SpamCode
 
+    @property
+    def RotateParagraphRect(self):
+        r"""段落文本旋转信息，只在valid为true时表示坐标有效
+        :rtype: :class:`tencentcloud.tmt.v20180321.models.RotateParagraphRect`
+        """
+        return self._RotateParagraphRect
+
+    @RotateParagraphRect.setter
+    def RotateParagraphRect(self, RotateParagraphRect):
+        self._RotateParagraphRect = RotateParagraphRect
+
 
     def _deserialize(self, params):
         self._SourceLineText = params.get("SourceLineText")
@@ -2315,6 +2451,9 @@ class TransDetail(AbstractModel):
         self._LinesCount = params.get("LinesCount")
         self._LineHeight = params.get("LineHeight")
         self._SpamCode = params.get("SpamCode")
+        if params.get("RotateParagraphRect") is not None:
+            self._RotateParagraphRect = RotateParagraphRect()
+            self._RotateParagraphRect._deserialize(params.get("RotateParagraphRect"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

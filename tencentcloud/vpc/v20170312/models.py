@@ -13806,6 +13806,275 @@ class CreateReserveIpAddressesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRoutePolicyAssociationsRequest(AbstractModel):
+    r"""CreateRoutePolicyAssociations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyAssociationSet: 路由接收策略绑定对象列表。
+        :type RoutePolicyAssociationSet: list of RoutePolicyAssociation
+        """
+        self._RoutePolicyAssociationSet = None
+
+    @property
+    def RoutePolicyAssociationSet(self):
+        r"""路由接收策略绑定对象列表。
+        :rtype: list of RoutePolicyAssociation
+        """
+        return self._RoutePolicyAssociationSet
+
+    @RoutePolicyAssociationSet.setter
+    def RoutePolicyAssociationSet(self, RoutePolicyAssociationSet):
+        self._RoutePolicyAssociationSet = RoutePolicyAssociationSet
+
+
+    def _deserialize(self, params):
+        if params.get("RoutePolicyAssociationSet") is not None:
+            self._RoutePolicyAssociationSet = []
+            for item in params.get("RoutePolicyAssociationSet"):
+                obj = RoutePolicyAssociation()
+                obj._deserialize(item)
+                self._RoutePolicyAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoutePolicyAssociationsResponse(AbstractModel):
+    r"""CreateRoutePolicyAssociations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRoutePolicyEntriesRequest(AbstractModel):
+    r"""CreateRoutePolicyEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由接收策略实例ID。
+        :type RoutePolicyId: str
+        :param _RoutePolicyEntrySet: 路由接收策略条目列表。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyEntrySet = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略实例ID。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由接收策略条目列表。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoutePolicyEntriesResponse(AbstractModel):
+    r"""CreateRoutePolicyEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRoutePolicyRequest(AbstractModel):
+    r"""CreateRoutePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyDescription: 路由策略描述。
+        :type RoutePolicyDescription: str
+        :param _RoutePolicyName: 路由策略名。
+        :type RoutePolicyName: str
+        :param _RoutePolicyEntrySet: 路由策略条目列表。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        """
+        self._RoutePolicyDescription = None
+        self._RoutePolicyName = None
+        self._RoutePolicyEntrySet = None
+
+    @property
+    def RoutePolicyDescription(self):
+        r"""路由策略描述。
+        :rtype: str
+        """
+        return self._RoutePolicyDescription
+
+    @RoutePolicyDescription.setter
+    def RoutePolicyDescription(self, RoutePolicyDescription):
+        self._RoutePolicyDescription = RoutePolicyDescription
+
+    @property
+    def RoutePolicyName(self):
+        r"""路由策略名。
+        :rtype: str
+        """
+        return self._RoutePolicyName
+
+    @RoutePolicyName.setter
+    def RoutePolicyName(self, RoutePolicyName):
+        self._RoutePolicyName = RoutePolicyName
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由策略条目列表。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyDescription = params.get("RoutePolicyDescription")
+        self._RoutePolicyName = params.get("RoutePolicyName")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoutePolicyResponse(AbstractModel):
+    r"""CreateRoutePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicy: 路由策略ID及规则。
+        :type RoutePolicy: :class:`tencentcloud.vpc.v20170312.models.RoutePolicy`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoutePolicy = None
+        self._RequestId = None
+
+    @property
+    def RoutePolicy(self):
+        r"""路由策略ID及规则。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RoutePolicy`
+        """
+        return self._RoutePolicy
+
+    @RoutePolicy.setter
+    def RoutePolicy(self, RoutePolicy):
+        self._RoutePolicy = RoutePolicy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoutePolicy") is not None:
+            self._RoutePolicy = RoutePolicy()
+            self._RoutePolicy._deserialize(params.get("RoutePolicy"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRouteTableRequest(AbstractModel):
     r"""CreateRouteTable请求参数结构体
 
@@ -20777,6 +21046,223 @@ class DeleteReserveIpAddressesRequest(AbstractModel):
 
 class DeleteReserveIpAddressesResponse(AbstractModel):
     r"""DeleteReserveIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRoutePolicyAssociationsRequest(AbstractModel):
+    r"""DeleteRoutePolicyAssociations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyAssociationSet: 路由策略绑定对象列表，删除路由策略绑定时，仅需使用RoutePolicyAssociation的RouteTableId字段和RoutePolicyId字段（不需要填写Priority字段）。
+        :type RoutePolicyAssociationSet: list of RoutePolicyAssociation
+        """
+        self._RoutePolicyAssociationSet = None
+
+    @property
+    def RoutePolicyAssociationSet(self):
+        r"""路由策略绑定对象列表，删除路由策略绑定时，仅需使用RoutePolicyAssociation的RouteTableId字段和RoutePolicyId字段（不需要填写Priority字段）。
+        :rtype: list of RoutePolicyAssociation
+        """
+        return self._RoutePolicyAssociationSet
+
+    @RoutePolicyAssociationSet.setter
+    def RoutePolicyAssociationSet(self, RoutePolicyAssociationSet):
+        self._RoutePolicyAssociationSet = RoutePolicyAssociationSet
+
+
+    def _deserialize(self, params):
+        if params.get("RoutePolicyAssociationSet") is not None:
+            self._RoutePolicyAssociationSet = []
+            for item in params.get("RoutePolicyAssociationSet"):
+                obj = RoutePolicyAssociation()
+                obj._deserialize(item)
+                self._RoutePolicyAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoutePolicyAssociationsResponse(AbstractModel):
+    r"""DeleteRoutePolicyAssociations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRoutePolicyEntriesRequest(AbstractModel):
+    r"""DeleteRoutePolicyEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由接收策略实例ID。
+        :type RoutePolicyId: str
+        :param _RoutePolicyEntrySet: 路由接收策略条目列表，删除路由策略规则时，仅需使用RoutePolicyEntry的RoutePolicyEntryIdId字段。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyEntrySet = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略实例ID。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由接收策略条目列表，删除路由策略规则时，仅需使用RoutePolicyEntry的RoutePolicyEntryIdId字段。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoutePolicyEntriesResponse(AbstractModel):
+    r"""DeleteRoutePolicyEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRoutePolicyRequest(AbstractModel):
+    r"""DeleteRoutePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由接收策略唯一ID。
+        :type RoutePolicyId: str
+        """
+        self._RoutePolicyId = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略唯一ID。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoutePolicyResponse(AbstractModel):
+    r"""DeleteRoutePolicy返回参数结构体
 
     """
 
@@ -32444,6 +32930,207 @@ class DescribeRouteListResponse(AbstractModel):
                 obj = Route()
                 obj._deserialize(item)
                 self._RouteSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRoutePolicyEntriesRequest(AbstractModel):
+    r"""DescribeRoutePolicyEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，参数不支持同时指定RoutePolicyEntryIds和Filters。
+<li>route-policy-id - String - （过滤条件）路由接收策略实例ID，形如：rrp-f49l6u0z。</li>
+<li>cidr-block - String - （过滤条件）CIDR(只取掩码前的子网部分)，形如：10.0.0.0/8。</li>
+<li>priority - Integer - （过滤条件）优先级，形如：20。</li>
+<li>gateway-type - String - （过滤条件）下一跳类型，形如：CVM。</li>
+<li>gateway-id - String - （过滤条件）下一跳实例唯一ID，形如：ccn-f49l6u0z。</li>
+<li>route-type - String - （过滤条件）路由类型，取值：USER（用户路由），NETD（网络探测下发的路由），CCN（云联网路由）。</li>
+<li>action - String - （过滤条件）动作，取值：DROP（丢弃），DISABLE（接收且禁用），ACCEPT（接收且启用）。</li>
+<li>description - String - （过滤条件）描述，形如：TEST。</li>
+<li>route-policy-item-id - String - （过滤条件）路由接收策略条目唯一ID，形如：rrpi-dq782kw7。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        :param _OrderField: 排序字段。当前只支持优先级Prioriry字段。
+        :type OrderField: str
+        :param _OrderDirection: 排序方向。
+ASC：升序。
+DESC：降序。
+        :type OrderDirection: str
+        :param _RoutePolicyEntryIds: 路由策略条目ID。
+        :type RoutePolicyEntryIds: list of str
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._OrderDirection = None
+        self._RoutePolicyEntryIds = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件，参数不支持同时指定RoutePolicyEntryIds和Filters。
+<li>route-policy-id - String - （过滤条件）路由接收策略实例ID，形如：rrp-f49l6u0z。</li>
+<li>cidr-block - String - （过滤条件）CIDR(只取掩码前的子网部分)，形如：10.0.0.0/8。</li>
+<li>priority - Integer - （过滤条件）优先级，形如：20。</li>
+<li>gateway-type - String - （过滤条件）下一跳类型，形如：CVM。</li>
+<li>gateway-id - String - （过滤条件）下一跳实例唯一ID，形如：ccn-f49l6u0z。</li>
+<li>route-type - String - （过滤条件）路由类型，取值：USER（用户路由），NETD（网络探测下发的路由），CCN（云联网路由）。</li>
+<li>action - String - （过滤条件）动作，取值：DROP（丢弃），DISABLE（接收且禁用），ACCEPT（接收且启用）。</li>
+<li>description - String - （过滤条件）描述，形如：TEST。</li>
+<li>route-policy-item-id - String - （过滤条件）路由接收策略条目唯一ID，形如：rrpi-dq782kw7。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""请求对象个数。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""排序字段。当前只支持优先级Prioriry字段。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        r"""排序方向。
+ASC：升序。
+DESC：降序。
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def RoutePolicyEntryIds(self):
+        r"""路由策略条目ID。
+        :rtype: list of str
+        """
+        return self._RoutePolicyEntryIds
+
+    @RoutePolicyEntryIds.setter
+    def RoutePolicyEntryIds(self, RoutePolicyEntryIds):
+        self._RoutePolicyEntryIds = RoutePolicyEntryIds
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        self._RoutePolicyEntryIds = params.get("RoutePolicyEntryIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoutePolicyEntriesResponse(AbstractModel):
+    r"""DescribeRoutePolicyEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyEntrySet: 路由接收策略条目列表。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        :param _TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoutePolicyEntrySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由接收策略条目列表。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的实例数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -52709,6 +53396,100 @@ class ModifyReserveIpAddressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRoutePolicyAttributeRequest(AbstractModel):
+    r"""ModifyRoutePolicyAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由接收策略实例ID，例如：rrp-dz0219jq。
+        :type RoutePolicyId: str
+        :param _RoutePolicyName: 路由接收策略名称。
+        :type RoutePolicyName: str
+        :param _RoutePolicyDescription: 路由接收策略描述。
+        :type RoutePolicyDescription: str
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyName = None
+        self._RoutePolicyDescription = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略实例ID，例如：rrp-dz0219jq。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyName(self):
+        r"""路由接收策略名称。
+        :rtype: str
+        """
+        return self._RoutePolicyName
+
+    @RoutePolicyName.setter
+    def RoutePolicyName(self, RoutePolicyName):
+        self._RoutePolicyName = RoutePolicyName
+
+    @property
+    def RoutePolicyDescription(self):
+        r"""路由接收策略描述。
+        :rtype: str
+        """
+        return self._RoutePolicyDescription
+
+    @RoutePolicyDescription.setter
+    def RoutePolicyDescription(self, RoutePolicyDescription):
+        self._RoutePolicyDescription = RoutePolicyDescription
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        self._RoutePolicyName = params.get("RoutePolicyName")
+        self._RoutePolicyDescription = params.get("RoutePolicyDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoutePolicyAttributeResponse(AbstractModel):
+    r"""ModifyRoutePolicyAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRouteTableAttributeRequest(AbstractModel):
     r"""ModifyRouteTableAttribute请求参数结构体
 
@@ -60390,6 +61171,159 @@ class ReplaceHighPriorityRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplaceRoutePolicyAssociationsRequest(AbstractModel):
+    r"""ReplaceRoutePolicyAssociations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyAssociationSet: 路由接收策略绑定对象列表。需要指定路由接收策略实例ID（RoutePolicyId）和路由表实例ID（RouteTableId）。
+        :type RoutePolicyAssociationSet: list of RoutePolicyAssociation
+        """
+        self._RoutePolicyAssociationSet = None
+
+    @property
+    def RoutePolicyAssociationSet(self):
+        r"""路由接收策略绑定对象列表。需要指定路由接收策略实例ID（RoutePolicyId）和路由表实例ID（RouteTableId）。
+        :rtype: list of RoutePolicyAssociation
+        """
+        return self._RoutePolicyAssociationSet
+
+    @RoutePolicyAssociationSet.setter
+    def RoutePolicyAssociationSet(self, RoutePolicyAssociationSet):
+        self._RoutePolicyAssociationSet = RoutePolicyAssociationSet
+
+
+    def _deserialize(self, params):
+        if params.get("RoutePolicyAssociationSet") is not None:
+            self._RoutePolicyAssociationSet = []
+            for item in params.get("RoutePolicyAssociationSet"):
+                obj = RoutePolicyAssociation()
+                obj._deserialize(item)
+                self._RoutePolicyAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceRoutePolicyAssociationsResponse(AbstractModel):
+    r"""ReplaceRoutePolicyAssociations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReplaceRoutePolicyEntriesRequest(AbstractModel):
+    r"""ReplaceRoutePolicyEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由策略实例ID，例如：rrp-azd4dt1c。
+        :type RoutePolicyId: str
+        :param _RoutePolicyEntrySet: 路由策略规则列表。需要指定路由策略规则ID（RoutePolicyEntryId）。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyEntrySet = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由策略实例ID，例如：rrp-azd4dt1c。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由策略规则列表。需要指定路由策略规则ID（RoutePolicyEntryId）。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceRoutePolicyEntriesResponse(AbstractModel):
+    r"""ReplaceRoutePolicyEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ReplaceRouteTableAssociationRequest(AbstractModel):
     r"""ReplaceRouteTableAssociation请求参数结构体
 
@@ -61231,6 +62165,204 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
 
 class ResetNatGatewayConnectionResponse(AbstractModel):
     r"""ResetNatGatewayConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetRoutePolicyAssociationsRequest(AbstractModel):
+    r"""ResetRoutePolicyAssociations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param _RoutePolicyAssociationSet: 路由策略绑定对象（RoutePolicyAssociation）列表。注意：路由策略绑定中的路由表实例ID（RouteTableId）需要和该接口的RouteTableId参数保持一致（也就是该接口只支持修改同一个路由表实例下的路有策略绑定关系及优先级）。
+        :type RoutePolicyAssociationSet: list of RoutePolicyAssociation
+        """
+        self._RouteTableId = None
+        self._RoutePolicyAssociationSet = None
+
+    @property
+    def RouteTableId(self):
+        r"""路由表实例ID，例如：rtb-azd4dt1c。
+        :rtype: str
+        """
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RoutePolicyAssociationSet(self):
+        r"""路由策略绑定对象（RoutePolicyAssociation）列表。注意：路由策略绑定中的路由表实例ID（RouteTableId）需要和该接口的RouteTableId参数保持一致（也就是该接口只支持修改同一个路由表实例下的路有策略绑定关系及优先级）。
+        :rtype: list of RoutePolicyAssociation
+        """
+        return self._RoutePolicyAssociationSet
+
+    @RoutePolicyAssociationSet.setter
+    def RoutePolicyAssociationSet(self, RoutePolicyAssociationSet):
+        self._RoutePolicyAssociationSet = RoutePolicyAssociationSet
+
+
+    def _deserialize(self, params):
+        self._RouteTableId = params.get("RouteTableId")
+        if params.get("RoutePolicyAssociationSet") is not None:
+            self._RoutePolicyAssociationSet = []
+            for item in params.get("RoutePolicyAssociationSet"):
+                obj = RoutePolicyAssociation()
+                obj._deserialize(item)
+                self._RoutePolicyAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRoutePolicyAssociationsResponse(AbstractModel):
+    r"""ResetRoutePolicyAssociations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetRoutePolicyEntriesRequest(AbstractModel):
+    r"""ResetRoutePolicyEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由接收策略实例ID，例如：rrp-azd4dt1c。
+        :type RoutePolicyId: str
+        :param _RoutePolicyEntrySet: 路由接收策略条目列表。需要指定路由策略条目ID（RoutePolicyEntryId）。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        :param _RoutePolicyDescription: 路由接收策略描述。
+        :type RoutePolicyDescription: str
+        :param _RoutePolicyName: 路由接收策略名字。
+        :type RoutePolicyName: str
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyEntrySet = None
+        self._RoutePolicyDescription = None
+        self._RoutePolicyName = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略实例ID，例如：rrp-azd4dt1c。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由接收策略条目列表。需要指定路由策略条目ID（RoutePolicyEntryId）。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+    @property
+    def RoutePolicyDescription(self):
+        r"""路由接收策略描述。
+        :rtype: str
+        """
+        return self._RoutePolicyDescription
+
+    @RoutePolicyDescription.setter
+    def RoutePolicyDescription(self, RoutePolicyDescription):
+        self._RoutePolicyDescription = RoutePolicyDescription
+
+    @property
+    def RoutePolicyName(self):
+        r"""路由接收策略名字。
+        :rtype: str
+        """
+        return self._RoutePolicyName
+
+    @RoutePolicyName.setter
+    def RoutePolicyName(self, RoutePolicyName):
+        self._RoutePolicyName = RoutePolicyName
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        self._RoutePolicyDescription = params.get("RoutePolicyDescription")
+        self._RoutePolicyName = params.get("RoutePolicyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRoutePolicyEntriesResponse(AbstractModel):
+    r"""ResetRoutePolicyEntries返回参数结构体
 
     """
 
@@ -63183,6 +64315,446 @@ class RouteECMPAlgorithm(AbstractModel):
     def _deserialize(self, params):
         self._DestinationCidrBlock = params.get("DestinationCidrBlock")
         self._SubnetRouteAlgorithm = params.get("SubnetRouteAlgorithm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoutePolicy(AbstractModel):
+    r"""路由接收策略。当云联网或其他业务添加路由到VPC自定义路由表时，可以丢弃或启用，禁用相应的路由条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyId: 路由策略唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyId: str
+        :param _RoutePolicyName: 路由策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyName: str
+        :param _RoutePolicyDescription: 路由策略描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyDescription: str
+        :param _RoutePolicyEntrySet: 路由策略规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyEntrySet: list of RoutePolicyEntry
+        :param _RoutePolicyAssociationSet: 路由策略绑定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyAssociationSet: list of RoutePolicyAssociation
+        :param _CreatedTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _TagSet: 标签键值对。
+        :type TagSet: list of Tag
+        """
+        self._RoutePolicyId = None
+        self._RoutePolicyName = None
+        self._RoutePolicyDescription = None
+        self._RoutePolicyEntrySet = None
+        self._RoutePolicyAssociationSet = None
+        self._CreatedTime = None
+        self._TagSet = None
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由策略唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def RoutePolicyName(self):
+        r"""路由策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutePolicyName
+
+    @RoutePolicyName.setter
+    def RoutePolicyName(self, RoutePolicyName):
+        self._RoutePolicyName = RoutePolicyName
+
+    @property
+    def RoutePolicyDescription(self):
+        r"""路由策略描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutePolicyDescription
+
+    @RoutePolicyDescription.setter
+    def RoutePolicyDescription(self, RoutePolicyDescription):
+        self._RoutePolicyDescription = RoutePolicyDescription
+
+    @property
+    def RoutePolicyEntrySet(self):
+        r"""路由策略规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RoutePolicyEntry
+        """
+        return self._RoutePolicyEntrySet
+
+    @RoutePolicyEntrySet.setter
+    def RoutePolicyEntrySet(self, RoutePolicyEntrySet):
+        self._RoutePolicyEntrySet = RoutePolicyEntrySet
+
+    @property
+    def RoutePolicyAssociationSet(self):
+        r"""路由策略绑定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RoutePolicyAssociation
+        """
+        return self._RoutePolicyAssociationSet
+
+    @RoutePolicyAssociationSet.setter
+    def RoutePolicyAssociationSet(self, RoutePolicyAssociationSet):
+        self._RoutePolicyAssociationSet = RoutePolicyAssociationSet
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def TagSet(self):
+        r"""标签键值对。
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        self._RoutePolicyName = params.get("RoutePolicyName")
+        self._RoutePolicyDescription = params.get("RoutePolicyDescription")
+        if params.get("RoutePolicyEntrySet") is not None:
+            self._RoutePolicyEntrySet = []
+            for item in params.get("RoutePolicyEntrySet"):
+                obj = RoutePolicyEntry()
+                obj._deserialize(item)
+                self._RoutePolicyEntrySet.append(obj)
+        if params.get("RoutePolicyAssociationSet") is not None:
+            self._RoutePolicyAssociationSet = []
+            for item in params.get("RoutePolicyAssociationSet"):
+                obj = RoutePolicyAssociation()
+                obj._deserialize(item)
+                self._RoutePolicyAssociationSet.append(obj)
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoutePolicyAssociation(AbstractModel):
+    r"""路由接收策略绑定。用来绑定路由表和路由接收策略以及绑定的优先级。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param _RoutePolicyId: 路由接收策略唯一ID。
+        :type RoutePolicyId: str
+        :param _Priority: 优先级。
+        :type Priority: int
+        """
+        self._RouteTableId = None
+        self._RoutePolicyId = None
+        self._Priority = None
+
+    @property
+    def RouteTableId(self):
+        r"""路由表唯一ID。
+        :rtype: str
+        """
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RoutePolicyId(self):
+        r"""路由接收策略唯一ID。
+        :rtype: str
+        """
+        return self._RoutePolicyId
+
+    @RoutePolicyId.setter
+    def RoutePolicyId(self, RoutePolicyId):
+        self._RoutePolicyId = RoutePolicyId
+
+    @property
+    def Priority(self):
+        r"""优先级。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._RouteTableId = params.get("RouteTableId")
+        self._RoutePolicyId = params.get("RoutePolicyId")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoutePolicyEntry(AbstractModel):
+    r"""路由接收策略条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyEntryId: 路由策略条目IPv4唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicyEntryId: str
+        :param _CidrBlock: 目标网段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrBlock: str
+        :param _Description: 路由策略规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _RouteType: 路由类型。
+USER：用户自定义类型。
+NETD：网络探测下发的路由。
+CCN：云联网路由。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteType: str
+        :param _GatewayType: 下一跳类型。目前我们支持的类型有：
+CVM：公网网关类型的云服务器；
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+HAVIP：高可用虚拟IP；
+NAT：NAT网关; 
+EIP：云服务器的公网IP；
+LOCAL_GATEWAY：本地网关;
+PVGW：PVGW网关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayType: str
+        :param _GatewayId: 网关唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _Priority: 优先级。数值越小，优先级越高。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Action: 动作。
+DROP：丢弃。
+DISABLE：接收且禁用。
+ACCEPT：接收且启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _CreatedTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _Region: 地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self._RoutePolicyEntryId = None
+        self._CidrBlock = None
+        self._Description = None
+        self._RouteType = None
+        self._GatewayType = None
+        self._GatewayId = None
+        self._Priority = None
+        self._Action = None
+        self._CreatedTime = None
+        self._Region = None
+
+    @property
+    def RoutePolicyEntryId(self):
+        r"""路由策略条目IPv4唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutePolicyEntryId
+
+    @RoutePolicyEntryId.setter
+    def RoutePolicyEntryId(self, RoutePolicyEntryId):
+        self._RoutePolicyEntryId = RoutePolicyEntryId
+
+    @property
+    def CidrBlock(self):
+        r"""目标网段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def Description(self):
+        r"""路由策略规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RouteType(self):
+        r"""路由类型。
+USER：用户自定义类型。
+NETD：网络探测下发的路由。
+CCN：云联网路由。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RouteType
+
+    @RouteType.setter
+    def RouteType(self, RouteType):
+        self._RouteType = RouteType
+
+    @property
+    def GatewayType(self):
+        r"""下一跳类型。目前我们支持的类型有：
+CVM：公网网关类型的云服务器；
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+HAVIP：高可用虚拟IP；
+NAT：NAT网关; 
+EIP：云服务器的公网IP；
+LOCAL_GATEWAY：本地网关;
+PVGW：PVGW网关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayId(self):
+        r"""网关唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Priority(self):
+        r"""优先级。数值越小，优先级越高。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Action(self):
+        r"""动作。
+DROP：丢弃。
+DISABLE：接收且禁用。
+ACCEPT：接收且启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Region(self):
+        r"""地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyEntryId = params.get("RoutePolicyEntryId")
+        self._CidrBlock = params.get("CidrBlock")
+        self._Description = params.get("Description")
+        self._RouteType = params.get("RouteType")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayId = params.get("GatewayId")
+        self._Priority = params.get("Priority")
+        self._Action = params.get("Action")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

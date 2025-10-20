@@ -2054,6 +2054,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancePasswordComplexity(self, request):
+        r"""该接口（DescribeInstancePasswordComplexity）用于查询实例的密码复杂度参数列表。
+
+        :param request: Request instance for DescribeInstancePasswordComplexity.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstancePasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstancePasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceUpgradeCheckJob(self, request):
         r"""该接口（DescribeInstanceUpgradeCheckJob）查询实例版本升级校验任务。
 

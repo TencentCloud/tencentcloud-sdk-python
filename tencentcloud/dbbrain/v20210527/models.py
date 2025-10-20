@@ -19088,21 +19088,21 @@ class SlowLogAgg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: 命令模版。
+        :param _Cmd: 命令模板。
         :type Cmd: str
         :param _Detail: 命令详情。
         :type Detail: str
         :param _ExecTimes: 执行次数。
         :type ExecTimes: int
-        :param _QueryTime: 总耗时。
+        :param _QueryTime: 总耗时。单位：s
         :type QueryTime: float
-        :param _QueryTimeAvg: 平均执行时间。
+        :param _QueryTimeAvg: 平均执行时间。单位：s
         :type QueryTimeAvg: float
-        :param _QueryTimeMax: 最大执行时间。
+        :param _QueryTimeMax: 最大执行时间。单位：s
         :type QueryTimeMax: float
-        :param _QueryTimeMin: 最小执行时间。
+        :param _QueryTimeMin: 最小执行时间。单位：s
         :type QueryTimeMin: float
-        :param _QueryTimeRatio: 总耗时占比
+        :param _QueryTimeRatio: 总耗时占比。单位：%
         :type QueryTimeRatio: float
         """
         self._Cmd = None
@@ -19116,7 +19116,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""命令模版。
+        r"""命令模板。
         :rtype: str
         """
         return self._Cmd
@@ -19149,7 +19149,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def QueryTime(self):
-        r"""总耗时。
+        r"""总耗时。单位：s
         :rtype: float
         """
         return self._QueryTime
@@ -19160,7 +19160,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def QueryTimeAvg(self):
-        r"""平均执行时间。
+        r"""平均执行时间。单位：s
         :rtype: float
         """
         return self._QueryTimeAvg
@@ -19171,7 +19171,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def QueryTimeMax(self):
-        r"""最大执行时间。
+        r"""最大执行时间。单位：s
         :rtype: float
         """
         return self._QueryTimeMax
@@ -19182,7 +19182,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def QueryTimeMin(self):
-        r"""最小执行时间。
+        r"""最小执行时间。单位：s
         :rtype: float
         """
         return self._QueryTimeMin
@@ -19193,7 +19193,7 @@ class SlowLogAgg(AbstractModel):
 
     @property
     def QueryTimeRatio(self):
-        r"""总耗时占比
+        r"""总耗时占比。单位：%
         :rtype: float
         """
         return self._QueryTimeRatio

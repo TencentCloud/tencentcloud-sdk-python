@@ -578,6 +578,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportDeviceDownloadTask(self, request):
+        r"""创建终端导出任务，私有化调用path为：capi/Assets/Device/ExportDeviceDownloadTask
+
+        :param request: Request instance for ExportDeviceDownloadTask.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ExportDeviceDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ExportDeviceDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportDeviceDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportDeviceDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportSoftwareInformationList(self, request):
         r"""导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
 

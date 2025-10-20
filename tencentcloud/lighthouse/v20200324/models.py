@@ -9596,6 +9596,57 @@ class DescribeZonesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DestinationRegionBlueprint(AbstractModel):
+    r"""目标地域镜像信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 目标地域。
+        :type Region: str
+        :param _BlueprintId: 目标地域镜像ID。
+        :type BlueprintId: str
+        """
+        self._Region = None
+        self._BlueprintId = None
+
+    @property
+    def Region(self):
+        r"""目标地域。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BlueprintId(self):
+        r"""目标地域镜像ID。
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._BlueprintId = params.get("BlueprintId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DetachCcnRequest(AbstractModel):
     r"""DetachCcn请求参数结构体
 
@@ -20452,10 +20503,24 @@ class SyncBlueprintResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DestinationRegionBlueprintSet: 目标地域镜像信息。
+        :type DestinationRegionBlueprintSet: list of DestinationRegionBlueprint
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DestinationRegionBlueprintSet = None
         self._RequestId = None
+
+    @property
+    def DestinationRegionBlueprintSet(self):
+        r"""目标地域镜像信息。
+        :rtype: list of DestinationRegionBlueprint
+        """
+        return self._DestinationRegionBlueprintSet
+
+    @DestinationRegionBlueprintSet.setter
+    def DestinationRegionBlueprintSet(self, DestinationRegionBlueprintSet):
+        self._DestinationRegionBlueprintSet = DestinationRegionBlueprintSet
 
     @property
     def RequestId(self):
@@ -20470,6 +20535,12 @@ class SyncBlueprintResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DestinationRegionBlueprintSet") is not None:
+            self._DestinationRegionBlueprintSet = []
+            for item in params.get("DestinationRegionBlueprintSet"):
+                obj = DestinationRegionBlueprint()
+                obj._deserialize(item)
+                self._DestinationRegionBlueprintSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

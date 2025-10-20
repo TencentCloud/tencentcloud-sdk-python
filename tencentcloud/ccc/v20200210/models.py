@@ -1333,10 +1333,13 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
         :type Number: str
         :param _CallInInterface: 待绑定的回调地址
         :type CallInInterface: :class:`tencentcloud.ccc.v20200210.models.Interface`
+        :param _NumberType: 绑定号码类型: inner: 内线号码 | number: 正常线路号码
+        :type NumberType: str
         """
         self._SdkAppId = None
         self._Number = None
         self._CallInInterface = None
+        self._NumberType = None
 
     @property
     def SdkAppId(self):
@@ -1371,6 +1374,17 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
     def CallInInterface(self, CallInInterface):
         self._CallInInterface = CallInInterface
 
+    @property
+    def NumberType(self):
+        r"""绑定号码类型: inner: 内线号码 | number: 正常线路号码
+        :rtype: str
+        """
+        return self._NumberType
+
+    @NumberType.setter
+    def NumberType(self, NumberType):
+        self._NumberType = NumberType
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -1378,6 +1392,7 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
         if params.get("CallInInterface") is not None:
             self._CallInInterface = Interface()
             self._CallInInterface._deserialize(params.get("CallInInterface"))
+        self._NumberType = params.get("NumberType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

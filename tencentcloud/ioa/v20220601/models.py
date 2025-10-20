@@ -7939,6 +7939,57 @@ class DeviceDetail(AbstractModel):
         
 
 
+class DeviceDownloadTask(AbstractModel):
+    r"""业务响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadURL: 同步数据下载的url
+        :type DownloadURL: str
+        :param _TaskId: 异步任务id，需要根据id去任务中心下载
+        :type TaskId: int
+        """
+        self._DownloadURL = None
+        self._TaskId = None
+
+    @property
+    def DownloadURL(self):
+        r"""同步数据下载的url
+        :rtype: str
+        """
+        return self._DownloadURL
+
+    @DownloadURL.setter
+    def DownloadURL(self, DownloadURL):
+        self._DownloadURL = DownloadURL
+
+    @property
+    def TaskId(self):
+        r"""异步任务id，需要根据id去任务中心下载
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._DownloadURL = params.get("DownloadURL")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceGroupDetail(AbstractModel):
     r"""返回的数组列表
 
@@ -8759,6 +8810,179 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExportDeviceDownloadTaskRequest(AbstractModel):
+    r"""ExportDeviceDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios；默认值0）
+        :type OsType: int
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _GroupId: 分组id
+        :type GroupId: int
+        :param _OnlineStatus:  在线状态 2 在线 0，1 离线
+        :type OnlineStatus: int
+        :param _ExportOrder: 导出顺序，接口返回的数据字段
+        :type ExportOrder: str
+        :param _ExportType:  导出类型， 0：终端树；7:硬件信息列表导出；
+        :type ExportType: int
+        :param _Condition: 过滤条件。同DescribeDevices接口
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        self._OsType = None
+        self._DomainInstanceId = None
+        self._GroupId = None
+        self._OnlineStatus = None
+        self._ExportOrder = None
+        self._ExportType = None
+        self._Condition = None
+
+    @property
+    def OsType(self):
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios；默认值0）
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def GroupId(self):
+        r"""分组id
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def OnlineStatus(self):
+        r""" 在线状态 2 在线 0，1 离线
+        :rtype: int
+        """
+        return self._OnlineStatus
+
+    @OnlineStatus.setter
+    def OnlineStatus(self, OnlineStatus):
+        self._OnlineStatus = OnlineStatus
+
+    @property
+    def ExportOrder(self):
+        r"""导出顺序，接口返回的数据字段
+        :rtype: str
+        """
+        return self._ExportOrder
+
+    @ExportOrder.setter
+    def ExportOrder(self, ExportOrder):
+        self._ExportOrder = ExportOrder
+
+    @property
+    def ExportType(self):
+        r""" 导出类型， 0：终端树；7:硬件信息列表导出；
+        :rtype: int
+        """
+        return self._ExportType
+
+    @ExportType.setter
+    def ExportType(self, ExportType):
+        self._ExportType = ExportType
+
+    @property
+    def Condition(self):
+        r"""过滤条件。同DescribeDevices接口
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+
+    def _deserialize(self, params):
+        self._OsType = params.get("OsType")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._GroupId = params.get("GroupId")
+        self._OnlineStatus = params.get("OnlineStatus")
+        self._ExportOrder = params.get("ExportOrder")
+        self._ExportType = params.get("ExportType")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportDeviceDownloadTaskResponse(AbstractModel):
+    r"""ExportDeviceDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务响应数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DeviceDownloadTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""业务响应数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeviceDownloadTask`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeviceDownloadTask()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ExportSoftwareDownloadUrlRspData(AbstractModel):

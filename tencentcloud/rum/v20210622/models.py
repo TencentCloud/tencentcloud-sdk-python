@@ -441,6 +441,10 @@ class CreateTawInstanceRequest(AbstractModel):
         :type ResourcePackageNum: int
         :param _InstanceType: 实例类型 1:原web相关类型 2:app端类型
         :type InstanceType: int
+        :param _AutoRenewalType: 自动续费类型
+        :type AutoRenewalType: int
+        :param _AutoRenewalThreshold: 自动续费阈值
+        :type AutoRenewalThreshold: int
         """
         self._AreaId = None
         self._ChargeType = None
@@ -454,6 +458,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self._ResourcePackageType = None
         self._ResourcePackageNum = None
         self._InstanceType = None
+        self._AutoRenewalType = None
+        self._AutoRenewalThreshold = None
 
     @property
     def AreaId(self):
@@ -587,6 +593,28 @@ class CreateTawInstanceRequest(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def AutoRenewalType(self):
+        r"""自动续费类型
+        :rtype: int
+        """
+        return self._AutoRenewalType
+
+    @AutoRenewalType.setter
+    def AutoRenewalType(self, AutoRenewalType):
+        self._AutoRenewalType = AutoRenewalType
+
+    @property
+    def AutoRenewalThreshold(self):
+        r"""自动续费阈值
+        :rtype: int
+        """
+        return self._AutoRenewalThreshold
+
+    @AutoRenewalThreshold.setter
+    def AutoRenewalThreshold(self, AutoRenewalThreshold):
+        self._AutoRenewalThreshold = AutoRenewalThreshold
+
 
     def _deserialize(self, params):
         self._AreaId = params.get("AreaId")
@@ -606,6 +634,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self._ResourcePackageType = params.get("ResourcePackageType")
         self._ResourcePackageNum = params.get("ResourcePackageNum")
         self._InstanceType = params.get("InstanceType")
+        self._AutoRenewalType = params.get("AutoRenewalType")
+        self._AutoRenewalThreshold = params.get("AutoRenewalThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
