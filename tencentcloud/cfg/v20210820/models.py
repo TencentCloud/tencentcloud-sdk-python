@@ -5678,6 +5678,8 @@ class TaskListItem(AbstractModel):
         :type ArchId: str
         :param _ArchName: 架构名称
         :type ArchName: str
+        :param _TaskSource: 来源
+        :type TaskSource: int
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -5695,6 +5697,7 @@ class TaskListItem(AbstractModel):
         self._TaskStatusType = None
         self._ArchId = None
         self._ArchName = None
+        self._TaskSource = None
 
     @property
     def TaskId(self):
@@ -5872,6 +5875,17 @@ class TaskListItem(AbstractModel):
     def ArchName(self, ArchName):
         self._ArchName = ArchName
 
+    @property
+    def TaskSource(self):
+        r"""来源
+        :rtype: int
+        """
+        return self._TaskSource
+
+    @TaskSource.setter
+    def TaskSource(self, TaskSource):
+        self._TaskSource = TaskSource
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -5890,6 +5904,7 @@ class TaskListItem(AbstractModel):
         self._TaskStatusType = params.get("TaskStatusType")
         self._ArchId = params.get("ArchId")
         self._ArchName = params.get("ArchName")
+        self._TaskSource = params.get("TaskSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

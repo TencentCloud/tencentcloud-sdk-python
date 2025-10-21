@@ -965,10 +965,22 @@ class CompareOptions(AbstractModel):
         :type SampleRate: int
         :param _ThreadCount: 线程数，取值1-8，默认为1
         :type ThreadCount: int
+        :param _Type: 对比类型：builtin（内置校验）、independent（独立校验）。默认为builtin，mongodb及redis链路不支持独立校验。
+        :type Type: str
+        :param _CompareMode: 校验类型，枚举值：structureCheck-结构校验(目前仅postgresql支持)、full-全量校验、increment-增量校验(如果勾选了增量校验，Method只能选dataCheck)、advanceObject-数据库信息校验(目前仅mongodb支持) 
+        :type CompareMode: list of str
+        :param _ReCheckTime: 复检次数
+        :type ReCheckTime: int
+        :param _ReCheckInterval: 复检时间间隔，单位为分钟，取值 1-60
+        :type ReCheckInterval: int
         """
         self._Method = None
         self._SampleRate = None
         self._ThreadCount = None
+        self._Type = None
+        self._CompareMode = None
+        self._ReCheckTime = None
+        self._ReCheckInterval = None
 
     @property
     def Method(self):
@@ -1003,11 +1015,59 @@ class CompareOptions(AbstractModel):
     def ThreadCount(self, ThreadCount):
         self._ThreadCount = ThreadCount
 
+    @property
+    def Type(self):
+        r"""对比类型：builtin（内置校验）、independent（独立校验）。默认为builtin，mongodb及redis链路不支持独立校验。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CompareMode(self):
+        r"""校验类型，枚举值：structureCheck-结构校验(目前仅postgresql支持)、full-全量校验、increment-增量校验(如果勾选了增量校验，Method只能选dataCheck)、advanceObject-数据库信息校验(目前仅mongodb支持) 
+        :rtype: list of str
+        """
+        return self._CompareMode
+
+    @CompareMode.setter
+    def CompareMode(self, CompareMode):
+        self._CompareMode = CompareMode
+
+    @property
+    def ReCheckTime(self):
+        r"""复检次数
+        :rtype: int
+        """
+        return self._ReCheckTime
+
+    @ReCheckTime.setter
+    def ReCheckTime(self, ReCheckTime):
+        self._ReCheckTime = ReCheckTime
+
+    @property
+    def ReCheckInterval(self):
+        r"""复检时间间隔，单位为分钟，取值 1-60
+        :rtype: int
+        """
+        return self._ReCheckInterval
+
+    @ReCheckInterval.setter
+    def ReCheckInterval(self, ReCheckInterval):
+        self._ReCheckInterval = ReCheckInterval
+
 
     def _deserialize(self, params):
         self._Method = params.get("Method")
         self._SampleRate = params.get("SampleRate")
         self._ThreadCount = params.get("ThreadCount")
+        self._Type = params.get("Type")
+        self._CompareMode = params.get("CompareMode")
+        self._ReCheckTime = params.get("ReCheckTime")
+        self._ReCheckInterval = params.get("ReCheckInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1422,7 +1482,8 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
         :type CompleteMode: str
@@ -1432,7 +1493,8 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -1501,7 +1563,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type SubscribeId: str
         :param _SubscribeMode: 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
         :type SubscribeMode: str
@@ -1541,7 +1603,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -2063,9 +2125,9 @@ class ConflictHandleOption(AbstractModel):
         r"""
         :param _ConditionColumn: 条件覆盖的列
         :type ConditionColumn: str
-        :param _ConditionOperator: 条件覆盖操作
+        :param _ConditionOperator: 条件覆盖操作，目前仅支持>
         :type ConditionOperator: str
-        :param _ConditionOrderInSrcAndDst: 条件覆盖优先级处理
+        :param _ConditionOrderInSrcAndDst: 条件覆盖优先级处理，支持类型有>,<,=
         :type ConditionOrderInSrcAndDst: str
         """
         self._ConditionColumn = None
@@ -2085,7 +2147,7 @@ class ConflictHandleOption(AbstractModel):
 
     @property
     def ConditionOperator(self):
-        r"""条件覆盖操作
+        r"""条件覆盖操作，目前仅支持>
         :rtype: str
         """
         return self._ConditionOperator
@@ -2096,7 +2158,7 @@ class ConflictHandleOption(AbstractModel):
 
     @property
     def ConditionOrderInSrcAndDst(self):
-        r"""条件覆盖优先级处理
+        r"""条件覆盖优先级处理，支持类型有>,<,=
         :rtype: str
         """
         return self._ConditionOrderInSrcAndDst
@@ -2129,8 +2191,18 @@ class ConsistencyOption(AbstractModel):
         r"""
         :param _Mode: 一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
         :type Mode: str
+        :param _ObjectMode: 校验对象选择。枚举值：sameAsMigrate-与迁移同步任务相同、custom-用户自定义，搭配Objects操作
+        :type ObjectMode: str
+        :param _Objects: 校验对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Objects: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
+        :param _Options: 校验配置
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         self._Mode = None
+        self._ObjectMode = None
+        self._Objects = None
+        self._Options = None
 
     @property
     def Mode(self):
@@ -2143,9 +2215,50 @@ class ConsistencyOption(AbstractModel):
     def Mode(self, Mode):
         self._Mode = Mode
 
+    @property
+    def ObjectMode(self):
+        r"""校验对象选择。枚举值：sameAsMigrate-与迁移同步任务相同、custom-用户自定义，搭配Objects操作
+        :rtype: str
+        """
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Objects(self):
+        r"""校验对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Options(self):
+        r"""校验配置
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
+        self._ObjectMode = params.get("ObjectMode")
+        if params.get("Objects") is not None:
+            self._Objects = DatabaseTableObject()
+            self._Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2361,7 +2474,8 @@ class CreateCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务 Id
+        :param _JobId: 任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _TaskName: 数据对比任务名称，若为空则默认给CompareTaskId相同值
         :type TaskName: str
@@ -2380,7 +2494,8 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务 Id
+        r"""任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -3214,7 +3329,7 @@ class CreateSyncJobRequest(AbstractModel):
         :type DstDatabaseType: str
         :param _DstRegion: 目标端数据库所在地域,如ap-guangzhou
         :type DstRegion: str
-        :param _Specification: 同步任务规格，Standard:标准版
+        :param _Specification: 同步任务规格，Standard:标准版，目前仅支持Standard规格。
         :type Specification: str
         :param _TimeSpan: 购买时长（单位：月），当PayMode值为PrePay则此项配置有意义，默认为1月，取值范围为[1,100]
         :type TimeSpan: int
@@ -3302,7 +3417,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Specification(self):
-        r"""同步任务规格，Standard:标准版
+        r"""同步任务规格，Standard:标准版，目前仅支持Standard规格。
         :rtype: str
         """
         return self._Specification
@@ -4646,7 +4761,9 @@ class DatabaseTableObject(AbstractModel):
         :type ObjectMode: str
         :param _Databases: 迁移对象，当 ObjectMode 为 partial 时，不为空
         :type Databases: list of DBItem
-        :param _AdvancedObjects: 高级对象类型，如trigger、function、procedure、event。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型
+        :param _AdvancedObjects: 高级对象类型，如trigger(触发器)、function(函数)、procedure(存储过程)、event(事件)。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。
+
+> 当前支持高级对象迁移的场景为MySQL、TDSQL-CMySQL、MariaDB、Percona之间的数据迁移。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
@@ -4678,7 +4795,9 @@ class DatabaseTableObject(AbstractModel):
 
     @property
     def AdvancedObjects(self):
-        r"""高级对象类型，如trigger、function、procedure、event。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型
+        r"""高级对象类型，如trigger(触发器)、function(函数)、procedure(存储过程)、event(事件)。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。
+
+> 当前支持高级对象迁移的场景为MySQL、TDSQL-CMySQL、MariaDB、Percona之间的数据迁移。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4768,9 +4887,9 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :type JobId: str
-        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9。可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :type CompareTaskId: str
         """
         self._JobId = None
@@ -4778,7 +4897,7 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -4789,7 +4908,7 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9。可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :rtype: str
         """
         return self._CompareTaskId
@@ -5328,7 +5447,8 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :type JobId: str
         :param _Limit: 分页设置，表示每页显示多少条任务，默认为 20
         :type Limit: int
@@ -5347,7 +5467,8 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -5616,13 +5737,13 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseType: 数据库类型，如mysql,redis等
+        :param _DatabaseType: 数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
         :type DatabaseType: str
         :param _MigrateRole: 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
         :type MigrateRole: str
-        :param _InstanceId: 云数据库实例ID
+        :param _InstanceId: 云数据库实例ID，可通过对应业务实例列表获取实例信息。
         :type InstanceId: str
-        :param _InstanceName: 云数据库名称
+        :param _InstanceName: 云数据库名称，可通过对应业务实例列表获取实例信息。
         :type InstanceName: str
         :param _Limit: 返回数量限制
         :type Limit: int
@@ -5650,7 +5771,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def DatabaseType(self):
-        r"""数据库类型，如mysql,redis等
+        r"""数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
         :rtype: str
         """
         return self._DatabaseType
@@ -5672,7 +5793,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""云数据库实例ID
+        r"""云数据库实例ID，可通过对应业务实例列表获取实例信息。
         :rtype: str
         """
         return self._InstanceId
@@ -5683,7 +5804,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""云数据库名称
+        r"""云数据库名称，可通过对应业务实例列表获取实例信息。
         :rtype: str
         """
         return self._InstanceName
@@ -5981,14 +6102,16 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -6983,14 +7106,14 @@ class DescribeSubscribeCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID
+        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID
+        r"""数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -7023,7 +7146,7 @@ class DescribeSubscribeCheckJobResponse(AbstractModel):
         :type SubscribeId: str
         :param _Message: 失败或者报错提示，成功则提示success。
         :type Message: str
-        :param _Status: 任务运行状态，可能值为 running,failed,success
+        :param _Status: 任务运行状态，可能值为 running(运行中),failed(失败),success(成功),unknown(未知状态)。
         :type Status: str
         :param _Progress: 当前总体进度，范围 0~100
         :type Progress: int
@@ -7069,7 +7192,7 @@ class DescribeSubscribeCheckJobResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务运行状态，可能值为 running,failed,success
+        r"""任务运行状态，可能值为 running(运行中),failed(失败),success(成功),unknown(未知状态)。
         :rtype: str
         """
         return self._Status
@@ -8117,13 +8240,14 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id，如sync-werwfs23
+        :param _JobId: 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
-        :param _JobIds: 同步任务id列表，如sync-werwfs23
+        :param _JobIds: 同步任务id列表，如["sync-n3gh7md9"]
         :type JobIds: list of str
         :param _JobName: 同步任务名
         :type JobName: str
-        :param _Order: 排序字段，可以取值为CreateTime
+        :param _Order: 排序字段，目前仅支持CreateTime字段排序
         :type Order: str
         :param _OrderSeq: 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
         :type OrderSeq: str
@@ -8131,11 +8255,11 @@ class DescribeSyncJobsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回同步任务实例数量，默认20，有效区间[1,100]
         :type Limit: int
-        :param _Status: 状态集合，如Initialized,CheckPass,Running,ResumableErr,Stopped
+        :param _Status: 状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
         :type Status: list of str
         :param _RunMode: 运行模式，如Immediate:立即运行，Timed:定时运行
         :type RunMode: str
-        :param _JobType: 任务类型，如mysql2mysql：msyql同步到mysql
+        :param _JobType: 任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
         :type JobType: str
         :param _PayMode: 付费类型，PrePay：预付费，PostPay：后付费
         :type PayMode: str
@@ -8163,7 +8287,8 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务id，如sync-werwfs23
+        r"""同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -8174,7 +8299,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        r"""同步任务id列表，如sync-werwfs23
+        r"""同步任务id列表，如["sync-n3gh7md9"]
         :rtype: list of str
         """
         return self._JobIds
@@ -8196,7 +8321,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序字段，可以取值为CreateTime
+        r"""排序字段，目前仅支持CreateTime字段排序
         :rtype: str
         """
         return self._Order
@@ -8240,7 +8365,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态集合，如Initialized,CheckPass,Running,ResumableErr,Stopped
+        r"""状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
         :rtype: list of str
         """
         return self._Status
@@ -8262,7 +8387,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobType(self):
-        r"""任务类型，如mysql2mysql：msyql同步到mysql
+        r"""任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
         :rtype: str
         """
         return self._JobType
@@ -10674,14 +10799,16 @@ class IsolateMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -11815,9 +11942,11 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
-        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type CompareTaskId: str
         :param _TaskName: 一致性校验任务名称
         :type TaskName: str
@@ -11828,7 +11957,8 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -11839,7 +11969,8 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._CompareTaskId
@@ -11909,9 +12040,11 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务 Id
+        :param _JobId: 任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
-        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type CompareTaskId: str
         :param _TaskName: 任务名称
         :type TaskName: str
@@ -11931,7 +12064,8 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务 Id
+        r"""任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -11942,7 +12076,8 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        r"""对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._CompareTaskId
@@ -12276,7 +12411,8 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _NewInstanceClass: 新实例规格大小，包括：micro、small、medium、large、xlarge、2xlarge
         :type NewInstanceClass: str
@@ -12286,7 +12422,8 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -12355,7 +12492,8 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务id
+        :param _JobId: 迁移任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _JobName: 修改后的迁移任务名
         :type JobName: str
@@ -12365,7 +12503,8 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务id
+        r"""迁移任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -12434,7 +12573,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务ID
+        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :type JobId: str
         :param _DumpThread: 迁移任务全量导出线程数、有效值为 1-16
         :type DumpThread: int
@@ -12456,7 +12595,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务ID
+        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -12573,7 +12712,8 @@ class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务id，如：dts-2rgv0f09
+        :param _JobId: 迁移任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _OtherOptions: 需要修改的属性，此结构设计为通用结构，用于屏蔽多个业务的定制属性。<br>例如对于Redis:<br>{<br>	 "Key": "DstWriteMode",	//目标库写入模式<br> 	"Value": "normal"	          //clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作，默认为此值) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	//是否在迁移时设置目标库只读<br/> 	"Value": "true"	          //true(设置只读)、false(不设置只读) <br/>} 
         :type OtherOptions: list of KeyValuePairOption
@@ -12583,7 +12723,8 @@ class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务id，如：dts-2rgv0f09
+        r"""迁移任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -12657,7 +12798,8 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
         :type RunMode: str
@@ -12688,7 +12830,8 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -13168,7 +13311,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type JobId: str
         :param _DynamicObjects: 修改后的同步对象
         :type DynamicObjects: :class:`tencentcloud.dts.v20211206.models.Objects`
@@ -13181,7 +13324,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -13266,11 +13409,11 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务ID
+        :param _JobId: 同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type JobId: str
         :param _DumpThread: 同步任务全量导出线程数、有效值为 1-16
         :type DumpThread: int
-        :param _DumpRps: 同步任务全量导出的 Rps 限制、需要大于 0
+        :param _DumpRps: 同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
         :type DumpRps: int
         :param _LoadThread: 同步任务全量导入线程数、有效值为 1-16
         :type LoadThread: int
@@ -13288,7 +13431,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务ID
+        r"""同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -13310,7 +13453,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def DumpRps(self):
-        r"""同步任务全量导出的 Rps 限制、需要大于 0
+        r"""同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
         :rtype: int
         """
         return self._DumpRps
@@ -13627,14 +13770,14 @@ class OnlineDDL(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态
+        :param _Status: 状态，ON-启用，OFF-不启用。
         :type Status: str
         """
         self._Status = None
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，ON-启用，OFF-不启用。
         :rtype: str
         """
         return self._Status
@@ -14630,13 +14773,13 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例id
+        :param _SubscribeId: 订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type SubscribeId: str
-        :param _TopicName: 订阅的kafka topic
+        :param _TopicName: 订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type TopicName: str
-        :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+        :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
         :type ConsumerGroupName: str
-        :param _PartitionNos: 需要修改offset的分区编号
+        :param _PartitionNos: 需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
         :type PartitionNos: list of int
         :param _ResetMode: 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
         :type ResetMode: str
@@ -14652,7 +14795,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例id
+        r"""订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._SubscribeId
@@ -14663,7 +14806,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""订阅的kafka topic
+        r"""订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._TopicName
@@ -14674,7 +14817,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
+        r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -14685,7 +14828,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def PartitionNos(self):
-        r"""需要修改offset的分区编号
+        r"""需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
         :rtype: list of int
         """
         return self._PartitionNos
@@ -14899,9 +15042,10 @@ class ResizeSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
-        :param _NewInstanceClass: 任务规格
+        :param _NewInstanceClass: 任务规格，可选值包括micro,small,medium,large
         :type NewInstanceClass: str
         """
         self._JobId = None
@@ -14909,7 +15053,8 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -14920,7 +15065,7 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def NewInstanceClass(self):
-        r"""任务规格
+        r"""任务规格，可选值包括micro,small,medium,large
         :rtype: str
         """
         return self._NewInstanceClass
@@ -14978,7 +15123,8 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         :param _ResumeOption: 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
         :type ResumeOption: str
@@ -14988,7 +15134,8 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15319,9 +15466,10 @@ class SkipCheckItemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
-        :param _StepIds: 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+        :param _StepIds: 需要跳过校验项的步骤id，需要通过[DescribeMigrationCheckJob](https://cloud.tencent.com/document/product/571/82086)接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
         :type StepIds: list of str
         :param _ForeignKeyFlag: 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
         :type ForeignKeyFlag: str
@@ -15332,7 +15480,8 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15343,7 +15492,7 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def StepIds(self):
-        r"""需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+        r"""需要跳过校验项的步骤id，需要通过[DescribeMigrationCheckJob](https://cloud.tencent.com/document/product/571/82086)接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
         :rtype: list of str
         """
         return self._StepIds
@@ -15428,7 +15577,8 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id，如：sync-4ddgid2
+        :param _JobId: 任务id，如：sync-4ddgid2，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :type JobId: str
         :param _StepIds: 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
         :type StepIds: list of str
@@ -15438,7 +15588,8 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务id，如：sync-4ddgid2
+        r"""任务id，如：sync-4ddgid2，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15727,14 +15878,16 @@ class StartMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -15921,14 +16074,14 @@ class StartSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id
+        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id
+        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
         :rtype: str
         """
         return self._JobId
@@ -16500,14 +16653,16 @@ class StopMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+
         :rtype: str
         """
         return self._JobId
@@ -16702,7 +16857,7 @@ class SubscribeCheckStepInfo(AbstractModel):
         :type StepId: str
         :param _StepNo: 步骤编号，从 1 开始
         :type StepNo: int
-        :param _Status: 当前步骤状态，可能值为 notStarted,running,finished,failed
+        :param _Status: 当前步骤状态，可能值为 notStarted-未开始，running-运行中，finished-已完成，failed-失败，unknown-未知
         :type Status: str
         :param _Percent: 当前步骤进度
         :type Percent: int
@@ -16754,7 +16909,7 @@ class SubscribeCheckStepInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""当前步骤状态，可能值为 notStarted,running,finished,failed
+        r"""当前步骤状态，可能值为 notStarted-未开始，running-运行中，finished-已完成，failed-失败，unknown-未知
         :rtype: str
         """
         return self._Status
@@ -17689,9 +17844,9 @@ class SyncJobInfo(AbstractModel):
         :type ExpireTime: str
         :param _SrcRegion: 源端地域，如：ap-guangzhou等
         :type SrcRegion: str
-        :param _SrcDatabaseType: 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _SrcDatabaseType: 源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
         :type SrcDatabaseType: str
-        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
         :type SrcAccessType: str
         :param _SrcInfo: 源端信息，单节点数据库使用
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
@@ -17701,7 +17856,7 @@ class SyncJobInfo(AbstractModel):
         :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstRegion: 目标端地域，如：ap-guangzhou等
         :type DstRegion: str
-        :param _DstDatabaseType: 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _DstDatabaseType: 目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
         :type DstDatabaseType: str
         :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
         :type DstAccessType: str
@@ -17910,7 +18065,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        r"""源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        r"""源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -17921,7 +18076,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        r"""源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        r"""源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
         :rtype: str
         """
         return self._SrcAccessType
@@ -17976,7 +18131,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        r"""目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        r"""目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
         :rtype: str
         """
         return self._DstDatabaseType

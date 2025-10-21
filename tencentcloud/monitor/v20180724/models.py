@@ -23182,10 +23182,24 @@ class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
         :param _JobType: job 类型
         :type JobType: str
         """
+        self._InstanceIds = None
         self._JobType = None
+
+    @property
+    def InstanceIds(self):
+        r"""实例ID列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
     @property
     def JobType(self):
@@ -23200,6 +23214,7 @@ class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
         self._JobType = params.get("JobType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -24057,6 +24072,135 @@ class DescribeRemoteURLsResponse(AbstractModel):
             self._RemoteWrites = []
             for item in params.get("RemoteWrites"):
                 obj = RemoteWrite()
+                obj._deserialize(item)
+                self._RemoteWrites.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRemoteWritesRequest(AbstractModel):
+    r"""DescribeRemoteWrites请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _Offset: 列表 offset
+        :type Offset: int
+        :param _Limit: 返回 limit
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""列表 offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回 limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteWritesResponse(AbstractModel):
+    r"""DescribeRemoteWrites返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 存储数据
+        :type Count: int
+        :param _RemoteWrites: 多写信息
+        :type RemoteWrites: list of WriteDestination
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RemoteWrites = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""存储数据
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RemoteWrites(self):
+        r"""多写信息
+        :rtype: list of WriteDestination
+        """
+        return self._RemoteWrites
+
+    @RemoteWrites.setter
+    def RemoteWrites(self, RemoteWrites):
+        self._RemoteWrites = RemoteWrites
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("RemoteWrites") is not None:
+            self._RemoteWrites = []
+            for item in params.get("RemoteWrites"):
+                obj = WriteDestination()
                 obj._deserialize(item)
                 self._RemoteWrites.append(obj)
         self._RequestId = params.get("RequestId")
@@ -25396,7 +25540,7 @@ class GetMonitorDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
         :type EndTime: str
-        :param _SpecifyStatistics: 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
+        :param _SpecifyStatistics: 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。特别说明：建议查询时严格参考API配置文档中提供的统计方式。如选择其他未提供的统计方式，可能有数据统计误差。
         :type SpecifyStatistics: int
         """
         self._Namespace = None
@@ -25475,7 +25619,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def SpecifyStatistics(self):
-        r"""返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
+        r"""返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。特别说明：建议查询时严格参考API配置文档中提供的统计方式。如选择其他未提供的统计方式，可能有数据统计误差。
         :rtype: int
         """
         return self._SpecifyStatistics
@@ -41900,6 +42044,42 @@ class UserNotice(AbstractModel):
         self._Weekday = params.get("Weekday")
         self._OnCallFormIDs = params.get("OnCallFormIDs")
         self._VoiceConfirmKey = params.get("VoiceConfirmKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WriteDestination(AbstractModel):
+    r"""数据写向目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Destination: 存储标识
+        :type Destination: str
+        """
+        self._Destination = None
+
+    @property
+    def Destination(self):
+        r"""存储标识
+        :rtype: str
+        """
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+
+    def _deserialize(self, params):
+        self._Destination = params.get("Destination")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

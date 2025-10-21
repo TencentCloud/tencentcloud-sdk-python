@@ -2594,6 +2594,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRemoteWrites(self, request):
+        r"""查询安装的 Agent 列表
+
+        :param request: Request instance for DescribeRemoteWrites.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRemoteWritesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeRemoteWritesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteWrites", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteWritesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSSOAccount(self, request):
         r"""列出当前grafana实例的所有授权账号
 

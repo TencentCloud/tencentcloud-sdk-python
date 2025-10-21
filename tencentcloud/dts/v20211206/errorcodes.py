@@ -44,6 +44,9 @@ FAILEDOPERATION_STARTJOBFAILED = 'FailedOperation.StartJobFailed'
 # 当前状态冲突，不能执行该操作。
 FAILEDOPERATION_STATUSINCONFLICT = 'FailedOperation.StatusInConflict'
 
+# 当前状态不允许操作。
+FAILEDOPERATION_STATUSINCONFLICTERROR = 'FailedOperation.StatusInConflictError'
+
 # 用户没有实名认证。
 FAILEDOPERATION_USERNOTAUTHED = 'FailedOperation.UserNotAuthed'
 
@@ -110,6 +113,9 @@ INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 业务参数错误。
+INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
+
 # 数据转换错误。
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
@@ -148,6 +154,9 @@ OPERATIONDENIED_OPERATIONDENIED = 'OperationDenied.OperationDenied'
 
 # 操作被拒绝。
 OPERATIONDENIED_OPERATIONDENIEDERROR = 'OperationDenied.OperationDeniedError'
+
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # 请求次数超限。
 REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = 'RequestLimitExceeded.RequestLimitExceededError'

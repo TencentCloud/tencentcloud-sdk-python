@@ -12066,11 +12066,17 @@ class DescribeAccountsRequest(AbstractModel):
         :type Limit: int
         :param _AccountRegexp: 匹配账号名的正则表达式，规则同 MySQL 官网。
         :type AccountRegexp: str
+        :param _SortBy: 默认无排序，支持：ASC、DESC、asc、desc
+        :type SortBy: str
+        :param _OrderBy: 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+        :type OrderBy: str
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
         self._AccountRegexp = None
+        self._SortBy = None
+        self._OrderBy = None
 
     @property
     def InstanceId(self):
@@ -12116,12 +12122,36 @@ class DescribeAccountsRequest(AbstractModel):
     def AccountRegexp(self, AccountRegexp):
         self._AccountRegexp = AccountRegexp
 
+    @property
+    def SortBy(self):
+        r"""默认无排序，支持：ASC、DESC、asc、desc
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        r"""待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AccountRegexp = params.get("AccountRegexp")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

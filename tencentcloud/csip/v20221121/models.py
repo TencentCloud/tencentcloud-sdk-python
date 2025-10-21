@@ -155,6 +155,8 @@ class AccessKeyAlarm(AbstractModel):
         :type Evidence: str
         :param _RuleKey: 告警规则标识
         :type RuleKey: str
+        :param _CloudType: 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :type CloudType: int
         """
         self._Name = None
         self._Level = None
@@ -178,6 +180,7 @@ class AccessKeyAlarm(AbstractModel):
         self._IsSupportEditWhiteAccount = None
         self._Evidence = None
         self._RuleKey = None
+        self._CloudType = None
 
     @property
     def Name(self):
@@ -426,6 +429,17 @@ class AccessKeyAlarm(AbstractModel):
     def RuleKey(self, RuleKey):
         self._RuleKey = RuleKey
 
+    @property
+    def CloudType(self):
+        r"""云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -450,6 +464,7 @@ class AccessKeyAlarm(AbstractModel):
         self._IsSupportEditWhiteAccount = params.get("IsSupportEditWhiteAccount")
         self._Evidence = params.get("Evidence")
         self._RuleKey = params.get("RuleKey")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -643,6 +658,8 @@ class AccessKeyAsset(AbstractModel):
         :param _CheckStatus: 0 表示已检测
 1 表示检测中
         :type CheckStatus: int
+        :param _CloudType: 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :type CloudType: int
         """
         self._ID = None
         self._Name = None
@@ -661,6 +678,7 @@ class AccessKeyAsset(AbstractModel):
         self._LastAccessTime = None
         self._Status = None
         self._CheckStatus = None
+        self._CloudType = None
 
     @property
     def ID(self):
@@ -858,6 +876,17 @@ class AccessKeyAsset(AbstractModel):
     def CheckStatus(self, CheckStatus):
         self._CheckStatus = CheckStatus
 
+    @property
+    def CloudType(self):
+        r"""云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -887,6 +916,7 @@ class AccessKeyAsset(AbstractModel):
         self._LastAccessTime = params.get("LastAccessTime")
         self._Status = params.get("Status")
         self._CheckStatus = params.get("CheckStatus")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1298,6 +1328,8 @@ class AccessKeyUser(AbstractModel):
         :type LoginFlag: int
         :param _CheckStatus: 0 表示已检测 1 表示检测中
         :type CheckStatus: int
+        :param _CloudType: 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :type CloudType: int
         """
         self._ID = None
         self._Name = None
@@ -1318,6 +1350,7 @@ class AccessKeyUser(AbstractModel):
         self._ActionFlag = None
         self._LoginFlag = None
         self._CheckStatus = None
+        self._CloudType = None
 
     @property
     def ID(self):
@@ -1534,6 +1567,17 @@ class AccessKeyUser(AbstractModel):
     def CheckStatus(self, CheckStatus):
         self._CheckStatus = CheckStatus
 
+    @property
+    def CloudType(self):
+        r"""云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -1565,6 +1609,7 @@ class AccessKeyUser(AbstractModel):
         self._ActionFlag = params.get("ActionFlag")
         self._LoginFlag = params.get("LoginFlag")
         self._CheckStatus = params.get("CheckStatus")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32397,6 +32442,7 @@ class SourceIPAsset(AbstractModel):
         :param _Region: IP地域
         :type Region: str
         :param _EventType: 调用方式
+-1:未统计
 0:控制台调用
 1:API
         :type EventType: int
@@ -32426,6 +32472,11 @@ class SourceIPAsset(AbstractModel):
         :type ShowStatus: bool
         :param _ISP: 运营商字段
         :type ISP: str
+        :param _VpcInfo: 账号外vpc信息
+        :type VpcInfo: list of SourceIPVpcInfo
+        :param _CloudType: 云类型
+0为腾讯云
+        :type CloudType: int
         """
         self._ID = None
         self._SourceIP = None
@@ -32444,6 +32495,8 @@ class SourceIPAsset(AbstractModel):
         self._Nickname = None
         self._ShowStatus = None
         self._ISP = None
+        self._VpcInfo = None
+        self._CloudType = None
 
     @property
     def ID(self):
@@ -32503,6 +32556,7 @@ class SourceIPAsset(AbstractModel):
     @property
     def EventType(self):
         r"""调用方式
+-1:未统计
 0:控制台调用
 1:API
         :rtype: int
@@ -32638,6 +32692,29 @@ class SourceIPAsset(AbstractModel):
     def ISP(self, ISP):
         self._ISP = ISP
 
+    @property
+    def VpcInfo(self):
+        r"""账号外vpc信息
+        :rtype: list of SourceIPVpcInfo
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def CloudType(self):
+        r"""云类型
+0为腾讯云
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -32667,6 +32744,13 @@ class SourceIPAsset(AbstractModel):
         self._Nickname = params.get("Nickname")
         self._ShowStatus = params.get("ShowStatus")
         self._ISP = params.get("ISP")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = SourceIPVpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

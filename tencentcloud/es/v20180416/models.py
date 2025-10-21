@@ -4450,6 +4450,16 @@ class DescribeInstanceLogsRequest(AbstractModel):
 <li>0, 降序</li>
 <li>1, 升序</li>
         :type OrderByType: int
+        :param _LogLevels: 日志级别
+        :type LogLevels: list of str
+        :param _NodeIds: 节点ID
+        :type NodeIds: list of str
+        :param _IndexName: 慢日志索引名
+        :type IndexName: str
+        :param _ShardId: 慢日志索引分片
+        :type ShardId: str
+        :param _QueryCost: 慢日志查询耗时
+        :type QueryCost: int
         """
         self._InstanceId = None
         self._LogType = None
@@ -4459,6 +4469,11 @@ class DescribeInstanceLogsRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._OrderByType = None
+        self._LogLevels = None
+        self._NodeIds = None
+        self._IndexName = None
+        self._ShardId = None
+        self._QueryCost = None
 
     @property
     def InstanceId(self):
@@ -4554,6 +4569,61 @@ class DescribeInstanceLogsRequest(AbstractModel):
     def OrderByType(self, OrderByType):
         self._OrderByType = OrderByType
 
+    @property
+    def LogLevels(self):
+        r"""日志级别
+        :rtype: list of str
+        """
+        return self._LogLevels
+
+    @LogLevels.setter
+    def LogLevels(self, LogLevels):
+        self._LogLevels = LogLevels
+
+    @property
+    def NodeIds(self):
+        r"""节点ID
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def IndexName(self):
+        r"""慢日志索引名
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def ShardId(self):
+        r"""慢日志索引分片
+        :rtype: str
+        """
+        return self._ShardId
+
+    @ShardId.setter
+    def ShardId(self, ShardId):
+        self._ShardId = ShardId
+
+    @property
+    def QueryCost(self):
+        r"""慢日志查询耗时
+        :rtype: int
+        """
+        return self._QueryCost
+
+    @QueryCost.setter
+    def QueryCost(self, QueryCost):
+        self._QueryCost = QueryCost
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4564,6 +4634,11 @@ class DescribeInstanceLogsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._OrderByType = params.get("OrderByType")
+        self._LogLevels = params.get("LogLevels")
+        self._NodeIds = params.get("NodeIds")
+        self._IndexName = params.get("IndexName")
+        self._ShardId = params.get("ShardId")
+        self._QueryCost = params.get("QueryCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12431,12 +12506,21 @@ class InstanceLog(AbstractModel):
         :type Message: str
         :param _NodeID: 集群节点ID
         :type NodeID: str
+        :param _IndexName: 慢日志索引名
+        :type IndexName: str
+        :param _Shard: 慢日志索引分片
+        :type Shard: str
+        :param _QueryCost: 慢日志索引查询耗时
+        :type QueryCost: str
         """
         self._Time = None
         self._Level = None
         self._Ip = None
         self._Message = None
         self._NodeID = None
+        self._IndexName = None
+        self._Shard = None
+        self._QueryCost = None
 
     @property
     def Time(self):
@@ -12493,6 +12577,39 @@ class InstanceLog(AbstractModel):
     def NodeID(self, NodeID):
         self._NodeID = NodeID
 
+    @property
+    def IndexName(self):
+        r"""慢日志索引名
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def Shard(self):
+        r"""慢日志索引分片
+        :rtype: str
+        """
+        return self._Shard
+
+    @Shard.setter
+    def Shard(self, Shard):
+        self._Shard = Shard
+
+    @property
+    def QueryCost(self):
+        r"""慢日志索引查询耗时
+        :rtype: str
+        """
+        return self._QueryCost
+
+    @QueryCost.setter
+    def QueryCost(self, QueryCost):
+        self._QueryCost = QueryCost
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -12500,6 +12617,9 @@ class InstanceLog(AbstractModel):
         self._Ip = params.get("Ip")
         self._Message = params.get("Message")
         self._NodeID = params.get("NodeID")
+        self._IndexName = params.get("IndexName")
+        self._Shard = params.get("Shard")
+        self._QueryCost = params.get("QueryCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17548,6 +17668,10 @@ class ServerlessSpace(AbstractModel):
         :param _TagList: 空间标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of TagInfo
+        :param _EnableMcpAccess: 是否开启mcp服务
+        :type EnableMcpAccess: int
+        :param _McpAccess: mcp的访问地址
+        :type McpAccess: str
         """
         self._SpaceId = None
         self._SpaceName = None
@@ -17569,6 +17693,8 @@ class ServerlessSpace(AbstractModel):
         self._KibanaLanguage = None
         self._ClusterType = None
         self._TagList = None
+        self._EnableMcpAccess = None
+        self._McpAccess = None
 
     @property
     def SpaceId(self):
@@ -17805,6 +17931,28 @@ class ServerlessSpace(AbstractModel):
     def TagList(self, TagList):
         self._TagList = TagList
 
+    @property
+    def EnableMcpAccess(self):
+        r"""是否开启mcp服务
+        :rtype: int
+        """
+        return self._EnableMcpAccess
+
+    @EnableMcpAccess.setter
+    def EnableMcpAccess(self, EnableMcpAccess):
+        self._EnableMcpAccess = EnableMcpAccess
+
+    @property
+    def McpAccess(self):
+        r"""mcp的访问地址
+        :rtype: str
+        """
+        return self._McpAccess
+
+    @McpAccess.setter
+    def McpAccess(self, McpAccess):
+        self._McpAccess = McpAccess
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
@@ -17841,6 +17989,8 @@ class ServerlessSpace(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._EnableMcpAccess = params.get("EnableMcpAccess")
+        self._McpAccess = params.get("McpAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
