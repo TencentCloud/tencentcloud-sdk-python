@@ -22742,6 +22742,165 @@ class QuestionObj(AbstractModel):
         
 
 
+class QuestionSplitLayoutOCRRequest(AbstractModel):
+    r"""QuestionSplitLayoutOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        :param _EnableImageCrop: 是否开启切边增强和弯曲矫正,默认为false不开启
+        :type EnableImageCrop: bool
+        :param _UseNewModel: false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+        :type UseNewModel: bool
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._IsPdf = None
+        self._PdfPageNumber = None
+        self._EnableImageCrop = None
+        self._UseNewModel = None
+
+    @property
+    def ImageUrl(self):
+        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def IsPdf(self):
+        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :rtype: bool
+        """
+        return self._IsPdf
+
+    @IsPdf.setter
+    def IsPdf(self, IsPdf):
+        self._IsPdf = IsPdf
+
+    @property
+    def PdfPageNumber(self):
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def EnableImageCrop(self):
+        r"""是否开启切边增强和弯曲矫正,默认为false不开启
+        :rtype: bool
+        """
+        return self._EnableImageCrop
+
+    @EnableImageCrop.setter
+    def EnableImageCrop(self, EnableImageCrop):
+        self._EnableImageCrop = EnableImageCrop
+
+    @property
+    def UseNewModel(self):
+        r"""false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+        :rtype: bool
+        """
+        return self._UseNewModel
+
+    @UseNewModel.setter
+    def UseNewModel(self, UseNewModel):
+        self._UseNewModel = UseNewModel
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._IsPdf = params.get("IsPdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableImageCrop = params.get("EnableImageCrop")
+        self._UseNewModel = params.get("UseNewModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionSplitLayoutOCRResponse(AbstractModel):
+    r"""QuestionSplitLayoutOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuestionInfo: 检测到的文本信息
+        :type QuestionInfo: list of QuestionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuestionInfo = None
+        self._RequestId = None
+
+    @property
+    def QuestionInfo(self):
+        r"""检测到的文本信息
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class QuestionSplitOCRRequest(AbstractModel):
     r"""QuestionSplitOCR请求参数结构体
 

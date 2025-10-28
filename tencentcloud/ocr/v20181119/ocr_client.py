@@ -1535,6 +1535,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QuestionSplitLayoutOCR(self, request):
+        r"""试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+
+        默认接口请求频率限制：2次/秒。
+
+        :param request: Request instance for QuestionSplitLayoutOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QuestionSplitLayoutOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QuestionSplitLayoutOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QuestionSplitLayoutOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.QuestionSplitLayoutOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QuestionSplitOCR(self, request):
         r"""试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
 

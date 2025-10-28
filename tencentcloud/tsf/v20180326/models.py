@@ -18304,6 +18304,8 @@ class DeployContainerApplicationRequest(AbstractModel):
         :type PodManagementPolicyType: str
         :param _Partition: 滚动更新分区序号
         :type Partition: int
+        :param _IncrementalDeployment: 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+        :type IncrementalDeployment: bool
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -18366,6 +18368,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._StaticIpEnabled = None
         self._PodManagementPolicyType = None
         self._Partition = None
+        self._IncrementalDeployment = None
 
     @property
     def ApplicationId(self):
@@ -19038,6 +19041,17 @@ class DeployContainerApplicationRequest(AbstractModel):
     def Partition(self, Partition):
         self._Partition = Partition
 
+    @property
+    def IncrementalDeployment(self):
+        r"""是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+        :rtype: bool
+        """
+        return self._IncrementalDeployment
+
+    @IncrementalDeployment.setter
+    def IncrementalDeployment(self, IncrementalDeployment):
+        self._IncrementalDeployment = IncrementalDeployment
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -19153,6 +19167,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._StaticIpEnabled = params.get("StaticIpEnabled")
         self._PodManagementPolicyType = params.get("PodManagementPolicyType")
         self._Partition = params.get("Partition")
+        self._IncrementalDeployment = params.get("IncrementalDeployment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31870,6 +31885,8 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         :type SearchWord: str
         :param _AppMicroServiceType: 部署组类型，精确过滤字段，M：service mesh, P：原生应用， G：网关应用
         :type AppMicroServiceType: str
+        :param _GroupName: 按照【部署组名称】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+        :type GroupName: str
         """
         self._GroupIdList = None
         self._ApplicationId = None
@@ -31880,6 +31897,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         self._GroupId = None
         self._SearchWord = None
         self._AppMicroServiceType = None
+        self._GroupName = None
 
     @property
     def GroupIdList(self):
@@ -31980,6 +31998,17 @@ class DescribeSimpleGroupsRequest(AbstractModel):
     def AppMicroServiceType(self, AppMicroServiceType):
         self._AppMicroServiceType = AppMicroServiceType
 
+    @property
+    def GroupName(self):
+        r"""按照【部署组名称】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
 
     def _deserialize(self, params):
         self._GroupIdList = params.get("GroupIdList")
@@ -31991,6 +32020,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._SearchWord = params.get("SearchWord")
         self._AppMicroServiceType = params.get("AppMicroServiceType")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32319,6 +32349,8 @@ class DescribeStatisticsRequest(AbstractModel):
         :param _ConfigCenterInstanceId: 独占配置中心的ID。
 可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk。
         :type ConfigCenterInstanceId: str
+        :param _ServiceFilter: 服务过滤
+        :type ServiceFilter: str
         """
         self._Type = None
         self._TimeStep = None
@@ -32336,6 +32368,7 @@ class DescribeStatisticsRequest(AbstractModel):
         self._DbName = None
         self._NamespaceIdList = None
         self._ConfigCenterInstanceId = None
+        self._ServiceFilter = None
 
     @property
     def Type(self):
@@ -32516,6 +32549,17 @@ class DescribeStatisticsRequest(AbstractModel):
     def ConfigCenterInstanceId(self, ConfigCenterInstanceId):
         self._ConfigCenterInstanceId = ConfigCenterInstanceId
 
+    @property
+    def ServiceFilter(self):
+        r"""服务过滤
+        :rtype: str
+        """
+        return self._ServiceFilter
+
+    @ServiceFilter.setter
+    def ServiceFilter(self, ServiceFilter):
+        self._ServiceFilter = ServiceFilter
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -32539,6 +32583,7 @@ class DescribeStatisticsRequest(AbstractModel):
         self._DbName = params.get("DbName")
         self._NamespaceIdList = params.get("NamespaceIdList")
         self._ConfigCenterInstanceId = params.get("ConfigCenterInstanceId")
+        self._ServiceFilter = params.get("ServiceFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35175,6 +35220,15 @@ class ExclusiveInstance(AbstractModel):
         :type RegionId: str
         :param _InstanceNamespaceId: 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :type InstanceNamespaceId: str
+        :param _GroupId: 部署组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
         """
         self._CenterType = None
         self._InstanceId = None
@@ -35182,6 +35236,9 @@ class ExclusiveInstance(AbstractModel):
         self._InstanceName = None
         self._RegionId = None
         self._InstanceNamespaceId = None
+        self._GroupId = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def CenterType(self):
@@ -35249,6 +35306,42 @@ class ExclusiveInstance(AbstractModel):
     def InstanceNamespaceId(self, InstanceNamespaceId):
         self._InstanceNamespaceId = InstanceNamespaceId
 
+    @property
+    def GroupId(self):
+        r"""部署组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._CenterType = params.get("CenterType")
@@ -35257,6 +35350,9 @@ class ExclusiveInstance(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._RegionId = params.get("RegionId")
         self._InstanceNamespaceId = params.get("InstanceNamespaceId")
+        self._GroupId = params.get("GroupId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

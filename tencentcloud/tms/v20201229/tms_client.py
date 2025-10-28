@@ -26,6 +26,52 @@ class TmsClient(AbstractClient):
     _service = 'tms'
 
 
+    def CreateFinancialLLMTask(self, request):
+        r"""创建金融大模型审校任务
+
+        :param request: Request instance for CreateFinancialLLMTask.
+        :type request: :class:`tencentcloud.tms.v20201229.models.CreateFinancialLLMTaskRequest`
+        :rtype: :class:`tencentcloud.tms.v20201229.models.CreateFinancialLLMTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFinancialLLMTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFinancialLLMTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFinancialLLMTaskResult(self, request):
+        r"""获取金融大模型审校任务结果
+
+        :param request: Request instance for GetFinancialLLMTaskResult.
+        :type request: :class:`tencentcloud.tms.v20201229.models.GetFinancialLLMTaskResultRequest`
+        :rtype: :class:`tencentcloud.tms.v20201229.models.GetFinancialLLMTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFinancialLLMTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFinancialLLMTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TextModeration(self, request):
         r"""本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
 

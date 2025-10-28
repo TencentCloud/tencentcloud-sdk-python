@@ -4772,6 +4772,8 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :type ErrorMsg: str
         :param _HasCN: 是否包含CN节点
         :type HasCN: bool
+        :param _ExistingJarConfList: 实例已经存在的jar包列表
+        :type ExistingJarConfList: list of ClusterConfigsInfoFromEMR
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4779,6 +4781,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._BuildVersion = None
         self._ErrorMsg = None
         self._HasCN = None
+        self._ExistingJarConfList = None
         self._RequestId = None
 
     @property
@@ -4826,6 +4829,17 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._HasCN = HasCN
 
     @property
+    def ExistingJarConfList(self):
+        r"""实例已经存在的jar包列表
+        :rtype: list of ClusterConfigsInfoFromEMR
+        """
+        return self._ExistingJarConfList
+
+    @ExistingJarConfList.setter
+    def ExistingJarConfList(self, ExistingJarConfList):
+        self._ExistingJarConfList = ExistingJarConfList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4847,6 +4861,12 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._BuildVersion = params.get("BuildVersion")
         self._ErrorMsg = params.get("ErrorMsg")
         self._HasCN = params.get("HasCN")
+        if params.get("ExistingJarConfList") is not None:
+            self._ExistingJarConfList = []
+            for item in params.get("ExistingJarConfList"):
+                obj = ClusterConfigsInfoFromEMR()
+                obj._deserialize(item)
+                self._ExistingJarConfList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

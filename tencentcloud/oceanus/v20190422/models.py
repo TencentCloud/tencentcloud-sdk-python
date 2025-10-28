@@ -12886,9 +12886,9 @@ class ResourceRef(AbstractModel):
         r"""
         :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param _Version: 0-引用 JAR 程序包，1-主程序包，2-引用配置文件，3-Python程序包，4-Python数据文件
+        :param _Version: 资源版本
         :type Version: int
-        :param _Type: 引用资源类型，例如主资源设置为1，代表main class所在的jar包
+        :param _Type: 0-引用 JAR 程序包，1-主程序包，2-引用配置文件，3-Python程序包，4-Python数据文件
         :type Type: int
         """
         self._ResourceId = None
@@ -12908,7 +12908,7 @@ class ResourceRef(AbstractModel):
 
     @property
     def Version(self):
-        r"""0-引用 JAR 程序包，1-主程序包，2-引用配置文件，3-Python程序包，4-Python数据文件
+        r"""资源版本
         :rtype: int
         """
         return self._Version
@@ -12919,7 +12919,7 @@ class ResourceRef(AbstractModel):
 
     @property
     def Type(self):
-        r"""引用资源类型，例如主资源设置为1，代表main class所在的jar包
+        r"""0-引用 JAR 程序包，1-主程序包，2-引用配置文件，3-Python程序包，4-Python数据文件
         :rtype: int
         """
         return self._Type

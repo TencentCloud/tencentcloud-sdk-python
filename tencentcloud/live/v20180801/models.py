@@ -36038,6 +36038,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
         :param _StorageTime: 录制存储时长。
 单位秒，取值范围： 0 - 1500天。
 0：表示永久存储。
+注：此参数只对录制到VOD有效。
         :type StorageTime: int
         :param _Enable: 是否开启当前格式录制，默认值为0，0：否， 1：是。
         :type Enable: int
@@ -36116,6 +36117,7 @@ FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
         r"""录制存储时长。
 单位秒，取值范围： 0 - 1500天。
 0：表示永久存储。
+注：此参数只对录制到VOD有效。
         :rtype: int
         """
         return self._StorageTime

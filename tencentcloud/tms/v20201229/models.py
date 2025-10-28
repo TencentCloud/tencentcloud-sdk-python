@@ -18,6 +18,148 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateFinancialLLMTaskRequest(AbstractModel):
+    r"""CreateFinancialLLMTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BizType: 审核策略BizType
+        :type BizType: str
+        :param _FileType: 待审文件类型，目前支持：PDF, DOC, DOCX
+        :type FileType: str
+        :param _ContentType: 送审内容类型：1-文档，2-文本
+        :type ContentType: int
+        :param _Content: 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+
+文档限制：
+
+- 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
+- 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
+- 文档解析后的纯文本长度不超过 10000字
+
+文本限制：Base64解码后的文本长度不超过10000字
+
+        :type Content: str
+        """
+        self._BizType = None
+        self._FileType = None
+        self._ContentType = None
+        self._Content = None
+
+    @property
+    def BizType(self):
+        r"""审核策略BizType
+        :rtype: str
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def FileType(self):
+        r"""待审文件类型，目前支持：PDF, DOC, DOCX
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def ContentType(self):
+        r"""送审内容类型：1-文档，2-文本
+        :rtype: int
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Content(self):
+        r"""送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+
+文档限制：
+
+- 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
+- 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
+- 文档解析后的纯文本长度不超过 10000字
+
+文本限制：Base64解码后的文本长度不超过10000字
+
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._BizType = params.get("BizType")
+        self._FileType = params.get("FileType")
+        self._ContentType = params.get("ContentType")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFinancialLLMTaskResponse(AbstractModel):
+    r"""CreateFinancialLLMTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 金融大模型审校任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""金融大模型审校任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DetailResults(AbstractModel):
     r"""文本审核返回的详细结果
 
@@ -329,6 +471,295 @@ class Device(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FinancialLLMViolationDetail(AbstractModel):
+    r"""金融大模型审校 违规明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 违规点
+        :type Label: str
+        :param _Suggestion: 处置建议
+        :type Suggestion: str
+        :param _Reasons: 违规原因列表
+        :type Reasons: list of FinancialLLMViolationReason
+        """
+        self._Label = None
+        self._Suggestion = None
+        self._Reasons = None
+
+    @property
+    def Label(self):
+        r"""违规点
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        r"""处置建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Reasons(self):
+        r"""违规原因列表
+        :rtype: list of FinancialLLMViolationReason
+        """
+        return self._Reasons
+
+    @Reasons.setter
+    def Reasons(self, Reasons):
+        self._Reasons = Reasons
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        if params.get("Reasons") is not None:
+            self._Reasons = []
+            for item in params.get("Reasons"):
+                obj = FinancialLLMViolationReason()
+                obj._deserialize(item)
+                self._Reasons.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FinancialLLMViolationReason(AbstractModel):
+    r"""金融大模型审校-违规原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetText: 违规原文片段
+        :type TargetText: str
+        :param _Reason: 违规原因
+        :type Reason: str
+        """
+        self._TargetText = None
+        self._Reason = None
+
+    @property
+    def TargetText(self):
+        r"""违规原文片段
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def Reason(self):
+        r"""违规原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._TargetText = params.get("TargetText")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFinancialLLMTaskResultRequest(AbstractModel):
+    r"""GetFinancialLLMTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 金融大模型审校任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""金融大模型审校任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFinancialLLMTaskResultResponse(AbstractModel):
+    r"""GetFinancialLLMTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 审校任务状态：
+
+- Success: 成功
+- Processing: 处理中，请等待
+- Failed: 失败
+        :type Status: str
+        :param _ModerationResult: 大模型审校结果
+        :type ModerationResult: str
+        :param _FailureReason: 审校任务失败原因，仅当任务失败时有值
+        :type FailureReason: str
+        :param _StartTime: 审校任务开始时间
+        :type StartTime: str
+        :param _ReviewedLabels: 本次检测的违规点列表
+        :type ReviewedLabels: list of str
+        :param _Details: 违规明细
+        :type Details: list of FinancialLLMViolationDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ModerationResult = None
+        self._FailureReason = None
+        self._StartTime = None
+        self._ReviewedLabels = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""审校任务状态：
+
+- Success: 成功
+- Processing: 处理中，请等待
+- Failed: 失败
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ModerationResult(self):
+        r"""大模型审校结果
+        :rtype: str
+        """
+        return self._ModerationResult
+
+    @ModerationResult.setter
+    def ModerationResult(self, ModerationResult):
+        self._ModerationResult = ModerationResult
+
+    @property
+    def FailureReason(self):
+        r"""审校任务失败原因，仅当任务失败时有值
+        :rtype: str
+        """
+        return self._FailureReason
+
+    @FailureReason.setter
+    def FailureReason(self, FailureReason):
+        self._FailureReason = FailureReason
+
+    @property
+    def StartTime(self):
+        r"""审校任务开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ReviewedLabels(self):
+        r"""本次检测的违规点列表
+        :rtype: list of str
+        """
+        return self._ReviewedLabels
+
+    @ReviewedLabels.setter
+    def ReviewedLabels(self, ReviewedLabels):
+        self._ReviewedLabels = ReviewedLabels
+
+    @property
+    def Details(self):
+        r"""违规明细
+        :rtype: list of FinancialLLMViolationDetail
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ModerationResult = params.get("ModerationResult")
+        self._FailureReason = params.get("FailureReason")
+        self._StartTime = params.get("StartTime")
+        self._ReviewedLabels = params.get("ReviewedLabels")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = FinancialLLMViolationDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class HitInfo(AbstractModel):

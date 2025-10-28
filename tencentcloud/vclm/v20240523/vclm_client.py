@@ -72,6 +72,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImageToVideoGeneralJob(self, request):
+        r"""查询图生视频通用能力任务接口
+
+        :param request: Request instance for DescribeImageToVideoGeneralJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoGeneralJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoGeneralJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageToVideoGeneralJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageToVideoGeneralJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePortraitSingJob(self, request):
         r"""用于查询图片唱演任务。
         支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
@@ -156,6 +179,29 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitImageAnimateJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitImageAnimateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitImageToVideoGeneralJob(self, request):
+        r"""图生视频通用能力接口
+
+        :param request: Request instance for SubmitImageToVideoGeneralJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoGeneralJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoGeneralJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitImageToVideoGeneralJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitImageToVideoGeneralJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
