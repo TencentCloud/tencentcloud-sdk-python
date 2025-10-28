@@ -2865,6 +2865,252 @@ class DeviceInfo(AbstractModel):
         
 
 
+class DurationDetails(AbstractModel):
+    r"""会话时长明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionTime: 会话时间
+        :type SessionTime: str
+        :param _Voice: 语音:min
+        :type Voice: int
+        :param _SD: 标清:min
+        :type SD: int
+        :param _HD: 高清:min
+        :type HD: int
+        :param _FHD: 超高清:min
+        :type FHD: int
+        :param _TwoK: 2k:min
+        :type TwoK: int
+        :param _FourK: 4k:min
+        :type FourK: int
+        :param _Online: 在线时长:min
+        :type Online: int
+        :param _MultiSD: 多网标清:min
+        :type MultiSD: int
+        :param _MultiHD: 多网高清:min
+        :type MultiHD: int
+        :param _MultiFHD: 多网超高清:min
+        :type MultiFHD: int
+        :param _MultiTwoK: 多网2k:min
+        :type MultiTwoK: int
+        :param _MultiFourK: 多网4k:min
+        :type MultiFourK: int
+        :param _MultiOnline: 多网在线时长:min
+        :type MultiOnline: int
+        :param _DeductDuration: 抵扣时长:min
+        :type DeductDuration: int
+        """
+        self._SessionTime = None
+        self._Voice = None
+        self._SD = None
+        self._HD = None
+        self._FHD = None
+        self._TwoK = None
+        self._FourK = None
+        self._Online = None
+        self._MultiSD = None
+        self._MultiHD = None
+        self._MultiFHD = None
+        self._MultiTwoK = None
+        self._MultiFourK = None
+        self._MultiOnline = None
+        self._DeductDuration = None
+
+    @property
+    def SessionTime(self):
+        r"""会话时间
+        :rtype: str
+        """
+        return self._SessionTime
+
+    @SessionTime.setter
+    def SessionTime(self, SessionTime):
+        self._SessionTime = SessionTime
+
+    @property
+    def Voice(self):
+        r"""语音:min
+        :rtype: int
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SD(self):
+        r"""标清:min
+        :rtype: int
+        """
+        return self._SD
+
+    @SD.setter
+    def SD(self, SD):
+        self._SD = SD
+
+    @property
+    def HD(self):
+        r"""高清:min
+        :rtype: int
+        """
+        return self._HD
+
+    @HD.setter
+    def HD(self, HD):
+        self._HD = HD
+
+    @property
+    def FHD(self):
+        r"""超高清:min
+        :rtype: int
+        """
+        return self._FHD
+
+    @FHD.setter
+    def FHD(self, FHD):
+        self._FHD = FHD
+
+    @property
+    def TwoK(self):
+        r"""2k:min
+        :rtype: int
+        """
+        return self._TwoK
+
+    @TwoK.setter
+    def TwoK(self, TwoK):
+        self._TwoK = TwoK
+
+    @property
+    def FourK(self):
+        r"""4k:min
+        :rtype: int
+        """
+        return self._FourK
+
+    @FourK.setter
+    def FourK(self, FourK):
+        self._FourK = FourK
+
+    @property
+    def Online(self):
+        r"""在线时长:min
+        :rtype: int
+        """
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def MultiSD(self):
+        r"""多网标清:min
+        :rtype: int
+        """
+        return self._MultiSD
+
+    @MultiSD.setter
+    def MultiSD(self, MultiSD):
+        self._MultiSD = MultiSD
+
+    @property
+    def MultiHD(self):
+        r"""多网高清:min
+        :rtype: int
+        """
+        return self._MultiHD
+
+    @MultiHD.setter
+    def MultiHD(self, MultiHD):
+        self._MultiHD = MultiHD
+
+    @property
+    def MultiFHD(self):
+        r"""多网超高清:min
+        :rtype: int
+        """
+        return self._MultiFHD
+
+    @MultiFHD.setter
+    def MultiFHD(self, MultiFHD):
+        self._MultiFHD = MultiFHD
+
+    @property
+    def MultiTwoK(self):
+        r"""多网2k:min
+        :rtype: int
+        """
+        return self._MultiTwoK
+
+    @MultiTwoK.setter
+    def MultiTwoK(self, MultiTwoK):
+        self._MultiTwoK = MultiTwoK
+
+    @property
+    def MultiFourK(self):
+        r"""多网4k:min
+        :rtype: int
+        """
+        return self._MultiFourK
+
+    @MultiFourK.setter
+    def MultiFourK(self, MultiFourK):
+        self._MultiFourK = MultiFourK
+
+    @property
+    def MultiOnline(self):
+        r"""多网在线时长:min
+        :rtype: int
+        """
+        return self._MultiOnline
+
+    @MultiOnline.setter
+    def MultiOnline(self, MultiOnline):
+        self._MultiOnline = MultiOnline
+
+    @property
+    def DeductDuration(self):
+        r"""抵扣时长:min
+        :rtype: int
+        """
+        return self._DeductDuration
+
+    @DeductDuration.setter
+    def DeductDuration(self, DeductDuration):
+        self._DeductDuration = DeductDuration
+
+
+    def _deserialize(self, params):
+        self._SessionTime = params.get("SessionTime")
+        self._Voice = params.get("Voice")
+        self._SD = params.get("SD")
+        self._HD = params.get("HD")
+        self._FHD = params.get("FHD")
+        self._TwoK = params.get("TwoK")
+        self._FourK = params.get("FourK")
+        self._Online = params.get("Online")
+        self._MultiSD = params.get("MultiSD")
+        self._MultiHD = params.get("MultiHD")
+        self._MultiFHD = params.get("MultiFHD")
+        self._MultiTwoK = params.get("MultiTwoK")
+        self._MultiFourK = params.get("MultiFourK")
+        self._MultiOnline = params.get("MultiOnline")
+        self._DeductDuration = params.get("DeductDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetDeviceLicenseRequest(AbstractModel):
     r"""GetDeviceLicense请求参数结构体
 
@@ -3100,6 +3346,180 @@ class GetDevicesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Devices.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDurationDetailsRequest(AbstractModel):
+    r"""GetDurationDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _PageNum: 页码
+        :type PageNum: int
+        :param _PageSize: 页面数量
+        :type PageSize: int
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DeviceId: 设备ID，不传查全部设备
+        :type DeviceId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNum = None
+        self._PageSize = None
+        self._ProjectId = None
+        self._DeviceId = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNum(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""页面数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DeviceId(self):
+        r"""设备ID，不传查全部设备
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDurationDetailsResponse(AbstractModel):
+    r"""GetDurationDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 列表总数
+        :type TotalCount: int
+        :param _DurationDetails: 时长明细列表
+        :type DurationDetails: list of DurationDetails
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DurationDetails = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""列表总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DurationDetails(self):
+        r"""时长明细列表
+        :rtype: list of DurationDetails
+        """
+        return self._DurationDetails
+
+    @DurationDetails.setter
+    def DurationDetails(self, DurationDetails):
+        self._DurationDetails = DurationDetails
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DurationDetails") is not None:
+            self._DurationDetails = []
+            for item in params.get("DurationDetails"):
+                obj = DurationDetails()
+                obj._deserialize(item)
+                self._DurationDetails.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3368,6 +3788,325 @@ class GetLicensesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Licenses.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class GetTotalDurationRequest(AbstractModel):
+    r"""GetTotalDuration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DeviceId: 设备id，不传查全部
+        :type DeviceId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ProjectId = None
+        self._DeviceId = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DeviceId(self):
+        r"""设备id，不传查全部
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ProjectId = params.get("ProjectId")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTotalDurationResponse(AbstractModel):
+    r"""GetTotalDuration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Voice: 语音:min
+        :type Voice: int
+        :param _SD: 标清:min
+        :type SD: int
+        :param _HD: 高清:min
+        :type HD: int
+        :param _FHD: 超高清:min
+        :type FHD: int
+        :param _TwoK: 2k:min
+        :type TwoK: int
+        :param _FourK: 4k:min
+        :type FourK: int
+        :param _Online: 在线时长:min 
+        :type Online: int
+        :param _MultiSD: 多网标清:min
+        :type MultiSD: int
+        :param _MultiHD: 多网高清:min
+        :type MultiHD: int
+        :param _MultiFHD: 多网超高清:min
+        :type MultiFHD: int
+        :param _MultiTwoK: 多网2k:min
+        :type MultiTwoK: int
+        :param _MultiFourK: 多网4k:min
+        :type MultiFourK: int
+        :param _MultiOnline: 多网在线时长:min 
+        :type MultiOnline: int
+        :param _DeductDuration: 总抵扣时长:min 
+        :type DeductDuration: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Voice = None
+        self._SD = None
+        self._HD = None
+        self._FHD = None
+        self._TwoK = None
+        self._FourK = None
+        self._Online = None
+        self._MultiSD = None
+        self._MultiHD = None
+        self._MultiFHD = None
+        self._MultiTwoK = None
+        self._MultiFourK = None
+        self._MultiOnline = None
+        self._DeductDuration = None
+        self._RequestId = None
+
+    @property
+    def Voice(self):
+        r"""语音:min
+        :rtype: int
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SD(self):
+        r"""标清:min
+        :rtype: int
+        """
+        return self._SD
+
+    @SD.setter
+    def SD(self, SD):
+        self._SD = SD
+
+    @property
+    def HD(self):
+        r"""高清:min
+        :rtype: int
+        """
+        return self._HD
+
+    @HD.setter
+    def HD(self, HD):
+        self._HD = HD
+
+    @property
+    def FHD(self):
+        r"""超高清:min
+        :rtype: int
+        """
+        return self._FHD
+
+    @FHD.setter
+    def FHD(self, FHD):
+        self._FHD = FHD
+
+    @property
+    def TwoK(self):
+        r"""2k:min
+        :rtype: int
+        """
+        return self._TwoK
+
+    @TwoK.setter
+    def TwoK(self, TwoK):
+        self._TwoK = TwoK
+
+    @property
+    def FourK(self):
+        r"""4k:min
+        :rtype: int
+        """
+        return self._FourK
+
+    @FourK.setter
+    def FourK(self, FourK):
+        self._FourK = FourK
+
+    @property
+    def Online(self):
+        r"""在线时长:min 
+        :rtype: int
+        """
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def MultiSD(self):
+        r"""多网标清:min
+        :rtype: int
+        """
+        return self._MultiSD
+
+    @MultiSD.setter
+    def MultiSD(self, MultiSD):
+        self._MultiSD = MultiSD
+
+    @property
+    def MultiHD(self):
+        r"""多网高清:min
+        :rtype: int
+        """
+        return self._MultiHD
+
+    @MultiHD.setter
+    def MultiHD(self, MultiHD):
+        self._MultiHD = MultiHD
+
+    @property
+    def MultiFHD(self):
+        r"""多网超高清:min
+        :rtype: int
+        """
+        return self._MultiFHD
+
+    @MultiFHD.setter
+    def MultiFHD(self, MultiFHD):
+        self._MultiFHD = MultiFHD
+
+    @property
+    def MultiTwoK(self):
+        r"""多网2k:min
+        :rtype: int
+        """
+        return self._MultiTwoK
+
+    @MultiTwoK.setter
+    def MultiTwoK(self, MultiTwoK):
+        self._MultiTwoK = MultiTwoK
+
+    @property
+    def MultiFourK(self):
+        r"""多网4k:min
+        :rtype: int
+        """
+        return self._MultiFourK
+
+    @MultiFourK.setter
+    def MultiFourK(self, MultiFourK):
+        self._MultiFourK = MultiFourK
+
+    @property
+    def MultiOnline(self):
+        r"""多网在线时长:min 
+        :rtype: int
+        """
+        return self._MultiOnline
+
+    @MultiOnline.setter
+    def MultiOnline(self, MultiOnline):
+        self._MultiOnline = MultiOnline
+
+    @property
+    def DeductDuration(self):
+        r"""总抵扣时长:min 
+        :rtype: int
+        """
+        return self._DeductDuration
+
+    @DeductDuration.setter
+    def DeductDuration(self, DeductDuration):
+        self._DeductDuration = DeductDuration
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Voice = params.get("Voice")
+        self._SD = params.get("SD")
+        self._HD = params.get("HD")
+        self._FHD = params.get("FHD")
+        self._TwoK = params.get("TwoK")
+        self._FourK = params.get("FourK")
+        self._Online = params.get("Online")
+        self._MultiSD = params.get("MultiSD")
+        self._MultiHD = params.get("MultiHD")
+        self._MultiFHD = params.get("MultiFHD")
+        self._MultiTwoK = params.get("MultiTwoK")
+        self._MultiFourK = params.get("MultiFourK")
+        self._MultiOnline = params.get("MultiOnline")
+        self._DeductDuration = params.get("DeductDuration")
         self._RequestId = params.get("RequestId")
 
 

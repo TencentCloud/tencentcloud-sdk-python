@@ -1412,6 +1412,40 @@ class CreateDatasetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateExportRequest(AbstractModel):
+    r"""CreateExport请求参数结构体
+
+    """
+
+
+class CreateExportResponse(AbstractModel):
+    r"""CreateExport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateModelServiceAuthTokenRequest(AbstractModel):
     r"""CreateModelServiceAuthToken请求参数结构体
 
@@ -5680,6 +5714,70 @@ class DeleteDatasetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteExportRequest(AbstractModel):
+    r"""DeleteExport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExportId: 日志下载任务的ID
+        :type ExportId: str
+        """
+        self._ExportId = None
+
+    @property
+    def ExportId(self):
+        r"""日志下载任务的ID
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
+
+
+    def _deserialize(self, params):
+        self._ExportId = params.get("ExportId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExportResponse(AbstractModel):
+    r"""DeleteExport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteModelServiceAuthTokenRequest(AbstractModel):
     r"""DeleteModelServiceAuthToken请求参数结构体
 
@@ -7549,6 +7647,70 @@ class DescribeEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Events.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExportRequest(AbstractModel):
+    r"""DescribeExport请求参数结构体
+
+    """
+
+
+class DescribeExportResponse(AbstractModel):
+    r"""DescribeExport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSize: 日志文件大小
+        :type FileSize: str
+        :param _Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileSize = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def FileSize(self):
+        r"""日志文件大小
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def Status(self):
+        r"""日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileSize = params.get("FileSize")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

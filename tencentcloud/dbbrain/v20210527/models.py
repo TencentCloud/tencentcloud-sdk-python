@@ -17852,7 +17852,7 @@ class RedisInstanceConf(AbstractModel):
 
 
 class RedisKeySpaceData(AbstractModel):
-    r"""redis key空间信息。
+    r"""redis key的内存占用等信息。
 
     """
 
@@ -17862,7 +17862,7 @@ class RedisKeySpaceData(AbstractModel):
         :type Key: str
         :param _Type: key类型。
         :type Type: str
-        :param _Encoding: key编码方式。
+        :param _Encoding: key编码方式。包括 int、string、linkedlist、hashtable、skiplist、zipmap、ziplist、intset、quicklist、listpack。
         :type Encoding: str
         :param _ExpireTime: key过期时间戳（毫秒），0代表未设置过期时间。
         :type ExpireTime: int
@@ -17876,6 +17876,8 @@ class RedisKeySpaceData(AbstractModel):
         :type AveElementSize: int
         :param _ShardId: 所属分片序号。
         :type ShardId: str
+        :param _Db: key所属数据库编号。
+        :type Db: int
         """
         self._Key = None
         self._Type = None
@@ -17886,6 +17888,7 @@ class RedisKeySpaceData(AbstractModel):
         self._MaxElementSize = None
         self._AveElementSize = None
         self._ShardId = None
+        self._Db = None
 
     @property
     def Key(self):
@@ -17911,7 +17914,7 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def Encoding(self):
-        r"""key编码方式。
+        r"""key编码方式。包括 int、string、linkedlist、hashtable、skiplist、zipmap、ziplist、intset、quicklist、listpack。
         :rtype: str
         """
         return self._Encoding
@@ -17986,6 +17989,17 @@ class RedisKeySpaceData(AbstractModel):
     def ShardId(self, ShardId):
         self._ShardId = ShardId
 
+    @property
+    def Db(self):
+        r"""key所属数据库编号。
+        :rtype: int
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -17997,6 +18011,7 @@ class RedisKeySpaceData(AbstractModel):
         self._MaxElementSize = params.get("MaxElementSize")
         self._AveElementSize = params.get("AveElementSize")
         self._ShardId = params.get("ShardId")
+        self._Db = params.get("Db")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

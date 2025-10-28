@@ -332,6 +332,9 @@ OPERATIONDENIED_CICPOLICYOPERATIONDENIED = 'OperationDenied.CicPolicyOperationDe
 # 存在未删除的API密钥。
 OPERATIONDENIED_HAVEKEYS = 'OperationDenied.HaveKeys'
 
+# 关联到标签组的策略，不能包含标签条件键。
+OPERATIONDENIED_POLICYTAGCONFLICT = 'OperationDenied.PolicyTagConflict'
+
 # 子用户不允许操作主账号密钥。
 OPERATIONDENIED_SUBUIN = 'OperationDenied.SubUin'
 

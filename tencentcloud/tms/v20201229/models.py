@@ -1187,6 +1187,8 @@ class TextModerationRequest(AbstractModel):
         :type SourceLanguage: str
         :param _Type: 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
         :type Type: str
+        :param _SessionId: 流式审核策略维度下的唯一会话ID
+        :type SessionId: str
         """
         self._Content = None
         self._BizType = None
@@ -1195,6 +1197,7 @@ class TextModerationRequest(AbstractModel):
         self._Device = None
         self._SourceLanguage = None
         self._Type = None
+        self._SessionId = None
 
     @property
     def Content(self):
@@ -1274,6 +1277,17 @@ class TextModerationRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def SessionId(self):
+        r"""流式审核策略维度下的唯一会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -1287,6 +1301,7 @@ class TextModerationRequest(AbstractModel):
             self._Device._deserialize(params.get("Device"))
         self._SourceLanguage = params.get("SourceLanguage")
         self._Type = params.get("Type")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1334,6 +1349,8 @@ class TextModerationResponse(AbstractModel):
         :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         :param _HitType: 该字段用于标识本次审核决策归因，比如text_nlp_tianji标识是由nlp tianji模型给出的审核决策，text_keyword_public标识命中了业务的关键词库
         :type HitType: str
+        :param _SessionId: 流式审核策略维度下的唯一会话ID
+        :type SessionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1350,6 +1367,7 @@ class TextModerationResponse(AbstractModel):
         self._ContextText = None
         self._SentimentAnalysis = None
         self._HitType = None
+        self._SessionId = None
         self._RequestId = None
 
     @property
@@ -1500,6 +1518,17 @@ class TextModerationResponse(AbstractModel):
         self._HitType = HitType
 
     @property
+    def SessionId(self):
+        r"""流式审核策略维度下的唯一会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1537,6 +1566,7 @@ class TextModerationResponse(AbstractModel):
             self._SentimentAnalysis = SentimentAnalysis()
             self._SentimentAnalysis._deserialize(params.get("SentimentAnalysis"))
         self._HitType = params.get("HitType")
+        self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
 
 

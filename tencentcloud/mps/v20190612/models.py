@@ -19464,8 +19464,10 @@ class CreateOutputInfo(AbstractModel):
         :type Zones: list of str
         :param _RISTSettings: 输出的RIST的配置。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
-        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
         :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        :param _StreamSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
+        :type StreamSelector: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
         """
         self._OutputName = None
         self._Description = None
@@ -19482,6 +19484,7 @@ class CreateOutputInfo(AbstractModel):
         self._Zones = None
         self._RISTSettings = None
         self._PidSelector = None
+        self._StreamSelector = None
 
     @property
     def OutputName(self):
@@ -19640,14 +19643,29 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def PidSelector(self):
-        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
         :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
         return self._PidSelector
 
     @PidSelector.setter
     def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
         self._PidSelector = PidSelector
+
+    @property
+    def StreamSelector(self):
+        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
 
 
     def _deserialize(self, params):
@@ -19676,6 +19694,9 @@ class CreateOutputInfo(AbstractModel):
         if params.get("PidSelector") is not None:
             self._PidSelector = PidSelector()
             self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27016,7 +27037,6 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         r"""
         :param _TaskType: 任务类型，目前取值有：
 <li>WorkflowTask：工作流处理任务。</li>
-
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
         :param _Status: 任务状态，取值：
@@ -27025,6 +27045,12 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 <li>FINISH：已完成。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _ErrCode: 任务失败时的错误码。
+        :type ErrCode: int
+        :param _ErrMsg: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrMsg: str
+        :param _Message: 任务异常Message。
+        :type Message: str
         :param _ImageProcessTaskResultSet: 图片处理任务的执行状态与结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
@@ -27039,6 +27065,9 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         """
         self._TaskType = None
         self._Status = None
+        self._ErrCode = None
+        self._ErrMsg = None
+        self._Message = None
         self._ImageProcessTaskResultSet = None
         self._CreateTime = None
         self._FinishTime = None
@@ -27048,7 +27077,6 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     def TaskType(self):
         r"""任务类型，目前取值有：
 <li>WorkflowTask：工作流处理任务。</li>
-
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27072,6 +27100,39 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""任务失败时的错误码。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMsg(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def Message(self):
+        r"""任务异常Message。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def ImageProcessTaskResultSet(self):
@@ -27124,6 +27185,9 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMsg = params.get("ErrMsg")
+        self._Message = params.get("Message")
         if params.get("ImageProcessTaskResultSet") is not None:
             self._ImageProcessTaskResultSet = []
             for item in params.get("ImageProcessTaskResultSet"):
@@ -28271,6 +28335,8 @@ class DescribeOutput(AbstractModel):
         :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         :param _StreamUrls: 输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
         :type StreamUrls: list of StreamUrlDetail
+        :param _StreamSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :type StreamSelector: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
         """
         self._OutputId = None
         self._OutputName = None
@@ -28293,6 +28359,7 @@ class DescribeOutput(AbstractModel):
         self._RISTSettings = None
         self._PidSelector = None
         self._StreamUrls = None
+        self._StreamSelector = None
 
     @property
     def OutputId(self):
@@ -28517,6 +28584,8 @@ class DescribeOutput(AbstractModel):
 
     @property
     def PidSelector(self):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
         r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
         :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
@@ -28524,6 +28593,8 @@ class DescribeOutput(AbstractModel):
 
     @PidSelector.setter
     def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
         self._PidSelector = PidSelector
 
     @property
@@ -28536,6 +28607,17 @@ class DescribeOutput(AbstractModel):
     @StreamUrls.setter
     def StreamUrls(self, StreamUrls):
         self._StreamUrls = StreamUrls
+
+    @property
+    def StreamSelector(self):
+        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
 
 
     def _deserialize(self, params):
@@ -28586,6 +28668,9 @@ class DescribeOutput(AbstractModel):
                 obj = StreamUrlDetail()
                 obj._deserialize(item)
                 self._StreamUrls.append(obj)
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49371,6 +49456,8 @@ class ModifyOutputInfo(AbstractModel):
         :type OutputType: str
         :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
         :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        :param _StreamSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :type StreamSelector: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
         """
         self._OutputId = None
         self._OutputName = None
@@ -49387,6 +49474,7 @@ class ModifyOutputInfo(AbstractModel):
         self._RISTSettings = None
         self._OutputType = None
         self._PidSelector = None
+        self._StreamSelector = None
 
     @property
     def OutputId(self):
@@ -49545,6 +49633,8 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def PidSelector(self):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
         r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
         :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
@@ -49552,7 +49642,20 @@ class ModifyOutputInfo(AbstractModel):
 
     @PidSelector.setter
     def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
         self._PidSelector = PidSelector
+
+    @property
+    def StreamSelector(self):
+        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
 
 
     def _deserialize(self, params):
@@ -49581,6 +49684,9 @@ class ModifyOutputInfo(AbstractModel):
         if params.get("PidSelector") is not None:
             self._PidSelector = PidSelector()
             self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64030,6 +64136,76 @@ class StreamLinkRegionInfo(AbstractModel):
         
 
 
+class StreamSelector(AbstractModel):
+    r"""选择指定的音轨或者视频输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SelectorType: 选择类型: PID | TRACK
+        :type SelectorType: str
+        :param _PidSelector: 根据 PID 配置选择器
+        :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        :param _TrackSelector: 根据 Track 配置选择器
+        :type TrackSelector: :class:`tencentcloud.mps.v20190612.models.TrackSelector`
+        """
+        self._SelectorType = None
+        self._PidSelector = None
+        self._TrackSelector = None
+
+    @property
+    def SelectorType(self):
+        r"""选择类型: PID | TRACK
+        :rtype: str
+        """
+        return self._SelectorType
+
+    @SelectorType.setter
+    def SelectorType(self, SelectorType):
+        self._SelectorType = SelectorType
+
+    @property
+    def PidSelector(self):
+        r"""根据 PID 配置选择器
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        self._PidSelector = PidSelector
+
+    @property
+    def TrackSelector(self):
+        r"""根据 Track 配置选择器
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TrackSelector`
+        """
+        return self._TrackSelector
+
+    @TrackSelector.setter
+    def TrackSelector(self, TrackSelector):
+        self._TrackSelector = TrackSelector
+
+
+    def _deserialize(self, params):
+        self._SelectorType = params.get("SelectorType")
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("TrackSelector") is not None:
+            self._TrackSelector = TrackSelector()
+            self._TrackSelector._deserialize(params.get("TrackSelector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StreamUrlDetail(AbstractModel):
     r"""描述 URL 的完整信息
 
@@ -66286,6 +66462,57 @@ class TrackInfo(AbstractModel):
     def _deserialize(self, params):
         self._TrackNum = params.get("TrackNum")
         self._ChannelVolume = params.get("ChannelVolume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrackSelector(AbstractModel):
+    r"""音视频轨道选择
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoIndex: 视频轨道序号，从1开始.
+        :type VideoIndex: list of int
+        :param _AudioIndex: 音频轨道序号，从1开始.
+        :type AudioIndex: list of int
+        """
+        self._VideoIndex = None
+        self._AudioIndex = None
+
+    @property
+    def VideoIndex(self):
+        r"""视频轨道序号，从1开始.
+        :rtype: list of int
+        """
+        return self._VideoIndex
+
+    @VideoIndex.setter
+    def VideoIndex(self, VideoIndex):
+        self._VideoIndex = VideoIndex
+
+    @property
+    def AudioIndex(self):
+        r"""音频轨道序号，从1开始.
+        :rtype: list of int
+        """
+        return self._AudioIndex
+
+    @AudioIndex.setter
+    def AudioIndex(self, AudioIndex):
+        self._AudioIndex = AudioIndex
+
+
+    def _deserialize(self, params):
+        self._VideoIndex = params.get("VideoIndex")
+        self._AudioIndex = params.get("AudioIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

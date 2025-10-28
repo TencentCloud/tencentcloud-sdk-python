@@ -572,7 +572,7 @@ class AddVpcCniSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
         :type ClusterId: str
         :param _SubnetIds: 为集群容器网络增加的子网列表
         :type SubnetIds: list of str
@@ -588,7 +588,7 @@ class AddVpcCniSubnetsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
         :rtype: str
         """
         return self._ClusterId
@@ -5340,7 +5340,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
         :type ClusterId: str
         :param _LogsetId: CLS日志集ID
         :type LogsetId: str
-        :param _ClusterType: 当前集群类型支持tke、eks
+        :param _ClusterType: 当前集群类型支持tke（标准集群）、eks（serverless集群）
         :type ClusterType: str
         """
         self._LogConfig = None
@@ -5383,7 +5383,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""当前集群类型支持tke、eks
+        r"""当前集群类型支持tke（标准集群）、eks（serverless集群）
         :rtype: str
         """
         return self._ClusterType
@@ -16296,7 +16296,7 @@ class DescribeClusterRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteTableName: 路由表名称。
+        :param _RouteTableName: 路由表名称。与集群 ID 一致，可以到[集群控制台](https://console.cloud.tencent.com/tke2)进行复制。
         :type RouteTableName: str
         :param _Filters: 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
         :type Filters: list of Filter
@@ -16306,7 +16306,7 @@ class DescribeClusterRoutesRequest(AbstractModel):
 
     @property
     def RouteTableName(self):
-        r"""路由表名称。
+        r"""路由表名称。与集群 ID 一致，可以到[集群控制台](https://console.cloud.tencent.com/tke2)进行复制。
         :rtype: str
         """
         return self._RouteTableName
@@ -19457,14 +19457,14 @@ class DescribeIPAMDRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
         :rtype: str
         """
         return self._ClusterId
@@ -24449,7 +24449,7 @@ class DescribeRouteTableConflictsRequest(AbstractModel):
         r"""
         :param _RouteTableCidrBlock: 路由表CIDR
         :type RouteTableCidrBlock: str
-        :param _VpcId: 路由表绑定的VPC
+        :param _VpcId: 路由表绑定的VPC，请到 [VPC 控制台](https://console.cloud.tencent.com/vpc/vpc)复制 VPC ID
         :type VpcId: str
         """
         self._RouteTableCidrBlock = None
@@ -24468,7 +24468,7 @@ class DescribeRouteTableConflictsRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""路由表绑定的VPC
+        r"""路由表绑定的VPC，请到 [VPC 控制台](https://console.cloud.tencent.com/vpc/vpc)复制 VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -27865,9 +27865,9 @@ class EnableClusterAuditRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _LogsetId: CLS日志集ID
+        :param _LogsetId: CLS日志集ID，可以通过cls接口或者控制台获取
         :type LogsetId: str
-        :param _TopicId: CLS日志主题ID
+        :param _TopicId: CLS日志主题ID，可以通过cls接口或者控制台获取
         :type TopicId: str
         :param _TopicRegion: topic所在region，默认为集群当前region
         :type TopicRegion: str
@@ -27890,7 +27890,7 @@ class EnableClusterAuditRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""CLS日志集ID
+        r"""CLS日志集ID，可以通过cls接口或者控制台获取
         :rtype: str
         """
         return self._LogsetId
@@ -27901,7 +27901,7 @@ class EnableClusterAuditRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""CLS日志主题ID
+        r"""CLS日志主题ID，可以通过cls接口或者控制台获取
         :rtype: str
         """
         return self._TopicId
@@ -28119,9 +28119,9 @@ class EnableEventPersistenceRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _LogsetId: cls服务的logsetID
+        :param _LogsetId: cls服务的logsetID，通过cls接口或者控制台获取
         :type LogsetId: str
-        :param _TopicId: cls服务的topicID
+        :param _TopicId: cls服务的topicID，通过cls接口或者控制台获取
         :type TopicId: str
         :param _TopicRegion: topic所在地域，默认为集群所在地域
         :type TopicRegion: str
@@ -28144,7 +28144,7 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""cls服务的logsetID
+        r"""cls服务的logsetID，通过cls接口或者控制台获取
         :rtype: str
         """
         return self._LogsetId
@@ -28155,7 +28155,7 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""cls服务的topicID
+        r"""cls服务的topicID，通过cls接口或者控制台获取
         :rtype: str
         """
         return self._TopicId
@@ -44188,6 +44188,7 @@ class RouteTableConflict(AbstractModel):
     def __init__(self):
         r"""
         :param _RouteTableType: 路由表类型。
+枚举值：CcsCluster、Vpc、VpcRouteTable、CcsClusterRouteTable
         :type RouteTableType: str
         :param _RouteTableCidrBlock: 路由表CIDR。
         :type RouteTableCidrBlock: str
@@ -44204,6 +44205,7 @@ class RouteTableConflict(AbstractModel):
     @property
     def RouteTableType(self):
         r"""路由表类型。
+枚举值：CcsCluster、Vpc、VpcRouteTable、CcsClusterRouteTable
         :rtype: str
         """
         return self._RouteTableType

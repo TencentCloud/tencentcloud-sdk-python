@@ -3197,6 +3197,9 @@ class Storage(AbstractModel):
         :type StorageAccountId: str
         :param _StorageAppId: 被指定存储用户appid
         :type StorageAppId: str
+        :param _Compress: 是否压缩。
+1:压缩  2:不压缩
+        :type Compress: int
         """
         self._StorageType = None
         self._StorageRegion = None
@@ -3204,6 +3207,7 @@ class Storage(AbstractModel):
         self._StoragePrefix = None
         self._StorageAccountId = None
         self._StorageAppId = None
+        self._Compress = None
 
     @property
     def StorageType(self):
@@ -3271,6 +3275,18 @@ class Storage(AbstractModel):
     def StorageAppId(self, StorageAppId):
         self._StorageAppId = StorageAppId
 
+    @property
+    def Compress(self):
+        r"""是否压缩。
+1:压缩  2:不压缩
+        :rtype: int
+        """
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
 
     def _deserialize(self, params):
         self._StorageType = params.get("StorageType")
@@ -3279,6 +3295,7 @@ class Storage(AbstractModel):
         self._StoragePrefix = params.get("StoragePrefix")
         self._StorageAccountId = params.get("StorageAccountId")
         self._StorageAppId = params.get("StorageAppId")
+        self._Compress = params.get("Compress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

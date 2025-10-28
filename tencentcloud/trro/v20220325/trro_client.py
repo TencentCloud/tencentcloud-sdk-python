@@ -486,6 +486,29 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDurationDetails(self, request):
+        r"""查询该时间段、对应项目、设备的不同分辨率的通话时长流水，流水以日期（天）为单位
+
+        :param request: Request instance for GetDurationDetails.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetDurationDetailsRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetDurationDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDurationDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDurationDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetLicenseStat(self, request):
         r"""统计license类型数量
 
@@ -523,6 +546,29 @@ class TrroClient(AbstractClient):
             body = self.call("GetLicenses", params, headers=headers)
             response = json.loads(body)
             model = models.GetLicensesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTotalDuration(self, request):
+        r"""查询该时间段、对应项目、设备的不同分辨率的通话时长汇总
+
+        :param request: Request instance for GetTotalDuration.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetTotalDurationRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetTotalDurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTotalDuration", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTotalDurationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -15165,7 +15165,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 <li>**H5**：<font color="red">H5长链接</font>跳转H5链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 <li>**SHORT_H5**：<font color="red">H5短链</font>跳转H5的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签H5页面</li></ul>
         :type Endpoint: str
-        :param _AutoJumpBackEvent: 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+        :param _AutoJumpBackEvent: <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
+触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
         :type AutoJumpBackEvent: str
         :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:
@@ -15177,7 +15178,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :param _ProxyOperatorIdCardNumber: 子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
         :type ProxyOperatorIdCardNumber: str
-        :param _AutoJumpUrl: 认证完成跳转链接。
+        :param _AutoJumpUrl: <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
+认证完成跳转链接。
 注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
         :type AutoJumpUrl: str
         :param _TopNavigationStatus: 是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
@@ -15213,6 +15215,10 @@ p.s.
         :type BankAccountNumber: str
         :param _Operator: 无
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _JumpEvents: 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :type JumpEvents: list of JumpEvent
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -15236,6 +15242,7 @@ p.s.
         self._OrganizationAuthorizationOptions = None
         self._BankAccountNumber = None
         self._Operator = None
+        self._JumpEvents = None
 
     @property
     def Agent(self):
@@ -15382,7 +15389,8 @@ p.s.
 
     @property
     def AutoJumpBackEvent(self):
-        r"""触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+        r"""<font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
+触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
         :rtype: str
         """
@@ -15421,7 +15429,8 @@ p.s.
 
     @property
     def AutoJumpUrl(self):
-        r"""认证完成跳转链接。
+        r"""<font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
+认证完成跳转链接。
 注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
         :rtype: str
         """
@@ -15549,6 +15558,19 @@ p.s.
 
         self._Operator = Operator
 
+    @property
+    def JumpEvents(self):
+        r"""跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :rtype: list of JumpEvent
+        """
+        return self._JumpEvents
+
+    @JumpEvents.setter
+    def JumpEvents(self, JumpEvents):
+        self._JumpEvents = JumpEvents
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -15579,6 +15601,12 @@ p.s.
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        if params.get("JumpEvents") is not None:
+            self._JumpEvents = []
+            for item in params.get("JumpEvents"):
+                obj = JumpEvent()
+                obj._deserialize(item)
+                self._JumpEvents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17353,7 +17381,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :param _PlatformAppAuthorization: 是否给平台应用授权
 
 <ul>
-<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
 <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
 </ul>
 
@@ -17370,10 +17398,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :type SealTypes: list of str
         :param _AuthToMe: 在处理授权关系时，授权的方向
 <ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
 </ul>
         :type AuthToMe: bool
+        :param _AuthorizedOrganizationIds: 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+        :type AuthorizedOrganizationIds: list of str
+        :param _AuthorizedOrganizationNames: 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+        :type AuthorizedOrganizationNames: list of str
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
@@ -17381,6 +17413,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._PlatformAppAuthorization = None
         self._SealTypes = None
         self._AuthToMe = None
+        self._AuthorizedOrganizationIds = None
+        self._AuthorizedOrganizationNames = None
 
     @property
     def Agent(self):
@@ -17403,6 +17437,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationId(self):
+        warnings.warn("parameter `AuthorizedOrganizationId` is deprecated", DeprecationWarning) 
+
         r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
 
 注：`被授权企业必须和当前企业在同一应用号下`
@@ -17412,10 +17448,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @AuthorizedOrganizationId.setter
     def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        warnings.warn("parameter `AuthorizedOrganizationId` is deprecated", DeprecationWarning) 
+
         self._AuthorizedOrganizationId = AuthorizedOrganizationId
 
     @property
     def AuthorizedOrganizationName(self):
+        warnings.warn("parameter `AuthorizedOrganizationName` is deprecated", DeprecationWarning) 
+
         r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
 
 注: 
@@ -17427,6 +17467,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @AuthorizedOrganizationName.setter
     def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
+        warnings.warn("parameter `AuthorizedOrganizationName` is deprecated", DeprecationWarning) 
+
         self._AuthorizedOrganizationName = AuthorizedOrganizationName
 
     @property
@@ -17434,7 +17476,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         r"""是否给平台应用授权
 
 <ul>
-<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
 <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
 </ul>
 
@@ -17469,8 +17511,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthToMe(self):
         r"""在处理授权关系时，授权的方向
 <ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
 </ul>
         :rtype: bool
         """
@@ -17479,6 +17521,28 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     @AuthToMe.setter
     def AuthToMe(self, AuthToMe):
         self._AuthToMe = AuthToMe
+
+    @property
+    def AuthorizedOrganizationIds(self):
+        r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+        :rtype: list of str
+        """
+        return self._AuthorizedOrganizationIds
+
+    @AuthorizedOrganizationIds.setter
+    def AuthorizedOrganizationIds(self, AuthorizedOrganizationIds):
+        self._AuthorizedOrganizationIds = AuthorizedOrganizationIds
+
+    @property
+    def AuthorizedOrganizationNames(self):
+        r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+        :rtype: list of str
+        """
+        return self._AuthorizedOrganizationNames
+
+    @AuthorizedOrganizationNames.setter
+    def AuthorizedOrganizationNames(self, AuthorizedOrganizationNames):
+        self._AuthorizedOrganizationNames = AuthorizedOrganizationNames
 
 
     def _deserialize(self, params):
@@ -17490,6 +17554,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._PlatformAppAuthorization = params.get("PlatformAppAuthorization")
         self._SealTypes = params.get("SealTypes")
         self._AuthToMe = params.get("AuthToMe")
+        self._AuthorizedOrganizationIds = params.get("AuthorizedOrganizationIds")
+        self._AuthorizedOrganizationNames = params.get("AuthorizedOrganizationNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25977,6 +26043,69 @@ class IntentionQuestionResult(AbstractModel):
         self._Video = params.get("Video")
         self._ResultCode = params.get("ResultCode")
         self._AsrResult = params.get("AsrResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JumpEvent(AbstractModel):
+    r"""跳转事件的结构体，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JumpEventType: 跳转事件枚举，
+* 1 - 企业收录。
+* 2 - 超管授权书审核。
+* 3 - 认证完成。
+        :type JumpEventType: int
+        :param _JumpUrl: 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/partner/openqianh5)
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :type JumpUrl: str
+        """
+        self._JumpEventType = None
+        self._JumpUrl = None
+
+    @property
+    def JumpEventType(self):
+        r"""跳转事件枚举，
+* 1 - 企业收录。
+* 2 - 超管授权书审核。
+* 3 - 认证完成。
+        :rtype: int
+        """
+        return self._JumpEventType
+
+    @JumpEventType.setter
+    def JumpEventType(self, JumpEventType):
+        self._JumpEventType = JumpEventType
+
+    @property
+    def JumpUrl(self):
+        r"""为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/partner/openqianh5)
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :rtype: str
+        """
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+
+    def _deserialize(self, params):
+        self._JumpEventType = params.get("JumpEventType")
+        self._JumpUrl = params.get("JumpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

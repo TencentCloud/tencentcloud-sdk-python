@@ -37,8 +37,15 @@ class AccountInfo(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 账号最后一次更新时间
         :type UpdateTime: str
-        :param _UserType: 账号类型
+        :param _PasswordUpdateTime: 账号密码最近一次修改时间。
+
+此字段只在2025-10-31后才生效，之前无论是否修改密码，该值统一为默认值：0000-00-00 00:00:00
+同时仅通过云API或者管控控制台修改密码，才会更新该字段。
+        :type PasswordUpdateTime: str
+        :param _UserType: 账号类型。支持normal、tencentDBSuper。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
         :type UserType: str
+        :param _OpenCam: 用户账号是否启用CAM验证
+        :type OpenCam: bool
         """
         self._DBInstanceId = None
         self._UserName = None
@@ -46,7 +53,9 @@ class AccountInfo(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._PasswordUpdateTime = None
         self._UserType = None
+        self._OpenCam = None
 
     @property
     def DBInstanceId(self):
@@ -115,8 +124,22 @@ class AccountInfo(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def PasswordUpdateTime(self):
+        r"""账号密码最近一次修改时间。
+
+此字段只在2025-10-31后才生效，之前无论是否修改密码，该值统一为默认值：0000-00-00 00:00:00
+同时仅通过云API或者管控控制台修改密码，才会更新该字段。
+        :rtype: str
+        """
+        return self._PasswordUpdateTime
+
+    @PasswordUpdateTime.setter
+    def PasswordUpdateTime(self, PasswordUpdateTime):
+        self._PasswordUpdateTime = PasswordUpdateTime
+
+    @property
     def UserType(self):
-        r"""账号类型
+        r"""账号类型。支持normal、tencentDBSuper。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
         :rtype: str
         """
         return self._UserType
@@ -124,6 +147,17 @@ class AccountInfo(AbstractModel):
     @UserType.setter
     def UserType(self, UserType):
         self._UserType = UserType
+
+    @property
+    def OpenCam(self):
+        r"""用户账号是否启用CAM验证
+        :rtype: bool
+        """
+        return self._OpenCam
+
+    @OpenCam.setter
+    def OpenCam(self, OpenCam):
+        self._OpenCam = OpenCam
 
 
     def _deserialize(self, params):
@@ -133,7 +167,9 @@ class AccountInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._PasswordUpdateTime = params.get("PasswordUpdateTime")
         self._UserType = params.get("UserType")
+        self._OpenCam = params.get("OpenCam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -202,17 +238,20 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -220,6 +259,17 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -235,6 +285,7 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1181,11 +1232,11 @@ class CloneDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 克隆的源实例ID。
+        :param _DBInstanceId: 克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _SpecCode: 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
         :type SpecCode: str
-        :param _Storage: 实例容量大小，单位：GB。
+        :param _Storage: 实例磁盘容量大小，设置步长限制为10。单位：GB。
         :type Storage: int
         :param _Period: 购买时长，单位：月。
 
@@ -1193,7 +1244,8 @@ class CloneDBInstanceRequest(AbstractModel):
 - 后付费：只支持1
 
         :type Period: int
-        :param _AutoRenewFlag: 续费标记：
+        :param _AutoRenewFlag: 续费标记。仅当计费模式为预付费时生效。
+枚举值：
 
 - 0：手动续费
 - 1：自动续费
@@ -1204,7 +1256,7 @@ class CloneDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :type SubnetId: str
-        :param _Name: 新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
+        :param _Name: 新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
         :type Name: str
         :param _InstanceChargeType: 实例计费类型，目前支持：
 
@@ -1213,14 +1265,14 @@ class CloneDBInstanceRequest(AbstractModel):
 
 默认值：PREPAID
         :type InstanceChargeType: str
-        :param _SecurityGroupIds: 实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
 
         :type SecurityGroupIds: list of str
-        :param _ProjectId: 项目ID。
+        :param _ProjectId: 项目ID。默认值为0，表示所属默认项目。
         :type ProjectId: int
         :param _TagList: 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
         :type TagList: list of Tag
-        :param _DBNodeSet: 实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
+        :param _DBNodeSet: 实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :type DBNodeSet: list of DBNode
         :param _AutoVoucher: 是否自动使用代金券：
@@ -1234,9 +1286,9 @@ class CloneDBInstanceRequest(AbstractModel):
         :type VoucherIds: str
         :param _ActivityId: 活动ID。
         :type ActivityId: int
-        :param _BackupSetId: 基础备份集ID。
+        :param _BackupSetId: 基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
         :type BackupSetId: str
-        :param _RecoveryTargetTime: 恢复时间点。
+        :param _RecoveryTargetTime: 恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
         :type RecoveryTargetTime: str
         :param _SyncMode: 主从同步方式，支持： 
 <li>Semi-sync：半同步</li>
@@ -1244,6 +1296,8 @@ class CloneDBInstanceRequest(AbstractModel):
 主实例默认值：Semi-sync
 只读实例默认值：Async
         :type SyncMode: str
+        :param _DeletionProtection: 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :type DeletionProtection: bool
         """
         self._DBInstanceId = None
         self._SpecCode = None
@@ -1264,10 +1318,11 @@ class CloneDBInstanceRequest(AbstractModel):
         self._BackupSetId = None
         self._RecoveryTargetTime = None
         self._SyncMode = None
+        self._DeletionProtection = None
 
     @property
     def DBInstanceId(self):
-        r"""克隆的源实例ID。
+        r"""克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -1289,7 +1344,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""实例容量大小，单位：GB。
+        r"""实例磁盘容量大小，设置步长限制为10。单位：GB。
         :rtype: int
         """
         return self._Storage
@@ -1315,7 +1370,8 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""续费标记：
+        r"""续费标记。仅当计费模式为预付费时生效。
+枚举值：
 
 - 0：手动续费
 - 1：自动续费
@@ -1353,7 +1409,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"未命名"。
+        r"""新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
         :rtype: str
         """
         return self._Name
@@ -1380,7 +1436,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        r"""实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
 
         :rtype: list of str
         """
@@ -1392,7 +1448,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID。
+        r"""项目ID。默认值为0，表示所属默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -1414,7 +1470,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DBNodeSet(self):
-        r"""实例节点部署信息，支持多可用区部署时需要指定每个节点的部署可用区信息。
+        r"""实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
         :rtype: list of DBNode
         """
@@ -1464,7 +1520,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        r"""基础备份集ID。
+        r"""基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
         :rtype: str
         """
         return self._BackupSetId
@@ -1475,7 +1531,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def RecoveryTargetTime(self):
-        r"""恢复时间点。
+        r"""恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -1498,6 +1554,17 @@ class CloneDBInstanceRequest(AbstractModel):
     @SyncMode.setter
     def SyncMode(self, SyncMode):
         self._SyncMode = SyncMode
+
+    @property
+    def DeletionProtection(self):
+        r"""实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
 
 
     def _deserialize(self, params):
@@ -1530,6 +1597,7 @@ class CloneDBInstanceRequest(AbstractModel):
         self._BackupSetId = params.get("BackupSetId")
         self._RecoveryTargetTime = params.get("RecoveryTargetTime")
         self._SyncMode = params.get("SyncMode")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1671,17 +1739,20 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步任务流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""异步任务流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -1689,6 +1760,17 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -1704,6 +1786,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1714,26 +1797,38 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _UserName: 创建的账号名称。
+        :param _UserName: 创建的账号名称。由字母（a-z, A-Z）、数字（0-9）、下划线（_）组成，以字母或（_）开头，最多63个字符。不能使用系统保留关键字，不能为postgres，且不能由pg_或tencentdb_开头
         :type UserName: str
-        :param _Password: 账号对应的密码。
-        :type Password: str
         :param _Type: 账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
         :type Type: str
-        :param _Remark: 账号备注。
+        :param _Password: 账号对应的密码。密码规则如下：
+<li>长度8 ~ 32位，推荐使用12位以上的密码</li>
+<li>不能以" / "开头</li>
+<li>必须包含以下四项:</li>
+
+小写字母 a ~ z           
+大写字母 A ～ Z
+数字 0 ～ 9
+特殊字符 ()`~!@#$%^&*-+=_|{}[]:<>,.?/
+
+        :type Password: str
+        :param _Remark: 账号备注。只允许英文字母、数字、下划线、中划线，以及全体汉字，限60个字符
         :type Remark: str
+        :param _OpenCam: 账号是否开启CAM验证
+        :type OpenCam: bool
         """
         self._DBInstanceId = None
         self._UserName = None
-        self._Password = None
         self._Type = None
+        self._Password = None
         self._Remark = None
+        self._OpenCam = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID。
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -1744,7 +1839,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""创建的账号名称。
+        r"""创建的账号名称。由字母（a-z, A-Z）、数字（0-9）、下划线（_）组成，以字母或（_）开头，最多63个字符。不能使用系统保留关键字，不能为postgres，且不能由pg_或tencentdb_开头
         :rtype: str
         """
         return self._UserName
@@ -1752,17 +1847,6 @@ class CreateAccountRequest(AbstractModel):
     @UserName.setter
     def UserName(self, UserName):
         self._UserName = UserName
-
-    @property
-    def Password(self):
-        r"""账号对应的密码。
-        :rtype: str
-        """
-        return self._Password
-
-    @Password.setter
-    def Password(self, Password):
-        self._Password = Password
 
     @property
     def Type(self):
@@ -1776,8 +1860,28 @@ class CreateAccountRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def Password(self):
+        r"""账号对应的密码。密码规则如下：
+<li>长度8 ~ 32位，推荐使用12位以上的密码</li>
+<li>不能以" / "开头</li>
+<li>必须包含以下四项:</li>
+
+小写字母 a ~ z           
+大写字母 A ～ Z
+数字 0 ～ 9
+特殊字符 ()`~!@#$%^&*-+=_|{}[]:<>,.?/
+
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
     def Remark(self):
-        r"""账号备注。
+        r"""账号备注。只允许英文字母、数字、下划线、中划线，以及全体汉字，限60个字符
         :rtype: str
         """
         return self._Remark
@@ -1786,13 +1890,25 @@ class CreateAccountRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def OpenCam(self):
+        r"""账号是否开启CAM验证
+        :rtype: bool
+        """
+        return self._OpenCam
+
+    @OpenCam.setter
+    def OpenCam(self, OpenCam):
+        self._OpenCam = OpenCam
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
         self._UserName = params.get("UserName")
-        self._Password = params.get("Password")
         self._Type = params.get("Type")
+        self._Password = params.get("Password")
         self._Remark = params.get("Remark")
+        self._OpenCam = params.get("OpenCam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2184,17 +2300,20 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID。
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID。
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -2202,6 +2321,17 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -2217,6 +2347,7 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2486,6 +2617,8 @@ mssql_compatible引擎：
 <li>1：是</li>
 默认值：0
         :type NeedSupportIpv6: int
+        :param _DeletionProtection: 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :type DeletionProtection: bool
         """
         self._Zone = None
         self._SpecCode = None
@@ -2518,6 +2651,7 @@ mssql_compatible引擎：
         self._DBEngineConfig = None
         self._SyncMode = None
         self._NeedSupportIpv6 = None
+        self._DeletionProtection = None
 
     @property
     def Zone(self):
@@ -2912,6 +3046,17 @@ mssql_compatible引擎：
     def NeedSupportIpv6(self, NeedSupportIpv6):
         self._NeedSupportIpv6 = NeedSupportIpv6
 
+    @property
+    def DeletionProtection(self):
+        r"""实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2955,6 +3100,7 @@ mssql_compatible引擎：
         self._DBEngineConfig = params.get("DBEngineConfig")
         self._SyncMode = params.get("SyncMode")
         self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3178,7 +3324,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type SpecCode: str
         :param _Storage: 实例硬盘容量大小，单位：GB。该参数的设置步长为10。
         :type Storage: int
-        :param _InstanceCount: 购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
+        :param _InstanceCount: 购买实例数量，取值范围：[1-6]。购买支持最大数量6个。
         :type InstanceCount: int
         :param _Period: 购买时长，单位：月。
 <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
@@ -3227,6 +3373,8 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type DBVersion: str
         :param _DedicatedClusterId: 专属集群ID
         :type DedicatedClusterId: str
+        :param _DeletionProtection: 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :type DeletionProtection: bool
         """
         self._Zone = None
         self._MasterDBInstanceId = None
@@ -3249,6 +3397,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._Name = None
         self._DBVersion = None
         self._DedicatedClusterId = None
+        self._DeletionProtection = None
 
     @property
     def Zone(self):
@@ -3297,7 +3446,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
+        r"""购买实例数量，取值范围：[1-6]。购买支持最大数量6个。
         :rtype: int
         """
         return self._InstanceCount
@@ -3501,6 +3650,17 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def DeletionProtection(self):
+        r"""实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3526,6 +3686,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._Name = params.get("Name")
         self._DBVersion = params.get("DBVersion")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3549,12 +3710,15 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         :type BillId: str
         :param _DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
         :type DBInstanceIdSet: list of str
+        :param _BillingParameters: 入参有BillingParameters值时，出参才有值，值为商品下单的参数。
+        :type BillingParameters: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealNames = None
         self._BillId = None
         self._DBInstanceIdSet = None
+        self._BillingParameters = None
         self._RequestId = None
 
     @property
@@ -3591,6 +3755,17 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self._DBInstanceIdSet = DBInstanceIdSet
 
     @property
+    def BillingParameters(self):
+        r"""入参有BillingParameters值时，出参才有值，值为商品下单的参数。
+        :rtype: str
+        """
+        return self._BillingParameters
+
+    @BillingParameters.setter
+    def BillingParameters(self, BillingParameters):
+        self._BillingParameters = BillingParameters
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3606,6 +3781,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self._DealNames = params.get("DealNames")
         self._BillId = params.get("BillId")
         self._DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self._BillingParameters = params.get("BillingParameters")
         self._RequestId = params.get("RequestId")
 
 
@@ -3712,17 +3888,20 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID。
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID。
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -3730,6 +3909,17 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -3745,6 +3935,7 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3943,13 +4134,16 @@ class CreateReadOnlyGroupResponse(AbstractModel):
         r"""
         :param _ReadOnlyGroupId: 只读组ID
         :type ReadOnlyGroupId: str
-        :param _FlowId: 流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReadOnlyGroupId = None
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -3965,7 +4159,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -3973,6 +4167,17 @@ class CreateReadOnlyGroupResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -3989,6 +4194,7 @@ class CreateReadOnlyGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4310,6 +4516,10 @@ mssql_compatible引擎：
         :type SupportIpv6: int
         :param _ExpandedCpu: 实例已经弹性扩容的cpu核数
         :type ExpandedCpu: int
+        :param _DeletionProtection: 实例是否开启删除保护，取值如下：
+- true：开启删除保护
+- false：关闭删除保护
+        :type DeletionProtection: bool
         """
         self._Region = None
         self._Zone = None
@@ -4351,6 +4561,7 @@ mssql_compatible引擎：
         self._NetworkAccessList = None
         self._SupportIpv6 = None
         self._ExpandedCpu = None
+        self._DeletionProtection = None
 
     @property
     def Region(self):
@@ -4822,6 +5033,19 @@ mssql_compatible引擎：
     def ExpandedCpu(self, ExpandedCpu):
         self._ExpandedCpu = ExpandedCpu
 
+    @property
+    def DeletionProtection(self):
+        r"""实例是否开启删除保护，取值如下：
+- true：开启删除保护
+- false：关闭删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -4884,6 +5108,7 @@ mssql_compatible引擎：
                 self._NetworkAccessList.append(obj)
         self._SupportIpv6 = params.get("SupportIpv6")
         self._ExpandedCpu = params.get("ExpandedCpu")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5910,17 +6135,20 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID。
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID。
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -5928,6 +6156,17 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -5943,6 +6182,7 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6177,17 +6417,20 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID。
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID。
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -6195,6 +6438,17 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -6210,6 +6464,7 @@ class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6418,15 +6673,17 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID，形如postgres-6fego161
+        :param _DBInstanceId: 实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _Limit: 分页返回，每页最大返回数目，默认20，取值范围为1-100
         :type Limit: int
         :param _Offset: 数据偏移量，从0开始。
         :type Offset: int
         :param _OrderBy: 返回数据按照创建时间或者用户名排序。取值支持createTime、name、updateTime。createTime-按照创建时间排序；name-按照用户名排序; updateTime-按照更新时间排序。
+默认值：createTime
         :type OrderBy: str
         :param _OrderByType: 返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
+默认值：desc
         :type OrderByType: str
         """
         self._DBInstanceId = None
@@ -6437,7 +6694,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""实例ID，形如postgres-6fego161
+        r"""实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6471,6 +6728,7 @@ class DescribeAccountsRequest(AbstractModel):
     @property
     def OrderBy(self):
         r"""返回数据按照创建时间或者用户名排序。取值支持createTime、name、updateTime。createTime-按照创建时间排序；name-按照用户名排序; updateTime-按照更新时间排序。
+默认值：createTime
         :rtype: str
         """
         return self._OrderBy
@@ -6482,6 +6740,7 @@ class DescribeAccountsRequest(AbstractModel):
     @property
     def OrderByType(self):
         r"""返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
+默认值：desc
         :rtype: str
         """
         return self._OrderByType
@@ -8153,14 +8412,14 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID
+        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -8725,21 +8984,21 @@ class DescribeDBInstancesRequest(AbstractModel):
         r"""
         :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string
-db-instance-name：按照实例名过滤，类型为string
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string
 db-project-id：按照项目ID过滤，类型为integer
-db-pay-mode：按照实例付费模式过滤，类型为string
+db-pay-mode：按照实例付费模式过滤，prepaid - 预付费；postpaid - 后付费。类型为string
 db-tag-key：按照标签键过滤，类型为string
 db-private-ip： 按照实例私有网络IP过滤，类型为string
 db-public-address： 按照实例外网地址过滤，类型为string
 db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
         :type Filters: list of Filter
-        :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
+        :param _Limit: 每页显示数量，取值范围为0-100，传入0时，取默认配置。默认为返回10条。
         :type Limit: int
         :param _Offset: 数据偏移量，从0开始。
         :type Offset: int
-        :param _OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
+        :param _OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime。默认值：CreateTime。
         :type OrderBy: str
-        :param _OrderByType: 排序方式，包括升序：asc、降序：desc。
+        :param _OrderByType: 排序方式，包括升序：asc、降序：desc。默认值：asc。
         :type OrderByType: str
         """
         self._Filters = None
@@ -8752,9 +9011,9 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
     def Filters(self):
         r"""按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string
-db-instance-name：按照实例名过滤，类型为string
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string
 db-project-id：按照项目ID过滤，类型为integer
-db-pay-mode：按照实例付费模式过滤，类型为string
+db-pay-mode：按照实例付费模式过滤，prepaid - 预付费；postpaid - 后付费。类型为string
 db-tag-key：按照标签键过滤，类型为string
 db-private-ip： 按照实例私有网络IP过滤，类型为string
 db-public-address： 按照实例外网地址过滤，类型为string
@@ -8769,7 +9028,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def Limit(self):
-        r"""每页显示数量，取值范围为1-100，默认为返回10条。
+        r"""每页显示数量，取值范围为0-100，传入0时，取默认配置。默认为返回10条。
         :rtype: int
         """
         return self._Limit
@@ -8791,7 +9050,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def OrderBy(self):
-        r"""排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
+        r"""排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime。默认值：CreateTime。
         :rtype: str
         """
         return self._OrderBy
@@ -8802,7 +9061,7 @@ db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
 
     @property
     def OrderByType(self):
-        r"""排序方式，包括升序：asc、降序：desc。
+        r"""排序方式，包括升序：asc、降序：desc。默认值：asc。
         :rtype: str
         """
         return self._OrderByType
@@ -14137,10 +14396,24 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -14155,6 +14428,7 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -14467,10 +14741,24 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -14485,6 +14773,7 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -14561,17 +14850,20 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -14579,6 +14871,17 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -14594,6 +14897,7 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -16084,17 +16388,20 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步任务流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""异步任务流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -16102,6 +16409,17 @@ class OpenDBExtranetAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -16117,6 +16435,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -17710,17 +18029,20 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -17728,6 +18050,17 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -17743,6 +18076,7 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -18031,17 +18365,20 @@ class RestartDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步流程ID
+        :param _FlowId: 流程ID，FlowId等同于TaskId
         :type FlowId: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""异步流程ID
+        r"""流程ID，FlowId等同于TaskId
         :rtype: int
         """
         return self._FlowId
@@ -18049,6 +18386,17 @@ class RestartDBInstanceResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -18064,6 +18412,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -18155,10 +18504,24 @@ class RestoreDBInstanceObjectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -18173,6 +18536,7 @@ class RestoreDBInstanceObjectsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -18821,10 +19185,24 @@ class SwitchDBInstancePrimaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -18839,6 +19217,7 @@ class SwitchDBInstancePrimaryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -19383,10 +19762,24 @@ class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -19401,6 +19794,7 @@ class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -19595,10 +19989,24 @@ class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -19613,6 +20021,7 @@ class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

@@ -718,6 +718,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeSeeService(self, request):
+        r"""开通 TWeSee 后付费服务
+
+        :param request: Request instance for CreateTWeSeeService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeSeeService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeSeeServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTWeTalkProductConfig(self, request):
         r"""用于配置TWeTalk服务连接产品配置信息。
 
@@ -4303,6 +4326,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("UpdateOtaModule", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOtaModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateOtaTaskStatus(self, request):
+        r"""本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态。
+
+        :param request: Request instance for UpdateOtaTaskStatus.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateOtaTaskStatusRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateOtaTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOtaTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOtaTaskStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

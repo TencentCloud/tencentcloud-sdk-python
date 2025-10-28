@@ -10865,9 +10865,9 @@ class BudgetOperationLogEntity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayerUin: Uin
+        :param _PayerUin: 支付者Uin
         :type PayerUin: int
-        :param _OwnerUin: 主用户Uin
+        :param _OwnerUin: 使用者Uin
 
         :type OwnerUin: int
         :param _OperateUin: 操作用户Uin
@@ -10876,7 +10876,7 @@ class BudgetOperationLogEntity(AbstractModel):
         :type BillDay: int
         :param _BillMonth: 月份
         :type BillMonth: str
-        :param _Action: 修改类型：ADD(新增)、UPDATE(更新)
+        :param _Action: 修改类型：ADD(新增)、UPDATE(更新)、DELETE(删除)
         :type Action: str
         :param _DiffValue: 变更信息
         :type DiffValue: list of BudgetInfoDiffEntity
@@ -10884,7 +10884,7 @@ class BudgetOperationLogEntity(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 修改时间
         :type UpdateTime: str
-        :param _OperationChannel: 修改渠道：官网修改/API修改
+        :param _OperationChannel: 修改渠道：CONSOLE/API
         :type OperationChannel: str
         :param _BudgetId: 预算项目id
         :type BudgetId: str
@@ -10903,7 +10903,7 @@ class BudgetOperationLogEntity(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""Uin
+        r"""支付者Uin
         :rtype: int
         """
         return self._PayerUin
@@ -10914,7 +10914,7 @@ class BudgetOperationLogEntity(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""主用户Uin
+        r"""使用者Uin
 
         :rtype: int
         """
@@ -10959,7 +10959,7 @@ class BudgetOperationLogEntity(AbstractModel):
 
     @property
     def Action(self):
-        r"""修改类型：ADD(新增)、UPDATE(更新)
+        r"""修改类型：ADD(新增)、UPDATE(更新)、DELETE(删除)
         :rtype: str
         """
         return self._Action
@@ -11003,7 +11003,7 @@ class BudgetOperationLogEntity(AbstractModel):
 
     @property
     def OperationChannel(self):
-        r"""修改渠道：官网修改/API修改
+        r"""修改渠道：CONSOLE/API
         :rtype: str
         """
         return self._OperationChannel

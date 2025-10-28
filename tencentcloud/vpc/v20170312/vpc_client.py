@@ -5436,6 +5436,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityGroupExpandedPolicies(self, request):
+        r"""本接口（DescribeSecurityGroupExpandedPolicies）用于查看参数模板展开后的安全组规则。本接口会通过缓存降低请求后端服务的调用次数，因此拉取结果会存在延迟（缓存超时时间为1分钟）。
+
+        :param request: Request instance for DescribeSecurityGroupExpandedPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupExpandedPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupExpandedPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupExpandedPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityGroupExpandedPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityGroupLimits(self, request):
         r"""本接口(DescribeSecurityGroupLimits)用于查询用户安全组配额。
 

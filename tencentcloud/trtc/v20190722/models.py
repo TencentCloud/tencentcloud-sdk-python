@@ -15384,18 +15384,16 @@ class StartWebRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordUrl: 需要录制的网页URL
-
+        :param _RecordUrl: 【必填】需要录制的网页URL
         :type RecordUrl: str
-        :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
-
-        :type MaxDurationLimit: int
         :param _StorageParams: 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
-        :param _WebRecordVideoParams: 页面录制视频参数
-        :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
         :param _SdkAppId: 【必填】TRTC的SdkAppId
         :type SdkAppId: int
+        :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+        :type MaxDurationLimit: int
+        :param _WebRecordVideoParams: 页面录制视频参数
+        :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
         :param _RecordId: 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
         :type RecordId: str
@@ -15407,10 +15405,10 @@ class StartWebRecordRequest(AbstractModel):
         :type EmulateMobileParams: :class:`tencentcloud.trtc.v20190722.models.EmulateMobileParams`
         """
         self._RecordUrl = None
-        self._MaxDurationLimit = None
         self._StorageParams = None
-        self._WebRecordVideoParams = None
         self._SdkAppId = None
+        self._MaxDurationLimit = None
+        self._WebRecordVideoParams = None
         self._RecordId = None
         self._PublishCdnParams = None
         self._ReadyTimeout = None
@@ -15418,8 +15416,7 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def RecordUrl(self):
-        r"""需要录制的网页URL
-
+        r"""【必填】需要录制的网页URL
         :rtype: str
         """
         return self._RecordUrl
@@ -15427,18 +15424,6 @@ class StartWebRecordRequest(AbstractModel):
     @RecordUrl.setter
     def RecordUrl(self, RecordUrl):
         self._RecordUrl = RecordUrl
-
-    @property
-    def MaxDurationLimit(self):
-        r"""录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
-
-        :rtype: int
-        """
-        return self._MaxDurationLimit
-
-    @MaxDurationLimit.setter
-    def MaxDurationLimit(self, MaxDurationLimit):
-        self._MaxDurationLimit = MaxDurationLimit
 
     @property
     def StorageParams(self):
@@ -15452,17 +15437,6 @@ class StartWebRecordRequest(AbstractModel):
         self._StorageParams = StorageParams
 
     @property
-    def WebRecordVideoParams(self):
-        r"""页面录制视频参数
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
-        """
-        return self._WebRecordVideoParams
-
-    @WebRecordVideoParams.setter
-    def WebRecordVideoParams(self, WebRecordVideoParams):
-        self._WebRecordVideoParams = WebRecordVideoParams
-
-    @property
     def SdkAppId(self):
         r"""【必填】TRTC的SdkAppId
         :rtype: int
@@ -15472,6 +15446,28 @@ class StartWebRecordRequest(AbstractModel):
     @SdkAppId.setter
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
+
+    @property
+    def MaxDurationLimit(self):
+        r"""录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+        :rtype: int
+        """
+        return self._MaxDurationLimit
+
+    @MaxDurationLimit.setter
+    def MaxDurationLimit(self, MaxDurationLimit):
+        self._MaxDurationLimit = MaxDurationLimit
+
+    @property
+    def WebRecordVideoParams(self):
+        r"""页面录制视频参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
+        """
+        return self._WebRecordVideoParams
+
+    @WebRecordVideoParams.setter
+    def WebRecordVideoParams(self, WebRecordVideoParams):
+        self._WebRecordVideoParams = WebRecordVideoParams
 
     @property
     def RecordId(self):
@@ -15521,14 +15517,14 @@ class StartWebRecordRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._RecordUrl = params.get("RecordUrl")
-        self._MaxDurationLimit = params.get("MaxDurationLimit")
         if params.get("StorageParams") is not None:
             self._StorageParams = StorageParams()
             self._StorageParams._deserialize(params.get("StorageParams"))
+        self._SdkAppId = params.get("SdkAppId")
+        self._MaxDurationLimit = params.get("MaxDurationLimit")
         if params.get("WebRecordVideoParams") is not None:
             self._WebRecordVideoParams = WebRecordVideoParams()
             self._WebRecordVideoParams._deserialize(params.get("WebRecordVideoParams"))
-        self._SdkAppId = params.get("SdkAppId")
         self._RecordId = params.get("RecordId")
         if params.get("PublishCdnParams") is not None:
             self._PublishCdnParams = []

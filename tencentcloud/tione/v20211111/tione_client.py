@@ -75,6 +75,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExport(self, request):
+        r"""创建任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务API
+
+        :param request: Request instance for CreateExport.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateExportRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateModelService(self, request):
         r"""用于创建、发布一个新的模型服务
 
@@ -227,6 +250,29 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteDataset", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDatasetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExport(self, request):
+        r"""删除任务式建模训练任务，Notebook，在线服务和批量预测任务日志导出任务API
+
+        :param request: Request instance for DeleteExport.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteExportRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -572,6 +618,29 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeEvents", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExport(self, request):
+        r"""查看任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务状态API
+
+        :param request: Request instance for DescribeExport.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeExportRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

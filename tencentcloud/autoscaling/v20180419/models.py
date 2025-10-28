@@ -7420,10 +7420,17 @@ HostNameSettings的该入参非必选，未选时不设置主机名后缀。
 假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNameSuffix: str
+        :param _HostNameDelimiter: 云服务器的主机名分隔符。
+默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为主机名的分隔符。如果不设置，则默认采用点号（.）分隔符。
+通过分割符连接多段。
+
+假设原主机名为“product-as-host”，分隔符HostNameDelimiter为“-”，设置主机名后缀"suffix"，那么最终主机名为“product-as-host-suffix”。
+        :type HostNameDelimiter: str
         """
         self._HostName = None
         self._HostNameStyle = None
         self._HostNameSuffix = None
+        self._HostNameDelimiter = None
 
     @property
     def HostName(self):
@@ -7471,11 +7478,27 @@ HostNameSettings的该入参非必选，未选时不设置主机名后缀。
     def HostNameSuffix(self, HostNameSuffix):
         self._HostNameSuffix = HostNameSuffix
 
+    @property
+    def HostNameDelimiter(self):
+        r"""云服务器的主机名分隔符。
+默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为主机名的分隔符。如果不设置，则默认采用点号（.）分隔符。
+通过分割符连接多段。
+
+假设原主机名为“product-as-host”，分隔符HostNameDelimiter为“-”，设置主机名后缀"suffix"，那么最终主机名为“product-as-host-suffix”。
+        :rtype: str
+        """
+        return self._HostNameDelimiter
+
+    @HostNameDelimiter.setter
+    def HostNameDelimiter(self, HostNameDelimiter):
+        self._HostNameDelimiter = HostNameDelimiter
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
         self._HostNameStyle = params.get("HostNameStyle")
         self._HostNameSuffix = params.get("HostNameSuffix")
+        self._HostNameDelimiter = params.get("HostNameDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8055,10 +8078,15 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
 假设后缀名称为 suffix，原实例名为 test.0，最终实例名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNameSuffix: str
+        :param _InstanceNameDelimiter: 云服务器实例名分隔符。 默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为实例名的分隔符。如果不设置，则默认采用点号（.）分隔符。 通过分割符连接多段。
+
+假设原实例名为“product-as-instance”，分隔符InstanceNameDelimiter为“-”，设置实例名后缀"suffix"，那么最终实例名为“product-as-instance-suffix”。
+        :type InstanceNameDelimiter: str
         """
         self._InstanceName = None
         self._InstanceNameStyle = None
         self._InstanceNameSuffix = None
+        self._InstanceNameDelimiter = None
 
     @property
     def InstanceName(self):
@@ -8100,11 +8128,25 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
     def InstanceNameSuffix(self, InstanceNameSuffix):
         self._InstanceNameSuffix = InstanceNameSuffix
 
+    @property
+    def InstanceNameDelimiter(self):
+        r"""云服务器实例名分隔符。 默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为实例名的分隔符。如果不设置，则默认采用点号（.）分隔符。 通过分割符连接多段。
+
+假设原实例名为“product-as-instance”，分隔符InstanceNameDelimiter为“-”，设置实例名后缀"suffix"，那么最终实例名为“product-as-instance-suffix”。
+        :rtype: str
+        """
+        return self._InstanceNameDelimiter
+
+    @InstanceNameDelimiter.setter
+    def InstanceNameDelimiter(self, InstanceNameDelimiter):
+        self._InstanceNameDelimiter = InstanceNameDelimiter
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
         self._InstanceNameStyle = params.get("InstanceNameStyle")
         self._InstanceNameSuffix = params.get("InstanceNameSuffix")
+        self._InstanceNameDelimiter = params.get("InstanceNameDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

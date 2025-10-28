@@ -3337,11 +3337,11 @@ class InstanceChargePrepaid(AbstractModel):
     def __init__(self):
         r"""
         :param _Period: 后付费计费周期，单位（月）：
-1，2，3，4，5，，6，7， 8，9，10，11，12，24，36，48，60
+1，2，3，4，5，6，7， 8，9，10，11，12，24，36，48，60
         :type Period: int
         :param _RenewFlag: 预付费续费方式：
-- NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 (默认）
-- NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不自动续费
+- NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 
+- NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不自动续费(默认)
 - DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知用户过期，也不自动续费
 
         :type RenewFlag: str
@@ -3352,7 +3352,7 @@ class InstanceChargePrepaid(AbstractModel):
     @property
     def Period(self):
         r"""后付费计费周期，单位（月）：
-1，2，3，4，5，，6，7， 8，9，10，11，12，24，36，48，60
+1，2，3，4，5，6，7， 8，9，10，11，12，24，36，48，60
         :rtype: int
         """
         return self._Period
@@ -3364,8 +3364,8 @@ class InstanceChargePrepaid(AbstractModel):
     @property
     def RenewFlag(self):
         r"""预付费续费方式：
-- NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 (默认）
-- NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不自动续费
+- NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 
+- NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不自动续费(默认)
 - DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知用户过期，也不自动续费
 
         :rtype: str
@@ -6801,6 +6801,8 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type InstanceTypes: list of str
         :param _Replicas: 期望节点数
         :type Replicas: int
+        :param _UpdateExistedNode: 是否更新存量节点
+        :type UpdateExistedNode: bool
         :param _DataDisks: 数据盘列表
         :type DataDisks: list of DataDisk
         :param _KeyIds: ssh公钥id数组
@@ -6825,6 +6827,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._EnableAutoscaling = None
         self._InstanceTypes = None
         self._Replicas = None
+        self._UpdateExistedNode = None
         self._DataDisks = None
         self._KeyIds = None
         self._GPUConfigs = None
@@ -7020,6 +7023,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._Replicas = Replicas
 
     @property
+    def UpdateExistedNode(self):
+        r"""是否更新存量节点
+        :rtype: bool
+        """
+        return self._UpdateExistedNode
+
+    @UpdateExistedNode.setter
+    def UpdateExistedNode(self, UpdateExistedNode):
+        self._UpdateExistedNode = UpdateExistedNode
+
+    @property
     def DataDisks(self):
         r"""数据盘列表
         :rtype: list of DataDisk
@@ -7083,6 +7097,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._EnableAutoscaling = params.get("EnableAutoscaling")
         self._InstanceTypes = params.get("InstanceTypes")
         self._Replicas = params.get("Replicas")
+        self._UpdateExistedNode = params.get("UpdateExistedNode")
         if params.get("DataDisks") is not None:
             self._DataDisks = []
             for item in params.get("DataDisks"):

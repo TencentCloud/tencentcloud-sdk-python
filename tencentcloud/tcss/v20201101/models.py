@@ -14109,11 +14109,14 @@ class CreateExportComplianceStatusListJobRequest(AbstractModel):
         :type ExportAll: bool
         :param _IdList: 要导出的资产ID列表或检测项ID列表，由ExportByAsset的取值决定。
         :type IdList: list of int non-negative
+        :param _Filters: 筛选
+        :type Filters: list of RunTimeFilters
         """
         self._AssetType = None
         self._ExportByAsset = None
         self._ExportAll = None
         self._IdList = None
+        self._Filters = None
 
     @property
     def AssetType(self):
@@ -14159,12 +14162,29 @@ class CreateExportComplianceStatusListJobRequest(AbstractModel):
     def IdList(self, IdList):
         self._IdList = IdList
 
+    @property
+    def Filters(self):
+        r"""筛选
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._AssetType = params.get("AssetType")
         self._ExportByAsset = params.get("ExportByAsset")
         self._ExportAll = params.get("ExportAll")
         self._IdList = params.get("IdList")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23715,6 +23735,10 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         :type RemainScanTime: int
         :param _IsAuthorized: 授权为：1，未授权为：0
         :type IsAuthorized: int
+        :param _Solution: 解决方案
+        :type Solution: str
+        :param _Reason: 原因
+        :type Reason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23748,6 +23772,8 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._Status = None
         self._RemainScanTime = None
         self._IsAuthorized = None
+        self._Solution = None
+        self._Reason = None
         self._RequestId = None
 
     @property
@@ -24081,6 +24107,28 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._IsAuthorized = IsAuthorized
 
     @property
+    def Solution(self):
+        r"""解决方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def Reason(self):
+        r"""原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -24123,6 +24171,8 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._Status = params.get("Status")
         self._RemainScanTime = params.get("RemainScanTime")
         self._IsAuthorized = params.get("IsAuthorized")
+        self._Solution = params.get("Solution")
+        self._Reason = params.get("Reason")
         self._RequestId = params.get("RequestId")
 
 
@@ -24607,6 +24657,10 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         :type SensitiveInfoCnt: int
         :param _Id: Id
         :type Id: int
+        :param _Solution: 解决方案
+        :type Solution: str
+        :param _Reason: 原因
+        :type Reason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24644,6 +24698,8 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._ImageCreateTime = None
         self._SensitiveInfoCnt = None
         self._Id = None
+        self._Solution = None
+        self._Reason = None
         self._RequestId = None
 
     @property
@@ -25025,6 +25081,28 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._Id = Id
 
     @property
+    def Solution(self):
+        r"""解决方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def Reason(self):
+        r"""原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -25071,6 +25149,8 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._ImageCreateTime = params.get("ImageCreateTime")
         self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
         self._Id = params.get("Id")
+        self._Solution = params.get("Solution")
+        self._Reason = params.get("Reason")
         self._RequestId = params.get("RequestId")
 
 
@@ -26265,10 +26345,13 @@ class DescribeAssetImageRegistryRiskListExportResponse(AbstractModel):
         r"""
         :param _DownloadUrl: excel文件下载地址
         :type DownloadUrl: str
+        :param _JobId: 导出任务id
+        :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrl = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -26281,6 +26364,17 @@ class DescribeAssetImageRegistryRiskListExportResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def JobId(self):
+        r"""导出任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
     @property
     def RequestId(self):
@@ -26296,6 +26390,7 @@ class DescribeAssetImageRegistryRiskListExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -56566,6 +56661,10 @@ class ImageRepoInfo(AbstractModel):
         :type SensitiveInfoCnt: int
         :param _RecommendedFix: 是否推荐处置
         :type RecommendedFix: bool
+        :param _Solution: 解决方案
+        :type Solution: str
+        :param _Reason: 原因
+        :type Reason: str
         """
         self._ImageDigest = None
         self._ImageRepoAddress = None
@@ -56611,6 +56710,8 @@ class ImageRepoInfo(AbstractModel):
         self._HasNeedFixVul = None
         self._SensitiveInfoCnt = None
         self._RecommendedFix = None
+        self._Solution = None
+        self._Reason = None
 
     @property
     def ImageDigest(self):
@@ -57100,6 +57201,28 @@ class ImageRepoInfo(AbstractModel):
     def RecommendedFix(self, RecommendedFix):
         self._RecommendedFix = RecommendedFix
 
+    @property
+    def Solution(self):
+        r"""解决方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def Reason(self):
+        r"""原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._ImageDigest = params.get("ImageDigest")
@@ -57146,6 +57269,8 @@ class ImageRepoInfo(AbstractModel):
         self._HasNeedFixVul = params.get("HasNeedFixVul")
         self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
         self._RecommendedFix = params.get("RecommendedFix")
+        self._Solution = params.get("Solution")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59007,6 +59132,11 @@ class ImagesInfo(AbstractModel):
         :type IsLatestImage: bool
         :param _RecommendedFix: 是否推荐处置
         :type RecommendedFix: bool
+        :param _Solution: 解决方案
+        :type Solution: str
+        :param _Reason: 原因
+
+        :type Reason: str
         """
         self._ImageID = None
         self._ImageName = None
@@ -59036,6 +59166,8 @@ class ImagesInfo(AbstractModel):
         self._LowLevelVulCnt = None
         self._IsLatestImage = None
         self._RecommendedFix = None
+        self._Solution = None
+        self._Reason = None
 
     @property
     def ImageID(self):
@@ -59345,6 +59477,29 @@ class ImagesInfo(AbstractModel):
     def RecommendedFix(self, RecommendedFix):
         self._RecommendedFix = RecommendedFix
 
+    @property
+    def Solution(self):
+        r"""解决方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def Reason(self):
+        r"""原因
+
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._ImageID = params.get("ImageID")
@@ -59375,6 +59530,8 @@ class ImagesInfo(AbstractModel):
         self._LowLevelVulCnt = params.get("LowLevelVulCnt")
         self._IsLatestImage = params.get("IsLatestImage")
         self._RecommendedFix = params.get("RecommendedFix")
+        self._Solution = params.get("Solution")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

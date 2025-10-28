@@ -25659,6 +25659,7 @@ class MqttConnectParam(AbstractModel):
         :param _SelfBuilt: 是否为自建集群
         :type SelfBuilt: bool
         :param _IsUpdate: 是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         :param _Region: MQTT连接源的实例资源地域, 跨地域时必填
         :type Region: str
@@ -25756,6 +25757,7 @@ class MqttConnectParam(AbstractModel):
     @property
     def IsUpdate(self):
         r"""是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdate

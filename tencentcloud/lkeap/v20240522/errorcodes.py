@@ -17,7 +17,7 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
-# 引擎层内部错误；
+# 引擎层内部错误。
 FAILEDOPERATION_ENGINESERVERERROR = 'FailedOperation.EngineServerError'
 
 # 解析失败。

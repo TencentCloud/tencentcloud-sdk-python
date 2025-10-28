@@ -6541,6 +6541,74 @@ class CreateTWeSeeRecognitionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeSeeServiceRequest(AbstractModel):
+    r"""CreateTWeSeeService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 服务类型
+1.VideoSummary
+2.ImageSummary
+        :type Service: str
+        """
+        self._Service = None
+
+    @property
+    def Service(self):
+        r"""服务类型
+1.VideoSummary
+2.ImageSummary
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeSeeServiceResponse(AbstractModel):
+    r"""CreateTWeSeeService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTWeTalkProductConfigRequest(AbstractModel):
     r"""CreateTWeTalkProductConfig请求参数结构体
 
@@ -34972,6 +35040,100 @@ class UpdateOtaModuleRequest(AbstractModel):
 
 class UpdateOtaModuleResponse(AbstractModel):
     r"""UpdateOtaModule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateOtaTaskStatusRequest(AbstractModel):
+    r"""UpdateOtaTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _TaskId: 固件升级任务ID
+        :type TaskId: int
+        :param _Status: 固件任务取消状态
+        :type Status: int
+        """
+        self._ProductId = None
+        self._TaskId = None
+        self._Status = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def TaskId(self):
+        r"""固件升级任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""固件任务取消状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOtaTaskStatusResponse(AbstractModel):
+    r"""UpdateOtaTaskStatus返回参数结构体
 
     """
 

@@ -13803,7 +13803,9 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :type UniformSocialCreditCode: str
         :param _LegalName: 企业法人的姓名
         :type LegalName: str
-        :param _AutoJumpUrl: 认证完成跳回的链接，最长500个字符
+        :param _AutoJumpUrl: <font color="red">即将废弃</font>，入参请使用JumpEvents。
+认证完成跳回的链接，最长500个字符。
+
         :type AutoJumpUrl: str
         :param _OrganizationAddress: 营业执照企业地址
         :type OrganizationAddress: str
@@ -13884,6 +13886,13 @@ p.s.
 
 p.s. 仅在对公打款不为空时有效
         :type BankAccountNumberSame: bool
+        :param _JumpEvents: 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+p.s.
+Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 
+
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :type JumpEvents: list of JumpEvent
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -13909,6 +13918,7 @@ p.s. 仅在对公打款不为空时有效
         self._UserData = None
         self._BankAccountNumber = None
         self._BankAccountNumberSame = None
+        self._JumpEvents = None
 
     @property
     def Operator(self):
@@ -13979,7 +13989,9 @@ p.s. 仅在对公打款不为空时有效
 
     @property
     def AutoJumpUrl(self):
-        r"""认证完成跳回的链接，最长500个字符
+        r"""<font color="red">即将废弃</font>，入参请使用JumpEvents。
+认证完成跳回的链接，最长500个字符。
+
         :rtype: str
         """
         return self._AutoJumpUrl
@@ -14229,6 +14241,22 @@ p.s. 仅在对公打款不为空时有效
     def BankAccountNumberSame(self, BankAccountNumberSame):
         self._BankAccountNumberSame = BankAccountNumberSame
 
+    @property
+    def JumpEvents(self):
+        r"""跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+p.s.
+Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 
+
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :rtype: list of JumpEvent
+        """
+        return self._JumpEvents
+
+    @JumpEvents.setter
+    def JumpEvents(self, JumpEvents):
+        self._JumpEvents = JumpEvents
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -14257,6 +14285,12 @@ p.s. 仅在对公打款不为空时有效
         self._UserData = params.get("UserData")
         self._BankAccountNumber = params.get("BankAccountNumber")
         self._BankAccountNumberSame = params.get("BankAccountNumberSame")
+        if params.get("JumpEvents") is not None:
+            self._JumpEvents = []
+            for item in params.get("JumpEvents"):
+                obj = JumpEvent()
+                obj._deserialize(item)
+                self._JumpEvents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32761,6 +32795,71 @@ class IntentionQuestionResult(AbstractModel):
         self._Video = params.get("Video")
         self._ResultCode = params.get("ResultCode")
         self._AsrResult = params.get("AsrResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JumpEvent(AbstractModel):
+    r"""跳转事件的结构体，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JumpEventType: 跳转事件枚举，
+* 1 - 企业收录。
+* 2 - 超管授权书审核。
+* 3 - 认证完成。
+        :type JumpEventType: int
+        :param _JumpUrl: 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
+
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :type JumpUrl: str
+        """
+        self._JumpEventType = None
+        self._JumpUrl = None
+
+    @property
+    def JumpEventType(self):
+        r"""跳转事件枚举，
+* 1 - 企业收录。
+* 2 - 超管授权书审核。
+* 3 - 认证完成。
+        :rtype: int
+        """
+        return self._JumpEventType
+
+    @JumpEventType.setter
+    def JumpEventType(self, JumpEventType):
+        self._JumpEventType = JumpEventType
+
+    @property
+    def JumpUrl(self):
+        r"""为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
+
+p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :rtype: str
+        """
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+
+    def _deserialize(self, params):
+        self._JumpEventType = params.get("JumpEventType")
+        self._JumpUrl = params.get("JumpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

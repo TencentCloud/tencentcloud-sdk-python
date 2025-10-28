@@ -23184,11 +23184,17 @@ class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例ID列表
         :type InstanceIds: list of str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
         :param _JobType: job 类型
         :type JobType: str
+        :param _Job: job 过滤，不写就是全部 job
+        :type Job: str
         """
         self._InstanceIds = None
+        self._ClusterId = None
         self._JobType = None
+        self._Job = None
 
     @property
     def InstanceIds(self):
@@ -23202,6 +23208,17 @@ class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
         self._InstanceIds = InstanceIds
 
     @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
     def JobType(self):
         r"""job 类型
         :rtype: str
@@ -23212,10 +23229,23 @@ class DescribePrometheusScrapeStatisticsRequest(AbstractModel):
     def JobType(self, JobType):
         self._JobType = JobType
 
+    @property
+    def Job(self):
+        r"""job 过滤，不写就是全部 job
+        :rtype: str
+        """
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
+        self._ClusterId = params.get("ClusterId")
         self._JobType = params.get("JobType")
+        self._Job = params.get("Job")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1781,7 +1781,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagFilters: 标签过滤数组
+        :param _TagFilters: 标签过滤数组，数量最多6个
         :type TagFilters: list of TagFilter
         :param _CreateUin: 创建标签者uin
         :type CreateUin: int
@@ -1809,7 +1809,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤数组
+        r"""标签过滤数组，数量最多6个
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -2020,7 +2020,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagFilters: 标签过滤数组
+        :param _TagFilters: 标签过滤数组，数量最多六个
         :type TagFilters: list of TagFilter
         :param _CreateUin: 创建标签者uin
         :type CreateUin: int
@@ -2048,7 +2048,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤数组
+        r"""标签过滤数组，数量最多六个
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -4646,7 +4646,7 @@ class Tag(AbstractModel):
 
 
 class TagFilter(AbstractModel):
-    r"""tag过滤数组多个是与的关系
+    r"""标签键值过滤条件
 
     """
 

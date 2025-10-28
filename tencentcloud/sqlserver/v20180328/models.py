@@ -7530,6 +7530,10 @@ class DbNormalDetail(AbstractModel):
         :type CreateTime: str
         :param _IsFullTextEnabled: 是否全文启用 0：否 1：是
         :type IsFullTextEnabled: str
+        :param _IsAvailabilityGroups: 是否是可用性组 0：否 1：是
+        :type IsAvailabilityGroups: str
+        :param _AGSyncState: AG组数据库同步状态
+        :type AGSyncState: str
         """
         self._IsSubscribed = None
         self._CollationName = None
@@ -7551,6 +7555,8 @@ class DbNormalDetail(AbstractModel):
         self._UserAccessDesc = None
         self._CreateTime = None
         self._IsFullTextEnabled = None
+        self._IsAvailabilityGroups = None
+        self._AGSyncState = None
 
     @property
     def IsSubscribed(self):
@@ -7776,6 +7782,28 @@ class DbNormalDetail(AbstractModel):
     def IsFullTextEnabled(self, IsFullTextEnabled):
         self._IsFullTextEnabled = IsFullTextEnabled
 
+    @property
+    def IsAvailabilityGroups(self):
+        r"""是否是可用性组 0：否 1：是
+        :rtype: str
+        """
+        return self._IsAvailabilityGroups
+
+    @IsAvailabilityGroups.setter
+    def IsAvailabilityGroups(self, IsAvailabilityGroups):
+        self._IsAvailabilityGroups = IsAvailabilityGroups
+
+    @property
+    def AGSyncState(self):
+        r"""AG组数据库同步状态
+        :rtype: str
+        """
+        return self._AGSyncState
+
+    @AGSyncState.setter
+    def AGSyncState(self, AGSyncState):
+        self._AGSyncState = AGSyncState
+
 
     def _deserialize(self, params):
         self._IsSubscribed = params.get("IsSubscribed")
@@ -7798,6 +7826,8 @@ class DbNormalDetail(AbstractModel):
         self._UserAccessDesc = params.get("UserAccessDesc")
         self._CreateTime = params.get("CreateTime")
         self._IsFullTextEnabled = params.get("IsFullTextEnabled")
+        self._IsAvailabilityGroups = params.get("IsAvailabilityGroups")
+        self._AGSyncState = params.get("AGSyncState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19974,11 +20004,11 @@ class Events(AbstractModel):
         :type Size: int
         :param _EventType: 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
         :type EventType: str
-        :param _Status: 事件记录状态，1-成功，2-失败
+        :param _Status: 事件记录状态，1-成功，2-失败，3-文件待删除，4-写入中
         :type Status: int
         :param _StartTime: 扩展文件生成开始时间
         :type StartTime: str
-        :param _EndTime: 扩展文件生成开始时间
+        :param _EndTime: 扩展文件最后更新时间
         :type EndTime: str
         :param _InternalAddr: 内网下载地址
         :type InternalAddr: str
@@ -20041,7 +20071,7 @@ class Events(AbstractModel):
 
     @property
     def Status(self):
-        r"""事件记录状态，1-成功，2-失败
+        r"""事件记录状态，1-成功，2-失败，3-文件待删除，4-写入中
         :rtype: int
         """
         return self._Status
@@ -20063,7 +20093,7 @@ class Events(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""扩展文件生成开始时间
+        r"""扩展文件最后更新时间
         :rtype: str
         """
         return self._EndTime
@@ -31603,6 +31633,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :param _DrZones: 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
 
         :type DrZones: list of DrZoneInfo
+        :param _UpgradeCompatLevel: 是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+        :type UpgradeCompatLevel: int
         """
         self._InstanceId = None
         self._Memory = None
@@ -31615,6 +31647,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._MultiZones = None
         self._WaitSwitch = None
         self._DrZones = None
+        self._UpgradeCompatLevel = None
 
     @property
     def InstanceId(self):
@@ -31738,6 +31771,17 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def DrZones(self, DrZones):
         self._DrZones = DrZones
 
+    @property
+    def UpgradeCompatLevel(self):
+        r"""是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+        :rtype: int
+        """
+        return self._UpgradeCompatLevel
+
+    @UpgradeCompatLevel.setter
+    def UpgradeCompatLevel(self, UpgradeCompatLevel):
+        self._UpgradeCompatLevel = UpgradeCompatLevel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -31756,6 +31800,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
                 obj = DrZoneInfo()
                 obj._deserialize(item)
                 self._DrZones.append(obj)
+        self._UpgradeCompatLevel = params.get("UpgradeCompatLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

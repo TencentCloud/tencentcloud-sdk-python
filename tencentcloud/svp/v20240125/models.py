@@ -1611,16 +1611,19 @@ class SavingPlanOverviewDetail(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间 yyyy-mm-dd HH:mm:ss格式
         :type EndTime: str
-        :param _Status: 状态
+        :param _Status: 1 生效 2 失效 3 作废
         :type Status: int
         :param _SavingAmount: 累计节省金额（单位：元）
         :type SavingAmount: str
         :param _Region: 地域
         :type Region: list of str
-        :param _PayType: 支付类型
+        :param _PayType: 1 全预付 2 部分预付 3 全不预付
         :type PayType: int
         :param _BuyTime: 购买时间 yyyy-mm-dd HH:mm:ss格式
         :type BuyTime: str
+        :param _PromiseAmount: 承诺金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromiseAmount: str
         """
         self._SpType = None
         self._PayAmount = None
@@ -1631,6 +1634,7 @@ class SavingPlanOverviewDetail(AbstractModel):
         self._Region = None
         self._PayType = None
         self._BuyTime = None
+        self._PromiseAmount = None
 
     @property
     def SpType(self):
@@ -1678,7 +1682,7 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""1 生效 2 失效 3 作废
         :rtype: int
         """
         return self._Status
@@ -1711,7 +1715,7 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def PayType(self):
-        r"""支付类型
+        r"""1 全预付 2 部分预付 3 全不预付
         :rtype: int
         """
         return self._PayType
@@ -1731,6 +1735,18 @@ class SavingPlanOverviewDetail(AbstractModel):
     def BuyTime(self, BuyTime):
         self._BuyTime = BuyTime
 
+    @property
+    def PromiseAmount(self):
+        r"""承诺金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PromiseAmount
+
+    @PromiseAmount.setter
+    def PromiseAmount(self, PromiseAmount):
+        self._PromiseAmount = PromiseAmount
+
 
     def _deserialize(self, params):
         self._SpType = params.get("SpType")
@@ -1742,6 +1758,7 @@ class SavingPlanOverviewDetail(AbstractModel):
         self._Region = params.get("Region")
         self._PayType = params.get("PayType")
         self._BuyTime = params.get("BuyTime")
+        self._PromiseAmount = params.get("PromiseAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

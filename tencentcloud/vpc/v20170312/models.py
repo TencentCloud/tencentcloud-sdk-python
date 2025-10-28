@@ -1586,6 +1586,8 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateName(self):
+        warnings.warn("parameter `AddressTemplateName` is deprecated", DeprecationWarning) 
+
         r"""IP模板名称，废弃字段。
         :rtype: str
         """
@@ -1593,10 +1595,14 @@ class AddressTemplateItem(AbstractModel):
 
     @AddressTemplateName.setter
     def AddressTemplateName(self, AddressTemplateName):
+        warnings.warn("parameter `AddressTemplateName` is deprecated", DeprecationWarning) 
+
         self._AddressTemplateName = AddressTemplateName
 
     @property
     def From(self):
+        warnings.warn("parameter `From` is deprecated", DeprecationWarning) 
+
         r"""废弃字段。
         :rtype: str
         """
@@ -1604,10 +1610,14 @@ class AddressTemplateItem(AbstractModel):
 
     @From.setter
     def From(self, From):
+        warnings.warn("parameter `From` is deprecated", DeprecationWarning) 
+
         self._From = From
 
     @property
     def To(self):
+        warnings.warn("parameter `To` is deprecated", DeprecationWarning) 
+
         r"""废弃字段
         :rtype: str
         """
@@ -1615,6 +1625,8 @@ class AddressTemplateItem(AbstractModel):
 
     @To.setter
     def To(self, To):
+        warnings.warn("parameter `To` is deprecated", DeprecationWarning) 
+
         self._To = To
 
     @property
@@ -8750,6 +8762,8 @@ class ConflictItem(AbstractModel):
 
     @property
     def ConfilctId(self):
+        warnings.warn("parameter `ConfilctId` is deprecated", DeprecationWarning) 
+
         r"""冲突资源的ID。已废弃
         :rtype: str
         """
@@ -8757,6 +8771,8 @@ class ConflictItem(AbstractModel):
 
     @ConfilctId.setter
     def ConfilctId(self, ConfilctId):
+        warnings.warn("parameter `ConfilctId` is deprecated", DeprecationWarning) 
+
         self._ConfilctId = ConfilctId
 
     @property
@@ -10822,7 +10838,7 @@ class CreateFlowLogRequest(AbstractModel):
         r"""
         :param _FlowLogName: 流日志实例名称。长度为不超过60个字符。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
+        :param _ResourceType: 流日志所属资源类型，NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择CCN，DCG时，请通过工单加入白名单。
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
@@ -10843,6 +10859,8 @@ class CreateFlowLogRequest(AbstractModel):
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         :param _CloudLogRegion: 流日志存储ID对应的地域，不传递默认为本地域。
         :type CloudLogRegion: str
+        :param _Period: 流日志采集周期，只支持CCN类型流日志。取值范围（单位s）：60， 300， 600。
+        :type Period: int
         """
         self._FlowLogName = None
         self._ResourceType = None
@@ -10855,6 +10873,7 @@ class CreateFlowLogRequest(AbstractModel):
         self._StorageType = None
         self._FlowLogStorage = None
         self._CloudLogRegion = None
+        self._Period = None
 
     @property
     def FlowLogName(self):
@@ -10869,7 +10888,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
+        r"""流日志所属资源类型，NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择CCN，DCG时，请通过工单加入白名单。
         :rtype: str
         """
         return self._ResourceType
@@ -10978,6 +10997,17 @@ class CreateFlowLogRequest(AbstractModel):
     def CloudLogRegion(self, CloudLogRegion):
         self._CloudLogRegion = CloudLogRegion
 
+    @property
+    def Period(self):
+        r"""流日志采集周期，只支持CCN类型流日志。取值范围（单位s）：60， 300， 600。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._FlowLogName = params.get("FlowLogName")
@@ -10998,6 +11028,7 @@ class CreateFlowLogRequest(AbstractModel):
             self._FlowLogStorage = FlowLogStorage()
             self._FlowLogStorage._deserialize(params.get("FlowLogStorage"))
         self._CloudLogRegion = params.get("CloudLogRegion")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23651,11 +23682,11 @@ class DescribeAddressesRequest(AbstractModel):
         :type AddressIds: list of str
         :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 <li> address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-id。</li>
-<li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-name。</li>
+<li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-name。注意：当指定 address-name 参数时，仅支持按第一个传入的 address-name 参数执行查询操作。</li>
 <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-ip。</li>
 <li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI。</li>
 <li> instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例 ID 过滤。实例 ID 形如：ins-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取instance-id。</li>
-<li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。</li>
+<li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。注意：当指定 private-ip-address 参数时，仅支持按第一个传入的 private-ip-address 参数执行查询操作。</li>
 <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取network-interface-id。</li>
 <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
 <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP。默认值是'EIP'。</li>
@@ -23690,11 +23721,11 @@ class DescribeAddressesRequest(AbstractModel):
     def Filters(self):
         r"""每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 <li> address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-id。</li>
-<li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-name。</li>
+<li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-name。注意：当指定 address-name 参数时，仅支持按第一个传入的 address-name 参数执行查询操作。</li>
 <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取address-ip。</li>
 <li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI。</li>
 <li> instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例 ID 过滤。实例 ID 形如：ins-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取instance-id。</li>
-<li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。</li>
+<li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。注意：当指定 private-ip-address 参数时，仅支持按第一个传入的 private-ip-address 参数执行查询操作。</li>
 <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取network-interface-id。</li>
 <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
 <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP。默认值是'EIP'。</li>
@@ -33879,6 +33910,125 @@ class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupExpandedPoliciesRequest(AbstractModel):
+    r"""DescribeSecurityGroupExpandedPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityGroupId: 安全组实例ID，例如：sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
+        :type SecurityGroupId: str
+        :param _Filters: 过滤条件。
+<li>security-group-id - String - 规则中的安全组ID。</li>
+<li>ip - String - IP，支持IPV4和IPV6模糊匹配。</li>
+<li>address-module - String - IP地址模板或IP地址组模板ID。</li>
+<li>service-module - String - 协议端口模板或协议端口组模板ID。</li>
+<li>protocol-type - String - 安全组策略支持的协议，可选值：`TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`。</li>
+<li>port - String - 是否必填：否 -协议端口，支持模糊匹配，值为`ALL`时，查询所有的端口。</li>
+<li>poly - String - 协议策略，可选值：`ALL`，所有策略；`ACCEPT`，允许；`DROP`，拒绝。</li>
+<li>direction - String - 协议规则，可选值：`ALL`，所有策略；`INBOUND`，入站规则；`OUTBOUND`，出站规则。</li>
+<li>description - String - 协议描述，该过滤条件支持模糊匹配。</li>
+        :type Filters: list of Filter
+        """
+        self._SecurityGroupId = None
+        self._Filters = None
+
+    @property
+    def SecurityGroupId(self):
+        r"""安全组实例ID，例如：sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
+        :rtype: str
+        """
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+<li>security-group-id - String - 规则中的安全组ID。</li>
+<li>ip - String - IP，支持IPV4和IPV6模糊匹配。</li>
+<li>address-module - String - IP地址模板或IP地址组模板ID。</li>
+<li>service-module - String - 协议端口模板或协议端口组模板ID。</li>
+<li>protocol-type - String - 安全组策略支持的协议，可选值：`TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`。</li>
+<li>port - String - 是否必填：否 -协议端口，支持模糊匹配，值为`ALL`时，查询所有的端口。</li>
+<li>poly - String - 协议策略，可选值：`ALL`，所有策略；`ACCEPT`，允许；`DROP`，拒绝。</li>
+<li>direction - String - 协议规则，可选值：`ALL`，所有策略；`INBOUND`，入站规则；`OUTBOUND`，出站规则。</li>
+<li>description - String - 协议描述，该过滤条件支持模糊匹配。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityGroupExpandedPoliciesResponse(AbstractModel):
+    r"""DescribeSecurityGroupExpandedPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityGroupPolicySet: 安全组规则集合。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecurityGroupPolicySet = None
+        self._RequestId = None
+
+    @property
+    def SecurityGroupPolicySet(self):
+        r"""安全组规则集合。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupPolicySet") is not None:
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupLimitsRequest(AbstractModel):
     r"""DescribeSecurityGroupLimits请求参数结构体
 
@@ -43543,13 +43693,13 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
+        :param _VpcId: 私有网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
         :type VpcId: str
         :param _FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
         :param _FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+        :param _ResourceType: 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转换），DCG（专线网关）。
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
@@ -43573,6 +43723,8 @@ class FlowLog(AbstractModel):
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         :param _CloudLogRegion: 流日志存储ID对应的地域信息。
         :type CloudLogRegion: str
+        :param _Period: 流日志采集周期，只支持CCN类型流日志。取值范围（单位s）：60， 300， 600。
+        :type Period: int
         """
         self._VpcId = None
         self._FlowLogId = None
@@ -43589,10 +43741,11 @@ class FlowLog(AbstractModel):
         self._StorageType = None
         self._FlowLogStorage = None
         self._CloudLogRegion = None
+        self._Period = None
 
     @property
     def VpcId(self):
-        r"""私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
+        r"""私有网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -43625,7 +43778,7 @@ class FlowLog(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+        r"""流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转换），DCG（专线网关）。
         :rtype: str
         """
         return self._ResourceType
@@ -43755,6 +43908,17 @@ class FlowLog(AbstractModel):
     def CloudLogRegion(self, CloudLogRegion):
         self._CloudLogRegion = CloudLogRegion
 
+    @property
+    def Period(self):
+        r"""流日志采集周期，只支持CCN类型流日志。取值范围（单位s）：60， 300， 600。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -43779,6 +43943,7 @@ class FlowLog(AbstractModel):
             self._FlowLogStorage = FlowLogStorage()
             self._FlowLogStorage._deserialize(params.get("FlowLogStorage"))
         self._CloudLogRegion = params.get("CloudLogRegion")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

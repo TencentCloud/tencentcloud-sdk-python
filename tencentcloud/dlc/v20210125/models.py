@@ -19250,10 +19250,16 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
         r"""
         :param _SparkSessionsList: spark session列表
         :type SparkSessionsList: list of SparkSessionInfo
+        :param _TotalSpec: 资源组总规格
+        :type TotalSpec: int
+        :param _TotalAvailable: 资源组当前可用规格
+        :type TotalAvailable: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SparkSessionsList = None
+        self._TotalSpec = None
+        self._TotalAvailable = None
         self._RequestId = None
 
     @property
@@ -19266,6 +19272,28 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
     @SparkSessionsList.setter
     def SparkSessionsList(self, SparkSessionsList):
         self._SparkSessionsList = SparkSessionsList
+
+    @property
+    def TotalSpec(self):
+        r"""资源组总规格
+        :rtype: int
+        """
+        return self._TotalSpec
+
+    @TotalSpec.setter
+    def TotalSpec(self, TotalSpec):
+        self._TotalSpec = TotalSpec
+
+    @property
+    def TotalAvailable(self):
+        r"""资源组当前可用规格
+        :rtype: int
+        """
+        return self._TotalAvailable
+
+    @TotalAvailable.setter
+    def TotalAvailable(self, TotalAvailable):
+        self._TotalAvailable = TotalAvailable
 
     @property
     def RequestId(self):
@@ -19286,6 +19314,8 @@ class DescribeNativeSparkSessionsResponse(AbstractModel):
                 obj = SparkSessionInfo()
                 obj._deserialize(item)
                 self._SparkSessionsList.append(obj)
+        self._TotalSpec = params.get("TotalSpec")
+        self._TotalAvailable = params.get("TotalAvailable")
         self._RequestId = params.get("RequestId")
 
 
@@ -37110,6 +37140,8 @@ name
         :type TotalSpecMin: int
         :param _TotalSpecMax: 总规格最大
         :type TotalSpecMax: int
+        :param _State: 状态，STARTING、RUNNING、TERMINATED
+        :type State: str
         """
         self._SparkSessionId = None
         self._SparkSessionName = None
@@ -37123,6 +37155,7 @@ name
         self._ExecutorNumMax = None
         self._TotalSpecMin = None
         self._TotalSpecMax = None
+        self._State = None
 
     @property
     def SparkSessionId(self):
@@ -37257,6 +37290,17 @@ name
     def TotalSpecMax(self, TotalSpecMax):
         self._TotalSpecMax = TotalSpecMax
 
+    @property
+    def State(self):
+        r"""状态，STARTING、RUNNING、TERMINATED
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
 
     def _deserialize(self, params):
         self._SparkSessionId = params.get("SparkSessionId")
@@ -37271,6 +37315,7 @@ name
         self._ExecutorNumMax = params.get("ExecutorNumMax")
         self._TotalSpecMin = params.get("TotalSpecMin")
         self._TotalSpecMax = params.get("TotalSpecMax")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
