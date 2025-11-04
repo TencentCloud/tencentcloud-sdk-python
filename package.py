@@ -89,7 +89,7 @@ def exec_cmd(cmd):
 
 
 def build_and_install_package(mod, upload):
-    cmd = 'cd temp-directory && python setup.py sdist bdist_wheel'
+    cmd = 'cd temp-directory && python3.8 -m build'
     ret, output = exec_cmd(cmd)
     if ret != 0:
         print("%s build failed because %s" % (mod, output))
