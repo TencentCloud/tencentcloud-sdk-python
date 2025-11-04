@@ -7672,6 +7672,115 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+        :type InstanceId: str
+        :param _ShardSize: 分片大小，单位：MB
+        :type ShardSize: int
+        :param _ShardNum: 分片数量。
+        :type ShardNum: int
+        :param _ReplicateNum: 复制组数量。
+        :type ReplicateNum: int
+        :param _ReadOnlyWeight: 只读权重。
+- 100：开启从只读。
+- 0：关闭从只读。
+        :type ReadOnlyWeight: int
+        :param _Type: 实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+        :type Type: int
+        """
+        self._InstanceId = None
+        self._ShardSize = None
+        self._ShardNum = None
+        self._ReplicateNum = None
+        self._ReadOnlyWeight = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ShardSize(self):
+        r"""分片大小，单位：MB
+        :rtype: int
+        """
+        return self._ShardSize
+
+    @ShardSize.setter
+    def ShardSize(self, ShardSize):
+        self._ShardSize = ShardSize
+
+    @property
+    def ShardNum(self):
+        r"""分片数量。
+        :rtype: int
+        """
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def ReplicateNum(self):
+        r"""复制组数量。
+        :rtype: int
+        """
+        return self._ReplicateNum
+
+    @ReplicateNum.setter
+    def ReplicateNum(self, ReplicateNum):
+        self._ReplicateNum = ReplicateNum
+
+    @property
+    def ReadOnlyWeight(self):
+        r"""只读权重。
+- 100：开启从只读。
+- 0：关闭从只读。
+        :rtype: int
+        """
+        return self._ReadOnlyWeight
+
+    @ReadOnlyWeight.setter
+    def ReadOnlyWeight(self, ReadOnlyWeight):
+        self._ReadOnlyWeight = ReadOnlyWeight
+
+    @property
+    def Type(self):
+        r"""实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ShardSize = params.get("ShardSize")
+        self._ShardNum = params.get("ShardNum")
+        self._ReplicateNum = params.get("ReplicateNum")
+        self._ReadOnlyWeight = params.get("ReadOnlyWeight")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceSpecBandwidthResponse(AbstractModel):
     r"""DescribeInstanceSpecBandwidth返回参数结构体
@@ -7680,10 +7789,38 @@ class DescribeInstanceSpecBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Bandwidth: 基础带宽。
+        :type Bandwidth: int
+        :param _ClientLimit: 链接限制。
+        :type ClientLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Bandwidth = None
+        self._ClientLimit = None
         self._RequestId = None
+
+    @property
+    def Bandwidth(self):
+        r"""基础带宽。
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ClientLimit(self):
+        r"""链接限制。
+        :rtype: int
+        """
+        return self._ClientLimit
+
+    @ClientLimit.setter
+    def ClientLimit(self, ClientLimit):
+        self._ClientLimit = ClientLimit
 
     @property
     def RequestId(self):
@@ -7698,6 +7835,8 @@ class DescribeInstanceSpecBandwidthResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Bandwidth = params.get("Bandwidth")
+        self._ClientLimit = params.get("ClientLimit")
         self._RequestId = params.get("RequestId")
 
 

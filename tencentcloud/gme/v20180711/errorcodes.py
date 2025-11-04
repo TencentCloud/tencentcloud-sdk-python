@@ -77,6 +77,9 @@ INVALIDPARAMETER_DATEOUTOFSIXTYDAYS = 'InvalidParameter.DateOutOfSixtyDays'
 # InvalidParameter.InvalidAudioInput
 INVALIDPARAMETER_INVALIDAUDIOINPUT = 'InvalidParameter.InvalidAudioInput'
 
+# InvalidParameter.InvalidSdkAppId
+INVALIDPARAMETER_INVALIDSDKAPPID = 'InvalidParameter.InvalidSdkAppId'
+
 # InvalidParameter.InvalidVoicePrintIdList
 INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = 'InvalidParameter.InvalidVoicePrintIdList'
 

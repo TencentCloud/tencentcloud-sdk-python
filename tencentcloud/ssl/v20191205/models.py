@@ -1540,6 +1540,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         :type CaType: str
         :param _SignAlgo: 签名算法
         :type SignAlgo: str
+        :param _UseCrossSignRoot: 是否使用交叉根证书
+        :type UseCrossSignRoot: bool
         """
         self._CertId = None
         self._GenCsrType = None
@@ -1582,6 +1584,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._Type = None
         self._CaType = None
         self._SignAlgo = None
+        self._UseCrossSignRoot = None
 
     @property
     def CertId(self):
@@ -2059,6 +2062,17 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
     def SignAlgo(self, SignAlgo):
         self._SignAlgo = SignAlgo
 
+    @property
+    def UseCrossSignRoot(self):
+        r"""是否使用交叉根证书
+        :rtype: bool
+        """
+        return self._UseCrossSignRoot
+
+    @UseCrossSignRoot.setter
+    def UseCrossSignRoot(self, UseCrossSignRoot):
+        self._UseCrossSignRoot = UseCrossSignRoot
+
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
@@ -2102,6 +2116,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._Type = params.get("Type")
         self._CaType = params.get("CaType")
         self._SignAlgo = params.get("SignAlgo")
+        self._UseCrossSignRoot = params.get("UseCrossSignRoot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8463,6 +8478,8 @@ null：用户上传证书（没有套餐类型），
         :type DomainType: int
         :param _CertType: 证书类型，DV（域名型）；OV（企业型）；EV（增强型）
         :type CertType: str
+        :param _UseCrossSignRoot: 是否使用交叉根
+        :type UseCrossSignRoot: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8510,6 +8527,7 @@ null：用户上传证书（没有套餐类型），
         self._CertChainInfo = None
         self._DomainType = None
         self._CertType = None
+        self._UseCrossSignRoot = None
         self._RequestId = None
 
     @property
@@ -9115,6 +9133,17 @@ null：用户上传证书（没有套餐类型），
         self._CertType = CertType
 
     @property
+    def UseCrossSignRoot(self):
+        r"""是否使用交叉根
+        :rtype: bool
+        """
+        return self._UseCrossSignRoot
+
+    @UseCrossSignRoot.setter
+    def UseCrossSignRoot(self, UseCrossSignRoot):
+        self._UseCrossSignRoot = UseCrossSignRoot
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9194,6 +9223,7 @@ null：用户上传证书（没有套餐类型），
                 self._CertChainInfo.append(obj)
         self._DomainType = params.get("DomainType")
         self._CertType = params.get("CertType")
+        self._UseCrossSignRoot = params.get("UseCrossSignRoot")
         self._RequestId = params.get("RequestId")
 
 
@@ -17560,6 +17590,8 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertCSRKeyParameter: str
         :param _SignAlgo: 签名算法
         :type SignAlgo: str
+        :param _UseCrossSignRoot: 是否使用交叉根证书，默认为true
+        :type UseCrossSignRoot: bool
         """
         self._CertificateId = None
         self._ValidType = None
@@ -17570,6 +17602,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CertCSREncryptAlgo = None
         self._CertCSRKeyParameter = None
         self._SignAlgo = None
+        self._UseCrossSignRoot = None
 
     @property
     def CertificateId(self):
@@ -17671,6 +17704,17 @@ class ReplaceCertificateRequest(AbstractModel):
     def SignAlgo(self, SignAlgo):
         self._SignAlgo = SignAlgo
 
+    @property
+    def UseCrossSignRoot(self):
+        r"""是否使用交叉根证书，默认为true
+        :rtype: bool
+        """
+        return self._UseCrossSignRoot
+
+    @UseCrossSignRoot.setter
+    def UseCrossSignRoot(self, UseCrossSignRoot):
+        self._UseCrossSignRoot = UseCrossSignRoot
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -17682,6 +17726,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CertCSREncryptAlgo = params.get("CertCSREncryptAlgo")
         self._CertCSRKeyParameter = params.get("CertCSRKeyParameter")
         self._SignAlgo = params.get("SignAlgo")
+        self._UseCrossSignRoot = params.get("UseCrossSignRoot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

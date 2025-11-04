@@ -243,7 +243,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsReplyStatus(self, request):
         r"""本接口 (PullSmsReplyStatus) 用于拉取短信回复状态。
-        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>此接口需要联系  <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 开通。</li><li>上行回复也支持 <a href="https://cloud.tencent.com/document/product/382/42907">配置回复回调</a> 的方式获取。</li></ul></blockquote>
+        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>此接口需要联系  <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 开通。接口拉取的状态数据为队列模式，同一号码一次下发的状态数据仅能拉取一次。</li><li>上行回复也支持 <a href="https://cloud.tencent.com/document/product/382/42907">配置回复回调</a> 的方式获取。</li></ul></blockquote>
 
         :param request: Request instance for PullSmsReplyStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusRequest`
@@ -291,7 +291,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsSendStatus(self, request):
         r"""本接口 (PullSmsSendStatus) 用于拉取短信下发状态。
-        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>此接口需要联系  <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 开通。</li><li>下发状态也支持 <a href="https://cloud.tencent.com/document/product/382/37809#.E7.9F.AD.E4.BF.A1.E7.8A.B6.E6.80.81.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE">配置回调</a> 的方式获取。</li></ul></blockquote>
+        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>此接口需要联系  <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 开通。接口拉取的状态数据为队列模式，同一号码一次下发的状态数据仅能拉取一次。</li><li>下发状态也支持 <a href="https://cloud.tencent.com/document/product/382/37809#sendingstatus">配置回调</a> 的方式获取。</li></ul></blockquote>
 
         :param request: Request instance for PullSmsSendStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusRequest`
@@ -315,7 +315,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsSendStatusByPhoneNumber(self, request):
         r"""本接口 (PullSmsSendStatusByPhoneNumber) 用于拉取单个号码短信下发状态。
-        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>下发状态也支持 <a href="https://cloud.tencent.com/document/product/382/37809#.E7.9F.AD.E4.BF.A1.E7.8A.B6.E6.80.81.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE">配置回调</a> 的方式获取。</li></ul></blockquote>
+        <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>下发状态也支持 <a href="https://cloud.tencent.com/document/product/382/37809#sendingstatus">配置回调</a> 的方式获取。</li></ul></blockquote>
 
         :param request: Request instance for PullSmsSendStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberRequest`

@@ -562,6 +562,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterDeletionProtection(self, request):
+        r"""修改集群删除保护状态
+
+        :param request: Request instance for ModifyClusterDeletionProtection.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyClusterDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyClusterDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterDeletionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInitNodeScripts(self, request):
         r"""本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
 

@@ -4305,7 +4305,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAttribute(self, request):
-        r"""修改集群属性
+        r"""修改集群属性，至少选择一个参数更新
 
         :param request: Request instance for ModifyClusterAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeRequest`
@@ -4420,7 +4420,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterRuntimeConfig(self, request):
-        r"""修改集群及节点池纬度运行时配置
+        r"""修改集群及节点池维度运行时配置
 
         :param request: Request instance for ModifyClusterRuntimeConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigRequest`

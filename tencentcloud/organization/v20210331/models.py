@@ -3337,6 +3337,8 @@ class CreateUserRequest(AbstractModel):
         :type UserStatus: str
         :param _UserType: 用户类型  Manual：手动创建，Synchronized：外部导入
         :type UserType: str
+        :param _NeedResetPassword: 是否需要重置密码： true: 需要重置  false: 不需要重置密码。 默认false
+        :type NeedResetPassword: bool
         """
         self._ZoneId = None
         self._UserName = None
@@ -3347,6 +3349,7 @@ class CreateUserRequest(AbstractModel):
         self._Email = None
         self._UserStatus = None
         self._UserType = None
+        self._NeedResetPassword = None
 
     @property
     def ZoneId(self):
@@ -3447,6 +3450,17 @@ class CreateUserRequest(AbstractModel):
     def UserType(self, UserType):
         self._UserType = UserType
 
+    @property
+    def NeedResetPassword(self):
+        r"""是否需要重置密码： true: 需要重置  false: 不需要重置密码。 默认false
+        :rtype: bool
+        """
+        return self._NeedResetPassword
+
+    @NeedResetPassword.setter
+    def NeedResetPassword(self, NeedResetPassword):
+        self._NeedResetPassword = NeedResetPassword
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3458,6 +3472,7 @@ class CreateUserRequest(AbstractModel):
         self._Email = params.get("Email")
         self._UserStatus = params.get("UserStatus")
         self._UserType = params.get("UserType")
+        self._NeedResetPassword = params.get("NeedResetPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21577,6 +21592,8 @@ class UpdateUserRequest(AbstractModel):
         :type NewDescription: str
         :param _NewEmail: 用户的电子邮箱。
         :type NewEmail: str
+        :param _NeedResetPassword: 是否需要重置密码
+        :type NeedResetPassword: bool
         """
         self._ZoneId = None
         self._UserId = None
@@ -21585,6 +21602,7 @@ class UpdateUserRequest(AbstractModel):
         self._NewDisplayName = None
         self._NewDescription = None
         self._NewEmail = None
+        self._NeedResetPassword = None
 
     @property
     def ZoneId(self):
@@ -21663,6 +21681,17 @@ class UpdateUserRequest(AbstractModel):
     def NewEmail(self, NewEmail):
         self._NewEmail = NewEmail
 
+    @property
+    def NeedResetPassword(self):
+        r"""是否需要重置密码
+        :rtype: bool
+        """
+        return self._NeedResetPassword
+
+    @NeedResetPassword.setter
+    def NeedResetPassword(self, NeedResetPassword):
+        self._NeedResetPassword = NeedResetPassword
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -21672,6 +21701,7 @@ class UpdateUserRequest(AbstractModel):
         self._NewDisplayName = params.get("NewDisplayName")
         self._NewDescription = params.get("NewDescription")
         self._NewEmail = params.get("NewEmail")
+        self._NeedResetPassword = params.get("NeedResetPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22057,6 +22087,8 @@ class UserInfo(AbstractModel):
         :type IsSelected: bool
         :param _Password: 用户密码
         :type Password: str
+        :param _NeedResetPassword: 下次登录是否需要重置密码， true: 需要重置密码， false：不需要重置密码
+        :type NeedResetPassword: bool
         """
         self._UserName = None
         self._FirstName = None
@@ -22071,6 +22103,7 @@ class UserInfo(AbstractModel):
         self._UpdateTime = None
         self._IsSelected = None
         self._Password = None
+        self._NeedResetPassword = None
 
     @property
     def UserName(self):
@@ -22215,6 +22248,17 @@ class UserInfo(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def NeedResetPassword(self):
+        r"""下次登录是否需要重置密码， true: 需要重置密码， false：不需要重置密码
+        :rtype: bool
+        """
+        return self._NeedResetPassword
+
+    @NeedResetPassword.setter
+    def NeedResetPassword(self, NeedResetPassword):
+        self._NeedResetPassword = NeedResetPassword
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -22230,6 +22274,7 @@ class UserInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._IsSelected = params.get("IsSelected")
         self._Password = params.get("Password")
+        self._NeedResetPassword = params.get("NeedResetPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

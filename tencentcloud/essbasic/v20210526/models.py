@@ -2769,6 +2769,8 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         :type FlowBatchUrlInfo: :class:`tencentcloud.essbasic.v20210526.models.FlowBatchUrlInfo`
         :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.essbasic.v20210526.models.Intention`
+        :param _VideoVerifyTimesLimit: 用于指定进入视频签署的限制次数，次数取值范围：1 - 10，不设置则默认为5次，仅视频签署时生效。
+        :type VideoVerifyTimesLimit: int
         :param _CacheApproverInfo: 缓存签署人信息。在H5签署链接动态领取场景，首次填写后，选择缓存签署人信息，在下次签署人点击领取链接时，会自动将个人信息（姓名、身份证号、手机号）填入，否则需要每次手动填写。
 
 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
@@ -2788,6 +2790,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._SignTypeSelector = None
         self._FlowBatchUrlInfo = None
         self._Intention = None
+        self._VideoVerifyTimesLimit = None
         self._CacheApproverInfo = None
         self._CanBatchReject = None
         self._PresetApproverInfo = None
@@ -2936,6 +2939,17 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._Intention = Intention
 
     @property
+    def VideoVerifyTimesLimit(self):
+        r"""用于指定进入视频签署的限制次数，次数取值范围：1 - 10，不设置则默认为5次，仅视频签署时生效。
+        :rtype: int
+        """
+        return self._VideoVerifyTimesLimit
+
+    @VideoVerifyTimesLimit.setter
+    def VideoVerifyTimesLimit(self, VideoVerifyTimesLimit):
+        self._VideoVerifyTimesLimit = VideoVerifyTimesLimit
+
+    @property
     def CacheApproverInfo(self):
         r"""缓存签署人信息。在H5签署链接动态领取场景，首次填写后，选择缓存签署人信息，在下次签署人点击领取链接时，会自动将个人信息（姓名、身份证号、手机号）填入，否则需要每次手动填写。
 
@@ -2990,6 +3004,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         if params.get("Intention") is not None:
             self._Intention = Intention()
             self._Intention._deserialize(params.get("Intention"))
+        self._VideoVerifyTimesLimit = params.get("VideoVerifyTimesLimit")
         self._CacheApproverInfo = params.get("CacheApproverInfo")
         self._CanBatchReject = params.get("CanBatchReject")
         if params.get("PresetApproverInfo") is not None:
@@ -5895,6 +5910,8 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 `1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
         :type FlowApproverInfos: list of FlowApproverInfo
+        :param _VideoVerifyTimesLimit: 用于指定进入视频签署的限制次数，次数取值范围：1 - 10，不设置则默认为5次，仅视频签署时生效。
+        :type VideoVerifyTimesLimit: int
         :param _Operator: 用户信息，暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _Organization: 机构信息，暂未开放
@@ -5913,6 +5930,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
         self._Agent = None
         self._FlowId = None
         self._FlowApproverInfos = None
+        self._VideoVerifyTimesLimit = None
         self._Operator = None
         self._Organization = None
         self._JumpUrl = None
@@ -5972,6 +5990,17 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
     @FlowApproverInfos.setter
     def FlowApproverInfos(self, FlowApproverInfos):
         self._FlowApproverInfos = FlowApproverInfos
+
+    @property
+    def VideoVerifyTimesLimit(self):
+        r"""用于指定进入视频签署的限制次数，次数取值范围：1 - 10，不设置则默认为5次，仅视频签署时生效。
+        :rtype: int
+        """
+        return self._VideoVerifyTimesLimit
+
+    @VideoVerifyTimesLimit.setter
+    def VideoVerifyTimesLimit(self, VideoVerifyTimesLimit):
+        self._VideoVerifyTimesLimit = VideoVerifyTimesLimit
 
     @property
     def Operator(self):
@@ -6043,6 +6072,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
                 obj = FlowApproverInfo()
                 obj._deserialize(item)
                 self._FlowApproverInfos.append(obj)
+        self._VideoVerifyTimesLimit = params.get("VideoVerifyTimesLimit")
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
@@ -13061,6 +13091,11 @@ class Component(AbstractModel):
 <ul><li> <b>UseSealSize</b>：使用印章设置的大小盖章，true表示使用印章设置的大小盖章，false表示使用签署控件的大小进行盖章；不传则为false</li></ul>
 <b>参数样例</b>：`{"UseSealSize":true}`
 
+<font color="red">签署意见功能设置，</font>当ComponentType为SIGN_OPINION时，可以通过以下参数设置签署意见的相关内容：
+<ul><li> <b>Values</b>：签署意见预设的需要用户填写的文本</li>
+<li> <b>ValuesArray</b>：签署意见需要用户按顺序点击的分词（组合后应和Values内容一致）</li></ul>
+<b>参数样例</b>：`{"Values":"我已知晓内容并同意签署","ValuesArray":["我","已知晓","内容","并","同意","签署"]}`
+
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
@@ -13486,6 +13521,11 @@ ChildrenComponent结构体定义:
 <font color="red">签署印章大小功能设置，</font>当ComponentType为SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署时按照实际印章的大小进行签署，如果印章没有设置大小，那么默认会是4.2cm的印章大小：
 <ul><li> <b>UseSealSize</b>：使用印章设置的大小盖章，true表示使用印章设置的大小盖章，false表示使用签署控件的大小进行盖章；不传则为false</li></ul>
 <b>参数样例</b>：`{"UseSealSize":true}`
+
+<font color="red">签署意见功能设置，</font>当ComponentType为SIGN_OPINION时，可以通过以下参数设置签署意见的相关内容：
+<ul><li> <b>Values</b>：签署意见预设的需要用户填写的文本</li>
+<li> <b>ValuesArray</b>：签署意见需要用户按顺序点击的分词（组合后应和Values内容一致）</li></ul>
+<b>参数样例</b>：`{"Values":"我已知晓内容并同意签署","ValuesArray":["我","已知晓","内容","并","同意","签署"]}`
 
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
@@ -16473,6 +16513,24 @@ class CreateFlowOption(AbstractModel):
         :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :type ForbidEditWatermark: bool
+        :param _PreviewAfterStart: 发起成功后是否预览合同
+<ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
+        :type PreviewAfterStart: bool
+        :param _SignAfterStart: 发起成功之后是否签署合同，仅当前经办人作为签署人时生效
+<ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
+        :type SignAfterStart: bool
+        :param _HideOperationSteps: 隐藏操作步骤: 具体的控件类型如下
+
+<ul><li>1 : 选择文件及签署方</li>
+<li>2 : 补充文件内容</li>
+<li>4 : 发起前合同信息与设置确认</li>
+</ul>
+注：仅对新版页面生效
+        :type HideOperationSteps: list of int non-negative
+        :param _SelfName: 本企业简称，注：仅对新版页面生效
+        :type SelfName: str
+        :param _HideSignCodeAfterStart: 发起后签署码隐藏，默认false，注：仅对新版页面生效
+        :type HideSignCodeAfterStart: bool
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -16485,6 +16543,11 @@ class CreateFlowOption(AbstractModel):
         self._SkipUploadFile = None
         self._SignComponentConfig = None
         self._ForbidEditWatermark = None
+        self._PreviewAfterStart = None
+        self._SignAfterStart = None
+        self._HideOperationSteps = None
+        self._SelfName = None
+        self._HideSignCodeAfterStart = None
 
     @property
     def CanEditFlow(self):
@@ -16632,6 +16695,69 @@ class CreateFlowOption(AbstractModel):
     def ForbidEditWatermark(self, ForbidEditWatermark):
         self._ForbidEditWatermark = ForbidEditWatermark
 
+    @property
+    def PreviewAfterStart(self):
+        r"""发起成功后是否预览合同
+<ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
+        :rtype: bool
+        """
+        return self._PreviewAfterStart
+
+    @PreviewAfterStart.setter
+    def PreviewAfterStart(self, PreviewAfterStart):
+        self._PreviewAfterStart = PreviewAfterStart
+
+    @property
+    def SignAfterStart(self):
+        r"""发起成功之后是否签署合同，仅当前经办人作为签署人时生效
+<ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
+        :rtype: bool
+        """
+        return self._SignAfterStart
+
+    @SignAfterStart.setter
+    def SignAfterStart(self, SignAfterStart):
+        self._SignAfterStart = SignAfterStart
+
+    @property
+    def HideOperationSteps(self):
+        r"""隐藏操作步骤: 具体的控件类型如下
+
+<ul><li>1 : 选择文件及签署方</li>
+<li>2 : 补充文件内容</li>
+<li>4 : 发起前合同信息与设置确认</li>
+</ul>
+注：仅对新版页面生效
+        :rtype: list of int non-negative
+        """
+        return self._HideOperationSteps
+
+    @HideOperationSteps.setter
+    def HideOperationSteps(self, HideOperationSteps):
+        self._HideOperationSteps = HideOperationSteps
+
+    @property
+    def SelfName(self):
+        r"""本企业简称，注：仅对新版页面生效
+        :rtype: str
+        """
+        return self._SelfName
+
+    @SelfName.setter
+    def SelfName(self, SelfName):
+        self._SelfName = SelfName
+
+    @property
+    def HideSignCodeAfterStart(self):
+        r"""发起后签署码隐藏，默认false，注：仅对新版页面生效
+        :rtype: bool
+        """
+        return self._HideSignCodeAfterStart
+
+    @HideSignCodeAfterStart.setter
+    def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
+        self._HideSignCodeAfterStart = HideSignCodeAfterStart
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -16647,6 +16773,11 @@ class CreateFlowOption(AbstractModel):
             self._SignComponentConfig = SignComponentConfig()
             self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
         self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._PreviewAfterStart = params.get("PreviewAfterStart")
+        self._SignAfterStart = params.get("SignAfterStart")
+        self._HideOperationSteps = params.get("HideOperationSteps")
+        self._SelfName = params.get("SelfName")
+        self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

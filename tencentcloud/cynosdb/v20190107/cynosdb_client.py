@@ -463,6 +463,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIntegrateCluster(self, request):
+        r"""本接口（CreateClusters）用于新购集群。
+
+        :param request: Request instance for CreateIntegrateCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateIntegrateClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateIntegrateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIntegrateCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIntegrateClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateParamTemplate(self, request):
         r"""本接口（CreateParamTemplate）用于创建参数模板。
 
@@ -1636,6 +1659,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIntegrateTask(self, request):
+        r"""本接口（DescribeIntegrateTask）用于查询集群任务。
+
+        :param request: Request instance for DescribeIntegrateTask.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIntegrateTaskRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIntegrateTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntegrateTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntegrateTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIsolatedInstances(self, request):
         r"""本接口（DescribeIsolatedInstances）用于查询回收站实例列表。
 
@@ -2248,6 +2294,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("InquirePriceModify", params, headers=headers)
             response = json.loads(body)
             model = models.InquirePriceModifyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquirePriceMultiSpec(self, request):
+        r"""此接口（InquirePriceMultiSpec）用于批量询价
+
+        :param request: Request instance for InquirePriceMultiSpec.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceMultiSpecRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceMultiSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceMultiSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceMultiSpecResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

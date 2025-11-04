@@ -360,9 +360,12 @@ class CkafkaTargetParams(AbstractModel):
         :type TopicName: str
         :param _RetryPolicy: 重试策略
         :type RetryPolicy: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
+        :param _EventDeliveryFormat: 事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)
+        :type EventDeliveryFormat: str
         """
         self._TopicName = None
         self._RetryPolicy = None
+        self._EventDeliveryFormat = None
 
     @property
     def TopicName(self):
@@ -386,12 +389,24 @@ class CkafkaTargetParams(AbstractModel):
     def RetryPolicy(self, RetryPolicy):
         self._RetryPolicy = RetryPolicy
 
+    @property
+    def EventDeliveryFormat(self):
+        r"""事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)
+        :rtype: str
+        """
+        return self._EventDeliveryFormat
+
+    @EventDeliveryFormat.setter
+    def EventDeliveryFormat(self, EventDeliveryFormat):
+        self._EventDeliveryFormat = EventDeliveryFormat
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
         if params.get("RetryPolicy") is not None:
             self._RetryPolicy = RetryPolicy()
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
+        self._EventDeliveryFormat = params.get("EventDeliveryFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

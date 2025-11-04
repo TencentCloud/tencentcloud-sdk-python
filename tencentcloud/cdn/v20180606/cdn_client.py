@@ -218,6 +218,8 @@ class CdnClient(AbstractClient):
 
     def DescribeBillingData(self, request):
         r"""DescribeBillingData 用于查询实际计费数据明细。
+        注意:
+        受计费算法的影响，计费数据接口返回的数据均存在一定延时。小时结算客户预计延时3-5小时。月结算客户预计延迟4-28小时，在凌晨4点（不含4点）之前，仅能查询到前2天数据，4点（含）之后，能查询到前1天数据。若您对数据及时性较强的诉求，建议使用[监控访问数据](https://cloud.tencent.com/document/product/228/30986)。
 
         :param request: Request instance for DescribeBillingData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataRequest`

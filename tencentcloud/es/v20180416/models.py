@@ -11116,6 +11116,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         :type ShowKibanaIpPort: str
         :param _IsCdzLite: 是否为CDZLite可用区
         :type IsCdzLite: bool
+        :param _EsPrivateTcpUrl: 集群内网tcp地址
+        :type EsPrivateTcpUrl: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -11213,6 +11215,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableDestroyProtection = None
         self._ShowKibanaIpPort = None
         self._IsCdzLite = None
+        self._EsPrivateTcpUrl = None
 
     @property
     def InstanceId(self):
@@ -12333,6 +12336,17 @@ RENEW_FLAG_DEFAULT：不自动续费
     def IsCdzLite(self, IsCdzLite):
         self._IsCdzLite = IsCdzLite
 
+    @property
+    def EsPrivateTcpUrl(self):
+        r"""集群内网tcp地址
+        :rtype: str
+        """
+        return self._EsPrivateTcpUrl
+
+    @EsPrivateTcpUrl.setter
+    def EsPrivateTcpUrl(self, EsPrivateTcpUrl):
+        self._EsPrivateTcpUrl = EsPrivateTcpUrl
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12479,6 +12493,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableDestroyProtection = params.get("EnableDestroyProtection")
         self._ShowKibanaIpPort = params.get("ShowKibanaIpPort")
         self._IsCdzLite = params.get("IsCdzLite")
+        self._EsPrivateTcpUrl = params.get("EsPrivateTcpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20327,6 +20342,8 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         :type DiskSize: int
         :param _OperationDuration: 可维护时间段
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
+        :param _MultiZoneInfo: 多可用区部署
+        :type MultiZoneInfo: list of ZoneDetail
         """
         self._InstanceId = None
         self._NodeNum = None
@@ -20337,6 +20354,7 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         self._NodeType = None
         self._DiskSize = None
         self._OperationDuration = None
+        self._MultiZoneInfo = None
 
     @property
     def InstanceId(self):
@@ -20437,6 +20455,17 @@ class UpdateLogstashInstanceRequest(AbstractModel):
     def OperationDuration(self, OperationDuration):
         self._OperationDuration = OperationDuration
 
+    @property
+    def MultiZoneInfo(self):
+        r"""多可用区部署
+        :rtype: list of ZoneDetail
+        """
+        return self._MultiZoneInfo
+
+    @MultiZoneInfo.setter
+    def MultiZoneInfo(self, MultiZoneInfo):
+        self._MultiZoneInfo = MultiZoneInfo
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -20457,6 +20486,12 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         if params.get("OperationDuration") is not None:
             self._OperationDuration = OperationDurationUpdated()
             self._OperationDuration._deserialize(params.get("OperationDuration"))
+        if params.get("MultiZoneInfo") is not None:
+            self._MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self._MultiZoneInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

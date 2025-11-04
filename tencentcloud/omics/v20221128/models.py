@@ -879,6 +879,57 @@ class CreateVolumeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CromwellConfig(AbstractModel):
+    r"""Cromwell工作流引擎设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxConcurrentWorkflows: 工作流并发数
+        :type MaxConcurrentWorkflows: int
+        :param _ConcurrentJobLimit: 作业并发数
+        :type ConcurrentJobLimit: int
+        """
+        self._MaxConcurrentWorkflows = None
+        self._ConcurrentJobLimit = None
+
+    @property
+    def MaxConcurrentWorkflows(self):
+        r"""工作流并发数
+        :rtype: int
+        """
+        return self._MaxConcurrentWorkflows
+
+    @MaxConcurrentWorkflows.setter
+    def MaxConcurrentWorkflows(self, MaxConcurrentWorkflows):
+        self._MaxConcurrentWorkflows = MaxConcurrentWorkflows
+
+    @property
+    def ConcurrentJobLimit(self):
+        r"""作业并发数
+        :rtype: int
+        """
+        return self._ConcurrentJobLimit
+
+    @ConcurrentJobLimit.setter
+    def ConcurrentJobLimit(self, ConcurrentJobLimit):
+        self._ConcurrentJobLimit = ConcurrentJobLimit
+
+
+    def _deserialize(self, params):
+        self._MaxConcurrentWorkflows = params.get("MaxConcurrentWorkflows")
+        self._ConcurrentJobLimit = params.get("ConcurrentJobLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseOption(AbstractModel):
     r"""数据库配置。
 
@@ -2114,6 +2165,8 @@ class Environment(AbstractModel):
         :type LastWorkflowUuid: str
         :param _CreationTime: 创建时间。
         :type CreationTime: str
+        :param _RuntimeConfig: 运行时配置。
+        :type RuntimeConfig: :class:`tencentcloud.omics.v20221128.models.EnvironmentRuntimeConfig`
         """
         self._EnvironmentId = None
         self._Name = None
@@ -2128,6 +2181,7 @@ class Environment(AbstractModel):
         self._ResourceIds = None
         self._LastWorkflowUuid = None
         self._CreationTime = None
+        self._RuntimeConfig = None
 
     @property
     def EnvironmentId(self):
@@ -2280,6 +2334,17 @@ class Environment(AbstractModel):
     def CreationTime(self, CreationTime):
         self._CreationTime = CreationTime
 
+    @property
+    def RuntimeConfig(self):
+        r"""运行时配置。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.EnvironmentRuntimeConfig`
+        """
+        return self._RuntimeConfig
+
+    @RuntimeConfig.setter
+    def RuntimeConfig(self, RuntimeConfig):
+        self._RuntimeConfig = RuntimeConfig
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -2297,6 +2362,9 @@ class Environment(AbstractModel):
             self._ResourceIds._deserialize(params.get("ResourceIds"))
         self._LastWorkflowUuid = params.get("LastWorkflowUuid")
         self._CreationTime = params.get("CreationTime")
+        if params.get("RuntimeConfig") is not None:
+            self._RuntimeConfig = EnvironmentRuntimeConfig()
+            self._RuntimeConfig._deserialize(params.get("RuntimeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2420,6 +2488,61 @@ class EnvironmentConfig(AbstractModel):
         if params.get("SecurityGroupOption") is not None:
             self._SecurityGroupOption = SecurityGroupOption()
             self._SecurityGroupOption._deserialize(params.get("SecurityGroupOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentRuntimeConfig(AbstractModel):
+    r"""环境运行时配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CromwellConfig: Cromwell工作流引擎设置
+        :type CromwellConfig: :class:`tencentcloud.omics.v20221128.models.CromwellConfig`
+        :param _NextflowConfig: Nextflow工作流引擎设置
+        :type NextflowConfig: :class:`tencentcloud.omics.v20221128.models.NextflowConfig`
+        """
+        self._CromwellConfig = None
+        self._NextflowConfig = None
+
+    @property
+    def CromwellConfig(self):
+        r"""Cromwell工作流引擎设置
+        :rtype: :class:`tencentcloud.omics.v20221128.models.CromwellConfig`
+        """
+        return self._CromwellConfig
+
+    @CromwellConfig.setter
+    def CromwellConfig(self, CromwellConfig):
+        self._CromwellConfig = CromwellConfig
+
+    @property
+    def NextflowConfig(self):
+        r"""Nextflow工作流引擎设置
+        :rtype: :class:`tencentcloud.omics.v20221128.models.NextflowConfig`
+        """
+        return self._NextflowConfig
+
+    @NextflowConfig.setter
+    def NextflowConfig(self, NextflowConfig):
+        self._NextflowConfig = NextflowConfig
+
+
+    def _deserialize(self, params):
+        if params.get("CromwellConfig") is not None:
+            self._CromwellConfig = CromwellConfig()
+            self._CromwellConfig._deserialize(params.get("CromwellConfig"))
+        if params.get("NextflowConfig") is not None:
+            self._NextflowConfig = NextflowConfig()
+            self._NextflowConfig._deserialize(params.get("NextflowConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3427,6 +3550,42 @@ class NFOption(AbstractModel):
         self._Resume = params.get("Resume")
         self._NFVersion = params.get("NFVersion")
         self._LaunchDir = params.get("LaunchDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NextflowConfig(AbstractModel):
+    r"""Nextflow工作流引擎设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorQueueSize: 工作流任务并发数
+        :type ExecutorQueueSize: int
+        """
+        self._ExecutorQueueSize = None
+
+    @property
+    def ExecutorQueueSize(self):
+        r"""工作流任务并发数
+        :rtype: int
+        """
+        return self._ExecutorQueueSize
+
+    @ExecutorQueueSize.setter
+    def ExecutorQueueSize(self, ExecutorQueueSize):
+        self._ExecutorQueueSize = ExecutorQueueSize
+
+
+    def _deserialize(self, params):
+        self._ExecutorQueueSize = params.get("ExecutorQueueSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

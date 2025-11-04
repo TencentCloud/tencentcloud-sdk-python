@@ -28833,9 +28833,12 @@ class ModifyBackupEncryptionStatusRequest(AbstractModel):
         :type InstanceId: str
         :param _EncryptionStatus: 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
         :type EncryptionStatus: str
+        :param _BinlogEncryptionStatus: 设置实例新增的自动日志备份文件默认加密状态。可选值为 on或者off。
+        :type BinlogEncryptionStatus: str
         """
         self._InstanceId = None
         self._EncryptionStatus = None
+        self._BinlogEncryptionStatus = None
 
     @property
     def InstanceId(self):
@@ -28859,10 +28862,22 @@ class ModifyBackupEncryptionStatusRequest(AbstractModel):
     def EncryptionStatus(self, EncryptionStatus):
         self._EncryptionStatus = EncryptionStatus
 
+    @property
+    def BinlogEncryptionStatus(self):
+        r"""设置实例新增的自动日志备份文件默认加密状态。可选值为 on或者off。
+        :rtype: str
+        """
+        return self._BinlogEncryptionStatus
+
+    @BinlogEncryptionStatus.setter
+    def BinlogEncryptionStatus(self, BinlogEncryptionStatus):
+        self._BinlogEncryptionStatus = BinlogEncryptionStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._EncryptionStatus = params.get("EncryptionStatus")
+        self._BinlogEncryptionStatus = params.get("BinlogEncryptionStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

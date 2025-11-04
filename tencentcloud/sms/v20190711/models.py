@@ -1073,7 +1073,9 @@ class DescribeSignListStatus(AbstractModel):
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param _StatusCode: 申请签名状态。其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
+        :param _StatusCode: 签名状态，其中：
+国内短信0表示签名可用，1表示审核中，2表示审核通过待生效，-1表示审核未通过、审核失败或未完成首次报备等原因导致签名不可用。具体可参考 [国内短信签名状态值说明](https://cloud.tencent.com/document/product/382/39022#ea7b2b63-ee71-404f-a525-c5a572d12ccd)。
+国际短信0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
         :type StatusCode: int
         :param _ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :type ReviewReply: str
@@ -1127,7 +1129,9 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def StatusCode(self):
-        r"""申请签名状态。其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
+        r"""签名状态，其中：
+国内短信0表示签名可用，1表示审核中，2表示审核通过待生效，-1表示审核未通过、审核失败或未完成首次报备等原因导致签名不可用。具体可参考 [国内短信签名状态值说明](https://cloud.tencent.com/document/product/382/39022#ea7b2b63-ee71-404f-a525-c5a572d12ccd)。
+国际短信0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
         :rtype: int
         """
         return self._StatusCode
@@ -2459,7 +2463,8 @@ class PullSmsSendStatus(AbstractModel):
         :type PhoneNumber: str
         :param _SerialNo: 本次发送标识 ID。
         :type SerialNo: str
-        :param _ReportStatus: 实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）。
+        :param _ReportStatus: 实际是否收到的短信接收状态，SUCCESS（下发成功）、FAIL（下发失败）。
+注：仅当运营商有返回短信接收状态时回包中才会有状态数据。
         :type ReportStatus: str
         :param _Description: 用户接收短信状态描述。
         :type Description: str
@@ -2541,7 +2546,8 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def ReportStatus(self):
-        r"""实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）。
+        r"""实际是否收到的短信接收状态，SUCCESS（下发成功）、FAIL（下发失败）。
+注：仅当运营商有返回短信接收状态时回包中才会有状态数据。
         :rtype: str
         """
         return self._ReportStatus
@@ -2865,7 +2871,8 @@ class SendSmsRequest(AbstractModel):
         :type ExtendCode: str
         :param _SessionContext: 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。
         :type SessionContext: str
-        :param _SenderId: 国内短信无senderid，无需填写该项；若需开通国际/港澳台短信senderid，请联系smshelper。
+        :param _SenderId: 国际/港澳台短信 Sender ID。可参考 [Sender ID 说明](https://cloud.tencent.com/document/product/382/102831)。
+注：国内短信无需填写该项；国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。
         :type SenderId: str
         """
         self._PhoneNumberSet = None
@@ -2957,7 +2964,8 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def SenderId(self):
-        r"""国内短信无senderid，无需填写该项；若需开通国际/港澳台短信senderid，请联系smshelper。
+        r"""国际/港澳台短信 Sender ID。可参考 [Sender ID 说明](https://cloud.tencent.com/document/product/382/102831)。
+注：国内短信无需填写该项；国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。
         :rtype: str
         """
         return self._SenderId
@@ -2994,6 +3002,7 @@ class SendSmsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SendStatusSet: 短信发送状态。
+注：可参考 <a href="#4.-.E7.A4.BA.E4.BE.8B">示例</a> ，包含短信发送成功和发送失败的输出示例。
         :type SendStatusSet: list of SendStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3004,6 +3013,7 @@ class SendSmsResponse(AbstractModel):
     @property
     def SendStatusSet(self):
         r"""短信发送状态。
+注：可参考 <a href="#4.-.E7.A4.BA.E4.BE.8B">示例</a> ，包含短信发送成功和发送失败的输出示例。
         :rtype: list of SendStatus
         """
         return self._SendStatusSet
@@ -3049,7 +3059,7 @@ class SendStatus(AbstractModel):
         :type Fee: int
         :param _SessionContext: 用户Session内容。
         :type SessionContext: str
-        :param _Code: 短信请求错误码，具体含义请参考错误码。
+        :param _Code: 短信请求错误码，具体含义请参考 [错误码](https://cloud.tencent.com/document/product/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81)。
         :type Code: str
         :param _Message: 短信请求错误码描述。
         :type Message: str
@@ -3110,7 +3120,7 @@ class SendStatus(AbstractModel):
 
     @property
     def Code(self):
-        r"""短信请求错误码，具体含义请参考错误码。
+        r"""短信请求错误码，具体含义请参考 [错误码](https://cloud.tencent.com/document/product/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81)。
         :rtype: str
         """
         return self._Code

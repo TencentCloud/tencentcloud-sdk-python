@@ -1982,6 +1982,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PauseDatahubTask(self, request):
+        r"""暂停Dip任务
+
+        :param request: Request instance for PauseDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.PauseDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PauseDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseDatahubTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewCkafkaInstance(self, request):
         r"""续费Ckafka实例, 目前只支持国内站包年包月实例续费
 
@@ -1996,6 +2019,52 @@ class CkafkaClient(AbstractClient):
             body = self.call("RenewCkafkaInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RenewCkafkaInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartDatahubTask(self, request):
+        r"""Datahub任务异常时，重启Datahub任务
+
+        :param request: Request instance for RestartDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.RestartDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RestartDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartDatahubTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeDatahubTask(self, request):
+        r"""恢复Dip任务
+
+        :param request: Request instance for ResumeDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ResumeDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ResumeDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeDatahubTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

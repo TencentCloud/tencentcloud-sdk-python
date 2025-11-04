@@ -3238,7 +3238,7 @@ class CasterLayoutInfo(AbstractModel):
         :type LayoutIndex: int
         :param _LayoutTemplateId: 布局模板Id。
 有效值[1，20，21，31，32，41]
-当使用布局模版时，无需LayoutParams参数，导播台将使用模版布局参数。
+当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。
 
         :type LayoutTemplateId: int
         :param _InputIndexList: 布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
@@ -3276,7 +3276,7 @@ class CasterLayoutInfo(AbstractModel):
     def LayoutTemplateId(self):
         r"""布局模板Id。
 有效值[1，20，21，31，32，41]
-当使用布局模版时，无需LayoutParams参数，导播台将使用模版布局参数。
+当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。
 
         :rtype: int
         """

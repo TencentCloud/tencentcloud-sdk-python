@@ -119,6 +119,9 @@ FAILEDOPERATION_NOSTORELABEL = 'FailedOperation.NoStoreLabel'
 # 上传的图片非行驶证
 FAILEDOPERATION_NOVEHICLELICENSEERROR = 'FailedOperation.NoVehicleLicenseError'
 
+# 非指定证件
+FAILEDOPERATION_NOTAPPOINTCARD = 'FailedOperation.NotAppointCard'
+
 # OCR识别失败。
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
 

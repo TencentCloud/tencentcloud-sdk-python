@@ -1950,6 +1950,187 @@ class QueryMemeJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryTextToImageJobRequest(AbstractModel):
+    r"""QueryTextToImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryTextToImageJobResponse(AbstractModel):
+    r"""QueryTextToImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务处理失败错误码。
+
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务处理失败错误信息。
+
+        :type JobErrorMsg: str
+        :param _ResultImage: 生成图 URL 列表，有效期1小时，请及时保存。
+
+        :type ResultImage: list of str
+        :param _ResultDetails: 结果 detail 数组，Success 代表成功。
+
+        :type ResultDetails: list of str
+        :param _RevisedPrompt: 对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        :type RevisedPrompt: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ResultImage = None
+        self._ResultDetails = None
+        self._RevisedPrompt = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        r"""当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        r"""当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :rtype: str
+        """
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        r"""任务处理失败错误码。
+
+        :rtype: str
+        """
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        r"""任务处理失败错误信息。
+
+        :rtype: str
+        """
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ResultImage(self):
+        r"""生成图 URL 列表，有效期1小时，请及时保存。
+
+        :rtype: list of str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def ResultDetails(self):
+        r"""结果 detail 数组，Success 代表成功。
+
+        :rtype: list of str
+        """
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def RevisedPrompt(self):
+        r"""对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        :rtype: list of str
+        """
+        return self._RevisedPrompt
+
+    @RevisedPrompt.setter
+    def RevisedPrompt(self, RevisedPrompt):
+        self._RevisedPrompt = RevisedPrompt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ResultImage = params.get("ResultImage")
+        self._ResultDetails = params.get("ResultDetails")
+        self._RevisedPrompt = params.get("RevisedPrompt")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryTextToImageProJobRequest(AbstractModel):
     r"""QueryTextToImageProJob请求参数结构体
 
@@ -3560,6 +3741,188 @@ class SubmitMemeJobResponse(AbstractModel):
     @property
     def JobId(self):
         r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitTextToImageJobRequest(AbstractModel):
+    r"""SubmitTextToImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 文本描述。 
+算法将根据输入的文本智能生成与之相关的图像。 
+不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
+        :type Prompt: str
+        :param _Resolution: 生成图分辨率，仅支持以下分辨率：
+640:1408,704:1344,768:1280,832:1216,896:1152,960:1088,1024:1024,1088:960,1152:896,1216:832,1280:768,1344:704,1408:640
+        :type Resolution: str
+        :param _Seed: 随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+扩写开启时固定种子不生效，将保持随机。
+        :type Seed: int
+        :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        :param _Revise: 是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
+
+如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+        :type Revise: int
+        """
+        self._Prompt = None
+        self._Resolution = None
+        self._Seed = None
+        self._LogoAdd = None
+        self._LogoParam = None
+        self._Revise = None
+
+    @property
+    def Prompt(self):
+        r"""文本描述。 
+算法将根据输入的文本智能生成与之相关的图像。 
+不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Resolution(self):
+        r"""生成图分辨率，仅支持以下分辨率：
+640:1408,704:1344,768:1280,832:1216,896:1152,960:1088,1024:1024,1088:960,1152:896,1216:832,1280:768,1344:704,1408:640
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Seed(self):
+        r"""随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+扩写开启时固定种子不生效，将保持随机。
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def LogoAdd(self):
+        r"""为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        r"""标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def Revise(self):
+        r"""是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
+
+如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+        :rtype: int
+        """
+        return self._Revise
+
+    @Revise.setter
+    def Revise(self, Revise):
+        self._Revise = Revise
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._Resolution = params.get("Resolution")
+        self._Seed = params.get("Seed")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._Revise = params.get("Revise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitTextToImageJobResponse(AbstractModel):
+    r"""SubmitTextToImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId

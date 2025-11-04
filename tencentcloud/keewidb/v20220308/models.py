@@ -1095,15 +1095,20 @@ class CreateInstancesResponse(AbstractModel):
         :type DealId: str
         :param _InstanceIds: 实例 ID 。
         :type InstanceIds: list of str
+        :param _DealName: 订单号。	
+        :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
         self._InstanceIds = None
+        self._DealName = None
         self._RequestId = None
 
     @property
     def DealId(self):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         r"""交易 ID。
         :rtype: str
         """
@@ -1111,6 +1116,8 @@ class CreateInstancesResponse(AbstractModel):
 
     @DealId.setter
     def DealId(self, DealId):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         self._DealId = DealId
 
     @property
@@ -1123,6 +1130,17 @@ class CreateInstancesResponse(AbstractModel):
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
+
+    @property
+    def DealName(self):
+        r"""订单号。	
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
     @property
     def RequestId(self):
@@ -1139,6 +1157,7 @@ class CreateInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
         self._InstanceIds = params.get("InstanceIds")
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 
@@ -1902,11 +1921,16 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
         r"""
         :param _DealIds: 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
         :type DealIds: list of str
+        :param _DealName: 订单号，订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealName。
+        :type DealName: str
         """
         self._DealIds = None
+        self._DealName = None
 
     @property
     def DealIds(self):
+        warnings.warn("parameter `DealIds` is deprecated", DeprecationWarning) 
+
         r"""订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
         :rtype: list of str
         """
@@ -1914,11 +1938,25 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
 
     @DealIds.setter
     def DealIds(self, DealIds):
+        warnings.warn("parameter `DealIds` is deprecated", DeprecationWarning) 
+
         self._DealIds = DealIds
+
+    @property
+    def DealName(self):
+        r"""订单号，订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealName。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
 
     def _deserialize(self, params):
         self._DealIds = params.get("DealIds")
+        self._DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4164,14 +4202,19 @@ class DestroyPrepaidInstanceResponse(AbstractModel):
         r"""
         :param _DealId: 交易ID。
         :type DealId: str
+        :param _DealName: 订单号。
+        :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
+        self._DealName = None
         self._RequestId = None
 
     @property
     def DealId(self):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         r"""交易ID。
         :rtype: str
         """
@@ -4179,7 +4222,20 @@ class DestroyPrepaidInstanceResponse(AbstractModel):
 
     @DealId.setter
     def DealId(self, DealId):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         self._DealId = DealId
+
+    @property
+    def DealName(self):
+        r"""订单号。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
     @property
     def RequestId(self):
@@ -4195,6 +4251,7 @@ class DestroyPrepaidInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 
@@ -7839,14 +7896,19 @@ class RenewInstanceResponse(AbstractModel):
         r"""
         :param _DealId: 交易 ID。
         :type DealId: str
+        :param _DealName: 订单号。
+        :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
+        self._DealName = None
         self._RequestId = None
 
     @property
     def DealId(self):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         r"""交易 ID。
         :rtype: str
         """
@@ -7854,7 +7916,20 @@ class RenewInstanceResponse(AbstractModel):
 
     @DealId.setter
     def DealId(self, DealId):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         self._DealId = DealId
+
+    @property
+    def DealName(self):
+        r"""订单号。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
     @property
     def RequestId(self):
@@ -7870,6 +7945,7 @@ class RenewInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 
@@ -8934,14 +9010,19 @@ class UpgradeInstanceResponse(AbstractModel):
         r"""
         :param _DealId: 交易ID。
         :type DealId: str
+        :param _DealName: 订单号。
+        :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
+        self._DealName = None
         self._RequestId = None
 
     @property
     def DealId(self):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         r"""交易ID。
         :rtype: str
         """
@@ -8949,7 +9030,20 @@ class UpgradeInstanceResponse(AbstractModel):
 
     @DealId.setter
     def DealId(self, DealId):
+        warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
+
         self._DealId = DealId
+
+    @property
+    def DealName(self):
+        r"""订单号。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
     @property
     def RequestId(self):
@@ -8965,6 +9059,7 @@ class UpgradeInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 

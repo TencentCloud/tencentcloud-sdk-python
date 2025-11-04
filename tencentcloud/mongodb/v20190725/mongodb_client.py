@@ -188,6 +188,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLogDownloadTask(self, request):
+        r"""创建日志下载任务
+
+        :param request: Request instance for CreateLogDownloadTask.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateLogDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateLogDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLogDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLogDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccountUser(self, request):
         r"""本接口（DeleteAccountUser）用于删除实例的自定义账号。
 
@@ -202,6 +225,29 @@ class MongodbClient(AbstractClient):
             body = self.call("DeleteAccountUser", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAccountUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLogDownloadTask(self, request):
+        r"""删除日志下载任务
+
+        :param request: Request instance for DeleteLogDownloadTask.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DeleteLogDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DeleteLogDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLogDownloadTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -572,6 +618,52 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogDownloadTasks(self, request):
+        r"""日志下载任务查询
+
+        :param request: Request instance for DescribeLogDownloadTasks.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeLogDownloadTasksRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeLogDownloadTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogDownloadTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogDownloadTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMongodbLogs(self, request):
+        r"""该接口（DescribeMongodbLogs）用于查询运行日志。
+
+        :param request: Request instance for DescribeMongodbLogs.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeMongodbLogsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeMongodbLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMongodbLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMongodbLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1242,6 +1334,52 @@ class MongodbClient(AbstractClient):
             body = self.call("TerminateDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDBInstanceKernelVersion(self, request):
+        r"""本接口(UpgradeDBInstanceKernelVersion)用于升级数据库实例内核版本。
+
+        :param request: Request instance for UpgradeDBInstanceKernelVersion.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.UpgradeDBInstanceKernelVersionRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.UpgradeDBInstanceKernelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDBInstanceKernelVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDBInstanceKernelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDbInstanceVersion(self, request):
+        r"""本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+
+        :param request: Request instance for UpgradeDbInstanceVersion.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.UpgradeDbInstanceVersionRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.UpgradeDbInstanceVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDbInstanceVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDbInstanceVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

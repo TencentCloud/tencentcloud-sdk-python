@@ -652,12 +652,18 @@ class CompareDetailInfo(AbstractModel):
         :type DifferenceData: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
         :param _DifferenceRow: 数据行不一致的详情，mongodb业务用到
         :type DifferenceRow: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
+        :param _DifferenceSchema: 表结构不一致详情，pg用
+        :type DifferenceSchema: :class:`tencentcloud.dts.v20211206.models.DifferenceSchemaDetail`
+        :param _DifferenceOwner: 对象owner不一致详情，pg用
+        :type DifferenceOwner: :class:`tencentcloud.dts.v20211206.models.DifferenceOwnerDetail`
         """
         self._Difference = None
         self._Skipped = None
         self._DifferenceAdvancedObjects = None
         self._DifferenceData = None
         self._DifferenceRow = None
+        self._DifferenceSchema = None
+        self._DifferenceOwner = None
 
     @property
     def Difference(self):
@@ -714,6 +720,28 @@ class CompareDetailInfo(AbstractModel):
     def DifferenceRow(self, DifferenceRow):
         self._DifferenceRow = DifferenceRow
 
+    @property
+    def DifferenceSchema(self):
+        r"""表结构不一致详情，pg用
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceSchemaDetail`
+        """
+        return self._DifferenceSchema
+
+    @DifferenceSchema.setter
+    def DifferenceSchema(self, DifferenceSchema):
+        self._DifferenceSchema = DifferenceSchema
+
+    @property
+    def DifferenceOwner(self):
+        r"""对象owner不一致详情，pg用
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceOwnerDetail`
+        """
+        return self._DifferenceOwner
+
+    @DifferenceOwner.setter
+    def DifferenceOwner(self, DifferenceOwner):
+        self._DifferenceOwner = DifferenceOwner
+
 
     def _deserialize(self, params):
         if params.get("Difference") is not None:
@@ -731,6 +759,12 @@ class CompareDetailInfo(AbstractModel):
         if params.get("DifferenceRow") is not None:
             self._DifferenceRow = DifferenceRowDetail()
             self._DifferenceRow._deserialize(params.get("DifferenceRow"))
+        if params.get("DifferenceSchema") is not None:
+            self._DifferenceSchema = DifferenceSchemaDetail()
+            self._DifferenceSchema._deserialize(params.get("DifferenceSchema"))
+        if params.get("DifferenceOwner") is not None:
+            self._DifferenceOwner = DifferenceOwnerDetail()
+            self._DifferenceOwner._deserialize(params.get("DifferenceOwner"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9372,6 +9406,64 @@ class DifferenceItem(AbstractModel):
         
 
 
+class DifferenceOwnerDetail(AbstractModel):
+    r"""pg owner不一致性详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: owner不一致总数
+        :type TotalCount: int
+        :param _Items: owner不一致详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OwnerDifference
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""owner不一致总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""owner不一致详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OwnerDifference
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OwnerDifference()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DifferenceRowDetail(AbstractModel):
     r"""mongodb行数校验不一致性详情结果
 
@@ -9418,6 +9510,64 @@ class DifferenceRowDetail(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = RowsCountDifference()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DifferenceSchemaDetail(AbstractModel):
+    r"""表结构不一致信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 表结构不一致的数量
+        :type TotalCount: int
+        :param _Items: 表结构不一致信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SchemaDifference
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""表结构不一致的数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""表结构不一致信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SchemaDifference
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SchemaDifference()
                 obj._deserialize(item)
                 self._Items.append(obj)
         memeber_set = set(params.keys())
@@ -14030,6 +14180,117 @@ class Options(AbstractModel):
         
 
 
+class OwnerDifference(AbstractModel):
+    r"""pg对象owner不一致信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: owner不一致的pg对象所在库
+        :type Db: str
+        :param _Schema: owner不一致的pg对象所在schema
+        :type Schema: str
+        :param _ObjectName: owner不一致的pg对象名
+        :type ObjectName: str
+        :param _ObjectType: owner不一致的pg对象类型
+        :type ObjectType: str
+        :param _SrcOwner: 源库对象owner
+        :type SrcOwner: str
+        :param _DstOwner: 目标库对象owner
+        :type DstOwner: str
+        """
+        self._Db = None
+        self._Schema = None
+        self._ObjectName = None
+        self._ObjectType = None
+        self._SrcOwner = None
+        self._DstOwner = None
+
+    @property
+    def Db(self):
+        r"""owner不一致的pg对象所在库
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Schema(self):
+        r"""owner不一致的pg对象所在schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def ObjectName(self):
+        r"""owner不一致的pg对象名
+        :rtype: str
+        """
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def ObjectType(self):
+        r"""owner不一致的pg对象类型
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def SrcOwner(self):
+        r"""源库对象owner
+        :rtype: str
+        """
+        return self._SrcOwner
+
+    @SrcOwner.setter
+    def SrcOwner(self, SrcOwner):
+        self._SrcOwner = SrcOwner
+
+    @property
+    def DstOwner(self):
+        r"""目标库对象owner
+        :rtype: str
+        """
+        return self._DstOwner
+
+    @DstOwner.setter
+    def DstOwner(self, DstOwner):
+        self._DstOwner = DstOwner
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._Schema = params.get("Schema")
+        self._ObjectName = params.get("ObjectName")
+        self._ObjectType = params.get("ObjectType")
+        self._SrcOwner = params.get("SrcOwner")
+        self._DstOwner = params.get("DstOwner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PartitionAssignment(AbstractModel):
     r"""数据订阅中kafka消费者组的分区分配情况。该数据是实时查询的，如果需要最新数据，需重新掉接口查询。
 
@@ -15449,6 +15710,102 @@ class RowsCountDifference(AbstractModel):
         self._Table = params.get("Table")
         self._SrcCount = params.get("SrcCount")
         self._DstCount = params.get("DstCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchemaDifference(AbstractModel):
+    r"""结构不一致详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: 结构不一致的表所在库
+        :type Db: str
+        :param _Schema: 结构不一致的表所在schema
+        :type Schema: str
+        :param _Table: 结构不一致的表
+        :type Table: str
+        :param _SrcSchema: 源库表结构
+        :type SrcSchema: str
+        :param _DstSchema: 目标库表结构
+        :type DstSchema: str
+        """
+        self._Db = None
+        self._Schema = None
+        self._Table = None
+        self._SrcSchema = None
+        self._DstSchema = None
+
+    @property
+    def Db(self):
+        r"""结构不一致的表所在库
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Schema(self):
+        r"""结构不一致的表所在schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Table(self):
+        r"""结构不一致的表
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def SrcSchema(self):
+        r"""源库表结构
+        :rtype: str
+        """
+        return self._SrcSchema
+
+    @SrcSchema.setter
+    def SrcSchema(self, SrcSchema):
+        self._SrcSchema = SrcSchema
+
+    @property
+    def DstSchema(self):
+        r"""目标库表结构
+        :rtype: str
+        """
+        return self._DstSchema
+
+    @DstSchema.setter
+    def DstSchema(self, DstSchema):
+        self._DstSchema = DstSchema
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._Schema = params.get("Schema")
+        self._Table = params.get("Table")
+        self._SrcSchema = params.get("SrcSchema")
+        self._DstSchema = params.get("DstSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

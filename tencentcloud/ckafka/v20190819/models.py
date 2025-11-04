@@ -22321,6 +22321,10 @@ class KafkaParam(AbstractModel):
         :type KeepPartition: bool
         :param _TopicRegularExpression: 正则匹配Topic列表
         :type TopicRegularExpression: str
+        :param _Prefix: Topic 前缀
+        :type Prefix: str
+        :param _Separator: Topic前缀分隔符
+        :type Separator: str
         """
         self._SelfBuilt = None
         self._Resource = None
@@ -22341,6 +22345,8 @@ class KafkaParam(AbstractModel):
         self._ConnectorSyncType = None
         self._KeepPartition = None
         self._TopicRegularExpression = None
+        self._Prefix = None
+        self._Separator = None
 
     @property
     def SelfBuilt(self):
@@ -22559,6 +22565,28 @@ class KafkaParam(AbstractModel):
     def TopicRegularExpression(self, TopicRegularExpression):
         self._TopicRegularExpression = TopicRegularExpression
 
+    @property
+    def Prefix(self):
+        r"""Topic 前缀
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Separator(self):
+        r"""Topic前缀分隔符
+        :rtype: str
+        """
+        return self._Separator
+
+    @Separator.setter
+    def Separator(self, Separator):
+        self._Separator = Separator
+
 
     def _deserialize(self, params):
         self._SelfBuilt = params.get("SelfBuilt")
@@ -22585,6 +22613,8 @@ class KafkaParam(AbstractModel):
         self._ConnectorSyncType = params.get("ConnectorSyncType")
         self._KeepPartition = params.get("KeepPartition")
         self._TopicRegularExpression = params.get("TopicRegularExpression")
+        self._Prefix = params.get("Prefix")
+        self._Separator = params.get("Separator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26966,6 +26996,89 @@ class Partitions(AbstractModel):
         
 
 
+class PauseDatahubTaskRequest(AbstractModel):
+    r"""PauseDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseDatahubTaskResponse(AbstractModel):
+    r"""PauseDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DatahubTaskIdRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class PostgreSQLConnectParam(AbstractModel):
     r"""PostgreSQL连接源参数
 
@@ -28340,6 +28453,172 @@ class ReplaceParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RestartDatahubTaskRequest(AbstractModel):
+    r"""RestartDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartDatahubTaskResponse(AbstractModel):
+    r"""RestartDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DatahubTaskIdRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeDatahubTaskRequest(AbstractModel):
+    r"""ResumeDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeDatahubTaskResponse(AbstractModel):
+    r"""ResumeDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DatahubTaskIdRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class Route(AbstractModel):

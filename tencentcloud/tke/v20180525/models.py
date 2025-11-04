@@ -183,9 +183,9 @@ class AddExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
-        :param _InstanceIds: 实例列表，不支持竞价实例
+        :param _InstanceIds: 实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
         :type InstanceIds: list of str
         :param _InstanceAdvancedSettings: 实例额外需要设置参数信息(默认值)
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -220,7 +220,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -231,7 +231,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例列表，不支持竞价实例
+        r"""实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
         :rtype: list of str
         """
         return self._InstanceIds
@@ -482,7 +482,7 @@ class AddNodeToNodePoolRequest(AbstractModel):
         :type ClusterId: str
         :param _NodePoolId: 节点池id
         :type NodePoolId: str
-        :param _InstanceIds: 节点id
+        :param _InstanceIds: 节点id，获取参考 https://cloud.tencent.com/document/product/213/15728
         :type InstanceIds: list of str
         """
         self._ClusterId = None
@@ -513,7 +513,7 @@ class AddNodeToNodePoolRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""节点id
+        r"""节点id，获取参考 https://cloud.tencent.com/document/product/213/15728
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1932,15 +1932,15 @@ class Cluster(AbstractModel):
         :type ContainerRuntime: str
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: 集群删除保护开关，打开：true，关闭：false
         :type DeletionProtection: bool
-        :param _EnableExternalNode: 集群是否开启第三方节点支持
+        :param _EnableExternalNode: 集群是否开启第三方节点支持，开启：true，关闭：false
         :type EnableExternalNode: bool
         :param _ClusterLevel: 集群等级，针对托管集群生效
         :type ClusterLevel: str
-        :param _AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效
+        :param _AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效。开启：true，关闭：false
         :type AutoUpgradeClusterLevel: bool
-        :param _QGPUShareEnable: 是否开启QGPU共享
+        :param _QGPUShareEnable: 是否开启QGPU共享，开启：true，关闭：false
         :type QGPUShareEnable: bool
         :param _RuntimeVersion: 运行时版本
         :type RuntimeVersion: str
@@ -2165,7 +2165,7 @@ class Cluster(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关
+        r"""集群删除保护开关，打开：true，关闭：false
         :rtype: bool
         """
         return self._DeletionProtection
@@ -2176,7 +2176,7 @@ class Cluster(AbstractModel):
 
     @property
     def EnableExternalNode(self):
-        r"""集群是否开启第三方节点支持
+        r"""集群是否开启第三方节点支持，开启：true，关闭：false
         :rtype: bool
         """
         return self._EnableExternalNode
@@ -2198,7 +2198,7 @@ class Cluster(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        r"""自动变配集群等级，针对托管集群生效
+        r"""自动变配集群等级，针对托管集群生效。开启：true，关闭：false
         :rtype: bool
         """
         return self._AutoUpgradeClusterLevel
@@ -2209,7 +2209,7 @@ class Cluster(AbstractModel):
 
     @property
     def QGPUShareEnable(self):
-        r"""是否开启QGPU共享
+        r"""是否开启QGPU共享，开启：true，关闭：false
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -2864,10 +2864,10 @@ class ClusterAsGroupOption(AbstractModel):
         :param _MaxTotalUnreadyPercentage: 未就绪节点的最大百分比，此后CA会停止操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTotalUnreadyPercentage: int
-        :param _ScaleDownUnreadyTime: 表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
+        :param _ScaleDownUnreadyTime: 表示未准备就绪的节点在有资格进行缩减之前应该停留多少分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleDownUnreadyTime: int
-        :param _UnregisteredNodeRemovalTime: CA删除未在Kubernetes中注册的节点之前等待的时间
+        :param _UnregisteredNodeRemovalTime: CA删除未在Kubernetes中注册的节点之前等待的分钟数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnregisteredNodeRemovalTime: int
         """
@@ -3018,7 +3018,7 @@ class ClusterAsGroupOption(AbstractModel):
 
     @property
     def ScaleDownUnreadyTime(self):
-        r"""表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
+        r"""表示未准备就绪的节点在有资格进行缩减之前应该停留多少分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3030,7 +3030,7 @@ class ClusterAsGroupOption(AbstractModel):
 
     @property
     def UnregisteredNodeRemovalTime(self):
-        r"""CA删除未在Kubernetes中注册的节点之前等待的时间
+        r"""CA删除未在Kubernetes中注册的节点之前等待的分钟数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5212,9 +5212,9 @@ class CreateBackupStorageLocationRequest(AbstractModel):
         r"""
         :param _StorageRegion: 存储仓库所属地域，比如COS广州(ap-guangzhou)
         :type StorageRegion: str
-        :param _Bucket: 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+        :param _Bucket: 对象存储桶名称，如果是COS必须是tke-backup前缀开头，字符长度是19
         :type Bucket: str
-        :param _Name: 备份仓库名称
+        :param _Name: 备份仓库名称，字符长度为63
         :type Name: str
         :param _Provider: 存储服务提供方，默认腾讯云
         :type Provider: str
@@ -5240,7 +5240,7 @@ class CreateBackupStorageLocationRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""对象存储桶名称，如果是COS必须是tke-backup前缀开头
+        r"""对象存储桶名称，如果是COS必须是tke-backup前缀开头，字符长度是19
         :rtype: str
         """
         return self._Bucket
@@ -5251,7 +5251,7 @@ class CreateBackupStorageLocationRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""备份仓库名称
+        r"""备份仓库名称，字符长度为63
         :rtype: str
         """
         return self._Name
@@ -5445,13 +5445,14 @@ class CreateClusterEndpointRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _SubnetId: 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
+        :param _SubnetId: 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)。获取方式：https://cloud.tencent.com/document/product/215/15784
+
         :type SubnetId: str
         :param _IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
         :type IsExtranet: bool
         :param _Domain: 设置域名
         :type Domain: str
-        :param _SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
+        :param _SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
         :type SecurityGroup: str
         :param _ExtensiveParameters: 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
 各个参数意义：
@@ -5484,7 +5485,8 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
 
     @property
     def SubnetId(self):
-        r"""集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
+        r"""集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)。获取方式：https://cloud.tencent.com/document/product/215/15784
+
         :rtype: str
         """
         return self._SubnetId
@@ -5517,7 +5519,7 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
 
     @property
     def SecurityGroup(self):
-        r"""使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
+        r"""使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
         :rtype: str
         """
         return self._SecurityGroup
@@ -13169,9 +13171,9 @@ class DescribeAvailableClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 Id。若只查询某个集群可升级的版本，需填写此项。
+        :param _ClusterId: 集群 Id。若只查询某个集群可升级的版本，需填写此项，与ClusterIds 参数二选一。
         :type ClusterId: str
-        :param _ClusterIds: 集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
+        :param _ClusterIds: 集群 Id 列表。若查询多个集群可升级的版本，需填写此项，与ClusterId 参数二选一。
         :type ClusterIds: list of str
         """
         self._ClusterId = None
@@ -13179,7 +13181,7 @@ class DescribeAvailableClusterVersionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 Id。若只查询某个集群可升级的版本，需填写此项。
+        r"""集群 Id。若只查询某个集群可升级的版本，需填写此项，与ClusterIds 参数二选一。
         :rtype: str
         """
         return self._ClusterId
@@ -13190,7 +13192,7 @@ class DescribeAvailableClusterVersionRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        r"""集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
+        r"""集群 Id 列表。若查询多个集群可升级的版本，需填写此项，与ClusterId 参数二选一。
         :rtype: list of str
         """
         return self._ClusterIds
@@ -14207,7 +14209,7 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
+        :param _Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启，CreateFailed 开启失败）
         :type Status: str
         :param _ErrorMsg: 开启访问入口失败信息
         :type ErrorMsg: str
@@ -14220,7 +14222,7 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
+        r"""查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启，CreateFailed 开启失败）
         :rtype: str
         """
         return self._Status
@@ -16954,7 +16956,7 @@ class DescribeClustersRequest(AbstractModel):
         :type Limit: int
         :param _Filters: · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
         :type Filters: list of Filter
-        :param _ClusterType: 集群类型，例如：MANAGED_CLUSTER
+        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
         :type ClusterType: str
         """
         self._ClusterIds = None
@@ -17010,7 +17012,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型，例如：MANAGED_CLUSTER
+        r"""集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
         :rtype: str
         """
         return self._ClusterType
@@ -24342,11 +24344,11 @@ class DescribeResourceUsageResponse(AbstractModel):
         r"""
         :param _CRDUsage: CRD使用量
         :type CRDUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
-        :param _PodUsage: Pod使用量
+        :param _PodUsage: Pod使用量，单位：个数
         :type PodUsage: int
-        :param _RSUsage: ReplicaSet使用量
+        :param _RSUsage: ReplicaSet使用量，单位：个数
         :type RSUsage: int
-        :param _ConfigMapUsage: ConfigMap使用量
+        :param _ConfigMapUsage: ConfigMap使用量，单位：个数
         :type ConfigMapUsage: int
         :param _OtherUsage: 其他资源使用量
         :type OtherUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
@@ -24373,7 +24375,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def PodUsage(self):
-        r"""Pod使用量
+        r"""Pod使用量，单位：个数
         :rtype: int
         """
         return self._PodUsage
@@ -24384,7 +24386,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def RSUsage(self):
-        r"""ReplicaSet使用量
+        r"""ReplicaSet使用量，单位：个数
         :rtype: int
         """
         return self._RSUsage
@@ -24395,7 +24397,7 @@ class DescribeResourceUsageResponse(AbstractModel):
 
     @property
     def ConfigMapUsage(self):
-        r"""ConfigMap使用量
+        r"""ConfigMap使用量，单位：个数
         :rtype: int
         """
         return self._ConfigMapUsage
@@ -29572,14 +29574,14 @@ class GetClusterLevelPriceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterLevel: 集群规格，托管集群询价
+        :param _ClusterLevel: 集群规格，托管集群询价，集群等级：L20、L50、L100、L200、L500、L1000、L3000、L5000
         :type ClusterLevel: str
         """
         self._ClusterLevel = None
 
     @property
     def ClusterLevel(self):
-        r"""集群规格，托管集群询价
+        r"""集群规格，托管集群询价，集群等级：L20、L50、L100、L200、L500、L1000、L3000、L5000
         :rtype: str
         """
         return self._ClusterLevel
@@ -32476,9 +32478,15 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
         :type Name: str
         :param _Statistics: 诊断结果统计
         :type Statistics: list of KubeJarvisStateStatistic
+        :param _StartTime: 诊断数据开始时间
+        :type StartTime: str
+        :param _EndTime: 诊断数据结束时间
+        :type EndTime: str
         """
         self._Name = None
         self._Statistics = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def Name(self):
@@ -32502,6 +32510,28 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
     def Statistics(self, Statistics):
         self._Statistics = Statistics
 
+    @property
+    def StartTime(self):
+        r"""诊断数据开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""诊断数据结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -32511,6 +32541,8 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
                 obj = KubeJarvisStateStatistic()
                 obj._deserialize(item)
                 self._Statistics.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32729,7 +32761,12 @@ class KubeJarvisStateStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthyLevel: 诊断结果的健康水平
+        :param _HealthyLevel: 诊断结果的健康水平，健康水平取值：
+serious：高风险
+risk：中风险
+warn：低风险
+good：健康
+failed：诊断流程异常
         :type HealthyLevel: str
         :param _Count: 诊断结果的统计
         :type Count: int
@@ -32739,7 +32776,12 @@ class KubeJarvisStateStatistic(AbstractModel):
 
     @property
     def HealthyLevel(self):
-        r"""诊断结果的健康水平
+        r"""诊断结果的健康水平，健康水平取值：
+serious：高风险
+risk：中风险
+warn：低风险
+good：健康
+failed：诊断流程异常
         :rtype: str
         """
         return self._HealthyLevel
@@ -32832,6 +32874,9 @@ class ListClusterInspectionResultsItemsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 目标集群ID
+
+取值可参考：
+[查询TKE集群列表](https://cloud.tencent.com/document/api/457/31862)
         :type ClusterId: str
         :param _StartTime: 查询历史结果的开始时间，Unix时间戳
         :type StartTime: str
@@ -32845,6 +32890,9 @@ class ListClusterInspectionResultsItemsRequest(AbstractModel):
     @property
     def ClusterId(self):
         r"""目标集群ID
+
+取值可参考：
+[查询TKE集群列表](https://cloud.tencent.com/document/api/457/31862)
         :rtype: str
         """
         return self._ClusterId
@@ -33475,11 +33523,11 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type ClusterId: str
         :param _ProjectId: 集群所属项目
         :type ProjectId: int
-        :param _ClusterName: 集群名称
+        :param _ClusterName: 集群名称,字符长度50
         :type ClusterName: str
         :param _ClusterDesc: 集群描述
         :type ClusterDesc: str
-        :param _ClusterLevel: 集群等级
+        :param _ClusterLevel: 集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
         :type ClusterLevel: str
         :param _AutoUpgradeClusterLevel: 自动变配集群等级
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
@@ -33521,7 +33569,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""集群名称,字符长度50
         :rtype: str
         """
         return self._ClusterName
@@ -33543,7 +33591,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""集群等级
+        r"""集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
         :rtype: str
         """
         return self._ClusterLevel
@@ -34028,7 +34076,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type ClusterId: str
         :param _NodePoolId: 节点池ID
         :type NodePoolId: str
-        :param _Name: 名称
+        :param _Name: 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
         :type Name: str
         :param _MaxNodesNum: 最大节点数
         :type MaxNodesNum: int
@@ -34110,7 +34158,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
         :rtype: str
         """
         return self._Name
@@ -34399,11 +34447,11 @@ class ModifyClusterRuntimeConfigRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID，必填
         :type ClusterId: str
-        :param _DstK8SVersion: 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+        :param _DstK8SVersion: 运行时版本需依据指定的Kubernetes版本进行设置。典型情况为，在升级过程中因版本冲突而需要调整运行时版本时。
         :type DstK8SVersion: str
-        :param _ClusterRuntimeConfig: 需要修改集群运行时时填写
+        :param _ClusterRuntimeConfig: 需要修改集群运行时填写
         :type ClusterRuntimeConfig: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
-        :param _NodePoolRuntimeConfig: 需要修改节点池运行时时，填需要修改的部分
+        :param _NodePoolRuntimeConfig: 需要修改节点池运行时，填需要修改的部分
         :type NodePoolRuntimeConfig: list of NodePoolRuntime
         """
         self._ClusterId = None
@@ -34424,7 +34472,7 @@ class ModifyClusterRuntimeConfigRequest(AbstractModel):
 
     @property
     def DstK8SVersion(self):
-        r"""当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+        r"""运行时版本需依据指定的Kubernetes版本进行设置。典型情况为，在升级过程中因版本冲突而需要调整运行时版本时。
         :rtype: str
         """
         return self._DstK8SVersion
@@ -34435,7 +34483,7 @@ class ModifyClusterRuntimeConfigRequest(AbstractModel):
 
     @property
     def ClusterRuntimeConfig(self):
-        r"""需要修改集群运行时时填写
+        r"""需要修改集群运行时填写
         :rtype: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
         """
         return self._ClusterRuntimeConfig
@@ -34446,7 +34494,7 @@ class ModifyClusterRuntimeConfigRequest(AbstractModel):
 
     @property
     def NodePoolRuntimeConfig(self):
-        r"""需要修改节点池运行时时，填需要修改的部分
+        r"""需要修改节点池运行时，填需要修改的部分
         :rtype: list of NodePoolRuntime
         """
         return self._NodePoolRuntimeConfig
@@ -34515,7 +34563,8 @@ class ModifyClusterTagsRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Tags: 集群标签
+        :param _Tags: 集群标签:
+[{"TagKey":"env","TagValue":"dev"}]}]
         :type Tags: list of Tag
         :param _SyncSubresource: 是否同步集群内子资源标签
         :type SyncSubresource: bool
@@ -34537,7 +34586,8 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群标签
+        r"""集群标签:
+[{"TagKey":"env","TagValue":"dev"}]}]
         :rtype: list of Tag
         """
         return self._Tags
@@ -35005,7 +35055,7 @@ class ModifyNodePoolInstanceTypesRequest(AbstractModel):
         :type ClusterId: str
         :param _NodePoolId: 节点池id
         :type NodePoolId: str
-        :param _InstanceTypes: 机型列表，主实例机型不支持修改
+        :param _InstanceTypes: 机型列表，参考 https://cloud.tencent.com/document/product/213/11518，主实例机型不支持修改
         :type InstanceTypes: list of str
         """
         self._ClusterId = None
@@ -35036,7 +35086,7 @@ class ModifyNodePoolInstanceTypesRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""机型列表，主实例机型不支持修改
+        r"""机型列表，参考 https://cloud.tencent.com/document/product/213/11518，主实例机型不支持修改
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -36735,11 +36785,11 @@ class NodePoolRuntime(AbstractModel):
         r"""
         :param _NodePoolId: 节点池ID
         :type NodePoolId: str
-        :param _RuntimeType: 运行时类型
+        :param _RuntimeType: 运行时类型，参考：https://cloud.tencent.com/document/api/457/105241
         :type RuntimeType: str
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: 运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
         :type RuntimeVersion: str
-        :param _NodePoolName: 节点池名称
+        :param _NodePoolName: 节点池名称，限制 255 字符
         :type NodePoolName: str
         """
         self._NodePoolId = None
@@ -36760,7 +36810,7 @@ class NodePoolRuntime(AbstractModel):
 
     @property
     def RuntimeType(self):
-        r"""运行时类型
+        r"""运行时类型，参考：https://cloud.tencent.com/document/api/457/105241
         :rtype: str
         """
         return self._RuntimeType
@@ -36771,7 +36821,7 @@ class NodePoolRuntime(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
         :rtype: str
         """
         return self._RuntimeVersion
@@ -36782,7 +36832,7 @@ class NodePoolRuntime(AbstractModel):
 
     @property
     def NodePoolName(self):
-        r"""节点池名称
+        r"""节点池名称，限制 255 字符
         :rtype: str
         """
         return self._NodePoolName
@@ -43794,9 +43844,9 @@ class ResourceUsage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 资源类型
+        :param _Name: 资源类型，参考k8s 官方资源
         :type Name: str
-        :param _Usage: 资源使用量
+        :param _Usage: 资源使用量，单位：个数
         :type Usage: int
         :param _Details: 资源使用详情
         :type Details: list of ResourceUsageDetail
@@ -43807,7 +43857,7 @@ class ResourceUsage(AbstractModel):
 
     @property
     def Name(self):
-        r"""资源类型
+        r"""资源类型，参考k8s 官方资源
         :rtype: str
         """
         return self._Name
@@ -43818,7 +43868,7 @@ class ResourceUsage(AbstractModel):
 
     @property
     def Usage(self):
-        r"""资源使用量
+        r"""资源使用量，单位：个数
         :rtype: int
         """
         return self._Usage
@@ -44594,9 +44644,9 @@ class RuntimeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuntimeType: 运行时类型
+        :param _RuntimeType: 运行时类型，支持的类型有 docker、containerd
         :type RuntimeType: str
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: 运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
         :type RuntimeVersion: str
         """
         self._RuntimeType = None
@@ -44604,7 +44654,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeType(self):
-        r"""运行时类型
+        r"""运行时类型，支持的类型有 docker、containerd
         :rtype: str
         """
         return self._RuntimeType
@@ -44615,7 +44665,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
         :rtype: str
         """
         return self._RuntimeVersion
@@ -46889,9 +46939,9 @@ class UpdateClusterVersionRequest(AbstractModel):
         :type DstVersion: str
         :param _ExtraArgs: 集群自定义参数
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param _MaxNotReadyPercent: 可容忍的最大不可用pod数目
+        :param _MaxNotReadyPercent: 可容忍的最大不可用pod数目。默认0
         :type MaxNotReadyPercent: float
-        :param _SkipPreCheck: 是否跳过预检查阶段
+        :param _SkipPreCheck: 是否跳过预检查阶段，默认false
         :type SkipPreCheck: bool
         """
         self._ClusterId = None
@@ -46935,7 +46985,7 @@ class UpdateClusterVersionRequest(AbstractModel):
 
     @property
     def MaxNotReadyPercent(self):
-        r"""可容忍的最大不可用pod数目
+        r"""可容忍的最大不可用pod数目。默认0
         :rtype: float
         """
         return self._MaxNotReadyPercent
@@ -46946,7 +46996,7 @@ class UpdateClusterVersionRequest(AbstractModel):
 
     @property
     def SkipPreCheck(self):
-        r"""是否跳过预检查阶段
+        r"""是否跳过预检查阶段，默认false
         :rtype: bool
         """
         return self._SkipPreCheck

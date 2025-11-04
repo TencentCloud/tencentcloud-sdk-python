@@ -16475,6 +16475,8 @@ class CreateVpcRequest(AbstractModel):
         :type DomainName: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
+        :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :type EnableRouteVpcPublish: bool
         """
         self._VpcName = None
         self._CidrBlock = None
@@ -16482,6 +16484,7 @@ class CreateVpcRequest(AbstractModel):
         self._DnsServers = None
         self._DomainName = None
         self._Tags = None
+        self._EnableRouteVpcPublish = None
 
     @property
     def VpcName(self):
@@ -16549,6 +16552,17 @@ class CreateVpcRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def EnableRouteVpcPublish(self):
+        r"""vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -16562,6 +16576,7 @@ class CreateVpcRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39769,23 +39784,23 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
         r"""
         :param _Protocol: 协议
         :type Protocol: str
-        :param _OriginalPort: 源端口
+        :param _OriginalPort: 映射前端口
         :type OriginalPort: int
-        :param _OriginalIp: 源IP
+        :param _OriginalIp: 映射前IP
         :type OriginalIp: str
-        :param _TranslationPort: 目的端口
+        :param _TranslationPort: 映射后端口
         :type TranslationPort: int
-        :param _TranslationIp: 目的IP
+        :param _TranslationIp: 映射后IP
         :type TranslationIp: str
         :param _OldProtocol: 旧协议。
         :type OldProtocol: str
-        :param _OldOriginalPort: 旧源端口
+        :param _OldOriginalPort: 旧映射前端口
         :type OldOriginalPort: int
-        :param _OldOriginalIp: 旧源IP
+        :param _OldOriginalIp: 旧映射前IP
         :type OldOriginalIp: str
-        :param _OldTranslationPort: 旧目的端口
+        :param _OldTranslationPort: 旧映射后端口
         :type OldTranslationPort: int
-        :param _OldTranslationIp: 旧目的IP
+        :param _OldTranslationIp: 旧映射后IP
         :type OldTranslationIp: str
         :param _Description: 描述
         :type Description: str
@@ -39815,7 +39830,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OriginalPort(self):
-        r"""源端口
+        r"""映射前端口
         :rtype: int
         """
         return self._OriginalPort
@@ -39826,7 +39841,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源IP
+        r"""映射前IP
         :rtype: str
         """
         return self._OriginalIp
@@ -39837,7 +39852,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def TranslationPort(self):
-        r"""目的端口
+        r"""映射后端口
         :rtype: int
         """
         return self._TranslationPort
@@ -39848,7 +39863,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""目的IP
+        r"""映射后IP
         :rtype: str
         """
         return self._TranslationIp
@@ -39870,7 +39885,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OldOriginalPort(self):
-        r"""旧源端口
+        r"""旧映射前端口
         :rtype: int
         """
         return self._OldOriginalPort
@@ -39881,7 +39896,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OldOriginalIp(self):
-        r"""旧源IP
+        r"""旧映射前IP
         :rtype: str
         """
         return self._OldOriginalIp
@@ -39892,7 +39907,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OldTranslationPort(self):
-        r"""旧目的端口
+        r"""旧映射后端口
         :rtype: int
         """
         return self._OldTranslationPort
@@ -39903,7 +39918,7 @@ class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
 
     @property
     def OldTranslationIp(self):
-        r"""旧目的IP
+        r"""旧映射后IP
         :rtype: str
         """
         return self._OldTranslationIp
@@ -48190,15 +48205,15 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Protocol: 协议
+        :param _Protocol: 协议，包含TCP和UDP
         :type Protocol: str
-        :param _OriginalPort: 源端口
+        :param _OriginalPort: 映射前端口
         :type OriginalPort: int
-        :param _OriginalIp: 源IP
+        :param _OriginalIp: 映射前IP
         :type OriginalIp: str
-        :param _TranslationPort: 目的端口
+        :param _TranslationPort: 映射后端口
         :type TranslationPort: int
-        :param _TranslationIp: 目的IP
+        :param _TranslationIp: 映射后IP
         :type TranslationIp: str
         :param _Description: 描述
         :type Description: str
@@ -48212,7 +48227,7 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议
+        r"""协议，包含TCP和UDP
         :rtype: str
         """
         return self._Protocol
@@ -48223,7 +48238,7 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def OriginalPort(self):
-        r"""源端口
+        r"""映射前端口
         :rtype: int
         """
         return self._OriginalPort
@@ -48234,7 +48249,7 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源IP
+        r"""映射前IP
         :rtype: str
         """
         return self._OriginalIp
@@ -48245,7 +48260,7 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def TranslationPort(self):
-        r"""目的端口
+        r"""映射后端口
         :rtype: int
         """
         return self._TranslationPort
@@ -48256,7 +48271,7 @@ class LocalDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""目的IP
+        r"""映射后IP
         :rtype: str
         """
         return self._TranslationIp
@@ -54660,6 +54675,8 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type DnsServers: list of str
         :param _DomainName: 域名。
         :type DomainName: str
+        :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :type EnableRouteVpcPublish: bool
         :param _EnableCdcPublish: 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
         :type EnableCdcPublish: bool
         """
@@ -54668,6 +54685,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._EnableMulticast = None
         self._DnsServers = None
         self._DomainName = None
+        self._EnableRouteVpcPublish = None
         self._EnableCdcPublish = None
 
     @property
@@ -54726,6 +54744,17 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._DomainName = DomainName
 
     @property
+    def EnableRouteVpcPublish(self):
+        r"""vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
+    @property
     def EnableCdcPublish(self):
         r"""发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
         :rtype: bool
@@ -54743,6 +54772,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._EnableMulticast = params.get("EnableMulticast")
         self._DnsServers = params.get("DnsServers")
         self._DomainName = params.get("DomainName")
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         self._EnableCdcPublish = params.get("EnableCdcPublish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -59319,13 +59349,13 @@ class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
         r"""
         :param _Protocol: 协议
         :type Protocol: str
-        :param _OriginalPort: 原端口
+        :param _OriginalPort: 映射前端口
         :type OriginalPort: int
-        :param _OriginalIp: 原IP
+        :param _OriginalIp: 映射前IP
         :type OriginalIp: str
-        :param _TranslationPort: 映射端口
+        :param _TranslationPort: 映射后端口
         :type TranslationPort: int
-        :param _TranslationIp: 映射IP
+        :param _TranslationIp: 映射后IP
         :type TranslationIp: str
         :param _Description: 描述
         :type Description: str
@@ -59356,7 +59386,7 @@ class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def OriginalPort(self):
-        r"""原端口
+        r"""映射前端口
         :rtype: int
         """
         return self._OriginalPort
@@ -59367,7 +59397,7 @@ class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""原IP
+        r"""映射前IP
         :rtype: str
         """
         return self._OriginalIp
@@ -59378,7 +59408,7 @@ class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def TranslationPort(self):
-        r"""映射端口
+        r"""映射后端口
         :rtype: int
         """
         return self._TranslationPort
@@ -59389,7 +59419,7 @@ class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""映射IP
+        r"""映射后IP
         :rtype: str
         """
         return self._TranslationIp
@@ -59474,7 +59504,7 @@ class PrivateNatGateway(AbstractModel):
         :type TagSet: list of Tag
         :param _DirectConnectGatewayIds: 专线网关唯一`ID`
         :type DirectConnectGatewayIds: list of str
-        :param _NatType: 私网网关类型
+        :param _NatType: 私网网关类型。可选类型："DCG","VPC","CCN"，分别对应专线网关、私有网络、云联网。
         :type NatType: str
         :param _CrossDomainInfo: 私网NAT跨域信息
         :type CrossDomainInfo: :class:`tencentcloud.vpc.v20170312.models.PrivateNatCrossDomainInfo`
@@ -59589,7 +59619,7 @@ class PrivateNatGateway(AbstractModel):
 
     @property
     def NatType(self):
-        r"""私网网关类型
+        r"""私网网关类型。可选类型："DCG","VPC","CCN"，分别对应专线网关、私有网络、云联网。
         :rtype: str
         """
         return self._NatType
@@ -67063,7 +67093,7 @@ class SourceIpTranslationNatRule(AbstractModel):
         r"""
         :param _ResourceId: 资源ID，如果ResourceType为USERDEFINED，可以为空字符串
         :type ResourceId: str
-        :param _ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
+        :param _ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED，分别表示子网、网卡、自定义网段
         :type ResourceType: str
         :param _PrivateIpAddress: 源IP/网段
         :type PrivateIpAddress: str
@@ -67103,7 +67133,7 @@ class SourceIpTranslationNatRule(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
+        r"""资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED，分别表示子网、网卡、自定义网段
         :rtype: str
         """
         return self._ResourceType
@@ -69556,13 +69586,13 @@ class TranslationNatRule(AbstractModel):
         r"""
         :param _TranslationDirection: 转换规则目标，可选值"LOCAL","PEER"。
         :type TranslationDirection: str
-        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层和四层。
         :type TranslationType: str
-        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :param _TranslationIp: 映射后IP,当转换规则类型为四层时为`IP`池。
         :type TranslationIp: str
         :param _Description: 转换规则描述。
         :type Description: str
-        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :param _OriginalIp: 映射前IP,当转换规则类型为三层时有效。
         :type OriginalIp: str
         :param _CreateTime: 创建时间。
         :type CreateTime: str
@@ -69590,7 +69620,7 @@ class TranslationNatRule(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层和四层。
         :rtype: str
         """
         return self._TranslationType
@@ -69601,7 +69631,7 @@ class TranslationNatRule(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转换`IP`,当转换规则类型为四层时为`IP`池。
+        r"""映射后IP,当转换规则类型为四层时为`IP`池。
         :rtype: str
         """
         return self._TranslationIp
@@ -69623,7 +69653,7 @@ class TranslationNatRule(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源`IP`,当转换规则类型为三层时有效。
+        r"""映射前IP,当转换规则类型为三层时有效。
         :rtype: str
         """
         return self._OriginalIp
@@ -69682,24 +69712,24 @@ class TranslationNatRuleDiff(AbstractModel):
         r"""
         :param _TranslationDirection: 转发规则目标，可选值"LOCAL","PEER"。
         :type TranslationDirection: str
-        :param _TranslationType: 转发规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
         :type TranslationType: str
-        :param _TranslationIp: 转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+        :param _TranslationIp: 转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
         :type TranslationIp: str
+        :param _OldTranslationIp: 旧转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
+        :type OldTranslationIp: str
         :param _Description: 转发规则描述。
         :type Description: str
-        :param _OldTranslationIp: 旧转发规则映射`IP`,当转发规则类型为四层时为`IP`池
-        :type OldTranslationIp: str
-        :param _OriginalIp: 新转发规则源`IP`,当转发规则类型为三层时有效
+        :param _OriginalIp: 新转发规则映射前`IP`,当转发规则类型为三层时有效
         :type OriginalIp: str
-        :param _OldOriginalIp: 旧转发规则源`IP`,当转发规则类型为三层时有效
+        :param _OldOriginalIp: 旧转发规则映射前`IP`,当转发规则类型为三层时有效
         :type OldOriginalIp: str
         """
         self._TranslationDirection = None
         self._TranslationType = None
         self._TranslationIp = None
-        self._Description = None
         self._OldTranslationIp = None
+        self._Description = None
         self._OriginalIp = None
         self._OldOriginalIp = None
 
@@ -69716,7 +69746,7 @@ class TranslationNatRuleDiff(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转发规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
         :rtype: str
         """
         return self._TranslationType
@@ -69727,7 +69757,7 @@ class TranslationNatRuleDiff(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+        r"""转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
         :rtype: str
         """
         return self._TranslationIp
@@ -69735,6 +69765,17 @@ class TranslationNatRuleDiff(AbstractModel):
     @TranslationIp.setter
     def TranslationIp(self, TranslationIp):
         self._TranslationIp = TranslationIp
+
+    @property
+    def OldTranslationIp(self):
+        r"""旧转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
+        :rtype: str
+        """
+        return self._OldTranslationIp
+
+    @OldTranslationIp.setter
+    def OldTranslationIp(self, OldTranslationIp):
+        self._OldTranslationIp = OldTranslationIp
 
     @property
     def Description(self):
@@ -69748,19 +69789,8 @@ class TranslationNatRuleDiff(AbstractModel):
         self._Description = Description
 
     @property
-    def OldTranslationIp(self):
-        r"""旧转发规则映射`IP`,当转发规则类型为四层时为`IP`池
-        :rtype: str
-        """
-        return self._OldTranslationIp
-
-    @OldTranslationIp.setter
-    def OldTranslationIp(self, OldTranslationIp):
-        self._OldTranslationIp = OldTranslationIp
-
-    @property
     def OriginalIp(self):
-        r"""新转发规则源`IP`,当转发规则类型为三层时有效
+        r"""新转发规则映射前`IP`,当转发规则类型为三层时有效
         :rtype: str
         """
         return self._OriginalIp
@@ -69771,7 +69801,7 @@ class TranslationNatRuleDiff(AbstractModel):
 
     @property
     def OldOriginalIp(self):
-        r"""旧转发规则源`IP`,当转发规则类型为三层时有效
+        r"""旧转发规则映射前`IP`,当转发规则类型为三层时有效
         :rtype: str
         """
         return self._OldOriginalIp
@@ -69785,8 +69815,8 @@ class TranslationNatRuleDiff(AbstractModel):
         self._TranslationDirection = params.get("TranslationDirection")
         self._TranslationType = params.get("TranslationType")
         self._TranslationIp = params.get("TranslationIp")
-        self._Description = params.get("Description")
         self._OldTranslationIp = params.get("OldTranslationIp")
+        self._Description = params.get("Description")
         self._OriginalIp = params.get("OriginalIp")
         self._OldOriginalIp = params.get("OldOriginalIp")
         memeber_set = set(params.keys())
@@ -69808,13 +69838,13 @@ class TranslationNatRuleInput(AbstractModel):
         r"""
         :param _TranslationDirection: 转换规则目标，可选值"LOCAL","PEER"。
         :type TranslationDirection: str
-        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
         :type TranslationType: str
-        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :param _TranslationIp: 映射后`IP`,当转换规则类型为四层时为`IP`池。
         :type TranslationIp: str
         :param _Description: 转换规则描述。
         :type Description: str
-        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :param _OriginalIp: 映射前`IP`,当转换规则类型为三层时有效。
         :type OriginalIp: str
         """
         self._TranslationDirection = None
@@ -69836,7 +69866,7 @@ class TranslationNatRuleInput(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
         :rtype: str
         """
         return self._TranslationType
@@ -69847,7 +69877,7 @@ class TranslationNatRuleInput(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转换`IP`,当转换规则类型为四层时为`IP`池。
+        r"""映射后`IP`,当转换规则类型为四层时为`IP`池。
         :rtype: str
         """
         return self._TranslationIp
@@ -69869,7 +69899,7 @@ class TranslationNatRuleInput(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源`IP`,当转换规则类型为三层时有效。
+        r"""映射前`IP`,当转换规则类型为三层时有效。
         :rtype: str
         """
         return self._OriginalIp
@@ -70770,6 +70800,8 @@ class Vpc(AbstractModel):
         :type TagSet: list of Tag
         :param _AssistantCidrSet: 辅助CIDR
         :type AssistantCidrSet: list of AssistantCidr
+        :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :type EnableRouteVpcPublish: bool
         :param _Ipv6CidrBlockSet: 返回多运营商IPv6 Cidr Block
         :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         """
@@ -70786,6 +70818,7 @@ class Vpc(AbstractModel):
         self._Ipv6CidrBlock = None
         self._TagSet = None
         self._AssistantCidrSet = None
+        self._EnableRouteVpcPublish = None
         self._Ipv6CidrBlockSet = None
 
     @property
@@ -70932,6 +70965,17 @@ class Vpc(AbstractModel):
         self._AssistantCidrSet = AssistantCidrSet
 
     @property
+    def EnableRouteVpcPublish(self):
+        r"""vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
+    @property
     def Ipv6CidrBlockSet(self):
         r"""返回多运营商IPv6 Cidr Block
         :rtype: list of ISPIPv6CidrBlock
@@ -70967,6 +71011,7 @@ class Vpc(AbstractModel):
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self._AssistantCidrSet.append(obj)
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         if params.get("Ipv6CidrBlockSet") is not None:
             self._Ipv6CidrBlockSet = []
             for item in params.get("Ipv6CidrBlockSet"):

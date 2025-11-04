@@ -1148,34 +1148,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def InstitutionOCR(self, request):
-        r"""不再维护，功能已切到其它接口
-
-        <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-        本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for InstitutionOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.InstitutionOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.InstitutionOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InstitutionOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.InstitutionOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def InsuranceBillOCR(self, request):
         r"""本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
 
@@ -1376,34 +1348,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def OrgCodeCertOCR(self, request):
-        r"""不再维护，功能已切到其它接口
-
-        <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-        本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for OrgCodeCertOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.OrgCodeCertOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.OrgCodeCertOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("OrgCodeCertOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.OrgCodeCertOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def PassportOCR(self, request):
         r"""<b>此接口为护照识别（中国大陆地区护照）的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/37657">护照识别（多国多地区护照）</a>。</b>
 
@@ -1447,35 +1391,6 @@ class OcrClient(AbstractClient):
             body = self.call("PermitOCR", params, headers=headers)
             response = json.loads(body)
             model = models.PermitOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def PropOwnerCertOCR(self, request):
-        r"""不再维护，功能已切到其它接口
-
-        <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-        本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
-        目前接口对合肥、成都、佛山三个城市的房产证版式识别较好。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for PropOwnerCertOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.PropOwnerCertOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.PropOwnerCertOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("PropOwnerCertOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.PropOwnerCertOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1700,32 +1615,6 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizeEncryptedIDCardOCR", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizeEncryptedIDCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RecognizeForeignPermanentResidentIdCard(self, request):
-        r"""不再维护，功能已切到其它接口
-
-        <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
-        外国人永久居留身份证识别
-
-        :param request: Request instance for RecognizeForeignPermanentResidentIdCard.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeForeignPermanentResidentIdCardRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeForeignPermanentResidentIdCardResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeForeignPermanentResidentIdCard", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeForeignPermanentResidentIdCardResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2000,32 +1889,6 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizeGeneralInvoice", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizeGeneralInvoiceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RecognizeGeneralTextImageWarn(self, request):
-        r"""不再维护，功能已切到其它接口
-
-        <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
-        本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
-
-        :param request: Request instance for RecognizeGeneralTextImageWarn.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralTextImageWarnRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralTextImageWarnResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeGeneralTextImageWarn", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeGeneralTextImageWarnResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

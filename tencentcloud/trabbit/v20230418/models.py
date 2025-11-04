@@ -1987,9 +1987,24 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
         :type InstanceId: str
         :param _VirtualHost: vhost名
         :type VirtualHost: str
+        :param _SortElement: 按哪个字段排序，支持：channel(channel数),incoming_bytes(入流量大小),outgoing_bytes(出流量大小)
+        :type SortElement: str
+        :param _SortType: 排序方式：ASC,DESC
+        :type SortType: str
+        :param _Offset: 分页参数，从第几条数据开始
+        :type Offset: int
+        :param _Limit: 一页大小
+        :type Limit: int
+        :param _Name: 连接名模糊搜索
+        :type Name: str
         """
         self._InstanceId = None
         self._VirtualHost = None
+        self._SortElement = None
+        self._SortType = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
 
     @property
     def InstanceId(self):
@@ -2013,10 +2028,70 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
     def VirtualHost(self, VirtualHost):
         self._VirtualHost = VirtualHost
 
+    @property
+    def SortElement(self):
+        r"""按哪个字段排序，支持：channel(channel数),incoming_bytes(入流量大小),outgoing_bytes(出流量大小)
+        :rtype: str
+        """
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortType(self):
+        r"""排序方式：ASC,DESC
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def Offset(self):
+        r"""分页参数，从第几条数据开始
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""一页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""连接名模糊搜索
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VirtualHost = params.get("VirtualHost")
+        self._SortElement = params.get("SortElement")
+        self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2109,6 +2184,8 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
         :type Offset: int
         :param _SearchWord: 搜索关键词
         :type SearchWord: str
+        :param _Channel: channelId
+        :type Channel: str
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -2116,6 +2193,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
         self._Limit = None
         self._Offset = None
         self._SearchWord = None
+        self._Channel = None
 
     @property
     def InstanceId(self):
@@ -2183,6 +2261,17 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
     def SearchWord(self, SearchWord):
         self._SearchWord = SearchWord
 
+    @property
+    def Channel(self):
+        r"""channelId
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2191,6 +2280,7 @@ class DescribeRabbitMQServerlessConsumersRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._SearchWord = params.get("SearchWord")
+        self._Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4615,12 +4705,18 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
         :type TraceFlag: bool
         :param _SendReceiveRatio: 限流生产消费比例
         :type SendReceiveRatio: float
+        :param _DeleteAllTags: 是否删除所有标签，默认为false
+        :type DeleteAllTags: bool
+        :param _InstanceTags: 修改的实例标签列表
+        :type InstanceTags: list of RabbitMQServerlessTag
         """
         self._InstanceId = None
         self._ClusterName = None
         self._Remark = None
         self._TraceFlag = None
         self._SendReceiveRatio = None
+        self._DeleteAllTags = None
+        self._InstanceTags = None
 
     @property
     def InstanceId(self):
@@ -4677,6 +4773,28 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
     def SendReceiveRatio(self, SendReceiveRatio):
         self._SendReceiveRatio = SendReceiveRatio
 
+    @property
+    def DeleteAllTags(self):
+        r"""是否删除所有标签，默认为false
+        :rtype: bool
+        """
+        return self._DeleteAllTags
+
+    @DeleteAllTags.setter
+    def DeleteAllTags(self, DeleteAllTags):
+        self._DeleteAllTags = DeleteAllTags
+
+    @property
+    def InstanceTags(self):
+        r"""修改的实例标签列表
+        :rtype: list of RabbitMQServerlessTag
+        """
+        return self._InstanceTags
+
+    @InstanceTags.setter
+    def InstanceTags(self, InstanceTags):
+        self._InstanceTags = InstanceTags
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4684,6 +4802,13 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
         self._Remark = params.get("Remark")
         self._TraceFlag = params.get("TraceFlag")
         self._SendReceiveRatio = params.get("SendReceiveRatio")
+        self._DeleteAllTags = params.get("DeleteAllTags")
+        if params.get("InstanceTags") is not None:
+            self._InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = RabbitMQServerlessTag()
+                obj._deserialize(item)
+                self._InstanceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4891,11 +5016,20 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
         :type QueueName: str
         :param _Remark: 新修改的备注
         :type Remark: str
+        :param _MessageTTL: MessageTTL参数单位ms,classic类型专用	
+        :type MessageTTL: int
+        :param _DeadLetterExchange: DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
+        :type DeadLetterExchange: str
+        :param _DeadLetterRoutingKey: DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
+        :type DeadLetterRoutingKey: str
         """
         self._InstanceId = None
         self._VirtualHost = None
         self._QueueName = None
         self._Remark = None
+        self._MessageTTL = None
+        self._DeadLetterExchange = None
+        self._DeadLetterRoutingKey = None
 
     @property
     def InstanceId(self):
@@ -4941,12 +5075,48 @@ class ModifyRabbitMQServerlessQueueRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def MessageTTL(self):
+        r"""MessageTTL参数单位ms,classic类型专用	
+        :rtype: int
+        """
+        return self._MessageTTL
+
+    @MessageTTL.setter
+    def MessageTTL(self, MessageTTL):
+        self._MessageTTL = MessageTTL
+
+    @property
+    def DeadLetterExchange(self):
+        r"""DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
+        :rtype: str
+        """
+        return self._DeadLetterExchange
+
+    @DeadLetterExchange.setter
+    def DeadLetterExchange(self, DeadLetterExchange):
+        self._DeadLetterExchange = DeadLetterExchange
+
+    @property
+    def DeadLetterRoutingKey(self):
+        r"""DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
+        :rtype: str
+        """
+        return self._DeadLetterRoutingKey
+
+    @DeadLetterRoutingKey.setter
+    def DeadLetterRoutingKey(self, DeadLetterRoutingKey):
+        self._DeadLetterRoutingKey = DeadLetterRoutingKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VirtualHost = params.get("VirtualHost")
         self._QueueName = params.get("QueueName")
         self._Remark = params.get("Remark")
+        self._MessageTTL = params.get("MessageTTL")
+        self._DeadLetterExchange = params.get("DeadLetterExchange")
+        self._DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5531,6 +5701,8 @@ class RabbitMQClusterInfo(AbstractModel):
         :type SendReceiveRatio: float
         :param _TraceTime: 消息轨迹保留时间，单位小时
         :type TraceTime: int
+        :param _Tags: 实例标签列表
+        :type Tags: list of RabbitMQServerlessTag
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5559,6 +5731,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MessageRetainTime = None
         self._SendReceiveRatio = None
         self._TraceTime = None
+        self._Tags = None
 
     @property
     def ClusterId(self):
@@ -5857,6 +6030,17 @@ class RabbitMQClusterInfo(AbstractModel):
     def TraceTime(self, TraceTime):
         self._TraceTime = TraceTime
 
+    @property
+    def Tags(self):
+        r"""实例标签列表
+        :rtype: list of RabbitMQServerlessTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5891,6 +6075,12 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MessageRetainTime = params.get("MessageRetainTime")
         self._SendReceiveRatio = params.get("SendReceiveRatio")
         self._TraceTime = params.get("TraceTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = RabbitMQServerlessTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6093,6 +6283,16 @@ class RabbitMQConnection(AbstractModel):
         :type Protocol: str
         :param _Channels: 连接下的channel数
         :type Channels: int
+        :param _IncomingBytes: 入流量大小，单位 bytes
+        :type IncomingBytes: float
+        :param _OutgoingBytes: 出流量大小，单位bytes
+        :type OutgoingBytes: float
+        :param _Heartbeat: 心跳间隔时间，默认60s
+        :type Heartbeat: int
+        :param _MaxChannel: 一个链接最大的channel数，默认1024
+        :type MaxChannel: int
+        :param _IdleSince: 空闲时间点
+        :type IdleSince: str
         """
         self._ConnectionName = None
         self._PeerHost = None
@@ -6101,6 +6301,11 @@ class RabbitMQConnection(AbstractModel):
         self._SSL = None
         self._Protocol = None
         self._Channels = None
+        self._IncomingBytes = None
+        self._OutgoingBytes = None
+        self._Heartbeat = None
+        self._MaxChannel = None
+        self._IdleSince = None
 
     @property
     def ConnectionName(self):
@@ -6179,6 +6384,61 @@ class RabbitMQConnection(AbstractModel):
     def Channels(self, Channels):
         self._Channels = Channels
 
+    @property
+    def IncomingBytes(self):
+        r"""入流量大小，单位 bytes
+        :rtype: float
+        """
+        return self._IncomingBytes
+
+    @IncomingBytes.setter
+    def IncomingBytes(self, IncomingBytes):
+        self._IncomingBytes = IncomingBytes
+
+    @property
+    def OutgoingBytes(self):
+        r"""出流量大小，单位bytes
+        :rtype: float
+        """
+        return self._OutgoingBytes
+
+    @OutgoingBytes.setter
+    def OutgoingBytes(self, OutgoingBytes):
+        self._OutgoingBytes = OutgoingBytes
+
+    @property
+    def Heartbeat(self):
+        r"""心跳间隔时间，默认60s
+        :rtype: int
+        """
+        return self._Heartbeat
+
+    @Heartbeat.setter
+    def Heartbeat(self, Heartbeat):
+        self._Heartbeat = Heartbeat
+
+    @property
+    def MaxChannel(self):
+        r"""一个链接最大的channel数，默认1024
+        :rtype: int
+        """
+        return self._MaxChannel
+
+    @MaxChannel.setter
+    def MaxChannel(self, MaxChannel):
+        self._MaxChannel = MaxChannel
+
+    @property
+    def IdleSince(self):
+        r"""空闲时间点
+        :rtype: str
+        """
+        return self._IdleSince
+
+    @IdleSince.setter
+    def IdleSince(self, IdleSince):
+        self._IdleSince = IdleSince
+
 
     def _deserialize(self, params):
         self._ConnectionName = params.get("ConnectionName")
@@ -6188,6 +6448,11 @@ class RabbitMQConnection(AbstractModel):
         self._SSL = params.get("SSL")
         self._Protocol = params.get("Protocol")
         self._Channels = params.get("Channels")
+        self._IncomingBytes = params.get("IncomingBytes")
+        self._OutgoingBytes = params.get("OutgoingBytes")
+        self._Heartbeat = params.get("Heartbeat")
+        self._MaxChannel = params.get("MaxChannel")
+        self._IdleSince = params.get("IdleSince")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6209,9 +6474,30 @@ class RabbitMQConsumersListInfo(AbstractModel):
         :type ClientIp: str
         :param _ConsumerTag: 消费者Tag
         :type ConsumerTag: str
+        :param _QueueName: 消费目标队列
+        :type QueueName: str
+        :param _AckRequired: 是否需要消费者手动 ack
+        :type AckRequired: bool
+        :param _PrefetchCount: 消费者 qos 值
+        :type PrefetchCount: int
+        :param _Active: 消费者状态
+        :type Active: str
+        :param _LastDeliveredTime: 最后一次投递消息时间
+        :type LastDeliveredTime: str
+        :param _UnAckMsgCount: 消费者未确认消息数
+        :type UnAckMsgCount: int
+        :param _ChannelName: consumer 所属的 channel 
+        :type ChannelName: str
         """
         self._ClientIp = None
         self._ConsumerTag = None
+        self._QueueName = None
+        self._AckRequired = None
+        self._PrefetchCount = None
+        self._Active = None
+        self._LastDeliveredTime = None
+        self._UnAckMsgCount = None
+        self._ChannelName = None
 
     @property
     def ClientIp(self):
@@ -6235,10 +6521,94 @@ class RabbitMQConsumersListInfo(AbstractModel):
     def ConsumerTag(self, ConsumerTag):
         self._ConsumerTag = ConsumerTag
 
+    @property
+    def QueueName(self):
+        r"""消费目标队列
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def AckRequired(self):
+        r"""是否需要消费者手动 ack
+        :rtype: bool
+        """
+        return self._AckRequired
+
+    @AckRequired.setter
+    def AckRequired(self, AckRequired):
+        self._AckRequired = AckRequired
+
+    @property
+    def PrefetchCount(self):
+        r"""消费者 qos 值
+        :rtype: int
+        """
+        return self._PrefetchCount
+
+    @PrefetchCount.setter
+    def PrefetchCount(self, PrefetchCount):
+        self._PrefetchCount = PrefetchCount
+
+    @property
+    def Active(self):
+        r"""消费者状态
+        :rtype: str
+        """
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+    @property
+    def LastDeliveredTime(self):
+        r"""最后一次投递消息时间
+        :rtype: str
+        """
+        return self._LastDeliveredTime
+
+    @LastDeliveredTime.setter
+    def LastDeliveredTime(self, LastDeliveredTime):
+        self._LastDeliveredTime = LastDeliveredTime
+
+    @property
+    def UnAckMsgCount(self):
+        r"""消费者未确认消息数
+        :rtype: int
+        """
+        return self._UnAckMsgCount
+
+    @UnAckMsgCount.setter
+    def UnAckMsgCount(self, UnAckMsgCount):
+        self._UnAckMsgCount = UnAckMsgCount
+
+    @property
+    def ChannelName(self):
+        r"""consumer 所属的 channel 
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
 
     def _deserialize(self, params):
         self._ClientIp = params.get("ClientIp")
         self._ConsumerTag = params.get("ConsumerTag")
+        self._QueueName = params.get("QueueName")
+        self._AckRequired = params.get("AckRequired")
+        self._PrefetchCount = params.get("PrefetchCount")
+        self._Active = params.get("Active")
+        self._LastDeliveredTime = params.get("LastDeliveredTime")
+        self._UnAckMsgCount = params.get("UnAckMsgCount")
+        self._ChannelName = params.get("ChannelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7207,6 +7577,8 @@ class RabbitMQServerlessInstance(AbstractModel):
         :type IsolatedTime: int
         :param _ServerlessExt: Serverless 扩展字段
         :type ServerlessExt: str
+        :param _Tags: 实例标签列表
+        :type Tags: list of RabbitMQServerlessTag
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7229,6 +7601,7 @@ class RabbitMQServerlessInstance(AbstractModel):
         self._MaxStorage = None
         self._IsolatedTime = None
         self._ServerlessExt = None
+        self._Tags = None
 
     @property
     def InstanceId(self):
@@ -7462,6 +7835,17 @@ class RabbitMQServerlessInstance(AbstractModel):
     def ServerlessExt(self, ServerlessExt):
         self._ServerlessExt = ServerlessExt
 
+    @property
+    def Tags(self):
+        r"""实例标签列表
+        :rtype: list of RabbitMQServerlessTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7490,6 +7874,63 @@ class RabbitMQServerlessInstance(AbstractModel):
         self._MaxStorage = params.get("MaxStorage")
         self._IsolatedTime = params.get("IsolatedTime")
         self._ServerlessExt = params.get("ServerlessExt")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = RabbitMQServerlessTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQServerlessTag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -119,7 +119,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateDNSAccount(self, request):
-        r"""跨账号关联VPC时绑定其他账号
+        r"""跨账号关联VPC时，可通过该API接口添加关联账号
 
         :param request: Request instance for CreatePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountRequest`
@@ -257,7 +257,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateDNSAccount(self, request):
-        r"""删除私有域解析账号
+        r"""适用于跨账号绑定VPC时需要移除关联账号的场景，解除账号关联后，将无法获取对应账号下的 VPC资源。
 
         :param request: Request instance for DeletePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountRequest`
@@ -487,7 +487,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateDNSAccountList(self, request):
-        r"""获取私有域解析账号列表
+        r"""在跨账号绑定VPC的场景下，可通过该API接口获取所有已关联账号的列表
 
         :param request: Request instance for DescribePrivateDNSAccountList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateDNSAccountListRequest`

@@ -23969,10 +23969,13 @@ class ModifyUserManagerPwdRequest(AbstractModel):
         :type UserName: str
         :param _PassWord: 密码
         :type PassWord: str
+        :param _SyncPwd: 是否同步密码
+        :type SyncPwd: bool
         """
         self._InstanceId = None
         self._UserName = None
         self._PassWord = None
+        self._SyncPwd = None
 
     @property
     def InstanceId(self):
@@ -24007,11 +24010,23 @@ class ModifyUserManagerPwdRequest(AbstractModel):
     def PassWord(self, PassWord):
         self._PassWord = PassWord
 
+    @property
+    def SyncPwd(self):
+        r"""是否同步密码
+        :rtype: bool
+        """
+        return self._SyncPwd
+
+    @SyncPwd.setter
+    def SyncPwd(self, SyncPwd):
+        self._SyncPwd = SyncPwd
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
+        self._SyncPwd = params.get("SyncPwd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

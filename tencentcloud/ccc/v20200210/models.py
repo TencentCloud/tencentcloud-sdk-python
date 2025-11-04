@@ -3212,7 +3212,7 @@ HoaiMy
 <li>Tencent TTS<br>
 配置请参考<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">腾讯云TTS文档链接</a></li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
        &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS类型, 目前支持&quot;tencent&quot; 和 “minixmax”， 其他的厂商支持中
        &quot;AppId&quot;: &quot;您的应用ID&quot;, // String 必填
        &quot;SecretId&quot;: &quot;您的密钥ID&quot;, // String 必填
@@ -3224,12 +3224,11 @@ HoaiMy
        &quot;FastVoiceType&quot;: &quot;xxxx&quot;   //  可选参数， 快速声音复刻的参数 
   }
 </code></pre>
-
-  </div></div><ul>
+ </div><ul>
 <li>Minimax TTS<br>
-配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS文档链接</a>。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
+配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank"> Minimax TTS 文档链接</a>。注意 Minimax TTS 存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
         &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS类型, 
         &quot;Model&quot;: &quot;speech-01-turbo&quot;,
         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
@@ -3239,13 +3238,13 @@ HoaiMy
         &quot;Speed&quot;: 1.2
 }
 </code></pre>
-</div></div><ul>
+</div><ul>
 <li>火山 TTS</li>
 </ul>
 <p>配置音色类型参考<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">火山TTS文档链接</a><br>
 语音合成音色列表–语音技术-火山引擎<br>
 大模型语音合成音色列表–语音技术-火山引擎</p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
     &quot;TTSType&quot;: &quot;volcengine&quot;,  // 必填：String TTS类型
     &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // 必填：String 火山引擎分配的Appid
     &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // 必填： String类型 火山引擎的访问token
@@ -3255,12 +3254,11 @@ HoaiMy
     &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
 }
 </code></pre>
-
-</div></div><ul>
+</div><ul>
 <li>Azure TTS<br>
 配置请参考<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS文档链接</a></li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
     &quot;TTSType&quot;: &quot;azure&quot;, // 必填：String TTS类型
     &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // 必填：String 订阅的Key
     &quot;Region&quot;: &quot;chinanorth3&quot;,  // 必填：String 订阅的地区
@@ -3269,13 +3267,11 @@ HoaiMy
     &quot;Rate&quot;: 1 // 选填：float 语速  0.5～2 默认为 1
 }
 </code></pre>
-
-</div></div><ul>
-<li>自定义</li>
+</div><ul>
+<li>自定义TTS</li>
 </ul>
-<p>TTS<br>
-具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<p>具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
   &quot;TTSType&quot;: &quot;custom&quot;, // String 必填
   &quot;APIKey&quot;: &quot;ApiKey&quot;, // String 必填 用来鉴权
   &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // String，必填，TTS API URL
@@ -3284,8 +3280,7 @@ HoaiMy
   &quot;AudioChannel&quot;: 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
 }
 </code></pre>
-
-</div></div>
+</div>
         :type CustomTTSConfig: str
         :param _PromptVariables: 提示词变量
         :type PromptVariables: list of Variable
@@ -3310,7 +3305,7 @@ HoaiMy
         :param _EnableComplianceAudio: 合规提示音， 
 该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
 该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
-我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+我方充分知悉和理解，根据[《网络安全法》](https://www.cac.gov.cn/2016-11/07/c_1119867116.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
         :type EnableComplianceAudio: bool
         """
         self._SdkAppId = None
@@ -3696,7 +3691,7 @@ HoaiMy
 <li>Tencent TTS<br>
 配置请参考<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">腾讯云TTS文档链接</a></li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
        &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS类型, 目前支持&quot;tencent&quot; 和 “minixmax”， 其他的厂商支持中
        &quot;AppId&quot;: &quot;您的应用ID&quot;, // String 必填
        &quot;SecretId&quot;: &quot;您的密钥ID&quot;, // String 必填
@@ -3708,12 +3703,11 @@ HoaiMy
        &quot;FastVoiceType&quot;: &quot;xxxx&quot;   //  可选参数， 快速声音复刻的参数 
   }
 </code></pre>
-
-  </div></div><ul>
+ </div><ul>
 <li>Minimax TTS<br>
-配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS文档链接</a>。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
+配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank"> Minimax TTS 文档链接</a>。注意 Minimax TTS 存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
         &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS类型, 
         &quot;Model&quot;: &quot;speech-01-turbo&quot;,
         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
@@ -3723,13 +3717,13 @@ HoaiMy
         &quot;Speed&quot;: 1.2
 }
 </code></pre>
-</div></div><ul>
+</div><ul>
 <li>火山 TTS</li>
 </ul>
 <p>配置音色类型参考<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">火山TTS文档链接</a><br>
 语音合成音色列表–语音技术-火山引擎<br>
 大模型语音合成音色列表–语音技术-火山引擎</p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
     &quot;TTSType&quot;: &quot;volcengine&quot;,  // 必填：String TTS类型
     &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // 必填：String 火山引擎分配的Appid
     &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // 必填： String类型 火山引擎的访问token
@@ -3739,12 +3733,11 @@ HoaiMy
     &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
 }
 </code></pre>
-
-</div></div><ul>
+</div><ul>
 <li>Azure TTS<br>
 配置请参考<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS文档链接</a></li>
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
     &quot;TTSType&quot;: &quot;azure&quot;, // 必填：String TTS类型
     &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // 必填：String 订阅的Key
     &quot;Region&quot;: &quot;chinanorth3&quot;,  // 必填：String 订阅的地区
@@ -3753,13 +3746,11 @@ HoaiMy
     &quot;Rate&quot;: 1 // 选填：float 语速  0.5～2 默认为 1
 }
 </code></pre>
-
-</div></div><ul>
-<li>自定义</li>
+</div><ul>
+<li>自定义TTS</li>
 </ul>
-<p>TTS<br>
-具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+<p>具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
   &quot;TTSType&quot;: &quot;custom&quot;, // String 必填
   &quot;APIKey&quot;: &quot;ApiKey&quot;, // String 必填 用来鉴权
   &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // String，必填，TTS API URL
@@ -3768,8 +3759,7 @@ HoaiMy
   &quot;AudioChannel&quot;: 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
 }
 </code></pre>
-
-</div></div>
+</div>
         :rtype: str
         """
         return self._CustomTTSConfig
@@ -3879,7 +3869,7 @@ HoaiMy
         r"""合规提示音， 
 该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
 该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
-我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+我方充分知悉和理解，根据[《网络安全法》](https://www.cac.gov.cn/2016-11/07/c_1119867116.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
         :rtype: bool
         """
         return self._EnableComplianceAudio
@@ -5592,7 +5582,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         :type SkillGroupId: int
         :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
         :type Priority: int
-        :param _ExpectedAbandonRate: 预期呼损率，百分比，5 - 50
+        :param _ExpectedAbandonRate: 预期呼损率，百分比，0 - 50
         :type ExpectedAbandonRate: int
         :param _RetryInterval: 呼叫重试间隔时间，单位秒，60 - 86400
         :type RetryInterval: int
@@ -5713,7 +5703,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        r"""预期呼损率，百分比，5 - 50
+        r"""预期呼损率，百分比，0 - 50
         :rtype: int
         """
         return self._ExpectedAbandonRate

@@ -2619,6 +2619,205 @@ class CreateDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLogDownloadTaskRequest(AbstractModel):
+    r"""CreateLogDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _NodeNames: 节点名称
+        :type NodeNames: list of str
+        :param _LogComponents: 日志类别
+        :type LogComponents: list of str
+        :param _LogLevels: 日志等级
+        :type LogLevels: list of str
+        :param _LogIds: 日志ID
+        :type LogIds: list of str
+        :param _LogConnections: 日志连接信息
+        :type LogConnections: list of str
+        :param _LogDetailParams: 日志详情过滤字段
+        :type LogDetailParams: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._NodeNames = None
+        self._LogComponents = None
+        self._LogLevels = None
+        self._LogIds = None
+        self._LogConnections = None
+        self._LogDetailParams = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NodeNames(self):
+        r"""节点名称
+        :rtype: list of str
+        """
+        return self._NodeNames
+
+    @NodeNames.setter
+    def NodeNames(self, NodeNames):
+        self._NodeNames = NodeNames
+
+    @property
+    def LogComponents(self):
+        r"""日志类别
+        :rtype: list of str
+        """
+        return self._LogComponents
+
+    @LogComponents.setter
+    def LogComponents(self, LogComponents):
+        self._LogComponents = LogComponents
+
+    @property
+    def LogLevels(self):
+        r"""日志等级
+        :rtype: list of str
+        """
+        return self._LogLevels
+
+    @LogLevels.setter
+    def LogLevels(self, LogLevels):
+        self._LogLevels = LogLevels
+
+    @property
+    def LogIds(self):
+        r"""日志ID
+        :rtype: list of str
+        """
+        return self._LogIds
+
+    @LogIds.setter
+    def LogIds(self, LogIds):
+        self._LogIds = LogIds
+
+    @property
+    def LogConnections(self):
+        r"""日志连接信息
+        :rtype: list of str
+        """
+        return self._LogConnections
+
+    @LogConnections.setter
+    def LogConnections(self, LogConnections):
+        self._LogConnections = LogConnections
+
+    @property
+    def LogDetailParams(self):
+        r"""日志详情过滤字段
+        :rtype: list of str
+        """
+        return self._LogDetailParams
+
+    @LogDetailParams.setter
+    def LogDetailParams(self, LogDetailParams):
+        self._LogDetailParams = LogDetailParams
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._NodeNames = params.get("NodeNames")
+        self._LogComponents = params.get("LogComponents")
+        self._LogLevels = params.get("LogLevels")
+        self._LogIds = params.get("LogIds")
+        self._LogConnections = params.get("LogConnections")
+        self._LogDetailParams = params.get("LogDetailParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogDownloadTaskResponse(AbstractModel):
+    r"""CreateLogDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CurrentOp(AbstractModel):
     r"""云数据库实例当前操作
 
@@ -3106,6 +3305,100 @@ class DeleteAccountUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLogDownloadTaskRequest(AbstractModel):
+    r"""DeleteLogDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._InstanceId = None
+        self._TaskId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogDownloadTaskResponse(AbstractModel):
+    r"""DeleteLogDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，0:成功
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态，0:成功
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -5952,6 +6245,434 @@ class DescribeInstanceParamsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceMultiParam.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogDownloadTasksRequest(AbstractModel):
+    r"""DescribeLogDownloadTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _Limit: 查询条数
+        :type Limit: int
+        :param _Offset: 页码
+        :type Offset: int
+        :param _StartTime: 下载任务的开始时间
+        :type StartTime: str
+        :param _EndTime: 下载任务的结束时间
+        :type EndTime: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""查询条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        r"""下载任务的开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""下载任务的结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogDownloadTasksResponse(AbstractModel):
+    r"""DescribeLogDownloadTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数量
+        :type TotalCount: int
+        :param _Tasks: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of Task
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        r"""任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Task
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = Task()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMongodbLogsRequest(AbstractModel):
+    r"""DescribeMongodbLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _StartTime: 查询日志的开启时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询时间范围：仅支持查询最近 7 天内的日志数据。
+        :type StartTime: str
+        :param _EndTime: 查询日志的结束时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询时间范围：仅支持查询最近 7 天内的日志数据。
+        :type EndTime: str
+        :param _NodeNames: 节点 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)的**节点管理**页面获取查询的节点 ID。
+        :type NodeNames: list of str
+        :param _LogComponents: 日志类别。
+- 日志类别包括但不限于 COMMAND、ACCESS、CONTROL、FTDC、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、RECOVERY、JOURNAL 和 WRITE 等。具体支持的类别可能会因 MongoDB 的版本而存在差异。具体信息，请参见[日志消息](https://www.mongodb.com/zh-cn/docs/v5.0/reference/log-messages/#log-message-examples)。
+- 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，也可查看**日志类别**。
+        :type LogComponents: list of str
+        :param _LogLevels: 日志级别。
+- 日志级别按严重性从高到低依次为：FATAL、ERROR、WARNING。
+- 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志级别**。
+        :type LogLevels: list of str
+        :param _LogIds: 日志 ID。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志 ID**。
+        :type LogIds: list of str
+        :param _LogConnections: 日志连接信息。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志连接信息**。
+        :type LogConnections: list of str
+        :param _LogDetailParams: 指定日志筛选的字段。
+        :type LogDetailParams: list of str
+        :param _Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页大小，最小值为1，最大值为100，默认值为20。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._NodeNames = None
+        self._LogComponents = None
+        self._LogLevels = None
+        self._LogIds = None
+        self._LogConnections = None
+        self._LogDetailParams = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""查询日志的开启时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询时间范围：仅支持查询最近 7 天内的日志数据。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询日志的结束时间。
+- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+- 查询时间范围：仅支持查询最近 7 天内的日志数据。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NodeNames(self):
+        r"""节点 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)的**节点管理**页面获取查询的节点 ID。
+        :rtype: list of str
+        """
+        return self._NodeNames
+
+    @NodeNames.setter
+    def NodeNames(self, NodeNames):
+        self._NodeNames = NodeNames
+
+    @property
+    def LogComponents(self):
+        r"""日志类别。
+- 日志类别包括但不限于 COMMAND、ACCESS、CONTROL、FTDC、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、RECOVERY、JOURNAL 和 WRITE 等。具体支持的类别可能会因 MongoDB 的版本而存在差异。具体信息，请参见[日志消息](https://www.mongodb.com/zh-cn/docs/v5.0/reference/log-messages/#log-message-examples)。
+- 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，也可查看**日志类别**。
+        :rtype: list of str
+        """
+        return self._LogComponents
+
+    @LogComponents.setter
+    def LogComponents(self, LogComponents):
+        self._LogComponents = LogComponents
+
+    @property
+    def LogLevels(self):
+        r"""日志级别。
+- 日志级别按严重性从高到低依次为：FATAL、ERROR、WARNING。
+- 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志级别**。
+        :rtype: list of str
+        """
+        return self._LogLevels
+
+    @LogLevels.setter
+    def LogLevels(self, LogLevels):
+        self._LogLevels = LogLevels
+
+    @property
+    def LogIds(self):
+        r"""日志 ID。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志 ID**。
+        :rtype: list of str
+        """
+        return self._LogIds
+
+    @LogIds.setter
+    def LogIds(self, LogIds):
+        self._LogIds = LogIds
+
+    @property
+    def LogConnections(self):
+        r"""日志连接信息。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志连接信息**。
+        :rtype: list of str
+        """
+        return self._LogConnections
+
+    @LogConnections.setter
+    def LogConnections(self, LogConnections):
+        self._LogConnections = LogConnections
+
+    @property
+    def LogDetailParams(self):
+        r"""指定日志筛选的字段。
+        :rtype: list of str
+        """
+        return self._LogDetailParams
+
+    @LogDetailParams.setter
+    def LogDetailParams(self, LogDetailParams):
+        self._LogDetailParams = LogDetailParams
+
+    @property
+    def Offset(self):
+        r"""偏移量，最小值为0，最大值为10000，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小，最小值为1，最大值为100，默认值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._NodeNames = params.get("NodeNames")
+        self._LogComponents = params.get("LogComponents")
+        self._LogLevels = params.get("LogLevels")
+        self._LogIds = params.get("LogIds")
+        self._LogConnections = params.get("LogConnections")
+        self._LogDetailParams = params.get("LogDetailParams")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMongodbLogsResponse(AbstractModel):
+    r"""DescribeMongodbLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 日志总数。
+        :type TotalCount: int
+        :param _LogList: 日志详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogList: list of LogInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""日志总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LogList(self):
+        r"""日志详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogInfo
+        """
+        return self._LogList
+
+    @LogList.setter
+    def LogList(self, LogList):
+        self._LogList = LogList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LogList") is not None:
+            self._LogList = []
+            for item in params.get("LogList"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self._LogList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9563,6 +10284,129 @@ class KillOpsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogInfo(AbstractModel):
+    r"""日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogComponent: 日志类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogComponent: str
+        :param _LogLevel: 日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: str
+        :param _LogTime: 日志产生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTime: str
+        :param _LogDetail: 日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogDetail: str
+        :param _LogConnection: 日志连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConnection: str
+        :param _LogId: 日志id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: str
+        """
+        self._LogComponent = None
+        self._LogLevel = None
+        self._LogTime = None
+        self._LogDetail = None
+        self._LogConnection = None
+        self._LogId = None
+
+    @property
+    def LogComponent(self):
+        r"""日志类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogComponent
+
+    @LogComponent.setter
+    def LogComponent(self, LogComponent):
+        self._LogComponent = LogComponent
+
+    @property
+    def LogLevel(self):
+        r"""日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def LogTime(self):
+        r"""日志产生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def LogDetail(self):
+        r"""日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogDetail
+
+    @LogDetail.setter
+    def LogDetail(self, LogDetail):
+        self._LogDetail = LogDetail
+
+    @property
+    def LogConnection(self):
+        r"""日志连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogConnection
+
+    @LogConnection.setter
+    def LogConnection(self, LogConnection):
+        self._LogConnection = LogConnection
+
+    @property
+    def LogId(self):
+        r"""日志id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+
+    def _deserialize(self, params):
+        self._LogComponent = params.get("LogComponent")
+        self._LogLevel = params.get("LogLevel")
+        self._LogTime = params.get("LogTime")
+        self._LogDetail = params.get("LogDetail")
+        self._LogConnection = params.get("LogConnection")
+        self._LogId = params.get("LogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
     r"""ModifyDBInstanceNetworkAddress请求参数结构体
 
@@ -13091,6 +13935,159 @@ class TagInfo(AbstractModel):
         
 
 
+class Task(AbstractModel):
+    r"""日志下载任务描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 下载任务类型，0:慢日志，1:错误日志
+        :type TaskType: int
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _FileSize: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param _Status: 任务状态，0:初始化，1:运行中，2:成功，3:失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Percent: 百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        :param _Url: 下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._TaskType = None
+        self._TaskId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FileSize = None
+        self._Status = None
+        self._Percent = None
+        self._Url = None
+
+    @property
+    def TaskType(self):
+        r"""下载任务类型，0:慢日志，1:错误日志
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FileSize(self):
+        r"""文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def Status(self):
+        r"""任务状态，0:初始化，1:运行中，2:成功，3:失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Percent(self):
+        r"""百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Url(self):
+        r"""下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._TaskId = params.get("TaskId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FileSize = params.get("FileSize")
+        self._Status = params.get("Status")
+        self._Percent = params.get("Percent")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TerminateDBInstancesRequest(AbstractModel):
     r"""TerminateDBInstances请求参数结构体
 
@@ -13152,6 +14149,209 @@ class TerminateDBInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
+    r"""UpgradeDBInstanceKernelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param _InMaintenance: 是否维护时间内升级。0-否，1-是
+        :type InMaintenance: int
+        """
+        self._InstanceId = None
+        self._InMaintenance = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InMaintenance(self):
+        r"""是否维护时间内升级。0-否，1-是
+        :rtype: int
+        """
+        return self._InMaintenance
+
+    @InMaintenance.setter
+    def InMaintenance(self, InMaintenance):
+        self._InMaintenance = InMaintenance
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InMaintenance = params.get("InMaintenance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
+    r"""UpgradeDBInstanceKernelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步流程任务ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""异步流程任务ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeDbInstanceVersionRequest(AbstractModel):
+    r"""UpgradeDbInstanceVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param _MongoVersion: 新升级的数据库版本，当前仅支持MONGO_40_WT（MongoDB 4.0 WiredTiger存储引擎版本）及MONGO_42_WT（MongoDB 4.0 WiredTiger存储引擎版本）。
+        :type MongoVersion: str
+        :param _InMaintenance: 是否在维护时间内升级。0-立即升级 1-维护时间内升级
+        :type InMaintenance: int
+        """
+        self._InstanceId = None
+        self._MongoVersion = None
+        self._InMaintenance = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MongoVersion(self):
+        r"""新升级的数据库版本，当前仅支持MONGO_40_WT（MongoDB 4.0 WiredTiger存储引擎版本）及MONGO_42_WT（MongoDB 4.0 WiredTiger存储引擎版本）。
+        :rtype: str
+        """
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def InMaintenance(self):
+        r"""是否在维护时间内升级。0-立即升级 1-维护时间内升级
+        :rtype: int
+        """
+        return self._InMaintenance
+
+    @InMaintenance.setter
+    def InMaintenance(self, InMaintenance):
+        self._InMaintenance = InMaintenance
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MongoVersion = params.get("MongoVersion")
+        self._InMaintenance = params.get("InMaintenance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDbInstanceVersionResponse(AbstractModel):
+    r"""UpgradeDbInstanceVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步流程任务ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""异步流程任务ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

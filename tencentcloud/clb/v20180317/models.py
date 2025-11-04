@@ -18,219 +18,6 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AddCustomizedConfigRequest(AbstractModel):
-    r"""AddCustomizedConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ConfigName: 配置名字
-        :type ConfigName: str
-        :param _ConfigType: 配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
-        :type ConfigType: str
-        :param _ConfigContent: 配置内容
-        :type ConfigContent: str
-        :param _Tags: 标签
-        :type Tags: list of TagInfo
-        """
-        self._ConfigName = None
-        self._ConfigType = None
-        self._ConfigContent = None
-        self._Tags = None
-
-    @property
-    def ConfigName(self):
-        r"""配置名字
-        :rtype: str
-        """
-        return self._ConfigName
-
-    @ConfigName.setter
-    def ConfigName(self, ConfigName):
-        self._ConfigName = ConfigName
-
-    @property
-    def ConfigType(self):
-        r"""配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
-        :rtype: str
-        """
-        return self._ConfigType
-
-    @ConfigType.setter
-    def ConfigType(self, ConfigType):
-        self._ConfigType = ConfigType
-
-    @property
-    def ConfigContent(self):
-        r"""配置内容
-        :rtype: str
-        """
-        return self._ConfigContent
-
-    @ConfigContent.setter
-    def ConfigContent(self, ConfigContent):
-        self._ConfigContent = ConfigContent
-
-    @property
-    def Tags(self):
-        r"""标签
-        :rtype: list of TagInfo
-        """
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-
-    def _deserialize(self, params):
-        self._ConfigName = params.get("ConfigName")
-        self._ConfigType = params.get("ConfigType")
-        self._ConfigContent = params.get("ConfigContent")
-        if params.get("Tags") is not None:
-            self._Tags = []
-            for item in params.get("Tags"):
-                obj = TagInfo()
-                obj._deserialize(item)
-                self._Tags.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddCustomizedConfigResponse(AbstractModel):
-    r"""AddCustomizedConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ConfigId: 配置ID
-        :type ConfigId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ConfigId = None
-        self._RequestId = None
-
-    @property
-    def ConfigId(self):
-        r"""配置ID
-        :rtype: str
-        """
-        return self._ConfigId
-
-    @ConfigId.setter
-    def ConfigId(self, ConfigId):
-        self._ConfigId = ConfigId
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ConfigId = params.get("ConfigId")
-        self._RequestId = params.get("RequestId")
-
-
-class AssociateCustomizedConfigRequest(AbstractModel):
-    r"""AssociateCustomizedConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UconfigId: 配置ID
-        :type UconfigId: str
-        :param _BindList: 关联的server或location
-        :type BindList: list of BindItem
-        """
-        self._UconfigId = None
-        self._BindList = None
-
-    @property
-    def UconfigId(self):
-        r"""配置ID
-        :rtype: str
-        """
-        return self._UconfigId
-
-    @UconfigId.setter
-    def UconfigId(self, UconfigId):
-        self._UconfigId = UconfigId
-
-    @property
-    def BindList(self):
-        r"""关联的server或location
-        :rtype: list of BindItem
-        """
-        return self._BindList
-
-    @BindList.setter
-    def BindList(self, BindList):
-        self._BindList = BindList
-
-
-    def _deserialize(self, params):
-        self._UconfigId = params.get("UconfigId")
-        if params.get("BindList") is not None:
-            self._BindList = []
-            for item in params.get("BindList"):
-                obj = BindItem()
-                obj._deserialize(item)
-                self._BindList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AssociateCustomizedConfigResponse(AbstractModel):
-    r"""AssociateCustomizedConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class AssociateTargetGroupsRequest(AbstractModel):
     r"""AssociateTargetGroups请求参数结构体
 
@@ -1535,87 +1322,6 @@ class BindDetailItem(AbstractModel):
         self._Vport = params.get("Vport")
         self._Url = params.get("Url")
         self._UconfigId = params.get("UconfigId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BindItem(AbstractModel):
-    r"""配置绑定关系
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LoadBalancerId: 配置绑定的CLB ID
-        :type LoadBalancerId: str
-        :param _ListenerId: 配置绑定的监听器ID
-        :type ListenerId: str
-        :param _Domain: 配置绑定的域名
-        :type Domain: str
-        :param _LocationId: 配置绑定的规则
-        :type LocationId: str
-        """
-        self._LoadBalancerId = None
-        self._ListenerId = None
-        self._Domain = None
-        self._LocationId = None
-
-    @property
-    def LoadBalancerId(self):
-        r"""配置绑定的CLB ID
-        :rtype: str
-        """
-        return self._LoadBalancerId
-
-    @LoadBalancerId.setter
-    def LoadBalancerId(self, LoadBalancerId):
-        self._LoadBalancerId = LoadBalancerId
-
-    @property
-    def ListenerId(self):
-        r"""配置绑定的监听器ID
-        :rtype: str
-        """
-        return self._ListenerId
-
-    @ListenerId.setter
-    def ListenerId(self, ListenerId):
-        self._ListenerId = ListenerId
-
-    @property
-    def Domain(self):
-        r"""配置绑定的域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def LocationId(self):
-        r"""配置绑定的规则
-        :rtype: str
-        """
-        return self._LocationId
-
-    @LocationId.setter
-    def LocationId(self, LocationId):
-        self._LocationId = LocationId
-
-
-    def _deserialize(self, params):
-        self._LoadBalancerId = params.get("LoadBalancerId")
-        self._ListenerId = params.get("ListenerId")
-        self._Domain = params.get("Domain")
-        self._LocationId = params.get("LocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4048,6 +3754,16 @@ class CreateListenerRequest(AbstractModel):
         :type SslCloseSwitch: bool
         :param _DataCompressMode: 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
         :type DataCompressMode: str
+        :param _RescheduleTargetZeroWeight: 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        :type RescheduleTargetZeroWeight: bool
+        :param _RescheduleUnhealthy: 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。
+        :type RescheduleUnhealthy: bool
+        :param _RescheduleExpandTarget: 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        :type RescheduleExpandTarget: bool
+        :param _RescheduleStartTime: 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :type RescheduleStartTime: int
+        :param _RescheduleInterval: 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :type RescheduleInterval: int
         """
         self._LoadBalancerId = None
         self._Ports = None
@@ -4073,6 +3789,11 @@ class CreateListenerRequest(AbstractModel):
         self._H2cSwitch = None
         self._SslCloseSwitch = None
         self._DataCompressMode = None
+        self._RescheduleTargetZeroWeight = None
+        self._RescheduleUnhealthy = None
+        self._RescheduleExpandTarget = None
+        self._RescheduleStartTime = None
+        self._RescheduleInterval = None
 
     @property
     def LoadBalancerId(self):
@@ -4348,6 +4069,61 @@ class CreateListenerRequest(AbstractModel):
     def DataCompressMode(self, DataCompressMode):
         self._DataCompressMode = DataCompressMode
 
+    @property
+    def RescheduleTargetZeroWeight(self):
+        r"""重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        :rtype: bool
+        """
+        return self._RescheduleTargetZeroWeight
+
+    @RescheduleTargetZeroWeight.setter
+    def RescheduleTargetZeroWeight(self, RescheduleTargetZeroWeight):
+        self._RescheduleTargetZeroWeight = RescheduleTargetZeroWeight
+
+    @property
+    def RescheduleUnhealthy(self):
+        r"""重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。
+        :rtype: bool
+        """
+        return self._RescheduleUnhealthy
+
+    @RescheduleUnhealthy.setter
+    def RescheduleUnhealthy(self, RescheduleUnhealthy):
+        self._RescheduleUnhealthy = RescheduleUnhealthy
+
+    @property
+    def RescheduleExpandTarget(self):
+        r"""重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        :rtype: bool
+        """
+        return self._RescheduleExpandTarget
+
+    @RescheduleExpandTarget.setter
+    def RescheduleExpandTarget(self, RescheduleExpandTarget):
+        self._RescheduleExpandTarget = RescheduleExpandTarget
+
+    @property
+    def RescheduleStartTime(self):
+        r"""重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :rtype: int
+        """
+        return self._RescheduleStartTime
+
+    @RescheduleStartTime.setter
+    def RescheduleStartTime(self, RescheduleStartTime):
+        self._RescheduleStartTime = RescheduleStartTime
+
+    @property
+    def RescheduleInterval(self):
+        r"""重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :rtype: int
+        """
+        return self._RescheduleInterval
+
+    @RescheduleInterval.setter
+    def RescheduleInterval(self, RescheduleInterval):
+        self._RescheduleInterval = RescheduleInterval
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -4380,6 +4156,11 @@ class CreateListenerRequest(AbstractModel):
         self._H2cSwitch = params.get("H2cSwitch")
         self._SslCloseSwitch = params.get("SslCloseSwitch")
         self._DataCompressMode = params.get("DataCompressMode")
+        self._RescheduleTargetZeroWeight = params.get("RescheduleTargetZeroWeight")
+        self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
+        self._RescheduleExpandTarget = params.get("RescheduleExpandTarget")
+        self._RescheduleStartTime = params.get("RescheduleStartTime")
+        self._RescheduleInterval = params.get("RescheduleInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4456,7 +4237,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ProjectId: int
         :param _AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
         :type AddressIPVersion: str
-        :param _Number: 创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
+        :param _Number: 创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
         :type Number: int
         :param _MasterZoneId: 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。
@@ -4622,7 +4403,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Number(self):
-        r"""创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
+        r"""创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
         :rtype: int
         """
         return self._Number
@@ -5800,70 +5581,6 @@ class CrossTargets(AbstractModel):
         
 
 
-class DeleteCustomizedConfigRequest(AbstractModel):
-    r"""DeleteCustomizedConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UconfigIdList: 删除的配置ID列表
-        :type UconfigIdList: list of str
-        """
-        self._UconfigIdList = None
-
-    @property
-    def UconfigIdList(self):
-        r"""删除的配置ID列表
-        :rtype: list of str
-        """
-        return self._UconfigIdList
-
-    @UconfigIdList.setter
-    def UconfigIdList(self, UconfigIdList):
-        self._UconfigIdList = UconfigIdList
-
-
-    def _deserialize(self, params):
-        self._UconfigIdList = params.get("UconfigIdList")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteCustomizedConfigResponse(AbstractModel):
-    r"""DeleteCustomizedConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DeleteListenerRequest(AbstractModel):
     r"""DeleteListener请求参数结构体
 
@@ -6031,9 +5748,9 @@ class DeleteLoadBalancerRequest(AbstractModel):
         r"""
         :param _LoadBalancerIds: 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
         :type LoadBalancerIds: list of str
-        :param _ForceDelete: 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-默认为 False。
-以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+        :param _ForceDelete: 是否强制删除clb。true表示强制删除，false表示不是强制删除，需要做拦截校验。
+默认为false。
+以下几种情况会默认拦截删除操作，如果触发情况1、2但确认强制删除则需要传强制校验参数ForceDelete为true。
 1、删除后端绑定大于等于 20 个 RS 的实例时。
 2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
 3、单地域内 5 分钟 内删除大于等于 30 个实例时。
@@ -6055,9 +5772,9 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     @property
     def ForceDelete(self):
-        r"""是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-默认为 False。
-以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+        r"""是否强制删除clb。true表示强制删除，false表示不是强制删除，需要做拦截校验。
+默认为false。
+以下几种情况会默认拦截删除操作，如果触发情况1、2但确认强制删除则需要传强制校验参数ForceDelete为true。
 1、删除后端绑定大于等于 20 个 RS 的实例时。
 2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
 3、单地域内 5 分钟 内删除大于等于 30 个实例时。
@@ -11084,90 +10801,6 @@ class DescribeTaskStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DisassociateCustomizedConfigRequest(AbstractModel):
-    r"""DisassociateCustomizedConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UconfigId: 配置ID
-        :type UconfigId: str
-        :param _BindList: 解绑的列表
-        :type BindList: list of BindItem
-        """
-        self._UconfigId = None
-        self._BindList = None
-
-    @property
-    def UconfigId(self):
-        r"""配置ID
-        :rtype: str
-        """
-        return self._UconfigId
-
-    @UconfigId.setter
-    def UconfigId(self, UconfigId):
-        self._UconfigId = UconfigId
-
-    @property
-    def BindList(self):
-        r"""解绑的列表
-        :rtype: list of BindItem
-        """
-        return self._BindList
-
-    @BindList.setter
-    def BindList(self, BindList):
-        self._BindList = BindList
-
-
-    def _deserialize(self, params):
-        self._UconfigId = params.get("UconfigId")
-        if params.get("BindList") is not None:
-            self._BindList = []
-            for item in params.get("BindList"):
-                obj = BindItem()
-                obj._deserialize(item)
-                self._BindList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DisassociateCustomizedConfigResponse(AbstractModel):
-    r"""DisassociateCustomizedConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DisassociateTargetGroupsRequest(AbstractModel):
     r"""DisassociateTargetGroups请求参数结构体
 
@@ -16190,100 +15823,6 @@ class ModifyBlockIPListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyCustomizedConfigRequest(AbstractModel):
-    r"""ModifyCustomizedConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ConfigName: 配置名字
-        :type ConfigName: str
-        :param _UconfigId: 配置ID
-        :type UconfigId: str
-        :param _ConfigContent: 配置内容
-        :type ConfigContent: str
-        """
-        self._ConfigName = None
-        self._UconfigId = None
-        self._ConfigContent = None
-
-    @property
-    def ConfigName(self):
-        r"""配置名字
-        :rtype: str
-        """
-        return self._ConfigName
-
-    @ConfigName.setter
-    def ConfigName(self, ConfigName):
-        self._ConfigName = ConfigName
-
-    @property
-    def UconfigId(self):
-        r"""配置ID
-        :rtype: str
-        """
-        return self._UconfigId
-
-    @UconfigId.setter
-    def UconfigId(self, UconfigId):
-        self._UconfigId = UconfigId
-
-    @property
-    def ConfigContent(self):
-        r"""配置内容
-        :rtype: str
-        """
-        return self._ConfigContent
-
-    @ConfigContent.setter
-    def ConfigContent(self, ConfigContent):
-        self._ConfigContent = ConfigContent
-
-
-    def _deserialize(self, params):
-        self._ConfigName = params.get("ConfigName")
-        self._UconfigId = params.get("UconfigId")
-        self._ConfigContent = params.get("ConfigContent")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCustomizedConfigResponse(AbstractModel):
-    r"""ModifyCustomizedConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyDomainAttributesRequest(AbstractModel):
     r"""ModifyDomainAttributes请求参数结构体
 
@@ -16817,6 +16356,16 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         :type SnatEnable: bool
         :param _DataCompressMode: 数据压缩模式
         :type DataCompressMode: str
+        :param _RescheduleTargetZeroWeight: 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        :type RescheduleTargetZeroWeight: bool
+        :param _RescheduleUnhealthy: 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+        :type RescheduleUnhealthy: bool
+        :param _RescheduleExpandTarget: 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        :type RescheduleExpandTarget: bool
+        :param _RescheduleStartTime: 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :type RescheduleStartTime: int
+        :param _RescheduleInterval: 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :type RescheduleInterval: int
         """
         self._LoadBalancerId = None
         self._ListenerId = None
@@ -16837,6 +16386,11 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         self._ProxyProtocol = None
         self._SnatEnable = None
         self._DataCompressMode = None
+        self._RescheduleTargetZeroWeight = None
+        self._RescheduleUnhealthy = None
+        self._RescheduleExpandTarget = None
+        self._RescheduleStartTime = None
+        self._RescheduleInterval = None
 
     @property
     def LoadBalancerId(self):
@@ -17058,6 +16612,61 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
     def DataCompressMode(self, DataCompressMode):
         self._DataCompressMode = DataCompressMode
 
+    @property
+    def RescheduleTargetZeroWeight(self):
+        r"""重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        :rtype: bool
+        """
+        return self._RescheduleTargetZeroWeight
+
+    @RescheduleTargetZeroWeight.setter
+    def RescheduleTargetZeroWeight(self, RescheduleTargetZeroWeight):
+        self._RescheduleTargetZeroWeight = RescheduleTargetZeroWeight
+
+    @property
+    def RescheduleUnhealthy(self):
+        r"""重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+        :rtype: bool
+        """
+        return self._RescheduleUnhealthy
+
+    @RescheduleUnhealthy.setter
+    def RescheduleUnhealthy(self, RescheduleUnhealthy):
+        self._RescheduleUnhealthy = RescheduleUnhealthy
+
+    @property
+    def RescheduleExpandTarget(self):
+        r"""重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        :rtype: bool
+        """
+        return self._RescheduleExpandTarget
+
+    @RescheduleExpandTarget.setter
+    def RescheduleExpandTarget(self, RescheduleExpandTarget):
+        self._RescheduleExpandTarget = RescheduleExpandTarget
+
+    @property
+    def RescheduleStartTime(self):
+        r"""重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :rtype: int
+        """
+        return self._RescheduleStartTime
+
+    @RescheduleStartTime.setter
+    def RescheduleStartTime(self, RescheduleStartTime):
+        self._RescheduleStartTime = RescheduleStartTime
+
+    @property
+    def RescheduleInterval(self):
+        r"""重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :rtype: int
+        """
+        return self._RescheduleInterval
+
+    @RescheduleInterval.setter
+    def RescheduleInterval(self, RescheduleInterval):
+        self._RescheduleInterval = RescheduleInterval
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -17085,6 +16694,11 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         self._ProxyProtocol = params.get("ProxyProtocol")
         self._SnatEnable = params.get("SnatEnable")
         self._DataCompressMode = params.get("DataCompressMode")
+        self._RescheduleTargetZeroWeight = params.get("RescheduleTargetZeroWeight")
+        self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
+        self._RescheduleExpandTarget = params.get("RescheduleExpandTarget")
+        self._RescheduleStartTime = params.get("RescheduleStartTime")
+        self._RescheduleInterval = params.get("RescheduleInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1417,6 +1417,171 @@ class CreateExportRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测枚举值：- TRAIN- NOTEBOOK- INFER- BATCH
+        :type Service: str
+        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :type ServiceId: str
+        :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        :type StartTime: str
+        :param _EndTime: 日志查询结束时间（RFC3339格式的时间字符串），开始时间和结束时间必须同时填或同时不填，默认值为当前时间
+        :type EndTime: str
+        :param _Format: 日志导出数据格式。json，csv，默认为csv
+        :type Format: str
+        :param _PodName: Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList注：支持结尾通配符*
+        :type PodName: str
+        :param _JobCategory: 描述任务的类型
+        :type JobCategory: str
+        :param _InstanceType: 实例的类型
+        :type InstanceType: str
+        :param _InstanceId: 查实例Id
+        :type InstanceId: str
+        :param _Type: 日志类型： PLATFORM_INIT, PLATFORM_SANITY_CHECK, USER
+        :type Type: str
+        """
+        self._Service = None
+        self._ServiceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Format = None
+        self._PodName = None
+        self._JobCategory = None
+        self._InstanceType = None
+        self._InstanceId = None
+        self._Type = None
+
+    @property
+    def Service(self):
+        r"""服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测枚举值：- TRAIN- NOTEBOOK- INFER- BATCH
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def ServiceId(self):
+        r"""服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StartTime(self):
+        r"""日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""日志查询结束时间（RFC3339格式的时间字符串），开始时间和结束时间必须同时填或同时不填，默认值为当前时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Format(self):
+        r"""日志导出数据格式。json，csv，默认为csv
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def PodName(self):
+        r"""Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList注：支持结尾通配符*
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def JobCategory(self):
+        r"""描述任务的类型
+        :rtype: str
+        """
+        return self._JobCategory
+
+    @JobCategory.setter
+    def JobCategory(self, JobCategory):
+        self._JobCategory = JobCategory
+
+    @property
+    def InstanceType(self):
+        r"""实例的类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        r"""查实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        r"""日志类型： PLATFORM_INIT, PLATFORM_SANITY_CHECK, USER
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._ServiceId = params.get("ServiceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Format = params.get("Format")
+        self._PodName = params.get("PodName")
+        self._JobCategory = params.get("JobCategory")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateExportResponse(AbstractModel):
     r"""CreateExport返回参数结构体
@@ -1425,10 +1590,24 @@ class CreateExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ExportId: 日志下载任务的ID
+        :type ExportId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ExportId = None
         self._RequestId = None
+
+    @property
+    def ExportId(self):
+        r"""日志下载任务的ID
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
 
     @property
     def RequestId(self):
@@ -1443,6 +1622,7 @@ class CreateExportResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ExportId = params.get("ExportId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7655,6 +7835,36 @@ class DescribeExportRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ExportId: 日志下载任务的ID
+        :type ExportId: str
+        """
+        self._ExportId = None
+
+    @property
+    def ExportId(self):
+        r"""日志下载任务的ID
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
+
+
+    def _deserialize(self, params):
+        self._ExportId = params.get("ExportId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeExportResponse(AbstractModel):
     r"""DescribeExport返回参数结构体
@@ -7663,6 +7873,14 @@ class DescribeExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ExportId: 日志下载任务的ID
+        :type ExportId: str
+        :param _FileName: 日志下载文件名
+        :type FileName: str
+        :param _CosPath: 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        :type CosPath: str
+        :param _CreateTime: 下载任务创建时间
+        :type CreateTime: str
         :param _FileSize: 日志文件大小
         :type FileSize: str
         :param _Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
@@ -7670,9 +7888,57 @@ class DescribeExportResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ExportId = None
+        self._FileName = None
+        self._CosPath = None
+        self._CreateTime = None
         self._FileSize = None
         self._Status = None
         self._RequestId = None
+
+    @property
+    def ExportId(self):
+        r"""日志下载任务的ID
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
+
+    @property
+    def FileName(self):
+        r"""日志下载文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CosPath(self):
+        r"""日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        :rtype: str
+        """
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+    @property
+    def CreateTime(self):
+        r"""下载任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
     @property
     def FileSize(self):
@@ -7709,6 +7975,10 @@ class DescribeExportResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ExportId = params.get("ExportId")
+        self._FileName = params.get("FileName")
+        self._CosPath = params.get("CosPath")
+        self._CreateTime = params.get("CreateTime")
         self._FileSize = params.get("FileSize")
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")

@@ -986,14 +986,14 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Account: 私有域解析账号
+        :param _Account: 私有域解析账号，该账号不能与主账号一致且需要子账号授权
         :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
         """
         self._Account = None
 
     @property
     def Account(self):
-        r"""私有域解析账号
+        r"""私有域解析账号，该账号不能与主账号一致且需要子账号授权
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
         """
         return self._Account

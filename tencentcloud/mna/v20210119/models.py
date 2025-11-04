@@ -6116,7 +6116,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :type DeviceList: list of str
         :param _AutoRenewFlag: 是否自动续费，该选项和流量截断冲突，只能开启一个
         :type AutoRenewFlag: bool
-        :param _PackageRegion: 区域标识，0：国内，1：国外
+        :param _PackageRegion: 区域标识，0：中国境内，1：中国境外
         :type PackageRegion: int
         :param _FlowTruncFlag: 是否开启流量截断功能，该选项和自动续费冲突
         :type FlowTruncFlag: bool
@@ -6182,7 +6182,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 
     @property
     def PackageRegion(self):
-        r"""区域标识，0：国内，1：国外
+        r"""区域标识，0：中国境内，1：中国境外
         :rtype: int
         """
         return self._PackageRegion

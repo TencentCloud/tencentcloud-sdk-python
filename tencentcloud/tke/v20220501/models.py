@@ -222,6 +222,192 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class Cluster(AbstractModel):
+    r"""集群信息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterDescription: 集群描述
+        :type ClusterDescription: str
+        :param _ClusterVersion: 集群版本（默认值为1.10.5）
+        :type ClusterVersion: str
+        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        :type ClusterType: str
+        :param _TagSpecification: 标签描述列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: list of TagSpecification
+        :param _ClusterStatus: 集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Upgrading 升级中,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 欠费隔离中,ResourceIsolated 欠费已隔离,ResourceReverse 冲正恢复中,Abnormal 异常)
+        :type ClusterStatus: str
+        :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _ClusterLevel: 集群等级，针对托管集群生效
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterLevel: str
+        :param _VpcId: 集群所在vpc的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._ClusterDescription = None
+        self._ClusterVersion = None
+        self._ClusterType = None
+        self._TagSpecification = None
+        self._ClusterStatus = None
+        self._CreatedTime = None
+        self._ClusterLevel = None
+        self._VpcId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterDescription(self):
+        r"""集群描述
+        :rtype: str
+        """
+        return self._ClusterDescription
+
+    @ClusterDescription.setter
+    def ClusterDescription(self, ClusterDescription):
+        self._ClusterDescription = ClusterDescription
+
+    @property
+    def ClusterVersion(self):
+        r"""集群版本（默认值为1.10.5）
+        :rtype: str
+        """
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def ClusterType(self):
+        r"""集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TagSpecification(self):
+        r"""标签描述列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagSpecification
+        """
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
+    @property
+    def ClusterStatus(self):
+        r"""集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Upgrading 升级中,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 欠费隔离中,ResourceIsolated 欠费已隔离,ResourceReverse 冲正恢复中,Abnormal 异常)
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ClusterLevel(self):
+        r"""集群等级，针对托管集群生效
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
+    def VpcId(self):
+        r"""集群所在vpc的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterDescription = params.get("ClusterDescription")
+        self._ClusterVersion = params.get("ClusterVersion")
+        self._ClusterType = params.get("ClusterType")
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._TagSpecification.append(obj)
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ClusterLevel = params.get("ClusterLevel")
+        self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateHealthCheckPolicyRequest(AbstractModel):
     r"""CreateHealthCheckPolicy请求参数结构体
 
@@ -1576,6 +1762,263 @@ class DescribeClusterInstancesResponse(AbstractModel):
                 obj = Instance()
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
+        self._Errors = params.get("Errors")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClustersRequest(AbstractModel):
+    r"""DescribeClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID列表(为空时，
+表示获取账号下所有集群)
+        :type ClusterIds: list of str
+        :param _Offset: 偏移量,默认0
+        :type Offset: int
+        :param _Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        :param _Filters: ·  ClusterName
+    按照【集群名】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterType
+    按照【集群类型】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterStatus
+    按照【集群状态】进行过滤。
+    类型：String
+    必选：否
+
+·  Tags
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+
+·  vpc-id
+    按照【VPC】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-key
+    按照【标签键】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-value
+    按照【标签值】进行过滤。
+    类型：String
+    必选：否
+
+·  tag:tag-key
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+        :type Filters: list of Filter
+        :param _ClusterType: 集群类型，例如：MANAGED_CLUSTER
+        :type ClusterType: str
+        """
+        self._ClusterIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._ClusterType = None
+
+    @property
+    def ClusterIds(self):
+        r"""集群ID列表(为空时，
+表示获取账号下所有集群)
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def Offset(self):
+        r"""偏移量,默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条数，默认20，最大为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""·  ClusterName
+    按照【集群名】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterType
+    按照【集群类型】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterStatus
+    按照【集群状态】进行过滤。
+    类型：String
+    必选：否
+
+·  Tags
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+
+·  vpc-id
+    按照【VPC】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-key
+    按照【标签键】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-value
+    按照【标签值】进行过滤。
+    类型：String
+    必选：否
+
+·  tag:tag-key
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ClusterType(self):
+        r"""集群类型，例如：MANAGED_CLUSTER
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClustersResponse(AbstractModel):
+    r"""DescribeClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 集群总个数
+        :type TotalCount: int
+        :param _Clusters: 集群信息列表
+        :type Clusters: list of Cluster
+        :param _Errors: 错误信息集合
+        :type Errors: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Clusters = None
+        self._Errors = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""集群总个数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Clusters(self):
+        r"""集群信息列表
+        :rtype: list of Cluster
+        """
+        return self._Clusters
+
+    @Clusters.setter
+    def Clusters(self, Clusters):
+        self._Clusters = Clusters
+
+    @property
+    def Errors(self):
+        r"""错误信息集合
+        :rtype: list of str
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Clusters") is not None:
+            self._Clusters = []
+            for item in params.get("Clusters"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self._Clusters.append(obj)
         self._Errors = params.get("Errors")
         self._RequestId = params.get("RequestId")
 

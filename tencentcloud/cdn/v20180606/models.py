@@ -26252,12 +26252,16 @@ class UrlRedirectRule(AbstractModel):
         :param _FullMatch: 指定是全路径配置还是任意匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullMatch: bool
+        :param _Regex: pattern是否支持正则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: bool
         """
         self._RedirectStatusCode = None
         self._Pattern = None
         self._RedirectUrl = None
         self._RedirectHost = None
         self._FullMatch = None
+        self._Regex = None
 
     @property
     def RedirectStatusCode(self):
@@ -26316,6 +26320,18 @@ class UrlRedirectRule(AbstractModel):
     def FullMatch(self, FullMatch):
         self._FullMatch = FullMatch
 
+    @property
+    def Regex(self):
+        r"""pattern是否支持正则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
 
     def _deserialize(self, params):
         self._RedirectStatusCode = params.get("RedirectStatusCode")
@@ -26323,6 +26339,7 @@ class UrlRedirectRule(AbstractModel):
         self._RedirectUrl = params.get("RedirectUrl")
         self._RedirectHost = params.get("RedirectHost")
         self._FullMatch = params.get("FullMatch")
+        self._Regex = params.get("Regex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

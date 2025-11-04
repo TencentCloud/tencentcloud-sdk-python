@@ -2042,6 +2042,145 @@ class AddOnSubtitle(AbstractModel):
         
 
 
+class AdvancedSuperResolutionConfig(AbstractModel):
+    r"""超分配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Type: 类型，可选值：
+<li>standard：通用超分</li>
+<li>super：高级超分。</li>
+默认值：standard。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Mode: 输出图片模式，默认percent。
+<li> aspect: 超分至指定宽高的较大矩形。</li>
+<li> fixed: 超分至固定宽高，强制缩放。</li>
+<li> percent: 超分倍率，可以为小数。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Percent: 超分倍率，可以为小数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: float
+        :param _Width: 目标图片宽度，不能超过4096。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 目标图片高度，不能超过4096。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Mode = None
+        self._Percent = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""类型，可选值：
+<li>standard：通用超分</li>
+<li>super：高级超分。</li>
+默认值：standard。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mode(self):
+        r"""输出图片模式，默认percent。
+<li> aspect: 超分至指定宽高的较大矩形。</li>
+<li> fixed: 超分至固定宽高，强制缩放。</li>
+<li> percent: 超分倍率，可以为小数。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Percent(self):
+        r"""超分倍率，可以为小数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Width(self):
+        r"""目标图片宽度，不能超过4096。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""目标图片高度，不能超过4096。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._Percent = params.get("Percent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisResult(AbstractModel):
     r"""智能分析结果
 
@@ -16741,7 +16880,25 @@ class CosFileUploadTrigger(AbstractModel):
         :type Region: str
         :param _Dir: 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。
         :type Dir: str
-        :param _Formats: 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
+        :param _Formats: 支持的所有格式如下：
+
+- 视频文件扩展名，支持以下选择，共15种：
+`.mp4`、`.avi`、`.mov`、`.wmv`、`.flv`、`.mkv`、`.mpg`、`.mpeg`、`.rm`、`.rmvb`、`.asf`、`.3gp`、`.webm`、`.ts`、`.m4v`
+
+- 音频文件扩展名，支持以下选择，共7种：
+`.mp3`、`.wav`、`.aac`、`.flac`、`.ogg`、`.m4a`、`.amr`
+
+- 字幕文件扩展名，支持以下选择，共2种：
+`.vtt`、`.srt`
+
+- `*`：支持任意文件格式
+
+- 不传或者传空列表：支持系统预设文件格式（视频：`.mp4`、`.ts`、`.flv`、`.wmv`、`.asf`、`.rm`、`.rmvb`、`.mpg`、`.mpeg`、`.3gp`、`.mov`、`.webm`、`.mkv`、`.avi`、`.m4v`，音频：`.mp3`、`.m4a`、`.flac`、`.ogg`、`.wav`、`.amr`、`.aac`，字幕：`.vtt`、`.srt`）
+
+**注意**：
+1. 如果传入的格式列表中有`*`则表示为支持任意文件格式。
+2. 扩展名传入时带不带`.`都可以，比如 `.mp4` 或 `mp4` 均支持。
+3. 自定义文件扩展名需满足数字、字母字符，长度在[1,64]范围内。
         :type Formats: list of str
         """
         self._Bucket = None
@@ -16784,7 +16941,25 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Formats(self):
-        r"""工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
+        r"""支持的所有格式如下：
+
+- 视频文件扩展名，支持以下选择，共15种：
+`.mp4`、`.avi`、`.mov`、`.wmv`、`.flv`、`.mkv`、`.mpg`、`.mpeg`、`.rm`、`.rmvb`、`.asf`、`.3gp`、`.webm`、`.ts`、`.m4v`
+
+- 音频文件扩展名，支持以下选择，共7种：
+`.mp3`、`.wav`、`.aac`、`.flac`、`.ogg`、`.m4a`、`.amr`
+
+- 字幕文件扩展名，支持以下选择，共2种：
+`.vtt`、`.srt`
+
+- `*`：支持任意文件格式
+
+- 不传或者传空列表：支持系统预设文件格式（视频：`.mp4`、`.ts`、`.flv`、`.wmv`、`.asf`、`.rm`、`.rmvb`、`.mpg`、`.mpeg`、`.3gp`、`.mov`、`.webm`、`.mkv`、`.avi`、`.m4v`，音频：`.mp3`、`.m4a`、`.flac`、`.ogg`、`.wav`、`.amr`、`.aac`，字幕：`.vtt`、`.srt`）
+
+**注意**：
+1. 如果传入的格式列表中有`*`则表示为支持任意文件格式。
+2. 扩展名传入时带不带`.`都可以，比如 `.mp4` 或 `mp4` 均支持。
+3. 自定义文件扩展名需满足数字、字母字符，长度在[1,64]范围内。
         :rtype: list of str
         """
         return self._Formats
@@ -21155,28 +21330,32 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         :type Name: str
         :param _VideoSrcLanguage: 智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :type VideoSrcLanguage: str
         :param _SubtitleType: 智能字幕字幕语言类型
 0: 源语言
@@ -21188,38 +21367,60 @@ prime_zh: 中英方言
         :param _Comment: 智能字幕模板描述信息
 长度限制：256 个字符。
         :type Comment: str
-        :param _SubtitleFormat: 智能字幕文件格式
- vtt: WebVTT 格式
- srt: SRT 格式
-不填或填空：不生成字幕文件
+        :param _SubtitleFormat: 智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
         :type SubtitleFormat: str
         :param _AsrHotWordsConfigure: ASR热词库参数
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateSwitch: 字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: 字幕翻译目标语言
-当TranslateSwitch为ON的时候生效
+        :param _TranslateDstLanguage: 字幕翻译目标语言，当TranslateSwitch为`ON`的时候生效
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
         :type TranslateDstLanguage: str
+        :param _ProcessType: 字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下默认类型为 ASR识别字幕
+        :type ProcessType: int
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -21229,6 +21430,7 @@ hi：印地语
         self._AsrHotWordsConfigure = None
         self._TranslateSwitch = None
         self._TranslateDstLanguage = None
+        self._ProcessType = None
 
     @property
     def Name(self):
@@ -21246,28 +21448,32 @@ hi：印地语
     def VideoSrcLanguage(self):
         r"""智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -21306,10 +21512,19 @@ prime_zh: 中英方言
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式
- vtt: WebVTT 格式
- srt: SRT 格式
-不填或填空：不生成字幕文件
+        r"""智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
         :rtype: str
         """
         return self._SubtitleFormat
@@ -21332,8 +21547,10 @@ prime_zh: 中英方言
     @property
     def TranslateSwitch(self):
         r"""字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
         :rtype: str
         """
         return self._TranslateSwitch
@@ -21344,26 +21561,31 @@ OFF: 关闭翻译
 
     @property
     def TranslateDstLanguage(self):
-        r"""字幕翻译目标语言
-当TranslateSwitch为ON的时候生效
+        r"""字幕翻译目标语言，当TranslateSwitch为`ON`的时候生效
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -21371,6 +21593,21 @@ hi：印地语
     @TranslateDstLanguage.setter
     def TranslateDstLanguage(self, TranslateDstLanguage):
         self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def ProcessType(self):
+        r"""字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下默认类型为 ASR识别字幕
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
 
 
     def _deserialize(self, params):
@@ -21384,6 +21621,7 @@ hi：印地语
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateSwitch = params.get("TranslateSwitch")
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30349,12 +30587,17 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
         :type Type: str
         :param _Name: 智能字幕模板标识过滤条件，长度限制：64 个字符。
         :type Name: str
+        :param _ProcessType: 字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+        :type ProcessType: int
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
         self._Name = None
+        self._ProcessType = None
 
     @property
     def Definitions(self):
@@ -30413,6 +30656,19 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def ProcessType(self):
+        r"""字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -30420,6 +30676,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
         self._Name = params.get("Name")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32967,6 +33224,26 @@ high_compress：码率优先：优先保证降低文件体积大小，可能有�
 low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
 no_config：未配置。
         :type CompressType: str
+        :param _EnhanceSceneType: 增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+        :type EnhanceSceneType: str
+        :param _EnhanceTranscodeType: 增强转码类型，可选值：
+<li>Common（普通转码）</li>
+<li>TEHD-100（极速高清视频转码）</li>
+<li>TEHD-200（极速高清音频转码）</li>
+        :type EnhanceTranscodeType: str
+        :param _EnhanceType: 增强类型，可选值：
+<li>VideoEnhance（仅视频增强）</li>
+<li>AudioEnhance（仅音频增强）</li>
+<li>VideoAudioEnhance（视频音频增强都含）</li>
+        :type EnhanceType: str
         """
         self._Definitions = None
         self._Type = None
@@ -32978,6 +33255,9 @@ no_config：未配置。
         self._Name = None
         self._SceneType = None
         self._CompressType = None
+        self._EnhanceSceneType = None
+        self._EnhanceTranscodeType = None
+        self._EnhanceType = None
 
     @property
     def Definitions(self):
@@ -33114,6 +33394,53 @@ no_config：未配置。
     def CompressType(self, CompressType):
         self._CompressType = CompressType
 
+    @property
+    def EnhanceSceneType(self):
+        r"""增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+        :rtype: str
+        """
+        return self._EnhanceSceneType
+
+    @EnhanceSceneType.setter
+    def EnhanceSceneType(self, EnhanceSceneType):
+        self._EnhanceSceneType = EnhanceSceneType
+
+    @property
+    def EnhanceTranscodeType(self):
+        r"""增强转码类型，可选值：
+<li>Common（普通转码）</li>
+<li>TEHD-100（极速高清视频转码）</li>
+<li>TEHD-200（极速高清音频转码）</li>
+        :rtype: str
+        """
+        return self._EnhanceTranscodeType
+
+    @EnhanceTranscodeType.setter
+    def EnhanceTranscodeType(self, EnhanceTranscodeType):
+        self._EnhanceTranscodeType = EnhanceTranscodeType
+
+    @property
+    def EnhanceType(self):
+        r"""增强类型，可选值：
+<li>VideoEnhance（仅视频增强）</li>
+<li>AudioEnhance（仅音频增强）</li>
+<li>VideoAudioEnhance（视频音频增强都含）</li>
+        :rtype: str
+        """
+        return self._EnhanceType
+
+    @EnhanceType.setter
+    def EnhanceType(self, EnhanceType):
+        self._EnhanceType = EnhanceType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -33126,6 +33453,9 @@ no_config：未配置。
         self._Name = params.get("Name")
         self._SceneType = params.get("SceneType")
         self._CompressType = params.get("CompressType")
+        self._EnhanceSceneType = params.get("EnhanceSceneType")
+        self._EnhanceTranscodeType = params.get("EnhanceTranscodeType")
+        self._EnhanceType = params.get("EnhanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34176,6 +34506,77 @@ Info：一般性的流信息。
         
 
 
+class DiffusionEnhanceConfig(AbstractModel):
+    r"""大模型增强
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+
+ON：开启；
+OFF：关闭。
+默认，OFF。
+        :type Switch: str
+        :param _Type: 强度类型，可选值：
+
+weak
+normal
+strong
+默认值：normal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+
+ON：开启；
+OFF：关闭。
+默认，OFF。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""强度类型，可选值：
+
+weak
+normal
+strong
+默认值：normal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableScheduleRequest(AbstractModel):
     r"""DisableSchedule请求参数结构体
 
@@ -34415,6 +34816,10 @@ class DrmInfo(AbstractModel):
 输出HLS：可以使用切片模式或singlefile模式
 输出DASH：只能singlefile模式
 
+- widevine+fairplay:
+ 只能用于HLS，切片格式只能是mp4
+ 可以使用切片模式或singfile模式
+
         :type Type: str
         :param _SimpleAesDrm: SimpleAes 加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -34447,6 +34852,10 @@ class DrmInfo(AbstractModel):
 可以用于HLS和DASH，切片格式只能是mp4
 输出HLS：可以使用切片模式或singlefile模式
 输出DASH：只能singlefile模式
+
+- widevine+fairplay:
+ 只能用于HLS，切片格式只能是mp4
+ 可以使用切片模式或singfile模式
 
         :rtype: str
         """
@@ -38243,6 +38652,82 @@ class FrameRateConfig(AbstractModel):
         
 
 
+class FrameRateWithDenConfig(AbstractModel):
+    r"""新插帧配置，支持分数帧率
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _FpsNum: 帧率分子，取值范围：非负数，除以分母后小于120，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsNum: int
+        :param _FpsDen: 帧率分母，取值范围：大于等于1。 默认值 1。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 FpsDenominator。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsDen: int
+        """
+        self._Switch = None
+        self._FpsNum = None
+        self._FpsDen = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FpsNum(self):
+        r"""帧率分子，取值范围：非负数，除以分母后小于120，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FpsNum
+
+    @FpsNum.setter
+    def FpsNum(self, FpsNum):
+        self._FpsNum = FpsNum
+
+    @property
+    def FpsDen(self):
+        r"""帧率分母，取值范围：大于等于1。 默认值 1。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 FpsDenominator。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FpsDen
+
+    @FpsDen.setter
+    def FpsDen(self, FpsDen):
+        self._FpsDen = FpsDen
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FpsNum = params.get("FpsNum")
+        self._FpsDen = params.get("FpsDen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     r"""智能按帧标签任务控制参数
 
@@ -38457,7 +38942,7 @@ class HdrConfig(AbstractModel):
 <li>HDR10</li>
 <li>HLG</li>
 默认值：HDR10。
-注意：video的编码方式需要为h265；
+注意：video的编码方式需要为h264或h265；
 注意：视频编码位深为10。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -38485,7 +38970,7 @@ class HdrConfig(AbstractModel):
 <li>HDR10</li>
 <li>HLG</li>
 默认值：HDR10。
-注意：video的编码方式需要为h265；
+注意：video的编码方式需要为h264或h265；
 注意：视频编码位深为10。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -38932,6 +39417,8 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: 超分配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _AdvancedSuperResolutionConfig: 高级超分配置。
+        :type AdvancedSuperResolutionConfig: :class:`tencentcloud.mps.v20190612.models.AdvancedSuperResolutionConfig`
         :param _Denoise: 降噪配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
@@ -38952,6 +39439,7 @@ class ImageEnhanceConfig(AbstractModel):
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         self._SuperResolution = None
+        self._AdvancedSuperResolutionConfig = None
         self._Denoise = None
         self._ImageQualityEnhance = None
         self._ColorEnhance = None
@@ -38970,6 +39458,17 @@ class ImageEnhanceConfig(AbstractModel):
     @SuperResolution.setter
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
+
+    @property
+    def AdvancedSuperResolutionConfig(self):
+        r"""高级超分配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdvancedSuperResolutionConfig`
+        """
+        return self._AdvancedSuperResolutionConfig
+
+    @AdvancedSuperResolutionConfig.setter
+    def AdvancedSuperResolutionConfig(self, AdvancedSuperResolutionConfig):
+        self._AdvancedSuperResolutionConfig = AdvancedSuperResolutionConfig
 
     @property
     def Denoise(self):
@@ -39048,6 +39547,9 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("AdvancedSuperResolutionConfig") is not None:
+            self._AdvancedSuperResolutionConfig = AdvancedSuperResolutionConfig()
+            self._AdvancedSuperResolutionConfig._deserialize(params.get("AdvancedSuperResolutionConfig"))
         if params.get("Denoise") is not None:
             self._Denoise = ImageDenoiseConfig()
             self._Denoise._deserialize(params.get("Denoise"))
@@ -39287,6 +39789,8 @@ class ImageProcessTaskResult(AbstractModel):
         :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _ErrMsg: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrMsg: str
         :param _Message: 错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
@@ -39298,6 +39802,7 @@ class ImageProcessTaskResult(AbstractModel):
         :type Progress: int
         """
         self._Status = None
+        self._ErrMsg = None
         self._Message = None
         self._Output = None
         self._Progress = None
@@ -39313,6 +39818,17 @@ class ImageProcessTaskResult(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ErrMsg(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
 
     @property
     def Message(self):
@@ -39353,6 +39869,7 @@ class ImageProcessTaskResult(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._ErrMsg = params.get("ErrMsg")
         self._Message = params.get("Message")
         if params.get("Output") is not None:
             self._Output = ImageProcessTaskOutput()
@@ -50634,8 +51151,10 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
         :param _Definition: 智能字幕模板唯一标识
         :type Definition: int
         :param _TranslateSwitch: 字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
         :type TranslateSwitch: str
         :param _Name: 智能字幕模板名称
 长度限制：64 个字符。
@@ -50645,33 +51164,47 @@ OFF: 关闭翻译
         :type Comment: str
         :param _VideoSrcLanguage: 智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: 智能字幕文件格式
- vtt: WebVTT 格式
-srt: SRT格式
-不填或填空：不生成字幕文件
+        :param _SubtitleFormat: 智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
         :type SubtitleFormat: str
         :param _SubtitleType: 智能字幕字幕语言类型
 0: 源语言
@@ -50685,24 +51218,36 @@ srt: SRT格式
         :param _TranslateDstLanguage: 字幕翻译目标语言
 当TranslateSwitch为ON的时候生效
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
         :type TranslateDstLanguage: str
+        :param _ProcessType: 字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下，默认是ASR方式
+        :type ProcessType: int
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -50713,6 +51258,7 @@ hi：印地语
         self._SubtitleType = None
         self._AsrHotWordsConfigure = None
         self._TranslateDstLanguage = None
+        self._ProcessType = None
 
     @property
     def Definition(self):
@@ -50728,8 +51274,10 @@ hi：印地语
     @property
     def TranslateSwitch(self):
         r"""字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
         :rtype: str
         """
         return self._TranslateSwitch
@@ -50766,28 +51314,33 @@ OFF: 关闭翻译
     def VideoSrcLanguage(self):
         r"""智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -50798,10 +51351,19 @@ prime_zh: 中英方言
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式
- vtt: WebVTT 格式
-srt: SRT格式
-不填或填空：不生成字幕文件
+        r"""智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
         :rtype: str
         """
         return self._SubtitleFormat
@@ -50842,23 +51404,29 @@ srt: SRT格式
         r"""字幕翻译目标语言
 当TranslateSwitch为ON的时候生效
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -50866,6 +51434,21 @@ hi：印地语
     @TranslateDstLanguage.setter
     def TranslateDstLanguage(self, TranslateDstLanguage):
         self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def ProcessType(self):
+        r"""字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下，默认是ASR方式
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
 
 
     def _deserialize(self, params):
@@ -50880,6 +51463,7 @@ hi：印地语
             self._AsrHotWordsConfigure = AsrHotWordsConfigure()
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56011,6 +56595,204 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class PureSubtitleTransResult(AbstractModel):
+    r"""纯字幕翻译结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态（有以下三种）： 
+- PROCESSING
+- SUCCESS 
+- FAIL
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Input: 翻译任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: 纯字幕翻译输出结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
+        :param _Progress: 任务进度。
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        r"""任务状态（有以下三种）： 
+- PROCESSING
+- SUCCESS 
+- FAIL
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""翻译任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""纯字幕翻译输出结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""任务进度。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = PureSubtitleTransResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PureSubtitleTransResultOutput(AbstractModel):
+    r"""翻译详细输出结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: 字幕文件存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _SubtitleResults: 多语言翻译的结果集合
+        :type SubtitleResults: list of SubtitleTransResultItem
+        """
+        self._OutputStorage = None
+        self._SubtitleResults = None
+
+    @property
+    def OutputStorage(self):
+        r"""字幕文件存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def SubtitleResults(self):
+        r"""多语言翻译的结果集合
+        :rtype: list of SubtitleTransResultItem
+        """
+        return self._SubtitleResults
+
+    @SubtitleResults.setter
+    def SubtitleResults(self, SubtitleResults):
+        self._SubtitleResults = SubtitleResults
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("SubtitleResults") is not None:
+            self._SubtitleResults = []
+            for item in params.get("SubtitleResults"):
+                obj = SubtitleTransResultItem()
+                obj._deserialize(item)
+                self._SubtitleResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlData(AbstractModel):
     r"""媒体质检结果输出。
 
@@ -57196,60 +57978,79 @@ class RawSmartSubtitleParameter(AbstractModel):
         :type SubtitleType: int
         :param _VideoSrcLanguage: 智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: 智能字幕文件格式
- vtt: WebVTT 格式
-srt: SRT格式
-不填或填空：不生成字幕文件
+        :param _SubtitleFormat: 智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFormat: str
         :param _TranslateSwitch: 字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: 字幕翻译目标语言
-当TranslateSwitch为ON的时候生效
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+当TranslateSwitch为ON的时候生效，翻译语言列表：
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateDstLanguage: str
         :param _AsrHotWordsConfigure: ASR热词库参数
@@ -57257,6 +58058,12 @@ hi：印地语
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _ExtInfo: 自定义参数
         :type ExtInfo: str
+        :param _ProcessType: 字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下默认类型为 ASR识别字幕
+        :type ProcessType: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -57265,6 +58072,7 @@ hi：印地语
         self._TranslateDstLanguage = None
         self._AsrHotWordsConfigure = None
         self._ExtInfo = None
+        self._ProcessType = None
 
     @property
     def SubtitleType(self):
@@ -57286,28 +58094,32 @@ hi：印地语
     def VideoSrcLanguage(self):
         r"""智能字幕视频源语言
 当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
-zh_en: 中英
-prime_zh: 中英方言
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -57318,10 +58130,19 @@ prime_zh: 中英方言
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式
- vtt: WebVTT 格式
-srt: SRT格式
-不填或填空：不生成字幕文件
+        r"""智能字幕文件格式:
+- ASR识别翻译处理类型下：
+     - vtt: WebVTT 格式字幕
+     - srt: SRT 格式字幕
+     - 不填或填空：不生成字幕文件
+- 纯字幕翻译处理类型下：
+    - original：与源文件一致
+    - vtt: WebVTT 格式字幕
+    - srt: SRT 格式字幕
+
+**注意**：
+- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+- 纯字幕翻译方式下，不允许传空或不传
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57334,8 +58155,10 @@ srt: SRT格式
     @property
     def TranslateSwitch(self):
         r"""字幕翻译开关
-ON: 开启翻译
-OFF: 关闭翻译
+`ON`: 开启翻译
+`OFF`: 关闭翻译
+
+**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57348,25 +58171,29 @@ OFF: 关闭翻译
     @property
     def TranslateDstLanguage(self):
         r"""字幕翻译目标语言
-当TranslateSwitch为ON的时候生效
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+当TranslateSwitch为ON的时候生效，翻译语言列表：
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57399,6 +58226,21 @@ hi：印地语
     def ExtInfo(self, ExtInfo):
         self._ExtInfo = ExtInfo
 
+    @property
+    def ProcessType(self):
+        r"""字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+
+**注意**：不传的情况下默认类型为 ASR识别字幕
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._SubtitleType = params.get("SubtitleType")
@@ -57410,6 +58252,7 @@ hi：印地语
             self._AsrHotWordsConfigure = AsrHotWordsConfigure()
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._ExtInfo = params.get("ExtInfo")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62234,12 +63077,15 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
         :param _SegmentSet: 语音全文识别片段列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        :param _Path: 字幕文件路径
+        :type Path: str
         :param _SubtitlePath: 字幕文件地址。
         :type SubtitlePath: str
         :param _OutputStorage: 字幕文件存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
+        self._Path = None
         self._SubtitlePath = None
         self._OutputStorage = None
 
@@ -62254,6 +63100,17 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
     @SegmentSet.setter
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
+
+    @property
+    def Path(self):
+        r"""字幕文件路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
 
     @property
     def SubtitlePath(self):
@@ -62285,6 +63142,7 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
                 obj = SmartSubtitleTaskAsrFullTextSegmentItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._Path = params.get("Path")
         self._SubtitlePath = params.get("SubtitlePath")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
@@ -62728,10 +63586,16 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
         :type SubtitlePath: str
         :param _OutputStorage: 字幕文件存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Path: 字幕文件地址
+        :type Path: str
+        :param _SubtitleResults: 多语言翻译时返回翻译结果。	
+        :type SubtitleResults: list of SubtitleTransResultItem
         """
         self._SegmentSet = None
         self._SubtitlePath = None
         self._OutputStorage = None
+        self._Path = None
+        self._SubtitleResults = None
 
     @property
     def SegmentSet(self):
@@ -62767,6 +63631,28 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def Path(self):
+        r"""字幕文件地址
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def SubtitleResults(self):
+        r"""多语言翻译时返回翻译结果。	
+        :rtype: list of SubtitleTransResultItem
+        """
+        return self._SubtitleResults
+
+    @SubtitleResults.setter
+    def SubtitleResults(self, SubtitleResults):
+        self._SubtitleResults = SubtitleResults
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -62779,6 +63665,13 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Path = params.get("Path")
+        if params.get("SubtitleResults") is not None:
+            self._SubtitleResults = []
+            for item in params.get("SubtitleResults"):
+                obj = SubtitleTransResultItem()
+                obj._deserialize(item)
+                self._SubtitleResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62933,32 +63826,40 @@ class SmartSubtitleTemplateItem(AbstractModel):
         :param _AsrHotWordsLibraryName: 模板关联热词库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrHotWordsLibraryName: str
-        :param _VideoSrcLanguage: 智能字幕视频源语言
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
+        :param _VideoSrcLanguage: 智能字幕视频源语言列表：
+
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: 智能字幕文件格式
- vtt: WebVTT 格式
-不填或填空：不生成字幕文件
+- vtt: WebVTT 格式
+- srt: SRT格式
+- original：与源字幕文件一致（用于纯字幕翻译模版）
+- 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFormat: str
         :param _SubtitleType: 智能字幕字幕语言类型
@@ -62975,24 +63876,30 @@ OFF: 关闭翻译
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: 字幕翻译目标语言
 当TranslateSwitch为ON的时候生效
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateDstLanguage: str
         :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
@@ -63002,6 +63909,10 @@ hi：印地语
         :param _AliasName: 智能字幕预设模板别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
+        :param _ProcessType: 字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+        :type ProcessType: int
         """
         self._Definition = None
         self._Name = None
@@ -63017,6 +63928,7 @@ hi：印地语
         self._CreateTime = None
         self._UpdateTime = None
         self._AliasName = None
+        self._ProcessType = None
 
     @property
     def Definition(self):
@@ -63093,28 +64005,34 @@ hi：印地语
 
     @property
     def VideoSrcLanguage(self):
-        r"""智能字幕视频源语言
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-zh-PY：中英粤
-zh-medical：中文医疗
-yue：中文粤语
-vi：越南语
-ms：马来语
-id：印度尼西亚语
-fil：菲律宾语
-th：泰语
-pt：葡萄牙语
-tr：土耳其语
-ar：阿拉伯语
-es：西班牙语
-hi：印地语
-fr：法语
-de：德语
-zh_dialect：中文方言
+        r"""智能字幕视频源语言列表：
+
+`zh`：简体中文
+`yue`：中文粵语
+`zh-PY`：中英粤
+`zh_medical`：中文医疗
+`zh_dialect`：中文方言
+`prime_zh`：中英方言
+`zh_en`：中英
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+`auto`：自动识别（仅在纯字幕翻译中支持）
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -63126,8 +64044,10 @@ zh_dialect：中文方言
     @property
     def SubtitleFormat(self):
         r"""智能字幕文件格式
- vtt: WebVTT 格式
-不填或填空：不生成字幕文件
+- vtt: WebVTT 格式
+- srt: SRT格式
+- original：与源字幕文件一致（用于纯字幕翻译模版）
+- 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63171,24 +64091,30 @@ OFF: 关闭翻译
     def TranslateDstLanguage(self):
         r"""字幕翻译目标语言
 当TranslateSwitch为ON的时候生效
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+`zh`：简体中文
+`zh-TW`：繁体中文
+`en`：英语
+`ja`：日语
+`ko`：韩语
+`fr`：法语
+`es`：西班牙语 
+`it`：意大利语
+`de`：德语
+`tr`：土耳其语
+`ru`：俄语
+`pt`：葡萄牙语（巴西）
+`pt-PT`：葡萄牙语（葡萄牙）
+`vi`：越南语
+`id`：印度尼西亚语 
+`ms`：马来语
+`th`：泰语
+`ar`：阿拉伯语
+`hi`：印地语
+`fil`：菲律宾语
+
+
+**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63232,6 +64158,19 @@ hi：印地语
     def AliasName(self, AliasName):
         self._AliasName = AliasName
 
+    @property
+    def ProcessType(self):
+        r"""字幕处理类型：
+- 0：ASR识别字幕
+- 1：纯字幕翻译
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -63250,6 +64189,7 @@ hi：印地语
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._AliasName = params.get("AliasName")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63267,9 +64207,10 @@ class SmartSubtitlesResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 任务的类型，取值范围： 
-<li>AsrFullTextRecognition：语音全文识别，</li> 
-<li>TransTextRecognition：语音翻译。</li>
+        :param _Type: 任务的类型，取值范围：
+- AsrFullTextRecognition：语音全文识别
+- TransTextRecognition：语音翻译
+- PureSubtitleTrans:   纯字幕翻译
         :type Type: str
         :param _AsrFullTextTask: 语音全文识别结果，当 Type 为
  AsrFullTextRecognition 时有效。
@@ -63280,16 +64221,21 @@ class SmartSubtitlesResult(AbstractModel):
 TransTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        :param _PureSubtitleTransTask: 当翻译类型为：PureSubtitleTrans 是返回纯字幕文件翻译结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PureSubtitleTransTask: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
         """
         self._Type = None
         self._AsrFullTextTask = None
         self._TransTextTask = None
+        self._PureSubtitleTransTask = None
 
     @property
     def Type(self):
-        r"""任务的类型，取值范围： 
-<li>AsrFullTextRecognition：语音全文识别，</li> 
-<li>TransTextRecognition：语音翻译。</li>
+        r"""任务的类型，取值范围：
+- AsrFullTextRecognition：语音全文识别
+- TransTextRecognition：语音翻译
+- PureSubtitleTrans:   纯字幕翻译
         :rtype: str
         """
         return self._Type
@@ -63325,6 +64271,18 @@ TransTextRecognition 时有效。
     def TransTextTask(self, TransTextTask):
         self._TransTextTask = TransTextTask
 
+    @property
+    def PureSubtitleTransTask(self):
+        r"""当翻译类型为：PureSubtitleTrans 是返回纯字幕文件翻译结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
+        """
+        return self._PureSubtitleTransTask
+
+    @PureSubtitleTransTask.setter
+    def PureSubtitleTransTask(self, PureSubtitleTransTask):
+        self._PureSubtitleTransTask = PureSubtitleTransTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -63334,6 +64292,9 @@ TransTextRecognition 时有效。
         if params.get("TransTextTask") is not None:
             self._TransTextTask = SmartSubtitleTaskTransTextResult()
             self._TransTextTask._deserialize(params.get("TransTextTask"))
+        if params.get("PureSubtitleTransTask") is not None:
+            self._PureSubtitleTransTask = PureSubtitleTransResult()
+            self._PureSubtitleTransTask._deserialize(params.get("PureSubtitleTransTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63861,7 +64822,9 @@ class SpekeDrm(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源标记，该字段内容为用户自定义；
-支持1-128个字符的数字、字母、下划线(_)、中划线(-)。
+支持1-128个字符的数字、字母、下划线(`_`)、中划线(-)。
+该字段对应Speke请求中的cid字段。
+注：不同DRM厂商对该字段的限制有所区别（如：华曦达不支持该字段带`_`），具体规则请与DRM厂商进行确认。
         :type ResourceId: str
         :param _KeyServerUrl: DRM厂商访问地址，该字段内容从DRM厂商获取。
 
@@ -63870,8 +64833,9 @@ class SpekeDrm(AbstractModel):
         :param _Vector: 加密初始化向量(十六进制32字节字符串)，该字段内容为用户自定义。
         :type Vector: str
         :param _EncryptionMethod: 加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc
+加密方式选择WideVine+FairPlay时，仅支持cbcs
 
-cbcs：PlayReady，Widevine，FairPlay 支持；
+cbcs：PlayReady，Widevine，FairPlay，WideVine+FairPlay 支持；
 cenc：PlayReady，Widevine支持；
         :type EncryptionMethod: str
         :param _EncryptionPreset: 子流加密规则，默认 preset0
@@ -63889,7 +64853,9 @@ preset1：每个子流使用不同的key加密；
     @property
     def ResourceId(self):
         r"""资源标记，该字段内容为用户自定义；
-支持1-128个字符的数字、字母、下划线(_)、中划线(-)。
+支持1-128个字符的数字、字母、下划线(`_`)、中划线(-)。
+该字段对应Speke请求中的cid字段。
+注：不同DRM厂商对该字段的限制有所区别（如：华曦达不支持该字段带`_`），具体规则请与DRM厂商进行确认。
         :rtype: str
         """
         return self._ResourceId
@@ -63925,8 +64891,9 @@ preset1：每个子流使用不同的key加密；
     @property
     def EncryptionMethod(self):
         r"""加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc
+加密方式选择WideVine+FairPlay时，仅支持cbcs
 
-cbcs：PlayReady，Widevine，FairPlay 支持；
+cbcs：PlayReady，Widevine，FairPlay，WideVine+FairPlay 支持；
 cenc：PlayReady，Widevine支持；
         :rtype: str
         """
@@ -64776,6 +65743,91 @@ class SubtitleTemplate(AbstractModel):
         self._ShadowAlpha = params.get("ShadowAlpha")
         self._LineSpacing = params.get("LineSpacing")
         self._Alignment = params.get("Alignment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleTransResultItem(AbstractModel):
+    r"""字幕翻译输出结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 翻译标识：
+- Success
+- Error
+        :type Status: str
+        :param _TransSrc: 源语言（如"en"）
+        :type TransSrc: str
+        :param _TransDst: 目标语言（如"zh"）
+        :type TransDst: str
+        :param _Path: 字幕文件地址
+        :type Path: str
+        """
+        self._Status = None
+        self._TransSrc = None
+        self._TransDst = None
+        self._Path = None
+
+    @property
+    def Status(self):
+        r"""翻译标识：
+- Success
+- Error
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TransSrc(self):
+        r"""源语言（如"en"）
+        :rtype: str
+        """
+        return self._TransSrc
+
+    @TransSrc.setter
+    def TransSrc(self, TransSrc):
+        self._TransSrc = TransSrc
+
+    @property
+    def TransDst(self):
+        r"""目标语言（如"zh"）
+        :rtype: str
+        """
+        return self._TransDst
+
+    @TransDst.setter
+    def TransDst(self, TransDst):
+        self._TransDst = TransDst
+
+    @property
+    def Path(self):
+        r"""字幕文件地址
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TransSrc = params.get("TransSrc")
+        self._TransDst = params.get("TransDst")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68720,39 +69772,56 @@ class VideoEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FrameRate: 插帧帧率配置。
+        :param _FrameRate: 插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
-        :param _SuperResolution: 超分配置。
+        :param _SuperResolution: 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         :param _Hdr: HDR配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
-        :param _Denoise: 视频降噪配置。
+        :param _Denoise: 视频降噪配置。注意与大模型增强不可同时开启。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
-        :param _ImageQualityEnhance: 综合增强配置。
+        :param _ImageQualityEnhance: 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         :param _ColorEnhance: 色彩增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _SharpEnhance: 细节增强配置。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
-        :param _FaceEnhance: 人脸增强配置。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         :param _LowLightEnhance: 低光照增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         :param _ScratchRepair: 去划痕配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
-        :param _ArtifactRepair: 去伪影（毛刺）配置。
+        :param _ArtifactRepair: 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        :param _EnhanceSceneType: 增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+<li>填空字符串代表不使用增强场景</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceSceneType: str
+        :param _DiffusionEnhance: 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
+        :param _FrameRateWithDen: 新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -68760,15 +69829,17 @@ class VideoEnhanceConfig(AbstractModel):
         self._Denoise = None
         self._ImageQualityEnhance = None
         self._ColorEnhance = None
-        self._SharpEnhance = None
-        self._FaceEnhance = None
         self._LowLightEnhance = None
         self._ScratchRepair = None
         self._ArtifactRepair = None
+        self._EnhanceSceneType = None
+        self._DiffusionEnhance = None
+        self._FrameRateWithDen = None
 
     @property
     def FrameRate(self):
-        r"""插帧帧率配置。
+        r"""插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
@@ -68780,7 +69851,8 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def SuperResolution(self):
-        r"""超分配置。
+        r"""超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
@@ -68804,7 +69876,8 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Denoise(self):
-        r"""视频降噪配置。
+        r"""视频降噪配置。注意与大模型增强不可同时开启。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
@@ -68816,7 +69889,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ImageQualityEnhance(self):
-        r"""综合增强配置。
+        r"""综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
@@ -68837,30 +69910,6 @@ class VideoEnhanceConfig(AbstractModel):
     @ColorEnhance.setter
     def ColorEnhance(self, ColorEnhance):
         self._ColorEnhance = ColorEnhance
-
-    @property
-    def SharpEnhance(self):
-        r"""细节增强配置。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
-        """
-        return self._SharpEnhance
-
-    @SharpEnhance.setter
-    def SharpEnhance(self, SharpEnhance):
-        self._SharpEnhance = SharpEnhance
-
-    @property
-    def FaceEnhance(self):
-        r"""人脸增强配置。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
-        """
-        return self._FaceEnhance
-
-    @FaceEnhance.setter
-    def FaceEnhance(self, FaceEnhance):
-        self._FaceEnhance = FaceEnhance
 
     @property
     def LowLightEnhance(self):
@@ -68888,7 +69937,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ArtifactRepair(self):
-        r"""去伪影（毛刺）配置。
+        r"""去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
@@ -68897,6 +69946,53 @@ class VideoEnhanceConfig(AbstractModel):
     @ArtifactRepair.setter
     def ArtifactRepair(self, ArtifactRepair):
         self._ArtifactRepair = ArtifactRepair
+
+    @property
+    def EnhanceSceneType(self):
+        r"""增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+<li>填空字符串代表不使用增强场景</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnhanceSceneType
+
+    @EnhanceSceneType.setter
+    def EnhanceSceneType(self, EnhanceSceneType):
+        self._EnhanceSceneType = EnhanceSceneType
+
+    @property
+    def DiffusionEnhance(self):
+        r"""大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
+        """
+        return self._DiffusionEnhance
+
+    @DiffusionEnhance.setter
+    def DiffusionEnhance(self, DiffusionEnhance):
+        self._DiffusionEnhance = DiffusionEnhance
+
+    @property
+    def FrameRateWithDen(self):
+        r"""新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
+        """
+        return self._FrameRateWithDen
+
+    @FrameRateWithDen.setter
+    def FrameRateWithDen(self, FrameRateWithDen):
+        self._FrameRateWithDen = FrameRateWithDen
 
 
     def _deserialize(self, params):
@@ -68918,12 +70014,6 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("ColorEnhance") is not None:
             self._ColorEnhance = ColorEnhanceConfig()
             self._ColorEnhance._deserialize(params.get("ColorEnhance"))
-        if params.get("SharpEnhance") is not None:
-            self._SharpEnhance = SharpEnhanceConfig()
-            self._SharpEnhance._deserialize(params.get("SharpEnhance"))
-        if params.get("FaceEnhance") is not None:
-            self._FaceEnhance = FaceEnhanceConfig()
-            self._FaceEnhance._deserialize(params.get("FaceEnhance"))
         if params.get("LowLightEnhance") is not None:
             self._LowLightEnhance = LowLightEnhanceConfig()
             self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
@@ -68933,6 +70023,13 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("ArtifactRepair") is not None:
             self._ArtifactRepair = ArtifactRepairConfig()
             self._ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        self._EnhanceSceneType = params.get("EnhanceSceneType")
+        if params.get("DiffusionEnhance") is not None:
+            self._DiffusionEnhance = DiffusionEnhanceConfig()
+            self._DiffusionEnhance._deserialize(params.get("DiffusionEnhance"))
+        if params.get("FrameRateWithDen") is not None:
+            self._FrameRateWithDen = FrameRateWithDenConfig()
+            self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
