@@ -3174,12 +3174,18 @@ class CreateMcpServerRequest(AbstractModel):
         :type Description: str
         :param _Envs: MCP Server环境变量。最大长度：10
         :type Envs: list of McpServerEnv
+        :param _TransportType: 传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式。未传传输类型字段时，默认创建此类型的MCP Server</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :type TransportType: str
         """
         self._InstanceId = None
         self._Name = None
         self._Command = None
         self._Description = None
         self._Envs = None
+        self._TransportType = None
 
     @property
     def InstanceId(self):
@@ -3236,6 +3242,20 @@ class CreateMcpServerRequest(AbstractModel):
     def Envs(self, Envs):
         self._Envs = Envs
 
+    @property
+    def TransportType(self):
+        r"""传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式。未传传输类型字段时，默认创建此类型的MCP Server</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :rtype: str
+        """
+        return self._TransportType
+
+    @TransportType.setter
+    def TransportType(self, TransportType):
+        self._TransportType = TransportType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3248,6 +3268,7 @@ class CreateMcpServerRequest(AbstractModel):
                 obj = McpServerEnv()
                 obj._deserialize(item)
                 self._Envs.append(obj)
+        self._TransportType = params.get("TransportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15231,11 +15252,14 @@ class McpServer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _McpServerId: MCP Server ID。
+        :param _McpServerId: MCP Server ID
         :type McpServerId: str
         :param _Name: MCP Server名称。最大长度：64
         :type Name: str
-        :param _McpServerType: MCP Server类型。枚举值：PUBLIC_PACKAGE，公共包安装；AGENT_GENERATED，AI生成。
+        :param _McpServerType: MCP Server类型。枚举值如下：
+
+<li>PUBLIC_PACKAGE：公共包安装</li>
+<li>AGENT_GENERATED：AI生成</li>
         :type McpServerType: str
         :param _IconUrl: MCP Server图标地址
         :type IconUrl: str
@@ -15243,18 +15267,18 @@ class McpServer(AbstractModel):
         :type Command: str
         :param _State: MCP Server状态。枚举值如下：
 
-PENDING：表示创建中
-LAUNCH_FAILED：表示创建失败
-RUNNING：表示运行中
-STOPPED：表示关闭
-STARTING：表示开启中
-STOPPING：表示关闭中
-RESTARTING：表示重启中
-REMOVING：表示删除中
-UNKNOWN：表示未知
-ENV_ERROR：表示环境错误
+<li>PENDING：表示创建中</li>
+<li>LAUNCH_FAILED：表示创建失败</li>
+<li>RUNNING：表示运行中</li>
+<li>STOPPED：表示关闭</li>
+<li>STARTING：表示开启中</li>
+<li>STOPPING：表示关闭中</li>
+<li>RESTARTING：表示重启中</li>
+<li>REMOVING：表示删除中</li>
+<li>UNKNOWN：表示未知</li>
+<li>ENV_ERROR：表示环境错误</li>
         :type State: str
-        :param _ServerUrl: MCP Server访问地址。
+        :param _ServerUrl: MCP Server访问地址。传输类型 TransportType 为 STREAMABLE_HTTP 时以 /mcp结尾，为 SSE 时以 /sse结尾。
         :type ServerUrl: str
         :param _Config: MCP Server配置
         :type Config: str
@@ -15268,6 +15292,11 @@ ENV_ERROR：表示环境错误
         :type UpdatedTime: str
         :param _EnvSet: MCP Server环境变量
         :type EnvSet: list of McpServerEnv
+        :param _TransportType: 传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :type TransportType: str
         """
         self._McpServerId = None
         self._Name = None
@@ -15281,10 +15310,11 @@ ENV_ERROR：表示环境错误
         self._CreatedTime = None
         self._UpdatedTime = None
         self._EnvSet = None
+        self._TransportType = None
 
     @property
     def McpServerId(self):
-        r"""MCP Server ID。
+        r"""MCP Server ID
         :rtype: str
         """
         return self._McpServerId
@@ -15306,7 +15336,10 @@ ENV_ERROR：表示环境错误
 
     @property
     def McpServerType(self):
-        r"""MCP Server类型。枚举值：PUBLIC_PACKAGE，公共包安装；AGENT_GENERATED，AI生成。
+        r"""MCP Server类型。枚举值如下：
+
+<li>PUBLIC_PACKAGE：公共包安装</li>
+<li>AGENT_GENERATED：AI生成</li>
         :rtype: str
         """
         return self._McpServerType
@@ -15341,16 +15374,16 @@ ENV_ERROR：表示环境错误
     def State(self):
         r"""MCP Server状态。枚举值如下：
 
-PENDING：表示创建中
-LAUNCH_FAILED：表示创建失败
-RUNNING：表示运行中
-STOPPED：表示关闭
-STARTING：表示开启中
-STOPPING：表示关闭中
-RESTARTING：表示重启中
-REMOVING：表示删除中
-UNKNOWN：表示未知
-ENV_ERROR：表示环境错误
+<li>PENDING：表示创建中</li>
+<li>LAUNCH_FAILED：表示创建失败</li>
+<li>RUNNING：表示运行中</li>
+<li>STOPPED：表示关闭</li>
+<li>STARTING：表示开启中</li>
+<li>STOPPING：表示关闭中</li>
+<li>RESTARTING：表示重启中</li>
+<li>REMOVING：表示删除中</li>
+<li>UNKNOWN：表示未知</li>
+<li>ENV_ERROR：表示环境错误</li>
         :rtype: str
         """
         return self._State
@@ -15361,7 +15394,7 @@ ENV_ERROR：表示环境错误
 
     @property
     def ServerUrl(self):
-        r"""MCP Server访问地址。
+        r"""MCP Server访问地址。传输类型 TransportType 为 STREAMABLE_HTTP 时以 /mcp结尾，为 SSE 时以 /sse结尾。
         :rtype: str
         """
         return self._ServerUrl
@@ -15427,6 +15460,20 @@ ENV_ERROR：表示环境错误
     def EnvSet(self, EnvSet):
         self._EnvSet = EnvSet
 
+    @property
+    def TransportType(self):
+        r"""传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :rtype: str
+        """
+        return self._TransportType
+
+    @TransportType.setter
+    def TransportType(self, TransportType):
+        self._TransportType = TransportType
+
 
     def _deserialize(self, params):
         self._McpServerId = params.get("McpServerId")
@@ -15446,6 +15493,7 @@ ENV_ERROR：表示环境错误
                 obj = McpServerEnv()
                 obj._deserialize(item)
                 self._EnvSet.append(obj)
+        self._TransportType = params.get("TransportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17047,7 +17095,7 @@ class ModifyMcpServerRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _McpServerId: MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+        :param _McpServerId: MCP Server ID。可以通[DescribeMcpServers](https://cloud.tencent.com/document/product/1207/122837)接口返回值中的McpServerId获取。
         :type McpServerId: str
         :param _Name: MCP Server名称。最大长度：64
         :type Name: str
@@ -17057,6 +17105,11 @@ class ModifyMcpServerRequest(AbstractModel):
         :type Description: str
         :param _Envs: MCP Server环境变量。最大长度：10。用于完整替换MCP Server的环境变量。当该字段为空时，系统将清除当前所有环境变量。若无需修改环境变量，请勿传递该字段。
         :type Envs: list of McpServerEnv
+        :param _TransportType: 传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :type TransportType: str
         """
         self._InstanceId = None
         self._McpServerId = None
@@ -17064,6 +17117,7 @@ class ModifyMcpServerRequest(AbstractModel):
         self._Command = None
         self._Description = None
         self._Envs = None
+        self._TransportType = None
 
     @property
     def InstanceId(self):
@@ -17078,7 +17132,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def McpServerId(self):
-        r"""MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+        r"""MCP Server ID。可以通[DescribeMcpServers](https://cloud.tencent.com/document/product/1207/122837)接口返回值中的McpServerId获取。
         :rtype: str
         """
         return self._McpServerId
@@ -17131,6 +17185,20 @@ class ModifyMcpServerRequest(AbstractModel):
     def Envs(self, Envs):
         self._Envs = Envs
 
+    @property
+    def TransportType(self):
+        r"""传输类型。枚举值如下：
+
+<li>STREAMABLE_HTTP：HTTP协议的流式传输方式</li>
+<li>SSE：Server-Sent Events，服务器发送事件</li>
+        :rtype: str
+        """
+        return self._TransportType
+
+    @TransportType.setter
+    def TransportType(self, TransportType):
+        self._TransportType = TransportType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17144,6 +17212,7 @@ class ModifyMcpServerRequest(AbstractModel):
                 obj = McpServerEnv()
                 obj._deserialize(item)
                 self._Envs.append(obj)
+        self._TransportType = params.get("TransportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

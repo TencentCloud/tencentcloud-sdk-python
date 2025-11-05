@@ -35530,7 +35530,7 @@ class ExpandGroupRequest(AbstractModel):
         r"""
         :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _InstanceIdList: 扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
+        :param _InstanceIdList: 扩容的机器实例ID列表，调用[DescribeGroupInstances](https://cloud.tencent.com/document/api/649/36066)查询虚拟机部署组云主机列表
         :type InstanceIdList: list of str
         """
         self._GroupId = None
@@ -35549,7 +35549,7 @@ class ExpandGroupRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        r"""扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
+        r"""扩容的机器实例ID列表，调用[DescribeGroupInstances](https://cloud.tencent.com/document/api/649/36066)查询虚拟机部署组云主机列表
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -43852,7 +43852,7 @@ class ModifyContainerReplicasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
+        :param _GroupId: 部署组ID，部署组唯一标识，可以通过[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的容器部署组列表；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的容器部署组
         :type GroupId: str
         :param _InstanceNum: 实例数量
         :type InstanceNum: int
@@ -43862,7 +43862,7 @@ class ModifyContainerReplicasRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
+        r"""部署组ID，部署组唯一标识，可以通过[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的容器部署组列表；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的容器部署组
         :rtype: str
         """
         return self._GroupId
@@ -48989,7 +48989,7 @@ class RemoveInstancesRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :type ClusterId: str
-        :param _InstanceIdList: 云主机 ID 列表
+        :param _InstanceIdList: 云主机 ID 列表，调用[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)查询已有的云主机列表
         :type InstanceIdList: list of str
         """
         self._ClusterId = None
@@ -49008,7 +49008,7 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        r"""云主机 ID 列表
+        r"""云主机 ID 列表，调用[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)查询已有的云主机列表
         :rtype: list of str
         """
         return self._InstanceIdList

@@ -1666,17 +1666,22 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
         :param _InstanceIds: 节点列表，空为全部节点
         :type InstanceIds: list of str
         :param _UpgradeType: 升级类型，枚举值：reset(重装升级，支持大版本和小版本)，hot(原地滚动小版本升级)，major(原地滚动大版本升级)
         :type UpgradeType: str
-        :param _Offset: 分页Offset
+        :param _Offset: 偏移量，默认为0。关于 Offset 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param _Filter: 过滤
+        :param _Filter: 过滤条件列表，Name 可选值为ip、instanceId、hostname、label
+
+- Name 为 ip 时，Value 为待查询节点 ip
+- Name 为 hostname 时，Value 为待查询节点名称
+- Name 为 label 时，Value 为待查询 K8S 节点 label
+- Name 为 instanceId 时，Value 为 待查询节点 id
         :type Filter: list of Filter
         """
         self._ClusterId = None
@@ -1688,7 +1693,7 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -1721,7 +1726,7 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页Offset
+        r"""偏移量，默认为0。关于 Offset 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -1732,7 +1737,7 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页Limit
+        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :rtype: int
         """
         return self._Limit
@@ -1743,7 +1748,12 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""过滤
+        r"""过滤条件列表，Name 可选值为ip、instanceId、hostname、label
+
+- Name 为 ip 时，Value 为待查询节点 ip
+- Name 为 hostname 时，Value 为待查询节点名称
+- Name 为 label 时，Value 为待查询 K8S 节点 label
+- Name 为 instanceId 时，Value 为 待查询节点 id
         :rtype: list of Filter
         """
         return self._Filter
@@ -10782,23 +10792,26 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
-        :param _InstanceIds: 主机InstanceId列表
+        :param _InstanceIds: 主机 InstanceId 列表
         :type InstanceIds: list of str
         :param _InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
         :type InstanceDeleteMode: str
         :param _ForceDelete: 是否强制删除(当节点在初始化时，可以指定参数为TRUE)
         :type ForceDelete: bool
+        :param _ResourceDeleteOptions: 集群删除时资源的删除策略，目前支持CBS（默认保留CBS）
+        :type ResourceDeleteOptions: list of ResourceDeleteOption
         """
         self._ClusterId = None
         self._InstanceIds = None
         self._InstanceDeleteMode = None
         self._ForceDelete = None
+        self._ResourceDeleteOptions = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -10809,7 +10822,7 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""主机InstanceId列表
+        r"""主机 InstanceId 列表
         :rtype: list of str
         """
         return self._InstanceIds
@@ -10840,12 +10853,29 @@ class DeleteClusterInstancesRequest(AbstractModel):
     def ForceDelete(self, ForceDelete):
         self._ForceDelete = ForceDelete
 
+    @property
+    def ResourceDeleteOptions(self):
+        r"""集群删除时资源的删除策略，目前支持CBS（默认保留CBS）
+        :rtype: list of ResourceDeleteOption
+        """
+        return self._ResourceDeleteOptions
+
+    @ResourceDeleteOptions.setter
+    def ResourceDeleteOptions(self, ResourceDeleteOptions):
+        self._ResourceDeleteOptions = ResourceDeleteOptions
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceIds = params.get("InstanceIds")
         self._InstanceDeleteMode = params.get("InstanceDeleteMode")
         self._ForceDelete = params.get("ForceDelete")
+        if params.get("ResourceDeleteOptions") is not None:
+            self._ResourceDeleteOptions = []
+            for item in params.get("ResourceDeleteOptions"):
+                obj = ResourceDeleteOption()
+                obj._deserialize(item)
+                self._ResourceDeleteOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14794,15 +14824,21 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
         :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param _InstanceIds: 需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。
+        :param _InstanceIds: 需要获取的节点实例 ID 列表。如果为空，表示拉取集群下所有节点实例。普通节点用 CVM ID（如 ins-1cghhuuu ），原生节点用节点池内机器 ID （如 np-1ade4uid-0a2dc ）。
         :type InstanceIds: list of str
-        :param _InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
+        :param _InstanceRole: 节点角色，默认为WORKER类型
+
+- WOKRER 集群内常规计算节点
+- MASTER 独立集群控制面组件节点
+- ETCD 独立集群 etcd 存储节点
+- MASTER_ETCD 独立集群控制面、etcd 共同部署的 master 节点
+
         :type InstanceRole: str
         :param _Filters: 过滤条件列表；Name的可选值为nodepool-id、nodepool-instance-type；Name为nodepool-id表示根据节点池id过滤机器，Value的值为具体的节点池id，Name为nodepool-instance-type表示节点加入节点池的方式，Value的值为MANUALLY_ADDED（手动加入节点池）、AUTOSCALING_ADDED（伸缩组扩容方式加入节点池）、ALL（手动加入节点池 和 伸缩组扩容方式加入节点池）
         :type Filters: list of Filter
@@ -14816,7 +14852,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -14849,7 +14885,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。
+        r"""需要获取的节点实例 ID 列表。如果为空，表示拉取集群下所有节点实例。普通节点用 CVM ID（如 ins-1cghhuuu ），原生节点用节点池内机器 ID （如 np-1ade4uid-0a2dc ）。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14860,7 +14896,13 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
+        r"""节点角色，默认为WORKER类型
+
+- WOKRER 集群内常规计算节点
+- MASTER 独立集群控制面组件节点
+- ETCD 独立集群 etcd 存储节点
+- MASTER_ETCD 独立集群控制面、etcd 共同部署的 master 节点
+
         :rtype: str
         """
         return self._InstanceRole
@@ -48115,7 +48157,7 @@ class UpgradeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
         :param _Operation: create 表示开始一次升级任务
 pause 表示停止任务
@@ -48127,11 +48169,12 @@ reset 大版本重装升级
 hot 小版本热升级
 major 大版本原地升级
         :type UpgradeType: str
-        :param _InstanceIds: 需要升级的节点列表
+        :param _InstanceIds: 需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
+](https://cloud.tencent.com/document/api/457/50366) 获取
         :type InstanceIds: list of str
         :param _ResetParam: 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
         :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
-        :param _SkipPreCheck: 是否忽略节点升级前检查
+        :param _SkipPreCheck: 是否忽略节点升级前检查，默认值 false
         :type SkipPreCheck: bool
         :param _MaxNotReadyPercent: 最大可容忍的不可用Pod比例
         :type MaxNotReadyPercent: float
@@ -48149,7 +48192,7 @@ major 大版本原地升级
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -48188,7 +48231,8 @@ major 大版本原地升级
 
     @property
     def InstanceIds(self):
-        r"""需要升级的节点列表
+        r"""需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
+](https://cloud.tencent.com/document/api/457/50366) 获取
         :rtype: list of str
         """
         return self._InstanceIds
@@ -48210,7 +48254,7 @@ major 大版本原地升级
 
     @property
     def SkipPreCheck(self):
-        r"""是否忽略节点升级前检查
+        r"""是否忽略节点升级前检查，默认值 false
         :rtype: bool
         """
         return self._SkipPreCheck

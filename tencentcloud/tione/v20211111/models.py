@@ -1832,7 +1832,7 @@ HYBRID_PAID:
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         :param _Sidecar: sidecar配置
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
-        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :type VolumeMounts: list of VolumeMount
         """
         self._ServiceGroupId = None
@@ -2354,7 +2354,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMounts(self):
-        r"""数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        r"""数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts
@@ -14627,7 +14627,7 @@ HYBRID_PAID:
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
         :param _ResourceGroupId: 资源组 id
         :type ResourceGroupId: str
-        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :type VolumeMounts: list of VolumeMount
         """
         self._ServiceId = None
@@ -15053,7 +15053,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMounts(self):
-        r"""数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        r"""数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts

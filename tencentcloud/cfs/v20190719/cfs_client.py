@@ -786,7 +786,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeLifecycleDataTask(self, request):
-        r"""查询生命周期任务的接口
+        r"""查询生命周期任务的接口。仅支持查询最近三个月内的任务数据。
 
         :param request: Request instance for DescribeLifecycleDataTask.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecycleDataTaskRequest`

@@ -17225,6 +17225,8 @@ class ModifyRuleRequest(AbstractModel):
         :type TrpcFunc: str
         :param _OAuth: OAuth配置信息。
         :type OAuth: :class:`tencentcloud.clb.v20180317.models.OAuth`
+        :param _CookieName: 自定义cookie名
+        :type CookieName: str
         """
         self._LoadBalancerId = None
         self._ListenerId = None
@@ -17237,6 +17239,7 @@ class ModifyRuleRequest(AbstractModel):
         self._TrpcCallee = None
         self._TrpcFunc = None
         self._OAuth = None
+        self._CookieName = None
 
     @property
     def LoadBalancerId(self):
@@ -17361,6 +17364,17 @@ class ModifyRuleRequest(AbstractModel):
     def OAuth(self, OAuth):
         self._OAuth = OAuth
 
+    @property
+    def CookieName(self):
+        r"""自定义cookie名
+        :rtype: str
+        """
+        return self._CookieName
+
+    @CookieName.setter
+    def CookieName(self, CookieName):
+        self._CookieName = CookieName
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -17378,6 +17392,7 @@ class ModifyRuleRequest(AbstractModel):
         if params.get("OAuth") is not None:
             self._OAuth = OAuth()
             self._OAuth._deserialize(params.get("OAuth"))
+        self._CookieName = params.get("CookieName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19597,6 +19612,8 @@ class RuleInput(AbstractModel):
         :type Domains: list of str
         :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
+        :param _CookieName: 自定义cookie名
+        :type CookieName: str
         """
         self._Url = None
         self._Domain = None
@@ -19613,6 +19630,7 @@ class RuleInput(AbstractModel):
         self._Quic = None
         self._Domains = None
         self._MultiCertInfo = None
+        self._CookieName = None
 
     @property
     def Url(self):
@@ -19780,6 +19798,17 @@ class RuleInput(AbstractModel):
     def MultiCertInfo(self, MultiCertInfo):
         self._MultiCertInfo = MultiCertInfo
 
+    @property
+    def CookieName(self):
+        r"""自定义cookie名
+        :rtype: str
+        """
+        return self._CookieName
+
+    @CookieName.setter
+    def CookieName(self, CookieName):
+        self._CookieName = CookieName
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -19803,6 +19832,7 @@ class RuleInput(AbstractModel):
         if params.get("MultiCertInfo") is not None:
             self._MultiCertInfo = MultiCertInfo()
             self._MultiCertInfo._deserialize(params.get("MultiCertInfo"))
+        self._CookieName = params.get("CookieName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19872,6 +19902,8 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
         :type TargetGroupList: list of BasicTargetGroupInfo
         :param _OAuth: OAuth配置状态信息。
         :type OAuth: :class:`tencentcloud.clb.v20180317.models.OAuth`
+        :param _CookieName: 自定义cookie名。
+        :type CookieName: str
         """
         self._LocationId = None
         self._Domain = None
@@ -19897,6 +19929,7 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
         self._Domains = None
         self._TargetGroupList = None
         self._OAuth = None
+        self._CookieName = None
 
     @property
     def LocationId(self):
@@ -20166,6 +20199,17 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
     def OAuth(self, OAuth):
         self._OAuth = OAuth
 
+    @property
+    def CookieName(self):
+        r"""自定义cookie名。
+        :rtype: str
+        """
+        return self._CookieName
+
+    @CookieName.setter
+    def CookieName(self, CookieName):
+        self._CookieName = CookieName
+
 
     def _deserialize(self, params):
         self._LocationId = params.get("LocationId")
@@ -20207,6 +20251,7 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
         if params.get("OAuth") is not None:
             self._OAuth = OAuth()
             self._OAuth._deserialize(params.get("OAuth"))
+        self._CookieName = params.get("CookieName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

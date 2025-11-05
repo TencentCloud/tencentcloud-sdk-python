@@ -2259,6 +2259,16 @@ class CreateDataFlowRequest(AbstractModel):
         :type SecretKey: str
         :param _DataFlowName: 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
         :type DataFlowName: str
+        :param _AutoRefresh:  0：不开启自动更新  1：开启自动更新
+        :type AutoRefresh: int
+        :param _UserKafkaTopic: KafkaConsumer 消费时使用的Topic参数
+        :type UserKafkaTopic: str
+        :param _ServerAddr: 	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+        :type ServerAddr: str
+        :param _UserName: Kafka消费用户名.示例值：name
+        :type UserName: str
+        :param _Password: Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+        :type Password: str
         """
         self._FileSystemId = None
         self._SourceStorageType = None
@@ -2268,6 +2278,11 @@ class CreateDataFlowRequest(AbstractModel):
         self._SecretId = None
         self._SecretKey = None
         self._DataFlowName = None
+        self._AutoRefresh = None
+        self._UserKafkaTopic = None
+        self._ServerAddr = None
+        self._UserName = None
+        self._Password = None
 
     @property
     def FileSystemId(self):
@@ -2357,6 +2372,61 @@ class CreateDataFlowRequest(AbstractModel):
     def DataFlowName(self, DataFlowName):
         self._DataFlowName = DataFlowName
 
+    @property
+    def AutoRefresh(self):
+        r""" 0：不开启自动更新  1：开启自动更新
+        :rtype: int
+        """
+        return self._AutoRefresh
+
+    @AutoRefresh.setter
+    def AutoRefresh(self, AutoRefresh):
+        self._AutoRefresh = AutoRefresh
+
+    @property
+    def UserKafkaTopic(self):
+        r"""KafkaConsumer 消费时使用的Topic参数
+        :rtype: str
+        """
+        return self._UserKafkaTopic
+
+    @UserKafkaTopic.setter
+    def UserKafkaTopic(self, UserKafkaTopic):
+        self._UserKafkaTopic = UserKafkaTopic
+
+    @property
+    def ServerAddr(self):
+        r"""	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+        :rtype: str
+        """
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def UserName(self):
+        r"""Kafka消费用户名.示例值：name
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
@@ -2367,6 +2437,11 @@ class CreateDataFlowRequest(AbstractModel):
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
         self._DataFlowName = params.get("DataFlowName")
+        self._AutoRefresh = params.get("AutoRefresh")
+        self._UserKafkaTopic = params.get("UserKafkaTopic")
+        self._ServerAddr = params.get("ServerAddr")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5271,11 +5346,11 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。
         :type EndTime: str
-        :param _TaskId: 	任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
         :param _Offset: Offset 分页码	
         :type Offset: int
@@ -5283,6 +5358,8 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
         :type Limit: int
         :param _Filters: 过滤条件，TaskName，FileSystemId，Type
         :type Filters: list of Filter
+        :param _CfsVersion: 文件系统版本；v3.1: pcfs/hifs v4.0:Turbo
+        :type CfsVersion: str
         """
         self._StartTime = None
         self._EndTime = None
@@ -5290,10 +5367,11 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._CfsVersion = None
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据。
         :rtype: str
         """
         return self._StartTime
@@ -5304,7 +5382,7 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。
         :rtype: str
         """
         return self._EndTime
@@ -5315,7 +5393,7 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""	任务ID
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -5357,6 +5435,17 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def CfsVersion(self):
+        r"""文件系统版本；v3.1: pcfs/hifs v4.0:Turbo
+        :rtype: str
+        """
+        return self._CfsVersion
+
+    @CfsVersion.setter
+    def CfsVersion(self, CfsVersion):
+        self._CfsVersion = CfsVersion
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -5370,6 +5459,7 @@ class DescribeLifecycleDataTaskRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._CfsVersion = params.get("CfsVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8074,12 +8164,27 @@ class ModifyDataFlowRequest(AbstractModel):
         :type SecretId: str
         :param _SecretKey: 密钥 key
         :type SecretKey: str
+        :param _UserKafkaTopic: KafkaConsumer 消费时使用的Topic参数
+        :type UserKafkaTopic: str
+        :param _ServerAddr: 服务地址
+        :type ServerAddr: str
+        :param _UserName: name
+        :type UserName: str
+        :param _Password: Kafka消费用户密码
+        :type Password: str
+        :param _AutoRefresh: 元数据增量更新开关；1开启，0关闭
+        :type AutoRefresh: int
         """
         self._DataFlowId = None
         self._FileSystemId = None
         self._DataFlowName = None
         self._SecretId = None
         self._SecretKey = None
+        self._UserKafkaTopic = None
+        self._ServerAddr = None
+        self._UserName = None
+        self._Password = None
+        self._AutoRefresh = None
 
     @property
     def DataFlowId(self):
@@ -8136,6 +8241,61 @@ class ModifyDataFlowRequest(AbstractModel):
     def SecretKey(self, SecretKey):
         self._SecretKey = SecretKey
 
+    @property
+    def UserKafkaTopic(self):
+        r"""KafkaConsumer 消费时使用的Topic参数
+        :rtype: str
+        """
+        return self._UserKafkaTopic
+
+    @UserKafkaTopic.setter
+    def UserKafkaTopic(self, UserKafkaTopic):
+        self._UserKafkaTopic = UserKafkaTopic
+
+    @property
+    def ServerAddr(self):
+        r"""服务地址
+        :rtype: str
+        """
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def UserName(self):
+        r"""name
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""Kafka消费用户密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AutoRefresh(self):
+        r"""元数据增量更新开关；1开启，0关闭
+        :rtype: int
+        """
+        return self._AutoRefresh
+
+    @AutoRefresh.setter
+    def AutoRefresh(self, AutoRefresh):
+        self._AutoRefresh = AutoRefresh
+
 
     def _deserialize(self, params):
         self._DataFlowId = params.get("DataFlowId")
@@ -8143,6 +8303,11 @@ class ModifyDataFlowRequest(AbstractModel):
         self._DataFlowName = params.get("DataFlowName")
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
+        self._UserKafkaTopic = params.get("UserKafkaTopic")
+        self._ServerAddr = params.get("ServerAddr")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._AutoRefresh = params.get("AutoRefresh")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

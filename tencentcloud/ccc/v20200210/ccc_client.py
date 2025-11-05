@@ -632,6 +632,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIAgentInfoList(self, request):
+        r"""获取智能体列表
+
+        :param request: Request instance for DescribeAIAgentInfoList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAgentInfoListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAgentInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIAgentInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIAgentInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAIAnalysisResult(self, request):
         r"""获取 AI 会话分析结果
 

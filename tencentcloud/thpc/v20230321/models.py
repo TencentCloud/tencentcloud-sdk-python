@@ -2291,7 +2291,7 @@ class CreateWorkspacesRequest(AbstractModel):
         :type SpaceCount: int
         :param _SpaceName: 工作空间显示名称
         :type SpaceName: str
-        :param _LoginSettings: 工作空间登陆设置
+        :param _LoginSettings: 工作空间登录设置
         :type LoginSettings: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
         :param _SecurityGroupIds: 工作空间所属安全组
         :type SecurityGroupIds: list of str
@@ -2469,7 +2469,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        r"""工作空间登陆设置
+        r"""工作空间登录设置
         :rtype: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
         """
         return self._LoginSettings

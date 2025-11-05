@@ -18,6 +18,57 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAgentInfo(AbstractModel):
+    r"""智能体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AIAgentId: 智能体ID
+        :type AIAgentId: int
+        :param _AIAgentName: 智能体名称
+        :type AIAgentName: str
+        """
+        self._AIAgentId = None
+        self._AIAgentName = None
+
+    @property
+    def AIAgentId(self):
+        r"""智能体ID
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
+    @property
+    def AIAgentName(self):
+        r"""智能体名称
+        :rtype: str
+        """
+        return self._AIAgentName
+
+    @AIAgentName.setter
+    def AIAgentName(self, AIAgentName):
+        self._AIAgentName = AIAgentName
+
+
+    def _deserialize(self, params):
+        self._AIAgentId = params.get("AIAgentId")
+        self._AIAgentName = params.get("AIAgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIAnalysisResult(AbstractModel):
     r"""AI会话分析结果
 
@@ -6620,6 +6671,135 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OnlineStaffList = params.get("OnlineStaffList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIAgentInfoListRequest(AbstractModel):
+    r"""DescribeAIAgentInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        """
+        self._SdkAppId = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def PageSize(self):
+        r"""分页尺寸，上限 100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""分页页码，从 0 开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIAgentInfoListResponse(AbstractModel):
+    r"""DescribeAIAgentInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AIAgentInfoList: 智能体信息列表
+        :type AIAgentInfoList: list of AIAgentInfo
+        :param _TotalCount: 智能体总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AIAgentInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AIAgentInfoList(self):
+        r"""智能体信息列表
+        :rtype: list of AIAgentInfo
+        """
+        return self._AIAgentInfoList
+
+    @AIAgentInfoList.setter
+    def AIAgentInfoList(self, AIAgentInfoList):
+        self._AIAgentInfoList = AIAgentInfoList
+
+    @property
+    def TotalCount(self):
+        r"""智能体总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AIAgentInfoList") is not None:
+            self._AIAgentInfoList = []
+            for item in params.get("AIAgentInfoList"):
+                obj = AIAgentInfo()
+                obj._deserialize(item)
+                self._AIAgentInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

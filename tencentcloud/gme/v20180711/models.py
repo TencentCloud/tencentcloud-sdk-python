@@ -1179,6 +1179,162 @@ class AudioTextStatisticsItem(AbstractModel):
         
 
 
+class AuditResultDetailExternal(AbstractModel):
+    r"""审核结果明细（对外）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _RoomId: 房间 ID
+        :type RoomId: str
+        :param _OpenId: UserID
+        :type OpenId: str
+        :param _Label: 标签
+        :type Label: str
+        :param _Rate: 恶意分数
+        :type Rate: float
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _Url: 音频 Url
+        :type Url: str
+        :param _FileId: 文件Id
+        :type FileId: str
+        :param _Info: ASR结果
+        :type Info: str
+        """
+        self._TaskId = None
+        self._RoomId = None
+        self._OpenId = None
+        self._Label = None
+        self._Rate = None
+        self._CreateTime = None
+        self._Url = None
+        self._FileId = None
+        self._Info = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RoomId(self):
+        r"""房间 ID
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def OpenId(self):
+        r"""UserID
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Label(self):
+        r"""标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Rate(self):
+        r"""恶意分数
+        :rtype: float
+        """
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Url(self):
+        r"""音频 Url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def FileId(self):
+        r"""文件Id
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Info(self):
+        r"""ASR结果
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RoomId = params.get("RoomId")
+        self._OpenId = params.get("OpenId")
+        self._Label = params.get("Label")
+        self._Rate = params.get("Rate")
+        self._CreateTime = params.get("CreateTime")
+        self._Url = params.get("Url")
+        self._FileId = params.get("FileId")
+        self._Info = params.get("Info")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ControlAIConversationRequest(AbstractModel):
     r"""ControlAIConversation请求参数结构体
 
@@ -3331,6 +3487,171 @@ class DescribeAuditResultExternalRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _BizId: 应用 ID
+        :type BizId: int
+        :param _PageNo: 页数  取值范围：>=1
+        :type PageNo: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _BeginTime: 起始时间戳（秒）
+        :type BeginTime: int
+        :param _EndTime: 截止时间戳（秒）
+        :type EndTime: int
+        :param _MinRate: 最小恶意分数
+        :type MinRate: int
+        :param _MaxRate: 最大恶意分数
+        :type MaxRate: int
+        :param _OpenId: UserID
+        :type OpenId: str
+        :param _Label: 恶意分类
+        :type Label: str
+        :param _RoomId: 房间 ID
+        :type RoomId: str
+        """
+        self._BizId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._MinRate = None
+        self._MaxRate = None
+        self._OpenId = None
+        self._Label = None
+        self._RoomId = None
+
+    @property
+    def BizId(self):
+        r"""应用 ID
+        :rtype: int
+        """
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def PageNo(self):
+        r"""页数  取值范围：>=1
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""每页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BeginTime(self):
+        r"""起始时间戳（秒）
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""截止时间戳（秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MinRate(self):
+        r"""最小恶意分数
+        :rtype: int
+        """
+        return self._MinRate
+
+    @MinRate.setter
+    def MinRate(self, MinRate):
+        self._MinRate = MinRate
+
+    @property
+    def MaxRate(self):
+        r"""最大恶意分数
+        :rtype: int
+        """
+        return self._MaxRate
+
+    @MaxRate.setter
+    def MaxRate(self, MaxRate):
+        self._MaxRate = MaxRate
+
+    @property
+    def OpenId(self):
+        r"""UserID
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Label(self):
+        r"""恶意分类
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RoomId(self):
+        r"""房间 ID
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._BizId = params.get("BizId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._MinRate = params.get("MinRate")
+        self._MaxRate = params.get("MaxRate")
+        self._OpenId = params.get("OpenId")
+        self._Label = params.get("Label")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAuditResultExternalResponse(AbstractModel):
     r"""DescribeAuditResultExternal返回参数结构体
@@ -3339,10 +3660,38 @@ class DescribeAuditResultExternalResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Data: 明细列表
+        :type Data: list of AuditResultDetailExternal
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""明细列表
+        :rtype: list of AuditResultDetailExternal
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -3357,6 +3706,13 @@ class DescribeAuditResultExternalResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AuditResultDetailExternal()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

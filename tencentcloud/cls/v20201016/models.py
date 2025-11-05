@@ -348,7 +348,7 @@ class AlarmInfo(AbstractModel):
         :param _MultiConditions: 多触发条件。与
 Condition互斥。
         :type MultiConditions: list of MultiCondition
-        :param _MonitorNotice: 云监控通知渠道相关信息，和AlarmNoticeIds互斥
+        :param _MonitorNotice: 腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
         :type MonitorNotice: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
         """
         self._Name = None
@@ -609,7 +609,7 @@ Condition互斥。
 
     @property
     def MonitorNotice(self):
-        r"""云监控通知渠道相关信息，和AlarmNoticeIds互斥
+        r"""腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
         :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
         """
         return self._MonitorNotice
@@ -1572,7 +1572,7 @@ class AlertHistoryRecord(AbstractModel):
         :param _MonitorObjectType: 监控对象类型。
 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
         :type MonitorObjectType: int
-        :param _SendType: 通知渠道类型，0默认代表cls内部通知渠道，1代表云监控通知渠道
+        :param _SendType: 通知渠道类型，0默认代表cls内部通知渠道，1代表腾讯云可观测平台通知渠道
         :type SendType: int
         """
         self._RecordId = None
@@ -1772,7 +1772,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def SendType(self):
-        r"""通知渠道类型，0默认代表cls内部通知渠道，1代表云监控通知渠道
+        r"""通知渠道类型，0默认代表cls内部通知渠道，1代表腾讯云可观测平台通知渠道
         :rtype: int
         """
         return self._SendType
@@ -27204,7 +27204,7 @@ class MonitorNotice(AbstractModel):
 
 
 class MonitorNoticeRule(AbstractModel):
-    r"""云监控通知渠道组信息
+    r"""腾讯云可观测平台通知渠道组信息
 
     """
 

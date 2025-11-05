@@ -13171,6 +13171,10 @@ class InstanceClusterShard(AbstractModel):
 - 0：down。
 - 1：on。
         :type Connected: int
+        :param _ZoneId: 可用区信息。
+        :type ZoneId: str
+        :param _ReplicasNodeId: 节点组 ID。
+        :type ReplicasNodeId: int
         """
         self._ShardName = None
         self._ShardId = None
@@ -13182,6 +13186,8 @@ class InstanceClusterShard(AbstractModel):
         self._Runid = None
         self._RunId = None
         self._Connected = None
+        self._ZoneId = None
+        self._ReplicasNodeId = None
 
     @property
     def ShardName(self):
@@ -13297,6 +13303,28 @@ class InstanceClusterShard(AbstractModel):
     def Connected(self, Connected):
         self._Connected = Connected
 
+    @property
+    def ZoneId(self):
+        r"""可用区信息。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ReplicasNodeId(self):
+        r"""节点组 ID。
+        :rtype: int
+        """
+        return self._ReplicasNodeId
+
+    @ReplicasNodeId.setter
+    def ReplicasNodeId(self, ReplicasNodeId):
+        self._ReplicasNodeId = ReplicasNodeId
+
 
     def _deserialize(self, params):
         self._ShardName = params.get("ShardName")
@@ -13309,6 +13337,8 @@ class InstanceClusterShard(AbstractModel):
         self._Runid = params.get("Runid")
         self._RunId = params.get("RunId")
         self._Connected = params.get("Connected")
+        self._ZoneId = params.get("ZoneId")
+        self._ReplicasNodeId = params.get("ReplicasNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

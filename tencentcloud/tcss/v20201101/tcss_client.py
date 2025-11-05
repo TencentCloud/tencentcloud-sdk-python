@@ -7713,6 +7713,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UninstallClusterContainerSecurity(self, request):
+        r"""卸载集群容器安全
+
+        :param request: Request instance for UninstallClusterContainerSecurity.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UninstallClusterContainerSecurityRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UninstallClusterContainerSecurityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallClusterContainerSecurity", params, headers=headers)
+            response = json.loads(body)
+            model = models.UninstallClusterContainerSecurityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
         r"""容器网络创建网络策略更新并发布任务
 

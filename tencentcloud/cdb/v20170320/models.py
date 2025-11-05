@@ -15791,11 +15791,11 @@ class DescribeCpuExpandHistoryRequest(AbstractModel):
         :type Status: str
         :param _StartTime: 查询的开始时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
         :type StartTime: int
-        :param _EndTime: 查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
+        :param _EndTime: 查询的结束时间，默认为当前时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
         :type EndTime: int
         :param _Offset: 分页入参
         :type Offset: int
-        :param _Limit: 分页入参
+        :param _Limit: 分页入参，默认20
         :type Limit: int
         """
         self._InstanceId = None
@@ -15852,7 +15852,7 @@ class DescribeCpuExpandHistoryRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
+        r"""查询的结束时间，默认为当前时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
         :rtype: int
         """
         return self._EndTime
@@ -15874,7 +15874,7 @@ class DescribeCpuExpandHistoryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页入参
+        r"""分页入参，默认20
         :rtype: int
         """
         return self._Limit

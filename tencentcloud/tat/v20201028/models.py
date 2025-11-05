@@ -1004,6 +1004,8 @@ class CreateInvokerRequest(AbstractModel):
 
 当执行器类型为 `SCHEDULE` 时，必须指定此参数。
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        :param _Tags: 为命令关联的标签，列表长度不超过10
+        :type Tags: list of Tag
         """
         self._Name = None
         self._Type = None
@@ -1012,6 +1014,7 @@ class CreateInvokerRequest(AbstractModel):
         self._Username = None
         self._Parameters = None
         self._ScheduleSettings = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -1104,6 +1107,17 @@ class CreateInvokerRequest(AbstractModel):
     def ScheduleSettings(self, ScheduleSettings):
         self._ScheduleSettings = ScheduleSettings
 
+    @property
+    def Tags(self):
+        r"""为命令关联的标签，列表长度不超过10
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1115,6 +1129,12 @@ class CreateInvokerRequest(AbstractModel):
         if params.get("ScheduleSettings") is not None:
             self._ScheduleSettings = ScheduleSettings()
             self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
