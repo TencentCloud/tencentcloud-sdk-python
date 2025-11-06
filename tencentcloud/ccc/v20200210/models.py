@@ -16572,6 +16572,302 @@ class SessionEvent(AbstractModel):
         
 
 
+class SetStaffStatusItem(AbstractModel):
+    r"""创建 staff 的信息 item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaffUserId: 座席账号
+        :type StaffUserId: str
+        :param _Status: 状态，free 示闲 notReady 示忙 rest 小休	
+        :type Status: str
+        :param _Reason: 如果设置小休状态，这里是原因
+        :type Reason: str
+        """
+        self._StaffUserId = None
+        self._Status = None
+        self._Reason = None
+
+    @property
+    def StaffUserId(self):
+        r"""座席账号
+        :rtype: str
+        """
+        return self._StaffUserId
+
+    @StaffUserId.setter
+    def StaffUserId(self, StaffUserId):
+        self._StaffUserId = StaffUserId
+
+    @property
+    def Status(self):
+        r"""状态，free 示闲 notReady 示忙 rest 小休	
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""如果设置小休状态，这里是原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._StaffUserId = params.get("StaffUserId")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetStaffStatusRequest(AbstractModel):
+    r"""SetStaffStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _StaffStatusList: 设置座席状态列表，最大个数 10
+        :type StaffStatusList: list of SetStaffStatusItem
+        """
+        self._SdkAppId = None
+        self._StaffStatusList = None
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StaffStatusList(self):
+        r"""设置座席状态列表，最大个数 10
+        :rtype: list of SetStaffStatusItem
+        """
+        return self._StaffStatusList
+
+    @StaffStatusList.setter
+    def StaffStatusList(self, StaffStatusList):
+        self._StaffStatusList = StaffStatusList
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("StaffStatusList") is not None:
+            self._StaffStatusList = []
+            for item in params.get("StaffStatusList"):
+                obj = SetStaffStatusItem()
+                obj._deserialize(item)
+                self._StaffStatusList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetStaffStatusResponse(AbstractModel):
+    r"""SetStaffStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaffStatusList: 设置座席状态应答列表
+        :type StaffStatusList: list of SetStaffStatusRspItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StaffStatusList = None
+        self._RequestId = None
+
+    @property
+    def StaffStatusList(self):
+        r"""设置座席状态应答列表
+        :rtype: list of SetStaffStatusRspItem
+        """
+        return self._StaffStatusList
+
+    @StaffStatusList.setter
+    def StaffStatusList(self, StaffStatusList):
+        self._StaffStatusList = StaffStatusList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StaffStatusList") is not None:
+            self._StaffStatusList = []
+            for item in params.get("StaffStatusList"):
+                obj = SetStaffStatusRspItem()
+                obj._deserialize(item)
+                self._StaffStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class SetStaffStatusRspItem(AbstractModel):
+    r"""设置 staff 状态应答 item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaffUserId: 座席账号
+        :type StaffUserId: str
+        :param _ErrorCode: 错误码，参考协议整体错误码
+        :type ErrorCode: str
+        :param _ErrorMessage: 错误信息
+        :type ErrorMessage: str
+        :param _Status: 当前状态
+        :type Status: str
+        :param _Reason: 当前状态如果是小休，这里是原因
+        :type Reason: str
+        :param _PreviousStatus: 之前状态
+        :type PreviousStatus: str
+        :param _PreviousReason: 之前状态如果是小休，这里是原因
+        :type PreviousReason: str
+        """
+        self._StaffUserId = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._Status = None
+        self._Reason = None
+        self._PreviousStatus = None
+        self._PreviousReason = None
+
+    @property
+    def StaffUserId(self):
+        r"""座席账号
+        :rtype: str
+        """
+        return self._StaffUserId
+
+    @StaffUserId.setter
+    def StaffUserId(self, StaffUserId):
+        self._StaffUserId = StaffUserId
+
+    @property
+    def ErrorCode(self):
+        r"""错误码，参考协议整体错误码
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def Status(self):
+        r"""当前状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""当前状态如果是小休，这里是原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def PreviousStatus(self):
+        r"""之前状态
+        :rtype: str
+        """
+        return self._PreviousStatus
+
+    @PreviousStatus.setter
+    def PreviousStatus(self, PreviousStatus):
+        self._PreviousStatus = PreviousStatus
+
+    @property
+    def PreviousReason(self):
+        r"""之前状态如果是小休，这里是原因
+        :rtype: str
+        """
+        return self._PreviousReason
+
+    @PreviousReason.setter
+    def PreviousReason(self, PreviousReason):
+        self._PreviousReason = PreviousReason
+
+
+    def _deserialize(self, params):
+        self._StaffUserId = params.get("StaffUserId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._PreviousStatus = params.get("PreviousStatus")
+        self._PreviousReason = params.get("PreviousReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillGroupInfoItem(AbstractModel):
     r"""技能组信息
 

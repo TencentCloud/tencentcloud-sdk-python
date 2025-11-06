@@ -93,7 +93,7 @@ class AddClusterCIDRRequest(AbstractModel):
         :type ClusterId: str
         :param _ClusterCIDRs: 增加的ClusterCIDR
         :type ClusterCIDRs: list of str
-        :param _IgnoreClusterCIDRConflict: 是否忽略ClusterCIDR与VPC路由表的冲突
+        :param _IgnoreClusterCIDRConflict: 是否忽略ClusterCIDR与VPC路由表的冲突，默认false，为true时忽略冲突
         :type IgnoreClusterCIDRConflict: bool
         """
         self._ClusterId = None
@@ -124,7 +124,7 @@ class AddClusterCIDRRequest(AbstractModel):
 
     @property
     def IgnoreClusterCIDRConflict(self):
-        r"""是否忽略ClusterCIDR与VPC路由表的冲突
+        r"""是否忽略ClusterCIDR与VPC路由表的冲突，默认false，为true时忽略冲突
         :rtype: bool
         """
         return self._IgnoreClusterCIDRConflict
@@ -1319,7 +1319,7 @@ class CancelClusterReleaseRequest(AbstractModel):
         :type ID: str
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，支持传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :type ClusterType: str
         """
         self._ID = None
@@ -1350,7 +1350,7 @@ class CancelClusterReleaseRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，支持传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -6152,11 +6152,11 @@ class CreateClusterReleaseRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Name: 应用名称
+        :param _Name: 应用名称，最长63个字符，只能包含小写字母、数字及分隔符“-”，且必须以小写字母开头，数字或小写字母结尾
         :type Name: str
-        :param _Namespace: 应用命名空间
+        :param _Namespace: 应用命名空间，从集群详情命名空间获取
         :type Namespace: str
-        :param _Chart: 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+        :param _Chart: 制品名称(从应用市场获取)或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
         :type Chart: str
         :param _Values: 自定义参数
         :type Values: :class:`tencentcloud.tke.v20180525.models.ReleaseValues`
@@ -6201,7 +6201,7 @@ class CreateClusterReleaseRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""应用名称
+        r"""应用名称，最长63个字符，只能包含小写字母、数字及分隔符“-”，且必须以小写字母开头，数字或小写字母结尾
         :rtype: str
         """
         return self._Name
@@ -6212,7 +6212,7 @@ class CreateClusterReleaseRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""应用命名空间
+        r"""应用命名空间，从集群详情命名空间获取
         :rtype: str
         """
         return self._Namespace
@@ -6223,7 +6223,7 @@ class CreateClusterReleaseRequest(AbstractModel):
 
     @property
     def Chart(self):
-        r"""制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+        r"""制品名称(从应用市场获取)或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
         :rtype: str
         """
         return self._Chart
@@ -15614,7 +15614,7 @@ class DescribeClusterPendingReleasesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认0
         :type Offset: int
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，支持传入tke（标准集群），eks（Serverless集群)，external（注册集群）
         :type ClusterType: str
         """
         self._ClusterId = None
@@ -15657,7 +15657,7 @@ class DescribeClusterPendingReleasesRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，支持传入tke（标准集群），eks（Serverless集群)，external（注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -15788,7 +15788,7 @@ class DescribeClusterReleaseDetailsRequest(AbstractModel):
         :type Name: str
         :param _Namespace: 应用所在命名空间
         :type Namespace: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :type ClusterType: str
         """
         self._ClusterId = None
@@ -15831,7 +15831,7 @@ class DescribeClusterReleaseDetailsRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -15914,7 +15914,7 @@ class DescribeClusterReleaseHistoryRequest(AbstractModel):
         :type Name: str
         :param _Namespace: 应用所在命名空间
         :type Namespace: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :type ClusterType: str
         """
         self._ClusterId = None
@@ -15957,7 +15957,7 @@ class DescribeClusterReleaseHistoryRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -16054,11 +16054,11 @@ class DescribeClusterReleasesRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _Limit: 每页数量限制
+        :param _Limit: 每页数量限制，默认值为20
         :type Limit: int
-        :param _Offset: 页偏移量
+        :param _Offset: 页偏移量，默认值为0
         :type Offset: int
-        :param _ClusterType: 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+        :param _ClusterType: 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
         :type ClusterType: str
         :param _Namespace: helm Release 安装的namespace
         :type Namespace: str
@@ -16088,7 +16088,7 @@ class DescribeClusterReleasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数量限制
+        r"""每页数量限制，默认值为20
         :rtype: int
         """
         return self._Limit
@@ -16099,7 +16099,7 @@ class DescribeClusterReleasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""页偏移量
+        r"""页偏移量，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -16110,7 +16110,7 @@ class DescribeClusterReleasesRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型, 目前支持传入 tke, eks, tkeedge, external 
+        r"""集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -29937,7 +29937,7 @@ class GetUpgradeInstanceProgressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :type ClusterId: str
         :param _Limit: 最多获取多少个节点的进度
         :type Limit: int
@@ -29950,7 +29950,7 @@ class GetUpgradeInstanceProgressRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
         :rtype: str
         """
         return self._ClusterId
@@ -30008,12 +30008,15 @@ class GetUpgradeInstanceProgressResponse(AbstractModel):
         :param _Done: 已升级节点总数
         :type Done: int
         :param _LifeState: 升级任务生命周期
+
+pending 还未开始
 process 运行中
 paused 已停止
 pauing 正在停止
 done  已完成
 timeout 已超时
 aborted 已取消
+
         :type LifeState: str
         :param _Instances: 各节点升级进度详情
         :type Instances: list of InstanceUpgradeProgressItem
@@ -30054,12 +30057,15 @@ aborted 已取消
     @property
     def LifeState(self):
         r"""升级任务生命周期
+
+pending 还未开始
 process 运行中
 paused 已停止
 pauing 正在停止
 done  已完成
 timeout 已超时
 aborted 已取消
+
         :rtype: str
         """
         return self._LifeState
@@ -37734,7 +37740,17 @@ class PendingRelease(AbstractModel):
         :type Name: str
         :param _Namespace: 应用命名空间
         :type Namespace: str
-        :param _Status: 应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
+        :param _Status: 应用状态，参考 Helm 发布状态。
+可选值及其释义如下：
+• ​​unknown​​: 状态未知
+• ​​deployed​​: 已成功部署
+• ​​uninstalled​​: 已卸载
+• ​​superseded​​: 已被新版本替代
+• ​​failed​​: 部署失败
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :type Status: str
         :param _UpdatedTime: 更新时间
         :type UpdatedTime: str
@@ -37804,7 +37820,17 @@ class PendingRelease(AbstractModel):
 
     @property
     def Status(self):
-        r"""应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
+        r"""应用状态，参考 Helm 发布状态。
+可选值及其释义如下：
+• ​​unknown​​: 状态未知
+• ​​deployed​​: 已成功部署
+• ​​uninstalled​​: 已卸载
+• ​​superseded​​: 已被新版本替代
+• ​​failed​​: 部署失败
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :rtype: str
         """
         return self._Status
@@ -42403,7 +42429,17 @@ class Release(AbstractModel):
         :type Namespace: str
         :param _Revision: 应用当前版本
         :type Revision: str
-        :param _Status: 应用状态
+        :param _Status: 应用状态，参考 Helm 发布状态。
+可选值及其释义如下：
+• ​​unknown​​: 状态未知
+• ​​deployed​​: 已成功部署
+• ​​uninstalled​​: 已卸载
+• ​​superseded​​: 已被新版本替代
+• ​​failed​​: 部署失败
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :type Status: str
         :param _ChartName: 制品名称
         :type ChartName: str
@@ -42461,7 +42497,17 @@ class Release(AbstractModel):
 
     @property
     def Status(self):
-        r"""应用状态
+        r"""应用状态，参考 Helm 发布状态。
+可选值及其释义如下：
+• ​​unknown​​: 状态未知
+• ​​deployed​​: 已成功部署
+• ​​uninstalled​​: 已卸载
+• ​​superseded​​: 已被新版本替代
+• ​​failed​​: 部署失败
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :rtype: str
         """
         return self._Status
@@ -42559,7 +42605,17 @@ class ReleaseDetails(AbstractModel):
         :type Namespace: str
         :param _Version: 应用当前版本
         :type Version: int
-        :param _Status: 应用状态
+        :param _Status: 应用状态，参考 Helm 发布状态。 
+可选值及其释义如下：
+• ​​unknown​​: 状态未知 
+• ​​deployed​​: 已成功部署 
+• ​​uninstalled​​: 已卸载 
+• ​​superseded​​: 已被新版本替代 
+• ​​failed​​: 部署失败 
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中 
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :type Status: str
         :param _Description: 应用描述
         :type Description: str
@@ -42644,7 +42700,17 @@ class ReleaseDetails(AbstractModel):
 
     @property
     def Status(self):
-        r"""应用状态
+        r"""应用状态，参考 Helm 发布状态。 
+可选值及其释义如下：
+• ​​unknown​​: 状态未知 
+• ​​deployed​​: 已成功部署 
+• ​​uninstalled​​: 已卸载 
+• ​​superseded​​: 已被新版本替代 
+• ​​failed​​: 部署失败 
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中 
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :rtype: str
         """
         return self._Status
@@ -42850,7 +42916,17 @@ class ReleaseHistory(AbstractModel):
         :type Namespace: str
         :param _Revision: 应用版本
         :type Revision: int
-        :param _Status: 应用状态
+        :param _Status: 应用状态，参考 Helm 发布状态。 
+可选值及其释义如下：
+• ​​unknown​​: 状态未知 
+• ​​deployed​​: 已成功部署 
+• ​​uninstalled​​: 已卸载 
+• ​​superseded​​: 已被新版本替代 
+• ​​failed​​: 部署失败 
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中 
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :type Status: str
         :param _Chart: 应用制品名称
         :type Chart: str
@@ -42905,7 +42981,17 @@ class ReleaseHistory(AbstractModel):
 
     @property
     def Status(self):
-        r"""应用状态
+        r"""应用状态，参考 Helm 发布状态。 
+可选值及其释义如下：
+• ​​unknown​​: 状态未知 
+• ​​deployed​​: 已成功部署 
+• ​​uninstalled​​: 已卸载 
+• ​​superseded​​: 已被新版本替代 
+• ​​failed​​: 部署失败 
+• ​​uninstalling​​: 正在卸载中
+• ​​pending-install​​: 等待安装/安装进行中
+• ​​pending-upgrade​​: 等待升级/升级进行中 
+• ​​pending-rollback​​: 等待回滚/回滚进行中
         :rtype: str
         """
         return self._Status
@@ -44080,7 +44166,7 @@ class RollbackClusterReleaseRequest(AbstractModel):
         :type Namespace: str
         :param _Revision: 回滚版本号
         :type Revision: int
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
         :type ClusterType: str
         """
         self._ClusterId = None
@@ -44135,7 +44221,7 @@ class RollbackClusterReleaseRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
         :rtype: str
         """
         return self._ClusterType
@@ -46494,7 +46580,7 @@ class UninstallClusterReleaseRequest(AbstractModel):
         :type Name: str
         :param _Namespace: 应用命名空间
         :type Namespace: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，传入 tke(标准集群)， eks(Serverless集群)，external(注册集群）
         :type ClusterType: str
         """
         self._ClusterId = None
@@ -46537,7 +46623,7 @@ class UninstallClusterReleaseRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""集群类型，传入 tke(标准集群)， eks(Serverless集群)，external(注册集群）
         :rtype: str
         """
         return self._ClusterType

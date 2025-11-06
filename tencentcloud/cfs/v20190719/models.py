@@ -3159,6 +3159,22 @@ deleting：删除中
         :type CreationTime: str
         :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
+        :param _AutoRefresh: 0：不开启自动更新
+
+1：开启自动更新
+        :type AutoRefresh: int
+        :param _UserKafkaTopic: KafkaConsumer 消费时使用的Topic参数
+        :type UserKafkaTopic: str
+        :param _ServerAddr: 服务地址
+        :type ServerAddr: str
+        :param _UserName: Kafka消费用户名
+        :type UserName: str
+        :param _AutoRefreshStatus: 自动刷新的状态，available：已生效
+pending：配置中
+unavailable：失效
+        :type AutoRefreshStatus: str
+        :param _AutoRefreshTime: 自动刷新开启时间
+        :type AutoRefreshTime: str
         """
         self._DataFlowId = None
         self._DataFlowName = None
@@ -3169,6 +3185,12 @@ deleting：删除中
         self._Status = None
         self._CreationTime = None
         self._FileSystemId = None
+        self._AutoRefresh = None
+        self._UserKafkaTopic = None
+        self._ServerAddr = None
+        self._UserName = None
+        self._AutoRefreshStatus = None
+        self._AutoRefreshTime = None
 
     @property
     def DataFlowId(self):
@@ -3272,6 +3294,76 @@ deleting：删除中
     def FileSystemId(self, FileSystemId):
         self._FileSystemId = FileSystemId
 
+    @property
+    def AutoRefresh(self):
+        r"""0：不开启自动更新
+
+1：开启自动更新
+        :rtype: int
+        """
+        return self._AutoRefresh
+
+    @AutoRefresh.setter
+    def AutoRefresh(self, AutoRefresh):
+        self._AutoRefresh = AutoRefresh
+
+    @property
+    def UserKafkaTopic(self):
+        r"""KafkaConsumer 消费时使用的Topic参数
+        :rtype: str
+        """
+        return self._UserKafkaTopic
+
+    @UserKafkaTopic.setter
+    def UserKafkaTopic(self, UserKafkaTopic):
+        self._UserKafkaTopic = UserKafkaTopic
+
+    @property
+    def ServerAddr(self):
+        r"""服务地址
+        :rtype: str
+        """
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def UserName(self):
+        r"""Kafka消费用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AutoRefreshStatus(self):
+        r"""自动刷新的状态，available：已生效
+pending：配置中
+unavailable：失效
+        :rtype: str
+        """
+        return self._AutoRefreshStatus
+
+    @AutoRefreshStatus.setter
+    def AutoRefreshStatus(self, AutoRefreshStatus):
+        self._AutoRefreshStatus = AutoRefreshStatus
+
+    @property
+    def AutoRefreshTime(self):
+        r"""自动刷新开启时间
+        :rtype: str
+        """
+        return self._AutoRefreshTime
+
+    @AutoRefreshTime.setter
+    def AutoRefreshTime(self, AutoRefreshTime):
+        self._AutoRefreshTime = AutoRefreshTime
+
 
     def _deserialize(self, params):
         self._DataFlowId = params.get("DataFlowId")
@@ -3283,6 +3375,12 @@ deleting：删除中
         self._Status = params.get("Status")
         self._CreationTime = params.get("CreationTime")
         self._FileSystemId = params.get("FileSystemId")
+        self._AutoRefresh = params.get("AutoRefresh")
+        self._UserKafkaTopic = params.get("UserKafkaTopic")
+        self._ServerAddr = params.get("ServerAddr")
+        self._UserName = params.get("UserName")
+        self._AutoRefreshStatus = params.get("AutoRefreshStatus")
+        self._AutoRefreshTime = params.get("AutoRefreshTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7626,19 +7724,19 @@ class LifecycleRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageType: 数据转储后的存储类型
+        :param _StorageType: 数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
         :type StorageType: str
-        :param _FileType: 数据转储文件类型
+        :param _FileType: 数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
         :type FileType: str
-        :param _Action: 数据转储行为
+        :param _Action: 数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
         :type Action: str
-        :param _Interval: 数据转储触发时间
+        :param _Interval: 数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: str
-        :param _FileMaxSize: 数据转储文件最大规格
+        :param _FileMaxSize: 数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMaxSize: str
-        :param _FileMinSize: 数据转储文件最小规格
+        :param _FileMinSize: 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMinSize: str
         """
@@ -7651,7 +7749,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""数据转储后的存储类型
+        r"""数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
         :rtype: str
         """
         return self._StorageType
@@ -7662,7 +7760,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def FileType(self):
-        r"""数据转储文件类型
+        r"""数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
         :rtype: str
         """
         return self._FileType
@@ -7673,7 +7771,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""数据转储行为
+        r"""数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
         :rtype: str
         """
         return self._Action
@@ -7684,7 +7782,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def Interval(self):
-        r"""数据转储触发时间
+        r"""数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7696,7 +7794,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def FileMaxSize(self):
-        r"""数据转储文件最大规格
+        r"""数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7708,7 +7806,7 @@ class LifecycleRule(AbstractModel):
 
     @property
     def FileMinSize(self):
-        r"""数据转储文件最小规格
+        r"""数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

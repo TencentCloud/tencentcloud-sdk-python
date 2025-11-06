@@ -8838,6 +8838,8 @@ OverseasCheques -- 海外支票
 RegistrationCertificate -- 备案证
 ​GridPhoto -- 电网系统照片
 ​SignaturePage -- 签署页
+​SalesDeliveryNote -- 销售发货单
+
 
 
         :type ConfigId: str
@@ -8955,6 +8957,8 @@ OverseasCheques -- 海外支票
 RegistrationCertificate -- 备案证
 ​GridPhoto -- 电网系统照片
 ​SignaturePage -- 签署页
+​SalesDeliveryNote -- 销售发货单
+
 
 
         :rtype: str

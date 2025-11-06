@@ -2952,6 +2952,140 @@ class ApplicationProxyRule(AbstractModel):
         
 
 
+class ApplyFreeCertificateRequest(AbstractModel):
+    r"""ApplyFreeCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Domain: 申请免费证书的目标域名。
+        :type Domain: str
+        :param _VerificationMethod: 申请免费证书时验证方式，详细验证方式说明参考[免费证书申请方式说明文档](https://cloud.tencent.com/document/product/1552/90437) ，相关取值有：
+<li>http_challenge：HTTP 访问文件验证方式，通过 HTTP 访问域名指定 URL 获取文件信息以完成免费证书申请验证；</li>
+<li>dns_challenge：DNS 委派验证方式，通过添加指定的主机记录解析指向 EdgeOne 以完成免费证书申请验证。</li>
+注意：在触发本接口后，你需要根据返回的验证信息，完成验证内容配置。配置完成后，还需要通过<a href = 'https://tcloud4api.woa.com/document/product/1657/927938?!preview&!document=1'>检查免费证书申请结果</a>接口进行验证，验证通过后，即可申请成功。在免费证书申请成功后，你可以调用<a href = 'https://cloud.tencent.com/document/product/1552/80764'>配置域名证书</a>接口为当前域名部署免费证书。
+        :type VerificationMethod: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+        self._VerificationMethod = None
+
+    @property
+    def ZoneId(self):
+        r"""站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""申请免费证书的目标域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerificationMethod(self):
+        r"""申请免费证书时验证方式，详细验证方式说明参考[免费证书申请方式说明文档](https://cloud.tencent.com/document/product/1552/90437) ，相关取值有：
+<li>http_challenge：HTTP 访问文件验证方式，通过 HTTP 访问域名指定 URL 获取文件信息以完成免费证书申请验证；</li>
+<li>dns_challenge：DNS 委派验证方式，通过添加指定的主机记录解析指向 EdgeOne 以完成免费证书申请验证。</li>
+注意：在触发本接口后，你需要根据返回的验证信息，完成验证内容配置。配置完成后，还需要通过<a href = 'https://tcloud4api.woa.com/document/product/1657/927938?!preview&!document=1'>检查免费证书申请结果</a>接口进行验证，验证通过后，即可申请成功。在免费证书申请成功后，你可以调用<a href = 'https://cloud.tencent.com/document/product/1552/80764'>配置域名证书</a>接口为当前域名部署免费证书。
+        :rtype: str
+        """
+        return self._VerificationMethod
+
+    @VerificationMethod.setter
+    def VerificationMethod(self, VerificationMethod):
+        self._VerificationMethod = VerificationMethod
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        self._VerificationMethod = params.get("VerificationMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFreeCertificateResponse(AbstractModel):
+    r"""ApplyFreeCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsVerification: 当 VerificationMethod 为 dns_challenge 时，域名申请免费证书的相关验证信息。
+        :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        :param _FileVerification: 当 VerificationMethod 为 http_challenge 时，域名申请免费证书的相关验证信息。
+        :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DnsVerification = None
+        self._FileVerification = None
+        self._RequestId = None
+
+    @property
+    def DnsVerification(self):
+        r"""当 VerificationMethod 为 dns_challenge 时，域名申请免费证书的相关验证信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        """
+        return self._DnsVerification
+
+    @DnsVerification.setter
+    def DnsVerification(self, DnsVerification):
+        self._DnsVerification = DnsVerification
+
+    @property
+    def FileVerification(self):
+        r"""当 VerificationMethod 为 http_challenge 时，域名申请免费证书的相关验证信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        """
+        return self._FileVerification
+
+    @FileVerification.setter
+    def FileVerification(self, FileVerification):
+        self._FileVerification = FileVerification
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DnsVerification") is not None:
+            self._DnsVerification = DnsVerification()
+            self._DnsVerification._deserialize(params.get("DnsVerification"))
+        if params.get("FileVerification") is not None:
+            self._FileVerification = FileVerification()
+            self._FileVerification._deserialize(params.get("FileVerification"))
+        self._RequestId = params.get("RequestId")
+
+
 class AscriptionInfo(AbstractModel):
     r"""站点归属信息
 
@@ -7072,6 +7206,132 @@ class CheckCnameStatusResponse(AbstractModel):
                 obj = CnameStatus()
                 obj._deserialize(item)
                 self._CnameStatus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CheckFreeCertificateVerificationRequest(AbstractModel):
+    r"""CheckFreeCertificateVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Domain: 加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+        :type Domain: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckFreeCertificateVerificationResponse(AbstractModel):
+    r"""CheckFreeCertificateVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommonName: 免费证书申请成功时，该证书颁发给的域名。
+注意：一个域名只允许申请一本免费证书， 如果已经有泛域名申请了免费证书的情况下，其子域名会匹配使用该泛域名证书。
+        :type CommonName: str
+        :param _SignatureAlgorithm: 免费证书申请成功时，该证书使用的签名算法，当前仅支持 RSA 2048。
+        :type SignatureAlgorithm: str
+        :param _ExpireTime: 免费证书申请成功时，该证书的过期时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type ExpireTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CommonName = None
+        self._SignatureAlgorithm = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def CommonName(self):
+        r"""免费证书申请成功时，该证书颁发给的域名。
+注意：一个域名只允许申请一本免费证书， 如果已经有泛域名申请了免费证书的情况下，其子域名会匹配使用该泛域名证书。
+        :rtype: str
+        """
+        return self._CommonName
+
+    @CommonName.setter
+    def CommonName(self, CommonName):
+        self._CommonName = CommonName
+
+    @property
+    def SignatureAlgorithm(self):
+        r"""免费证书申请成功时，该证书使用的签名算法，当前仅支持 RSA 2048。
+        :rtype: str
+        """
+        return self._SignatureAlgorithm
+
+    @SignatureAlgorithm.setter
+    def SignatureAlgorithm(self, SignatureAlgorithm):
+        self._SignatureAlgorithm = SignatureAlgorithm
+
+    @property
+    def ExpireTime(self):
+        r"""免费证书申请成功时，该证书的过期时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CommonName = params.get("CommonName")
+        self._SignatureAlgorithm = params.get("SignatureAlgorithm")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 

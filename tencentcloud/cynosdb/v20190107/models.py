@@ -41,6 +41,14 @@ class Ability(AbstractModel):
         :type NoSupportTransparentDataEncryptionReason: str
         :param _IsSupportManualLogic: 是否支持手动发起逻辑备份
         :type IsSupportManualLogic: str
+        :param _IsSupportGlobalEncryption: 是否支持开启全局加密
+        :type IsSupportGlobalEncryption: str
+        :param _NoSupportGlobalEncryptionReason: 不支持全局加密的原因
+        :type NoSupportGlobalEncryptionReason: str
+        :param _NoSupportTransparentDataEncryptionReasonCode: 不支持透明加密原因状态码
+        :type NoSupportTransparentDataEncryptionReasonCode: str
+        :param _NoSupportGlobalEncryptionReasonCode: 不支持全局加密原因状态码
+        :type NoSupportGlobalEncryptionReasonCode: str
         """
         self._IsSupportSlaveZone = None
         self._NonsupportSlaveZoneReason = None
@@ -50,6 +58,10 @@ class Ability(AbstractModel):
         self._IsSupportTransparentDataEncryption = None
         self._NoSupportTransparentDataEncryptionReason = None
         self._IsSupportManualLogic = None
+        self._IsSupportGlobalEncryption = None
+        self._NoSupportGlobalEncryptionReason = None
+        self._NoSupportTransparentDataEncryptionReasonCode = None
+        self._NoSupportGlobalEncryptionReasonCode = None
 
     @property
     def IsSupportSlaveZone(self):
@@ -139,6 +151,50 @@ class Ability(AbstractModel):
     def IsSupportManualLogic(self, IsSupportManualLogic):
         self._IsSupportManualLogic = IsSupportManualLogic
 
+    @property
+    def IsSupportGlobalEncryption(self):
+        r"""是否支持开启全局加密
+        :rtype: str
+        """
+        return self._IsSupportGlobalEncryption
+
+    @IsSupportGlobalEncryption.setter
+    def IsSupportGlobalEncryption(self, IsSupportGlobalEncryption):
+        self._IsSupportGlobalEncryption = IsSupportGlobalEncryption
+
+    @property
+    def NoSupportGlobalEncryptionReason(self):
+        r"""不支持全局加密的原因
+        :rtype: str
+        """
+        return self._NoSupportGlobalEncryptionReason
+
+    @NoSupportGlobalEncryptionReason.setter
+    def NoSupportGlobalEncryptionReason(self, NoSupportGlobalEncryptionReason):
+        self._NoSupportGlobalEncryptionReason = NoSupportGlobalEncryptionReason
+
+    @property
+    def NoSupportTransparentDataEncryptionReasonCode(self):
+        r"""不支持透明加密原因状态码
+        :rtype: str
+        """
+        return self._NoSupportTransparentDataEncryptionReasonCode
+
+    @NoSupportTransparentDataEncryptionReasonCode.setter
+    def NoSupportTransparentDataEncryptionReasonCode(self, NoSupportTransparentDataEncryptionReasonCode):
+        self._NoSupportTransparentDataEncryptionReasonCode = NoSupportTransparentDataEncryptionReasonCode
+
+    @property
+    def NoSupportGlobalEncryptionReasonCode(self):
+        r"""不支持全局加密原因状态码
+        :rtype: str
+        """
+        return self._NoSupportGlobalEncryptionReasonCode
+
+    @NoSupportGlobalEncryptionReasonCode.setter
+    def NoSupportGlobalEncryptionReasonCode(self, NoSupportGlobalEncryptionReasonCode):
+        self._NoSupportGlobalEncryptionReasonCode = NoSupportGlobalEncryptionReasonCode
+
 
     def _deserialize(self, params):
         self._IsSupportSlaveZone = params.get("IsSupportSlaveZone")
@@ -149,6 +205,10 @@ class Ability(AbstractModel):
         self._IsSupportTransparentDataEncryption = params.get("IsSupportTransparentDataEncryption")
         self._NoSupportTransparentDataEncryptionReason = params.get("NoSupportTransparentDataEncryptionReason")
         self._IsSupportManualLogic = params.get("IsSupportManualLogic")
+        self._IsSupportGlobalEncryption = params.get("IsSupportGlobalEncryption")
+        self._NoSupportGlobalEncryptionReason = params.get("NoSupportGlobalEncryptionReason")
+        self._NoSupportTransparentDataEncryptionReasonCode = params.get("NoSupportTransparentDataEncryptionReasonCode")
+        self._NoSupportGlobalEncryptionReasonCode = params.get("NoSupportGlobalEncryptionReasonCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17713,11 +17773,17 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
         :param _KeyRegion: 加密秘钥地域
 
         :type KeyRegion: str
+        :param _KeyType: 秘钥类型
+        :type KeyType: str
+        :param _IsOpenGlobalEncryption: 是否已经开启全局加密
+        :type IsOpenGlobalEncryption: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeyId = None
         self._KeyRegion = None
+        self._KeyType = None
+        self._IsOpenGlobalEncryption = None
         self._RequestId = None
 
     @property
@@ -17744,6 +17810,28 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
         self._KeyRegion = KeyRegion
 
     @property
+    def KeyType(self):
+        r"""秘钥类型
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""是否已经开启全局加密
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17758,6 +17846,8 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._KeyRegion = params.get("KeyRegion")
+        self._KeyType = params.get("KeyType")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
         self._RequestId = params.get("RequestId")
 
 
@@ -17957,7 +18047,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID（InstanceId与InstanceGroupId必须任选一个传入）
         :type InstanceId: str
-        :param _InstanceGroupId: 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
+        :param _InstanceGroupId: 实例组 ID，可通过 [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/product/1003/103934) 接口查询。
         :type InstanceGroupId: str
         """
         self._InstanceId = None
@@ -17980,7 +18070,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
+        r"""实例组 ID，可通过 [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/product/1003/103934) 接口查询。
         :rtype: str
         """
         return self._InstanceGroupId
@@ -32473,11 +32563,14 @@ class OpenClusterTransparentEncryptRequest(AbstractModel):
         :type KeyId: str
         :param _KeyRegion: 秘钥地域
         :type KeyRegion: str
+        :param _IsOpenGlobalEncryption: 是否开启全局加密
+        :type IsOpenGlobalEncryption: bool
         """
         self._ClusterId = None
         self._KeyType = None
         self._KeyId = None
         self._KeyRegion = None
+        self._IsOpenGlobalEncryption = None
 
     @property
     def ClusterId(self):
@@ -32523,12 +32616,24 @@ class OpenClusterTransparentEncryptRequest(AbstractModel):
     def KeyRegion(self, KeyRegion):
         self._KeyRegion = KeyRegion
 
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""是否开启全局加密
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._KeyType = params.get("KeyType")
         self._KeyId = params.get("KeyId")
         self._KeyRegion = params.get("KeyRegion")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

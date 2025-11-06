@@ -749,14 +749,17 @@ class AudioFormat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+        :param _Format: 生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
         :type Format: str
+        :param _SampleRate: 采样率，默认24000， 可选16000, 24000 
+        :type SampleRate: int
         """
         self._Format = None
+        self._SampleRate = None
 
     @property
     def Format(self):
-        r"""生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+        r"""生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
         :rtype: str
         """
         return self._Format
@@ -765,9 +768,21 @@ class AudioFormat(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def SampleRate(self):
+        r"""采样率，默认24000， 可选16000, 24000 
+        :rtype: int
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
+        self._SampleRate = params.get("SampleRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16610,8 +16625,11 @@ class TTSConfig(AbstractModel):
         r"""
         :param _VoiceId: 音色ID
         :type VoiceId: str
+        :param _Model: TTS 的模型，默认是：flow_01_turbo, 可选: [ flow_01_turbo, flow_01_ex]
+        :type Model: str
         """
         self._VoiceId = None
+        self._Model = None
 
     @property
     def VoiceId(self):
@@ -16624,9 +16642,21 @@ class TTSConfig(AbstractModel):
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
 
+    @property
+    def Model(self):
+        r"""TTS 的模型，默认是：flow_01_turbo, 可选: [ flow_01_turbo, flow_01_ex]
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16865,12 +16895,18 @@ class TextToSpeechRequest(AbstractModel):
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         :param _APIKey: TTS的API密钥
         :type APIKey: str
+        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :type Model: str
+        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :type Language: str
         """
         self._Text = None
         self._Voice = None
         self._SdkAppId = None
         self._AudioFormat = None
         self._APIKey = None
+        self._Model = None
+        self._Language = None
 
     @property
     def Text(self):
@@ -16918,6 +16954,8 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         r"""TTS的API密钥
         :rtype: str
         """
@@ -16925,7 +16963,31 @@ class TextToSpeechRequest(AbstractModel):
 
     @APIKey.setter
     def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         self._APIKey = APIKey
+
+    @property
+    def Model(self):
+        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
 
     def _deserialize(self, params):
@@ -16938,6 +17000,8 @@ class TextToSpeechRequest(AbstractModel):
             self._AudioFormat = AudioFormat()
             self._AudioFormat._deserialize(params.get("AudioFormat"))
         self._APIKey = params.get("APIKey")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17008,12 +17072,18 @@ class TextToSpeechSSERequest(AbstractModel):
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         :param _APIKey: TTS的API密钥
         :type APIKey: str
+        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :type Model: str
+        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :type Language: str
         """
         self._Text = None
         self._Voice = None
         self._SdkAppId = None
         self._AudioFormat = None
         self._APIKey = None
+        self._Model = None
+        self._Language = None
 
     @property
     def Text(self):
@@ -17070,6 +17140,28 @@ class TextToSpeechSSERequest(AbstractModel):
     def APIKey(self, APIKey):
         self._APIKey = APIKey
 
+    @property
+    def Model(self):
+        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -17081,6 +17173,8 @@ class TextToSpeechSSERequest(AbstractModel):
             self._AudioFormat = AudioFormat()
             self._AudioFormat._deserialize(params.get("AudioFormat"))
         self._APIKey = params.get("APIKey")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18712,8 +18806,17 @@ class Voice(AbstractModel):
         r"""
         :param _VoiceId: TTS的声音的ID
         :type VoiceId: str
+        :param _Speed: 语速，范围 0.5-2.0，默认 1.0
+        :type Speed: float
+        :param _Volume: (0, 10]   默认值1.0 
+        :type Volume: float
+        :param _Pitch: 取值[-12,12],默认0
+        :type Pitch: int
         """
         self._VoiceId = None
+        self._Speed = None
+        self._Volume = None
+        self._Pitch = None
 
     @property
     def VoiceId(self):
@@ -18726,9 +18829,45 @@ class Voice(AbstractModel):
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
 
+    @property
+    def Speed(self):
+        r"""语速，范围 0.5-2.0，默认 1.0
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""(0, 10]   默认值1.0 
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Pitch(self):
+        r"""取值[-12,12],默认0
+        :rtype: int
+        """
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
+        self._Pitch = params.get("Pitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18756,12 +18895,18 @@ class VoiceCloneRequest(AbstractModel):
         :type APIKey: str
         :param _PromptText: 声音克隆的参考文本，为参考音频对应的文字。
         :type PromptText: str
+        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :type Model: str
+        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :type Language: str
         """
         self._SdkAppId = None
         self._VoiceName = None
         self._PromptAudio = None
         self._APIKey = None
         self._PromptText = None
+        self._Model = None
+        self._Language = None
 
     @property
     def SdkAppId(self):
@@ -18818,6 +18963,28 @@ class VoiceCloneRequest(AbstractModel):
     def PromptText(self, PromptText):
         self._PromptText = PromptText
 
+    @property
+    def Model(self):
+        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -18825,6 +18992,8 @@ class VoiceCloneRequest(AbstractModel):
         self._PromptAudio = params.get("PromptAudio")
         self._APIKey = params.get("APIKey")
         self._PromptText = params.get("PromptText")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

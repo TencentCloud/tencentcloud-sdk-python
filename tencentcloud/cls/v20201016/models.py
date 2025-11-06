@@ -9737,6 +9737,8 @@ class CreateTopicRequest(AbstractModel):
         :type IsWebTracking: bool
         :param _Extends: 主题扩展信息
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        :param _IsSourceFrom: 开启记录公网来源ip和服务端接收时间
+        :type IsSourceFrom: bool
         """
         self._LogsetId = None
         self._TopicName = None
@@ -9752,6 +9754,7 @@ class CreateTopicRequest(AbstractModel):
         self._TopicId = None
         self._IsWebTracking = None
         self._Extends = None
+        self._IsSourceFrom = None
 
     @property
     def LogsetId(self):
@@ -9924,6 +9927,17 @@ class CreateTopicRequest(AbstractModel):
     def Extends(self, Extends):
         self._Extends = Extends
 
+    @property
+    def IsSourceFrom(self):
+        r"""开启记录公网来源ip和服务端接收时间
+        :rtype: bool
+        """
+        return self._IsSourceFrom
+
+    @IsSourceFrom.setter
+    def IsSourceFrom(self, IsSourceFrom):
+        self._IsSourceFrom = IsSourceFrom
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -9947,6 +9961,7 @@ class CreateTopicRequest(AbstractModel):
         if params.get("Extends") is not None:
             self._Extends = TopicExtendInfo()
             self._Extends._deserialize(params.get("Extends"))
+        self._IsSourceFrom = params.get("IsSourceFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

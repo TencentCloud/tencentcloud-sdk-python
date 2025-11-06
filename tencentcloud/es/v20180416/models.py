@@ -9805,6 +9805,162 @@ class GetDiagnoseSettingsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetIpTraceStatusRequest(AbstractModel):
+    r"""GetIpTraceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetIpTraceStatusResponse(AbstractModel):
+    r"""GetIpTraceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpenIpTrace: 是否开启IP溯源
+        :type OpenIpTrace: bool
+        :param _DurationTime: IP溯源开启持续时间，单位：秒
+        :type DurationTime: int
+        :param _IpTraceConfig: IP溯源配置
+        :type IpTraceConfig: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
+        :param _LastStartTime: 上次执行时间
+        :type LastStartTime: str
+        :param _LastEndTime: 上次关闭时间
+        :type LastEndTime: str
+        :param _FilterKibanaIp: 是否过滤Kibana节点IP
+        :type FilterKibanaIp: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OpenIpTrace = None
+        self._DurationTime = None
+        self._IpTraceConfig = None
+        self._LastStartTime = None
+        self._LastEndTime = None
+        self._FilterKibanaIp = None
+        self._RequestId = None
+
+    @property
+    def OpenIpTrace(self):
+        r"""是否开启IP溯源
+        :rtype: bool
+        """
+        return self._OpenIpTrace
+
+    @OpenIpTrace.setter
+    def OpenIpTrace(self, OpenIpTrace):
+        self._OpenIpTrace = OpenIpTrace
+
+    @property
+    def DurationTime(self):
+        r"""IP溯源开启持续时间，单位：秒
+        :rtype: int
+        """
+        return self._DurationTime
+
+    @DurationTime.setter
+    def DurationTime(self, DurationTime):
+        self._DurationTime = DurationTime
+
+    @property
+    def IpTraceConfig(self):
+        r"""IP溯源配置
+        :rtype: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
+        """
+        return self._IpTraceConfig
+
+    @IpTraceConfig.setter
+    def IpTraceConfig(self, IpTraceConfig):
+        self._IpTraceConfig = IpTraceConfig
+
+    @property
+    def LastStartTime(self):
+        r"""上次执行时间
+        :rtype: str
+        """
+        return self._LastStartTime
+
+    @LastStartTime.setter
+    def LastStartTime(self, LastStartTime):
+        self._LastStartTime = LastStartTime
+
+    @property
+    def LastEndTime(self):
+        r"""上次关闭时间
+        :rtype: str
+        """
+        return self._LastEndTime
+
+    @LastEndTime.setter
+    def LastEndTime(self, LastEndTime):
+        self._LastEndTime = LastEndTime
+
+    @property
+    def FilterKibanaIp(self):
+        r"""是否过滤Kibana节点IP
+        :rtype: bool
+        """
+        return self._FilterKibanaIp
+
+    @FilterKibanaIp.setter
+    def FilterKibanaIp(self, FilterKibanaIp):
+        self._FilterKibanaIp = FilterKibanaIp
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OpenIpTrace = params.get("OpenIpTrace")
+        self._DurationTime = params.get("DurationTime")
+        if params.get("IpTraceConfig") is not None:
+            self._IpTraceConfig = IpTraceConfig()
+            self._IpTraceConfig._deserialize(params.get("IpTraceConfig"))
+        self._LastStartTime = params.get("LastStartTime")
+        self._LastEndTime = params.get("LastEndTime")
+        self._FilterKibanaIp = params.get("FilterKibanaIp")
+        self._RequestId = params.get("RequestId")
+
+
 class GetRequestTargetNodeTypesRequest(AbstractModel):
     r"""GetRequestTargetNodeTypes请求参数结构体
 
@@ -12700,6 +12856,303 @@ class IpTimePair(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Timestamp = params.get("Timestamp")
+        self._NodeIp = params.get("NodeIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTraceConfig(AbstractModel):
+    r"""IP溯源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableRequest: 请求溯源开关
+        :type EnableRequest: bool
+        :param _EnableResponse: 返回溯源开关
+        :type EnableResponse: bool
+        :param _EnableRequestBody: 请求消息体溯源开关
+        :type EnableRequestBody: bool
+        :param _EnableResponseBody: 返回消息体溯源开关
+        :type EnableResponseBody: bool
+        :param _RemoteIpInclude: 排除IP
+        :type RemoteIpInclude: list of str
+        :param _RemoteIpExclude: 包含IP
+        :type RemoteIpExclude: list of str
+        :param _UriInclude: 排除uri
+        :type UriInclude: list of str
+        :param _UriExclude: 包含uri
+        :type UriExclude: list of str
+        """
+        self._EnableRequest = None
+        self._EnableResponse = None
+        self._EnableRequestBody = None
+        self._EnableResponseBody = None
+        self._RemoteIpInclude = None
+        self._RemoteIpExclude = None
+        self._UriInclude = None
+        self._UriExclude = None
+
+    @property
+    def EnableRequest(self):
+        r"""请求溯源开关
+        :rtype: bool
+        """
+        return self._EnableRequest
+
+    @EnableRequest.setter
+    def EnableRequest(self, EnableRequest):
+        self._EnableRequest = EnableRequest
+
+    @property
+    def EnableResponse(self):
+        r"""返回溯源开关
+        :rtype: bool
+        """
+        return self._EnableResponse
+
+    @EnableResponse.setter
+    def EnableResponse(self, EnableResponse):
+        self._EnableResponse = EnableResponse
+
+    @property
+    def EnableRequestBody(self):
+        r"""请求消息体溯源开关
+        :rtype: bool
+        """
+        return self._EnableRequestBody
+
+    @EnableRequestBody.setter
+    def EnableRequestBody(self, EnableRequestBody):
+        self._EnableRequestBody = EnableRequestBody
+
+    @property
+    def EnableResponseBody(self):
+        r"""返回消息体溯源开关
+        :rtype: bool
+        """
+        return self._EnableResponseBody
+
+    @EnableResponseBody.setter
+    def EnableResponseBody(self, EnableResponseBody):
+        self._EnableResponseBody = EnableResponseBody
+
+    @property
+    def RemoteIpInclude(self):
+        r"""排除IP
+        :rtype: list of str
+        """
+        return self._RemoteIpInclude
+
+    @RemoteIpInclude.setter
+    def RemoteIpInclude(self, RemoteIpInclude):
+        self._RemoteIpInclude = RemoteIpInclude
+
+    @property
+    def RemoteIpExclude(self):
+        r"""包含IP
+        :rtype: list of str
+        """
+        return self._RemoteIpExclude
+
+    @RemoteIpExclude.setter
+    def RemoteIpExclude(self, RemoteIpExclude):
+        self._RemoteIpExclude = RemoteIpExclude
+
+    @property
+    def UriInclude(self):
+        r"""排除uri
+        :rtype: list of str
+        """
+        return self._UriInclude
+
+    @UriInclude.setter
+    def UriInclude(self, UriInclude):
+        self._UriInclude = UriInclude
+
+    @property
+    def UriExclude(self):
+        r"""包含uri
+        :rtype: list of str
+        """
+        return self._UriExclude
+
+    @UriExclude.setter
+    def UriExclude(self, UriExclude):
+        self._UriExclude = UriExclude
+
+
+    def _deserialize(self, params):
+        self._EnableRequest = params.get("EnableRequest")
+        self._EnableResponse = params.get("EnableResponse")
+        self._EnableRequestBody = params.get("EnableRequestBody")
+        self._EnableResponseBody = params.get("EnableResponseBody")
+        self._RemoteIpInclude = params.get("RemoteIpInclude")
+        self._RemoteIpExclude = params.get("RemoteIpExclude")
+        self._UriInclude = params.get("UriInclude")
+        self._UriExclude = params.get("UriExclude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTraceLogEntry(AbstractModel):
+    r"""IP溯源日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 时间
+        :type Timestamp: str
+        :param _RemoteIp: 访问IP
+        :type RemoteIp: str
+        :param _TraceType: 溯源类型rsp/req
+        :type TraceType: str
+        :param _NetType: 访问网络类型，公网/私网
+        :type NetType: str
+        :param _Message: 原始消息
+        :type Message: str
+        :param _Uri: 访问uri
+        :type Uri: str
+        :param _PublicIp: 公网IP
+        :type PublicIp: str
+        :param _ReqTypeOrRspStatus: 请求类型或返回状态
+        :type ReqTypeOrRspStatus: str
+        :param _NodeIp: 集群节点IP
+        :type NodeIp: str
+        """
+        self._Timestamp = None
+        self._RemoteIp = None
+        self._TraceType = None
+        self._NetType = None
+        self._Message = None
+        self._Uri = None
+        self._PublicIp = None
+        self._ReqTypeOrRspStatus = None
+        self._NodeIp = None
+
+    @property
+    def Timestamp(self):
+        r"""时间
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RemoteIp(self):
+        r"""访问IP
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
+    @property
+    def TraceType(self):
+        r"""溯源类型rsp/req
+        :rtype: str
+        """
+        return self._TraceType
+
+    @TraceType.setter
+    def TraceType(self, TraceType):
+        self._TraceType = TraceType
+
+    @property
+    def NetType(self):
+        r"""访问网络类型，公网/私网
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Message(self):
+        r"""原始消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Uri(self):
+        r"""访问uri
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def PublicIp(self):
+        r"""公网IP
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def ReqTypeOrRspStatus(self):
+        r"""请求类型或返回状态
+        :rtype: str
+        """
+        return self._ReqTypeOrRspStatus
+
+    @ReqTypeOrRspStatus.setter
+    def ReqTypeOrRspStatus(self, ReqTypeOrRspStatus):
+        self._ReqTypeOrRspStatus = ReqTypeOrRspStatus
+
+    @property
+    def NodeIp(self):
+        r"""集群节点IP
+        :rtype: str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._RemoteIp = params.get("RemoteIp")
+        self._TraceType = params.get("TraceType")
+        self._NetType = params.get("NetType")
+        self._Message = params.get("Message")
+        self._Uri = params.get("Uri")
+        self._PublicIp = params.get("PublicIp")
+        self._ReqTypeOrRspStatus = params.get("ReqTypeOrRspStatus")
         self._NodeIp = params.get("NodeIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16143,6 +16596,270 @@ class ProcessDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryIpTraceLogRequest(AbstractModel):
+    r"""QueryIpTraceLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES集群ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Offset: 起始偏移量
+        :type Offset: int
+        :param _Limit: 数据条数
+        :type Limit: int
+        :param _RemoteIp: 访问IP
+        :type RemoteIp: list of str
+        :param _TraceType: Request/Response 请求/返回, 非必填
+        :type TraceType: list of str
+        :param _NetType: Public/Private 公网访问/内网访问, 非必填
+        :type NetType: list of str
+        :param _ReqTypeOrRspStatus: POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :type ReqTypeOrRspStatus: list of str
+        :param _SearchKey: 关键字模糊查询，支持Lucene Query String
+        :type SearchKey: str
+        :param _Uri: Uri搜索
+        :type Uri: str
+        :param _NodeIp: 集群节点IP
+        :type NodeIp: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._RemoteIp = None
+        self._TraceType = None
+        self._NetType = None
+        self._ReqTypeOrRspStatus = None
+        self._SearchKey = None
+        self._Uri = None
+        self._NodeIp = None
+
+    @property
+    def InstanceId(self):
+        r"""ES集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""起始偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""数据条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RemoteIp(self):
+        r"""访问IP
+        :rtype: list of str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
+    @property
+    def TraceType(self):
+        r"""Request/Response 请求/返回, 非必填
+        :rtype: list of str
+        """
+        return self._TraceType
+
+    @TraceType.setter
+    def TraceType(self, TraceType):
+        self._TraceType = TraceType
+
+    @property
+    def NetType(self):
+        r"""Public/Private 公网访问/内网访问, 非必填
+        :rtype: list of str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def ReqTypeOrRspStatus(self):
+        r"""POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :rtype: list of str
+        """
+        return self._ReqTypeOrRspStatus
+
+    @ReqTypeOrRspStatus.setter
+    def ReqTypeOrRspStatus(self, ReqTypeOrRspStatus):
+        self._ReqTypeOrRspStatus = ReqTypeOrRspStatus
+
+    @property
+    def SearchKey(self):
+        r"""关键字模糊查询，支持Lucene Query String
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Uri(self):
+        r"""Uri搜索
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def NodeIp(self):
+        r"""集群节点IP
+        :rtype: list of str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._RemoteIp = params.get("RemoteIp")
+        self._TraceType = params.get("TraceType")
+        self._NetType = params.get("NetType")
+        self._ReqTypeOrRspStatus = params.get("ReqTypeOrRspStatus")
+        self._SearchKey = params.get("SearchKey")
+        self._Uri = params.get("Uri")
+        self._NodeIp = params.get("NodeIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryIpTraceLogResponse(AbstractModel):
+    r"""QueryIpTraceLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _IpTraceLogList: IP溯源日志列表
+        :type IpTraceLogList: list of IpTraceLogEntry
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._IpTraceLogList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def IpTraceLogList(self):
+        r"""IP溯源日志列表
+        :rtype: list of IpTraceLogEntry
+        """
+        return self._IpTraceLogList
+
+    @IpTraceLogList.setter
+    def IpTraceLogList(self, IpTraceLogList):
+        self._IpTraceLogList = IpTraceLogList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("IpTraceLogList") is not None:
+            self._IpTraceLogList = []
+            for item in params.get("IpTraceLogList"):
+                obj = IpTraceLogEntry()
+                obj._deserialize(item)
+                self._IpTraceLogList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class RestartInstanceRequest(AbstractModel):
@@ -20205,6 +20922,132 @@ class UpdateInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateIpTraceStatusRequest(AbstractModel):
+    r"""UpdateIpTraceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _OpenIpTrace: IP溯源配置开关
+        :type OpenIpTrace: bool
+        :param _DurationTime: IP溯源开启持续时间，单位：秒
+        :type DurationTime: int
+        :param _IpTraceConfig: IP溯源配置
+        :type IpTraceConfig: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
+        :param _FilterKibanaIp: 是否过滤kibana节点IP
+        :type FilterKibanaIp: bool
+        """
+        self._InstanceId = None
+        self._OpenIpTrace = None
+        self._DurationTime = None
+        self._IpTraceConfig = None
+        self._FilterKibanaIp = None
+
+    @property
+    def InstanceId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OpenIpTrace(self):
+        r"""IP溯源配置开关
+        :rtype: bool
+        """
+        return self._OpenIpTrace
+
+    @OpenIpTrace.setter
+    def OpenIpTrace(self, OpenIpTrace):
+        self._OpenIpTrace = OpenIpTrace
+
+    @property
+    def DurationTime(self):
+        r"""IP溯源开启持续时间，单位：秒
+        :rtype: int
+        """
+        return self._DurationTime
+
+    @DurationTime.setter
+    def DurationTime(self, DurationTime):
+        self._DurationTime = DurationTime
+
+    @property
+    def IpTraceConfig(self):
+        r"""IP溯源配置
+        :rtype: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
+        """
+        return self._IpTraceConfig
+
+    @IpTraceConfig.setter
+    def IpTraceConfig(self, IpTraceConfig):
+        self._IpTraceConfig = IpTraceConfig
+
+    @property
+    def FilterKibanaIp(self):
+        r"""是否过滤kibana节点IP
+        :rtype: bool
+        """
+        return self._FilterKibanaIp
+
+    @FilterKibanaIp.setter
+    def FilterKibanaIp(self, FilterKibanaIp):
+        self._FilterKibanaIp = FilterKibanaIp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OpenIpTrace = params.get("OpenIpTrace")
+        self._DurationTime = params.get("DurationTime")
+        if params.get("IpTraceConfig") is not None:
+            self._IpTraceConfig = IpTraceConfig()
+            self._IpTraceConfig._deserialize(params.get("IpTraceConfig"))
+        self._FilterKibanaIp = params.get("FilterKibanaIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateIpTraceStatusResponse(AbstractModel):
+    r"""UpdateIpTraceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

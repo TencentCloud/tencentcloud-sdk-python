@@ -18617,6 +18617,9 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         :type RealGpu: int
         :param _RealGpuDetailSet: 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
         :type RealGpuDetailSet: list of GpuDetail
+        :param _EnableRDMA: 是否开启rdma
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRDMA: bool
         """
         self._Cpu = None
         self._Memory = None
@@ -18624,6 +18627,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         self._GpuType = None
         self._RealGpu = None
         self._RealGpuDetailSet = None
+        self._EnableRDMA = None
 
     @property
     def Cpu(self):
@@ -18700,6 +18704,18 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
     def RealGpuDetailSet(self, RealGpuDetailSet):
         self._RealGpuDetailSet = RealGpuDetailSet
 
+    @property
+    def EnableRDMA(self):
+        r"""是否开启rdma
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableRDMA
+
+    @EnableRDMA.setter
+    def EnableRDMA(self, EnableRDMA):
+        self._EnableRDMA = EnableRDMA
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -18713,6 +18729,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
                 obj = GpuDetail()
                 obj._deserialize(item)
                 self._RealGpuDetailSet.append(obj)
+        self._EnableRDMA = params.get("EnableRDMA")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

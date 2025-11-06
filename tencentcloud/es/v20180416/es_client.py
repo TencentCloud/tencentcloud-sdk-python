@@ -878,6 +878,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetIpTraceStatus(self, request):
+        r"""查询IP溯源状态
+
+        :param request: Request instance for GetIpTraceStatus.
+        :type request: :class:`tencentcloud.es.v20180416.models.GetIpTraceStatusRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.GetIpTraceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetIpTraceStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetIpTraceStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRequestTargetNodeTypes(self, request):
         r"""获取接收客户端请求的节点类型
 
@@ -961,6 +984,29 @@ class EsClient(AbstractClient):
             body = self.call("ModifyEsVipSecurityGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyEsVipSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryIpTraceLog(self, request):
+        r"""查询IP溯源日志
+
+        :param request: Request instance for QueryIpTraceLog.
+        :type request: :class:`tencentcloud.es.v20180416.models.QueryIpTraceLogRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.QueryIpTraceLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryIpTraceLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryIpTraceLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1244,6 +1290,29 @@ class EsClient(AbstractClient):
             body = self.call("UpdateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateIpTraceStatus(self, request):
+        r"""更新ES集群IP溯源状态
+
+        :param request: Request instance for UpdateIpTraceStatus.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateIpTraceStatusRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateIpTraceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateIpTraceStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateIpTraceStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

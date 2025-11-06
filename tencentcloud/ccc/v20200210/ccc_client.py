@@ -1669,6 +1669,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetStaffStatus(self, request):
+        r"""设置 staff 状态
+
+        :param request: Request instance for SetStaffStatus.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.SetStaffStatusRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.SetStaffStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetStaffStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetStaffStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAutoCalloutTask(self, request):
         r"""停止自动外呼任务
 

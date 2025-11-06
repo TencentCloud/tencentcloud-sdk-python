@@ -143,6 +143,9 @@ FAILEDOPERATION_TAGNOTEXIST = 'FailedOperation.TagNotExist'
 # 标签值长度超过限制。
 FAILEDOPERATION_TAGVALUETOOLONG = 'FailedOperation.TagValueTooLong'
 
+# 获取结果超时
+FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = 'FailedOperation.TaskOvertimeFetchResult'
+
 # 资源数量超出限制。
 FAILEDOPERATION_TOOMANYRESOURCES = 'FailedOperation.TooManyResources'
 
