@@ -96,7 +96,7 @@ def build_and_install_package(mod, upload):
         return
 
     if upload is True:
-        cmd = 'cd temp-directory && twine upload dist/*'
+        cmd = 'cd temp-directory && python3.8 -m twine upload dist/*'
         ret, output = exec_cmd(cmd)
         print(output)
         if ret != 0:
