@@ -6198,7 +6198,9 @@ class CreateClustersRequest(AbstractModel):
         :type AdminPassword: str
         :param _Port: 端口，默认3306，取值范围[0, 65535)
         :type Port: int
-        :param _PayMode: 计费模式，按量计费：0，包年包月：1。默认按量计费。
+        :param _PayMode: 计费模式，支持值为0和1，默认值为0。
+取值为0，表示按量计费。
+取值为1，表示包年包月。
         :type PayMode: int
         :param _Count: 购买集群数，可选值范围[1,50]，默认为1
         :type Count: int
@@ -6476,7 +6478,9 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def PayMode(self):
-        r"""计费模式，按量计费：0，包年包月：1。默认按量计费。
+        r"""计费模式，支持值为0和1，默认值为0。
+取值为0，表示按量计费。
+取值为1，表示包年包月。
         :rtype: int
         """
         return self._PayMode
@@ -36197,7 +36201,7 @@ class QueryParamFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Names: 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        :param _Names: 搜索字段，目前支持：ProxyGroupId
         :type Names: list of str
         :param _Values: 搜索字符串
         :type Values: list of str
@@ -36210,7 +36214,7 @@ class QueryParamFilter(AbstractModel):
 
     @property
     def Names(self):
-        r"""搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        r"""搜索字段，目前支持：ProxyGroupId
         :rtype: list of str
         """
         return self._Names
