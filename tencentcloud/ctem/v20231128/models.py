@@ -4209,6 +4209,8 @@ class DescribeHttpsRequest(AbstractModel):
         :type IsShowChange: bool
         :param _HasExpirationRisk: 是否仅显示过期风险资产
         :type HasExpirationRisk: bool
+        :param _OnlyOffline: 是否只查询离线网站
+        :type OnlyOffline: bool
         """
         self._CustomerIdList = None
         self._IsAggregation = None
@@ -4226,6 +4228,7 @@ class DescribeHttpsRequest(AbstractModel):
         self._Ignored = None
         self._IsShowChange = None
         self._HasExpirationRisk = None
+        self._OnlyOffline = None
 
     @property
     def CustomerIdList(self):
@@ -4403,6 +4406,17 @@ class DescribeHttpsRequest(AbstractModel):
     def HasExpirationRisk(self, HasExpirationRisk):
         self._HasExpirationRisk = HasExpirationRisk
 
+    @property
+    def OnlyOffline(self):
+        r"""是否只查询离线网站
+        :rtype: bool
+        """
+        return self._OnlyOffline
+
+    @OnlyOffline.setter
+    def OnlyOffline(self, OnlyOffline):
+        self._OnlyOffline = OnlyOffline
+
 
     def _deserialize(self, params):
         self._CustomerIdList = params.get("CustomerIdList")
@@ -4426,6 +4440,7 @@ class DescribeHttpsRequest(AbstractModel):
         self._Ignored = params.get("Ignored")
         self._IsShowChange = params.get("IsShowChange")
         self._HasExpirationRisk = params.get("HasExpirationRisk")
+        self._OnlyOffline = params.get("OnlyOffline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6881,6 +6896,8 @@ class DescribeSubDomainsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
+        :param _OnlyOffline: 是否只查询离线子域名
+        :type OnlyOffline: bool
         """
         self._CustomerIdList = None
         self._IsNew = None
@@ -6896,6 +6913,7 @@ class DescribeSubDomainsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+        self._OnlyOffline = None
 
     @property
     def CustomerIdList(self):
@@ -7051,6 +7069,17 @@ class DescribeSubDomainsRequest(AbstractModel):
     def Ignored(self, Ignored):
         self._Ignored = Ignored
 
+    @property
+    def OnlyOffline(self):
+        r"""是否只查询离线子域名
+        :rtype: bool
+        """
+        return self._OnlyOffline
+
+    @OnlyOffline.setter
+    def OnlyOffline(self, OnlyOffline):
+        self._OnlyOffline = OnlyOffline
+
 
     def _deserialize(self, params):
         self._CustomerIdList = params.get("CustomerIdList")
@@ -7072,6 +7101,7 @@ class DescribeSubDomainsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Ignored = params.get("Ignored")
+        self._OnlyOffline = params.get("OnlyOffline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8799,6 +8829,10 @@ class DisplayAsset(AbstractModel):
         :type Domains: str
         :param _LastModify: 端口和服务最近更新时间
         :type LastModify: str
+        :param _IsCloudAsset: 是否为云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产状态，-1为下线
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._Os = None
@@ -8812,6 +8846,8 @@ class DisplayAsset(AbstractModel):
         self._Services = None
         self._Domains = None
         self._LastModify = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -8945,6 +8981,28 @@ class DisplayAsset(AbstractModel):
     def LastModify(self, LastModify):
         self._LastModify = LastModify
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产状态，-1为下线
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8961,6 +9019,8 @@ class DisplayAsset(AbstractModel):
         self._Services = params.get("Services")
         self._Domains = params.get("Domains")
         self._LastModify = params.get("LastModify")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9000,6 +9060,10 @@ class DisplayConfig(AbstractModel):
         :type RiskLevel: int
         :param _Suggestion: 建议
         :type Suggestion: str
+        :param _IsCloudAsset: 是否为云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产状态，-1为下线
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._Url = None
@@ -9012,6 +9076,8 @@ class DisplayConfig(AbstractModel):
         self._AIAnalysis = None
         self._RiskLevel = None
         self._Suggestion = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -9134,6 +9200,28 @@ class DisplayConfig(AbstractModel):
     def Suggestion(self, Suggestion):
         self._Suggestion = Suggestion
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产状态，-1为下线
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9149,6 +9237,8 @@ class DisplayConfig(AbstractModel):
         self._AIAnalysis = params.get("AIAnalysis")
         self._RiskLevel = params.get("RiskLevel")
         self._Suggestion = params.get("Suggestion")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9293,6 +9383,10 @@ class DisplayDomain(AbstractModel):
         :type Company: str
         :param _DisplayToolCommon: 公共字段
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _IsCloudAsset: 是否为云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产状态，-1为下线
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._Domain = None
@@ -9301,6 +9395,8 @@ class DisplayDomain(AbstractModel):
         self._ExpiredTime = None
         self._Company = None
         self._DisplayToolCommon = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -9379,6 +9475,28 @@ class DisplayDomain(AbstractModel):
     def DisplayToolCommon(self, DisplayToolCommon):
         self._DisplayToolCommon = DisplayToolCommon
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产状态，-1为下线
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9390,6 +9508,8 @@ class DisplayDomain(AbstractModel):
         if params.get("DisplayToolCommon") is not None:
             self._DisplayToolCommon = DisplayToolCommon()
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10429,6 +10549,18 @@ class DisplayHttp(AbstractModel):
         :param _IsChange: 资产是否发生变动
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsChange: bool
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
+        :param _AvailabilityRate: 可用率（百分比）
+        :type AvailabilityRate: int
+        :param _AvailabilityState: 可用状态 1:异常 0:正常
+        :type AvailabilityState: int
+        :param _ResponseTime: 平均响应时间：单位ms
+        :type ResponseTime: int
+        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :type AnalysisState: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -10444,6 +10576,12 @@ class DisplayHttp(AbstractModel):
         self._Ssl = None
         self._SslExpiredTime = None
         self._IsChange = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
+        self._AvailabilityRate = None
+        self._AvailabilityState = None
+        self._ResponseTime = None
+        self._AnalysisState = None
 
     @property
     def Id(self):
@@ -10600,6 +10738,72 @@ class DisplayHttp(AbstractModel):
     def IsChange(self, IsChange):
         self._IsChange = IsChange
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AvailabilityRate(self):
+        r"""可用率（百分比）
+        :rtype: int
+        """
+        return self._AvailabilityRate
+
+    @AvailabilityRate.setter
+    def AvailabilityRate(self, AvailabilityRate):
+        self._AvailabilityRate = AvailabilityRate
+
+    @property
+    def AvailabilityState(self):
+        r"""可用状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AvailabilityState
+
+    @AvailabilityState.setter
+    def AvailabilityState(self, AvailabilityState):
+        self._AvailabilityState = AvailabilityState
+
+    @property
+    def ResponseTime(self):
+        r"""平均响应时间：单位ms
+        :rtype: int
+        """
+        return self._ResponseTime
+
+    @ResponseTime.setter
+    def ResponseTime(self, ResponseTime):
+        self._ResponseTime = ResponseTime
+
+    @property
+    def AnalysisState(self):
+        r"""域名解析状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AnalysisState
+
+    @AnalysisState.setter
+    def AnalysisState(self, AnalysisState):
+        self._AnalysisState = AnalysisState
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10618,6 +10822,12 @@ class DisplayHttp(AbstractModel):
         self._Ssl = params.get("Ssl")
         self._SslExpiredTime = params.get("SslExpiredTime")
         self._IsChange = params.get("IsChange")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AvailabilityRate = params.get("AvailabilityRate")
+        self._AvailabilityState = params.get("AvailabilityState")
+        self._ResponseTime = params.get("ResponseTime")
+        self._AnalysisState = params.get("AnalysisState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11585,6 +11795,10 @@ class DisplayManage(AbstractModel):
         :param _Status: 状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
 
         :type Status: str
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -11595,6 +11809,8 @@ class DisplayManage(AbstractModel):
         self._Code = None
         self._Host = None
         self._Status = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -11696,6 +11912,28 @@ class DisplayManage(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11709,6 +11947,8 @@ class DisplayManage(AbstractModel):
         self._Code = params.get("Code")
         self._Host = params.get("Host")
         self._Status = params.get("Status")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11876,6 +12116,12 @@ class DisplayPort(AbstractModel):
         :type LastCheckTime: str
         :param _Status: 状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
         :type Status: str
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
+        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :type AnalysisState: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -11888,6 +12134,9 @@ class DisplayPort(AbstractModel):
         self._Banner = None
         self._LastCheckTime = None
         self._Status = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
+        self._AnalysisState = None
 
     @property
     def Id(self):
@@ -12010,6 +12259,39 @@ class DisplayPort(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AnalysisState(self):
+        r"""域名解析状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AnalysisState
+
+    @AnalysisState.setter
+    def AnalysisState(self, AnalysisState):
+        self._AnalysisState = AnalysisState
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12025,6 +12307,9 @@ class DisplayPort(AbstractModel):
         self._Banner = params.get("Banner")
         self._LastCheckTime = params.get("LastCheckTime")
         self._Status = params.get("Status")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AnalysisState = params.get("AnalysisState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12052,12 +12337,18 @@ class DisplaySensitiveInfo(AbstractModel):
         :type Value: str
         :param _DisplayToolCommon: 公共字段
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._Type = None
         self._Source = None
         self._Value = None
         self._DisplayToolCommon = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -12114,6 +12405,28 @@ class DisplaySensitiveInfo(AbstractModel):
     def DisplayToolCommon(self, DisplayToolCommon):
         self._DisplayToolCommon = DisplayToolCommon
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12123,6 +12436,8 @@ class DisplaySensitiveInfo(AbstractModel):
         if params.get("DisplayToolCommon") is not None:
             self._DisplayToolCommon = DisplayToolCommon()
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12156,6 +12471,20 @@ class DisplaySubDomain(AbstractModel):
         :type Isp: str
         :param _DisplayToolCommon: 公共字段
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
+        :param _AvailabilityRate: 可用率（百分比）
+        :type AvailabilityRate: int
+        :param _AvailabilityState: 可用状态 1:异常 0:正常
+        :type AvailabilityState: int
+        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :type AnalysisState: int
+        :param _AverageDelay: 平均时延：单位ms
+        :type AverageDelay: int
+        :param _LossRate: 丢包率（百分比）
+        :type LossRate: int
         """
         self._Id = None
         self._SubDomain = None
@@ -12165,6 +12494,13 @@ class DisplaySubDomain(AbstractModel):
         self._City = None
         self._Isp = None
         self._DisplayToolCommon = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
+        self._AvailabilityRate = None
+        self._AvailabilityState = None
+        self._AnalysisState = None
+        self._AverageDelay = None
+        self._LossRate = None
 
     @property
     def Id(self):
@@ -12254,6 +12590,83 @@ class DisplaySubDomain(AbstractModel):
     def DisplayToolCommon(self, DisplayToolCommon):
         self._DisplayToolCommon = DisplayToolCommon
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AvailabilityRate(self):
+        r"""可用率（百分比）
+        :rtype: int
+        """
+        return self._AvailabilityRate
+
+    @AvailabilityRate.setter
+    def AvailabilityRate(self, AvailabilityRate):
+        self._AvailabilityRate = AvailabilityRate
+
+    @property
+    def AvailabilityState(self):
+        r"""可用状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AvailabilityState
+
+    @AvailabilityState.setter
+    def AvailabilityState(self, AvailabilityState):
+        self._AvailabilityState = AvailabilityState
+
+    @property
+    def AnalysisState(self):
+        r"""域名解析状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AnalysisState
+
+    @AnalysisState.setter
+    def AnalysisState(self, AnalysisState):
+        self._AnalysisState = AnalysisState
+
+    @property
+    def AverageDelay(self):
+        r"""平均时延：单位ms
+        :rtype: int
+        """
+        return self._AverageDelay
+
+    @AverageDelay.setter
+    def AverageDelay(self, AverageDelay):
+        self._AverageDelay = AverageDelay
+
+    @property
+    def LossRate(self):
+        r"""丢包率（百分比）
+        :rtype: int
+        """
+        return self._LossRate
+
+    @LossRate.setter
+    def LossRate(self, LossRate):
+        self._LossRate = LossRate
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12266,6 +12679,13 @@ class DisplaySubDomain(AbstractModel):
         if params.get("DisplayToolCommon") is not None:
             self._DisplayToolCommon = DisplayToolCommon()
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AvailabilityRate = params.get("AvailabilityRate")
+        self._AvailabilityState = params.get("AvailabilityState")
+        self._AnalysisState = params.get("AnalysisState")
+        self._AverageDelay = params.get("AverageDelay")
+        self._LossRate = params.get("LossRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12818,6 +13238,12 @@ class DisplayVul(AbstractModel):
         :type Status: str
         :param _LastCheckTime: 上次复测时间
         :type LastCheckTime: str
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
+        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :type AnalysisState: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -12832,6 +13258,9 @@ class DisplayVul(AbstractModel):
         self._AiJudge = None
         self._Status = None
         self._LastCheckTime = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
+        self._AnalysisState = None
 
     @property
     def Id(self):
@@ -12976,6 +13405,39 @@ class DisplayVul(AbstractModel):
     def LastCheckTime(self, LastCheckTime):
         self._LastCheckTime = LastCheckTime
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AnalysisState(self):
+        r"""域名解析状态 1:异常 0:正常
+        :rtype: int
+        """
+        return self._AnalysisState
+
+    @AnalysisState.setter
+    def AnalysisState(self, AnalysisState):
+        self._AnalysisState = AnalysisState
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12993,6 +13455,9 @@ class DisplayVul(AbstractModel):
         self._AiJudge = params.get("AiJudge")
         self._Status = params.get("Status")
         self._LastCheckTime = params.get("LastCheckTime")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AnalysisState = params.get("AnalysisState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13026,7 +13491,7 @@ class DisplayWeakPassword(AbstractModel):
         :type Account: str
         :param _Password: 弱口令密码
         :type Password: str
-        :param _IsHoneypot: 是否蜜罐
+        :param _IsHoneypot: 是否为蜜罐
         :type IsHoneypot: bool
         :param _ScreenshotUrl: 截图
         :type ScreenshotUrl: str
@@ -13034,6 +13499,10 @@ class DisplayWeakPassword(AbstractModel):
         :type Status: str
         :param _LastCheckTime: 上次复测时间
         :type LastCheckTime: str
+        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :type IsCloudAsset: int
+        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :type CloudAssetStatus: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -13047,6 +13516,8 @@ class DisplayWeakPassword(AbstractModel):
         self._ScreenshotUrl = None
         self._Status = None
         self._LastCheckTime = None
+        self._IsCloudAsset = None
+        self._CloudAssetStatus = None
 
     @property
     def Id(self):
@@ -13138,7 +13609,7 @@ class DisplayWeakPassword(AbstractModel):
 
     @property
     def IsHoneypot(self):
-        r"""是否蜜罐
+        r"""是否为蜜罐
         :rtype: bool
         """
         return self._IsHoneypot
@@ -13180,6 +13651,28 @@ class DisplayWeakPassword(AbstractModel):
     def LastCheckTime(self, LastCheckTime):
         self._LastCheckTime = LastCheckTime
 
+    @property
+    def IsCloudAsset(self):
+        r"""是否为云资产：0-非云资产 1-是云资产
+        :rtype: int
+        """
+        return self._IsCloudAsset
+
+    @IsCloudAsset.setter
+    def IsCloudAsset(self, IsCloudAsset):
+        self._IsCloudAsset = IsCloudAsset
+
+    @property
+    def CloudAssetStatus(self):
+        r"""云资产是否下线：-1-已下线 0-正常
+        :rtype: int
+        """
+        return self._CloudAssetStatus
+
+    @CloudAssetStatus.setter
+    def CloudAssetStatus(self, CloudAssetStatus):
+        self._CloudAssetStatus = CloudAssetStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13196,6 +13689,8 @@ class DisplayWeakPassword(AbstractModel):
         self._ScreenshotUrl = params.get("ScreenshotUrl")
         self._Status = params.get("Status")
         self._LastCheckTime = params.get("LastCheckTime")
+        self._IsCloudAsset = params.get("IsCloudAsset")
+        self._CloudAssetStatus = params.get("CloudAssetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

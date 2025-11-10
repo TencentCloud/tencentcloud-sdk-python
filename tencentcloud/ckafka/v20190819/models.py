@@ -6469,30 +6469,28 @@ class CreateRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+        :param _InstanceId: <p>ckafka集群实例id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
         :type InstanceId: str
-        :param _VipType: 路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)
+        :param _VipType: <p>路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)</p>
         :type VipType: int
-        :param _VpcId: vpc网络Id,当vipType为3时必填
+        :param _VpcId: <p>vpc网络Id,当vipType为3时必填</p>
         :type VpcId: str
-        :param _SubnetId: vpc子网id,当vipType为3时必填
+        :param _SubnetId: <p>vpc子网id,当vipType为3时必填</p>
         :type SubnetId: str
-        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
-vipType=3,支持 0,1,3,4,5
-vipType=7,支持0,1,3
-vipType=1,支持1,3
-
+        :param _AccessType: <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
         :type AccessType: int
-        :param _AuthFlag: 是否需要权限管理,该字段已废弃
+        :param _AuthFlag: <p>是否需要权限管理,该字段已废弃</p>
         :type AuthFlag: int
-        :param _CallerAppid: 调用方appId
+        :param _CallerAppid: <p>调用方appId</p>
         :type CallerAppid: int
-        :param _PublicNetwork: 公网带宽,公网路由必传,且是3的倍数,无默认值
+        :param _PublicNetwork: <p>公网带宽,公网路由必传,且是3的倍数,无默认值</p>
         :type PublicNetwork: int
-        :param _Ip: vip地址
+        :param _Ip: <p>vip地址</p>
         :type Ip: str
-        :param _Note: 备注信息
+        :param _Note: <p>备注信息</p>
         :type Note: str
+        :param _SecurityGroupIds: <p>关联安全组有序列表</p>
+        :type SecurityGroupIds: list of str
         """
         self._InstanceId = None
         self._VipType = None
@@ -6504,10 +6502,11 @@ vipType=1,支持1,3
         self._PublicNetwork = None
         self._Ip = None
         self._Note = None
+        self._SecurityGroupIds = None
 
     @property
     def InstanceId(self):
-        r"""ckafka集群实例id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+        r"""<p>ckafka集群实例id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6518,7 +6517,7 @@ vipType=1,支持1,3
 
     @property
     def VipType(self):
-        r"""路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)
+        r"""<p>路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)</p>
         :rtype: int
         """
         return self._VipType
@@ -6529,7 +6528,7 @@ vipType=1,支持1,3
 
     @property
     def VpcId(self):
-        r"""vpc网络Id,当vipType为3时必填
+        r"""<p>vpc网络Id,当vipType为3时必填</p>
         :rtype: str
         """
         return self._VpcId
@@ -6540,7 +6539,7 @@ vipType=1,支持1,3
 
     @property
     def SubnetId(self):
-        r"""vpc子网id,当vipType为3时必填
+        r"""<p>vpc子网id,当vipType为3时必填</p>
         :rtype: str
         """
         return self._SubnetId
@@ -6551,11 +6550,7 @@ vipType=1,支持1,3
 
     @property
     def AccessType(self):
-        r"""访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
-vipType=3,支持 0,1,3,4,5
-vipType=7,支持0,1,3
-vipType=1,支持1,3
-
+        r"""<p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
         :rtype: int
         """
         return self._AccessType
@@ -6566,7 +6561,7 @@ vipType=1,支持1,3
 
     @property
     def AuthFlag(self):
-        r"""是否需要权限管理,该字段已废弃
+        r"""<p>是否需要权限管理,该字段已废弃</p>
         :rtype: int
         """
         return self._AuthFlag
@@ -6577,7 +6572,7 @@ vipType=1,支持1,3
 
     @property
     def CallerAppid(self):
-        r"""调用方appId
+        r"""<p>调用方appId</p>
         :rtype: int
         """
         return self._CallerAppid
@@ -6588,7 +6583,7 @@ vipType=1,支持1,3
 
     @property
     def PublicNetwork(self):
-        r"""公网带宽,公网路由必传,且是3的倍数,无默认值
+        r"""<p>公网带宽,公网路由必传,且是3的倍数,无默认值</p>
         :rtype: int
         """
         return self._PublicNetwork
@@ -6599,7 +6594,7 @@ vipType=1,支持1,3
 
     @property
     def Ip(self):
-        r"""vip地址
+        r"""<p>vip地址</p>
         :rtype: str
         """
         return self._Ip
@@ -6610,7 +6605,7 @@ vipType=1,支持1,3
 
     @property
     def Note(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Note
@@ -6618,6 +6613,17 @@ vipType=1,支持1,3
     @Note.setter
     def Note(self, Note):
         self._Note = Note
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>关联安全组有序列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
 
 
     def _deserialize(self, params):
@@ -6631,6 +6637,7 @@ vipType=1,支持1,3
         self._PublicNetwork = params.get("PublicNetwork")
         self._Ip = params.get("Ip")
         self._Note = params.get("Note")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6648,7 +6655,7 @@ class CreateRouteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果
+        :param _Result: <p>返回结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6658,7 +6665,7 @@ class CreateRouteResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result

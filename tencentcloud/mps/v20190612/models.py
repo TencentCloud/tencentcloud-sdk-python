@@ -17578,8 +17578,8 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 注意：
 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
         :type PureAudio: int
-        :param _SegmentType: hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准
+        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的分片格式以此字段为准
         :type SegmentType: str
         """
         self._Format = None
@@ -17688,8 +17688,8 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准
+        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的分片格式以此字段为准
         :rtype: str
         """
         return self._SegmentType
@@ -21991,11 +21991,14 @@ class CreateStreamLinkFlowRequest(AbstractModel):
         :type InputGroup: list of CreateInput
         :param _EventId: 该Flow关联的媒体传输事件ID，每个flow只能关联一个Event。
         :type EventId: str
+        :param _OutputGroup: 流的输出组。
+        :type OutputGroup: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfo`
         """
         self._FlowName = None
         self._MaxBandwidth = None
         self._InputGroup = None
         self._EventId = None
+        self._OutputGroup = None
 
     @property
     def FlowName(self):
@@ -22041,6 +22044,17 @@ class CreateStreamLinkFlowRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def OutputGroup(self):
+        r"""流的输出组。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfo`
+        """
+        return self._OutputGroup
+
+    @OutputGroup.setter
+    def OutputGroup(self, OutputGroup):
+        self._OutputGroup = OutputGroup
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -22052,6 +22066,9 @@ class CreateStreamLinkFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InputGroup.append(obj)
         self._EventId = params.get("EventId")
+        if params.get("OutputGroup") is not None:
+            self._OutputGroup = CreateOutputInfo()
+            self._OutputGroup._deserialize(params.get("OutputGroup"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70119,7 +70136,6 @@ second：表示秒
         :type Vcrf: int
         :param _HlsTime: 分片平均时长，范围：（0-10]，单位：秒
 不填表示自动，将根据视频的GOP等特征自动选择合适的分片时长。
-注意：只能在封装格式hls的情况下使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type HlsTime: int
         :param _SegmentType: hls 分片类型，可选值 ：
@@ -70415,7 +70431,6 @@ second：表示秒
     def HlsTime(self):
         r"""分片平均时长，范围：（0-10]，单位：秒
 不填表示自动，将根据视频的GOP等特征自动选择合适的分片时长。
-注意：只能在封装格式hls的情况下使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

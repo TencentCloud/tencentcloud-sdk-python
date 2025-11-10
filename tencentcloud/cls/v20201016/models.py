@@ -7687,6 +7687,10 @@ class CreateDataTransformRequest(AbstractModel):
         :type PreviewLogStatistics: list of PreviewLogStatistic
         :param _DataTransformType: 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
         :type DataTransformType: int
+        :param _KeepFailureLog: 保留失败日志状态，1:不保留(默认)，2:保留。
+        :type KeepFailureLog: int
+        :param _FailureLogKey: 失败日志的字段名称
+        :type FailureLogKey: str
         """
         self._FuncType = None
         self._SrcTopicId = None
@@ -7697,6 +7701,8 @@ class CreateDataTransformRequest(AbstractModel):
         self._EnableFlag = None
         self._PreviewLogStatistics = None
         self._DataTransformType = None
+        self._KeepFailureLog = None
+        self._FailureLogKey = None
 
     @property
     def FuncType(self):
@@ -7812,6 +7818,28 @@ class CreateDataTransformRequest(AbstractModel):
     def DataTransformType(self, DataTransformType):
         self._DataTransformType = DataTransformType
 
+    @property
+    def KeepFailureLog(self):
+        r"""保留失败日志状态，1:不保留(默认)，2:保留。
+        :rtype: int
+        """
+        return self._KeepFailureLog
+
+    @KeepFailureLog.setter
+    def KeepFailureLog(self, KeepFailureLog):
+        self._KeepFailureLog = KeepFailureLog
+
+    @property
+    def FailureLogKey(self):
+        r"""失败日志的字段名称
+        :rtype: str
+        """
+        return self._FailureLogKey
+
+    @FailureLogKey.setter
+    def FailureLogKey(self, FailureLogKey):
+        self._FailureLogKey = FailureLogKey
+
 
     def _deserialize(self, params):
         self._FuncType = params.get("FuncType")
@@ -7833,6 +7861,8 @@ class CreateDataTransformRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PreviewLogStatistics.append(obj)
         self._DataTransformType = params.get("DataTransformType")
+        self._KeepFailureLog = params.get("KeepFailureLog")
+        self._FailureLogKey = params.get("FailureLogKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
