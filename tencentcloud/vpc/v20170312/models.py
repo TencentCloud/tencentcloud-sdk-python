@@ -1941,6 +1941,13 @@ AnycastEIP是否用于绑定负载均衡。
         :type AntiDDoSPackageId: str
         :param _ClientToken: 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
         :type ClientToken: str
+        :param _IPChargeType: 原生EIP IP资源的计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+</ul></li>
+</ul>
+        :type IPChargeType: str
         """
         self._AddressCount = None
         self._InternetServiceProvider = None
@@ -1959,6 +1966,7 @@ AnycastEIP是否用于绑定负载均衡。
         self._Egress = None
         self._AntiDDoSPackageId = None
         self._ClientToken = None
+        self._IPChargeType = None
 
     @property
     def AddressCount(self):
@@ -2178,6 +2186,22 @@ AnycastEIP是否用于绑定负载均衡。
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def IPChargeType(self):
+        r"""原生EIP IP资源的计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+</ul></li>
+</ul>
+        :rtype: str
+        """
+        return self._IPChargeType
+
+    @IPChargeType.setter
+    def IPChargeType(self, IPChargeType):
+        self._IPChargeType = IPChargeType
+
 
     def _deserialize(self, params):
         self._AddressCount = params.get("AddressCount")
@@ -2204,6 +2228,7 @@ AnycastEIP是否用于绑定负载均衡。
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._ClientToken = params.get("ClientToken")
+        self._IPChargeType = params.get("IPChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46036,11 +46061,19 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
 <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
 <ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
         :type AddressType: str
+        :param _IPChargeType: 原生EIP IP资源的计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+</ul></li>
+</ul>
+        :type IPChargeType: str
         """
         self._InternetChargeType = None
         self._InternetMaxBandwidthOut = None
         self._AddressChargePrepaid = None
         self._AddressType = None
+        self._IPChargeType = None
 
     @property
     def InternetChargeType(self):
@@ -46101,6 +46134,22 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
     def AddressType(self, AddressType):
         self._AddressType = AddressType
 
+    @property
+    def IPChargeType(self):
+        r"""原生EIP IP资源的计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+</ul></li>
+</ul>
+        :rtype: str
+        """
+        return self._IPChargeType
+
+    @IPChargeType.setter
+    def IPChargeType(self, IPChargeType):
+        self._IPChargeType = IPChargeType
+
 
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
@@ -46109,6 +46158,7 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
             self._AddressChargePrepaid = AddressChargePrepaid()
             self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
         self._AddressType = params.get("AddressType")
+        self._IPChargeType = params.get("IPChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47029,14 +47079,23 @@ class InternetPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressPrice: 公网IP询价详细参数。
+        :param _AddressPrice: 公网IP网络费询价详细参数。
         :type AddressPrice: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        :param _IPPrice: 公网IP资源费询价详细参数。仅原生IP价格查询返回。
+        :type IPPrice: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        :param _OriginalPrice: 总原价，单位：元，仅预付费价格查询返回。
+        :type OriginalPrice: float
+        :param _DiscountPrice: 折扣后的总价格，单位：元。仅预付费价格查询返回。
+        :type DiscountPrice: float
         """
         self._AddressPrice = None
+        self._IPPrice = None
+        self._OriginalPrice = None
+        self._DiscountPrice = None
 
     @property
     def AddressPrice(self):
-        r"""公网IP询价详细参数。
+        r"""公网IP网络费询价详细参数。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
         """
         return self._AddressPrice
@@ -47045,11 +47104,49 @@ class InternetPrice(AbstractModel):
     def AddressPrice(self, AddressPrice):
         self._AddressPrice = AddressPrice
 
+    @property
+    def IPPrice(self):
+        r"""公网IP资源费询价详细参数。仅原生IP价格查询返回。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        """
+        return self._IPPrice
+
+    @IPPrice.setter
+    def IPPrice(self, IPPrice):
+        self._IPPrice = IPPrice
+
+    @property
+    def OriginalPrice(self):
+        r"""总原价，单位：元，仅预付费价格查询返回。
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        r"""折扣后的总价格，单位：元。仅预付费价格查询返回。
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
 
     def _deserialize(self, params):
         if params.get("AddressPrice") is not None:
             self._AddressPrice = InternetPriceDetail()
             self._AddressPrice._deserialize(params.get("AddressPrice"))
+        if params.get("IPPrice") is not None:
+            self._IPPrice = InternetPriceDetail()
+            self._IPPrice._deserialize(params.get("IPPrice"))
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

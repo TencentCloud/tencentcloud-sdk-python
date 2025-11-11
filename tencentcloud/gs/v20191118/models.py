@@ -3184,9 +3184,17 @@ class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _ExpirationDuration: 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
         :type ExpirationDuration: str
+        :param _Mode: 模式。
+STANDARD：默认值，标准模式
+ACCELERATED：加速模式，该模式需要开通加速服务才能生效
+        :type Mode: str
+        :param _UserIP: 用户 IP。在加速模式下，该字段必填。
+        :type UserIP: str
         """
         self._AndroidInstanceIds = None
         self._ExpirationDuration = None
+        self._Mode = None
+        self._UserIP = None
 
     @property
     def AndroidInstanceIds(self):
@@ -3210,10 +3218,36 @@ class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
     def ExpirationDuration(self, ExpirationDuration):
         self._ExpirationDuration = ExpirationDuration
 
+    @property
+    def Mode(self):
+        r"""模式。
+STANDARD：默认值，标准模式
+ACCELERATED：加速模式，该模式需要开通加速服务才能生效
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def UserIP(self):
+        r"""用户 IP。在加速模式下，该字段必填。
+        :rtype: str
+        """
+        return self._UserIP
+
+    @UserIP.setter
+    def UserIP(self, UserIP):
+        self._UserIP = UserIP
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._ExpirationDuration = params.get("ExpirationDuration")
+        self._Mode = params.get("Mode")
+        self._UserIP = params.get("UserIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

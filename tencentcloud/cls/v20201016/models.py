@@ -7685,12 +7685,34 @@ class CreateDataTransformRequest(AbstractModel):
         :param _PreviewLogStatistics: 用于预览加工结果的测试数据
 目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type PreviewLogStatistics: list of PreviewLogStatistic
+        :param _BackupGiveUpData: 当FuncType为2时，动态创建的日志集、日志主题的个数超出产品规格限制是否丢弃数据， 默认为false。
+
+false：创建兜底日志集、日志主题并将日志写入兜底主题；
+true：丢弃日志数据。
+        :type BackupGiveUpData: bool
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
+        :type HasServicesLog: int
         :param _DataTransformType: 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
         :type DataTransformType: int
         :param _KeepFailureLog: 保留失败日志状态，1:不保留(默认)，2:保留。
         :type KeepFailureLog: int
         :param _FailureLogKey: 失败日志的字段名称
         :type FailureLogKey: str
+        :param _ProcessFromTimestamp: 指定加工数据的开始时间, 秒级时间戳。
+ - 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        :type ProcessFromTimestamp: int
+        :param _ProcessToTimestamp: 指定加工数据的结束时间，秒级时间戳。
+
+-  不可指定未来的时间
+-  不填则表示持续执行
+        :type ProcessToTimestamp: int
+        :param _TaskId: 对已经创建的并且使用了关联外部数据库能力的任务预览（TaskType 为 1 或 2）时，该值必传
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
+        :type TaskId: str
+        :param _DataTransformSqlDataSources: 关联的数据源信息
+        :type DataTransformSqlDataSources: list of DataTransformSqlDataSource
+        :param _EnvInfos: 设置的环境变量
+        :type EnvInfos: list of EnvInfo
         """
         self._FuncType = None
         self._SrcTopicId = None
@@ -7700,9 +7722,16 @@ class CreateDataTransformRequest(AbstractModel):
         self._DstResources = None
         self._EnableFlag = None
         self._PreviewLogStatistics = None
+        self._BackupGiveUpData = None
+        self._HasServicesLog = None
         self._DataTransformType = None
         self._KeepFailureLog = None
         self._FailureLogKey = None
+        self._ProcessFromTimestamp = None
+        self._ProcessToTimestamp = None
+        self._TaskId = None
+        self._DataTransformSqlDataSources = None
+        self._EnvInfos = None
 
     @property
     def FuncType(self):
@@ -7808,6 +7837,31 @@ class CreateDataTransformRequest(AbstractModel):
         self._PreviewLogStatistics = PreviewLogStatistics
 
     @property
+    def BackupGiveUpData(self):
+        r"""当FuncType为2时，动态创建的日志集、日志主题的个数超出产品规格限制是否丢弃数据， 默认为false。
+
+false：创建兜底日志集、日志主题并将日志写入兜底主题；
+true：丢弃日志数据。
+        :rtype: bool
+        """
+        return self._BackupGiveUpData
+
+    @BackupGiveUpData.setter
+    def BackupGiveUpData(self, BackupGiveUpData):
+        self._BackupGiveUpData = BackupGiveUpData
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
     def DataTransformType(self):
         r"""数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
         :rtype: int
@@ -7840,6 +7894,66 @@ class CreateDataTransformRequest(AbstractModel):
     def FailureLogKey(self, FailureLogKey):
         self._FailureLogKey = FailureLogKey
 
+    @property
+    def ProcessFromTimestamp(self):
+        r"""指定加工数据的开始时间, 秒级时间戳。
+ - 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        :rtype: int
+        """
+        return self._ProcessFromTimestamp
+
+    @ProcessFromTimestamp.setter
+    def ProcessFromTimestamp(self, ProcessFromTimestamp):
+        self._ProcessFromTimestamp = ProcessFromTimestamp
+
+    @property
+    def ProcessToTimestamp(self):
+        r"""指定加工数据的结束时间，秒级时间戳。
+
+-  不可指定未来的时间
+-  不填则表示持续执行
+        :rtype: int
+        """
+        return self._ProcessToTimestamp
+
+    @ProcessToTimestamp.setter
+    def ProcessToTimestamp(self, ProcessToTimestamp):
+        self._ProcessToTimestamp = ProcessToTimestamp
+
+    @property
+    def TaskId(self):
+        r"""对已经创建的并且使用了关联外部数据库能力的任务预览（TaskType 为 1 或 2）时，该值必传
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DataTransformSqlDataSources(self):
+        r"""关联的数据源信息
+        :rtype: list of DataTransformSqlDataSource
+        """
+        return self._DataTransformSqlDataSources
+
+    @DataTransformSqlDataSources.setter
+    def DataTransformSqlDataSources(self, DataTransformSqlDataSources):
+        self._DataTransformSqlDataSources = DataTransformSqlDataSources
+
+    @property
+    def EnvInfos(self):
+        r"""设置的环境变量
+        :rtype: list of EnvInfo
+        """
+        return self._EnvInfos
+
+    @EnvInfos.setter
+    def EnvInfos(self, EnvInfos):
+        self._EnvInfos = EnvInfos
+
 
     def _deserialize(self, params):
         self._FuncType = params.get("FuncType")
@@ -7860,9 +7974,26 @@ class CreateDataTransformRequest(AbstractModel):
                 obj = PreviewLogStatistic()
                 obj._deserialize(item)
                 self._PreviewLogStatistics.append(obj)
+        self._BackupGiveUpData = params.get("BackupGiveUpData")
+        self._HasServicesLog = params.get("HasServicesLog")
         self._DataTransformType = params.get("DataTransformType")
         self._KeepFailureLog = params.get("KeepFailureLog")
         self._FailureLogKey = params.get("FailureLogKey")
+        self._ProcessFromTimestamp = params.get("ProcessFromTimestamp")
+        self._ProcessToTimestamp = params.get("ProcessToTimestamp")
+        self._TaskId = params.get("TaskId")
+        if params.get("DataTransformSqlDataSources") is not None:
+            self._DataTransformSqlDataSources = []
+            for item in params.get("DataTransformSqlDataSources"):
+                obj = DataTransformSqlDataSource()
+                obj._deserialize(item)
+                self._DataTransformSqlDataSources.append(obj)
+        if params.get("EnvInfos") is not None:
+            self._EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self._EnvInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11138,6 +11269,121 @@ class DataTransformResouceInfo(AbstractModel):
         
 
 
+class DataTransformSqlDataSource(AbstractModel):
+    r"""外部表SQL信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSource: 数据源类型 1:MySql;2:自建mysql;3:pgsql
+        :type DataSource: int
+        :param _Region: InstanceId所属地域。例如：ap-guangzhou
+        :type Region: str
+        :param _InstanceId: 实例Id。
+- 当DataSource为1时，表示云数据库Mysql 实例id，如：cdb-zxcvbnm
+
+        :type InstanceId: str
+        :param _User: mysql访问用户名
+        :type User: str
+        :param _AliasName: 别名。数据加工语句中使用
+        :type AliasName: str
+        :param _Password: mysql访问密码。
+        :type Password: str
+        """
+        self._DataSource = None
+        self._Region = None
+        self._InstanceId = None
+        self._User = None
+        self._AliasName = None
+        self._Password = None
+
+    @property
+    def DataSource(self):
+        r"""数据源类型 1:MySql;2:自建mysql;3:pgsql
+        :rtype: int
+        """
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def Region(self):
+        r"""InstanceId所属地域。例如：ap-guangzhou
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceId(self):
+        r"""实例Id。
+- 当DataSource为1时，表示云数据库Mysql 实例id，如：cdb-zxcvbnm
+
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        r"""mysql访问用户名
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def AliasName(self):
+        r"""别名。数据加工语句中使用
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def Password(self):
+        r"""mysql访问密码。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._DataSource = params.get("DataSource")
+        self._Region = params.get("Region")
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._AliasName = params.get("AliasName")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataTransformTaskInfo(AbstractModel):
     r"""数据加工任务基本详情
 
@@ -11157,7 +11403,7 @@ class DataTransformTaskInfo(AbstractModel):
         :type SrcTopicId: str
         :param _Status: 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
         :type Status: int
-        :param _CreateTime: 加工任务创建时间
+        :param _CreateTime: 创建时间
 时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _UpdateTime: 最近修改时间
@@ -11174,12 +11420,31 @@ class DataTransformTaskInfo(AbstractModel):
         :type DstResources: list of DataTransformResouceInfo
         :param _EtlContent: 加工逻辑函数。
         :type EtlContent: str
+        :param _BackupTopicID: 兜底topic_id
+        :type BackupTopicID: str
+        :param _BackupGiveUpData: 超限之后是否丢弃日志数据
+        :type BackupGiveUpData: bool
+        :param _HasServicesLog: 是否开启投递服务日志。 1关闭,2开启
+        :type HasServicesLog: int
+        :param _TaskDstCount: 任务目标日志主题数量
+        :type TaskDstCount: int
         :param _DataTransformType: 数据加工类型。0：标准加工任务；1：前置加工任务。
         :type DataTransformType: int
         :param _KeepFailureLog: 保留失败日志状态。 1:不保留，2:保留
         :type KeepFailureLog: int
         :param _FailureLogKey: 失败日志的字段名称
         :type FailureLogKey: str
+        :param _ProcessFromTimestamp: 指定加工数据的开始时间，秒级时间戳。
+- 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        :type ProcessFromTimestamp: int
+        :param _ProcessToTimestamp: 指定加工数据的结束时间，秒级时间戳。
+1. 不可指定未来的时间
+2. 不填则表示持续执行
+        :type ProcessToTimestamp: int
+        :param _DataTransformSqlDataSources: sql数据源信息
+        :type DataTransformSqlDataSources: list of DataTransformSqlDataSource
+        :param _EnvInfos: 环境变量
+        :type EnvInfos: list of EnvInfo
         """
         self._Name = None
         self._TaskId = None
@@ -11194,9 +11459,17 @@ class DataTransformTaskInfo(AbstractModel):
         self._LogsetId = None
         self._DstResources = None
         self._EtlContent = None
+        self._BackupTopicID = None
+        self._BackupGiveUpData = None
+        self._HasServicesLog = None
+        self._TaskDstCount = None
         self._DataTransformType = None
         self._KeepFailureLog = None
         self._FailureLogKey = None
+        self._ProcessFromTimestamp = None
+        self._ProcessToTimestamp = None
+        self._DataTransformSqlDataSources = None
+        self._EnvInfos = None
 
     @property
     def Name(self):
@@ -11266,7 +11539,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""加工任务创建时间
+        r"""创建时间
 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -11345,6 +11618,50 @@ class DataTransformTaskInfo(AbstractModel):
         self._EtlContent = EtlContent
 
     @property
+    def BackupTopicID(self):
+        r"""兜底topic_id
+        :rtype: str
+        """
+        return self._BackupTopicID
+
+    @BackupTopicID.setter
+    def BackupTopicID(self, BackupTopicID):
+        self._BackupTopicID = BackupTopicID
+
+    @property
+    def BackupGiveUpData(self):
+        r"""超限之后是否丢弃日志数据
+        :rtype: bool
+        """
+        return self._BackupGiveUpData
+
+    @BackupGiveUpData.setter
+    def BackupGiveUpData(self, BackupGiveUpData):
+        self._BackupGiveUpData = BackupGiveUpData
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。 1关闭,2开启
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def TaskDstCount(self):
+        r"""任务目标日志主题数量
+        :rtype: int
+        """
+        return self._TaskDstCount
+
+    @TaskDstCount.setter
+    def TaskDstCount(self, TaskDstCount):
+        self._TaskDstCount = TaskDstCount
+
+    @property
     def DataTransformType(self):
         r"""数据加工类型。0：标准加工任务；1：前置加工任务。
         :rtype: int
@@ -11377,6 +11694,53 @@ class DataTransformTaskInfo(AbstractModel):
     def FailureLogKey(self, FailureLogKey):
         self._FailureLogKey = FailureLogKey
 
+    @property
+    def ProcessFromTimestamp(self):
+        r"""指定加工数据的开始时间，秒级时间戳。
+- 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        :rtype: int
+        """
+        return self._ProcessFromTimestamp
+
+    @ProcessFromTimestamp.setter
+    def ProcessFromTimestamp(self, ProcessFromTimestamp):
+        self._ProcessFromTimestamp = ProcessFromTimestamp
+
+    @property
+    def ProcessToTimestamp(self):
+        r"""指定加工数据的结束时间，秒级时间戳。
+1. 不可指定未来的时间
+2. 不填则表示持续执行
+        :rtype: int
+        """
+        return self._ProcessToTimestamp
+
+    @ProcessToTimestamp.setter
+    def ProcessToTimestamp(self, ProcessToTimestamp):
+        self._ProcessToTimestamp = ProcessToTimestamp
+
+    @property
+    def DataTransformSqlDataSources(self):
+        r"""sql数据源信息
+        :rtype: list of DataTransformSqlDataSource
+        """
+        return self._DataTransformSqlDataSources
+
+    @DataTransformSqlDataSources.setter
+    def DataTransformSqlDataSources(self, DataTransformSqlDataSources):
+        self._DataTransformSqlDataSources = DataTransformSqlDataSources
+
+    @property
+    def EnvInfos(self):
+        r"""环境变量
+        :rtype: list of EnvInfo
+        """
+        return self._EnvInfos
+
+    @EnvInfos.setter
+    def EnvInfos(self, EnvInfos):
+        self._EnvInfos = EnvInfos
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -11397,9 +11761,27 @@ class DataTransformTaskInfo(AbstractModel):
                 obj._deserialize(item)
                 self._DstResources.append(obj)
         self._EtlContent = params.get("EtlContent")
+        self._BackupTopicID = params.get("BackupTopicID")
+        self._BackupGiveUpData = params.get("BackupGiveUpData")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._TaskDstCount = params.get("TaskDstCount")
         self._DataTransformType = params.get("DataTransformType")
         self._KeepFailureLog = params.get("KeepFailureLog")
         self._FailureLogKey = params.get("FailureLogKey")
+        self._ProcessFromTimestamp = params.get("ProcessFromTimestamp")
+        self._ProcessToTimestamp = params.get("ProcessToTimestamp")
+        if params.get("DataTransformSqlDataSources") is not None:
+            self._DataTransformSqlDataSources = []
+            for item in params.get("DataTransformSqlDataSources"):
+                obj = DataTransformSqlDataSource()
+                obj._deserialize(item)
+                self._DataTransformSqlDataSources.append(obj)
+        if params.get("EnvInfos") is not None:
+            self._EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self._EnvInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15267,7 +15649,7 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 必选：否
 示例：756cec3e-a0a5-44c3-85a8-090870582000
 日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 
 - status
 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
@@ -15326,7 +15708,7 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 必选：否
 示例：756cec3e-a0a5-44c3-85a8-090870582000
 日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 
 - status
 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
@@ -18684,6 +19066,57 @@ class DynamicIndex(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvInfo(AbstractModel):
+    r"""数据加工-高级设置-环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 环境变量名
+        :type Key: str
+        :param _Value: 环境变量值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""环境变量名
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""环境变量值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25153,15 +25586,30 @@ class ModifyDataTransformRequest(AbstractModel):
         :type EnableFlag: int
         :param _DstResources: 加工任务目的topic_id以及别名
         :type DstResources: list of DataTransformResouceInfo
+        :param _BackupGiveUpData: 超限之后是否丢弃日志数据
+        :type BackupGiveUpData: bool
         :param _HasServicesLog: 是否开启投递服务日志。1关闭，2开启
         :type HasServicesLog: int
+        :param _KeepFailureLog: 保留失败日志状态。 1:不保留，2:保留
+        :type KeepFailureLog: int
+        :param _FailureLogKey: 失败日志的字段名称
+        :type FailureLogKey: str
+        :param _DataTransformSqlDataSources: 外部数据源信息
+        :type DataTransformSqlDataSources: list of DataTransformSqlDataSource
+        :param _EnvInfos: 设置的环境变量
+        :type EnvInfos: list of EnvInfo
         """
         self._TaskId = None
         self._Name = None
         self._EtlContent = None
         self._EnableFlag = None
         self._DstResources = None
+        self._BackupGiveUpData = None
         self._HasServicesLog = None
+        self._KeepFailureLog = None
+        self._FailureLogKey = None
+        self._DataTransformSqlDataSources = None
+        self._EnvInfos = None
 
     @property
     def TaskId(self):
@@ -25231,6 +25679,17 @@ class ModifyDataTransformRequest(AbstractModel):
         self._DstResources = DstResources
 
     @property
+    def BackupGiveUpData(self):
+        r"""超限之后是否丢弃日志数据
+        :rtype: bool
+        """
+        return self._BackupGiveUpData
+
+    @BackupGiveUpData.setter
+    def BackupGiveUpData(self, BackupGiveUpData):
+        self._BackupGiveUpData = BackupGiveUpData
+
+    @property
     def HasServicesLog(self):
         r"""是否开启投递服务日志。1关闭，2开启
         :rtype: int
@@ -25240,6 +25699,50 @@ class ModifyDataTransformRequest(AbstractModel):
     @HasServicesLog.setter
     def HasServicesLog(self, HasServicesLog):
         self._HasServicesLog = HasServicesLog
+
+    @property
+    def KeepFailureLog(self):
+        r"""保留失败日志状态。 1:不保留，2:保留
+        :rtype: int
+        """
+        return self._KeepFailureLog
+
+    @KeepFailureLog.setter
+    def KeepFailureLog(self, KeepFailureLog):
+        self._KeepFailureLog = KeepFailureLog
+
+    @property
+    def FailureLogKey(self):
+        r"""失败日志的字段名称
+        :rtype: str
+        """
+        return self._FailureLogKey
+
+    @FailureLogKey.setter
+    def FailureLogKey(self, FailureLogKey):
+        self._FailureLogKey = FailureLogKey
+
+    @property
+    def DataTransformSqlDataSources(self):
+        r"""外部数据源信息
+        :rtype: list of DataTransformSqlDataSource
+        """
+        return self._DataTransformSqlDataSources
+
+    @DataTransformSqlDataSources.setter
+    def DataTransformSqlDataSources(self, DataTransformSqlDataSources):
+        self._DataTransformSqlDataSources = DataTransformSqlDataSources
+
+    @property
+    def EnvInfos(self):
+        r"""设置的环境变量
+        :rtype: list of EnvInfo
+        """
+        return self._EnvInfos
+
+    @EnvInfos.setter
+    def EnvInfos(self, EnvInfos):
+        self._EnvInfos = EnvInfos
 
 
     def _deserialize(self, params):
@@ -25253,7 +25756,22 @@ class ModifyDataTransformRequest(AbstractModel):
                 obj = DataTransformResouceInfo()
                 obj._deserialize(item)
                 self._DstResources.append(obj)
+        self._BackupGiveUpData = params.get("BackupGiveUpData")
         self._HasServicesLog = params.get("HasServicesLog")
+        self._KeepFailureLog = params.get("KeepFailureLog")
+        self._FailureLogKey = params.get("FailureLogKey")
+        if params.get("DataTransformSqlDataSources") is not None:
+            self._DataTransformSqlDataSources = []
+            for item in params.get("DataTransformSqlDataSources"):
+                obj = DataTransformSqlDataSource()
+                obj._deserialize(item)
+                self._DataTransformSqlDataSources.append(obj)
+        if params.get("EnvInfos") is not None:
+            self._EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self._EnvInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

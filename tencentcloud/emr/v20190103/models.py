@@ -26619,11 +26619,14 @@ class NodeSpecDisk(AbstractModel):
         :type DiskType: str
         :param _DefaultDiskSize: 指定磁盘大小
         :type DefaultDiskSize: int
+        :param _IsSpecialDisk: 是否为特殊的数据盘，如：单副本盘
+        :type IsSpecialDisk: bool
         """
         self._Count = None
         self._Name = None
         self._DiskType = None
         self._DefaultDiskSize = None
+        self._IsSpecialDisk = None
 
     @property
     def Count(self):
@@ -26669,12 +26672,24 @@ class NodeSpecDisk(AbstractModel):
     def DefaultDiskSize(self, DefaultDiskSize):
         self._DefaultDiskSize = DefaultDiskSize
 
+    @property
+    def IsSpecialDisk(self):
+        r"""是否为特殊的数据盘，如：单副本盘
+        :rtype: bool
+        """
+        return self._IsSpecialDisk
+
+    @IsSpecialDisk.setter
+    def IsSpecialDisk(self, IsSpecialDisk):
+        self._IsSpecialDisk = IsSpecialDisk
+
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._Name = params.get("Name")
         self._DiskType = params.get("DiskType")
         self._DefaultDiskSize = params.get("DefaultDiskSize")
+        self._IsSpecialDisk = params.get("IsSpecialDisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

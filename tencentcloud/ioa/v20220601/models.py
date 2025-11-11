@@ -7286,6 +7286,10 @@ class DeviceDetail(AbstractModel):
         :type AccountName: str
         :param _AccountGroupId: 账号组id
         :type AccountGroupId: int
+        :param _ScreenRecordingPermission: 是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+        :type ScreenRecordingPermission: int
+        :param _DiskAccessPermission: 是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+        :type DiskAccessPermission: int
         :param _RemarkName: 终端备注名
         :type RemarkName: str
         """
@@ -7337,6 +7341,8 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupName = None
         self._AccountName = None
         self._AccountGroupId = None
+        self._ScreenRecordingPermission = None
+        self._DiskAccessPermission = None
         self._RemarkName = None
 
     @property
@@ -7868,6 +7874,28 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupId = AccountGroupId
 
     @property
+    def ScreenRecordingPermission(self):
+        r"""是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+        :rtype: int
+        """
+        return self._ScreenRecordingPermission
+
+    @ScreenRecordingPermission.setter
+    def ScreenRecordingPermission(self, ScreenRecordingPermission):
+        self._ScreenRecordingPermission = ScreenRecordingPermission
+
+    @property
+    def DiskAccessPermission(self):
+        r"""是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+        :rtype: int
+        """
+        return self._DiskAccessPermission
+
+    @DiskAccessPermission.setter
+    def DiskAccessPermission(self, DiskAccessPermission):
+        self._DiskAccessPermission = DiskAccessPermission
+
+    @property
     def RemarkName(self):
         r"""终端备注名
         :rtype: str
@@ -7928,6 +7956,8 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupName = params.get("AccountGroupName")
         self._AccountName = params.get("AccountName")
         self._AccountGroupId = params.get("AccountGroupId")
+        self._ScreenRecordingPermission = params.get("ScreenRecordingPermission")
+        self._DiskAccessPermission = params.get("DiskAccessPermission")
         self._RemarkName = params.get("RemarkName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
