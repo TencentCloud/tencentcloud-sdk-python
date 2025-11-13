@@ -23854,6 +23854,8 @@ class ModifyUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 集群字符串ID
+        :type InstanceId: str
         :param _Users: 用户信息列表
         :type Users: list of str
         :param _UserGroup: 用户主组，cvm集群为必填参数，tke集群选填
@@ -23863,10 +23865,22 @@ class ModifyUserGroupRequest(AbstractModel):
         :param _Remark: 备注
         :type Remark: str
         """
+        self._InstanceId = None
         self._Users = None
         self._UserGroup = None
         self._Groups = None
         self._Remark = None
+
+    @property
+    def InstanceId(self):
+        r"""集群字符串ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Users(self):
@@ -23914,6 +23928,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._Users = params.get("Users")
         self._UserGroup = params.get("UserGroup")
         self._Groups = params.get("Groups")

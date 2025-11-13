@@ -958,7 +958,7 @@ class CreateVideoModerationTaskRequest(AbstractModel):
         r"""
         :param _BizType: 该字段表示特定审核策略的编号，用于接口调度。需要提前在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中创建策略后获取该Biztype字段，传入该字段，会根据业务场景在审核时调用相应的审核策略。 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
-        :param _Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
+        :param _Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频），VIDEO_AIGC（AI生成检测）
         :type Type: str
         :param _Tasks: 输入的任务信息，最多可以同时创建10个任务
         :type Tasks: list of TaskInput
@@ -992,7 +992,7 @@ class CreateVideoModerationTaskRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
+        r"""任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频），VIDEO_AIGC（AI生成检测）
         :rtype: str
         """
         return self._Type

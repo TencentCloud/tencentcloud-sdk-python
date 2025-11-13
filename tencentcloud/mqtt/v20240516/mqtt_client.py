@@ -1048,6 +1048,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def KickOutClient(self, request):
+        r"""踢出客户端
+
+        :param request: Request instance for KickOutClient.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.KickOutClientRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.KickOutClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("KickOutClient", params, headers=headers)
+            response = json.loads(body)
+            model = models.KickOutClientResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAuthorizationPolicy(self, request):
         r"""修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
 

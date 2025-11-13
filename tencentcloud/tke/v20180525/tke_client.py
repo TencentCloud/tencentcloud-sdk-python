@@ -1797,6 +1797,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterAvailableExtraArgs(self, request):
+        r"""查询集群可用的自定义参数
+
+        :param request: Request instance for DescribeClusterAvailableExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAvailableExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAvailableExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterAvailableExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterAvailableExtraArgsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterCommonNames(self, request):
         r"""获取指定子账户在RBAC授权模式中对应kube-apiserver客户端证书的CommonName字段，如果没有客户端证书，将会签发一个，此接口有最大传入子账户数量上限，当前为50
 
@@ -3729,6 +3752,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasks(self, request):
+        r"""查询任务相关信息，只会查询对应任务类型的最新的一条任务状态
+
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVersions(self, request):
         r"""获取集群版本信息
 
@@ -4364,6 +4410,52 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterEndpointSP", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterEndpointSPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterExtraArgs(self, request):
+        r"""更新集群自定义参数，只支持托管集群
+
+        :param request: Request instance for ModifyClusterExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterExtraArgsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterExtraArgsTaskState(self, request):
+        r"""暂停或者取消集群更新参数任务
+
+        :param request: Request instance for ModifyClusterExtraArgsTaskState.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterExtraArgsTaskStateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterExtraArgsTaskStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterExtraArgsTaskState", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterExtraArgsTaskStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

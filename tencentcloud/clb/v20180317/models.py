@@ -12792,10 +12792,12 @@ class Listener(AbstractModel):
         :param _IdleConnectTimeout: 空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdleConnectTimeout: int
-        :param _RescheduleInterval: 调度时间。触发强制重新调度后，长连接将会在设置的调度时间内断开并完成重新分配
+        :param _RescheduleInterval: 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。
         :type RescheduleInterval: int
         :param _DataCompressMode: 数据压缩模式
         :type DataCompressMode: str
+        :param _RescheduleStartTime: 重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。
+        :type RescheduleStartTime: int
         """
         self._ListenerId = None
         self._Protocol = None
@@ -12822,6 +12824,7 @@ class Listener(AbstractModel):
         self._IdleConnectTimeout = None
         self._RescheduleInterval = None
         self._DataCompressMode = None
+        self._RescheduleStartTime = None
 
     @property
     def ListenerId(self):
@@ -13088,7 +13091,7 @@ class Listener(AbstractModel):
 
     @property
     def RescheduleInterval(self):
-        r"""调度时间。触发强制重新调度后，长连接将会在设置的调度时间内断开并完成重新分配
+        r"""重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。
         :rtype: int
         """
         return self._RescheduleInterval
@@ -13107,6 +13110,17 @@ class Listener(AbstractModel):
     @DataCompressMode.setter
     def DataCompressMode(self, DataCompressMode):
         self._DataCompressMode = DataCompressMode
+
+    @property
+    def RescheduleStartTime(self):
+        r"""重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。
+        :rtype: int
+        """
+        return self._RescheduleStartTime
+
+    @RescheduleStartTime.setter
+    def RescheduleStartTime(self, RescheduleStartTime):
+        self._RescheduleStartTime = RescheduleStartTime
 
 
     def _deserialize(self, params):
@@ -13151,6 +13165,7 @@ class Listener(AbstractModel):
         self._IdleConnectTimeout = params.get("IdleConnectTimeout")
         self._RescheduleInterval = params.get("RescheduleInterval")
         self._DataCompressMode = params.get("DataCompressMode")
+        self._RescheduleStartTime = params.get("RescheduleStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
