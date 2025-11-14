@@ -1380,7 +1380,7 @@ class Content(AbstractModel):
         :param _Type: 内容类型
 注意：
 需包含至少一个 Type 为"text"的参数。
-参数值可选范围：[text", "image_url"]
+参数值可选范围：[text", "image_url","video_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Text: 当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 image_url 时，当前字段内容需保持为空，传递内容不生效。
@@ -1390,17 +1390,25 @@ class Content(AbstractModel):
 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 text 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
+        :param _VideoUrl: 当type为video_url时使用，标识具体的视频链接内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoUrl: :class:`tencentcloud.hunyuan.v20230901.models.VideoUrl`
+        :param _VideoFrames: 当type为video_frames时使用，标识具体的视频内图像帧内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoFrames: :class:`tencentcloud.hunyuan.v20230901.models.VideoFrames`
         """
         self._Type = None
         self._Text = None
         self._ImageUrl = None
+        self._VideoUrl = None
+        self._VideoFrames = None
 
     @property
     def Type(self):
         r"""内容类型
 注意：
 需包含至少一个 Type 为"text"的参数。
-参数值可选范围：[text", "image_url"]
+参数值可选范围：[text", "image_url","video_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1435,6 +1443,30 @@ class Content(AbstractModel):
     def ImageUrl(self, ImageUrl):
         self._ImageUrl = ImageUrl
 
+    @property
+    def VideoUrl(self):
+        r"""当type为video_url时使用，标识具体的视频链接内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.VideoUrl`
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def VideoFrames(self):
+        r"""当type为video_frames时使用，标识具体的视频内图像帧内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.VideoFrames`
+        """
+        return self._VideoFrames
+
+    @VideoFrames.setter
+    def VideoFrames(self, VideoFrames):
+        self._VideoFrames = VideoFrames
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1442,6 +1474,12 @@ class Content(AbstractModel):
         if params.get("ImageUrl") is not None:
             self._ImageUrl = ImageUrl()
             self._ImageUrl._deserialize(params.get("ImageUrl"))
+        if params.get("VideoUrl") is not None:
+            self._VideoUrl = VideoUrl()
+            self._VideoUrl._deserialize(params.get("VideoUrl"))
+        if params.get("VideoFrames") is not None:
+            self._VideoFrames = VideoFrames()
+            self._VideoFrames._deserialize(params.get("VideoFrames"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7869,6 +7907,93 @@ class UserLocation(AbstractModel):
         if params.get("Approximate") is not None:
             self._Approximate = Approximate()
             self._Approximate._deserialize(params.get("Approximate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoFrames(AbstractModel):
+    r"""当type为video_frames时使用，标识具体的视频内图像帧内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Frames: 视频图像帧列表，图像帧传url
+        :type Frames: list of str
+        """
+        self._Frames = None
+
+    @property
+    def Frames(self):
+        r"""视频图像帧列表，图像帧传url
+        :rtype: list of str
+        """
+        return self._Frames
+
+    @Frames.setter
+    def Frames(self, Frames):
+        self._Frames = Frames
+
+
+    def _deserialize(self, params):
+        self._Frames = params.get("Frames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoUrl(AbstractModel):
+    r"""当type为video_url时使用，标识具体的视频链接内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 视频的url，如"https://your-video-path.mp/4"
+        :type Url: str
+        :param _Fps: 控制视频抽帧频率，取值范围为 0.1 ~5，表示每隔 1/fps 秒抽取一帧，默认为 1s抽取一帧
+        :type Fps: float
+        """
+        self._Url = None
+        self._Fps = None
+
+    @property
+    def Url(self):
+        r"""视频的url，如"https://your-video-path.mp/4"
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Fps(self):
+        r"""控制视频抽帧频率，取值范围为 0.1 ~5，表示每隔 1/fps 秒抽取一帧，默认为 1s抽取一帧
+        :rtype: float
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

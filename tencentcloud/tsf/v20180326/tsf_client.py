@@ -4222,6 +4222,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGroupLane(self, request):
+        r"""更新部署组泳道信息
+
+        :param request: Request instance for ModifyGroupLane.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyGroupLaneRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyGroupLaneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGroupLane", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGroupLaneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyLane(self, request):
         r"""更新泳道配置信息
 

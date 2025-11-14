@@ -10709,6 +10709,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type ConvergenceHistoryIDs: list of str
         :param _AlarmTypes: 告警类型
         :type AlarmTypes: list of str
+        :param _ShieldStatus: 是否已屏蔽
+        :type ShieldStatus: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -10731,6 +10733,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._AlarmLevels = None
         self._ConvergenceHistoryIDs = None
         self._AlarmTypes = None
+        self._ShieldStatus = None
 
     @property
     def Module(self):
@@ -10966,6 +10969,17 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
     def AlarmTypes(self, AlarmTypes):
         self._AlarmTypes = AlarmTypes
 
+    @property
+    def ShieldStatus(self):
+        r"""是否已屏蔽
+        :rtype: list of str
+        """
+        return self._ShieldStatus
+
+    @ShieldStatus.setter
+    def ShieldStatus(self, ShieldStatus):
+        self._ShieldStatus = ShieldStatus
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -10994,6 +11008,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._AlarmLevels = params.get("AlarmLevels")
         self._ConvergenceHistoryIDs = params.get("ConvergenceHistoryIDs")
         self._AlarmTypes = params.get("AlarmTypes")
+        self._ShieldStatus = params.get("ShieldStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

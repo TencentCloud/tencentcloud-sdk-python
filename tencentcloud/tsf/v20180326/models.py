@@ -43939,6 +43939,105 @@ class ModifyContainerReplicasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyGroupLaneRequest(AbstractModel):
+    r"""ModifyGroupLane请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+        :type GroupId: str
+        :param _LaneList: 泳道部署组列表。
+        :type LaneList: list of LaneGroup
+        """
+        self._GroupId = None
+        self._LaneList = None
+
+    @property
+    def GroupId(self):
+        r"""部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def LaneList(self):
+        r"""泳道部署组列表。
+        :rtype: list of LaneGroup
+        """
+        return self._LaneList
+
+    @LaneList.setter
+    def LaneList(self, LaneList):
+        self._LaneList = LaneList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        if params.get("LaneList") is not None:
+            self._LaneList = []
+            for item in params.get("LaneList"):
+                obj = LaneGroup()
+                obj._deserialize(item)
+                self._LaneList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGroupLaneResponse(AbstractModel):
+    r"""ModifyGroupLane返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作结果。- true：成功- false：失败
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""操作结果。- true：成功- false：失败
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGroupRequest(AbstractModel):
     r"""ModifyGroup请求参数结构体
 

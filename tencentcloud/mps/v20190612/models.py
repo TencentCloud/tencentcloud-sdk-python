@@ -64877,13 +64877,15 @@ class SpekeDrm(AbstractModel):
         :type KeyServerUrl: str
         :param _Vector: 加密初始化向量(十六进制32字节字符串)，该字段内容为用户自定义。
         :type Vector: str
-        :param _EncryptionMethod: 加密方式，FairPlay 默认cbcs
-加密方式，PlayReady，Widevine 默认cenc
-加密方式，WideVine+FairPlay，Playready+Fairplay，Widevine+Playready+Fairplay默认cbcs
-加密方式，Widevine+Playready默认cenc
-
+        :param _EncryptionMethod: 加密方式，可选值：
 cbcs：PlayReady，Widevine，FairPlay，WideVine+FairPlay，Widevine+Playready，Playready+Fairplay，Widevine+Playready+Fairplay支持；
 cenc：PlayReady，Widevine，Widevine+Playready支持；
+
+若不填
+FairPlay 默认cbcs;
+PlayReady，Widevine 默认cenc;
+WideVine+FairPlay，Playready+Fairplay，Widevine+Playready+Fairplay默认cbcs;
+Widevine+Playready默认cenc;
         :type EncryptionMethod: str
         :param _EncryptionPreset: 子流加密规则，默认 preset0
 preset0：全部子流使用同一个key加密；
@@ -64937,13 +64939,15 @@ preset1：每个子流使用不同的key加密；
 
     @property
     def EncryptionMethod(self):
-        r"""加密方式，FairPlay 默认cbcs
-加密方式，PlayReady，Widevine 默认cenc
-加密方式，WideVine+FairPlay，Playready+Fairplay，Widevine+Playready+Fairplay默认cbcs
-加密方式，Widevine+Playready默认cenc
-
+        r"""加密方式，可选值：
 cbcs：PlayReady，Widevine，FairPlay，WideVine+FairPlay，Widevine+Playready，Playready+Fairplay，Widevine+Playready+Fairplay支持；
 cenc：PlayReady，Widevine，Widevine+Playready支持；
+
+若不填
+FairPlay 默认cbcs;
+PlayReady，Widevine 默认cenc;
+WideVine+FairPlay，Playready+Fairplay，Widevine+Playready+Fairplay默认cbcs;
+Widevine+Playready默认cenc;
         :rtype: str
         """
         return self._EncryptionMethod

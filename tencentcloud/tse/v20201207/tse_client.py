@@ -486,6 +486,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrModifyCloudNativeAPIGatewayIPRestriction(self, request):
+        r"""创建或编辑云原生网关访问控制
+
+        :param request: Request instance for CreateOrModifyCloudNativeAPIGatewayIPRestriction.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrModifyCloudNativeAPIGatewayIPRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrUpdateConfigFileAndRelease(self, request):
         r"""创建或更新配置文件并发布配置
 
@@ -615,6 +638,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteCloudNativeAPIGatewayCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudNativeAPIGatewayCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudNativeAPIGatewayIPRestriction(self, request):
+        r"""删除云原生网关访问控制
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayIPRestriction.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayIPRestrictionRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayIPRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayIPRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayIPRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1190,6 +1236,29 @@ class TseClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGatewayConfig", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewayConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayIPRestriction(self, request):
+        r"""查询云原生网关访问控制
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayIPRestriction.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayIPRestrictionRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayIPRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayIPRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayIPRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

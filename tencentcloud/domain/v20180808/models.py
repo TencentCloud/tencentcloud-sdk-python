@@ -968,8 +968,12 @@ class BiddingSuccessfulResult(AbstractModel):
         :param _PayEndTime: 支付结束时间
 格式:YYYY-MM-DD HH:mm:ss
         :type PayEndTime: str
+        :param _ModifyOwnerEndTime: 交割时间
+格式:YYYY-MM-DD HH:mm:ss
+        :type ModifyOwnerEndTime: str
         """
         self._PayEndTime = None
+        self._ModifyOwnerEndTime = None
 
     @property
     def PayEndTime(self):
@@ -983,9 +987,22 @@ class BiddingSuccessfulResult(AbstractModel):
     def PayEndTime(self, PayEndTime):
         self._PayEndTime = PayEndTime
 
+    @property
+    def ModifyOwnerEndTime(self):
+        r"""交割时间
+格式:YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._ModifyOwnerEndTime
+
+    @ModifyOwnerEndTime.setter
+    def ModifyOwnerEndTime(self, ModifyOwnerEndTime):
+        self._ModifyOwnerEndTime = ModifyOwnerEndTime
+
 
     def _deserialize(self, params):
         self._PayEndTime = params.get("PayEndTime")
+        self._ModifyOwnerEndTime = params.get("ModifyOwnerEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4254,6 +4271,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         :type BiddingBondPrice: float
         :param _Status: 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
         :type Status: int
+        :param _ModifyOwnerEndTime: 交割时间
+格式:YYYY-MM-DD HH:mm:ss
+        :type ModifyOwnerEndTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4267,6 +4287,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         self._BiddingBondRefund = None
         self._BiddingBondPrice = None
         self._Status = None
+        self._ModifyOwnerEndTime = None
         self._RequestId = None
 
     @property
@@ -4385,6 +4406,18 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         self._Status = Status
 
     @property
+    def ModifyOwnerEndTime(self):
+        r"""交割时间
+格式:YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._ModifyOwnerEndTime
+
+    @ModifyOwnerEndTime.setter
+    def ModifyOwnerEndTime(self, ModifyOwnerEndTime):
+        self._ModifyOwnerEndTime = ModifyOwnerEndTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4407,6 +4440,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         self._BiddingBondRefund = params.get("BiddingBondRefund")
         self._BiddingBondPrice = params.get("BiddingBondPrice")
         self._Status = params.get("Status")
+        self._ModifyOwnerEndTime = params.get("ModifyOwnerEndTime")
         self._RequestId = params.get("RequestId")
 
 

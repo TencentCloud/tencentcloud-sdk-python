@@ -2372,12 +2372,15 @@ KafkaType为1时，ServerAddr必填
         :type IsEncryptionAddr: bool
         :param _Protocol: 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param _UserKafkaMeta: 用户kafka拓展信息
+        :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._KafkaType = None
         self._KafkaInstance = None
         self._ServerAddr = None
         self._IsEncryptionAddr = None
         self._Protocol = None
+        self._UserKafkaMeta = None
 
     @property
     def KafkaType(self):
@@ -2438,6 +2441,17 @@ KafkaType为1时，ServerAddr必填
     def Protocol(self, Protocol):
         self._Protocol = Protocol
 
+    @property
+    def UserKafkaMeta(self):
+        r"""用户kafka拓展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
+        """
+        return self._UserKafkaMeta
+
+    @UserKafkaMeta.setter
+    def UserKafkaMeta(self, UserKafkaMeta):
+        self._UserKafkaMeta = UserKafkaMeta
+
 
     def _deserialize(self, params):
         self._KafkaType = params.get("KafkaType")
@@ -2447,6 +2461,9 @@ KafkaType为1时，ServerAddr必填
         if params.get("Protocol") is not None:
             self._Protocol = KafkaProtocolInfo()
             self._Protocol._deserialize(params.get("Protocol"))
+        if params.get("UserKafkaMeta") is not None:
+            self._UserKafkaMeta = UserKafkaMeta()
+            self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3548,6 +3565,8 @@ class ConfigInfo(AbstractModel):
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
         :type AdvancedConfig: str
+        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :type InputType: str
         """
         self._ConfigId = None
         self._Name = None
@@ -3561,6 +3580,7 @@ class ConfigInfo(AbstractModel):
         self._CreateTime = None
         self._UserDefineRule = None
         self._AdvancedConfig = None
+        self._InputType = None
 
     @property
     def ConfigId(self):
@@ -3713,6 +3733,17 @@ class ConfigInfo(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def InputType(self):
+        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -3734,6 +3765,7 @@ class ConfigInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UserDefineRule = params.get("UserDefineRule")
         self._AdvancedConfig = params.get("AdvancedConfig")
+        self._InputType = params.get("InputType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6850,6 +6882,8 @@ class CreateConfigRequest(AbstractModel):
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
         :type AdvancedConfig: str
+        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :type InputType: str
         """
         self._Name = None
         self._Output = None
@@ -6859,6 +6893,7 @@ class CreateConfigRequest(AbstractModel):
         self._ExcludePaths = None
         self._UserDefineRule = None
         self._AdvancedConfig = None
+        self._InputType = None
 
     @property
     def Name(self):
@@ -6967,6 +7002,17 @@ class CreateConfigRequest(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def InputType(self):
+        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6984,6 +7030,7 @@ class CreateConfigRequest(AbstractModel):
                 self._ExcludePaths.append(obj)
         self._UserDefineRule = params.get("UserDefineRule")
         self._AdvancedConfig = params.get("AdvancedConfig")
+        self._InputType = params.get("InputType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8571,6 +8618,8 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :param _ConsumerGroupName: 用户Kafka消费组名称。
 - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
         :type ConsumerGroupName: str
+        :param _UserKafkaMeta: 用户kafka拓展信息
+        :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._TopicId = None
         self._Name = None
@@ -8583,6 +8632,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._IsEncryptionAddr = None
         self._Protocol = None
         self._ConsumerGroupName = None
+        self._UserKafkaMeta = None
 
     @property
     def TopicId(self):
@@ -8710,6 +8760,17 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
     def ConsumerGroupName(self, ConsumerGroupName):
         self._ConsumerGroupName = ConsumerGroupName
 
+    @property
+    def UserKafkaMeta(self):
+        r"""用户kafka拓展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
+        """
+        return self._UserKafkaMeta
+
+    @UserKafkaMeta.setter
+    def UserKafkaMeta(self, UserKafkaMeta):
+        self._UserKafkaMeta = UserKafkaMeta
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -8727,6 +8788,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
             self._Protocol = KafkaProtocolInfo()
             self._Protocol._deserialize(params.get("Protocol"))
         self._ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("UserKafkaMeta") is not None:
+            self._UserKafkaMeta = UserKafkaMeta()
+            self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21321,6 +21385,8 @@ class KafkaRechargeInfo(AbstractModel):
         :type UpdateTime: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        :param _UserKafkaMeta: 用户kafka拓展信息
+        :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._Id = None
         self._TopicId = None
@@ -21337,6 +21403,7 @@ class KafkaRechargeInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._LogRechargeRule = None
+        self._UserKafkaMeta = None
 
     @property
     def Id(self):
@@ -21503,6 +21570,17 @@ class KafkaRechargeInfo(AbstractModel):
     def LogRechargeRule(self, LogRechargeRule):
         self._LogRechargeRule = LogRechargeRule
 
+    @property
+    def UserKafkaMeta(self):
+        r"""用户kafka拓展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
+        """
+        return self._UserKafkaMeta
+
+    @UserKafkaMeta.setter
+    def UserKafkaMeta(self, UserKafkaMeta):
+        self._UserKafkaMeta = UserKafkaMeta
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -21524,6 +21602,9 @@ class KafkaRechargeInfo(AbstractModel):
         if params.get("LogRechargeRule") is not None:
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        if params.get("UserKafkaMeta") is not None:
+            self._UserKafkaMeta = UserKafkaMeta()
+            self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22245,10 +22326,13 @@ class LogRechargeRuleInfo(AbstractModel):
         :type TimeZone: str
         :param _Metadata: 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
         :type Metadata: list of str
-        :param _Keys: 日志Key列表，RechargeType为full_regex_log时必填
+        :param _Keys: 日志Key列表，RechargeType为full_regex_log、delimiter_log时必填
         :type Keys: list of str
         :param _ParseArray: json解析模式，开启首层数据解析
         :type ParseArray: bool
+        :param _Delimiter: 分隔符解析模式-分隔符
+当解析格式为分隔符提取时，该字段必填
+        :type Delimiter: str
         """
         self._RechargeType = None
         self._EncodingFormat = None
@@ -22265,6 +22349,7 @@ class LogRechargeRuleInfo(AbstractModel):
         self._Metadata = None
         self._Keys = None
         self._ParseArray = None
+        self._Delimiter = None
 
     @property
     def RechargeType(self):
@@ -22499,7 +22584,7 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def Keys(self):
-        r"""日志Key列表，RechargeType为full_regex_log时必填
+        r"""日志Key列表，RechargeType为full_regex_log、delimiter_log时必填
         :rtype: list of str
         """
         return self._Keys
@@ -22519,6 +22604,18 @@ class LogRechargeRuleInfo(AbstractModel):
     def ParseArray(self, ParseArray):
         self._ParseArray = ParseArray
 
+    @property
+    def Delimiter(self):
+        r"""分隔符解析模式-分隔符
+当解析格式为分隔符提取时，该字段必填
+        :rtype: str
+        """
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
 
     def _deserialize(self, params):
         self._RechargeType = params.get("RechargeType")
@@ -22536,6 +22633,7 @@ class LogRechargeRuleInfo(AbstractModel):
         self._Metadata = params.get("Metadata")
         self._Keys = params.get("Keys")
         self._ParseArray = params.get("ParseArray")
+        self._Delimiter = params.get("Delimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24769,6 +24867,8 @@ class ModifyConfigRequest(AbstractModel):
 样例：
 `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
         :type AdvancedConfig: str
+        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :type InputType: str
         """
         self._ConfigId = None
         self._Name = None
@@ -24779,6 +24879,7 @@ class ModifyConfigRequest(AbstractModel):
         self._Output = None
         self._UserDefineRule = None
         self._AdvancedConfig = None
+        self._InputType = None
 
     @property
     def ConfigId(self):
@@ -24898,6 +24999,17 @@ class ModifyConfigRequest(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def InputType(self):
+        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -24916,6 +25028,7 @@ class ModifyConfigRequest(AbstractModel):
         self._Output = params.get("Output")
         self._UserDefineRule = params.get("UserDefineRule")
         self._AdvancedConfig = params.get("AdvancedConfig")
+        self._InputType = params.get("InputType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26137,6 +26250,8 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         :param _StatusControl: 导入控制，1：暂停；2：启动。
         :type StatusControl: int
+        :param _UserKafkaMeta: 用户kafka拓展信息
+        :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._Id = None
         self._TopicId = None
@@ -26150,6 +26265,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         self._ConsumerGroupName = None
         self._LogRechargeRule = None
         self._StatusControl = None
+        self._UserKafkaMeta = None
 
     @property
     def Id(self):
@@ -26290,6 +26406,17 @@ class ModifyKafkaRechargeRequest(AbstractModel):
     def StatusControl(self, StatusControl):
         self._StatusControl = StatusControl
 
+    @property
+    def UserKafkaMeta(self):
+        r"""用户kafka拓展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
+        """
+        return self._UserKafkaMeta
+
+    @UserKafkaMeta.setter
+    def UserKafkaMeta(self, UserKafkaMeta):
+        self._UserKafkaMeta = UserKafkaMeta
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -26308,6 +26435,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
         self._StatusControl = params.get("StatusControl")
+        if params.get("UserKafkaMeta") is not None:
+            self._UserKafkaMeta = UserKafkaMeta()
+            self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29116,6 +29246,8 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :type ConsumerGroupName: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        :param _UserKafkaMeta: 用户kafka拓展信息
+        :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._PreviewType = None
         self._KafkaType = None
@@ -29127,6 +29259,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._Protocol = None
         self._ConsumerGroupName = None
         self._LogRechargeRule = None
+        self._UserKafkaMeta = None
 
     @property
     def PreviewType(self):
@@ -29245,6 +29378,17 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
     def LogRechargeRule(self, LogRechargeRule):
         self._LogRechargeRule = LogRechargeRule
 
+    @property
+    def UserKafkaMeta(self):
+        r"""用户kafka拓展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
+        """
+        return self._UserKafkaMeta
+
+    @UserKafkaMeta.setter
+    def UserKafkaMeta(self, UserKafkaMeta):
+        self._UserKafkaMeta = UserKafkaMeta
+
 
     def _deserialize(self, params):
         self._PreviewType = params.get("PreviewType")
@@ -29261,6 +29405,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         if params.get("LogRechargeRule") is not None:
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        if params.get("UserKafkaMeta") is not None:
+            self._UserKafkaMeta = UserKafkaMeta()
+            self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32939,6 +33086,64 @@ class UploadLogResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UserKafkaMeta(AbstractModel):
+    r"""用户kafka扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KafkaVersion: 用户kafka version
+支持如下版本：
+  - 0.10.2.0
+  - 1.0.0
+  - 2.0.0
+  - 2.2.0
+  - 2.4.0
+  - 2.6.0
+  - 2.7.0
+  - 2.8.0
+  - 3.0.0
+  - 3.2.0
+        :type KafkaVersion: str
+        """
+        self._KafkaVersion = None
+
+    @property
+    def KafkaVersion(self):
+        r"""用户kafka version
+支持如下版本：
+  - 0.10.2.0
+  - 1.0.0
+  - 2.0.0
+  - 2.2.0
+  - 2.4.0
+  - 2.6.0
+  - 2.7.0
+  - 2.8.0
+  - 3.0.0
+  - 3.2.0
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+
+    def _deserialize(self, params):
+        self._KafkaVersion = params.get("KafkaVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ValueInfo(AbstractModel):

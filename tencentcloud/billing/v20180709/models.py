@@ -23272,10 +23272,13 @@ class DescribeBillSummaryRequest(AbstractModel):
         :type GroupType: str
         :param _TagKey: 标签键，GroupType=tag获取标签维度账单时传
         :type TagKey: list of str
+        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :type OperateUin: str
         """
         self._Month = None
         self._GroupType = None
         self._TagKey = None
+        self._OperateUin = None
 
     @property
     def Month(self):
@@ -23310,11 +23313,23 @@ class DescribeBillSummaryRequest(AbstractModel):
     def TagKey(self, TagKey):
         self._TagKey = TagKey
 
+    @property
+    def OperateUin(self):
+        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
 
     def _deserialize(self, params):
         self._Month = params.get("Month")
         self._GroupType = params.get("GroupType")
         self._TagKey = params.get("TagKey")
+        self._OperateUin = params.get("OperateUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

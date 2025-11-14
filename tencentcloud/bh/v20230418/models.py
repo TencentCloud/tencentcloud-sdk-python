@@ -618,6 +618,12 @@ class Acl(AbstractModel):
         :type AllowKeyboardLogger: bool
         :param _AppAssetSet: 关联的应用资产列表
         :type AppAssetSet: list of AppAsset
+        :param _AclType: 权限类型 0-默认普通权限 1-工单权限,2-权限工单权限
+        :type AclType: int
+        :param _TicketId: 权限所属工单id
+        :type TicketId: str
+        :param _TicketName: 权限所属工单名称
+        :type TicketName: str
         """
         self._Id = None
         self._Name = None
@@ -651,6 +657,9 @@ class Acl(AbstractModel):
         self._WhiteCmds = None
         self._AllowKeyboardLogger = None
         self._AppAssetSet = None
+        self._AclType = None
+        self._TicketId = None
+        self._TicketName = None
 
     @property
     def Id(self):
@@ -1006,6 +1015,39 @@ class Acl(AbstractModel):
     def AppAssetSet(self, AppAssetSet):
         self._AppAssetSet = AppAssetSet
 
+    @property
+    def AclType(self):
+        r"""权限类型 0-默认普通权限 1-工单权限,2-权限工单权限
+        :rtype: int
+        """
+        return self._AclType
+
+    @AclType.setter
+    def AclType(self, AclType):
+        self._AclType = AclType
+
+    @property
+    def TicketId(self):
+        r"""权限所属工单id
+        :rtype: str
+        """
+        return self._TicketId
+
+    @TicketId.setter
+    def TicketId(self, TicketId):
+        self._TicketId = TicketId
+
+    @property
+    def TicketName(self):
+        r"""权限所属工单名称
+        :rtype: str
+        """
+        return self._TicketName
+
+    @TicketName.setter
+    def TicketName(self, TicketName):
+        self._TicketName = TicketName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1077,6 +1119,9 @@ class Acl(AbstractModel):
                 obj = AppAsset()
                 obj._deserialize(item)
                 self._AppAssetSet.append(obj)
+        self._AclType = params.get("AclType")
+        self._TicketId = params.get("TicketId")
+        self._TicketName = params.get("TicketName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1550,6 +1595,57 @@ class AppAsset(AbstractModel):
         if params.get("Department") is not None:
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetSyncFlags(AbstractModel):
+    r"""资产同步标志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleGranted: 是否已完成角色授权
+        :type RoleGranted: bool
+        :param _AutoSync: 是否已开启自动资产同步
+        :type AutoSync: bool
+        """
+        self._RoleGranted = None
+        self._AutoSync = None
+
+    @property
+    def RoleGranted(self):
+        r"""是否已完成角色授权
+        :rtype: bool
+        """
+        return self._RoleGranted
+
+    @RoleGranted.setter
+    def RoleGranted(self, RoleGranted):
+        self._RoleGranted = RoleGranted
+
+    @property
+    def AutoSync(self):
+        r"""是否已开启自动资产同步
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+
+    def _deserialize(self, params):
+        self._RoleGranted = params.get("RoleGranted")
+        self._AutoSync = params.get("AutoSync")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6518,6 +6614,8 @@ class DescribeAclsRequest(AbstractModel):
         :type AuthorizedAppAssetIdSet: list of int non-negative
         :param _Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
+        :param _StatusSet: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
+        :type StatusSet: list of int non-negative
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的访问权限
         :type DepartmentId: str
         :param _ExactAccount: 是否根据AuthorizedDeviceIdSet,对资产账号进行精确匹配，默认false, 设置true时，确保AuthorizedDeviceIdSet只有一个元素
@@ -6534,6 +6632,7 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = None
         self._AuthorizedAppAssetIdSet = None
         self._Status = None
+        self._StatusSet = None
         self._DepartmentId = None
         self._ExactAccount = None
         self._Filters = None
@@ -6638,6 +6737,17 @@ class DescribeAclsRequest(AbstractModel):
         self._Status = Status
 
     @property
+    def StatusSet(self):
+        r"""访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
+        :rtype: list of int non-negative
+        """
+        return self._StatusSet
+
+    @StatusSet.setter
+    def StatusSet(self, StatusSet):
+        self._StatusSet = StatusSet
+
+    @property
     def DepartmentId(self):
         r"""部门ID，用于过滤属于某个部门的访问权限
         :rtype: str
@@ -6681,6 +6791,7 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self._AuthorizedAppAssetIdSet = params.get("AuthorizedAppAssetIdSet")
         self._Status = params.get("Status")
+        self._StatusSet = params.get("StatusSet")
         self._DepartmentId = params.get("DepartmentId")
         self._ExactAccount = params.get("ExactAccount")
         if params.get("Filters") is not None:
@@ -6759,6 +6870,57 @@ class DescribeAclsResponse(AbstractModel):
                 obj = Acl()
                 obj._deserialize(item)
                 self._AclSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAssetSyncFlagRequest(AbstractModel):
+    r"""DescribeAssetSyncFlag请求参数结构体
+
+    """
+
+
+class DescribeAssetSyncFlagResponse(AbstractModel):
+    r"""DescribeAssetSyncFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetSyncFlags: 资产同步标志
+        :type AssetSyncFlags: :class:`tencentcloud.bh.v20230418.models.AssetSyncFlags`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AssetSyncFlags = None
+        self._RequestId = None
+
+    @property
+    def AssetSyncFlags(self):
+        r"""资产同步标志
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AssetSyncFlags`
+        """
+        return self._AssetSyncFlags
+
+    @AssetSyncFlags.setter
+    def AssetSyncFlags(self, AssetSyncFlags):
+        self._AssetSyncFlags = AssetSyncFlags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AssetSyncFlags") is not None:
+            self._AssetSyncFlags = AssetSyncFlags()
+            self._AssetSyncFlags._deserialize(params.get("AssetSyncFlags"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7169,6 +7331,8 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         :type Name: str
         :param _Type: 命令模板类型 1-内置模板 2-自定义模板
         :type Type: int
+        :param _TypeSet: 命令模板类型 1-内置模板 2-自定义模板
+        :type TypeSet: list of int non-negative
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param _Limit: 每页条目数量，默认20
@@ -7177,6 +7341,7 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         self._IdSet = None
         self._Name = None
         self._Type = None
+        self._TypeSet = None
         self._Offset = None
         self._Limit = None
 
@@ -7214,6 +7379,17 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def TypeSet(self):
+        r"""命令模板类型 1-内置模板 2-自定义模板
+        :rtype: list of int non-negative
+        """
+        return self._TypeSet
+
+    @TypeSet.setter
+    def TypeSet(self, TypeSet):
+        self._TypeSet = TypeSet
+
+    @property
     def Offset(self):
         r"""分页偏移位置，默认值为0
         :rtype: int
@@ -7240,6 +7416,7 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         self._IdSet = params.get("IdSet")
         self._Name = params.get("Name")
         self._Type = params.get("Type")
+        self._TypeSet = params.get("TypeSet")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -7903,6 +8080,12 @@ class DescribeDevicesRequest(AbstractModel):
         :type ManagedAccount: str
         :param _DepartmentId: 过滤条件，可按照部门ID进行过滤
         :type DepartmentId: str
+        :param _AccountIdSet: 资产所属云账号id
+        :type AccountIdSet: list of int non-negative
+        :param _ProviderTypeSet: 云厂商类型，1-腾讯云，2-阿里云
+        :type ProviderTypeSet: list of int non-negative
+        :param _CloudDeviceStatusSet: 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :type CloudDeviceStatusSet: list of int non-negative
         :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :type TagFilters: list of TagFilter
         :param _Filters: 过滤数组。支持的Name：
@@ -7921,6 +8104,9 @@ BindingStatus 绑定状态
         self._KindSet = None
         self._ManagedAccount = None
         self._DepartmentId = None
+        self._AccountIdSet = None
+        self._ProviderTypeSet = None
+        self._CloudDeviceStatusSet = None
         self._TagFilters = None
         self._Filters = None
 
@@ -8057,6 +8243,39 @@ BindingStatus 绑定状态
         self._DepartmentId = DepartmentId
 
     @property
+    def AccountIdSet(self):
+        r"""资产所属云账号id
+        :rtype: list of int non-negative
+        """
+        return self._AccountIdSet
+
+    @AccountIdSet.setter
+    def AccountIdSet(self, AccountIdSet):
+        self._AccountIdSet = AccountIdSet
+
+    @property
+    def ProviderTypeSet(self):
+        r"""云厂商类型，1-腾讯云，2-阿里云
+        :rtype: list of int non-negative
+        """
+        return self._ProviderTypeSet
+
+    @ProviderTypeSet.setter
+    def ProviderTypeSet(self, ProviderTypeSet):
+        self._ProviderTypeSet = ProviderTypeSet
+
+    @property
+    def CloudDeviceStatusSet(self):
+        r"""同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :rtype: list of int non-negative
+        """
+        return self._CloudDeviceStatusSet
+
+    @CloudDeviceStatusSet.setter
+    def CloudDeviceStatusSet(self, CloudDeviceStatusSet):
+        self._CloudDeviceStatusSet = CloudDeviceStatusSet
+
+    @property
     def TagFilters(self):
         r"""过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :rtype: list of TagFilter
@@ -8093,6 +8312,9 @@ BindingStatus 绑定状态
         self._KindSet = params.get("KindSet")
         self._ManagedAccount = params.get("ManagedAccount")
         self._DepartmentId = params.get("DepartmentId")
+        self._AccountIdSet = params.get("AccountIdSet")
+        self._ProviderTypeSet = params.get("ProviderTypeSet")
+        self._CloudDeviceStatusSet = params.get("CloudDeviceStatusSet")
         if params.get("TagFilters") is not None:
             self._TagFilters = []
             for item in params.get("TagFilters"):
@@ -8560,8 +8782,12 @@ class DescribeLoginEventRequest(AbstractModel):
         :type SourceIp: str
         :param _Entry: 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
         :type Entry: int
+        :param _EntrySet: 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+        :type EntrySet: list of int non-negative
         :param _Result: 操作结果，1-成功，2-失败
         :type Result: int
+        :param _ResultSet: 操作结果，1-成功，2-失败
+        :type ResultSet: list of int non-negative
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param _Limit: 分页每页记录数，默认20
@@ -8573,7 +8799,9 @@ class DescribeLoginEventRequest(AbstractModel):
         self._EndTime = None
         self._SourceIp = None
         self._Entry = None
+        self._EntrySet = None
         self._Result = None
+        self._ResultSet = None
         self._Offset = None
         self._Limit = None
 
@@ -8644,6 +8872,17 @@ class DescribeLoginEventRequest(AbstractModel):
         self._Entry = Entry
 
     @property
+    def EntrySet(self):
+        r"""登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+        :rtype: list of int non-negative
+        """
+        return self._EntrySet
+
+    @EntrySet.setter
+    def EntrySet(self, EntrySet):
+        self._EntrySet = EntrySet
+
+    @property
     def Result(self):
         r"""操作结果，1-成功，2-失败
         :rtype: int
@@ -8653,6 +8892,17 @@ class DescribeLoginEventRequest(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def ResultSet(self):
+        r"""操作结果，1-成功，2-失败
+        :rtype: list of int non-negative
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
 
     @property
     def Offset(self):
@@ -8684,7 +8934,9 @@ class DescribeLoginEventRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._SourceIp = params.get("SourceIp")
         self._Entry = params.get("Entry")
+        self._EntrySet = params.get("EntrySet")
         self._Result = params.get("Result")
+        self._ResultSet = params.get("ResultSet")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -8779,8 +9031,12 @@ class DescribeOperationEventRequest(AbstractModel):
         :type SourceIp: str
         :param _Kind: 操作类型，参考DescribeOperationType返回结果
         :type Kind: int
+        :param _KindSet: 操作类型，参考DescribeOperationType返回结果
+        :type KindSet: list of int non-negative
         :param _Result: 操作结果，1-成功，2-失败
         :type Result: int
+        :param _ResultSet: 操作结果，1-成功，2-失败
+        :type ResultSet: list of int non-negative
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param _Limit: 分页每页记录数，默认20
@@ -8792,7 +9048,9 @@ class DescribeOperationEventRequest(AbstractModel):
         self._EndTime = None
         self._SourceIp = None
         self._Kind = None
+        self._KindSet = None
         self._Result = None
+        self._ResultSet = None
         self._Offset = None
         self._Limit = None
 
@@ -8863,6 +9121,17 @@ class DescribeOperationEventRequest(AbstractModel):
         self._Kind = Kind
 
     @property
+    def KindSet(self):
+        r"""操作类型，参考DescribeOperationType返回结果
+        :rtype: list of int non-negative
+        """
+        return self._KindSet
+
+    @KindSet.setter
+    def KindSet(self, KindSet):
+        self._KindSet = KindSet
+
+    @property
     def Result(self):
         r"""操作结果，1-成功，2-失败
         :rtype: int
@@ -8872,6 +9141,17 @@ class DescribeOperationEventRequest(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def ResultSet(self):
+        r"""操作结果，1-成功，2-失败
+        :rtype: list of int non-negative
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
 
     @property
     def Offset(self):
@@ -8903,7 +9183,9 @@ class DescribeOperationEventRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._SourceIp = params.get("SourceIp")
         self._Kind = params.get("Kind")
+        self._KindSet = params.get("KindSet")
         self._Result = params.get("Result")
+        self._ResultSet = params.get("ResultSet")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -9279,6 +9561,40 @@ class DescribeResourcesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecuritySettingRequest(AbstractModel):
+    r"""DescribeSecuritySetting请求参数结构体
+
+    """
+
+
+class DescribeSecuritySettingResponse(AbstractModel):
+    r"""DescribeSecuritySetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9937,6 +10253,8 @@ class Device(AbstractModel):
         :type PrivateIp: str
         :param _ApCode: 地域编码
         :type ApCode: str
+        :param _ApName: 地域名称
+        :type ApName: str
         :param _OsName: 操作系统名称
         :type OsName: str
         :param _Kind: 资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
@@ -9979,6 +10297,16 @@ class Device(AbstractModel):
         :type SyncPodCount: int
         :param _TotalPodCount: K8S集群pod总数量	
         :type TotalPodCount: int
+        :param _CloudAccountId: 云账号id
+        :type CloudAccountId: int
+        :param _CloudAccountName: 云账号名称
+        :type CloudAccountName: str
+        :param _ProviderType: 云厂商类型1-腾讯云，2-阿里云
+        :type ProviderType: int
+        :param _ProviderName: 云厂商名称
+        :type ProviderName: str
+        :param _SyncCloudDeviceStatus: 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :type SyncCloudDeviceStatus: int
         """
         self._Id = None
         self._InstanceId = None
@@ -9986,6 +10314,7 @@ class Device(AbstractModel):
         self._PublicIp = None
         self._PrivateIp = None
         self._ApCode = None
+        self._ApName = None
         self._OsName = None
         self._Kind = None
         self._Port = None
@@ -10007,6 +10336,11 @@ class Device(AbstractModel):
         self._Workload = None
         self._SyncPodCount = None
         self._TotalPodCount = None
+        self._CloudAccountId = None
+        self._CloudAccountName = None
+        self._ProviderType = None
+        self._ProviderName = None
+        self._SyncCloudDeviceStatus = None
 
     @property
     def Id(self):
@@ -10073,6 +10407,17 @@ class Device(AbstractModel):
     @ApCode.setter
     def ApCode(self, ApCode):
         self._ApCode = ApCode
+
+    @property
+    def ApName(self):
+        r"""地域名称
+        :rtype: str
+        """
+        return self._ApName
+
+    @ApName.setter
+    def ApName(self, ApName):
+        self._ApName = ApName
 
     @property
     def OsName(self):
@@ -10305,6 +10650,61 @@ class Device(AbstractModel):
     def TotalPodCount(self, TotalPodCount):
         self._TotalPodCount = TotalPodCount
 
+    @property
+    def CloudAccountId(self):
+        r"""云账号id
+        :rtype: int
+        """
+        return self._CloudAccountId
+
+    @CloudAccountId.setter
+    def CloudAccountId(self, CloudAccountId):
+        self._CloudAccountId = CloudAccountId
+
+    @property
+    def CloudAccountName(self):
+        r"""云账号名称
+        :rtype: str
+        """
+        return self._CloudAccountName
+
+    @CloudAccountName.setter
+    def CloudAccountName(self, CloudAccountName):
+        self._CloudAccountName = CloudAccountName
+
+    @property
+    def ProviderType(self):
+        r"""云厂商类型1-腾讯云，2-阿里云
+        :rtype: int
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def ProviderName(self):
+        r"""云厂商名称
+        :rtype: str
+        """
+        return self._ProviderName
+
+    @ProviderName.setter
+    def ProviderName(self, ProviderName):
+        self._ProviderName = ProviderName
+
+    @property
+    def SyncCloudDeviceStatus(self):
+        r"""同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :rtype: int
+        """
+        return self._SyncCloudDeviceStatus
+
+    @SyncCloudDeviceStatus.setter
+    def SyncCloudDeviceStatus(self, SyncCloudDeviceStatus):
+        self._SyncCloudDeviceStatus = SyncCloudDeviceStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10313,6 +10713,7 @@ class Device(AbstractModel):
         self._PublicIp = params.get("PublicIp")
         self._PrivateIp = params.get("PrivateIp")
         self._ApCode = params.get("ApCode")
+        self._ApName = params.get("ApName")
         self._OsName = params.get("OsName")
         self._Kind = params.get("Kind")
         self._Port = params.get("Port")
@@ -10343,6 +10744,11 @@ class Device(AbstractModel):
         self._Workload = params.get("Workload")
         self._SyncPodCount = params.get("SyncPodCount")
         self._TotalPodCount = params.get("TotalPodCount")
+        self._CloudAccountId = params.get("CloudAccountId")
+        self._CloudAccountName = params.get("CloudAccountName")
+        self._ProviderType = params.get("ProviderType")
+        self._ProviderName = params.get("ProviderName")
+        self._SyncCloudDeviceStatus = params.get("SyncCloudDeviceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10477,6 +10883,134 @@ class DeviceAccount(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DisableExternalAccessRequest(AbstractModel):
+    r"""DisableExternalAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableExternalAccessResponse(AbstractModel):
+    r"""DisableExternalAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisableIntranetAccessRequest(AbstractModel):
+    r"""DisableIntranetAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableIntranetAccessResponse(AbstractModel):
+    r"""DisableIntranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Domain(AbstractModel):
@@ -10635,6 +11169,194 @@ class Domain(AbstractModel):
         
 
 
+class EnableExternalAccessRequest(AbstractModel):
+    r"""EnableExternalAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableExternalAccessResponse(AbstractModel):
+    r"""EnableExternalAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableIntranetAccessRequest(AbstractModel):
+    r"""EnableIntranetAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机实例id
+        :type ResourceId: str
+        :param _VpcId: 开通内网访问的vpc id
+        :type VpcId: str
+        :param _VpcCidrBlock: vpc的网段
+        :type VpcCidrBlock: str
+        :param _SubnetId: 开通内网访问的subnet id
+        :type SubnetId: str
+        :param _DomainName: 内网ip的自定义域名，可为空
+        :type DomainName: str
+        """
+        self._ResourceId = None
+        self._VpcId = None
+        self._VpcCidrBlock = None
+        self._SubnetId = None
+        self._DomainName = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机实例id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def VpcId(self):
+        r"""开通内网访问的vpc id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCidrBlock(self):
+        r"""vpc的网段
+        :rtype: str
+        """
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def SubnetId(self):
+        r"""开通内网访问的subnet id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def DomainName(self):
+        r"""内网ip的自定义域名，可为空
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._VpcId = params.get("VpcId")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._SubnetId = params.get("SubnetId")
+        self._DomainName = params.get("DomainName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableIntranetAccessResponse(AbstractModel):
+    r"""EnableIntranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ExternalDevice(AbstractModel):
     r"""主机参数，导入外部主机时使用
 
@@ -10660,6 +11382,18 @@ class ExternalDevice(AbstractModel):
         :type SSLCert: str
         :param _SSLCertName: SSL证书名称，EnableSSL时必填
         :type SSLCertName: str
+        :param _InstanceId: 资产实例id
+        :type InstanceId: str
+        :param _ApCode: 资产所属地域
+        :type ApCode: str
+        :param _ApName: 地域名称
+        :type ApName: str
+        :param _VpcId: 资产所属VPC
+        :type VpcId: str
+        :param _SubnetId: 资产所属子网
+        :type SubnetId: str
+        :param _PublicIp: 公网IP
+        :type PublicIp: str
         """
         self._OsName = None
         self._Ip = None
@@ -10670,6 +11404,12 @@ class ExternalDevice(AbstractModel):
         self._EnableSSL = None
         self._SSLCert = None
         self._SSLCertName = None
+        self._InstanceId = None
+        self._ApCode = None
+        self._ApName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PublicIp = None
 
     @property
     def OsName(self):
@@ -10770,6 +11510,72 @@ class ExternalDevice(AbstractModel):
     def SSLCertName(self, SSLCertName):
         self._SSLCertName = SSLCertName
 
+    @property
+    def InstanceId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ApCode(self):
+        r"""资产所属地域
+        :rtype: str
+        """
+        return self._ApCode
+
+    @ApCode.setter
+    def ApCode(self, ApCode):
+        self._ApCode = ApCode
+
+    @property
+    def ApName(self):
+        r"""地域名称
+        :rtype: str
+        """
+        return self._ApName
+
+    @ApName.setter
+    def ApName(self, ApName):
+        self._ApName = ApName
+
+    @property
+    def VpcId(self):
+        r"""资产所属VPC
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""资产所属子网
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PublicIp(self):
+        r"""公网IP
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
 
     def _deserialize(self, params):
         self._OsName = params.get("OsName")
@@ -10781,6 +11587,12 @@ class ExternalDevice(AbstractModel):
         self._EnableSSL = params.get("EnableSSL")
         self._SSLCert = params.get("SSLCert")
         self._SSLCertName = params.get("SSLCertName")
+        self._InstanceId = params.get("InstanceId")
+        self._ApCode = params.get("ApCode")
+        self._ApName = params.get("ApName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PublicIp = params.get("PublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11034,8 +11846,11 @@ class ImportExternalDeviceRequest(AbstractModel):
         r"""
         :param _DeviceSet: 资产参数列表
         :type DeviceSet: list of ExternalDevice
+        :param _AccountId:  资产所属云账号id
+        :type AccountId: int
         """
         self._DeviceSet = None
+        self._AccountId = None
 
     @property
     def DeviceSet(self):
@@ -11048,6 +11863,17 @@ class ImportExternalDeviceRequest(AbstractModel):
     def DeviceSet(self, DeviceSet):
         self._DeviceSet = DeviceSet
 
+    @property
+    def AccountId(self):
+        r""" 资产所属云账号id
+        :rtype: int
+        """
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
 
     def _deserialize(self, params):
         if params.get("DeviceSet") is not None:
@@ -11056,6 +11882,7 @@ class ImportExternalDeviceRequest(AbstractModel):
                 obj = ExternalDevice()
                 obj._deserialize(item)
                 self._DeviceSet.append(obj)
+        self._AccountId = params.get("AccountId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11218,6 +12045,228 @@ class LoginEvent(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccessWhiteListAutoStatusRequest(AbstractModel):
+    r"""ModifyAccessWhiteListAutoStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowAuto: true：放开自动添加IP；false：不放开自动添加IP
+        :type AllowAuto: bool
+        """
+        self._AllowAuto = None
+
+    @property
+    def AllowAuto(self):
+        r"""true：放开自动添加IP；false：不放开自动添加IP
+        :rtype: bool
+        """
+        return self._AllowAuto
+
+    @AllowAuto.setter
+    def AllowAuto(self, AllowAuto):
+        self._AllowAuto = AllowAuto
+
+
+    def _deserialize(self, params):
+        self._AllowAuto = params.get("AllowAuto")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessWhiteListAutoStatusResponse(AbstractModel):
+    r"""ModifyAccessWhiteListAutoStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAccessWhiteListRuleRequest(AbstractModel):
+    r"""ModifyAccessWhiteListRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 白名单规则ID
+        :type Id: int
+        :param _Source: ip或网段信息，如10.10.10.1或10.10.10.0/24，最大长度40字节
+        :type Source: str
+        :param _Remark: 备注信息，最大长度64字符。
+        :type Remark: str
+        """
+        self._Id = None
+        self._Source = None
+        self._Remark = None
+
+    @property
+    def Id(self):
+        r"""白名单规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Source(self):
+        r"""ip或网段信息，如10.10.10.1或10.10.10.0/24，最大长度40字节
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Remark(self):
+        r"""备注信息，最大长度64字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Source = params.get("Source")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessWhiteListRuleResponse(AbstractModel):
+    r"""ModifyAccessWhiteListRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAccessWhiteListStatusRequest(AbstractModel):
+    r"""ModifyAccessWhiteListStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowAny: true：放开全部来源IP；false：不放开全部来源IP
+        :type AllowAny: bool
+        """
+        self._AllowAny = None
+
+    @property
+    def AllowAny(self):
+        r"""true：放开全部来源IP；false：不放开全部来源IP
+        :rtype: bool
+        """
+        return self._AllowAny
+
+    @AllowAny.setter
+    def AllowAny(self, AllowAny):
+        self._AllowAny = AllowAny
+
+
+    def _deserialize(self, params):
+        self._AllowAny = params.get("AllowAny")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessWhiteListStatusResponse(AbstractModel):
+    r"""ModifyAccessWhiteListStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAclRequest(AbstractModel):
@@ -11697,6 +12746,149 @@ class ModifyAclRequest(AbstractModel):
 
 class ModifyAclResponse(AbstractModel):
     r"""ModifyAcl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAssetSyncFlagRequest(AbstractModel):
+    r"""ModifyAssetSyncFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoSync: 是否开启资产自动同步，false-不开启，true-开启
+        :type AutoSync: bool
+        """
+        self._AutoSync = None
+
+    @property
+    def AutoSync(self):
+        r"""是否开启资产自动同步，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+
+    def _deserialize(self, params):
+        self._AutoSync = params.get("AutoSync")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAssetSyncFlagResponse(AbstractModel):
+    r"""ModifyAssetSyncFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuthModeSettingRequest(AbstractModel):
+    r"""ModifyAuthModeSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthMode: 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+        :type AuthMode: int
+        :param _ResourceType: 资源类型，0：普通 1：国密
+        :type ResourceType: int
+        """
+        self._AuthMode = None
+        self._ResourceType = None
+
+    @property
+    def AuthMode(self):
+        r"""双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+        :rtype: int
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def ResourceType(self):
+        r"""资源类型，0：普通 1：国密
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._AuthMode = params.get("AuthMode")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuthModeSettingResponse(AbstractModel):
+    r"""ModifyAuthModeSetting返回参数结构体
 
     """
 
@@ -13148,6 +14340,85 @@ class ModifyOperationTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReconnectionSettingRequest(AbstractModel):
+    r"""ModifyReconnectionSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReconnectionMaxCount: 重试次数,取值范围：0-20
+        :type ReconnectionMaxCount: int
+        :param _Enable: true：限制重连次数，false：不限制重连次数
+        :type Enable: bool
+        """
+        self._ReconnectionMaxCount = None
+        self._Enable = None
+
+    @property
+    def ReconnectionMaxCount(self):
+        r"""重试次数,取值范围：0-20
+        :rtype: int
+        """
+        return self._ReconnectionMaxCount
+
+    @ReconnectionMaxCount.setter
+    def ReconnectionMaxCount(self, ReconnectionMaxCount):
+        self._ReconnectionMaxCount = ReconnectionMaxCount
+
+    @property
+    def Enable(self):
+        r"""true：限制重连次数，false：不限制重连次数
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._ReconnectionMaxCount = params.get("ReconnectionMaxCount")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReconnectionSettingResponse(AbstractModel):
+    r"""ModifyReconnectionSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourceRequest(AbstractModel):
     r"""ModifyResource请求参数结构体
 
@@ -14356,6 +15627,8 @@ class Resource(AbstractModel):
         :type IntranetVpcId: str
         :param _IntranetVpcCidr: 开通内网访问vpc的网段
         :type IntranetVpcCidr: str
+        :param _DomainName: 堡垒机内网ip自定义域名
+        :type DomainName: str
         :param _ShareClb: 是否共享clb，true-共享clb，false-独享clb
         :type ShareClb: bool
         :param _OpenClbId: 共享clb id
@@ -14421,6 +15694,7 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = None
         self._IntranetVpcId = None
         self._IntranetVpcCidr = None
+        self._DomainName = None
         self._ShareClb = None
         self._OpenClbId = None
         self._LbVipIsp = None
@@ -14875,6 +16149,17 @@ class Resource(AbstractModel):
         self._IntranetVpcCidr = IntranetVpcCidr
 
     @property
+    def DomainName(self):
+        r"""堡垒机内网ip自定义域名
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
     def ShareClb(self):
         r"""是否共享clb，true-共享clb，false-独享clb
         :rtype: bool
@@ -15053,6 +16338,7 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = params.get("IntranetPrivateIpSet")
         self._IntranetVpcId = params.get("IntranetVpcId")
         self._IntranetVpcCidr = params.get("IntranetVpcCidr")
+        self._DomainName = params.get("DomainName")
         self._ShareClb = params.get("ShareClb")
         self._OpenClbId = params.get("OpenClbId")
         self._LbVipIsp = params.get("LbVipIsp")
@@ -16255,6 +17541,8 @@ class SearchFileBySidRequest(AbstractModel):
         :type Offset: int
         :param _AuditAction: 1-已执行，  2-被阻断
         :type AuditAction: int
+        :param _AuditActionSet: 1-已执行，  2-被阻断
+        :type AuditActionSet: list of int
         :param _TypeFilters: 以Protocol和Method为条件查询
         :type TypeFilters: list of SearchFileTypeFilter
         """
@@ -16264,6 +17552,7 @@ class SearchFileBySidRequest(AbstractModel):
         self._FileName = None
         self._Offset = None
         self._AuditAction = None
+        self._AuditActionSet = None
         self._TypeFilters = None
 
     @property
@@ -16333,6 +17622,17 @@ class SearchFileBySidRequest(AbstractModel):
         self._AuditAction = AuditAction
 
     @property
+    def AuditActionSet(self):
+        r"""1-已执行，  2-被阻断
+        :rtype: list of int
+        """
+        return self._AuditActionSet
+
+    @AuditActionSet.setter
+    def AuditActionSet(self, AuditActionSet):
+        self._AuditActionSet = AuditActionSet
+
+    @property
     def TypeFilters(self):
         r"""以Protocol和Method为条件查询
         :rtype: list of SearchFileTypeFilter
@@ -16351,6 +17651,7 @@ class SearchFileBySidRequest(AbstractModel):
         self._FileName = params.get("FileName")
         self._Offset = params.get("Offset")
         self._AuditAction = params.get("AuditAction")
+        self._AuditActionSet = params.get("AuditActionSet")
         if params.get("TypeFilters") is not None:
             self._TypeFilters = []
             for item in params.get("TypeFilters"):
@@ -17591,6 +18892,8 @@ class SearchSessionRequest(AbstractModel):
         :type DeviceName: str
         :param _Status: 状态，1为活跃，2为结束，3为强制离线，4为其他错误
         :type Status: int
+        :param _StatusSet: 状态，1为活跃，2为结束，3为强制离线
+        :type StatusSet: list of int non-negative
         :param _Id: 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
         :type Id: str
         :param _AppAssetKindSet: 应用资产类型, 1-web
@@ -17599,6 +18902,8 @@ class SearchSessionRequest(AbstractModel):
         :type AppAssetUrl: str
         :param _DeviceKind: 资产类型
         :type DeviceKind: str
+        :param _DeviceKindSet: 资产类型 Linux, EKS,TKE
+        :type DeviceKindSet: list of str
         """
         self._PrivateIp = None
         self._PublicIp = None
@@ -17613,10 +18918,12 @@ class SearchSessionRequest(AbstractModel):
         self._RealName = None
         self._DeviceName = None
         self._Status = None
+        self._StatusSet = None
         self._Id = None
         self._AppAssetKindSet = None
         self._AppAssetUrl = None
         self._DeviceKind = None
+        self._DeviceKindSet = None
 
     @property
     def PrivateIp(self):
@@ -17762,6 +19069,17 @@ class SearchSessionRequest(AbstractModel):
         self._Status = Status
 
     @property
+    def StatusSet(self):
+        r"""状态，1为活跃，2为结束，3为强制离线
+        :rtype: list of int non-negative
+        """
+        return self._StatusSet
+
+    @StatusSet.setter
+    def StatusSet(self, StatusSet):
+        self._StatusSet = StatusSet
+
+    @property
     def Id(self):
         r"""若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
         :rtype: str
@@ -17805,6 +19123,17 @@ class SearchSessionRequest(AbstractModel):
     def DeviceKind(self, DeviceKind):
         self._DeviceKind = DeviceKind
 
+    @property
+    def DeviceKindSet(self):
+        r"""资产类型 Linux, EKS,TKE
+        :rtype: list of str
+        """
+        return self._DeviceKindSet
+
+    @DeviceKindSet.setter
+    def DeviceKindSet(self, DeviceKindSet):
+        self._DeviceKindSet = DeviceKindSet
+
 
     def _deserialize(self, params):
         self._PrivateIp = params.get("PrivateIp")
@@ -17820,10 +19149,12 @@ class SearchSessionRequest(AbstractModel):
         self._RealName = params.get("RealName")
         self._DeviceName = params.get("DeviceName")
         self._Status = params.get("Status")
+        self._StatusSet = params.get("StatusSet")
         self._Id = params.get("Id")
         self._AppAssetKindSet = params.get("AppAssetKindSet")
         self._AppAssetUrl = params.get("AppAssetUrl")
         self._DeviceKind = params.get("DeviceKind")
+        self._DeviceKindSet = params.get("DeviceKindSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
