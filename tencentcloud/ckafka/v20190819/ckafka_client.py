@@ -877,29 +877,6 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAppInfo(self, request):
-        r"""查询用户列表
-
-        :param request: Request instance for DescribeAppInfo.
-        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAppInfoRequest`
-        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeAppInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAppInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAppInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeCkafkaZone(self, request):
         r"""用于查看ckafka的可用区列表
 

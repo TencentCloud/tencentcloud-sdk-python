@@ -11478,11 +11478,14 @@ class KafkaOption(AbstractModel):
         :type DDLTopicName: str
         :param _TopicRules: 单topic和自定义topic的描述
         :type TopicRules: list of TopicRule
+        :param _DataOption: 其他附加信息，对于特定数据类型可设置额外参数，比如针对Canal兼容的功能支持："canalOfficialFormat":"on"表示打开Canal兼容功能，默认不带。
+        :type DataOption: list of KeyValuePairOption
         """
         self._DataType = None
         self._TopicType = None
         self._DDLTopicName = None
         self._TopicRules = None
+        self._DataOption = None
 
     @property
     def DataType(self):
@@ -11528,6 +11531,17 @@ class KafkaOption(AbstractModel):
     def TopicRules(self, TopicRules):
         self._TopicRules = TopicRules
 
+    @property
+    def DataOption(self):
+        r"""其他附加信息，对于特定数据类型可设置额外参数，比如针对Canal兼容的功能支持："canalOfficialFormat":"on"表示打开Canal兼容功能，默认不带。
+        :rtype: list of KeyValuePairOption
+        """
+        return self._DataOption
+
+    @DataOption.setter
+    def DataOption(self, DataOption):
+        self._DataOption = DataOption
+
 
     def _deserialize(self, params):
         self._DataType = params.get("DataType")
@@ -11539,6 +11553,12 @@ class KafkaOption(AbstractModel):
                 obj = TopicRule()
                 obj._deserialize(item)
                 self._TopicRules.append(obj)
+        if params.get("DataOption") is not None:
+            self._DataOption = []
+            for item in params.get("DataOption"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._DataOption.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -20788,8 +20788,11 @@ class DeletePrivateNatGatewayRequest(AbstractModel):
         r"""
         :param _NatGatewayId: 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
         :type NatGatewayId: str
+        :param _IgnoreOperationRisk: 忽略操作风险
+        :type IgnoreOperationRisk: bool
         """
         self._NatGatewayId = None
+        self._IgnoreOperationRisk = None
 
     @property
     def NatGatewayId(self):
@@ -20802,9 +20805,21 @@ class DeletePrivateNatGatewayRequest(AbstractModel):
     def NatGatewayId(self, NatGatewayId):
         self._NatGatewayId = NatGatewayId
 
+    @property
+    def IgnoreOperationRisk(self):
+        r"""忽略操作风险
+        :rtype: bool
+        """
+        return self._IgnoreOperationRisk
+
+    @IgnoreOperationRisk.setter
+    def IgnoreOperationRisk(self, IgnoreOperationRisk):
+        self._IgnoreOperationRisk = IgnoreOperationRisk
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
+        self._IgnoreOperationRisk = params.get("IgnoreOperationRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

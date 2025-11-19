@@ -49,6 +49,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchCreateTWeSeeRecognitionTask(self, request):
+        r"""批量同步执行 TWeSee 语义理解任务
+
+        :param request: Request instance for BatchCreateTWeSeeRecognitionTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchCreateTWeSeeRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchCreateTWeSeeRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateTWeSeeRecognitionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchInvokeTWeSeeRecognitionTask(self, request):
+        r"""批量同步执行 TWeSee 语义理解任务
+
+        :param request: Request instance for BatchInvokeTWeSeeRecognitionTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchInvokeTWeSeeRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchInvokeTWeSeeRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchInvokeTWeSeeRecognitionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchInvokeTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchUpdateFirmware(self, request):
         r"""本接口（BatchUpdateFirmware）用于批量更新设备固件
 
@@ -718,6 +764,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeSeeRecognitionTaskWithFile(self, request):
+        r"""同步执行 TWeSee 语义理解任务
+
+        :param request: Request instance for CreateTWeSeeRecognitionTaskWithFile.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeRecognitionTaskWithFileRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeRecognitionTaskWithFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeSeeRecognitionTaskWithFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeSeeRecognitionTaskWithFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTWeSeeService(self, request):
         r"""开通 TWeSee 后付费服务
 
@@ -1077,6 +1146,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeleteStudioProduct", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStudioProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTWeTalkProductConfigV2(self, request):
+        r"""用于删除配置TWeTalk服务连接产品配置信息。
+
+        :param request: Request instance for DeleteTWeTalkProductConfigV2.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeTalkProductConfigV2Request`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeTalkProductConfigV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTWeTalkProductConfigV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTWeTalkProductConfigV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1790,31 +1882,6 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribeDeviceFirmwares", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceFirmwaresResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDeviceLocationSolve(self, request):
-        r"""获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
-
-        获取实时位置解析
-
-        :param request: Request instance for DescribeDeviceLocationSolve.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceLocationSolveRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceLocationSolveResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDeviceLocationSolve", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDeviceLocationSolveResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3241,6 +3308,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("InvokeTWeSeeRecognitionTask", params, headers=headers)
             response = json.loads(body)
             model = models.InvokeTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InvokeTWeSeeRecognitionTaskWithFile(self, request):
+        r"""同步执行 TWeSee 语义理解任务
+
+        :param request: Request instance for InvokeTWeSeeRecognitionTaskWithFile.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskWithFileRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskWithFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeTWeSeeRecognitionTaskWithFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeTWeSeeRecognitionTaskWithFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

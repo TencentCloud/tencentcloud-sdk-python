@@ -660,7 +660,7 @@ Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分
 Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
         :type MaskUrl: str
-        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :param _RspImgType: 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :type RspImgType: str
         :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
 1：添加标识。
@@ -736,7 +736,7 @@ Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -854,7 +854,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :type InputUrl: str
-        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :param _RspImgType: 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :type RspImgType: str
         :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
 1：添加标识。
@@ -913,7 +913,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType
@@ -2536,7 +2536,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :type InputImage: str
-        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+        :param _RspImgType: 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。 示例值：url
         :type RspImgType: str
         """
         self._InputUrl = None
@@ -2571,7 +2571,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 
     @property
     def RspImgType(self):
-        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+        r"""返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。 示例值：url
         :rtype: str
         """
         return self._RspImgType
@@ -3794,9 +3794,11 @@ class SubmitTextToImageJobRequest(AbstractModel):
         :param _LogoParam: 标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
-        :param _Revise: 是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
-
-如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+        :param _Revise: 是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
+0：关闭改写
+1：开启改写
+建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+示例值：1
         :type Revise: int
         """
         self._Prompt = None
@@ -3874,9 +3876,11 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def Revise(self):
-        r"""是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
-
-如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+        r"""是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
+0：关闭改写
+1：开启改写
+建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+示例值：1
         :rtype: int
         """
         return self._Revise
@@ -4485,7 +4489,7 @@ class TextToImageRapidRequest(AbstractModel):
         :param _LogoParam: 标识内容设置。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
-        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :param _RspImgType: 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :type RspImgType: str
         """
         self._Prompt = None
@@ -4624,7 +4628,7 @@ class TextToImageRapidRequest(AbstractModel):
 
     @property
     def RspImgType(self):
-        r"""返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        r"""返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
         :rtype: str
         """
         return self._RspImgType

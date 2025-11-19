@@ -29058,7 +29058,7 @@ class RateMsgRecordRequest(AbstractModel):
 (2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
 (3) 点赞或者点踩之后，如果想要取消状态，传值为0即可
         :type Score: int
-        :param _Reasons: 原因，只有Score参数为2即点踩的时候才需要输入
+        :param _Reasons: 支持通过API自定义，字符上限值为20字符；通过API 自定义标签，可以支持平台端用户在不满意问题错误类型中筛选、查看
         :type Reasons: list of str
         :param _FeedbackContent: 用户自定义反馈内容
         :type FeedbackContent: str
@@ -29108,7 +29108,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def Reasons(self):
-        r"""原因，只有Score参数为2即点踩的时候才需要输入
+        r"""支持通过API自定义，字符上限值为20字符；通过API 自定义标签，可以支持平台端用户在不满意问题错误类型中筛选、查看
         :rtype: list of str
         """
         return self._Reasons

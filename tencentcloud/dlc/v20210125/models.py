@@ -1876,9 +1876,12 @@ class AttachUserPolicyRequest(AbstractModel):
         :type UserId: str
         :param _PolicySet: 鉴权策略集合
         :type PolicySet: list of Policy
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._PolicySet = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -1902,6 +1905,17 @@ class AttachUserPolicyRequest(AbstractModel):
     def PolicySet(self, PolicySet):
         self._PolicySet = PolicySet
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -1911,6 +1925,7 @@ class AttachUserPolicyRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self._PolicySet.append(obj)
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9053,6 +9068,8 @@ class CreateUserRequest(AbstractModel):
         :type WorkGroupIds: list of int
         :param _UserAlias: 用户别名，字符长度小50
         :type UserAlias: str
+        :param _AccountType: 账号类型，UserAccount：用户账号 RoleAccount：角色账号，默认为用户账号
+        :type AccountType: str
         """
         self._UserId = None
         self._UserDescription = None
@@ -9060,6 +9077,7 @@ class CreateUserRequest(AbstractModel):
         self._UserType = None
         self._WorkGroupIds = None
         self._UserAlias = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -9127,6 +9145,17 @@ class CreateUserRequest(AbstractModel):
     def UserAlias(self, UserAlias):
         self._UserAlias = UserAlias
 
+    @property
+    def AccountType(self):
+        r"""账号类型，UserAccount：用户账号 RoleAccount：角色账号，默认为用户账号
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -9140,6 +9169,7 @@ class CreateUserRequest(AbstractModel):
         self._UserType = params.get("UserType")
         self._WorkGroupIds = params.get("WorkGroupIds")
         self._UserAlias = params.get("UserAlias")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15029,8 +15059,11 @@ class DeleteUserRequest(AbstractModel):
         r"""
         :param _UserIds: 需要删除的用户的Id
         :type UserIds: list of str
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserIds = None
+        self._AccountType = None
 
     @property
     def UserIds(self):
@@ -15043,9 +15076,21 @@ class DeleteUserRequest(AbstractModel):
     def UserIds(self, UserIds):
         self._UserIds = UserIds
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserIds = params.get("UserIds")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25009,6 +25054,8 @@ engine-name：库表的模糊搜索。
         :type Limit: int
         :param _Offset: 偏移量，默认为0
         :type Offset: int
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._Type = None
@@ -25017,6 +25064,7 @@ engine-name：库表的模糊搜索。
         self._Sorting = None
         self._Limit = None
         self._Offset = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -25119,6 +25167,17 @@ engine-name：库表的模糊搜索。
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -25133,6 +25192,7 @@ engine-name：库表的模糊搜索。
         self._Sorting = params.get("Sorting")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25437,8 +25497,11 @@ class DescribeUserTypeRequest(AbstractModel):
         r"""
         :param _UserId: 用户ID（UIN），如果不填默认为调用方的子UIN
         :type UserId: str
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -25451,9 +25514,21 @@ class DescribeUserTypeRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25642,6 +25717,8 @@ class DescribeUsersRequest(AbstractModel):
         :type Sorting: str
         :param _Filters: 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
         :type Filters: list of Filter
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._Offset = None
@@ -25649,6 +25726,7 @@ class DescribeUsersRequest(AbstractModel):
         self._SortBy = None
         self._Sorting = None
         self._Filters = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -25716,6 +25794,17 @@ class DescribeUsersRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -25729,6 +25818,7 @@ class DescribeUsersRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26463,9 +26553,12 @@ class DetachUserPolicyRequest(AbstractModel):
         :type UserId: str
         :param _PolicySet: 解绑的权限集合
         :type PolicySet: list of Policy
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._PolicySet = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -26489,6 +26582,17 @@ class DetachUserPolicyRequest(AbstractModel):
     def PolicySet(self, PolicySet):
         self._PolicySet = PolicySet
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -26498,6 +26602,7 @@ class DetachUserPolicyRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self._PolicySet.append(obj)
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31207,9 +31312,12 @@ class ModifyUserRequest(AbstractModel):
         :type UserId: str
         :param _UserDescription: 用户描述
         :type UserDescription: str
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._UserDescription = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -31233,10 +31341,22 @@ class ModifyUserRequest(AbstractModel):
     def UserDescription(self, UserDescription):
         self._UserDescription = UserDescription
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
         self._UserDescription = params.get("UserDescription")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31286,9 +31406,12 @@ class ModifyUserTypeRequest(AbstractModel):
         :type UserId: str
         :param _UserType: 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
         :type UserType: str
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._UserType = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -31312,10 +31435,22 @@ class ModifyUserTypeRequest(AbstractModel):
     def UserType(self, UserType):
         self._UserType = UserType
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
         self._UserType = params.get("UserType")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33710,6 +33845,8 @@ class Policy(AbstractModel):
         :param _EngineGeneration: 引擎类型
 
         :type EngineGeneration: str
+        :param _Model: 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        :type Model: str
         """
         self._Database = None
         self._Catalog = None
@@ -33729,6 +33866,7 @@ class Policy(AbstractModel):
         self._SourceName = None
         self._Id = None
         self._EngineGeneration = None
+        self._Model = None
 
     @property
     def Database(self):
@@ -33941,6 +34079,17 @@ class Policy(AbstractModel):
     def EngineGeneration(self, EngineGeneration):
         self._EngineGeneration = EngineGeneration
 
+    @property
+    def Model(self):
+        r"""需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
@@ -33961,6 +34110,7 @@ class Policy(AbstractModel):
         self._SourceName = params.get("SourceName")
         self._Id = params.get("Id")
         self._EngineGeneration = params.get("EngineGeneration")
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43471,6 +43621,8 @@ class UserDetailInfo(AbstractModel):
         :param _CatalogPolicyInfo: 数据源权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _ModelPolicyInfo: 模型权限集合
+        :type ModelPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
         self._UserId = None
         self._Type = None
@@ -43483,6 +43635,7 @@ class UserDetailInfo(AbstractModel):
         self._RowFilterInfo = None
         self._AccountType = None
         self._CatalogPolicyInfo = None
+        self._ModelPolicyInfo = None
 
     @property
     def UserId(self):
@@ -43610,6 +43763,17 @@ class UserDetailInfo(AbstractModel):
     def CatalogPolicyInfo(self, CatalogPolicyInfo):
         self._CatalogPolicyInfo = CatalogPolicyInfo
 
+    @property
+    def ModelPolicyInfo(self):
+        r"""模型权限集合
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        """
+        return self._ModelPolicyInfo
+
+    @ModelPolicyInfo.setter
+    def ModelPolicyInfo(self, ModelPolicyInfo):
+        self._ModelPolicyInfo = ModelPolicyInfo
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -43633,6 +43797,9 @@ class UserDetailInfo(AbstractModel):
         if params.get("CatalogPolicyInfo") is not None:
             self._CatalogPolicyInfo = Policys()
             self._CatalogPolicyInfo._deserialize(params.get("CatalogPolicyInfo"))
+        if params.get("ModelPolicyInfo") is not None:
+            self._ModelPolicyInfo = Policys()
+            self._ModelPolicyInfo._deserialize(params.get("ModelPolicyInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43897,12 +44064,15 @@ class UserMessage(AbstractModel):
         :type CreateTime: str
         :param _UserAlias: 用户别名
         :type UserAlias: str
+        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :type AccountType: str
         """
         self._UserId = None
         self._UserDescription = None
         self._Creator = None
         self._CreateTime = None
         self._UserAlias = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -43960,6 +44130,17 @@ class UserMessage(AbstractModel):
     def UserAlias(self, UserAlias):
         self._UserAlias = UserAlias
 
+    @property
+    def AccountType(self):
+        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -43967,6 +44148,7 @@ class UserMessage(AbstractModel):
         self._Creator = params.get("Creator")
         self._CreateTime = params.get("CreateTime")
         self._UserAlias = params.get("UserAlias")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

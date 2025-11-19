@@ -1030,10 +1030,24 @@ class CreateApplicationAndVideoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _LicenseId: license唯一标识
+        :type LicenseId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._LicenseId = None
         self._RequestId = None
+
+    @property
+    def LicenseId(self):
+        r"""license唯一标识
+        :rtype: int
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
 
     @property
     def RequestId(self):
@@ -1048,6 +1062,7 @@ class CreateApplicationAndVideoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._LicenseId = params.get("LicenseId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1109,10 +1124,24 @@ class CreateApplicationAndWebPlayerLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _LicenseId: license的唯一标识
+        :type LicenseId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._LicenseId = None
         self._RequestId = None
+
+    @property
+    def LicenseId(self):
+        r"""license的唯一标识
+        :rtype: int
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
 
     @property
     def RequestId(self):
@@ -1127,6 +1156,7 @@ class CreateApplicationAndWebPlayerLicenseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._LicenseId = params.get("LicenseId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2525,6 +2555,8 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
         :type MacBundleId: str
         :param _WinProcessName: Windows 进程名
         :type WinProcessName: str
+        :param _LicenseId: license唯一标识
+        :type LicenseId: int
         """
         self._BizType = None
         self._AppType = None
@@ -2534,6 +2566,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
         self._Platform = None
         self._MacBundleId = None
         self._WinProcessName = None
+        self._LicenseId = None
 
     @property
     def BizType(self):
@@ -2623,6 +2656,17 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
     def WinProcessName(self, WinProcessName):
         self._WinProcessName = WinProcessName
 
+    @property
+    def LicenseId(self):
+        r"""license唯一标识
+        :rtype: int
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
 
     def _deserialize(self, params):
         self._BizType = params.get("BizType")
@@ -2633,6 +2677,7 @@ class DescribeVcubeApplicationAndPlayListRequest(AbstractModel):
         self._Platform = params.get("Platform")
         self._MacBundleId = params.get("MacBundleId")
         self._WinProcessName = params.get("WinProcessName")
+        self._LicenseId = params.get("LicenseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

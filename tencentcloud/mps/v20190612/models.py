@@ -30459,6 +30459,11 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
 * Preset：系统预置模板；
 * Custom：用户自定义模板。
         :type Type: str
+        :param _EraseType: 智能擦除模板擦除类型过滤条件。
+- subtitle 去字幕
+- watermark 去水印
+- privacy 隐私保护
+        :type EraseType: str
         :param _Name: 智能擦除模板名过滤条件，长度限制：64 个字符。
         :type Name: str
         """
@@ -30466,6 +30471,7 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._EraseType = None
         self._Name = None
 
     @property
@@ -30515,6 +30521,20 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def EraseType(self):
+        r"""智能擦除模板擦除类型过滤条件。
+- subtitle 去字幕
+- watermark 去水印
+- privacy 隐私保护
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
     def Name(self):
         r"""智能擦除模板名过滤条件，长度限制：64 个字符。
         :rtype: str
@@ -30531,6 +30551,7 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._EraseType = params.get("EraseType")
         self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -40973,6 +40994,175 @@ class LiveActivityResult(AbstractModel):
         
 
 
+class LiveAiAnalysisDescriptionItem(AbstractModel):
+    r"""直播摘要结果信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Paragraphs: 分段结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paragraphs: list of LiveAiParagraphInfo
+        """
+        self._Paragraphs = None
+
+    @property
+    def Paragraphs(self):
+        r"""分段结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveAiParagraphInfo
+        """
+        return self._Paragraphs
+
+    @Paragraphs.setter
+    def Paragraphs(self, Paragraphs):
+        self._Paragraphs = Paragraphs
+
+
+    def _deserialize(self, params):
+        if params.get("Paragraphs") is not None:
+            self._Paragraphs = []
+            for item in params.get("Paragraphs"):
+                obj = LiveAiParagraphInfo()
+                obj._deserialize(item)
+                self._Paragraphs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveAiParagraphInfo(AbstractModel):
+    r"""分段信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 分段摘要
+        :type Summary: str
+        :param _Title: 分段标题
+        :type Title: str
+        :param _Keywords: 分段关键词
+        :type Keywords: list of str
+        :param _StartTimeOffset: 分段起始时间点，秒
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 分段结束时间点，秒
+        :type EndTimeOffset: float
+        :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。	
+        :type BeginTime: str
+        :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。	
+        :type EndTime: str
+        """
+        self._Summary = None
+        self._Title = None
+        self._Keywords = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def Summary(self):
+        r"""分段摘要
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Title(self):
+        r"""分段标题
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Keywords(self):
+        r"""分段关键词
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def StartTimeOffset(self):
+        r"""分段起始时间点，秒
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        r"""分段结束时间点，秒
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def BeginTime(self):
+        r"""直播切片对应直播起始时间点，采用 ISO 日期格式。	
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""直播切片对应直播结束时间点，采用 ISO 日期格式。	
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        self._Title = params.get("Title")
+        self._Keywords = params.get("Keywords")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveRecordFile(AbstractModel):
     r"""直播录制输出文件信息
 
@@ -41665,7 +41855,10 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultSet: 直播分析子任务结果，暂时只支持直播拆条。
+        :param _ResultSet: 直播分析子任务结果，支持：
+<li>直播拆条</li>
+<li>直播高光集锦</li>
+<li>直播摘要</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultSet: list of LiveStreamAiAnalysisResultItem
         """
@@ -41673,7 +41866,10 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
-        r"""直播分析子任务结果，暂时只支持直播拆条。
+        r"""直播分析子任务结果，支持：
+<li>直播拆条</li>
+<li>直播高光集锦</li>
+<li>直播摘要</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveStreamAiAnalysisResultItem
         """
@@ -41711,6 +41907,7 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
         :param _Type: 结果的类型，取值范围：
 <li>SegmentRecognition：拆条。</li>
 <li>Highlight ：集锦。</li>
+<li> Description：摘要。</li>
         :type Type: str
         :param _SegmentResultSet: 拆条结果，当 Type 为
 SegmentRecognition 时有效。
@@ -41719,16 +41916,20 @@ SegmentRecognition 时有效。
         :param _HighlightResultSet: 集锦结果，当Type 为 Highlight 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighlightResultSet: list of MediaAiAnalysisHighlightItem
+        :param _DescriptionResult: 摘要结果，当Type 为 Description 时有效。
+        :type DescriptionResult: :class:`tencentcloud.mps.v20190612.models.LiveAiAnalysisDescriptionItem`
         """
         self._Type = None
         self._SegmentResultSet = None
         self._HighlightResultSet = None
+        self._DescriptionResult = None
 
     @property
     def Type(self):
         r"""结果的类型，取值范围：
 <li>SegmentRecognition：拆条。</li>
 <li>Highlight ：集锦。</li>
+<li> Description：摘要。</li>
         :rtype: str
         """
         return self._Type
@@ -41762,6 +41963,17 @@ SegmentRecognition 时有效。
     def HighlightResultSet(self, HighlightResultSet):
         self._HighlightResultSet = HighlightResultSet
 
+    @property
+    def DescriptionResult(self):
+        r"""摘要结果，当Type 为 Description 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveAiAnalysisDescriptionItem`
+        """
+        return self._DescriptionResult
+
+    @DescriptionResult.setter
+    def DescriptionResult(self, DescriptionResult):
+        self._DescriptionResult = DescriptionResult
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -41777,6 +41989,9 @@ SegmentRecognition 时有效。
                 obj = MediaAiAnalysisHighlightItem()
                 obj._deserialize(item)
                 self._HighlightResultSet.append(obj)
+        if params.get("DescriptionResult") is not None:
+            self._DescriptionResult = LiveAiAnalysisDescriptionItem()
+            self._DescriptionResult._deserialize(params.get("DescriptionResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53696,6 +53911,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>AiRecognitionResult：内容识别结果；</li>
 <li>LiveRecordResult：直播录制结果；</li>
 <li>AiQualityControlResult：媒体质检结果；</li>
+<li>AiAnalysisResult：内容分析结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :type NotificationType: str
         :param _TaskId: 视频处理任务 ID。
@@ -53750,6 +53966,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>AiRecognitionResult：内容识别结果；</li>
 <li>LiveRecordResult：直播录制结果；</li>
 <li>AiQualityControlResult：媒体质检结果；</li>
+<li>AiAnalysisResult：内容分析结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :rtype: str
         """
