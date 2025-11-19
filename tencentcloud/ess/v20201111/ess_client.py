@@ -172,6 +172,66 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchAdminChangeInvitations(self, request):
+        r"""本接口（CreateBatchAdminChangeInvitations）用于批量创建企业超管信息变更。
+        该接口为提交任务接口,如果需要获得链接， 需要使用接口创建超管变更链接(CreateBatchAdminChangeInvitationsUrl)。
+
+        批量创建链接有以下限制：
+
+        1. 单次最多创建10个企业的超管变更。
+        2. 同一批创建的企业不能重复,唯一值为企业 Id。
+
+        注意：
+        此接口创建的超管变更企业，必须是以下两种企业。
+        1. 集团子企业，调用方必须是主企业。
+        2. 代认证企业，此企业是由[创建企业认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl)创建的
+
+        :param request: Request instance for CreateBatchAdminChangeInvitations.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchAdminChangeInvitationsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchAdminChangeInvitationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchAdminChangeInvitations", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchAdminChangeInvitationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateBatchAdminChangeInvitationsUrl(self, request):
+        r"""此接口用于获取企业批量变更超管链接，包含多条超管变更任务。
+
+        前提条件：已调用 [CreateBatchAdminChangeInvitations生成批量变更超管任务接口](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchAdminChangeInvitations) 确保任务提交。
+        此链接包含多条超管变更流程，使用该链接可以批量的对企业进行超管变更。
+
+        :param request: Request instance for CreateBatchAdminChangeInvitationsUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchAdminChangeInvitationsUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchAdminChangeInvitationsUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchAdminChangeInvitationsUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchAdminChangeInvitationsUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchCancelFlowUrl(self, request):
         r"""指定需要批量撤回的签署流程Id，以获取批量撤销链接。
         客户需指定要撤回的签署流程Id，最多可指定100个，超过100则不处理。

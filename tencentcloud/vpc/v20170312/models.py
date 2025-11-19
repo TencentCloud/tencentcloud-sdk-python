@@ -3968,6 +3968,7 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :param _PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
         :type PublicIpAddresses: list of str
         :param _Zone: 弹性IP可用区，自动分配弹性IP时传递。
+其中产品可用区查询接口为[查询产品可用区列表](https://cloud.tencent.com/document/product/1596/77929)
         :type Zone: str
         :param _StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
         :type StockPublicIpAddressesBandwidthOut: int
@@ -3975,6 +3976,8 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type PublicIpAddressesBandwidthOut: int
         :param _PublicIpFromSameZone: 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
         :type PublicIpFromSameZone: bool
+        :param _IpAddressEnableMode: 启用或者禁用NAT网关绑定的EIP
+        :type IpAddressEnableMode: bool
         """
         self._NatGatewayId = None
         self._AddressCount = None
@@ -3983,6 +3986,7 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         self._StockPublicIpAddressesBandwidthOut = None
         self._PublicIpAddressesBandwidthOut = None
         self._PublicIpFromSameZone = None
+        self._IpAddressEnableMode = None
 
     @property
     def NatGatewayId(self):
@@ -4020,6 +4024,7 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
     @property
     def Zone(self):
         r"""弹性IP可用区，自动分配弹性IP时传递。
+其中产品可用区查询接口为[查询产品可用区列表](https://cloud.tencent.com/document/product/1596/77929)
         :rtype: str
         """
         return self._Zone
@@ -4061,6 +4066,17 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
     def PublicIpFromSameZone(self, PublicIpFromSameZone):
         self._PublicIpFromSameZone = PublicIpFromSameZone
 
+    @property
+    def IpAddressEnableMode(self):
+        r"""启用或者禁用NAT网关绑定的EIP
+        :rtype: bool
+        """
+        return self._IpAddressEnableMode
+
+    @IpAddressEnableMode.setter
+    def IpAddressEnableMode(self, IpAddressEnableMode):
+        self._IpAddressEnableMode = IpAddressEnableMode
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -4070,6 +4086,7 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         self._StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
         self._PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
         self._PublicIpFromSameZone = params.get("PublicIpFromSameZone")
+        self._IpAddressEnableMode = params.get("IpAddressEnableMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11980,7 +11997,7 @@ class CreateNatGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatGatewayName: NAT网关名称
+        :param _NatGatewayName: NAT网关名称，限制60字符
         :type NatGatewayName: str
         :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
@@ -12026,7 +12043,7 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayName(self):
-        r"""NAT网关名称
+        r"""NAT网关名称，限制60字符
         :rtype: str
         """
         return self._NatGatewayName
@@ -13223,7 +13240,7 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatGatewayName: 私网网关名称
+        :param _NatGatewayName: 私网网关名称，限制60个字符
         :type NatGatewayName: str
         :param _VpcId: 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
         :type VpcId: str
@@ -13248,7 +13265,7 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayName(self):
-        r"""私网网关名称
+        r"""私网网关名称，限制60个字符
         :rtype: str
         """
         return self._NatGatewayName
@@ -13419,15 +13436,15 @@ class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
         r"""
         :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
         :type NatGatewayId: str
-        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :param _TranslationDirection: 转换规则目标，可选值LOCAL。
         :type TranslationDirection: str
-        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :type TranslationType: str
-        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :param _TranslationIp: 映射后`IP`,当转换规则类型为四层时为`IP`池。
         :type TranslationIp: str
         :param _TranslationAclRules: 访问控制列表。
         :type TranslationAclRules: list of TranslationAclRule
-        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :param _OriginalIp: 映射前`IP`,当转换规则类型为三层时有效。
         :type OriginalIp: str
         """
         self._NatGatewayId = None
@@ -13450,7 +13467,7 @@ class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationDirection(self):
-        r"""转换规则目标，可选值"LOCAL"。
+        r"""转换规则目标，可选值LOCAL。
         :rtype: str
         """
         return self._TranslationDirection
@@ -13461,7 +13478,7 @@ class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :rtype: str
         """
         return self._TranslationType
@@ -13472,7 +13489,7 @@ class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转换`IP`,当转换规则类型为四层时为`IP`池。
+        r"""映射后`IP`,当转换规则类型为四层时为`IP`池。
         :rtype: str
         """
         return self._TranslationIp
@@ -13494,7 +13511,7 @@ class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源`IP`,当转换规则类型为三层时有效。
+        r"""映射前`IP`,当转换规则类型为三层时有效。
         :rtype: str
         """
         return self._OriginalIp
@@ -20173,8 +20190,11 @@ class DeleteNatGatewayRequest(AbstractModel):
         r"""
         :param _NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
         :type NatGatewayId: str
+        :param _IgnoreOperationRisk: 忽略操作风险
+        :type IgnoreOperationRisk: bool
         """
         self._NatGatewayId = None
+        self._IgnoreOperationRisk = None
 
     @property
     def NatGatewayId(self):
@@ -20187,9 +20207,21 @@ class DeleteNatGatewayRequest(AbstractModel):
     def NatGatewayId(self, NatGatewayId):
         self._NatGatewayId = NatGatewayId
 
+    @property
+    def IgnoreOperationRisk(self):
+        r"""忽略操作风险
+        :rtype: bool
+        """
+        return self._IgnoreOperationRisk
+
+    @IgnoreOperationRisk.setter
+    def IgnoreOperationRisk(self, IgnoreOperationRisk):
+        self._IgnoreOperationRisk = IgnoreOperationRisk
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
+        self._IgnoreOperationRisk = params.get("IgnoreOperationRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20820,15 +20852,15 @@ class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
         r"""
         :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
         :type NatGatewayId: str
-        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :param _TranslationDirection: 转换规则目标，可选值LOCAL。
         :type TranslationDirection: str
-        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :type TranslationType: str
-        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池
+        :param _TranslationIp: 映射后`IP`,当转换规则类型为四层时为`IP`池
         :type TranslationIp: str
         :param _AclRuleIds: 访问控制规则对应`ID`
         :type AclRuleIds: list of int non-negative
-        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效
+        :param _OriginalIp: 映射前`IP`,当转换规则类型为三层时有效
         :type OriginalIp: str
         """
         self._NatGatewayId = None
@@ -20851,7 +20883,7 @@ class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationDirection(self):
-        r"""转换规则目标，可选值"LOCAL"。
+        r"""转换规则目标，可选值LOCAL。
         :rtype: str
         """
         return self._TranslationDirection
@@ -20862,7 +20894,7 @@ class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :rtype: str
         """
         return self._TranslationType
@@ -20873,7 +20905,7 @@ class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转换`IP`,当转换规则类型为四层时为`IP`池
+        r"""映射后`IP`,当转换规则类型为四层时为`IP`池
         :rtype: str
         """
         return self._TranslationIp
@@ -20895,7 +20927,7 @@ class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源`IP`,当转换规则类型为三层时有效
+        r"""映射前`IP`,当转换规则类型为三层时有效
         :rtype: str
         """
         return self._OriginalIp
@@ -30380,6 +30412,60 @@ class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNatGatewayZonesRequest(AbstractModel):
+    r"""DescribeNatGatewayZones请求参数结构体
+
+    """
+
+
+class DescribeNatGatewayZonesResponse(AbstractModel):
+    r"""DescribeNatGatewayZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneSet: 可售卖可用区信息列表
+        :type ZoneSet: list of NatZoneInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneSet(self):
+        r"""可售卖可用区信息列表
+        :rtype: list of NatZoneInfo
+        """
+        return self._ZoneSet
+
+    @ZoneSet.setter
+    def ZoneSet(self, ZoneSet):
+        self._ZoneSet = ZoneSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSet") is not None:
+            self._ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = NatZoneInfo()
+                obj._deserialize(item)
+                self._ZoneSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewaysRequest(AbstractModel):
     r"""DescribeNatGateways请求参数结构体
 
@@ -30389,7 +30475,7 @@ class DescribeNatGatewaysRequest(AbstractModel):
         r"""
         :param _NatGatewayIds: NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
         :type NatGatewayIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
+        :param _Filters: 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-state - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -30414,7 +30500,7 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
+        r"""过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-state - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -31607,7 +31693,7 @@ class DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest(Abstr
         r"""
         :param _NatGatewayId: 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
         :type NatGatewayId: str
-        :param _Filters: 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+        :param _Filters: 过滤条件，Name可选值：OriginalIp、TranslationIp、OriginalPort、TranslationPort、Protocol、Description，分别表示映射前IP、映射后IP、映射前端口、映射后端口、协议类型、描述
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认值为0。
         :type Offset: int
@@ -31632,7 +31718,7 @@ class DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest(Abstr
 
     @property
     def Filters(self):
-        r"""过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+        r"""过滤条件，Name可选值：OriginalIp、TranslationIp、OriginalPort、TranslationPort、Protocol、Description，分别表示映射前IP、映射后IP、映射前端口、映射后端口、协议类型、描述
         :rtype: list of Filter
         """
         return self._Filters
@@ -31961,13 +32047,13 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         r"""
         :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
         :type NatGatewayId: str
-        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :param _TranslationDirection: 转换规则目标，可选值LOCAL。
         :type TranslationDirection: str
-        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :param _TranslationType: 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :type TranslationType: str
-        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :param _TranslationIp: 映射后`IP`,当转换规则类型为四层时为`IP`池。
         :type TranslationIp: str
-        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :param _OriginalIp: 映射前`IP`,当转换规则类型为三层时有效。
         :type OriginalIp: str
         :param _Offset: 偏移量。默认值为0。
         :type Offset: int
@@ -31998,7 +32084,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
 
     @property
     def TranslationDirection(self):
-        r"""转换规则目标，可选值"LOCAL"。
+        r"""转换规则目标，可选值LOCAL。
         :rtype: str
         """
         return self._TranslationDirection
@@ -32009,7 +32095,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
 
     @property
     def TranslationType(self):
-        r"""转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        r"""转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
         :rtype: str
         """
         return self._TranslationType
@@ -32020,7 +32106,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
 
     @property
     def TranslationIp(self):
-        r"""转换`IP`,当转换规则类型为四层时为`IP`池。
+        r"""映射后`IP`,当转换规则类型为四层时为`IP`池。
         :rtype: str
         """
         return self._TranslationIp
@@ -32031,7 +32117,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
 
     @property
     def OriginalIp(self):
-        r"""源`IP`,当转换规则类型为三层时有效。
+        r"""映射前`IP`,当转换规则类型为三层时有效。
         :rtype: str
         """
         return self._OriginalIp
@@ -32321,6 +32407,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _NatGatewayIds: 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+注意：NatGatewayIds和Filters参数互斥，不能同时传入。
         :type NatGatewayIds: list of str
         :param _Filters: 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :type Filters: list of Filter
@@ -32328,9 +32415,9 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20。
         :type Limit: int
-        :param _OrderField: 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+        :param _OrderField: 排序字段。可选值：NatGatewayId、NatGatewayName、CreatedTime。
         :type OrderField: str
-        :param _OrderDirection: 排序方式。可选值："ASC"、"DESC"。
+        :param _OrderDirection: 排序方式。可选值：ASC、DESC。分别表示升序、降序。
         :type OrderDirection: str
         """
         self._NatGatewayIds = None
@@ -32343,6 +32430,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
     @property
     def NatGatewayIds(self):
         r"""私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+注意：NatGatewayIds和Filters参数互斥，不能同时传入。
         :rtype: list of str
         """
         return self._NatGatewayIds
@@ -32386,7 +32474,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+        r"""排序字段。可选值：NatGatewayId、NatGatewayName、CreatedTime。
         :rtype: str
         """
         return self._OrderField
@@ -32397,7 +32485,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""排序方式。可选值："ASC"、"DESC"。
+        r"""排序方式。可选值：ASC、DESC。分别表示升序、降序。
         :rtype: str
         """
         return self._OrderDirection
@@ -37201,14 +37289,20 @@ class DescribeVpcEndPointRequest(AbstractModel):
         :param _EndPointId: 终端节点ID列表。可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679) 
 获取。
         :type EndPointId: list of str
-        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
         :type IpAddressType: str
+        :param _MaxResults: 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :type MaxResults: int
+        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._EndPointId = None
         self._IpAddressType = None
+        self._MaxResults = None
+        self._NextToken = None
 
     @property
     def Filters(self):
@@ -37264,7 +37358,7 @@ class DescribeVpcEndPointRequest(AbstractModel):
 
     @property
     def IpAddressType(self):
-        r"""协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        r"""协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
         :rtype: str
         """
         return self._IpAddressType
@@ -37272,6 +37366,28 @@ class DescribeVpcEndPointRequest(AbstractModel):
     @IpAddressType.setter
     def IpAddressType(self, IpAddressType):
         self._IpAddressType = IpAddressType
+
+    @property
+    def MaxResults(self):
+        r"""每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
 
 
     def _deserialize(self, params):
@@ -37285,6 +37401,8 @@ class DescribeVpcEndPointRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._EndPointId = params.get("EndPointId")
         self._IpAddressType = params.get("IpAddressType")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37306,11 +37424,14 @@ class DescribeVpcEndPointResponse(AbstractModel):
         :type EndPointSet: list of EndPoint
         :param _TotalCount: 符合查询条件的终端节点个数。
         :type TotalCount: int
+        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EndPointSet = None
         self._TotalCount = None
+        self._NextToken = None
         self._RequestId = None
 
     @property
@@ -37336,6 +37457,17 @@ class DescribeVpcEndPointResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def NextToken(self):
+        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -37355,6 +37487,7 @@ class DescribeVpcEndPointResponse(AbstractModel):
                 obj._deserialize(item)
                 self._EndPointSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -37384,8 +37517,12 @@ GWLB可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/p
         :type EndPointServiceIds: list of str
         :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
         :type IsListAuthorizedEndPointService: bool
-        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
         :type IpAddressType: str
+        :param _MaxResults: 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :type MaxResults: int
+        :param _NextToken: 如果NextToken返回 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         """
         self._Filters = None
         self._Offset = None
@@ -37393,6 +37530,8 @@ GWLB可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/p
         self._EndPointServiceIds = None
         self._IsListAuthorizedEndPointService = None
         self._IpAddressType = None
+        self._MaxResults = None
+        self._NextToken = None
 
     @property
     def Filters(self):
@@ -37460,7 +37599,7 @@ GWLB可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/p
 
     @property
     def IpAddressType(self):
-        r"""协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        r"""协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
         :rtype: str
         """
         return self._IpAddressType
@@ -37468,6 +37607,28 @@ GWLB可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/p
     @IpAddressType.setter
     def IpAddressType(self, IpAddressType):
         self._IpAddressType = IpAddressType
+
+    @property
+    def MaxResults(self):
+        r"""每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""如果NextToken返回 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
 
 
     def _deserialize(self, params):
@@ -37482,6 +37643,8 @@ GWLB可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/p
         self._EndPointServiceIds = params.get("EndPointServiceIds")
         self._IsListAuthorizedEndPointService = params.get("IsListAuthorizedEndPointService")
         self._IpAddressType = params.get("IpAddressType")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37503,11 +37666,14 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
         :type EndPointServiceSet: list of EndPointService
         :param _TotalCount: 符合查询条件的个数。
         :type TotalCount: int
+        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EndPointServiceSet = None
         self._TotalCount = None
+        self._NextToken = None
         self._RequestId = None
 
     @property
@@ -37533,6 +37699,17 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def NextToken(self):
+        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -37552,6 +37729,7 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._EndPointServiceSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -52321,7 +52499,7 @@ class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
         r"""
         :param _NatGatewayId: NAT网关的ID，形如：`nat-df453454`。
         :type NatGatewayId: str
-        :param _SourceIpTranslationNatRule: NAT网关的SNAT转换规则。
+        :param _SourceIpTranslationNatRule: NAT网关的SNAT转换规则。仅支持根据指定的NatGatewaySnatId修改PublicIpAddresses或Description。
         :type SourceIpTranslationNatRule: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
         """
         self._NatGatewayId = None
@@ -52340,7 +52518,7 @@ class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def SourceIpTranslationNatRule(self):
-        r"""NAT网关的SNAT转换规则。
+        r"""NAT网关的SNAT转换规则。仅支持根据指定的NatGatewaySnatId修改PublicIpAddresses或Description。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
         """
         return self._SourceIpTranslationNatRule
@@ -57149,6 +57327,57 @@ class NatRegionInfoWithArea(AbstractModel):
     """
 
 
+class NatZoneInfo(AbstractModel):
+    r"""NAT网关可用区集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区名称
+        :type Zone: str
+        :param _ZoneId: 可用区id
+        :type ZoneId: int
+        """
+        self._Zone = None
+        self._ZoneId = None
+
+    @property
+    def Zone(self):
+        r"""可用区名称
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneId(self):
+        r"""可用区id
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetDetect(AbstractModel):
     r"""网络探测对象。
 
@@ -60136,7 +60365,7 @@ class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
         :type VpcId: str
         :param _NatGatewayId: NAT网关ID
         :type NatGatewayId: str
-        :param _DryRun: 是否是预刷新；True:是， False:否
+        :param _DryRun: 是否是预刷新；true:是， false:否
         :type DryRun: bool
         """
         self._VpcId = None
@@ -60167,7 +60396,7 @@ class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否是预刷新；True:是， False:否
+        r"""是否是预刷新；true:是， false:否
         :rtype: bool
         """
         return self._DryRun

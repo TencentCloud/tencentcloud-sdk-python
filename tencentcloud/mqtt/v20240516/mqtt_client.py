@@ -72,6 +72,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddClientSubscription(self, request):
+        r"""为MQTT客户端增加一条订阅
+
+        :param request: Request instance for AddClientSubscription.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.AddClientSubscriptionRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.AddClientSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddClientSubscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddClientSubscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ApplyRegistrationCode(self, request):
         r"""申请ca注册码
 
@@ -408,6 +431,29 @@ class MqttClient(AbstractClient):
             body = self.call("DeleteCaCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCaCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteClientSubscription(self, request):
+        r"""删除MQTT客户端下的一条订阅
+
+        :param request: Request instance for DeleteClientSubscription.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteClientSubscriptionRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteClientSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClientSubscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClientSubscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

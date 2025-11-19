@@ -3565,7 +3565,10 @@ class ConfigInfo(AbstractModel):
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
         :type AdvancedConfig: str
-        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :param _InputType: 日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :type InputType: str
         """
         self._ConfigId = None
@@ -3735,7 +3738,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def InputType(self):
-        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        r"""日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :rtype: str
         """
         return self._InputType
@@ -6882,7 +6888,10 @@ class CreateConfigRequest(AbstractModel):
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
         :type AdvancedConfig: str
-        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :param _InputType: 日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :type InputType: str
         """
         self._Name = None
@@ -7004,7 +7013,10 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def InputType(self):
-        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        r"""日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :rtype: str
         """
         return self._InputType
@@ -24867,7 +24879,10 @@ class ModifyConfigRequest(AbstractModel):
 样例：
 `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
         :type AdvancedConfig: str
-        :param _InputType: 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        :param _InputType: 日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :type InputType: str
         """
         self._ConfigId = None
@@ -25001,7 +25016,10 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def InputType(self):
-        r"""日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+        r"""日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
+- file: 文件类型采集
+- windows_event：windows事件采集
+- syslog：系统日志采集
         :rtype: str
         """
         return self._InputType

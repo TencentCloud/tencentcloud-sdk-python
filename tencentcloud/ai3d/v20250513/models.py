@@ -351,17 +351,17 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
         r"""
         :param _Prompt: 文生3D，3D内容的描述，中文正向提示词。
 最多支持1024个 utf-8 字符。
-文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :type Prompt: str
         :param _ImageBase64: 输入图 Base64 数据。
-大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 格式：jpg，png，jpeg，webp。
 ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :type ImageBase64: str
         :param _ImageUrl: 输入图Url。
-大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 格式：jpg，png，jpeg，webp。
-ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :type ImageUrl: str
         :param _MultiViewImages: 多视角的模型图片，视角参考值：
 left：左视图；
@@ -369,7 +369,7 @@ right：右视图；
 back：后视图；
 
 每个视角仅限制一张图片。
-●图片大小限制：编码后大小不可超过8M。
+●图片大小限制：编码后大小不可超过8M。（base64编码后会大30%左右，建议实际输入图片不超过5m）
 ●图片分辨率限制：单边分辨率小于5000且大于128。
 ●支持图片格式：支持jpg或png
         :type MultiViewImages: list of ViewImage
@@ -404,7 +404,7 @@ quadrilateral: 四边形面与三角形面混合生成。
     def Prompt(self):
         r"""文生3D，3D内容的描述，中文正向提示词。
 最多支持1024个 utf-8 字符。
-文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :rtype: str
         """
         return self._Prompt
@@ -416,7 +416,7 @@ quadrilateral: 四边形面与三角形面混合生成。
     @property
     def ImageBase64(self):
         r"""输入图 Base64 数据。
-大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 格式：jpg，png，jpeg，webp。
 ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :rtype: str
@@ -430,9 +430,9 @@ ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl�
     @property
     def ImageUrl(self):
         r"""输入图Url。
-大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 格式：jpg，png，jpeg，webp。
-ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
         :rtype: str
         """
         return self._ImageUrl
@@ -449,7 +449,7 @@ right：右视图；
 back：后视图；
 
 每个视角仅限制一张图片。
-●图片大小限制：编码后大小不可超过8M。
+●图片大小限制：编码后大小不可超过8M。（base64编码后会大30%左右，建议实际输入图片不超过5m）
 ●图片分辨率限制：单边分辨率小于5000且大于128。
 ●支持图片格式：支持jpg或png
         :rtype: list of ViewImage

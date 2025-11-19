@@ -33089,37 +33089,37 @@ class ZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneList: zone列表
+        :param _ZoneList: <p>zone列表</p>
         :type ZoneList: list of ZoneInfo
-        :param _MaxBuyInstanceNum: 最大购买实例个数
+        :param _MaxBuyInstanceNum: <p>最大购买实例个数</p>
         :type MaxBuyInstanceNum: int
-        :param _MaxBandwidth: 最大购买带宽 单位Mb/s
+        :param _MaxBandwidth: <p>最大购买带宽 单位Mb/s</p>
         :type MaxBandwidth: int
-        :param _UnitPrice: 后付费单位价格
+        :param _UnitPrice: <p>后付费单位价格</p>
         :type UnitPrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
-        :param _MessagePrice: 后付费消息单价
+        :param _MessagePrice: <p>后付费消息单价</p>
         :type MessagePrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
-        :param _ClusterInfo: 用户独占集群信息
+        :param _ClusterInfo: <p>用户独占集群信息</p>
         :type ClusterInfo: list of ClusterInfo
-        :param _Standard: 购买标准版配置
+        :param _Standard: <p>购买标准版配置</p>
         :type Standard: str
-        :param _StandardS2: 购买标准版S2配置
+        :param _StandardS2: <p>购买标准版S2配置</p>
         :type StandardS2: str
-        :param _Profession: 购买专业版配置
+        :param _Profession: <p>购买专业版配置</p>
         :type Profession: str
-        :param _Physical: 购买物理独占版配置
+        :param _Physical: <p>购买物理独占版配置</p>
         :type Physical: str
-        :param _PublicNetwork: 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义
+        :param _PublicNetwork: <p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义</p>
         :type PublicNetwork: str
-        :param _PublicNetworkLimit: 公网带宽配置
+        :param _PublicNetworkLimit: <p>公网带宽配置</p>
         :type PublicNetworkLimit: str
-        :param _RequestId: 请求Id
+        :param _RequestId: <p>请求Id</p>
         :type RequestId: str
-        :param _Offset: 分页offset
+        :param _Offset: <p>分页offset</p>
         :type Offset: int
-        :param _Limit: 分页limit
+        :param _Limit: <p>分页limit</p>
         :type Limit: int
-        :param _ForceCheckTag: 是否必须录入tag
+        :param _ForceCheckTag: <p>是否必须录入tag</p>
         :type ForceCheckTag: bool
         """
         self._ZoneList = None
@@ -33141,7 +33141,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ZoneList(self):
-        r"""zone列表
+        r"""<p>zone列表</p>
         :rtype: list of ZoneInfo
         """
         return self._ZoneList
@@ -33152,7 +33152,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MaxBuyInstanceNum(self):
-        r"""最大购买实例个数
+        r"""<p>最大购买实例个数</p>
         :rtype: int
         """
         return self._MaxBuyInstanceNum
@@ -33163,7 +33163,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        r"""最大购买带宽 单位Mb/s
+        r"""<p>最大购买带宽 单位Mb/s</p>
         :rtype: int
         """
         return self._MaxBandwidth
@@ -33174,7 +33174,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def UnitPrice(self):
-        r"""后付费单位价格
+        r"""<p>后付费单位价格</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
         """
         return self._UnitPrice
@@ -33185,7 +33185,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MessagePrice(self):
-        r"""后付费消息单价
+        r"""<p>后付费消息单价</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
         """
         return self._MessagePrice
@@ -33196,7 +33196,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ClusterInfo(self):
-        r"""用户独占集群信息
+        r"""<p>用户独占集群信息</p>
         :rtype: list of ClusterInfo
         """
         return self._ClusterInfo
@@ -33207,7 +33207,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Standard(self):
-        r"""购买标准版配置
+        r"""<p>购买标准版配置</p>
         :rtype: str
         """
         return self._Standard
@@ -33218,7 +33218,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def StandardS2(self):
-        r"""购买标准版S2配置
+        r"""<p>购买标准版S2配置</p>
         :rtype: str
         """
         return self._StandardS2
@@ -33229,7 +33229,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Profession(self):
-        r"""购买专业版配置
+        r"""<p>购买专业版配置</p>
         :rtype: str
         """
         return self._Profession
@@ -33240,7 +33240,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Physical(self):
-        r"""购买物理独占版配置
+        r"""<p>购买物理独占版配置</p>
         :rtype: str
         """
         return self._Physical
@@ -33251,7 +33251,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        r"""公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义
+        r"""<p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义</p>
         :rtype: str
         """
         return self._PublicNetwork
@@ -33262,7 +33262,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def PublicNetworkLimit(self):
-        r"""公网带宽配置
+        r"""<p>公网带宽配置</p>
         :rtype: str
         """
         return self._PublicNetworkLimit
@@ -33273,7 +33273,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""请求Id
+        r"""<p>请求Id</p>
         :rtype: str
         """
         return self._RequestId
@@ -33284,7 +33284,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页offset
+        r"""<p>分页offset</p>
         :rtype: int
         """
         return self._Offset
@@ -33295,7 +33295,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页limit
+        r"""<p>分页limit</p>
         :rtype: int
         """
         return self._Limit
@@ -33306,7 +33306,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ForceCheckTag(self):
-        r"""是否必须录入tag
+        r"""<p>是否必须录入tag</p>
         :rtype: bool
         """
         return self._ForceCheckTag

@@ -73,6 +73,157 @@ class Admin(AbstractModel):
         
 
 
+class AdminChangeInvitationInfo(AbstractModel):
+    r"""企业变更超管信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChangeAdminOrganizationId: 要变更的企业Id。
+使用接口进行变更，所支持的企业有两种。
+1. 集团主企业替子企业进行超管变更。
+    子企业的企业 Id 可在更多-组织管理-集团组织管理处获取。如图位置![image](https://qcloudimg.tencent-cloud.cn/raw/3d4469c13ca9e66a847560fc4309c58b.png)
+2. 使用接口[创建企业认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 创建的企业，企业 Id 可以从回调[企业引导企业实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E4%B8%80-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%BC%81%E4%B8%9A%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)得到。
+        :type ChangeAdminOrganizationId: str
+        :param _NewAdminName: 组织机构要变更的超管姓名。 
+跟超管变更的操作人保持一致。
+
+        :type NewAdminName: str
+        :param _AuthFiles: 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+p.s. 如果上传授权书 ，需遵循以下条件
+1. 超管的信息（超管姓名，超管手机号）必须为必填参数。
+        :type AuthFiles: list of str
+        :param _NewAdminMobile: 组织机构要变更的超管手机号。
+跟超管变更的操作人保持一致。
+超管变更的手机号和超管变更的证件号，必须要传递一个。
+        :type NewAdminMobile: str
+        :param _NewAdminIdCardType: 组织机构要变更的超管证件类型支持以下类型
+- ID_CARD : 中国大陆居民身份证 (默认值)
+- HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+
+跟超管变更的操作人保持一致。
+
+        :type NewAdminIdCardType: str
+        :param _NewAdminIdCardNumber: 组织机构新超管证件号。
+
+跟超管变更的操作人保持一致。
+
+超管变更的手机号和超管变更的证件号，必须要传递一个。
+        :type NewAdminIdCardNumber: str
+        """
+        self._ChangeAdminOrganizationId = None
+        self._NewAdminName = None
+        self._AuthFiles = None
+        self._NewAdminMobile = None
+        self._NewAdminIdCardType = None
+        self._NewAdminIdCardNumber = None
+
+    @property
+    def ChangeAdminOrganizationId(self):
+        r"""要变更的企业Id。
+使用接口进行变更，所支持的企业有两种。
+1. 集团主企业替子企业进行超管变更。
+    子企业的企业 Id 可在更多-组织管理-集团组织管理处获取。如图位置![image](https://qcloudimg.tencent-cloud.cn/raw/3d4469c13ca9e66a847560fc4309c58b.png)
+2. 使用接口[创建企业认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 创建的企业，企业 Id 可以从回调[企业引导企业实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E4%B8%80-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%BC%81%E4%B8%9A%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)得到。
+        :rtype: str
+        """
+        return self._ChangeAdminOrganizationId
+
+    @ChangeAdminOrganizationId.setter
+    def ChangeAdminOrganizationId(self, ChangeAdminOrganizationId):
+        self._ChangeAdminOrganizationId = ChangeAdminOrganizationId
+
+    @property
+    def NewAdminName(self):
+        r"""组织机构要变更的超管姓名。 
+跟超管变更的操作人保持一致。
+
+        :rtype: str
+        """
+        return self._NewAdminName
+
+    @NewAdminName.setter
+    def NewAdminName(self, NewAdminName):
+        self._NewAdminName = NewAdminName
+
+    @property
+    def AuthFiles(self):
+        r"""授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+p.s. 如果上传授权书 ，需遵循以下条件
+1. 超管的信息（超管姓名，超管手机号）必须为必填参数。
+        :rtype: list of str
+        """
+        return self._AuthFiles
+
+    @AuthFiles.setter
+    def AuthFiles(self, AuthFiles):
+        self._AuthFiles = AuthFiles
+
+    @property
+    def NewAdminMobile(self):
+        r"""组织机构要变更的超管手机号。
+跟超管变更的操作人保持一致。
+超管变更的手机号和超管变更的证件号，必须要传递一个。
+        :rtype: str
+        """
+        return self._NewAdminMobile
+
+    @NewAdminMobile.setter
+    def NewAdminMobile(self, NewAdminMobile):
+        self._NewAdminMobile = NewAdminMobile
+
+    @property
+    def NewAdminIdCardType(self):
+        r"""组织机构要变更的超管证件类型支持以下类型
+- ID_CARD : 中国大陆居民身份证 (默认值)
+- HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+
+跟超管变更的操作人保持一致。
+
+        :rtype: str
+        """
+        return self._NewAdminIdCardType
+
+    @NewAdminIdCardType.setter
+    def NewAdminIdCardType(self, NewAdminIdCardType):
+        self._NewAdminIdCardType = NewAdminIdCardType
+
+    @property
+    def NewAdminIdCardNumber(self):
+        r"""组织机构新超管证件号。
+
+跟超管变更的操作人保持一致。
+
+超管变更的手机号和超管变更的证件号，必须要传递一个。
+        :rtype: str
+        """
+        return self._NewAdminIdCardNumber
+
+    @NewAdminIdCardNumber.setter
+    def NewAdminIdCardNumber(self, NewAdminIdCardNumber):
+        self._NewAdminIdCardNumber = NewAdminIdCardNumber
+
+
+    def _deserialize(self, params):
+        self._ChangeAdminOrganizationId = params.get("ChangeAdminOrganizationId")
+        self._NewAdminName = params.get("NewAdminName")
+        self._AuthFiles = params.get("AuthFiles")
+        self._NewAdminMobile = params.get("NewAdminMobile")
+        self._NewAdminIdCardType = params.get("NewAdminIdCardType")
+        self._NewAdminIdCardNumber = params.get("NewAdminIdCardNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Agent(AbstractModel):
     r"""代理相关应用信息，如集团主企业代子企业操作
 
@@ -4126,6 +4277,380 @@ class ComponentLimit(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBatchAdminChangeInvitationsRequest(AbstractModel):
+    r"""CreateBatchAdminChangeInvitations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _AdminChangeInvitationInfos: 组织机构超管变更信息。
+一次最多支持10条超管变更信息。
+        :type AdminChangeInvitationInfos: list of AdminChangeInvitationInfo
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._AdminChangeInvitationInfos = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def AdminChangeInvitationInfos(self):
+        r"""组织机构超管变更信息。
+一次最多支持10条超管变更信息。
+        :rtype: list of AdminChangeInvitationInfo
+        """
+        return self._AdminChangeInvitationInfos
+
+    @AdminChangeInvitationInfos.setter
+    def AdminChangeInvitationInfos(self, AdminChangeInvitationInfos):
+        self._AdminChangeInvitationInfos = AdminChangeInvitationInfos
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("AdminChangeInvitationInfos") is not None:
+            self._AdminChangeInvitationInfos = []
+            for item in params.get("AdminChangeInvitationInfos"):
+                obj = AdminChangeInvitationInfo()
+                obj._deserialize(item)
+                self._AdminChangeInvitationInfos.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchAdminChangeInvitationsResponse(AbstractModel):
+    r"""CreateBatchAdminChangeInvitations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMessages: 批量生成企业认证链接的详细错误信息，
+顺序与输入参数保持一致。
+若企业认证均成功生成，则不返回错误信息；
+若存在任何错误，则返回具体的错误描述。
+        :type ErrorMessages: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMessages = None
+        self._RequestId = None
+
+    @property
+    def ErrorMessages(self):
+        r"""批量生成企业认证链接的详细错误信息，
+顺序与输入参数保持一致。
+若企业认证均成功生成，则不返回错误信息；
+若存在任何错误，则返回具体的错误描述。
+        :rtype: list of str
+        """
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMessages = params.get("ErrorMessages")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBatchAdminChangeInvitationsUrlRequest(AbstractModel):
+    r"""CreateBatchAdminChangeInvitationsUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _NewAdminName: 组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。
+
+        :type NewAdminName: str
+        :param _NewAdminMobile: 组织机构要变更的超管手机号。 
+在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。
+
+超管手机号 和超管证件号 二选一 必填。
+
+注意：
+1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。
+        :type NewAdminMobile: str
+        :param _NewAdminIdCardType: 组织机构要变更的超管证件类型支持以下类型
+- ID_CARD : 中国大陆居民身份证 (默认值)
+-  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+需要更当前操作人的证件类型保持一致。
+
+        :type NewAdminIdCardType: str
+        :param _NewAdminIdCardNumber: 组织机构要变更的超管证件号。 
+在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。
+
+超管手机号和超管证件号 二选一必填。
+        :type NewAdminIdCardNumber: str
+        :param _NotifyType: 通知方式。
+ NONE（默认）
+ SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
+注意：
+发送信息的手机号，是用户传递的手机号。
+如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+        :type NotifyType: str
+        :param _Endpoint: 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        :type Endpoint: str
+        """
+        self._Operator = None
+        self._NewAdminName = None
+        self._NewAdminMobile = None
+        self._NewAdminIdCardType = None
+        self._NewAdminIdCardNumber = None
+        self._NotifyType = None
+        self._Endpoint = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def NewAdminName(self):
+        r"""组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。
+
+        :rtype: str
+        """
+        return self._NewAdminName
+
+    @NewAdminName.setter
+    def NewAdminName(self, NewAdminName):
+        self._NewAdminName = NewAdminName
+
+    @property
+    def NewAdminMobile(self):
+        r"""组织机构要变更的超管手机号。 
+在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。
+
+超管手机号 和超管证件号 二选一 必填。
+
+注意：
+1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。
+        :rtype: str
+        """
+        return self._NewAdminMobile
+
+    @NewAdminMobile.setter
+    def NewAdminMobile(self, NewAdminMobile):
+        self._NewAdminMobile = NewAdminMobile
+
+    @property
+    def NewAdminIdCardType(self):
+        r"""组织机构要变更的超管证件类型支持以下类型
+- ID_CARD : 中国大陆居民身份证 (默认值)
+-  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+需要更当前操作人的证件类型保持一致。
+
+        :rtype: str
+        """
+        return self._NewAdminIdCardType
+
+    @NewAdminIdCardType.setter
+    def NewAdminIdCardType(self, NewAdminIdCardType):
+        self._NewAdminIdCardType = NewAdminIdCardType
+
+    @property
+    def NewAdminIdCardNumber(self):
+        r"""组织机构要变更的超管证件号。 
+在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。
+
+超管手机号和超管证件号 二选一必填。
+        :rtype: str
+        """
+        return self._NewAdminIdCardNumber
+
+    @NewAdminIdCardNumber.setter
+    def NewAdminIdCardNumber(self, NewAdminIdCardNumber):
+        self._NewAdminIdCardNumber = NewAdminIdCardNumber
+
+    @property
+    def NotifyType(self):
+        r"""通知方式。
+ NONE（默认）
+ SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
+注意：
+发送信息的手机号，是用户传递的手机号。
+如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+        :rtype: str
+        """
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def Endpoint(self):
+        r"""要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._NewAdminName = params.get("NewAdminName")
+        self._NewAdminMobile = params.get("NewAdminMobile")
+        self._NewAdminIdCardType = params.get("NewAdminIdCardType")
+        self._NewAdminIdCardNumber = params.get("NewAdminIdCardNumber")
+        self._NotifyType = params.get("NotifyType")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchAdminChangeInvitationsUrlResponse(AbstractModel):
+    r"""CreateBatchAdminChangeInvitationsUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+ <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> 
+<tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+<tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>
+注： 
+`1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+
+        :type Url: str
+        :param _ExpireTime: 链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+ <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> 
+<tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+<tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>
+注： 
+`1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpireTime(self):
+        r"""链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBatchCancelFlowUrlRequest(AbstractModel):
@@ -10323,6 +10848,8 @@ class CreateFlowOption(AbstractModel):
         :type PreviewAfterStart: bool
         :param _SignAfterStart: 发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>	
         :type SignAfterStart: bool
+        :param _NeedFlowDraft: 发起过程中是否保存草稿
+        :type NeedFlowDraft: bool
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -10347,6 +10874,7 @@ class CreateFlowOption(AbstractModel):
         self._HideSignCodeAfterStart = None
         self._PreviewAfterStart = None
         self._SignAfterStart = None
+        self._NeedFlowDraft = None
 
     @property
     def CanEditFlow(self):
@@ -10706,6 +11234,17 @@ class CreateFlowOption(AbstractModel):
     def SignAfterStart(self, SignAfterStart):
         self._SignAfterStart = SignAfterStart
 
+    @property
+    def NeedFlowDraft(self):
+        r"""发起过程中是否保存草稿
+        :rtype: bool
+        """
+        return self._NeedFlowDraft
+
+    @NeedFlowDraft.setter
+    def NeedFlowDraft(self, NeedFlowDraft):
+        self._NeedFlowDraft = NeedFlowDraft
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -10738,6 +11277,7 @@ class CreateFlowOption(AbstractModel):
         self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         self._PreviewAfterStart = params.get("PreviewAfterStart")
         self._SignAfterStart = params.get("SignAfterStart")
+        self._NeedFlowDraft = params.get("NeedFlowDraft")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14084,6 +14624,8 @@ Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font
 
 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
         :type JumpEvents: list of JumpEvent
+        :param _OrganizationIdCardType: 企业证照类型：<ul><li> **USCC** :(默认)工商组织营业执照</li><li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li></ul>
+        :type OrganizationIdCardType: str
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -14110,6 +14652,7 @@ p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，
         self._BankAccountNumber = None
         self._BankAccountNumberSame = None
         self._JumpEvents = None
+        self._OrganizationIdCardType = None
 
     @property
     def Operator(self):
@@ -14448,6 +14991,17 @@ p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，
     def JumpEvents(self, JumpEvents):
         self._JumpEvents = JumpEvents
 
+    @property
+    def OrganizationIdCardType(self):
+        r"""企业证照类型：<ul><li> **USCC** :(默认)工商组织营业执照</li><li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li></ul>
+        :rtype: str
+        """
+        return self._OrganizationIdCardType
+
+    @OrganizationIdCardType.setter
+    def OrganizationIdCardType(self, OrganizationIdCardType):
+        self._OrganizationIdCardType = OrganizationIdCardType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -14482,6 +15036,7 @@ p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，
                 obj = JumpEvent()
                 obj._deserialize(item)
                 self._JumpEvents.append(obj)
+        self._OrganizationIdCardType = params.get("OrganizationIdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15748,6 +16303,7 @@ class CreatePrepareFlowRequest(AbstractModel):
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 </ul>
 注意：需要同时设置 ResourceType 参数指定资源类型
         :type ResourceId: str
@@ -15757,7 +16313,9 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type FlowName: str
         :param _ResourceType: 资源类型，取值有：
 <ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li></ul>
+<li> **2**：文件（默认值）</li>
+<li> **3**：草稿</li>
+</ul>
         :type ResourceType: int
         :param _Unordered: 合同流程的签署顺序类型：
 <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
@@ -15868,6 +16426,7 @@ class CreatePrepareFlowRequest(AbstractModel):
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 </ul>
 注意：需要同时设置 ResourceType 参数指定资源类型
         :rtype: str
@@ -15895,7 +16454,9 @@ class CreatePrepareFlowRequest(AbstractModel):
     def ResourceType(self):
         r"""资源类型，取值有：
 <ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li></ul>
+<li> **2**：文件（默认值）</li>
+<li> **3**：草稿</li>
+</ul>
         :rtype: int
         """
         return self._ResourceType
@@ -16196,11 +16757,14 @@ class CreatePrepareFlowResponse(AbstractModel):
         :type Url: str
         :param _FlowId: 创建的合同id（还未实际发起），每次调用会生成新的id，用户可以记录此字段对应后续页面发起的合同，若在页面上未成功发起，则此字段无效。
         :type FlowId: str
+        :param _DraftId: 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        :type DraftId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
         self._FlowId = None
+        self._DraftId = None
         self._RequestId = None
 
     @property
@@ -16226,6 +16790,17 @@ class CreatePrepareFlowResponse(AbstractModel):
         self._FlowId = FlowId
 
     @property
+    def DraftId(self):
+        r"""临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        :rtype: str
+        """
+        return self._DraftId
+
+    @DraftId.setter
+    def DraftId(self, DraftId):
+        self._DraftId = DraftId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16240,6 +16815,7 @@ class CreatePrepareFlowResponse(AbstractModel):
     def _deserialize(self, params):
         self._Url = params.get("Url")
         self._FlowId = params.get("FlowId")
+        self._DraftId = params.get("DraftId")
         self._RequestId = params.get("RequestId")
 
 
@@ -22119,6 +22695,9 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         :type HighRiskCount: int
         :param _TotalRiskCount: 合同审查出的风险总数
         :type TotalRiskCount: int
+        :param _ApprovedLists: 通过项信息(详细引文信息)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApprovedLists: list of OutputReference
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -22135,6 +22714,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._UserData = None
         self._HighRiskCount = None
         self._TotalRiskCount = None
+        self._ApprovedLists = None
         self._RequestId = None
 
     @property
@@ -22301,6 +22881,18 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._TotalRiskCount = TotalRiskCount
 
     @property
+    def ApprovedLists(self):
+        r"""通过项信息(详细引文信息)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OutputReference
+        """
+        return self._ApprovedLists
+
+    @ApprovedLists.setter
+    def ApprovedLists(self, ApprovedLists):
+        self._ApprovedLists = ApprovedLists
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -22333,6 +22925,12 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._UserData = params.get("UserData")
         self._HighRiskCount = params.get("HighRiskCount")
         self._TotalRiskCount = params.get("TotalRiskCount")
+        if params.get("ApprovedLists") is not None:
+            self._ApprovedLists = []
+            for item in params.get("ApprovedLists"):
+                obj = OutputReference()
+                obj._deserialize(item)
+                self._ApprovedLists.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35919,6 +36517,124 @@ class OrganizationInfo(AbstractModel):
         
 
 
+class OutputReference(AbstractModel):
+    r"""审查通过项对应的引文信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 合同审查风险结果ID
+        :type RiskId: str
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskDescription: 风险描述
+        :type RiskDescription: str
+        :param _CategoryName: 风险要点分类名称
+        :type CategoryName: str
+        :param _RiskBasis: 审查依据
+        :type RiskBasis: str
+        :param _Excerpts: 引文内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Excerpts: list of ReferenceExcerpt
+        """
+        self._RiskId = None
+        self._RiskName = None
+        self._RiskDescription = None
+        self._CategoryName = None
+        self._RiskBasis = None
+        self._Excerpts = None
+
+    @property
+    def RiskId(self):
+        r"""合同审查风险结果ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def RiskName(self):
+        r"""风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskDescription(self):
+        r"""风险描述
+        :rtype: str
+        """
+        return self._RiskDescription
+
+    @RiskDescription.setter
+    def RiskDescription(self, RiskDescription):
+        self._RiskDescription = RiskDescription
+
+    @property
+    def CategoryName(self):
+        r"""风险要点分类名称
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def RiskBasis(self):
+        r"""审查依据
+        :rtype: str
+        """
+        return self._RiskBasis
+
+    @RiskBasis.setter
+    def RiskBasis(self, RiskBasis):
+        self._RiskBasis = RiskBasis
+
+    @property
+    def Excerpts(self):
+        r"""引文内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReferenceExcerpt
+        """
+        return self._Excerpts
+
+    @Excerpts.setter
+    def Excerpts(self, Excerpts):
+        self._Excerpts = Excerpts
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._RiskName = params.get("RiskName")
+        self._RiskDescription = params.get("RiskDescription")
+        self._CategoryName = params.get("CategoryName")
+        self._RiskBasis = params.get("RiskBasis")
+        if params.get("Excerpts") is not None:
+            self._Excerpts = []
+            for item in params.get("Excerpts"):
+                obj = ReferenceExcerpt()
+                obj._deserialize(item)
+                self._Excerpts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutputRisk(AbstractModel):
     r"""合同审查任务识别出的风险结果信息
 
@@ -35950,6 +36666,8 @@ class OutputRisk(AbstractModel):
         :type Positions: list of PositionInfo
         :param _RiskBasis: 审查依据
         :type RiskBasis: str
+        :param _RiskLevelId: 风险等级id
+        :type RiskLevelId: int
         """
         self._RiskId = None
         self._RiskName = None
@@ -35960,6 +36678,7 @@ class OutputRisk(AbstractModel):
         self._Content = None
         self._Positions = None
         self._RiskBasis = None
+        self._RiskLevelId = None
 
     @property
     def RiskId(self):
@@ -36066,6 +36785,17 @@ class OutputRisk(AbstractModel):
     def RiskBasis(self, RiskBasis):
         self._RiskBasis = RiskBasis
 
+    @property
+    def RiskLevelId(self):
+        r"""风险等级id
+        :rtype: int
+        """
+        return self._RiskLevelId
+
+    @RiskLevelId.setter
+    def RiskLevelId(self, RiskLevelId):
+        self._RiskLevelId = RiskLevelId
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -36082,6 +36812,7 @@ class OutputRisk(AbstractModel):
                 obj._deserialize(item)
                 self._Positions.append(obj)
         self._RiskBasis = params.get("RiskBasis")
+        self._RiskLevelId = params.get("RiskLevelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37198,6 +37929,61 @@ class RecipientComponentInfo(AbstractModel):
                 obj = FilledComponent()
                 obj._deserialize(item)
                 self._Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReferenceExcerpt(AbstractModel):
+    r"""引用的资料
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 原文内容
+        :type Content: str
+        :param _Position: 坐标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: :class:`tencentcloud.ess.v20201111.models.PositionInfo`
+        """
+        self._Content = None
+        self._Position = None
+
+    @property
+    def Content(self):
+        r"""原文内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Position(self):
+        r"""坐标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.PositionInfo`
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        if params.get("Position") is not None:
+            self._Position = PositionInfo()
+            self._Position._deserialize(params.get("Position"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

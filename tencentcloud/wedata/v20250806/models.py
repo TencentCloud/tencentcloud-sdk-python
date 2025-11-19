@@ -29658,22 +29658,22 @@ class TaskConfiguration(AbstractModel):
         :param _YarnQueue: 资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type YarnQueue: str
-        :param _SourceServiceId: 来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _SourceServiceId: 来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceId: str
-        :param _SourceServiceType: 来源数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _SourceServiceType: 来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceType: str
-        :param _SourceServiceName: 来源数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _SourceServiceName: 来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceName: str
-        :param _TargetServiceId: 目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _TargetServiceId: 目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceId: str
-        :param _TargetServiceType: 目标数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _TargetServiceType: 目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceType: str
-        :param _TargetServiceName: 目标数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :param _TargetServiceName: 目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceName: str
         :param _ResourceGroup: 资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
@@ -29771,7 +29771,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def SourceServiceId(self):
-        r"""来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29783,7 +29783,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def SourceServiceType(self):
-        r"""来源数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29795,7 +29795,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def SourceServiceName(self):
-        r"""来源数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29807,7 +29807,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def TargetServiceId(self):
-        r"""目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29819,7 +29819,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def TargetServiceType(self):
-        r"""目标数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29831,7 +29831,7 @@ class TaskConfiguration(AbstractModel):
 
     @property
     def TargetServiceName(self):
-        r"""目标数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        r"""目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

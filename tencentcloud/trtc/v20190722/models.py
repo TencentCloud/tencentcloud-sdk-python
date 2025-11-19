@@ -16627,9 +16627,15 @@ class TTSConfig(AbstractModel):
         :type VoiceId: str
         :param _Model: TTS 的模型，默认是：flow_01_turbo, 可选: [ flow_01_turbo, flow_01_ex]
         :type Model: str
+        :param _Speed: 语速，范围 0.5-2.0，默认 1.0
+        :type Speed: float
+        :param _Volume: (0, 10] 默认值1.0
+        :type Volume: float
         """
         self._VoiceId = None
         self._Model = None
+        self._Speed = None
+        self._Volume = None
 
     @property
     def VoiceId(self):
@@ -16653,10 +16659,34 @@ class TTSConfig(AbstractModel):
     def Model(self, Model):
         self._Model = Model
 
+    @property
+    def Speed(self):
+        r"""语速，范围 0.5-2.0，默认 1.0
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""(0, 10] 默认值1.0
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
         self._Model = params.get("Model")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

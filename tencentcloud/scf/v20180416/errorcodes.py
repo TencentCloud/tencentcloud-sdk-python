@@ -119,6 +119,9 @@ FAILEDOPERATION_GETALIAS = 'FailedOperation.GetAlias'
 # 获取函数代码地址失败。
 FAILEDOPERATION_GETFUNCTIONADDRESS = 'FailedOperation.GetFunctionAddress'
 
+# InstanceIsolationEnabled 状态不正确。
+FAILEDOPERATION_INSTANCEISOLATIONENABLED = 'FailedOperation.InstanceIsolationEnabled'
+
 # InstanceNotFound 实例不存在。
 FAILEDOPERATION_INSTANCENOTFOUND = 'FailedOperation.InstanceNotFound'
 
@@ -130,6 +133,9 @@ FAILEDOPERATION_INSUFFICIENTRESOURCES = 'FailedOperation.InsufficientResources'
 
 # 调用函数失败。
 FAILEDOPERATION_INVOKEFUNCTION = 'FailedOperation.InvokeFunction'
+
+# 混合节点配置异常。
+FAILEDOPERATION_MIXNODECONFIG = 'FailedOperation.MixNodeConfig'
 
 # 命名空间已存在，请勿重复创建。
 FAILEDOPERATION_NAMESPACE = 'FailedOperation.Namespace'
@@ -175,6 +181,9 @@ FAILEDOPERATION_RESERVEDINPROGRESS = 'FailedOperation.ReservedInProgress'
 
 # ServiceClosed 请确认后再操作。
 FAILEDOPERATION_SERVICECLOSED = 'FailedOperation.ServiceClosed'
+
+# SessionName参数异常。
+FAILEDOPERATION_SESSIONNAME = 'FailedOperation.SessionName'
 
 # 更新自定义域名失败，SSL异常。
 FAILEDOPERATION_SSL = 'FailedOperation.Ssl'

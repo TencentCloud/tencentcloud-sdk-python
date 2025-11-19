@@ -1603,6 +1603,8 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SpId: 节省计划资源id
+        :type SpId: str
         :param _SpType: 节省计划类型
         :type SpType: str
         :param _PayAmount: 支付金额（单位：元）
@@ -1625,6 +1627,7 @@ class SavingPlanOverviewDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromiseAmount: str
         """
+        self._SpId = None
         self._SpType = None
         self._PayAmount = None
         self._StartTime = None
@@ -1635,6 +1638,17 @@ class SavingPlanOverviewDetail(AbstractModel):
         self._PayType = None
         self._BuyTime = None
         self._PromiseAmount = None
+
+    @property
+    def SpId(self):
+        r"""节省计划资源id
+        :rtype: str
+        """
+        return self._SpId
+
+    @SpId.setter
+    def SpId(self, SpId):
+        self._SpId = SpId
 
     @property
     def SpType(self):
@@ -1749,6 +1763,7 @@ class SavingPlanOverviewDetail(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SpId = params.get("SpId")
         self._SpType = params.get("SpType")
         self._PayAmount = params.get("PayAmount")
         self._StartTime = params.get("StartTime")

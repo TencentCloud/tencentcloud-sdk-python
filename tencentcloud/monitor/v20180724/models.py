@@ -1062,6 +1062,8 @@ class AlarmNotice(AbstractModel):
         :param _Tags: 通知模板绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :type IsLoginFree: int
         """
         self._Id = None
         self._Name = None
@@ -1076,6 +1078,7 @@ class AlarmNotice(AbstractModel):
         self._AMPConsumerId = None
         self._CLSNotices = None
         self._Tags = None
+        self._IsLoginFree = None
 
     @property
     def Id(self):
@@ -1233,6 +1236,17 @@ class AlarmNotice(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsLoginFree(self):
+        r"""是否免登录，0-否，1-是
+        :rtype: int
+        """
+        return self._IsLoginFree
+
+    @IsLoginFree.setter
+    def IsLoginFree(self, IsLoginFree):
+        self._IsLoginFree = IsLoginFree
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1268,6 +1282,7 @@ class AlarmNotice(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsLoginFree = params.get("IsLoginFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3994,6 +4009,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type CLSNotices: list of CLSNotice
         :param _Tags: 模板绑定的标签
         :type Tags: list of Tag
+        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :type IsLoginFree: int
         """
         self._Module = None
         self._Name = None
@@ -4003,6 +4020,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self._URLNotices = None
         self._CLSNotices = None
         self._Tags = None
+        self._IsLoginFree = None
 
     @property
     def Module(self):
@@ -4092,6 +4110,17 @@ class CreateAlarmNoticeRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsLoginFree(self):
+        r"""是否免登录，0-否，1-是
+        :rtype: int
+        """
+        return self._IsLoginFree
+
+    @IsLoginFree.setter
+    def IsLoginFree(self, IsLoginFree):
+        self._IsLoginFree = IsLoginFree
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -4122,6 +4151,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsLoginFree = params.get("IsLoginFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5721,7 +5751,8 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param _VpcId: VPC ID (私有网络 ID)
         :type VpcId: str
-        :param _SubnetIds: 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
+        :param _SubnetIds: 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
+注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
         :type SubnetIds: list of str
         :param _EnableInternet: 是否启用外网
         :type EnableInternet: bool
@@ -5764,7 +5795,8 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网 ID 数组(VPC ID下的子网 ID，只取第一个)
+        r"""子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
+注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
         :rtype: list of str
         """
         return self._SubnetIds
@@ -28677,6 +28709,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type CLSNotices: list of CLSNotice
         :param _PolicyIds: 告警通知模板绑定的告警策略ID列表
         :type PolicyIds: list of str
+        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :type IsLoginFree: int
         """
         self._Module = None
         self._Name = None
@@ -28687,6 +28721,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self._URLNotices = None
         self._CLSNotices = None
         self._PolicyIds = None
+        self._IsLoginFree = None
 
     @property
     def Module(self):
@@ -28787,6 +28822,17 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     def PolicyIds(self, PolicyIds):
         self._PolicyIds = PolicyIds
 
+    @property
+    def IsLoginFree(self):
+        r"""是否免登录，0-否，1-是
+        :rtype: int
+        """
+        return self._IsLoginFree
+
+    @IsLoginFree.setter
+    def IsLoginFree(self, IsLoginFree):
+        self._IsLoginFree = IsLoginFree
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -28813,6 +28859,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._CLSNotices.append(obj)
         self._PolicyIds = params.get("PolicyIds")
+        self._IsLoginFree = params.get("IsLoginFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

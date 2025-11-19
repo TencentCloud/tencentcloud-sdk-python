@@ -6743,6 +6743,22 @@ class CCRuleItems(AbstractModel):
         :type PageId: str
         :param _ActionRatio: 动作灰度比例，默认值100
         :type ActionRatio: int
+        :param _Domains: 批量cc规则配置的批量域名
+        :type Domains: list of str
+        :param _GroupIds: 批量cc规则使用的批量防护组
+        :type GroupIds: list of int non-negative
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 定时任务类型：month or week
+        :type CronType: str
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: int
+        :param _ValidStatus: 是否生效
+        :type ValidStatus: int
+        :param _Source: 来源：批量还是单个规则
+        :type Source: str
         """
         self._Name = None
         self._Status = None
@@ -6765,6 +6781,14 @@ class CCRuleItems(AbstractModel):
         self._LogicalOp = None
         self._PageId = None
         self._ActionRatio = None
+        self._Domains = None
+        self._GroupIds = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._ExpireTime = None
+        self._ValidStatus = None
+        self._Source = None
 
     @property
     def Name(self):
@@ -6997,6 +7021,94 @@ class CCRuleItems(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Domains(self):
+        r"""批量cc规则配置的批量域名
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def GroupIds(self):
+        r"""批量cc规则使用的批量防护组
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def JobType(self):
+        r"""定时任务类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        r"""定时任务类型：month or week
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ValidStatus(self):
+        r"""是否生效
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+    @property
+    def Source(self):
+        r"""来源：批量还是单个规则
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7020,6 +7132,16 @@ class CCRuleItems(AbstractModel):
         self._LogicalOp = params.get("LogicalOp")
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
+        self._Domains = params.get("Domains")
+        self._GroupIds = params.get("GroupIds")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ValidStatus = params.get("ValidStatus")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7041,9 +7163,15 @@ class CCRuleLists(AbstractModel):
         :type TotalCount: int
         :param _Res: 规则
         :type Res: list of CCRuleItems
+        :param _Limit: 规则限制总数
+        :type Limit: int
+        :param _Available: 规则剩余多少可用
+        :type Available: int
         """
         self._TotalCount = None
         self._Res = None
+        self._Limit = None
+        self._Available = None
 
     @property
     def TotalCount(self):
@@ -7067,6 +7195,28 @@ class CCRuleLists(AbstractModel):
     def Res(self, Res):
         self._Res = Res
 
+    @property
+    def Limit(self):
+        r"""规则限制总数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Available(self):
+        r"""规则剩余多少可用
+        :rtype: int
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -7076,6 +7226,8 @@ class CCRuleLists(AbstractModel):
                 obj = CCRuleItems()
                 obj._deserialize(item)
                 self._Res.append(obj)
+        self._Limit = params.get("Limit")
+        self._Available = params.get("Available")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9792,6 +9944,8 @@ class CreateOwaspWhiteRuleRequest(AbstractModel):
         :type ExpireTime: int
         :param _Status: 规则状态，0：关闭、1：开启，默认为开启
         :type Status: int
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._Name = None
         self._Domain = None
@@ -9802,6 +9956,7 @@ class CreateOwaspWhiteRuleRequest(AbstractModel):
         self._JobDateTime = None
         self._ExpireTime = None
         self._Status = None
+        self._LogicalOp = None
 
     @property
     def Name(self):
@@ -9902,6 +10057,17 @@ class CreateOwaspWhiteRuleRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9920,6 +10086,7 @@ class CreateOwaspWhiteRuleRequest(AbstractModel):
             self._JobDateTime._deserialize(params.get("JobDateTime"))
         self._ExpireTime = params.get("ExpireTime")
         self._Status = params.get("Status")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24674,7 +24841,21 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
         :type LoadBalancerSet: list of LoadBalancerPackageNew
         :param _AppId: 用户id
         :type AppId: int
-        :param _State: 负载均衡型WAF域名LB监听器状态。
+        :param _State: SAAS型WAF域名状态：
+-2：配置下发失败
+-1：配置下发中
+0：DNS解析中
+1：无DNS解析记录，请接入WAF
+10：DNS解析未知，域名启用了代理
+11：DNS解析异常，使用A记录接入WAF IP
+200：检测源站不可达
+220：源站不支持长连接
+311：证书过期
+312：证书即将过期
+310：证书异常
+316：备案异常
+5：WAF回源已变更
+负载均衡型WAF域名LB监听器状态：
 0：操作成功 
 4：正在绑定LB 
 6：正在解绑LB 
@@ -25016,7 +25197,21 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def State(self):
-        r"""负载均衡型WAF域名LB监听器状态。
+        r"""SAAS型WAF域名状态：
+-2：配置下发失败
+-1：配置下发中
+0：DNS解析中
+1：无DNS解析记录，请接入WAF
+10：DNS解析未知，域名启用了代理
+11：DNS解析异常，使用A记录接入WAF IP
+200：检测源站不可达
+220：源站不支持长连接
+311：证书过期
+312：证书即将过期
+310：证书异常
+316：备案异常
+5：WAF回源已变更
+负载均衡型WAF域名LB监听器状态：
 0：操作成功 
 4：正在绑定LB 
 6：正在解绑LB 
@@ -25691,6 +25886,28 @@ https：使用https协议回源
         :type UseCase: int
         :param _Gzip: gzip开关。0：关闭 1：默认值，打开。
         :type Gzip: int
+        :param _State: SAAS型WAF域名状态：
+-2：配置下发失败
+-1：配置下发中
+0：DNS解析中
+1：无DNS解析记录，请接入WAF
+10：DNS解析未知，域名启用了代理
+11：DNS解析异常，使用A记录接入WAF IP
+200：检测源站不可达
+220：源站不支持长连接
+311：证书过期
+312：证书即将过期
+310：证书异常
+316：备案异常
+5：WAF回源已变更
+负载均衡型WAF域名LB监听器状态：
+0：操作成功 
+4：正在绑定LB 
+6：正在解绑LB 
+7：解绑LB失败 
+8：绑定LB失败 
+10：内部错误
+        :type State: int
         """
         self._Domain = None
         self._DomainId = None
@@ -25748,6 +25965,7 @@ https：使用https协议回源
         self._UpstreamRules = None
         self._UseCase = None
         self._Gzip = None
+        self._State = None
 
     @property
     def Domain(self):
@@ -26416,6 +26634,37 @@ https：使用https协议回源
     def Gzip(self, Gzip):
         self._Gzip = Gzip
 
+    @property
+    def State(self):
+        r"""SAAS型WAF域名状态：
+-2：配置下发失败
+-1：配置下发中
+0：DNS解析中
+1：无DNS解析记录，请接入WAF
+10：DNS解析未知，域名启用了代理
+11：DNS解析异常，使用A记录接入WAF IP
+200：检测源站不可达
+220：源站不支持长连接
+311：证书过期
+312：证书即将过期
+310：证书异常
+316：备案异常
+5：WAF回源已变更
+负载均衡型WAF域名LB监听器状态：
+0：操作成功 
+4：正在绑定LB 
+6：正在解绑LB 
+7：解绑LB失败 
+8：绑定LB失败 
+10：内部错误
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -26484,6 +26733,7 @@ https：使用https协议回源
                 self._UpstreamRules.append(obj)
         self._UseCase = params.get("UseCase")
         self._Gzip = params.get("Gzip")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30677,6 +30927,10 @@ class InstanceInfo(AbstractModel):
         :type LLMPkg: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
         :param _ElasticResourceId: 弹性资源Id
         :type ElasticResourceId: str
+        :param _LLMMonPkg: 预付费大模型安全信息包
+        :type LLMMonPkg: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
+        :param _RegionId: 地域id
+        :type RegionId: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -30728,6 +30982,8 @@ class InstanceInfo(AbstractModel):
         self._ExceedPolicy = None
         self._LLMPkg = None
         self._ElasticResourceId = None
+        self._LLMMonPkg = None
+        self._RegionId = None
 
     @property
     def InstanceId(self):
@@ -31290,6 +31546,28 @@ class InstanceInfo(AbstractModel):
     def ElasticResourceId(self, ElasticResourceId):
         self._ElasticResourceId = ElasticResourceId
 
+    @property
+    def LLMMonPkg(self):
+        r"""预付费大模型安全信息包
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
+        """
+        return self._LLMMonPkg
+
+    @LLMMonPkg.setter
+    def LLMMonPkg(self, LLMMonPkg):
+        self._LLMMonPkg = LLMMonPkg
+
+    @property
+    def RegionId(self):
+        r"""地域id
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -31370,6 +31648,10 @@ class InstanceInfo(AbstractModel):
             self._LLMPkg = LLMPkg()
             self._LLMPkg._deserialize(params.get("LLMPkg"))
         self._ElasticResourceId = params.get("ElasticResourceId")
+        if params.get("LLMMonPkg") is not None:
+            self._LLMMonPkg = LLMMonPkg()
+            self._LLMMonPkg._deserialize(params.get("LLMMonPkg"))
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32092,6 +32374,164 @@ class KVInt(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMMonPkg(AbstractModel):
+    r"""有效预付费大模型安全包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireKey: 计费项
+        :type InquireKey: str
+        :param _RenewFlag: 预付费大模型安全续费标识
+0 手动续费；1自动续费；2 到期不续
+        :type RenewFlag: int
+        :param _UseToken: 大模型安全Token使用量
+        :type UseToken: int
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireKey = None
+        self._RenewFlag = None
+        self._UseToken = None
+        self._InstanceId = None
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireKey(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._InquireKey
+
+    @InquireKey.setter
+    def InquireKey(self, InquireKey):
+        self._InquireKey = InquireKey
+
+    @property
+    def RenewFlag(self):
+        r"""预付费大模型安全续费标识
+0 手动续费；1自动续费；2 到期不续
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def UseToken(self):
+        r"""大模型安全Token使用量
+        :rtype: int
+        """
+        return self._UseToken
+
+    @UseToken.setter
+    def UseToken(self, UseToken):
+        self._UseToken = UseToken
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireKey = params.get("InquireKey")
+        self._RenewFlag = params.get("RenewFlag")
+        self._UseToken = params.get("UseToken")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38813,6 +39253,8 @@ class ModifyOwaspWhiteRuleRequest(AbstractModel):
         :type ExpireTime: int
         :param _Status: 规则状态，0：关闭、1：开启，默认为开启
         :type Status: int
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._RuleId = None
         self._Name = None
@@ -38824,6 +39266,7 @@ class ModifyOwaspWhiteRuleRequest(AbstractModel):
         self._JobDateTime = None
         self._ExpireTime = None
         self._Status = None
+        self._LogicalOp = None
 
     @property
     def RuleId(self):
@@ -38935,6 +39378,17 @@ class ModifyOwaspWhiteRuleRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -38954,6 +39408,7 @@ class ModifyOwaspWhiteRuleRequest(AbstractModel):
             self._JobDateTime._deserialize(params.get("JobDateTime"))
         self._ExpireTime = params.get("ExpireTime")
         self._Status = params.get("Status")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41304,6 +41759,8 @@ class OwaspWhiteRule(AbstractModel):
         :type CronType: str
         :param _ValidStatus: 当前是否有效
         :type ValidStatus: bool
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._RuleId = None
         self._Name = None
@@ -41317,6 +41774,7 @@ class OwaspWhiteRule(AbstractModel):
         self._JobDateTime = None
         self._CronType = None
         self._ValidStatus = None
+        self._LogicalOp = None
 
     @property
     def RuleId(self):
@@ -41450,6 +41908,17 @@ class OwaspWhiteRule(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -41471,6 +41940,7 @@ class OwaspWhiteRule(AbstractModel):
             self._JobDateTime._deserialize(params.get("JobDateTime"))
         self._CronType = params.get("CronType")
         self._ValidStatus = params.get("ValidStatus")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47192,6 +47662,8 @@ class UpsertCCRuleRequest(AbstractModel):
         :type PageId: str
         :param _ActionRatio: 动作灰度比例，默认值100
         :type ActionRatio: int
+        :param _Source: 规则来源
+        :type Source: str
         """
         self._Domain = None
         self._Name = None
@@ -47217,6 +47689,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._LogicalOp = None
         self._PageId = None
         self._ActionRatio = None
+        self._Source = None
 
     @property
     def Domain(self):
@@ -47482,6 +47955,17 @@ class UpsertCCRuleRequest(AbstractModel):
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
 
+    @property
+    def Source(self):
+        r"""规则来源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -47508,6 +47992,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._LogicalOp = params.get("LogicalOp")
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49037,6 +49522,10 @@ class WafRuleLimit(AbstractModel):
         :type ClientMsg: int
         :param _TrafficMarking: 流量标记的规格
         :type TrafficMarking: int
+        :param _BatchCC: 批量cc
+        :type BatchCC: int
+        :param _BatchSession: 批量session
+        :type BatchSession: int
         """
         self._CC = None
         self._CustomRule = None
@@ -49051,6 +49540,8 @@ class WafRuleLimit(AbstractModel):
         self._ApiSecurity = None
         self._ClientMsg = None
         self._TrafficMarking = None
+        self._BatchCC = None
+        self._BatchSession = None
 
     @property
     def CC(self):
@@ -49195,6 +49686,28 @@ class WafRuleLimit(AbstractModel):
     def TrafficMarking(self, TrafficMarking):
         self._TrafficMarking = TrafficMarking
 
+    @property
+    def BatchCC(self):
+        r"""批量cc
+        :rtype: int
+        """
+        return self._BatchCC
+
+    @BatchCC.setter
+    def BatchCC(self, BatchCC):
+        self._BatchCC = BatchCC
+
+    @property
+    def BatchSession(self):
+        r"""批量session
+        :rtype: int
+        """
+        return self._BatchSession
+
+    @BatchSession.setter
+    def BatchSession(self, BatchSession):
+        self._BatchSession = BatchSession
+
 
     def _deserialize(self, params):
         self._CC = params.get("CC")
@@ -49210,6 +49723,8 @@ class WafRuleLimit(AbstractModel):
         self._ApiSecurity = params.get("ApiSecurity")
         self._ClientMsg = params.get("ClientMsg")
         self._TrafficMarking = params.get("TrafficMarking")
+        self._BatchCC = params.get("BatchCC")
+        self._BatchSession = params.get("BatchSession")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

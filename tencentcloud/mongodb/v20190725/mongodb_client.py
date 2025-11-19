@@ -72,6 +72,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuditLogFile(self, request):
+        r"""本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditLogFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBackupDBInstance(self, request):
         r"""本接口（CreateBackupDBInstance）用于备份实例。
 
@@ -234,6 +257,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAuditLogFile(self, request):
+        r"""本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditLogFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLogDownloadTask(self, request):
         r"""删除日志下载任务
 
@@ -294,6 +340,29 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeAsyncRequestInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAsyncRequestInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        r"""本接口（DescribeAuditInstanceList）用于查询开通或未开通数据库审计的实例列表。
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -997,6 +1066,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAuditService(self, request):
+        r"""本接口(ModifyAuditService)用于修改云数据库审计策略的服务配置，包括审计日志保存时长等。
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceNetworkAddress(self, request):
         r"""本接口（ModifyDBInstanceNetworkAddress）用于修改云数据库实例的网络信息，支持基础网络切换为私有网络、私有网络切换私有网络。
 
@@ -1127,6 +1219,29 @@ class MongodbClient(AbstractClient):
             body = self.call("OfflineIsolatedDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.OfflineIsolatedDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenAuditService(self, request):
+        r"""本接口(OpenAuditService)用于开通云数据库实例的审计。
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

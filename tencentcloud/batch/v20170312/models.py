@@ -5746,10 +5746,13 @@ class InputMapping(AbstractModel):
         :type DestinationPath: str
         :param _MountOptionParameter: 挂载配置项参数
         :type MountOptionParameter: str
+        :param _MountType: 挂载COS存储时支持的挂载工具；当前可选值：COSFS、GooseFS-Lite。
+        :type MountType: str
         """
         self._SourcePath = None
         self._DestinationPath = None
         self._MountOptionParameter = None
+        self._MountType = None
 
     @property
     def SourcePath(self):
@@ -5784,11 +5787,23 @@ class InputMapping(AbstractModel):
     def MountOptionParameter(self, MountOptionParameter):
         self._MountOptionParameter = MountOptionParameter
 
+    @property
+    def MountType(self):
+        r"""挂载COS存储时支持的挂载工具；当前可选值：COSFS、GooseFS-Lite。
+        :rtype: str
+        """
+        return self._MountType
+
+    @MountType.setter
+    def MountType(self, MountType):
+        self._MountType = MountType
+
 
     def _deserialize(self, params):
         self._SourcePath = params.get("SourcePath")
         self._DestinationPath = params.get("DestinationPath")
         self._MountOptionParameter = params.get("MountOptionParameter")
+        self._MountType = params.get("MountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

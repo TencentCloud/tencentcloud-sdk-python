@@ -6986,7 +6986,9 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         r"""
         :param _ResourceType: 资源类型，取值有：
 <ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li></ul>
+<li> **2**：文件（默认值）</li>
+<li> **3**：草稿</li>
+</ul>
         :type ResourceType: int
         :param _FlowInfo: 要创建的合同信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
@@ -7004,6 +7006,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 </ul>
 注意：需要同时设置 ResourceType 参数指定资源类型
         :type ResourceId: str
@@ -7042,7 +7045,9 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     def ResourceType(self):
         r"""资源类型，取值有：
 <ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li></ul>
+<li> **2**：文件（默认值）</li>
+<li> **3**：草稿</li>
+</ul>
         :rtype: int
         """
         return self._ResourceType
@@ -7087,6 +7092,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+<li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 </ul>
 注意：需要同时设置 ResourceType 参数指定资源类型
         :rtype: str
@@ -7251,12 +7257,15 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         :type PreviewFlowUrl: str
         :param _FlowId: 发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
         :type FlowId: str
+        :param _DraftId: 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        :type DraftId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PrepareFlowUrl = None
         self._PreviewFlowUrl = None
         self._FlowId = None
+        self._DraftId = None
         self._RequestId = None
 
     @property
@@ -7293,6 +7302,17 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         self._FlowId = FlowId
 
     @property
+    def DraftId(self):
+        r"""临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+        :rtype: str
+        """
+        return self._DraftId
+
+    @DraftId.setter
+    def DraftId(self, DraftId):
+        self._DraftId = DraftId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7308,6 +7328,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         self._PrepareFlowUrl = params.get("PrepareFlowUrl")
         self._PreviewFlowUrl = params.get("PreviewFlowUrl")
         self._FlowId = params.get("FlowId")
+        self._DraftId = params.get("DraftId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15259,6 +15280,13 @@ p.s.
 p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
         :type JumpEvents: list of JumpEvent
+        :param _ProxyOrganizationIdCardType: 企业证照类型：
+<ul>
+<li> **USCC** :(默认)工商组织营业执照</li>
+<li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li>
+</ul>
+
+        :type ProxyOrganizationIdCardType: str
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -15283,6 +15311,7 @@ p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </
         self._BankAccountNumber = None
         self._Operator = None
         self._JumpEvents = None
+        self._ProxyOrganizationIdCardType = None
 
     @property
     def Agent(self):
@@ -15611,6 +15640,22 @@ p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </
     def JumpEvents(self, JumpEvents):
         self._JumpEvents = JumpEvents
 
+    @property
+    def ProxyOrganizationIdCardType(self):
+        r"""企业证照类型：
+<ul>
+<li> **USCC** :(默认)工商组织营业执照</li>
+<li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li>
+</ul>
+
+        :rtype: str
+        """
+        return self._ProxyOrganizationIdCardType
+
+    @ProxyOrganizationIdCardType.setter
+    def ProxyOrganizationIdCardType(self, ProxyOrganizationIdCardType):
+        self._ProxyOrganizationIdCardType = ProxyOrganizationIdCardType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -15647,6 +15692,7 @@ p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </
                 obj = JumpEvent()
                 obj._deserialize(item)
                 self._JumpEvents.append(obj)
+        self._ProxyOrganizationIdCardType = params.get("ProxyOrganizationIdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16531,6 +16577,8 @@ class CreateFlowOption(AbstractModel):
         :type SelfName: str
         :param _HideSignCodeAfterStart: 发起后签署码隐藏，默认false，注：仅对新版页面生效
         :type HideSignCodeAfterStart: bool
+        :param _NeedFlowDraft: 发起过程中是否保存草稿	
+        :type NeedFlowDraft: bool
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -16548,6 +16596,7 @@ class CreateFlowOption(AbstractModel):
         self._HideOperationSteps = None
         self._SelfName = None
         self._HideSignCodeAfterStart = None
+        self._NeedFlowDraft = None
 
     @property
     def CanEditFlow(self):
@@ -16758,6 +16807,17 @@ class CreateFlowOption(AbstractModel):
     def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
         self._HideSignCodeAfterStart = HideSignCodeAfterStart
 
+    @property
+    def NeedFlowDraft(self):
+        r"""发起过程中是否保存草稿	
+        :rtype: bool
+        """
+        return self._NeedFlowDraft
+
+    @NeedFlowDraft.setter
+    def NeedFlowDraft(self, NeedFlowDraft):
+        self._NeedFlowDraft = NeedFlowDraft
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -16778,6 +16838,7 @@ class CreateFlowOption(AbstractModel):
         self._HideOperationSteps = params.get("HideOperationSteps")
         self._SelfName = params.get("SelfName")
         self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
+        self._NeedFlowDraft = params.get("NeedFlowDraft")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21612,7 +21673,10 @@ class DynamicFlowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+        :param _FlowId: 合同流程ID，为32位字符串。 
+- FlowId 在通过[ChannelCreateFlowByFiles](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles) 发起，可以在返回参数FlowId中获取。
+- 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 
+- 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :type FlowId: str
         :param _FlowApprovers: 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
         :type FlowApprovers: list of FlowApproverInfo
@@ -21628,7 +21692,10 @@ class DynamicFlowInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+        r"""合同流程ID，为32位字符串。 
+- FlowId 在通过[ChannelCreateFlowByFiles](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles) 发起，可以在返回参数FlowId中获取。
+- 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 
+- 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :rtype: str
         """
         return self._FlowId

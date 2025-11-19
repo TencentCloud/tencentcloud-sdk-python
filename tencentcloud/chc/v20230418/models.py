@@ -1422,6 +1422,16 @@ class CreateQuitWorkOrderRequest(AbstractModel):
         :type LogisticsReceipt: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
         :param _CustomerReceipt: 客户上门自提必传
         :type CustomerReceipt: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
+        :param _Building: 楼宇名
+        :type Building: str
+        :param _IdcUnitId: 机房管理单元id
+        :type IdcUnitId: str
+        :param _Isp: 运营商
+        :type Isp: str
+        :param _EmailSet: 放行邮件目的邮箱
+        :type EmailSet: list of str
+        :param _FactorSet: 到访原因
+        :type FactorSet: list of str
         """
         self._IdcId = None
         self._DeviceType = None
@@ -1434,6 +1444,11 @@ class CreateQuitWorkOrderRequest(AbstractModel):
         self._Remark = None
         self._LogisticsReceipt = None
         self._CustomerReceipt = None
+        self._Building = None
+        self._IdcUnitId = None
+        self._Isp = None
+        self._EmailSet = None
+        self._FactorSet = None
 
     @property
     def IdcId(self):
@@ -1556,6 +1571,61 @@ class CreateQuitWorkOrderRequest(AbstractModel):
     def CustomerReceipt(self, CustomerReceipt):
         self._CustomerReceipt = CustomerReceipt
 
+    @property
+    def Building(self):
+        r"""楼宇名
+        :rtype: str
+        """
+        return self._Building
+
+    @Building.setter
+    def Building(self, Building):
+        self._Building = Building
+
+    @property
+    def IdcUnitId(self):
+        r"""机房管理单元id
+        :rtype: str
+        """
+        return self._IdcUnitId
+
+    @IdcUnitId.setter
+    def IdcUnitId(self, IdcUnitId):
+        self._IdcUnitId = IdcUnitId
+
+    @property
+    def Isp(self):
+        r"""运营商
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def EmailSet(self):
+        r"""放行邮件目的邮箱
+        :rtype: list of str
+        """
+        return self._EmailSet
+
+    @EmailSet.setter
+    def EmailSet(self, EmailSet):
+        self._EmailSet = EmailSet
+
+    @property
+    def FactorSet(self):
+        r"""到访原因
+        :rtype: list of str
+        """
+        return self._FactorSet
+
+    @FactorSet.setter
+    def FactorSet(self, FactorSet):
+        self._FactorSet = FactorSet
+
 
     def _deserialize(self, params):
         self._IdcId = params.get("IdcId")
@@ -1577,6 +1647,11 @@ class CreateQuitWorkOrderRequest(AbstractModel):
         if params.get("CustomerReceipt") is not None:
             self._CustomerReceipt = CustomerReceipt()
             self._CustomerReceipt._deserialize(params.get("CustomerReceipt"))
+        self._Building = params.get("Building")
+        self._IdcUnitId = params.get("IdcUnitId")
+        self._Isp = params.get("Isp")
+        self._EmailSet = params.get("EmailSet")
+        self._FactorSet = params.get("FactorSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2688,7 +2763,7 @@ class CustomerReceipt(AbstractModel):
         :type PickUpStuff: str
         :param _PickUpStuffContact: 自提人电话
         :type PickUpStuffContact: str
-        :param _PickUpStuffIDCard: 自提人证件号码
+        :param _PickUpStuffIDCard: 到访人证件号码
         :type PickUpStuffIDCard: str
         :param _PickUpTime: 自提时间
         :type PickUpTime: str
@@ -2730,7 +2805,7 @@ OTHER: 其他
 
     @property
     def PickUpStuffIDCard(self):
-        r"""自提人证件号码
+        r"""到访人证件号码
         :rtype: str
         """
         return self._PickUpStuffIDCard
@@ -6302,6 +6377,12 @@ class DeviceOrderBaseInfo(AbstractModel):
         :type CustomerReceipt: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
         :param _LogisticsReceipt: 物流上门收货信息
         :type LogisticsReceipt: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
+        :param _Building: 涉及物资放行时的楼宇
+        :type Building: str
+        :param _EmailSet: 物资放行抄送邮箱
+        :type EmailSet: list of str
+        :param _FactorSet: 物资放行到访原因
+        :type FactorSet: list of str
         """
         self._IdcId = None
         self._IdcName = None
@@ -6319,6 +6400,9 @@ class DeviceOrderBaseInfo(AbstractModel):
         self._HandoverMethod = None
         self._CustomerReceipt = None
         self._LogisticsReceipt = None
+        self._Building = None
+        self._EmailSet = None
+        self._FactorSet = None
 
     @property
     def IdcId(self):
@@ -6496,6 +6580,39 @@ class DeviceOrderBaseInfo(AbstractModel):
     def LogisticsReceipt(self, LogisticsReceipt):
         self._LogisticsReceipt = LogisticsReceipt
 
+    @property
+    def Building(self):
+        r"""涉及物资放行时的楼宇
+        :rtype: str
+        """
+        return self._Building
+
+    @Building.setter
+    def Building(self, Building):
+        self._Building = Building
+
+    @property
+    def EmailSet(self):
+        r"""物资放行抄送邮箱
+        :rtype: list of str
+        """
+        return self._EmailSet
+
+    @EmailSet.setter
+    def EmailSet(self, EmailSet):
+        self._EmailSet = EmailSet
+
+    @property
+    def FactorSet(self):
+        r"""物资放行到访原因
+        :rtype: list of str
+        """
+        return self._FactorSet
+
+    @FactorSet.setter
+    def FactorSet(self, FactorSet):
+        self._FactorSet = FactorSet
+
 
     def _deserialize(self, params):
         self._IdcId = params.get("IdcId")
@@ -6524,6 +6641,9 @@ class DeviceOrderBaseInfo(AbstractModel):
         if params.get("LogisticsReceipt") is not None:
             self._LogisticsReceipt = LogisticsReceipt()
             self._LogisticsReceipt._deserialize(params.get("LogisticsReceipt"))
+        self._Building = params.get("Building")
+        self._EmailSet = params.get("EmailSet")
+        self._FactorSet = params.get("FactorSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

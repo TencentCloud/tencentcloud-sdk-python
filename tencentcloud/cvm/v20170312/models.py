@@ -2106,7 +2106,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
         :type CvmQuotaTotal: int
         :param _CurrentNum: 置放群组内已有的云服务器数量。
         :type CurrentNum: int
-        :param _CreateTime: 置放群组创建时间。
+        :param _CreateTime: 分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2176,7 +2176,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""置放群组创建时间。
+        r"""分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreateTime
@@ -5252,7 +5252,7 @@ class DescribeHostsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: <li><strong>zone</strong></li>
-<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
 <li><strong>project-id</strong></li>
 <p style="padding-left: 30px;">按照【<strong>项目ID</strong>】进行过滤，可通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725)查询已创建的项目列表或登录[控制台](https://console.cloud.tencent.com/cvm/index)进行查看；也可以调用[AddProject](https://cloud.tencent.com/document/api/651/81952)创建新的项目。项目ID形如：1002189。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>host-id</strong></li>
@@ -5278,7 +5278,7 @@ class DescribeHostsRequest(AbstractModel):
     @property
     def Filters(self):
         r"""<li><strong>zone</strong></li>
-<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
 <li><strong>project-id</strong></li>
 <p style="padding-left: 30px;">按照【<strong>项目ID</strong>】进行过滤，可通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725)查询已创建的项目列表或登录[控制台](https://console.cloud.tencent.com/cvm/index)进行查看；也可以调用[AddProject](https://cloud.tencent.com/document/api/651/81952)创建新的项目。项目ID形如：1002189。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>host-id</strong></li>
@@ -5859,7 +5859,7 @@ class DescribeImagesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。
         :type Limit: int
-        :param _InstanceType: 实例类型，如 `S1.SMALL1`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
+        :param _InstanceType: 实例类型，如 `SA5.MEDIUM2`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
         :type InstanceType: str
         """
         self._ImageIds = None
@@ -5914,7 +5914,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，如 `S1.SMALL1`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
+        r"""实例类型，如 `SA5.MEDIUM2`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
         :rtype: str
         """
         return self._InstanceType
@@ -7229,7 +7229,7 @@ class DescribeKeyPairsRequest(AbstractModel):
         :param _KeyIds: 密钥对ID，密钥对ID形如：`skey-11112222`（此接口支持同时传入多个ID进行过滤。此参数的具体格式可参考 API [简介](https://cloud.tencent.com/document/api/213/15688)的 `id.N` 一节）。参数不支持同时指定 `KeyIds` 和 `Filters`。密钥对ID可以通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询。
         :type KeyIds: list of str
         :param _Filters: 过滤条件。
-<li> project-id - Integer - 是否必填：否 -（过滤条件）按照项目ID过滤。可以通过[项目列表](https://console.cloud.tencent.com/project)查询项目ID，或者调用接口 [DescribeProject](https://cloud.tencent.com/document/api/378/4400)，取返回信息中的projectId获取项目ID。</li>
+<li> project-id - Integer - 是否必填：否 -（过滤条件）按照项目ID过滤。可以通过[项目列表](https://console.cloud.tencent.com/project)查询项目ID，或者调用接口 [DescribeProjects](https://cloud.tencent.com/document/api/651/78725)，取返回信息中的projectId获取项目ID。</li>
 <li> key-name - String - 是否必填：否 -（过滤条件）按照密钥对名称过滤。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值过滤。</li>
@@ -7260,7 +7260,7 @@ class DescribeKeyPairsRequest(AbstractModel):
     @property
     def Filters(self):
         r"""过滤条件。
-<li> project-id - Integer - 是否必填：否 -（过滤条件）按照项目ID过滤。可以通过[项目列表](https://console.cloud.tencent.com/project)查询项目ID，或者调用接口 [DescribeProject](https://cloud.tencent.com/document/api/378/4400)，取返回信息中的projectId获取项目ID。</li>
+<li> project-id - Integer - 是否必填：否 -（过滤条件）按照项目ID过滤。可以通过[项目列表](https://console.cloud.tencent.com/project)查询项目ID，或者调用接口 [DescribeProjects](https://cloud.tencent.com/document/api/651/78725)，取返回信息中的projectId获取项目ID。</li>
 <li> key-name - String - 是否必填：否 -（过滤条件）按照密钥对名称过滤。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值过滤。</li>
@@ -7393,13 +7393,13 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
         :type LaunchTemplateVersions: list of int non-negative
         :param _MinVersion: 通过范围指定版本时的最小版本号，默认为0。
         :type MinVersion: int
-        :param _MaxVersion: 过范围指定版本时的最大版本号，默认为30。
+        :param _MaxVersion: 通过范围指定版本时的最大版本号，默认为30。
         :type MaxVersion: int
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param _DefaultVersion: 是否查询默认版本。该参数不可与LaunchTemplateVersions同时指定。
+        :param _DefaultVersion: 是否查询默认版本。默认值：false
         :type DefaultVersion: bool
         """
         self._LaunchTemplateId = None
@@ -7445,7 +7445,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def MaxVersion(self):
-        r"""过范围指定版本时的最大版本号，默认为30。
+        r"""通过范围指定版本时的最大版本号，默认为30。
         :rtype: int
         """
         return self._MaxVersion
@@ -7478,7 +7478,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def DefaultVersion(self):
-        r"""是否查询默认版本。该参数不可与LaunchTemplateVersions同时指定。
+        r"""是否查询默认版本。默认值：false
         :rtype: bool
         """
         return self._DefaultVersion
@@ -9732,7 +9732,8 @@ class HostResource(AbstractModel):
         :type GpuTotal: int
         :param _GpuAvailable: 专用宿主机实例可用GPU卡数
         :type GpuAvailable: int
-        :param _ExclusiveOwner: CDH owner
+        :param _ExclusiveOwner: CDH 拥有者
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveOwner: str
         """
         self._CpuTotal = None
@@ -9847,7 +9848,8 @@ class HostResource(AbstractModel):
 
     @property
     def ExclusiveOwner(self):
-        r"""CDH owner
+        r"""CDH 拥有者
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExclusiveOwner
@@ -19414,7 +19416,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
+        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
         :type InstanceIds: list of str
         :param _InternetAccessible: 公网出带宽配置。不同机型带宽上限范围不一致，具体限制详见带宽限制对账表。暂时只支持 `InternetMaxBandwidthOut` 参数。
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
@@ -19430,7 +19432,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
+        r"""一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
         :rtype: list of str
         """
         return self._InstanceIds

@@ -2698,6 +2698,8 @@ class AgentToolInfo(AbstractModel):
         :type Query: list of AgentPluginQuery
         :param _FinanceStatus: 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
         :type FinanceStatus: int
+        :param _ToolSource: 工具来源: 0-来自插件，1-来自工作流
+        :type ToolSource: int
         """
         self._PluginId = None
         self._PluginName = None
@@ -2716,6 +2718,7 @@ class AgentToolInfo(AbstractModel):
         self._CallingMethod = None
         self._Query = None
         self._FinanceStatus = None
+        self._ToolSource = None
 
     @property
     def PluginId(self):
@@ -2907,6 +2910,17 @@ class AgentToolInfo(AbstractModel):
     def FinanceStatus(self, FinanceStatus):
         self._FinanceStatus = FinanceStatus
 
+    @property
+    def ToolSource(self):
+        r"""工具来源: 0-来自插件，1-来自工作流
+        :rtype: int
+        """
+        return self._ToolSource
+
+    @ToolSource.setter
+    def ToolSource(self, ToolSource):
+        self._ToolSource = ToolSource
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -2948,6 +2962,7 @@ class AgentToolInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Query.append(obj)
         self._FinanceStatus = params.get("FinanceStatus")
+        self._ToolSource = params.get("ToolSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4932,6 +4947,9 @@ class CateInfo(AbstractModel):
         :param _Children: 子分类
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of CateInfo
+        :param _IsLeaf: 是否为叶子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLeaf: bool
         """
         self._CateBizId = None
         self._Name = None
@@ -4940,6 +4958,7 @@ class CateInfo(AbstractModel):
         self._CanEdit = None
         self._CanDelete = None
         self._Children = None
+        self._IsLeaf = None
 
     @property
     def CateBizId(self):
@@ -5029,6 +5048,18 @@ class CateInfo(AbstractModel):
     def Children(self, Children):
         self._Children = Children
 
+    @property
+    def IsLeaf(self):
+        r"""是否为叶子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLeaf
+
+    @IsLeaf.setter
+    def IsLeaf(self, IsLeaf):
+        self._IsLeaf = IsLeaf
+
 
     def _deserialize(self, params):
         self._CateBizId = params.get("CateBizId")
@@ -5043,6 +5074,7 @@ class CateInfo(AbstractModel):
                 obj = CateInfo()
                 obj._deserialize(item)
                 self._Children.append(obj)
+        self._IsLeaf = params.get("IsLeaf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19815,8 +19847,23 @@ class ListDocCateRequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID
         :type BotBizId: str
+        :param _QueryType: 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+        :type QueryType: int
+        :param _ParentCateBizId: QueryType=1时，父节点分类ID
+        :type ParentCateBizId: str
+        :param _PageNumber: QueryType=1时，页码（从1开始）
+        :type PageNumber: int
+        :param _PageSize: 每页数量（默认10）
+        :type PageSize: int
+        :param _Query: QueryType=2时，搜索内容
+        :type Query: str
         """
         self._BotBizId = None
+        self._QueryType = None
+        self._ParentCateBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
 
     @property
     def BotBizId(self):
@@ -19829,9 +19876,69 @@ class ListDocCateRequest(AbstractModel):
     def BotBizId(self, BotBizId):
         self._BotBizId = BotBizId
 
+    @property
+    def QueryType(self):
+        r"""分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+        :rtype: int
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def ParentCateBizId(self):
+        r"""QueryType=1时，父节点分类ID
+        :rtype: str
+        """
+        return self._ParentCateBizId
+
+    @ParentCateBizId.setter
+    def ParentCateBizId(self, ParentCateBizId):
+        self._ParentCateBizId = ParentCateBizId
+
+    @property
+    def PageNumber(self):
+        r"""QueryType=1时，页码（从1开始）
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数量（默认10）
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""QueryType=2时，搜索内容
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
+        self._QueryType = params.get("QueryType")
+        self._ParentCateBizId = params.get("ParentCateBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20914,8 +21021,23 @@ class ListQACateRequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID
         :type BotBizId: str
+        :param _QueryType: 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+        :type QueryType: int
+        :param _ParentCateBizId: QueryType=1时，父节点分类ID
+        :type ParentCateBizId: str
+        :param _PageNumber: QueryType=1时，页码（从1开始）
+        :type PageNumber: int
+        :param _PageSize: 每页数量（默认10）
+        :type PageSize: int
+        :param _Query: QueryType=2时，搜索内容
+        :type Query: str
         """
         self._BotBizId = None
+        self._QueryType = None
+        self._ParentCateBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
 
     @property
     def BotBizId(self):
@@ -20928,9 +21050,69 @@ class ListQACateRequest(AbstractModel):
     def BotBizId(self, BotBizId):
         self._BotBizId = BotBizId
 
+    @property
+    def QueryType(self):
+        r"""分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+        :rtype: int
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def ParentCateBizId(self):
+        r"""QueryType=1时，父节点分类ID
+        :rtype: str
+        """
+        return self._ParentCateBizId
+
+    @ParentCateBizId.setter
+    def ParentCateBizId(self, ParentCateBizId):
+        self._ParentCateBizId = ParentCateBizId
+
+    @property
+    def PageNumber(self):
+        r"""QueryType=1时，页码（从1开始）
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数量（默认10）
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""QueryType=2时，搜索内容
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
+        self._QueryType = params.get("QueryType")
+        self._ParentCateBizId = params.get("ParentCateBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28346,6 +28528,9 @@ class QACate(AbstractModel):
         :param _Children: 子分类
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of QACate
+        :param _IsLeaf: 是否是叶子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLeaf: bool
         """
         self._CateBizId = None
         self._Name = None
@@ -28354,6 +28539,7 @@ class QACate(AbstractModel):
         self._CanEdit = None
         self._CanDelete = None
         self._Children = None
+        self._IsLeaf = None
 
     @property
     def CateBizId(self):
@@ -28444,6 +28630,18 @@ class QACate(AbstractModel):
     def Children(self, Children):
         self._Children = Children
 
+    @property
+    def IsLeaf(self):
+        r"""是否是叶子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLeaf
+
+    @IsLeaf.setter
+    def IsLeaf(self, IsLeaf):
+        self._IsLeaf = IsLeaf
+
 
     def _deserialize(self, params):
         self._CateBizId = params.get("CateBizId")
@@ -28458,6 +28656,7 @@ class QACate(AbstractModel):
                 obj = QACate()
                 obj._deserialize(item)
                 self._Children.append(obj)
+        self._IsLeaf = params.get("IsLeaf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28861,11 +29060,14 @@ class RateMsgRecordRequest(AbstractModel):
         :type Score: int
         :param _Reasons: 原因，只有Score参数为2即点踩的时候才需要输入
         :type Reasons: list of str
+        :param _FeedbackContent: 用户自定义反馈内容
+        :type FeedbackContent: str
         """
         self._BotAppKey = None
         self._RecordId = None
         self._Score = None
         self._Reasons = None
+        self._FeedbackContent = None
 
     @property
     def BotAppKey(self):
@@ -28915,12 +29117,24 @@ class RateMsgRecordRequest(AbstractModel):
     def Reasons(self, Reasons):
         self._Reasons = Reasons
 
+    @property
+    def FeedbackContent(self):
+        r"""用户自定义反馈内容
+        :rtype: str
+        """
+        return self._FeedbackContent
+
+    @FeedbackContent.setter
+    def FeedbackContent(self, FeedbackContent):
+        self._FeedbackContent = FeedbackContent
+
 
     def _deserialize(self, params):
         self._BotAppKey = params.get("BotAppKey")
         self._RecordId = params.get("RecordId")
         self._Score = params.get("Score")
         self._Reasons = params.get("Reasons")
+        self._FeedbackContent = params.get("FeedbackContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32889,6 +33103,8 @@ class UnsatisfiedReply(AbstractModel):
         :type UpdateTime: str
         :param _Operator: 操作人
         :type Operator: str
+        :param _FeedbackContent: 自定义反馈
+        :type FeedbackContent: str
         """
         self._ReplyBizId = None
         self._RecordBizId = None
@@ -32899,6 +33115,7 @@ class UnsatisfiedReply(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._Operator = None
+        self._FeedbackContent = None
 
     @property
     def ReplyBizId(self):
@@ -33005,6 +33222,17 @@ class UnsatisfiedReply(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def FeedbackContent(self):
+        r"""自定义反馈
+        :rtype: str
+        """
+        return self._FeedbackContent
+
+    @FeedbackContent.setter
+    def FeedbackContent(self, FeedbackContent):
+        self._FeedbackContent = FeedbackContent
+
 
     def _deserialize(self, params):
         self._ReplyBizId = params.get("ReplyBizId")
@@ -33016,6 +33244,7 @@ class UnsatisfiedReply(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Operator = params.get("Operator")
+        self._FeedbackContent = params.get("FeedbackContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

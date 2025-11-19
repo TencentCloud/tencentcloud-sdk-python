@@ -229,7 +229,7 @@ class DataagentClient(AbstractClient):
 
 
     def QueryChunkList(self, request):
-        r"""分配查询
+        r"""文档切片查询
 
         :param request: Request instance for QueryChunkList.
         :type request: :class:`tencentcloud.dataagent.v20250513.models.QueryChunkListRequest`

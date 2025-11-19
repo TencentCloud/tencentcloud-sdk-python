@@ -282,7 +282,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaInstance(self, request):
-        r"""本接口（CreateGrafanaInstance）用于创建 Grafana 包年包月实例，默认基础版、到期自动续费、不可使用代金券。
+        r"""本接口（CreateGrafanaInstance）用于创建 Grafana 包年包月实例，默认基础版、到期自动续费。
 
         :param request: Request instance for CreateGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaInstanceRequest`

@@ -72,6 +72,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAccountCAM(self, request):
+        r"""本接口用于关闭数据库账户的CAM验证服务。
+
+        :param request: Request instance for CloseAccountCAM.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseAccountCAMRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseAccountCAMResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAccountCAM", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAccountCAMResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseDBExtranetAccess(self, request):
         r"""本接口（CloseDBExtranetAccess）用于关闭实例公网地址。
 
@@ -1710,6 +1733,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceDeletionProtection(self, request):
+        r"""本接口（DeletionProtection）用于开启或关闭实例销毁保护
+
+        :param request: Request instance for ModifyDBInstanceDeletionProtection.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceDeletionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceDeployment(self, request):
         r"""本接口（ModifyDBInstanceDeployment）用于修改节点可用区部署方式，仅支持主实例。
 
@@ -2057,6 +2103,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenAccountCAM(self, request):
+        r"""本接口用于开启数据库账户的CAM验证服务。
+
+        :param request: Request instance for OpenAccountCAM.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenAccountCAMRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenAccountCAMResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAccountCAM", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAccountCAMResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenDBExtranetAccess(self, request):
         r"""本接口（OpenDBExtranetAccess）用于开通实例公网地址。
 
@@ -2094,6 +2163,29 @@ class PostgresClient(AbstractClient):
             body = self.call("RebalanceReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             model = models.RebalanceReadOnlyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefreshAccountPassword(self, request):
+        r"""本接口用于对开启CAM验证的账户执行手动刷新密码。
+
+        :param request: Request instance for RefreshAccountPassword.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.RefreshAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.RefreshAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefreshAccountPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

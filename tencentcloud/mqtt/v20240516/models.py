@@ -176,6 +176,115 @@ class ActivateDeviceCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddClientSubscriptionRequest(AbstractModel):
+    r"""AddClientSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ClientId: 客户端id
+        :type ClientId: str
+        :param _TopicFilter: 订阅
+        :type TopicFilter: str
+        :param _Qos: 服务质量:0,1,2
+        :type Qos: str
+        """
+        self._InstanceId = None
+        self._ClientId = None
+        self._TopicFilter = None
+        self._Qos = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientId(self):
+        r"""客户端id
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def TopicFilter(self):
+        r"""订阅
+        :rtype: str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+    @property
+    def Qos(self):
+        r"""服务质量:0,1,2
+        :rtype: str
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientId = params.get("ClientId")
+        self._TopicFilter = params.get("TopicFilter")
+        self._Qos = params.get("Qos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddClientSubscriptionResponse(AbstractModel):
+    r"""AddClientSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ApplyRegistrationCodeRequest(AbstractModel):
     r"""ApplyRegistrationCode请求参数结构体
 
@@ -2858,6 +2967,100 @@ class DeleteCaCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteClientSubscriptionRequest(AbstractModel):
+    r"""DeleteClientSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ClientId: 客户端id
+        :type ClientId: str
+        :param _TopicFilter: 订阅
+        :type TopicFilter: str
+        """
+        self._InstanceId = None
+        self._ClientId = None
+        self._TopicFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientId(self):
+        r"""客户端id
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def TopicFilter(self):
+        r"""订阅
+        :rtype: str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientId = params.get("ClientId")
+        self._TopicFilter = params.get("TopicFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClientSubscriptionResponse(AbstractModel):
+    r"""DeleteClientSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDeviceCertificateRequest(AbstractModel):
     r"""DeleteDeviceCertificate请求参数结构体
 
@@ -5286,6 +5489,8 @@ API：通过API手动注册
         :type MessageRate: int
         :param _TransportLayerSecurity: 服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
         :type TransportLayerSecurity: str
+        :param _MessageEnrichmentRuleLimit: 消息属性增强规则配额
+        :type MessageEnrichmentRuleLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5323,6 +5528,7 @@ API：通过API手动注册
         self._TopicPrefixSlashLimit = None
         self._MessageRate = None
         self._TransportLayerSecurity = None
+        self._MessageEnrichmentRuleLimit = None
         self._RequestId = None
 
     @property
@@ -5705,6 +5911,17 @@ API：通过API手动注册
         self._TransportLayerSecurity = TransportLayerSecurity
 
     @property
+    def MessageEnrichmentRuleLimit(self):
+        r"""消息属性增强规则配额
+        :rtype: int
+        """
+        return self._MessageEnrichmentRuleLimit
+
+    @MessageEnrichmentRuleLimit.setter
+    def MessageEnrichmentRuleLimit(self, MessageEnrichmentRuleLimit):
+        self._MessageEnrichmentRuleLimit = MessageEnrichmentRuleLimit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5751,6 +5968,7 @@ API：通过API手动注册
         self._TopicPrefixSlashLimit = params.get("TopicPrefixSlashLimit")
         self._MessageRate = params.get("MessageRate")
         self._TransportLayerSecurity = params.get("TransportLayerSecurity")
+        self._MessageEnrichmentRuleLimit = params.get("MessageEnrichmentRuleLimit")
         self._RequestId = params.get("RequestId")
 
 

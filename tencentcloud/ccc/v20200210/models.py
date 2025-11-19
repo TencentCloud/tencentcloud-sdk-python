@@ -3358,6 +3358,13 @@ HoaiMy
 该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
 我方充分知悉和理解，根据[《网络安全法》](https://www.cac.gov.cn/2016-11/07/c_1119867116.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
         :type EnableComplianceAudio: bool
+        :param _EnableVoicemailDetection: 是否开启语音信箱识别
+        :type EnableVoicemailDetection: bool
+        :param _VoicemailAction: 识别到对端为语音信箱时的行为，当EnableVoicemailDetection为True时生效
+0: 挂断电话（默认）
+        :type VoicemailAction: int
+        :param _LLMExtraBody: 大模型拓展参数， 格式为json字符串
+        :type LLMExtraBody: str
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3392,6 +3399,9 @@ HoaiMy
         self._VadLevel = None
         self._ToneWord = None
         self._EnableComplianceAudio = None
+        self._EnableVoicemailDetection = None
+        self._VoicemailAction = None
+        self._LLMExtraBody = None
 
     @property
     def SdkAppId(self):
@@ -3929,6 +3939,40 @@ HoaiMy
     def EnableComplianceAudio(self, EnableComplianceAudio):
         self._EnableComplianceAudio = EnableComplianceAudio
 
+    @property
+    def EnableVoicemailDetection(self):
+        r"""是否开启语音信箱识别
+        :rtype: bool
+        """
+        return self._EnableVoicemailDetection
+
+    @EnableVoicemailDetection.setter
+    def EnableVoicemailDetection(self, EnableVoicemailDetection):
+        self._EnableVoicemailDetection = EnableVoicemailDetection
+
+    @property
+    def VoicemailAction(self):
+        r"""识别到对端为语音信箱时的行为，当EnableVoicemailDetection为True时生效
+0: 挂断电话（默认）
+        :rtype: int
+        """
+        return self._VoicemailAction
+
+    @VoicemailAction.setter
+    def VoicemailAction(self, VoicemailAction):
+        self._VoicemailAction = VoicemailAction
+
+    @property
+    def LLMExtraBody(self):
+        r"""大模型拓展参数， 格式为json字符串
+        :rtype: str
+        """
+        return self._LLMExtraBody
+
+    @LLMExtraBody.setter
+    def LLMExtraBody(self, LLMExtraBody):
+        self._LLMExtraBody = LLMExtraBody
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3986,6 +4030,9 @@ HoaiMy
             self._ToneWord = ToneWordInfo()
             self._ToneWord._deserialize(params.get("ToneWord"))
         self._EnableComplianceAudio = params.get("EnableComplianceAudio")
+        self._EnableVoicemailDetection = params.get("EnableVoicemailDetection")
+        self._VoicemailAction = params.get("VoicemailAction")
+        self._LLMExtraBody = params.get("LLMExtraBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15340,6 +15387,87 @@ class PackageBuyInfo(AbstractModel):
         
 
 
+class PauseAutoCalloutTaskRequest(AbstractModel):
+    r"""PauseAutoCalloutTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+        :type TaskId: int
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+
+        :type SdkAppId: int
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseAutoCalloutTaskResponse(AbstractModel):
+    r"""PauseAutoCalloutTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PausePredictiveDialingCampaignRequest(AbstractModel):
     r"""PausePredictiveDialingCampaign请求参数结构体
 
@@ -15677,6 +15805,85 @@ class RestoreMemberOnlineRequest(AbstractModel):
 
 class RestoreMemberOnlineResponse(AbstractModel):
     r"""RestoreMemberOnline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeAutoCalloutTaskRequest(AbstractModel):
+    r"""ResumeAutoCalloutTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+        :type TaskId: int
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeAutoCalloutTaskResponse(AbstractModel):
+    r"""ResumeAutoCalloutTask返回参数结构体
 
     """
 

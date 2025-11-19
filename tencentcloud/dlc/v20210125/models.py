@@ -13682,6 +13682,8 @@ class DatasourceConnectionConfig(AbstractModel):
         :type TCHouseD: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
         :param _TccHive: TccHive数据目录连接信息
         :type TccHive: :class:`tencentcloud.dlc.v20210125.models.TccHive`
+        :param _MongoDB: MongoDB 数据源
+        :type MongoDB: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
         self._Mysql = None
         self._Hive = None
@@ -13694,6 +13696,7 @@ class DatasourceConnectionConfig(AbstractModel):
         self._TDSQLPostgreSql = None
         self._TCHouseD = None
         self._TccHive = None
+        self._MongoDB = None
 
     @property
     def Mysql(self):
@@ -13826,6 +13829,17 @@ class DatasourceConnectionConfig(AbstractModel):
     def TccHive(self, TccHive):
         self._TccHive = TccHive
 
+    @property
+    def MongoDB(self):
+        r"""MongoDB 数据源
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        """
+        return self._MongoDB
+
+    @MongoDB.setter
+    def MongoDB(self, MongoDB):
+        self._MongoDB = MongoDB
+
 
     def _deserialize(self, params):
         if params.get("Mysql") is not None:
@@ -13861,6 +13875,9 @@ class DatasourceConnectionConfig(AbstractModel):
         if params.get("TccHive") is not None:
             self._TccHive = TccHive()
             self._TccHive._deserialize(params.get("TccHive"))
+        if params.get("MongoDB") is not None:
+            self._MongoDB = DataSourceInfo()
+            self._MongoDB._deserialize(params.get("MongoDB"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

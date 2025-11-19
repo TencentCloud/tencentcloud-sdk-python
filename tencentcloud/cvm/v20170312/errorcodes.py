@@ -1157,6 +1157,9 @@ UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'
 # 共享镜像不支持导出。
 UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.SharedImageExportUnsupported'
 
+# 从其他账号共享的镜像不支持修改属性。
+UNSUPPORTEDOPERATION_SHAREDIMAGEMODIFYUNSUPPORTED = 'UnsupportedOperation.SharedImageModifyUnsupported'
+
 # 请求不支持特殊机型的实例
 UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = 'UnsupportedOperation.SpecialInstanceType'
 

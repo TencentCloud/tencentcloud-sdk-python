@@ -3727,7 +3727,7 @@ class CreateListenerRequest(AbstractModel):
         :type KeepaliveEnable: int
         :param _EndPort: 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
         :type EndPort: int
-        :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
+        :param _DeregisterTargetRst: 重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :type DeregisterTargetRst: bool
         :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
 <li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
@@ -3741,8 +3741,7 @@ class CreateListenerRequest(AbstractModel):
         :type IdleConnectTimeout: int
         :param _ProxyProtocol: TCP_SSL和QUIC是否支持PP
         :type ProxyProtocol: bool
-        :param _SnatEnable: 是否开启SNAT，True（开启）、False（关闭）。
-默认为关闭。
+        :param _SnatEnable: 是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
         :type SnatEnable: bool
         :param _FullEndPorts: 全端口段监听器的结束端口，端口范围：2 - 65535
         :type FullEndPorts: list of int
@@ -3945,7 +3944,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def DeregisterTargetRst(self):
-        r"""解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
+        r"""重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -4013,8 +4012,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def SnatEnable(self):
-        r"""是否开启SNAT，True（开启）、False（关闭）。
-默认为关闭。
+        r"""是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
         :rtype: bool
         """
         return self._SnatEnable
@@ -12778,7 +12776,7 @@ class Listener(AbstractModel):
         :type KeepaliveEnable: int
         :param _Toa: 仅支持Nat64 CLB TCP监听器
         :type Toa: bool
-        :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
+        :param _DeregisterTargetRst: 重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :type DeregisterTargetRst: bool
         :param _AttrFlags: 监听器的属性
         :type AttrFlags: list of str
@@ -13023,7 +13021,7 @@ class Listener(AbstractModel):
 
     @property
     def DeregisterTargetRst(self):
-        r"""解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
+        r"""重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -16346,9 +16344,7 @@ class ModifyListenerRequest(AbstractModel):
 默认值0表示不开启，1表示开启。
 若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
         :type KeepaliveEnable: int
-        :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
-True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
-不传则表示不修改。
+        :param _DeregisterTargetRst: 重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :type DeregisterTargetRst: bool
         :param _SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
@@ -16366,8 +16362,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         :type IdleConnectTimeout: int
         :param _ProxyProtocol: TCP_SSL和QUIC是否支持PP
         :type ProxyProtocol: bool
-        :param _SnatEnable: 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
-不传则表示不修改。
+        :param _SnatEnable: 是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
         :type SnatEnable: bool
         :param _DataCompressMode: 数据压缩模式
         :type DataCompressMode: str
@@ -16523,9 +16518,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
 
     @property
     def DeregisterTargetRst(self):
-        r"""解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
-True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
-不传则表示不修改。
+        r"""重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -16606,8 +16599,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
 
     @property
     def SnatEnable(self):
-        r"""是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
-不传则表示不修改。
+        r"""是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
         :rtype: bool
         """
         return self._SnatEnable

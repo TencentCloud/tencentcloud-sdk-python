@@ -1681,6 +1681,115 @@ class CloneDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseAccountCAMRequest(AbstractModel):
+    r"""CloseAccountCAM请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _UserName: 需要关闭CAM服务的账号名称
+        :type UserName: str
+        :param _Password: 关闭CAM后，登录该账号所需要的新密码
+        :type Password: str
+        :param _PasswordEncrypt: 密码是否加密
+        :type PasswordEncrypt: bool
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._Password = None
+        self._PasswordEncrypt = None
+
+    @property
+    def DBInstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""需要关闭CAM服务的账号名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""关闭CAM后，登录该账号所需要的新密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PasswordEncrypt(self):
+        r"""密码是否加密
+        :rtype: bool
+        """
+        return self._PasswordEncrypt
+
+    @PasswordEncrypt.setter
+    def PasswordEncrypt(self, PasswordEncrypt):
+        self._PasswordEncrypt = PasswordEncrypt
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._PasswordEncrypt = params.get("PasswordEncrypt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAccountCAMResponse(AbstractModel):
+    r"""CloseAccountCAM返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     r"""CloseDBExtranetAccess请求参数结构体
 
@@ -14278,6 +14387,85 @@ class ModifyDBInstanceChargeTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceDeletionProtectionRequest(AbstractModel):
+    r"""ModifyDBInstanceDeletionProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :type DBInstanceId: str
+        :param _DeletionProtection: 开启或关闭实例删除保护。true - 开启 ；false - 关闭。
+        :type DeletionProtection: bool
+        """
+        self._DBInstanceId = None
+        self._DeletionProtection = None
+
+    @property
+    def DBInstanceId(self):
+        r"""实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DeletionProtection(self):
+        r"""开启或关闭实例删除保护。true - 开启 ；false - 关闭。
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DeletionProtection = params.get("DeletionProtection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceDeletionProtectionResponse(AbstractModel):
+    r"""ModifyDBInstanceDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceDeploymentRequest(AbstractModel):
     r"""ModifyDBInstanceDeployment请求参数结构体
 
@@ -16328,6 +16516,85 @@ class NetworkAccess(AbstractModel):
         
 
 
+class OpenAccountCAMRequest(AbstractModel):
+    r"""OpenAccountCAM请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 数据库实例ID
+        :type DBInstanceId: str
+        :param _UserName: 需要开启CAM服务的账号名称
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""数据库实例ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""需要开启CAM服务的账号名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAccountCAMResponse(AbstractModel):
+    r"""OpenAccountCAM返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OpenDBExtranetAccessRequest(AbstractModel):
     r"""OpenDBExtranetAccess请求参数结构体
 
@@ -17849,6 +18116,85 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
 
 class RebalanceReadOnlyGroupResponse(AbstractModel):
     r"""RebalanceReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RefreshAccountPasswordRequest(AbstractModel):
+    r"""RefreshAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _UserName: 账号名称
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""账号名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshAccountPasswordResponse(AbstractModel):
+    r"""RefreshAccountPassword返回参数结构体
 
     """
 

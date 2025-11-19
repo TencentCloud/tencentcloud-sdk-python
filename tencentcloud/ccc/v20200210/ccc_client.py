@@ -1577,6 +1577,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PauseAutoCalloutTask(self, request):
+        r"""暂停未完成的自动外呼任务
+
+        :param request: Request instance for PauseAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.PauseAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.PauseAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseAutoCalloutTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseAutoCalloutTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PausePredictiveDialingCampaign(self, request):
         r"""暂停预测式外呼任务
 
@@ -1637,6 +1660,29 @@ class CccClient(AbstractClient):
             body = self.call("RestoreMemberOnline", params, headers=headers)
             response = json.loads(body)
             model = models.RestoreMemberOnlineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeAutoCalloutTask(self, request):
+        r"""暂停未完成的自动外呼任务
+
+        :param request: Request instance for ResumeAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ResumeAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ResumeAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeAutoCalloutTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeAutoCalloutTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
