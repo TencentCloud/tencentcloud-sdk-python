@@ -214,6 +214,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidInstanceAcceleratorToken(self, request):
+        r"""创建安卓实例加速Token
+
+        :param request: Request instance for CreateAndroidInstanceAcceleratorToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceAcceleratorTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceAcceleratorTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidInstanceAcceleratorToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidInstanceAcceleratorTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAndroidInstanceImage(self, request):
         r"""使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
 
@@ -849,6 +872,29 @@ class GsClient(AbstractClient):
             body = self.call("DisconnectAndroidInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DisconnectAndroidInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisconnectAndroidInstanceAccelerator(self, request):
+        r"""断开安卓实例加速节点
+
+        :param request: Request instance for DisconnectAndroidInstanceAccelerator.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DisconnectAndroidInstanceAcceleratorRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DisconnectAndroidInstanceAcceleratorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisconnectAndroidInstanceAccelerator", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisconnectAndroidInstanceAcceleratorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

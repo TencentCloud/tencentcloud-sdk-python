@@ -7152,6 +7152,121 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSSLRequest(AbstractModel):
+    r"""DescribeInstanceSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSSLResponse(AbstractModel):
+    r"""DescribeInstanceSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: SSL开启状态。0为关闭，1为开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ExpiredTime: 证书过期时间，格式为2023-05-01 12:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param _CertUrl: 证书下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ExpiredTime = None
+        self._CertUrl = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""SSL开启状态。0为关闭，1为开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpiredTime(self):
+        r"""证书过期时间，格式为2023-05-01 12:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def CertUrl(self):
+        r"""证书下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CertUrl
+
+    @CertUrl.setter
+    def CertUrl(self, CertUrl):
+        self._CertUrl = CertUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._CertUrl = params.get("CertUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLogDownloadTasksRequest(AbstractModel):
     r"""DescribeLogDownloadTasks请求参数结构体
 
@@ -10328,6 +10443,159 @@ class InstanceDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InstanceEnableSSLRequest(AbstractModel):
+    r"""InstanceEnableSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Enable: 配置是否要开启SSL访问。
+- true：开启。
+- false：关闭。
+        :type Enable: bool
+        """
+        self._InstanceId = None
+        self._Enable = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Enable(self):
+        r"""配置是否要开启SSL访问。
+- true：开启。
+- false：关闭。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceEnableSSLResponse(AbstractModel):
+    r"""InstanceEnableSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: SSL开启状态。
+- 0：关闭。
+- 1：开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ExpiredTime: 证书文件过期时间，格式为：2023-05-01 12:00:00。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param _CertUrl: 证书文件的下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertUrl: str
+        :param _FlowId: 流程id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ExpiredTime = None
+        self._CertUrl = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""SSL开启状态。
+- 0：关闭。
+- 1：开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpiredTime(self):
+        r"""证书文件过期时间，格式为：2023-05-01 12:00:00。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def CertUrl(self):
+        r"""证书文件的下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CertUrl
+
+    @CertUrl.setter
+    def CertUrl(self, CertUrl):
+        self._CertUrl = CertUrl
+
+    @property
+    def FlowId(self):
+        r"""流程id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._CertUrl = params.get("CertUrl")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class InstanceEnumParam(AbstractModel):

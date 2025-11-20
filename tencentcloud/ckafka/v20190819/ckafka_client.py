@@ -877,6 +877,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCkafkaVersion(self, request):
+        r"""查询实例版本信息
+
+        :param request: Request instance for DescribeCkafkaVersion.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCkafkaVersionRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeCkafkaVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCkafkaVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCkafkaVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCkafkaZone(self, request):
         r"""用于查看ckafka的可用区列表
 
@@ -2065,6 +2088,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("SendMessage", params, headers=headers)
             response = json.loads(body)
             model = models.SendMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeBrokerVersion(self, request):
+        r"""broker版本升级
+
+        :param request: Request instance for UpgradeBrokerVersion.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.UpgradeBrokerVersionRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.UpgradeBrokerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeBrokerVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeBrokerVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

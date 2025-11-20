@@ -2692,6 +2692,120 @@ class CreateAndroidInstanceADBResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndroidInstanceAcceleratorTokenRequest(AbstractModel):
+    r"""CreateAndroidInstanceAcceleratorToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserIP: 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
+        :type UserIP: str
+        :param _AndroidInstanceIds: 实例 ID 列表。每次请求的实例的上限为 500。
+        :type AndroidInstanceIds: list of str
+        """
+        self._UserIP = None
+        self._AndroidInstanceIds = None
+
+    @property
+    def UserIP(self):
+        r"""用户IP，用户客户端的公网IP，用于就近选择起始加速节点
+        :rtype: str
+        """
+        return self._UserIP
+
+    @UserIP.setter
+    def UserIP(self, UserIP):
+        self._UserIP = UserIP
+
+    @property
+    def AndroidInstanceIds(self):
+        r"""实例 ID 列表。每次请求的实例的上限为 500。
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+
+    def _deserialize(self, params):
+        self._UserIP = params.get("UserIP")
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidInstanceAcceleratorTokenResponse(AbstractModel):
+    r"""CreateAndroidInstanceAcceleratorToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AcceleratorInfo: 加速信息
+        :type AcceleratorInfo: str
+        :param _AndroidInstanceErrors: 安卓实例错误列表。列表包含有问题的安卓实例 ID 以及发生的错误信息。
+        :type AndroidInstanceErrors: list of AndroidInstanceError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AcceleratorInfo = None
+        self._AndroidInstanceErrors = None
+        self._RequestId = None
+
+    @property
+    def AcceleratorInfo(self):
+        r"""加速信息
+        :rtype: str
+        """
+        return self._AcceleratorInfo
+
+    @AcceleratorInfo.setter
+    def AcceleratorInfo(self, AcceleratorInfo):
+        self._AcceleratorInfo = AcceleratorInfo
+
+    @property
+    def AndroidInstanceErrors(self):
+        r"""安卓实例错误列表。列表包含有问题的安卓实例 ID 以及发生的错误信息。
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AcceleratorInfo = params.get("AcceleratorInfo")
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAndroidInstanceImageRequest(AbstractModel):
     r"""CreateAndroidInstanceImage请求参数结构体
 
@@ -6254,6 +6368,85 @@ class DisableAndroidInstancesAppResponse(AbstractModel):
                 obj = AndroidInstanceError()
                 obj._deserialize(item)
                 self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DisconnectAndroidInstanceAcceleratorRequest(AbstractModel):
+    r"""DisconnectAndroidInstanceAccelerator请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 实例ID
+        :type AndroidInstanceId: str
+        :param _UserId: 用户 ID。用户 ID 为空，将断开该实例的所有用户连接；用户 ID 不为空，只断开该用户的连接。
+        :type UserId: str
+        """
+        self._AndroidInstanceId = None
+        self._UserId = None
+
+    @property
+    def AndroidInstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def UserId(self):
+        r"""用户 ID。用户 ID 为空，将断开该实例的所有用户连接；用户 ID 不为空，只断开该用户的连接。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisconnectAndroidInstanceAcceleratorResponse(AbstractModel):
+    r"""DisconnectAndroidInstanceAccelerator返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

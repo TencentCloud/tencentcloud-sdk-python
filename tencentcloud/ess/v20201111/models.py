@@ -4279,6 +4279,87 @@ class ComponentLimit(AbstractModel):
         
 
 
+class ContractReviewWebUrlOption(AbstractModel):
+    r"""合同审查个性化参数，用于控制页面的展示内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisableTemporaryStore: 禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
+        :type DisableTemporaryStore: bool
+        :param _DisableExport: 禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮
+        :type DisableExport: bool
+        :param _DisableReviewAgain: 禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮
+        :type DisableReviewAgain: bool
+        :param _DisableWxQrcode: 禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码
+        :type DisableWxQrcode: bool
+        """
+        self._DisableTemporaryStore = None
+        self._DisableExport = None
+        self._DisableReviewAgain = None
+        self._DisableWxQrcode = None
+
+    @property
+    def DisableTemporaryStore(self):
+        r"""禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
+        :rtype: bool
+        """
+        return self._DisableTemporaryStore
+
+    @DisableTemporaryStore.setter
+    def DisableTemporaryStore(self, DisableTemporaryStore):
+        self._DisableTemporaryStore = DisableTemporaryStore
+
+    @property
+    def DisableExport(self):
+        r"""禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮
+        :rtype: bool
+        """
+        return self._DisableExport
+
+    @DisableExport.setter
+    def DisableExport(self, DisableExport):
+        self._DisableExport = DisableExport
+
+    @property
+    def DisableReviewAgain(self):
+        r"""禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮
+        :rtype: bool
+        """
+        return self._DisableReviewAgain
+
+    @DisableReviewAgain.setter
+    def DisableReviewAgain(self, DisableReviewAgain):
+        self._DisableReviewAgain = DisableReviewAgain
+
+    @property
+    def DisableWxQrcode(self):
+        r"""禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码
+        :rtype: bool
+        """
+        return self._DisableWxQrcode
+
+    @DisableWxQrcode.setter
+    def DisableWxQrcode(self, DisableWxQrcode):
+        self._DisableWxQrcode = DisableWxQrcode
+
+
+    def _deserialize(self, params):
+        self._DisableTemporaryStore = params.get("DisableTemporaryStore")
+        self._DisableExport = params.get("DisableExport")
+        self._DisableReviewAgain = params.get("DisableReviewAgain")
+        self._DisableWxQrcode = params.get("DisableWxQrcode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBatchAdminChangeInvitationsRequest(AbstractModel):
     r"""CreateBatchAdminChangeInvitations请求参数结构体
 
@@ -4447,9 +4528,13 @@ class CreateBatchAdminChangeInvitationsUrlRequest(AbstractModel):
  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
 注意：
 发送信息的手机号，是用户传递的手机号。
-如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+如果用户同时传递了证件号，手机号会被用户在电子签注册的手机号进行覆盖。
         :type NotifyType: str
-        :param _Endpoint: 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        :param _Endpoint: 要跳转的链接类型
+<ul>
+<li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li>
+<li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li>
+</ul>
         :type Endpoint: str
         """
         self._Operator = None
@@ -4538,7 +4623,7 @@ class CreateBatchAdminChangeInvitationsUrlRequest(AbstractModel):
  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
 注意：
 发送信息的手机号，是用户传递的手机号。
-如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+如果用户同时传递了证件号，手机号会被用户在电子签注册的手机号进行覆盖。
         :rtype: str
         """
         return self._NotifyType
@@ -4549,7 +4634,11 @@ class CreateBatchAdminChangeInvitationsUrlRequest(AbstractModel):
 
     @property
     def Endpoint(self):
-        r"""要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        r"""要跳转的链接类型
+<ul>
+<li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li>
+<li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li>
+</ul>
         :rtype: str
         """
         return self._Endpoint
@@ -6334,7 +6423,6 @@ class CreateBatchSignUrlRequest(AbstractModel):
 <ul>
 <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-<li>请确保此企业已完成腾讯电子签企业认证。</li>
 </ul>
         :type OrganizationName: str
         :param _JumpToDetail: 是否直接跳转至合同内容页面进行签署
@@ -6516,7 +6604,6 @@ class CreateBatchSignUrlRequest(AbstractModel):
 <ul>
 <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-<li>请确保此企业已完成腾讯电子签企业认证。</li>
 </ul>
         :rtype: str
         """
@@ -7137,10 +7224,13 @@ class CreateContractReviewWebUrlRequest(AbstractModel):
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
         :type UserData: str
+        :param _Option: 个性化参数，用于控制页面展示内容
+        :type Option: :class:`tencentcloud.ess.v20201111.models.ContractReviewWebUrlOption`
         """
         self._Operator = None
         self._ResourceId = None
         self._UserData = None
+        self._Option = None
 
     @property
     def Operator(self):
@@ -7181,6 +7271,17 @@ class CreateContractReviewWebUrlRequest(AbstractModel):
     def UserData(self, UserData):
         self._UserData = UserData
 
+    @property
+    def Option(self):
+        r"""个性化参数，用于控制页面展示内容
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ContractReviewWebUrlOption`
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -7188,6 +7289,9 @@ class CreateContractReviewWebUrlRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._ResourceId = params.get("ResourceId")
         self._UserData = params.get("UserData")
+        if params.get("Option") is not None:
+            self._Option = ContractReviewWebUrlOption()
+            self._Option._deserialize(params.get("Option"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

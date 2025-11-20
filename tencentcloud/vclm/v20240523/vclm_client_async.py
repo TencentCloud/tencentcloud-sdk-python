@@ -43,6 +43,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHumanActorJob(
+            self,
+            request: models.DescribeHumanActorJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHumanActorJobResponse:
+        """
+        通过JobId提交请求，获取人像驱动任务的结果信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHumanActorJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHumanActorJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeImageAnimateJob(
             self,
             request: models.DescribeImageAnimateJobRequest,
@@ -129,6 +147,25 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "DescribeVideoStylizationJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoStylizationJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHumanActorJob(
+            self,
+            request: models.SubmitHumanActorJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHumanActorJobResponse:
+        """
+        用于提交人像驱动任务
+        支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHumanActorJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHumanActorJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

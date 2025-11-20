@@ -6641,6 +6641,219 @@ class ElectronicFlightTicketFull(AbstractModel):
         
 
 
+class ElectronicTollSummary(AbstractModel):
+    r"""其他发票
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Total: 金额
+        :type Total: str
+        :param _Items: 列表
+        :type Items: list of ElectronicTollSummaryItem
+        :param _TableItems: 表格
+        :type TableItems: list of ElectronicTollSummaryList
+        :param _Date: 发票日期
+        :type Date: str
+        """
+        self._Title = None
+        self._Total = None
+        self._Items = None
+        self._TableItems = None
+        self._Date = None
+
+    @property
+    def Title(self):
+        r"""发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Total(self):
+        r"""金额
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""列表
+        :rtype: list of ElectronicTollSummaryItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TableItems(self):
+        r"""表格
+        :rtype: list of ElectronicTollSummaryList
+        """
+        return self._TableItems
+
+    @TableItems.setter
+    def TableItems(self, TableItems):
+        self._TableItems = TableItems
+
+    @property
+    def Date(self):
+        r"""发票日期
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ElectronicTollSummaryItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("TableItems") is not None:
+            self._TableItems = []
+            for item in params.get("TableItems"):
+                obj = ElectronicTollSummaryList()
+                obj._deserialize(item)
+                self._TableItems.append(obj)
+        self._Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ElectronicTollSummaryItem(AbstractModel):
+    r"""ElectronicTollSummaryItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 票面key值
+        :type Name: str
+        :param _Value: 票面value值
+        :type Value: str
+        :param _Row: 字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
+        :type Row: int
+        """
+        self._Name = None
+        self._Value = None
+        self._Row = None
+
+    @property
+    def Name(self):
+        r"""票面key值
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""票面value值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Row(self):
+        r"""字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
+        :rtype: int
+        """
+        return self._Row
+
+    @Row.setter
+    def Row(self, Row):
+        self._Row = Row
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Row = params.get("Row")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ElectronicTollSummaryList(AbstractModel):
+    r"""其他票Table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 列表
+        :type Items: list of ElectronicTollSummaryItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r"""列表
+        :rtype: list of ElectronicTollSummaryItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ElectronicTollSummaryItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ElectronicTrainTicket(AbstractModel):
     r"""全电发票（铁路电子客票）
 
@@ -29375,6 +29588,9 @@ class SingleInvoiceItem(AbstractModel):
         :param _UsedCarPurchaseInvoiceElectronic: 二手车销售统一发票（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedCarPurchaseInvoiceElectronic: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
+        :param _ElectronicTollSummary: 通行费电子票据汇总单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElectronicTollSummary: :class:`tencentcloud.ocr.v20181119.models.ElectronicTollSummary`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -29413,6 +29629,7 @@ class SingleInvoiceItem(AbstractModel):
         self._SaleInventory = None
         self._MotorVehicleSaleInvoiceElectronic = None
         self._UsedCarPurchaseInvoiceElectronic = None
+        self._ElectronicTollSummary = None
 
     @property
     def VatSpecialInvoice(self):
@@ -29858,6 +30075,18 @@ class SingleInvoiceItem(AbstractModel):
     def UsedCarPurchaseInvoiceElectronic(self, UsedCarPurchaseInvoiceElectronic):
         self._UsedCarPurchaseInvoiceElectronic = UsedCarPurchaseInvoiceElectronic
 
+    @property
+    def ElectronicTollSummary(self):
+        r"""通行费电子票据汇总单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ElectronicTollSummary`
+        """
+        return self._ElectronicTollSummary
+
+    @ElectronicTollSummary.setter
+    def ElectronicTollSummary(self, ElectronicTollSummary):
+        self._ElectronicTollSummary = ElectronicTollSummary
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -29971,6 +30200,9 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("UsedCarPurchaseInvoiceElectronic") is not None:
             self._UsedCarPurchaseInvoiceElectronic = UsedCarPurchaseInvoice()
             self._UsedCarPurchaseInvoiceElectronic._deserialize(params.get("UsedCarPurchaseInvoiceElectronic"))
+        if params.get("ElectronicTollSummary") is not None:
+            self._ElectronicTollSummary = ElectronicTollSummary()
+            self._ElectronicTollSummary._deserialize(params.get("ElectronicTollSummary"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

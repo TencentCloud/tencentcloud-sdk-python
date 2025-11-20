@@ -691,6 +691,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCkafkaVersion(
+            self,
+            request: models.DescribeCkafkaVersionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCkafkaVersionResponse:
+        """
+        查询实例版本信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCkafkaVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCkafkaVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCkafkaZone(
             self,
             request: models.DescribeCkafkaZoneRequest,
@@ -1623,6 +1641,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "SendMessage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SendMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeBrokerVersion(
+            self,
+            request: models.UpgradeBrokerVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeBrokerVersionResponse:
+        """
+        broker版本升级
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeBrokerVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeBrokerVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

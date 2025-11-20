@@ -49,6 +49,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEnterprise(self, request):
+        r"""添加企业架构数据
+
+        :param request: Request instance for CreateEnterprise.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateEnterpriseRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateEnterpriseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEnterprise", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEnterpriseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateJobRecord(self, request):
         r"""启动测绘
 
@@ -63,6 +86,29 @@ class CtemClient(AbstractClient):
             body = self.call("CreateJobRecord", params, headers=headers)
             response = json.loads(body)
             model = models.CreateJobRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiSecs(self, request):
+        r"""查看API安全数据
+
+        :param request: Request instance for DescribeApiSecs.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeApiSecsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeApiSecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiSecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiSecsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

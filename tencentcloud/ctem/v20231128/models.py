@@ -322,6 +322,220 @@ class CreateCustomerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEnterpriseRequest(AbstractModel):
+    r"""CreateEnterprise请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Name: 名称
+        :type Name: str
+        :param _ParentEnterpriseUid: 上一级企业
+        :type ParentEnterpriseUid: str
+        :param _CreditCode: 统一社会信用代码
+        :type CreditCode: str
+        :param _Status: 企业状态:存续、已注销
+        :type Status: str
+        :param _RegisteredCapital: 注册资本（单位:元）
+        :type RegisteredCapital: str
+        :param _ShareholdingRatio: 持股比例
+        :type ShareholdingRatio: str
+        :param _LegalPerson: 法人代表
+        :type LegalPerson: str
+        :param _Type: 类型
+        :type Type: str
+        :param _Industry: 行业类型
+        :type Industry: str
+        :param _EnterpriseUid: 子公司ID
+        :type EnterpriseUid: str
+        """
+        self._CustomerId = None
+        self._Name = None
+        self._ParentEnterpriseUid = None
+        self._CreditCode = None
+        self._Status = None
+        self._RegisteredCapital = None
+        self._ShareholdingRatio = None
+        self._LegalPerson = None
+        self._Type = None
+        self._Industry = None
+        self._EnterpriseUid = None
+
+    @property
+    def CustomerId(self):
+        r"""企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentEnterpriseUid(self):
+        r"""上一级企业
+        :rtype: str
+        """
+        return self._ParentEnterpriseUid
+
+    @ParentEnterpriseUid.setter
+    def ParentEnterpriseUid(self, ParentEnterpriseUid):
+        self._ParentEnterpriseUid = ParentEnterpriseUid
+
+    @property
+    def CreditCode(self):
+        r"""统一社会信用代码
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def Status(self):
+        r"""企业状态:存续、已注销
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RegisteredCapital(self):
+        r"""注册资本（单位:元）
+        :rtype: str
+        """
+        return self._RegisteredCapital
+
+    @RegisteredCapital.setter
+    def RegisteredCapital(self, RegisteredCapital):
+        self._RegisteredCapital = RegisteredCapital
+
+    @property
+    def ShareholdingRatio(self):
+        r"""持股比例
+        :rtype: str
+        """
+        return self._ShareholdingRatio
+
+    @ShareholdingRatio.setter
+    def ShareholdingRatio(self, ShareholdingRatio):
+        self._ShareholdingRatio = ShareholdingRatio
+
+    @property
+    def LegalPerson(self):
+        r"""法人代表
+        :rtype: str
+        """
+        return self._LegalPerson
+
+    @LegalPerson.setter
+    def LegalPerson(self, LegalPerson):
+        self._LegalPerson = LegalPerson
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Industry(self):
+        r"""行业类型
+        :rtype: str
+        """
+        return self._Industry
+
+    @Industry.setter
+    def Industry(self, Industry):
+        self._Industry = Industry
+
+    @property
+    def EnterpriseUid(self):
+        r"""子公司ID
+        :rtype: str
+        """
+        return self._EnterpriseUid
+
+    @EnterpriseUid.setter
+    def EnterpriseUid(self, EnterpriseUid):
+        self._EnterpriseUid = EnterpriseUid
+
+
+    def _deserialize(self, params):
+        self._CustomerId = params.get("CustomerId")
+        self._Name = params.get("Name")
+        self._ParentEnterpriseUid = params.get("ParentEnterpriseUid")
+        self._CreditCode = params.get("CreditCode")
+        self._Status = params.get("Status")
+        self._RegisteredCapital = params.get("RegisteredCapital")
+        self._ShareholdingRatio = params.get("ShareholdingRatio")
+        self._LegalPerson = params.get("LegalPerson")
+        self._Type = params.get("Type")
+        self._Industry = params.get("Industry")
+        self._EnterpriseUid = params.get("EnterpriseUid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnterpriseResponse(AbstractModel):
+    r"""CreateEnterprise返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateJobRecordRequest(AbstractModel):
     r"""CreateJobRecord请求参数结构体
 
@@ -827,6 +1041,305 @@ class Customer(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeApiSecsRequest(AbstractModel):
+    r"""DescribeApiSecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAggregation: 是否聚合数据
+        :type IsAggregation: bool
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        """
+        self._IsAggregation = None
+        self._Offset = None
+        self._Limit = None
+        self._Ignored = None
+        self._UpdateAtEnd = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._CreateAtStart = None
+        self._Format = None
+        self._IsNew = None
+        self._CustomerIdList = None
+        self._EnterpriseUidList = None
+        self._Filters = None
+        self._CustomerId = None
+
+    @property
+    def IsAggregation(self):
+        r"""是否聚合数据
+        :rtype: bool
+        """
+        return self._IsAggregation
+
+    @IsAggregation.setter
+    def IsAggregation(self, IsAggregation):
+        self._IsAggregation = IsAggregation
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Ignored(self):
+        r"""是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+    @property
+    def UpdateAtEnd(self):
+        r"""更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def CreateAtEnd(self):
+        r"""创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        r"""更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def CreateAtStart(self):
+        r"""创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def Format(self):
+        r"""数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def IsNew(self):
+        r"""是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerIdList(self):
+        r"""企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
+
+    @property
+    def EnterpriseUidList(self):
+        r"""子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Filters(self):
+        r"""查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def CustomerId(self):
+        r"""企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+
+    def _deserialize(self, params):
+        self._IsAggregation = params.get("IsAggregation")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Ignored = params.get("Ignored")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._Format = params.get("Format")
+        self._IsNew = params.get("IsNew")
+        self._CustomerIdList = params.get("CustomerIdList")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._CustomerId = params.get("CustomerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiSecsResponse(AbstractModel):
+    r"""DescribeApiSecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: API安全数组
+        :type List: list of DisplayApiSec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        r"""API安全数组
+        :rtype: list of DisplayApiSec
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayApiSec()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAppsRequest(AbstractModel):
@@ -8608,6 +9121,194 @@ class DescribeWechatOfficialAccountsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DisplayApiSec(AbstractModel):
+    r"""API安全详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Url: Url
+        :type Url: str
+        :param _Host: Host地址
+        :type Host: str
+        :param _Path: Path路径
+        :type Path: str
+        :param _Method: 方法：POST、GET、DELETE等
+        :type Method: str
+        :param _Status: 修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+        :type Status: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Request: 请求体
+        :type Request: str
+        :param _Response: 响应体
+        :type Response: str
+        :param _IsRiskAPI: 是否风险API
+        :type IsRiskAPI: bool
+        """
+        self._Id = None
+        self._DisplayToolCommon = None
+        self._Url = None
+        self._Host = None
+        self._Path = None
+        self._Method = None
+        self._Status = None
+        self._Code = None
+        self._Request = None
+        self._Response = None
+        self._IsRiskAPI = None
+
+    @property
+    def Id(self):
+        r"""主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DisplayToolCommon(self):
+        r"""公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def Url(self):
+        r"""Url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Host(self):
+        r"""Host地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Path(self):
+        r"""Path路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        r"""方法：POST、GET、DELETE等
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Status(self):
+        r"""修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Request(self):
+        r"""请求体
+        :rtype: str
+        """
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+    @property
+    def Response(self):
+        r"""响应体
+        :rtype: str
+        """
+        return self._Response
+
+    @Response.setter
+    def Response(self, Response):
+        self._Response = Response
+
+    @property
+    def IsRiskAPI(self):
+        r"""是否风险API
+        :rtype: bool
+        """
+        return self._IsRiskAPI
+
+    @IsRiskAPI.setter
+    def IsRiskAPI(self, IsRiskAPI):
+        self._IsRiskAPI = IsRiskAPI
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Url = params.get("Url")
+        self._Host = params.get("Host")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._Status = params.get("Status")
+        self._Code = params.get("Code")
+        self._Request = params.get("Request")
+        self._Response = params.get("Response")
+        self._IsRiskAPI = params.get("IsRiskAPI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DisplayApp(AbstractModel):

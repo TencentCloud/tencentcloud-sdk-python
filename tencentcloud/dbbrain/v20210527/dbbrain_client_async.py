@@ -817,6 +817,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMongoDBProcessList(
+            self,
+            request: models.DescribeMongoDBProcessListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMongoDBProcessListResponse:
+        """
+        查询MongoDB实时会话列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMongoDBProcessList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMongoDBProcessListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMySqlProcessList(
             self,
             request: models.DescribeMySqlProcessListRequest,

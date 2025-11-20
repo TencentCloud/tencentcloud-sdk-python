@@ -49,6 +49,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHumanActorJob(self, request):
+        r"""通过JobId提交请求，获取人像驱动任务的结果信息。
+
+        :param request: Request instance for DescribeHumanActorJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeHumanActorJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeHumanActorJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHumanActorJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHumanActorJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeImageAnimateJob(self, request):
         r"""用于查询图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
 
@@ -156,6 +179,30 @@ class VclmClient(AbstractClient):
             body = self.call("DescribeVideoStylizationJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoStylizationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHumanActorJob(self, request):
+        r"""用于提交人像驱动任务
+        支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
+
+        :param request: Request instance for SubmitHumanActorJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitHumanActorJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitHumanActorJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHumanActorJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHumanActorJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -321,6 +321,7 @@ class AutoscalingClient(AbstractClient):
 
     def CreateScalingPolicy(self, request):
         r"""本接口（CreateScalingPolicy）用于创建告警触发策略。
+        - 目标追踪策略触发扩容的条件为，指定类型指标连续 3 个周期高于阈值（目标值），每个周期 1 分钟；触发缩容的条件为，指定类型指标连续 15 个周期低于阈值（目标值的80%），每个周期 1 分钟。
 
         :param request: Request instance for CreateScalingPolicy.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateScalingPolicyRequest`

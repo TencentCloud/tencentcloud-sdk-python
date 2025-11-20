@@ -2214,17 +2214,17 @@ class CreateHpcClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区。
+        :param _Zone: 可用区信息。可用区信息可通过 [查询可用区信息](https://cloud.tencent.com/document/api/213/15707) 接口获取。
         :type Zone: str
-        :param _Name: 高性能计算集群名称。
+        :param _Name: 高性能计算集群名称，长度限制[1-60]。
         :type Name: str
-        :param _Remark: 高性能计算集群备注。
+        :param _Remark: 高性能计算集群备注，长度[1-256]。
         :type Remark: str
-        :param _HpcClusterType: 高性能计算集群类型。
+        :param _HpcClusterType: 高性能计算集群类型，当前有三个取值：分别是CDC/CHC/STANDARD，其中STANDARD是默认的标准模式。
         :type HpcClusterType: str
-        :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。
+        :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC场景类型。
         :type HpcClusterBusinessId: str
-        :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+        :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。集群信息可通过 [查询高性能集群信息](https://cloud.tencent.com/document/api/213/83220) 接口获取。
         :type TagSpecification: list of TagSpecification
         """
         self._Zone = None
@@ -2236,7 +2236,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""可用区信息。可用区信息可通过 [查询可用区信息](https://cloud.tencent.com/document/api/213/15707) 接口获取。
         :rtype: str
         """
         return self._Zone
@@ -2247,7 +2247,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""高性能计算集群名称。
+        r"""高性能计算集群名称，长度限制[1-60]。
         :rtype: str
         """
         return self._Name
@@ -2258,7 +2258,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""高性能计算集群备注。
+        r"""高性能计算集群备注，长度[1-256]。
         :rtype: str
         """
         return self._Remark
@@ -2269,7 +2269,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def HpcClusterType(self):
-        r"""高性能计算集群类型。
+        r"""高性能计算集群类型，当前有三个取值：分别是CDC/CHC/STANDARD，其中STANDARD是默认的标准模式。
         :rtype: str
         """
         return self._HpcClusterType
@@ -2280,7 +2280,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def HpcClusterBusinessId(self):
-        r"""高性能计算集群对应的业务场景标识，当前只支持CDC。
+        r"""高性能计算集群对应的业务场景标识，当前只支持CDC场景类型。
         :rtype: str
         """
         return self._HpcClusterBusinessId
@@ -2291,7 +2291,7 @@ class CreateHpcClusterRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+        r"""标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。集群信息可通过 [查询高性能集群信息](https://cloud.tencent.com/document/api/213/83220) 接口获取。
         :rtype: list of TagSpecification
         """
         return self._TagSpecification

@@ -43,6 +43,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEnterprise(
+            self,
+            request: models.CreateEnterpriseRequest,
+            opts: Dict = None,
+    ) -> models.CreateEnterpriseResponse:
+        """
+        添加企业架构数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEnterprise"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEnterpriseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateJobRecord(
             self,
             request: models.CreateJobRecordRequest,
@@ -56,6 +74,24 @@ class CtemClient(AbstractClient):
         kwargs["action"] = "CreateJobRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateJobRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApiSecs(
+            self,
+            request: models.DescribeApiSecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiSecsResponse:
+        """
+        查看API安全数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiSecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiSecsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

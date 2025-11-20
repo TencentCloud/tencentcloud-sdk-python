@@ -173,6 +173,24 @@ class GsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAndroidInstanceAcceleratorToken(
+            self,
+            request: models.CreateAndroidInstanceAcceleratorTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateAndroidInstanceAcceleratorTokenResponse:
+        """
+        创建安卓实例加速Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAndroidInstanceAcceleratorToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAndroidInstanceAcceleratorTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAndroidInstanceImage(
             self,
             request: models.CreateAndroidInstanceImageRequest,
@@ -672,6 +690,24 @@ class GsClient(AbstractClient):
         kwargs["action"] = "DisconnectAndroidInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DisconnectAndroidInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisconnectAndroidInstanceAccelerator(
+            self,
+            request: models.DisconnectAndroidInstanceAcceleratorRequest,
+            opts: Dict = None,
+    ) -> models.DisconnectAndroidInstanceAcceleratorResponse:
+        """
+        断开安卓实例加速节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisconnectAndroidInstanceAccelerator"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisconnectAndroidInstanceAcceleratorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

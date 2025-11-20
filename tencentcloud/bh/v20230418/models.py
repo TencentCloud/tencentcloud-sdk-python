@@ -545,6 +545,222 @@ class AccessWhiteListRule(AbstractModel):
         
 
 
+class AccountGroup(AbstractModel):
+    r"""ioa账号组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 账号组id
+        :type Id: int
+        :param _Name: 账号组名称
+        :type Name: str
+        :param _IdPath: 账号组id路径
+        :type IdPath: str
+        :param _NamePath: 账号组名称路径
+        :type NamePath: str
+        :param _ParentId: 父账号组id
+        :type ParentId: int
+        :param _Source: 账号组来源
+        :type Source: int
+        :param _UserTotal: 账号组下用户总数
+        :type UserTotal: int
+        :param _IsLeaf: 是否叶子节点
+        :type IsLeaf: bool
+        :param _ImportType: 账号组导入类型
+        :type ImportType: str
+        :param _Description: 账号组描述
+        :type Description: str
+        :param _ParentOrgId: 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :type ParentOrgId: str
+        :param _OrgId: 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :type OrgId: str
+        :param _Status: 账号组是否已经接入，0表示未接入，1表示接入
+        :type Status: int
+        """
+        self._Id = None
+        self._Name = None
+        self._IdPath = None
+        self._NamePath = None
+        self._ParentId = None
+        self._Source = None
+        self._UserTotal = None
+        self._IsLeaf = None
+        self._ImportType = None
+        self._Description = None
+        self._ParentOrgId = None
+        self._OrgId = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""账号组id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""账号组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdPath(self):
+        r"""账号组id路径
+        :rtype: str
+        """
+        return self._IdPath
+
+    @IdPath.setter
+    def IdPath(self, IdPath):
+        self._IdPath = IdPath
+
+    @property
+    def NamePath(self):
+        r"""账号组名称路径
+        :rtype: str
+        """
+        return self._NamePath
+
+    @NamePath.setter
+    def NamePath(self, NamePath):
+        self._NamePath = NamePath
+
+    @property
+    def ParentId(self):
+        r"""父账号组id
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Source(self):
+        r"""账号组来源
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def UserTotal(self):
+        r"""账号组下用户总数
+        :rtype: int
+        """
+        return self._UserTotal
+
+    @UserTotal.setter
+    def UserTotal(self, UserTotal):
+        self._UserTotal = UserTotal
+
+    @property
+    def IsLeaf(self):
+        r"""是否叶子节点
+        :rtype: bool
+        """
+        return self._IsLeaf
+
+    @IsLeaf.setter
+    def IsLeaf(self, IsLeaf):
+        self._IsLeaf = IsLeaf
+
+    @property
+    def ImportType(self):
+        r"""账号组导入类型
+        :rtype: str
+        """
+        return self._ImportType
+
+    @ImportType.setter
+    def ImportType(self, ImportType):
+        self._ImportType = ImportType
+
+    @property
+    def Description(self):
+        r"""账号组描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ParentOrgId(self):
+        r"""父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :rtype: str
+        """
+        return self._ParentOrgId
+
+    @ParentOrgId.setter
+    def ParentOrgId(self, ParentOrgId):
+        self._ParentOrgId = ParentOrgId
+
+    @property
+    def OrgId(self):
+        r"""源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :rtype: str
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def Status(self):
+        r"""账号组是否已经接入，0表示未接入，1表示接入
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._IdPath = params.get("IdPath")
+        self._NamePath = params.get("NamePath")
+        self._ParentId = params.get("ParentId")
+        self._Source = params.get("Source")
+        self._UserTotal = params.get("UserTotal")
+        self._IsLeaf = params.get("IsLeaf")
+        self._ImportType = params.get("ImportType")
+        self._Description = params.get("Description")
+        self._ParentOrgId = params.get("ParentOrgId")
+        self._OrgId = params.get("OrgId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Acl(AbstractModel):
     r"""访问权限
 
@@ -4894,6 +5110,229 @@ class CreateResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSyncUserTaskRequest(AbstractModel):
+    r"""CreateSyncUserTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserKind: 同步用户类型, 1-同步ioa用户
+        :type UserKind: int
+        """
+        self._UserKind = None
+
+    @property
+    def UserKind(self):
+        r"""同步用户类型, 1-同步ioa用户
+        :rtype: int
+        """
+        return self._UserKind
+
+    @UserKind.setter
+    def UserKind(self, UserKind):
+        self._UserKind = UserKind
+
+
+    def _deserialize(self, params):
+        self._UserKind = params.get("UserKind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSyncUserTaskResponse(AbstractModel):
+    r"""CreateSyncUserTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserDirectoryRequest(AbstractModel):
+    r"""CreateUserDirectory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DirId: 目录id
+        :type DirId: int
+        :param _DirName: 目录名称
+        :type DirName: str
+        :param _UserOrgSet: ioa分组信息
+        :type UserOrgSet: list of UserOrg
+        :param _Source: ioa关联用户源类型
+        :type Source: int
+        :param _SourceName: ioa关联用户源名称
+        :type SourceName: str
+        :param _UserCount: 目录包含用户数
+        :type UserCount: int
+        """
+        self._DirId = None
+        self._DirName = None
+        self._UserOrgSet = None
+        self._Source = None
+        self._SourceName = None
+        self._UserCount = None
+
+    @property
+    def DirId(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._DirId
+
+    @DirId.setter
+    def DirId(self, DirId):
+        self._DirId = DirId
+
+    @property
+    def DirName(self):
+        r"""目录名称
+        :rtype: str
+        """
+        return self._DirName
+
+    @DirName.setter
+    def DirName(self, DirName):
+        self._DirName = DirName
+
+    @property
+    def UserOrgSet(self):
+        r"""ioa分组信息
+        :rtype: list of UserOrg
+        """
+        return self._UserOrgSet
+
+    @UserOrgSet.setter
+    def UserOrgSet(self, UserOrgSet):
+        self._UserOrgSet = UserOrgSet
+
+    @property
+    def Source(self):
+        r"""ioa关联用户源类型
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceName(self):
+        r"""ioa关联用户源名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def UserCount(self):
+        r"""目录包含用户数
+        :rtype: int
+        """
+        return self._UserCount
+
+    @UserCount.setter
+    def UserCount(self, UserCount):
+        self._UserCount = UserCount
+
+
+    def _deserialize(self, params):
+        self._DirId = params.get("DirId")
+        self._DirName = params.get("DirName")
+        if params.get("UserOrgSet") is not None:
+            self._UserOrgSet = []
+            for item in params.get("UserOrgSet"):
+                obj = UserOrg()
+                obj._deserialize(item)
+                self._UserOrgSet.append(obj)
+        self._Source = params.get("Source")
+        self._SourceName = params.get("SourceName")
+        self._UserCount = params.get("UserCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserDirectoryResponse(AbstractModel):
+    r"""CreateUserDirectory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 目录Id
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""目录Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserGroupRequest(AbstractModel):
     r"""CreateUserGroup请求参数结构体
 
@@ -5797,6 +6236,70 @@ class DeleteOperationTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteUserDirectoryRequest(AbstractModel):
+    r"""DeleteUserDirectory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 目录id集合
+        :type IdSet: list of int non-negative
+        """
+        self._IdSet = None
+
+    @property
+    def IdSet(self):
+        r"""目录id集合
+        :rtype: list of int non-negative
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserDirectoryResponse(AbstractModel):
+    r"""DeleteUserDirectory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteUserGroupMembersRequest(AbstractModel):
     r"""DeleteUserGroupMembers请求参数结构体
 
@@ -6586,6 +7089,165 @@ class DescribeAccessWhiteListRulesResponse(AbstractModel):
                 self._AccessWhiteListRuleSet.append(obj)
         self._AllowAny = params.get("AllowAny")
         self._AllowAuto = params.get("AllowAuto")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccountGroupsRequest(AbstractModel):
+    r"""DescribeAccountGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeepIn: 是否递归查询，0为不递归，1为递归
+        :type DeepIn: int
+        :param _ParentId: 父账号组ID, 默认0,查询根账号组下所有分组 
+        :type ParentId: int
+        :param _GroupName: 账号组名称，模糊查询
+        :type GroupName: str
+        :param _PageSize: 分页查询，每页条数
+        :type PageSize: int
+        :param _PageNum: 获取第几页的数据
+        :type PageNum: int
+        """
+        self._DeepIn = None
+        self._ParentId = None
+        self._GroupName = None
+        self._PageSize = None
+        self._PageNum = None
+
+    @property
+    def DeepIn(self):
+        r"""是否递归查询，0为不递归，1为递归
+        :rtype: int
+        """
+        return self._DeepIn
+
+    @DeepIn.setter
+    def DeepIn(self, DeepIn):
+        self._DeepIn = DeepIn
+
+    @property
+    def ParentId(self):
+        r"""父账号组ID, 默认0,查询根账号组下所有分组 
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def GroupName(self):
+        r"""账号组名称，模糊查询
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def PageSize(self):
+        r"""分页查询，每页条数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        r"""获取第几页的数据
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+
+    def _deserialize(self, params):
+        self._DeepIn = params.get("DeepIn")
+        self._ParentId = params.get("ParentId")
+        self._GroupName = params.get("GroupName")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountGroupsResponse(AbstractModel):
+    r"""DescribeAccountGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 账号组总数
+        :type TotalCount: int
+        :param _AccountGroupSet: 账号组信息
+        :type AccountGroupSet: list of AccountGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AccountGroupSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""账号组总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccountGroupSet(self):
+        r"""账号组信息
+        :rtype: list of AccountGroup
+        """
+        return self._AccountGroupSet
+
+    @AccountGroupSet.setter
+    def AccountGroupSet(self, AccountGroupSet):
+        self._AccountGroupSet = AccountGroupSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AccountGroupSet") is not None:
+            self._AccountGroupSet = []
+            for item in params.get("AccountGroupSet"):
+                obj = AccountGroup()
+                obj._deserialize(item)
+                self._AccountGroupSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9598,6 +10260,189 @@ class DescribeSecuritySettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSourceTypesRequest(AbstractModel):
+    r"""DescribeSourceTypes请求参数结构体
+
+    """
+
+
+class DescribeSourceTypesResponse(AbstractModel):
+    r"""DescribeSourceTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 认证源总数
+        :type TotalCount: int
+        :param _SourceTypeSet: 认证源信息
+        :type SourceTypeSet: list of SourceType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SourceTypeSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""认证源总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SourceTypeSet(self):
+        r"""认证源信息
+        :rtype: list of SourceType
+        """
+        return self._SourceTypeSet
+
+    @SourceTypeSet.setter
+    def SourceTypeSet(self, SourceTypeSet):
+        self._SourceTypeSet = SourceTypeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SourceTypeSet") is not None:
+            self._SourceTypeSet = []
+            for item in params.get("SourceTypeSet"):
+                obj = SourceType()
+                obj._deserialize(item)
+                self._SourceTypeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserDirectoryRequest(AbstractModel):
+    r"""DescribeUserDirectory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserDirectoryResponse(AbstractModel):
+    r"""DescribeUserDirectory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserDirSet: 用户目录集
+        :type UserDirSet: list of UserDirectory
+        :param _TotalCount: 用户目录集总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserDirSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UserDirSet(self):
+        r"""用户目录集
+        :rtype: list of UserDirectory
+        """
+        return self._UserDirSet
+
+    @UserDirSet.setter
+    def UserDirSet(self, UserDirSet):
+        self._UserDirSet = UserDirSet
+
+    @property
+    def TotalCount(self):
+        r"""用户目录集总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserDirSet") is not None:
+            self._UserDirSet = []
+            for item in params.get("UserDirSet"):
+                obj = UserDirectory()
+                obj._deserialize(item)
+                self._UserDirSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserGroupMembersRequest(AbstractModel):
     r"""DescribeUserGroupMembers请求参数结构体
 
@@ -9928,6 +10773,87 @@ class DescribeUserGroupsResponse(AbstractModel):
                 obj = Group()
                 obj._deserialize(item)
                 self._GroupSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserSyncStatusRequest(AbstractModel):
+    r"""DescribeUserSyncStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserKind: 获取用户同步状态， 1-获取ioa用户同步状态
+        :type UserKind: int
+        """
+        self._UserKind = None
+
+    @property
+    def UserKind(self):
+        r"""获取用户同步状态， 1-获取ioa用户同步状态
+        :rtype: int
+        """
+        return self._UserKind
+
+    @UserKind.setter
+    def UserKind(self, UserKind):
+        self._UserKind = UserKind
+
+
+    def _deserialize(self, params):
+        self._UserKind = params.get("UserKind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserSyncStatusResponse(AbstractModel):
+    r"""DescribeUserSyncStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 用户同步状态
+        :type Status: :class:`tencentcloud.bh.v20230418.models.AssetSyncStatus`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""用户同步状态
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AssetSyncStatus`
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Status") is not None:
+            self._Status = AssetSyncStatus()
+            self._Status._deserialize(params.get("Status"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14566,6 +15492,90 @@ class ModifyResourceRequest(AbstractModel):
 
 class ModifyResourceResponse(AbstractModel):
     r"""ModifyResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserDirectoryRequest(AbstractModel):
+    r"""ModifyUserDirectory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 目录id
+        :type Id: int
+        :param _UserOrgSet: ioa分组信息
+        :type UserOrgSet: list of UserOrg
+        """
+        self._Id = None
+        self._UserOrgSet = None
+
+    @property
+    def Id(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def UserOrgSet(self):
+        r"""ioa分组信息
+        :rtype: list of UserOrg
+        """
+        return self._UserOrgSet
+
+    @UserOrgSet.setter
+    def UserOrgSet(self, UserOrgSet):
+        self._UserOrgSet = UserOrgSet
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("UserOrgSet") is not None:
+            self._UserOrgSet = []
+            for item in params.get("UserOrgSet"):
+                obj = UserOrg()
+                obj._deserialize(item)
+                self._UserOrgSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserDirectoryResponse(AbstractModel):
+    r"""ModifyUserDirectory返回参数结构体
 
     """
 
@@ -20022,6 +21032,215 @@ class SetLDAPSyncFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SourceType(AbstractModel):
+    r"""ioa用户源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: 账号组来源
+        :type Source: int
+        :param _Type: 账号组来源类型
+        :type Type: str
+        :param _Name: 账号组来源名称
+        :type Name: str
+        :param _Target: 区分ioa原来和iam-mini
+        :type Target: str
+        """
+        self._Source = None
+        self._Type = None
+        self._Name = None
+        self._Target = None
+
+    @property
+    def Source(self):
+        r"""账号组来源
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Type(self):
+        r"""账号组来源类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""账号组来源名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Target(self):
+        r"""区分ioa原来和iam-mini
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncDevicesToIOARequest(AbstractModel):
+    r"""SyncDevicesToIOA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIdSet: 资产ID集合。资产必须已绑定支持IOA功能的堡垒机实例。每次最多同步200个资产。
+        :type DeviceIdSet: list of int non-negative
+        """
+        self._DeviceIdSet = None
+
+    @property
+    def DeviceIdSet(self):
+        r"""资产ID集合。资产必须已绑定支持IOA功能的堡垒机实例。每次最多同步200个资产。
+        :rtype: list of int non-negative
+        """
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
+
+
+    def _deserialize(self, params):
+        self._DeviceIdSet = params.get("DeviceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncDevicesToIOAResponse(AbstractModel):
+    r"""SyncDevicesToIOA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SyncUserToIOARequest(AbstractModel):
+    r"""SyncUserToIOA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserIdSet: 需要同步到ioa的本地用户的id集合
+        :type UserIdSet: list of int non-negative
+        """
+        self._UserIdSet = None
+
+    @property
+    def UserIdSet(self):
+        r"""需要同步到ioa的本地用户的id集合
+        :rtype: list of int non-negative
+        """
+        return self._UserIdSet
+
+    @UserIdSet.setter
+    def UserIdSet(self, UserIdSet):
+        self._UserIdSet = UserIdSet
+
+
+    def _deserialize(self, params):
+        self._UserIdSet = params.get("UserIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncUserToIOAResponse(AbstractModel):
+    r"""SyncUserToIOA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TagFilter(AbstractModel):
     r"""资产标签
 
@@ -20602,6 +21821,248 @@ class User(AbstractModel):
         if params.get("IOAUserGroup") is not None:
             self._IOAUserGroup = IOAUserGroup()
             self._IOAUserGroup._deserialize(params.get("IOAUserGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserDirectory(AbstractModel):
+    r"""用户目录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 目录id
+        :type Id: int
+        :param _DirId: ioa目录id
+        :type DirId: int
+        :param _DirName: ioa目录名称
+        :type DirName: str
+        :param _Source: ioa关联用户源类型
+        :type Source: int
+        :param _SourceName: ioa关联用户源名称
+        :type SourceName: str
+        :param _UserTotal: 目录包含用户数
+        :type UserTotal: int
+        :param _CreateTime: 目录接入时间
+        :type CreateTime: str
+        :param _UserOrgSet: 目录下的组织细节信息
+        :type UserOrgSet: list of UserOrg
+        """
+        self._Id = None
+        self._DirId = None
+        self._DirName = None
+        self._Source = None
+        self._SourceName = None
+        self._UserTotal = None
+        self._CreateTime = None
+        self._UserOrgSet = None
+
+    @property
+    def Id(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DirId(self):
+        r"""ioa目录id
+        :rtype: int
+        """
+        return self._DirId
+
+    @DirId.setter
+    def DirId(self, DirId):
+        self._DirId = DirId
+
+    @property
+    def DirName(self):
+        r"""ioa目录名称
+        :rtype: str
+        """
+        return self._DirName
+
+    @DirName.setter
+    def DirName(self, DirName):
+        self._DirName = DirName
+
+    @property
+    def Source(self):
+        r"""ioa关联用户源类型
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceName(self):
+        r"""ioa关联用户源名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def UserTotal(self):
+        r"""目录包含用户数
+        :rtype: int
+        """
+        return self._UserTotal
+
+    @UserTotal.setter
+    def UserTotal(self, UserTotal):
+        self._UserTotal = UserTotal
+
+    @property
+    def CreateTime(self):
+        r"""目录接入时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UserOrgSet(self):
+        r"""目录下的组织细节信息
+        :rtype: list of UserOrg
+        """
+        return self._UserOrgSet
+
+    @UserOrgSet.setter
+    def UserOrgSet(self, UserOrgSet):
+        self._UserOrgSet = UserOrgSet
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DirId = params.get("DirId")
+        self._DirName = params.get("DirName")
+        self._Source = params.get("Source")
+        self._SourceName = params.get("SourceName")
+        self._UserTotal = params.get("UserTotal")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("UserOrgSet") is not None:
+            self._UserOrgSet = []
+            for item in params.get("UserOrgSet"):
+                obj = UserOrg()
+                obj._deserialize(item)
+                self._UserOrgSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserOrg(AbstractModel):
+    r"""同步的ioa用户组织信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: ioa用户组织id
+        :type OrgId: int
+        :param _OrgName: ioa用户组织名称
+        :type OrgName: str
+        :param _OrgIdPath: ioa用户组织id路径
+        :type OrgIdPath: str
+        :param _OrgNamePath: ioa用户组织名称路径
+        :type OrgNamePath: str
+        :param _UserTotal: ioa用户组织id下的用户数
+        :type UserTotal: int
+        """
+        self._OrgId = None
+        self._OrgName = None
+        self._OrgIdPath = None
+        self._OrgNamePath = None
+        self._UserTotal = None
+
+    @property
+    def OrgId(self):
+        r"""ioa用户组织id
+        :rtype: int
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def OrgName(self):
+        r"""ioa用户组织名称
+        :rtype: str
+        """
+        return self._OrgName
+
+    @OrgName.setter
+    def OrgName(self, OrgName):
+        self._OrgName = OrgName
+
+    @property
+    def OrgIdPath(self):
+        r"""ioa用户组织id路径
+        :rtype: str
+        """
+        return self._OrgIdPath
+
+    @OrgIdPath.setter
+    def OrgIdPath(self, OrgIdPath):
+        self._OrgIdPath = OrgIdPath
+
+    @property
+    def OrgNamePath(self):
+        r"""ioa用户组织名称路径
+        :rtype: str
+        """
+        return self._OrgNamePath
+
+    @OrgNamePath.setter
+    def OrgNamePath(self, OrgNamePath):
+        self._OrgNamePath = OrgNamePath
+
+    @property
+    def UserTotal(self):
+        r"""ioa用户组织id下的用户数
+        :rtype: int
+        """
+        return self._UserTotal
+
+    @UserTotal.setter
+    def UserTotal(self, UserTotal):
+        self._UserTotal = UserTotal
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        self._OrgName = params.get("OrgName")
+        self._OrgIdPath = params.get("OrgIdPath")
+        self._OrgNamePath = params.get("OrgNamePath")
+        self._UserTotal = params.get("UserTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

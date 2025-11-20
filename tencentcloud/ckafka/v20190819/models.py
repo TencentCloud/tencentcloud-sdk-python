@@ -6888,6 +6888,8 @@ class CreateTopicRequest(AbstractModel):
         :type RetentionBytes: int
         :param _Tags: 标签列表
         :type Tags: list of Tag
+        :param _LogMsgTimestampType: 消息保存的时间类型:CreateTime/LogAppendTime
+        :type LogMsgTimestampType: str
         """
         self._InstanceId = None
         self._TopicName = None
@@ -6906,6 +6908,7 @@ class CreateTopicRequest(AbstractModel):
         self._AclRuleName = None
         self._RetentionBytes = None
         self._Tags = None
+        self._LogMsgTimestampType = None
 
     @property
     def InstanceId(self):
@@ -7094,6 +7097,17 @@ class CreateTopicRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def LogMsgTimestampType(self):
+        r"""消息保存的时间类型:CreateTime/LogAppendTime
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7118,6 +7132,7 @@ class CreateTopicRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10179,6 +10194,70 @@ class DescribeAclRuleResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = AclRuleResp()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCkafkaVersionRequest(AbstractModel):
+    r"""DescribeCkafkaVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""ckafka集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCkafkaVersionResponse(AbstractModel):
+    r"""DescribeCkafkaVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -14006,9 +14085,12 @@ class DescribeRouteRequest(AbstractModel):
         :type InstanceId: str
         :param _RouteId: 路由Id
         :type RouteId: int
+        :param _MainRouteFlag: 是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+        :type MainRouteFlag: bool
         """
         self._InstanceId = None
         self._RouteId = None
+        self._MainRouteFlag = None
 
     @property
     def InstanceId(self):
@@ -14032,10 +14114,22 @@ class DescribeRouteRequest(AbstractModel):
     def RouteId(self, RouteId):
         self._RouteId = RouteId
 
+    @property
+    def MainRouteFlag(self):
+        r"""是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+        :rtype: bool
+        """
+        return self._MainRouteFlag
+
+    @MainRouteFlag.setter
+    def MainRouteFlag(self, MainRouteFlag):
+        self._MainRouteFlag = MainRouteFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._RouteId = params.get("RouteId")
+        self._MainRouteFlag = params.get("MainRouteFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20062,6 +20156,10 @@ serverless  :serverless版
         :type RemainingTopics: int
         :param _DynamicDiskConfig: 动态硬盘扩容策略
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        :param _SystemMaintenanceTime: 系统维护时间
+        :type SystemMaintenanceTime: str
+        :param _MaxMessageByte: 实例级别消息最大大小
+        :type MaxMessageByte: int
         :param _InstanceChargeType: 实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
         :type InstanceChargeType: str
         :param _ElasticBandwidthSwitch: 是否开启弹性带宽白名单   
@@ -20131,6 +20229,8 @@ CLOUD_EKS_TSE EKS集群
         self._RemainingPartitions = None
         self._RemainingTopics = None
         self._DynamicDiskConfig = None
+        self._SystemMaintenanceTime = None
+        self._MaxMessageByte = None
         self._InstanceChargeType = None
         self._ElasticBandwidthSwitch = None
         self._ElasticBandwidthOpenStatus = None
@@ -20531,6 +20631,28 @@ serverless  :serverless版
         self._DynamicDiskConfig = DynamicDiskConfig
 
     @property
+    def SystemMaintenanceTime(self):
+        r"""系统维护时间
+        :rtype: str
+        """
+        return self._SystemMaintenanceTime
+
+    @SystemMaintenanceTime.setter
+    def SystemMaintenanceTime(self, SystemMaintenanceTime):
+        self._SystemMaintenanceTime = SystemMaintenanceTime
+
+    @property
+    def MaxMessageByte(self):
+        r"""实例级别消息最大大小
+        :rtype: int
+        """
+        return self._MaxMessageByte
+
+    @MaxMessageByte.setter
+    def MaxMessageByte(self, MaxMessageByte):
+        self._MaxMessageByte = MaxMessageByte
+
+    @property
     def InstanceChargeType(self):
         r"""实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
         :rtype: str
@@ -20697,6 +20819,8 @@ CLOUD_EKS_TSE EKS集群
         if params.get("DynamicDiskConfig") is not None:
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        self._SystemMaintenanceTime = params.get("SystemMaintenanceTime")
+        self._MaxMessageByte = params.get("MaxMessageByte")
         self._InstanceChargeType = params.get("InstanceChargeType")
         self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         self._ElasticBandwidthOpenStatus = params.get("ElasticBandwidthOpenStatus")
@@ -24746,6 +24870,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type QuotaConsumerByteRate: int
         :param _ReplicaNum: topic副本数  最小值 1,最大值 3
         :type ReplicaNum: int
+        :param _LogMsgTimestampType: 消息保存的时间类型：CreateTime/LogAppendTime
+        :type LogMsgTimestampType: str
         """
         self._InstanceId = None
         self._TopicName = None
@@ -24765,6 +24891,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._QuotaProducerByteRate = None
         self._QuotaConsumerByteRate = None
         self._ReplicaNum = None
+        self._LogMsgTimestampType = None
 
     @property
     def InstanceId(self):
@@ -24964,6 +25091,17 @@ class ModifyTopicAttributesRequest(AbstractModel):
     def ReplicaNum(self, ReplicaNum):
         self._ReplicaNum = ReplicaNum
 
+    @property
+    def LogMsgTimestampType(self):
+        r"""消息保存的时间类型：CreateTime/LogAppendTime
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24989,6 +25127,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._QuotaProducerByteRate = params.get("QuotaProducerByteRate")
         self._QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
         self._ReplicaNum = params.get("ReplicaNum")
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32305,6 +32444,147 @@ class TransformsParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpgradeBrokerVersionRequest(AbstractModel):
+    r"""UpgradeBrokerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+        :type InstanceId: str
+        :param _Type: 1.平滑升配.2.垂直升配
+        :type Type: int
+        :param _SourceVersion: 版本号
+        :type SourceVersion: str
+        :param _TargetVersion: 版本号
+        :type TargetVersion: str
+        :param _DelayTimeStamp: 延迟时间
+        :type DelayTimeStamp: str
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._SourceVersion = None
+        self._TargetVersion = None
+        self._DelayTimeStamp = None
+
+    @property
+    def InstanceId(self):
+        r"""ckafka集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        r"""1.平滑升配.2.垂直升配
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SourceVersion(self):
+        r"""版本号
+        :rtype: str
+        """
+        return self._SourceVersion
+
+    @SourceVersion.setter
+    def SourceVersion(self, SourceVersion):
+        self._SourceVersion = SourceVersion
+
+    @property
+    def TargetVersion(self):
+        r"""版本号
+        :rtype: str
+        """
+        return self._TargetVersion
+
+    @TargetVersion.setter
+    def TargetVersion(self, TargetVersion):
+        self._TargetVersion = TargetVersion
+
+    @property
+    def DelayTimeStamp(self):
+        r"""延迟时间
+        :rtype: str
+        """
+        return self._DelayTimeStamp
+
+    @DelayTimeStamp.setter
+    def DelayTimeStamp(self, DelayTimeStamp):
+        self._DelayTimeStamp = DelayTimeStamp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._SourceVersion = params.get("SourceVersion")
+        self._TargetVersion = params.get("TargetVersion")
+        self._DelayTimeStamp = params.get("DelayTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeBrokerVersionResponse(AbstractModel):
+    r"""UpgradeBrokerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 升配结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""升配结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class UrlDecodeParam(AbstractModel):

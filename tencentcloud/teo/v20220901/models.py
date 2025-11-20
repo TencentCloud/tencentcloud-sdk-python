@@ -42587,6 +42587,8 @@ class ModifyZoneSettingRequest(AbstractModel):
         :param _Grpc: Grpc 协议支持配置。
 不填写表示保持原有配置。
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param _NetworkErrorLogging: 网络错误日志记录配置。不填写表示保持原有配置。
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
         :param _ImageOptimize: 图片优化配置。
 不填写表示关闭。
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
@@ -42614,6 +42616,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self._Ipv6 = None
         self._ClientIpCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._ImageOptimize = None
         self._StandardDebug = None
         self._JITVideoProcess = None
@@ -42846,6 +42849,17 @@ class ModifyZoneSettingRequest(AbstractModel):
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""网络错误日志记录配置。不填写表示保持原有配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def ImageOptimize(self):
         r"""图片优化配置。
 不填写表示关闭。
@@ -42936,6 +42950,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("Grpc") is not None:
             self._Grpc = Grpc()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLogging()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("ImageOptimize") is not None:
             self._ImageOptimize = ImageOptimize()
             self._ImageOptimize._deserialize(params.get("ImageOptimize"))
@@ -43775,6 +43792,86 @@ class NSDetail(AbstractModel):
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self._VanityNameServersIps.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkErrorLogging(AbstractModel):
+    r"""网络错误日志记录配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 是否开启网络错误日志记录配置，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""是否开启网络错误日志记录配置，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkErrorLoggingParameters(AbstractModel):
+    r"""网络错误日志记录配置项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 网络错误日志记录配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""网络错误日志记录配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56701,6 +56798,9 @@ class ZoneConfig(AbstractModel):
         :param _Grpc: gRPC 协议支持配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        :param _NetworkErrorLogging: 网络错误日志记录配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLoggingParameters`
         :param _AccelerateMainland: 中国大陆加速优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
@@ -56728,6 +56828,7 @@ class ZoneConfig(AbstractModel):
         self._ClientIPHeader = None
         self._ClientIPCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._AccelerateMainland = None
         self._StandardDebug = None
 
@@ -56972,6 +57073,18 @@ class ZoneConfig(AbstractModel):
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""网络错误日志记录配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLoggingParameters`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def AccelerateMainland(self):
         r"""中国大陆加速优化配置。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -57057,6 +57170,9 @@ class ZoneConfig(AbstractModel):
         if params.get("Grpc") is not None:
             self._Grpc = GrpcParameters()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLoggingParameters()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("AccelerateMainland") is not None:
             self._AccelerateMainland = AccelerateMainlandParameters()
             self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
@@ -57263,6 +57379,9 @@ class ZoneSetting(AbstractModel):
         :param _Grpc: Grpc协议支持配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param _NetworkErrorLogging: 网络错误日志记录配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
         :param _ImageOptimize: 图片优化相关配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
@@ -57296,6 +57415,7 @@ class ZoneSetting(AbstractModel):
         self._Https = None
         self._ClientIpCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._ImageOptimize = None
         self._AccelerateMainland = None
         self._StandardDebug = None
@@ -57542,6 +57662,18 @@ class ZoneSetting(AbstractModel):
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""网络错误日志记录配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def ImageOptimize(self):
         r"""图片优化相关配置。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -57647,6 +57779,9 @@ class ZoneSetting(AbstractModel):
         if params.get("Grpc") is not None:
             self._Grpc = Grpc()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLogging()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("ImageOptimize") is not None:
             self._ImageOptimize = ImageOptimize()
             self._ImageOptimize._deserialize(params.get("ImageOptimize"))

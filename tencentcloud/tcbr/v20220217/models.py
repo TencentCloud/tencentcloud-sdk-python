@@ -3074,6 +3074,8 @@ class ServerBaseConfig(AbstractModel):
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
         :param _VolumesConf: 存储配置信息
         :type VolumesConf: list of VolumeConf
+        :param _LinkImageRegistry: 关联镜像密钥
+        :type LinkImageRegistry: str
         """
         self._EnvId = None
         self._ServerName = None
@@ -3105,6 +3107,7 @@ class ServerBaseConfig(AbstractModel):
         self._SessionAffinity = None
         self._VpcConf = None
         self._VolumesConf = None
+        self._LinkImageRegistry = None
 
     @property
     def EnvId(self):
@@ -3437,6 +3440,17 @@ class ServerBaseConfig(AbstractModel):
     def VolumesConf(self, VolumesConf):
         self._VolumesConf = VolumesConf
 
+    @property
+    def LinkImageRegistry(self):
+        r"""关联镜像密钥
+        :rtype: str
+        """
+        return self._LinkImageRegistry
+
+    @LinkImageRegistry.setter
+    def LinkImageRegistry(self, LinkImageRegistry):
+        self._LinkImageRegistry = LinkImageRegistry
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3486,6 +3500,7 @@ class ServerBaseConfig(AbstractModel):
                 obj = VolumeConf()
                 obj._deserialize(item)
                 self._VolumesConf.append(obj)
+        self._LinkImageRegistry = params.get("LinkImageRegistry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

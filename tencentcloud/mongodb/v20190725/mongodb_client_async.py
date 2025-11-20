@@ -550,6 +550,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceSSL(
+            self,
+            request: models.DescribeInstanceSSLRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceSSLResponse:
+        """
+        查看实例SSL开启状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceSSLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLogDownloadTasks(
             self,
             request: models.DescribeLogDownloadTasksRequest,
@@ -799,6 +817,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "InquirePriceRenewDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InquirePriceRenewDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InstanceEnableSSL(
+            self,
+            request: models.InstanceEnableSSLRequest,
+            opts: Dict = None,
+    ) -> models.InstanceEnableSSLResponse:
+        """
+        本接口（InstanceEnableSSL）用于设置实例SSL状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstanceEnableSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstanceEnableSSLResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -231,6 +231,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type IntervalDays: int
         :param _CrossRegionsAliveDays: 跨地域复制的快照保留时间，单位天
         :type CrossRegionsAliveDays: int
+        :param _Tags: 快照策略标签
+        :type Tags: list of TagInfo
         """
         self._AutoSnapshotPolicyId = None
         self._PolicyName = None
@@ -248,6 +250,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         self._DayOfMonth = None
         self._IntervalDays = None
         self._CrossRegionsAliveDays = None
+        self._Tags = None
 
     @property
     def AutoSnapshotPolicyId(self):
@@ -427,6 +430,17 @@ class AutoSnapshotPolicyInfo(AbstractModel):
     def CrossRegionsAliveDays(self, CrossRegionsAliveDays):
         self._CrossRegionsAliveDays = CrossRegionsAliveDays
 
+    @property
+    def Tags(self):
+        r"""快照策略标签
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
@@ -450,6 +464,12 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         self._DayOfMonth = params.get("DayOfMonth")
         self._IntervalDays = params.get("IntervalDays")
         self._CrossRegionsAliveDays = params.get("CrossRegionsAliveDays")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1130,6 +1150,8 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         :type DayOfMonth: str
         :param _IntervalDays: 间隔天数，与DayOfWeek，DayOfMonth 三者选一
         :type IntervalDays: int
+        :param _ResourceTags: 快照策略标签
+        :type ResourceTags: list of TagInfo
         """
         self._Hour = None
         self._PolicyName = None
@@ -1137,6 +1159,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         self._AliveDays = None
         self._DayOfMonth = None
         self._IntervalDays = None
+        self._ResourceTags = None
 
     @property
     def Hour(self):
@@ -1204,6 +1227,17 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
     def IntervalDays(self, IntervalDays):
         self._IntervalDays = IntervalDays
 
+    @property
+    def ResourceTags(self):
+        r"""快照策略标签
+        :rtype: list of TagInfo
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
 
     def _deserialize(self, params):
         self._Hour = params.get("Hour")
@@ -1212,6 +1246,12 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         self._AliveDays = params.get("AliveDays")
         self._DayOfMonth = params.get("DayOfMonth")
         self._IntervalDays = params.get("IntervalDays")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

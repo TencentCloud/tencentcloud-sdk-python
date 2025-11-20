@@ -696,6 +696,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSSL(self, request):
+        r"""查看实例SSL开启状态
+
+        :param request: Request instance for DescribeInstanceSSL.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceSSLRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogDownloadTasks(self, request):
         r"""日志下载任务查询
 
@@ -1011,6 +1034,29 @@ class MongodbClient(AbstractClient):
             body = self.call("InquirePriceRenewDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.InquirePriceRenewDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InstanceEnableSSL(self, request):
+        r"""本接口（InstanceEnableSSL）用于设置实例SSL状态。
+
+        :param request: Request instance for InstanceEnableSSL.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.InstanceEnableSSLRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.InstanceEnableSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstanceEnableSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstanceEnableSSLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

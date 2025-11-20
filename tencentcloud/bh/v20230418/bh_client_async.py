@@ -313,6 +313,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSyncUserTask(
+            self,
+            request: models.CreateSyncUserTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSyncUserTaskResponse:
+        """
+        创建用户同步任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSyncUserTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSyncUserTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateUser(
             self,
             request: models.CreateUserRequest,
@@ -326,6 +344,24 @@ class BhClient(AbstractClient):
         kwargs["action"] = "CreateUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateUserDirectory(
+            self,
+            request: models.CreateUserDirectoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserDirectoryResponse:
+        """
+        创建用户目录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserDirectory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserDirectoryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -511,6 +547,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteUserDirectory(
+            self,
+            request: models.DeleteUserDirectoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserDirectoryResponse:
+        """
+        删除用户目录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserDirectory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserDirectoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteUserGroupMembers(
             self,
             request: models.DeleteUserGroupMembersRequest,
@@ -596,6 +650,24 @@ class BhClient(AbstractClient):
         kwargs["action"] = "DescribeAccessWhiteListRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAccessWhiteListRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccountGroups(
+            self,
+            request: models.DescribeAccountGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountGroupsResponse:
+        """
+        获取账号组信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -907,6 +979,42 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSourceTypes(
+            self,
+            request: models.DescribeSourceTypesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSourceTypesResponse:
+        """
+        获取认证源信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSourceTypes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSourceTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserDirectory(
+            self,
+            request: models.DescribeUserDirectoryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserDirectoryResponse:
+        """
+        获取用户目录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserDirectory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserDirectoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserGroupMembers(
             self,
             request: models.DescribeUserGroupMembersRequest,
@@ -938,6 +1046,24 @@ class BhClient(AbstractClient):
         kwargs["action"] = "DescribeUserGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUserGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserSyncStatus(
+            self,
+            request: models.DescribeUserSyncStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserSyncStatusResponse:
+        """
+        获取用户同步状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserSyncStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserSyncStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1339,6 +1465,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyUserDirectory(
+            self,
+            request: models.ModifyUserDirectoryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserDirectoryResponse:
+        """
+        修改用户目录信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserDirectory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserDirectoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserGroup(
             self,
             request: models.ModifyUserGroupRequest,
@@ -1640,6 +1784,42 @@ class BhClient(AbstractClient):
         kwargs["action"] = "SetLDAPSyncFlag"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetLDAPSyncFlagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SyncDevicesToIOA(
+            self,
+            request: models.SyncDevicesToIOARequest,
+            opts: Dict = None,
+    ) -> models.SyncDevicesToIOAResponse:
+        """
+        同步资产到IOA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SyncDevicesToIOA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SyncDevicesToIOAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SyncUserToIOA(
+            self,
+            request: models.SyncUserToIOARequest,
+            opts: Dict = None,
+    ) -> models.SyncUserToIOAResponse:
+        """
+        同步堡垒机本地用户到IOA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SyncUserToIOA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SyncUserToIOAResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

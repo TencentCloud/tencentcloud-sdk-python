@@ -1285,6 +1285,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
+        :param _BlindWatermark: 数字水印参数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         :param _OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -1322,6 +1325,7 @@ PureAudio：纯音频类型
         """
         self._Definition = None
         self._WatermarkSet = None
+        self._BlindWatermark = None
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._SubStreamObjectName = None
@@ -1354,6 +1358,18 @@ PureAudio：纯音频类型
     @WatermarkSet.setter
     def WatermarkSet(self, WatermarkSet):
         self._WatermarkSet = WatermarkSet
+
+    @property
+    def BlindWatermark(self):
+        r"""数字水印参数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
 
     @property
     def OutputStorage(self):
@@ -1488,6 +1504,9 @@ PureAudio：纯音频类型
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self._WatermarkSet.append(obj)
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -14281,6 +14300,42 @@ class BlindWatermarkEmbedInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._EmbedText = params.get("EmbedText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlindWatermarkInput(AbstractModel):
+    r"""媒体处理任务中的数字水印参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板ID
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板ID
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39282,19 +39337,22 @@ class ImageAreaBoxInfo(AbstractModel):
 默认值：logo。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _AreaCoordSet: 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :param _AreaCoordSet: 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。注意：该字段最大值为4096。
 示例值：[101, 85, 111, 95]
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
-        :param _BoundingBox: 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+        :param _BoundingBox: 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。当表示像素时，该字段最大值为4096。
 - [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
 - [50, 50, 350, 280] : 表示像素 （数值大于等于1）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoundingBox: list of float
+        :param _BoundingBoxUnitType: BoundingBox字段单位。设置为0时，按照该字段规则自动选择单位；设置为1时，单位为比例；设置为2时，单位为像素。
+        :type BoundingBoxUnitType: int
         """
         self._Type = None
         self._AreaCoordSet = None
         self._BoundingBox = None
+        self._BoundingBoxUnitType = None
 
     @property
     def Type(self):
@@ -39313,7 +39371,7 @@ class ImageAreaBoxInfo(AbstractModel):
 
     @property
     def AreaCoordSet(self):
-        r"""图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        r"""图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。注意：该字段最大值为4096。
 示例值：[101, 85, 111, 95]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
@@ -39326,7 +39384,7 @@ class ImageAreaBoxInfo(AbstractModel):
 
     @property
     def BoundingBox(self):
-        r"""图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+        r"""图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。当表示像素时，该字段最大值为4096。
 - [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
 - [50, 50, 350, 280] : 表示像素 （数值大于等于1）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -39338,11 +39396,23 @@ class ImageAreaBoxInfo(AbstractModel):
     def BoundingBox(self, BoundingBox):
         self._BoundingBox = BoundingBox
 
+    @property
+    def BoundingBoxUnitType(self):
+        r"""BoundingBox字段单位。设置为0时，按照该字段规则自动选择单位；设置为1时，单位为比例；设置为2时，单位为像素。
+        :rtype: int
+        """
+        return self._BoundingBoxUnitType
+
+    @BoundingBoxUnitType.setter
+    def BoundingBoxUnitType(self, BoundingBoxUnitType):
+        self._BoundingBoxUnitType = BoundingBoxUnitType
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._AreaCoordSet = params.get("AreaCoordSet")
         self._BoundingBox = params.get("BoundingBox")
+        self._BoundingBoxUnitType = params.get("BoundingBoxUnitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55683,6 +55753,10 @@ class ProcessImageRequest(AbstractModel):
 <li>/自定义路径/文件名_{变量名}.{format}</li>
 如果不填，则默认为相对路径：{inputName}.{format}。
         :type OutputPath: str
+        :param _Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :type ResourceId: str
         :param _ImageTask: 图片处理参数。
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
         """
@@ -55690,6 +55764,8 @@ class ProcessImageRequest(AbstractModel):
         self._OutputStorage = None
         self._OutputDir = None
         self._OutputPath = None
+        self._Definition = None
+        self._ResourceId = None
         self._ImageTask = None
 
     @property
@@ -55744,6 +55820,28 @@ class ProcessImageRequest(AbstractModel):
         self._OutputPath = OutputPath
 
     @property
+    def Definition(self):
+        r"""图片处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ResourceId(self):
+        r"""资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
     def ImageTask(self):
         r"""图片处理参数。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
@@ -55764,6 +55862,8 @@ class ProcessImageRequest(AbstractModel):
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputDir = params.get("OutputDir")
         self._OutputPath = params.get("OutputPath")
+        self._Definition = params.get("Definition")
+        self._ResourceId = params.get("ResourceId")
         if params.get("ImageTask") is not None:
             self._ImageTask = ImageTaskInput()
             self._ImageTask._deserialize(params.get("ImageTask"))
@@ -67864,6 +67964,9 @@ class TranscodeTaskInput(AbstractModel):
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
+        :param _BlindWatermark: 数字水印参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         :param _MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
         :param _StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
@@ -67902,6 +68005,7 @@ class TranscodeTaskInput(AbstractModel):
         self._RawParameter = None
         self._OverrideParameter = None
         self._WatermarkSet = None
+        self._BlindWatermark = None
         self._MosaicSet = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
@@ -67958,6 +68062,18 @@ class TranscodeTaskInput(AbstractModel):
     @WatermarkSet.setter
     def WatermarkSet(self, WatermarkSet):
         self._WatermarkSet = WatermarkSet
+
+    @property
+    def BlindWatermark(self):
+        r"""数字水印参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
 
     @property
     def MosaicSet(self):
@@ -68079,6 +68195,9 @@ class TranscodeTaskInput(AbstractModel):
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self._WatermarkSet.append(obj)
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         if params.get("MosaicSet") is not None:
             self._MosaicSet = []
             for item in params.get("MosaicSet"):

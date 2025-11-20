@@ -5794,10 +5794,12 @@ class DescribeDBDiagEventRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :type InstanceId: str
         :param _EventId: 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
         :type EventId: int
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -5807,6 +5809,8 @@ class DescribeDBDiagEventRequest(AbstractModel):
     @property
     def InstanceId(self):
         r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :rtype: str
         """
         return self._InstanceId
@@ -5828,7 +5832,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -6054,13 +6058,14 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
         :type StartTime: str
-        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
         :type EndTime: str
         :param _Severities: 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
         :type Severities: list of int
-        :param _InstanceIds: 实例ID列表。
+        :param _InstanceIds: 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :type InstanceIds: list of str
-        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
         :type Product: str
         :param _Offset: 偏移量，默认0。
         :type Offset: int
@@ -6088,7 +6093,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+        r"""结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
         :rtype: str
         """
         return self._EndTime
@@ -6110,7 +6115,8 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例ID列表。
+        r"""实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6121,7 +6127,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        r"""服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -6242,12 +6248,14 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :type InstanceId: str
         :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。结束时间与开始时间的间隔最大可为2天。
         :type StartTime: str
         :param _EndTime: 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
         :type EndTime: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -6258,6 +6266,8 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
     @property
     def InstanceId(self):
         r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+
+查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
         :rtype: str
         """
         return self._InstanceId
@@ -6290,7 +6300,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -8132,6 +8142,194 @@ class DescribeMetricTopProxiesResponse(AbstractModel):
                 obj = RedisMetricTopProxiesData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMongoDBProcessListRequest(AbstractModel):
+    r"""DescribeMongoDBProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值：mongodb
+        :type Product: str
+        :param _ID: 线程的ID，用于筛选线程列表。
+        :type ID: int
+        :param _Host: 线程的操作主机地址，用于筛选线程列表。
+        :type Host: str
+        :param _DB: 线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+        :type DB: str
+        :param _Type: 命令类型 ,如果是多个 使用 ','  分割
+        :type Type: str
+        :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :type Time: int
+        :param _Limit: 返回数量，默认20。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._ID = None
+        self._Host = None
+        self._DB = None
+        self._Type = None
+        self._Time = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值：mongodb
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ID(self):
+        r"""线程的ID，用于筛选线程列表。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Host(self):
+        r"""线程的操作主机地址，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        r"""线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def Type(self):
+        r"""命令类型 ,如果是多个 使用 ','  分割
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Time(self):
+        r"""线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._ID = params.get("ID")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._Type = params.get("Type")
+        self._Time = params.get("Time")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMongoDBProcessListResponse(AbstractModel):
+    r"""DescribeMongoDBProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessList: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessList: :class:`tencentcloud.dbbrain.v20210527.models.MongoDBProcessList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProcessList = None
+        self._RequestId = None
+
+    @property
+    def ProcessList(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MongoDBProcessList`
+        """
+        return self._ProcessList
+
+    @ProcessList.setter
+    def ProcessList(self, ProcessList):
+        self._ProcessList = ProcessList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessList") is not None:
+            self._ProcessList = MongoDBProcessList()
+            self._ProcessList._deserialize(params.get("ProcessList"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13258,7 +13456,7 @@ class DiagHistoryEventItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiagType: 诊断类型。
+        :param _DiagType: 诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
         :type DiagType: str
         :param _EndTime: 结束时间。
         :type EndTime: str
@@ -13304,7 +13502,7 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def DiagType(self):
-        r"""诊断类型。
+        r"""诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
         :rtype: str
         """
         return self._DiagType
@@ -16572,6 +16770,259 @@ class MongoDBIndex(AbstractModel):
                 obj = IndexesToDrop()
                 obj._deserialize(item)
                 self._IndexesToDrop.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MongoDBProcessItem(AbstractModel):
+    r"""mongodb会话详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsInternalIp: 是否内部IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInternalIp: bool
+        :param _Type: 语句类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Command: 语句详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: str
+        :param _InstanceNodeId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNodeId: str
+        :param _Host: 客户端ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Time: 运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: float
+        :param _ID: 会话ID
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _ShardName: 分片名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardName: str
+        :param _User: 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _DB: 数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DB: str
+        """
+        self._IsInternalIp = None
+        self._Type = None
+        self._Command = None
+        self._InstanceNodeId = None
+        self._Host = None
+        self._Time = None
+        self._ID = None
+        self._ShardName = None
+        self._User = None
+        self._DB = None
+
+    @property
+    def IsInternalIp(self):
+        r"""是否内部IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsInternalIp
+
+    @IsInternalIp.setter
+    def IsInternalIp(self, IsInternalIp):
+        self._IsInternalIp = IsInternalIp
+
+    @property
+    def Type(self):
+        r"""语句类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Command(self):
+        r"""语句详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def InstanceNodeId(self):
+        r"""节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceNodeId
+
+    @InstanceNodeId.setter
+    def InstanceNodeId(self, InstanceNodeId):
+        self._InstanceNodeId = InstanceNodeId
+
+    @property
+    def Host(self):
+        r"""客户端ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Time(self):
+        r"""运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ID(self):
+        r"""会话ID
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ShardName(self):
+        r"""分片名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShardName
+
+    @ShardName.setter
+    def ShardName(self, ShardName):
+        self._ShardName = ShardName
+
+    @property
+    def User(self):
+        r"""用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def DB(self):
+        r"""数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+
+    def _deserialize(self, params):
+        self._IsInternalIp = params.get("IsInternalIp")
+        self._Type = params.get("Type")
+        self._Command = params.get("Command")
+        self._InstanceNodeId = params.get("InstanceNodeId")
+        self._Host = params.get("Host")
+        self._Time = params.get("Time")
+        self._ID = params.get("ID")
+        self._ShardName = params.get("ShardName")
+        self._User = params.get("User")
+        self._DB = params.get("DB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MongoDBProcessList(AbstractModel):
+    r"""mongodb 会话列表 返回数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: 列名字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Names: list of str
+        :param _Data: 接口返回数据详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of MongoDBProcessItem
+        """
+        self._Names = None
+        self._Data = None
+
+    @property
+    def Names(self):
+        r"""列名字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Data(self):
+        r"""接口返回数据详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MongoDBProcessItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MongoDBProcessItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

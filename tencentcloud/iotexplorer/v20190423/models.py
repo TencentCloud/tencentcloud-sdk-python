@@ -33520,10 +33520,13 @@ class TalkBasicConfigInfo(AbstractModel):
         :type GreetingMessage: str
         :param _DefaultVoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
         :type DefaultVoiceType: int
+        :param _FastVoiceType: 复刻音色ID，当不为空时，DefaultVoiceType为200000000
+        :type FastVoiceType: str
         """
         self._SystemPrompt = None
         self._GreetingMessage = None
         self._DefaultVoiceType = None
+        self._FastVoiceType = None
 
     @property
     def SystemPrompt(self):
@@ -33558,11 +33561,23 @@ class TalkBasicConfigInfo(AbstractModel):
     def DefaultVoiceType(self, DefaultVoiceType):
         self._DefaultVoiceType = DefaultVoiceType
 
+    @property
+    def FastVoiceType(self):
+        r"""复刻音色ID，当不为空时，DefaultVoiceType为200000000
+        :rtype: str
+        """
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
 
     def _deserialize(self, params):
         self._SystemPrompt = params.get("SystemPrompt")
         self._GreetingMessage = params.get("GreetingMessage")
         self._DefaultVoiceType = params.get("DefaultVoiceType")
+        self._FastVoiceType = params.get("FastVoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
