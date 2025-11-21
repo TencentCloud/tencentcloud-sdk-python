@@ -27,7 +27,7 @@
 ```bash
 # 安装公共包, 必选, 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
 pip install --upgrade tencentcloud-sdk-python-common # 同步版本
-pip install --upgrade tencentcloud-sdk-python-common[async] # 异步版本
+pip install --upgrade 'tencentcloud-sdk-python-common[async]' # 异步版本
 
 pip install --upgrade tencentcloud-sdk-python-指定产品包名缩写  # 如 CVM 产品包：tencentcloud-sdk-python-cvm
 ```
@@ -37,7 +37,7 @@ pip install --upgrade tencentcloud-sdk-python-指定产品包名缩写  # 如 CV
 ```bash
 # 如果你的 python 版本 >= 3.6 且希望使用异步功能, 可以选择安装 async 版本, 否则选择同步版本
 pip install --upgrade tencentcloud-sdk-python # 同步版本
-pip install --upgrade tencentcloud-sdk-python[async] # 异步版本
+pip install --upgrade 'tencentcloud-sdk-python[async]' # 异步版本
 ```
 全产品 SDK 包含了所有云产品的调用代码，体积偏大，对体积敏感的场景，推荐安装指定产品 SDK。
 
@@ -178,7 +178,7 @@ Common Client 参考[示例](./examples/common_client/describe_instances.py)
 
 从 `3.1.0` 版本开始，腾讯云 Python SDK 支持异步调用方式。异步 SDK 基于 `httpx` 库，适用于高并发场景。
 
-使用异步功能需要安装 async 版本公共包 `pip install tencentcloud-sdk-python-common[async]`。
+使用异步功能需要安装 async 版本公共包 `pip install 'tencentcloud-sdk-python-common[async]'`。
 
 **注意事项**:
 
@@ -372,3 +372,4 @@ client_profile = ClientProfile()
 client_profile.disable_region_breaker = False  # 使用地域容灾必须要将这个值置为false
 client_profile.region_breaker_profile = region_breaker_profile
 ```
+
