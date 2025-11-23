@@ -133,6 +133,24 @@ class PrivatednsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePrivateZoneList(
+            self,
+            request: models.CreatePrivateZoneListRequest,
+            opts: Dict = None,
+    ) -> models.CreatePrivateZoneListResponse:
+        """
+        批量创建私有域
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePrivateZoneList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePrivateZoneListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePrivateZoneRecord(
             self,
             request: models.CreatePrivateZoneRecordRequest,
@@ -146,6 +164,24 @@ class PrivatednsClient(AbstractClient):
         kwargs["action"] = "CreatePrivateZoneRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreatePrivateZoneRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePrivateZoneRecordList(
+            self,
+            request: models.CreatePrivateZoneRecordListRequest,
+            opts: Dict = None,
+    ) -> models.CreatePrivateZoneRecordListResponse:
+        """
+        批量添加私有域解析记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePrivateZoneRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePrivateZoneRecordListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -283,7 +319,7 @@ class PrivatednsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAccountVpcListResponse:
         """
-        获取私有域解析账号的VPC列表
+        获取关联账号的VPC列表
         """
         
         kwargs = {}
@@ -308,6 +344,42 @@ class PrivatednsClient(AbstractClient):
         kwargs["action"] = "DescribeAuditLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCreateRecordListResult(
+            self,
+            request: models.DescribeCreateRecordListResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCreateRecordListResultResponse:
+        """
+        查询批量添加私有域解析记录结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCreateRecordListResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCreateRecordListResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCreateZoneListResult(
+            self,
+            request: models.DescribeCreateZoneListResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCreateZoneListResultResponse:
+        """
+        查询批量添加私有域结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCreateZoneListResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCreateZoneListResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -26,6 +26,52 @@ class CtemClient(AbstractClient):
     _service = 'ctem'
 
 
+    def CreateApp(self, request):
+        r"""添加APP资产
+
+        :param request: Request instance for CreateApp.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateAppRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAsset(self, request):
+        r"""添加主机资产
+
+        :param request: Request instance for CreateAsset.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateAssetRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomer(self, request):
         r"""创建企业
 
@@ -49,8 +95,31 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDomain(self, request):
+        r"""添加主域名数据
+
+        :param request: Request instance for CreateDomain.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateDomainRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEnterprise(self, request):
-        r"""添加企业架构数据
+        r"""添加企业架构资产
 
         :param request: Request instance for CreateEnterprise.
         :type request: :class:`tencentcloud.ctem.v20231128.models.CreateEnterpriseRequest`
@@ -63,6 +132,29 @@ class CtemClient(AbstractClient):
             body = self.call("CreateEnterprise", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEnterpriseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateHttp(self, request):
+        r"""添加网站资产
+
+        :param request: Request instance for CreateHttp.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateHttpRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateHttpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHttp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHttpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -86,6 +178,443 @@ class CtemClient(AbstractClient):
             body = self.call("CreateJobRecord", params, headers=headers)
             response = json.loads(body)
             model = models.CreateJobRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateManage(self, request):
+        r"""添加后台数据
+
+        :param request: Request instance for CreateManage.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateManageRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateManageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateManage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateManageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePort(self, request):
+        r"""添加端口服务资产
+
+        :param request: Request instance for CreatePort.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreatePortRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreatePortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePort", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePortResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSeeds(self, request):
+        r"""创建种子
+
+        :param request: Request instance for CreateSeeds.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateSeedsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateSeedsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSeeds", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSeedsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSubDomain(self, request):
+        r"""添加子域名数据
+
+        :param request: Request instance for CreateSubDomain.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateSubDomainRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateSubDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSuspiciousAsset(self, request):
+        r"""添加影子资产
+
+        :param request: Request instance for CreateSuspiciousAsset.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateSuspiciousAssetRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateSuspiciousAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSuspiciousAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSuspiciousAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWechatApplet(self, request):
+        r"""添加微信小程序资产
+
+        :param request: Request instance for CreateWechatApplet.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateWechatAppletRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateWechatAppletResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWechatApplet", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWechatAppletResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWechatOfficialAccount(self, request):
+        r"""添加微信公众号资产
+
+        :param request: Request instance for CreateWechatOfficialAccount.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateWechatOfficialAccountRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateWechatOfficialAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWechatOfficialAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWechatOfficialAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteApps(self, request):
+        r"""删除APP数据
+
+        :param request: Request instance for DeleteApps.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteAppsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteAppsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAppsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAssets(self, request):
+        r"""删除主机资产数据
+
+        :param request: Request instance for DeleteAssets.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteAssetsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDomains(self, request):
+        r"""删除主域名数据
+
+        :param request: Request instance for DeleteDomains.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteDomainsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteEnterprises(self, request):
+        r"""删除企业架构数据
+
+        :param request: Request instance for DeleteEnterprises.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteEnterprisesRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteEnterprisesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEnterprises", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEnterprisesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteHttps(self, request):
+        r"""删除网站资产数据
+
+        :param request: Request instance for DeleteHttps.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteHttpsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteHttpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteHttps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteHttpsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteManages(self, request):
+        r"""删除后台数据
+
+        :param request: Request instance for DeleteManages.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteManagesRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteManagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteManages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteManagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePorts(self, request):
+        r"""删除端口数据
+
+        :param request: Request instance for DeletePorts.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeletePortsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeletePortsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePorts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePortsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSeeds(self, request):
+        r"""删除种子
+
+        :param request: Request instance for DeleteSeeds.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteSeedsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteSeedsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSeeds", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSeedsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSubDomains(self, request):
+        r"""删除子域名数据
+
+        :param request: Request instance for DeleteSubDomains.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteSubDomainsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteSubDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSubDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSubDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSuspiciousAssets(self, request):
+        r"""删除影子资产数据
+
+        :param request: Request instance for DeleteSuspiciousAssets.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteSuspiciousAssetsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteSuspiciousAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSuspiciousAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSuspiciousAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWechatApplets(self, request):
+        r"""删除微信小程序数据
+
+        :param request: Request instance for DeleteWechatApplets.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteWechatAppletsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteWechatAppletsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWechatApplets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWechatAppletsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWechatOfficialAccounts(self, request):
+        r"""删除微信公众号数据
+
+        :param request: Request instance for DeleteWechatOfficialAccounts.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DeleteWechatOfficialAccountsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DeleteWechatOfficialAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWechatOfficialAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWechatOfficialAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -601,6 +1130,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSeeds(self, request):
+        r"""查看种子列表
+
+        :param request: Request instance for DescribeSeeds.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeSeedsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeSeedsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSeeds", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSeedsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSensitiveInfos(self, request):
         r"""查看敏感信息泄露数据
 
@@ -762,6 +1314,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IgnoreData(self, request):
+        r"""忽略数据
+
+        :param request: Request instance for IgnoreData.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.IgnoreDataRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.IgnoreDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IgnoreData", params, headers=headers)
+            response = json.loads(body)
+            model = models.IgnoreDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomer(self, request):
         r"""编辑企业
 
@@ -799,6 +1374,29 @@ class CtemClient(AbstractClient):
             body = self.call("ModifyLabel", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySeedStatus(self, request):
+        r"""修改种子状态
+
+        :param request: Request instance for ModifySeedStatus.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.ModifySeedStatusRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ModifySeedStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySeedStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySeedStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

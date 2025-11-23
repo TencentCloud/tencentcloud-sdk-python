@@ -54284,6 +54284,9 @@ class ParseNotificationResponse(AbstractModel):
         :param _BatchTaskEvent: 批量处理任务信息，仅当 EventType 为 BatchTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTaskEvent: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        :param _ExtractBlindWatermarkTask: 数字水印提取任务信息，仅当 EventType 为 ExtractBlindWatermark，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractBlindWatermarkTask: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -54296,6 +54299,7 @@ class ParseNotificationResponse(AbstractModel):
         self._Timestamp = None
         self._Sign = None
         self._BatchTaskEvent = None
+        self._ExtractBlindWatermarkTask = None
         self._RequestId = None
 
     @property
@@ -54408,6 +54412,18 @@ class ParseNotificationResponse(AbstractModel):
         self._BatchTaskEvent = BatchTaskEvent
 
     @property
+    def ExtractBlindWatermarkTask(self):
+        r"""数字水印提取任务信息，仅当 EventType 为 ExtractBlindWatermark，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkTask
+
+    @ExtractBlindWatermarkTask.setter
+    def ExtractBlindWatermarkTask(self, ExtractBlindWatermarkTask):
+        self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -54437,6 +54453,9 @@ class ParseNotificationResponse(AbstractModel):
         if params.get("BatchTaskEvent") is not None:
             self._BatchTaskEvent = BatchSubTaskResult()
             self._BatchTaskEvent._deserialize(params.get("BatchTaskEvent"))
+        if params.get("ExtractBlindWatermarkTask") is not None:
+            self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         self._RequestId = params.get("RequestId")
 
 

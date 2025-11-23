@@ -1045,6 +1045,154 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrivateZoneListRequest(AbstractModel):
+    r"""CreatePrivateZoneList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 私有域域名数组，域名格式必须是标准的TLD
+        :type Domains: list of str
+        """
+        self._Domains = None
+
+    @property
+    def Domains(self):
+        r"""私有域域名数组，域名格式必须是标准的TLD
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateZoneListResponse(AbstractModel):
+    r"""CreatePrivateZoneList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePrivateZoneRecordListRequest(AbstractModel):
+    r"""CreatePrivateZoneRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: 私有域ID数组
+        :type ZoneIds: list of str
+        :param _RecordsInfo: 私有域解析记录数据
+        :type RecordsInfo: list of RecordsInfo
+        """
+        self._ZoneIds = None
+        self._RecordsInfo = None
+
+    @property
+    def ZoneIds(self):
+        r"""私有域ID数组
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RecordsInfo(self):
+        r"""私有域解析记录数据
+        :rtype: list of RecordsInfo
+        """
+        return self._RecordsInfo
+
+    @RecordsInfo.setter
+    def RecordsInfo(self, RecordsInfo):
+        self._RecordsInfo = RecordsInfo
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        if params.get("RecordsInfo") is not None:
+            self._RecordsInfo = []
+            for item in params.get("RecordsInfo"):
+                obj = RecordsInfo()
+                obj._deserialize(item)
+                self._RecordsInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateZoneRecordListResponse(AbstractModel):
+    r"""CreatePrivateZoneRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrivateZoneRecordRequest(AbstractModel):
     r"""CreatePrivateZoneRecord请求参数结构体
 
@@ -2216,9 +2364,9 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: VPC数量
+        :param _TotalCount: 关联账号VPC数量
         :type TotalCount: int
-        :param _VpcSet: VPC 列表
+        :param _VpcSet: 关联账号VPC 列表
         :type VpcSet: list of AccountVpcInfoOut
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2229,7 +2377,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""VPC数量
+        r"""关联账号VPC数量
         :rtype: int
         """
         return self._TotalCount
@@ -2240,7 +2388,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        r"""VPC 列表
+        r"""关联账号VPC 列表
         :rtype: list of AccountVpcInfoOut
         """
         return self._VpcSet
@@ -2418,6 +2566,198 @@ class DescribeAuditLogResponse(AbstractModel):
                 obj = AuditLog()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCreateRecordListResultRequest(AbstractModel):
+    r"""DescribeCreateRecordListResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: 私有域ID数组
+        :type ZoneIds: list of str
+        :param _RecordsInfo: 私有域解析记录数据
+        :type RecordsInfo: list of RecordsInfo
+        """
+        self._ZoneIds = None
+        self._RecordsInfo = None
+
+    @property
+    def ZoneIds(self):
+        r"""私有域ID数组
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RecordsInfo(self):
+        r"""私有域解析记录数据
+        :rtype: list of RecordsInfo
+        """
+        return self._RecordsInfo
+
+    @RecordsInfo.setter
+    def RecordsInfo(self, RecordsInfo):
+        self._RecordsInfo = RecordsInfo
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        if params.get("RecordsInfo") is not None:
+            self._RecordsInfo = []
+            for item in params.get("RecordsInfo"):
+                obj = RecordsInfo()
+                obj._deserialize(item)
+                self._RecordsInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCreateRecordListResultResponse(AbstractModel):
+    r"""DescribeCreateRecordListResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordsResult: 批量添加解析记录结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordsResult: list of RecordsInfoResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordsResult = None
+        self._RequestId = None
+
+    @property
+    def RecordsResult(self):
+        r"""批量添加解析记录结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordsInfoResult
+        """
+        return self._RecordsResult
+
+    @RecordsResult.setter
+    def RecordsResult(self, RecordsResult):
+        self._RecordsResult = RecordsResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RecordsResult") is not None:
+            self._RecordsResult = []
+            for item in params.get("RecordsResult"):
+                obj = RecordsInfoResult()
+                obj._deserialize(item)
+                self._RecordsResult.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCreateZoneListResultRequest(AbstractModel):
+    r"""DescribeCreateZoneListResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 私有域域名数组，域名格式必须是标准的TLD
+        :type Domains: list of str
+        """
+        self._Domains = None
+
+    @property
+    def Domains(self):
+        r"""私有域域名数组，域名格式必须是标准的TLD
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCreateZoneListResultResponse(AbstractModel):
+    r"""DescribeCreateZoneListResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZonesInfo: 私有域域名和zoneId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZonesInfo: list of ZoneInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZonesInfo = None
+        self._RequestId = None
+
+    @property
+    def ZonesInfo(self):
+        r"""私有域域名和zoneId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ZoneInfo
+        """
+        return self._ZonesInfo
+
+    @ZonesInfo.setter
+    def ZonesInfo(self, ZonesInfo):
+        self._ZonesInfo = ZonesInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZonesInfo") is not None:
+            self._ZonesInfo = []
+            for item in params.get("ZonesInfo"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self._ZonesInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2764,7 +3104,7 @@ class DescribeInboundEndpointListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页限制数目， 最大100，默认20
         :type Limit: int
-        :param _Filters: 过滤参数，支持EndPointName，EndpointName，EndpointId
+        :param _Filters: 过滤参数，支持EndPointName，EndpointName，EndPointId
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -2795,7 +3135,7 @@ class DescribeInboundEndpointListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤参数，支持EndPointName，EndpointName，EndpointId
+        r"""过滤参数，支持EndPointName，EndpointName，EndPointId
         :rtype: list of Filter
         """
         return self._Filters
@@ -6080,6 +6420,362 @@ class RecordInfo(AbstractModel):
         
 
 
+class RecordsInfo(AbstractModel):
+    r"""私有域解析记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordType: 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :type RecordType: str
+        :param _SubDomain: 子域名，例如 "www", "m", "@"
+        :type SubDomain: str
+        :param _RecordValue: 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :type RecordValue: str
+        :param _Weight: 记录权重，值为1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TTL: int
+        :param _MX: MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MX: int
+        """
+        self._RecordType = None
+        self._SubDomain = None
+        self._RecordValue = None
+        self._Weight = None
+        self._TTL = None
+        self._MX = None
+
+    @property
+    def RecordType(self):
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def SubDomain(self):
+        r"""子域名，例如 "www", "m", "@"
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordValue(self):
+        r"""记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :rtype: str
+        """
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+    @property
+    def Weight(self):
+        r"""记录权重，值为1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def TTL(self):
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def MX(self):
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MX
+
+    @MX.setter
+    def MX(self, MX):
+        self._MX = MX
+
+
+    def _deserialize(self, params):
+        self._RecordType = params.get("RecordType")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordValue = params.get("RecordValue")
+        self._Weight = params.get("Weight")
+        self._TTL = params.get("TTL")
+        self._MX = params.get("MX")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordsInfoResult(AbstractModel):
+    r"""批量添加解析记录返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域ID
+        :type ZoneId: str
+        :param _Domain: 私有域域名
+        :type Domain: str
+        :param _RecordsStatus: 私有域解析记录创建结果
+        :type RecordsStatus: list of RecordsInfoStatus
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+        self._RecordsStatus = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""私有域ID
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""私有域域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RecordsStatus(self):
+        r"""私有域解析记录创建结果
+        :rtype: list of RecordsInfoStatus
+        """
+        return self._RecordsStatus
+
+    @RecordsStatus.setter
+    def RecordsStatus(self, RecordsStatus):
+        self._RecordsStatus = RecordsStatus
+
+    @property
+    def Remark(self):
+        r"""备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        if params.get("RecordsStatus") is not None:
+            self._RecordsStatus = []
+            for item in params.get("RecordsStatus"):
+                obj = RecordsInfoStatus()
+                obj._deserialize(item)
+                self._RecordsStatus.append(obj)
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordsInfoStatus(AbstractModel):
+    r"""批量添加解析记录结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordType: 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :type RecordType: str
+        :param _SubDomain: 子域名，例如 "www", "m", "@"
+        :type SubDomain: str
+        :param _RecordValue: 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :type RecordValue: str
+        :param _Weight: 记录权重，值为1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TTL: int
+        :param _MX: MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MX: int
+        :param _Status: 是否添加成功：0是失败，1是成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Message: 若status为0，则此处为失败原因描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._RecordType = None
+        self._SubDomain = None
+        self._RecordValue = None
+        self._Weight = None
+        self._TTL = None
+        self._MX = None
+        self._Status = None
+        self._Message = None
+
+    @property
+    def RecordType(self):
+        r"""记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def SubDomain(self):
+        r"""子域名，例如 "www", "m", "@"
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordValue(self):
+        r"""记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :rtype: str
+        """
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+    @property
+    def Weight(self):
+        r"""记录权重，值为1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def TTL(self):
+        r"""记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def MX(self):
+        r"""MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MX
+
+    @MX.setter
+    def MX(self, MX):
+        self._MX = MX
+
+    @property
+    def Status(self):
+        r"""是否添加成功：0是失败，1是成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""若status为0，则此处为失败原因描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._RecordType = params.get("RecordType")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordValue = params.get("RecordValue")
+        self._Weight = params.get("Weight")
+        self._TTL = params.get("TTL")
+        self._MX = params.get("MX")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubnetIpInfo(AbstractModel):
     r"""终端节点信息
 
@@ -6353,6 +7049,76 @@ class VpcInfo(AbstractModel):
     def _deserialize(self, params):
         self._UniqVpcId = params.get("UniqVpcId")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneInfo(AbstractModel):
+    r"""创建私有域成功后返回私有域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param _Domain: 私有域域名
+        :type Domain: str
+        :param _Reason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+        self._Reason = None
+
+    @property
+    def ZoneId(self):
+        r"""私有域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""私有域域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Reason(self):
+        r"""失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

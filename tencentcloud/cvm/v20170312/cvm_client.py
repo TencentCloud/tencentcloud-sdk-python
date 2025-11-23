@@ -155,7 +155,7 @@ class CvmClient(AbstractClient):
 
 
     def ConvertOperatingSystems(self, request):
-        r"""本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+        r"""本接口(ConvertOperatingSystems)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
 
         :param request: Request instance for ConvertOperatingSystems.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ConvertOperatingSystemsRequest`

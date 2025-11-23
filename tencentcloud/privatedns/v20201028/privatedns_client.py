@@ -164,6 +164,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePrivateZoneList(self, request):
+        r"""批量创建私有域
+
+        :param request: Request instance for CreatePrivateZoneList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrivateZoneList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrivateZoneListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrivateZoneRecord(self, request):
         r"""添加私有域解析记录
 
@@ -178,6 +201,29 @@ class PrivatednsClient(AbstractClient):
             body = self.call("CreatePrivateZoneRecord", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePrivateZoneRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePrivateZoneRecordList(self, request):
+        r"""批量添加私有域解析记录
+
+        :param request: Request instance for CreatePrivateZoneRecordList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRecordListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrivateZoneRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrivateZoneRecordListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -349,7 +395,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeAccountVpcList(self, request):
-        r"""获取私有域解析账号的VPC列表
+        r"""获取关联账号的VPC列表
 
         :param request: Request instance for DescribeAccountVpcList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAccountVpcListRequest`
@@ -385,6 +431,52 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribeAuditLog", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCreateRecordListResult(self, request):
+        r"""查询批量添加私有域解析记录结果
+
+        :param request: Request instance for DescribeCreateRecordListResult.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeCreateRecordListResultRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeCreateRecordListResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreateRecordListResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreateRecordListResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCreateZoneListResult(self, request):
+        r"""查询批量添加私有域结果
+
+        :param request: Request instance for DescribeCreateZoneListResult.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeCreateZoneListResultRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeCreateZoneListResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreateZoneListResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreateZoneListResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

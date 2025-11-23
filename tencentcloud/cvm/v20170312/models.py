@@ -1879,7 +1879,7 @@ class ConvertOperatingSystemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SupportTargetOSList: 转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
+        :param _SupportTargetOSList: 转换的目标操作系统信息，仅在入参 DryRun 为 true 时返回。
         :type SupportTargetOSList: list of TargetOS
         :param _TaskId: 操作系统转换的任务 ID
         :type TaskId: str
@@ -1892,7 +1892,7 @@ class ConvertOperatingSystemsResponse(AbstractModel):
 
     @property
     def SupportTargetOSList(self):
-        r"""转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
+        r"""转换的目标操作系统信息，仅在入参 DryRun 为 true 时返回。
         :rtype: list of TargetOS
         """
         return self._SupportTargetOSList

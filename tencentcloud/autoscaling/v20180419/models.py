@@ -8008,9 +8008,15 @@ class InstanceNameIndexSettings(AbstractModel):
 下调初始序号可能会造成伸缩组内实例名称序号重复。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginIndex: int
+        :param _IndexLength: 实例名称递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。 取值范围：0-8，最大为整数8。 采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
+
+假设设置为3，那么序号形如：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999; 
+假设设置为0，对应的序号为0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :type IndexLength: int
         """
         self._Enabled = None
         self._BeginIndex = None
+        self._IndexLength = None
 
     @property
     def Enabled(self):
@@ -8044,10 +8050,25 @@ class InstanceNameIndexSettings(AbstractModel):
     def BeginIndex(self, BeginIndex):
         self._BeginIndex = BeginIndex
 
+    @property
+    def IndexLength(self):
+        r"""实例名称递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。 取值范围：0-8，最大为整数8。 采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
+
+假设设置为3，那么序号形如：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999; 
+假设设置为0，对应的序号为0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :rtype: int
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
         self._BeginIndex = params.get("BeginIndex")
+        self._IndexLength = params.get("IndexLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

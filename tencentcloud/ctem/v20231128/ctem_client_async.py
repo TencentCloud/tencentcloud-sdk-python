@@ -25,6 +25,42 @@ class CtemClient(AbstractClient):
     _endpoint = 'ctem.tencentcloudapi.com'
     _service = 'ctem'
 
+    async def CreateApp(
+            self,
+            request: models.CreateAppRequest,
+            opts: Dict = None,
+    ) -> models.CreateAppResponse:
+        """
+        添加APP资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAsset(
+            self,
+            request: models.CreateAssetRequest,
+            opts: Dict = None,
+    ) -> models.CreateAssetResponse:
+        """
+        添加主机资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCustomer(
             self,
             request: models.CreateCustomerRequest,
@@ -43,19 +79,55 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDomain(
+            self,
+            request: models.CreateDomainRequest,
+            opts: Dict = None,
+    ) -> models.CreateDomainResponse:
+        """
+        添加主域名数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateEnterprise(
             self,
             request: models.CreateEnterpriseRequest,
             opts: Dict = None,
     ) -> models.CreateEnterpriseResponse:
         """
-        添加企业架构数据
+        添加企业架构资产
         """
         
         kwargs = {}
         kwargs["action"] = "CreateEnterprise"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateEnterpriseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateHttp(
+            self,
+            request: models.CreateHttpRequest,
+            opts: Dict = None,
+    ) -> models.CreateHttpResponse:
+        """
+        添加网站资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHttp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHttpResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -74,6 +146,348 @@ class CtemClient(AbstractClient):
         kwargs["action"] = "CreateJobRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateJobRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateManage(
+            self,
+            request: models.CreateManageRequest,
+            opts: Dict = None,
+    ) -> models.CreateManageResponse:
+        """
+        添加后台数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateManage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateManageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePort(
+            self,
+            request: models.CreatePortRequest,
+            opts: Dict = None,
+    ) -> models.CreatePortResponse:
+        """
+        添加端口服务资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePort"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePortResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSeeds(
+            self,
+            request: models.CreateSeedsRequest,
+            opts: Dict = None,
+    ) -> models.CreateSeedsResponse:
+        """
+        创建种子
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSeeds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSeedsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSubDomain(
+            self,
+            request: models.CreateSubDomainRequest,
+            opts: Dict = None,
+    ) -> models.CreateSubDomainResponse:
+        """
+        添加子域名数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSubDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSubDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSuspiciousAsset(
+            self,
+            request: models.CreateSuspiciousAssetRequest,
+            opts: Dict = None,
+    ) -> models.CreateSuspiciousAssetResponse:
+        """
+        添加影子资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSuspiciousAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSuspiciousAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWechatApplet(
+            self,
+            request: models.CreateWechatAppletRequest,
+            opts: Dict = None,
+    ) -> models.CreateWechatAppletResponse:
+        """
+        添加微信小程序资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWechatApplet"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWechatAppletResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWechatOfficialAccount(
+            self,
+            request: models.CreateWechatOfficialAccountRequest,
+            opts: Dict = None,
+    ) -> models.CreateWechatOfficialAccountResponse:
+        """
+        添加微信公众号资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWechatOfficialAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWechatOfficialAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApps(
+            self,
+            request: models.DeleteAppsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAppsResponse:
+        """
+        删除APP数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApps"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAppsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAssets(
+            self,
+            request: models.DeleteAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAssetsResponse:
+        """
+        删除主机资产数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDomains(
+            self,
+            request: models.DeleteDomainsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDomainsResponse:
+        """
+        删除主域名数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDomains"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDomainsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEnterprises(
+            self,
+            request: models.DeleteEnterprisesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEnterprisesResponse:
+        """
+        删除企业架构数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEnterprises"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEnterprisesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteHttps(
+            self,
+            request: models.DeleteHttpsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteHttpsResponse:
+        """
+        删除网站资产数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteHttps"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteHttpsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteManages(
+            self,
+            request: models.DeleteManagesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteManagesResponse:
+        """
+        删除后台数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteManages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteManagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePorts(
+            self,
+            request: models.DeletePortsRequest,
+            opts: Dict = None,
+    ) -> models.DeletePortsResponse:
+        """
+        删除端口数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePorts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePortsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSeeds(
+            self,
+            request: models.DeleteSeedsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSeedsResponse:
+        """
+        删除种子
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSeeds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSeedsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSubDomains(
+            self,
+            request: models.DeleteSubDomainsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSubDomainsResponse:
+        """
+        删除子域名数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSubDomains"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSubDomainsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSuspiciousAssets(
+            self,
+            request: models.DeleteSuspiciousAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSuspiciousAssetsResponse:
+        """
+        删除影子资产数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSuspiciousAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSuspiciousAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWechatApplets(
+            self,
+            request: models.DeleteWechatAppletsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWechatAppletsResponse:
+        """
+        删除微信小程序数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWechatApplets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWechatAppletsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWechatOfficialAccounts(
+            self,
+            request: models.DeleteWechatOfficialAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWechatOfficialAccountsResponse:
+        """
+        删除微信公众号数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWechatOfficialAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWechatOfficialAccountsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -475,6 +889,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSeeds(
+            self,
+            request: models.DescribeSeedsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSeedsResponse:
+        """
+        查看种子列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSeeds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSeedsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSensitiveInfos(
             self,
             request: models.DescribeSensitiveInfosRequest,
@@ -601,6 +1033,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IgnoreData(
+            self,
+            request: models.IgnoreDataRequest,
+            opts: Dict = None,
+    ) -> models.IgnoreDataResponse:
+        """
+        忽略数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IgnoreData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IgnoreDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCustomer(
             self,
             request: models.ModifyCustomerRequest,
@@ -632,6 +1082,24 @@ class CtemClient(AbstractClient):
         kwargs["action"] = "ModifyLabel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySeedStatus(
+            self,
+            request: models.ModifySeedStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySeedStatusResponse:
+        """
+        修改种子状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySeedStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySeedStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

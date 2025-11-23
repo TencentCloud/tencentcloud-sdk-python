@@ -13215,9 +13215,24 @@ class DescribeWorkflowRunRequest(AbstractModel):
         :type AppBizId: str
         :param _WorkflowRunId: 工作流运行实例ID
         :type WorkflowRunId: str
+        :param _SubWorkflowNodePath: 指定的子工作流对应的NodePath。
+格式：`[<node_id>[<index>].]*<node_id>[<index>]`
+- 此路径用于定位一个具体的工作流实例（Workflow Run），可以是主工作流实例或某个子工作流节点产生的子实例。
+- 路径由点号（.）分隔的节点标识符组成，每个节点标识符格式为 `节点ID[实例索引]`。
+- **节点ID (node_id)**：子工作流所属的节点的ID。
+- **实例索引 (index)**：“实例索引” 在工作流节点的时候为空，循环、批处理节点非空，从1开始。
+示例：
+- "" 或 不设置 -> 查询主工作流实例 (父工作流)
+- "node_id_a" -> 查询由主工作流中工作流节点`node_id_a`对应的子工作流实例
+- "node_id_a.node_id_b[1]" -> 查询工作流节点`node_id_a`对应的子工作流的循环节点node_id_b的第1轮循环的子工作流运行状态
+        :type SubWorkflowNodePath: str
+        :param _IncludeWorkflowGraph: 是否需要返回工作流的流程图配置
+        :type IncludeWorkflowGraph: bool
         """
         self._AppBizId = None
         self._WorkflowRunId = None
+        self._SubWorkflowNodePath = None
+        self._IncludeWorkflowGraph = None
 
     @property
     def AppBizId(self):
@@ -13241,10 +13256,43 @@ class DescribeWorkflowRunRequest(AbstractModel):
     def WorkflowRunId(self, WorkflowRunId):
         self._WorkflowRunId = WorkflowRunId
 
+    @property
+    def SubWorkflowNodePath(self):
+        r"""指定的子工作流对应的NodePath。
+格式：`[<node_id>[<index>].]*<node_id>[<index>]`
+- 此路径用于定位一个具体的工作流实例（Workflow Run），可以是主工作流实例或某个子工作流节点产生的子实例。
+- 路径由点号（.）分隔的节点标识符组成，每个节点标识符格式为 `节点ID[实例索引]`。
+- **节点ID (node_id)**：子工作流所属的节点的ID。
+- **实例索引 (index)**：“实例索引” 在工作流节点的时候为空，循环、批处理节点非空，从1开始。
+示例：
+- "" 或 不设置 -> 查询主工作流实例 (父工作流)
+- "node_id_a" -> 查询由主工作流中工作流节点`node_id_a`对应的子工作流实例
+- "node_id_a.node_id_b[1]" -> 查询工作流节点`node_id_a`对应的子工作流的循环节点node_id_b的第1轮循环的子工作流运行状态
+        :rtype: str
+        """
+        return self._SubWorkflowNodePath
+
+    @SubWorkflowNodePath.setter
+    def SubWorkflowNodePath(self, SubWorkflowNodePath):
+        self._SubWorkflowNodePath = SubWorkflowNodePath
+
+    @property
+    def IncludeWorkflowGraph(self):
+        r"""是否需要返回工作流的流程图配置
+        :rtype: bool
+        """
+        return self._IncludeWorkflowGraph
+
+    @IncludeWorkflowGraph.setter
+    def IncludeWorkflowGraph(self, IncludeWorkflowGraph):
+        self._IncludeWorkflowGraph = IncludeWorkflowGraph
+
 
     def _deserialize(self, params):
         self._AppBizId = params.get("AppBizId")
         self._WorkflowRunId = params.get("WorkflowRunId")
+        self._SubWorkflowNodePath = params.get("SubWorkflowNodePath")
+        self._IncludeWorkflowGraph = params.get("IncludeWorkflowGraph")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13266,11 +13314,14 @@ class DescribeWorkflowRunResponse(AbstractModel):
         :type WorkflowRun: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
         :param _NodeRuns: 节点列表
         :type NodeRuns: list of NodeRunBase
+        :param _SubWorkflowNodePath: 子工作流对应的NodePath
+        :type SubWorkflowNodePath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WorkflowRun = None
         self._NodeRuns = None
+        self._SubWorkflowNodePath = None
         self._RequestId = None
 
     @property
@@ -13296,6 +13347,17 @@ class DescribeWorkflowRunResponse(AbstractModel):
         self._NodeRuns = NodeRuns
 
     @property
+    def SubWorkflowNodePath(self):
+        r"""子工作流对应的NodePath
+        :rtype: str
+        """
+        return self._SubWorkflowNodePath
+
+    @SubWorkflowNodePath.setter
+    def SubWorkflowNodePath(self, SubWorkflowNodePath):
+        self._SubWorkflowNodePath = SubWorkflowNodePath
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13317,6 +13379,7 @@ class DescribeWorkflowRunResponse(AbstractModel):
                 obj = NodeRunBase()
                 obj._deserialize(item)
                 self._NodeRuns.append(obj)
+        self._SubWorkflowNodePath = params.get("SubWorkflowNodePath")
         self._RequestId = params.get("RequestId")
 
 
@@ -34789,6 +34852,8 @@ class WorkflowRunDetail(AbstractModel):
         :type MainModelName: str
         :param _CustomVariables: API参数配置
         :type CustomVariables: list of CustomVariable
+        :param _WorkflowGraph: 工作流的流程图
+        :type WorkflowGraph: str
         """
         self._RunEnv = None
         self._AppBizId = None
@@ -34806,6 +34871,7 @@ class WorkflowRunDetail(AbstractModel):
         self._Query = None
         self._MainModelName = None
         self._CustomVariables = None
+        self._WorkflowGraph = None
 
     @property
     def RunEnv(self):
@@ -34941,6 +35007,8 @@ class WorkflowRunDetail(AbstractModel):
 
     @property
     def DialogJson(self):
+        warnings.warn("parameter `DialogJson` is deprecated", DeprecationWarning) 
+
         r"""工作流画布Json
         :rtype: str
         """
@@ -34948,6 +35016,8 @@ class WorkflowRunDetail(AbstractModel):
 
     @DialogJson.setter
     def DialogJson(self, DialogJson):
+        warnings.warn("parameter `DialogJson` is deprecated", DeprecationWarning) 
+
         self._DialogJson = DialogJson
 
     @property
@@ -34983,6 +35053,17 @@ class WorkflowRunDetail(AbstractModel):
     def CustomVariables(self, CustomVariables):
         self._CustomVariables = CustomVariables
 
+    @property
+    def WorkflowGraph(self):
+        r"""工作流的流程图
+        :rtype: str
+        """
+        return self._WorkflowGraph
+
+    @WorkflowGraph.setter
+    def WorkflowGraph(self, WorkflowGraph):
+        self._WorkflowGraph = WorkflowGraph
+
 
     def _deserialize(self, params):
         self._RunEnv = params.get("RunEnv")
@@ -35006,6 +35087,7 @@ class WorkflowRunDetail(AbstractModel):
                 obj = CustomVariable()
                 obj._deserialize(item)
                 self._CustomVariables.append(obj)
+        self._WorkflowGraph = params.get("WorkflowGraph")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3458,6 +3458,158 @@ class ApiDetailSampleHistory(AbstractModel):
         
 
 
+class ApiNameMethod(AbstractModel):
+    r"""带有请求方式的apiname结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiName: api名称
+        :type ApiName: str
+        :param _Method: api请求方式
+        :type Method: str
+        :param _Count: api近30天请求数量
+        :type Count: int
+        :param _Label: api标签
+        :type Label: list of str
+        """
+        self._ApiName = None
+        self._Method = None
+        self._Count = None
+        self._Label = None
+
+    @property
+    def ApiName(self):
+        r"""api名称
+        :rtype: str
+        """
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Method(self):
+        r"""api请求方式
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Count(self):
+        r"""api近30天请求数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Label(self):
+        r"""api标签
+        :rtype: list of str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._ApiName = params.get("ApiName")
+        self._Method = params.get("Method")
+        self._Count = params.get("Count")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiNameOp(AbstractModel):
+    r"""带有匹配方式的apiname列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: 匹配值列表
+        :type Value: list of str
+        :param _Op: 匹配方式，如属于和正则等
+        :type Op: str
+        :param _ApiNameMethod: 手动筛选的时候，要传该结构体
+        :type ApiNameMethod: list of ApiNameMethod
+        """
+        self._Value = None
+        self._Op = None
+        self._ApiNameMethod = None
+
+    @property
+    def Value(self):
+        r"""匹配值列表
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Op(self):
+        r"""匹配方式，如属于和正则等
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def ApiNameMethod(self):
+        r"""手动筛选的时候，要传该结构体
+        :rtype: list of ApiNameMethod
+        """
+        return self._ApiNameMethod
+
+    @ApiNameMethod.setter
+    def ApiNameMethod(self, ApiNameMethod):
+        self._ApiNameMethod = ApiNameMethod
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._Op = params.get("Op")
+        if params.get("ApiNameMethod") is not None:
+            self._ApiNameMethod = []
+            for item in params.get("ApiNameMethod"):
+                obj = ApiNameMethod()
+                obj._deserialize(item)
+                self._ApiNameMethod.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiParameterType(AbstractModel):
     r"""api请求参数类型
 
@@ -3785,6 +3937,414 @@ class ApiPkg(AbstractModel):
         
 
 
+class ApiSecCustomEventRule(AbstractModel):
+    r"""api安全自定义事件规则结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _Status: 开关，1：开，0:关
+        :type Status: int
+        :param _ApiNameOp: api匹配列表
+        :type ApiNameOp: list of ApiNameOp
+        :param _Description: 事件详情
+        :type Description: str
+        :param _UpdateTime: 时间戳，出参有该值，入参不需要传没有
+        :type UpdateTime: int
+        :param _MatchRuleList: 匹配规则列表
+        :type MatchRuleList: list of ApiSecSceneRuleEntry
+        :param _StatRuleList: 统计规则列表
+        :type StatRuleList: list of ApiSecSceneRuleEntry
+        :param _ReqFrequency: 访问频次，第一个字段表示次数，第二个字段表示分钟
+        :type ReqFrequency: list of int
+        :param _RiskLevel: 风险等级，取值为100,200,300，分别表示低位、中危、高危
+        :type RiskLevel: str
+        :param _Source: 规则来源
+        :type Source: str
+        """
+        self._RuleName = None
+        self._Status = None
+        self._ApiNameOp = None
+        self._Description = None
+        self._UpdateTime = None
+        self._MatchRuleList = None
+        self._StatRuleList = None
+        self._ReqFrequency = None
+        self._RiskLevel = None
+        self._Source = None
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Status(self):
+        r"""开关，1：开，0:关
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApiNameOp(self):
+        r"""api匹配列表
+        :rtype: list of ApiNameOp
+        """
+        return self._ApiNameOp
+
+    @ApiNameOp.setter
+    def ApiNameOp(self, ApiNameOp):
+        self._ApiNameOp = ApiNameOp
+
+    @property
+    def Description(self):
+        r"""事件详情
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UpdateTime(self):
+        r"""时间戳，出参有该值，入参不需要传没有
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MatchRuleList(self):
+        r"""匹配规则列表
+        :rtype: list of ApiSecSceneRuleEntry
+        """
+        return self._MatchRuleList
+
+    @MatchRuleList.setter
+    def MatchRuleList(self, MatchRuleList):
+        self._MatchRuleList = MatchRuleList
+
+    @property
+    def StatRuleList(self):
+        r"""统计规则列表
+        :rtype: list of ApiSecSceneRuleEntry
+        """
+        return self._StatRuleList
+
+    @StatRuleList.setter
+    def StatRuleList(self, StatRuleList):
+        self._StatRuleList = StatRuleList
+
+    @property
+    def ReqFrequency(self):
+        r"""访问频次，第一个字段表示次数，第二个字段表示分钟
+        :rtype: list of int
+        """
+        return self._ReqFrequency
+
+    @ReqFrequency.setter
+    def ReqFrequency(self, ReqFrequency):
+        self._ReqFrequency = ReqFrequency
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级，取值为100,200,300，分别表示低位、中危、高危
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Source(self):
+        r"""规则来源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        if params.get("ApiNameOp") is not None:
+            self._ApiNameOp = []
+            for item in params.get("ApiNameOp"):
+                obj = ApiNameOp()
+                obj._deserialize(item)
+                self._ApiNameOp.append(obj)
+        self._Description = params.get("Description")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("MatchRuleList") is not None:
+            self._MatchRuleList = []
+            for item in params.get("MatchRuleList"):
+                obj = ApiSecSceneRuleEntry()
+                obj._deserialize(item)
+                self._MatchRuleList.append(obj)
+        if params.get("StatRuleList") is not None:
+            self._StatRuleList = []
+            for item in params.get("StatRuleList"):
+                obj = ApiSecSceneRuleEntry()
+                obj._deserialize(item)
+                self._StatRuleList.append(obj)
+        self._ReqFrequency = params.get("ReqFrequency")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecCustomSensitiveRule(AbstractModel):
+    r"""api安全客户自定义敏感检测规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Position: 参数位置
+        :type Position: list of str
+        :param _MatchKey: 匹配条件
+        :type MatchKey: str
+        :param _MatchValue: 匹配值
+        :type MatchValue: list of str
+        :param _Level: 风险等级
+        :type Level: str
+        :param _MatchCond: 匹配符号，当匹配条件为关键字匹配和字符匹配的时候传该值,可传多个
+        :type MatchCond: list of str
+        :param _IsPan: 规则是否泛化，默认0表示不泛化
+        :type IsPan: int
+        """
+        self._Position = None
+        self._MatchKey = None
+        self._MatchValue = None
+        self._Level = None
+        self._MatchCond = None
+        self._IsPan = None
+
+    @property
+    def Position(self):
+        r"""参数位置
+        :rtype: list of str
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def MatchKey(self):
+        r"""匹配条件
+        :rtype: str
+        """
+        return self._MatchKey
+
+    @MatchKey.setter
+    def MatchKey(self, MatchKey):
+        self._MatchKey = MatchKey
+
+    @property
+    def MatchValue(self):
+        r"""匹配值
+        :rtype: list of str
+        """
+        return self._MatchValue
+
+    @MatchValue.setter
+    def MatchValue(self, MatchValue):
+        self._MatchValue = MatchValue
+
+    @property
+    def Level(self):
+        r"""风险等级
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def MatchCond(self):
+        r"""匹配符号，当匹配条件为关键字匹配和字符匹配的时候传该值,可传多个
+        :rtype: list of str
+        """
+        return self._MatchCond
+
+    @MatchCond.setter
+    def MatchCond(self, MatchCond):
+        self._MatchCond = MatchCond
+
+    @property
+    def IsPan(self):
+        r"""规则是否泛化，默认0表示不泛化
+        :rtype: int
+        """
+        return self._IsPan
+
+    @IsPan.setter
+    def IsPan(self, IsPan):
+        self._IsPan = IsPan
+
+
+    def _deserialize(self, params):
+        self._Position = params.get("Position")
+        self._MatchKey = params.get("MatchKey")
+        self._MatchValue = params.get("MatchValue")
+        self._Level = params.get("Level")
+        self._MatchCond = params.get("MatchCond")
+        self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecExtractRule(AbstractModel):
+    r"""api提取规则内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _ApiName: api名称
+        :type ApiName: str
+        :param _Methods: 请求方法列表
+        :type Methods: list of str
+        :param _Status: 开关状态，0是关，1是开
+        :type Status: int
+        :param _Regex: 正则匹配内容
+        :type Regex: str
+        :param _UpdateTime: 10更新时间戳
+        :type UpdateTime: int
+        """
+        self._RuleName = None
+        self._ApiName = None
+        self._Methods = None
+        self._Status = None
+        self._Regex = None
+        self._UpdateTime = None
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def ApiName(self):
+        r"""api名称
+        :rtype: str
+        """
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Methods(self):
+        r"""请求方法列表
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Status(self):
+        r"""开关状态，0是关，1是开
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Regex(self):
+        r"""正则匹配内容
+        :rtype: str
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+    @property
+    def UpdateTime(self):
+        r"""10更新时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._ApiName = params.get("ApiName")
+        self._Methods = params.get("Methods")
+        self._Status = params.get("Status")
+        self._Regex = params.get("Regex")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiSecKey(AbstractModel):
     r"""api列表
 
@@ -3841,6 +4401,351 @@ class ApiSecKey(AbstractModel):
         self._ApiName = params.get("ApiName")
         self._Domain = params.get("Domain")
         self._Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecPrivilegeRule(AbstractModel):
+    r"""自定义api鉴权规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称，不可重复
+        :type RuleName: str
+        :param _Status: 1:开，0:关
+        :type Status: int
+        :param _ApiName: 最多输入20个api
+        :type ApiName: list of str
+        :param _Position: 鉴权位置
+        :type Position: str
+        :param _ParameterList: 鉴权参数列表
+        :type ParameterList: list of str
+        :param _UpdateTime: 更新时间戳
+        :type UpdateTime: int
+        :param _Source: 规则来源
+        :type Source: str
+        :param _ApiNameOp: 带有匹配方式的api列表
+        :type ApiNameOp: list of ApiNameOp
+        :param _Option: 应用对象取值，1表示手动填写，2表示从api资产中获取
+        :type Option: int
+        """
+        self._RuleName = None
+        self._Status = None
+        self._ApiName = None
+        self._Position = None
+        self._ParameterList = None
+        self._UpdateTime = None
+        self._Source = None
+        self._ApiNameOp = None
+        self._Option = None
+
+    @property
+    def RuleName(self):
+        r"""规则名称，不可重复
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Status(self):
+        r"""1:开，0:关
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApiName(self):
+        r"""最多输入20个api
+        :rtype: list of str
+        """
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Position(self):
+        r"""鉴权位置
+        :rtype: str
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def ParameterList(self):
+        r"""鉴权参数列表
+        :rtype: list of str
+        """
+        return self._ParameterList
+
+    @ParameterList.setter
+    def ParameterList(self, ParameterList):
+        self._ParameterList = ParameterList
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Source(self):
+        r"""规则来源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ApiNameOp(self):
+        r"""带有匹配方式的api列表
+        :rtype: list of ApiNameOp
+        """
+        return self._ApiNameOp
+
+    @ApiNameOp.setter
+    def ApiNameOp(self, ApiNameOp):
+        self._ApiNameOp = ApiNameOp
+
+    @property
+    def Option(self):
+        r"""应用对象取值，1表示手动填写，2表示从api资产中获取
+        :rtype: int
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        self._ApiName = params.get("ApiName")
+        self._Position = params.get("Position")
+        self._ParameterList = params.get("ParameterList")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Source = params.get("Source")
+        if params.get("ApiNameOp") is not None:
+            self._ApiNameOp = []
+            for item in params.get("ApiNameOp"):
+                obj = ApiNameOp()
+                obj._deserialize(item)
+                self._ApiNameOp.append(obj)
+        self._Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecSceneRule(AbstractModel):
+    r"""api安全自定义场景规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 场景名称
+        :type RuleName: str
+        :param _Status: 开关状态，1表示开，0表示关
+        :type Status: int
+        :param _UpdateTime: 更新时间，10位时间戳
+        :type UpdateTime: int
+        :param _RuleList: 规则列表
+        :type RuleList: list of ApiSecSceneRuleEntry
+        :param _Source: 规则来源，系统内置:OS
+客户自定义：custom
+        :type Source: str
+        """
+        self._RuleName = None
+        self._Status = None
+        self._UpdateTime = None
+        self._RuleList = None
+        self._Source = None
+
+    @property
+    def RuleName(self):
+        r"""场景名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Status(self):
+        r"""开关状态，1表示开，0表示关
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，10位时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RuleList(self):
+        r"""规则列表
+        :rtype: list of ApiSecSceneRuleEntry
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Source(self):
+        r"""规则来源，系统内置:OS
+客户自定义：custom
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = ApiSecSceneRuleEntry()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecSceneRuleEntry(AbstractModel):
+    r"""api安全用户自定义场景规则结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 匹配字段
+        :type Key: str
+        :param _Value: 匹配值
+        :type Value: list of str
+        :param _Operate: 操作符
+        :type Operate: str
+        :param _Name: 当匹配字段是get参数值，post参数值，cookie参数值，header参数值，rsp参数值的时候，可填充此字段
+        :type Name: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Operate = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        r"""匹配字段
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""匹配值
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Operate(self):
+        r"""操作符
+        :rtype: str
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Name(self):
+        r"""当匹配字段是get参数值，post参数值，cookie参数值，header参数值，rsp参数值的时候，可填充此字段
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Operate = params.get("Operate")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4867,6 +5772,102 @@ class BotActionScopeRuleEntry(AbstractModel):
         self._Value = params.get("Value")
         self._Name = params.get("Name")
         self._ValueArray = params.get("ValueArray")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotIdConfig(AbstractModel):
+    r"""BOT-ID规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        :param _Status: 规则开关
+        :type Status: bool
+        :param _Action: 动作配置
+        :type Action: str
+        :param _BotId: 规则名称
+        :type BotId: str
+        :param _Redirect: 重定向路径
+        :type Redirect: str
+        """
+        self._RuleId = None
+        self._Status = None
+        self._Action = None
+        self._BotId = None
+        self._Redirect = None
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Status(self):
+        r"""规则开关
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Action(self):
+        r"""动作配置
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def BotId(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._BotId
+
+    @BotId.setter
+    def BotId(self, BotId):
+        self._BotId = BotId
+
+    @property
+    def Redirect(self):
+        r"""重定向路径
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Status = params.get("Status")
+        self._Action = params.get("Action")
+        self._BotId = params.get("BotId")
+        self._Redirect = params.get("Redirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10480,6 +11481,432 @@ class CreatePostCLSFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRateLimitV2Request(AbstractModel):
+    r"""CreateRateLimitV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Name: 规则名
+        :type Name: str
+        :param _Priority: 规则优先级
+        :type Priority: int
+        :param _Status: 规则开关，0关闭，1开启
+        :type Status: int
+        :param _LimitWindow: 限流窗口
+        :type LimitWindow: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        :param _LimitObject: 支持API或Domain，如果是基于API，则LimitPaths不能为空，否则LimitPaths为空
+        :type LimitObject: str
+        :param _LimitStrategy: 限流策略，0:观察,1:拦截，2:人机
+        :type LimitStrategy: int
+        :param _LimitMethod: 限流方法
+        :type LimitMethod: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        :param _LimitPaths: 限流路径列表
+        :type LimitPaths: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        :param _LimitHeaders: 限流Headers
+        :type LimitHeaders: list of LimitHeader
+        :param _LimitHeaderName: 基于Header参数名限流
+        :type LimitHeaderName: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        :param _GetParamsName: 基于Get参数名限流
+        :type GetParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _GetParamsValue: 基于Get参数值限流
+        :type GetParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsName: 基于Post参数名限流
+        :type PostParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsValue: 基于Post参数值限流
+        :type PostParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _IpLocation: 基于IP归属地限流
+        :type IpLocation: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _RedirectInfo: 重定向信息,当LimitStrategy为重定向时，此字段必填
+        :type RedirectInfo: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        :param _BlockPage: 拦截页面,0表示429，否则填写blockPageID
+        :type BlockPage: int
+        :param _ObjectSrc: 限流对象来源，0：手动填写，1：API资产
+        :type ObjectSrc: int
+        :param _QuotaShare: 是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :type QuotaShare: bool
+        :param _PathsOption: 路径选项,可配置每个路径的请求方法
+        :type PathsOption: list of PathItem
+        :param _Order: 限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :type Order: int
+        """
+        self._Domain = None
+        self._Name = None
+        self._Priority = None
+        self._Status = None
+        self._LimitWindow = None
+        self._LimitObject = None
+        self._LimitStrategy = None
+        self._LimitMethod = None
+        self._LimitPaths = None
+        self._LimitHeaders = None
+        self._LimitHeaderName = None
+        self._GetParamsName = None
+        self._GetParamsValue = None
+        self._PostParamsName = None
+        self._PostParamsValue = None
+        self._IpLocation = None
+        self._RedirectInfo = None
+        self._BlockPage = None
+        self._ObjectSrc = None
+        self._QuotaShare = None
+        self._PathsOption = None
+        self._Order = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        r"""规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        r"""规则优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        r"""规则开关，0关闭，1开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LimitWindow(self):
+        r"""限流窗口
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        """
+        return self._LimitWindow
+
+    @LimitWindow.setter
+    def LimitWindow(self, LimitWindow):
+        self._LimitWindow = LimitWindow
+
+    @property
+    def LimitObject(self):
+        r"""支持API或Domain，如果是基于API，则LimitPaths不能为空，否则LimitPaths为空
+        :rtype: str
+        """
+        return self._LimitObject
+
+    @LimitObject.setter
+    def LimitObject(self, LimitObject):
+        self._LimitObject = LimitObject
+
+    @property
+    def LimitStrategy(self):
+        r"""限流策略，0:观察,1:拦截，2:人机
+        :rtype: int
+        """
+        return self._LimitStrategy
+
+    @LimitStrategy.setter
+    def LimitStrategy(self, LimitStrategy):
+        self._LimitStrategy = LimitStrategy
+
+    @property
+    def LimitMethod(self):
+        r"""限流方法
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
+    @property
+    def LimitPaths(self):
+        r"""限流路径列表
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        """
+        return self._LimitPaths
+
+    @LimitPaths.setter
+    def LimitPaths(self, LimitPaths):
+        self._LimitPaths = LimitPaths
+
+    @property
+    def LimitHeaders(self):
+        r"""限流Headers
+        :rtype: list of LimitHeader
+        """
+        return self._LimitHeaders
+
+    @LimitHeaders.setter
+    def LimitHeaders(self, LimitHeaders):
+        self._LimitHeaders = LimitHeaders
+
+    @property
+    def LimitHeaderName(self):
+        r"""基于Header参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        """
+        return self._LimitHeaderName
+
+    @LimitHeaderName.setter
+    def LimitHeaderName(self, LimitHeaderName):
+        self._LimitHeaderName = LimitHeaderName
+
+    @property
+    def GetParamsName(self):
+        r"""基于Get参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsName
+
+    @GetParamsName.setter
+    def GetParamsName(self, GetParamsName):
+        self._GetParamsName = GetParamsName
+
+    @property
+    def GetParamsValue(self):
+        r"""基于Get参数值限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsValue
+
+    @GetParamsValue.setter
+    def GetParamsValue(self, GetParamsValue):
+        self._GetParamsValue = GetParamsValue
+
+    @property
+    def PostParamsName(self):
+        r"""基于Post参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsName
+
+    @PostParamsName.setter
+    def PostParamsName(self, PostParamsName):
+        self._PostParamsName = PostParamsName
+
+    @property
+    def PostParamsValue(self):
+        r"""基于Post参数值限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsValue
+
+    @PostParamsValue.setter
+    def PostParamsValue(self, PostParamsValue):
+        self._PostParamsValue = PostParamsValue
+
+    @property
+    def IpLocation(self):
+        r"""基于IP归属地限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._IpLocation
+
+    @IpLocation.setter
+    def IpLocation(self, IpLocation):
+        self._IpLocation = IpLocation
+
+    @property
+    def RedirectInfo(self):
+        r"""重定向信息,当LimitStrategy为重定向时，此字段必填
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        """
+        return self._RedirectInfo
+
+    @RedirectInfo.setter
+    def RedirectInfo(self, RedirectInfo):
+        self._RedirectInfo = RedirectInfo
+
+    @property
+    def BlockPage(self):
+        r"""拦截页面,0表示429，否则填写blockPageID
+        :rtype: int
+        """
+        return self._BlockPage
+
+    @BlockPage.setter
+    def BlockPage(self, BlockPage):
+        self._BlockPage = BlockPage
+
+    @property
+    def ObjectSrc(self):
+        r"""限流对象来源，0：手动填写，1：API资产
+        :rtype: int
+        """
+        return self._ObjectSrc
+
+    @ObjectSrc.setter
+    def ObjectSrc(self, ObjectSrc):
+        self._ObjectSrc = ObjectSrc
+
+    @property
+    def QuotaShare(self):
+        r"""是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :rtype: bool
+        """
+        return self._QuotaShare
+
+    @QuotaShare.setter
+    def QuotaShare(self, QuotaShare):
+        self._QuotaShare = QuotaShare
+
+    @property
+    def PathsOption(self):
+        r"""路径选项,可配置每个路径的请求方法
+        :rtype: list of PathItem
+        """
+        return self._PathsOption
+
+    @PathsOption.setter
+    def PathsOption(self, PathsOption):
+        self._PathsOption = PathsOption
+
+    @property
+    def Order(self):
+        r"""限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        if params.get("LimitWindow") is not None:
+            self._LimitWindow = LimitWindow()
+            self._LimitWindow._deserialize(params.get("LimitWindow"))
+        self._LimitObject = params.get("LimitObject")
+        self._LimitStrategy = params.get("LimitStrategy")
+        if params.get("LimitMethod") is not None:
+            self._LimitMethod = LimitMethod()
+            self._LimitMethod._deserialize(params.get("LimitMethod"))
+        if params.get("LimitPaths") is not None:
+            self._LimitPaths = LimitPath()
+            self._LimitPaths._deserialize(params.get("LimitPaths"))
+        if params.get("LimitHeaders") is not None:
+            self._LimitHeaders = []
+            for item in params.get("LimitHeaders"):
+                obj = LimitHeader()
+                obj._deserialize(item)
+                self._LimitHeaders.append(obj)
+        if params.get("LimitHeaderName") is not None:
+            self._LimitHeaderName = LimitHeaderName()
+            self._LimitHeaderName._deserialize(params.get("LimitHeaderName"))
+        if params.get("GetParamsName") is not None:
+            self._GetParamsName = MatchOption()
+            self._GetParamsName._deserialize(params.get("GetParamsName"))
+        if params.get("GetParamsValue") is not None:
+            self._GetParamsValue = MatchOption()
+            self._GetParamsValue._deserialize(params.get("GetParamsValue"))
+        if params.get("PostParamsName") is not None:
+            self._PostParamsName = MatchOption()
+            self._PostParamsName._deserialize(params.get("PostParamsName"))
+        if params.get("PostParamsValue") is not None:
+            self._PostParamsValue = MatchOption()
+            self._PostParamsValue._deserialize(params.get("PostParamsValue"))
+        if params.get("IpLocation") is not None:
+            self._IpLocation = MatchOption()
+            self._IpLocation._deserialize(params.get("IpLocation"))
+        if params.get("RedirectInfo") is not None:
+            self._RedirectInfo = RedirectInfo()
+            self._RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self._BlockPage = params.get("BlockPage")
+        self._ObjectSrc = params.get("ObjectSrc")
+        self._QuotaShare = params.get("QuotaShare")
+        if params.get("PathsOption") is not None:
+            self._PathsOption = []
+            for item in params.get("PathsOption"):
+                obj = PathItem()
+                obj._deserialize(item)
+                self._PathsOption.append(obj)
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRateLimitV2Response(AbstractModel):
+    r"""CreateRateLimitV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseInfo: 操作结果
+        :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BaseInfo = None
+        self._RequestId = None
+
+    @property
+    def BaseInfo(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        """
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = RateLimitCommonRsp()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class CronJob(AbstractModel):
     r"""规则周期执行的数据结构
 
@@ -12253,6 +13680,102 @@ class DeleteOwaspWhiteRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRateLimitsV2Request(AbstractModel):
+    r"""DeleteRateLimitsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _LimitRuleIds: 要删除的限流ID列表
+        :type LimitRuleIds: list of int
+        """
+        self._Domain = None
+        self._LimitRuleIds = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LimitRuleIds(self):
+        r"""要删除的限流ID列表
+        :rtype: list of int
+        """
+        return self._LimitRuleIds
+
+    @LimitRuleIds.setter
+    def LimitRuleIds(self, LimitRuleIds):
+        self._LimitRuleIds = LimitRuleIds
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._LimitRuleIds = params.get("LimitRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRateLimitsV2Response(AbstractModel):
+    r"""DeleteRateLimitsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseInfo: 操作结果
+        :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BaseInfo = None
+        self._RequestId = None
+
+    @property
+    def BaseInfo(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        """
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = RateLimitCommonRsp()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -22093,6 +23616,279 @@ class DescribeProtectionModesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRateLimitsV2Request(AbstractModel):
+    r"""DescribeRateLimitsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Id: 限流规则ID
+        :type Id: int
+        :param _Name: 规则名
+        :type Name: str
+        :param _Method: 限流接口名
+        :type Method: str
+        :param _LimitObject: 限流对象，可选API、Domain
+        :type LimitObject: str
+        :param _Status: 规则开关，0表示关闭，1表示开启
+        :type Status: int
+        :param _Order: 排序方式，可选desc、asc
+        :type Order: str
+        :param _By: 排序字段，可选Priority、Timestamp、ID
+        :type By: str
+        :param _Offset: 分页的起始位置
+        :type Offset: int
+        :param _Limit: 每页行数
+        :type Limit: int
+        :param _Filters: 过滤器
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Id = None
+        self._Name = None
+        self._Method = None
+        self._LimitObject = None
+        self._Status = None
+        self._Order = None
+        self._By = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Id(self):
+        r"""限流规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Method(self):
+        r"""限流接口名
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def LimitObject(self):
+        r"""限流对象，可选API、Domain
+        :rtype: str
+        """
+        return self._LimitObject
+
+    @LimitObject.setter
+    def LimitObject(self, LimitObject):
+        self._LimitObject = LimitObject
+
+    @property
+    def Status(self):
+        r"""规则开关，0表示关闭，1表示开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Order(self):
+        r"""排序方式，可选desc、asc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段，可选Priority、Timestamp、ID
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Offset(self):
+        r"""分页的起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页行数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤器
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Method = params.get("Method")
+        self._LimitObject = params.get("LimitObject")
+        self._Status = params.get("Status")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRateLimitsV2Response(AbstractModel):
+    r"""DescribeRateLimitsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 查询结果中规则数量
+        :type Total: int
+        :param _BaseInfo: 操作结果
+        :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _RateLimits: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimits: list of LimitRuleV2
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._BaseInfo = None
+        self._RateLimits = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""查询结果中规则数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def BaseInfo(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        """
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def RateLimits(self):
+        r"""规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LimitRuleV2
+        """
+        return self._RateLimits
+
+    @RateLimits.setter
+    def RateLimits(self, RateLimits):
+        self._RateLimits = RateLimits
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = RateLimitCommonRsp()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
+        if params.get("RateLimits") is not None:
+            self._RateLimits = []
+            for item in params.get("RateLimits"):
+                obj = LimitRuleV2()
+                obj._deserialize(item)
+                self._RateLimits.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRuleLimitRequest(AbstractModel):
     r"""DescribeRuleLimit请求参数结构体
 
@@ -26928,6 +28724,158 @@ class DownloadAttackRecordInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableLimitRuleItem(AbstractModel):
+    r"""EnableLimitRuleItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitRuleId: 规则ID
+        :type LimitRuleId: int
+        :param _Status: 规则开关，0开启，1关闭
+        :type Status: int
+        """
+        self._LimitRuleId = None
+        self._Status = None
+
+    @property
+    def LimitRuleId(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._LimitRuleId
+
+    @LimitRuleId.setter
+    def LimitRuleId(self, LimitRuleId):
+        self._LimitRuleId = LimitRuleId
+
+    @property
+    def Status(self):
+        r"""规则开关，0开启，1关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._LimitRuleId = params.get("LimitRuleId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableRateLimitsV2Request(AbstractModel):
+    r"""EnableRateLimitsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _EnableItems: 具体规则列表
+        :type EnableItems: list of EnableLimitRuleItem
+        """
+        self._Domain = None
+        self._EnableItems = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def EnableItems(self):
+        r"""具体规则列表
+        :rtype: list of EnableLimitRuleItem
+        """
+        return self._EnableItems
+
+    @EnableItems.setter
+    def EnableItems(self, EnableItems):
+        self._EnableItems = EnableItems
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("EnableItems") is not None:
+            self._EnableItems = []
+            for item in params.get("EnableItems"):
+                obj = EnableLimitRuleItem()
+                obj._deserialize(item)
+                self._EnableItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableRateLimitsV2Response(AbstractModel):
+    r"""EnableRateLimitsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseInfo: 操作结果
+        :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BaseInfo = None
+        self._RequestId = None
+
+    @property
+    def BaseInfo(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        """
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = RateLimitCommonRsp()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class ExportAccessInfo(AbstractModel):
@@ -32653,6 +34601,750 @@ class LLMPkg(AbstractModel):
         
 
 
+class LimitHeader(AbstractModel):
+    r"""限流Header数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Type: 匹配方式，支持EXACT(等于), REGEX（正则） , IN（属于） , NOT_IN（不属于）, CONTAINS（包含）, NOT_CONTAINS（不包含）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Type = None
+
+    @property
+    def Key(self):
+        r"""key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        r"""匹配方式，支持EXACT(等于), REGEX（正则） , IN（属于） , NOT_IN（不属于）, CONTAINS（包含）, NOT_CONTAINS（不包含）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitHeaderName(AbstractModel):
+    r"""限流Header参数名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamsName: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamsName: str
+        :param _Type: 操作符号,支持REGEX(正则),IN(属于),NOT_IN(不属于), EACH(每个参数值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._ParamsName = None
+        self._Type = None
+
+    @property
+    def ParamsName(self):
+        r"""参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamsName
+
+    @ParamsName.setter
+    def ParamsName(self, ParamsName):
+        self._ParamsName = ParamsName
+
+    @property
+    def Type(self):
+        r"""操作符号,支持REGEX(正则),IN(属于),NOT_IN(不属于), EACH(每个参数值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._ParamsName = params.get("ParamsName")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitMethod(AbstractModel):
+    r"""限流方法数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Method: 需要限流的请求方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param _Type: 匹配方式，支持EXACT(等于), REGEX（正则） , IN（属于） , NOT_IN（不属于）, CONTAINS（包含）, NOT_CONTAINS（不包含）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Method = None
+        self._Type = None
+
+    @property
+    def Method(self):
+        r"""需要限流的请求方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Type(self):
+        r"""匹配方式，支持EXACT(等于), REGEX（正则） , IN（属于） , NOT_IN（不属于）, CONTAINS（包含）, NOT_CONTAINS（不包含）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Method = params.get("Method")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitPath(AbstractModel):
+    r"""限流Path
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 限流路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Type: 匹配方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Path = None
+        self._Type = None
+
+    @property
+    def Path(self):
+        r"""限流路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Type(self):
+        r"""匹配方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitRuleV2(AbstractModel):
+    r"""自研版限流规则数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitRuleID: 规则ID
+        :type LimitRuleID: int
+        :param _Name: 规则名
+        :type Name: str
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _Status: 规则开关，0表示关闭，1表示开启
+        :type Status: int
+        :param _TsVersion: 时间戳
+        :type TsVersion: int
+        :param _LimitObject: 限流对象，API或Domain
+        :type LimitObject: str
+        :param _LimitMethod: 限流方法名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitMethod: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        :param _LimitPaths: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitPaths: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        :param _LimitHeaders: Header参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitHeaders: list of LimitHeader
+        :param _LimitWindow: 限流窗口
+        :type LimitWindow: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        :param _LimitStrategy: 限流策略，0:观察,1:拦截，2:人机
+        :type LimitStrategy: int
+        :param _LimitHeaderName: Header参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitHeaderName: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        :param _GetParamsName: Get参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GetParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _GetParamsValue: Get参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GetParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsName: Post参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsValue: Post参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _IpLocation: Ip属地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpLocation: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _RedirectInfo: 重定向信息，当LimitStrategy为2时，此字段不为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectInfo: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        :param _BlockPage: 拦截页面，0表示429，否则为BlockPageID
+        :type BlockPage: int
+        :param _ObjectSrc: 限流对象来源，0：手动填写，1：API资产
+        :type ObjectSrc: int
+        :param _QuotaShare: 是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :type QuotaShare: bool
+        :param _PathsOption: 路径选项,可配置每个路径的请求方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathsOption: list of PathItem
+        :param _Order: 574新增需求，限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :type Order: int
+        """
+        self._LimitRuleID = None
+        self._Name = None
+        self._Priority = None
+        self._Status = None
+        self._TsVersion = None
+        self._LimitObject = None
+        self._LimitMethod = None
+        self._LimitPaths = None
+        self._LimitHeaders = None
+        self._LimitWindow = None
+        self._LimitStrategy = None
+        self._LimitHeaderName = None
+        self._GetParamsName = None
+        self._GetParamsValue = None
+        self._PostParamsName = None
+        self._PostParamsValue = None
+        self._IpLocation = None
+        self._RedirectInfo = None
+        self._BlockPage = None
+        self._ObjectSrc = None
+        self._QuotaShare = None
+        self._PathsOption = None
+        self._Order = None
+
+    @property
+    def LimitRuleID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._LimitRuleID
+
+    @LimitRuleID.setter
+    def LimitRuleID(self, LimitRuleID):
+        self._LimitRuleID = LimitRuleID
+
+    @property
+    def Name(self):
+        r"""规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        r"""规则开关，0表示关闭，1表示开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TsVersion(self):
+        r"""时间戳
+        :rtype: int
+        """
+        return self._TsVersion
+
+    @TsVersion.setter
+    def TsVersion(self, TsVersion):
+        self._TsVersion = TsVersion
+
+    @property
+    def LimitObject(self):
+        r"""限流对象，API或Domain
+        :rtype: str
+        """
+        return self._LimitObject
+
+    @LimitObject.setter
+    def LimitObject(self, LimitObject):
+        self._LimitObject = LimitObject
+
+    @property
+    def LimitMethod(self):
+        r"""限流方法名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
+    @property
+    def LimitPaths(self):
+        r"""路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        """
+        return self._LimitPaths
+
+    @LimitPaths.setter
+    def LimitPaths(self, LimitPaths):
+        self._LimitPaths = LimitPaths
+
+    @property
+    def LimitHeaders(self):
+        r"""Header参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LimitHeader
+        """
+        return self._LimitHeaders
+
+    @LimitHeaders.setter
+    def LimitHeaders(self, LimitHeaders):
+        self._LimitHeaders = LimitHeaders
+
+    @property
+    def LimitWindow(self):
+        r"""限流窗口
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        """
+        return self._LimitWindow
+
+    @LimitWindow.setter
+    def LimitWindow(self, LimitWindow):
+        self._LimitWindow = LimitWindow
+
+    @property
+    def LimitStrategy(self):
+        r"""限流策略，0:观察,1:拦截，2:人机
+        :rtype: int
+        """
+        return self._LimitStrategy
+
+    @LimitStrategy.setter
+    def LimitStrategy(self, LimitStrategy):
+        self._LimitStrategy = LimitStrategy
+
+    @property
+    def LimitHeaderName(self):
+        r"""Header参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        """
+        return self._LimitHeaderName
+
+    @LimitHeaderName.setter
+    def LimitHeaderName(self, LimitHeaderName):
+        self._LimitHeaderName = LimitHeaderName
+
+    @property
+    def GetParamsName(self):
+        r"""Get参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsName
+
+    @GetParamsName.setter
+    def GetParamsName(self, GetParamsName):
+        self._GetParamsName = GetParamsName
+
+    @property
+    def GetParamsValue(self):
+        r"""Get参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsValue
+
+    @GetParamsValue.setter
+    def GetParamsValue(self, GetParamsValue):
+        self._GetParamsValue = GetParamsValue
+
+    @property
+    def PostParamsName(self):
+        r"""Post参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsName
+
+    @PostParamsName.setter
+    def PostParamsName(self, PostParamsName):
+        self._PostParamsName = PostParamsName
+
+    @property
+    def PostParamsValue(self):
+        r"""Post参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsValue
+
+    @PostParamsValue.setter
+    def PostParamsValue(self, PostParamsValue):
+        self._PostParamsValue = PostParamsValue
+
+    @property
+    def IpLocation(self):
+        r"""Ip属地
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._IpLocation
+
+    @IpLocation.setter
+    def IpLocation(self, IpLocation):
+        self._IpLocation = IpLocation
+
+    @property
+    def RedirectInfo(self):
+        r"""重定向信息，当LimitStrategy为2时，此字段不为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        """
+        return self._RedirectInfo
+
+    @RedirectInfo.setter
+    def RedirectInfo(self, RedirectInfo):
+        self._RedirectInfo = RedirectInfo
+
+    @property
+    def BlockPage(self):
+        r"""拦截页面，0表示429，否则为BlockPageID
+        :rtype: int
+        """
+        return self._BlockPage
+
+    @BlockPage.setter
+    def BlockPage(self, BlockPage):
+        self._BlockPage = BlockPage
+
+    @property
+    def ObjectSrc(self):
+        r"""限流对象来源，0：手动填写，1：API资产
+        :rtype: int
+        """
+        return self._ObjectSrc
+
+    @ObjectSrc.setter
+    def ObjectSrc(self, ObjectSrc):
+        self._ObjectSrc = ObjectSrc
+
+    @property
+    def QuotaShare(self):
+        r"""是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :rtype: bool
+        """
+        return self._QuotaShare
+
+    @QuotaShare.setter
+    def QuotaShare(self, QuotaShare):
+        self._QuotaShare = QuotaShare
+
+    @property
+    def PathsOption(self):
+        r"""路径选项,可配置每个路径的请求方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PathItem
+        """
+        return self._PathsOption
+
+    @PathsOption.setter
+    def PathsOption(self, PathsOption):
+        self._PathsOption = PathsOption
+
+    @property
+    def Order(self):
+        r"""574新增需求，限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._LimitRuleID = params.get("LimitRuleID")
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        self._TsVersion = params.get("TsVersion")
+        self._LimitObject = params.get("LimitObject")
+        if params.get("LimitMethod") is not None:
+            self._LimitMethod = LimitMethod()
+            self._LimitMethod._deserialize(params.get("LimitMethod"))
+        if params.get("LimitPaths") is not None:
+            self._LimitPaths = LimitPath()
+            self._LimitPaths._deserialize(params.get("LimitPaths"))
+        if params.get("LimitHeaders") is not None:
+            self._LimitHeaders = []
+            for item in params.get("LimitHeaders"):
+                obj = LimitHeader()
+                obj._deserialize(item)
+                self._LimitHeaders.append(obj)
+        if params.get("LimitWindow") is not None:
+            self._LimitWindow = LimitWindow()
+            self._LimitWindow._deserialize(params.get("LimitWindow"))
+        self._LimitStrategy = params.get("LimitStrategy")
+        if params.get("LimitHeaderName") is not None:
+            self._LimitHeaderName = LimitHeaderName()
+            self._LimitHeaderName._deserialize(params.get("LimitHeaderName"))
+        if params.get("GetParamsName") is not None:
+            self._GetParamsName = MatchOption()
+            self._GetParamsName._deserialize(params.get("GetParamsName"))
+        if params.get("GetParamsValue") is not None:
+            self._GetParamsValue = MatchOption()
+            self._GetParamsValue._deserialize(params.get("GetParamsValue"))
+        if params.get("PostParamsName") is not None:
+            self._PostParamsName = MatchOption()
+            self._PostParamsName._deserialize(params.get("PostParamsName"))
+        if params.get("PostParamsValue") is not None:
+            self._PostParamsValue = MatchOption()
+            self._PostParamsValue._deserialize(params.get("PostParamsValue"))
+        if params.get("IpLocation") is not None:
+            self._IpLocation = MatchOption()
+            self._IpLocation._deserialize(params.get("IpLocation"))
+        if params.get("RedirectInfo") is not None:
+            self._RedirectInfo = RedirectInfo()
+            self._RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self._BlockPage = params.get("BlockPage")
+        self._ObjectSrc = params.get("ObjectSrc")
+        self._QuotaShare = params.get("QuotaShare")
+        if params.get("PathsOption") is not None:
+            self._PathsOption = []
+            for item in params.get("PathsOption"):
+                obj = PathItem()
+                obj._deserialize(item)
+                self._PathsOption.append(obj)
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitWindow(AbstractModel):
+    r"""限流窗口大小
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Second: 每秒允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Second: int
+        :param _Minute: 每分钟允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Minute: int
+        :param _Hour: 每小时允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hour: int
+        :param _QuotaShare: 是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaShare: bool
+        """
+        self._Second = None
+        self._Minute = None
+        self._Hour = None
+        self._QuotaShare = None
+
+    @property
+    def Second(self):
+        r"""每秒允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Second
+
+    @Second.setter
+    def Second(self, Second):
+        self._Second = Second
+
+    @property
+    def Minute(self):
+        r"""每分钟允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Minute
+
+    @Minute.setter
+    def Minute(self, Minute):
+        self._Minute = Minute
+
+    @property
+    def Hour(self):
+        r"""每小时允许通过的最大请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Hour
+
+    @Hour.setter
+    def Hour(self, Hour):
+        self._Hour = Hour
+
+    @property
+    def QuotaShare(self):
+        r"""是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._QuotaShare
+
+    @QuotaShare.setter
+    def QuotaShare(self, QuotaShare):
+        self._QuotaShare = QuotaShare
+
+
+    def _deserialize(self, params):
+        self._Second = params.get("Second")
+        self._Minute = params.get("Minute")
+        self._Hour = params.get("Hour")
+        self._QuotaShare = params.get("QuotaShare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoadBalancer(AbstractModel):
     r"""负载均衡的监听器
 
@@ -33777,6 +36469,78 @@ class MajorEventsProPkg(AbstractModel):
         
 
 
+class MatchOption(AbstractModel):
+    r"""限流规则中匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Params: 匹配参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        :param _Func: 逻辑符号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Func: str
+        :param _Content: 匹配内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Params = None
+        self._Func = None
+        self._Content = None
+
+    @property
+    def Params(self):
+        r"""匹配参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def Func(self):
+        r"""逻辑符号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Func
+
+    @Func.setter
+    def Func(self, Func):
+        self._Func = Func
+
+    @property
+    def Content(self):
+        r"""匹配内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Params = params.get("Params")
+        self._Func = params.get("Func")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MiniExtendPkg(AbstractModel):
     r"""小程序安全接入ID扩展资源信息
 
@@ -34818,6 +37582,260 @@ class ModifyApiSecEventChangeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyApiSecSensitiveRuleRequest(AbstractModel):
+    r"""ModifyApiSecSensitiveRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Status: 1表示开，0表示关，3表示删除
+        :type Status: int
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _CustomRule: 客户自定义配置
+        :type CustomRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
+        :param _RuleNameList: rulename列表，批量操作的时候填改值
+        :type RuleNameList: list of str
+        :param _CustomApiExtractRule: api提取规则内容
+        :type CustomApiExtractRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
+        :param _ApiExtractRuleName: 批量操作的时候的api提取规则
+        :type ApiExtractRuleName: list of str
+        :param _ApiSecPrivilegeRule: 自定义api鉴权规则
+        :type ApiSecPrivilegeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
+        :param _ApiSecPrivilegeRuleName: 匹配操作时候的api鉴权规则
+        :type ApiSecPrivilegeRuleName: list of str
+        :param _ApiSecSceneRuleNameList: 批量操作的时候的自定义场景列表
+        :type ApiSecSceneRuleNameList: list of str
+        :param _ApiSecSceneRule: 单条自定义api场景规则
+        :type ApiSecSceneRule: :class:`tencentcloud.waf.v20180125.models.ApiSecSceneRule`
+        :param _ApiSecCustomEventRuleNameList: 批量操作的时候的自定义事件规则列表
+        :type ApiSecCustomEventRuleNameList: list of str
+        :param _ApiSecCustomEventRuleRule: 自定义事件规则
+        :type ApiSecCustomEventRuleRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomEventRule`
+        """
+        self._Domain = None
+        self._Status = None
+        self._RuleName = None
+        self._CustomRule = None
+        self._RuleNameList = None
+        self._CustomApiExtractRule = None
+        self._ApiExtractRuleName = None
+        self._ApiSecPrivilegeRule = None
+        self._ApiSecPrivilegeRuleName = None
+        self._ApiSecSceneRuleNameList = None
+        self._ApiSecSceneRule = None
+        self._ApiSecCustomEventRuleNameList = None
+        self._ApiSecCustomEventRuleRule = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        r"""1表示开，0表示关，3表示删除
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def CustomRule(self):
+        r"""客户自定义配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
+        """
+        return self._CustomRule
+
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
+
+    @property
+    def RuleNameList(self):
+        r"""rulename列表，批量操作的时候填改值
+        :rtype: list of str
+        """
+        return self._RuleNameList
+
+    @RuleNameList.setter
+    def RuleNameList(self, RuleNameList):
+        self._RuleNameList = RuleNameList
+
+    @property
+    def CustomApiExtractRule(self):
+        r"""api提取规则内容
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
+        """
+        return self._CustomApiExtractRule
+
+    @CustomApiExtractRule.setter
+    def CustomApiExtractRule(self, CustomApiExtractRule):
+        self._CustomApiExtractRule = CustomApiExtractRule
+
+    @property
+    def ApiExtractRuleName(self):
+        r"""批量操作的时候的api提取规则
+        :rtype: list of str
+        """
+        return self._ApiExtractRuleName
+
+    @ApiExtractRuleName.setter
+    def ApiExtractRuleName(self, ApiExtractRuleName):
+        self._ApiExtractRuleName = ApiExtractRuleName
+
+    @property
+    def ApiSecPrivilegeRule(self):
+        r"""自定义api鉴权规则
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
+        """
+        return self._ApiSecPrivilegeRule
+
+    @ApiSecPrivilegeRule.setter
+    def ApiSecPrivilegeRule(self, ApiSecPrivilegeRule):
+        self._ApiSecPrivilegeRule = ApiSecPrivilegeRule
+
+    @property
+    def ApiSecPrivilegeRuleName(self):
+        r"""匹配操作时候的api鉴权规则
+        :rtype: list of str
+        """
+        return self._ApiSecPrivilegeRuleName
+
+    @ApiSecPrivilegeRuleName.setter
+    def ApiSecPrivilegeRuleName(self, ApiSecPrivilegeRuleName):
+        self._ApiSecPrivilegeRuleName = ApiSecPrivilegeRuleName
+
+    @property
+    def ApiSecSceneRuleNameList(self):
+        r"""批量操作的时候的自定义场景列表
+        :rtype: list of str
+        """
+        return self._ApiSecSceneRuleNameList
+
+    @ApiSecSceneRuleNameList.setter
+    def ApiSecSceneRuleNameList(self, ApiSecSceneRuleNameList):
+        self._ApiSecSceneRuleNameList = ApiSecSceneRuleNameList
+
+    @property
+    def ApiSecSceneRule(self):
+        r"""单条自定义api场景规则
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecSceneRule`
+        """
+        return self._ApiSecSceneRule
+
+    @ApiSecSceneRule.setter
+    def ApiSecSceneRule(self, ApiSecSceneRule):
+        self._ApiSecSceneRule = ApiSecSceneRule
+
+    @property
+    def ApiSecCustomEventRuleNameList(self):
+        r"""批量操作的时候的自定义事件规则列表
+        :rtype: list of str
+        """
+        return self._ApiSecCustomEventRuleNameList
+
+    @ApiSecCustomEventRuleNameList.setter
+    def ApiSecCustomEventRuleNameList(self, ApiSecCustomEventRuleNameList):
+        self._ApiSecCustomEventRuleNameList = ApiSecCustomEventRuleNameList
+
+    @property
+    def ApiSecCustomEventRuleRule(self):
+        r"""自定义事件规则
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomEventRule`
+        """
+        return self._ApiSecCustomEventRuleRule
+
+    @ApiSecCustomEventRuleRule.setter
+    def ApiSecCustomEventRuleRule(self, ApiSecCustomEventRuleRule):
+        self._ApiSecCustomEventRuleRule = ApiSecCustomEventRuleRule
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._RuleName = params.get("RuleName")
+        if params.get("CustomRule") is not None:
+            self._CustomRule = ApiSecCustomSensitiveRule()
+            self._CustomRule._deserialize(params.get("CustomRule"))
+        self._RuleNameList = params.get("RuleNameList")
+        if params.get("CustomApiExtractRule") is not None:
+            self._CustomApiExtractRule = ApiSecExtractRule()
+            self._CustomApiExtractRule._deserialize(params.get("CustomApiExtractRule"))
+        self._ApiExtractRuleName = params.get("ApiExtractRuleName")
+        if params.get("ApiSecPrivilegeRule") is not None:
+            self._ApiSecPrivilegeRule = ApiSecPrivilegeRule()
+            self._ApiSecPrivilegeRule._deserialize(params.get("ApiSecPrivilegeRule"))
+        self._ApiSecPrivilegeRuleName = params.get("ApiSecPrivilegeRuleName")
+        self._ApiSecSceneRuleNameList = params.get("ApiSecSceneRuleNameList")
+        if params.get("ApiSecSceneRule") is not None:
+            self._ApiSecSceneRule = ApiSecSceneRule()
+            self._ApiSecSceneRule._deserialize(params.get("ApiSecSceneRule"))
+        self._ApiSecCustomEventRuleNameList = params.get("ApiSecCustomEventRuleNameList")
+        if params.get("ApiSecCustomEventRuleRule") is not None:
+            self._ApiSecCustomEventRuleRule = ApiSecCustomEventRule()
+            self._ApiSecCustomEventRuleRule._deserialize(params.get("ApiSecCustomEventRuleRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApiSecSensitiveRuleResponse(AbstractModel):
+    r"""ModifyApiSecSensitiveRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAreaBanAreasRequest(AbstractModel):
     r"""ModifyAreaBanAreas请求参数结构体
 
@@ -35531,6 +38549,180 @@ class ModifyBatchIpAccessControlResponse(AbstractModel):
                 obj = BatchDomainResult()
                 obj._deserialize(item)
                 self._Failed.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBotIdRuleRequest(AbstractModel):
+    r"""ModifyBotIdRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _Data: 配置信息，支持批量
+        :type Data: list of BotIdConfig
+        :param _GlobalSwitch: 0-全局设置不生效 1-全局开关配置字段生效 2-全局动作配置字段生效 3-全局开关和动作字段都生效 4-只修改全局重定向路径 5-只修改全局防护等级
+        :type GlobalSwitch: int
+        :param _Status: 全局开关
+        :type Status: bool
+        :param _RuleAction: 全局动作
+        :type RuleAction: str
+        :param _GlobalRedirect: 全局重定向路径
+        :type GlobalRedirect: str
+        :param _ProtectLevel: 防护等级：normal-正常；strict-严格
+        :type ProtectLevel: str
+        """
+        self._Domain = None
+        self._SceneId = None
+        self._Data = None
+        self._GlobalSwitch = None
+        self._Status = None
+        self._RuleAction = None
+        self._GlobalRedirect = None
+        self._ProtectLevel = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SceneId(self):
+        r"""场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Data(self):
+        r"""配置信息，支持批量
+        :rtype: list of BotIdConfig
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def GlobalSwitch(self):
+        r"""0-全局设置不生效 1-全局开关配置字段生效 2-全局动作配置字段生效 3-全局开关和动作字段都生效 4-只修改全局重定向路径 5-只修改全局防护等级
+        :rtype: int
+        """
+        return self._GlobalSwitch
+
+    @GlobalSwitch.setter
+    def GlobalSwitch(self, GlobalSwitch):
+        self._GlobalSwitch = GlobalSwitch
+
+    @property
+    def Status(self):
+        r"""全局开关
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleAction(self):
+        r"""全局动作
+        :rtype: str
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def GlobalRedirect(self):
+        r"""全局重定向路径
+        :rtype: str
+        """
+        return self._GlobalRedirect
+
+    @GlobalRedirect.setter
+    def GlobalRedirect(self, GlobalRedirect):
+        self._GlobalRedirect = GlobalRedirect
+
+    @property
+    def ProtectLevel(self):
+        r"""防护等级：normal-正常；strict-严格
+        :rtype: str
+        """
+        return self._ProtectLevel
+
+    @ProtectLevel.setter
+    def ProtectLevel(self, ProtectLevel):
+        self._ProtectLevel = ProtectLevel
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SceneId = params.get("SceneId")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BotIdConfig()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._GlobalSwitch = params.get("GlobalSwitch")
+        self._Status = params.get("Status")
+        self._RuleAction = params.get("RuleAction")
+        self._GlobalRedirect = params.get("GlobalRedirect")
+        self._ProtectLevel = params.get("ProtectLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBotIdRuleResponse(AbstractModel):
+    r"""ModifyBotIdRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -42002,6 +45194,57 @@ class ParamCompareList(AbstractModel):
         
 
 
+class PathItem(AbstractModel):
+    r"""指定限流path和对应的method
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 请求路径
+        :type Path: str
+        :param _Method: 请求方法
+        :type Method: str
+        """
+        self._Path = None
+        self._Method = None
+
+    @property
+    def Path(self):
+        r"""请求路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        r"""请求方法
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PeakPointsItem(AbstractModel):
     r"""PeakPoints数组项
 
@@ -43558,6 +46801,129 @@ class RCEPkg(AbstractModel):
         self._UsedNum = params.get("UsedNum")
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitCommonRsp(AbstractModel):
+    r"""限流相关通用返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 响应码
+        :type Code: int
+        :param _Info: 提示信息
+        :type Info: str
+        """
+        self._Code = None
+        self._Info = None
+
+    @property
+    def Code(self):
+        r"""响应码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Info(self):
+        r"""提示信息
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Info = params.get("Info")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedirectInfo(AbstractModel):
+    r"""重定向信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _Url: url路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Protocol = None
+        self._Domain = None
+        self._Url = None
+
+    @property
+    def Protocol(self):
+        r"""协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Domain(self):
+        r"""域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Url(self):
+        r"""url路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._Domain = params.get("Domain")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47495,6 +50861,447 @@ class UpdateProtectionModesResponse(AbstractModel):
         if params.get("CommonRsp") is not None:
             self._CommonRsp = CommonRspData()
             self._CommonRsp._deserialize(params.get("CommonRsp"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRateLimitV2Request(AbstractModel):
+    r"""UpdateRateLimitV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _LimitRuleId: 规则ID
+        :type LimitRuleId: int
+        :param _Name: 规则名
+        :type Name: str
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _Status: 开关，0关闭，1开启
+        :type Status: int
+        :param _LimitObject: 支持API，Domain。如果基于API，则LimitPaths不能为空，否则LimitPaths为空
+        :type LimitObject: str
+        :param _LimitStrategy: 限流策略，0:观察,1:拦截，2:人机
+        :type LimitStrategy: int
+        :param _LimitHeaderName: 基于Header参数名限流
+        :type LimitHeaderName: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        :param _LimitMethod: 限流方法
+        :type LimitMethod: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        :param _LimitPaths: 限流路径
+        :type LimitPaths: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        :param _LimitHeaders: 限流Headers
+        :type LimitHeaders: list of LimitHeader
+        :param _LimitWindow: 限流窗口
+        :type LimitWindow: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        :param _GetParamsName: 基于Get参数名限流
+        :type GetParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _GetParamsValue: 基于Get参数值限流
+        :type GetParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsName: 基于Post参数名限流
+        :type PostParamsName: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _PostParamsValue: 基于Post参数值限流
+        :type PostParamsValue: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _IpLocation: 基于IP归属地限流
+        :type IpLocation: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        :param _RedirectInfo: 重定向信息,当LimitStrategy为重定向时，此字段必填
+        :type RedirectInfo: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        :param _BlockPage: 拦截页面,0表示429，否则填写blockPageID
+        :type BlockPage: int
+        :param _ObjectSrc: 限流对象来源，0：手动填写，1：API资产
+        :type ObjectSrc: int
+        :param _QuotaShare: 是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :type QuotaShare: bool
+        :param _PathsOption: 路径选项,可配置每个路径的请求方法
+        :type PathsOption: list of PathItem
+        :param _Order: 限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :type Order: int
+        """
+        self._Domain = None
+        self._LimitRuleId = None
+        self._Name = None
+        self._Priority = None
+        self._Status = None
+        self._LimitObject = None
+        self._LimitStrategy = None
+        self._LimitHeaderName = None
+        self._LimitMethod = None
+        self._LimitPaths = None
+        self._LimitHeaders = None
+        self._LimitWindow = None
+        self._GetParamsName = None
+        self._GetParamsValue = None
+        self._PostParamsName = None
+        self._PostParamsValue = None
+        self._IpLocation = None
+        self._RedirectInfo = None
+        self._BlockPage = None
+        self._ObjectSrc = None
+        self._QuotaShare = None
+        self._PathsOption = None
+        self._Order = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LimitRuleId(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._LimitRuleId
+
+    @LimitRuleId.setter
+    def LimitRuleId(self, LimitRuleId):
+        self._LimitRuleId = LimitRuleId
+
+    @property
+    def Name(self):
+        r"""规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        r"""开关，0关闭，1开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LimitObject(self):
+        r"""支持API，Domain。如果基于API，则LimitPaths不能为空，否则LimitPaths为空
+        :rtype: str
+        """
+        return self._LimitObject
+
+    @LimitObject.setter
+    def LimitObject(self, LimitObject):
+        self._LimitObject = LimitObject
+
+    @property
+    def LimitStrategy(self):
+        r"""限流策略，0:观察,1:拦截，2:人机
+        :rtype: int
+        """
+        return self._LimitStrategy
+
+    @LimitStrategy.setter
+    def LimitStrategy(self, LimitStrategy):
+        self._LimitStrategy = LimitStrategy
+
+    @property
+    def LimitHeaderName(self):
+        r"""基于Header参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitHeaderName`
+        """
+        return self._LimitHeaderName
+
+    @LimitHeaderName.setter
+    def LimitHeaderName(self, LimitHeaderName):
+        self._LimitHeaderName = LimitHeaderName
+
+    @property
+    def LimitMethod(self):
+        r"""限流方法
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitMethod`
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
+    @property
+    def LimitPaths(self):
+        r"""限流路径
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitPath`
+        """
+        return self._LimitPaths
+
+    @LimitPaths.setter
+    def LimitPaths(self, LimitPaths):
+        self._LimitPaths = LimitPaths
+
+    @property
+    def LimitHeaders(self):
+        r"""限流Headers
+        :rtype: list of LimitHeader
+        """
+        return self._LimitHeaders
+
+    @LimitHeaders.setter
+    def LimitHeaders(self, LimitHeaders):
+        self._LimitHeaders = LimitHeaders
+
+    @property
+    def LimitWindow(self):
+        r"""限流窗口
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LimitWindow`
+        """
+        return self._LimitWindow
+
+    @LimitWindow.setter
+    def LimitWindow(self, LimitWindow):
+        self._LimitWindow = LimitWindow
+
+    @property
+    def GetParamsName(self):
+        r"""基于Get参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsName
+
+    @GetParamsName.setter
+    def GetParamsName(self, GetParamsName):
+        self._GetParamsName = GetParamsName
+
+    @property
+    def GetParamsValue(self):
+        r"""基于Get参数值限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._GetParamsValue
+
+    @GetParamsValue.setter
+    def GetParamsValue(self, GetParamsValue):
+        self._GetParamsValue = GetParamsValue
+
+    @property
+    def PostParamsName(self):
+        r"""基于Post参数名限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsName
+
+    @PostParamsName.setter
+    def PostParamsName(self, PostParamsName):
+        self._PostParamsName = PostParamsName
+
+    @property
+    def PostParamsValue(self):
+        r"""基于Post参数值限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._PostParamsValue
+
+    @PostParamsValue.setter
+    def PostParamsValue(self, PostParamsValue):
+        self._PostParamsValue = PostParamsValue
+
+    @property
+    def IpLocation(self):
+        r"""基于IP归属地限流
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MatchOption`
+        """
+        return self._IpLocation
+
+    @IpLocation.setter
+    def IpLocation(self, IpLocation):
+        self._IpLocation = IpLocation
+
+    @property
+    def RedirectInfo(self):
+        r"""重定向信息,当LimitStrategy为重定向时，此字段必填
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RedirectInfo`
+        """
+        return self._RedirectInfo
+
+    @RedirectInfo.setter
+    def RedirectInfo(self, RedirectInfo):
+        self._RedirectInfo = RedirectInfo
+
+    @property
+    def BlockPage(self):
+        r"""拦截页面,0表示429，否则填写blockPageID
+        :rtype: int
+        """
+        return self._BlockPage
+
+    @BlockPage.setter
+    def BlockPage(self, BlockPage):
+        self._BlockPage = BlockPage
+
+    @property
+    def ObjectSrc(self):
+        r"""限流对象来源，0：手动填写，1：API资产
+        :rtype: int
+        """
+        return self._ObjectSrc
+
+    @ObjectSrc.setter
+    def ObjectSrc(self, ObjectSrc):
+        self._ObjectSrc = ObjectSrc
+
+    @property
+    def QuotaShare(self):
+        r"""是否共享配额，只有当对象为URL时有效，false表示URL独享配额，true表示所有URL共享配额
+        :rtype: bool
+        """
+        return self._QuotaShare
+
+    @QuotaShare.setter
+    def QuotaShare(self, QuotaShare):
+        self._QuotaShare = QuotaShare
+
+    @property
+    def PathsOption(self):
+        r"""路径选项,可配置每个路径的请求方法
+        :rtype: list of PathItem
+        """
+        return self._PathsOption
+
+    @PathsOption.setter
+    def PathsOption(self, PathsOption):
+        self._PathsOption = PathsOption
+
+    @property
+    def Order(self):
+        r"""限流执行顺序，0：默认情况，限流优先，1：安全防护优先
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._LimitRuleId = params.get("LimitRuleId")
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        self._LimitObject = params.get("LimitObject")
+        self._LimitStrategy = params.get("LimitStrategy")
+        if params.get("LimitHeaderName") is not None:
+            self._LimitHeaderName = LimitHeaderName()
+            self._LimitHeaderName._deserialize(params.get("LimitHeaderName"))
+        if params.get("LimitMethod") is not None:
+            self._LimitMethod = LimitMethod()
+            self._LimitMethod._deserialize(params.get("LimitMethod"))
+        if params.get("LimitPaths") is not None:
+            self._LimitPaths = LimitPath()
+            self._LimitPaths._deserialize(params.get("LimitPaths"))
+        if params.get("LimitHeaders") is not None:
+            self._LimitHeaders = []
+            for item in params.get("LimitHeaders"):
+                obj = LimitHeader()
+                obj._deserialize(item)
+                self._LimitHeaders.append(obj)
+        if params.get("LimitWindow") is not None:
+            self._LimitWindow = LimitWindow()
+            self._LimitWindow._deserialize(params.get("LimitWindow"))
+        if params.get("GetParamsName") is not None:
+            self._GetParamsName = MatchOption()
+            self._GetParamsName._deserialize(params.get("GetParamsName"))
+        if params.get("GetParamsValue") is not None:
+            self._GetParamsValue = MatchOption()
+            self._GetParamsValue._deserialize(params.get("GetParamsValue"))
+        if params.get("PostParamsName") is not None:
+            self._PostParamsName = MatchOption()
+            self._PostParamsName._deserialize(params.get("PostParamsName"))
+        if params.get("PostParamsValue") is not None:
+            self._PostParamsValue = MatchOption()
+            self._PostParamsValue._deserialize(params.get("PostParamsValue"))
+        if params.get("IpLocation") is not None:
+            self._IpLocation = MatchOption()
+            self._IpLocation._deserialize(params.get("IpLocation"))
+        if params.get("RedirectInfo") is not None:
+            self._RedirectInfo = RedirectInfo()
+            self._RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self._BlockPage = params.get("BlockPage")
+        self._ObjectSrc = params.get("ObjectSrc")
+        self._QuotaShare = params.get("QuotaShare")
+        if params.get("PathsOption") is not None:
+            self._PathsOption = []
+            for item in params.get("PathsOption"):
+                obj = PathItem()
+                obj._deserialize(item)
+                self._PathsOption.append(obj)
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRateLimitV2Response(AbstractModel):
+    r"""UpdateRateLimitV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseInfo: 操作结果
+        :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BaseInfo = None
+        self._RequestId = None
+
+    @property
+    def BaseInfo(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        """
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = RateLimitCommonRsp()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
         self._RequestId = params.get("RequestId")
 
 

@@ -367,6 +367,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRateLimitV2(
+            self,
+            request: models.CreateRateLimitV2Request,
+            opts: Dict = None,
+    ) -> models.CreateRateLimitV2Response:
+        """
+        创建限流规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRateLimitV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRateLimitV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccessExport(
             self,
             request: models.DeleteAccessExportRequest,
@@ -668,6 +686,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DeleteOwaspWhiteRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteOwaspWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRateLimitsV2(
+            self,
+            request: models.DeleteRateLimitsV2Request,
+            opts: Dict = None,
+    ) -> models.DeleteRateLimitsV2Response:
+        """
+        删除自研版限流规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRateLimitsV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRateLimitsV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1717,6 +1753,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRateLimitsV2(
+            self,
+            request: models.DescribeRateLimitsV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeRateLimitsV2Response:
+        """
+        查询限流规则列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRateLimitsV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRateLimitsV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRuleLimit(
             self,
             request: models.DescribeRuleLimitRequest,
@@ -2097,6 +2151,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableRateLimitsV2(
+            self,
+            request: models.EnableRateLimitsV2Request,
+            opts: Dict = None,
+    ) -> models.EnableRateLimitsV2Response:
+        """
+        批量更改自研版限流规则开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableRateLimitsV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableRateLimitsV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FreshAntiFakeUrl(
             self,
             request: models.FreshAntiFakeUrlRequest,
@@ -2331,6 +2403,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyApiSecSensitiveRule(
+            self,
+            request: models.ModifyApiSecSensitiveRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiSecSensitiveRuleResponse:
+        """
+        修改api安全敏感检测规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiSecSensitiveRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiSecSensitiveRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAreaBanAreas(
             self,
             request: models.ModifyAreaBanAreasRequest,
@@ -2416,6 +2506,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "ModifyBatchIpAccessControl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBatchIpAccessControlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBotIdRule(
+            self,
+            request: models.ModifyBotIdRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBotIdRuleResponse:
+        """
+        修改Bot-ID规则配置1
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBotIdRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBotIdRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3284,6 +3392,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "UpdateProtectionModes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateProtectionModesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateRateLimitV2(
+            self,
+            request: models.UpdateRateLimitV2Request,
+            opts: Dict = None,
+    ) -> models.UpdateRateLimitV2Response:
+        """
+        更新自研版限流规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateRateLimitV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateRateLimitV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

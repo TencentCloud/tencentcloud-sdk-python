@@ -233,6 +233,52 @@ class VcubeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteApplicationAndVideoLicense(self, request):
+        r"""删除视频播放器 License 和相关应用
+
+        :param request: Request instance for DeleteApplicationAndVideoLicense.
+        :type request: :class:`tencentcloud.vcube.v20220410.models.DeleteApplicationAndVideoLicenseRequest`
+        :rtype: :class:`tencentcloud.vcube.v20220410.models.DeleteApplicationAndVideoLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationAndVideoLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApplicationAndVideoLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteApplicationAndWebPlayerLicense(self, request):
+        r"""删除web播放器license和应用
+
+        :param request: Request instance for DeleteApplicationAndWebPlayerLicense.
+        :type request: :class:`tencentcloud.vcube.v20220410.models.DeleteApplicationAndWebPlayerLicenseRequest`
+        :rtype: :class:`tencentcloud.vcube.v20220410.models.DeleteApplicationAndWebPlayerLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationAndWebPlayerLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApplicationAndWebPlayerLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFeatureList(self, request):
         r"""查询功能列表
 

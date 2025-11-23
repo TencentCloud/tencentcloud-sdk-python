@@ -4947,6 +4947,12 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
         :type UserData: str
+        :param _EnableGeneralChecklist: 启用附加通用风险审查清单。默认为启用状态
+可选值如下：
+
+- 1: 启用系统提供的附加通用风险审查清单
+- 2:不启用系统提供的附加通用风险审查清单
+        :type EnableGeneralChecklist: int
         """
         self._Operator = None
         self._ResourceIds = None
@@ -4956,6 +4962,7 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         self._Agent = None
         self._Comment = None
         self._UserData = None
+        self._EnableGeneralChecklist = None
 
     @property
     def Operator(self):
@@ -5059,6 +5066,21 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     def UserData(self, UserData):
         self._UserData = UserData
 
+    @property
+    def EnableGeneralChecklist(self):
+        r"""启用附加通用风险审查清单。默认为启用状态
+可选值如下：
+
+- 1: 启用系统提供的附加通用风险审查清单
+- 2:不启用系统提供的附加通用风险审查清单
+        :rtype: int
+        """
+        return self._EnableGeneralChecklist
+
+    @EnableGeneralChecklist.setter
+    def EnableGeneralChecklist(self, EnableGeneralChecklist):
+        self._EnableGeneralChecklist = EnableGeneralChecklist
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5075,6 +5097,7 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._Comment = params.get("Comment")
         self._UserData = params.get("UserData")
+        self._EnableGeneralChecklist = params.get("EnableGeneralChecklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

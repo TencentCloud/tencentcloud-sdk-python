@@ -187,6 +187,42 @@ class VcubeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteApplicationAndVideoLicense(
+            self,
+            request: models.DeleteApplicationAndVideoLicenseRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApplicationAndVideoLicenseResponse:
+        """
+        删除视频播放器 License 和相关应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApplicationAndVideoLicense"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApplicationAndVideoLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApplicationAndWebPlayerLicense(
+            self,
+            request: models.DeleteApplicationAndWebPlayerLicenseRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApplicationAndWebPlayerLicenseResponse:
+        """
+        删除web播放器license和应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApplicationAndWebPlayerLicense"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApplicationAndWebPlayerLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFeatureList(
             self,
             request: models.DescribeFeatureListRequest,

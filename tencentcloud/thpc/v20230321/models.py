@@ -5271,9 +5271,12 @@ class GooseFSxOption(AbstractModel):
         :type Masters: list of str
         :param _LocalPath: 文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
         :type LocalPath: str
+        :param _FileSystemId: GooseFSx文件系统ID 文件系统ID通过调用接口[DescribeFileSystems](https://cloud.tencent.com/document/api/1424/95789)获取。
+        :type FileSystemId: str
         """
         self._Masters = None
         self._LocalPath = None
+        self._FileSystemId = None
 
     @property
     def Masters(self):
@@ -5297,10 +5300,22 @@ class GooseFSxOption(AbstractModel):
     def LocalPath(self, LocalPath):
         self._LocalPath = LocalPath
 
+    @property
+    def FileSystemId(self):
+        r"""GooseFSx文件系统ID 文件系统ID通过调用接口[DescribeFileSystems](https://cloud.tencent.com/document/api/1424/95789)获取。
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
 
     def _deserialize(self, params):
         self._Masters = params.get("Masters")
         self._LocalPath = params.get("LocalPath")
+        self._FileSystemId = params.get("FileSystemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
