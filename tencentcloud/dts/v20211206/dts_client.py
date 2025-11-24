@@ -330,6 +330,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSyncCompareTask(self, request):
+        r"""本接口用于创建数据对比任务，创建成功后会返回数据对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9，创建成功后可通过StartSyncCompare启动一致性校验任务
+
+        :param request: Request instance for CreateSyncCompareTask.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateSyncCompareTaskRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateSyncCompareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSyncCompareTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSyncCompareTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSyncJob(self, request):
         r"""创建一个同步任务
 
@@ -390,6 +413,29 @@ class DtsClient(AbstractClient):
             body = self.call("DeleteConsumerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSyncCompareTask(self, request):
+        r"""删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
+
+        :param request: Request instance for DeleteSyncCompareTask.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DeleteSyncCompareTaskRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DeleteSyncCompareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSyncCompareTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSyncCompareTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -718,6 +764,52 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeSubscribeReturnable", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSubscribeReturnableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSyncCompareReport(self, request):
+        r"""查询一致性校验任务详情
+
+        :param request: Request instance for DescribeSyncCompareReport.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareReportRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSyncCompareReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSyncCompareReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSyncCompareTasks(self, request):
+        r"""查询一致性校验任务列表。通过该接口可查看改任务下所有一致性校验任务。
+
+        :param request: Request instance for DescribeSyncCompareTasks.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareTasksRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSyncCompareTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSyncCompareTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1155,6 +1247,52 @@ class DtsClient(AbstractClient):
             body = self.call("ModifySubscribeObjects", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySubscribeObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySyncCompareTask(self, request):
+        r"""修改一致性校验任务，在任务创建后启动之前，可修改一致性校验参数
+
+        :param request: Request instance for ModifySyncCompareTask.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncCompareTaskRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncCompareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncCompareTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncCompareTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySyncCompareTaskName(self, request):
+        r"""修改同步一致性校验任务名称
+
+        :param request: Request instance for ModifySyncCompareTaskName.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncCompareTaskNameRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncCompareTaskNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncCompareTaskName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncCompareTaskNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1603,6 +1741,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartSyncCompare(self, request):
+        r"""启动一致性校验任务，启动之前需要先通过接口`CreateSyncCompareTask` 创建一致性校验任务，启动后可通过接口`DescribeSyncCompareTasks` 查询一致性校验任务列表来获得启动后的状态
+
+        :param request: Request instance for StartSyncCompare.
+        :type request: :class:`tencentcloud.dts.v20211206.models.StartSyncCompareRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.StartSyncCompareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartSyncCompare", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartSyncCompareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartSyncJob(self, request):
         r"""启动同步任务
 
@@ -1664,6 +1825,29 @@ class DtsClient(AbstractClient):
             body = self.call("StopMigrateJob", params, headers=headers)
             response = json.loads(body)
             model = models.StopMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopSyncCompare(self, request):
+        r"""终止一致性校验任务
+
+        :param request: Request instance for StopSyncCompare.
+        :type request: :class:`tencentcloud.dts.v20211206.models.StopSyncCompareRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.StopSyncCompareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopSyncCompare", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopSyncCompareResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

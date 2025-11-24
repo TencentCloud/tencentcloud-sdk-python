@@ -26022,6 +26022,8 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
 
     @property
     def Name(self):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
         r"""查询成员企业的企业名，模糊匹配
         :rtype: str
         """
@@ -26029,6 +26031,8 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
 
     @Name.setter
     def Name(self, Name):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
         self._Name = Name
 
     @property

@@ -424,6 +424,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDlcDeliver(self, request):
+        r"""创建DLC投递任务
+
+        :param request: Request instance for CreateDlcDeliver.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDlcDeliverRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDlcDeliverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDlcDeliver", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDlcDeliverResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExport(self, request):
         r"""本接口仅创建下载任务。任务返回的下载地址，请用户调用[DescribeExports](https://cloud.tencent.com/document/product/614/56449)查看任务列表，其中有下载地址CosPath参数。
 
@@ -921,6 +944,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteDataTransform", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDlcDeliver(self, request):
+        r"""删除DLC投递任务
+
+        :param request: Request instance for DeleteDlcDeliver.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDlcDeliverRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteDlcDeliverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDlcDeliver", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDlcDeliverResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1496,6 +1542,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeDataTransformInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataTransformInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDlcDelivers(self, request):
+        r"""获取告警渠道回调配置列表。
+
+        :param request: Request instance for DescribeDlcDelivers.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDlcDeliversRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeDlcDeliversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDlcDelivers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDlcDeliversResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2233,6 +2302,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyDataTransform", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDlcDeliver(self, request):
+        r"""修改DLC投递任务
+
+        :param request: Request instance for ModifyDlcDeliver.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDlcDeliverRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyDlcDeliverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDlcDeliver", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDlcDeliverResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

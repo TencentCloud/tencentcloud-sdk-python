@@ -234,6 +234,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlindWatermarkTemplate(self, request):
+        r"""创建用户自定义数字水印模板，数量上限：1000。
+
+        :param request: Request instance for CreateBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         r"""创建用户自定义内容审核模板，数量上限：50。
 
@@ -343,6 +366,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreatePersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateProcessImageTemplate(self, request):
+        r"""创建图片处理模板
+
+        :param request: Request instance for CreateProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -886,6 +932,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBlindWatermarkTemplate(self, request):
+        r"""删除用户自定义数字水印模板。
+
+        :param request: Request instance for DeleteBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteContentReviewTemplate(self, request):
         r"""删除用户自定义内容审核模板。
 
@@ -969,6 +1038,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeletePersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProcessImageTemplate(self, request):
+        r"""删除图片处理模板
+
+        :param request: Request instance for DeleteProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1461,6 +1553,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBlindWatermarkTemplates(self, request):
+        r"""查询用户自定义数字水印模板，支持根据条件，分页查询。
+
+        :param request: Request instance for DescribeBlindWatermarkTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBlindWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeBlindWatermarkTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlindWatermarkTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlindWatermarkTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         r"""根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
 
@@ -1613,6 +1728,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribePersonSamples", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePersonSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProcessImageTemplates(self, request):
+        r"""查询图片处理模板列表。
+
+        :param request: Request instance for DescribeProcessImageTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeProcessImageTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeProcessImageTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProcessImageTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProcessImageTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2418,6 +2556,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractBlindWatermark(self, request):
+        r"""用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+
+        :param request: Request instance for ExtractBlindWatermark.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractBlindWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractBlindWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManageTask(self, request):
         r"""对已发起的任务进行管理。
 
@@ -2558,6 +2719,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBlindWatermarkTemplate(self, request):
+        r"""修改用户自定义数字水印模板，数字水印类型不允许修改。
+
+        :param request: Request instance for ModifyBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyContentReviewTemplate(self, request):
         r"""修改用户自定义内容审核模板。
 
@@ -2641,6 +2825,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyPersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProcessImageTemplate(self, request):
+        r"""修改图片处理模板。
+
+        :param request: Request instance for ModifyProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

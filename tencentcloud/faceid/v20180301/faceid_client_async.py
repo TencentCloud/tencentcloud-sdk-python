@@ -493,24 +493,6 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def Liveness(
-            self,
-            request: models.LivenessRequest,
-            opts: Dict = None,
-    ) -> models.LivenessResponse:
-        """
-        活体检测
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "Liveness"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.LivenessResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def LivenessCompare(
             self,
             request: models.LivenessCompareRequest,

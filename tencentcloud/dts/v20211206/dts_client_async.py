@@ -264,6 +264,24 @@ class DtsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSyncCompareTask(
+            self,
+            request: models.CreateSyncCompareTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSyncCompareTaskResponse:
+        """
+        本接口用于创建数据对比任务，创建成功后会返回数据对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9，创建成功后可通过StartSyncCompare启动一致性校验任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSyncCompareTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSyncCompareTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSyncJob(
             self,
             request: models.CreateSyncJobRequest,
@@ -313,6 +331,24 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "DeleteConsumerGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSyncCompareTask(
+            self,
+            request: models.DeleteSyncCompareTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSyncCompareTaskResponse:
+        """
+        删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSyncCompareTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSyncCompareTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -571,6 +607,42 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "DescribeSubscribeReturnable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSubscribeReturnableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSyncCompareReport(
+            self,
+            request: models.DescribeSyncCompareReportRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSyncCompareReportResponse:
+        """
+        查询一致性校验任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSyncCompareReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSyncCompareReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSyncCompareTasks(
+            self,
+            request: models.DescribeSyncCompareTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSyncCompareTasksResponse:
+        """
+        查询一致性校验任务列表。通过该接口可查看改任务下所有一致性校验任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSyncCompareTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSyncCompareTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -913,6 +985,42 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "ModifySubscribeObjects"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySubscribeObjectsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySyncCompareTask(
+            self,
+            request: models.ModifySyncCompareTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifySyncCompareTaskResponse:
+        """
+        修改一致性校验任务，在任务创建后启动之前，可修改一致性校验参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySyncCompareTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySyncCompareTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySyncCompareTaskName(
+            self,
+            request: models.ModifySyncCompareTaskNameRequest,
+            opts: Dict = None,
+    ) -> models.ModifySyncCompareTaskNameResponse:
+        """
+        修改同步一致性校验任务名称
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySyncCompareTaskName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySyncCompareTaskNameResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1262,6 +1370,24 @@ class DtsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartSyncCompare(
+            self,
+            request: models.StartSyncCompareRequest,
+            opts: Dict = None,
+    ) -> models.StartSyncCompareResponse:
+        """
+        启动一致性校验任务，启动之前需要先通过接口`CreateSyncCompareTask` 创建一致性校验任务，启动后可通过接口`DescribeSyncCompareTasks` 查询一致性校验任务列表来获得启动后的状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartSyncCompare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartSyncCompareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StartSyncJob(
             self,
             request: models.StartSyncJobRequest,
@@ -1312,6 +1438,24 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "StopMigrateJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopMigrateJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopSyncCompare(
+            self,
+            request: models.StopSyncCompareRequest,
+            opts: Dict = None,
+    ) -> models.StopSyncCompareResponse:
+        """
+        终止一致性校验任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopSyncCompare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopSyncCompareResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

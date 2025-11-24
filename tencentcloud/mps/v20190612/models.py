@@ -14346,6 +14346,132 @@ class BlindWatermarkInput(AbstractModel):
         
 
 
+class BlindWatermarkTemplate(AbstractModel):
+    r"""数字水印模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA取证水印；</li>
+        :type Type: str
+        :param _Name: 数字水印模板名称。
+        :type Name: str
+        :param _TextContent: 数字水印模板文本内容，长度不超过64个字符。
+        :type TextContent: str
+        :param _Comment: 数字水印模板描述信息。
+        :type Comment: str
+        :param _CreateTime: 数字水印模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type CreateTime: str
+        :param _UpdateTime: 数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._TextContent = None
+        self._Comment = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA取证水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TextContent(self):
+        r"""数字水印模板文本内容，长度不超过64个字符。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""数字水印模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._TextContent = params.get("TextContent")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassificationConfigureInfo(AbstractModel):
     r"""智能分类任务控制参数
 
@@ -18191,6 +18317,130 @@ class CreateAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBlindWatermarkTemplateRequest(AbstractModel):
+    r"""CreateBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+        :type Type: str
+        :param _TextContent: 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+        :type TextContent: str
+        :param _Name: 数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 数字水印模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._Type = None
+        self._TextContent = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TextContent(self):
+        r"""数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TextContent = params.get("TextContent")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlindWatermarkTemplateResponse(AbstractModel):
+    r"""CreateBlindWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateContentReviewTemplateRequest(AbstractModel):
     r"""CreateContentReviewTemplate请求参数结构体
 
@@ -20648,6 +20898,117 @@ class CreatePersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateProcessImageTemplateRequest(AbstractModel):
+    r"""CreateProcessImageTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessImageTemplate: 图片处理模板。
+        :type ProcessImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _Name: 图片处理模板名称，长度限制：64个字符。
+        :type Name: str
+        :param _Comment: 图片处理模板描述信息，长度限制：256个字符。
+        :type Comment: str
+        """
+        self._ProcessImageTemplate = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def ProcessImageTemplate(self):
+        r"""图片处理模板。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageTemplate
+
+    @ProcessImageTemplate.setter
+    def ProcessImageTemplate(self, ProcessImageTemplate):
+        self._ProcessImageTemplate = ProcessImageTemplate
+
+    @property
+    def Name(self):
+        r"""图片处理模板名称，长度限制：64个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片处理模板描述信息，长度限制：256个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessImageTemplate") is not None:
+            self._ProcessImageTemplate = ImageTaskInput()
+            self._ProcessImageTemplate._deserialize(params.get("ProcessImageTemplate"))
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProcessImageTemplateResponse(AbstractModel):
+    r"""CreateProcessImageTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片处理模板唯一标识
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""图片处理模板唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -23839,6 +24200,70 @@ class DeleteAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBlindWatermarkTemplateRequest(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlindWatermarkTemplateResponse(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteContentReviewTemplateRequest(AbstractModel):
     r"""DeleteContentReviewTemplate请求参数结构体
 
@@ -24069,6 +24494,70 @@ class DeletePersonSampleRequest(AbstractModel):
 
 class DeletePersonSampleResponse(AbstractModel):
     r"""DeletePersonSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProcessImageTemplateRequest(AbstractModel):
+    r"""DeleteProcessImageTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""图片处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProcessImageTemplateResponse(AbstractModel):
+    r"""DeleteProcessImageTemplate返回参数结构体
 
     """
 
@@ -26515,6 +27004,169 @@ class DescribeBatchTaskDetailResponse(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlindWatermarkTemplatesRequest(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: 数字水印模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param _Name: 数字水印模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+        :type Type: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :type Limit: int
+        """
+        self._Definitions = None
+        self._Name = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Definitions(self):
+        r"""数字水印模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Name(self):
+        r"""数字水印模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _BlindWatermarkTemplateSet: 数字水印模板详情列表。
+        :type BlindWatermarkTemplateSet: list of BlindWatermarkTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BlindWatermarkTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BlindWatermarkTemplateSet(self):
+        r"""数字水印模板详情列表。
+        :rtype: list of BlindWatermarkTemplate
+        """
+        return self._BlindWatermarkTemplateSet
+
+    @BlindWatermarkTemplateSet.setter
+    def BlindWatermarkTemplateSet(self, BlindWatermarkTemplateSet):
+        self._BlindWatermarkTemplateSet = BlindWatermarkTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BlindWatermarkTemplateSet") is not None:
+            self._BlindWatermarkTemplateSet = []
+            for item in params.get("BlindWatermarkTemplateSet"):
+                obj = BlindWatermarkTemplate()
+                obj._deserialize(item)
+                self._BlindWatermarkTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29904,6 +30556,199 @@ class DescribePersonSamplesResponse(AbstractModel):
                 obj = AiSamplePerson()
                 obj._deserialize(item)
                 self._PersonSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProcessImageTemplatesRequest(AbstractModel):
+    r"""DescribeProcessImageTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: 图片处理模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数 默认值：10；最大值：100。
+        :type Limit: int
+        :param _Name: 图片处理模板标识过滤条件。
+        :type Name: str
+        :param _OrderType: 排序方式，OrderBy设置后才有效，可选值：   0：升序   1：降序  默认 0。
+        :type OrderType: int
+        :param _OrderBy: 排序字段，可选值：  
+Definition：模板唯一标识； 
+默认值：创建时间。
+        :type OrderBy: str
+        :param _Type: 模板类型过滤条件，可选值： <li>Preset：系统预置模板；</li> <li>Custom：用户自定义模板。</li>
+        :type Type: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+        self._OrderType = None
+        self._OrderBy = None
+        self._Type = None
+
+    @property
+    def Definitions(self):
+        r"""图片处理模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数 默认值：10；最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""图片处理模板标识过滤条件。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OrderType(self):
+        r"""排序方式，OrderBy设置后才有效，可选值：   0：升序   1：降序  默认 0。
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值：  
+Definition：模板唯一标识； 
+默认值：创建时间。
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Type(self):
+        r"""模板类型过滤条件，可选值： <li>Preset：系统预置模板；</li> <li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        self._OrderType = params.get("OrderType")
+        self._OrderBy = params.get("OrderBy")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProcessImageTemplatesResponse(AbstractModel):
+    r"""DescribeProcessImageTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _ProcessImageTemplateSet: 图片处理模板详情列表。
+        :type ProcessImageTemplateSet: list of ProcessImageTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProcessImageTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProcessImageTemplateSet(self):
+        r"""图片处理模板详情列表。
+        :rtype: list of ProcessImageTemplate
+        """
+        return self._ProcessImageTemplateSet
+
+    @ProcessImageTemplateSet.setter
+    def ProcessImageTemplateSet(self, ProcessImageTemplateSet):
+        self._ProcessImageTemplateSet = ProcessImageTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProcessImageTemplateSet") is not None:
+            self._ProcessImageTemplateSet = []
+            for item in params.get("ProcessImageTemplateSet"):
+                obj = ProcessImageTemplate()
+                obj._deserialize(item)
+                self._ProcessImageTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -36601,6 +37446,151 @@ class ExtractBlindWatermarkConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExtractBlindWatermarkRequest(AbstractModel):
+    r"""ExtractBlindWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+        :type Type: str
+        :param _InputInfo: 媒体处理的文件输入信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ExtractBlindWatermarkConfig: 提取数字水印任务配置
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        :type ResourceId: str
+        """
+        self._Type = None
+        self._InputInfo = None
+        self._TaskNotifyConfig = None
+        self._ExtractBlindWatermarkConfig = None
+        self._ResourceId = None
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputInfo(self):
+        r"""媒体处理的文件输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def TaskNotifyConfig(self):
+        r"""任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""提取数字水印任务配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+    @property
+    def ResourceId(self):
+        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkResponse(AbstractModel):
+    r"""ExtractBlindWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExtractBlindWatermarkTask(AbstractModel):
@@ -49376,6 +50366,115 @@ class ModifyAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBlindWatermarkTemplateRequest(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _Name: 数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 数字水印模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _TextContent: 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+        :type TextContent: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._TextContent = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TextContent(self):
+        r"""数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlindWatermarkTemplateResponse(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyContentReviewTemplateRequest(AbstractModel):
     r"""ModifyContentReviewTemplate请求参数结构体
 
@@ -50727,6 +51826,117 @@ class ModifyPersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProcessImageTemplateRequest(AbstractModel):
+    r"""ModifyProcessImageTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param _Name: 图片处理模板名称，长度限制：64个字符。
+        :type Name: str
+        :param _Comment: 模板描述信息，长度限制256个字符。
+        :type Comment: str
+        :param _ProcessImageTemplate: 图片处理模板参数。
+        :type ProcessImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._ProcessImageTemplate = None
+
+    @property
+    def Definition(self):
+        r"""图片处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""图片处理模板名称，长度限制：64个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""模板描述信息，长度限制256个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ProcessImageTemplate(self):
+        r"""图片处理模板参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageTemplate
+
+    @ProcessImageTemplate.setter
+    def ProcessImageTemplate(self, ProcessImageTemplate):
+        self._ProcessImageTemplate = ProcessImageTemplate
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("ProcessImageTemplate") is not None:
+            self._ProcessImageTemplate = ImageTaskInput()
+            self._ProcessImageTemplate._deserialize(params.get("ProcessImageTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProcessImageTemplateResponse(AbstractModel):
+    r"""ModifyProcessImageTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -55937,6 +57147,134 @@ class ProcessImageResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class ProcessImageTemplate(AbstractModel):
+    r"""图片处理模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param _Name: 图片处理模板名称。
+        :type Name: str
+        :param _Comment: 图片处理模板描述信息。
+        :type Comment: str
+        :param _Type: 模板类型。
+        :type Type: str
+        :param _ProcessImageConfig: 图片处理模板配置参数。
+        :type ProcessImageConfig: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _CreateTime: 模板创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._ProcessImageConfig = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""图片处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""图片处理模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片处理模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""模板类型。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProcessImageConfig(self):
+        r"""图片处理模板配置参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageConfig
+
+    @ProcessImageConfig.setter
+    def ProcessImageConfig(self, ProcessImageConfig):
+        self._ProcessImageConfig = ProcessImageConfig
+
+    @property
+    def CreateTime(self):
+        r"""模板创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""模板最后修改时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("ProcessImageConfig") is not None:
+            self._ProcessImageConfig = ImageTaskInput()
+            self._ProcessImageConfig._deserialize(params.get("ProcessImageConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProcessLiveStreamRequest(AbstractModel):

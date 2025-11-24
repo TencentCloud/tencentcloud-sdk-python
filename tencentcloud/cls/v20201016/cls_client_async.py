@@ -338,6 +338,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDlcDeliver(
+            self,
+            request: models.CreateDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.CreateDlcDeliverResponse:
+        """
+        创建DLC投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDlcDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateExport(
             self,
             request: models.CreateExportRequest,
@@ -729,6 +747,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteDataTransform"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDataTransformResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDlcDeliver(
+            self,
+            request: models.DeleteDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDlcDeliverResponse:
+        """
+        删除DLC投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDlcDeliverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1179,6 +1215,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeDataTransformInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataTransformInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDlcDelivers(
+            self,
+            request: models.DescribeDlcDeliversRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDlcDeliversResponse:
+        """
+        获取告警渠道回调配置列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDlcDelivers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDlcDeliversResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1756,6 +1810,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyDataTransform"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDataTransformResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDlcDeliver(
+            self,
+            request: models.ModifyDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDlcDeliverResponse:
+        """
+        修改DLC投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDlcDeliverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

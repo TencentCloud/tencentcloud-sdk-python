@@ -579,7 +579,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCheckViewRisks(self, request):
-        r"""检查视角下云资源配置风险列表示例
+        r"""检查视角下云资源配置风险列表
 
         :param request: Request instance for DescribeCheckViewRisks.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCheckViewRisksRequest`

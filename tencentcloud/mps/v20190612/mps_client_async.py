@@ -188,6 +188,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBlindWatermarkTemplate(
+            self,
+            request: models.CreateBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateBlindWatermarkTemplateResponse:
+        """
+        创建用户自定义数字水印模板，数量上限：1000。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateContentReviewTemplate(
             self,
             request: models.CreateContentReviewTemplateRequest,
@@ -276,6 +294,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreatePersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreatePersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateProcessImageTemplate(
+            self,
+            request: models.CreateProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateProcessImageTemplateResponse:
+        """
+        创建图片处理模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -705,6 +741,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBlindWatermarkTemplate(
+            self,
+            request: models.DeleteBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBlindWatermarkTemplateResponse:
+        """
+        删除用户自定义数字水印模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteContentReviewTemplate(
             self,
             request: models.DeleteContentReviewTemplateRequest,
@@ -772,6 +826,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DeletePersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProcessImageTemplate(
+            self,
+            request: models.DeleteProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProcessImageTemplateResponse:
+        """
+        删除图片处理模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1155,6 +1227,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBlindWatermarkTemplates(
+            self,
+            request: models.DescribeBlindWatermarkTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlindWatermarkTemplatesResponse:
+        """
+        查询用户自定义数字水印模板，支持根据条件，分页查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlindWatermarkTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlindWatermarkTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContentReviewTemplates(
             self,
             request: models.DescribeContentReviewTemplatesRequest,
@@ -1276,6 +1366,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribePersonSamples"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePersonSamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProcessImageTemplates(
+            self,
+            request: models.DescribeProcessImageTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProcessImageTemplatesResponse:
+        """
+        查询图片处理模板列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProcessImageTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProcessImageTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1907,6 +2015,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExtractBlindWatermark(
+            self,
+            request: models.ExtractBlindWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.ExtractBlindWatermarkResponse:
+        """
+        用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExtractBlindWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExtractBlindWatermarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ManageTask(
             self,
             request: models.ManageTaskRequest,
@@ -2017,6 +2143,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBlindWatermarkTemplate(
+            self,
+            request: models.ModifyBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBlindWatermarkTemplateResponse:
+        """
+        修改用户自定义数字水印模板，数字水印类型不允许修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyContentReviewTemplate(
             self,
             request: models.ModifyContentReviewTemplateRequest,
@@ -2084,6 +2228,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ModifyPersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyProcessImageTemplate(
+            self,
+            request: models.ModifyProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProcessImageTemplateResponse:
+        """
+        修改图片处理模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

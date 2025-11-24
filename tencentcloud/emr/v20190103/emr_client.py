@@ -765,6 +765,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceOplog(self, request):
+        r"""获取实例操作日志
+
+        :param request: Request instance for DescribeInstanceOplog.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceOplogRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceOplogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceOplog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceOplogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceRenewNodes(self, request):
         r"""查询待续费节点信息
 

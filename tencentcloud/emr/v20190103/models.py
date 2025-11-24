@@ -10683,6 +10683,245 @@ class DescribeInspectionTaskResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceOplogRequest(AbstractModel):
+    r"""DescribeInstanceOplog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR实例ID
+        :type InstanceId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 页大小
+        :type Limit: int
+        :param _StartTime: 开头时间时间戳
+        :type StartTime: int
+        :param _EndTime: 结尾时间时间戳
+        :type EndTime: int
+        :param _SearchFields: 搜索项数组
+        :type SearchFields: list of SearchItem
+        :param _Operand: 集群、节点、组件
+        :type Operand: str
+        :param _SecurityLevel: 一般、危险、高危
+        :type SecurityLevel: str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SearchFields = None
+        self._Operand = None
+        self._SecurityLevel = None
+
+    @property
+    def InstanceId(self):
+        r"""EMR实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        r"""开头时间时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结尾时间时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SearchFields(self):
+        r"""搜索项数组
+        :rtype: list of SearchItem
+        """
+        return self._SearchFields
+
+    @SearchFields.setter
+    def SearchFields(self, SearchFields):
+        self._SearchFields = SearchFields
+
+    @property
+    def Operand(self):
+        r"""集群、节点、组件
+        :rtype: str
+        """
+        return self._Operand
+
+    @Operand.setter
+    def Operand(self, Operand):
+        self._Operand = Operand
+
+    @property
+    def SecurityLevel(self):
+        r"""一般、危险、高危
+        :rtype: str
+        """
+        return self._SecurityLevel
+
+    @SecurityLevel.setter
+    def SecurityLevel(self, SecurityLevel):
+        self._SecurityLevel = SecurityLevel
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SearchFields") is not None:
+            self._SearchFields = []
+            for item in params.get("SearchFields"):
+                obj = SearchItem()
+                obj._deserialize(item)
+                self._SearchFields.append(obj)
+        self._Operand = params.get("Operand")
+        self._SecurityLevel = params.get("SecurityLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceOplogResponse(AbstractModel):
+    r"""DescribeInstanceOplog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: 操作日志数量
+        :type TotalCnt: int
+        :param _LogList: 操作日志列表
+        :type LogList: list of OperationLog
+        :param _OperandList: 操作对象筛选项数组
+        :type OperandList: list of str
+        :param _SecurityLevelList: 安全级别筛选数组
+        :type SecurityLevelList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._LogList = None
+        self._OperandList = None
+        self._SecurityLevelList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        r"""操作日志数量
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def LogList(self):
+        r"""操作日志列表
+        :rtype: list of OperationLog
+        """
+        return self._LogList
+
+    @LogList.setter
+    def LogList(self, LogList):
+        self._LogList = LogList
+
+    @property
+    def OperandList(self):
+        r"""操作对象筛选项数组
+        :rtype: list of str
+        """
+        return self._OperandList
+
+    @OperandList.setter
+    def OperandList(self, OperandList):
+        self._OperandList = OperandList
+
+    @property
+    def SecurityLevelList(self):
+        r"""安全级别筛选数组
+        :rtype: list of str
+        """
+        return self._SecurityLevelList
+
+    @SecurityLevelList.setter
+    def SecurityLevelList(self, SecurityLevelList):
+        self._SecurityLevelList = SecurityLevelList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("LogList") is not None:
+            self._LogList = []
+            for item in params.get("LogList"):
+                obj = OperationLog()
+                obj._deserialize(item)
+                self._LogList.append(obj)
+        self._OperandList = params.get("OperandList")
+        self._SecurityLevelList = params.get("SecurityLevelList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRenewNodesRequest(AbstractModel):
     r"""DescribeInstanceRenewNodes请求参数结构体
 
@@ -27400,6 +27639,162 @@ class OpScope(AbstractModel):
                 obj = ServiceBasicRestartInfo()
                 obj._deserialize(item)
                 self._ServiceInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperationLog(AbstractModel):
+    r"""操作日志描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR实例ID
+        :type InstanceId: int
+        :param _Operation: 操作名称
+        :type Operation: str
+        :param _OperationType: 操作类型
+        :type OperationType: int
+        :param _UserType: 用户类型
+        :type UserType: int
+        :param _Operator: 操作者
+        :type Operator: str
+        :param _CreateTime: 操作时间
+        :type CreateTime: str
+        :param _Operand: 操作对象
+        :type Operand: str
+        :param _OperationDesc: 操作详情
+        :type OperationDesc: str
+        :param _SecurityLevel: 安全级别
+        :type SecurityLevel: str
+        """
+        self._InstanceId = None
+        self._Operation = None
+        self._OperationType = None
+        self._UserType = None
+        self._Operator = None
+        self._CreateTime = None
+        self._Operand = None
+        self._OperationDesc = None
+        self._SecurityLevel = None
+
+    @property
+    def InstanceId(self):
+        r"""EMR实例ID
+        :rtype: int
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Operation(self):
+        r"""操作名称
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def OperationType(self):
+        r"""操作类型
+        :rtype: int
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def UserType(self):
+        r"""用户类型
+        :rtype: int
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def Operator(self):
+        r"""操作者
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def CreateTime(self):
+        r"""操作时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Operand(self):
+        r"""操作对象
+        :rtype: str
+        """
+        return self._Operand
+
+    @Operand.setter
+    def Operand(self, Operand):
+        self._Operand = Operand
+
+    @property
+    def OperationDesc(self):
+        r"""操作详情
+        :rtype: str
+        """
+        return self._OperationDesc
+
+    @OperationDesc.setter
+    def OperationDesc(self, OperationDesc):
+        self._OperationDesc = OperationDesc
+
+    @property
+    def SecurityLevel(self):
+        r"""安全级别
+        :rtype: str
+        """
+        return self._SecurityLevel
+
+    @SecurityLevel.setter
+    def SecurityLevel(self, SecurityLevel):
+        self._SecurityLevel = SecurityLevel
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Operation = params.get("Operation")
+        self._OperationType = params.get("OperationType")
+        self._UserType = params.get("UserType")
+        self._Operator = params.get("Operator")
+        self._CreateTime = params.get("CreateTime")
+        self._Operand = params.get("Operand")
+        self._OperationDesc = params.get("OperationDesc")
+        self._SecurityLevel = params.get("SecurityLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

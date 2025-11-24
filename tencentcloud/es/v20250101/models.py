@@ -401,11 +401,11 @@ class ChunkConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxChunkSize: 最大分片长度
+        :param _MaxChunkSize: 按照分隔符切片后，对分片长度会进行校验，当超过最大分片长度时，则用下一级分隔符分割，如无下一级分隔符，则保留原长度；默认值：1000
         :type MaxChunkSize: int
-        :param _Delimiters: 分隔符列表
+        :param _Delimiters: 分隔符列表，优先靠前的分隔符；文件类型为TXT时，默认值：["\n\n", "\n", "。", "！", "？", "，", ""]
         :type Delimiters: list of str
-        :param _ChunkOverlap: 相邻切片重合字符数，需要小于分片长度
+        :param _ChunkOverlap: 相邻切片重合字符数，需要小于分片长度，若形成完全冗余的切片，则会自动过滤；默认值：0.2*MaxChunkSize
         :type ChunkOverlap: int
         """
         self._MaxChunkSize = None
@@ -414,7 +414,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        r"""最大分片长度
+        r"""按照分隔符切片后，对分片长度会进行校验，当超过最大分片长度时，则用下一级分隔符分割，如无下一级分隔符，则保留原长度；默认值：1000
         :rtype: int
         """
         return self._MaxChunkSize
@@ -425,7 +425,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def Delimiters(self):
-        r"""分隔符列表
+        r"""分隔符列表，优先靠前的分隔符；文件类型为TXT时，默认值：["\n\n", "\n", "。", "！", "？", "，", ""]
         :rtype: list of str
         """
         return self._Delimiters
@@ -436,7 +436,7 @@ class ChunkConfig(AbstractModel):
 
     @property
     def ChunkOverlap(self):
-        r"""相邻切片重合字符数，需要小于分片长度
+        r"""相邻切片重合字符数，需要小于分片长度，若形成完全冗余的切片，则会自动过滤；默认值：0.2*MaxChunkSize
         :rtype: int
         """
         return self._ChunkOverlap

@@ -6438,6 +6438,8 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         :type DeviceName: str
         :param _InputURL: 输入视频 / 图片的 URL
         :type InputURL: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
         :param _CustomId: 自定义事件 ID
         :type CustomId: str
         :param _EnableSearch: 是否保存该事件使其可被搜索
@@ -6472,6 +6474,7 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         self._ProductId = None
         self._DeviceName = None
         self._InputURL = None
+        self._ChannelId = None
         self._CustomId = None
         self._EnableSearch = None
         self._StartTimeMs = None
@@ -6516,6 +6519,17 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
     @InputURL.setter
     def InputURL(self, InputURL):
         self._InputURL = InputURL
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
 
     @property
     def CustomId(self):
@@ -6651,6 +6665,7 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._InputURL = params.get("InputURL")
+        self._ChannelId = params.get("ChannelId")
         self._CustomId = params.get("CustomId")
         self._EnableSearch = params.get("EnableSearch")
         self._StartTimeMs = params.get("StartTimeMs")

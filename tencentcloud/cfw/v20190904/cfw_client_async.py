@@ -997,6 +997,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNatFwSwitch(
+            self,
+            request: models.DescribeNatFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatFwSwitchResponse:
+        """
+        查询NAT边界防火墙开关列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatFwSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNatFwVpcDnsLst(
             self,
             request: models.DescribeNatFwVpcDnsLstRequest,

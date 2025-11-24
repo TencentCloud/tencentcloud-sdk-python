@@ -604,6 +604,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceOplog(
+            self,
+            request: models.DescribeInstanceOplogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceOplogResponse:
+        """
+        获取实例操作日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceOplog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceOplogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceRenewNodes(
             self,
             request: models.DescribeInstanceRenewNodesRequest,

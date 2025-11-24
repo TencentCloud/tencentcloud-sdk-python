@@ -5233,6 +5233,8 @@ class AssetRiskItem(AbstractModel):
         :type Severity: str
         :param _RiskRuleId: 风险规则ID
         :type RiskRuleId: str
+        :param _Classify: 处置分类
+        :type Classify: str
         """
         self._AppId = None
         self._Provider = None
@@ -5248,6 +5250,7 @@ class AssetRiskItem(AbstractModel):
         self._CheckType = None
         self._Severity = None
         self._RiskRuleId = None
+        self._Classify = None
 
     @property
     def AppId(self):
@@ -5403,6 +5406,17 @@ class AssetRiskItem(AbstractModel):
     def RiskRuleId(self, RiskRuleId):
         self._RiskRuleId = RiskRuleId
 
+    @property
+    def Classify(self):
+        r"""处置分类
+        :rtype: str
+        """
+        return self._Classify
+
+    @Classify.setter
+    def Classify(self, Classify):
+        self._Classify = Classify
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -5419,6 +5433,7 @@ class AssetRiskItem(AbstractModel):
         self._CheckType = params.get("CheckType")
         self._Severity = params.get("Severity")
         self._RiskRuleId = params.get("RiskRuleId")
+        self._Classify = params.get("Classify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9842,6 +9857,8 @@ class CheckViewRiskItem(AbstractModel):
         :type AssetType: str
         :param _EventType: 事件类型
         :type EventType: str
+        :param _Classify: 处置分类
+        :type Classify: str
         """
         self._RiskRuleId = None
         self._RiskTitle = None
@@ -9856,6 +9873,7 @@ class CheckViewRiskItem(AbstractModel):
         self._RiskCount = None
         self._AssetType = None
         self._EventType = None
+        self._Classify = None
 
     @property
     def RiskRuleId(self):
@@ -10000,6 +10018,17 @@ class CheckViewRiskItem(AbstractModel):
     def EventType(self, EventType):
         self._EventType = EventType
 
+    @property
+    def Classify(self):
+        r"""处置分类
+        :rtype: str
+        """
+        return self._Classify
+
+    @Classify.setter
+    def Classify(self, Classify):
+        self._Classify = Classify
+
 
     def _deserialize(self, params):
         self._RiskRuleId = params.get("RiskRuleId")
@@ -10015,6 +10044,7 @@ class CheckViewRiskItem(AbstractModel):
         self._RiskCount = params.get("RiskCount")
         self._AssetType = params.get("AssetType")
         self._EventType = params.get("EventType")
+        self._Classify = params.get("Classify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25024,6 +25054,14 @@ class ExposesItem(AbstractModel):
         :type PortDetectCount: int
         :param _PortDetectResult: 端口开放结果
         :type PortDetectResult: str
+        :param _Tag: 标签
+        :type Tag: str
+        :param _Comment: 备注
+        :type Comment: str
+        :param _ToGovernedRiskCount: 待治理风险数量
+        :type ToGovernedRiskCount: int
+        :param _ToGovernedRiskContent: 待治理风险内容
+        :type ToGovernedRiskContent: str
         """
         self._Provider = None
         self._CloudAccountName = None
@@ -25057,6 +25095,10 @@ class ExposesItem(AbstractModel):
         self._ExposureID = None
         self._PortDetectCount = None
         self._PortDetectResult = None
+        self._Tag = None
+        self._Comment = None
+        self._ToGovernedRiskCount = None
+        self._ToGovernedRiskContent = None
 
     @property
     def Provider(self):
@@ -25410,6 +25452,50 @@ class ExposesItem(AbstractModel):
     def PortDetectResult(self, PortDetectResult):
         self._PortDetectResult = PortDetectResult
 
+    @property
+    def Tag(self):
+        r"""标签
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Comment(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ToGovernedRiskCount(self):
+        r"""待治理风险数量
+        :rtype: int
+        """
+        return self._ToGovernedRiskCount
+
+    @ToGovernedRiskCount.setter
+    def ToGovernedRiskCount(self, ToGovernedRiskCount):
+        self._ToGovernedRiskCount = ToGovernedRiskCount
+
+    @property
+    def ToGovernedRiskContent(self):
+        r"""待治理风险内容
+        :rtype: str
+        """
+        return self._ToGovernedRiskContent
+
+    @ToGovernedRiskContent.setter
+    def ToGovernedRiskContent(self, ToGovernedRiskContent):
+        self._ToGovernedRiskContent = ToGovernedRiskContent
+
 
     def _deserialize(self, params):
         self._Provider = params.get("Provider")
@@ -25444,6 +25530,10 @@ class ExposesItem(AbstractModel):
         self._ExposureID = params.get("ExposureID")
         self._PortDetectCount = params.get("PortDetectCount")
         self._PortDetectResult = params.get("PortDetectResult")
+        self._Tag = params.get("Tag")
+        self._Comment = params.get("Comment")
+        self._ToGovernedRiskCount = params.get("ToGovernedRiskCount")
+        self._ToGovernedRiskContent = params.get("ToGovernedRiskContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25773,6 +25863,8 @@ class GateWayAsset(AbstractModel):
         :type Status: str
         :param _EngineRegion: TSE的网关真实地域
         :type EngineRegion: str
+        :param _WeakPasswordRisk: 弱口令风险
+        :type WeakPasswordRisk: int
         """
         self._AppId = None
         self._Uin = None
@@ -25803,6 +25895,7 @@ class GateWayAsset(AbstractModel):
         self._IsNewAsset = None
         self._Status = None
         self._EngineRegion = None
+        self._WeakPasswordRisk = None
 
     @property
     def AppId(self):
@@ -26123,6 +26216,17 @@ class GateWayAsset(AbstractModel):
     def EngineRegion(self, EngineRegion):
         self._EngineRegion = EngineRegion
 
+    @property
+    def WeakPasswordRisk(self):
+        r"""弱口令风险
+        :rtype: int
+        """
+        return self._WeakPasswordRisk
+
+    @WeakPasswordRisk.setter
+    def WeakPasswordRisk(self, WeakPasswordRisk):
+        self._WeakPasswordRisk = WeakPasswordRisk
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -26159,6 +26263,7 @@ class GateWayAsset(AbstractModel):
         self._IsNewAsset = params.get("IsNewAsset")
         self._Status = params.get("Status")
         self._EngineRegion = params.get("EngineRegion")
+        self._WeakPasswordRisk = params.get("WeakPasswordRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

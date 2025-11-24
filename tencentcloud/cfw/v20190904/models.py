@@ -2138,6 +2138,133 @@ enum FilterOperatorType {
         
 
 
+class CommonIdName(AbstractModel):
+    r"""ID NAME 组合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        r"""资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonIdNameStatus(AbstractModel):
+    r"""ID NAME STATUS 组合结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 资源name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""资源name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAcRulesRequest(AbstractModel):
     r"""CreateAcRules请求参数结构体
 
@@ -11438,6 +11565,296 @@ class DescribeNatFwInstancesInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NatinsLst.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNatFwSwitchRequest(AbstractModel):
+    r"""DescribeNatFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，分页用
+        :type Offset: int
+        :param _Limit: 条数，分页用
+        :type Limit: int
+        :param _Filters: 过滤条件组合
+        :type Filters: list of CommonFilter
+        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :type Order: str
+        :param _By: 排序所用到的字段
+        :type By: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，分页用
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""条数，分页用
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤条件组合
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序所用到的字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatFwSwitchResponse(AbstractModel):
+    r"""DescribeNatFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Data: NAT边界防火墙开关列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of NatSwitchListData
+        :param _VpcList: 开关相关VPC列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcList: list of CommonIdName
+        :param _NatList: 开关相关NAT列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatList: list of CommonIdName
+        :param _RouteList: 开关相关ROUTE列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteList: list of CommonIdName
+        :param _OnNum: 开启开关个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnNum: int
+        :param _OffNum: 关闭开关个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffNum: int
+        :param _FailData: 失败开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailData: list of CommonIdNameStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._VpcList = None
+        self._NatList = None
+        self._RouteList = None
+        self._OnNum = None
+        self._OffNum = None
+        self._FailData = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""NAT边界防火墙开关列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NatSwitchListData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def VpcList(self):
+        r"""开关相关VPC列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonIdName
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def NatList(self):
+        r"""开关相关NAT列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonIdName
+        """
+        return self._NatList
+
+    @NatList.setter
+    def NatList(self, NatList):
+        self._NatList = NatList
+
+    @property
+    def RouteList(self):
+        r"""开关相关ROUTE列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonIdName
+        """
+        return self._RouteList
+
+    @RouteList.setter
+    def RouteList(self, RouteList):
+        self._RouteList = RouteList
+
+    @property
+    def OnNum(self):
+        r"""开启开关个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OnNum
+
+    @OnNum.setter
+    def OnNum(self, OnNum):
+        self._OnNum = OnNum
+
+    @property
+    def OffNum(self):
+        r"""关闭开关个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OffNum
+
+    @OffNum.setter
+    def OffNum(self, OffNum):
+        self._OffNum = OffNum
+
+    @property
+    def FailData(self):
+        r"""失败开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonIdNameStatus
+        """
+        return self._FailData
+
+    @FailData.setter
+    def FailData(self, FailData):
+        self._FailData = FailData
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = NatSwitchListData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = CommonIdName()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
+        if params.get("NatList") is not None:
+            self._NatList = []
+            for item in params.get("NatList"):
+                obj = CommonIdName()
+                obj._deserialize(item)
+                self._NatList.append(obj)
+        if params.get("RouteList") is not None:
+            self._RouteList = []
+            for item in params.get("RouteList"):
+                obj = CommonIdName()
+                obj._deserialize(item)
+                self._RouteList.append(obj)
+        self._OnNum = params.get("OnNum")
+        self._OffNum = params.get("OffNum")
+        if params.get("FailData") is not None:
+            self._FailData = []
+            for item in params.get("FailData"):
+                obj = CommonIdNameStatus()
+                obj._deserialize(item)
+                self._FailData.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20955,6 +21372,365 @@ class NatInstanceInfo(AbstractModel):
         self._ElasticSwitch = params.get("ElasticSwitch")
         self._ElasticBandwidth = params.get("ElasticBandwidth")
         self._IsFirstAfterPay = params.get("IsFirstAfterPay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatSwitchListData(AbstractModel):
+    r"""NAT防火墙开关列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 列表ID
+        :type Id: int
+        :param _SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _SubnetName: 子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetName: str
+        :param _SubnetCidr: IPv4 CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetCidr: str
+        :param _RouteId: 关联路由ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteId: str
+        :param _RouteName: 关联路由名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteName: str
+        :param _CvmNum: 云服务器个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmNum: int
+        :param _VpcId: 所属VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcName: 所属VPC名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param _Enable: 是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param _Status: 开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _NatId: NAT网关ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatId: str
+        :param _NatName: NAT网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatName: str
+        :param _NatInsId: NAT防火墙实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatInsId: str
+        :param _NatInsName: NAT防火墙实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatInsName: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Abnormal: 开关是否异常,0:正常,1:异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abnormal: int
+        :param _ORTableId: nat防火墙出口路由表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ORTableId: str
+        :param _ORTableName: nat防火墙出口路由表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ORTableName: str
+        :param _Ohavips: 出口Snat Ip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ohavips: list of str
+        """
+        self._Id = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._SubnetCidr = None
+        self._RouteId = None
+        self._RouteName = None
+        self._CvmNum = None
+        self._VpcId = None
+        self._VpcName = None
+        self._Enable = None
+        self._Status = None
+        self._NatId = None
+        self._NatName = None
+        self._NatInsId = None
+        self._NatInsName = None
+        self._Region = None
+        self._Abnormal = None
+        self._ORTableId = None
+        self._ORTableName = None
+        self._Ohavips = None
+
+    @property
+    def Id(self):
+        r"""列表ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetCidr(self):
+        r"""IPv4 CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetCidr
+
+    @SubnetCidr.setter
+    def SubnetCidr(self, SubnetCidr):
+        self._SubnetCidr = SubnetCidr
+
+    @property
+    def RouteId(self):
+        r"""关联路由ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def RouteName(self):
+        r"""关联路由名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def CvmNum(self):
+        r"""云服务器个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CvmNum
+
+    @CvmNum.setter
+    def CvmNum(self, CvmNum):
+        self._CvmNum = CvmNum
+
+    @property
+    def VpcId(self):
+        r"""所属VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""所属VPC名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def Enable(self):
+        r"""是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Status(self):
+        r"""开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NatId(self):
+        r"""NAT网关ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def NatName(self):
+        r"""NAT网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NatName
+
+    @NatName.setter
+    def NatName(self, NatName):
+        self._NatName = NatName
+
+    @property
+    def NatInsId(self):
+        r"""NAT防火墙实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def NatInsName(self):
+        r"""NAT防火墙实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NatInsName
+
+    @NatInsName.setter
+    def NatInsName(self, NatInsName):
+        self._NatInsName = NatInsName
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Abnormal(self):
+        r"""开关是否异常,0:正常,1:异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Abnormal
+
+    @Abnormal.setter
+    def Abnormal(self, Abnormal):
+        self._Abnormal = Abnormal
+
+    @property
+    def ORTableId(self):
+        r"""nat防火墙出口路由表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ORTableId
+
+    @ORTableId.setter
+    def ORTableId(self, ORTableId):
+        self._ORTableId = ORTableId
+
+    @property
+    def ORTableName(self):
+        r"""nat防火墙出口路由表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ORTableName
+
+    @ORTableName.setter
+    def ORTableName(self, ORTableName):
+        self._ORTableName = ORTableName
+
+    @property
+    def Ohavips(self):
+        r"""出口Snat Ip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Ohavips
+
+    @Ohavips.setter
+    def Ohavips(self, Ohavips):
+        self._Ohavips = Ohavips
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetCidr = params.get("SubnetCidr")
+        self._RouteId = params.get("RouteId")
+        self._RouteName = params.get("RouteName")
+        self._CvmNum = params.get("CvmNum")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._Enable = params.get("Enable")
+        self._Status = params.get("Status")
+        self._NatId = params.get("NatId")
+        self._NatName = params.get("NatName")
+        self._NatInsId = params.get("NatInsId")
+        self._NatInsName = params.get("NatInsName")
+        self._Region = params.get("Region")
+        self._Abnormal = params.get("Abnormal")
+        self._ORTableId = params.get("ORTableId")
+        self._ORTableName = params.get("ORTableName")
+        self._Ohavips = params.get("Ohavips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

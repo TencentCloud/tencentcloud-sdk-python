@@ -925,10 +925,24 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceId = None
         self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def RequestId(self):
@@ -943,6 +957,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2261,13 +2276,27 @@ class DescribeDetectTaskPackageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Offset: 偏移量
+        :type Offset: int
         :param _Limit: 每页条数
         :type Limit: int
         :param _Filters: 探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
         :type Filters: list of ResourceFilter
         """
+        self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def Limit(self):
@@ -2293,6 +2322,7 @@ class DescribeDetectTaskPackageListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -2516,6 +2546,36 @@ class DescribeInstanceDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceDetailResponse(AbstractModel):
     r"""DescribeInstanceDetail返回参数结构体
@@ -2718,6 +2778,8 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Offset: 偏移量
+        :type Offset: int
         :param _Limit: 每页条数
         :type Limit: int
         :param _Filters: InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
@@ -2725,9 +2787,21 @@ class DescribeInstancePackageListRequest(AbstractModel):
         :param _IsUsed: 是否使用：0未使用1已使用
         :type IsUsed: int
         """
+        self._Offset = None
         self._Limit = None
         self._Filters = None
         self._IsUsed = None
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def Limit(self):
@@ -2764,6 +2838,7 @@ class DescribeInstancePackageListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -2937,11 +3012,14 @@ class DescribeMonitorsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页，当前分页记录数
         :type Limit: int
+        :param _Filters: 查询过滤条件：MonitorName：监控器名称；MonitorId：监控器id
+        :type Filters: list of ResourceFilter
         :param _IsDetectNum: 是否查探测次数0否1是
         :type IsDetectNum: int
         """
         self._Offset = None
         self._Limit = None
+        self._Filters = None
         self._IsDetectNum = None
 
     @property
@@ -2967,6 +3045,17 @@ class DescribeMonitorsRequest(AbstractModel):
         self._Limit = Limit
 
     @property
+    def Filters(self):
+        r"""查询过滤条件：MonitorName：监控器名称；MonitorId：监控器id
+        :rtype: list of ResourceFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def IsDetectNum(self):
         r"""是否查探测次数0否1是
         :rtype: int
@@ -2981,6 +3070,12 @@ class DescribeMonitorsRequest(AbstractModel):
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ResourceFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         self._IsDetectNum = params.get("IsDetectNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5218,10 +5313,24 @@ class ModifyInstanceConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id	
+        :type InstanceId: str
         :param _InstanceConfig: 实例配置详情
         :type InstanceConfig: :class:`tencentcloud.igtm.v20231024.models.InstanceConfig`
         """
+        self._InstanceId = None
         self._InstanceConfig = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id	
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def InstanceConfig(self):
@@ -5236,6 +5345,7 @@ class ModifyInstanceConfigRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         if params.get("InstanceConfig") is not None:
             self._InstanceConfig = InstanceConfig()
             self._InstanceConfig._deserialize(params.get("InstanceConfig"))

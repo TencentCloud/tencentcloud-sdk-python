@@ -1911,13 +1911,15 @@ Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、
 视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 
-示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+若您未使用Encryption进行加密传输，则本字段为必填参数。
         :type FaceInput: str
         :param _FaceInputType: 传入的类型。
 - 取值范围：
 1：传入的是图片类型。
 2：传入的是视频类型。
 其他：返回错误码InvalidParameter。
+
+若您未使用Encryption进行加密传输，则本字段为必填参数。
         :type FaceInputType: int
         :param _Encryption: 是否需要对请求信息进行全包体加密。
 - 支持的加密算法:AES-256-CBC、SM4-GCM。
@@ -1947,7 +1949,7 @@ Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、
 视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 
-示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+若您未使用Encryption进行加密传输，则本字段为必填参数。
         :rtype: str
         """
         return self._FaceInput
@@ -1963,6 +1965,8 @@ Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、
 1：传入的是图片类型。
 2：传入的是视频类型。
 其他：返回错误码InvalidParameter。
+
+若您未使用Encryption进行加密传输，则本字段为必填参数。
         :rtype: int
         """
         return self._FaceInputType
@@ -3010,7 +3014,7 @@ class DetectInfoText(AbstractModel):
         :type Comparemsg: str
         :param _Sim: 本次流程活体一比一的分数。
 - 取值范围 [0.00, 100.00]。
-- 相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值。
+- 相似度大于等于70时才判断为同一人，阈值不支持自定义。
 - 阈值70的误通过率为千分之一，阈值80的误通过率是万分之一。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sim: str
@@ -3074,6 +3078,17 @@ class DetectInfoText(AbstractModel):
         :param _VisaNum: 港澳台居住证签发次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VisaNum: str
+        :param _LivenessActionSequence: 活体检测的动作顺序，多动作以“,”分隔。
+输出格式如：“1,2”表示“张嘴+眨眼”。
+- 详细序列值含义如下： 
+   1：张嘴
+2：眨眼
+3：点头
+4：摇头
+5：静默
+注：仅浮层H5产品返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessActionSequence: str
         """
         self._ErrCode = None
         self._ErrMsg = None
@@ -3105,6 +3120,7 @@ class DetectInfoText(AbstractModel):
         self._NFCBillingCounts = None
         self._PassNo = None
         self._VisaNum = None
+        self._LivenessActionSequence = None
 
     @property
     def ErrCode(self):
@@ -3340,7 +3356,7 @@ class DetectInfoText(AbstractModel):
     def Sim(self):
         r"""本次流程活体一比一的分数。
 - 取值范围 [0.00, 100.00]。
-- 相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值。
+- 相似度大于等于70时才判断为同一人，阈值不支持自定义。
 - 阈值70的误通过率为千分之一，阈值80的误通过率是万分之一。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -3510,6 +3526,26 @@ class DetectInfoText(AbstractModel):
     def VisaNum(self, VisaNum):
         self._VisaNum = VisaNum
 
+    @property
+    def LivenessActionSequence(self):
+        r"""活体检测的动作顺序，多动作以“,”分隔。
+输出格式如：“1,2”表示“张嘴+眨眼”。
+- 详细序列值含义如下： 
+   1：张嘴
+2：眨眼
+3：点头
+4：摇头
+5：静默
+注：仅浮层H5产品返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LivenessActionSequence
+
+    @LivenessActionSequence.setter
+    def LivenessActionSequence(self, LivenessActionSequence):
+        self._LivenessActionSequence = LivenessActionSequence
+
 
     def _deserialize(self, params):
         self._ErrCode = params.get("ErrCode")
@@ -3547,6 +3583,7 @@ class DetectInfoText(AbstractModel):
         self._NFCBillingCounts = params.get("NFCBillingCounts")
         self._PassNo = params.get("PassNo")
         self._VisaNum = params.get("VisaNum")
+        self._LivenessActionSequence = params.get("LivenessActionSequence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7616,14 +7653,14 @@ class IntentionActionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+        :param _Text: 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为250个字符。
         :type Text: str
         """
         self._Text = None
 
     @property
     def Text(self):
-        r"""点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+        r"""点头确认模式下，系统语音播报使用的问题文本，问题最大长度为250个字符。
         :rtype: str
         """
         return self._Text
@@ -7827,7 +7864,7 @@ class IntentionQuestion(AbstractModel):
     def __init__(self):
         r"""
         :param _Question: 当选择语音问答模式时，系统自动播报的问题文本。
-- 最大长度为150个字符。
+- 最大长度为250个字符。
         :type Question: str
         :param _Answers: 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表。
 - 传入后可自动判断用户回答文本是否在标准文本列表中。
@@ -7840,7 +7877,7 @@ class IntentionQuestion(AbstractModel):
     @property
     def Question(self):
         r"""当选择语音问答模式时，系统自动播报的问题文本。
-- 最大长度为150个字符。
+- 最大长度为250个字符。
         :rtype: str
         """
         return self._Question
@@ -8826,193 +8863,6 @@ class LivenessRecognitionResponse(AbstractModel):
     def _deserialize(self, params):
         self._BestFrameBase64 = params.get("BestFrameBase64")
         self._Sim = params.get("Sim")
-        self._Result = params.get("Result")
-        self._Description = params.get("Description")
-        self._BestFrameList = params.get("BestFrameList")
-        self._RequestId = params.get("RequestId")
-
-
-class LivenessRequest(AbstractModel):
-    r"""Liveness请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _VideoBase64: 用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
-        :type VideoBase64: str
-        :param _LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
-LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
-        :type LivenessType: str
-        :param _ValidateData: 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
-动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
-静默模式传参：不需要传递此参数。
-        :type ValidateData: str
-        :param _Optional: 额外配置，传入JSON字符串。
-{
-"BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
-}
-        :type Optional: str
-        """
-        self._VideoBase64 = None
-        self._LivenessType = None
-        self._ValidateData = None
-        self._Optional = None
-
-    @property
-    def VideoBase64(self):
-        r"""用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
-        :rtype: str
-        """
-        return self._VideoBase64
-
-    @VideoBase64.setter
-    def VideoBase64(self, VideoBase64):
-        self._VideoBase64 = VideoBase64
-
-    @property
-    def LivenessType(self):
-        r"""活体检测类型，取值：LIP/ACTION/SILENT。
-LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
-        :rtype: str
-        """
-        return self._LivenessType
-
-    @LivenessType.setter
-    def LivenessType(self, LivenessType):
-        self._LivenessType = LivenessType
-
-    @property
-    def ValidateData(self):
-        r"""数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
-动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
-静默模式传参：不需要传递此参数。
-        :rtype: str
-        """
-        return self._ValidateData
-
-    @ValidateData.setter
-    def ValidateData(self, ValidateData):
-        self._ValidateData = ValidateData
-
-    @property
-    def Optional(self):
-        r"""额外配置，传入JSON字符串。
-{
-"BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
-}
-        :rtype: str
-        """
-        return self._Optional
-
-    @Optional.setter
-    def Optional(self, Optional):
-        self._Optional = Optional
-
-
-    def _deserialize(self, params):
-        self._VideoBase64 = params.get("VideoBase64")
-        self._LivenessType = params.get("LivenessType")
-        self._ValidateData = params.get("ValidateData")
-        self._Optional = params.get("Optional")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LivenessResponse(AbstractModel):
-    r"""Liveness返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BestFrameBase64: str
-        :param _Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-        :type Result: str
-        :param _Description: 业务结果描述。
-        :type Description: str
-        :param _BestFrameList: 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BestFrameList: list of str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._BestFrameBase64 = None
-        self._Result = None
-        self._Description = None
-        self._BestFrameList = None
-        self._RequestId = None
-
-    @property
-    def BestFrameBase64(self):
-        r"""验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._BestFrameBase64
-
-    @BestFrameBase64.setter
-    def BestFrameBase64(self, BestFrameBase64):
-        self._BestFrameBase64 = BestFrameBase64
-
-    @property
-    def Result(self):
-        r"""业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def Description(self):
-        r"""业务结果描述。
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def BestFrameList(self):
-        r"""最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of str
-        """
-        return self._BestFrameList
-
-    @BestFrameList.setter
-    def BestFrameList(self, BestFrameList):
-        self._BestFrameList = BestFrameList
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._BestFrameBase64 = params.get("BestFrameBase64")
         self._Result = params.get("Result")
         self._Description = params.get("Description")
         self._BestFrameList = params.get("BestFrameList")

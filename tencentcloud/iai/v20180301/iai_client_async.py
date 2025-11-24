@@ -316,45 +316,6 @@ class IaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DetectLiveFace(
-            self,
-            request: models.DetectLiveFaceRequest,
-            opts: Dict = None,
-    ) -> models.DetectLiveFaceResponse:
-        """
-        用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
-
-        静态活体检测适用于手机自拍的场景，或对防攻击要求不高的场景。如果对活体检测有更高安全性要求，请使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/faceid)产品。
-
-        >
-        - 图片的宽高比请接近3：4，不符合宽高比的图片返回的分值不具备参考意义。本接口适用于类手机自拍场景，非类手机自拍照返回的分值不具备参考意义。
-
-        >
-        - 使用过程中建议正对摄像头，不要距离太远，使面部可以完整地显示在识别的框内，识别过程中不要移动设备或遮挡面部。不要选择光线过强或过弱的环境进行面部识别，识别时不要添加任何滤镜。
-
-        >
-        - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-
-        ## 调用次数计费（资源包）
-        |资源包规格|100万次|1000万次|5000万次|1亿次|
-        |-|-|-|-|-|
-        |人脸静态活体检测|1800元|17400元|75000元|110000元|
-
-        ## 调用次数计费（后付费）
-        |月接口调用总量|0<调用量≤300万|300万<调用量≤1500万|调用量>1500万|
-        |-|-|-|-|
-        |人脸静态活体检测|0.0019元/次|0.0017元/次|0.0013元/次|
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DetectLiveFace"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DetectLiveFaceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetGroupInfo(
             self,
             request: models.GetGroupInfoRequest,

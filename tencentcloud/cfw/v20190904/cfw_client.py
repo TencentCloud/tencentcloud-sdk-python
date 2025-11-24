@@ -1268,6 +1268,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNatFwSwitch(self, request):
+        r"""查询NAT边界防火墙开关列表
+
+        :param request: Request instance for DescribeNatFwSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatFwSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatFwSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNatFwVpcDnsLst(self, request):
         r"""展示当前natfw 实例对应的vpc dns开关
 

@@ -17845,7 +17845,7 @@ class RecordListItem(AbstractModel):
         :type MonitorStatus: str
         :param _Remark: 记录备注说明
         :type Remark: str
-        :param _TTL: 记录缓存时间
+        :param _TTL: 记录缓存时间，单位：秒
         :type TTL: int
         :param _MX: MX值
         :type MX: int
@@ -17991,7 +17991,7 @@ class RecordListItem(AbstractModel):
 
     @property
     def TTL(self):
-        r"""记录缓存时间
+        r"""记录缓存时间，单位：秒
         :rtype: int
         """
         return self._TTL

@@ -624,29 +624,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def Liveness(self, request):
-        r"""活体检测
-
-        :param request: Request instance for Liveness.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("Liveness", params, headers=headers)
-            response = json.loads(body)
-            model = models.LivenessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def LivenessCompare(self, request):
         r"""传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
 

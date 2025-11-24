@@ -1125,10 +1125,16 @@ class CompareTableItem(AbstractModel):
         :type ColumnMode: str
         :param _Columns: 当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
         :type Columns: list of CompareColumnItem
+        :param _FilterCondition: 过滤条件
+        :type FilterCondition: str
+        :param _FilterTimeZone: 时区选择。如 "+08:00", "-08:00", "+00:00"（空值等价于"+00:00"）	
+        :type FilterTimeZone: str
         """
         self._TableName = None
         self._ColumnMode = None
         self._Columns = None
+        self._FilterCondition = None
+        self._FilterTimeZone = None
 
     @property
     def TableName(self):
@@ -1163,6 +1169,28 @@ class CompareTableItem(AbstractModel):
     def Columns(self, Columns):
         self._Columns = Columns
 
+    @property
+    def FilterCondition(self):
+        r"""过滤条件
+        :rtype: str
+        """
+        return self._FilterCondition
+
+    @FilterCondition.setter
+    def FilterCondition(self, FilterCondition):
+        self._FilterCondition = FilterCondition
+
+    @property
+    def FilterTimeZone(self):
+        r"""时区选择。如 "+08:00", "-08:00", "+00:00"（空值等价于"+00:00"）	
+        :rtype: str
+        """
+        return self._FilterTimeZone
+
+    @FilterTimeZone.setter
+    def FilterTimeZone(self, FilterTimeZone):
+        self._FilterTimeZone = FilterTimeZone
+
 
     def _deserialize(self, params):
         self._TableName = params.get("TableName")
@@ -1173,6 +1201,8 @@ class CompareTableItem(AbstractModel):
                 obj = CompareColumnItem()
                 obj._deserialize(item)
                 self._Columns.append(obj)
+        self._FilterCondition = params.get("FilterCondition")
+        self._FilterTimeZone = params.get("FilterTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3346,6 +3376,151 @@ class CreateSubscribeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSyncCompareTaskRequest(AbstractModel):
+    r"""CreateSyncCompareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _TaskName: 数据对比任务名称，若为空则默认给CompareTaskId相同值
+        :type TaskName: str
+        :param _ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
+        :type ObjectMode: str
+        :param _Objects: 对比对象，当ObjectMode值为custom时，此项需要填写
+        :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param _Options: 一致性校验选项
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
+        self._JobId = None
+        self._TaskName = None
+        self._ObjectMode = None
+        self._Objects = None
+        self._Options = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        r"""数据对比任务名称，若为空则默认给CompareTaskId相同值
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ObjectMode(self):
+        r"""数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
+        :rtype: str
+        """
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Objects(self):
+        r"""对比对象，当ObjectMode值为custom时，此项需要填写
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Options(self):
+        r"""一致性校验选项
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._ObjectMode = params.get("ObjectMode")
+        if params.get("Objects") is not None:
+            self._Objects = CompareObject()
+            self._Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSyncCompareTaskResponse(AbstractModel):
+    r"""CreateSyncCompareTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompareTaskId: 数据对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareTaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CompareTaskId = None
+        self._RequestId = None
+
+    @property
+    def CompareTaskId(self):
+        r"""数据对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSyncJobRequest(AbstractModel):
     r"""CreateSyncJob请求参数结构体
 
@@ -5067,6 +5242,85 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
 class DeleteConsumerGroupResponse(AbstractModel):
     r"""DeleteConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSyncCompareTaskRequest(AbstractModel):
+    r"""DeleteSyncCompareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :type CompareTaskId: str
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSyncCompareTaskResponse(AbstractModel):
+    r"""DeleteSyncCompareTask返回参数结构体
 
     """
 
@@ -8267,6 +8521,423 @@ class DescribeSubscribeReturnableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSyncCompareReportRequest(AbstractModel):
+    r"""DescribeSyncCompareReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 校验任务 Id
+        :type CompareTaskId: str
+        :param _DifferenceLimit: 校验不一致结果的 limit
+        :type DifferenceLimit: int
+        :param _DifferenceOffset: 不一致的 Offset
+        :type DifferenceOffset: int
+        :param _DifferenceDB: 搜索条件，不一致的库名
+        :type DifferenceDB: str
+        :param _DifferenceTable: 搜索条件，不一致的表名
+        :type DifferenceTable: str
+        :param _SkippedLimit: 未校验的 Limit
+        :type SkippedLimit: int
+        :param _SkippedOffset: 未校验的 Offset
+        :type SkippedOffset: int
+        :param _SkippedDB: 搜索条件，未校验的库名
+        :type SkippedDB: str
+        :param _SkippedTable: 搜索条件，未校验的表名
+        :type SkippedTable: str
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._DifferenceLimit = None
+        self._DifferenceOffset = None
+        self._DifferenceDB = None
+        self._DifferenceTable = None
+        self._SkippedLimit = None
+        self._SkippedOffset = None
+        self._SkippedDB = None
+        self._SkippedTable = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""校验任务 Id
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def DifferenceLimit(self):
+        r"""校验不一致结果的 limit
+        :rtype: int
+        """
+        return self._DifferenceLimit
+
+    @DifferenceLimit.setter
+    def DifferenceLimit(self, DifferenceLimit):
+        self._DifferenceLimit = DifferenceLimit
+
+    @property
+    def DifferenceOffset(self):
+        r"""不一致的 Offset
+        :rtype: int
+        """
+        return self._DifferenceOffset
+
+    @DifferenceOffset.setter
+    def DifferenceOffset(self, DifferenceOffset):
+        self._DifferenceOffset = DifferenceOffset
+
+    @property
+    def DifferenceDB(self):
+        r"""搜索条件，不一致的库名
+        :rtype: str
+        """
+        return self._DifferenceDB
+
+    @DifferenceDB.setter
+    def DifferenceDB(self, DifferenceDB):
+        self._DifferenceDB = DifferenceDB
+
+    @property
+    def DifferenceTable(self):
+        r"""搜索条件，不一致的表名
+        :rtype: str
+        """
+        return self._DifferenceTable
+
+    @DifferenceTable.setter
+    def DifferenceTable(self, DifferenceTable):
+        self._DifferenceTable = DifferenceTable
+
+    @property
+    def SkippedLimit(self):
+        r"""未校验的 Limit
+        :rtype: int
+        """
+        return self._SkippedLimit
+
+    @SkippedLimit.setter
+    def SkippedLimit(self, SkippedLimit):
+        self._SkippedLimit = SkippedLimit
+
+    @property
+    def SkippedOffset(self):
+        r"""未校验的 Offset
+        :rtype: int
+        """
+        return self._SkippedOffset
+
+    @SkippedOffset.setter
+    def SkippedOffset(self, SkippedOffset):
+        self._SkippedOffset = SkippedOffset
+
+    @property
+    def SkippedDB(self):
+        r"""搜索条件，未校验的库名
+        :rtype: str
+        """
+        return self._SkippedDB
+
+    @SkippedDB.setter
+    def SkippedDB(self, SkippedDB):
+        self._SkippedDB = SkippedDB
+
+    @property
+    def SkippedTable(self):
+        r"""搜索条件，未校验的表名
+        :rtype: str
+        """
+        return self._SkippedTable
+
+    @SkippedTable.setter
+    def SkippedTable(self, SkippedTable):
+        self._SkippedTable = SkippedTable
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._DifferenceLimit = params.get("DifferenceLimit")
+        self._DifferenceOffset = params.get("DifferenceOffset")
+        self._DifferenceDB = params.get("DifferenceDB")
+        self._DifferenceTable = params.get("DifferenceTable")
+        self._SkippedLimit = params.get("SkippedLimit")
+        self._SkippedOffset = params.get("SkippedOffset")
+        self._SkippedDB = params.get("SkippedDB")
+        self._SkippedTable = params.get("SkippedTable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSyncCompareReportResponse(AbstractModel):
+    r"""DescribeSyncCompareReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Abstract: 一致性校验摘要信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abstract: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
+        :param _Detail: 一致性校验详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
+        :param _IncAbstract: 增量校验阶段的摘要
+        :type IncAbstract: :class:`tencentcloud.dts.v20211206.models.IncCompareAbstractInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Abstract = None
+        self._Detail = None
+        self._IncAbstract = None
+        self._RequestId = None
+
+    @property
+    def Abstract(self):
+        r"""一致性校验摘要信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
+        """
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
+
+    @property
+    def Detail(self):
+        r"""一致性校验详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def IncAbstract(self):
+        r"""增量校验阶段的摘要
+        :rtype: :class:`tencentcloud.dts.v20211206.models.IncCompareAbstractInfo`
+        """
+        return self._IncAbstract
+
+    @IncAbstract.setter
+    def IncAbstract(self, IncAbstract):
+        self._IncAbstract = IncAbstract
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Abstract") is not None:
+            self._Abstract = CompareAbstractInfo()
+            self._Abstract._deserialize(params.get("Abstract"))
+        if params.get("Detail") is not None:
+            self._Detail = CompareDetailInfo()
+            self._Detail._deserialize(params.get("Detail"))
+        if params.get("IncAbstract") is not None:
+            self._IncAbstract = IncCompareAbstractInfo()
+            self._IncAbstract._deserialize(params.get("IncAbstract"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSyncCompareTasksRequest(AbstractModel):
+    r"""DescribeSyncCompareTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _Limit: 分页设置，表示每页显示多少条任务，默认为 20
+        :type Limit: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _CompareTaskId: 校验任务 ID
+        :type CompareTaskId: str
+        :param _Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :type Status: list of str
+        """
+        self._JobId = None
+        self._Limit = None
+        self._Offset = None
+        self._CompareTaskId = None
+        self._Status = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Limit(self):
+        r"""分页设置，表示每页显示多少条任务，默认为 20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CompareTaskId(self):
+        r"""校验任务 ID
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def Status(self):
+        r"""任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSyncCompareTasksResponse(AbstractModel):
+    r"""DescribeSyncCompareTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 一致性校验任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CompareTaskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""一致性校验任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CompareTaskItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CompareTaskItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSyncJobsRequest(AbstractModel):
     r"""DescribeSyncJobs请求参数结构体
 
@@ -10942,6 +11613,102 @@ class GroupInfo(AbstractModel):
         
 
 
+class IncCompareAbstractInfo(AbstractModel):
+    r"""增量校验阶段的摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartPosition: 增量起始位点
+        :type StartPosition: str
+        :param _CurrentPosition: 增量当前位点
+        :type CurrentPosition: str
+        :param _CheckedRecord: 已校验行数
+        :type CheckedRecord: int
+        :param _DiffRecord: 不一致行数
+        :type DiffRecord: int
+        :param _DiffTable: 不一致表的数量
+        :type DiffTable: int
+        """
+        self._StartPosition = None
+        self._CurrentPosition = None
+        self._CheckedRecord = None
+        self._DiffRecord = None
+        self._DiffTable = None
+
+    @property
+    def StartPosition(self):
+        r"""增量起始位点
+        :rtype: str
+        """
+        return self._StartPosition
+
+    @StartPosition.setter
+    def StartPosition(self, StartPosition):
+        self._StartPosition = StartPosition
+
+    @property
+    def CurrentPosition(self):
+        r"""增量当前位点
+        :rtype: str
+        """
+        return self._CurrentPosition
+
+    @CurrentPosition.setter
+    def CurrentPosition(self, CurrentPosition):
+        self._CurrentPosition = CurrentPosition
+
+    @property
+    def CheckedRecord(self):
+        r"""已校验行数
+        :rtype: int
+        """
+        return self._CheckedRecord
+
+    @CheckedRecord.setter
+    def CheckedRecord(self, CheckedRecord):
+        self._CheckedRecord = CheckedRecord
+
+    @property
+    def DiffRecord(self):
+        r"""不一致行数
+        :rtype: int
+        """
+        return self._DiffRecord
+
+    @DiffRecord.setter
+    def DiffRecord(self, DiffRecord):
+        self._DiffRecord = DiffRecord
+
+    @property
+    def DiffTable(self):
+        r"""不一致表的数量
+        :rtype: int
+        """
+        return self._DiffTable
+
+    @DiffTable.setter
+    def DiffTable(self, DiffTable):
+        self._DiffTable = DiffTable
+
+
+    def _deserialize(self, params):
+        self._StartPosition = params.get("StartPosition")
+        self._CurrentPosition = params.get("CurrentPosition")
+        self._CheckedRecord = params.get("CheckedRecord")
+        self._DiffRecord = params.get("DiffRecord")
+        self._DiffTable = params.get("DiffTable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IsolateMigrateJobRequest(AbstractModel):
     r"""IsolateMigrateJob请求参数结构体
 
@@ -13448,6 +14215,243 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
 class ModifySubscribeObjectsResponse(AbstractModel):
     r"""ModifySubscribeObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySyncCompareTaskNameRequest(AbstractModel):
+    r"""ModifySyncCompareTaskName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :type CompareTaskId: str
+        :param _TaskName: 一致性校验任务名称
+        :type TaskName: str
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._TaskName = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def TaskName(self):
+        r"""一致性校验任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncCompareTaskNameResponse(AbstractModel):
+    r"""ModifySyncCompareTaskName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySyncCompareTaskRequest(AbstractModel):
+    r"""ModifySyncCompareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :type CompareTaskId: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
+        :type ObjectMode: str
+        :param _Objects: 对比对象，若CompareObjectMode取值为custom，则此项必填
+        :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param _Options: 一致性校验选项
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._TaskName = None
+        self._ObjectMode = None
+        self._Objects = None
+        self._Options = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ObjectMode(self):
+        r"""数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
+        :rtype: str
+        """
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Objects(self):
+        r"""对比对象，若CompareObjectMode取值为custom，则此项必填
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Options(self):
+        r"""一致性校验选项
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._TaskName = params.get("TaskName")
+        self._ObjectMode = params.get("ObjectMode")
+        if params.get("Objects") is not None:
+            self._Objects = CompareObject()
+            self._Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncCompareTaskResponse(AbstractModel):
+    r"""ModifySyncCompareTask返回参数结构体
 
     """
 
@@ -16444,6 +17448,85 @@ class StartSubscribeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartSyncCompareRequest(AbstractModel):
+    r"""StartSyncCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :type CompareTaskId: str
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartSyncCompareResponse(AbstractModel):
+    r"""StartSyncCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StartSyncJobRequest(AbstractModel):
     r"""StartSyncJob请求参数结构体
 
@@ -17063,6 +18146,100 @@ class StopMigrateJobRequest(AbstractModel):
 
 class StopMigrateJobResponse(AbstractModel):
     r"""StopMigrateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopSyncCompareRequest(AbstractModel):
+    r"""StopSyncCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :type CompareTaskId: str
+        :param _ForceStop: 是否强制停止。如果填true，迁移任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+        :type ForceStop: bool
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._ForceStop = None
+
+    @property
+    def JobId(self):
+        r"""任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def ForceStop(self):
+        r"""是否强制停止。如果填true，迁移任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+        :rtype: bool
+        """
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._ForceStop = params.get("ForceStop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopSyncCompareResponse(AbstractModel):
+    r"""StopSyncCompare返回参数结构体
 
     """
 
