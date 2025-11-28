@@ -1918,26 +1918,6 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeLiveForbidStreamList(
-            self,
-            request: models.DescribeLiveForbidStreamListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeLiveForbidStreamListResponse:
-        """
-        获取禁推流列表。
-
-        注意：该接口仅作为直播辅助查询接口，重要业务场景不可强依赖该接口。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeLiveForbidStreamList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeLiveForbidStreamListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeLivePackageInfo(
             self,
             request: models.DescribeLivePackageInfoRequest,

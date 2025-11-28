@@ -670,6 +670,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteGroupSubscribeTopic(self, request):
+        r"""删除消费分组订阅的topic(消费分组必须是Empty 状态)
+
+        :param request: Request instance for DeleteGroupSubscribeTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupSubscribeTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupSubscribeTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroupSubscribeTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupSubscribeTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInstancePost(self, request):
         r"""删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 
@@ -1259,6 +1282,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeInstancesDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModifyType(self, request):
+        r"""查询实例变配类型
+
+        :param request: Request instance for DescribeModifyType.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeModifyTypeRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeModifyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModifyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModifyTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

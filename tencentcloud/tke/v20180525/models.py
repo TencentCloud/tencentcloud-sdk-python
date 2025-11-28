@@ -1528,6 +1528,85 @@ class CancelClusterReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelUpgradePlanRequest(AbstractModel):
+    r"""CancelUpgradePlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _PlanID: 升级计划ID
+        :type PlanID: int
+        """
+        self._ClusterID = None
+        self._PlanID = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PlanID(self):
+        r"""升级计划ID
+        :rtype: int
+        """
+        return self._PlanID
+
+    @PlanID.setter
+    def PlanID(self, PlanID):
+        self._PlanID = PlanID
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._PlanID = params.get("PlanID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelUpgradePlanResponse(AbstractModel):
+    r"""CancelUpgradePlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Capabilities(AbstractModel):
     r"""cloudrun安全特性能力
 
@@ -4569,6 +4648,92 @@ class ClusterPublicLB(AbstractModel):
         
 
 
+class ClusterRollOutSequenceTag(AbstractModel):
+    r"""集群发布序列标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _Tags: 集群发布序列标签
+        :type Tags: list of Tag
+        :param _Region: 地域
+        :type Region: str
+        """
+        self._ClusterID = None
+        self._ClusterName = None
+        self._Tags = None
+        self._Region = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Tags(self):
+        r"""集群发布序列标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterStatus(AbstractModel):
     r"""集群状态信息
 
@@ -5938,6 +6103,135 @@ class CreateClusterInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceIdSet = params.get("InstanceIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""CreateClusterMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长（小时）
+        :type Duration: int
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _Exclusions: 维护排除项
+        :type Exclusions: list of MaintenanceExclusion
+        """
+        self._ClusterID = None
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._DayOfWeek = None
+        self._Exclusions = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长（小时）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Exclusions(self):
+        r"""维护排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._DayOfWeek = params.get("DayOfWeek")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""CreateClusterMaintenanceWindowAndExclusions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -8596,6 +8890,135 @@ class CreateEksLogConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""CreateGlobalMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长(小时)
+        :type Duration: int
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _TargetRegions: 地域
+        :type TargetRegions: list of str
+        :param _Exclusions: 维护排除项
+        :type Exclusions: list of MaintenanceExclusion
+        """
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._DayOfWeek = None
+        self._TargetRegions = None
+        self._Exclusions = None
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长(小时)
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def TargetRegions(self):
+        r"""地域
+        :rtype: list of str
+        """
+        return self._TargetRegions
+
+    @TargetRegions.setter
+    def TargetRegions(self, TargetRegions):
+        self._TargetRegions = TargetRegions
+
+    @property
+    def Exclusions(self):
+        r"""维护排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+
+    def _deserialize(self, params):
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._TargetRegions = params.get("TargetRegions")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""CreateGlobalMaintenanceWindowAndExclusions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateImageCacheRequest(AbstractModel):
     r"""CreateImageCache请求参数结构体
 
@@ -9946,6 +10369,105 @@ class CreateReservedInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRollOutSequenceRequest(AbstractModel):
+    r"""CreateRollOutSequence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 发布序列名称
+        :type Name: str
+        :param _SequenceFlows: 发布序列步骤
+        :type SequenceFlows: list of SequenceFlow
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._SequenceFlows = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        r"""发布序列名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SequenceFlows(self):
+        r"""发布序列步骤
+        :rtype: list of SequenceFlow
+        """
+        return self._SequenceFlows
+
+    @SequenceFlows.setter
+    def SequenceFlows(self, SequenceFlows):
+        self._SequenceFlows = SequenceFlows
+
+    @property
+    def Enabled(self):
+        r"""是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SequenceFlows") is not None:
+            self._SequenceFlows = []
+            for item in params.get("SequenceFlows"):
+                obj = SequenceFlow()
+                obj._deserialize(item)
+                self._SequenceFlows.append(obj)
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRollOutSequenceResponse(AbstractModel):
+    r"""CreateRollOutSequence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTKEEdgeClusterRequest(AbstractModel):
     r"""CreateTKEEdgeCluster请求参数结构体
 
@@ -11074,6 +11596,70 @@ class DeleteClusterInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteClusterMaintenanceWindowAndExclusionRequest(AbstractModel):
+    r"""DeleteClusterMaintenanceWindowAndExclusion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        """
+        self._ClusterID = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterMaintenanceWindowAndExclusionResponse(AbstractModel):
+    r"""DeleteClusterMaintenanceWindowAndExclusion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteClusterNodePoolRequest(AbstractModel):
     r"""DeleteClusterNodePool请求参数结构体
 
@@ -11967,6 +12553,70 @@ class DeleteEdgeClusterInstancesRequest(AbstractModel):
 
 class DeleteEdgeClusterInstancesResponse(AbstractModel):
     r"""DeleteEdgeClusterInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGlobalMaintenanceWindowAndExclusionRequest(AbstractModel):
+    r"""DeleteGlobalMaintenanceWindowAndExclusion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 全局维护时间窗口ID
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""全局维护时间窗口ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalMaintenanceWindowAndExclusionResponse(AbstractModel):
+    r"""DeleteGlobalMaintenanceWindowAndExclusion返回参数结构体
 
     """
 
@@ -13005,6 +13655,70 @@ class DeleteReservedInstancesRequest(AbstractModel):
 
 class DeleteReservedInstancesResponse(AbstractModel):
     r"""DeleteReservedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRollOutSequenceRequest(AbstractModel):
+    r"""DeleteRollOutSequence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 发布序列ID
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""发布序列ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRollOutSequenceResponse(AbstractModel):
+    r"""DeleteRollOutSequence返回参数结构体
 
     """
 
@@ -15595,6 +16309,140 @@ class DescribeClusterLevelChangeRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""DescribeClusterMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        :param _Filters: 过滤项
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤项
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""DescribeClusterMaintenanceWindowAndExclusions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaintenanceWindowAndExclusions: 维护时间窗口和排除项
+        :type MaintenanceWindowAndExclusions: list of MaintenanceWindowAndExclusion
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MaintenanceWindowAndExclusions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def MaintenanceWindowAndExclusions(self):
+        r"""维护时间窗口和排除项
+        :rtype: list of MaintenanceWindowAndExclusion
+        """
+        return self._MaintenanceWindowAndExclusions
+
+    @MaintenanceWindowAndExclusions.setter
+    def MaintenanceWindowAndExclusions(self, MaintenanceWindowAndExclusions):
+        self._MaintenanceWindowAndExclusions = MaintenanceWindowAndExclusions
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MaintenanceWindowAndExclusions") is not None:
+            self._MaintenanceWindowAndExclusions = []
+            for item in params.get("MaintenanceWindowAndExclusions"):
+                obj = MaintenanceWindowAndExclusion()
+                obj._deserialize(item)
+                self._MaintenanceWindowAndExclusions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterNodePoolDetailRequest(AbstractModel):
     r"""DescribeClusterNodePoolDetail请求参数结构体
 
@@ -16496,6 +17344,140 @@ class DescribeClusterReleasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ReleaseSet.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterRollOutSequenceTagsRequest(AbstractModel):
+    r"""DescribeClusterRollOutSequenceTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        :param _Filters: 过滤项
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤项
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterRollOutSequenceTagsResponse(AbstractModel):
+    r"""DescribeClusterRollOutSequenceTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterTags: 集群发布序列标签
+        :type ClusterTags: list of ClusterRollOutSequenceTag
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterTags = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterTags(self):
+        r"""集群发布序列标签
+        :rtype: list of ClusterRollOutSequenceTag
+        """
+        return self._ClusterTags
+
+    @ClusterTags.setter
+    def ClusterTags(self, ClusterTags):
+        self._ClusterTags = ClusterTags
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterTags") is not None:
+            self._ClusterTags = []
+            for item in params.get("ClusterTags"):
+                obj = ClusterRollOutSequenceTag()
+                obj._deserialize(item)
+                self._ClusterTags.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -19726,6 +20708,140 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         self._EnabledPublicConnect = params.get("EnabledPublicConnect")
         self._PublicConnectUrl = params.get("PublicConnectUrl")
         self._PublicCustomDomain = params.get("PublicCustomDomain")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""DescribeGlobalMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        :param _Filters: 筛选项
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""筛选项
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""DescribeGlobalMaintenanceWindowAndExclusions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _MaintenanceWindowAndExclusions: 维护时间窗口
+        :type MaintenanceWindowAndExclusions: list of GlobalMaintenanceWindowAndExclusion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MaintenanceWindowAndExclusions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MaintenanceWindowAndExclusions(self):
+        r"""维护时间窗口
+        :rtype: list of GlobalMaintenanceWindowAndExclusion
+        """
+        return self._MaintenanceWindowAndExclusions
+
+    @MaintenanceWindowAndExclusions.setter
+    def MaintenanceWindowAndExclusions(self, MaintenanceWindowAndExclusions):
+        self._MaintenanceWindowAndExclusions = MaintenanceWindowAndExclusions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MaintenanceWindowAndExclusions") is not None:
+            self._MaintenanceWindowAndExclusions = []
+            for item in params.get("MaintenanceWindowAndExclusions"):
+                obj = GlobalMaintenanceWindowAndExclusion()
+                obj._deserialize(item)
+                self._MaintenanceWindowAndExclusions.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24719,6 +25835,120 @@ class DescribeResourceUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRollOutSequencesRequest(AbstractModel):
+    r"""DescribeRollOutSequences请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRollOutSequencesResponse(AbstractModel):
+    r"""DescribeRollOutSequences返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sequences: 发布序列
+        :type Sequences: list of RollOutSequence
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Sequences = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Sequences(self):
+        r"""发布序列
+        :rtype: list of RollOutSequence
+        """
+        return self._Sequences
+
+    @Sequences.setter
+    def Sequences(self, Sequences):
+        self._Sequences = Sequences
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Sequences") is not None:
+            self._Sequences = []
+            for item in params.get("Sequences"):
+                obj = RollOutSequence()
+                obj._deserialize(item)
+                self._Sequences.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRouteTableConflictsRequest(AbstractModel):
     r"""DescribeRouteTableConflicts请求参数结构体
 
@@ -25745,6 +26975,249 @@ class DescribeTasksResponse(AbstractModel):
                 obj = Task()
                 obj._deserialize(item)
                 self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUpgradeTaskDetailRequest(AbstractModel):
+    r"""DescribeUpgradeTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 升级任务ID
+        :type ID: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        """
+        self._ID = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ID(self):
+        r"""升级任务ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpgradeTaskDetailResponse(AbstractModel):
+    r"""DescribeUpgradeTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpgradePlans: 升级计划
+        :type UpgradePlans: list of UpgradePlan
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UpgradePlans = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UpgradePlans(self):
+        r"""升级计划
+        :rtype: list of UpgradePlan
+        """
+        return self._UpgradePlans
+
+    @UpgradePlans.setter
+    def UpgradePlans(self, UpgradePlans):
+        self._UpgradePlans = UpgradePlans
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UpgradePlans") is not None:
+            self._UpgradePlans = []
+            for item in params.get("UpgradePlans"):
+                obj = UpgradePlan()
+                obj._deserialize(item)
+                self._UpgradePlans.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUpgradeTasksRequest(AbstractModel):
+    r"""DescribeUpgradeTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 最大输出条目数，默认为20
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大输出条目数，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpgradeTasksResponse(AbstractModel):
+    r"""DescribeUpgradeTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpgradeTasks: 升级任务
+        :type UpgradeTasks: list of UpgradeTask
+        :param _TotalCount: 总条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UpgradeTasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UpgradeTasks(self):
+        r"""升级任务
+        :rtype: list of UpgradeTask
+        """
+        return self._UpgradeTasks
+
+    @UpgradeTasks.setter
+    def UpgradeTasks(self, UpgradeTasks):
+        self._UpgradeTasks = UpgradeTasks
+
+    @property
+    def TotalCount(self):
+        r"""总条目数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UpgradeTasks") is not None:
+            self._UpgradeTasks = []
+            for item in params.get("UpgradeTasks"):
+                obj = UpgradeTask()
+                obj._deserialize(item)
+                self._UpgradeTasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -30559,6 +32032,122 @@ aborted 已取消
         self._RequestId = params.get("RequestId")
 
 
+class GlobalMaintenanceWindowAndExclusion(AbstractModel):
+    r"""全局维护时间窗口和排除项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetRegions: 地域
+        :type TargetRegions: list of str
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长（小时）
+        :type Duration: int
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _Exclusions: 排除项
+        :type Exclusions: list of MaintenanceExclusion
+        :param _ID: 维护窗口ID
+        :type ID: int
+        """
+        self._TargetRegions = None
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._DayOfWeek = None
+        self._Exclusions = None
+        self._ID = None
+
+    @property
+    def TargetRegions(self):
+        r"""地域
+        :rtype: list of str
+        """
+        return self._TargetRegions
+
+    @TargetRegions.setter
+    def TargetRegions(self, TargetRegions):
+        self._TargetRegions = TargetRegions
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长（小时）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Exclusions(self):
+        r"""排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+    @property
+    def ID(self):
+        r"""维护窗口ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._TargetRegions = params.get("TargetRegions")
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._DayOfWeek = params.get("DayOfWeek")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HttpGet(AbstractModel):
     r"""Probe中的HttpGet
 
@@ -33752,6 +35341,233 @@ class LoginSettings(AbstractModel):
         
 
 
+class MaintenanceExclusion(AbstractModel):
+    r"""维护时间排除项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 维护排除项名称
+        :type Name: str
+        :param _StartAt: 维护排除项开始时间
+        :type StartAt: str
+        :param _EndAt: 维护排除项结束时间
+        :type EndAt: str
+        :param _ID: 维护排除项ID
+        :type ID: int
+        """
+        self._Name = None
+        self._StartAt = None
+        self._EndAt = None
+        self._ID = None
+
+    @property
+    def Name(self):
+        r"""维护排除项名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartAt(self):
+        r"""维护排除项开始时间
+        :rtype: str
+        """
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def EndAt(self):
+        r"""维护排除项结束时间
+        :rtype: str
+        """
+        return self._EndAt
+
+    @EndAt.setter
+    def EndAt(self, EndAt):
+        self._EndAt = EndAt
+
+    @property
+    def ID(self):
+        r"""维护排除项ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._StartAt = params.get("StartAt")
+        self._EndAt = params.get("EndAt")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaintenanceWindowAndExclusion(AbstractModel):
+    r"""维护时间窗口和排除项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长（小时）
+        :type Duration: int
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _Region: 地域
+        :type Region: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterVersion: 集群版本
+        :type ClusterVersion: str
+        :param _Exclusions: 排除项
+        :type Exclusions: list of MaintenanceExclusion
+        """
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._ClusterID = None
+        self._DayOfWeek = None
+        self._Region = None
+        self._ClusterName = None
+        self._ClusterVersion = None
+        self._Exclusions = None
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长（小时）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterVersion(self):
+        r"""集群版本
+        :rtype: str
+        """
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def Exclusions(self):
+        r"""排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+
+    def _deserialize(self, params):
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._ClusterID = params.get("ClusterID")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._Region = params.get("Region")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterVersion = params.get("ClusterVersion")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManuallyAdded(AbstractModel):
     r"""手动加入的节点
 
@@ -34710,6 +36526,135 @@ class ModifyClusterImageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""ModifyClusterMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长（小时）
+        :type Duration: int
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _Exclusions: 维护排除项
+        :type Exclusions: list of MaintenanceExclusion
+        """
+        self._ClusterID = None
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._DayOfWeek = None
+        self._Exclusions = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长（小时）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Exclusions(self):
+        r"""维护排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._DayOfWeek = params.get("DayOfWeek")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""ModifyClusterMaintenanceWindowAndExclusions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterNodePoolRequest(AbstractModel):
     r"""ModifyClusterNodePool请求参数结构体
 
@@ -35057,6 +37002,90 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
 class ModifyClusterNodePoolResponse(AbstractModel):
     r"""ModifyClusterNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterRollOutSequenceTagsRequest(AbstractModel):
+    r"""ModifyClusterRollOutSequenceTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _Tags: 集群发布序列标签（为空时表示移除集群标签）
+        :type Tags: list of Tag
+        """
+        self._ClusterID = None
+        self._Tags = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def Tags(self):
+        r"""集群发布序列标签（为空时表示移除集群标签）
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterRollOutSequenceTagsResponse(AbstractModel):
+    r"""ModifyClusterRollOutSequenceTags返回参数结构体
 
     """
 
@@ -35460,6 +37489,150 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
 class ModifyClusterVirtualNodePoolResponse(AbstractModel):
     r"""ModifyClusterVirtualNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
+    r"""ModifyGlobalMaintenanceWindowAndExclusions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 维护窗口ID
+        :type ID: int
+        :param _TargetRegions: 地域
+        :type TargetRegions: list of str
+        :param _MaintenanceTime: 维护开始时间
+        :type MaintenanceTime: str
+        :param _Duration: 维护时长（小时）
+        :type Duration: int
+        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :type DayOfWeek: list of str
+        :param _Exclusions: 维护排除项
+        :type Exclusions: list of MaintenanceExclusion
+        """
+        self._ID = None
+        self._TargetRegions = None
+        self._MaintenanceTime = None
+        self._Duration = None
+        self._DayOfWeek = None
+        self._Exclusions = None
+
+    @property
+    def ID(self):
+        r"""维护窗口ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TargetRegions(self):
+        r"""地域
+        :rtype: list of str
+        """
+        return self._TargetRegions
+
+    @TargetRegions.setter
+    def TargetRegions(self, TargetRegions):
+        self._TargetRegions = TargetRegions
+
+    @property
+    def MaintenanceTime(self):
+        r"""维护开始时间
+        :rtype: str
+        """
+        return self._MaintenanceTime
+
+    @MaintenanceTime.setter
+    def MaintenanceTime(self, MaintenanceTime):
+        self._MaintenanceTime = MaintenanceTime
+
+    @property
+    def Duration(self):
+        r"""维护时长（小时）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def DayOfWeek(self):
+        r"""维护周期（一周中的哪几天）
+        :rtype: list of str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Exclusions(self):
+        r"""维护排除项
+        :rtype: list of MaintenanceExclusion
+        """
+        return self._Exclusions
+
+    @Exclusions.setter
+    def Exclusions(self, Exclusions):
+        self._Exclusions = Exclusions
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._TargetRegions = params.get("TargetRegions")
+        self._MaintenanceTime = params.get("MaintenanceTime")
+        self._Duration = params.get("Duration")
+        self._DayOfWeek = params.get("DayOfWeek")
+        if params.get("Exclusions") is not None:
+            self._Exclusions = []
+            for item in params.get("Exclusions"):
+                obj = MaintenanceExclusion()
+                obj._deserialize(item)
+                self._Exclusions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalMaintenanceWindowAndExclusionsResponse(AbstractModel):
+    r"""ModifyGlobalMaintenanceWindowAndExclusions返回参数结构体
 
     """
 
@@ -36709,6 +38882,120 @@ class ModifyReservedInstanceScopeRequest(AbstractModel):
 
 class ModifyReservedInstanceScopeResponse(AbstractModel):
     r"""ModifyReservedInstanceScope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRollOutSequenceRequest(AbstractModel):
+    r"""ModifyRollOutSequence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 发布序列ID
+        :type ID: int
+        :param _Name: 发布序列名称
+        :type Name: str
+        :param _SequenceFlows: 发布序列步骤
+        :type SequenceFlows: list of SequenceFlow
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        """
+        self._ID = None
+        self._Name = None
+        self._SequenceFlows = None
+        self._Enabled = None
+
+    @property
+    def ID(self):
+        r"""发布序列ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""发布序列名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SequenceFlows(self):
+        r"""发布序列步骤
+        :rtype: list of SequenceFlow
+        """
+        return self._SequenceFlows
+
+    @SequenceFlows.setter
+    def SequenceFlows(self, SequenceFlows):
+        self._SequenceFlows = SequenceFlows
+
+    @property
+    def Enabled(self):
+        r"""是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        if params.get("SequenceFlows") is not None:
+            self._SequenceFlows = []
+            for item in params.get("SequenceFlows"):
+                obj = SequenceFlow()
+                obj._deserialize(item)
+                self._SequenceFlows.append(obj)
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRollOutSequenceResponse(AbstractModel):
+    r"""ModifyRollOutSequence返回参数结构体
 
     """
 
@@ -44748,6 +47035,92 @@ class RestartEKSContainerInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RollOutSequence(AbstractModel):
+    r"""发布序列
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 发布序列名称
+        :type Name: str
+        :param _SequenceFlows: 发布序列步骤
+        :type SequenceFlows: list of SequenceFlow
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        :param _ID: 发布序列ID
+        :type ID: int
+        """
+        self._Name = None
+        self._SequenceFlows = None
+        self._Enabled = None
+        self._ID = None
+
+    @property
+    def Name(self):
+        r"""发布序列名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SequenceFlows(self):
+        r"""发布序列步骤
+        :rtype: list of SequenceFlow
+        """
+        return self._SequenceFlows
+
+    @SequenceFlows.setter
+    def SequenceFlows(self, SequenceFlows):
+        self._SequenceFlows = SequenceFlows
+
+    @property
+    def Enabled(self):
+        r"""是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ID(self):
+        r"""发布序列ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SequenceFlows") is not None:
+            self._SequenceFlows = []
+            for item in params.get("SequenceFlows"):
+                obj = SequenceFlow()
+                obj._deserialize(item)
+                self._SequenceFlows.append(obj)
+        self._Enabled = params.get("Enabled")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RollbackClusterReleaseRequest(AbstractModel):
     r"""RollbackClusterRelease请求参数结构体
 
@@ -45741,6 +48114,113 @@ class SecurityContext(AbstractModel):
         
 
 
+class SequenceFlow(AbstractModel):
+    r"""发布序列步骤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: 发布序列步骤标签
+        :type Tags: list of SequenceTag
+        :param _SoakTime: 等待时间（秒）
+        :type SoakTime: int
+        """
+        self._Tags = None
+        self._SoakTime = None
+
+    @property
+    def Tags(self):
+        r"""发布序列步骤标签
+        :rtype: list of SequenceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SoakTime(self):
+        r"""等待时间（秒）
+        :rtype: int
+        """
+        return self._SoakTime
+
+    @SoakTime.setter
+    def SoakTime(self, SoakTime):
+        self._SoakTime = SoakTime
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = SequenceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._SoakTime = params.get("SoakTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SequenceTag(AbstractModel):
+    r"""发布序列标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: list of str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签值
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceAccountAuthenticationOptions(AbstractModel):
     r"""ServiceAccount认证相关配置
 
@@ -46421,6 +48901,100 @@ class Switch(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchClusterEndpointRequest(AbstractModel):
+    r"""SwitchClusterEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
+        :type IsExtranet: bool
+        :param _Rollback: 切换回滚至非直连
+        :type Rollback: bool
+        """
+        self._ClusterId = None
+        self._IsExtranet = None
+        self._Rollback = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IsExtranet(self):
+        r"""是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
+        :rtype: bool
+        """
+        return self._IsExtranet
+
+    @IsExtranet.setter
+    def IsExtranet(self, IsExtranet):
+        self._IsExtranet = IsExtranet
+
+    @property
+    def Rollback(self):
+        r"""切换回滚至非直连
+        :rtype: bool
+        """
+        return self._Rollback
+
+    @Rollback.setter
+    def Rollback(self, Rollback):
+        self._Rollback = Rollback
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._IsExtranet = params.get("IsExtranet")
+        self._Rollback = params.get("Rollback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchClusterEndpointResponse(AbstractModel):
+    r"""SwitchClusterEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SwitchInfo(AbstractModel):
@@ -49517,6 +52091,273 @@ class UpgradeNodeResetParam(AbstractModel):
             self._LoginSettings = LoginSettings()
             self._LoginSettings._deserialize(params.get("LoginSettings"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradePlan(AbstractModel):
+    r"""升级计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 升级计划ID
+        :type ID: int
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _PlanedStartAt: 预计开始时间
+        :type PlanedStartAt: str
+        :param _UpgradeStartAt: 升级开始时间
+        :type UpgradeStartAt: str
+        :param _UpgradeEndAt: 升级结束时间
+        :type UpgradeEndAt: str
+        :param _Status: 升级状态
+        :type Status: str
+        :param _Reason: 原因
+        :type Reason: str
+        """
+        self._ID = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._PlanedStartAt = None
+        self._UpgradeStartAt = None
+        self._UpgradeEndAt = None
+        self._Status = None
+        self._Reason = None
+
+    @property
+    def ID(self):
+        r"""升级计划ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def PlanedStartAt(self):
+        r"""预计开始时间
+        :rtype: str
+        """
+        return self._PlanedStartAt
+
+    @PlanedStartAt.setter
+    def PlanedStartAt(self, PlanedStartAt):
+        self._PlanedStartAt = PlanedStartAt
+
+    @property
+    def UpgradeStartAt(self):
+        r"""升级开始时间
+        :rtype: str
+        """
+        return self._UpgradeStartAt
+
+    @UpgradeStartAt.setter
+    def UpgradeStartAt(self, UpgradeStartAt):
+        self._UpgradeStartAt = UpgradeStartAt
+
+    @property
+    def UpgradeEndAt(self):
+        r"""升级结束时间
+        :rtype: str
+        """
+        return self._UpgradeEndAt
+
+    @UpgradeEndAt.setter
+    def UpgradeEndAt(self, UpgradeEndAt):
+        self._UpgradeEndAt = UpgradeEndAt
+
+    @property
+    def Status(self):
+        r"""升级状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._PlanedStartAt = params.get("PlanedStartAt")
+        self._UpgradeStartAt = params.get("UpgradeStartAt")
+        self._UpgradeEndAt = params.get("UpgradeEndAt")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeTask(AbstractModel):
+    r"""升级任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 任务ID
+        :type ID: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Component: 组件名称
+        :type Component: str
+        :param _RelatedResources: 关联资源
+        :type RelatedResources: list of str
+        :param _UpgradeImpact: 升级影响
+        :type UpgradeImpact: str
+        :param _PlanedStartAt: 预计开始时间
+        :type PlanedStartAt: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Component = None
+        self._RelatedResources = None
+        self._UpgradeImpact = None
+        self._PlanedStartAt = None
+        self._CreatedAt = None
+
+    @property
+    def ID(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Component(self):
+        r"""组件名称
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def RelatedResources(self):
+        r"""关联资源
+        :rtype: list of str
+        """
+        return self._RelatedResources
+
+    @RelatedResources.setter
+    def RelatedResources(self, RelatedResources):
+        self._RelatedResources = RelatedResources
+
+    @property
+    def UpgradeImpact(self):
+        r"""升级影响
+        :rtype: str
+        """
+        return self._UpgradeImpact
+
+    @UpgradeImpact.setter
+    def UpgradeImpact(self, UpgradeImpact):
+        self._UpgradeImpact = UpgradeImpact
+
+    @property
+    def PlanedStartAt(self):
+        r"""预计开始时间
+        :rtype: str
+        """
+        return self._PlanedStartAt
+
+    @PlanedStartAt.setter
+    def PlanedStartAt(self, PlanedStartAt):
+        self._PlanedStartAt = PlanedStartAt
+
+    @property
+    def CreatedAt(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Component = params.get("Component")
+        self._RelatedResources = params.get("RelatedResources")
+        self._UpgradeImpact = params.get("UpgradeImpact")
+        self._PlanedStartAt = params.get("PlanedStartAt")
+        self._CreatedAt = params.get("CreatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

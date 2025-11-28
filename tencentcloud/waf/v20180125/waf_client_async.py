@@ -97,6 +97,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddBypassAllRule(
+            self,
+            request: models.AddBypassAllRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddBypassAllRuleResponse:
+        """
+        添加一键bypass能力支持,直接添加APPID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddBypassAllRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddBypassAllRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddCustomRule(
             self,
             request: models.AddCustomRuleRequest,
@@ -3268,6 +3286,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryBypassAllStatus(
+            self,
+            request: models.QueryBypassAllStatusRequest,
+            opts: Dict = None,
+    ) -> models.QueryBypassAllStatusResponse:
+        """
+        查询该用户是否被加入了全局的bypass列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryBypassAllStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryBypassAllStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RefreshAccessCheckResult(
             self,
             request: models.RefreshAccessCheckResultRequest,
@@ -3281,6 +3317,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "RefreshAccessCheckResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RefreshAccessCheckResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveBypassAllRule(
+            self,
+            request: models.RemoveBypassAllRuleRequest,
+            opts: Dict = None,
+    ) -> models.RemoveBypassAllRuleResponse:
+        """
+        删除一键bypass规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveBypassAllRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveBypassAllRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -23120,6 +23120,255 @@ class DescribeTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskListRequest(AbstractModel):
+    r"""DescribeTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+task-operator- string （子uin过滤）
+task-kind - string （任务类型过滤）
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+        :type SortBy: str
+        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
+        :type Sorting: str
+        :param _StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        :type StartTime: str
+        :param _EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        :type EndTime: str
+        :param _DataEngineName: 数据引擎名称，用于筛选
+        :type DataEngineName: str
+        :param _ResourceGroupName: spark引擎资源组名称
+        :type ResourceGroupName: str
+        :param _HouseIds: 引擎id列表
+        :type HouseIds: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._SortBy = None
+        self._Sorting = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DataEngineName = None
+        self._ResourceGroupName = None
+        self._HouseIds = None
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+task-operator- string （子uin过滤）
+task-kind - string （任务类型过滤）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        r"""排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        r"""排序方式，desc表示正序，asc表示反序， 默认为asc。
+        :rtype: str
+        """
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def StartTime(self):
+        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DataEngineName(self):
+        r"""数据引擎名称，用于筛选
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def ResourceGroupName(self):
+        r"""spark引擎资源组名称
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def HouseIds(self):
+        r"""引擎id列表
+        :rtype: list of str
+        """
+        return self._HouseIds
+
+    @HouseIds.setter
+    def HouseIds(self, HouseIds):
+        self._HouseIds = HouseIds
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DataEngineName = params.get("DataEngineName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._HouseIds = params.get("HouseIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskListResponse(AbstractModel):
+    r"""DescribeTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskList: 任务对象列表。
+        :type TaskList: list of TaskFullRespInfo
+        :param _TotalCount: 实例总数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskList(self):
+        r"""任务对象列表。
+        :rtype: list of TaskFullRespInfo
+        """
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def TotalCount(self):
+        r"""实例总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = TaskFullRespInfo()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskLogRequest(AbstractModel):
     r"""DescribeTaskLog请求参数结构体
 
@@ -35068,8 +35317,44 @@ class ReportHeartbeatMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceConf(AbstractModel):
+    r"""数据治理资源配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Parallelism: 当为TCLake优化资源时，优化任务的并行度
+        :type Parallelism: int
+        """
+        self._Parallelism = None
+
+    @property
+    def Parallelism(self):
+        r"""当为TCLake优化资源时，优化任务的并行度
+        :rtype: int
+        """
+        return self._Parallelism
+
+    @Parallelism.setter
+    def Parallelism(self, Parallelism):
+        self._Parallelism = Parallelism
+
+
+    def _deserialize(self, params):
+        self._Parallelism = params.get("Parallelism")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceInfo(AbstractModel):
-    r"""ResourceInfo
+    r"""数据优化资源信息结构
 
     """
 
@@ -35090,6 +35375,8 @@ class ResourceInfo(AbstractModel):
         :type Status: int
         :param _ResourceGroupName: 标准引擎资源组信息
         :type ResourceGroupName: str
+        :param _ResourceConf: 资源配置信息
+        :type ResourceConf: :class:`tencentcloud.dlc.v20210125.models.ResourceConf`
         """
         self._AttributionType = None
         self._ResourceType = None
@@ -35098,6 +35385,7 @@ class ResourceInfo(AbstractModel):
         self._Favor = None
         self._Status = None
         self._ResourceGroupName = None
+        self._ResourceConf = None
 
     @property
     def AttributionType(self):
@@ -35177,6 +35465,17 @@ class ResourceInfo(AbstractModel):
     def ResourceGroupName(self, ResourceGroupName):
         self._ResourceGroupName = ResourceGroupName
 
+    @property
+    def ResourceConf(self):
+        r"""资源配置信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ResourceConf`
+        """
+        return self._ResourceConf
+
+    @ResourceConf.setter
+    def ResourceConf(self, ResourceConf):
+        self._ResourceConf = ResourceConf
+
 
     def _deserialize(self, params):
         self._AttributionType = params.get("AttributionType")
@@ -35191,6 +35490,9 @@ class ResourceInfo(AbstractModel):
                 self._Favor.append(obj)
         self._Status = params.get("Status")
         self._ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("ResourceConf") is not None:
+            self._ResourceConf = ResourceConf()
+            self._ResourceConf._deserialize(params.get("ResourceConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40087,6 +40389,1111 @@ class Task(AbstractModel):
         if params.get("SparkSQLTask") is not None:
             self._SparkSQLTask = SQLTask()
             self._SparkSQLTask._deserialize(params.get("SparkSQLTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFullRespInfo(AbstractModel):
+    r"""任务实例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 任务所属Database的名称。
+        :type DatabaseName: str
+        :param _DataAmount: 任务数据量。
+        :type DataAmount: int
+        :param _Id: 任务Id。
+        :type Id: str
+        :param _UsedTime: 计算耗时，单位： ms
+        :type UsedTime: int
+        :param _OutputPath: 任务输出路径。
+        :type OutputPath: str
+        :param _CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param _State: 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        :type State: int
+        :param _SQLType: 任务SQL类型，DDL|DML等
+        :type SQLType: str
+        :param _SQL: 任务SQL语句
+        :type SQL: str
+        :param _ResultExpired: 结果是否过期。
+        :type ResultExpired: bool
+        :param _RowAffectInfo: 数据影响统计信息。
+        :type RowAffectInfo: str
+        :param _DataSet: 任务结果数据表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSet: str
+        :param _Error: 失败信息, 例如：errorMessage。该字段已废弃。
+        :type Error: str
+        :param _Percentage: 任务执行进度num/100(%)
+        :type Percentage: int
+        :param _OutputMessage: 任务执行输出信息。
+        :type OutputMessage: str
+        :param _TaskType: 执行SQL的引擎类型
+        :type TaskType: str
+        :param _ProgressDetail: 任务进度明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgressDetail: str
+        :param _UpdateTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _DataEngineId: 计算资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _OperateUin: 执行sql的子uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _DataEngineName: 计算资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineName: str
+        :param _InputType: 导入类型是本地导入还是cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param _InputConf: 导入配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputConf: str
+        :param _DataNumber: 数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataNumber: int
+        :param _CanDownload: 查询数据能不能下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDownload: bool
+        :param _UserAlias: 用户别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
+        :param _SparkJobName: spark应用作业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobName: str
+        :param _SparkJobId: spark应用作业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobId: str
+        :param _SparkJobFile: spark应用入口jar文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobFile: str
+        :param _UiUrl: spark ui url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UiUrl: str
+        :param _TotalTime: 任务耗时，单位： ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTime: int
+        :param _CmdArgs: spark app job执行task的程序入口参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmdArgs: str
+        :param _ImageVersion: 集群镜像大版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageVersion: str
+        :param _DriverSize: driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DriverSize: str
+        :param _ExecutorSize: executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorSize: str
+        :param _ExecutorNums: 指定executor数量，最小值为1，最大值小于集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorNums: int
+        :param _ExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorMaxNumbers: int
+        :param _CommonMetrics: 任务公共指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonMetrics: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
+        :param _SparkMonitorMetrics: spark任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
+        :param _PrestoMonitorMetrics: presto任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
+        :param _ResultFormat: 结果文件格式：默认为csv
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultFormat: str
+        :param _EngineTypeDetail: 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineTypeDetail: str
+        :param _ResourceGroupName: spark引擎资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param _Source: 任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+        :type Source: str
+        :param _SourceExtra: 子渠道信息，一般由第三方调用定义
+        :type SourceExtra: str
+        :param _CreatorUin: 创建人uin
+        :type CreatorUin: str
+        :param _CreatorAlias: 创建人名字
+        :type CreatorAlias: str
+        :param _CustomizedConf: 引擎参数
+        :type CustomizedConf: str
+        :param _TaskTimeSum: 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+示例值：4329
+        :type TaskTimeSum: int
+        :param _StageStartTime: 引擎执行时间
+        :type StageStartTime: int
+        :param _InputRecordsSum: 数据扫描条数
+        :type InputRecordsSum: int
+        :param _AnalysisStatusType: 健康状态
+        :type AnalysisStatusType: int
+        :param _OutputRecordsSum: 输出总行数
+        :type OutputRecordsSum: int
+        :param _OutputBytesSum: 输出总大小
+        :type OutputBytesSum: int
+        :param _OutputFilesNum: 输出文件个数
+        :type OutputFilesNum: int
+        :param _OutputSmallFilesNum: 输出小文件个数
+        :type OutputSmallFilesNum: int
+        :param _ShuffleReadRecordsSum: 数据shuffle行数
+        :type ShuffleReadRecordsSum: int
+        :param _ShuffleReadBytesSum: 数据shuffle大小
+        :type ShuffleReadBytesSum: int
+        :param _SparkAppId: spark作业id
+        :type SparkAppId: str
+        :param _TaskCategory: 任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+        :type TaskCategory: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _EngineType: 引擎类型，用做任务详情页跳转引擎tab
+        :type EngineType: str
+        :param _EngineHasListenerConfig: 引擎是否支持洞察数据采集
+        :type EngineHasListenerConfig: bool
+        :param _ResourceGroupId: spark引擎资源组id
+        :type ResourceGroupId: str
+        :param _JobTimeSum: 任务计算耗时
+        :type JobTimeSum: int
+        :param _LaunchTime: 任务启动耗时
+        :type LaunchTime: str
+        :param _GpuDriverSize: Gpu Driver 规格
+        :type GpuDriverSize: int
+        :param _GpuExecutorSize: Gpu Executor 规格
+        :type GpuExecutorSize: int
+        """
+        self._DatabaseName = None
+        self._DataAmount = None
+        self._Id = None
+        self._UsedTime = None
+        self._OutputPath = None
+        self._CreateTime = None
+        self._State = None
+        self._SQLType = None
+        self._SQL = None
+        self._ResultExpired = None
+        self._RowAffectInfo = None
+        self._DataSet = None
+        self._Error = None
+        self._Percentage = None
+        self._OutputMessage = None
+        self._TaskType = None
+        self._ProgressDetail = None
+        self._UpdateTime = None
+        self._DataEngineId = None
+        self._OperateUin = None
+        self._DataEngineName = None
+        self._InputType = None
+        self._InputConf = None
+        self._DataNumber = None
+        self._CanDownload = None
+        self._UserAlias = None
+        self._SparkJobName = None
+        self._SparkJobId = None
+        self._SparkJobFile = None
+        self._UiUrl = None
+        self._TotalTime = None
+        self._CmdArgs = None
+        self._ImageVersion = None
+        self._DriverSize = None
+        self._ExecutorSize = None
+        self._ExecutorNums = None
+        self._ExecutorMaxNumbers = None
+        self._CommonMetrics = None
+        self._SparkMonitorMetrics = None
+        self._PrestoMonitorMetrics = None
+        self._ResultFormat = None
+        self._EngineTypeDetail = None
+        self._ResourceGroupName = None
+        self._Source = None
+        self._SourceExtra = None
+        self._CreatorUin = None
+        self._CreatorAlias = None
+        self._CustomizedConf = None
+        self._TaskTimeSum = None
+        self._StageStartTime = None
+        self._InputRecordsSum = None
+        self._AnalysisStatusType = None
+        self._OutputRecordsSum = None
+        self._OutputBytesSum = None
+        self._OutputFilesNum = None
+        self._OutputSmallFilesNum = None
+        self._ShuffleReadRecordsSum = None
+        self._ShuffleReadBytesSum = None
+        self._SparkAppId = None
+        self._TaskCategory = None
+        self._TaskName = None
+        self._EngineType = None
+        self._EngineHasListenerConfig = None
+        self._ResourceGroupId = None
+        self._JobTimeSum = None
+        self._LaunchTime = None
+        self._GpuDriverSize = None
+        self._GpuExecutorSize = None
+
+    @property
+    def DatabaseName(self):
+        r"""任务所属Database的名称。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DataAmount(self):
+        r"""任务数据量。
+        :rtype: int
+        """
+        return self._DataAmount
+
+    @DataAmount.setter
+    def DataAmount(self, DataAmount):
+        self._DataAmount = DataAmount
+
+    @property
+    def Id(self):
+        r"""任务Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def UsedTime(self):
+        r"""计算耗时，单位： ms
+        :rtype: int
+        """
+        return self._UsedTime
+
+    @UsedTime.setter
+    def UsedTime(self, UsedTime):
+        self._UsedTime = UsedTime
+
+    @property
+    def OutputPath(self):
+        r"""任务输出路径。
+        :rtype: str
+        """
+        return self._OutputPath
+
+    @OutputPath.setter
+    def OutputPath(self, OutputPath):
+        self._OutputPath = OutputPath
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def State(self):
+        r"""任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def SQLType(self):
+        r"""任务SQL类型，DDL|DML等
+        :rtype: str
+        """
+        return self._SQLType
+
+    @SQLType.setter
+    def SQLType(self, SQLType):
+        self._SQLType = SQLType
+
+    @property
+    def SQL(self):
+        r"""任务SQL语句
+        :rtype: str
+        """
+        return self._SQL
+
+    @SQL.setter
+    def SQL(self, SQL):
+        self._SQL = SQL
+
+    @property
+    def ResultExpired(self):
+        r"""结果是否过期。
+        :rtype: bool
+        """
+        return self._ResultExpired
+
+    @ResultExpired.setter
+    def ResultExpired(self, ResultExpired):
+        self._ResultExpired = ResultExpired
+
+    @property
+    def RowAffectInfo(self):
+        r"""数据影响统计信息。
+        :rtype: str
+        """
+        return self._RowAffectInfo
+
+    @RowAffectInfo.setter
+    def RowAffectInfo(self, RowAffectInfo):
+        self._RowAffectInfo = RowAffectInfo
+
+    @property
+    def DataSet(self):
+        r"""任务结果数据表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def Error(self):
+        r"""失败信息, 例如：errorMessage。该字段已废弃。
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def Percentage(self):
+        r"""任务执行进度num/100(%)
+        :rtype: int
+        """
+        return self._Percentage
+
+    @Percentage.setter
+    def Percentage(self, Percentage):
+        self._Percentage = Percentage
+
+    @property
+    def OutputMessage(self):
+        r"""任务执行输出信息。
+        :rtype: str
+        """
+        return self._OutputMessage
+
+    @OutputMessage.setter
+    def OutputMessage(self, OutputMessage):
+        self._OutputMessage = OutputMessage
+
+    @property
+    def TaskType(self):
+        r"""执行SQL的引擎类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ProgressDetail(self):
+        r"""任务进度明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProgressDetail
+
+    @ProgressDetail.setter
+    def ProgressDetail(self, ProgressDetail):
+        self._ProgressDetail = ProgressDetail
+
+    @property
+    def UpdateTime(self):
+        r"""任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DataEngineId(self):
+        r"""计算资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def OperateUin(self):
+        r"""执行sql的子uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def DataEngineName(self):
+        r"""计算资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def InputType(self):
+        r"""导入类型是本地导入还是cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputConf(self):
+        r"""导入配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputConf
+
+    @InputConf.setter
+    def InputConf(self, InputConf):
+        self._InputConf = InputConf
+
+    @property
+    def DataNumber(self):
+        r"""数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataNumber
+
+    @DataNumber.setter
+    def DataNumber(self, DataNumber):
+        self._DataNumber = DataNumber
+
+    @property
+    def CanDownload(self):
+        r"""查询数据能不能下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanDownload
+
+    @CanDownload.setter
+    def CanDownload(self, CanDownload):
+        self._CanDownload = CanDownload
+
+    @property
+    def UserAlias(self):
+        r"""用户别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserAlias
+
+    @UserAlias.setter
+    def UserAlias(self, UserAlias):
+        self._UserAlias = UserAlias
+
+    @property
+    def SparkJobName(self):
+        r"""spark应用作业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkJobName
+
+    @SparkJobName.setter
+    def SparkJobName(self, SparkJobName):
+        self._SparkJobName = SparkJobName
+
+    @property
+    def SparkJobId(self):
+        r"""spark应用作业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkJobId
+
+    @SparkJobId.setter
+    def SparkJobId(self, SparkJobId):
+        self._SparkJobId = SparkJobId
+
+    @property
+    def SparkJobFile(self):
+        r"""spark应用入口jar文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkJobFile
+
+    @SparkJobFile.setter
+    def SparkJobFile(self, SparkJobFile):
+        self._SparkJobFile = SparkJobFile
+
+    @property
+    def UiUrl(self):
+        r"""spark ui url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UiUrl
+
+    @UiUrl.setter
+    def UiUrl(self, UiUrl):
+        self._UiUrl = UiUrl
+
+    @property
+    def TotalTime(self):
+        r"""任务耗时，单位： ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalTime
+
+    @TotalTime.setter
+    def TotalTime(self, TotalTime):
+        self._TotalTime = TotalTime
+
+    @property
+    def CmdArgs(self):
+        r"""spark app job执行task的程序入口参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CmdArgs
+
+    @CmdArgs.setter
+    def CmdArgs(self, CmdArgs):
+        self._CmdArgs = CmdArgs
+
+    @property
+    def ImageVersion(self):
+        r"""集群镜像大版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def DriverSize(self):
+        r"""driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DriverSize
+
+    @DriverSize.setter
+    def DriverSize(self, DriverSize):
+        self._DriverSize = DriverSize
+
+    @property
+    def ExecutorSize(self):
+        r"""executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorSize
+
+    @ExecutorSize.setter
+    def ExecutorSize(self, ExecutorSize):
+        self._ExecutorSize = ExecutorSize
+
+    @property
+    def ExecutorNums(self):
+        r"""指定executor数量，最小值为1，最大值小于集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutorNums
+
+    @ExecutorNums.setter
+    def ExecutorNums(self, ExecutorNums):
+        self._ExecutorNums = ExecutorNums
+
+    @property
+    def ExecutorMaxNumbers(self):
+        r"""指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutorMaxNumbers
+
+    @ExecutorMaxNumbers.setter
+    def ExecutorMaxNumbers(self, ExecutorMaxNumbers):
+        self._ExecutorMaxNumbers = ExecutorMaxNumbers
+
+    @property
+    def CommonMetrics(self):
+        r"""任务公共指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
+        """
+        return self._CommonMetrics
+
+    @CommonMetrics.setter
+    def CommonMetrics(self, CommonMetrics):
+        self._CommonMetrics = CommonMetrics
+
+    @property
+    def SparkMonitorMetrics(self):
+        r"""spark任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
+        """
+        return self._SparkMonitorMetrics
+
+    @SparkMonitorMetrics.setter
+    def SparkMonitorMetrics(self, SparkMonitorMetrics):
+        self._SparkMonitorMetrics = SparkMonitorMetrics
+
+    @property
+    def PrestoMonitorMetrics(self):
+        r"""presto任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
+        """
+        return self._PrestoMonitorMetrics
+
+    @PrestoMonitorMetrics.setter
+    def PrestoMonitorMetrics(self, PrestoMonitorMetrics):
+        self._PrestoMonitorMetrics = PrestoMonitorMetrics
+
+    @property
+    def ResultFormat(self):
+        r"""结果文件格式：默认为csv
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
+    @property
+    def EngineTypeDetail(self):
+        r"""引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
+    @property
+    def ResourceGroupName(self):
+        r"""spark引擎资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def Source(self):
+        r"""任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceExtra(self):
+        r"""子渠道信息，一般由第三方调用定义
+        :rtype: str
+        """
+        return self._SourceExtra
+
+    @SourceExtra.setter
+    def SourceExtra(self, SourceExtra):
+        self._SourceExtra = SourceExtra
+
+    @property
+    def CreatorUin(self):
+        r"""创建人uin
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreatorAlias(self):
+        r"""创建人名字
+        :rtype: str
+        """
+        return self._CreatorAlias
+
+    @CreatorAlias.setter
+    def CreatorAlias(self, CreatorAlias):
+        self._CreatorAlias = CreatorAlias
+
+    @property
+    def CustomizedConf(self):
+        r"""引擎参数
+        :rtype: str
+        """
+        return self._CustomizedConf
+
+    @CustomizedConf.setter
+    def CustomizedConf(self, CustomizedConf):
+        self._CustomizedConf = CustomizedConf
+
+    @property
+    def TaskTimeSum(self):
+        r"""单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+示例值：4329
+        :rtype: int
+        """
+        return self._TaskTimeSum
+
+    @TaskTimeSum.setter
+    def TaskTimeSum(self, TaskTimeSum):
+        self._TaskTimeSum = TaskTimeSum
+
+    @property
+    def StageStartTime(self):
+        r"""引擎执行时间
+        :rtype: int
+        """
+        return self._StageStartTime
+
+    @StageStartTime.setter
+    def StageStartTime(self, StageStartTime):
+        self._StageStartTime = StageStartTime
+
+    @property
+    def InputRecordsSum(self):
+        r"""数据扫描条数
+        :rtype: int
+        """
+        return self._InputRecordsSum
+
+    @InputRecordsSum.setter
+    def InputRecordsSum(self, InputRecordsSum):
+        self._InputRecordsSum = InputRecordsSum
+
+    @property
+    def AnalysisStatusType(self):
+        r"""健康状态
+        :rtype: int
+        """
+        return self._AnalysisStatusType
+
+    @AnalysisStatusType.setter
+    def AnalysisStatusType(self, AnalysisStatusType):
+        self._AnalysisStatusType = AnalysisStatusType
+
+    @property
+    def OutputRecordsSum(self):
+        r"""输出总行数
+        :rtype: int
+        """
+        return self._OutputRecordsSum
+
+    @OutputRecordsSum.setter
+    def OutputRecordsSum(self, OutputRecordsSum):
+        self._OutputRecordsSum = OutputRecordsSum
+
+    @property
+    def OutputBytesSum(self):
+        r"""输出总大小
+        :rtype: int
+        """
+        return self._OutputBytesSum
+
+    @OutputBytesSum.setter
+    def OutputBytesSum(self, OutputBytesSum):
+        self._OutputBytesSum = OutputBytesSum
+
+    @property
+    def OutputFilesNum(self):
+        r"""输出文件个数
+        :rtype: int
+        """
+        return self._OutputFilesNum
+
+    @OutputFilesNum.setter
+    def OutputFilesNum(self, OutputFilesNum):
+        self._OutputFilesNum = OutputFilesNum
+
+    @property
+    def OutputSmallFilesNum(self):
+        r"""输出小文件个数
+        :rtype: int
+        """
+        return self._OutputSmallFilesNum
+
+    @OutputSmallFilesNum.setter
+    def OutputSmallFilesNum(self, OutputSmallFilesNum):
+        self._OutputSmallFilesNum = OutputSmallFilesNum
+
+    @property
+    def ShuffleReadRecordsSum(self):
+        r"""数据shuffle行数
+        :rtype: int
+        """
+        return self._ShuffleReadRecordsSum
+
+    @ShuffleReadRecordsSum.setter
+    def ShuffleReadRecordsSum(self, ShuffleReadRecordsSum):
+        self._ShuffleReadRecordsSum = ShuffleReadRecordsSum
+
+    @property
+    def ShuffleReadBytesSum(self):
+        r"""数据shuffle大小
+        :rtype: int
+        """
+        return self._ShuffleReadBytesSum
+
+    @ShuffleReadBytesSum.setter
+    def ShuffleReadBytesSum(self, ShuffleReadBytesSum):
+        self._ShuffleReadBytesSum = ShuffleReadBytesSum
+
+    @property
+    def SparkAppId(self):
+        r"""spark作业id
+        :rtype: str
+        """
+        return self._SparkAppId
+
+    @SparkAppId.setter
+    def SparkAppId(self, SparkAppId):
+        self._SparkAppId = SparkAppId
+
+    @property
+    def TaskCategory(self):
+        r"""任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+        :rtype: str
+        """
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def EngineType(self):
+        r"""引擎类型，用做任务详情页跳转引擎tab
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def EngineHasListenerConfig(self):
+        r"""引擎是否支持洞察数据采集
+        :rtype: bool
+        """
+        return self._EngineHasListenerConfig
+
+    @EngineHasListenerConfig.setter
+    def EngineHasListenerConfig(self, EngineHasListenerConfig):
+        self._EngineHasListenerConfig = EngineHasListenerConfig
+
+    @property
+    def ResourceGroupId(self):
+        r"""spark引擎资源组id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def JobTimeSum(self):
+        r"""任务计算耗时
+        :rtype: int
+        """
+        return self._JobTimeSum
+
+    @JobTimeSum.setter
+    def JobTimeSum(self, JobTimeSum):
+        self._JobTimeSum = JobTimeSum
+
+    @property
+    def LaunchTime(self):
+        r"""任务启动耗时
+        :rtype: str
+        """
+        return self._LaunchTime
+
+    @LaunchTime.setter
+    def LaunchTime(self, LaunchTime):
+        self._LaunchTime = LaunchTime
+
+    @property
+    def GpuDriverSize(self):
+        r"""Gpu Driver 规格
+        :rtype: int
+        """
+        return self._GpuDriverSize
+
+    @GpuDriverSize.setter
+    def GpuDriverSize(self, GpuDriverSize):
+        self._GpuDriverSize = GpuDriverSize
+
+    @property
+    def GpuExecutorSize(self):
+        r"""Gpu Executor 规格
+        :rtype: int
+        """
+        return self._GpuExecutorSize
+
+    @GpuExecutorSize.setter
+    def GpuExecutorSize(self, GpuExecutorSize):
+        self._GpuExecutorSize = GpuExecutorSize
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DataAmount = params.get("DataAmount")
+        self._Id = params.get("Id")
+        self._UsedTime = params.get("UsedTime")
+        self._OutputPath = params.get("OutputPath")
+        self._CreateTime = params.get("CreateTime")
+        self._State = params.get("State")
+        self._SQLType = params.get("SQLType")
+        self._SQL = params.get("SQL")
+        self._ResultExpired = params.get("ResultExpired")
+        self._RowAffectInfo = params.get("RowAffectInfo")
+        self._DataSet = params.get("DataSet")
+        self._Error = params.get("Error")
+        self._Percentage = params.get("Percentage")
+        self._OutputMessage = params.get("OutputMessage")
+        self._TaskType = params.get("TaskType")
+        self._ProgressDetail = params.get("ProgressDetail")
+        self._UpdateTime = params.get("UpdateTime")
+        self._DataEngineId = params.get("DataEngineId")
+        self._OperateUin = params.get("OperateUin")
+        self._DataEngineName = params.get("DataEngineName")
+        self._InputType = params.get("InputType")
+        self._InputConf = params.get("InputConf")
+        self._DataNumber = params.get("DataNumber")
+        self._CanDownload = params.get("CanDownload")
+        self._UserAlias = params.get("UserAlias")
+        self._SparkJobName = params.get("SparkJobName")
+        self._SparkJobId = params.get("SparkJobId")
+        self._SparkJobFile = params.get("SparkJobFile")
+        self._UiUrl = params.get("UiUrl")
+        self._TotalTime = params.get("TotalTime")
+        self._CmdArgs = params.get("CmdArgs")
+        self._ImageVersion = params.get("ImageVersion")
+        self._DriverSize = params.get("DriverSize")
+        self._ExecutorSize = params.get("ExecutorSize")
+        self._ExecutorNums = params.get("ExecutorNums")
+        self._ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        if params.get("CommonMetrics") is not None:
+            self._CommonMetrics = CommonMetrics()
+            self._CommonMetrics._deserialize(params.get("CommonMetrics"))
+        if params.get("SparkMonitorMetrics") is not None:
+            self._SparkMonitorMetrics = SparkMonitorMetrics()
+            self._SparkMonitorMetrics._deserialize(params.get("SparkMonitorMetrics"))
+        if params.get("PrestoMonitorMetrics") is not None:
+            self._PrestoMonitorMetrics = PrestoMonitorMetrics()
+            self._PrestoMonitorMetrics._deserialize(params.get("PrestoMonitorMetrics"))
+        self._ResultFormat = params.get("ResultFormat")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._Source = params.get("Source")
+        self._SourceExtra = params.get("SourceExtra")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreatorAlias = params.get("CreatorAlias")
+        self._CustomizedConf = params.get("CustomizedConf")
+        self._TaskTimeSum = params.get("TaskTimeSum")
+        self._StageStartTime = params.get("StageStartTime")
+        self._InputRecordsSum = params.get("InputRecordsSum")
+        self._AnalysisStatusType = params.get("AnalysisStatusType")
+        self._OutputRecordsSum = params.get("OutputRecordsSum")
+        self._OutputBytesSum = params.get("OutputBytesSum")
+        self._OutputFilesNum = params.get("OutputFilesNum")
+        self._OutputSmallFilesNum = params.get("OutputSmallFilesNum")
+        self._ShuffleReadRecordsSum = params.get("ShuffleReadRecordsSum")
+        self._ShuffleReadBytesSum = params.get("ShuffleReadBytesSum")
+        self._SparkAppId = params.get("SparkAppId")
+        self._TaskCategory = params.get("TaskCategory")
+        self._TaskName = params.get("TaskName")
+        self._EngineType = params.get("EngineType")
+        self._EngineHasListenerConfig = params.get("EngineHasListenerConfig")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._JobTimeSum = params.get("JobTimeSum")
+        self._LaunchTime = params.get("LaunchTime")
+        self._GpuDriverSize = params.get("GpuDriverSize")
+        self._GpuExecutorSize = params.get("GpuExecutorSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

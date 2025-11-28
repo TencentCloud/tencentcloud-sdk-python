@@ -118,6 +118,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddBypassAllRule(self, request):
+        r"""添加一键bypass能力支持,直接添加APPID
+
+        :param request: Request instance for AddBypassAllRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddBypassAllRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddBypassAllRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddBypassAllRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddBypassAllRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddCustomRule(self, request):
         r"""增加访问控制（自定义策略）
 
@@ -4169,6 +4192,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryBypassAllStatus(self, request):
+        r"""查询该用户是否被加入了全局的bypass列表
+
+        :param request: Request instance for QueryBypassAllStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.QueryBypassAllStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.QueryBypassAllStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryBypassAllStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryBypassAllStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RefreshAccessCheckResult(self, request):
         r"""刷新接入检查的结果，后台会生成接入检查任务
 
@@ -4183,6 +4229,29 @@ class WafClient(AbstractClient):
             body = self.call("RefreshAccessCheckResult", params, headers=headers)
             response = json.loads(body)
             model = models.RefreshAccessCheckResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveBypassAllRule(self, request):
+        r"""删除一键bypass规则
+
+        :param request: Request instance for RemoveBypassAllRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.RemoveBypassAllRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RemoveBypassAllRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveBypassAllRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveBypassAllRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

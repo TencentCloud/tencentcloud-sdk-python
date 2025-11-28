@@ -2424,31 +2424,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeLiveForbidStreamList(self, request):
-        r"""获取禁推流列表。
-
-        注意：该接口仅作为直播辅助查询接口，重要业务场景不可强依赖该接口。
-
-        :param request: Request instance for DescribeLiveForbidStreamList.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLiveForbidStreamList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLiveForbidStreamListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeLivePackageInfo(self, request):
         r"""查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
 

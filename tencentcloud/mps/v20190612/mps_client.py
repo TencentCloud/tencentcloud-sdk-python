@@ -2268,6 +2268,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUsageData(self, request):
+        r"""该接口返回查询时间范围内每天使用的媒体处理用量信息。
+           1. 可以查询最近365天内的媒体处理统计数据。
+           2. 查询时间跨度不超过90天。
+
+        :param request: Request instance for DescribeUsageData.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeUsageDataRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoDatabaseEntryTaskDetail(self, request):
         r"""根据任务ID查询视频入库任务的状态。
 

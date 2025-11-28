@@ -9245,6 +9245,117 @@ class DeleteGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteGroupSubscribeTopicRequest(AbstractModel):
+    r"""DeleteGroupSubscribeTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+        :type InstanceId: str
+        :param _Group: 消费分组名称
+        :type Group: str
+        :param _Topic: 主题名
+        :type Topic: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Topic = None
+
+    @property
+    def InstanceId(self):
+        r"""ckafka集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""消费分组名称
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Topic(self):
+        r"""主题名
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupSubscribeTopicResponse(AbstractModel):
+    r"""DeleteGroupSubscribeTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstancePostRequest(AbstractModel):
     r"""DeleteInstancePost请求参数结构体
 
@@ -9913,6 +10024,108 @@ class DeleteUserResponse(AbstractModel):
             self._Result = JgwOperateResponse()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescModifyType(AbstractModel):
+    r"""变配类型查询出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyType: 变配类型
+        :type ModifyType: int
+        :param _MigrateFlag: 是否迁移标志
+        :type MigrateFlag: bool
+        :param _MigrateCostTime: 迁移预计耗时(稳定模式)秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateCostTime: int
+        :param _UpgradeStrategy: 升配模式(1:稳定模式，2:高速模式)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeStrategy: int
+        :param _MigrateCostTimeHighSpeed: 迁移预计耗时(高速模式)秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateCostTimeHighSpeed: int
+        """
+        self._ModifyType = None
+        self._MigrateFlag = None
+        self._MigrateCostTime = None
+        self._UpgradeStrategy = None
+        self._MigrateCostTimeHighSpeed = None
+
+    @property
+    def ModifyType(self):
+        r"""变配类型
+        :rtype: int
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def MigrateFlag(self):
+        r"""是否迁移标志
+        :rtype: bool
+        """
+        return self._MigrateFlag
+
+    @MigrateFlag.setter
+    def MigrateFlag(self, MigrateFlag):
+        self._MigrateFlag = MigrateFlag
+
+    @property
+    def MigrateCostTime(self):
+        r"""迁移预计耗时(稳定模式)秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MigrateCostTime
+
+    @MigrateCostTime.setter
+    def MigrateCostTime(self, MigrateCostTime):
+        self._MigrateCostTime = MigrateCostTime
+
+    @property
+    def UpgradeStrategy(self):
+        r"""升配模式(1:稳定模式，2:高速模式)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpgradeStrategy
+
+    @UpgradeStrategy.setter
+    def UpgradeStrategy(self, UpgradeStrategy):
+        self._UpgradeStrategy = UpgradeStrategy
+
+    @property
+    def MigrateCostTimeHighSpeed(self):
+        r"""迁移预计耗时(高速模式)秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MigrateCostTimeHighSpeed
+
+    @MigrateCostTimeHighSpeed.setter
+    def MigrateCostTimeHighSpeed(self, MigrateCostTimeHighSpeed):
+        self._MigrateCostTimeHighSpeed = MigrateCostTimeHighSpeed
+
+
+    def _deserialize(self, params):
+        self._ModifyType = params.get("ModifyType")
+        self._MigrateFlag = params.get("MigrateFlag")
+        self._MigrateCostTime = params.get("MigrateCostTime")
+        self._UpgradeStrategy = params.get("UpgradeStrategy")
+        self._MigrateCostTimeHighSpeed = params.get("MigrateCostTimeHighSpeed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeACLRequest(AbstractModel):
@@ -13857,6 +14070,192 @@ class DescribeInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = InstanceResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModifyTypeRequest(AbstractModel):
+    r"""DescribeModifyType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+        :type InstanceId: str
+        :param _BandWidth: 升配后的带宽，单位mb
+        :type BandWidth: int
+        :param _DiskSize: 升配后的磁盘，单位G
+        :type DiskSize: int
+        :param _DiskType: 磁盘类型，例如 CLOUD_PREMIUM
+        :type DiskType: str
+        :param _Partition: 分区数量
+        :type Partition: int
+        :param _Topic: topic数量
+        :type Topic: int
+        :param _Type: 实例类型例如 sp_ckafka_profession
+        :type Type: str
+        :param _ModifyEntry: 变配入口
+        :type ModifyEntry: str
+        """
+        self._InstanceId = None
+        self._BandWidth = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._Partition = None
+        self._Topic = None
+        self._Type = None
+        self._ModifyEntry = None
+
+    @property
+    def InstanceId(self):
+        r"""ckafka集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BandWidth(self):
+        r"""升配后的带宽，单位mb
+        :rtype: int
+        """
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
+
+    @property
+    def DiskSize(self):
+        r"""升配后的磁盘，单位G
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        r"""磁盘类型，例如 CLOUD_PREMIUM
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def Partition(self):
+        r"""分区数量
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Topic(self):
+        r"""topic数量
+        :rtype: int
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        r"""实例类型例如 sp_ckafka_profession
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ModifyEntry(self):
+        r"""变配入口
+        :rtype: str
+        """
+        return self._ModifyEntry
+
+    @ModifyEntry.setter
+    def ModifyEntry(self, ModifyEntry):
+        self._ModifyEntry = ModifyEntry
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BandWidth = params.get("BandWidth")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._Partition = params.get("Partition")
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._ModifyEntry = params.get("ModifyEntry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModifyTypeResponse(AbstractModel):
+    r"""DescribeModifyType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回的变配类型结构
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescModifyType`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回的变配类型结构
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescModifyType`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescModifyType()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 

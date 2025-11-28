@@ -13726,6 +13726,8 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 <li>True: 修改最大值或最小值时，如与当前期望数存在冲突，则同步调整期望数。例如修改时传入最小值 2，当前期望数为 1，则同步调整期望数为 2。</li>
 <li>False: 修改最大值或最小值时，如与当前期望数存在冲突，报错提示不允许修改。</li>
         :type DesiredCapacitySyncWithMaxMinSize: bool
+        :param _PriorityScaleInUnhealthy: 优先缩容不健康实例。若开启，缩容时会优先选择不健康实例。默认值为 False。
+        :type PriorityScaleInUnhealthy: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
@@ -13733,6 +13735,7 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
         self._ReplaceMode = None
         self._AutoUpdateInstanceTags = None
         self._DesiredCapacitySyncWithMaxMinSize = None
+        self._PriorityScaleInUnhealthy = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13808,6 +13811,17 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
     def DesiredCapacitySyncWithMaxMinSize(self, DesiredCapacitySyncWithMaxMinSize):
         self._DesiredCapacitySyncWithMaxMinSize = DesiredCapacitySyncWithMaxMinSize
 
+    @property
+    def PriorityScaleInUnhealthy(self):
+        r"""优先缩容不健康实例。若开启，缩容时会优先选择不健康实例。默认值为 False。
+        :rtype: bool
+        """
+        return self._PriorityScaleInUnhealthy
+
+    @PriorityScaleInUnhealthy.setter
+    def PriorityScaleInUnhealthy(self, PriorityScaleInUnhealthy):
+        self._PriorityScaleInUnhealthy = PriorityScaleInUnhealthy
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
@@ -13816,6 +13830,7 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
         self._ReplaceMode = params.get("ReplaceMode")
         self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
         self._DesiredCapacitySyncWithMaxMinSize = params.get("DesiredCapacitySyncWithMaxMinSize")
+        self._PriorityScaleInUnhealthy = params.get("PriorityScaleInUnhealthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -761,12 +761,15 @@ SLURM默认队列为：compute。
         :type ImageId: str
         :param _ResourceType: 要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
         :type ResourceType: str
+        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
         """
         self._ClusterId = None
         self._ResourceSet = None
         self._QueueName = None
         self._ImageId = None
         self._ResourceType = None
+        self._UserData = None
 
     @property
     def ClusterId(self):
@@ -825,6 +828,17 @@ SLURM默认队列为：compute。
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def UserData(self):
+        r"""提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -832,6 +846,7 @@ SLURM默认队列为：compute。
         self._QueueName = params.get("QueueName")
         self._ImageId = params.get("ImageId")
         self._ResourceType = params.get("ResourceType")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9342,7 +9342,7 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
         :type EndTime: int
         :param _IsInternal: 是否获取内网地址
         :type IsInternal: bool
-        :param _CorrectTimestamp: 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+        :param _CorrectTimestamp: 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转、回退等问题导致无法播放
         :type CorrectTimestamp: bool
         """
         self._ChannelId = None
@@ -9397,7 +9397,7 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
 
     @property
     def CorrectTimestamp(self):
-        r"""云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+        r"""云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转、回退等问题导致无法播放
         :rtype: bool
         """
         return self._CorrectTimestamp

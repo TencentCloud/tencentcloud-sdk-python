@@ -34487,6 +34487,193 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUsageDataRequest(AbstractModel):
+    r"""DescribeUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param _Types: 查询媒体处理任务类型，默认查询转码。
+<li>Transcode：转码</li>
+<li>Enhance：增强</li>
+<li>AIAnalysis：智能分析</li>
+<li>AIRecognition：智能识别</li>
+<li>AIReview：内容审核</li>
+<li>Snapshot：截图</li>
+<li>AnimatedGraphics：转动图</li>
+<li>AiQualityControl：质检</li>
+<li>Evaluation：视频评测</li>
+<li>ImageProcess: 图片处理</li>
+<li>AddBlindWatermark: 添加基础版权数字水印</li>
+<li>AddNagraWatermark: 添加NAGRA数字水印</li>
+<li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+        :type Types: list of str
+        :param _ProcessRegions: 媒体处理园区，默认返回 ap-guangzhou 园区。
+<li>ap-guangzhou：广州</li>
+<li>ap-hongkong：中国香港</li>
+<li>ap-taipei：中国台北</li>
+<li>ap-singapore：新加坡</li>
+<li>ap-mumbai：印度</li>
+<li>ap-jakarta：雅加达</li>
+<li>ap-seoul：首尔</li>
+<li>ap-bangkok：泰国</li>
+<li>ap-tokyo：日本</li>
+<li>na-siliconvalley：美国硅谷</li>
+<li>na-ashburn：弗吉尼亚</li>
+<li>na-toronto：多伦多</li>
+<li>sa-saopaulo：圣保罗</li>
+<li>eu-frankfurt：法兰克福</li>
+<li>eu-moscow：俄罗斯</li>
+<li>aws：AWS</li>
+        :type ProcessRegions: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Types = None
+        self._ProcessRegions = None
+
+    @property
+    def StartTime(self):
+        r"""起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Types(self):
+        r"""查询媒体处理任务类型，默认查询转码。
+<li>Transcode：转码</li>
+<li>Enhance：增强</li>
+<li>AIAnalysis：智能分析</li>
+<li>AIRecognition：智能识别</li>
+<li>AIReview：内容审核</li>
+<li>Snapshot：截图</li>
+<li>AnimatedGraphics：转动图</li>
+<li>AiQualityControl：质检</li>
+<li>Evaluation：视频评测</li>
+<li>ImageProcess: 图片处理</li>
+<li>AddBlindWatermark: 添加基础版权数字水印</li>
+<li>AddNagraWatermark: 添加NAGRA数字水印</li>
+<li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def ProcessRegions(self):
+        r"""媒体处理园区，默认返回 ap-guangzhou 园区。
+<li>ap-guangzhou：广州</li>
+<li>ap-hongkong：中国香港</li>
+<li>ap-taipei：中国台北</li>
+<li>ap-singapore：新加坡</li>
+<li>ap-mumbai：印度</li>
+<li>ap-jakarta：雅加达</li>
+<li>ap-seoul：首尔</li>
+<li>ap-bangkok：泰国</li>
+<li>ap-tokyo：日本</li>
+<li>na-siliconvalley：美国硅谷</li>
+<li>na-ashburn：弗吉尼亚</li>
+<li>na-toronto：多伦多</li>
+<li>sa-saopaulo：圣保罗</li>
+<li>eu-frankfurt：法兰克福</li>
+<li>eu-moscow：俄罗斯</li>
+<li>aws：AWS</li>
+        :rtype: list of str
+        """
+        return self._ProcessRegions
+
+    @ProcessRegions.setter
+    def ProcessRegions(self, ProcessRegions):
+        self._ProcessRegions = ProcessRegions
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Types = params.get("Types")
+        self._ProcessRegions = params.get("ProcessRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsageDataResponse(AbstractModel):
+    r"""DescribeUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 媒体处理统计数据概览，展示所查询任务的概览以及详细数据。
+        :type Data: list of TaskStatData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""媒体处理统计数据概览，展示所查询任务的概览以及详细数据。
+        :rtype: list of TaskStatData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskStatData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoDatabaseEntryTaskDetailRequest(AbstractModel):
     r"""DescribeVideoDatabaseEntryTaskDetail请求参数结构体
 
@@ -66533,6 +66720,62 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         
 
 
+class SpecificationDataItem(AbstractModel):
+    r"""指定规格任务统计数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specification: 任务规格。
+        :type Specification: str
+        :param _Data: 统计数据。
+        :type Data: list of TaskStatDataItem
+        """
+        self._Specification = None
+        self._Data = None
+
+    @property
+    def Specification(self):
+        r"""任务规格。
+        :rtype: str
+        """
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Data(self):
+        r"""统计数据。
+        :rtype: list of TaskStatDataItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Specification = params.get("Specification")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpekeDrm(AbstractModel):
     r"""FairPlay，WideVine，PlayReady 等Drm加密方式。
 
@@ -68397,6 +68640,322 @@ class TaskSimpleInfo(AbstractModel):
         self._BeginProcessTime = params.get("BeginProcessTime")
         self._FinishTime = params.get("FinishTime")
         self._SubTaskTypes = params.get("SubTaskTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatData(AbstractModel):
+    r"""任务统计数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 任务类型。
+<li>Transcode: 转码</li>
+<li>Enhance: 增强</li>
+<li>AIAnalysis: 智能分析</li>
+<li>AIRecognition: 智能识别</li>
+<li>AIReview: 内容审核</li>
+<li>Snapshot: 截图</li>
+<li>AnimatedGraphics: 转动图</li>
+<li>ImageProcess: 图片处理</li>
+        :type TaskType: str
+        :param _Summary: 任务数统计数据概览。
+<li>Transcode：用量单位为秒</li>
+<li>Enhance：用量单位为秒</li>
+<li>AIAnalysis：用量单位为秒</li>
+<li>AIRecognition：用量单位为秒</li>
+<li>AIReview：用量单位为秒</li>
+<li>Snapshot：用量单位为张</li>
+<li>AnimatedGraphics: 用量单位为秒</li>
+<li>ImageProcess: 用量单位为张</li>
+        :type Summary: list of TaskStatDataItem
+        :param _Details: 不同规格任务统计数据详情。
+
+1、转码规格：
+<li>Audio：纯音频</li>
+<li>Remuxing：转封装</li>
+<li>其他转码规格：{TYPE}.{CODEC}.{SPECIFICATION}</li>  其中 TYPE 取值
+    Standard：普通转码
+    TESHD-10：视频极速高清
+    TESHD-20：音频极速高清
+    TESHD-30：音视频极速高清
+    TESHD-30-SDK：音视频极速高清SDK按时长计费
+    TESHD-30-SDKCores：音视频极速高清SDK按核心数计费
+    Edit：视频编辑
+  其中 CODEC 取值
+    H264：H.264 编码
+    H265：H.265 编码
+    AV1：AV1 编码
+    MV-HEVC：MV-HEVC 编码
+  其中 SPECIFICATION 取值
+    SD：标清
+    HD：高清
+    FHD：全高清
+    2K：2K
+    4K：4K
+例如 TESHD-10.H265.HD 表示 H.265 编码方式高清极速高清转码
+
+2、增强规格：视频增强格式：{TYPE}.{CODEC}.{SPECIFICATION}.{FPS}，其中 CODEC 和 SPECIFICATION 同转码，FPS在原子类型时才存在；音频增强格式：{TYPE}。
+增强TYPE 取值：
+<li>Enhance：通用增强类型，可能是任意一种原子增强类型</li>
+<li>原子增强类型</li>  视频原子增强类型取值：
+    Sdr2hdr：SDR2HDR
+    SuperResolution：超分
+    InsertFrame：插帧
+    ComprehensiveEnhancement：综合增强
+    NoiseReduction：视频降噪
+    ColorEnhancement：色彩增强
+    RemoveScratches：去划痕
+    Deburr：去毛刺
+    DetailEnhancement：细节增强
+    LightEnhancement：低光照增强
+    FaceEnhancement：人脸增强
+  音频原子增强类型取值：
+    AudioNoiseReduction
+    VolumeBalance
+    AudioBeautify
+    AudioSeparation
+
+3、截图规格：
+<li>ImageSprite：雪碧图</li>
+<li>SampleSnapshot：采样截图</li>
+<li>SnapshotByTime：时间点截图</li>
+4、图片处理规格：{TYPE}.{CODEC}.{SPECIFICATION}
+<li> ImageCompression：图片编码</li>
+<li> ImageSuperResolution：图片超分</li>
+<li> EnhanceImageColor：图片色彩增强</li>
+5、智能分析规格：
+<li>AIAnalysis：分析大类，对于未拆分的</li>
+<li>VideoTag：视频标签</li>
+<li>VideoClassification：视频分类</li>
+<li>SmartCover：智能封面</li>
+<li>FrameLabel：帧标签</li>
+<li>VideoSplit：视频拆条</li>
+<li>Highlights：精彩集锦</li>
+<li>OpeningAndEnding：片头片尾</li>
+6、智能识别规格：
+<li>AIRecognition：识别大类，对于未拆分的</li>
+<li>FaceRecognition：人脸识别</li>
+<li>TextRecognition：文字识别</li>
+<li>ObjectRecognition：物体识别</li>
+<li>VoiceRecognition：语音识别</li>
+<li>VoiceTranslation：语音翻译</li>
+7、内容审核、转动图无细分规格。
+        :type Details: list of SpecificationDataItem
+        """
+        self._TaskType = None
+        self._Summary = None
+        self._Details = None
+
+    @property
+    def TaskType(self):
+        r"""任务类型。
+<li>Transcode: 转码</li>
+<li>Enhance: 增强</li>
+<li>AIAnalysis: 智能分析</li>
+<li>AIRecognition: 智能识别</li>
+<li>AIReview: 内容审核</li>
+<li>Snapshot: 截图</li>
+<li>AnimatedGraphics: 转动图</li>
+<li>ImageProcess: 图片处理</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Summary(self):
+        r"""任务数统计数据概览。
+<li>Transcode：用量单位为秒</li>
+<li>Enhance：用量单位为秒</li>
+<li>AIAnalysis：用量单位为秒</li>
+<li>AIRecognition：用量单位为秒</li>
+<li>AIReview：用量单位为秒</li>
+<li>Snapshot：用量单位为张</li>
+<li>AnimatedGraphics: 用量单位为秒</li>
+<li>ImageProcess: 用量单位为张</li>
+        :rtype: list of TaskStatDataItem
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Details(self):
+        r"""不同规格任务统计数据详情。
+
+1、转码规格：
+<li>Audio：纯音频</li>
+<li>Remuxing：转封装</li>
+<li>其他转码规格：{TYPE}.{CODEC}.{SPECIFICATION}</li>  其中 TYPE 取值
+    Standard：普通转码
+    TESHD-10：视频极速高清
+    TESHD-20：音频极速高清
+    TESHD-30：音视频极速高清
+    TESHD-30-SDK：音视频极速高清SDK按时长计费
+    TESHD-30-SDKCores：音视频极速高清SDK按核心数计费
+    Edit：视频编辑
+  其中 CODEC 取值
+    H264：H.264 编码
+    H265：H.265 编码
+    AV1：AV1 编码
+    MV-HEVC：MV-HEVC 编码
+  其中 SPECIFICATION 取值
+    SD：标清
+    HD：高清
+    FHD：全高清
+    2K：2K
+    4K：4K
+例如 TESHD-10.H265.HD 表示 H.265 编码方式高清极速高清转码
+
+2、增强规格：视频增强格式：{TYPE}.{CODEC}.{SPECIFICATION}.{FPS}，其中 CODEC 和 SPECIFICATION 同转码，FPS在原子类型时才存在；音频增强格式：{TYPE}。
+增强TYPE 取值：
+<li>Enhance：通用增强类型，可能是任意一种原子增强类型</li>
+<li>原子增强类型</li>  视频原子增强类型取值：
+    Sdr2hdr：SDR2HDR
+    SuperResolution：超分
+    InsertFrame：插帧
+    ComprehensiveEnhancement：综合增强
+    NoiseReduction：视频降噪
+    ColorEnhancement：色彩增强
+    RemoveScratches：去划痕
+    Deburr：去毛刺
+    DetailEnhancement：细节增强
+    LightEnhancement：低光照增强
+    FaceEnhancement：人脸增强
+  音频原子增强类型取值：
+    AudioNoiseReduction
+    VolumeBalance
+    AudioBeautify
+    AudioSeparation
+
+3、截图规格：
+<li>ImageSprite：雪碧图</li>
+<li>SampleSnapshot：采样截图</li>
+<li>SnapshotByTime：时间点截图</li>
+4、图片处理规格：{TYPE}.{CODEC}.{SPECIFICATION}
+<li> ImageCompression：图片编码</li>
+<li> ImageSuperResolution：图片超分</li>
+<li> EnhanceImageColor：图片色彩增强</li>
+5、智能分析规格：
+<li>AIAnalysis：分析大类，对于未拆分的</li>
+<li>VideoTag：视频标签</li>
+<li>VideoClassification：视频分类</li>
+<li>SmartCover：智能封面</li>
+<li>FrameLabel：帧标签</li>
+<li>VideoSplit：视频拆条</li>
+<li>Highlights：精彩集锦</li>
+<li>OpeningAndEnding：片头片尾</li>
+6、智能识别规格：
+<li>AIRecognition：识别大类，对于未拆分的</li>
+<li>FaceRecognition：人脸识别</li>
+<li>TextRecognition：文字识别</li>
+<li>ObjectRecognition：物体识别</li>
+<li>VoiceRecognition：语音识别</li>
+<li>VoiceTranslation：语音翻译</li>
+7、内容审核、转动图无细分规格。
+        :rtype: list of SpecificationDataItem
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("Summary") is not None:
+            self._Summary = []
+            for item in params.get("Summary"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self._Summary.append(obj)
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = SpecificationDataItem()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatDataItem(AbstractModel):
+    r"""任务统计数据，包括任务数和用量。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :type Time: str
+        :param _Count: 任务数。
+        :type Count: int
+        :param _Usage: 任务用量。
+        :type Usage: int
+        """
+        self._Time = None
+        self._Count = None
+        self._Usage = None
+
+    @property
+    def Time(self):
+        r"""数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Count(self):
+        r"""任务数。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Usage(self):
+        r"""任务用量。
+        :rtype: int
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Count = params.get("Count")
+        self._Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

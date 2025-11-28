@@ -4431,6 +4431,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type AvailableTime: list of TimeRange
         :param _AIAgentId: 智能体 ID，不填写时需要填写 IvrId
         :type AIAgentId: int
+        :param _RetryInterval: 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+        :type RetryInterval: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -4447,6 +4449,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._TimeZone = None
         self._AvailableTime = None
         self._AIAgentId = None
+        self._RetryInterval = None
 
     @property
     def SdkAppId(self):
@@ -4613,6 +4616,17 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def AIAgentId(self, AIAgentId):
         self._AIAgentId = AIAgentId
 
+    @property
+    def RetryInterval(self):
+        r"""任务失败重试时间间隔，重试间隔 600秒～86400 秒
+        :rtype: int
+        """
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4645,6 +4659,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AvailableTime.append(obj)
         self._AIAgentId = params.get("AIAgentId")
+        self._RetryInterval = params.get("RetryInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

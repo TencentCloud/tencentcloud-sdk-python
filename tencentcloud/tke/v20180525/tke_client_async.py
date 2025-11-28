@@ -133,6 +133,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelUpgradePlan(
+            self,
+            request: models.CancelUpgradePlanRequest,
+            opts: Dict = None,
+    ) -> models.CancelUpgradePlanResponse:
+        """
+        取消升级计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelUpgradePlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelUpgradePlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckEdgeClusterCIDR(
             self,
             request: models.CheckEdgeClusterCIDRRequest,
@@ -272,6 +290,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "CreateClusterInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateClusterInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateClusterMaintenanceWindowAndExclusions(
+            self,
+            request: models.CreateClusterMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.CreateClusterMaintenanceWindowAndExclusionsResponse:
+        """
+        创建集群维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateClusterMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateClusterMaintenanceWindowAndExclusionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,6 +529,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateGlobalMaintenanceWindowAndExclusions(
+            self,
+            request: models.CreateGlobalMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.CreateGlobalMaintenanceWindowAndExclusionsResponse:
+        """
+        创建全局维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGlobalMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGlobalMaintenanceWindowAndExclusionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateImageCache(
             self,
             request: models.CreateImageCacheRequest,
@@ -691,6 +745,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRollOutSequence(
+            self,
+            request: models.CreateRollOutSequenceRequest,
+            opts: Dict = None,
+    ) -> models.CreateRollOutSequenceResponse:
+        """
+        创建集群发布序列
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRollOutSequence"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRollOutSequenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTKEEdgeCluster(
             self,
             request: models.CreateTKEEdgeClusterRequest,
@@ -830,6 +902,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DeleteClusterInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteClusterInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteClusterMaintenanceWindowAndExclusion(
+            self,
+            request: models.DeleteClusterMaintenanceWindowAndExclusionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteClusterMaintenanceWindowAndExclusionResponse:
+        """
+        删除集群维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteClusterMaintenanceWindowAndExclusion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteClusterMaintenanceWindowAndExclusionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1010,6 +1100,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DeleteEdgeClusterInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteEdgeClusterInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGlobalMaintenanceWindowAndExclusion(
+            self,
+            request: models.DeleteGlobalMaintenanceWindowAndExclusionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGlobalMaintenanceWindowAndExclusionResponse:
+        """
+        删除全集维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGlobalMaintenanceWindowAndExclusion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGlobalMaintenanceWindowAndExclusionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1226,6 +1334,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DeleteReservedInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteReservedInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRollOutSequence(
+            self,
+            request: models.DeleteRollOutSequenceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRollOutSequenceResponse:
+        """
+        删除集群发布序列
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRollOutSequence"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRollOutSequenceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1627,6 +1753,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterMaintenanceWindowAndExclusions(
+            self,
+            request: models.DescribeClusterMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterMaintenanceWindowAndExclusionsResponse:
+        """
+        获取集群维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterMaintenanceWindowAndExclusionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterNodePoolDetail(
             self,
             request: models.DescribeClusterNodePoolDetailRequest,
@@ -1730,6 +1874,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DescribeClusterReleases"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterReleasesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterRollOutSequenceTags(
+            self,
+            request: models.DescribeClusterRollOutSequenceTagsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterRollOutSequenceTagsResponse:
+        """
+        查询集群发布序列标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterRollOutSequenceTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterRollOutSequenceTagsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2162,6 +2324,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DescribeExternalNodeSupportConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeExternalNodeSupportConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeGlobalMaintenanceWindowAndExclusions(
+            self,
+            request: models.DescribeGlobalMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGlobalMaintenanceWindowAndExclusionsResponse:
+        """
+        获取全局维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGlobalMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGlobalMaintenanceWindowAndExclusionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2815,6 +2995,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRollOutSequences(
+            self,
+            request: models.DescribeRollOutSequencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRollOutSequencesResponse:
+        """
+        查询集群发布序列
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRollOutSequences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRollOutSequencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRouteTableConflicts(
             self,
             request: models.DescribeRouteTableConflictsRequest,
@@ -2954,6 +3152,42 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DescribeTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUpgradeTaskDetail(
+            self,
+            request: models.DescribeUpgradeTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUpgradeTaskDetailResponse:
+        """
+        查询计划升级任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUpgradeTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUpgradeTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUpgradeTasks(
+            self,
+            request: models.DescribeUpgradeTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUpgradeTasksResponse:
+        """
+        查询计划升级任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUpgradeTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUpgradeTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3517,6 +3751,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterMaintenanceWindowAndExclusions(
+            self,
+            request: models.ModifyClusterMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterMaintenanceWindowAndExclusionsResponse:
+        """
+        更新集群维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterMaintenanceWindowAndExclusionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterNodePool(
             self,
             request: models.ModifyClusterNodePoolRequest,
@@ -3530,6 +3782,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "ModifyClusterNodePool"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterNodePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterRollOutSequenceTags(
+            self,
+            request: models.ModifyClusterRollOutSequenceTagsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterRollOutSequenceTagsResponse:
+        """
+        更新集群发布序列标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterRollOutSequenceTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterRollOutSequenceTagsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3584,6 +3854,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "ModifyClusterVirtualNodePool"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterVirtualNodePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyGlobalMaintenanceWindowAndExclusions(
+            self,
+            request: models.ModifyGlobalMaintenanceWindowAndExclusionsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyGlobalMaintenanceWindowAndExclusionsResponse:
+        """
+        更新全局维护时间窗口和排除项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyGlobalMaintenanceWindowAndExclusions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyGlobalMaintenanceWindowAndExclusionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3823,6 +4111,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRollOutSequence(
+            self,
+            request: models.ModifyRollOutSequenceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRollOutSequenceResponse:
+        """
+        更新集群发布序列
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRollOutSequence"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRollOutSequenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RemoveNodeFromNodePool(
             self,
             request: models.RemoveNodeFromNodePoolRequest,
@@ -3962,6 +4268,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "SetNodePoolNodeProtection"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetNodePoolNodeProtectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SwitchClusterEndpoint(
+            self,
+            request: models.SwitchClusterEndpointRequest,
+            opts: Dict = None,
+    ) -> models.SwitchClusterEndpointResponse:
+        """
+        切换集群网络访问链路为直连
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SwitchClusterEndpoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SwitchClusterEndpointResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

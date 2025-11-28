@@ -7218,7 +7218,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _Domain: 加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+        :param _Domain: 加速域名，该域名为[申请免费证书](https://cloud.tencent.com/document/product/1552/124807)时使用的域名。
         :type Domain: str
         """
         self._ZoneId = None
@@ -7237,7 +7237,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+        r"""加速域名，该域名为[申请免费证书](https://cloud.tencent.com/document/product/1552/124807)时使用的域名。
         :rtype: str
         """
         return self._Domain

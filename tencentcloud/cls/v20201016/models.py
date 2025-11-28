@@ -10163,6 +10163,12 @@ class CreateTopicRequest(AbstractModel):
 非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
 仅在StorageType为 hot 时生效，指标主题不支持该配置。
         :type HotPeriod: int
+        :param _Encryption: 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+0或者不传： 不加密
+1：kms-cls 云产品密钥加密
+
+支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+        :type Encryption: int
         :param _BizType: 主题类型
 - 0:日志主题，默认值
 - 1:指标主题
@@ -10190,6 +10196,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = None
         self._Describes = None
         self._HotPeriod = None
+        self._Encryption = None
         self._BizType = None
         self._TopicId = None
         self._IsWebTracking = None
@@ -10318,6 +10325,21 @@ class CreateTopicRequest(AbstractModel):
         self._HotPeriod = HotPeriod
 
     @property
+    def Encryption(self):
+        r"""加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+0或者不传： 不加密
+1：kms-cls 云产品密钥加密
+
+支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+        :rtype: int
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
     def BizType(self):
         r"""主题类型
 - 0:日志主题，默认值
@@ -10395,6 +10417,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = params.get("Period")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
+        self._Encryption = params.get("Encryption")
         self._BizType = params.get("BizType")
         self._TopicId = params.get("TopicId")
         self._IsWebTracking = params.get("IsWebTracking")

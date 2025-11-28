@@ -384,10 +384,13 @@ class Chunk(AbstractModel):
         :type Content: str
         :param _Size: 切片的字数
         :type Size: int
+        :param _Summary: 切片概要
+        :type Summary: str
         """
         self._Id = None
         self._Content = None
         self._Size = None
+        self._Summary = None
 
     @property
     def Id(self):
@@ -422,11 +425,23 @@ class Chunk(AbstractModel):
     def Size(self, Size):
         self._Size = Size
 
+    @property
+    def Summary(self):
+        r"""切片概要
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Content = params.get("Content")
         self._Size = params.get("Size")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

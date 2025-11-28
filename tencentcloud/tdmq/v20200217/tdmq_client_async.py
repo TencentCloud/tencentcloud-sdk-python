@@ -1737,66 +1737,6 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeRocketMQSmoothMigrationTaskList(
-            self,
-            request: models.DescribeRocketMQSmoothMigrationTaskListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeRocketMQSmoothMigrationTaskListResponse:
-        """
-        平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        用于查询RocketMQ平滑迁移任务列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRocketMQSmoothMigrationTaskList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRocketMQSmoothMigrationTaskListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeRocketMQSourceClusterGroupList(
-            self,
-            request: models.DescribeRocketMQSourceClusterGroupListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeRocketMQSourceClusterGroupListResponse:
-        """
-        平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        平滑迁移过程获取源集群group列表接口
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRocketMQSourceClusterGroupList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRocketMQSourceClusterGroupListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeRocketMQSourceClusterTopicList(
-            self,
-            request: models.DescribeRocketMQSourceClusterTopicListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeRocketMQSourceClusterTopicListResponse:
-        """
-        平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        平滑迁移过程获取源集群topic列表接口
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRocketMQSourceClusterTopicList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRocketMQSourceClusterTopicListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeRocketMQSubscriptions(
             self,
             request: models.DescribeRocketMQSubscriptionsRequest,
@@ -1828,6 +1768,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DescribeRocketMQTopUsages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRocketMQTopUsagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopic(
+            self,
+            request: models.DescribeRocketMQTopicRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopicResponse:
+        """
+        获取RocketMQ主题详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopicResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

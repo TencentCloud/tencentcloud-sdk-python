@@ -10187,7 +10187,7 @@ class MixLayout(AbstractModel):
         :type MediaId: int
         :param _ImageLayer: 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
         :type ImageLayer: int
-        :param _SubBackgroundImage: 图片的url地址， 只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :param _SubBackgroundImage: 图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :type SubBackgroundImage: str
         """
         self._Top = None
@@ -10310,7 +10310,7 @@ class MixLayout(AbstractModel):
 
     @property
     def SubBackgroundImage(self):
-        r"""图片的url地址， 只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        r"""图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :rtype: str
         """
         return self._SubBackgroundImage
@@ -10373,13 +10373,13 @@ class MixLayoutParams(AbstractModel):
 1：辅流（屏幕分享）；
 这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
         :type MediaId: int
-        :param _BackgroundImageUrl: 图片的url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :param _BackgroundImageUrl: 图片的url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :type BackgroundImageUrl: str
         :param _PlaceHolderMode: 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行音视频时可显示对应的占位图。
         :type PlaceHolderMode: int
         :param _BackgroundImageRenderMode: 背景画面宽高比不一致的时候处理方案，与MixLayoutList定义的RenderMode一致。
         :type BackgroundImageRenderMode: int
-        :param _DefaultSubBackgroundImage: 子画面占位图url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :param _DefaultSubBackgroundImage: 子画面占位图url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :type DefaultSubBackgroundImage: str
         :param _WaterMarkList: 水印布局参数， 最多支持25个。
         :type WaterMarkList: list of WaterMark
@@ -10473,7 +10473,7 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def BackgroundImageUrl(self):
-        r"""图片的url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        r"""图片的url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :rtype: str
         """
         return self._BackgroundImageUrl
@@ -10506,7 +10506,7 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def DefaultSubBackgroundImage(self):
-        r"""子画面占位图url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        r"""子画面占位图url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
         :rtype: str
         """
         return self._DefaultSubBackgroundImage
@@ -13684,6 +13684,8 @@ class ServerPushText(AbstractModel):
         :type Priority: int
         :param _AddHistory: 是否将文本加入到llm历史上下文中
         :type AddHistory: bool
+        :param _MetaInfo: 如果填写，会和字幕绑定发送到端上，注意确保内容为json字符串
+        :type MetaInfo: str
         """
         self._Text = None
         self._Interrupt = None
@@ -13692,6 +13694,7 @@ class ServerPushText(AbstractModel):
         self._DropMode = None
         self._Priority = None
         self._AddHistory = None
+        self._MetaInfo = None
 
     @property
     def Text(self):
@@ -13781,6 +13784,17 @@ class ServerPushText(AbstractModel):
     def AddHistory(self, AddHistory):
         self._AddHistory = AddHistory
 
+    @property
+    def MetaInfo(self):
+        r"""如果填写，会和字幕绑定发送到端上，注意确保内容为json字符串
+        :rtype: str
+        """
+        return self._MetaInfo
+
+    @MetaInfo.setter
+    def MetaInfo(self, MetaInfo):
+        self._MetaInfo = MetaInfo
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -13790,6 +13804,7 @@ class ServerPushText(AbstractModel):
         self._DropMode = params.get("DropMode")
         self._Priority = params.get("Priority")
         self._AddHistory = params.get("AddHistory")
+        self._MetaInfo = params.get("MetaInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

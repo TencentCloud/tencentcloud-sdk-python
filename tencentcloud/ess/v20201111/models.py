@@ -3198,6 +3198,8 @@ class ComparisonDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ComparisonPointId: 合同对比差异点唯一ID。
+        :type ComparisonPointId: str
         :param _ComparisonType: 对比前后差异类型，具体如下：
 <ul><li> **add**：新增</li>
 <li> **change**：变更</li>
@@ -3215,10 +3217,22 @@ class ComparisonDetail(AbstractModel):
         :param _DiffText: 对比文本。
         :type DiffText: str
         """
+        self._ComparisonPointId = None
         self._ComparisonType = None
         self._ContentType = None
         self._OriginText = None
         self._DiffText = None
+
+    @property
+    def ComparisonPointId(self):
+        r"""合同对比差异点唯一ID。
+        :rtype: str
+        """
+        return self._ComparisonPointId
+
+    @ComparisonPointId.setter
+    def ComparisonPointId(self, ComparisonPointId):
+        self._ComparisonPointId = ComparisonPointId
 
     @property
     def ComparisonType(self):
@@ -3274,6 +3288,7 @@ class ComparisonDetail(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ComparisonPointId = params.get("ComparisonPointId")
         self._ComparisonType = params.get("ComparisonType")
         self._ContentType = params.get("ContentType")
         self._OriginText = params.get("OriginText")
@@ -29224,10 +29239,7 @@ WEWORKAPP: 企业微信
         :param _CustomUserId: 企业微信UserId
 <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId
         :type CustomUserId: str
-        :param _ApproverName: 补充企业签署人员工姓名
-<ul>
-<li>ApproverSource!=WEWORKAPP时，必传</li>
-</ul>
+        :param _ApproverName: 企业签署人的员工姓名。除企业微信应用场景（ApproverSource设置为WEWORKAPP）外，本字段为必填。
         :type ApproverName: str
         :param _ApproverMobile: 补充企业签署人员工手机号
 <ul>
@@ -29321,10 +29333,7 @@ WEWORKAPP: 企业微信
 
     @property
     def ApproverName(self):
-        r"""补充企业签署人员工姓名
-<ul>
-<li>ApproverSource!=WEWORKAPP时，必传</li>
-</ul>
+        r"""企业签署人的员工姓名。除企业微信应用场景（ApproverSource设置为WEWORKAPP）外，本字段为必填。
         :rtype: str
         """
         return self._ApproverName

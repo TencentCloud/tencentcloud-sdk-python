@@ -1381,6 +1381,40 @@ class AddAttackWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddBypassAllRuleRequest(AbstractModel):
+    r"""AddBypassAllRule请求参数结构体
+
+    """
+
+
+class AddBypassAllRuleResponse(AbstractModel):
+    r"""AddBypassAllRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddCustomRuleRequest(AbstractModel):
     r"""AddCustomRule请求参数结构体
 
@@ -46655,6 +46689,55 @@ class QpsData(AbstractModel):
         
 
 
+class QueryBypassAllStatusRequest(AbstractModel):
+    r"""QueryBypassAllStatus请求参数结构体
+
+    """
+
+
+class QueryBypassAllStatusResponse(AbstractModel):
+    r"""QueryBypassAllStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 该用户是否被加入了全局的bypass列表
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""该用户是否被加入了全局的bypass列表
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class RCEPkg(AbstractModel):
     r"""有效REC设备安全包信息
 
@@ -46972,6 +47055,40 @@ class RefreshAccessCheckResultRequest(AbstractModel):
 
 class RefreshAccessCheckResultResponse(AbstractModel):
     r"""RefreshAccessCheckResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveBypassAllRuleRequest(AbstractModel):
+    r"""RemoveBypassAllRule请求参数结构体
+
+    """
+
+
+class RemoveBypassAllRuleResponse(AbstractModel):
+    r"""RemoveBypassAllRule返回参数结构体
 
     """
 

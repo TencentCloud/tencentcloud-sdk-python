@@ -5428,6 +5428,9 @@ class GetFunctionResponse(AbstractModel):
         :param _ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议配置的参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        :param _InstanceConcurrencyConfig: 单实例多并发配置。只支持Web函数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceConcurrencyConfig: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
         :param _DnsCache: 是否开启DNS缓存
         :type DnsCache: str
         :param _IntranetConfig: 内网访问配置
@@ -5481,6 +5484,7 @@ class GetFunctionResponse(AbstractModel):
         self._ImageConfig = None
         self._ProtocolType = None
         self._ProtocolParams = None
+        self._InstanceConcurrencyConfig = None
         self._DnsCache = None
         self._IntranetConfig = None
         self._RequestId = None
@@ -5987,6 +5991,18 @@ class GetFunctionResponse(AbstractModel):
         self._ProtocolParams = ProtocolParams
 
     @property
+    def InstanceConcurrencyConfig(self):
+        r"""单实例多并发配置。只支持Web函数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        """
+        return self._InstanceConcurrencyConfig
+
+    @InstanceConcurrencyConfig.setter
+    def InstanceConcurrencyConfig(self, InstanceConcurrencyConfig):
+        self._InstanceConcurrencyConfig = InstanceConcurrencyConfig
+
+    @property
     def DnsCache(self):
         r"""是否开启DNS缓存
         :rtype: str
@@ -6105,6 +6121,9 @@ class GetFunctionResponse(AbstractModel):
         if params.get("ProtocolParams") is not None:
             self._ProtocolParams = ProtocolParams()
             self._ProtocolParams._deserialize(params.get("ProtocolParams"))
+        if params.get("InstanceConcurrencyConfig") is not None:
+            self._InstanceConcurrencyConfig = InstanceConcurrencyConfig()
+            self._InstanceConcurrencyConfig._deserialize(params.get("InstanceConcurrencyConfig"))
         self._DnsCache = params.get("DnsCache")
         if params.get("IntranetConfig") is not None:
             self._IntranetConfig = IntranetConfigOut()
@@ -6890,9 +6909,21 @@ class InstanceConcurrencyConfig(AbstractModel):
         :param _MaxConcurrency: 单实例并发数最大值。取值范围 [1,100]
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxConcurrency: int
+        :param _InstanceIsolationEnabled: 安全隔离开关
+        :type InstanceIsolationEnabled: str
+        :param _Type: 基于会话：Session-Based ， 或者基于请求：Request-Based，二选一
+        :type Type: str
+        :param _MixNodeConfig: 动态并发参数
+        :type MixNodeConfig: list of MixNodeConfig
+        :param _SessionConfig: 会话配置参数
+        :type SessionConfig: :class:`tencentcloud.scf.v20180416.models.SessionConfig`
         """
         self._DynamicEnabled = None
         self._MaxConcurrency = None
+        self._InstanceIsolationEnabled = None
+        self._Type = None
+        self._MixNodeConfig = None
+        self._SessionConfig = None
 
     @property
     def DynamicEnabled(self):
@@ -6918,10 +6949,65 @@ class InstanceConcurrencyConfig(AbstractModel):
     def MaxConcurrency(self, MaxConcurrency):
         self._MaxConcurrency = MaxConcurrency
 
+    @property
+    def InstanceIsolationEnabled(self):
+        r"""安全隔离开关
+        :rtype: str
+        """
+        return self._InstanceIsolationEnabled
+
+    @InstanceIsolationEnabled.setter
+    def InstanceIsolationEnabled(self, InstanceIsolationEnabled):
+        self._InstanceIsolationEnabled = InstanceIsolationEnabled
+
+    @property
+    def Type(self):
+        r"""基于会话：Session-Based ， 或者基于请求：Request-Based，二选一
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def MixNodeConfig(self):
+        r"""动态并发参数
+        :rtype: list of MixNodeConfig
+        """
+        return self._MixNodeConfig
+
+    @MixNodeConfig.setter
+    def MixNodeConfig(self, MixNodeConfig):
+        self._MixNodeConfig = MixNodeConfig
+
+    @property
+    def SessionConfig(self):
+        r"""会话配置参数
+        :rtype: :class:`tencentcloud.scf.v20180416.models.SessionConfig`
+        """
+        return self._SessionConfig
+
+    @SessionConfig.setter
+    def SessionConfig(self, SessionConfig):
+        self._SessionConfig = SessionConfig
+
 
     def _deserialize(self, params):
         self._DynamicEnabled = params.get("DynamicEnabled")
         self._MaxConcurrency = params.get("MaxConcurrency")
+        self._InstanceIsolationEnabled = params.get("InstanceIsolationEnabled")
+        self._Type = params.get("Type")
+        if params.get("MixNodeConfig") is not None:
+            self._MixNodeConfig = []
+            for item in params.get("MixNodeConfig"):
+                obj = MixNodeConfig()
+                obj._deserialize(item)
+                self._MixNodeConfig.append(obj)
+        if params.get("SessionConfig") is not None:
+            self._SessionConfig = SessionConfig()
+            self._SessionConfig._deserialize(params.get("SessionConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9511,6 +9597,57 @@ class LogSearchContext(AbstractModel):
         
 
 
+class MixNodeConfig(AbstractModel):
+    r"""动态并发配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSpec: GPU机型名
+        :type NodeSpec: str
+        :param _Num: 并发个数
+        :type Num: int
+        """
+        self._NodeSpec = None
+        self._Num = None
+
+    @property
+    def NodeSpec(self):
+        r"""GPU机型名
+        :rtype: str
+        """
+        return self._NodeSpec
+
+    @NodeSpec.setter
+    def NodeSpec(self, NodeSpec):
+        self._NodeSpec = NodeSpec
+
+    @property
+    def Num(self):
+        r"""并发个数
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+
+    def _deserialize(self, params):
+        self._NodeSpec = params.get("NodeSpec")
+        self._Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Namespace(AbstractModel):
     r"""命名空间
 
@@ -11497,6 +11634,132 @@ class SearchKey(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionConfig(AbstractModel):
+    r"""会话参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSource: session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING' 
+        :type SessionSource: str
+        :param _SessionName: session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
+        :type SessionName: str
+        :param _MaximumConcurrencySessionPerInstance: 最大并发会话数
+        :type MaximumConcurrencySessionPerInstance: int
+        :param _MaximumTTLInSeconds: 生命周期
+        :type MaximumTTLInSeconds: int
+        :param _MaximumIdleTimeInSeconds: 空闲时长
+        :type MaximumIdleTimeInSeconds: int
+        :param _SessionPath: session 对应的路径信息
+        :type SessionPath: str
+        :param _IdleTimeoutStrategy: 自动销毁 FATAL、自动暂停PAUSE， 只有启动安全隔离的时候才会有
+        :type IdleTimeoutStrategy: str
+        """
+        self._SessionSource = None
+        self._SessionName = None
+        self._MaximumConcurrencySessionPerInstance = None
+        self._MaximumTTLInSeconds = None
+        self._MaximumIdleTimeInSeconds = None
+        self._SessionPath = None
+        self._IdleTimeoutStrategy = None
+
+    @property
+    def SessionSource(self):
+        r"""session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING' 
+        :rtype: str
+        """
+        return self._SessionSource
+
+    @SessionSource.setter
+    def SessionSource(self, SessionSource):
+        self._SessionSource = SessionSource
+
+    @property
+    def SessionName(self):
+        r"""session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
+        :rtype: str
+        """
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def MaximumConcurrencySessionPerInstance(self):
+        r"""最大并发会话数
+        :rtype: int
+        """
+        return self._MaximumConcurrencySessionPerInstance
+
+    @MaximumConcurrencySessionPerInstance.setter
+    def MaximumConcurrencySessionPerInstance(self, MaximumConcurrencySessionPerInstance):
+        self._MaximumConcurrencySessionPerInstance = MaximumConcurrencySessionPerInstance
+
+    @property
+    def MaximumTTLInSeconds(self):
+        r"""生命周期
+        :rtype: int
+        """
+        return self._MaximumTTLInSeconds
+
+    @MaximumTTLInSeconds.setter
+    def MaximumTTLInSeconds(self, MaximumTTLInSeconds):
+        self._MaximumTTLInSeconds = MaximumTTLInSeconds
+
+    @property
+    def MaximumIdleTimeInSeconds(self):
+        r"""空闲时长
+        :rtype: int
+        """
+        return self._MaximumIdleTimeInSeconds
+
+    @MaximumIdleTimeInSeconds.setter
+    def MaximumIdleTimeInSeconds(self, MaximumIdleTimeInSeconds):
+        self._MaximumIdleTimeInSeconds = MaximumIdleTimeInSeconds
+
+    @property
+    def SessionPath(self):
+        r"""session 对应的路径信息
+        :rtype: str
+        """
+        return self._SessionPath
+
+    @SessionPath.setter
+    def SessionPath(self, SessionPath):
+        self._SessionPath = SessionPath
+
+    @property
+    def IdleTimeoutStrategy(self):
+        r"""自动销毁 FATAL、自动暂停PAUSE， 只有启动安全隔离的时候才会有
+        :rtype: str
+        """
+        return self._IdleTimeoutStrategy
+
+    @IdleTimeoutStrategy.setter
+    def IdleTimeoutStrategy(self, IdleTimeoutStrategy):
+        self._IdleTimeoutStrategy = IdleTimeoutStrategy
+
+
+    def _deserialize(self, params):
+        self._SessionSource = params.get("SessionSource")
+        self._SessionName = params.get("SessionName")
+        self._MaximumConcurrencySessionPerInstance = params.get("MaximumConcurrencySessionPerInstance")
+        self._MaximumTTLInSeconds = params.get("MaximumTTLInSeconds")
+        self._MaximumIdleTimeInSeconds = params.get("MaximumIdleTimeInSeconds")
+        self._SessionPath = params.get("SessionPath")
+        self._IdleTimeoutStrategy = params.get("IdleTimeoutStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

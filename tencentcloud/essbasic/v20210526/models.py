@@ -27559,7 +27559,8 @@ class OperateChannelTemplateRequest(AbstractModel):
         :param _TemplateId: 合同模板ID，为32位字符串。
 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
         :type TemplateId: str
-        :param _ProxyOrganizationOpenIds: 第三方平台子客企业的唯一标识，支持批量(用,分割)，
+        :param _ProxyOrganizationOpenIds: 第三方平台子客企业的唯一标识，支持批量(用,分割) 
+一次批量操作最多支持100个第三方平台子客
         :type ProxyOrganizationOpenIds: str
         :param _AuthTag: 模板可见范围, 可以设置的值如下:
 
@@ -27583,6 +27584,11 @@ class OperateChannelTemplateRequest(AbstractModel):
         :type Available: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。
+不传默认值为 20
+        :type Limit: int
+        :param _Offset: 分页查询偏移量，默认为0
+        :type Offset: int
         """
         self._Agent = None
         self._OperateType = None
@@ -27591,6 +27597,8 @@ class OperateChannelTemplateRequest(AbstractModel):
         self._AuthTag = None
         self._Available = None
         self._Operator = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def Agent(self):
@@ -27638,7 +27646,8 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        r"""第三方平台子客企业的唯一标识，支持批量(用,分割)，
+        r"""第三方平台子客企业的唯一标识，支持批量(用,分割) 
+一次批量操作最多支持100个第三方平台子客
         :rtype: str
         """
         return self._ProxyOrganizationOpenIds
@@ -27700,6 +27709,29 @@ class OperateChannelTemplateRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def Limit(self):
+        r"""指定分页每页返回的数据条数，单页最大支持 100。
+不传默认值为 20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -27713,6 +27745,8 @@ class OperateChannelTemplateRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27745,10 +27779,12 @@ class OperateChannelTemplateResponse(AbstractModel):
 **all**: 所有本第三方应用合作企业可见
 **part**: 指定的本第三方应用合作企业
         :type AuthTag: str
-        :param _ProxyOrganizationOpenIds: 第三方平台子客企业标识列表
+        :param _ProxyOrganizationOpenIds: 第三方平台子客企业标识列表，仅在select 模式下返回
         :type ProxyOrganizationOpenIds: list of str
         :param _FailMessageList: 操作失败信息数组
         :type FailMessageList: list of AuthFailMessage
+        :param _Total: 授权的平台子企业数量，OperateType 为select 时返回。
+        :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -27758,6 +27794,7 @@ class OperateChannelTemplateResponse(AbstractModel):
         self._AuthTag = None
         self._ProxyOrganizationOpenIds = None
         self._FailMessageList = None
+        self._Total = None
         self._RequestId = None
 
     @property
@@ -27813,7 +27850,7 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     @property
     def ProxyOrganizationOpenIds(self):
-        r"""第三方平台子客企业标识列表
+        r"""第三方平台子客企业标识列表，仅在select 模式下返回
         :rtype: list of str
         """
         return self._ProxyOrganizationOpenIds
@@ -27832,6 +27869,17 @@ class OperateChannelTemplateResponse(AbstractModel):
     @FailMessageList.setter
     def FailMessageList(self, FailMessageList):
         self._FailMessageList = FailMessageList
+
+    @property
+    def Total(self):
+        r"""授权的平台子企业数量，OperateType 为select 时返回。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -27857,6 +27905,7 @@ class OperateChannelTemplateResponse(AbstractModel):
                 obj = AuthFailMessage()
                 obj._deserialize(item)
                 self._FailMessageList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

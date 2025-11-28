@@ -14583,7 +14583,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: 实例id，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _BackupMethod: 备份方式。
 - 0：逻辑备份。
@@ -14595,22 +14595,46 @@ class SetBackupRulesRequest(AbstractModel):
         :type BackupMethod: int
         :param _BackupTime: 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
         :type BackupTime: int
+        :param _BackupFrequency: 自动备份频率，内部展示，默认取值为24h。
+        :type BackupFrequency: int
         :param _Notify: 设置自动备份发生错误时，是否发送失败告警。
 - true：发送。
 - false：不发送。
         :type Notify: bool
         :param _BackupRetentionPeriod: 指定备份数据保存天数。默认为 7 天，支持设置为7、30、90、180、365。
         :type BackupRetentionPeriod: int
+        :param _ActiveWeekdays: 周几备份，0-6，逗号分割。仅对高级备份生效
+        :type ActiveWeekdays: str
+        :param _LongTermUnit: 长期保留周期，周weekly，月monthly，空不开启
+        :type LongTermUnit: str
+        :param _LongTermActiveDays: 长期保留哪些天的，周0-6，月1-31，逗号分割
+        :type LongTermActiveDays: str
+        :param _LongTermExpiredDays: 长期备份保留多少天
+        :type LongTermExpiredDays: int
+        :param _OplogExpiredDays: 增量保留多少天
+        :type OplogExpiredDays: int
+        :param _BackupVersion: 备份版本。旧版本备份为0，高级备份为1。开启高级备份此值传1
+        :type BackupVersion: int
+        :param _AlarmWaterLevel: 告警额度。50-300
+        :type AlarmWaterLevel: int
         """
         self._InstanceId = None
         self._BackupMethod = None
         self._BackupTime = None
+        self._BackupFrequency = None
         self._Notify = None
         self._BackupRetentionPeriod = None
+        self._ActiveWeekdays = None
+        self._LongTermUnit = None
+        self._LongTermActiveDays = None
+        self._LongTermExpiredDays = None
+        self._OplogExpiredDays = None
+        self._BackupVersion = None
+        self._AlarmWaterLevel = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""实例id，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -14648,6 +14672,17 @@ class SetBackupRulesRequest(AbstractModel):
         self._BackupTime = BackupTime
 
     @property
+    def BackupFrequency(self):
+        r"""自动备份频率，内部展示，默认取值为24h。
+        :rtype: int
+        """
+        return self._BackupFrequency
+
+    @BackupFrequency.setter
+    def BackupFrequency(self, BackupFrequency):
+        self._BackupFrequency = BackupFrequency
+
+    @property
     def Notify(self):
         r"""设置自动备份发生错误时，是否发送失败告警。
 - true：发送。
@@ -14671,13 +14706,98 @@ class SetBackupRulesRequest(AbstractModel):
     def BackupRetentionPeriod(self, BackupRetentionPeriod):
         self._BackupRetentionPeriod = BackupRetentionPeriod
 
+    @property
+    def ActiveWeekdays(self):
+        r"""周几备份，0-6，逗号分割。仅对高级备份生效
+        :rtype: str
+        """
+        return self._ActiveWeekdays
+
+    @ActiveWeekdays.setter
+    def ActiveWeekdays(self, ActiveWeekdays):
+        self._ActiveWeekdays = ActiveWeekdays
+
+    @property
+    def LongTermUnit(self):
+        r"""长期保留周期，周weekly，月monthly，空不开启
+        :rtype: str
+        """
+        return self._LongTermUnit
+
+    @LongTermUnit.setter
+    def LongTermUnit(self, LongTermUnit):
+        self._LongTermUnit = LongTermUnit
+
+    @property
+    def LongTermActiveDays(self):
+        r"""长期保留哪些天的，周0-6，月1-31，逗号分割
+        :rtype: str
+        """
+        return self._LongTermActiveDays
+
+    @LongTermActiveDays.setter
+    def LongTermActiveDays(self, LongTermActiveDays):
+        self._LongTermActiveDays = LongTermActiveDays
+
+    @property
+    def LongTermExpiredDays(self):
+        r"""长期备份保留多少天
+        :rtype: int
+        """
+        return self._LongTermExpiredDays
+
+    @LongTermExpiredDays.setter
+    def LongTermExpiredDays(self, LongTermExpiredDays):
+        self._LongTermExpiredDays = LongTermExpiredDays
+
+    @property
+    def OplogExpiredDays(self):
+        r"""增量保留多少天
+        :rtype: int
+        """
+        return self._OplogExpiredDays
+
+    @OplogExpiredDays.setter
+    def OplogExpiredDays(self, OplogExpiredDays):
+        self._OplogExpiredDays = OplogExpiredDays
+
+    @property
+    def BackupVersion(self):
+        r"""备份版本。旧版本备份为0，高级备份为1。开启高级备份此值传1
+        :rtype: int
+        """
+        return self._BackupVersion
+
+    @BackupVersion.setter
+    def BackupVersion(self, BackupVersion):
+        self._BackupVersion = BackupVersion
+
+    @property
+    def AlarmWaterLevel(self):
+        r"""告警额度。50-300
+        :rtype: int
+        """
+        return self._AlarmWaterLevel
+
+    @AlarmWaterLevel.setter
+    def AlarmWaterLevel(self, AlarmWaterLevel):
+        self._AlarmWaterLevel = AlarmWaterLevel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BackupMethod = params.get("BackupMethod")
         self._BackupTime = params.get("BackupTime")
+        self._BackupFrequency = params.get("BackupFrequency")
         self._Notify = params.get("Notify")
         self._BackupRetentionPeriod = params.get("BackupRetentionPeriod")
+        self._ActiveWeekdays = params.get("ActiveWeekdays")
+        self._LongTermUnit = params.get("LongTermUnit")
+        self._LongTermActiveDays = params.get("LongTermActiveDays")
+        self._LongTermExpiredDays = params.get("LongTermExpiredDays")
+        self._OplogExpiredDays = params.get("OplogExpiredDays")
+        self._BackupVersion = params.get("BackupVersion")
+        self._AlarmWaterLevel = params.get("AlarmWaterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

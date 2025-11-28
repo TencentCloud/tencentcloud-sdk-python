@@ -1787,6 +1787,26 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUsageData(
+            self,
+            request: models.DescribeUsageDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageDataResponse:
+        """
+        该接口返回查询时间范围内每天使用的媒体处理用量信息。
+           1. 可以查询最近365天内的媒体处理统计数据。
+           2. 查询时间跨度不超过90天。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVideoDatabaseEntryTaskDetail(
             self,
             request: models.DescribeVideoDatabaseEntryTaskDetailRequest,

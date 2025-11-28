@@ -11426,6 +11426,15 @@ class CynosdbInstanceDetail(AbstractModel):
         :param _Zone: 可用区
         :type Zone: str
         :param _Status: 实例状态
+creating：创建中
+running：运行中
+isolating：隔离中
+isolated：已隔离
+activating：解隔离中
+offlining：下线中
+offlined：已下线
+deleting：删除中
+deleted：已删除
         :type Status: str
         :param _StatusDesc: 实例状态中文描述
         :type StatusDesc: str
@@ -11618,6 +11627,15 @@ pause
     @property
     def Status(self):
         r"""实例状态
+creating：创建中
+running：运行中
+isolating：隔离中
+isolated：已隔离
+activating：解隔离中
+offlining：下线中
+offlined：已下线
+deleting：删除中
+deleted：已删除
         :rtype: str
         """
         return self._Status
@@ -23560,7 +23578,7 @@ class GdnTaskInfo(AbstractModel):
         :type StandbyClusterRegion: str
         :param _StandbyClusterId: 从集群ID
         :type StandbyClusterId: str
-        :param _StandbyClusterName: 从集群别名
+        :param _StandbyClusterName: 从集群名称
         :type StandbyClusterName: str
         """
         self._GdnId = None
@@ -23639,7 +23657,7 @@ class GdnTaskInfo(AbstractModel):
 
     @property
     def StandbyClusterName(self):
-        r"""从集群别名
+        r"""从集群名称
         :rtype: str
         """
         return self._StandbyClusterName
@@ -36168,6 +36186,8 @@ class QueryFilter(AbstractModel):
 
     @property
     def Operator(self):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
         r"""操作符
         :rtype: str
         """
@@ -36175,6 +36195,8 @@ class QueryFilter(AbstractModel):
 
     @Operator.setter
     def Operator(self, Operator):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
         self._Operator = Operator
 
 
@@ -41860,6 +41882,12 @@ class TradePrice(AbstractModel):
         :type UnitPriceDiscount: int
         :param _ChargeUnit: 计费价格单位
         :type ChargeUnit: str
+        :param _UnitPriceHighPrecision: 高精度下不包含优惠价格
+        :type UnitPriceHighPrecision: str
+        :param _UnitPriceDiscountHighPrecision: 高精度下优惠后价格
+        :type UnitPriceDiscountHighPrecision: str
+        :param _AmountUnit: 货币单位
+        :type AmountUnit: str
         """
         self._TotalPrice = None
         self._Discount = None
@@ -41867,6 +41895,9 @@ class TradePrice(AbstractModel):
         self._UnitPrice = None
         self._UnitPriceDiscount = None
         self._ChargeUnit = None
+        self._UnitPriceHighPrecision = None
+        self._UnitPriceDiscountHighPrecision = None
+        self._AmountUnit = None
 
     @property
     def TotalPrice(self):
@@ -41934,6 +41965,39 @@ class TradePrice(AbstractModel):
     def ChargeUnit(self, ChargeUnit):
         self._ChargeUnit = ChargeUnit
 
+    @property
+    def UnitPriceHighPrecision(self):
+        r"""高精度下不包含优惠价格
+        :rtype: str
+        """
+        return self._UnitPriceHighPrecision
+
+    @UnitPriceHighPrecision.setter
+    def UnitPriceHighPrecision(self, UnitPriceHighPrecision):
+        self._UnitPriceHighPrecision = UnitPriceHighPrecision
+
+    @property
+    def UnitPriceDiscountHighPrecision(self):
+        r"""高精度下优惠后价格
+        :rtype: str
+        """
+        return self._UnitPriceDiscountHighPrecision
+
+    @UnitPriceDiscountHighPrecision.setter
+    def UnitPriceDiscountHighPrecision(self, UnitPriceDiscountHighPrecision):
+        self._UnitPriceDiscountHighPrecision = UnitPriceDiscountHighPrecision
+
+    @property
+    def AmountUnit(self):
+        r"""货币单位
+        :rtype: str
+        """
+        return self._AmountUnit
+
+    @AmountUnit.setter
+    def AmountUnit(self, AmountUnit):
+        self._AmountUnit = AmountUnit
+
 
     def _deserialize(self, params):
         self._TotalPrice = params.get("TotalPrice")
@@ -41942,6 +42006,9 @@ class TradePrice(AbstractModel):
         self._UnitPrice = params.get("UnitPrice")
         self._UnitPriceDiscount = params.get("UnitPriceDiscount")
         self._ChargeUnit = params.get("ChargeUnit")
+        self._UnitPriceHighPrecision = params.get("UnitPriceHighPrecision")
+        self._UnitPriceDiscountHighPrecision = params.get("UnitPriceDiscountHighPrecision")
+        self._AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42510,6 +42577,10 @@ class UpgradeProxyRequest(AbstractModel):
         :type IsInMaintainPeriod: str
         :param _ProxyZones: 数据库代理节点信息
         :type ProxyZones: list of ProxyZone
+        :param _IsRollUpgrade: 是否滚动升级
+        :type IsRollUpgrade: str
+        :param _RollUpgradeWaitingTime: 滚动升级等待时间，单位：秒
+        :type RollUpgradeWaitingTime: int
         """
         self._ClusterId = None
         self._Cpu = None
@@ -42519,6 +42590,8 @@ class UpgradeProxyRequest(AbstractModel):
         self._ReloadBalance = None
         self._IsInMaintainPeriod = None
         self._ProxyZones = None
+        self._IsRollUpgrade = None
+        self._RollUpgradeWaitingTime = None
 
     @property
     def ClusterId(self):
@@ -42608,6 +42681,28 @@ class UpgradeProxyRequest(AbstractModel):
     def ProxyZones(self, ProxyZones):
         self._ProxyZones = ProxyZones
 
+    @property
+    def IsRollUpgrade(self):
+        r"""是否滚动升级
+        :rtype: str
+        """
+        return self._IsRollUpgrade
+
+    @IsRollUpgrade.setter
+    def IsRollUpgrade(self, IsRollUpgrade):
+        self._IsRollUpgrade = IsRollUpgrade
+
+    @property
+    def RollUpgradeWaitingTime(self):
+        r"""滚动升级等待时间，单位：秒
+        :rtype: int
+        """
+        return self._RollUpgradeWaitingTime
+
+    @RollUpgradeWaitingTime.setter
+    def RollUpgradeWaitingTime(self, RollUpgradeWaitingTime):
+        self._RollUpgradeWaitingTime = RollUpgradeWaitingTime
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -42623,6 +42718,8 @@ class UpgradeProxyRequest(AbstractModel):
                 obj = ProxyZone()
                 obj._deserialize(item)
                 self._ProxyZones.append(obj)
+        self._IsRollUpgrade = params.get("IsRollUpgrade")
+        self._RollUpgradeWaitingTime = params.get("RollUpgradeWaitingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

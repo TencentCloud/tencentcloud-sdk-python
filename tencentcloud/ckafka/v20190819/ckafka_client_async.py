@@ -529,6 +529,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteGroupSubscribeTopic(
+            self,
+            request: models.DeleteGroupSubscribeTopicRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGroupSubscribeTopicResponse:
+        """
+        删除消费分组订阅的topic(消费分组必须是Empty 状态)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGroupSubscribeTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGroupSubscribeTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteInstancePost(
             self,
             request: models.DeleteInstancePostRequest,
@@ -992,6 +1010,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "DescribeInstancesDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstancesDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModifyType(
+            self,
+            request: models.DescribeModifyTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModifyTypeResponse:
+        """
+        查询实例变配类型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModifyType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModifyTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

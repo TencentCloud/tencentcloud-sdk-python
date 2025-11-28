@@ -164,6 +164,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelUpgradePlan(self, request):
+        r"""取消升级计划
+
+        :param request: Request instance for CancelUpgradePlan.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CancelUpgradePlanRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CancelUpgradePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelUpgradePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelUpgradePlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckEdgeClusterCIDR(self, request):
         r"""检查边缘计算集群的CIDR是否冲突
 
@@ -339,6 +362,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateClusterInstances", params, headers=headers)
             response = json.loads(body)
             model = models.CreateClusterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateClusterMaintenanceWindowAndExclusions(self, request):
+        r"""创建集群维护时间窗口和排除项
+
+        :param request: Request instance for CreateClusterMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterMaintenanceWindowAndExclusionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -624,6 +670,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGlobalMaintenanceWindowAndExclusions(self, request):
+        r"""创建全局维护时间窗口和排除项
+
+        :param request: Request instance for CreateGlobalMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateGlobalMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateGlobalMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalMaintenanceWindowAndExclusionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateImageCache(self, request):
         r"""创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
 
@@ -877,6 +946,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRollOutSequence(self, request):
+        r"""创建集群发布序列
+
+        :param request: Request instance for CreateRollOutSequence.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateRollOutSequenceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateRollOutSequenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRollOutSequence", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRollOutSequenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTKEEdgeCluster(self, request):
         r"""创建边缘计算集群
 
@@ -1052,6 +1144,29 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteClusterInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteClusterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteClusterMaintenanceWindowAndExclusion(self, request):
+        r"""删除集群维护时间窗口和排除项
+
+        :param request: Request instance for DeleteClusterMaintenanceWindowAndExclusion.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterMaintenanceWindowAndExclusionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterMaintenanceWindowAndExclusionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterMaintenanceWindowAndExclusion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterMaintenanceWindowAndExclusionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1282,6 +1397,29 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteEdgeClusterInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEdgeClusterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlobalMaintenanceWindowAndExclusion(self, request):
+        r"""删除全集维护时间窗口和排除项
+
+        :param request: Request instance for DeleteGlobalMaintenanceWindowAndExclusion.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteGlobalMaintenanceWindowAndExclusionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteGlobalMaintenanceWindowAndExclusionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlobalMaintenanceWindowAndExclusion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlobalMaintenanceWindowAndExclusionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1558,6 +1696,29 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteReservedInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteReservedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRollOutSequence(self, request):
+        r"""删除集群发布序列
+
+        :param request: Request instance for DeleteRollOutSequence.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteRollOutSequenceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteRollOutSequenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRollOutSequence", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRollOutSequenceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2073,6 +2234,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterMaintenanceWindowAndExclusions(self, request):
+        r"""获取集群维护时间窗口和排除项
+
+        :param request: Request instance for DescribeClusterMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterMaintenanceWindowAndExclusionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterNodePoolDetail(self, request):
         r"""查询节点池详情
 
@@ -2202,6 +2386,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeClusterReleases", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterReleasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterRollOutSequenceTags(self, request):
+        r"""查询集群发布序列标签
+
+        :param request: Request instance for DescribeClusterRollOutSequenceTags.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRollOutSequenceTagsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRollOutSequenceTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterRollOutSequenceTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterRollOutSequenceTagsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2754,6 +2961,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeExternalNodeSupportConfig", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExternalNodeSupportConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGlobalMaintenanceWindowAndExclusions(self, request):
+        r"""获取全局维护时间窗口和排除项
+
+        :param request: Request instance for DescribeGlobalMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeGlobalMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeGlobalMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalMaintenanceWindowAndExclusionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3591,6 +3821,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRollOutSequences(self, request):
+        r"""查询集群发布序列
+
+        :param request: Request instance for DescribeRollOutSequences.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRollOutSequencesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRollOutSequencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRollOutSequences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRollOutSequencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRouteTableConflicts(self, request):
         r"""查询路由表冲突列表
 
@@ -3766,6 +4019,52 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgradeTaskDetail(self, request):
+        r"""查询计划升级任务详情
+
+        :param request: Request instance for DescribeUpgradeTaskDetail.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeUpgradeTaskDetailRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeUpgradeTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgradeTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgradeTasks(self, request):
+        r"""查询计划升级任务
+
+        :param request: Request instance for DescribeUpgradeTasks.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeUpgradeTasksRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeUpgradeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgradeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4488,6 +4787,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterMaintenanceWindowAndExclusions(self, request):
+        r"""更新集群维护时间窗口和排除项
+
+        :param request: Request instance for ModifyClusterMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterMaintenanceWindowAndExclusionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterNodePool(self, request):
         r"""编辑节点池
 
@@ -4502,6 +4824,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterRollOutSequenceTags(self, request):
+        r"""更新集群发布序列标签
+
+        :param request: Request instance for ModifyClusterRollOutSequenceTags.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRollOutSequenceTagsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRollOutSequenceTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterRollOutSequenceTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterRollOutSequenceTagsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4571,6 +4916,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterVirtualNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterVirtualNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalMaintenanceWindowAndExclusions(self, request):
+        r"""更新全局维护时间窗口和排除项
+
+        :param request: Request instance for ModifyGlobalMaintenanceWindowAndExclusions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyGlobalMaintenanceWindowAndExclusionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyGlobalMaintenanceWindowAndExclusionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalMaintenanceWindowAndExclusions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalMaintenanceWindowAndExclusionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4879,6 +5247,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRollOutSequence(self, request):
+        r"""更新集群发布序列
+
+        :param request: Request instance for ModifyRollOutSequence.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyRollOutSequenceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyRollOutSequenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRollOutSequence", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRollOutSequenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveNodeFromNodePool(self, request):
         r"""移出节点池节点，但保留在集群内
 
@@ -5054,6 +5445,29 @@ class TkeClient(AbstractClient):
             body = self.call("SetNodePoolNodeProtection", params, headers=headers)
             response = json.loads(body)
             model = models.SetNodePoolNodeProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchClusterEndpoint(self, request):
+        r"""切换集群网络访问链路为直连
+
+        :param request: Request instance for SwitchClusterEndpoint.
+        :type request: :class:`tencentcloud.tke.v20180525.models.SwitchClusterEndpointRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SwitchClusterEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchClusterEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchClusterEndpointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -269,6 +269,9 @@ INVALIDPARAMETER_INVALIDACCESSPOLICY = 'InvalidParameter.InvalidAccessPolicy'
 # 指定的Spark任务程序包文件格式不匹配，当前仅支持.jar或.py
 INVALIDPARAMETER_INVALIDAPPFILEFORMAT = 'InvalidParameter.InvalidAppFileFormat'
 
+# 指定的桶不存在
+INVALIDPARAMETER_INVALIDBUCKETNAME = 'InvalidParameter.InvalidBucketName'
+
 # 字段名称设置错误，字段名称必须小于等于128字节
 INVALIDPARAMETER_INVALIDCOLUMNNAMELENGTH = 'InvalidParameter.InvalidColumnNameLength'
 
@@ -524,6 +527,9 @@ INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = 'InvalidParameter.SparkJobSortByTy
 # 任务已经结束，不能取消。
 INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
 
+# 过滤字段类型不匹配，当前仅支持： task-id/task-sql-keyword/task-kind/task-operator/batch-id/session-id/task-state/task-time-sum/stage-start-time/input-records-sum/output-records-sum/output-bytes-sum/output-files-num/output-small-files-num/shuffle-read-records-sum/shuffle-read-bytes-sum
+INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = 'InvalidParameter.TaskListSortByTypeNotMatch'
+
 # 任务不存在。
 INVALIDPARAMETER_TASKNOTFOUND = 'InvalidParameter.TaskNotFound'
 
@@ -670,6 +676,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # 账号余额不足，无法执行SQL任务。
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
+
+# 网关不处于运行中
+RESOURCEUNAVAILABLE_GATEWAYNOTRUNNING = 'ResourceUnavailable.GatewayNotRunning'
 
 # 网关未运行
 RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = 'ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning'

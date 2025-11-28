@@ -2213,81 +2213,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRocketMQSmoothMigrationTaskList(self, request):
-        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        用于查询RocketMQ平滑迁移任务列表
-
-        :param request: Request instance for DescribeRocketMQSmoothMigrationTaskList.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSmoothMigrationTaskListRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSmoothMigrationTaskListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRocketMQSmoothMigrationTaskList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRocketMQSmoothMigrationTaskListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeRocketMQSourceClusterGroupList(self, request):
-        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        平滑迁移过程获取源集群group列表接口
-
-        :param request: Request instance for DescribeRocketMQSourceClusterGroupList.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterGroupListRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterGroupListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRocketMQSourceClusterGroupList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRocketMQSourceClusterGroupListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeRocketMQSourceClusterTopicList(self, request):
-        r"""平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-
-        平滑迁移过程获取源集群topic列表接口
-
-        :param request: Request instance for DescribeRocketMQSourceClusterTopicList.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterTopicListRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterTopicListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRocketMQSourceClusterTopicList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRocketMQSourceClusterTopicListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeRocketMQSubscriptions(self, request):
         r"""用于获取RocketMQ消费组订阅关系数据
 
@@ -2325,6 +2250,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRocketMQTopUsages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRocketMQTopUsagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRocketMQTopic(self, request):
+        r"""获取RocketMQ主题详情
+
+        :param request: Request instance for DescribeRocketMQTopic.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQTopicResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

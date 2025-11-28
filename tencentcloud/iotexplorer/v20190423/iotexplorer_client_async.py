@@ -151,6 +151,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindTWeTalkAIBot(
+            self,
+            request: models.BindTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.BindTWeTalkAIBotResponse:
+        """
+        用于绑定一个产品和智能体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CallDeviceActionAsync(
             self,
             request: models.CallDeviceActionAsyncRequest,
@@ -639,6 +657,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTWeTalkAIBot(
+            self,
+            request: models.CreateTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeTalkAIBotResponse:
+        """
+        用于新增TWeTalk智能体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTWeTalkProductConfig(
             self,
             request: models.CreateTWeTalkProductConfigRequest,
@@ -904,6 +940,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteStudioProduct"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteStudioProductResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTWeTalkAIBot(
+            self,
+            request: models.DeleteTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeTalkAIBotResponse:
+        """
+        用于删除TWeTalk智能体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeTalkAIBotResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1971,6 +2025,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTWeTalkAIBot(
+            self,
+            request: models.DescribeTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeTalkAIBotResponse:
+        """
+        用于查询TWeTalk智能体详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTWeTalkProductConfig(
             self,
             request: models.DescribeTWeTalkProductConfigRequest,
@@ -2434,6 +2506,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "GetTWeCallActiveStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTWeCallActiveStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTWeTalkAIBotList(
+            self,
+            request: models.GetTWeTalkAIBotListRequest,
+            opts: Dict = None,
+    ) -> models.GetTWeTalkAIBotListResponse:
+        """
+        用于查询TWeTalk智能体列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTWeTalkAIBotList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTWeTalkAIBotListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2979,6 +3069,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTWeTalkAIBot(
+            self,
+            request: models.ModifyTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeTalkAIBotResponse:
+        """
+        用于修改TWeTalk智能体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTWeTalkProductConfig(
             self,
             request: models.ModifyTWeTalkProductConfigRequest,
@@ -3392,6 +3500,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "UnbindProducts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindProductsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindTWeTalkAIBot(
+            self,
+            request: models.UnbindTWeTalkAIBotRequest,
+            opts: Dict = None,
+    ) -> models.UnbindTWeTalkAIBotResponse:
+        """
+        用于解除一个产品和智能体的绑定。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindTWeTalkAIBot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindTWeTalkAIBotResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
