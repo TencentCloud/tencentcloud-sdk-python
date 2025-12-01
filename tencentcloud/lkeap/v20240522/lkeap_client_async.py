@@ -44,12 +44,6 @@ class LkeapClient(AbstractClient):
             - DeepSeek-V3-0324为671B参数MoE模型，在编程与技术能力、上下文理解与长文本处理等方面优势突出。
             - 支持128K上下文长度，最大输出16k（不含思维链）。
             - 注意：相比于DeepSeek-V3，DeepSeek-V3-0324仅更新了模型权重，未增加参数量。总模型大小为685B，其中包括671B的主模型权重和 14B 的多令牌预测（MTP）模块权重，后续均描述主模型参数量。
-        - DeepSeek-V3（model 参数值为**deepseek-v3**）
-            - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
-            - 支持64K上下文长度，最大输出16k。
-        - DeepSeek-R1（model 参数值为**deepseek-r1**）
-            - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
-            -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
         - DeepSeek-R1-0528（model 参数值为**deepseek-r1-0528**）
             - DeepSeek-R1-0528为671B 模型，架构优化与训练策略升级后，相比上一版本在代码生成、长文本处理和复杂推理领域提升明显。
             -  支持128K上下文长度，最大输入长度96k，最大输出16k（默认4k），最大思维链输出长度32k。
@@ -67,11 +61,7 @@ class LkeapClient(AbstractClient):
 
         - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://console.cloud.tencent.com/lkeap/settings)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 
-            -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-
             -  DeepSeek-R1-0528 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-
-            - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 
             - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 
@@ -109,7 +99,7 @@ class LkeapClient(AbstractClient):
 
         - 其中SecretKey和SecretID需要从腾讯云控制台获取
 
-        - 参数params中模型Model字段可以选择“deepseek-r1“和“deepseek-v3”
+        - 参数params中模型Model字段可以选择“deepseek-r1-0528“和“deepseek-v3-0324”
 
         ```
         # -*- coding: utf-8 -*-
@@ -140,7 +130,7 @@ class LkeapClient(AbstractClient):
             clientProfile = ClientProfile()
             clientProfile.httpProfile = httpProfile
 
-            params = "{\"Model\":\"deepseek-r1\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
+            params = "{\"Model\":\"deepseek-r1-0528\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
             common_client = CommonClient("lkeap", "2024-05-22", cred, "ap-guangzhou", profile=clientProfile)
             resp = common_client._call_and_deserialize("ChatCompletions", json.loads(params), NonStreamResponse)
             if isinstance(resp, NonStreamResponse):  # 非流式响应
@@ -153,7 +143,7 @@ class LkeapClient(AbstractClient):
 
         ```
 
-        **DeepSeek-R1使用建议**
+        **DeepSeek-R1-0528使用建议**
 
         1. 将温度设置在 0.5-0.7 范围内（建议为0.6），以防止无休止的重复或不连贯的输出。
         2. 避免添加system prompt，所有说明都应包含在user prompt中。

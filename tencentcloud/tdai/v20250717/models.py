@@ -1908,12 +1908,18 @@ class DescribeChatDetailRequest(AbstractModel):
         :type InstanceId: str
         :param _ChatId: 会话Id
         :type ChatId: str
-        :param _LastStreamingTokenId: 最后一条流式TokenID
-        :type LastStreamingTokenId: int
+        :param _StreamingId: 流ID
+        :type StreamingId: str
+        :param _BeginStreamingTokenId: 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
+        :type BeginStreamingTokenId: str
+        :param _TokenLimit: 单次获取的token数量，默认2000
+        :type TokenLimit: int
         """
         self._InstanceId = None
         self._ChatId = None
-        self._LastStreamingTokenId = None
+        self._StreamingId = None
+        self._BeginStreamingTokenId = None
+        self._TokenLimit = None
 
     @property
     def InstanceId(self):
@@ -1938,21 +1944,45 @@ class DescribeChatDetailRequest(AbstractModel):
         self._ChatId = ChatId
 
     @property
-    def LastStreamingTokenId(self):
-        r"""最后一条流式TokenID
+    def StreamingId(self):
+        r"""流ID
+        :rtype: str
+        """
+        return self._StreamingId
+
+    @StreamingId.setter
+    def StreamingId(self, StreamingId):
+        self._StreamingId = StreamingId
+
+    @property
+    def BeginStreamingTokenId(self):
+        r"""开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
+        :rtype: str
+        """
+        return self._BeginStreamingTokenId
+
+    @BeginStreamingTokenId.setter
+    def BeginStreamingTokenId(self, BeginStreamingTokenId):
+        self._BeginStreamingTokenId = BeginStreamingTokenId
+
+    @property
+    def TokenLimit(self):
+        r"""单次获取的token数量，默认2000
         :rtype: int
         """
-        return self._LastStreamingTokenId
+        return self._TokenLimit
 
-    @LastStreamingTokenId.setter
-    def LastStreamingTokenId(self, LastStreamingTokenId):
-        self._LastStreamingTokenId = LastStreamingTokenId
+    @TokenLimit.setter
+    def TokenLimit(self, TokenLimit):
+        self._TokenLimit = TokenLimit
 
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ChatId = params.get("ChatId")
-        self._LastStreamingTokenId = params.get("LastStreamingTokenId")
+        self._StreamingId = params.get("StreamingId")
+        self._BeginStreamingTokenId = params.get("BeginStreamingTokenId")
+        self._TokenLimit = params.get("TokenLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

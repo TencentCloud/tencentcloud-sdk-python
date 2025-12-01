@@ -40951,6 +40951,7 @@ class ImageEraseLogoConfig(AbstractModel):
         :param _DetectTypes: 图片框选区域类型，可选值：
 <li>logo：图标；</li>
 <li>text：文字；</li>
+<li>watermark：水印；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetectTypes: list of str
         """
@@ -40991,6 +40992,7 @@ class ImageEraseLogoConfig(AbstractModel):
         r"""图片框选区域类型，可选值：
 <li>logo：图标；</li>
 <li>text：文字；</li>
+<li>watermark：水印；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -57170,8 +57172,9 @@ class ProcessImageRequest(AbstractModel):
 如果不填，则默认为相对路径：{inputName}.{format}。
         :type OutputPath: str
         :param _Definition: 图片处理模板唯一标识。
+图片模板功能内测中，如需使用请提交工单申请。
         :type Definition: int
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :type ResourceId: str
         :param _ImageTask: 图片处理参数。
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
@@ -57238,6 +57241,7 @@ class ProcessImageRequest(AbstractModel):
     @property
     def Definition(self):
         r"""图片处理模板唯一标识。
+图片模板功能内测中，如需使用请提交工单申请。
         :rtype: int
         """
         return self._Definition
@@ -57248,7 +57252,7 @@ class ProcessImageRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :rtype: str
         """
         return self._ResourceId

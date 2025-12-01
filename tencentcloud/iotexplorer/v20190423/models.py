@@ -14987,6 +14987,8 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         :type OverrideMode: int
         :param _TaskUserDefine: 用户自定义消息
         :type TaskUserDefine: str
+        :param _RateLimit: 每分钟发送设备量
+        :type RateLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15008,6 +15010,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._RetryInterval = None
         self._OverrideMode = None
         self._TaskUserDefine = None
+        self._RateLimit = None
         self._RequestId = None
 
     @property
@@ -15209,6 +15212,17 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._TaskUserDefine = TaskUserDefine
 
     @property
+    def RateLimit(self):
+        r"""每分钟发送设备量
+        :rtype: int
+        """
+        return self._RateLimit
+
+    @RateLimit.setter
+    def RateLimit(self, RateLimit):
+        self._RateLimit = RateLimit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15239,6 +15253,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._RetryInterval = params.get("RetryInterval")
         self._OverrideMode = params.get("OverrideMode")
         self._TaskUserDefine = params.get("TaskUserDefine")
+        self._RateLimit = params.get("RateLimit")
         self._RequestId = params.get("RequestId")
 
 

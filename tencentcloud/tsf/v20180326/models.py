@@ -14682,9 +14682,9 @@ class CreateTaskFlowRequest(AbstractModel):
         :type TriggerRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
         :param _FlowEdges: 工作流任务节点列表
         :type FlowEdges: list of TaskFlowEdge
-        :param _TimeOut: 工作流执行超时时间
+        :param _TimeOut: 工作流执行超时时间，单位：毫秒
         :type TimeOut: int
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 数据集列表
         :type ProgramIdList: list of str
         """
         self._FlowName = None
@@ -14728,7 +14728,7 @@ class CreateTaskFlowRequest(AbstractModel):
 
     @property
     def TimeOut(self):
-        r"""工作流执行超时时间
+        r"""工作流执行超时时间，单位：毫秒
         :rtype: int
         """
         return self._TimeOut
@@ -14739,7 +14739,7 @@ class CreateTaskFlowRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        r"""无
+        r"""数据集列表
         :rtype: list of str
         """
         return self._ProgramIdList
