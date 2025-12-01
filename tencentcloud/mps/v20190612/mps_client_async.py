@@ -194,7 +194,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateBlindWatermarkTemplateResponse:
         """
-        创建用户自定义数字水印模板，数量上限：1000。
+        创建用户自定义数字水印模板。
         """
         
         kwargs = {}

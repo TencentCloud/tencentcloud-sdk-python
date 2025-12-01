@@ -1007,8 +1007,11 @@ class CreateChatCompletionRequest(AbstractModel):
         r"""
         :param _IsHidden: 是否隐藏
         :type IsHidden: bool
+        :param _IsChatHidden: 是否隐藏会话
+        :type IsChatHidden: bool
         """
         self._IsHidden = None
+        self._IsChatHidden = None
 
     @property
     def IsHidden(self):
@@ -1021,9 +1024,21 @@ class CreateChatCompletionRequest(AbstractModel):
     def IsHidden(self, IsHidden):
         self._IsHidden = IsHidden
 
+    @property
+    def IsChatHidden(self):
+        r"""是否隐藏会话
+        :rtype: bool
+        """
+        return self._IsChatHidden
+
+    @IsChatHidden.setter
+    def IsChatHidden(self, IsChatHidden):
+        self._IsChatHidden = IsChatHidden
+
 
     def _deserialize(self, params):
         self._IsHidden = params.get("IsHidden")
+        self._IsChatHidden = params.get("IsChatHidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -235,7 +235,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateBlindWatermarkTemplate(self, request):
-        r"""创建用户自定义数字水印模板，数量上限：1000。
+        r"""创建用户自定义数字水印模板。
 
         :param request: Request instance for CreateBlindWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateBlindWatermarkTemplateRequest`

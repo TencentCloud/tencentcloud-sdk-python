@@ -486,6 +486,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQTopicV2(self, request):
+        r"""创建RocketMQ主题
+
+        :param request: Request instance for CreateRocketMQTopicV2.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicV2Request`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQTopicV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQTopicV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQVipInstance(self, request):
         r"""创建RocketMQ专享实例
 

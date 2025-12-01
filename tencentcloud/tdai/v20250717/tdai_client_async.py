@@ -67,7 +67,7 @@ class TdaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateChatCompletionResponse:
         """
-        用于创建一次回话的SSE接口
+        用于创建一次会话的SSE接口
         """
         
         kwargs = {}

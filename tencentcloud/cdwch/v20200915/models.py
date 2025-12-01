@@ -1272,11 +1272,14 @@ class ConfigSubmitContext(AbstractModel):
         :type NewConfValue: str
         :param _FilePath: 保存配置文件的路径
         :type FilePath: str
+        :param _Ip: 节点ip信息，可选参数，当修改集群节点级配置（例如keeper_config.xml）时此参数必填；
+        :type Ip: str
         """
         self._FileName = None
         self._OldConfValue = None
         self._NewConfValue = None
         self._FilePath = None
+        self._Ip = None
 
     @property
     def FileName(self):
@@ -1322,12 +1325,24 @@ class ConfigSubmitContext(AbstractModel):
     def FilePath(self, FilePath):
         self._FilePath = FilePath
 
+    @property
+    def Ip(self):
+        r"""节点ip信息，可选参数，当修改集群节点级配置（例如keeper_config.xml）时此参数必填；
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
         self._OldConfValue = params.get("OldConfValue")
         self._NewConfValue = params.get("NewConfValue")
         self._FilePath = params.get("FilePath")
+        self._Ip = params.get("Ip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5618,7 +5633,7 @@ class InstanceNode(AbstractModel):
         :type NodeGroups: list of GroupInfo
         :param _Rip: VPC IP
         :type Rip: str
-        :param _IsCHProxy: ture的时候表示该节点上部署了chproxy进程
+        :param _IsCHProxy: ture的时候表示该节点上部署了chPROXY进程
         :type IsCHProxy: bool
         :param _Status: 节点状态
         :type Status: str
@@ -5626,10 +5641,12 @@ class InstanceNode(AbstractModel):
         :type UUID: str
         :param _Zone: 区
         :type Zone: str
-        :param _ZoneDesc: 区描述
+        :param _ZoneDesc: 去描述
         :type ZoneDesc: str
         :param _RealResourceId: 真实资源id
         :type RealResourceId: str
+        :param _SubnetId: 子网信息
+        :type SubnetId: str
         """
         self._Ip = None
         self._Spec = None
@@ -5646,6 +5663,7 @@ class InstanceNode(AbstractModel):
         self._Zone = None
         self._ZoneDesc = None
         self._RealResourceId = None
+        self._SubnetId = None
 
     @property
     def Ip(self):
@@ -5748,7 +5766,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def IsCHProxy(self):
-        r"""ture的时候表示该节点上部署了chproxy进程
+        r"""ture的时候表示该节点上部署了chPROXY进程
         :rtype: bool
         """
         return self._IsCHProxy
@@ -5792,7 +5810,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def ZoneDesc(self):
-        r"""区描述
+        r"""去描述
         :rtype: str
         """
         return self._ZoneDesc
@@ -5811,6 +5829,17 @@ class InstanceNode(AbstractModel):
     @RealResourceId.setter
     def RealResourceId(self, RealResourceId):
         self._RealResourceId = RealResourceId
+
+    @property
+    def SubnetId(self):
+        r"""子网信息
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
@@ -5834,6 +5863,7 @@ class InstanceNode(AbstractModel):
         self._Zone = params.get("Zone")
         self._ZoneDesc = params.get("ZoneDesc")
         self._RealResourceId = params.get("RealResourceId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

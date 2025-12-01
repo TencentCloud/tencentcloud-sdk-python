@@ -73,7 +73,7 @@ class TdaiClient(AbstractClient):
 
 
     def CreateChatCompletion(self, request):
-        r"""用于创建一次回话的SSE接口
+        r"""用于创建一次会话的SSE接口
 
         :param request: Request instance for CreateChatCompletion.
         :type request: :class:`tencentcloud.tdai.v20250717.models.CreateChatCompletionRequest`

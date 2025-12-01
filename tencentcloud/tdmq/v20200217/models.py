@@ -6296,6 +6296,165 @@ class CreateRocketMQTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQTopicV2Request(AbstractModel):
+    r"""CreateRocketMQTopicV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
+        :type Type: str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _PartitionNum: 分区数，全局顺序无效
+        :type PartitionNum: int
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
+        """
+        self._Topic = None
+        self._Type = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._Remark = None
+        self._PartitionNum = None
+        self._TagList = None
+
+    @property
+    def Topic(self):
+        r"""主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        r"""主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PartitionNum(self):
+        r"""分区数，全局顺序无效
+        :rtype: int
+        """
+        return self._PartitionNum
+
+    @PartitionNum.setter
+    def PartitionNum(self, PartitionNum):
+        self._PartitionNum = PartitionNum
+
+    @property
+    def TagList(self):
+        r"""标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        self._PartitionNum = params.get("PartitionNum")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQTopicV2Response(AbstractModel):
+    r"""CreateRocketMQTopicV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQVipInstanceRequest(AbstractModel):
     r"""CreateRocketMQVipInstance请求参数结构体
 

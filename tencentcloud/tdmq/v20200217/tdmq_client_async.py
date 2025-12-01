@@ -385,6 +385,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQTopicV2(
+            self,
+            request: models.CreateRocketMQTopicV2Request,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQTopicV2Response:
+        """
+        创建RocketMQ主题
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQTopicV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQTopicV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQVipInstance(
             self,
             request: models.CreateRocketMQVipInstanceRequest,

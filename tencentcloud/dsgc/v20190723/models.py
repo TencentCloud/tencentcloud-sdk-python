@@ -4679,17 +4679,17 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
         r"""
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
+        :param _CosBucketItems: 必填，COS资源列表
+        :type CosBucketItems: list of CosBucketItem
         :param _ResourceRegion: 资源所处地域。
         :type ResourceRegion: str
         :param _Buckets: COS桶列表
         :type Buckets: list of str
-        :param _CosBucketItems: 必填，COS资源列表
-        :type CosBucketItems: list of CosBucketItem
         """
         self._DspaId = None
+        self._CosBucketItems = None
         self._ResourceRegion = None
         self._Buckets = None
-        self._CosBucketItems = None
 
     @property
     def DspaId(self):
@@ -4701,6 +4701,17 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
     @DspaId.setter
     def DspaId(self, DspaId):
         self._DspaId = DspaId
+
+    @property
+    def CosBucketItems(self):
+        r"""必填，COS资源列表
+        :rtype: list of CosBucketItem
+        """
+        return self._CosBucketItems
+
+    @CosBucketItems.setter
+    def CosBucketItems(self, CosBucketItems):
+        self._CosBucketItems = CosBucketItems
 
     @property
     def ResourceRegion(self):
@@ -4732,28 +4743,17 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
         self._Buckets = Buckets
 
-    @property
-    def CosBucketItems(self):
-        r"""必填，COS资源列表
-        :rtype: list of CosBucketItem
-        """
-        return self._CosBucketItems
-
-    @CosBucketItems.setter
-    def CosBucketItems(self, CosBucketItems):
-        self._CosBucketItems = CosBucketItems
-
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
-        self._ResourceRegion = params.get("ResourceRegion")
-        self._Buckets = params.get("Buckets")
         if params.get("CosBucketItems") is not None:
             self._CosBucketItems = []
             for item in params.get("CosBucketItems"):
                 obj = CosBucketItem()
                 obj._deserialize(item)
                 self._CosBucketItems.append(obj)
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._Buckets = params.get("Buckets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4803,6 +4803,8 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
         :type DspaId: str
         :param _MetaType: 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
         :type MetaType: str
+        :param _CloudResourceItems: 必填，云数据库资源列表。
+        :type CloudResourceItems: list of CloudResourceItem
         :param _ResourceRegion: 资源所处地域。
         :type ResourceRegion: str
         :param _UpdateStatus: 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
@@ -4811,16 +4813,14 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
         :type UpdateId: str
         :param _Items: 云上资源列表。
         :type Items: list of DspaCloudResourceMeta
-        :param _CloudResourceItems: 必填，云数据库资源列表。
-        :type CloudResourceItems: list of CloudResourceItem
         """
         self._DspaId = None
         self._MetaType = None
+        self._CloudResourceItems = None
         self._ResourceRegion = None
         self._UpdateStatus = None
         self._UpdateId = None
         self._Items = None
-        self._CloudResourceItems = None
 
     @property
     def DspaId(self):
@@ -4843,6 +4843,17 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     @MetaType.setter
     def MetaType(self, MetaType):
         self._MetaType = MetaType
+
+    @property
+    def CloudResourceItems(self):
+        r"""必填，云数据库资源列表。
+        :rtype: list of CloudResourceItem
+        """
+        return self._CloudResourceItems
+
+    @CloudResourceItems.setter
+    def CloudResourceItems(self, CloudResourceItems):
+        self._CloudResourceItems = CloudResourceItems
 
     @property
     def ResourceRegion(self):
@@ -4904,21 +4915,16 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
         self._Items = Items
 
-    @property
-    def CloudResourceItems(self):
-        r"""必填，云数据库资源列表。
-        :rtype: list of CloudResourceItem
-        """
-        return self._CloudResourceItems
-
-    @CloudResourceItems.setter
-    def CloudResourceItems(self, CloudResourceItems):
-        self._CloudResourceItems = CloudResourceItems
-
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._MetaType = params.get("MetaType")
+        if params.get("CloudResourceItems") is not None:
+            self._CloudResourceItems = []
+            for item in params.get("CloudResourceItems"):
+                obj = CloudResourceItem()
+                obj._deserialize(item)
+                self._CloudResourceItems.append(obj)
         self._ResourceRegion = params.get("ResourceRegion")
         self._UpdateStatus = params.get("UpdateStatus")
         self._UpdateId = params.get("UpdateId")
@@ -4928,12 +4934,6 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
                 obj = DspaCloudResourceMeta()
                 obj._deserialize(item)
                 self._Items.append(obj)
-        if params.get("CloudResourceItems") is not None:
-            self._CloudResourceItems = []
-            for item in params.get("CloudResourceItems"):
-                obj = CloudResourceItem()
-                obj._deserialize(item)
-                self._CloudResourceItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

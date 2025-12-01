@@ -7459,10 +7459,15 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
         :type AndroidAppId: str
         :param _AndroidAppVersion: 应用版本
         :type AndroidAppVersion: str
+        :param _InstallationMethod: 安装方式。
+CLEAR_DATA 默认，清理数据
+KEEP_DATA 保留数据
+        :type InstallationMethod: str
         """
         self._AndroidInstanceIds = None
         self._AndroidAppId = None
         self._AndroidAppVersion = None
+        self._InstallationMethod = None
 
     @property
     def AndroidInstanceIds(self):
@@ -7497,11 +7502,25 @@ class InstallAndroidInstancesAppRequest(AbstractModel):
     def AndroidAppVersion(self, AndroidAppVersion):
         self._AndroidAppVersion = AndroidAppVersion
 
+    @property
+    def InstallationMethod(self):
+        r"""安装方式。
+CLEAR_DATA 默认，清理数据
+KEEP_DATA 保留数据
+        :rtype: str
+        """
+        return self._InstallationMethod
+
+    @InstallationMethod.setter
+    def InstallationMethod(self, InstallationMethod):
+        self._InstallationMethod = InstallationMethod
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._AndroidAppId = params.get("AndroidAppId")
         self._AndroidAppVersion = params.get("AndroidAppVersion")
+        self._InstallationMethod = params.get("InstallationMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8879,9 +8898,12 @@ class ModifyAndroidInstancesUserIdRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _UserId: 用户 ID
         :type UserId: str
+        :param _ExpirationDuration: 有效时长。如果不填该字段，默认为永久。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :type ExpirationDuration: str
         """
         self._AndroidInstanceIds = None
         self._UserId = None
+        self._ExpirationDuration = None
 
     @property
     def AndroidInstanceIds(self):
@@ -8905,10 +8927,22 @@ class ModifyAndroidInstancesUserIdRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ExpirationDuration(self):
+        r"""有效时长。如果不填该字段，默认为永久。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :rtype: str
+        """
+        return self._ExpirationDuration
+
+    @ExpirationDuration.setter
+    def ExpirationDuration(self, ExpirationDuration):
+        self._ExpirationDuration = ExpirationDuration
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._UserId = params.get("UserId")
+        self._ExpirationDuration = params.get("ExpirationDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

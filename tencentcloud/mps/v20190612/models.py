@@ -25502,7 +25502,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        :param _Definitions: 视频内容分析模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -25523,7 +25523,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        r"""视频内容分析模板唯一标识过滤条件，数组长度限制：100。
         :rtype: list of int
         """
         return self._Definitions
@@ -25665,7 +25665,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+        :param _Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -25686,7 +25686,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+        r"""视频内容识别模板唯一标识过滤条件，数组长度限制：100。
         :rtype: list of int
         """
         return self._Definitions
