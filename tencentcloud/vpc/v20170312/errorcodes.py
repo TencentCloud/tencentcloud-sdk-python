@@ -1136,6 +1136,9 @@ UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = 'UnsupportedOperation.NatGatewayHaveR
 # NAT网关存在路由和最近流量“出/入带宽”峰值取大超过检测带宽阈值。
 UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = 'UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic'
 
+# NAT实例当前负载较高，请稍后重试
+UNSUPPORTEDOPERATION_NATGATEWAYISBUSY = 'UnsupportedOperation.NatGatewayIsBusy'
+
 # NAT网关已被封禁，不支持此操作。
 UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = 'UnsupportedOperation.NatGatewayRestricted'
 

@@ -7678,7 +7678,7 @@ class VpcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResetNatGatewayConnectionResponse:
         """
-        本接口（ResetNatGatewayConnection）用来NAT网关并发连接上限。
+        本接口（ResetNatGatewayConnection）用于调整传统型NAT网关并发连接数上限。
         """
         
         kwargs = {}

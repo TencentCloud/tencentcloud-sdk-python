@@ -966,6 +966,10 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         :type NeedRestart: int
         :param _FilePath: 保存配置文件的路径
         :type FilePath: str
+        :param _Ip: 节点级配置的ip，当ConfigLevel取值为node时，此参数必选；
+        :type Ip: str
+        :param _ConfigLevel: 可选参数，参数取值：node,cluster; node: 节点级参数配置，cluster: 实例级参数配置；
+        :type ConfigLevel: str
         """
         self._FileName = None
         self._FileConf = None
@@ -973,6 +977,8 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         self._OriParam = None
         self._NeedRestart = None
         self._FilePath = None
+        self._Ip = None
+        self._ConfigLevel = None
 
     @property
     def FileName(self):
@@ -1040,6 +1046,28 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
     def FilePath(self, FilePath):
         self._FilePath = FilePath
 
+    @property
+    def Ip(self):
+        r"""节点级配置的ip，当ConfigLevel取值为node时，此参数必选；
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ConfigLevel(self):
+        r"""可选参数，参数取值：node,cluster; node: 节点级参数配置，cluster: 实例级参数配置；
+        :rtype: str
+        """
+        return self._ConfigLevel
+
+    @ConfigLevel.setter
+    def ConfigLevel(self, ConfigLevel):
+        self._ConfigLevel = ConfigLevel
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -1048,6 +1076,8 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         self._OriParam = params.get("OriParam")
         self._NeedRestart = params.get("NeedRestart")
         self._FilePath = params.get("FilePath")
+        self._Ip = params.get("Ip")
+        self._ConfigLevel = params.get("ConfigLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -27385,10 +27385,13 @@ class ModifyAccountPasswordRequest(AbstractModel):
         :type NewPassword: str
         :param _Accounts: 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :type Accounts: list of Account
+        :param _SkipValidatePassword: 是否跳过校验密码复杂度
+        :type SkipValidatePassword: bool
         """
         self._InstanceId = None
         self._NewPassword = None
         self._Accounts = None
+        self._SkipValidatePassword = None
 
     @property
     def InstanceId(self):
@@ -27423,6 +27426,17 @@ class ModifyAccountPasswordRequest(AbstractModel):
     def Accounts(self, Accounts):
         self._Accounts = Accounts
 
+    @property
+    def SkipValidatePassword(self):
+        r"""是否跳过校验密码复杂度
+        :rtype: bool
+        """
+        return self._SkipValidatePassword
+
+    @SkipValidatePassword.setter
+    def SkipValidatePassword(self, SkipValidatePassword):
+        self._SkipValidatePassword = SkipValidatePassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -27433,6 +27447,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self._Accounts.append(obj)
+        self._SkipValidatePassword = params.get("SkipValidatePassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38048,8 +38063,11 @@ class SwitchForUpgradeRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
+        :param _IsRelatedSwitch: 是否开启关联切换，true为开启，false为关闭，默认false
+        :type IsRelatedSwitch: bool
         """
         self._InstanceId = None
+        self._IsRelatedSwitch = None
 
     @property
     def InstanceId(self):
@@ -38062,9 +38080,21 @@ class SwitchForUpgradeRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IsRelatedSwitch(self):
+        r"""是否开启关联切换，true为开启，false为关闭，默认false
+        :rtype: bool
+        """
+        return self._IsRelatedSwitch
+
+    @IsRelatedSwitch.setter
+    def IsRelatedSwitch(self, IsRelatedSwitch):
+        self._IsRelatedSwitch = IsRelatedSwitch
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IsRelatedSwitch = params.get("IsRelatedSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

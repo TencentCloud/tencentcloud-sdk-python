@@ -182,6 +182,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetUploadJobDetails(self, request):
+        r"""查询上传任务
+
+        :param request: Request instance for GetUploadJobDetails.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.GetUploadJobDetailsRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.GetUploadJobDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetUploadJobDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetUploadJobDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyChunk(self, request):
         r"""编辑修改分片
 
@@ -265,6 +288,29 @@ class DataagentClient(AbstractClient):
             body = self.call("StopChatAI", params, headers=headers)
             response = json.loads(body)
             model = models.StopChatAIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadAndCommitFile(self, request):
+        r"""上传提交文件
+
+        :param request: Request instance for UploadAndCommitFile.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.UploadAndCommitFileRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.UploadAndCommitFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadAndCommitFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadAndCommitFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

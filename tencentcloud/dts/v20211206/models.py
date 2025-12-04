@@ -4673,6 +4673,99 @@ class DBItem(AbstractModel):
         
 
 
+class DBOpFilter(AbstractModel):
+    r"""库/表/视图级别的 DDL/DML 白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: 规则生效的库名
+        :type DbName: str
+        :param _OpFilter: 库级 DDL/DML 过滤规则
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        :param _Tables: 表级 DDL/DML 过滤信息
+        :type Tables: list of TableFilter
+        :param _Views: 视图级 DDL/DML 过滤信息
+        :type Views: list of ViewFilter
+        """
+        self._DbName = None
+        self._OpFilter = None
+        self._Tables = None
+        self._Views = None
+
+    @property
+    def DbName(self):
+        r"""规则生效的库名
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def OpFilter(self):
+        r"""库级 DDL/DML 过滤规则
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+    @property
+    def Tables(self):
+        r"""表级 DDL/DML 过滤信息
+        :rtype: list of TableFilter
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Views(self):
+        r"""视图级 DDL/DML 过滤信息
+        :rtype: list of ViewFilter
+        """
+        return self._Views
+
+    @Views.setter
+    def Views(self, Views):
+        self._Views = Views
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = TableFilter()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Views") is not None:
+            self._Views = []
+            for item in params.get("Views"):
+                obj = ViewFilter()
+                obj._deserialize(item)
+                self._Views.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Database(AbstractModel):
     r"""需要同步的库表对象
 
@@ -14812,11 +14905,14 @@ class Objects(AbstractModel):
         :type AdvancedObjects: list of str
         :param _OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
         :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        :param _DatabasesOpFilter: 库/表/视图级 DML/DDL 白名单
+        :type DatabasesOpFilter: list of DBOpFilter
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
         self._OnlineDDL = None
+        self._DatabasesOpFilter = None
 
     @property
     def Mode(self):
@@ -14863,6 +14959,17 @@ class Objects(AbstractModel):
     def OnlineDDL(self, OnlineDDL):
         self._OnlineDDL = OnlineDDL
 
+    @property
+    def DatabasesOpFilter(self):
+        r"""库/表/视图级 DML/DDL 白名单
+        :rtype: list of DBOpFilter
+        """
+        return self._DatabasesOpFilter
+
+    @DatabasesOpFilter.setter
+    def DatabasesOpFilter(self, DatabasesOpFilter):
+        self._DatabasesOpFilter = DatabasesOpFilter
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -14876,6 +14983,12 @@ class Objects(AbstractModel):
         if params.get("OnlineDDL") is not None:
             self._OnlineDDL = OnlineDDL()
             self._OnlineDDL._deserialize(params.get("OnlineDDL"))
+        if params.get("DatabasesOpFilter") is not None:
+            self._DatabasesOpFilter = []
+            for item in params.get("DatabasesOpFilter"):
+                obj = DBOpFilter()
+                obj._deserialize(item)
+                self._DatabasesOpFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14963,6 +15076,62 @@ class OnlineDDL(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpFilter(AbstractModel):
+    r"""DDL/DML 过滤规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpTypes: DML 白名单
+        :type OpTypes: list of str
+        :param _DdlOptions: DDL 白名单
+        :type DdlOptions: list of DdlOption
+        """
+        self._OpTypes = None
+        self._DdlOptions = None
+
+    @property
+    def OpTypes(self):
+        r"""DML 白名单
+        :rtype: list of str
+        """
+        return self._OpTypes
+
+    @OpTypes.setter
+    def OpTypes(self, OpTypes):
+        self._OpTypes = OpTypes
+
+    @property
+    def DdlOptions(self):
+        r"""DDL 白名单
+        :rtype: list of DdlOption
+        """
+        return self._DdlOptions
+
+    @DdlOptions.setter
+    def DdlOptions(self, DdlOptions):
+        self._DdlOptions = DdlOptions
+
+
+    def _deserialize(self, params):
+        self._OpTypes = params.get("OpTypes")
+        if params.get("DdlOptions") is not None:
+            self._DdlOptions = []
+            for item in params.get("DdlOptions"):
+                obj = DdlOption()
+                obj._deserialize(item)
+                self._DdlOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20079,6 +20248,59 @@ class Table(AbstractModel):
         
 
 
+class TableFilter(AbstractModel):
+    r"""表级 DDL/DML 过滤信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 规则生效的表名
+        :type TableName: str
+        :param _OpFilter: 表级 DDL/DML 过滤规则
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        self._TableName = None
+        self._OpFilter = None
+
+    @property
+    def TableName(self):
+        r"""规则生效的表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def OpFilter(self):
+        r"""表级 DDL/DML 过滤规则
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableItem(AbstractModel):
     r"""表对象集合，当 TableMode 为 partial 时，此项需要填写
 
@@ -20617,6 +20839,59 @@ class View(AbstractModel):
     def _deserialize(self, params):
         self._ViewName = params.get("ViewName")
         self._NewViewName = params.get("NewViewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ViewFilter(AbstractModel):
+    r"""视图级 DDL/DML 过滤信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewName: 规则生效的视图名
+        :type ViewName: str
+        :param _OpFilter: 视图级 DDL/DML 过滤规则
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        self._ViewName = None
+        self._OpFilter = None
+
+    @property
+    def ViewName(self):
+        r"""规则生效的视图名
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def OpFilter(self):
+        r"""视图级 DDL/DML 过滤规则
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+
+    def _deserialize(self, params):
+        self._ViewName = params.get("ViewName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9704,7 +9704,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetNatGatewayConnection(self, request):
-        r"""本接口（ResetNatGatewayConnection）用来NAT网关并发连接上限。
+        r"""本接口（ResetNatGatewayConnection）用于调整传统型NAT网关并发连接数上限。
 
         :param request: Request instance for ResetNatGatewayConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionRequest`

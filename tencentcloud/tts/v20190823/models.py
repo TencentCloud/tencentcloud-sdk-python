@@ -37,7 +37,7 @@ class CreateTtsTaskRequest(AbstractModel):
         :type ModelType: int
         :param _VoiceType: 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
         :type VoiceType: int
-        :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+        :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
         :param _SampleRate: 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
         :type SampleRate: int
@@ -137,7 +137,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def PrimaryLanguage(self):
-        r"""主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+        r"""主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :rtype: int
         """
         return self._PrimaryLanguage
@@ -664,7 +664,7 @@ class TextToVoiceRequest(AbstractModel):
         :type VoiceType: int
         :param _FastVoiceType: 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。
         :type FastVoiceType: str
-        :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+        :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
         :param _SampleRate: 音频采样率：
 <li>24000：24k（部分音色支持，请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)）</li>
@@ -790,7 +790,7 @@ class TextToVoiceRequest(AbstractModel):
 
     @property
     def PrimaryLanguage(self):
-        r"""主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+        r"""主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :rtype: int
         """
         return self._PrimaryLanguage

@@ -1896,6 +1896,9 @@ class AllocateAddressesRequest(AbstractModel):
 <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
 <li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
         :type InternetChargeType: str
+        :param _IPChargeType: IP 资源计费模式，当前仅支持原生 IP。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+        :type IPChargeType: str
         :param _InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
 <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
@@ -1909,7 +1912,9 @@ class AllocateAddressesRequest(AbstractModel):
 <li>EIP：弹性公网 IP。 </li>
 <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
 <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
+<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+<li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
+关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
         :type AddressType: str
         :param _AnycastZone: Anycast发布域。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
@@ -1941,17 +1946,11 @@ AnycastEIP是否用于绑定负载均衡。
         :type AntiDDoSPackageId: str
         :param _ClientToken: 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
         :type ClientToken: str
-        :param _IPChargeType: 原生EIP IP资源的计费方式。
-<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
-<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
-<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
-</ul></li>
-</ul>
-        :type IPChargeType: str
         """
         self._AddressCount = None
         self._InternetServiceProvider = None
         self._InternetChargeType = None
+        self._IPChargeType = None
         self._InternetMaxBandwidthOut = None
         self._AddressChargePrepaid = None
         self._AddressType = None
@@ -1966,7 +1965,6 @@ AnycastEIP是否用于绑定负载均衡。
         self._Egress = None
         self._AntiDDoSPackageId = None
         self._ClientToken = None
-        self._IPChargeType = None
 
     @property
     def AddressCount(self):
@@ -2012,6 +2010,18 @@ AnycastEIP是否用于绑定负载均衡。
         self._InternetChargeType = InternetChargeType
 
     @property
+    def IPChargeType(self):
+        r"""IP 资源计费模式，当前仅支持原生 IP。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+        :rtype: str
+        """
+        return self._IPChargeType
+
+    @IPChargeType.setter
+    def IPChargeType(self, IPChargeType):
+        self._IPChargeType = IPChargeType
+
+    @property
     def InternetMaxBandwidthOut(self):
         r"""EIP出带宽上限，单位：Mbps。
 <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
@@ -2044,7 +2054,9 @@ AnycastEIP是否用于绑定负载均衡。
 <li>EIP：弹性公网 IP。 </li>
 <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
 <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
+<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+<li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
+关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
         :rtype: str
         """
         return self._AddressType
@@ -2186,27 +2198,12 @@ AnycastEIP是否用于绑定负载均衡。
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
-    @property
-    def IPChargeType(self):
-        r"""原生EIP IP资源的计费方式。
-<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
-<li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
-<li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
-</ul></li>
-</ul>
-        :rtype: str
-        """
-        return self._IPChargeType
-
-    @IPChargeType.setter
-    def IPChargeType(self, IPChargeType):
-        self._IPChargeType = IPChargeType
-
 
     def _deserialize(self, params):
         self._AddressCount = params.get("AddressCount")
         self._InternetServiceProvider = params.get("InternetServiceProvider")
         self._InternetChargeType = params.get("InternetChargeType")
+        self._IPChargeType = params.get("IPChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         if params.get("AddressChargePrepaid") is not None:
             self._AddressChargePrepaid = AddressChargePrepaid()
@@ -2228,7 +2225,6 @@ AnycastEIP是否用于绑定负载均衡。
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._ClientToken = params.get("ClientToken")
-        self._IPChargeType = params.get("IPChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8925,6 +8921,72 @@ class ConflictSource(AbstractModel):
         
 
 
+class ConnectionStateTimeouts(AbstractModel):
+    r"""NAT网关超时时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UDPMappingTimeout: UDP映射空闲时间，指多少秒以后UDP流停止向端点发送。取值范围为：3-7200秒，默认为10秒。
+        :type UDPMappingTimeout: int
+        :param _TCPEstablishedConnectionTimeout: TCP已建立的连接空闲超时，指多少秒以后连接变为空闲状态。取值范围为：40-10800秒，默认为10800秒。
+        :type TCPEstablishedConnectionTimeout: int
+        :param _TcpTimeWaitTimeout: TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
+        :type TcpTimeWaitTimeout: int
+        """
+        self._UDPMappingTimeout = None
+        self._TCPEstablishedConnectionTimeout = None
+        self._TcpTimeWaitTimeout = None
+
+    @property
+    def UDPMappingTimeout(self):
+        r"""UDP映射空闲时间，指多少秒以后UDP流停止向端点发送。取值范围为：3-7200秒，默认为10秒。
+        :rtype: int
+        """
+        return self._UDPMappingTimeout
+
+    @UDPMappingTimeout.setter
+    def UDPMappingTimeout(self, UDPMappingTimeout):
+        self._UDPMappingTimeout = UDPMappingTimeout
+
+    @property
+    def TCPEstablishedConnectionTimeout(self):
+        r"""TCP已建立的连接空闲超时，指多少秒以后连接变为空闲状态。取值范围为：40-10800秒，默认为10800秒。
+        :rtype: int
+        """
+        return self._TCPEstablishedConnectionTimeout
+
+    @TCPEstablishedConnectionTimeout.setter
+    def TCPEstablishedConnectionTimeout(self, TCPEstablishedConnectionTimeout):
+        self._TCPEstablishedConnectionTimeout = TCPEstablishedConnectionTimeout
+
+    @property
+    def TcpTimeWaitTimeout(self):
+        r"""TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
+        :rtype: int
+        """
+        return self._TcpTimeWaitTimeout
+
+    @TcpTimeWaitTimeout.setter
+    def TcpTimeWaitTimeout(self, TcpTimeWaitTimeout):
+        self._TcpTimeWaitTimeout = TcpTimeWaitTimeout
+
+
+    def _deserialize(self, params):
+        self._UDPMappingTimeout = params.get("UDPMappingTimeout")
+        self._TCPEstablishedConnectionTimeout = params.get("TCPEstablishedConnectionTimeout")
+        self._TcpTimeWaitTimeout = params.get("TcpTimeWaitTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAddressTemplateGroupRequest(AbstractModel):
     r"""CreateAddressTemplateGroup请求参数结构体
 
@@ -12025,6 +12087,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type NatProductVersion: int
         :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
         :type DeletionProtectionEnabled: bool
+        :param _ExclusiveType: 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :type ExclusiveType: str
         """
         self._NatGatewayName = None
         self._VpcId = None
@@ -12040,6 +12104,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._PublicIpFromSameZone = None
         self._NatProductVersion = None
         self._DeletionProtectionEnabled = None
+        self._ExclusiveType = None
 
     @property
     def NatGatewayName(self):
@@ -12199,6 +12264,17 @@ class CreateNatGatewayRequest(AbstractModel):
     def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
         self._DeletionProtectionEnabled = DeletionProtectionEnabled
 
+    @property
+    def ExclusiveType(self):
+        r"""独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :rtype: str
+        """
+        return self._ExclusiveType
+
+    @ExclusiveType.setter
+    def ExclusiveType(self, ExclusiveType):
+        self._ExclusiveType = ExclusiveType
+
 
     def _deserialize(self, params):
         self._NatGatewayName = params.get("NatGatewayName")
@@ -12220,6 +12296,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._PublicIpFromSameZone = params.get("PublicIpFromSameZone")
         self._NatProductVersion = params.get("NatProductVersion")
         self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
+        self._ExclusiveType = params.get("ExclusiveType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16519,6 +16596,8 @@ class CreateVpcRequest(AbstractModel):
         :type Tags: list of Tag
         :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
         :type EnableRouteVpcPublish: bool
+        :param _EnableRouteVpcPublishIpv6: vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :type EnableRouteVpcPublishIpv6: bool
         """
         self._VpcName = None
         self._CidrBlock = None
@@ -16527,6 +16606,7 @@ class CreateVpcRequest(AbstractModel):
         self._DomainName = None
         self._Tags = None
         self._EnableRouteVpcPublish = None
+        self._EnableRouteVpcPublishIpv6 = None
 
     @property
     def VpcName(self):
@@ -16605,6 +16685,17 @@ class CreateVpcRequest(AbstractModel):
     def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
         self._EnableRouteVpcPublish = EnableRouteVpcPublish
 
+    @property
+    def EnableRouteVpcPublishIpv6(self):
+        r"""vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublishIpv6
+
+    @EnableRouteVpcPublishIpv6.setter
+    def EnableRouteVpcPublishIpv6(self, EnableRouteVpcPublishIpv6):
+        self._EnableRouteVpcPublishIpv6 = EnableRouteVpcPublishIpv6
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -16619,6 +16710,7 @@ class CreateVpcRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
+        self._EnableRouteVpcPublishIpv6 = params.get("EnableRouteVpcPublishIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54969,6 +55061,8 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type EnableRouteVpcPublish: bool
         :param _EnableCdcPublish: 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
         :type EnableCdcPublish: bool
+        :param _EnableRouteVpcPublishIpv6: vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :type EnableRouteVpcPublishIpv6: bool
         """
         self._VpcId = None
         self._VpcName = None
@@ -54977,6 +55071,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._DomainName = None
         self._EnableRouteVpcPublish = None
         self._EnableCdcPublish = None
+        self._EnableRouteVpcPublishIpv6 = None
 
     @property
     def VpcId(self):
@@ -55055,6 +55150,17 @@ class ModifyVpcAttributeRequest(AbstractModel):
     def EnableCdcPublish(self, EnableCdcPublish):
         self._EnableCdcPublish = EnableCdcPublish
 
+    @property
+    def EnableRouteVpcPublishIpv6(self):
+        r"""vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublishIpv6
+
+    @EnableRouteVpcPublishIpv6.setter
+    def EnableRouteVpcPublishIpv6(self, EnableRouteVpcPublishIpv6):
+        self._EnableRouteVpcPublishIpv6 = EnableRouteVpcPublishIpv6
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -55064,6 +55170,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._DomainName = params.get("DomainName")
         self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         self._EnableCdcPublish = params.get("EnableCdcPublish")
+        self._EnableRouteVpcPublishIpv6 = params.get("EnableRouteVpcPublishIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56638,6 +56745,10 @@ class NatGateway(AbstractModel):
         :type DedicatedClusterId: str
         :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
         :type DeletionProtectionEnabled: bool
+        :param _ConnectionStateTimeouts: NAT实例连接超时时间
+        :type ConnectionStateTimeouts: :class:`tencentcloud.vpc.v20170312.models.ConnectionStateTimeouts`
+        :param _ExclusiveType: 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :type ExclusiveType: str
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -56662,6 +56773,8 @@ class NatGateway(AbstractModel):
         self._SmartScheduleMode = None
         self._DedicatedClusterId = None
         self._DeletionProtectionEnabled = None
+        self._ConnectionStateTimeouts = None
+        self._ExclusiveType = None
 
     @property
     def NatGatewayId(self):
@@ -56918,6 +57031,28 @@ class NatGateway(AbstractModel):
     def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
         self._DeletionProtectionEnabled = DeletionProtectionEnabled
 
+    @property
+    def ConnectionStateTimeouts(self):
+        r"""NAT实例连接超时时间
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ConnectionStateTimeouts`
+        """
+        return self._ConnectionStateTimeouts
+
+    @ConnectionStateTimeouts.setter
+    def ConnectionStateTimeouts(self, ConnectionStateTimeouts):
+        self._ConnectionStateTimeouts = ConnectionStateTimeouts
+
+    @property
+    def ExclusiveType(self):
+        r"""独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :rtype: str
+        """
+        return self._ExclusiveType
+
+    @ExclusiveType.setter
+    def ExclusiveType(self, ExclusiveType):
+        self._ExclusiveType = ExclusiveType
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -56963,6 +57098,10 @@ class NatGateway(AbstractModel):
         self._SmartScheduleMode = params.get("SmartScheduleMode")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
+        if params.get("ConnectionStateTimeouts") is not None:
+            self._ConnectionStateTimeouts = ConnectionStateTimeouts()
+            self._ConnectionStateTimeouts._deserialize(params.get("ConnectionStateTimeouts"))
+        self._ExclusiveType = params.get("ExclusiveType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62659,9 +62798,12 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
         :type NatGatewayId: str
         :param _MaxConcurrentConnection: NAT网关并发连接上限，形如：1000000、3000000、10000000。
         :type MaxConcurrentConnection: int
+        :param _ExclusiveType: 独享实例规格。如果要变配到独享实例，此参数必选，取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :type ExclusiveType: str
         """
         self._NatGatewayId = None
         self._MaxConcurrentConnection = None
+        self._ExclusiveType = None
 
     @property
     def NatGatewayId(self):
@@ -62685,10 +62827,22 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
     def MaxConcurrentConnection(self, MaxConcurrentConnection):
         self._MaxConcurrentConnection = MaxConcurrentConnection
 
+    @property
+    def ExclusiveType(self):
+        r"""独享实例规格。如果要变配到独享实例，此参数必选，取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+        :rtype: str
+        """
+        return self._ExclusiveType
+
+    @ExclusiveType.setter
+    def ExclusiveType(self, ExclusiveType):
+        self._ExclusiveType = ExclusiveType
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
         self._MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+        self._ExclusiveType = params.get("ExclusiveType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69788,12 +69942,12 @@ class TranslationAclRule(AbstractModel):
         :type Protocol: str
         :param _SourcePort: 源端口。
         :type SourcePort: str
-        :param _SourceCidr: 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
-        :type SourceCidr: str
         :param _DestinationPort: 目的端口。
         :type DestinationPort: str
         :param _DestinationCidr: 目的地址。
         :type DestinationCidr: str
+        :param _SourceCidr: 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
+        :type SourceCidr: str
         :param _AclRuleId: ACL规则`ID`。
         :type AclRuleId: int
         :param _Action: 是否匹配。
@@ -69803,9 +69957,9 @@ class TranslationAclRule(AbstractModel):
         """
         self._Protocol = None
         self._SourcePort = None
-        self._SourceCidr = None
         self._DestinationPort = None
         self._DestinationCidr = None
+        self._SourceCidr = None
         self._AclRuleId = None
         self._Action = None
         self._Description = None
@@ -69833,17 +69987,6 @@ class TranslationAclRule(AbstractModel):
         self._SourcePort = SourcePort
 
     @property
-    def SourceCidr(self):
-        r"""源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
-        :rtype: str
-        """
-        return self._SourceCidr
-
-    @SourceCidr.setter
-    def SourceCidr(self, SourceCidr):
-        self._SourceCidr = SourceCidr
-
-    @property
     def DestinationPort(self):
         r"""目的端口。
         :rtype: str
@@ -69864,6 +70007,17 @@ class TranslationAclRule(AbstractModel):
     @DestinationCidr.setter
     def DestinationCidr(self, DestinationCidr):
         self._DestinationCidr = DestinationCidr
+
+    @property
+    def SourceCidr(self):
+        r"""源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
+        :rtype: str
+        """
+        return self._SourceCidr
+
+    @SourceCidr.setter
+    def SourceCidr(self, SourceCidr):
+        self._SourceCidr = SourceCidr
 
     @property
     def AclRuleId(self):
@@ -69902,9 +70056,9 @@ class TranslationAclRule(AbstractModel):
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
         self._SourcePort = params.get("SourcePort")
-        self._SourceCidr = params.get("SourceCidr")
         self._DestinationPort = params.get("DestinationPort")
         self._DestinationCidr = params.get("DestinationCidr")
+        self._SourceCidr = params.get("SourceCidr")
         self._AclRuleId = params.get("AclRuleId")
         self._Action = params.get("Action")
         self._Description = params.get("Description")
@@ -71145,6 +71299,8 @@ class Vpc(AbstractModel):
         :type EnableRouteVpcPublish: bool
         :param _Ipv6CidrBlockSet: 返回多运营商IPv6 Cidr Block
         :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
+        :param _EnableRouteVpcPublishIpv6: vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :type EnableRouteVpcPublishIpv6: bool
         """
         self._VpcName = None
         self._VpcId = None
@@ -71161,6 +71317,7 @@ class Vpc(AbstractModel):
         self._AssistantCidrSet = None
         self._EnableRouteVpcPublish = None
         self._Ipv6CidrBlockSet = None
+        self._EnableRouteVpcPublishIpv6 = None
 
     @property
     def VpcName(self):
@@ -71327,6 +71484,17 @@ class Vpc(AbstractModel):
     def Ipv6CidrBlockSet(self, Ipv6CidrBlockSet):
         self._Ipv6CidrBlockSet = Ipv6CidrBlockSet
 
+    @property
+    def EnableRouteVpcPublishIpv6(self):
+        r"""vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublishIpv6
+
+    @EnableRouteVpcPublishIpv6.setter
+    def EnableRouteVpcPublishIpv6(self, EnableRouteVpcPublishIpv6):
+        self._EnableRouteVpcPublishIpv6 = EnableRouteVpcPublishIpv6
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -71359,6 +71527,7 @@ class Vpc(AbstractModel):
                 obj = ISPIPv6CidrBlock()
                 obj._deserialize(item)
                 self._Ipv6CidrBlockSet.append(obj)
+        self._EnableRouteVpcPublishIpv6 = params.get("EnableRouteVpcPublishIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2145,7 +2145,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQPublicAccessMonitorData(self, request):
-        r"""从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
+        r"""查询公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
+        当前 API 适用集群：4.x 专享集群 和 4.x 通用集群。5.x 集群暂不支持该功能。
 
         :param request: Request instance for DescribeRocketMQPublicAccessMonitorData.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessMonitorDataRequest`

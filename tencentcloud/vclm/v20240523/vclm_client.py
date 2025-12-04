@@ -165,6 +165,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVideoFaceFusionJob(self, request):
+        r"""查询视频人脸融合任务
+
+        :param request: Request instance for DescribeVideoFaceFusionJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoFaceFusionJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoFaceFusionJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoFaceFusionJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoFaceFusionJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoStylizationJob(self, request):
         r"""用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
@@ -296,6 +319,29 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitTemplateToVideoJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitTemplateToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitVideoFaceFusionJob(self, request):
+        r"""提交视频人脸融合任务
+
+        :param request: Request instance for SubmitVideoFaceFusionJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoFaceFusionJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoFaceFusionJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitVideoFaceFusionJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitVideoFaceFusionJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

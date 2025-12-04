@@ -1197,6 +1197,8 @@ class DataKeyMetadata(AbstractModel):
         :type DataKeyId: str
         :param _KeyId: CMK的全局唯一标识
         :type KeyId: str
+        :param _KeyName: CMK的名称
+        :type KeyName: str
         :param _DataKeyName: 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
         :type DataKeyName: str
         :param _NumberOfBytes: 数据密钥的长度,单位字节
@@ -1236,6 +1238,7 @@ class DataKeyMetadata(AbstractModel):
         """
         self._DataKeyId = None
         self._KeyId = None
+        self._KeyName = None
         self._DataKeyName = None
         self._NumberOfBytes = None
         self._CreateTime = None
@@ -1276,6 +1279,17 @@ class DataKeyMetadata(AbstractModel):
     @KeyId.setter
     def KeyId(self, KeyId):
         self._KeyId = KeyId
+
+    @property
+    def KeyName(self):
+        r"""CMK的名称
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
 
     @property
     def DataKeyName(self):
@@ -1479,6 +1493,7 @@ class DataKeyMetadata(AbstractModel):
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
         self._KeyId = params.get("KeyId")
+        self._KeyName = params.get("KeyName")
         self._DataKeyName = params.get("DataKeyName")
         self._NumberOfBytes = params.get("NumberOfBytes")
         self._CreateTime = params.get("CreateTime")
@@ -1984,7 +1999,7 @@ class DescribeKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyMetadata: 密钥属性信息
+        :param _KeyMetadata: 密钥属性信息。
         :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1994,7 +2009,7 @@ class DescribeKeyResponse(AbstractModel):
 
     @property
     def KeyMetadata(self):
-        r"""密钥属性信息
+        r"""密钥属性信息。
         :rtype: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
         """
         return self._KeyMetadata
@@ -3887,6 +3902,8 @@ class GenerateDataKeyRequest(AbstractModel):
         :type Description: str
         :param _HsmClusterId: KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
         :type HsmClusterId: str
+        :param _Tags: 标签列表,当参数IsHostedByKms=1，数据密钥托管到kms时有效.
+        :type Tags: list of Tag
         """
         self._KeyId = None
         self._KeySpec = None
@@ -3898,6 +3915,7 @@ class GenerateDataKeyRequest(AbstractModel):
         self._DataKeyName = None
         self._Description = None
         self._HsmClusterId = None
+        self._Tags = None
 
     @property
     def KeyId(self):
@@ -4009,6 +4027,17 @@ class GenerateDataKeyRequest(AbstractModel):
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def Tags(self):
+        r"""标签列表,当参数IsHostedByKms=1，数据密钥托管到kms时有效.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -4021,6 +4050,12 @@ class GenerateDataKeyRequest(AbstractModel):
         self._DataKeyName = params.get("DataKeyName")
         self._Description = params.get("Description")
         self._HsmClusterId = params.get("HsmClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4047,6 +4082,10 @@ class GenerateDataKeyResponse(AbstractModel):
         :type CiphertextBlob: str
         :param _DataKeyId: DataKey的全局唯一标识,当KMS托管数据密钥时返回。
         :type DataKeyId: str
+        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :type TagCode: int
+        :param _TagMsg: 标签操作的返回信息
+        :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4054,6 +4093,8 @@ class GenerateDataKeyResponse(AbstractModel):
         self._Plaintext = None
         self._CiphertextBlob = None
         self._DataKeyId = None
+        self._TagCode = None
+        self._TagMsg = None
         self._RequestId = None
 
     @property
@@ -4102,6 +4143,28 @@ class GenerateDataKeyResponse(AbstractModel):
         self._DataKeyId = DataKeyId
 
     @property
+    def TagCode(self):
+        r"""标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        r"""标签操作的返回信息
+        :rtype: str
+        """
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4118,6 +4181,8 @@ class GenerateDataKeyResponse(AbstractModel):
         self._Plaintext = params.get("Plaintext")
         self._CiphertextBlob = params.get("CiphertextBlob")
         self._DataKeyId = params.get("DataKeyId")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5113,6 +5178,8 @@ class ImportDataKeyRequest(AbstractModel):
         :type KeyId: str
         :param _HsmClusterId: KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
         :type HsmClusterId: str
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
         """
         self._DataKeyName = None
         self._ImportKeyMaterial = None
@@ -5120,6 +5187,7 @@ class ImportDataKeyRequest(AbstractModel):
         self._Description = None
         self._KeyId = None
         self._HsmClusterId = None
+        self._Tags = None
 
     @property
     def DataKeyName(self):
@@ -5188,6 +5256,17 @@ class ImportDataKeyRequest(AbstractModel):
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def Tags(self):
+        r"""标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DataKeyName = params.get("DataKeyName")
@@ -5196,6 +5275,12 @@ class ImportDataKeyRequest(AbstractModel):
         self._Description = params.get("Description")
         self._KeyId = params.get("KeyId")
         self._HsmClusterId = params.get("HsmClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5217,11 +5302,17 @@ class ImportDataKeyResponse(AbstractModel):
         :type KeyId: str
         :param _DataKeyId: DataKey的全局唯一标识  否  官网/国内&国际站展示
         :type DataKeyId: str
+        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :type TagCode: int
+        :param _TagMsg: 标签操作的返回信息
+        :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeyId = None
         self._DataKeyId = None
+        self._TagCode = None
+        self._TagMsg = None
         self._RequestId = None
 
     @property
@@ -5247,6 +5338,28 @@ class ImportDataKeyResponse(AbstractModel):
         self._DataKeyId = DataKeyId
 
     @property
+    def TagCode(self):
+        r"""标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        r"""标签操作的返回信息
+        :rtype: str
+        """
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5261,6 +5374,8 @@ class ImportDataKeyResponse(AbstractModel):
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._DataKeyId = params.get("DataKeyId")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5926,6 +6041,8 @@ class ListDataKeyDetailRequest(AbstractModel):
         :type KeyId: str
         :param _DataKeyLen: 数据密钥的长度
         :type DataKeyLen: int
+        :param _TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self._Offset = None
         self._Limit = None
@@ -5937,6 +6054,7 @@ class ListDataKeyDetailRequest(AbstractModel):
         self._HsmClusterId = None
         self._KeyId = None
         self._DataKeyLen = None
+        self._TagFilters = None
 
     @property
     def Offset(self):
@@ -6048,6 +6166,17 @@ class ListDataKeyDetailRequest(AbstractModel):
     def DataKeyLen(self, DataKeyLen):
         self._DataKeyLen = DataKeyLen
 
+    @property
+    def TagFilters(self):
+        r"""标签过滤条件
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6060,6 +6189,12 @@ class ListDataKeyDetailRequest(AbstractModel):
         self._HsmClusterId = params.get("HsmClusterId")
         self._KeyId = params.get("KeyId")
         self._DataKeyLen = params.get("DataKeyLen")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

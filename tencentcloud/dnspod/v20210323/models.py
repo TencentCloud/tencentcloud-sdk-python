@@ -12488,7 +12488,7 @@ class DomainShareUserInfo(AbstractModel):
         r"""
         :param _DomainShareId: 共享记录ID
         :type DomainShareId: int
-        :param _Mode: 共享模式。r-只读；w-可写；rw-可读写。
+        :param _Mode: 共享模式。r-只读；rw-可读写。
         :type Mode: str
         :param _Nickname: 共享到的用户昵称
         :type Nickname: str
@@ -12519,7 +12519,7 @@ class DomainShareUserInfo(AbstractModel):
 
     @property
     def Mode(self):
-        r"""共享模式。r-只读；w-可写；rw-可读写。
+        r"""共享模式。r-只读；rw-可读写。
         :rtype: str
         """
         return self._Mode
@@ -14290,7 +14290,7 @@ class ModifyDomainStatusRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 域名状态，”enable” 、”disable” 分别代表启用和暂停
+        :param _Status: 域名状态，"enable"、"disable" 分别代表启用和暂停
         :type Status: str
         :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
@@ -14312,7 +14312,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""域名状态，”enable” 、”disable” 分别代表启用和暂停
+        r"""域名状态，"enable"、"disable" 分别代表启用和暂停
         :rtype: str
         """
         return self._Status
@@ -14878,7 +14878,7 @@ class ModifyPackageAutoRenewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID。可以在控制台查看所有的资源
+        :param _ResourceId: 计费资源ID
         :type ResourceId: str
         :param _Status: enable 开启自动续费；disable 关闭自动续费
         :type Status: str
@@ -14888,7 +14888,7 @@ class ModifyPackageAutoRenewRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID。可以在控制台查看所有的资源
+        r"""计费资源ID
         :rtype: str
         """
         return self._ResourceId

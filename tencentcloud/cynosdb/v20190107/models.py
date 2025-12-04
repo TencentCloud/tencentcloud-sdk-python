@@ -28521,6 +28521,100 @@ class ModifyClusterDatabaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterGlobalEncryptionRequest(AbstractModel):
+    r"""ModifyClusterGlobalEncryption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _IsOpenGlobalEncryption: 开启或关闭全局加密
+        :type IsOpenGlobalEncryption: bool
+        """
+        self._ClusterId = None
+        self._IsOpenGlobalEncryption = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""开启或关闭全局加密
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterGlobalEncryptionResponse(AbstractModel):
+    r"""ModifyClusterGlobalEncryption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterNameRequest(AbstractModel):
     r"""ModifyClusterName请求参数结构体
 

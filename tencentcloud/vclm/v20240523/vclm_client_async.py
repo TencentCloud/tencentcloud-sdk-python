@@ -134,6 +134,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVideoFaceFusionJob(
+            self,
+            request: models.DescribeVideoFaceFusionJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoFaceFusionJobResponse:
+        """
+        查询视频人脸融合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoFaceFusionJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoFaceFusionJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVideoStylizationJob(
             self,
             request: models.DescribeVideoStylizationJobRequest,
@@ -239,6 +257,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitTemplateToVideoJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitTemplateToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitVideoFaceFusionJob(
+            self,
+            request: models.SubmitVideoFaceFusionJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitVideoFaceFusionJobResponse:
+        """
+        提交视频人脸融合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitVideoFaceFusionJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitVideoFaceFusionJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

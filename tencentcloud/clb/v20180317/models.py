@@ -407,6 +407,76 @@ class AutoRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AvailableZoneAffinityInfo(AbstractModel):
+    r"""可用区转发亲和信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启可用区转发亲和。true：开启可用区转发亲和；false：开启可用区转发亲和。
+        :type Enable: bool
+        :param _ExitRatio: 可用区转发亲和失效阈值，当可用区内后端服务健康比例小于该阈值时，负载均衡会退出可用区转发亲和，转为全可用区转发。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExitRatio: int
+        :param _ReentryRatio: 可用区转发亲和的重新生效阈值，当处于全可用区转发，且负载均衡可用区内的后端服务健康比例大于等于该阈值时，负载均衡会重新进入可用区转发亲和。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReentryRatio: int
+        """
+        self._Enable = None
+        self._ExitRatio = None
+        self._ReentryRatio = None
+
+    @property
+    def Enable(self):
+        r"""是否开启可用区转发亲和。true：开启可用区转发亲和；false：开启可用区转发亲和。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def ExitRatio(self):
+        r"""可用区转发亲和失效阈值，当可用区内后端服务健康比例小于该阈值时，负载均衡会退出可用区转发亲和，转为全可用区转发。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExitRatio
+
+    @ExitRatio.setter
+    def ExitRatio(self, ExitRatio):
+        self._ExitRatio = ExitRatio
+
+    @property
+    def ReentryRatio(self):
+        r"""可用区转发亲和的重新生效阈值，当处于全可用区转发，且负载均衡可用区内的后端服务健康比例大于等于该阈值时，负载均衡会重新进入可用区转发亲和。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReentryRatio
+
+    @ReentryRatio.setter
+    def ReentryRatio(self, ReentryRatio):
+        self._ReentryRatio = ReentryRatio
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._ExitRatio = params.get("ExitRatio")
+        self._ReentryRatio = params.get("ReentryRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Backend(AbstractModel):
     r"""监听器绑定的后端服务的详细信息
 
@@ -437,6 +507,9 @@ class Backend(AbstractModel):
         :type EniId: str
         :param _Tag: 标签。
         :type Tag: str
+        :param _Zone: 后端服务所在的可用区，如ap-guangzhou-1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
         """
         self._Type = None
         self._InstanceId = None
@@ -448,6 +521,7 @@ class Backend(AbstractModel):
         self._RegisteredTime = None
         self._EniId = None
         self._Tag = None
+        self._Zone = None
 
     @property
     def Type(self):
@@ -562,6 +636,18 @@ class Backend(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def Zone(self):
+        r"""后端服务所在的可用区，如ap-guangzhou-1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -574,6 +660,7 @@ class Backend(AbstractModel):
         self._RegisteredTime = params.get("RegisteredTime")
         self._EniId = params.get("EniId")
         self._Tag = params.get("Tag")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13697,6 +13784,8 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         :type TargetCount: int
         :param _AssociateEndpoint: 负载均衡实例关联的Endpoint id。
         :type AssociateEndpoint: str
+        :param _AvailableZoneAffinityInfo: 可用区转发亲和信息
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -13756,6 +13845,7 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         self._Exclusive = None
         self._TargetCount = None
         self._AssociateEndpoint = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerId(self):
@@ -14452,6 +14542,17 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
     def AssociateEndpoint(self, AssociateEndpoint):
         self._AssociateEndpoint = AssociateEndpoint
 
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""可用区转发亲和信息
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -14539,6 +14640,9 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         self._Exclusive = params.get("Exclusive")
         self._TargetCount = params.get("TargetCount")
         self._AssociateEndpoint = params.get("AssociateEndpoint")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14681,6 +14785,9 @@ Public：公网属性，Private：内网属性；对于内网属性的负载均�
         :param _Exclusive: 0：表示非独占型实例，1：表示独占型态实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Exclusive: int
+        :param _AvailableZoneAffinityInfo: 可用区转发亲和信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -14724,6 +14831,7 @@ Public：公网属性，Private：内网属性；对于内网属性的负载均�
         self._AttributeFlags = None
         self._SlaType = None
         self._Exclusive = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerId(self):
@@ -15228,6 +15336,18 @@ Public：公网属性，Private：内网属性；对于内网属性的负载均�
     def Exclusive(self, Exclusive):
         self._Exclusive = Exclusive
 
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""可用区转发亲和信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -15283,6 +15403,9 @@ Public：公网属性，Private：内网属性；对于内网属性的负载均�
         self._AttributeFlags = params.get("AttributeFlags")
         self._SlaType = params.get("SlaType")
         self._Exclusive = params.get("Exclusive")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

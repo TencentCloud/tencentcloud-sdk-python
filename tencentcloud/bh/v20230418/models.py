@@ -1953,6 +1953,42 @@ class AssetSyncStatus(AbstractModel):
         
 
 
+class AuthModeSetting(AbstractModel):
+    r"""认证方式设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthMode: 双因子认证，0-不开启，1-OTP，2-短信
+        :type AuthMode: int
+        """
+        self._AuthMode = None
+
+    @property
+    def AuthMode(self):
+        r"""双因子认证，0-不开启，1-OTP，2-短信
+        :rtype: int
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+
+    def _deserialize(self, params):
+        self._AuthMode = params.get("AuthMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindDeviceAccountPasswordRequest(AbstractModel):
     r"""BindDeviceAccountPassword请求参数结构体
 
@@ -10239,10 +10275,24 @@ class DescribeSecuritySettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SecuritySetting: 无
+        :type SecuritySetting: :class:`tencentcloud.bh.v20230418.models.SecuritySetting`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SecuritySetting = None
         self._RequestId = None
+
+    @property
+    def SecuritySetting(self):
+        r"""无
+        :rtype: :class:`tencentcloud.bh.v20230418.models.SecuritySetting`
+        """
+        return self._SecuritySetting
+
+    @SecuritySetting.setter
+    def SecuritySetting(self, SecuritySetting):
+        self._SecuritySetting = SecuritySetting
 
     @property
     def RequestId(self):
@@ -10257,6 +10307,9 @@ class DescribeSecuritySettingResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("SecuritySetting") is not None:
+            self._SecuritySetting = SecuritySetting()
+            self._SecuritySetting._deserialize(params.get("SecuritySetting"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16196,6 +16249,57 @@ class OperationTask(AbstractModel):
         
 
 
+class ReconnectionSetting(AbstractModel):
+    r"""运维资产重连次数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReconnectionMaxCount: 重连次数
+        :type ReconnectionMaxCount: int
+        :param _Enable: true：可以重连，false：不可以重连
+        :type Enable: bool
+        """
+        self._ReconnectionMaxCount = None
+        self._Enable = None
+
+    @property
+    def ReconnectionMaxCount(self):
+        r"""重连次数
+        :rtype: int
+        """
+        return self._ReconnectionMaxCount
+
+    @ReconnectionMaxCount.setter
+    def ReconnectionMaxCount(self, ReconnectionMaxCount):
+        self._ReconnectionMaxCount = ReconnectionMaxCount
+
+    @property
+    def Enable(self):
+        r"""true：可以重连，false：不可以重连
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._ReconnectionMaxCount = params.get("ReconnectionMaxCount")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReplayInformation(AbstractModel):
     r"""回放所需字段信息
 
@@ -20602,6 +20706,61 @@ class SearchTaskResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SecuritySetting(AbstractModel):
+    r"""系统安全设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthModeGM: 国密认证方式设置
+        :type AuthModeGM: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
+        :param _Reconnection: 资产重连次数
+        :type Reconnection: :class:`tencentcloud.bh.v20230418.models.ReconnectionSetting`
+        """
+        self._AuthModeGM = None
+        self._Reconnection = None
+
+    @property
+    def AuthModeGM(self):
+        r"""国密认证方式设置
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
+        """
+        return self._AuthModeGM
+
+    @AuthModeGM.setter
+    def AuthModeGM(self, AuthModeGM):
+        self._AuthModeGM = AuthModeGM
+
+    @property
+    def Reconnection(self):
+        r"""资产重连次数
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ReconnectionSetting`
+        """
+        return self._Reconnection
+
+    @Reconnection.setter
+    def Reconnection(self, Reconnection):
+        self._Reconnection = Reconnection
+
+
+    def _deserialize(self, params):
+        if params.get("AuthModeGM") is not None:
+            self._AuthModeGM = AuthModeSetting()
+            self._AuthModeGM._deserialize(params.get("AuthModeGM"))
+        if params.get("Reconnection") is not None:
+            self._Reconnection = ReconnectionSetting()
+            self._Reconnection._deserialize(params.get("Reconnection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SessionResult(AbstractModel):
     r"""搜索字符或图形会话时返回的SessionResul结构体
 
@@ -21519,7 +21678,8 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
+        :param _UserName: 用户名,1 - 128个字符 必须以英文字母开头，只能由a-zA-Z0-9以及+=,.@_-组成，支持邮箱格式
+
         :type UserName: str
         :param _RealName: 用户姓名， 最大20个字符，不能包含空白字符
         :type RealName: str
@@ -21559,6 +21719,8 @@ class User(AbstractModel):
         :type UserFrom: int
         :param _IOAUserGroup: ioa同步过来的用户相关信息
         :type IOAUserGroup: :class:`tencentcloud.bh.v20230418.models.IOAUserGroup`
+        :param _RoleArn: cam角色用户载体
+        :type RoleArn: str
         """
         self._UserName = None
         self._RealName = None
@@ -21579,10 +21741,12 @@ class User(AbstractModel):
         self._AclVersion = None
         self._UserFrom = None
         self._IOAUserGroup = None
+        self._RoleArn = None
 
     @property
     def UserName(self):
-        r"""用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
+        r"""用户名,1 - 128个字符 必须以英文字母开头，只能由a-zA-Z0-9以及+=,.@_-组成，支持邮箱格式
+
         :rtype: str
         """
         return self._UserName
@@ -21791,6 +21955,17 @@ class User(AbstractModel):
     def IOAUserGroup(self, IOAUserGroup):
         self._IOAUserGroup = IOAUserGroup
 
+    @property
+    def RoleArn(self):
+        r"""cam角色用户载体
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -21821,6 +21996,7 @@ class User(AbstractModel):
         if params.get("IOAUserGroup") is not None:
             self._IOAUserGroup = IOAUserGroup()
             self._IOAUserGroup._deserialize(params.get("IOAUserGroup"))
+        self._RoleArn = params.get("RoleArn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

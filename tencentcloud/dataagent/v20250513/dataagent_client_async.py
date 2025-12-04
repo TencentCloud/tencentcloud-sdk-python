@@ -151,6 +151,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetUploadJobDetails(
+            self,
+            request: models.GetUploadJobDetailsRequest,
+            opts: Dict = None,
+    ) -> models.GetUploadJobDetailsResponse:
+        """
+        查询上传任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetUploadJobDetails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetUploadJobDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyChunk(
             self,
             request: models.ModifyChunkRequest,
@@ -218,6 +236,24 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "StopChatAI"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopChatAIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UploadAndCommitFile(
+            self,
+            request: models.UploadAndCommitFileRequest,
+            opts: Dict = None,
+    ) -> models.UploadAndCommitFileResponse:
+        """
+        上传提交文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UploadAndCommitFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UploadAndCommitFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

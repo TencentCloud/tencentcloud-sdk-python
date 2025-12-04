@@ -716,6 +716,10 @@ class DescribeInstanceDetail(AbstractModel):
         :type FenceId: str
         :param _ClusterId: 所属集群ID(默认集群为空)
         :type ClusterId: str
+        :param _ResourceTags: 实例标签
+        :type ResourceTags: list of ResourceTag
+        :param _CpuType: CPU类型：Intel/AMD,Hygon
+        :type CpuType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -743,6 +747,8 @@ class DescribeInstanceDetail(AbstractModel):
         self._Zone = None
         self._FenceId = None
         self._ClusterId = None
+        self._ResourceTags = None
+        self._CpuType = None
 
     @property
     def InstanceId(self):
@@ -1030,6 +1036,28 @@ class DescribeInstanceDetail(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def ResourceTags(self):
+        r"""实例标签
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def CpuType(self):
+        r"""CPU类型：Intel/AMD,Hygon
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1058,6 +1086,13 @@ class DescribeInstanceDetail(AbstractModel):
         self._Zone = params.get("Zone")
         self._FenceId = params.get("FenceId")
         self._ClusterId = params.get("ClusterId")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1163,6 +1198,10 @@ class DescribeInstanceDetailResponse(AbstractModel):
         :type FenceId: str
         :param _ClusterId: 所属集群ID(默认集群为空)
         :type ClusterId: str
+        :param _ResourceTags: 独享集群的标签信息
+        :type ResourceTags: list of ResourceTag
+        :param _CpuType: CPU类型，Intel/AMD,Hygon
+        :type CpuType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1192,6 +1231,8 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self._Zone = None
         self._FenceId = None
         self._ClusterId = None
+        self._ResourceTags = None
+        self._CpuType = None
         self._RequestId = None
 
     @property
@@ -1481,6 +1522,28 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self._ClusterId = ClusterId
 
     @property
+    def ResourceTags(self):
+        r"""独享集群的标签信息
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def CpuType(self):
+        r"""CPU类型，Intel/AMD,Hygon
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1519,6 +1582,13 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self._Zone = params.get("Zone")
         self._FenceId = params.get("FenceId")
         self._ClusterId = params.get("ClusterId")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._CpuType = params.get("CpuType")
         self._RequestId = params.get("RequestId")
 
 
@@ -3094,3 +3164,54 @@ class ModifyInstanceNameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    r"""标签对象，包含tagKey & tagValue
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

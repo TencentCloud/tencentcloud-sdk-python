@@ -452,6 +452,72 @@ class Chunk(AbstractModel):
         
 
 
+class CosFileInfo(AbstractModel):
+    r"""cos 文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称，包含后缀
+        :type FileName: str
+        :param _FileType: 文件类型，"PDF", "DOC", "DOCX", "XLS", "XLSX", "PPT", "PPTX", "MD", "TXT", "PNG", "JPG", "JPEG", "CSV"
+        :type FileType: str
+        :param _UserCosUrl: 用户文件的cosurl
+        :type UserCosUrl: str
+        """
+        self._FileName = None
+        self._FileType = None
+        self._UserCosUrl = None
+
+    @property
+    def FileName(self):
+        r"""文件名称，包含后缀
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        r"""文件类型，"PDF", "DOC", "DOCX", "XLS", "XLSX", "PPT", "PPTX", "MD", "TXT", "PNG", "JPG", "JPEG", "CSV"
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def UserCosUrl(self):
+        r"""用户文件的cosurl
+        :rtype: str
+        """
+        return self._UserCosUrl
+
+    @UserCosUrl.setter
+    def UserCosUrl(self, UserCosUrl):
+        self._UserCosUrl = UserCosUrl
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._UserCosUrl = params.get("UserCosUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDataAgentSessionRequest(AbstractModel):
     r"""CreateDataAgentSession请求参数结构体
 
@@ -929,6 +995,102 @@ class GetSessionDetailsResponse(AbstractModel):
                 self._RecordList.append(obj)
         self._RecordCount = params.get("RecordCount")
         self._RunRecord = params.get("RunRecord")
+        self._RequestId = params.get("RequestId")
+
+
+class GetUploadJobDetailsRequest(AbstractModel):
+    r"""GetUploadJobDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _JobId: 任务id
+        :type JobId: str
+        """
+        self._InstanceId = None
+        self._JobId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def JobId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetUploadJobDetailsResponse(AbstractModel):
+    r"""GetUploadJobDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Job: 任务详情
+        :type Job: :class:`tencentcloud.dataagent.v20250513.models.UploadJob`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def Job(self):
+        r"""任务详情
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.UploadJob`
+        """
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Job") is not None:
+            self._Job = UploadJob()
+            self._Job._deserialize(params.get("Job"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2037,6 +2199,299 @@ class Task(AbstractModel):
                 obj = StepInfo()
                 obj._deserialize(item)
                 self._StepInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadAndCommitFileRequest(AbstractModel):
+    r"""UploadAndCommitFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _CosFiles: 上传文件列表
+        :type CosFiles: list of CosFileInfo
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
+        """
+        self._InstanceId = None
+        self._CosFiles = None
+        self._KnowledgeBaseId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CosFiles(self):
+        r"""上传文件列表
+        :rtype: list of CosFileInfo
+        """
+        return self._CosFiles
+
+    @CosFiles.setter
+    def CosFiles(self, CosFiles):
+        self._CosFiles = CosFiles
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("CosFiles") is not None:
+            self._CosFiles = []
+            for item in params.get("CosFiles"):
+                obj = CosFileInfo()
+                obj._deserialize(item)
+                self._CosFiles.append(obj)
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadAndCommitFileResponse(AbstractModel):
+    r"""UploadAndCommitFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 上传任务
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""上传任务
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class UploadJob(AbstractModel):
+    r"""上传任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+        :type Id: int
+        :param _JobId: 任务id
+        :type JobId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
+        :param _Uin: uin
+        :type Uin: str
+        :param _SubUin: subuin
+        :type SubUin: str
+        :param _Status: Pending、FileUploading、
+FileParsing、
+Success、
+Failed 
+	
+        :type Status: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 任务更新时间
+        :type UpdateTime: str
+        :param _Message: 错误信息
+        :type Message: str
+        """
+        self._Id = None
+        self._JobId = None
+        self._InstanceId = None
+        self._KnowledgeBaseId = None
+        self._Uin = None
+        self._SubUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Message = None
+
+    @property
+    def Id(self):
+        r"""id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def JobId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def Uin(self):
+        r"""uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        r"""subuin
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def Status(self):
+        r"""Pending、FileUploading、
+FileParsing、
+Success、
+Failed 
+	
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""任务更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Message(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._JobId = params.get("JobId")
+        self._InstanceId = params.get("InstanceId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

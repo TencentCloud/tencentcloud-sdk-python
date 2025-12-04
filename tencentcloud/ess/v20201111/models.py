@@ -27008,7 +27008,7 @@ class DescribeSingleSignOnEmployeesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SsoApplicationId: 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
         :type SsoApplicationId: str
-        :param _OpenIds: 需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+        :param _OpenIds: 需要查询的单点登录员工的唯一Id 值.不能超过 200 个。
 如果传递了 openIds，limit 和 offset 参数无效，
         :type OpenIds: list of str
         :param _Agent: 代理企业和员工的信息。
@@ -27051,7 +27051,7 @@ class DescribeSingleSignOnEmployeesRequest(AbstractModel):
 
     @property
     def OpenIds(self):
-        r"""需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+        r"""需要查询的单点登录员工的唯一Id 值.不能超过 200 个。
 如果传递了 openIds，limit 和 offset 参数无效，
         :rtype: list of str
         """

@@ -2113,6 +2113,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterGlobalEncryption(
+            self,
+            request: models.ModifyClusterGlobalEncryptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterGlobalEncryptionResponse:
+        """
+        开关全局加密
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterGlobalEncryption"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterGlobalEncryptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterName(
             self,
             request: models.ModifyClusterNameRequest,

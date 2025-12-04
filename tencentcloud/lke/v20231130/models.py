@@ -556,6 +556,42 @@ class AgentDebugInfo(AbstractModel):
         
 
 
+class AgentHandoffAdvancedSetting(AbstractModel):
+    r"""Agent转交高级设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConversationPolicy: 对话流转策略；0-由上一轮回复用户的 Agent 继续发起，1- 回到主Agent
+        :type ConversationPolicy: int
+        """
+        self._ConversationPolicy = None
+
+    @property
+    def ConversationPolicy(self):
+        r"""对话流转策略；0-由上一轮回复用户的 Agent 继续发起，1- 回到主Agent
+        :rtype: int
+        """
+        return self._ConversationPolicy
+
+    @ConversationPolicy.setter
+    def ConversationPolicy(self, ConversationPolicy):
+        self._ConversationPolicy = ConversationPolicy
+
+
+    def _deserialize(self, params):
+        self._ConversationPolicy = params.get("ConversationPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentInput(AbstractModel):
     r"""Agent输入值，支持直接赋值和引用
 
@@ -2700,6 +2736,8 @@ class AgentToolInfo(AbstractModel):
         :type FinanceStatus: int
         :param _ToolSource: 工具来源: 0-来自插件，1-来自工作流
         :type ToolSource: int
+        :param _FinanceType: 计费状态；0-不计费，1-限时免费，2-官方收费
+        :type FinanceType: int
         """
         self._PluginId = None
         self._PluginName = None
@@ -2719,6 +2757,7 @@ class AgentToolInfo(AbstractModel):
         self._Query = None
         self._FinanceStatus = None
         self._ToolSource = None
+        self._FinanceType = None
 
     @property
     def PluginId(self):
@@ -2921,6 +2960,17 @@ class AgentToolInfo(AbstractModel):
     def ToolSource(self, ToolSource):
         self._ToolSource = ToolSource
 
+    @property
+    def FinanceType(self):
+        r"""计费状态；0-不计费，1-限时免费，2-官方收费
+        :rtype: int
+        """
+        return self._FinanceType
+
+    @FinanceType.setter
+    def FinanceType(self, FinanceType):
+        self._FinanceType = FinanceType
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -2963,6 +3013,7 @@ class AgentToolInfo(AbstractModel):
                 self._Query.append(obj)
         self._FinanceStatus = params.get("FinanceStatus")
         self._ToolSource = params.get("ToolSource")
+        self._FinanceType = params.get("FinanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8524,11 +8575,14 @@ class DescribeAppAgentListResponse(AbstractModel):
         :type StaringAgentId: str
         :param _Agents: 应用Agent信息列表
         :type Agents: list of Agent
+        :param _HandoffAdvancedSetting: Agent转交高级设置
+        :type HandoffAdvancedSetting: :class:`tencentcloud.lke.v20231130.models.AgentHandoffAdvancedSetting`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StaringAgentId = None
         self._Agents = None
+        self._HandoffAdvancedSetting = None
         self._RequestId = None
 
     @property
@@ -8554,6 +8608,17 @@ class DescribeAppAgentListResponse(AbstractModel):
         self._Agents = Agents
 
     @property
+    def HandoffAdvancedSetting(self):
+        r"""Agent转交高级设置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentHandoffAdvancedSetting`
+        """
+        return self._HandoffAdvancedSetting
+
+    @HandoffAdvancedSetting.setter
+    def HandoffAdvancedSetting(self, HandoffAdvancedSetting):
+        self._HandoffAdvancedSetting = HandoffAdvancedSetting
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8573,6 +8638,9 @@ class DescribeAppAgentListResponse(AbstractModel):
                 obj = Agent()
                 obj._deserialize(item)
                 self._Agents.append(obj)
+        if params.get("HandoffAdvancedSetting") is not None:
+            self._HandoffAdvancedSetting = AgentHandoffAdvancedSetting()
+            self._HandoffAdvancedSetting._deserialize(params.get("HandoffAdvancedSetting"))
         self._RequestId = params.get("RequestId")
 
 

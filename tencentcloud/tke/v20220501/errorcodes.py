@@ -86,5 +86,8 @@ RESOURCEUNAVAILABLE_CLUSTERSTATE = 'ResourceUnavailable.ClusterState'
 # 无该接口CAM权限。
 UNAUTHORIZEDOPERATION_CAMNOAUTH = 'UnauthorizedOperation.CamNoAuth'
 
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'
+
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

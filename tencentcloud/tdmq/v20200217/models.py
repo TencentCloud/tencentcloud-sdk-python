@@ -17663,9 +17663,12 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 专享集群ID
+        :param _InstanceId: 集群 ID
         :type InstanceId: str
-        :param _MetricName: 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+        :param _MetricName: 指标名称，仅支持单指标拉取。指标枚举如下：
+
+- ClientIntraffic：入流量
+- ClientOuttraffic：出流量
         :type MetricName: str
         :param _StartTime: 起始时间
         :type StartTime: str
@@ -17682,7 +17685,7 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""专享集群ID
+        r"""集群 ID
         :rtype: str
         """
         return self._InstanceId
@@ -17693,7 +17696,10 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+        r"""指标名称，仅支持单指标拉取。指标枚举如下：
+
+- ClientIntraffic：入流量
+- ClientOuttraffic：出流量
         :rtype: str
         """
         return self._MetricName

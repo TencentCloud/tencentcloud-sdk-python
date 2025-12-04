@@ -223,6 +223,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterMachine(
+            self,
+            request: models.ModifyClusterMachineRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterMachineResponse:
+        """
+        修改原生节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterMachine"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterMachineResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyHealthCheckPolicy(
             self,
             request: models.ModifyHealthCheckPolicyRequest,

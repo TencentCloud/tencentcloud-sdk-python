@@ -223,6 +223,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMessageEnrichmentRule(
+            self,
+            request: models.CreateMessageEnrichmentRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateMessageEnrichmentRuleResponse:
+        """
+        创建一条消息属性增强规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMessageEnrichmentRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMessageEnrichmentRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTopic(
             self,
             request: models.CreateTopicRequest,
@@ -434,6 +452,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DeleteInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMessageEnrichmentRule(
+            self,
+            request: models.DeleteMessageEnrichmentRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMessageEnrichmentRuleResponse:
+        """
+        删除消息属性增强规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMessageEnrichmentRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMessageEnrichmentRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -750,6 +786,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMessageEnrichmentRules(
+            self,
+            request: models.DescribeMessageEnrichmentRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMessageEnrichmentRulesResponse:
+        """
+        查询消息属性增强规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMessageEnrichmentRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMessageEnrichmentRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMessageList(
             self,
             request: models.DescribeMessageListRequest,
@@ -1026,6 +1080,25 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMessageEnrichmentRule(
+            self,
+            request: models.ModifyMessageEnrichmentRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMessageEnrichmentRuleResponse:
+        """
+        修改消息属性增强规则
+        注意：需要提交当前规则的所有属性，即使某些字段没有修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMessageEnrichmentRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMessageEnrichmentRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTopic(
             self,
             request: models.ModifyTopicRequest,
@@ -1147,6 +1220,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "UpdateAuthorizationPolicyPriority"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAuthorizationPolicyPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateMessageEnrichmentRulePriority(
+            self,
+            request: models.UpdateMessageEnrichmentRulePriorityRequest,
+            opts: Dict = None,
+    ) -> models.UpdateMessageEnrichmentRulePriorityResponse:
+        """
+        修改消息属性增强规则优先级
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateMessageEnrichmentRulePriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateMessageEnrichmentRulePriorityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -2694,6 +2694,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterGlobalEncryption(self, request):
+        r"""开关全局加密
+
+        :param request: Request instance for ModifyClusterGlobalEncryption.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterGlobalEncryptionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterGlobalEncryptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterGlobalEncryption", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterGlobalEncryptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterName(self, request):
         r"""本接口（ModifyClusterName）用于修改集群名称。
 
