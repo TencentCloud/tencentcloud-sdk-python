@@ -5430,8 +5430,12 @@ class CCN(AbstractModel):
         :type Ipv6Flag: bool
         :param _MrtbAggregatePolicyFlag: 是否支持路由表聚合策略
         :type MrtbAggregatePolicyFlag: bool
-        :param _MrtbPolicyValueFlag: 是否支持策略值
+        :param _MrtbPolicyValueFlag: 是否支持AsPath策略值
         :type MrtbPolicyValueFlag: bool
+        :param _RouteTablePolicyValueCommunityFlag: 是否支持Community策略值
+        :type RouteTablePolicyValueCommunityFlag: bool
+        :param _PolicyBasedRoutingFlag: 是否支持策略路由
+        :type PolicyBasedRoutingFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
@@ -5456,6 +5460,8 @@ class CCN(AbstractModel):
         self._Ipv6Flag = None
         self._MrtbAggregatePolicyFlag = None
         self._MrtbPolicyValueFlag = None
+        self._RouteTablePolicyValueCommunityFlag = None
+        self._PolicyBasedRoutingFlag = None
 
     @property
     def CcnId(self):
@@ -5701,7 +5707,7 @@ class CCN(AbstractModel):
 
     @property
     def MrtbPolicyValueFlag(self):
-        r"""是否支持策略值
+        r"""是否支持AsPath策略值
         :rtype: bool
         """
         return self._MrtbPolicyValueFlag
@@ -5709,6 +5715,28 @@ class CCN(AbstractModel):
     @MrtbPolicyValueFlag.setter
     def MrtbPolicyValueFlag(self, MrtbPolicyValueFlag):
         self._MrtbPolicyValueFlag = MrtbPolicyValueFlag
+
+    @property
+    def RouteTablePolicyValueCommunityFlag(self):
+        r"""是否支持Community策略值
+        :rtype: bool
+        """
+        return self._RouteTablePolicyValueCommunityFlag
+
+    @RouteTablePolicyValueCommunityFlag.setter
+    def RouteTablePolicyValueCommunityFlag(self, RouteTablePolicyValueCommunityFlag):
+        self._RouteTablePolicyValueCommunityFlag = RouteTablePolicyValueCommunityFlag
+
+    @property
+    def PolicyBasedRoutingFlag(self):
+        r"""是否支持策略路由
+        :rtype: bool
+        """
+        return self._PolicyBasedRoutingFlag
+
+    @PolicyBasedRoutingFlag.setter
+    def PolicyBasedRoutingFlag(self, PolicyBasedRoutingFlag):
+        self._PolicyBasedRoutingFlag = PolicyBasedRoutingFlag
 
 
     def _deserialize(self, params):
@@ -5740,6 +5768,8 @@ class CCN(AbstractModel):
         self._Ipv6Flag = params.get("Ipv6Flag")
         self._MrtbAggregatePolicyFlag = params.get("MrtbAggregatePolicyFlag")
         self._MrtbPolicyValueFlag = params.get("MrtbPolicyValueFlag")
+        self._RouteTablePolicyValueCommunityFlag = params.get("RouteTablePolicyValueCommunityFlag")
+        self._PolicyBasedRoutingFlag = params.get("PolicyBasedRoutingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1587,15 +1587,15 @@ class BindStaffSkillGroupListRequest(AbstractModel):
         :type SdkAppId: int
         :param _StaffEmail: 座席邮箱
         :type StaffEmail: str
-        :param _SkillGroupList: 绑定技能组列表
-        :type SkillGroupList: list of int
         :param _StaffSkillGroupList: 绑定技能组列表(必填)
         :type StaffSkillGroupList: list of StaffSkillGroupList
+        :param _SkillGroupList: 绑定技能组列表
+        :type SkillGroupList: list of int
         """
         self._SdkAppId = None
         self._StaffEmail = None
-        self._SkillGroupList = None
         self._StaffSkillGroupList = None
+        self._SkillGroupList = None
 
     @property
     def SdkAppId(self):
@@ -1620,6 +1620,17 @@ class BindStaffSkillGroupListRequest(AbstractModel):
         self._StaffEmail = StaffEmail
 
     @property
+    def StaffSkillGroupList(self):
+        r"""绑定技能组列表(必填)
+        :rtype: list of StaffSkillGroupList
+        """
+        return self._StaffSkillGroupList
+
+    @StaffSkillGroupList.setter
+    def StaffSkillGroupList(self, StaffSkillGroupList):
+        self._StaffSkillGroupList = StaffSkillGroupList
+
+    @property
     def SkillGroupList(self):
         warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
 
@@ -1634,28 +1645,17 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
         self._SkillGroupList = SkillGroupList
 
-    @property
-    def StaffSkillGroupList(self):
-        r"""绑定技能组列表(必填)
-        :rtype: list of StaffSkillGroupList
-        """
-        return self._StaffSkillGroupList
-
-    @StaffSkillGroupList.setter
-    def StaffSkillGroupList(self, StaffSkillGroupList):
-        self._StaffSkillGroupList = StaffSkillGroupList
-
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._StaffEmail = params.get("StaffEmail")
-        self._SkillGroupList = params.get("SkillGroupList")
         if params.get("StaffSkillGroupList") is not None:
             self._StaffSkillGroupList = []
             for item in params.get("StaffSkillGroupList"):
                 obj = StaffSkillGroupList()
                 obj._deserialize(item)
                 self._StaffSkillGroupList.append(obj)
+        self._SkillGroupList = params.get("SkillGroupList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6292,15 +6292,15 @@ class CreateUserSigRequest(AbstractModel):
         :type SdkAppId: int
         :param _Uid: 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
         :type Uid: str
-        :param _ExpiredTime: 有效期，单位秒，不超过 1 小时
-        :type ExpiredTime: int
         :param _ClientData: 用户签名数据，必填字段，为标准 JSON 格式
         :type ClientData: str
+        :param _ExpiredTime: 有效期，单位秒，不超过 1 小时
+        :type ExpiredTime: int
         """
         self._SdkAppId = None
         self._Uid = None
-        self._ExpiredTime = None
         self._ClientData = None
+        self._ExpiredTime = None
 
     @property
     def SdkAppId(self):
@@ -6325,17 +6325,6 @@ class CreateUserSigRequest(AbstractModel):
         self._Uid = Uid
 
     @property
-    def ExpiredTime(self):
-        r"""有效期，单位秒，不超过 1 小时
-        :rtype: int
-        """
-        return self._ExpiredTime
-
-    @ExpiredTime.setter
-    def ExpiredTime(self, ExpiredTime):
-        self._ExpiredTime = ExpiredTime
-
-    @property
     def ClientData(self):
         r"""用户签名数据，必填字段，为标准 JSON 格式
         :rtype: str
@@ -6346,12 +6335,23 @@ class CreateUserSigRequest(AbstractModel):
     def ClientData(self, ClientData):
         self._ClientData = ClientData
 
+    @property
+    def ExpiredTime(self):
+        r"""有效期，单位秒，不超过 1 小时
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Uid = params.get("Uid")
-        self._ExpiredTime = params.get("ExpiredTime")
         self._ClientData = params.get("ClientData")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12149,18 +12149,18 @@ class DescribeTelCdrRequest(AbstractModel):
         :type StartTimeStamp: int
         :param _EndTimeStamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
         :type EndTimeStamp: int
-        :param _InstanceId: 实例 ID（废弃）
-        :type InstanceId: int
-        :param _Limit: 返回数据条数，上限（废弃）
-        :type Limit: int
-        :param _Offset: 偏移（废弃）
-        :type Offset: int
         :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _PageSize: 分页尺寸（必填），上限 100
         :type PageSize: int
         :param _PageNumber: 分页页码（必填），从 0 开始
         :type PageNumber: int
+        :param _InstanceId: 实例 ID（废弃）
+        :type InstanceId: int
+        :param _Limit: 返回数据条数，上限（废弃）
+        :type Limit: int
+        :param _Offset: 偏移（废弃）
+        :type Offset: int
         :param _Phones: 按手机号筛选
         :type Phones: list of str
         :param _SessionIds: 按SessionId筛选
@@ -12168,12 +12168,12 @@ class DescribeTelCdrRequest(AbstractModel):
         """
         self._StartTimeStamp = None
         self._EndTimeStamp = None
-        self._InstanceId = None
-        self._Limit = None
-        self._Offset = None
         self._SdkAppId = None
         self._PageSize = None
         self._PageNumber = None
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
         self._Phones = None
         self._SessionIds = None
 
@@ -12198,6 +12198,39 @@ class DescribeTelCdrRequest(AbstractModel):
     @EndTimeStamp.setter
     def EndTimeStamp(self, EndTimeStamp):
         self._EndTimeStamp = EndTimeStamp
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def PageSize(self):
+        r"""分页尺寸（必填），上限 100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""分页页码（必填），从 0 开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
     @property
     def InstanceId(self):
@@ -12237,39 +12270,6 @@ class DescribeTelCdrRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
-        :rtype: int
-        """
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def PageSize(self):
-        r"""分页尺寸（必填），上限 100
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def PageNumber(self):
-        r"""分页页码（必填），从 0 开始
-        :rtype: int
-        """
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-    @property
     def Phones(self):
         r"""按手机号筛选
         :rtype: list of str
@@ -12295,12 +12295,12 @@ class DescribeTelCdrRequest(AbstractModel):
     def _deserialize(self, params):
         self._StartTimeStamp = params.get("StartTimeStamp")
         self._EndTimeStamp = params.get("EndTimeStamp")
-        self._InstanceId = params.get("InstanceId")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
         self._SdkAppId = params.get("SdkAppId")
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         self._Phones = params.get("Phones")
         self._SessionIds = params.get("SessionIds")
         memeber_set = set(params.keys())
@@ -18324,6 +18324,8 @@ class TelCdrInfo(AbstractModel):
 
 电话呼出        221     callerCancelWithoutRing      **未振铃被叫号码异常**
 
+电话呼出        222     voiceMailReached      **语音信箱挂断**
+
 音频呼入        501     callConflict      **VoIP用户呼叫冲突终止**
 
 音频呼入        502     clientTimeout      **VoIP用户客户端超时**
@@ -18602,6 +18604,8 @@ NotExists
 电话呼出        220     callerCancelWhileRing      **振铃中主叫取消**
 
 电话呼出        221     callerCancelWithoutRing      **未振铃被叫号码异常**
+
+电话呼出        222     voiceMailReached      **语音信箱挂断**
 
 音频呼入        501     callConflict      **VoIP用户呼叫冲突终止**
 

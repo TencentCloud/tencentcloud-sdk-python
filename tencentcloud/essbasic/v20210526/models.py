@@ -7376,6 +7376,8 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         :type LicenseType: int
         :param _SceneKey: <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
+        :param _FileId: 印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+        :type FileId: str
         """
         self._Agent = None
         self._UserName = None
@@ -7389,6 +7391,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._EnableAutoSign = None
         self._LicenseType = None
         self._SceneKey = None
+        self._FileId = None
 
     @property
     def Agent(self):
@@ -7535,6 +7538,17 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
     def SceneKey(self, SceneKey):
         self._SceneKey = SceneKey
 
+    @property
+    def FileId(self):
+        r"""印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -7553,6 +7567,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._EnableAutoSign = params.get("EnableAutoSign")
         self._LicenseType = params.get("LicenseType")
         self._SceneKey = params.get("SceneKey")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10182,7 +10197,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。默认值为20
         :type Limit: int
         :param _Offset: 分页查询偏移量，默认为0，最大为20000
         :type Offset: int
@@ -10231,7 +10246,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大支持 100。
+        r"""指定分页每页返回的数据条数，单页最大支持 100。默认值为20
         :rtype: int
         """
         return self._Limit

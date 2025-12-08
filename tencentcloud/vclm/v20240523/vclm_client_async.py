@@ -61,6 +61,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHunyuanToVideoJob(
+            self,
+            request: models.DescribeHunyuanToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHunyuanToVideoJobResponse:
+        """
+        查询混元生视频任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHunyuanToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHunyuanToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeImageAnimateJob(
             self,
             request: models.DescribeImageAnimateJobRequest,
@@ -170,6 +188,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVideoVoiceJob(
+            self,
+            request: models.DescribeVideoVoiceJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoVoiceJobResponse:
+        """
+        通过JobId提交请求，获取视频配音频任务的结果信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoVoiceJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoVoiceJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitHumanActorJob(
             self,
             request: models.SubmitHumanActorJobRequest,
@@ -184,6 +220,26 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitHumanActorJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHumanActorJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanToVideoJob(
+            self,
+            request: models.SubmitHunyuanToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanToVideoJobResponse:
+        """
+        ●混元生视频接口，基于混元大模型，根据输入的文本或图片智能生成视频。
+
+        ●默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanToVideoJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -293,6 +349,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitVideoStylizationJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitVideoStylizationJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitVideoVoiceJob(
+            self,
+            request: models.SubmitVideoVoiceJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitVideoVoiceJobResponse:
+        """
+        提交视频配音效任务，输入视频后提交请求，会返回一个JobId，用于查询视频配音效的处理进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitVideoVoiceJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitVideoVoiceJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

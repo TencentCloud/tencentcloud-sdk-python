@@ -785,6 +785,115 @@ class DeleteDataAgentSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetKnowledgeBaseFileListRequest(AbstractModel):
+    r"""GetKnowledgeBaseFileList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Page: 默认 1 表示第一页，可以不填
+        :type Page: int
+        :param _PageSize: 默认 10 一页展示 10 条，可以不填
+        :type PageSize: int
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
+        """
+        self._InstanceId = None
+        self._Page = None
+        self._PageSize = None
+        self._KnowledgeBaseId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Page(self):
+        r"""默认 1 表示第一页，可以不填
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""默认 10 一页展示 10 条，可以不填
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetKnowledgeBaseFileListResponse(AbstractModel):
+    r"""GetKnowledgeBaseFileList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class GetKnowledgeBaseListRequest(AbstractModel):
     r"""GetKnowledgeBaseList请求参数结构体
 

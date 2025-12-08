@@ -1739,3 +1739,49 @@ class TrocketClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SendMessage(self, request):
+        r"""发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+
+        :param request: Request instance for SendMessage.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.SendMessageRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.SendMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyMessageConsumption(self, request):
+        r"""消息消费验证
+
+        :param request: Request instance for VerifyMessageConsumption.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.VerifyMessageConsumptionRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.VerifyMessageConsumptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyMessageConsumption", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyMessageConsumptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

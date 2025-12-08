@@ -962,9 +962,13 @@ class Cluster(AbstractModel):
         :param _PublicEndPoint: 公网访问接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicEndPoint: str
+        :param _OldPublicEndPoint: 旧的公网访问接入点
+        :type OldPublicEndPoint: str
         :param _VpcEndPoint: VPC访问接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcEndPoint: str
+        :param _OldVpcEndPoint: 旧的VPC访问接入点
+        :type OldVpcEndPoint: str
         :param _NamespaceNum: 命名空间数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceNum: int
@@ -995,6 +999,10 @@ class Cluster(AbstractModel):
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _OldInternalPulsarEndPoint: 旧的支撑网 Pulsar 接入点
+        :type OldInternalPulsarEndPoint: str
+        :param _OldInternalHttpEndPoint: 旧的支撑网 HTTP 接入点
+        :type OldInternalHttpEndPoint: str
         :param _PayMode: 计费模式：
 0: 按量计费
 1: 包年包月
@@ -1024,7 +1032,9 @@ class Cluster(AbstractModel):
         self._MaxStorageCapacity = None
         self._Version = None
         self._PublicEndPoint = None
+        self._OldPublicEndPoint = None
         self._VpcEndPoint = None
+        self._OldVpcEndPoint = None
         self._NamespaceNum = None
         self._UsedStorageBudget = None
         self._MaxPublishRateInMessages = None
@@ -1035,6 +1045,8 @@ class Cluster(AbstractModel):
         self._MaxMessageDelayInSeconds = None
         self._PublicAccessEnabled = None
         self._Tags = None
+        self._OldInternalPulsarEndPoint = None
+        self._OldInternalHttpEndPoint = None
         self._PayMode = None
         self._ProjectId = None
         self._ProjectName = None
@@ -1209,6 +1221,17 @@ class Cluster(AbstractModel):
         self._PublicEndPoint = PublicEndPoint
 
     @property
+    def OldPublicEndPoint(self):
+        r"""旧的公网访问接入点
+        :rtype: str
+        """
+        return self._OldPublicEndPoint
+
+    @OldPublicEndPoint.setter
+    def OldPublicEndPoint(self, OldPublicEndPoint):
+        self._OldPublicEndPoint = OldPublicEndPoint
+
+    @property
     def VpcEndPoint(self):
         r"""VPC访问接入点
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1219,6 +1242,17 @@ class Cluster(AbstractModel):
     @VpcEndPoint.setter
     def VpcEndPoint(self, VpcEndPoint):
         self._VpcEndPoint = VpcEndPoint
+
+    @property
+    def OldVpcEndPoint(self):
+        r"""旧的VPC访问接入点
+        :rtype: str
+        """
+        return self._OldVpcEndPoint
+
+    @OldVpcEndPoint.setter
+    def OldVpcEndPoint(self, OldVpcEndPoint):
+        self._OldVpcEndPoint = OldVpcEndPoint
 
     @property
     def NamespaceNum(self):
@@ -1341,6 +1375,28 @@ class Cluster(AbstractModel):
         self._Tags = Tags
 
     @property
+    def OldInternalPulsarEndPoint(self):
+        r"""旧的支撑网 Pulsar 接入点
+        :rtype: str
+        """
+        return self._OldInternalPulsarEndPoint
+
+    @OldInternalPulsarEndPoint.setter
+    def OldInternalPulsarEndPoint(self, OldInternalPulsarEndPoint):
+        self._OldInternalPulsarEndPoint = OldInternalPulsarEndPoint
+
+    @property
+    def OldInternalHttpEndPoint(self):
+        r"""旧的支撑网 HTTP 接入点
+        :rtype: str
+        """
+        return self._OldInternalHttpEndPoint
+
+    @OldInternalHttpEndPoint.setter
+    def OldInternalHttpEndPoint(self, OldInternalHttpEndPoint):
+        self._OldInternalHttpEndPoint = OldInternalHttpEndPoint
+
+    @property
     def PayMode(self):
         r"""计费模式：
 0: 按量计费
@@ -1406,7 +1462,9 @@ class Cluster(AbstractModel):
         self._MaxStorageCapacity = params.get("MaxStorageCapacity")
         self._Version = params.get("Version")
         self._PublicEndPoint = params.get("PublicEndPoint")
+        self._OldPublicEndPoint = params.get("OldPublicEndPoint")
         self._VpcEndPoint = params.get("VpcEndPoint")
+        self._OldVpcEndPoint = params.get("OldVpcEndPoint")
         self._NamespaceNum = params.get("NamespaceNum")
         self._UsedStorageBudget = params.get("UsedStorageBudget")
         self._MaxPublishRateInMessages = params.get("MaxPublishRateInMessages")
@@ -1422,6 +1480,8 @@ class Cluster(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._OldInternalPulsarEndPoint = params.get("OldInternalPulsarEndPoint")
+        self._OldInternalHttpEndPoint = params.get("OldInternalHttpEndPoint")
         self._PayMode = params.get("PayMode")
         self._ProjectId = params.get("ProjectId")
         self._ProjectName = params.get("ProjectName")
@@ -3379,7 +3439,7 @@ class CreateCmqQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueName: 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :param _QueueName: 队列名字，在单个地域同一账号下唯一。队列名称以字母起始，只能包含字母、数字、“-”及“_”，最大64字符，不区分大小写。
         :type QueueName: str
         :param _MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
         :type MaxMsgHeapNum: int
@@ -3434,7 +3494,7 @@ class CreateCmqQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        r"""队列名字，在单个地域同一账号下唯一。队列名称以字母起始，只能包含字母、数字、“-”及“_”，最大64字符，不区分大小写。
         :rtype: str
         """
         return self._QueueName
@@ -3705,7 +3765,7 @@ class CreateCmqSubscribeRequest(AbstractModel):
         r"""
         :param _TopicName: 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
-        :param _SubscriptionName: 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :param _SubscriptionName: 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称以字母起始，只能包含字母、数字、“-”及“_”，最大64字符，创建后不能修改。
         :type SubscriptionName: str
         :param _Protocol: 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。
         :type Protocol: str
@@ -3742,7 +3802,7 @@ class CreateCmqSubscribeRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
-        r"""订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        r"""订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称以字母起始，只能包含字母、数字、“-”及“_”，最大64字符，创建后不能修改。
         :rtype: str
         """
         return self._SubscriptionName
@@ -3887,7 +3947,7 @@ class CreateCmqTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :param _TopicName: 主题名字，在单个地域同一账号下唯一。主题名称只能包含字母、数字、“-”及“_”，最大64字符，创建后不能修改，不区分大小写。
         :type TopicName: str
         :param _MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
         :type MaxMsgSize: int
@@ -3909,7 +3969,7 @@ class CreateCmqTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        r"""主题名字，在单个地域同一账号下唯一。主题名称只能包含字母、数字、“-”及“_”，最大64字符，创建后不能修改，不区分大小写。
         :rtype: str
         """
         return self._TopicName
@@ -4058,6 +4118,10 @@ class CreateEnvironmentRequest(AbstractModel):
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: 是否开启自动创建订阅
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
+        :type SubscriptionExpirationTimeEnable: bool
         """
         self._EnvironmentId = None
         self._MsgTTL = None
@@ -4065,6 +4129,8 @@ class CreateEnvironmentRequest(AbstractModel):
         self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
 
     @property
     def EnvironmentId(self):
@@ -4132,6 +4198,28 @@ class CreateEnvironmentRequest(AbstractModel):
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间开关
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -4142,6 +4230,8 @@ class CreateEnvironmentRequest(AbstractModel):
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4168,6 +4258,10 @@ class CreateEnvironmentResponse(AbstractModel):
         :type Remark: str
         :param _NamespaceId: 命名空间ID
         :type NamespaceId: str
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4175,6 +4269,8 @@ class CreateEnvironmentResponse(AbstractModel):
         self._MsgTTL = None
         self._Remark = None
         self._NamespaceId = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -4223,6 +4319,28 @@ class CreateEnvironmentResponse(AbstractModel):
         self._NamespaceId = NamespaceId
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4239,6 +4357,8 @@ class CreateEnvironmentResponse(AbstractModel):
         self._MsgTTL = params.get("MsgTTL")
         self._Remark = params.get("Remark")
         self._NamespaceId = params.get("NamespaceId")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -4365,9 +4485,6 @@ class CreateProClusterRequest(AbstractModel):
         :param _ProductName: 集群规格代号
 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
         :type ProductName: str
-        :param _StorageSize: 存储规格
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
-        :type StorageSize: int
         :param _AutoRenewFlag: 1: true，开启自动按月续费
 
 0: false，关闭自动按月续费
@@ -4378,6 +4495,9 @@ class CreateProClusterRequest(AbstractModel):
         :type ClusterName: str
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
+        :param _StorageSize: 存储规格
+参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :type StorageSize: int
         :param _Vpc: vpc网络标签
         :type Vpc: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _Tags: 集群的标签列表(已废弃)
@@ -4385,11 +4505,11 @@ class CreateProClusterRequest(AbstractModel):
         """
         self._ZoneIds = None
         self._ProductName = None
-        self._StorageSize = None
         self._AutoRenewFlag = None
         self._TimeSpan = None
         self._ClusterName = None
         self._AutoVoucher = None
+        self._StorageSize = None
         self._Vpc = None
         self._Tags = None
 
@@ -4417,18 +4537,6 @@ class CreateProClusterRequest(AbstractModel):
     @ProductName.setter
     def ProductName(self, ProductName):
         self._ProductName = ProductName
-
-    @property
-    def StorageSize(self):
-        r"""存储规格
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
-        :rtype: int
-        """
-        return self._StorageSize
-
-    @StorageSize.setter
-    def StorageSize(self, StorageSize):
-        self._StorageSize = StorageSize
 
     @property
     def AutoRenewFlag(self):
@@ -4477,6 +4585,18 @@ class CreateProClusterRequest(AbstractModel):
         self._AutoVoucher = AutoVoucher
 
     @property
+    def StorageSize(self):
+        r"""存储规格
+参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
     def Vpc(self):
         r"""vpc网络标签
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
@@ -4502,11 +4622,11 @@ class CreateProClusterRequest(AbstractModel):
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
         self._ProductName = params.get("ProductName")
-        self._StorageSize = params.get("StorageSize")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._ClusterName = params.get("ClusterName")
         self._AutoVoucher = params.get("AutoVoucher")
+        self._StorageSize = params.get("StorageSize")
         if params.get("Vpc") is not None:
             self._Vpc = VpcInfo()
             self._Vpc._deserialize(params.get("Vpc"))
@@ -5586,7 +5706,7 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: 命名空间
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _RoleName: 角色名称。
         :type RoleName: str
@@ -5605,7 +5725,7 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -7096,6 +7216,8 @@ class CreateTopicRequest(AbstractModel):
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒，范围60-（3600*24）
         :type AckTimeOut: int
+        :param _PulsarTopicMessageType: Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
+        :type PulsarTopicMessageType: int
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -7108,6 +7230,7 @@ class CreateTopicRequest(AbstractModel):
         self._UnackPolicy = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._PulsarTopicMessageType = None
 
     @property
     def EnvironmentId(self):
@@ -7239,6 +7362,17 @@ class CreateTopicRequest(AbstractModel):
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def PulsarTopicMessageType(self):
+        r"""Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
+        :rtype: int
+        """
+        return self._PulsarTopicMessageType
+
+    @PulsarTopicMessageType.setter
+    def PulsarTopicMessageType(self, PulsarTopicMessageType):
+        self._PulsarTopicMessageType = PulsarTopicMessageType
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -7252,6 +7386,7 @@ class CreateTopicRequest(AbstractModel):
         self._UnackPolicy = params.get("UnackPolicy")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8497,7 +8632,7 @@ class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: 环境（命名空间）名称。
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _RoleNames: 角色名称数组。
         :type RoleNames: list of str
@@ -8510,7 +8645,7 @@ class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""环境（命名空间）名称。
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -10984,6 +11119,10 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         :type Replicas: int
         :param _Remark: 备注。
         :type Remark: str
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10995,6 +11134,8 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._EnvironmentId = None
         self._Replicas = None
         self._Remark = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -11086,6 +11227,28 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._Remark = Remark
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间开关
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11106,6 +11269,8 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._EnvironmentId = params.get("EnvironmentId")
         self._Replicas = params.get("Replicas")
         self._Remark = params.get("Remark")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -11937,6 +12102,8 @@ class DescribeMsgTraceRequest(AbstractModel):
         :type SubscriptionName: str
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param _TopicName: topic 名字
+        :type TopicName: str
         """
         self._EnvironmentId = None
         self._MsgId = None
@@ -11945,6 +12112,7 @@ class DescribeMsgTraceRequest(AbstractModel):
         self._Limit = None
         self._SubscriptionName = None
         self._ClusterId = None
+        self._TopicName = None
 
     @property
     def EnvironmentId(self):
@@ -12023,6 +12191,17 @@ class DescribeMsgTraceRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def TopicName(self):
+        r"""topic 名字
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -12032,6 +12211,7 @@ class DescribeMsgTraceRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._SubscriptionName = params.get("SubscriptionName")
         self._ClusterId = params.get("ClusterId")
+        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12787,14 +12967,14 @@ class DescribePulsarProInstanceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群id
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""集群id
         :rtype: str
         """
         return self._ClusterId
@@ -12831,12 +13011,15 @@ class DescribePulsarProInstanceDetailResponse(AbstractModel):
         :param _ClusterSpecInfo: 集群规格信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterSpecInfo: :class:`tencentcloud.tdmq.v20200217.models.PulsarProClusterSpecInfo`
+        :param _CertificateList: 集群的证书列表
+        :type CertificateList: list of CertificateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterInfo = None
         self._NetworkAccessPointInfos = None
         self._ClusterSpecInfo = None
+        self._CertificateList = None
         self._RequestId = None
 
     @property
@@ -12875,6 +13058,17 @@ class DescribePulsarProInstanceDetailResponse(AbstractModel):
         self._ClusterSpecInfo = ClusterSpecInfo
 
     @property
+    def CertificateList(self):
+        r"""集群的证书列表
+        :rtype: list of CertificateInfo
+        """
+        return self._CertificateList
+
+    @CertificateList.setter
+    def CertificateList(self, CertificateList):
+        self._CertificateList = CertificateList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12899,6 +13093,12 @@ class DescribePulsarProInstanceDetailResponse(AbstractModel):
         if params.get("ClusterSpecInfo") is not None:
             self._ClusterSpecInfo = PulsarProClusterSpecInfo()
             self._ClusterSpecInfo._deserialize(params.get("ClusterSpecInfo"))
+        if params.get("CertificateList") is not None:
+            self._CertificateList = []
+            for item in params.get("CertificateList"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CertificateList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16229,7 +16429,8 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
         r"""
         :param _ClusterId: 必填字段，RocketMQ集群的ID
         :type ClusterId: str
-        :param _EnvironmentId: 命名空间
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
+
         :type EnvironmentId: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
@@ -16260,7 +16461,8 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
+
         :rtype: str
         """
         return self._EnvironmentId
@@ -16343,9 +16545,9 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数。
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param _EnvironmentRoleSets: 命名空间角色集合。
+        :param _EnvironmentRoleSets: 角色授权列表
         :type EnvironmentRoleSets: list of EnvironmentRole
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16356,7 +16558,7 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""记录数。
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -16367,7 +16569,7 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     @property
     def EnvironmentRoleSets(self):
-        r"""命名空间角色集合。
+        r"""角色授权列表
         :rtype: list of EnvironmentRole
         """
         return self._EnvironmentRoleSets
@@ -18201,9 +18403,9 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数。
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param _RoleSets: 角色数组。
+        :param _RoleSets: 角色列表
         :type RoleSets: list of Role
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18214,7 +18416,7 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""记录数。
+        r"""总数
         :rtype: int
         """
         return self._TotalCount
@@ -18225,7 +18427,7 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     @property
     def RoleSets(self):
-        r"""角色数组。
+        r"""角色列表
         :rtype: list of Role
         """
         return self._RoleSets
@@ -20906,7 +21108,10 @@ class DetailedRolePerm(AbstractModel):
         :type PermWrite: bool
         :param _PermRead: 是否开启消费权限
         :type PermRead: bool
-        :param _ResourceType: 授权资源类型（Topic:主题; Group:消费组）
+        :param _ResourceType: 授权资源类型，枚举值如下：
+- Topic：主题维度
+- Group：消费组维度
+- Cluster：集群维度（默认值）
         :type ResourceType: str
         :param _Remark: 资源备注
         :type Remark: str
@@ -20952,7 +21157,10 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""授权资源类型（Topic:主题; Group:消费组）
+        r"""授权资源类型，枚举值如下：
+- Topic：主题维度
+- Group：消费组维度
+- Cluster：集群维度（默认值）
         :rtype: str
         """
         return self._ResourceType
@@ -21117,6 +21325,10 @@ class Environment(AbstractModel):
         :param _AutoSubscriptionCreation: 是否自动创建订阅
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
+        :type SubscriptionExpirationTimeEnable: bool
         """
         self._EnvironmentId = None
         self._Remark = None
@@ -21128,6 +21340,8 @@ class Environment(AbstractModel):
         self._TopicNum = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
 
     @property
     def EnvironmentId(self):
@@ -21242,6 +21456,28 @@ class Environment(AbstractModel):
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间开关
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -21256,6 +21492,8 @@ class Environment(AbstractModel):
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22442,6 +22680,10 @@ class InternalTenant(AbstractModel):
         :param _PublicAccessEnabled: public Access Enabled
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEnabled: bool
+        :param _TagList: 实例标签列表
+        :type TagList: list of str
+        :param _TenantSpec: 实例规格
+        :type TenantSpec: str
         """
         self._TenantId = None
         self._TenantName = None
@@ -22465,6 +22707,8 @@ class InternalTenant(AbstractModel):
         self._MaxPublishRateInBytes = None
         self._MaxRetentionSizeInMB = None
         self._PublicAccessEnabled = None
+        self._TagList = None
+        self._TenantSpec = None
 
     @property
     def TenantId(self):
@@ -22712,6 +22956,28 @@ class InternalTenant(AbstractModel):
     def PublicAccessEnabled(self, PublicAccessEnabled):
         self._PublicAccessEnabled = PublicAccessEnabled
 
+    @property
+    def TagList(self):
+        r"""实例标签列表
+        :rtype: list of str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def TenantSpec(self):
+        r"""实例规格
+        :rtype: str
+        """
+        return self._TenantSpec
+
+    @TenantSpec.setter
+    def TenantSpec(self, TenantSpec):
+        self._TenantSpec = TenantSpec
+
 
     def _deserialize(self, params):
         self._TenantId = params.get("TenantId")
@@ -22736,6 +23002,8 @@ class InternalTenant(AbstractModel):
         self._MaxPublishRateInBytes = params.get("MaxPublishRateInBytes")
         self._MaxRetentionSizeInMB = params.get("MaxRetentionSizeInMB")
         self._PublicAccessEnabled = params.get("PublicAccessEnabled")
+        self._TagList = params.get("TagList")
+        self._TenantSpec = params.get("TenantSpec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23570,6 +23838,10 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: 是否开启自动创建订阅
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
+        :type SubscriptionExpirationTimeEnable: bool
         """
         self._EnvironmentId = None
         self._MsgTTL = None
@@ -23577,6 +23849,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
 
     @property
     def EnvironmentId(self):
@@ -23644,6 +23918,28 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间开关
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -23654,6 +23950,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23681,6 +23979,10 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         :param _NamespaceId: 命名空间ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
+        :param _SubscriptionExpirationTime: 离线订阅过期自动清理时间
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23688,6 +23990,8 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         self._MsgTTL = None
         self._Remark = None
         self._NamespaceId = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -23737,6 +24041,28 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         self._NamespaceId = NamespaceId
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""离线订阅过期自动清理时间
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""离线订阅过期自动清理时间开关
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -23753,6 +24079,8 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         self._MsgTTL = params.get("MsgTTL")
         self._Remark = params.get("Remark")
         self._NamespaceId = params.get("NamespaceId")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -24658,7 +24986,7 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: 环境（命名空间）名称。
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _RoleName: 角色名称。
         :type RoleName: str
@@ -24677,7 +25005,7 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""环境（命名空间）名称。
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -27051,6 +27379,8 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         :type Tls: bool
         :param _CustomUrl: 接入点自定义域名
         :type CustomUrl: str
+        :param _SecurityGroupIds: 接入点绑定的安全组id列表，仅限vpc接入点有效
+        :type SecurityGroupIds: list of str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -27065,6 +27395,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._ZoneName = None
         self._Tls = None
         self._CustomUrl = None
+        self._SecurityGroupIds = None
 
     @property
     def VpcId(self):
@@ -27224,6 +27555,17 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     def CustomUrl(self, CustomUrl):
         self._CustomUrl = CustomUrl
 
+    @property
+    def SecurityGroupIds(self):
+        r"""接入点绑定的安全组id列表，仅限vpc接入点有效
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -27244,6 +27586,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._ZoneName = params.get("ZoneName")
         self._Tls = params.get("Tls")
         self._CustomUrl = params.get("CustomUrl")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31558,7 +31901,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
@@ -31566,7 +31909,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         :type Type: int
         :param _Topic: 主题名称
         :type Topic: str
-        :param _ResetTimestamp: 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
+        :param _ResetTimestamp: 重置指定的时间戳，仅在 Type 为1时生效，以毫秒为单位
         :type ResetTimestamp: int
         :param _RetryFlag: 重置的是否是retry topic
         :type RetryFlag: bool
@@ -31592,7 +31935,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -31636,7 +31979,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
 
     @property
     def ResetTimestamp(self):
-        r"""重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
+        r"""重置指定的时间戳，仅在 Type 为1时生效，以毫秒为单位
         :rtype: int
         """
         return self._ResetTimestamp
@@ -37192,6 +37535,8 @@ class Topic(AbstractModel):
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒
         :type AckTimeOut: int
+        :param _PulsarTopicMessageType: Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
+        :type PulsarTopicMessageType: int
         """
         self._AverageMsgSize = None
         self._ConsumerCount = None
@@ -37220,6 +37565,7 @@ class Topic(AbstractModel):
         self._Tenant = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._PulsarTopicMessageType = None
 
     @property
     def AverageMsgSize(self):
@@ -37552,6 +37898,17 @@ class Topic(AbstractModel):
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def PulsarTopicMessageType(self):
+        r"""Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
+        :rtype: int
+        """
+        return self._PulsarTopicMessageType
+
+    @PulsarTopicMessageType.setter
+    def PulsarTopicMessageType(self, PulsarTopicMessageType):
+        self._PulsarTopicMessageType = PulsarTopicMessageType
+
 
     def _deserialize(self, params):
         self._AverageMsgSize = params.get("AverageMsgSize")
@@ -37586,6 +37943,7 @@ class Topic(AbstractModel):
         self._Tenant = params.get("Tenant")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

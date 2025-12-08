@@ -3069,7 +3069,7 @@ EXIST：导入现有版本
         :type TrainingJobName: str
         :param _TrainingModelCosPath: 模型来源cos目录，以/结尾
         :type TrainingModelCosPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _AlgorithmFramework: 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
+        :param _AlgorithmFramework: 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION/ONNX)
         :type AlgorithmFramework: str
         :param _ReasoningEnvironment: 推理环境
         :type ReasoningEnvironment: str
@@ -3099,7 +3099,7 @@ EXIST：导入现有版本
 枚举值：NORMAL(通用)  ACCELERATE(加速)
 注意:  默认为NORMAL
         :type ModelVersionType: str
-        :param _ModelFormat: 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
+        :param _ModelFormat: 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE_BERT/HUGGING_FACE_STABLE_DIFFUSION/HUGGING_FACE_STABLE_DIFFUSION_LORA/WEB_UI_STABLE_DIFFUSION）
         :type ModelFormat: str
         :param _ReasoningEnvironmentId: 推理镜像ID
         :type ReasoningEnvironmentId: str
@@ -3210,7 +3210,7 @@ EXIST：导入现有版本
 
     @property
     def AlgorithmFramework(self):
-        r"""算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
+        r"""算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION/ONNX)
         :rtype: str
         """
         return self._AlgorithmFramework
@@ -3366,7 +3366,7 @@ EXIST：导入现有版本
 
     @property
     def ModelFormat(self):
-        r"""模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
+        r"""模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE_BERT/HUGGING_FACE_STABLE_DIFFUSION/HUGGING_FACE_STABLE_DIFFUSION_LORA/WEB_UI_STABLE_DIFFUSION）
         :rtype: str
         """
         return self._ModelFormat
@@ -6129,6 +6129,8 @@ class DeleteModelServiceRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""服务分类
         :rtype: str
         """
@@ -6136,6 +6138,8 @@ class DeleteModelServiceRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -8688,6 +8692,8 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""服务分类
         :rtype: str
         """
@@ -8695,6 +8701,8 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -8881,6 +8889,8 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""服务分类
         :rtype: str
         """
@@ -8888,6 +8898,8 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -9051,6 +9063,8 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""服务分类
         :rtype: str
         """
@@ -9058,6 +9072,8 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -9299,6 +9315,8 @@ class DescribeModelServiceRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""服务分类
         :rtype: str
         """
@@ -9306,6 +9324,8 @@ class DescribeModelServiceRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -9598,7 +9618,7 @@ class DescribeNotebooksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotebookSet: 详情
+        :param _NotebookSet: notebook详情
         :type NotebookSet: list of NotebookSetItem
         :param _TotalCount: 总条数
         :type TotalCount: int
@@ -9611,7 +9631,7 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def NotebookSet(self):
-        r"""详情
+        r"""notebook详情
         :rtype: list of NotebookSetItem
         """
         return self._NotebookSet
@@ -10668,6 +10688,12 @@ class ExecAction(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExposePortConfig(AbstractModel):
+    r"""暴露端口信息
+
+    """
 
 
 class Filter(AbstractModel):
@@ -16205,6 +16231,8 @@ class NotebookSetItem(AbstractModel):
         :param _AppId: AppId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
+        :param _ExposePortConfig: 容器服务暴露端口配置
+        :type ExposePortConfig: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
         """
         self._Id = None
         self._Name = None
@@ -16236,6 +16264,7 @@ class NotebookSetItem(AbstractModel):
         self._SubUin = None
         self._SubUinName = None
         self._AppId = None
+        self._ExposePortConfig = None
 
     @property
     def Id(self):
@@ -16592,6 +16621,17 @@ class NotebookSetItem(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def ExposePortConfig(self):
+        r"""容器服务暴露端口配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        """
+        return self._ExposePortConfig
+
+    @ExposePortConfig.setter
+    def ExposePortConfig(self, ExposePortConfig):
+        self._ExposePortConfig = ExposePortConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16637,6 +16677,9 @@ class NotebookSetItem(AbstractModel):
         self._SubUin = params.get("SubUin")
         self._SubUinName = params.get("SubUinName")
         self._AppId = params.get("AppId")
+        if params.get("ExposePortConfig") is not None:
+            self._ExposePortConfig = ExposePortConfig()
+            self._ExposePortConfig._deserialize(params.get("ExposePortConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

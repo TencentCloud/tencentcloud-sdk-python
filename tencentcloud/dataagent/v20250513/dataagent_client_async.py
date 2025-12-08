@@ -115,6 +115,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetKnowledgeBaseFileList(
+            self,
+            request: models.GetKnowledgeBaseFileListRequest,
+            opts: Dict = None,
+    ) -> models.GetKnowledgeBaseFileListResponse:
+        """
+        获取知识库文件信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetKnowledgeBaseFileList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetKnowledgeBaseFileListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetKnowledgeBaseList(
             self,
             request: models.GetKnowledgeBaseListRequest,

@@ -23,6 +23,9 @@ FAILEDOPERATION_AICONCURRENTNOPACKAGE = 'FailedOperation.AIConcurrentNoPackage'
 # AI并发超频
 FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = 'FailedOperation.AIConcurrentOverFrequency'
 
+# AI套餐包过期，请续费或重新购买
+FAILEDOPERATION_AILICENSEHASEXPIRED = 'FailedOperation.AILicenseHasExpired'
+
 # 外呼失败。
 FAILEDOPERATION_CALLOUTFAILED = 'FailedOperation.CallOutFailed'
 

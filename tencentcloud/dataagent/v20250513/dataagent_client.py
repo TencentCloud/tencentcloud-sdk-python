@@ -136,6 +136,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetKnowledgeBaseFileList(self, request):
+        r"""获取知识库文件信息列表
+
+        :param request: Request instance for GetKnowledgeBaseFileList.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.GetKnowledgeBaseFileListRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.GetKnowledgeBaseFileListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetKnowledgeBaseFileList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetKnowledgeBaseFileListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetKnowledgeBaseList(self, request):
         r"""获取知识库列表
 

@@ -1389,3 +1389,39 @@ class TrocketClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def SendMessage(
+            self,
+            request: models.SendMessageRequest,
+            opts: Dict = None,
+    ) -> models.SendMessageResponse:
+        """
+        发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendMessage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VerifyMessageConsumption(
+            self,
+            request: models.VerifyMessageConsumptionRequest,
+            opts: Dict = None,
+    ) -> models.VerifyMessageConsumptionResponse:
+        """
+        消息消费验证
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyMessageConsumption"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyMessageConsumptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

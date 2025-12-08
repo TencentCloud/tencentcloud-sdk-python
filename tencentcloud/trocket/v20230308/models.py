@@ -15107,6 +15107,145 @@ class RollbackMigratingTopicStageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SendMessageRequest(AbstractModel):
+    r"""SendMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _MsgBody: 消息内容
+        :type MsgBody: str
+        :param _MsgKey: 消息Key
+        :type MsgKey: str
+        :param _MsgTag: 消息Tag
+        :type MsgTag: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._MsgBody = None
+        self._MsgKey = None
+        self._MsgTag = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def MsgBody(self):
+        r"""消息内容
+        :rtype: str
+        """
+        return self._MsgBody
+
+    @MsgBody.setter
+    def MsgBody(self, MsgBody):
+        self._MsgBody = MsgBody
+
+    @property
+    def MsgKey(self):
+        r"""消息Key
+        :rtype: str
+        """
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def MsgTag(self):
+        r"""消息Tag
+        :rtype: str
+        """
+        return self._MsgTag
+
+    @MsgTag.setter
+    def MsgTag(self, MsgTag):
+        self._MsgTag = MsgTag
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._MsgBody = params.get("MsgBody")
+        self._MsgKey = params.get("MsgKey")
+        self._MsgTag = params.get("MsgTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMessageResponse(AbstractModel):
+    r"""SendMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID
+        :type MsgId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MsgId = None
+        self._RequestId = None
+
+    @property
+    def MsgId(self):
+        r"""消息ID
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._RequestId = params.get("RequestId")
+
+
 class SmoothMigrationTaskItem(AbstractModel):
     r"""平滑迁移任务
 
@@ -16559,6 +16698,130 @@ class TopicStageChangeResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyMessageConsumptionRequest(AbstractModel):
+    r"""VerifyMessageConsumption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _MsgId: 消息ID
+        :type MsgId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._ClientId = None
+        self._MsgId = None
+        self._ConsumerGroup = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""主题
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def ClientId(self):
+        r"""客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def MsgId(self):
+        r"""消息ID
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费组名称
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._ClientId = params.get("ClientId")
+        self._MsgId = params.get("MsgId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyMessageConsumptionResponse(AbstractModel):
+    r"""VerifyMessageConsumption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class VpcInfo(AbstractModel):

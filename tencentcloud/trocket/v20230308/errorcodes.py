@@ -64,3 +64,6 @@ UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = 'UnsupportedOperation.InstanceT
 
 # 资源已存在，请检查后重试。
 UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = 'UnsupportedOperation.ResourceAlreadyExists'
+
+# 当前消费者类型不支持此操作。
+UNSUPPORTEDOPERATION_UNSUPPORTEDCONSUMERTYPE = 'UnsupportedOperation.UnsupportedConsumerType'

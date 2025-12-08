@@ -14950,6 +14950,115 @@ class ModifyPackageAutoRenewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPackageDomainRequest(AbstractModel):
+    r"""ModifyPackageDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operation: 操作类型：change: 套餐换域名；unbind: 解绑套餐域名；bind: 套餐绑定域名。
+        :type Operation: str
+        :param _DomainId: 域名ID。Operation为change时必传，代表更换前的域名。
+        :type DomainId: int
+        :param _NewDomainId: 域名ID。Operation为change或bind时必传，代表更换后或要绑定的域名。
+        :type NewDomainId: int
+        :param _ResourceId: 套餐资源ID。Operation为bind或unbind时必传，代表将要操作的套餐资源。
+        :type ResourceId: str
+        """
+        self._Operation = None
+        self._DomainId = None
+        self._NewDomainId = None
+        self._ResourceId = None
+
+    @property
+    def Operation(self):
+        r"""操作类型：change: 套餐换域名；unbind: 解绑套餐域名；bind: 套餐绑定域名。
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def DomainId(self):
+        r"""域名ID。Operation为change时必传，代表更换前的域名。
+        :rtype: int
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def NewDomainId(self):
+        r"""域名ID。Operation为change或bind时必传，代表更换后或要绑定的域名。
+        :rtype: int
+        """
+        return self._NewDomainId
+
+    @NewDomainId.setter
+    def NewDomainId(self, NewDomainId):
+        self._NewDomainId = NewDomainId
+
+    @property
+    def ResourceId(self):
+        r"""套餐资源ID。Operation为bind或unbind时必传，代表将要操作的套餐资源。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._Operation = params.get("Operation")
+        self._DomainId = params.get("DomainId")
+        self._NewDomainId = params.get("NewDomainId")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPackageDomainResponse(AbstractModel):
+    r"""ModifyPackageDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRecordBatchDetail(AbstractModel):
     r"""批量添加记录返回结构
 

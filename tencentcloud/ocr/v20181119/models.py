@@ -5836,6 +5836,14 @@ class ElectronicAirTransport(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElectronicAirTransportDetails: list of ElectronicAirTransportDetail
+        :param _Fare: 票价
+        :type Fare: str
+        :param _FuelSurcharge: 燃油附加费
+        :type FuelSurcharge: str
+        :param _TaxAmount: 增值税税额
+        :type TaxAmount: str
+        :param _DevelopmentFund: 民航发展基金
+        :type DevelopmentFund: str
         """
         self._Code = None
         self._Number = None
@@ -5853,6 +5861,10 @@ class ElectronicAirTransport(AbstractModel):
         self._PassengerNo = None
         self._ElectronicNumber = None
         self._ElectronicAirTransportDetails = None
+        self._Fare = None
+        self._FuelSurcharge = None
+        self._TaxAmount = None
+        self._DevelopmentFund = None
 
     @property
     def Code(self):
@@ -6048,6 +6060,50 @@ class ElectronicAirTransport(AbstractModel):
     def ElectronicAirTransportDetails(self, ElectronicAirTransportDetails):
         self._ElectronicAirTransportDetails = ElectronicAirTransportDetails
 
+    @property
+    def Fare(self):
+        r"""票价
+        :rtype: str
+        """
+        return self._Fare
+
+    @Fare.setter
+    def Fare(self, Fare):
+        self._Fare = Fare
+
+    @property
+    def FuelSurcharge(self):
+        r"""燃油附加费
+        :rtype: str
+        """
+        return self._FuelSurcharge
+
+    @FuelSurcharge.setter
+    def FuelSurcharge(self, FuelSurcharge):
+        self._FuelSurcharge = FuelSurcharge
+
+    @property
+    def TaxAmount(self):
+        r"""增值税税额
+        :rtype: str
+        """
+        return self._TaxAmount
+
+    @TaxAmount.setter
+    def TaxAmount(self, TaxAmount):
+        self._TaxAmount = TaxAmount
+
+    @property
+    def DevelopmentFund(self):
+        r"""民航发展基金
+        :rtype: str
+        """
+        return self._DevelopmentFund
+
+    @DevelopmentFund.setter
+    def DevelopmentFund(self, DevelopmentFund):
+        self._DevelopmentFund = DevelopmentFund
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -6071,6 +6127,10 @@ class ElectronicAirTransport(AbstractModel):
                 obj = ElectronicAirTransportDetail()
                 obj._deserialize(item)
                 self._ElectronicAirTransportDetails.append(obj)
+        self._Fare = params.get("Fare")
+        self._FuelSurcharge = params.get("FuelSurcharge")
+        self._TaxAmount = params.get("TaxAmount")
+        self._DevelopmentFund = params.get("DevelopmentFund")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8472,6 +8532,7 @@ ItemNames=["姓名","性别"]
         :type ReturnFullText: bool
         :param _ConfigId: 配置id支持：
 General -- 通用场景
+GeneralNoDate -- 无后处理日期格式模版
 OnlineTaxiItinerary -- 网约车行程单
 RideHailingDriverLicense -- 网约车驾驶证
 RideHailingTransportLicense -- 网约车运输证
@@ -8570,6 +8631,7 @@ ItemNames=["姓名","性别"]
     def ConfigId(self):
         r"""配置id支持：
 General -- 通用场景
+GeneralNoDate -- 无后处理日期格式模版
 OnlineTaxiItinerary -- 网约车行程单
 RideHailingDriverLicense -- 网约车驾驶证
 RideHailingTransportLicense -- 网约车运输证
@@ -25750,7 +25812,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
         :param _PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
         :type PdfPageSize: int
-        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Angle: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25799,7 +25861,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+        r"""图片旋转角度（角度制），文本的水平方向为0°。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """

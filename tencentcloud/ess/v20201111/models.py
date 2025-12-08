@@ -36920,7 +36920,7 @@ class OutputRisk(AbstractModel):
         :type RiskName: str
         :param _RiskDescription: 风险描述
         :type RiskDescription: str
-        :param _RiskLevel: 风险等级。
+        :param _RiskLevel: 风险等级别名。
 
 等级描述如下：
 <ul>
@@ -36938,7 +36938,7 @@ class OutputRisk(AbstractModel):
         :type Positions: list of PositionInfo
         :param _RiskBasis: 审查依据
         :type RiskBasis: str
-        :param _RiskLevelId: 风险等级id
+        :param _RiskLevelId: 风险等级id。1 为最高风险等级，0 为最低风险等级，从[2,n]数字越大风险等级逐渐降低。
         :type RiskLevelId: int
         """
         self._RiskId = None
@@ -36987,7 +36987,7 @@ class OutputRisk(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级。
+        r"""风险等级别名。
 
 等级描述如下：
 <ul>
@@ -37059,7 +37059,7 @@ class OutputRisk(AbstractModel):
 
     @property
     def RiskLevelId(self):
-        r"""风险等级id
+        r"""风险等级id。1 为最高风险等级，0 为最低风险等级，从[2,n]数字越大风险等级逐渐降低。
         :rtype: int
         """
         return self._RiskLevelId

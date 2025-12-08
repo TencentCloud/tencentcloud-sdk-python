@@ -17776,8 +17776,9 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 注意：
 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
         :type PureAudio: int
-        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的分片格式以此字段为准
+        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
+ 
+注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
         :type SegmentType: str
         """
         self._Format = None
@@ -17886,8 +17887,9 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的分片格式以此字段为准
+        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
+ 
+注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
         :rtype: str
         """
         return self._SegmentType
@@ -45936,6 +45938,12 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         :param _MindMapUrl: 摘要思维导图地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type MindMapUrl: str
+        :param _MindMapPath: 摘要思维导图路径。
+        :type MindMapPath: str
+        :param _SubtitlePath: 视频字幕文件路径。
+        :type SubtitlePath: str
+        :param _OutputStorage: 摘要文件存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._Description = None
         self._Confidence = None
@@ -45943,6 +45951,9 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         self._Keywords = None
         self._Paragraphs = None
         self._MindMapUrl = None
+        self._MindMapPath = None
+        self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def Description(self):
@@ -46012,6 +46023,39 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
     def MindMapUrl(self, MindMapUrl):
         self._MindMapUrl = MindMapUrl
 
+    @property
+    def MindMapPath(self):
+        r"""摘要思维导图路径。
+        :rtype: str
+        """
+        return self._MindMapPath
+
+    @MindMapPath.setter
+    def MindMapPath(self, MindMapPath):
+        self._MindMapPath = MindMapPath
+
+    @property
+    def SubtitlePath(self):
+        r"""视频字幕文件路径。
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+    @property
+    def OutputStorage(self):
+        r"""摘要文件存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
@@ -46025,6 +46069,11 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
                 obj._deserialize(item)
                 self._Paragraphs.append(obj)
         self._MindMapUrl = params.get("MindMapUrl")
+        self._MindMapPath = params.get("MindMapPath")
+        self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50023,8 +50072,8 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 注意：
 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
         :type PureAudio: int
-        :param _SegmentType: hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准
+        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
         :type SegmentType: str
         """
         self._Definition = None
@@ -50145,8 +50194,8 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准
+        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
         :rtype: str
         """
         return self._SegmentType

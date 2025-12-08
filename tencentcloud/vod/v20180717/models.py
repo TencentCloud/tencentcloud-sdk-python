@@ -41215,6 +41215,174 @@ class LowLightEnhanceInfo(AbstractModel):
         
 
 
+class MPSAiMediaInfo(AbstractModel):
+    r"""使用MPS进行处理后的智能媒体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AiMediaList: MPS处理后的智能媒体信息列表
+        :type AiMediaList: list of MPSAiMediaItem
+        """
+        self._AiMediaList = None
+
+    @property
+    def AiMediaList(self):
+        r"""MPS处理后的智能媒体信息列表
+        :rtype: list of MPSAiMediaItem
+        """
+        return self._AiMediaList
+
+    @AiMediaList.setter
+    def AiMediaList(self, AiMediaList):
+        self._AiMediaList = AiMediaList
+
+
+    def _deserialize(self, params):
+        if params.get("AiMediaList") is not None:
+            self._AiMediaList = []
+            for item in params.get("AiMediaList"):
+                obj = MPSAiMediaItem()
+                obj._deserialize(item)
+                self._AiMediaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSAiMediaItem(AbstractModel):
+    r"""MPS AI媒资任务项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: MPS智能处理任务类型
+        :type TaskType: str
+        :param _AiMediaTasks: MPS 智能媒资任务输出
+        :type AiMediaTasks: list of MPSAiMediaTask
+        """
+        self._TaskType = None
+        self._AiMediaTasks = None
+
+    @property
+    def TaskType(self):
+        r"""MPS智能处理任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def AiMediaTasks(self):
+        r"""MPS 智能媒资任务输出
+        :rtype: list of MPSAiMediaTask
+        """
+        return self._AiMediaTasks
+
+    @AiMediaTasks.setter
+    def AiMediaTasks(self, AiMediaTasks):
+        self._AiMediaTasks = AiMediaTasks
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("AiMediaTasks") is not None:
+            self._AiMediaTasks = []
+            for item in params.get("AiMediaTasks"):
+                obj = MPSAiMediaTask()
+                obj._deserialize(item)
+                self._AiMediaTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSAiMediaTask(AbstractModel):
+    r"""MPS智能任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: MPS智能任务的模板 ID
+        :type Definition: int
+        :param _OutputFile: MPS智能任务输出文件集合
+        :type OutputFile: list of MPSOutputFileInfo
+        :param _OutputText: MPS智能任务输出
+        :type OutputText: str
+        """
+        self._Definition = None
+        self._OutputFile = None
+        self._OutputText = None
+
+    @property
+    def Definition(self):
+        r"""MPS智能任务的模板 ID
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputFile(self):
+        r"""MPS智能任务输出文件集合
+        :rtype: list of MPSOutputFileInfo
+        """
+        return self._OutputFile
+
+    @OutputFile.setter
+    def OutputFile(self, OutputFile):
+        self._OutputFile = OutputFile
+
+    @property
+    def OutputText(self):
+        r"""MPS智能任务输出
+        :rtype: str
+        """
+        return self._OutputText
+
+    @OutputText.setter
+    def OutputText(self, OutputText):
+        self._OutputText = OutputText
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputFile") is not None:
+            self._OutputFile = []
+            for item in params.get("OutputFile"):
+                obj = MPSOutputFileInfo()
+                obj._deserialize(item)
+                self._OutputFile.append(obj)
+        self._OutputText = params.get("OutputText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MPSOutputFile(AbstractModel):
     r"""用于描述 MPS 视频处理任务中的返回文件结果。
 
@@ -41318,6 +41486,57 @@ class MPSOutputFile(AbstractModel):
         self._Url = params.get("Url")
         self._Definition = params.get("Definition")
         self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSOutputFileInfo(AbstractModel):
+    r"""MPS输出文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: MPS输出文件类型
+        :type FileType: str
+        :param _Url: MPS输出文件的URL
+        :type Url: str
+        """
+        self._FileType = None
+        self._Url = None
+
+    @property
+    def FileType(self):
+        r"""MPS输出文件类型
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Url(self):
+        r"""MPS输出文件的URL
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41450,8 +41669,11 @@ class MPSTaskOutput(AbstractModel):
         r"""
         :param _OutputFiles: 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
         :type OutputFiles: list of MPSOutputFile
+        :param _OutputText: 任务返回的结果JSON
+        :type OutputText: str
         """
         self._OutputFiles = None
+        self._OutputText = None
 
     @property
     def OutputFiles(self):
@@ -41464,6 +41686,17 @@ class MPSTaskOutput(AbstractModel):
     def OutputFiles(self, OutputFiles):
         self._OutputFiles = OutputFiles
 
+    @property
+    def OutputText(self):
+        r"""任务返回的结果JSON
+        :rtype: str
+        """
+        return self._OutputText
+
+    @OutputText.setter
+    def OutputText(self, OutputText):
+        self._OutputText = OutputText
+
 
     def _deserialize(self, params):
         if params.get("OutputFiles") is not None:
@@ -41472,6 +41705,7 @@ class MPSTaskOutput(AbstractModel):
                 obj = MPSOutputFile()
                 obj._deserialize(item)
                 self._OutputFiles.append(obj)
+        self._OutputText = params.get("OutputText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43719,6 +43953,8 @@ class MediaInfo(AbstractModel):
         :param _ReviewInfo: 审核信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewInfo: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
+        :param _MPSAiMediaInfo: MPS智能媒资信息
+        :type MPSAiMediaInfo: :class:`tencentcloud.vod.v20180717.models.MPSAiMediaInfo`
         """
         self._BasicInfo = None
         self._MetaData = None
@@ -43733,6 +43969,7 @@ class MediaInfo(AbstractModel):
         self._SubtitleInfo = None
         self._FileId = None
         self._ReviewInfo = None
+        self._MPSAiMediaInfo = None
 
     @property
     def BasicInfo(self):
@@ -43889,6 +44126,17 @@ class MediaInfo(AbstractModel):
     def ReviewInfo(self, ReviewInfo):
         self._ReviewInfo = ReviewInfo
 
+    @property
+    def MPSAiMediaInfo(self):
+        r"""MPS智能媒资信息
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSAiMediaInfo`
+        """
+        return self._MPSAiMediaInfo
+
+    @MPSAiMediaInfo.setter
+    def MPSAiMediaInfo(self, MPSAiMediaInfo):
+        self._MPSAiMediaInfo = MPSAiMediaInfo
+
 
     def _deserialize(self, params):
         if params.get("BasicInfo") is not None:
@@ -43928,6 +44176,9 @@ class MediaInfo(AbstractModel):
         if params.get("ReviewInfo") is not None:
             self._ReviewInfo = FileReviewInfo()
             self._ReviewInfo._deserialize(params.get("ReviewInfo"))
+        if params.get("MPSAiMediaInfo") is not None:
+            self._MPSAiMediaInfo = MPSAiMediaInfo()
+            self._MPSAiMediaInfo._deserialize(params.get("MPSAiMediaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

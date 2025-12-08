@@ -19660,9 +19660,10 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
         :type AppName: str
         :param _PageNum: 取得第几页，默认1。
         :type PageNum: int
-        :param _PageSize: 每页大小，最大100。 
-取值：10~100之间的任意整数。
+        :param _PageSize: 每页大小，最大300000。 
+取值：10~300000之间的任意整数。
 默认值：10。
+注意：尽量传入比当前总流数大的PageSize, 一次性拉走全部在线流，减少访问频次，推荐1分钟拉取一次。
         :type PageSize: int
         :param _StreamName: 流名称，用于精确查询。
         :type StreamName: str
@@ -19708,9 +19709,10 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小，最大100。 
-取值：10~100之间的任意整数。
+        r"""每页大小，最大300000。 
+取值：10~300000之间的任意整数。
 默认值：10。
+注意：尽量传入比当前总流数大的PageSize, 一次性拉走全部在线流，减少访问频次，推荐1分钟拉取一次。
         :rtype: int
         """
         return self._PageSize

@@ -1867,6 +1867,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _MachineCode: 产品规格类型。
 - HIO10G：通用高HIO万兆型。
@@ -2032,6 +2033,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -2437,6 +2439,7 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _ClusterType: 实例类型。当 MirrorTplId 为空值时，该参数必填。
 - REPLSET：副本集实例。
@@ -2479,6 +2482,7 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -2622,6 +2626,7 @@ class CreateDBInstanceRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _GoodsNum: 实例数量, 最小值1，最大值为30。
         :type GoodsNum: int
@@ -2789,6 +2794,7 @@ class CreateDBInstanceRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -5963,6 +5969,7 @@ class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _ClusterType: 模板适配集群类型。
 - REPLSET：副本集实例。
@@ -6049,6 +6056,7 @@ class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -6145,6 +6153,7 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: list of str
         :param _TplType: 指定查询的模板类型。
 - DEFAULT：系统默认模板。
@@ -6188,6 +6197,7 @@ class DescribeDBInstanceParamTplRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: list of str
         """
         return self._MongoVersion
@@ -9000,6 +9010,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _MachineCode: 产品规格类型。
 - HIO10G：通用高HIO万兆型。
@@ -9110,6 +9121,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -9692,6 +9704,7 @@ class InstanceDetail(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _Memory: 实例内存规格，单位：MB。
         :type Memory: int
@@ -10000,6 +10013,7 @@ class InstanceDetail(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -13482,6 +13496,7 @@ class ParamTpl(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
         :param _ClusterType: 参数模板适用的数据库类型。
 - REPLSET：副本集实例。
@@ -13534,6 +13549,7 @@ class ParamTpl(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersion
@@ -15331,7 +15347,7 @@ class SpecItem(AbstractModel):
 - 内存规格：支持4、8、16、32、64、128、240、512。单位g：表示GB。128g 则表示128GB。
         :type SpecCode: str
         :param _Status: 售卖规格有效标志，取值范围如下：
-- 0：停止售卖，
+- 0：停止售卖。
 - 1：开放售卖。
         :type Status: int
         :param _Cpu: 计算资源规格，CPU核数。
@@ -15355,12 +15371,22 @@ class SpecItem(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :type MongoVersionCode: str
         :param _MongoVersionValue: 实例版本对应的数字版本。
+- MongoDB 3.2 版本：2。
+- MongoDB 3.6 版本：4。
+- MongoDB 4.0 版本：5。
+- MongoDB 4.2 版本：9。
+- MongoDB 4.4 版本：10。
+- MongoDB 5.0 版本：11。
+- MongoDB 6.0 版本：12。
+- MongoDB 7.0 版本：13。
+- MongoDB 8.0 版本：14。
         :type MongoVersionValue: int
-        :param _Version: 实例版本信息。支持：4.2、4.4、5.0、6.0、7.0。
+        :param _Version: 实例版本信息。支持：4.2、4.4、5.0、6.0、7.0、8.0。
         :type Version: str
-        :param _EngineName: 存储引擎。
+        :param _EngineName: 存储引擎，仅支持 WiredTiger。
         :type EngineName: str
         :param _ClusterType: 集群类型，取值如下：
 - 1：分片集群。
@@ -15422,7 +15448,7 @@ class SpecItem(AbstractModel):
     @property
     def Status(self):
         r"""售卖规格有效标志，取值范围如下：
-- 0：停止售卖，
+- 0：停止售卖。
 - 1：开放售卖。
         :rtype: int
         """
@@ -15518,6 +15544,7 @@ class SpecItem(AbstractModel):
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
+- MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。
         :rtype: str
         """
         return self._MongoVersionCode
@@ -15529,6 +15556,15 @@ class SpecItem(AbstractModel):
     @property
     def MongoVersionValue(self):
         r"""实例版本对应的数字版本。
+- MongoDB 3.2 版本：2。
+- MongoDB 3.6 版本：4。
+- MongoDB 4.0 版本：5。
+- MongoDB 4.2 版本：9。
+- MongoDB 4.4 版本：10。
+- MongoDB 5.0 版本：11。
+- MongoDB 6.0 版本：12。
+- MongoDB 7.0 版本：13。
+- MongoDB 8.0 版本：14。
         :rtype: int
         """
         return self._MongoVersionValue
@@ -15539,7 +15575,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Version(self):
-        r"""实例版本信息。支持：4.2、4.4、5.0、6.0、7.0。
+        r"""实例版本信息。支持：4.2、4.4、5.0、6.0、7.0、8.0。
         :rtype: str
         """
         return self._Version
@@ -15550,7 +15586,7 @@ class SpecItem(AbstractModel):
 
     @property
     def EngineName(self):
-        r"""存储引擎。
+        r"""存储引擎，仅支持 WiredTiger。
         :rtype: str
         """
         return self._EngineName

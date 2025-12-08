@@ -1853,6 +1853,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPackageDomain(self, request):
+        r"""套餐绑定、解绑、更换域名
+
+        :param request: Request instance for ModifyPackageDomain.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyPackageDomainRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyPackageDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPackageDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPackageDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRecord(self, request):
         r"""修改记录
 

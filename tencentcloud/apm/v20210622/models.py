@@ -437,6 +437,10 @@ class ApmAppConfig(AbstractModel):
         :type DisableMemoryUsed: int
         :param _DisableCpuUsed: 探针熔断CPU阈值
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: 慢SQL阈值
+        :type SlowSQLThresholds: list of ApmTag
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -490,6 +494,8 @@ class ApmAppConfig(AbstractModel):
         self._UrlNumberSegmentThreshold = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
 
     @property
     def InstanceKey(self):
@@ -1086,6 +1092,28 @@ class ApmAppConfig(AbstractModel):
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
 
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""是否开启SQL参数获取
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""慢SQL阈值
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1147,6 +1175,13 @@ class ApmAppConfig(AbstractModel):
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1206,6 +1241,10 @@ class ApmApplicationConfigView(AbstractModel):
         :type DisableMemoryUsed: int
         :param _DisableCpuUsed: 探针熔断CPU阈值
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: 慢SQL阈值
+        :type SlowSQLThresholds: list of ApmTag
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1228,6 +1267,8 @@ class ApmApplicationConfigView(AbstractModel):
         self._TraceSquash = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
 
     @property
     def InstanceKey(self):
@@ -1460,6 +1501,28 @@ class ApmApplicationConfigView(AbstractModel):
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
 
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""是否开启SQL参数获取
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""慢SQL阈值
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1488,6 +1551,13 @@ class ApmApplicationConfigView(AbstractModel):
         self._TraceSquash = params.get("TraceSquash")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3377,10 +3447,24 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleId: 指标匹配规则的ID
+        :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleId = None
         self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""指标匹配规则的ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -3395,6 +3479,7 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6813,6 +6898,10 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type DisableMemoryUsed: int
         :param _DisableCpuUsed: 探针熔断CPU阈值
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: 慢SQL阈值
+        :type SlowSQLThresholds: list of ApmTag
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -6863,6 +6952,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._UrlNumberSegmentThreshold = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
 
     @property
     def InstanceId(self):
@@ -7403,6 +7494,28 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
 
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""是否开启SQL参数获取
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""慢SQL阈值
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7461,6 +7574,13 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7506,9 +7626,9 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: 关联的产品名，当前只支持Prometheus
+        :param _ProductName: 关联的产品名，当前只支持Prometheus、CKafka
         :type ProductName: str
-        :param _Status: 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+        :param _Status: 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
         :type Status: int
         :param _InstanceId: 业务系统ID
         :type InstanceId: str
@@ -7525,7 +7645,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""关联的产品名，当前只支持Prometheus
+        r"""关联的产品名，当前只支持Prometheus、CKafka
         :rtype: str
         """
         return self._ProductName
@@ -7536,7 +7656,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+        r"""关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
         :rtype: int
         """
         return self._Status

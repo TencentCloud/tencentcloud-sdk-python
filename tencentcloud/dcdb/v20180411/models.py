@@ -7744,6 +7744,8 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         :type CpuType: str
         :param _ProtectedProperty: 实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
         :type ProtectedProperty: int
+        :param _FlowId: 流程Id，标志实例当前所处的异步任务
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7803,6 +7805,7 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self._IsDcnSwitchSupported = None
         self._CpuType = None
         self._ProtectedProperty = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
@@ -8422,6 +8425,17 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self._ProtectedProperty = ProtectedProperty
 
     @property
+    def FlowId(self):
+        r"""流程Id，标志实例当前所处的异步任务
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8505,6 +8519,7 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
         self._CpuType = params.get("CpuType")
         self._ProtectedProperty = params.get("ProtectedProperty")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

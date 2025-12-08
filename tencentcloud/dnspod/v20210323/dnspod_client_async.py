@@ -1457,6 +1457,24 @@ class DnspodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyPackageDomain(
+            self,
+            request: models.ModifyPackageDomainRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPackageDomainResponse:
+        """
+        套餐绑定、解绑、更换域名
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPackageDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPackageDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRecord(
             self,
             request: models.ModifyRecordRequest,

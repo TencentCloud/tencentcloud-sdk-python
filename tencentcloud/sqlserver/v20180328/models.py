@@ -20004,7 +20004,7 @@ class Events(AbstractModel):
         :type Size: int
         :param _EventType: 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
         :type EventType: str
-        :param _Status: 事件记录状态，1-成功，2-失败，3-文件待删除，4-写入中
+        :param _Status: 事件记录状态，1-成功，4-写入中
         :type Status: int
         :param _StartTime: 扩展文件生成开始时间
         :type StartTime: str
@@ -20071,7 +20071,7 @@ class Events(AbstractModel):
 
     @property
     def Status(self):
-        r"""事件记录状态，1-成功，2-失败，3-文件待删除，4-写入中
+        r"""事件记录状态，1-成功，4-写入中
         :rtype: int
         """
         return self._Status
