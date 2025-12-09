@@ -1413,7 +1413,7 @@ class MongodbClient(AbstractClient):
 
 
     def SetBackupRules(self, request):
-        r"""本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+        r"""本接口（SetBackupRules）用于设置 MongoDB 云数据库的自动备份规则。
 
         :param request: Request instance for SetBackupRules.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.SetBackupRulesRequest`

@@ -614,7 +614,9 @@ class AddInstancesRequest(AbstractModel):
         :type Memory: int
         :param _ReadOnlyCount: 新增只读实例数，取值范围为(0,15]
         :type ReadOnlyCount: int
-        :param _DeviceType: 实例机器类型
+        :param _DeviceType: 实例机器类型，支持值如下：
+- common：表示通用型
+- exclusive：表示独享型
         :type DeviceType: str
         :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
         :type InstanceGrpId: str
@@ -709,7 +711,9 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例机器类型
+        r"""实例机器类型，支持值如下：
+- common：表示通用型
+- exclusive：表示独享型
         :rtype: str
         """
         return self._DeviceType
@@ -2902,12 +2906,15 @@ class BinlogItem(AbstractModel):
         :type FinishTime: str
         :param _BinlogId: Binlog文件ID
         :type BinlogId: int
+        :param _CrossRegions: binlog所跨地域
+        :type CrossRegions: list of str
         """
         self._FileName = None
         self._FileSize = None
         self._StartTime = None
         self._FinishTime = None
         self._BinlogId = None
+        self._CrossRegions = None
 
     @property
     def FileName(self):
@@ -2964,6 +2971,17 @@ class BinlogItem(AbstractModel):
     def BinlogId(self, BinlogId):
         self._BinlogId = BinlogId
 
+    @property
+    def CrossRegions(self):
+        r"""binlog所跨地域
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -2971,6 +2989,7 @@ class BinlogItem(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._FinishTime = params.get("FinishTime")
         self._BinlogId = params.get("BinlogId")
+        self._CrossRegions = params.get("CrossRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9506,7 +9525,16 @@ class CynosdbClusterDetail(AbstractModel):
         :type Zone: str
         :param _PhysicalZone: 物理可用区
         :type PhysicalZone: str
-        :param _Status: 状态
+        :param _Status: 状态，支持的值如下：
+- creating：创建中
+- running：运行中
+- isolating：隔离中
+- isolated：已隔离
+- activating：从回收站重新恢复
+- offlining：下线中
+- offlined：已下线
+- deleting：删除中
+- deleted：已删除
         :type Status: str
         :param _StatusDesc: 状态描述
         :type StatusDesc: str
@@ -9730,7 +9758,16 @@ pausing
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，支持的值如下：
+- creating：创建中
+- running：运行中
+- isolating：隔离中
+- isolated：已隔离
+- activating：从回收站重新恢复
+- offlining：下线中
+- offlined：已下线
+- deleting：删除中
+- deleted：已删除
         :rtype: str
         """
         return self._Status
@@ -24098,7 +24135,9 @@ class InquirePriceCreateRequest(AbstractModel):
         :type InstancePayMode: str
         :param _StoragePayMode: 存储购买类型，可选值为：PREPAID, POSTPAID
         :type StoragePayMode: str
-        :param _DeviceType: 实例设备类型
+        :param _DeviceType: 实例设备类型，支持值如下：
+- common：表示通用型
+- exclusive：表示独享型
         :type DeviceType: str
         :param _Cpu: CPU核数，PREPAID与POSTPAID实例类型必传
         :type Cpu: int
@@ -24171,7 +24210,9 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例设备类型
+        r"""实例设备类型，支持值如下：
+- common：表示通用型
+- exclusive：表示独享型
         :rtype: str
         """
         return self._DeviceType

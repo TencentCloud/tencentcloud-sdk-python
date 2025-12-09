@@ -17013,7 +17013,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _EnvironmentId: 命名空间
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: 主题，查询死信时传groupId
         :type TopicName: str
@@ -17056,7 +17056,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -17682,7 +17682,7 @@ class DescribeRocketMQProducersRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _Topic: 主题名
         :type Topic: str
@@ -17716,7 +17716,7 @@ class DescribeRocketMQProducersRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId

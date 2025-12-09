@@ -46382,6 +46382,10 @@ class DescribeTestRunningRecordRequest(AbstractModel):
         :type PageSize: int
         :param _PageIndex: 分页索引
         :type PageIndex: int
+        :param _StatusList: 状态列表  LAUNCHED:等待运行 RUNNING:运行中 KILLING:终止中 KILLED:已终止 SUCCESS:成功 FAILED:失败 SKIP_RUNNING 跳过运行 NEVER_RUN:未运行
+        :type StatusList: list of str
+        :param _OrderConditionList: 排序条件 排序的key：timeCost,startTime
+        :type OrderConditionList: list of OrderCondition
         """
         self._ProjectId = None
         self._TaskId = None
@@ -46392,6 +46396,8 @@ class DescribeTestRunningRecordRequest(AbstractModel):
         self._RecordIdList = None
         self._PageSize = None
         self._PageIndex = None
+        self._StatusList = None
+        self._OrderConditionList = None
 
     @property
     def ProjectId(self):
@@ -46492,6 +46498,28 @@ class DescribeTestRunningRecordRequest(AbstractModel):
     def PageIndex(self, PageIndex):
         self._PageIndex = PageIndex
 
+    @property
+    def StatusList(self):
+        r"""状态列表  LAUNCHED:等待运行 RUNNING:运行中 KILLING:终止中 KILLED:已终止 SUCCESS:成功 FAILED:失败 SKIP_RUNNING 跳过运行 NEVER_RUN:未运行
+        :rtype: list of str
+        """
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def OrderConditionList(self):
+        r"""排序条件 排序的key：timeCost,startTime
+        :rtype: list of OrderCondition
+        """
+        return self._OrderConditionList
+
+    @OrderConditionList.setter
+    def OrderConditionList(self, OrderConditionList):
+        self._OrderConditionList = OrderConditionList
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -46503,6 +46531,13 @@ class DescribeTestRunningRecordRequest(AbstractModel):
         self._RecordIdList = params.get("RecordIdList")
         self._PageSize = params.get("PageSize")
         self._PageIndex = params.get("PageIndex")
+        self._StatusList = params.get("StatusList")
+        if params.get("OrderConditionList") is not None:
+            self._OrderConditionList = []
+            for item in params.get("OrderConditionList"):
+                obj = OrderCondition()
+                obj._deserialize(item)
+                self._OrderConditionList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -111739,6 +111774,8 @@ class UpdateWorkflowInfoRequest(AbstractModel):
         :type WorkflowParams: list of ParamInfo
         :param _GeneralTaskParams: 用于配置优化参数（线程、内存、CPU核数等），仅作用于Spark SQL节点。多个参数用英文分号分隔。
         :type GeneralTaskParams: list of GeneralTaskParam
+        :param _DependencyWorkflow: 工作流依赖，yes/no。开启后表示当前任务依赖本工作流上个周期的所有任务。仅支持当前任务所在工作流的任务全部为同周期的情况，如果非同周期则不生效，请在工作流-统一调度上进行配置。
+        :type DependencyWorkflow: str
         """
         self._ProjectId = None
         self._OperatorName = None
@@ -111752,6 +111789,7 @@ class UpdateWorkflowInfoRequest(AbstractModel):
         self._UserGroupName = None
         self._WorkflowParams = None
         self._GeneralTaskParams = None
+        self._DependencyWorkflow = None
 
     @property
     def ProjectId(self):
@@ -111885,6 +111923,17 @@ class UpdateWorkflowInfoRequest(AbstractModel):
     def GeneralTaskParams(self, GeneralTaskParams):
         self._GeneralTaskParams = GeneralTaskParams
 
+    @property
+    def DependencyWorkflow(self):
+        r"""工作流依赖，yes/no。开启后表示当前任务依赖本工作流上个周期的所有任务。仅支持当前任务所在工作流的任务全部为同周期的情况，如果非同周期则不生效，请在工作流-统一调度上进行配置。
+        :rtype: str
+        """
+        return self._DependencyWorkflow
+
+    @DependencyWorkflow.setter
+    def DependencyWorkflow(self, DependencyWorkflow):
+        self._DependencyWorkflow = DependencyWorkflow
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -111909,6 +111958,7 @@ class UpdateWorkflowInfoRequest(AbstractModel):
                 obj = GeneralTaskParam()
                 obj._deserialize(item)
                 self._GeneralTaskParams.append(obj)
+        self._DependencyWorkflow = params.get("DependencyWorkflow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

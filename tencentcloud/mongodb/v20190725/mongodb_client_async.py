@@ -1117,7 +1117,7 @@ class MongodbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetBackupRulesResponse:
         """
-        本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+        本接口（SetBackupRules）用于设置 MongoDB 云数据库的自动备份规则。
         """
         
         kwargs = {}

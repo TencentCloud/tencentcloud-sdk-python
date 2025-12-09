@@ -96,7 +96,9 @@ class TrocketClient(AbstractClient):
 
 
     def CreateMQTTInsPublicEndpoint(self, request):
-        r"""为MQTT实例创建公网接入点
+        r"""下线trocket下mqtt接口
+
+        为MQTT实例创建公网接入点
 
         :param request: Request instance for CreateMQTTInsPublicEndpoint.
         :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTInsPublicEndpointRequest`
@@ -119,7 +121,9 @@ class TrocketClient(AbstractClient):
 
 
     def CreateMQTTInstance(self, request):
-        r"""购买新的MQTT实例
+        r"""下线trocket下mqtt接口
+
+        购买新的MQTT实例
 
         :param request: Request instance for CreateMQTTInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTInstanceRequest`
@@ -142,7 +146,9 @@ class TrocketClient(AbstractClient):
 
 
     def CreateMQTTTopic(self, request):
-        r"""创建主题
+        r"""下线trocket下mqtt接口
+
+        创建主题
 
         :param request: Request instance for CreateMQTTTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTTopicRequest`
@@ -165,7 +171,9 @@ class TrocketClient(AbstractClient):
 
 
     def CreateMQTTUser(self, request):
-        r"""添加mqtt角色
+        r"""下线trocket下mqtt接口
+
+        添加mqtt角色
 
         :param request: Request instance for CreateMQTTUser.
         :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTUserRequest`
@@ -280,7 +288,9 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTInsPublicEndpoint(self, request):
-        r"""删除MQTT实例的公网接入点
+        r"""下线trocket下mqtt接口
+
+        删除MQTT实例的公网接入点
 
         :param request: Request instance for DeleteMQTTInsPublicEndpoint.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTInsPublicEndpointRequest`
@@ -303,7 +313,9 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTInstance(self, request):
-        r"""删除MQTT实例
+        r"""下线trocket下mqtt接口
+
+        删除MQTT实例
 
         :param request: Request instance for DeleteMQTTInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTInstanceRequest`
@@ -326,7 +338,9 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTTopic(self, request):
-        r"""删除MQTT主题
+        r"""下线trocket下mqtt接口
+
+        删除MQTT主题
 
         :param request: Request instance for DeleteMQTTTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTTopicRequest`
@@ -349,7 +363,9 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTUser(self, request):
-        r"""删除MQTT访问用户
+        r"""下线trocket下mqtt接口
+
+        删除MQTT访问用户
 
         :param request: Request instance for DeleteMQTTUser.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTUserRequest`
@@ -654,7 +670,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTClient(self, request):
-        r"""查询 MQTT 客户端详情
+        r"""下线trocket下mqtt接口
+
+        查询 MQTT 客户端详情
 
         :param request: Request instance for DescribeMQTTClient.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTClientRequest`
@@ -677,7 +695,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTInsPublicEndpoints(self, request):
-        r"""查询MQTT实例公网接入点
+        r"""下线trocket下mqtt接口
+
+        查询MQTT实例公网接入点
 
         :param request: Request instance for DescribeMQTTInsPublicEndpoints.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInsPublicEndpointsRequest`
@@ -700,7 +720,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTInsVPCEndpoints(self, request):
-        r"""查询MQTT实例公网接入点
+        r"""下线trocket下mqtt接口
+
+        查询MQTT实例公网接入点
 
         :param request: Request instance for DescribeMQTTInsVPCEndpoints.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInsVPCEndpointsRequest`
@@ -723,7 +745,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTInstance(self, request):
-        r"""查询实例信息
+        r"""下线trocket下mqtt接口
+
+        查询实例信息
 
         :param request: Request instance for DescribeMQTTInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInstanceRequest`
@@ -746,7 +770,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTInstanceCert(self, request):
-        r"""查询MQTT集群证书列表
+        r"""下线trocket下mqtt接口
+
+        查询MQTT集群证书列表
 
         :param request: Request instance for DescribeMQTTInstanceCert.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInstanceCertRequest`
@@ -769,7 +795,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTInstanceList(self, request):
-        r"""获取实例列表，Filters参数使用说明如下：
+        r"""下线trocket下mqtt接口
+
+        获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
         2. InstanceId，实例ID查询
         3. InstanceType, 实例类型查询，支持多选
@@ -798,7 +826,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTMessage(self, request):
-        r"""查询MQTT消息详情
+        r"""下线trocket下mqtt接口
+
+        查询MQTT消息详情
 
         :param request: Request instance for DescribeMQTTMessage.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTMessageRequest`
@@ -821,7 +851,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTMessageList(self, request):
-        r"""查询消息列表，如查询死信，请设置ConsumerGroup参数
+        r"""下线trocket下mqtt接口
+
+        查询消息列表，如查询死信，请设置ConsumerGroup参数
 
         :param request: Request instance for DescribeMQTTMessageList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTMessageListRequest`
@@ -844,7 +876,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTProductSKUList(self, request):
-        r"""获取产品售卖规格
+        r"""下线trocket下mqtt接口
+
+        获取产品售卖规格
 
         :param request: Request instance for DescribeMQTTProductSKUList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTProductSKUListRequest`
@@ -867,7 +901,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTTopic(self, request):
-        r"""查询mqtt主题详情
+        r"""下线trocket下mqtt接口
+
+        查询mqtt主题详情
 
         :param request: Request instance for DescribeMQTTTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTTopicRequest`
@@ -890,7 +926,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTTopicList(self, request):
-        r"""获取主题列表，Filter参数使用说明如下：
+        r"""下线trocket下mqtt接口
+
+        获取主题列表，Filter参数使用说明如下：
 
         1. TopicName，主题名称模糊搜索
         2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
@@ -916,7 +954,9 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTUserList(self, request):
-        r"""查询用户列表，Filter参数使用说明如下：
+        r"""下线trocket下mqtt接口
+
+        查询用户列表，Filter参数使用说明如下：
 
         1. Username，用户名称模糊搜索
 
@@ -1121,6 +1161,7 @@ class TrocketClient(AbstractClient):
         r"""查询主题关联的生产者列表信息，Filters支持以下筛选条件：
         - ClientIP，客户端IP
         - ClientID，客户端ID
+        当前 API 适用集群：5.x 集群。4.x 集群的查询生产者客户端列表接口文档见 [DescribeRocketMQProducers](https://cloud.tencent.com/document/api/1179/122749)。
 
         :param request: Request instance for DescribeProducerList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeProducerListRequest`
@@ -1488,7 +1529,9 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTInsPublicEndpoint(self, request):
-        r"""更新MQTT实例公网接入点
+        r"""下线trocket下mqtt接口
+
+        更新MQTT实例公网接入点
 
         :param request: Request instance for ModifyMQTTInsPublicEndpoint.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyMQTTInsPublicEndpointRequest`
@@ -1511,7 +1554,9 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTInstance(self, request):
-        r"""修改实例属性
+        r"""下线trocket下mqtt接口
+
+        修改实例属性
 
         :param request: Request instance for ModifyMQTTInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyMQTTInstanceRequest`
@@ -1534,7 +1579,9 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTInstanceCertBinding(self, request):
-        r"""更新MQTT集群绑定证书
+        r"""下线trocket下mqtt接口
+
+        更新MQTT集群绑定证书
         参数传空，则为删除证书
 
         :param request: Request instance for ModifyMQTTInstanceCertBinding.
@@ -1558,7 +1605,9 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTTopic(self, request):
-        r"""修改主题属性
+        r"""下线trocket下mqtt接口
+
+        修改主题属性
 
         :param request: Request instance for ModifyMQTTTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyMQTTTopicRequest`
@@ -1581,7 +1630,9 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTUser(self, request):
-        r"""修改MQTT角色
+        r"""下线trocket下mqtt接口
+
+        修改MQTT角色
 
         :param request: Request instance for ModifyMQTTUser.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyMQTTUserRequest`
@@ -1673,7 +1724,8 @@ class TrocketClient(AbstractClient):
 
 
     def ResendDeadLetterMessage(self, request):
-        r"""重新发送死信消息
+        r"""重新发送死信消息。
+        当前 API 适用集群：5.x集群。4.x 集群的重发死信消息接口文档见 [RetryRocketMQDlqMessage](https://cloud.tencent.com/document/api/1179/114595)。
 
         :param request: Request instance for ResendDeadLetterMessage.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ResendDeadLetterMessageRequest`
@@ -1742,7 +1794,8 @@ class TrocketClient(AbstractClient):
 
 
     def SendMessage(self, request):
-        r"""发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        r"""发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证 SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        当前 API 适用集群：5.x 集群。4.x 集群的发送消息接口文档见 [SendRocketMQMessage](https://cloud.tencent.com/document/api/1179/94179)。
 
         :param request: Request instance for SendMessage.
         :type request: :class:`tencentcloud.trocket.v20230308.models.SendMessageRequest`
@@ -1765,7 +1818,8 @@ class TrocketClient(AbstractClient):
 
 
     def VerifyMessageConsumption(self, request):
-        r"""消息消费验证
+        r"""消息消费验证。
+        当前 API 适用集群：5.x 集群。4.x 集群的消息消费验证接口文档见 [VerifyRocketMQConsume](https://cloud.tencent.com/document/api/1179/101061)。
 
         :param request: Request instance for VerifyMessageConsumption.
         :type request: :class:`tencentcloud.trocket.v20230308.models.VerifyMessageConsumptionRequest`

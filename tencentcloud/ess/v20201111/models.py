@@ -8545,7 +8545,6 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
 ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
         :type HintText: str
         :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
-示例值:QmFzZTYOIEJhc2U2NCA=
         :type UserData: str
         """
         self._Operator = None
@@ -8591,7 +8590,6 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
     @property
     def UserData(self):
         r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
-示例值:QmFzZTYOIEJhc2U2NCA=
         :rtype: str
         """
         return self._UserData

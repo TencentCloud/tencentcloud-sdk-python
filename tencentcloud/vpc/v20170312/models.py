@@ -66335,6 +66335,8 @@ class SecurityGroupPolicy(AbstractModel):
         :type PolicyDescription: str
         :param _ModifyTime: 安全组最近修改时间。
         :type ModifyTime: str
+        :param _Priority: 安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用`DescribeSecurityGroupPolicies`获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。
+        :type Priority: int
         """
         self._PolicyIndex = None
         self._Protocol = None
@@ -66347,6 +66349,7 @@ class SecurityGroupPolicy(AbstractModel):
         self._Action = None
         self._PolicyDescription = None
         self._ModifyTime = None
+        self._Priority = None
 
     @property
     def PolicyIndex(self):
@@ -66470,6 +66473,17 @@ class SecurityGroupPolicy(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def Priority(self):
+        r"""安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用`DescribeSecurityGroupPolicies`获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
 
     def _deserialize(self, params):
         self._PolicyIndex = params.get("PolicyIndex")
@@ -66487,6 +66501,7 @@ class SecurityGroupPolicy(AbstractModel):
         self._Action = params.get("Action")
         self._PolicyDescription = params.get("PolicyDescription")
         self._ModifyTime = params.get("ModifyTime")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -16707,15 +16707,15 @@ class VerifyMessageConsumptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _ClientId: 客户端ID
         :type ClientId: str
         :param _MsgId: 消息ID
         :type MsgId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -16726,7 +16726,7 @@ class VerifyMessageConsumptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -16737,7 +16737,7 @@ class VerifyMessageConsumptionRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -16770,7 +16770,7 @@ class VerifyMessageConsumptionRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        r"""消费组名称
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup

@@ -568,6 +568,8 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableDeepSearch(self):
+        warnings.warn("parameter `EnableDeepSearch` is deprecated", DeprecationWarning) 
+
         r"""是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
         :rtype: bool
         """
@@ -575,6 +577,8 @@ class ChatCompletionsRequest(AbstractModel):
 
     @EnableDeepSearch.setter
     def EnableDeepSearch(self, EnableDeepSearch):
+        warnings.warn("parameter `EnableDeepSearch` is deprecated", DeprecationWarning) 
+
         self._EnableDeepSearch = EnableDeepSearch
 
     @property
@@ -636,6 +640,8 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableDeepRead(self):
+        warnings.warn("parameter `EnableDeepRead` is deprecated", DeprecationWarning) 
+
         r"""是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
         :rtype: bool
         """
@@ -643,6 +649,8 @@ class ChatCompletionsRequest(AbstractModel):
 
     @EnableDeepRead.setter
     def EnableDeepRead(self, EnableDeepRead):
+        warnings.warn("parameter `EnableDeepRead` is deprecated", DeprecationWarning) 
+
         self._EnableDeepRead = EnableDeepRead
 
     @property
@@ -4936,6 +4944,42 @@ quote:引用 n 篇资料作为参考
         
 
 
+class PromptTokensDetails(AbstractModel):
+    r"""输入token的详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CachedTokens: 缓存 token 的数量。
+        :type CachedTokens: str
+        """
+        self._CachedTokens = None
+
+    @property
+    def CachedTokens(self):
+        r"""缓存 token 的数量。
+        :rtype: str
+        """
+        return self._CachedTokens
+
+    @CachedTokens.setter
+    def CachedTokens(self, CachedTokens):
+        self._CachedTokens = CachedTokens
+
+
+    def _deserialize(self, params):
+        self._CachedTokens = params.get("CachedTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryHunyuanImageChatJobRequest(AbstractModel):
     r"""QueryHunyuanImageChatJob请求参数结构体
 
@@ -7811,10 +7855,13 @@ class Usage(AbstractModel):
         :type CompletionTokens: int
         :param _TotalTokens: 总 Token 数量。
         :type TotalTokens: int
+        :param _PromptTokensDetails: 输入 token 的详情。
+        :type PromptTokensDetails: :class:`tencentcloud.hunyuan.v20230901.models.PromptTokensDetails`
         """
         self._PromptTokens = None
         self._CompletionTokens = None
         self._TotalTokens = None
+        self._PromptTokensDetails = None
 
     @property
     def PromptTokens(self):
@@ -7849,11 +7896,25 @@ class Usage(AbstractModel):
     def TotalTokens(self, TotalTokens):
         self._TotalTokens = TotalTokens
 
+    @property
+    def PromptTokensDetails(self):
+        r"""输入 token 的详情。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.PromptTokensDetails`
+        """
+        return self._PromptTokensDetails
+
+    @PromptTokensDetails.setter
+    def PromptTokensDetails(self, PromptTokensDetails):
+        self._PromptTokensDetails = PromptTokensDetails
+
 
     def _deserialize(self, params):
         self._PromptTokens = params.get("PromptTokens")
         self._CompletionTokens = params.get("CompletionTokens")
         self._TotalTokens = params.get("TotalTokens")
+        if params.get("PromptTokensDetails") is not None:
+            self._PromptTokensDetails = PromptTokensDetails()
+            self._PromptTokensDetails._deserialize(params.get("PromptTokensDetails"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

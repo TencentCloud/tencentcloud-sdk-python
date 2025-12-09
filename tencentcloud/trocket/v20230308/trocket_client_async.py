@@ -85,6 +85,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMQTTInsPublicEndpointResponse:
         """
+        下线trocket下mqtt接口
+
         为MQTT实例创建公网接入点
         """
         
@@ -103,6 +105,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMQTTInstanceResponse:
         """
+        下线trocket下mqtt接口
+
         购买新的MQTT实例
         """
         
@@ -121,6 +125,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMQTTTopicResponse:
         """
+        下线trocket下mqtt接口
+
         创建主题
         """
         
@@ -139,6 +145,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMQTTUserResponse:
         """
+        下线trocket下mqtt接口
+
         添加mqtt角色
         """
         
@@ -229,6 +237,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteMQTTInsPublicEndpointResponse:
         """
+        下线trocket下mqtt接口
+
         删除MQTT实例的公网接入点
         """
         
@@ -247,6 +257,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteMQTTInstanceResponse:
         """
+        下线trocket下mqtt接口
+
         删除MQTT实例
         """
         
@@ -265,6 +277,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteMQTTTopicResponse:
         """
+        下线trocket下mqtt接口
+
         删除MQTT主题
         """
         
@@ -283,6 +297,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteMQTTUserResponse:
         """
+        下线trocket下mqtt接口
+
         删除MQTT访问用户
         """
         
@@ -528,6 +544,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTClientResponse:
         """
+        下线trocket下mqtt接口
+
         查询 MQTT 客户端详情
         """
         
@@ -546,6 +564,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTInsPublicEndpointsResponse:
         """
+        下线trocket下mqtt接口
+
         查询MQTT实例公网接入点
         """
         
@@ -564,6 +584,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTInsVPCEndpointsResponse:
         """
+        下线trocket下mqtt接口
+
         查询MQTT实例公网接入点
         """
         
@@ -582,6 +604,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTInstanceResponse:
         """
+        下线trocket下mqtt接口
+
         查询实例信息
         """
         
@@ -600,6 +624,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTInstanceCertResponse:
         """
+        下线trocket下mqtt接口
+
         查询MQTT集群证书列表
         """
         
@@ -618,6 +644,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTInstanceListResponse:
         """
+        下线trocket下mqtt接口
+
         获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
         2. InstanceId，实例ID查询
@@ -642,6 +670,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTMessageResponse:
         """
+        下线trocket下mqtt接口
+
         查询MQTT消息详情
         """
         
@@ -660,6 +690,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTMessageListResponse:
         """
+        下线trocket下mqtt接口
+
         查询消息列表，如查询死信，请设置ConsumerGroup参数
         """
         
@@ -678,6 +710,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTProductSKUListResponse:
         """
+        下线trocket下mqtt接口
+
         获取产品售卖规格
         """
         
@@ -696,6 +730,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTTopicResponse:
         """
+        下线trocket下mqtt接口
+
         查询mqtt主题详情
         """
         
@@ -714,6 +750,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTTopicListResponse:
         """
+        下线trocket下mqtt接口
+
         获取主题列表，Filter参数使用说明如下：
 
         1. TopicName，主题名称模糊搜索
@@ -735,6 +773,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMQTTUserListResponse:
         """
+        下线trocket下mqtt接口
+
         查询用户列表，Filter参数使用说明如下：
 
         1. Username，用户名称模糊搜索
@@ -900,6 +940,7 @@ class TrocketClient(AbstractClient):
         查询主题关联的生产者列表信息，Filters支持以下筛选条件：
         - ClientIP，客户端IP
         - ClientID，客户端ID
+        当前 API 适用集群：5.x 集群。4.x 集群的查询生产者客户端列表接口文档见 [DescribeRocketMQProducers](https://cloud.tencent.com/document/api/1179/122749)。
         """
         
         kwargs = {}
@@ -1197,6 +1238,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMQTTInsPublicEndpointResponse:
         """
+        下线trocket下mqtt接口
+
         更新MQTT实例公网接入点
         """
         
@@ -1215,6 +1258,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMQTTInstanceResponse:
         """
+        下线trocket下mqtt接口
+
         修改实例属性
         """
         
@@ -1233,6 +1278,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMQTTInstanceCertBindingResponse:
         """
+        下线trocket下mqtt接口
+
         更新MQTT集群绑定证书
         参数传空，则为删除证书
         """
@@ -1252,6 +1299,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMQTTTopicResponse:
         """
+        下线trocket下mqtt接口
+
         修改主题属性
         """
         
@@ -1270,6 +1319,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMQTTUserResponse:
         """
+        下线trocket下mqtt接口
+
         修改MQTT角色
         """
         
@@ -1342,7 +1393,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResendDeadLetterMessageResponse:
         """
-        重新发送死信消息
+        重新发送死信消息。
+        当前 API 适用集群：5.x集群。4.x 集群的重发死信消息接口文档见 [RetryRocketMQDlqMessage](https://cloud.tencent.com/document/api/1179/114595)。
         """
         
         kwargs = {}
@@ -1396,7 +1448,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SendMessageResponse:
         """
-        发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证 SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+        当前 API 适用集群：5.x 集群。4.x 集群的发送消息接口文档见 [SendRocketMQMessage](https://cloud.tencent.com/document/api/1179/94179)。
         """
         
         kwargs = {}
@@ -1414,7 +1467,8 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.VerifyMessageConsumptionResponse:
         """
-        消息消费验证
+        消息消费验证。
+        当前 API 适用集群：5.x 集群。4.x 集群的消息消费验证接口文档见 [VerifyRocketMQConsume](https://cloud.tencent.com/document/api/1179/101061)。
         """
         
         kwargs = {}

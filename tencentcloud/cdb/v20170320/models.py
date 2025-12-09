@@ -17090,7 +17090,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SubnetIds: list of int non-negative
         :param _CdbErrors: 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
         :type CdbErrors: list of int
-        :param _OrderBy: 返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
+        :param _OrderBy: 返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
         :type OrderBy: str
         :param _OrderDirection: 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
         :type OrderDirection: str
@@ -17132,7 +17132,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ProxyIds: list of str
         :param _EngineTypes: 数据库引擎类型。可选值为：InnoDB、RocksDB。
         :type EngineTypes: list of str
-        :param _QueryClusterInfo: 是否获取集群版实例节点信息，可填：true 或 false。默认为 false。
+        :param _QueryClusterInfo: 是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
         :type QueryClusterInfo: bool
         """
         self._ProjectId = None
@@ -17339,7 +17339,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
+        r"""返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
         :rtype: str
         """
         return self._OrderBy
@@ -17561,7 +17561,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def QueryClusterInfo(self):
-        r"""是否获取集群版实例节点信息，可填：true 或 false。默认为 false。
+        r"""是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
         :rtype: bool
         """
         return self._QueryClusterInfo
@@ -19737,9 +19737,9 @@ class DescribeInstancePasswordComplexityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 实例的参数总数
+        :param _TotalCount: 密码复杂度相关参数总数
         :type TotalCount: int
-        :param _Items: 参数详情
+        :param _Items: 密码复杂度参数详情，policy取值范围["","LOW","MEDIUM"],空或者LOW表示：密码复杂度关，MEDIUM表示：密码复杂度开；当policy参数值是MEDIUM时，以下参数才有意义，length:取值范围[8-64],表示：最少字符数；mixed_case_count：取值范围[1-16]，表示大写字母和小写字母的最少个数。number_count：取值范围[1-16]，表示数字字符的最少个数。special_char_count：取值范围[1-16]，表示特殊字符的最少个数。
         :type Items: list of ParameterDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19750,7 +19750,7 @@ class DescribeInstancePasswordComplexityResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""实例的参数总数
+        r"""密码复杂度相关参数总数
         :rtype: int
         """
         return self._TotalCount
@@ -19761,7 +19761,7 @@ class DescribeInstancePasswordComplexityResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""参数详情
+        r"""密码复杂度参数详情，policy取值范围["","LOW","MEDIUM"],空或者LOW表示：密码复杂度关，MEDIUM表示：密码复杂度开；当policy参数值是MEDIUM时，以下参数才有意义，length:取值范围[8-64],表示：最少字符数；mixed_case_count：取值范围[1-16]，表示大写字母和小写字母的最少个数。number_count：取值范围[1-16]，表示数字字符的最少个数。special_char_count：取值范围[1-16]，表示特殊字符的最少个数。
         :rtype: list of ParameterDetail
         """
         return self._Items
