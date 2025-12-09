@@ -10978,7 +10978,7 @@ class CreateClusterRequest(AbstractModel):
         :type ProgramId: str
         :param _KuberneteApiServer: api地址
         :type KuberneteApiServer: str
-        :param _KuberneteNativeType: K : kubeconfig, S : service account
+        :param _KuberneteNativeType: K : kubeconfig, S : service account (公有云不支持通过kubeconfig和service account的方式创建集群)
         :type KuberneteNativeType: str
         :param _KuberneteNativeSecret: Kubernetes 原生 Secret 资源对象
         :type KuberneteNativeSecret: str
@@ -11153,7 +11153,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def KuberneteNativeType(self):
-        r"""K : kubeconfig, S : service account
+        r"""K : kubeconfig, S : service account (公有云不支持通过kubeconfig和service account的方式创建集群)
         :rtype: str
         """
         return self._KuberneteNativeType

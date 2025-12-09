@@ -5837,7 +5837,7 @@ class CreateRocketMQGroupRequest(AbstractModel):
         r"""
         :param _GroupId: Group名称，8~64个字符
         :type GroupId: str
-        :param _Namespaces: 命名空间，目前只支持单个命名空间
+        :param _Namespaces: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type Namespaces: list of str
         :param _ReadEnable: 是否开启消费
         :type ReadEnable: bool
@@ -5874,7 +5874,7 @@ class CreateRocketMQGroupRequest(AbstractModel):
 
     @property
     def Namespaces(self):
-        r"""命名空间，目前只支持单个命名空间
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: list of str
         """
         return self._Namespaces
@@ -6286,7 +6286,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
         r"""
         :param _Topic: 主题名称，3-64个字符，只能包含字母、数字、“-”及“_”
         :type Topic: str
-        :param _Namespaces: 主题所在的命名空间，目前支持在单个命名空间下创建主题
+        :param _Namespaces: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type Namespaces: list of str
         :param _Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
         :type Type: str
@@ -6317,7 +6317,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
 
     @property
     def Namespaces(self):
-        r"""主题所在的命名空间，目前支持在单个命名空间下创建主题
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: list of str
         """
         return self._Namespaces
@@ -6429,7 +6429,7 @@ class CreateRocketMQTopicV2Request(AbstractModel):
         :type Type: str
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Namespace: 命名空间
+        :param _Namespace: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type Namespace: str
         :param _Remark: 备注
         :type Remark: str
@@ -6481,7 +6481,7 @@ class CreateRocketMQTopicV2Request(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._Namespace
@@ -8728,7 +8728,7 @@ class DeleteRocketMQGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
@@ -8750,7 +8750,7 @@ class DeleteRocketMQGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -8995,7 +8995,7 @@ class DeleteRocketMQTopicRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _Topic: 主题名称
         :type Topic: str
@@ -9017,7 +9017,7 @@ class DeleteRocketMQTopicRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -15918,7 +15918,7 @@ class DescribeRocketMQConsumeStatsRequest(AbstractModel):
         r"""
         :param _ClusterId: 实例ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _ConsumerGroup: 消费组
         :type ConsumerGroup: str
@@ -15940,7 +15940,7 @@ class DescribeRocketMQConsumeStatsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -16032,7 +16032,7 @@ class DescribeRocketMQConsumerConnectionDetailRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
@@ -16066,7 +16066,7 @@ class DescribeRocketMQConsumerConnectionDetailRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -16221,7 +16221,7 @@ class DescribeRocketMQConsumerConnectionsRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组ID
         :type GroupId: str
@@ -16255,7 +16255,7 @@ class DescribeRocketMQConsumerConnectionsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -16610,7 +16610,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _Offset: 偏移量
         :type Offset: int
@@ -16656,7 +16656,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -17345,7 +17345,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _EnvironmentId: 命名空间
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: 主题，rocketmq查询死信时值为groupId
         :type TopicName: str
@@ -17379,7 +17379,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -18819,7 +18819,7 @@ class DescribeRocketMQSubscriptionsRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Namespace: 命名空间名称
+        :param _Namespace: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type Namespace: str
         :param _Group: 消费组名称
         :type Group: str
@@ -18847,7 +18847,7 @@ class DescribeRocketMQSubscriptionsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间名称
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._Namespace
@@ -19123,7 +19123,7 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _EnvironmentId: 命名空间
+        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: 主题名称，查询死信时为groupId
         :type TopicName: str
@@ -19178,7 +19178,7 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -19594,7 +19594,7 @@ class DescribeRocketMQTopicStatsRequest(AbstractModel):
         r"""
         :param _ClusterId: 实例ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _TopicName: 主题名
         :type TopicName: str
@@ -19616,7 +19616,7 @@ class DescribeRocketMQTopicStatsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -19708,7 +19708,7 @@ class DescribeRocketMQTopicsByGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
@@ -19736,7 +19736,7 @@ class DescribeRocketMQTopicsByGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -19866,7 +19866,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
         :type Limit: int
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _FilterType: 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Transaction
         :type FilterType: list of str
@@ -19921,7 +19921,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -25117,7 +25117,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间
+        :param _NamespaceId: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
@@ -25151,7 +25151,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -25820,7 +25820,7 @@ class ModifyRocketMQTopicRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _Topic: 主题名称
         :type Topic: str
@@ -25848,7 +25848,7 @@ class ModifyRocketMQTopicRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -32106,7 +32106,7 @@ class RetryRocketMQDlqMessageRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _NamespaceId: 命名空间名称
+        :param _NamespaceId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :type NamespaceId: str
         :param _GroupName: group名称
         :type GroupName: str
@@ -32131,7 +32131,7 @@ class RetryRocketMQDlqMessageRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间名称
+        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
         :rtype: str
         """
         return self._NamespaceId

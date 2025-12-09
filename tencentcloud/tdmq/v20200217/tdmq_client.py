@@ -349,7 +349,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQCluster(self, request):
-        r"""此接口用于创建一个RocketMQ集群
+        r"""创建 RocketMQ 集群。
+        当前 API 适用集群：4.x 虚拟集群。创建 4.x 专享或通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)，创建 5.x 集群接口文档见 [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)。
 
         :param request: Request instance for CreateRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterRequest`
@@ -396,7 +397,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQGroup(self, request):
-        r"""创建RocketMQ消费组
+        r"""创建 RocketMQ 消费组。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
 
         :param request: Request instance for CreateRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupRequest`
@@ -419,7 +421,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQNamespace(self, request):
-        r"""创建RocketMQ命名空间
+        r"""创建 RocketMQ 命名空间。
+        当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 
         :param request: Request instance for CreateRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceRequest`
@@ -466,7 +469,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQTopic(self, request):
-        r"""创建RocketMQ主题
+        r"""批量创建 RocketMQ 主题。
+        当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 
         :param request: Request instance for CreateRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicRequest`
@@ -489,7 +493,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQTopicV2(self, request):
-        r"""创建RocketMQ主题
+        r"""创建 RocketMQ 主题。
+        当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 
         :param request: Request instance for CreateRocketMQTopicV2.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicV2Request`
@@ -880,7 +885,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQCluster(self, request):
-        r"""删除RocketMQ集群
+        r"""删除 RocketMQ 集群。
+        当前 API 适用集群：4.x 虚拟集群。删除 4.x 专享或通用集群的接口文档见 [DeleteRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95802)，删除 5.x 集群的接口文档见 [DeleteInstance](https://cloud.tencent.com/document/product/1493/97867)。
 
         :param request: Request instance for DeleteRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterRequest`
@@ -927,7 +933,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQGroup(self, request):
-        r"""删除RocketMQ消费组
+        r"""删除 RocketMQ 消费组。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群消费组的接口文档见 [DeleteConsumerGroup](https://cloud.tencent.com/document/api/1493/97942)。
 
         :param request: Request instance for DeleteRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupRequest`
@@ -950,7 +957,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQNamespace(self, request):
-        r"""删除RocketMQ命名空间
+        r"""删除 RocketMQ 命名空间。
+        当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 
         :param request: Request instance for DeleteRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceRequest`
@@ -997,7 +1005,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQTopic(self, request):
-        r"""删除RocketMQ主题
+        r"""删除 RocketMQ 主题。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群主题的接口文档见 [DeleteTopic](https://cloud.tencent.com/document/api/1493/97946)。
 
         :param request: Request instance for DeleteRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicRequest`
@@ -1919,7 +1928,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumeStats(self, request):
-        r"""获取消费详情列表
+        r"""查询 RocketMQ 消费详情列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群消费详情的接口文档见 [DescribeConsumerGroup](https://cloud.tencent.com/document/api/1493/97941)。
 
         :param request: Request instance for DescribeRocketMQConsumeStats.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumeStatsRequest`
@@ -1942,7 +1952,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumerConnectionDetail(self, request):
-        r"""获取在线消费端详情
+        r"""查询 RocketMQ 消费者客户端详情。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消费者客户端详情接口文档见 [DescribeConsumerClient](https://cloud.tencent.com/document/api/1493/115240)。
 
         :param request: Request instance for DescribeRocketMQConsumerConnectionDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionDetailRequest`
@@ -1965,7 +1976,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQConsumerConnections(self, request):
-        r"""获取指定消费组下当前客户端的连接情况
+        r"""查询 RocketMQ 消费组下的客户端连接列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组下的客户端连接列表接口文档见 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140)。
 
         :param request: Request instance for DescribeRocketMQConsumerConnections.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionsRequest`
@@ -2012,7 +2024,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQGroups(self, request):
-        r"""获取RocketMQ消费组列表
+        r"""查询 RocketMQ 消费组列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的消费组列表接口文档见 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535)。
 
         :param request: Request instance for DescribeRocketMQGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsRequest`
@@ -2081,7 +2094,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsgTrace(self, request):
-        r"""查询消息轨迹
+        r"""查询消息轨迹。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消息轨迹的接口文档见 [DescribeMessageTrace](https://cloud.tencent.com/document/api/1493/114302)。
 
         :param request: Request instance for DescribeRocketMQMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgTraceRequest`
@@ -2104,7 +2118,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQNamespaces(self, request):
-        r"""获取RocketMQ命名空间列表
+        r"""获取 RocketMQ 命名空间列表。
+        当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 
         :param request: Request instance for DescribeRocketMQNamespaces.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesRequest`
@@ -2244,7 +2259,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSubscriptions(self, request):
-        r"""用于获取RocketMQ消费组订阅关系数据
+        r"""查询 RocketMQ 消费组订阅关系列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 
         :param request: Request instance for DescribeRocketMQSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSubscriptionsRequest`
@@ -2313,7 +2329,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicMsgs(self, request):
-        r"""rocketmq 消息查询
+        r"""查询 RocketMQ 消息列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消息列表接口文档见 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593)。
 
         :param request: Request instance for DescribeRocketMQTopicMsgs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicMsgsRequest`
@@ -2336,7 +2353,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicStats(self, request):
-        r"""获取Topic生产详情列表
+        r"""查询 RocketMQ 主题生产详情列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群暂不支持该功能。
 
         :param request: Request instance for DescribeRocketMQTopicStats.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicStatsRequest`
@@ -2359,7 +2377,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopics(self, request):
-        r"""获取RocketMQ主题列表
+        r"""查询 RocketMQ 主题列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的主题列表接口文档见 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)。
 
         :param request: Request instance for DescribeRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsRequest`
@@ -2382,7 +2401,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicsByGroup(self, request):
-        r"""获取指定消费组下订阅的主题列表
+        r"""查询 RocketMQ 消费组订阅的主题列表。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 
         :param request: Request instance for DescribeRocketMQTopicsByGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsByGroupRequest`
@@ -2958,7 +2978,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQGroup(self, request):
-        r"""更新RocketMQ消费组信息
+        r"""修改 RocketMQ 消费组属性。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群消费组属性的接口文档见 [ModifyConsumerGroup](https://cloud.tencent.com/document/api/1493/97940)。
 
         :param request: Request instance for ModifyRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupRequest`
@@ -3027,7 +3048,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQNamespace(self, request):
-        r"""更新RocketMQ命名空间
+        r"""更新 RocketMQ 命名空间。
+        当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 
         :param request: Request instance for ModifyRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceRequest`
@@ -3074,7 +3096,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQTopic(self, request):
-        r"""更新RocketMQ主题信息
+        r"""修改 RocketMQ 主题属性。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群主题属性的接口文档见 [ModifyTopic](https://cloud.tencent.com/document/api/1493/97944)。
 
         :param request: Request instance for ModifyRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicRequest`
@@ -3255,7 +3278,8 @@ class TdmqClient(AbstractClient):
 
 
     def RetryRocketMQDlqMessage(self, request):
-        r"""重发RocketMQ死信消息
+        r"""重发 RocketMQ 死信消息。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的重发死信消息接口文档见 [ResendDeadLetterMessage](https://cloud.tencent.com/document/api/1493/114592)。
 
         :param request: Request instance for RetryRocketMQDlqMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.RetryRocketMQDlqMessageRequest`

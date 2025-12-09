@@ -6118,6 +6118,8 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         :type CanBatchReject: bool
         :param _PresetApproverInfo: 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
         :type PresetApproverInfo: :class:`tencentcloud.ess.v20201111.models.PresetApproverInfo`
+        :param _CanSkipReadFlow: 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。`
+        :type CanSkipReadFlow: bool
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -6134,6 +6136,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._CacheApproverInfo = None
         self._CanBatchReject = None
         self._PresetApproverInfo = None
+        self._CanSkipReadFlow = None
 
     @property
     def FlowApproverInfo(self):
@@ -6345,6 +6348,17 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     def PresetApproverInfo(self, PresetApproverInfo):
         self._PresetApproverInfo = PresetApproverInfo
 
+    @property
+    def CanSkipReadFlow(self):
+        r"""是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。`
+        :rtype: bool
+        """
+        return self._CanSkipReadFlow
+
+    @CanSkipReadFlow.setter
+    def CanSkipReadFlow(self, CanSkipReadFlow):
+        self._CanSkipReadFlow = CanSkipReadFlow
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -6374,6 +6388,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         if params.get("PresetApproverInfo") is not None:
             self._PresetApproverInfo = PresetApproverInfo()
             self._PresetApproverInfo._deserialize(params.get("PresetApproverInfo"))
+        self._CanSkipReadFlow = params.get("CanSkipReadFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8529,10 +8544,14 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
 
 ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
         :type HintText: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
+示例值:QmFzZTYOIEJhc2U2NCA=
+        :type UserData: str
         """
         self._Operator = None
         self._Agent = None
         self._HintText = None
+        self._UserData = None
 
     @property
     def Operator(self):
@@ -8569,6 +8588,18 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
     def HintText(self, HintText):
         self._HintText = HintText
 
+    @property
+    def UserData(self):
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
+示例值:QmFzZTYOIEJhc2U2NCA=
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8578,6 +8609,7 @@ class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._HintText = params.get("HintText")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

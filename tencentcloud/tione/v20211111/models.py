@@ -13902,6 +13902,7 @@ class ModelInfo(AbstractModel):
         :param _CosPathInfo: cos路径信息
         :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _GooseFSx: GooseFSx的配置，ModelSource为GooseFSx时有效
+注意：此字段可能返回 null，表示取不到有效值。
         :type GooseFSx: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         :param _AlgorithmFramework: 模型对应的算法框架，预留
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14004,6 +14005,7 @@ class ModelInfo(AbstractModel):
     @property
     def GooseFSx(self):
         r"""GooseFSx的配置，ModelSource为GooseFSx时有效
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         """
         return self._GooseFSx

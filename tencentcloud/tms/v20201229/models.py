@@ -25,32 +25,34 @@ class CreateFinancialLLMTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizType: 审核策略BizType
+        :param _BizType: 接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
+示例值：TencentCloudFinancialLLMDefault
         :type BizType: str
-        :param _FileType: 待审文件类型，目前支持：PDF, DOC, DOCX
-        :type FileType: str
-        :param _ContentType: 送审内容类型：1-文档，2-文本
+        :param _ContentType: 送审内容的格式，有两个可选值：
+- 1：代表送审内容为**文档**，如DOC文档
+- 2：代表送审内容为**纯文本**
+
+示例值：1
         :type ContentType: int
-        :param _Content: 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+        :param _FileType: 若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
+说明：若送审内容为纯文本（ContentType=2），则本字段传空（FileType=""）。
+        :type FileType: str
+        :param _Content: 送审内容的传入方式如下：
+- 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
+- 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
 
-文档限制：
-
-- 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
-- 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
-- 文档解析后的纯文本长度不超过 10000字
-
-文本限制：Base64解码后的文本长度不超过10000字
-
+示例值：5piO5aSpNjAz5LiA5a6a5rao
         :type Content: str
         """
         self._BizType = None
-        self._FileType = None
         self._ContentType = None
+        self._FileType = None
         self._Content = None
 
     @property
     def BizType(self):
-        r"""审核策略BizType
+        r"""接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
+示例值：TencentCloudFinancialLLMDefault
         :rtype: str
         """
         return self._BizType
@@ -60,19 +62,12 @@ class CreateFinancialLLMTaskRequest(AbstractModel):
         self._BizType = BizType
 
     @property
-    def FileType(self):
-        r"""待审文件类型，目前支持：PDF, DOC, DOCX
-        :rtype: str
-        """
-        return self._FileType
-
-    @FileType.setter
-    def FileType(self, FileType):
-        self._FileType = FileType
-
-    @property
     def ContentType(self):
-        r"""送审内容类型：1-文档，2-文本
+        r"""送审内容的格式，有两个可选值：
+- 1：代表送审内容为**文档**，如DOC文档
+- 2：代表送审内容为**纯文本**
+
+示例值：1
         :rtype: int
         """
         return self._ContentType
@@ -82,17 +77,24 @@ class CreateFinancialLLMTaskRequest(AbstractModel):
         self._ContentType = ContentType
 
     @property
+    def FileType(self):
+        r"""若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
+说明：若送审内容为纯文本（ContentType=2），则本字段传空（FileType=""）。
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
     def Content(self):
-        r"""送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+        r"""送审内容的传入方式如下：
+- 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
+- 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
 
-文档限制：
-
-- 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
-- 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
-- 文档解析后的纯文本长度不超过 10000字
-
-文本限制：Base64解码后的文本长度不超过10000字
-
+示例值：5piO5aSpNjAz5LiA5a6a5rao
         :rtype: str
         """
         return self._Content
@@ -104,8 +106,8 @@ class CreateFinancialLLMTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._BizType = params.get("BizType")
-        self._FileType = params.get("FileType")
         self._ContentType = params.get("ContentType")
+        self._FileType = params.get("FileType")
         self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -124,7 +126,8 @@ class CreateFinancialLLMTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 金融大模型审校任务ID
+        :param _TaskId: 本次请求返回的任务ID将用于后续查询接口，以获取对应的审校结果。
+示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -134,7 +137,8 @@ class CreateFinancialLLMTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""金融大模型审校任务ID
+        r"""本次请求返回的任务ID将用于后续查询接口，以获取对应的审校结果。
+示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9。
         :rtype: str
         """
         return self._TaskId
@@ -602,14 +606,16 @@ class GetFinancialLLMTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 金融大模型审校任务ID
+        :param _TaskId: 该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
+示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""金融大模型审校任务ID
+        r"""该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
+示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
         :rtype: str
         """
         return self._TaskId
@@ -638,40 +644,42 @@ class GetFinancialLLMTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 审校任务状态：
+        :param _Status: TaskId对应的任务的状态：
+- Success: 任务已完成
+- Processing: 任务进行中，建议10秒后再查询
+- Failed: 任务失败
 
-- Success: 成功
-- Processing: 处理中，请等待
-- Failed: 失败
         :type Status: str
-        :param _ModerationResult: 大模型审校结果
-        :type ModerationResult: str
-        :param _FailureReason: 审校任务失败原因，仅当任务失败时有值
-        :type FailureReason: str
-        :param _StartTime: 审校任务开始时间
-        :type StartTime: str
+        :param _Details: 该字段标识服务检测到的违规点，具体内容参阅数据结构[FinancialLLMViolationDetail](https://cloud.tencent.com/document/api/1124/51861#FinancialLLMViolationDetail)
+        :type Details: list of FinancialLLMViolationDetail
         :param _ReviewedLabels: 本次检测的违规点列表
         :type ReviewedLabels: list of str
-        :param _Details: 违规明细
-        :type Details: list of FinancialLLMViolationDetail
+        :param _StartTime: 审校任务的开始时间
+示例值：2025-09-25 19:42:35
+        :type StartTime: str
+        :param _FailureReason: 若审校任务失败（Status="Failed"），该字段返回失败的具体原因。
+示例值：文档解析失败
+        :type FailureReason: str
+        :param _ModerationResult: 该字段为历史结构字段，不再推荐使用。
+        :type ModerationResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
-        self._ModerationResult = None
-        self._FailureReason = None
-        self._StartTime = None
-        self._ReviewedLabels = None
         self._Details = None
+        self._ReviewedLabels = None
+        self._StartTime = None
+        self._FailureReason = None
+        self._ModerationResult = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""审校任务状态：
+        r"""TaskId对应的任务的状态：
+- Success: 任务已完成
+- Processing: 任务进行中，建议10秒后再查询
+- Failed: 任务失败
 
-- Success: 成功
-- Processing: 处理中，请等待
-- Failed: 失败
         :rtype: str
         """
         return self._Status
@@ -681,37 +689,15 @@ class GetFinancialLLMTaskResultResponse(AbstractModel):
         self._Status = Status
 
     @property
-    def ModerationResult(self):
-        r"""大模型审校结果
-        :rtype: str
+    def Details(self):
+        r"""该字段标识服务检测到的违规点，具体内容参阅数据结构[FinancialLLMViolationDetail](https://cloud.tencent.com/document/api/1124/51861#FinancialLLMViolationDetail)
+        :rtype: list of FinancialLLMViolationDetail
         """
-        return self._ModerationResult
+        return self._Details
 
-    @ModerationResult.setter
-    def ModerationResult(self, ModerationResult):
-        self._ModerationResult = ModerationResult
-
-    @property
-    def FailureReason(self):
-        r"""审校任务失败原因，仅当任务失败时有值
-        :rtype: str
-        """
-        return self._FailureReason
-
-    @FailureReason.setter
-    def FailureReason(self, FailureReason):
-        self._FailureReason = FailureReason
-
-    @property
-    def StartTime(self):
-        r"""审校任务开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
 
     @property
     def ReviewedLabels(self):
@@ -725,15 +711,39 @@ class GetFinancialLLMTaskResultResponse(AbstractModel):
         self._ReviewedLabels = ReviewedLabels
 
     @property
-    def Details(self):
-        r"""违规明细
-        :rtype: list of FinancialLLMViolationDetail
+    def StartTime(self):
+        r"""审校任务的开始时间
+示例值：2025-09-25 19:42:35
+        :rtype: str
         """
-        return self._Details
+        return self._StartTime
 
-    @Details.setter
-    def Details(self, Details):
-        self._Details = Details
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FailureReason(self):
+        r"""若审校任务失败（Status="Failed"），该字段返回失败的具体原因。
+示例值：文档解析失败
+        :rtype: str
+        """
+        return self._FailureReason
+
+    @FailureReason.setter
+    def FailureReason(self, FailureReason):
+        self._FailureReason = FailureReason
+
+    @property
+    def ModerationResult(self):
+        r"""该字段为历史结构字段，不再推荐使用。
+        :rtype: str
+        """
+        return self._ModerationResult
+
+    @ModerationResult.setter
+    def ModerationResult(self, ModerationResult):
+        self._ModerationResult = ModerationResult
 
     @property
     def RequestId(self):
@@ -749,16 +759,16 @@ class GetFinancialLLMTaskResultResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
-        self._ModerationResult = params.get("ModerationResult")
-        self._FailureReason = params.get("FailureReason")
-        self._StartTime = params.get("StartTime")
-        self._ReviewedLabels = params.get("ReviewedLabels")
         if params.get("Details") is not None:
             self._Details = []
             for item in params.get("Details"):
                 obj = FinancialLLMViolationDetail()
                 obj._deserialize(item)
                 self._Details.append(obj)
+        self._ReviewedLabels = params.get("ReviewedLabels")
+        self._StartTime = params.get("StartTime")
+        self._FailureReason = params.get("FailureReason")
+        self._ModerationResult = params.get("ModerationResult")
         self._RequestId = params.get("RequestId")
 
 
@@ -1172,22 +1182,37 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+        :param _Content: 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
+
         :type Content: str
-        :param _BizType: 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        :param _BizType: 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
+- **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
+- **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+
+示例值：TencentCloudDefault
         :type BizType: str
-        :param _DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+        :param _DataId: 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
+取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
         :type DataId: str
-        :param _User: 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+        :param _User: 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
-        :param _Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+        :param _Device: 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
-        :param _SourceLanguage: 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
+        :param _SourceLanguage: Content字段的原始语种，枚举值包括 zh 和 en：
+- 推荐使用 zh
+- en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+
+示例值：zh
+
         :type SourceLanguage: str
-        :param _Type: 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+        :param _Type: 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
+TEXT：内容安全
+TEXT_AIGC：AI生成识别
         :type Type: str
-        :param _SessionId: 流式审核策略维度下的唯一会话ID
+        :param _SessionId: 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
         :type SessionId: str
         """
         self._Content = None
@@ -1201,7 +1226,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+        r"""待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
+
         :rtype: str
         """
         return self._Content
@@ -1212,8 +1239,11 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        r"""该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        r"""接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
+- **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
+- **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+
+示例值：TencentCloudDefault
         :rtype: str
         """
         return self._BizType
@@ -1224,7 +1254,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        r"""该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+        r"""该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
+取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
         :rtype: str
         """
         return self._DataId
@@ -1235,7 +1267,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        r"""该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+        r"""该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
         :rtype: :class:`tencentcloud.tms.v20201229.models.User`
         """
         return self._User
@@ -1246,7 +1278,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        r"""该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+        r"""该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
         :rtype: :class:`tencentcloud.tms.v20201229.models.Device`
         """
         return self._Device
@@ -1257,7 +1289,12 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def SourceLanguage(self):
-        r"""表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
+        r"""Content字段的原始语种，枚举值包括 zh 和 en：
+- 推荐使用 zh
+- en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+
+示例值：zh
+
         :rtype: str
         """
         return self._SourceLanguage
@@ -1268,7 +1305,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+        r"""服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
+TEXT：内容安全
+TEXT_AIGC：AI生成识别
         :rtype: str
         """
         return self._Type
@@ -1279,7 +1318,8 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""流式审核策略维度下的唯一会话ID
+        r"""适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
         :rtype: str
         """
         return self._SessionId
@@ -1319,51 +1359,59 @@ class TextModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizType: 该字段用于返回请求参数中的BizType参数
+        :param _BizType: 该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+示例值：TencentCloudDefault
         :type BizType: str
+        :param _Suggestion: 用于标识对本次请求的处置建议，共三种返回值。
+返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+        :type Suggestion: str
         :param _Label: 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
         :type Label: str
-        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-        :type Suggestion: str
-        :param _Keywords: 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+        :param _SubLabel: 对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+示例值：SexualBehavior（该值为 Porn 下的一个二级标签）
+        :type SubLabel: str
+        :param _Score: 该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+示例值：85
+        :type Score: int
+        :param _Keywords: 该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+示例值：["优惠券", "线下兑换"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
-        :type Score: int
-        :param _DetailResults: 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
+        :param _DetailResults: 该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param _RiskDetails: 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
+        :param _RiskDetails: 该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param _Extra: 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
+        :param _Extra: 该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
+备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
         :type Extra: str
-        :param _DataId: 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+        :param _DataId: 该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
         :type DataId: str
-        :param _SubLabel: 该字段用于返回当前标签（Label）下的二级标签。
-        :type SubLabel: str
-        :param _ContextText: 该字段用于返回上下文关联文本
+        :param _ContextText: 历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
         :type ContextText: str
-        :param _SentimentAnalysis: 情感分析结果
+        :param _SentimentAnalysis: 该字段为历史结构字段，不再推荐使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
-        :param _HitType: 该字段用于标识本次审核决策归因，比如text_nlp_tianji标识是由nlp tianji模型给出的审核决策，text_keyword_public标识命中了业务的关键词库
+        :param _HitType: 该字段为历史结构字段，不再推荐使用。
         :type HitType: str
-        :param _SessionId: 流式审核策略维度下的唯一会话ID
+        :param _SessionId: 该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
         :type SessionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BizType = None
-        self._Label = None
         self._Suggestion = None
-        self._Keywords = None
+        self._Label = None
+        self._SubLabel = None
         self._Score = None
+        self._Keywords = None
         self._DetailResults = None
         self._RiskDetails = None
         self._Extra = None
         self._DataId = None
-        self._SubLabel = None
         self._ContextText = None
         self._SentimentAnalysis = None
         self._HitType = None
@@ -1372,7 +1420,8 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def BizType(self):
-        r"""该字段用于返回请求参数中的BizType参数
+        r"""该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+示例值：TencentCloudDefault
         :rtype: str
         """
         return self._BizType
@@ -1380,6 +1429,18 @@ class TextModerationResponse(AbstractModel):
     @BizType.setter
     def BizType(self, BizType):
         self._BizType = BizType
+
+    @property
+    def Suggestion(self):
+        r"""用于标识对本次请求的处置建议，共三种返回值。
+返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
 
     @property
     def Label(self):
@@ -1393,19 +1454,33 @@ class TextModerationResponse(AbstractModel):
         self._Label = Label
 
     @property
-    def Suggestion(self):
-        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+    def SubLabel(self):
+        r"""对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+示例值：SexualBehavior（该值为 Porn 下的一个二级标签）
         :rtype: str
         """
-        return self._Suggestion
+        return self._SubLabel
 
-    @Suggestion.setter
-    def Suggestion(self, Suggestion):
-        self._Suggestion = Suggestion
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def Score(self):
+        r"""该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+示例值：85
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
 
     @property
     def Keywords(self):
-        r"""该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+        r"""该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+示例值：["优惠券", "线下兑换"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1416,19 +1491,8 @@ class TextModerationResponse(AbstractModel):
         self._Keywords = Keywords
 
     @property
-    def Score(self):
-        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
-        :rtype: int
-        """
-        return self._Score
-
-    @Score.setter
-    def Score(self, Score):
-        self._Score = Score
-
-    @property
     def DetailResults(self):
-        r"""该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
+        r"""该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailResults
         """
@@ -1440,7 +1504,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RiskDetails(self):
-        r"""该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
+        r"""该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskDetails
         """
@@ -1452,7 +1516,8 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
+        r"""该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
+备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
         :rtype: str
         """
         return self._Extra
@@ -1463,7 +1528,8 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
-        r"""该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+        r"""该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
         :rtype: str
         """
         return self._DataId
@@ -1473,19 +1539,8 @@ class TextModerationResponse(AbstractModel):
         self._DataId = DataId
 
     @property
-    def SubLabel(self):
-        r"""该字段用于返回当前标签（Label）下的二级标签。
-        :rtype: str
-        """
-        return self._SubLabel
-
-    @SubLabel.setter
-    def SubLabel(self, SubLabel):
-        self._SubLabel = SubLabel
-
-    @property
     def ContextText(self):
-        r"""该字段用于返回上下文关联文本
+        r"""历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
         :rtype: str
         """
         return self._ContextText
@@ -1496,7 +1551,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SentimentAnalysis(self):
-        r"""情感分析结果
+        r"""该字段为历史结构字段，不再推荐使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         """
@@ -1508,7 +1563,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def HitType(self):
-        r"""该字段用于标识本次审核决策归因，比如text_nlp_tianji标识是由nlp tianji模型给出的审核决策，text_keyword_public标识命中了业务的关键词库
+        r"""该字段为历史结构字段，不再推荐使用。
         :rtype: str
         """
         return self._HitType
@@ -1519,7 +1574,8 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""流式审核策略维度下的唯一会话ID
+        r"""该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
         :rtype: str
         """
         return self._SessionId
@@ -1542,10 +1598,11 @@ class TextModerationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._BizType = params.get("BizType")
-        self._Label = params.get("Label")
         self._Suggestion = params.get("Suggestion")
-        self._Keywords = params.get("Keywords")
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
         self._Score = params.get("Score")
+        self._Keywords = params.get("Keywords")
         if params.get("DetailResults") is not None:
             self._DetailResults = []
             for item in params.get("DetailResults"):
@@ -1560,7 +1617,6 @@ class TextModerationResponse(AbstractModel):
                 self._RiskDetails.append(obj)
         self._Extra = params.get("Extra")
         self._DataId = params.get("DataId")
-        self._SubLabel = params.get("SubLabel")
         self._ContextText = params.get("ContextText")
         if params.get("SentimentAnalysis") is not None:
             self._SentimentAnalysis = SentimentAnalysis()

@@ -7265,10 +7265,10 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         :type ClusterId: str
         :param _Name: 节点池名称
         :type Name: str
+        :param _SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
         :param _SubnetIds: 子网ID列表
         :type SubnetIds: list of str
-        :param _SecurityGroupIds: 安全组ID列表，必选参数
-        :type SecurityGroupIds: list of str
         :param _Labels: 虚拟节点label
         :type Labels: list of Label
         :param _Taints: 虚拟节点taint
@@ -7284,8 +7284,8 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         """
         self._ClusterId = None
         self._Name = None
-        self._SubnetIds = None
         self._SecurityGroupIds = None
+        self._SubnetIds = None
         self._Labels = None
         self._Taints = None
         self._VirtualNodes = None
@@ -7315,6 +7315,17 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def SecurityGroupIds(self):
+        r"""安全组ID列表
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
     def SubnetIds(self):
         r"""子网ID列表
         :rtype: list of str
@@ -7324,17 +7335,6 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
     @SubnetIds.setter
     def SubnetIds(self, SubnetIds):
         self._SubnetIds = SubnetIds
-
-    @property
-    def SecurityGroupIds(self):
-        r"""安全组ID列表，必选参数
-        :rtype: list of str
-        """
-        return self._SecurityGroupIds
-
-    @SecurityGroupIds.setter
-    def SecurityGroupIds(self, SecurityGroupIds):
-        self._SecurityGroupIds = SecurityGroupIds
 
     @property
     def Labels(self):
@@ -7397,8 +7397,8 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._Name = params.get("Name")
-        self._SubnetIds = params.get("SubnetIds")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._SubnetIds = params.get("SubnetIds")
         if params.get("Labels") is not None:
             self._Labels = []
             for item in params.get("Labels"):

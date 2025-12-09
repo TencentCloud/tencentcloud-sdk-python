@@ -3051,6 +3051,573 @@ class ApproveType(AbstractModel):
         
 
 
+class AssetDim(AbstractModel):
+    r"""资产维度信息结构定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: 文件夹 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: int
+        :param _DimCode: 维度编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimCode: str
+        :param _DimName: 维度名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimName: str
+        :param _Description: 维度描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _OwnerAccount: 维度负责人UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccount: int
+        :param _Owner: 维度负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _ModifyUserId: 变更人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyUserId: int
+        :param _ModifyUser: 维度最近修改人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyUser: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _DimType: 维度录入方式， 取值：manual-手动录入；dict-关联字典表；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimType: str
+        :param _ValuePairCount: 枚举值数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValuePairCount: int
+        :param _IndicatorPairCount: 关联指标数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorPairCount: int
+        :param _TableColumnCount: 关联字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableColumnCount: int
+        :param _DimId: 维度 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimId: int
+        :param _DimTableLink: 维度关联表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimTableLink: :class:`tencentcloud.wedata.v20210820.models.DimTableLink`
+        :param _ValuePairs: 枚举值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValuePairs: list of Pair
+        :param _TableColumns: 维度关联字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableColumns: list of AssetDimTableColumn
+        :param _SourceIndicatorIds: 关联指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIndicatorIds: list of IndicatorBaseSimpleInfo
+        :param _DimPermission: 权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimPermission: :class:`tencentcloud.wedata.v20210820.models.PermissionStatus`
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+        :type ProjectName: str
+        """
+        self._FolderId = None
+        self._DimCode = None
+        self._DimName = None
+        self._Description = None
+        self._OwnerAccount = None
+        self._Owner = None
+        self._ModifyUserId = None
+        self._ModifyUser = None
+        self._ModifyTime = None
+        self._CreateTime = None
+        self._DimType = None
+        self._ValuePairCount = None
+        self._IndicatorPairCount = None
+        self._TableColumnCount = None
+        self._DimId = None
+        self._DimTableLink = None
+        self._ValuePairs = None
+        self._TableColumns = None
+        self._SourceIndicatorIds = None
+        self._DimPermission = None
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def FolderId(self):
+        r"""文件夹 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def DimCode(self):
+        r"""维度编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DimCode
+
+    @DimCode.setter
+    def DimCode(self, DimCode):
+        self._DimCode = DimCode
+
+    @property
+    def DimName(self):
+        r"""维度名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DimName
+
+    @DimName.setter
+    def DimName(self, DimName):
+        self._DimName = DimName
+
+    @property
+    def Description(self):
+        r"""维度描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OwnerAccount(self):
+        r"""维度负责人UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OwnerAccount
+
+    @OwnerAccount.setter
+    def OwnerAccount(self, OwnerAccount):
+        self._OwnerAccount = OwnerAccount
+
+    @property
+    def Owner(self):
+        r"""维度负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def ModifyUserId(self):
+        r"""变更人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ModifyUserId
+
+    @ModifyUserId.setter
+    def ModifyUserId(self, ModifyUserId):
+        self._ModifyUserId = ModifyUserId
+
+    @property
+    def ModifyUser(self):
+        r"""维度最近修改人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyUser
+
+    @ModifyUser.setter
+    def ModifyUser(self, ModifyUser):
+        self._ModifyUser = ModifyUser
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DimType(self):
+        r"""维度录入方式， 取值：manual-手动录入；dict-关联字典表；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DimType
+
+    @DimType.setter
+    def DimType(self, DimType):
+        self._DimType = DimType
+
+    @property
+    def ValuePairCount(self):
+        r"""枚举值数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ValuePairCount
+
+    @ValuePairCount.setter
+    def ValuePairCount(self, ValuePairCount):
+        self._ValuePairCount = ValuePairCount
+
+    @property
+    def IndicatorPairCount(self):
+        r"""关联指标数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndicatorPairCount
+
+    @IndicatorPairCount.setter
+    def IndicatorPairCount(self, IndicatorPairCount):
+        self._IndicatorPairCount = IndicatorPairCount
+
+    @property
+    def TableColumnCount(self):
+        r"""关联字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableColumnCount
+
+    @TableColumnCount.setter
+    def TableColumnCount(self, TableColumnCount):
+        self._TableColumnCount = TableColumnCount
+
+    @property
+    def DimId(self):
+        r"""维度 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DimId
+
+    @DimId.setter
+    def DimId(self, DimId):
+        self._DimId = DimId
+
+    @property
+    def DimTableLink(self):
+        r"""维度关联表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DimTableLink`
+        """
+        return self._DimTableLink
+
+    @DimTableLink.setter
+    def DimTableLink(self, DimTableLink):
+        self._DimTableLink = DimTableLink
+
+    @property
+    def ValuePairs(self):
+        r"""枚举值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Pair
+        """
+        return self._ValuePairs
+
+    @ValuePairs.setter
+    def ValuePairs(self, ValuePairs):
+        self._ValuePairs = ValuePairs
+
+    @property
+    def TableColumns(self):
+        r"""维度关联字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetDimTableColumn
+        """
+        return self._TableColumns
+
+    @TableColumns.setter
+    def TableColumns(self, TableColumns):
+        self._TableColumns = TableColumns
+
+    @property
+    def SourceIndicatorIds(self):
+        r"""关联指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndicatorBaseSimpleInfo
+        """
+        return self._SourceIndicatorIds
+
+    @SourceIndicatorIds.setter
+    def SourceIndicatorIds(self, SourceIndicatorIds):
+        self._SourceIndicatorIds = SourceIndicatorIds
+
+    @property
+    def DimPermission(self):
+        r"""权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.PermissionStatus`
+        """
+        return self._DimPermission
+
+    @DimPermission.setter
+    def DimPermission(self, DimPermission):
+        self._DimPermission = DimPermission
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._DimCode = params.get("DimCode")
+        self._DimName = params.get("DimName")
+        self._Description = params.get("Description")
+        self._OwnerAccount = params.get("OwnerAccount")
+        self._Owner = params.get("Owner")
+        self._ModifyUserId = params.get("ModifyUserId")
+        self._ModifyUser = params.get("ModifyUser")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        self._DimType = params.get("DimType")
+        self._ValuePairCount = params.get("ValuePairCount")
+        self._IndicatorPairCount = params.get("IndicatorPairCount")
+        self._TableColumnCount = params.get("TableColumnCount")
+        self._DimId = params.get("DimId")
+        if params.get("DimTableLink") is not None:
+            self._DimTableLink = DimTableLink()
+            self._DimTableLink._deserialize(params.get("DimTableLink"))
+        if params.get("ValuePairs") is not None:
+            self._ValuePairs = []
+            for item in params.get("ValuePairs"):
+                obj = Pair()
+                obj._deserialize(item)
+                self._ValuePairs.append(obj)
+        if params.get("TableColumns") is not None:
+            self._TableColumns = []
+            for item in params.get("TableColumns"):
+                obj = AssetDimTableColumn()
+                obj._deserialize(item)
+                self._TableColumns.append(obj)
+        if params.get("SourceIndicatorIds") is not None:
+            self._SourceIndicatorIds = []
+            for item in params.get("SourceIndicatorIds"):
+                obj = IndicatorBaseSimpleInfo()
+                obj._deserialize(item)
+                self._SourceIndicatorIds.append(obj)
+        if params.get("DimPermission") is not None:
+            self._DimPermission = PermissionStatus()
+            self._DimPermission._deserialize(params.get("DimPermission"))
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetDimTableColumn(AbstractModel):
+    r"""资产维度关联数据表字段结构定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: 表字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnName: str
+        :param _ColumnNameCn: 表字段中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnNameCn: str
+        :param _ColumnType: 表字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnType: str
+        :param _ColumnDescription: 表字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnDescription: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableGuid: 表GUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGuid: str
+        :param _DatabaseName: 表归属的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 表归属的Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        """
+        self._ColumnName = None
+        self._ColumnNameCn = None
+        self._ColumnType = None
+        self._ColumnDescription = None
+        self._TableName = None
+        self._TableGuid = None
+        self._DatabaseName = None
+        self._SchemaName = None
+
+    @property
+    def ColumnName(self):
+        r"""表字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def ColumnNameCn(self):
+        r"""表字段中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnNameCn
+
+    @ColumnNameCn.setter
+    def ColumnNameCn(self, ColumnNameCn):
+        self._ColumnNameCn = ColumnNameCn
+
+    @property
+    def ColumnType(self):
+        r"""表字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnType
+
+    @ColumnType.setter
+    def ColumnType(self, ColumnType):
+        self._ColumnType = ColumnType
+
+    @property
+    def ColumnDescription(self):
+        r"""表字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnDescription
+
+    @ColumnDescription.setter
+    def ColumnDescription(self, ColumnDescription):
+        self._ColumnDescription = ColumnDescription
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableGuid(self):
+        r"""表GUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableGuid
+
+    @TableGuid.setter
+    def TableGuid(self, TableGuid):
+        self._TableGuid = TableGuid
+
+    @property
+    def DatabaseName(self):
+        r"""表归属的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""表归属的Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        self._ColumnNameCn = params.get("ColumnNameCn")
+        self._ColumnType = params.get("ColumnType")
+        self._ColumnDescription = params.get("ColumnDescription")
+        self._TableName = params.get("TableName")
+        self._TableGuid = params.get("TableGuid")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsyncResourceVO(AbstractModel):
     r"""操作资源DTO
 
@@ -10465,6 +11032,18 @@ class ColumnMeta(AbstractModel):
         :param _Specification: 字段使用说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
+        :param _CategoryName: 目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryName: str
+        :param _OriginType: 源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginType: str
+        :param _IndicatorBase: 列绑定的指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorBase: :class:`tencentcloud.wedata.v20210820.models.IndicatorBaseSimpleInfo`
+        :param _AssetDim: 列绑定的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetDim: :class:`tencentcloud.wedata.v20210820.models.AssetDim`
         """
         self._NameEn = None
         self._NameCn = None
@@ -10480,6 +11059,10 @@ class ColumnMeta(AbstractModel):
         self._LevelRank = None
         self._InfluxCategory = None
         self._Specification = None
+        self._CategoryName = None
+        self._OriginType = None
+        self._IndicatorBase = None
+        self._AssetDim = None
 
     @property
     def NameEn(self):
@@ -10649,6 +11232,54 @@ class ColumnMeta(AbstractModel):
     def Specification(self, Specification):
         self._Specification = Specification
 
+    @property
+    def CategoryName(self):
+        r"""目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def OriginType(self):
+        r"""源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def IndicatorBase(self):
+        r"""列绑定的指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.IndicatorBaseSimpleInfo`
+        """
+        return self._IndicatorBase
+
+    @IndicatorBase.setter
+    def IndicatorBase(self, IndicatorBase):
+        self._IndicatorBase = IndicatorBase
+
+    @property
+    def AssetDim(self):
+        r"""列绑定的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.AssetDim`
+        """
+        return self._AssetDim
+
+    @AssetDim.setter
+    def AssetDim(self, AssetDim):
+        self._AssetDim = AssetDim
+
 
     def _deserialize(self, params):
         self._NameEn = params.get("NameEn")
@@ -10670,6 +11301,14 @@ class ColumnMeta(AbstractModel):
         self._LevelRank = params.get("LevelRank")
         self._InfluxCategory = params.get("InfluxCategory")
         self._Specification = params.get("Specification")
+        self._CategoryName = params.get("CategoryName")
+        self._OriginType = params.get("OriginType")
+        if params.get("IndicatorBase") is not None:
+            self._IndicatorBase = IndicatorBaseSimpleInfo()
+            self._IndicatorBase._deserialize(params.get("IndicatorBase"))
+        if params.get("AssetDim") is not None:
+            self._AssetDim = AssetDim()
+            self._AssetDim._deserialize(params.get("AssetDim"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11249,8 +11888,12 @@ class CommonIdOpsDto(AbstractModel):
         :param _Id: 返回补录计划名称_ok
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
+        :param _MakeId: 补录计划Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MakeId: str
         """
         self._Id = None
+        self._MakeId = None
 
     @property
     def Id(self):
@@ -11264,9 +11907,22 @@ class CommonIdOpsDto(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def MakeId(self):
+        r"""补录计划Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MakeId
+
+    @MakeId.setter
+    def MakeId(self, MakeId):
+        self._MakeId = MakeId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._MakeId = params.get("MakeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17747,6 +18403,8 @@ class DataSourceEnvInfo(AbstractModel):
         :param _BizParams: 配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizParams: str
+        :param _TcCatalogOpen: 是否支持tccatalog
+        :type TcCatalogOpen: bool
         """
         self._Env = None
         self._DataSourceType = None
@@ -17756,6 +18414,7 @@ class DataSourceEnvInfo(AbstractModel):
         self._DataSourceId = None
         self._EnvDataSourceId = None
         self._BizParams = None
+        self._TcCatalogOpen = None
 
     @property
     def Env(self):
@@ -17853,6 +18512,17 @@ class DataSourceEnvInfo(AbstractModel):
     def BizParams(self, BizParams):
         self._BizParams = BizParams
 
+    @property
+    def TcCatalogOpen(self):
+        r"""是否支持tccatalog
+        :rtype: bool
+        """
+        return self._TcCatalogOpen
+
+    @TcCatalogOpen.setter
+    def TcCatalogOpen(self, TcCatalogOpen):
+        self._TcCatalogOpen = TcCatalogOpen
+
 
     def _deserialize(self, params):
         self._Env = params.get("Env")
@@ -17863,6 +18533,7 @@ class DataSourceEnvInfo(AbstractModel):
         self._DataSourceId = params.get("DataSourceId")
         self._EnvDataSourceId = params.get("EnvDataSourceId")
         self._BizParams = params.get("BizParams")
+        self._TcCatalogOpen = params.get("TcCatalogOpen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18005,6 +18676,8 @@ class DataSourceInfo(AbstractModel):
         :param _DatasourceType: 数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: str
+        :param _TcCatalogOpen: 是否开通tccatalog,默认没有开启
+        :type TcCatalogOpen: bool
         """
         self._DatabaseName = None
         self._Description = None
@@ -18048,6 +18721,7 @@ class DataSourceInfo(AbstractModel):
         self._DataSourceEnvInfos = None
         self._ForbidProbe = None
         self._DatasourceType = None
+        self._TcCatalogOpen = None
 
     @property
     def DatabaseName(self):
@@ -18552,6 +19226,17 @@ class DataSourceInfo(AbstractModel):
     def DatasourceType(self, DatasourceType):
         self._DatasourceType = DatasourceType
 
+    @property
+    def TcCatalogOpen(self):
+        r"""是否开通tccatalog,默认没有开启
+        :rtype: bool
+        """
+        return self._TcCatalogOpen
+
+    @TcCatalogOpen.setter
+    def TcCatalogOpen(self, TcCatalogOpen):
+        self._TcCatalogOpen = TcCatalogOpen
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -18603,6 +19288,7 @@ class DataSourceInfo(AbstractModel):
                 self._DataSourceEnvInfos.append(obj)
         self._ForbidProbe = params.get("ForbidProbe")
         self._DatasourceType = params.get("DatasourceType")
+        self._TcCatalogOpen = params.get("TcCatalogOpen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33075,6 +33761,10 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         :type ScheduleTimeZone: str
         :param _RunPriorityList: 根据任务优先级筛选
         :type RunPriorityList: list of int
+        :param _IncludeManualTask: 是否包含手动工作流
+        :type IncludeManualTask: str
+        :param _CheckPrivilege: 是否检查权限
+        :type CheckPrivilege: bool
         """
         self._ProjectId = None
         self._FolderIdList = None
@@ -33105,6 +33795,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._BlackTaskIdList = None
         self._ScheduleTimeZone = None
         self._RunPriorityList = None
+        self._IncludeManualTask = None
+        self._CheckPrivilege = None
 
     @property
     def ProjectId(self):
@@ -33425,6 +34117,28 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
     def RunPriorityList(self, RunPriorityList):
         self._RunPriorityList = RunPriorityList
 
+    @property
+    def IncludeManualTask(self):
+        r"""是否包含手动工作流
+        :rtype: str
+        """
+        return self._IncludeManualTask
+
+    @IncludeManualTask.setter
+    def IncludeManualTask(self, IncludeManualTask):
+        self._IncludeManualTask = IncludeManualTask
+
+    @property
+    def CheckPrivilege(self):
+        r"""是否检查权限
+        :rtype: bool
+        """
+        return self._CheckPrivilege
+
+    @CheckPrivilege.setter
+    def CheckPrivilege(self, CheckPrivilege):
+        self._CheckPrivilege = CheckPrivilege
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33461,6 +34175,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._BlackTaskIdList = params.get("BlackTaskIdList")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._RunPriorityList = params.get("RunPriorityList")
+        self._IncludeManualTask = params.get("IncludeManualTask")
+        self._CheckPrivilege = params.get("CheckPrivilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34207,6 +34923,10 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         :type KeyWord: str
         :param _ScheduleTimeZone: **时区** timeZone, 默认UTC+8
         :type ScheduleTimeZone: str
+        :param _CheckPrivilege: 是否过滤无权限的工作流
+true: 过滤无权限的仅返回有权限的工作流列表(默认)
+false： 返回所有的工作流列表
+        :type CheckPrivilege: bool
         """
         self._ProjectId = None
         self._ProductNameList = None
@@ -34225,6 +34945,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._WorkflowTypeList = None
         self._KeyWord = None
         self._ScheduleTimeZone = None
+        self._CheckPrivilege = None
 
     @property
     def ProjectId(self):
@@ -34413,6 +35134,19 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def CheckPrivilege(self):
+        r"""是否过滤无权限的工作流
+true: 过滤无权限的仅返回有权限的工作流列表(默认)
+false： 返回所有的工作流列表
+        :rtype: bool
+        """
+        return self._CheckPrivilege
+
+    @CheckPrivilege.setter
+    def CheckPrivilege(self, CheckPrivilege):
+        self._CheckPrivilege = CheckPrivilege
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -34432,6 +35166,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._WorkflowTypeList = params.get("WorkflowTypeList")
         self._KeyWord = params.get("KeyWord")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._CheckPrivilege = params.get("CheckPrivilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47309,6 +48044,95 @@ class DiagnoseRep(AbstractModel):
         
 
 
+class DimTableLink(AbstractModel):
+    r"""维度关联单个表字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 维度主键KEY对应的表列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 维度值对应的表列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _TableGuid: 表 GUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGuid: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        """
+        self._Key = None
+        self._Value = None
+        self._TableGuid = None
+        self._TableName = None
+
+    @property
+    def Key(self):
+        r"""维度主键KEY对应的表列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""维度值对应的表列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def TableGuid(self):
+        r"""表 GUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableGuid
+
+    @TableGuid.setter
+    def TableGuid(self, TableGuid):
+        self._TableGuid = TableGuid
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._TableGuid = params.get("TableGuid")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DimensionCount(AbstractModel):
     r"""维度统计业务视图
 
@@ -57002,6 +57826,178 @@ class GovDatasourceInfo(AbstractModel):
         
 
 
+class IndicatorBaseSimpleInfo(AbstractModel):
+    r"""指标列表简单结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ID
+        :type Id: int
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _MeasureUnit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MeasureUnit: int
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _IndicatorCode: 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorCode: str
+        :param _BizOwnerName: 业务负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizOwnerName: str
+        :param _TechOwnerName: 技术服务站名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TechOwnerName: str
+        :param _BizCaliber: 业务口径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCaliber: str
+        :param _IndicatorType: 指标类型（1-原子指标 2-衍生指标 3-复合指标）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorType: int
+        """
+        self._Id = None
+        self._Name = None
+        self._MeasureUnit = None
+        self._Status = None
+        self._IndicatorCode = None
+        self._BizOwnerName = None
+        self._TechOwnerName = None
+        self._BizCaliber = None
+        self._IndicatorType = None
+
+    @property
+    def Id(self):
+        r"""ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MeasureUnit(self):
+        r"""单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MeasureUnit
+
+    @MeasureUnit.setter
+    def MeasureUnit(self, MeasureUnit):
+        self._MeasureUnit = MeasureUnit
+
+    @property
+    def Status(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IndicatorCode(self):
+        r"""编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndicatorCode
+
+    @IndicatorCode.setter
+    def IndicatorCode(self, IndicatorCode):
+        self._IndicatorCode = IndicatorCode
+
+    @property
+    def BizOwnerName(self):
+        r"""业务负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizOwnerName
+
+    @BizOwnerName.setter
+    def BizOwnerName(self, BizOwnerName):
+        self._BizOwnerName = BizOwnerName
+
+    @property
+    def TechOwnerName(self):
+        r"""技术服务站名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TechOwnerName
+
+    @TechOwnerName.setter
+    def TechOwnerName(self, TechOwnerName):
+        self._TechOwnerName = TechOwnerName
+
+    @property
+    def BizCaliber(self):
+        r"""业务口径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizCaliber
+
+    @BizCaliber.setter
+    def BizCaliber(self, BizCaliber):
+        self._BizCaliber = BizCaliber
+
+    @property
+    def IndicatorType(self):
+        r"""指标类型（1-原子指标 2-衍生指标 3-复合指标）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndicatorType
+
+    @IndicatorType.setter
+    def IndicatorType(self, IndicatorType):
+        self._IndicatorType = IndicatorType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MeasureUnit = params.get("MeasureUnit")
+        self._Status = params.get("Status")
+        self._IndicatorCode = params.get("IndicatorCode")
+        self._BizOwnerName = params.get("BizOwnerName")
+        self._TechOwnerName = params.get("TechOwnerName")
+        self._BizCaliber = params.get("BizCaliber")
+        self._IndicatorType = params.get("IndicatorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceApiOpsRequest(AbstractModel):
     r"""实例查询类型
 
@@ -60734,6 +61730,8 @@ class InstanceOpsDto(AbstractModel):
         :type InstanceCycleType: str
         :param _InstanceSchedulerDesc: 实例执行计划描述
         :type InstanceSchedulerDesc: str
+        :param _Privileges: 当前用户对该实例的权限列表
+        :type Privileges: list of str
         """
         self._TaskId = None
         self._TaskName = None
@@ -60802,6 +61800,7 @@ class InstanceOpsDto(AbstractModel):
         self._AllowRedoType = None
         self._InstanceCycleType = None
         self._InstanceSchedulerDesc = None
+        self._Privileges = None
 
     @property
     def TaskId(self):
@@ -61604,6 +62603,17 @@ class InstanceOpsDto(AbstractModel):
     def InstanceSchedulerDesc(self, InstanceSchedulerDesc):
         self._InstanceSchedulerDesc = InstanceSchedulerDesc
 
+    @property
+    def Privileges(self):
+        r"""当前用户对该实例的权限列表
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -61687,6 +62697,7 @@ class InstanceOpsDto(AbstractModel):
         self._AllowRedoType = params.get("AllowRedoType")
         self._InstanceCycleType = params.get("InstanceCycleType")
         self._InstanceSchedulerDesc = params.get("InstanceSchedulerDesc")
+        self._Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77384,6 +78395,78 @@ class PathNodeDsVO(AbstractModel):
         
 
 
+class PermissionStatus(AbstractModel):
+    r"""读写权限状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanWrite: 写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanWrite: bool
+        :param _CanDelete: 写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDelete: bool
+        :param _CanRead: 写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanRead: bool
+        """
+        self._CanWrite = None
+        self._CanDelete = None
+        self._CanRead = None
+
+    @property
+    def CanWrite(self):
+        r"""写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanWrite
+
+    @CanWrite.setter
+    def CanWrite(self, CanWrite):
+        self._CanWrite = CanWrite
+
+    @property
+    def CanDelete(self):
+        r"""写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanRead(self):
+        r"""写权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanRead
+
+    @CanRead.setter
+    def CanRead(self, CanRead):
+        self._CanRead = CanRead
+
+
+    def _deserialize(self, params):
+        self._CanWrite = params.get("CanWrite")
+        self._CanDelete = params.get("CanDelete")
+        self._CanRead = params.get("CanRead")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProdSchedulerTask(AbstractModel):
     r"""数据质量生产调度任务业务实体
 
@@ -77409,6 +78492,12 @@ class ProdSchedulerTask(AbstractModel):
         :param _ScheduleTimeZone: 时区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
+        :param _InChargeIdList: 负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeIdList: list of str
+        :param _InChargeNameList: 负责人name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeNameList: list of str
         """
         self._WorkflowId = None
         self._TaskId = None
@@ -77416,6 +78505,8 @@ class ProdSchedulerTask(AbstractModel):
         self._CycleType = None
         self._TaskType = None
         self._ScheduleTimeZone = None
+        self._InChargeIdList = None
+        self._InChargeNameList = None
 
     @property
     def WorkflowId(self):
@@ -77489,6 +78580,30 @@ class ProdSchedulerTask(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def InChargeIdList(self):
+        r"""负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeIdList
+
+    @InChargeIdList.setter
+    def InChargeIdList(self, InChargeIdList):
+        self._InChargeIdList = InChargeIdList
+
+    @property
+    def InChargeNameList(self):
+        r"""负责人name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeNameList
+
+    @InChargeNameList.setter
+    def InChargeNameList(self, InChargeNameList):
+        self._InChargeNameList = InChargeNameList
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -77497,6 +78612,8 @@ class ProdSchedulerTask(AbstractModel):
         self._CycleType = params.get("CycleType")
         self._TaskType = params.get("TaskType")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._InChargeIdList = params.get("InChargeIdList")
+        self._InChargeNameList = params.get("InChargeNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79621,9 +80738,9 @@ class RegisterEventRequest(AbstractModel):
         :type TimeUnit: str
         :param _Owner: 事件所属人
         :type Owner: str
-        :param _EventType: 必填，事件类型，默认值：TIME_SERIES
+        :param _EventType: 事件类型，不填会使用默认值 TIME_SERIES 填充
         :type EventType: str
-        :param _DimensionFormat: 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
+        :param _DimensionFormat: 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
         :type DimensionFormat: str
         :param _TimeToLive: 存活时间
         :type TimeToLive: int
@@ -79709,7 +80826,7 @@ class RegisterEventRequest(AbstractModel):
 
     @property
     def EventType(self):
-        r"""必填，事件类型，默认值：TIME_SERIES
+        r"""事件类型，不填会使用默认值 TIME_SERIES 填充
         :rtype: str
         """
         return self._EventType
@@ -79720,7 +80837,7 @@ class RegisterEventRequest(AbstractModel):
 
     @property
     def DimensionFormat(self):
-        r"""必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
+        r"""对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
         :rtype: str
         """
         return self._DimensionFormat
@@ -94064,6 +95181,10 @@ class SuccessorTaskInfo(AbstractModel):
         :param _TaskTypeDesc: 任务类型描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeDesc: str
+        :param _Privileges: 当前用户对该资源的权限列表
+CAN_MANAGE 有修改操作权限
+NO_PERMISSION 无权限
+        :type Privileges: list of str
         """
         self._TaskId = None
         self._WorkflowId = None
@@ -94078,6 +95199,7 @@ class SuccessorTaskInfo(AbstractModel):
         self._CycleUnit = None
         self._ScheduleDesc = None
         self._TaskTypeDesc = None
+        self._Privileges = None
 
     @property
     def TaskId(self):
@@ -94225,6 +95347,19 @@ class SuccessorTaskInfo(AbstractModel):
     def TaskTypeDesc(self, TaskTypeDesc):
         self._TaskTypeDesc = TaskTypeDesc
 
+    @property
+    def Privileges(self):
+        r"""当前用户对该资源的权限列表
+CAN_MANAGE 有修改操作权限
+NO_PERMISSION 无权限
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -94240,6 +95375,7 @@ class SuccessorTaskInfo(AbstractModel):
         self._CycleUnit = params.get("CycleUnit")
         self._ScheduleDesc = params.get("ScheduleDesc")
         self._TaskTypeDesc = params.get("TaskTypeDesc")
+        self._Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -98693,7 +99829,7 @@ class TableScoreStatisticsInfo(AbstractModel):
 
 
 class TagVoteSum(AbstractModel):
-    r"""基于表的标签统计信息
+    r"""基于资产的标签统计信息
 
     """
 
@@ -98701,21 +99837,37 @@ class TagVoteSum(AbstractModel):
         r"""
         :param _TagId: 标签id
         :type TagId: int
+        :param _TagName: 标签名
+        :type TagName: str
         :param _VoteSum: 该表该标签投票次数
         :type VoteSum: int
         :param _Status: 当前用户对这张表是否加了该标签 true 已添加 false 未添加
         :type Status: bool
-        :param _TagName: 标签名
-        :type TagName: str
         :param _TagDesc: 标签描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagDesc: str
+        :param _TagValueId: 标签值Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValueId: int
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        :param _TagIsDeleted: 标签是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagIsDeleted: bool
+        :param _TagValueIsDeleted: 标签值是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValueIsDeleted: bool
         """
         self._TagId = None
+        self._TagName = None
         self._VoteSum = None
         self._Status = None
-        self._TagName = None
         self._TagDesc = None
+        self._TagValueId = None
+        self._TagValue = None
+        self._TagIsDeleted = None
+        self._TagValueIsDeleted = None
 
     @property
     def TagId(self):
@@ -98727,6 +99879,17 @@ class TagVoteSum(AbstractModel):
     @TagId.setter
     def TagId(self, TagId):
         self._TagId = TagId
+
+    @property
+    def TagName(self):
+        r"""标签名
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
 
     @property
     def VoteSum(self):
@@ -98751,17 +99914,6 @@ class TagVoteSum(AbstractModel):
         self._Status = Status
 
     @property
-    def TagName(self):
-        r"""标签名
-        :rtype: str
-        """
-        return self._TagName
-
-    @TagName.setter
-    def TagName(self, TagName):
-        self._TagName = TagName
-
-    @property
     def TagDesc(self):
         r"""标签描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -98773,13 +99925,65 @@ class TagVoteSum(AbstractModel):
     def TagDesc(self, TagDesc):
         self._TagDesc = TagDesc
 
+    @property
+    def TagValueId(self):
+        r"""标签值Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TagValueId
+
+    @TagValueId.setter
+    def TagValueId(self, TagValueId):
+        self._TagValueId = TagValueId
+
+    @property
+    def TagValue(self):
+        r"""标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def TagIsDeleted(self):
+        r"""标签是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TagIsDeleted
+
+    @TagIsDeleted.setter
+    def TagIsDeleted(self, TagIsDeleted):
+        self._TagIsDeleted = TagIsDeleted
+
+    @property
+    def TagValueIsDeleted(self):
+        r"""标签值是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TagValueIsDeleted
+
+    @TagValueIsDeleted.setter
+    def TagValueIsDeleted(self, TagValueIsDeleted):
+        self._TagValueIsDeleted = TagValueIsDeleted
+
 
     def _deserialize(self, params):
         self._TagId = params.get("TagId")
+        self._TagName = params.get("TagName")
         self._VoteSum = params.get("VoteSum")
         self._Status = params.get("Status")
-        self._TagName = params.get("TagName")
         self._TagDesc = params.get("TagDesc")
+        self._TagValueId = params.get("TagValueId")
+        self._TagValue = params.get("TagValue")
+        self._TagIsDeleted = params.get("TagIsDeleted")
+        self._TagValueIsDeleted = params.get("TagValueIsDeleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104472,6 +105676,15 @@ no：任务无需满足自依赖
         :param _OwnerId: 负责人Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
+        :param _Privileges: 当前用户对该任务的权限列表， 当前支持
+CAN_MANAGE : 有权限管理操作
+        :type Privileges: list of str
+        :param _BundleId: bundle客户端唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleId: str
+        :param _BundleInfo: bundle客户端信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleInfo: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -104565,6 +105778,9 @@ no：任务无需满足自依赖
         self._SelfWorkFlowDependType = None
         self._AllowRedoType = None
         self._OwnerId = None
+        self._Privileges = None
+        self._BundleId = None
+        self._BundleInfo = None
 
     @property
     def TaskId(self):
@@ -105671,6 +106887,42 @@ no：任务无需满足自依赖
     def OwnerId(self, OwnerId):
         self._OwnerId = OwnerId
 
+    @property
+    def Privileges(self):
+        r"""当前用户对该任务的权限列表， 当前支持
+CAN_MANAGE : 有权限管理操作
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def BundleId(self):
+        r"""bundle客户端唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""bundle客户端信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -105787,6 +107039,9 @@ no：任务无需满足自依赖
         self._SelfWorkFlowDependType = params.get("SelfWorkFlowDependType")
         self._AllowRedoType = params.get("AllowRedoType")
         self._OwnerId = params.get("OwnerId")
+        self._Privileges = params.get("Privileges")
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -113155,6 +114410,10 @@ class WorkflowExtOpsDto(AbstractModel):
         :param _WorkflowType: 工作流类型，周期cycle，手动manual
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
+        :param _BundleId: bundle客户端绑定唯一id
+        :type BundleId: str
+        :param _BundleInfo: bundle客户端扩展信息，json格式
+        :type BundleInfo: str
         """
         self._TaskCount = None
         self._FolderName = None
@@ -113172,6 +114431,8 @@ class WorkflowExtOpsDto(AbstractModel):
         self._ModifyTime = None
         self._ModifyUser = None
         self._WorkflowType = None
+        self._BundleId = None
+        self._BundleInfo = None
 
     @property
     def TaskCount(self):
@@ -113365,6 +114626,28 @@ class WorkflowExtOpsDto(AbstractModel):
     def WorkflowType(self, WorkflowType):
         self._WorkflowType = WorkflowType
 
+    @property
+    def BundleId(self):
+        r"""bundle客户端绑定唯一id
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""bundle客户端扩展信息，json格式
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
 
     def _deserialize(self, params):
         self._TaskCount = params.get("TaskCount")
@@ -113383,6 +114666,8 @@ class WorkflowExtOpsDto(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._ModifyUser = params.get("ModifyUser")
         self._WorkflowType = params.get("WorkflowType")
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

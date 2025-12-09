@@ -11430,11 +11430,10 @@ creating：创建中
 running：运行中
 isolating：隔离中
 isolated：已隔离
-activating：解隔离中
+activating：恢复中
 offlining：下线中
 offlined：已下线
-deleting：删除中
-deleted：已删除
+
         :type Status: str
         :param _StatusDesc: 实例状态中文描述
         :type StatusDesc: str
@@ -11631,11 +11630,10 @@ creating：创建中
 running：运行中
 isolating：隔离中
 isolated：已隔离
-activating：解隔离中
+activating：恢复中
 offlining：下线中
 offlined：已下线
-deleting：删除中
-deleted：已删除
+
         :rtype: str
         """
         return self._Status

@@ -452,6 +452,102 @@ class Chunk(AbstractModel):
         
 
 
+class ColumnInfo(AbstractModel):
+    r"""知识库文档表列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 列名称
+        :type Name: str
+        :param _Type: 列类型：int, bigint, double, date, datetime, string，decimal
+        :type Type: str
+        :param _Description: 列名称描述
+        :type Description: str
+        :param _Index: 列索引
+        :type Index: int
+        :param _OriginalName: 原始字段名称
+        :type OriginalName: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Description = None
+        self._Index = None
+        self._OriginalName = None
+
+    @property
+    def Name(self):
+        r"""列名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""列类型：int, bigint, double, date, datetime, string，decimal
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""列名称描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Index(self):
+        r"""列索引
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def OriginalName(self):
+        r"""原始字段名称
+        :rtype: str
+        """
+        return self._OriginalName
+
+    @OriginalName.setter
+    def OriginalName(self, OriginalName):
+        self._OriginalName = OriginalName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._Index = params.get("Index")
+        self._OriginalName = params.get("OriginalName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosFileInfo(AbstractModel):
     r"""cos 文件信息
 
@@ -785,6 +881,213 @@ class DeleteDataAgentSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FileInfo(AbstractModel):
+    r"""知识库文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称
+        :type FileName: str
+        :param _FileSize: 文件大小，字节
+        :type FileSize: float
+        :param _Type: 文件类型,0=文本,1=表格，默认0
+
+        :type Type: int
+        :param _FileId: 文件ID
+        :type FileId: str
+        :param _Status: 状态，0：数据处理中  1：可用 -1：错误
+        :type Status: int
+        :param _CreateUser: 操作者
+
+        :type CreateUser: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ChunkConfig: 分片策略
+        :type ChunkConfig: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
+        :param _Source: 文件来源0=unknow,1=user_cos,2=local
+        :type Source: int
+        :param _FileUrl: 文件url
+        :type FileUrl: str
+        :param _IsShowCase: 是否官方示例，0=否，1=是
+        :type IsShowCase: int
+        :param _DocumentSummary: 文档摘要
+        :type DocumentSummary: str
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._Type = None
+        self._FileId = None
+        self._Status = None
+        self._CreateUser = None
+        self._CreateTime = None
+        self._ChunkConfig = None
+        self._Source = None
+        self._FileUrl = None
+        self._IsShowCase = None
+        self._DocumentSummary = None
+
+    @property
+    def FileName(self):
+        r"""文件名称
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""文件大小，字节
+        :rtype: float
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def Type(self):
+        r"""文件类型,0=文本,1=表格，默认0
+
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Status(self):
+        r"""状态，0：数据处理中  1：可用 -1：错误
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateUser(self):
+        r"""操作者
+
+        :rtype: str
+        """
+        return self._CreateUser
+
+    @CreateUser.setter
+    def CreateUser(self, CreateUser):
+        self._CreateUser = CreateUser
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ChunkConfig(self):
+        r"""分片策略
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
+        """
+        return self._ChunkConfig
+
+    @ChunkConfig.setter
+    def ChunkConfig(self, ChunkConfig):
+        self._ChunkConfig = ChunkConfig
+
+    @property
+    def Source(self):
+        r"""文件来源0=unknow,1=user_cos,2=local
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def FileUrl(self):
+        r"""文件url
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def IsShowCase(self):
+        r"""是否官方示例，0=否，1=是
+        :rtype: int
+        """
+        return self._IsShowCase
+
+    @IsShowCase.setter
+    def IsShowCase(self, IsShowCase):
+        self._IsShowCase = IsShowCase
+
+    @property
+    def DocumentSummary(self):
+        r"""文档摘要
+        :rtype: str
+        """
+        return self._DocumentSummary
+
+    @DocumentSummary.setter
+    def DocumentSummary(self, DocumentSummary):
+        self._DocumentSummary = DocumentSummary
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Status = params.get("Status")
+        self._CreateUser = params.get("CreateUser")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ChunkConfig") is not None:
+            self._ChunkConfig = KnowledgeTaskConfig()
+            self._ChunkConfig._deserialize(params.get("ChunkConfig"))
+        self._Source = params.get("Source")
+        self._FileUrl = params.get("FileUrl")
+        self._IsShowCase = params.get("IsShowCase")
+        self._DocumentSummary = params.get("DocumentSummary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetKnowledgeBaseFileListRequest(AbstractModel):
     r"""GetKnowledgeBaseFileList请求参数结构体
 
@@ -873,10 +1176,38 @@ class GetKnowledgeBaseFileListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FileList: 文件信息列表
+        :type FileList: list of FileInfo
+        :param _Total: 文件信息总数
+        :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FileList = None
+        self._Total = None
         self._RequestId = None
+
+    @property
+    def FileList(self):
+        r"""文件信息列表
+        :rtype: list of FileInfo
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
+    def Total(self):
+        r"""文件信息总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -891,6 +1222,13 @@ class GetKnowledgeBaseFileListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = FileInfo()
+                obj._deserialize(item)
+                self._FileList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -1321,6 +1659,154 @@ class KnowledgeBase(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._FileNum = params.get("FileNum")
         self._DatasourceIds = params.get("DatasourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeTaskConfig(AbstractModel):
+    r"""任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChunkType: 切片类型  0:自定义切片，1：智能切片
+        :type ChunkType: int
+        :param _MaxChunkSize: /智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+        :type MaxChunkSize: int
+        :param _Delimiters:  切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delimiters: list of str
+        :param _ChunkOverlap: 自定义切片使用:默认0 可重叠字符长度
+        :type ChunkOverlap: int
+        :param _Columns: 表格类文档解析
+        :type Columns: list of ColumnInfo
+        :param _Indexes: 带检索的索引列表
+        :type Indexes: list of int
+        :param _GenDocSummary: 0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+        :type GenDocSummary: int
+        :param _GenParaSummary: 0：不生成段落摘要，1：生成段落概要。默认0
+        :type GenParaSummary: int
+        """
+        self._ChunkType = None
+        self._MaxChunkSize = None
+        self._Delimiters = None
+        self._ChunkOverlap = None
+        self._Columns = None
+        self._Indexes = None
+        self._GenDocSummary = None
+        self._GenParaSummary = None
+
+    @property
+    def ChunkType(self):
+        r"""切片类型  0:自定义切片，1：智能切片
+        :rtype: int
+        """
+        return self._ChunkType
+
+    @ChunkType.setter
+    def ChunkType(self, ChunkType):
+        self._ChunkType = ChunkType
+
+    @property
+    def MaxChunkSize(self):
+        r"""/智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+        :rtype: int
+        """
+        return self._MaxChunkSize
+
+    @MaxChunkSize.setter
+    def MaxChunkSize(self, MaxChunkSize):
+        self._MaxChunkSize = MaxChunkSize
+
+    @property
+    def Delimiters(self):
+        r""" 切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Delimiters
+
+    @Delimiters.setter
+    def Delimiters(self, Delimiters):
+        self._Delimiters = Delimiters
+
+    @property
+    def ChunkOverlap(self):
+        r"""自定义切片使用:默认0 可重叠字符长度
+        :rtype: int
+        """
+        return self._ChunkOverlap
+
+    @ChunkOverlap.setter
+    def ChunkOverlap(self, ChunkOverlap):
+        self._ChunkOverlap = ChunkOverlap
+
+    @property
+    def Columns(self):
+        r"""表格类文档解析
+        :rtype: list of ColumnInfo
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Indexes(self):
+        r"""带检索的索引列表
+        :rtype: list of int
+        """
+        return self._Indexes
+
+    @Indexes.setter
+    def Indexes(self, Indexes):
+        self._Indexes = Indexes
+
+    @property
+    def GenDocSummary(self):
+        r"""0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+        :rtype: int
+        """
+        return self._GenDocSummary
+
+    @GenDocSummary.setter
+    def GenDocSummary(self, GenDocSummary):
+        self._GenDocSummary = GenDocSummary
+
+    @property
+    def GenParaSummary(self):
+        r"""0：不生成段落摘要，1：生成段落概要。默认0
+        :rtype: int
+        """
+        return self._GenParaSummary
+
+    @GenParaSummary.setter
+    def GenParaSummary(self, GenParaSummary):
+        self._GenParaSummary = GenParaSummary
+
+
+    def _deserialize(self, params):
+        self._ChunkType = params.get("ChunkType")
+        self._MaxChunkSize = params.get("MaxChunkSize")
+        self._Delimiters = params.get("Delimiters")
+        self._ChunkOverlap = params.get("ChunkOverlap")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ColumnInfo()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._Indexes = params.get("Indexes")
+        self._GenDocSummary = params.get("GenDocSummary")
+        self._GenParaSummary = params.get("GenParaSummary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
