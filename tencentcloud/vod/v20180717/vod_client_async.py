@@ -2513,6 +2513,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ImportMediaKnowledge(
+            self,
+            request: models.ImportMediaKnowledgeRequest,
+            opts: Dict = None,
+    ) -> models.ImportMediaKnowledgeResponse:
+        """
+        用于将智能分析的结果导入到知识库中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportMediaKnowledge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportMediaKnowledgeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InspectMediaQuality(
             self,
             request: models.InspectMediaQualityRequest,
@@ -3593,6 +3611,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "SearchMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchMediaBySemantics(
+            self,
+            request: models.SearchMediaBySemanticsRequest,
+            opts: Dict = None,
+    ) -> models.SearchMediaBySemanticsResponse:
+        """
+        使用自然语言对媒体进行语义搜索。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchMediaBySemantics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchMediaBySemanticsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

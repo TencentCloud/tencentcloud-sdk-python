@@ -11177,8 +11177,8 @@ class AigcVideoOutputConfig(AbstractModel):
         :type Duration: float
         :param _Resolution: 生成视频的分辨率。
 <li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li>
-<li>当 ModelName 是 Jimeng，可选值为 768P、1080P，默认为 768P；</li>
-<li>当 ModelName 是 Hailuo，可选值为 1080P；</li>
+<li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li>
+<li>当 ModelName 是 Jimeng，可选值为 1080P；</li>
 <li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li>
 <li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li>
 <li>当 ModelName 是 OS，可选值为 720P；</li>
@@ -11281,8 +11281,8 @@ class AigcVideoOutputConfig(AbstractModel):
     def Resolution(self):
         r"""生成视频的分辨率。
 <li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li>
-<li>当 ModelName 是 Jimeng，可选值为 768P、1080P，默认为 768P；</li>
-<li>当 ModelName 是 Hailuo，可选值为 1080P；</li>
+<li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li>
+<li>当 ModelName 是 Jimeng，可选值为 1080P；</li>
 <li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li>
 <li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li>
 <li>当 ModelName 是 OS，可选值为 720P；</li>
@@ -42396,6 +42396,119 @@ class ImageWatermarkTemplate(AbstractModel):
         
 
 
+class ImportMediaKnowledgeRequest(AbstractModel):
+    r"""ImportMediaKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param _ImportTasks: 需要导入知识库任务类型，可选值有：
+- AiAnalysis.DescriptionTask
+- SmartSubtitle.AsrFullTextTask
+        :type ImportTasks: list of str
+        """
+        self._SubAppId = None
+        self._FileId = None
+        self._ImportTasks = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileId(self):
+        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def ImportTasks(self):
+        r"""需要导入知识库任务类型，可选值有：
+- AiAnalysis.DescriptionTask
+- SmartSubtitle.AsrFullTextTask
+        :rtype: list of str
+        """
+        return self._ImportTasks
+
+    @ImportTasks.setter
+    def ImportTasks(self, ImportTasks):
+        self._ImportTasks = ImportTasks
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._FileId = params.get("FileId")
+        self._ImportTasks = params.get("ImportTasks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportMediaKnowledgeResponse(AbstractModel):
+    r"""ImportMediaKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class InspectMediaQualityRequest(AbstractModel):
     r"""InspectMediaQuality请求参数结构体
 
@@ -69541,6 +69654,169 @@ class ScratchRepairInfo(AbstractModel):
         
 
 
+class SearchMediaBySemanticsRequest(AbstractModel):
+    r"""SearchMediaBySemantics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Text: 需要进行搜索的内容
+        :type Text: str
+        :param _Limit: 返回的记录条数，默认值：20。
+        :type Limit: int
+        :param _Categories: 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        :type Categories: list of str
+        :param _Tags: 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+        :type Tags: list of str
+        :param _TaskTypes: 搜索的任务类型，可选值有： 
+- AiAnalysis.DescriptionTask 
+- SmartSubtitle.AsrFullTextTask
+        :type TaskTypes: list of str
+        """
+        self._SubAppId = None
+        self._Text = None
+        self._Limit = None
+        self._Categories = None
+        self._Tags = None
+        self._TaskTypes = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Text(self):
+        r"""需要进行搜索的内容
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Limit(self):
+        r"""返回的记录条数，默认值：20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Categories(self):
+        r"""文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        :rtype: list of str
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def Tags(self):
+        r"""标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def TaskTypes(self):
+        r"""搜索的任务类型，可选值有： 
+- AiAnalysis.DescriptionTask 
+- SmartSubtitle.AsrFullTextTask
+        :rtype: list of str
+        """
+        return self._TaskTypes
+
+    @TaskTypes.setter
+    def TaskTypes(self, TaskTypes):
+        self._TaskTypes = TaskTypes
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Text = params.get("Text")
+        self._Limit = params.get("Limit")
+        self._Categories = params.get("Categories")
+        self._Tags = params.get("Tags")
+        self._TaskTypes = params.get("TaskTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchMediaBySemanticsResponse(AbstractModel):
+    r"""SearchMediaBySemantics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchResults: 媒体列表。
+        :type SearchResults: list of SemanticsSearchResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SearchResults = None
+        self._RequestId = None
+
+    @property
+    def SearchResults(self):
+        r"""媒体列表。
+        :rtype: list of SemanticsSearchResult
+        """
+        return self._SearchResults
+
+    @SearchResults.setter
+    def SearchResults(self, SearchResults):
+        self._SearchResults = SearchResults
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SearchResults") is not None:
+            self._SearchResults = []
+            for item in params.get("SearchResults"):
+                obj = SemanticsSearchResult()
+                obj._deserialize(item)
+                self._SearchResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class SearchMediaRequest(AbstractModel):
     r"""SearchMedia请求参数结构体
 
@@ -70273,6 +70549,87 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SemanticsSearchResult(AbstractModel):
+    r"""语义搜索结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体文件唯一标识 ID。
+        :type FileId: str
+        :param _Score: 视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+        :type Score: float
+        :param _StartTimeOffset: 视频片段的开始时间，单位：秒
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 视频片段的开始时间，单位：秒
+        :type EndTimeOffset: float
+        """
+        self._FileId = None
+        self._Score = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+
+    @property
+    def FileId(self):
+        r"""媒体文件唯一标识 ID。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Score(self):
+        r"""视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTimeOffset(self):
+        r"""视频片段的开始时间，单位：秒
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        r"""视频片段的开始时间，单位：秒
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Score = params.get("Score")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -881,11 +881,14 @@ class CkUserAlterInfo(AbstractModel):
         :type PassWord: str
         :param _Describe: 描述
         :type Describe: str
+        :param _OriginalPassword: 账户的当前密码
+        :type OriginalPassword: str
         """
         self._InstanceId = None
         self._UserName = None
         self._PassWord = None
         self._Describe = None
+        self._OriginalPassword = None
 
     @property
     def InstanceId(self):
@@ -931,12 +934,24 @@ class CkUserAlterInfo(AbstractModel):
     def Describe(self, Describe):
         self._Describe = Describe
 
+    @property
+    def OriginalPassword(self):
+        r"""账户的当前密码
+        :rtype: str
+        """
+        return self._OriginalPassword
+
+    @OriginalPassword.setter
+    def OriginalPassword(self, OriginalPassword):
+        self._OriginalPassword = OriginalPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
         self._Describe = params.get("Describe")
+        self._OriginalPassword = params.get("OriginalPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

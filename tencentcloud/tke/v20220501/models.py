@@ -4436,12 +4436,15 @@ class ModifyClusterMachineRequest(AbstractModel):
         :type MachineNames: list of str
         :param _DisplayName: machine的display name
         :type DisplayName: str
+        :param _SystemDisk: 系统盘的信息
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
         :param _InstanceChargePrepaid: 节点预付费信息
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         self._ClusterId = None
         self._MachineNames = None
         self._DisplayName = None
+        self._SystemDisk = None
         self._InstanceChargePrepaid = None
 
     @property
@@ -4478,6 +4481,17 @@ class ModifyClusterMachineRequest(AbstractModel):
         self._DisplayName = DisplayName
 
     @property
+    def SystemDisk(self):
+        r"""系统盘的信息
+        :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
     def InstanceChargePrepaid(self):
         r"""节点预付费信息
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
@@ -4493,6 +4507,9 @@ class ModifyClusterMachineRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._MachineNames = params.get("MachineNames")
         self._DisplayName = params.get("DisplayName")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("InstanceChargePrepaid") is not None:
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))

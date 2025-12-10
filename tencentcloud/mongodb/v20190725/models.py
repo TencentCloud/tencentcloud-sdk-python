@@ -14634,8 +14634,8 @@ class SetBackupRulesRequest(AbstractModel):
 - 按月保留： 指定为 monthly。
         :type LongTermUnit: str
         :param _LongTermActiveDays: 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号 , 分隔。
-- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号 , 分隔。
+- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
+- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
         :type LongTermActiveDays: str
         :param _LongTermExpiredDays: 长期备份保留时长。取值范围[30,1075]。
         :type LongTermExpiredDays: int
@@ -14643,7 +14643,6 @@ class SetBackupRulesRequest(AbstractModel):
 - 单位：天。
 - 默认值：7天。
 - 取值范围：[7,365]。
-
         :type OplogExpiredDays: int
         :param _BackupVersion: 指定备份版本。
 - 旧版本备份：0。
@@ -14778,8 +14777,8 @@ class SetBackupRulesRequest(AbstractModel):
     @property
     def LongTermActiveDays(self):
         r"""指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号 , 分隔。
-- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号 , 分隔。
+- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
+- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
         :rtype: str
         """
         return self._LongTermActiveDays
@@ -14805,7 +14804,6 @@ class SetBackupRulesRequest(AbstractModel):
 - 单位：天。
 - 默认值：7天。
 - 取值范围：[7,365]。
-
         :rtype: int
         """
         return self._OplogExpiredDays

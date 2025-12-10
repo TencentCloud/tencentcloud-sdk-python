@@ -5912,6 +5912,162 @@ class BotIdConfig(AbstractModel):
         
 
 
+class BotMonitorPkg(AbstractModel):
+    r"""BOT安全监测资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        r"""申请数量
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        r"""使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        r"""续费标志
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotPkg(AbstractModel):
     r"""Bot资源信息
 
@@ -7118,6 +7274,162 @@ class BotScoreRuleEntry(AbstractModel):
         self._Action = params.get("Action")
         self._Label = params.get("Label")
         self._Redirect = params.get("Redirect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotSecurityPkg(AbstractModel):
+    r"""BOT安全护航资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        r"""申请数量
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        r"""使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        r"""续费标志
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32913,6 +33225,10 @@ class InstanceInfo(AbstractModel):
         :type LLMMonPkg: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
         :param _RegionId: 地域id
         :type RegionId: int
+        :param _BotSecurityPkg: BOT安全护航信息
+        :type BotSecurityPkg: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
+        :param _BotMonitorPkg: BOT安全监测资源信息
+        :type BotMonitorPkg: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -32966,6 +33282,8 @@ class InstanceInfo(AbstractModel):
         self._ElasticResourceId = None
         self._LLMMonPkg = None
         self._RegionId = None
+        self._BotSecurityPkg = None
+        self._BotMonitorPkg = None
 
     @property
     def InstanceId(self):
@@ -33550,6 +33868,28 @@ class InstanceInfo(AbstractModel):
     def RegionId(self, RegionId):
         self._RegionId = RegionId
 
+    @property
+    def BotSecurityPkg(self):
+        r"""BOT安全护航信息
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
+        """
+        return self._BotSecurityPkg
+
+    @BotSecurityPkg.setter
+    def BotSecurityPkg(self, BotSecurityPkg):
+        self._BotSecurityPkg = BotSecurityPkg
+
+    @property
+    def BotMonitorPkg(self):
+        r"""BOT安全监测资源信息
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
+        """
+        return self._BotMonitorPkg
+
+    @BotMonitorPkg.setter
+    def BotMonitorPkg(self, BotMonitorPkg):
+        self._BotMonitorPkg = BotMonitorPkg
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -33634,6 +33974,12 @@ class InstanceInfo(AbstractModel):
             self._LLMMonPkg = LLMMonPkg()
             self._LLMMonPkg._deserialize(params.get("LLMMonPkg"))
         self._RegionId = params.get("RegionId")
+        if params.get("BotSecurityPkg") is not None:
+            self._BotSecurityPkg = BotSecurityPkg()
+            self._BotSecurityPkg._deserialize(params.get("BotSecurityPkg"))
+        if params.get("BotMonitorPkg") is not None:
+            self._BotMonitorPkg = BotMonitorPkg()
+            self._BotMonitorPkg._deserialize(params.get("BotMonitorPkg"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

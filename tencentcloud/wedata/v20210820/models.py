@@ -24615,7 +24615,15 @@ presto\SparkJob\SparkSql
         :param _CreateTime: 创造时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _CycleUnit: 周期类型
+        :param _CycleUnit: 周期类型D天周期
+H小时
+Ccrontab类型
+I分钟
+O一次性
+Y年
+R用户驱动
+W周
+M月
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleUnit: str
         :param _ScheduleDesc: 调度计划
@@ -24627,6 +24635,15 @@ presto\SparkJob\SparkSql
         :param _DatasourceType: 数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: str
+        :param _ComputeResource: 引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeResource: str
+        :param _DlcRegion: dlc地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcRegion: str
+        :param _IsInherit: 资源组或自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInherit: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -24646,6 +24663,9 @@ presto\SparkJob\SparkSql
         self._ScheduleDesc = None
         self._DatasourceId = None
         self._DatasourceType = None
+        self._ComputeResource = None
+        self._DlcRegion = None
+        self._IsInherit = None
 
     @property
     def TaskId(self):
@@ -24818,7 +24838,15 @@ presto\SparkJob\SparkSql
 
     @property
     def CycleUnit(self):
-        r"""周期类型
+        r"""周期类型D天周期
+H小时
+Ccrontab类型
+I分钟
+O一次性
+Y年
+R用户驱动
+W周
+M月
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24864,6 +24892,42 @@ presto\SparkJob\SparkSql
     def DatasourceType(self, DatasourceType):
         self._DatasourceType = DatasourceType
 
+    @property
+    def ComputeResource(self):
+        r"""引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComputeResource
+
+    @ComputeResource.setter
+    def ComputeResource(self, ComputeResource):
+        self._ComputeResource = ComputeResource
+
+    @property
+    def DlcRegion(self):
+        r"""dlc地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DlcRegion
+
+    @DlcRegion.setter
+    def DlcRegion(self, DlcRegion):
+        self._DlcRegion = DlcRegion
+
+    @property
+    def IsInherit(self):
+        r"""资源组或自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -24884,6 +24948,9 @@ presto\SparkJob\SparkSql
         self._ScheduleDesc = params.get("ScheduleDesc")
         self._DatasourceId = params.get("DatasourceId")
         self._DatasourceType = params.get("DatasourceType")
+        self._ComputeResource = params.get("ComputeResource")
+        self._DlcRegion = params.get("DlcRegion")
+        self._IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25031,6 +25098,12 @@ presto
         :type CycleUnitList: list of str
         :param _CanSubmit: 是否筛选出可提交的任务
         :type CanSubmit: bool
+        :param _TimeZone: 返回时间字段需要转换的时区
+        :type TimeZone: str
+        :param _MinUpdateTime: 任务最后更新时间最小值，ISO8601格式，如2025-07-16T15:00:00+08:00
+        :type MinUpdateTime: str
+        :param _MaxUpdateTime: 任务最后更新时间最大值，ISO8601格式，如2025-07-17T15:00:00+08:00
+        :type MaxUpdateTime: str
         """
         self._ProjectId = None
         self._Page = None
@@ -25053,6 +25126,9 @@ presto
         self._DatasourceTypeList = None
         self._CycleUnitList = None
         self._CanSubmit = None
+        self._TimeZone = None
+        self._MinUpdateTime = None
+        self._MaxUpdateTime = None
 
     @property
     def ProjectId(self):
@@ -25296,6 +25372,39 @@ presto
     def CanSubmit(self, CanSubmit):
         self._CanSubmit = CanSubmit
 
+    @property
+    def TimeZone(self):
+        r"""返回时间字段需要转换的时区
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def MinUpdateTime(self):
+        r"""任务最后更新时间最小值，ISO8601格式，如2025-07-16T15:00:00+08:00
+        :rtype: str
+        """
+        return self._MinUpdateTime
+
+    @MinUpdateTime.setter
+    def MinUpdateTime(self, MinUpdateTime):
+        self._MinUpdateTime = MinUpdateTime
+
+    @property
+    def MaxUpdateTime(self):
+        r"""任务最后更新时间最大值，ISO8601格式，如2025-07-17T15:00:00+08:00
+        :rtype: str
+        """
+        return self._MaxUpdateTime
+
+    @MaxUpdateTime.setter
+    def MaxUpdateTime(self, MaxUpdateTime):
+        self._MaxUpdateTime = MaxUpdateTime
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -25319,6 +25428,9 @@ presto
         self._DatasourceTypeList = params.get("DatasourceTypeList")
         self._CycleUnitList = params.get("CycleUnitList")
         self._CanSubmit = params.get("CanSubmit")
+        self._TimeZone = params.get("TimeZone")
+        self._MinUpdateTime = params.get("MinUpdateTime")
+        self._MaxUpdateTime = params.get("MaxUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

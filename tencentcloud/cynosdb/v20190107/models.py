@@ -4547,10 +4547,12 @@ class ClusterInstanceDetail(AbstractModel):
         :param _InstanceDeviceType: 实例机器类型
         :type InstanceDeviceType: str
         :param _InstanceStorageType: 实例存储类型
+说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
         :type InstanceStorageType: str
         :param _DbMode: 数据库类型
         :type DbMode: str
         :param _NodeList: 节点列表
+说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
         :type NodeList: list of str
         """
         self._InstanceId = None
@@ -4740,6 +4742,7 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def InstanceStorageType(self):
         r"""实例存储类型
+说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
         :rtype: str
         """
         return self._InstanceStorageType
@@ -4762,6 +4765,7 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def NodeList(self):
         r"""节点列表
+说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
         :rtype: list of str
         """
         return self._NodeList
@@ -16169,7 +16173,7 @@ class DescribeBinlogsRequest(AbstractModel):
         :type EndTime: str
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 限制条数
+        :param _Limit: 限制条数，默认值为20
         :type Limit: int
         """
         self._ClusterId = None
@@ -16224,7 +16228,7 @@ class DescribeBinlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制条数
+        r"""限制条数，默认值为20
         :rtype: int
         """
         return self._Limit

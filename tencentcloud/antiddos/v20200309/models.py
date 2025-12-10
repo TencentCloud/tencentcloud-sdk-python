@@ -21106,9 +21106,9 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 标签键
+        :param _TagKey: 标签键。
         :type TagKey: str
-        :param _TagValue: 标签值
+        :param _TagValue: 标签值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -21116,7 +21116,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""标签键
+        r"""标签键。
         :rtype: str
         """
         return self._TagKey
@@ -21127,7 +21127,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""标签值
+        r"""标签值。
         :rtype: str
         """
         return self._TagValue

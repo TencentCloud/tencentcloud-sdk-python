@@ -11071,7 +11071,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type ImageBase64: str
         :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param _IsWords: 是否返回单字信息，默认关
+        :param _IsWords: 是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
         :type IsWords: bool
         :param _EnableDetectSplit: 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
         :type EnableDetectSplit: bool
@@ -11081,7 +11081,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type PdfPageNumber: int
         :param _EnableDetectText: 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
         :type EnableDetectText: bool
-        :param _ConfigID: 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
+        :param _ConfigID: 配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
         :type ConfigID: str
         """
         self._ImageBase64 = None
@@ -11117,7 +11117,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def IsWords(self):
-        r"""是否返回单字信息，默认关
+        r"""是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
         :rtype: bool
         """
         return self._IsWords
@@ -11172,7 +11172,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ConfigID(self):
-        r"""配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
+        r"""配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
         :rtype: str
         """
         return self._ConfigID

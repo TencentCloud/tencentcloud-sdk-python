@@ -64691,8 +64691,8 @@ NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
 LOCAL_GATEWAY：CDC本地网关；
 INTRANAT：私网NAT网关；
-USER_CCN；云联网（自定义路由）。
-
+USER_CCN：云联网（自定义路由）；
+GWLB_ENDPOINT：网关负载均衡终端节点。
         :type GatewayType: str
         :param _GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
 特殊说明：
@@ -64763,8 +64763,8 @@ NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
 LOCAL_GATEWAY：CDC本地网关；
 INTRANAT：私网NAT网关；
-USER_CCN；云联网（自定义路由）。
-
+USER_CCN：云联网（自定义路由）；
+GWLB_ENDPOINT：网关负载均衡终端节点。
         :rtype: str
         """
         return self._GatewayType
