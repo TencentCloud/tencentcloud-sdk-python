@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,23 @@
 # limitations under the License.
 
 
-__version__ = '3.1.12'
+# 内部错误。
+INTERNALERROR = 'InternalError'
+
+# 数据库访问错误。
+INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

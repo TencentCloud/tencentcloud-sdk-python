@@ -25,6 +25,98 @@ class Ai3dClient(AbstractClient):
     _endpoint = 'ai3d.tencentcloudapi.com'
     _service = 'ai3d'
 
+    async def Convert3DFormat(
+            self,
+            request: models.Convert3DFormatRequest,
+            opts: Dict = None,
+    ) -> models.Convert3DFormatResponse:
+        """
+        输入3D模型文件后，可进行3D模型文件格式转换。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "Convert3DFormat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.Convert3DFormatResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHunyuanTo3DUVJob(
+            self,
+            request: models.DescribeHunyuanTo3DUVJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHunyuanTo3DUVJobResponse:
+        """
+        查询组件拆分任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHunyuanTo3DUVJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHunyuanTo3DUVJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReduceFaceJob(
+            self,
+            request: models.DescribeReduceFaceJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReduceFaceJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReduceFaceJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReduceFaceJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTextureTo3DJob(
+            self,
+            request: models.DescribeTextureTo3DJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTextureTo3DJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTextureTo3DJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTextureTo3DJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryHunyuan3DPartJob(
+            self,
+            request: models.QueryHunyuan3DPartJobRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuan3DPartJobResponse:
+        """
+        查询组件生成任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuan3DPartJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuan3DPartJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuanTo3DProJob(
             self,
             request: models.QueryHunyuanTo3DProJobRequest,
@@ -63,6 +155,24 @@ class Ai3dClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitHunyuan3DPartJob(
+            self,
+            request: models.SubmitHunyuan3DPartJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuan3DPartJobResponse:
+        """
+        输入3D模型文件后，根据模型结构自动进行组件识别生成。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuan3DPartJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuan3DPartJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitHunyuanTo3DProJob(
             self,
             request: models.SubmitHunyuanTo3DProJobRequest,
@@ -96,6 +206,62 @@ class Ai3dClient(AbstractClient):
         kwargs["action"] = "SubmitHunyuanTo3DRapidJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanTo3DUVJob(
+            self,
+            request: models.SubmitHunyuanTo3DUVJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanTo3DUVJobResponse:
+        """
+        输入模型后，可根据模型纹理进行UV展开，输出对应UV贴图。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanTo3DUVJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanTo3DUVJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitReduceFaceJob(
+            self,
+            request: models.SubmitReduceFaceJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitReduceFaceJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitReduceFaceJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitReduceFaceJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitTextureTo3DJob(
+            self,
+            request: models.SubmitTextureTo3DJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitTextureTo3DJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitTextureTo3DJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitTextureTo3DJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

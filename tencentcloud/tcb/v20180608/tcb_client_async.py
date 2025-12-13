@@ -187,24 +187,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateStandaloneGateway(
-            self,
-            request: models.CreateStandaloneGatewayRequest,
-            opts: Dict = None,
-    ) -> models.CreateStandaloneGatewayResponse:
-        """
-        本接口（CreateStandaloneGateway）用于创建独立网关。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateStandaloneGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateStandaloneGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateStaticStore(
             self,
             request: models.CreateStaticStoreRequest,
@@ -290,24 +272,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteCloudBaseRunServerVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudBaseRunServerVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteEndUser(
-            self,
-            request: models.DeleteEndUserRequest,
-            opts: Dict = None,
-    ) -> models.DeleteEndUserResponse:
-        """
-        删除终端用户
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteEndUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteEndUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -781,60 +745,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEndUserLoginStatistic(
-            self,
-            request: models.DescribeEndUserLoginStatisticRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEndUserLoginStatisticResponse:
-        """
-        获取环境终端用户新增与登录信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEndUserLoginStatistic"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEndUserLoginStatisticResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeEndUserStatistic(
-            self,
-            request: models.DescribeEndUserStatisticRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEndUserStatisticResponse:
-        """
-        获取终端用户总量与平台分布情况
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEndUserStatistic"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEndUserStatisticResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeEndUsers(
-            self,
-            request: models.DescribeEndUsersRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEndUsersResponse:
-        """
-        获取终端用户列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEndUsers"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEndUsersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEnvDealRegion(
             self,
             request: models.DescribeEnvDealRegionRequest,
@@ -1127,42 +1037,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeStandaloneGateway(
-            self,
-            request: models.DescribeStandaloneGatewayRequest,
-            opts: Dict = None,
-    ) -> models.DescribeStandaloneGatewayResponse:
-        """
-        本接口（DescribeStandaloneGateway）查询小租户网关套餐信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeStandaloneGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeStandaloneGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeStandaloneGatewayPackage(
-            self,
-            request: models.DescribeStandaloneGatewayPackageRequest,
-            opts: Dict = None,
-    ) -> models.DescribeStandaloneGatewayPackageResponse:
-        """
-        本接口（DescribeStandaloneGatewayPackage）用于查询小租户网关套餐信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeStandaloneGatewayPackage"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeStandaloneGatewayPackageResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeUserActivityInfo(
             self,
             request: models.DescribeUserActivityInfoRequest,
@@ -1266,24 +1140,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DestroyEnv"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyEnvResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DestroyStandaloneGateway(
-            self,
-            request: models.DestroyStandaloneGatewayRequest,
-            opts: Dict = None,
-    ) -> models.DestroyStandaloneGatewayResponse:
-        """
-        本接口（DestroyStandaloneGateway）用于销毁小租户网关。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DestroyStandaloneGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DestroyStandaloneGatewayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1451,24 +1307,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ModifyEndUser(
-            self,
-            request: models.ModifyEndUserRequest,
-            opts: Dict = None,
-    ) -> models.ModifyEndUserResponse:
-        """
-        管理终端用户
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyEndUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyEndUserResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ModifyEnv(
             self,
             request: models.ModifyEnvRequest,
@@ -1572,42 +1410,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "SearchClsLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClsLogResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TurnOffStandaloneGateway(
-            self,
-            request: models.TurnOffStandaloneGatewayRequest,
-            opts: Dict = None,
-    ) -> models.TurnOffStandaloneGatewayResponse:
-        """
-        本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TurnOffStandaloneGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TurnOffStandaloneGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TurnOnStandaloneGateway(
-            self,
-            request: models.TurnOnStandaloneGatewayRequest,
-            opts: Dict = None,
-    ) -> models.TurnOnStandaloneGatewayResponse:
-        """
-        本接口（TurnOnStandaloneGateway）用于开启小租户网关。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TurnOnStandaloneGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TurnOnStandaloneGatewayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -24561,6 +24561,8 @@ SocialSecurityCard：社保卡
         :type Overlap: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _Watermark: 是否水印
         :type Watermark: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Electron: 是否电子证照（目前仅支持电子身份证、电子营业执照识别
+        :type Electron: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24575,6 +24577,7 @@ SocialSecurityCard：社保卡
         self._Cover = None
         self._Overlap = None
         self._Watermark = None
+        self._Electron = None
         self._RequestId = None
 
     @property
@@ -24710,6 +24713,17 @@ SocialSecurityCard：社保卡
         self._Watermark = Watermark
 
     @property
+    def Electron(self):
+        r"""是否电子证照（目前仅支持电子身份证、电子营业执照识别
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Electron
+
+    @Electron.setter
+    def Electron(self, Electron):
+        self._Electron = Electron
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -24753,6 +24767,9 @@ SocialSecurityCard：社保卡
         if params.get("Watermark") is not None:
             self._Watermark = GeneralCardWarnInfo()
             self._Watermark._deserialize(params.get("Watermark"))
+        if params.get("Electron") is not None:
+            self._Electron = GeneralCardWarnInfo()
+            self._Electron._deserialize(params.get("Electron"))
         self._RequestId = params.get("RequestId")
 
 

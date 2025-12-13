@@ -10820,6 +10820,8 @@ class TableInfoNew(AbstractModel):
         :type TxhBackupExpireDay: int
         :param _SyncTableInfo: 表格的缓写信息
         :type SyncTableInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
+        :param _ShardNum: 表格分片数量
+        :type ShardNum: int
         """
         self._TableName = None
         self._TableInstanceId = None
@@ -10850,6 +10852,7 @@ class TableInfoNew(AbstractModel):
         self._DbClusterInfoStruct = None
         self._TxhBackupExpireDay = None
         self._SyncTableInfo = None
+        self._ShardNum = None
 
     @property
     def TableName(self):
@@ -11170,6 +11173,17 @@ class TableInfoNew(AbstractModel):
     def SyncTableInfo(self, SyncTableInfo):
         self._SyncTableInfo = SyncTableInfo
 
+    @property
+    def ShardNum(self):
+        r"""表格分片数量
+        :rtype: int
+        """
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
 
     def _deserialize(self, params):
         self._TableName = params.get("TableName")
@@ -11210,6 +11224,7 @@ class TableInfoNew(AbstractModel):
         if params.get("SyncTableInfo") is not None:
             self._SyncTableInfo = SyncTableInfo()
             self._SyncTableInfo._deserialize(params.get("SyncTableInfo"))
+        self._ShardNum = params.get("ShardNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

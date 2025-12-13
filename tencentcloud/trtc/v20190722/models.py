@@ -749,9 +749,20 @@ class AudioFormat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
+        :param _Format: 生成的音频格式
+
+- TextToSpeech流式接口
+
+ 支持 pcm, 默认: pcm
+
+- TextToSpeech非流式接口
+
+ 支持 pcm,wav,  默认: pcm
         :type Format: str
-        :param _SampleRate: 采样率，默认24000， 可选16000, 24000 
+        :param _SampleRate: 生成的音频采样率，默认24000
+可选
+- 16000
+- 24000 
         :type SampleRate: int
         """
         self._Format = None
@@ -759,7 +770,15 @@ class AudioFormat(AbstractModel):
 
     @property
     def Format(self):
-        r"""生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
+        r"""生成的音频格式
+
+- TextToSpeech流式接口
+
+ 支持 pcm, 默认: pcm
+
+- TextToSpeech非流式接口
+
+ 支持 pcm,wav,  默认: pcm
         :rtype: str
         """
         return self._Format
@@ -770,7 +789,10 @@ class AudioFormat(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""采样率，默认24000， 可选16000, 24000 
+        r"""生成的音频采样率，默认24000
+可选
+- 16000
+- 24000 
         :rtype: int
         """
         return self._SampleRate
@@ -16940,9 +16962,9 @@ class TextToSpeechRequest(AbstractModel):
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         :param _APIKey: TTS的API密钥
         :type APIKey: str
-        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :param _Model: TTS的模型，当前固定为：flow_01_turbo
         :type Model: str
-        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :param _Language:  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
         :type Language: str
         """
         self._Text = None
@@ -17014,7 +17036,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        r"""TTS的模型，当前固定为：flow_01_turbo
         :rtype: str
         """
         return self._Model
@@ -17025,7 +17047,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def Language(self):
-        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        r""" 需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
         :rtype: str
         """
         return self._Language
@@ -17117,9 +17139,9 @@ class TextToSpeechSSERequest(AbstractModel):
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         :param _APIKey: TTS的API密钥
         :type APIKey: str
-        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :param _Model: TTS的模型，当前固定为：flow_01_turbo
         :type Model: str
-        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :param _Language:  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
         :type Language: str
         """
         self._Text = None
@@ -17176,6 +17198,8 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         r"""TTS的API密钥
         :rtype: str
         """
@@ -17183,11 +17207,13 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @APIKey.setter
     def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         self._APIKey = APIKey
 
     @property
     def Model(self):
-        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        r"""TTS的模型，当前固定为：flow_01_turbo
         :rtype: str
         """
         return self._Model
@@ -17198,7 +17224,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def Language(self):
-        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        r""" 需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
         :rtype: str
         """
         return self._Language
@@ -18843,19 +18869,19 @@ class VideoParams(AbstractModel):
 
 
 class Voice(AbstractModel):
-    r"""TTS的声音参数
+    r"""TTS的声音参数配置
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceId: TTS的声音的ID
+        :param _VoiceId:  音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
         :type VoiceId: str
-        :param _Speed: 语速，范围 0.5-2.0，默认 1.0
+        :param _Speed: 语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
         :type Speed: float
-        :param _Volume: (0, 10]   默认值1.0 
+        :param _Volume:  音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
         :type Volume: float
-        :param _Pitch: 取值[-12,12],默认0
+        :param _Pitch:  音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
         :type Pitch: int
         """
         self._VoiceId = None
@@ -18865,7 +18891,7 @@ class Voice(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""TTS的声音的ID
+        r""" 音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
         :rtype: str
         """
         return self._VoiceId
@@ -18876,7 +18902,7 @@ class Voice(AbstractModel):
 
     @property
     def Speed(self):
-        r"""语速，范围 0.5-2.0，默认 1.0
+        r"""语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
         :rtype: float
         """
         return self._Speed
@@ -18887,7 +18913,7 @@ class Voice(AbstractModel):
 
     @property
     def Volume(self):
-        r"""(0, 10]   默认值1.0 
+        r""" 音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
         :rtype: float
         """
         return self._Volume
@@ -18898,7 +18924,7 @@ class Voice(AbstractModel):
 
     @property
     def Pitch(self):
-        r"""取值[-12,12],默认0
+        r""" 音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
         :rtype: int
         """
         return self._Pitch

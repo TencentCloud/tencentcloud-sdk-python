@@ -27428,6 +27428,8 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def SkipValidatePassword(self):
+        warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
+
         r"""是否跳过校验密码复杂度
         :rtype: bool
         """
@@ -27435,6 +27437,8 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @SkipValidatePassword.setter
     def SkipValidatePassword(self, SkipValidatePassword):
+        warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
+
         self._SkipValidatePassword = SkipValidatePassword
 
 

@@ -4165,8 +4165,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 - 例如 13 表示拉取文本类、视频最佳截图信息。
 - 默认值：0
         :type InfoType: str
-        :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧。
-- 仅部分服务支持，若需使用请与慧眼小助手沟通。
+        :param _BestFramesCount: 从活体视频中截取一定张数的自截帧。
 - 默认值为0，最大值为10，超出10的最多只给10张。
 - InfoType需要包含3。
         :type BestFramesCount: int
@@ -4238,8 +4237,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def BestFramesCount(self):
-        r"""从活体视频中截取一定张数的最佳帧。
-- 仅部分服务支持，若需使用请与慧眼小助手沟通。
+        r"""从活体视频中截取一定张数的自截帧。
 - 默认值为0，最大值为10，超出10的最多只给10张。
 - InfoType需要包含3。
         :rtype: int
@@ -4384,12 +4382,12 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _EncryptedBody: 加密后的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptedBody: str
-        :param _IsVerifyIntention: 本次请求是否配置开启意愿校验。 
-false：未开启意愿校验 
-true：已开启意愿校验 
-说明：若请求开启了意愿校验，可结合IntentionVerifyType中具体使用的校验模式从对应的出参Result中获取最终的核验结果；若请求没有开启意愿校验，则可在出参Text中获取最终的核验结果。
+        :param _IsVerifyIntention: 本次请求是否配置开启意愿核身校验。 
+false：未开启意愿核身校验 
+true：已开启意愿核身校验 
+说明：若请求开启了意愿核身校验，可结合IntentionVerifyType中具体使用的校验模式从对应的出参Result中获取最终的核验结果；若请求没有开启意愿核身校验，则可在出参Text中获取最终的核验结果。
         :type IsVerifyIntention: bool
-        :param _IntentionVerifyType: 本次请求意愿校验使用的具体模式。
+        :param _IntentionVerifyType: 本次请求意愿核身校验使用的具体模式。
 0：问答模式
 1：点头确认模式
 2：朗读模式
@@ -4526,10 +4524,10 @@ true：已开启意愿校验
 
     @property
     def IsVerifyIntention(self):
-        r"""本次请求是否配置开启意愿校验。 
-false：未开启意愿校验 
-true：已开启意愿校验 
-说明：若请求开启了意愿校验，可结合IntentionVerifyType中具体使用的校验模式从对应的出参Result中获取最终的核验结果；若请求没有开启意愿校验，则可在出参Text中获取最终的核验结果。
+        r"""本次请求是否配置开启意愿核身校验。 
+false：未开启意愿核身校验 
+true：已开启意愿核身校验 
+说明：若请求开启了意愿核身校验，可结合IntentionVerifyType中具体使用的校验模式从对应的出参Result中获取最终的核验结果；若请求没有开启意愿核身校验，则可在出参Text中获取最终的核验结果。
         :rtype: bool
         """
         return self._IsVerifyIntention
@@ -4540,7 +4538,7 @@ true：已开启意愿校验
 
     @property
     def IntentionVerifyType(self):
-        r"""本次请求意愿校验使用的具体模式。
+        r"""本次请求意愿核身校验使用的具体模式。
 0：问答模式
 1：点头确认模式
 2：朗读模式

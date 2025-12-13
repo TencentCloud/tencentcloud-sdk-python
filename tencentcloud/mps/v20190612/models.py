@@ -45968,7 +45968,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 TDMQ-CMQ：消息队列
 "URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
-<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+<font color="red"> 注：不填或为空时不发送回调，如需回调需填写对应类型值。 </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
@@ -45998,7 +45998,7 @@ TDMQ-CMQ：消息队列
 TDMQ-CMQ：消息队列
 "URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
-<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+<font color="red"> 注：不填或为空时不发送回调，如需回调需填写对应类型值。 </font>
         :rtype: str
         """
         return self._NotifyType
@@ -70983,7 +70983,7 @@ class TaskStatData(AbstractModel):
 <li> ImageSuperResolution：图片超分</li>
 <li> EnhanceImageColor：图片色彩增强</li>
 5、智能分析规格：
-<li>AIAnalysis：分析大类，对于未拆分的</li>
+<li>AIAnalysis：分析大类</li>
 <li>VideoTag：视频标签</li>
 <li>VideoClassification：视频分类</li>
 <li>SmartCover：智能封面</li>
@@ -70992,7 +70992,7 @@ class TaskStatData(AbstractModel):
 <li>Highlights：精彩集锦</li>
 <li>OpeningAndEnding：片头片尾</li>
 6、智能识别规格：
-<li>AIRecognition：识别大类，对于未拆分的</li>
+<li>AIRecognition：识别大类</li>
 <li>FaceRecognition：人脸识别</li>
 <li>TextRecognition：文字识别</li>
 <li>ObjectRecognition：物体识别</li>
@@ -71101,7 +71101,7 @@ class TaskStatData(AbstractModel):
 <li> ImageSuperResolution：图片超分</li>
 <li> EnhanceImageColor：图片色彩增强</li>
 5、智能分析规格：
-<li>AIAnalysis：分析大类，对于未拆分的</li>
+<li>AIAnalysis：分析大类</li>
 <li>VideoTag：视频标签</li>
 <li>VideoClassification：视频分类</li>
 <li>SmartCover：智能封面</li>
@@ -71110,7 +71110,7 @@ class TaskStatData(AbstractModel):
 <li>Highlights：精彩集锦</li>
 <li>OpeningAndEnding：片头片尾</li>
 6、智能识别规格：
-<li>AIRecognition：识别大类，对于未拆分的</li>
+<li>AIRecognition：识别大类</li>
 <li>FaceRecognition：人脸识别</li>
 <li>TextRecognition：文字识别</li>
 <li>ObjectRecognition：物体识别</li>
@@ -71666,6 +71666,930 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TextTranslationRequest(AbstractModel):
+    r"""TextTranslation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+        :type SourceText: str
+        :param _Source: 源语言，支持： 
+    "auto": "自动识别（识别为一种语言）",
+    "ab": "阿布哈兹语",
+    "ace": "亚齐语",
+    "ach": "阿乔利语",
+    "af": "南非荷兰语",
+    "ak": "契维语（阿坎语）",
+    "am": "Amharic",
+    "ar": "阿拉伯语",
+    "as": "阿萨姆语",
+    "ay": "艾马拉语",
+    "az": "阿塞拜疆语",
+    "ba": "巴什基尔语",
+    "ban": "巴厘语",
+    "bbc": "巴塔克托巴语",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "保加利亚语",
+    "bho": "博杰普尔语",
+    "bik": "Bikol",
+    "bm": "班巴拉语",
+    "bn": "孟加拉语",
+    "br": "布列塔尼语",
+    "bs": "波斯尼亚语",
+    "btx": "巴塔克卡罗语",
+    "bts": "巴塔克西马隆贡语",
+    "bua": "布里亚特语",
+    "ca": "加泰罗尼亚语",
+    "ceb": "宿务语",
+    "cgg": "Kiga",
+    "chm": "草原马里语",
+    "ckb": "库尔德语（索拉尼语）",
+    "cnh": "哈卡钦语",
+    "co": "科西嘉语",
+    "crh": "克里米亚鞑靼语",
+    "crs": "塞舌尔克里奥尔语",
+    "cs": "捷克语",
+    "cv": "楚瓦什语",
+    "cy": "威尔士语",
+    "da": "丹麦语",
+    "de": "德语",
+    "din": "Dinka",
+    "doi": "多格来语",
+    "dov": "敦贝语",
+    "dv": "第维埃语",
+    "dz": "宗卡语",
+    "ee": "Ewe",
+    "el": "希腊语",
+    "en": "英语",
+    "eo": "世界语",
+    "es": "西班牙语",
+    "et": "爱沙尼亚语",
+    "eu": "巴斯克语",
+    "fa": "波斯语",
+    "ff": "富拉语",
+    "fi": "芬兰语",
+    "fil": "菲律宾语（塔加拉语）",
+    "fj": "斐济语",
+    "fr": "法语",
+    "fr-CA": "法语（加拿大）",
+    "fr-FR": "法语（法国）",
+    "fy": "弗里斯兰语",
+    "ga": "爱尔兰语",
+    "gaa": "加 (Ga) 语",
+    "gd": "苏格兰盖尔语",
+    "gl": "加利西亚语",
+    "gn": "瓜拉尼语",
+    "gom": "贡根语",
+    "gu": "古吉拉特语",
+    "gv": "马恩岛语",
+    "ha": "Hausa",
+    "haw": "夏威夷语",
+    "he": "希伯来语",
+    "hi": "印地语",
+    "hil": "希利盖农语",
+    "hmn": "苗语",
+    "hr": "克罗地亚语",
+    "hrx": "洪斯吕克语",
+    "ht": "海地克里奥尔语",
+    "hu": "匈牙利语",
+    "hy": "亚美尼亚语",
+    "id": "印度尼西亚语",
+    "ig": "Igbo",
+    "ilo": "伊洛果语",
+    "is": "冰岛语",
+    "it": "意大利语",
+    "iw": "希伯来语",
+    "ja": "日语",
+    "jv": "爪哇语",
+    "jw": "爪哇语",
+    "ka": "格鲁吉亚语",
+    "kk": "哈萨克语",
+    "km": "高棉语",
+    "kn": "卡纳达语",
+    "ko": "韩语",
+    "kri": "Krio",
+    "ku": "库尔德语（库尔曼吉语）",
+    "ktu": "吉土巴语",
+    "ky": "吉尔吉斯语",
+    "la": "拉丁语",
+    "lb": "卢森堡语",
+    "lg": "干达语（卢干达语）",
+    "li": "林堡语",
+    "lij": "利古里亚语",
+    "lmo": "伦巴第语",
+    "ln": "林加拉语",
+    "lo": "老挝语",
+    "lt": "立陶宛语",
+    "ltg": "拉特加莱语",
+    "luo": "Luo",
+    "lus": "米佐语",
+    "lv": "拉脱维亚语",
+    "mai": "迈蒂利语",
+    "mak": "马卡萨",
+    "mg": "马尔加什语",
+    "mi": "毛利语",
+    "min": "米南语",
+    "mk": "马其顿语",
+    "ml": "马拉雅拉姆语",
+    "mn": "蒙古语",
+    "mr": "马拉地语",
+    "ms": "马来语",
+    "mt": "马耳他语",
+    "my": "缅甸语",
+    "ne": "尼泊尔语",
+    "new": "尼泊尔语（尼瓦尔语）",
+    "nl": "荷兰语",
+    "no": "挪威语",
+    "nr": "恩德贝莱语（南部）",
+    "nso": "北索托语（塞佩蒂语）",
+    "nus": "努尔语",
+    "ny": "齐切瓦语（尼扬贾语）",
+    "oc": "奥克斯坦语",
+    "om": "Oromo",
+    "or": "奥里亚语（奥里亚）",
+    "pa": "旁遮普语",
+    "pag": "邦阿西楠语",
+    "pam": "邦板牙语",
+    "pap": "Papiamento",
+    "pl": "波兰语",
+    "ps": "Pashto",
+    "pt": "葡萄牙语",
+    "pt-BR": "葡萄牙语（巴西）",
+    "pt-PT": "葡萄牙语（葡萄牙）",
+    "qu": "克丘亚语",
+    "ro": "罗马尼亚语",
+    "rom": "罗姆语",
+    "rn": "Rundi",
+    "ru": "俄语",
+    "rw": "卢旺达语",
+    "sa": "梵语",
+    "scn": "西西里语",
+    "sd": "信德语",
+    "sg": "Sango",
+    "shn": "掸语",
+    "si": "僧伽罗语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语",
+    "sm": "萨摩亚语",
+    "sn": "修纳语",
+    "so": "索马里语",
+    "sq": "阿尔巴尼亚语",
+    "sr": "塞尔维亚语",
+    "ss": "斯瓦特语",
+    "st": "塞索托语",
+    "su": "巽他语",
+    "sv": "瑞典语",
+    "sw": "斯瓦希里语",
+    "szl": "西里西亚语",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "tet": "德顿语",
+    "tg": "塔吉克语",
+    "th": "泰语",
+    "ti": "提格里尼亚语",
+    "tk": "土库曼语",
+    "tl": "菲律宾语（塔加拉语）",
+    "tn": "茨瓦纳语",
+    "tr": "土耳其语",
+    "ts": "聪加语",
+    "tt": "鞑靼语",
+    "ug": "维吾尔语",
+    "uk": "乌克兰语",
+    "ur": "乌尔都语",
+    "uz": "乌兹别克语",
+    "vi": "越南语",
+    "xh": "科萨语",
+    "yi": "意第绪语",
+    "yo": "约鲁巴语",
+    "yua": "尤卡坦玛雅语",
+    "yue": "粤语",
+    "zh": "简体中文",
+    "zh-TW": "中文（繁体）",
+    "zu": "祖鲁语"
+        :type Source: str
+        :param _Target: 目标语言，支持：
+    "ab": "阿布哈兹语",
+    "ace": "亚齐语",
+    "ach": "阿乔利语",
+    "af": "南非荷兰语",
+    "ak": "契维语（阿坎语）",
+    "am": "Amharic",
+    "ar": "阿拉伯语",
+    "as": "阿萨姆语",
+    "ay": "艾马拉语",
+    "az": "阿塞拜疆语",
+    "ba": "巴什基尔语",
+    "ban": "巴厘语",
+    "bbc": "巴塔克托巴语",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "保加利亚语",
+    "bho": "博杰普尔语",
+    "bik": "Bikol",
+    "bm": "班巴拉语",
+    "bn": "孟加拉语",
+    "br": "布列塔尼语",
+    "bs": "波斯尼亚语",
+    "btx": "巴塔克卡罗语",
+    "bts": "巴塔克西马隆贡语",
+    "bua": "布里亚特语",
+    "ca": "加泰罗尼亚语",
+    "ceb": "宿务语",
+    "cgg": "Kiga",
+    "chm": "草原马里语",
+    "ckb": "库尔德语（索拉尼语）",
+    "cnh": "哈卡钦语",
+    "co": "科西嘉语",
+    "crh": "克里米亚鞑靼语",
+    "crs": "塞舌尔克里奥尔语",
+    "cs": "捷克语",
+    "cv": "楚瓦什语",
+    "cy": "威尔士语",
+    "da": "丹麦语",
+    "de": "德语",
+    "din": "Dinka",
+    "doi": "多格来语",
+    "dov": "敦贝语",
+    "dv": "第维埃语",
+    "dz": "宗卡语",
+    "ee": "Ewe",
+    "el": "希腊语",
+    "en": "英语",
+    "eo": "世界语",
+    "es": "西班牙语",
+    "et": "爱沙尼亚语",
+    "eu": "巴斯克语",
+    "fa": "波斯语",
+    "ff": "富拉语",
+    "fi": "芬兰语",
+    "fil": "菲律宾语（塔加拉语）",
+    "fj": "斐济语",
+    "fr": "法语",
+    "fr-CA": "法语（加拿大）",
+    "fr-FR": "法语（法国）",
+    "fy": "弗里斯兰语",
+    "ga": "爱尔兰语",
+    "gaa": "加 (Ga) 语",
+    "gd": "苏格兰盖尔语",
+    "gl": "加利西亚语",
+    "gn": "瓜拉尼语",
+    "gom": "贡根语",
+    "gu": "古吉拉特语",
+    "gv": "马恩岛语",
+    "ha": "Hausa",
+    "haw": "夏威夷语",
+    "he": "希伯来语",
+    "hi": "印地语",
+    "hil": "希利盖农语",
+    "hmn": "苗语",
+    "hr": "克罗地亚语",
+    "hrx": "洪斯吕克语",
+    "ht": "海地克里奥尔语",
+    "hu": "匈牙利语",
+    "hy": "亚美尼亚语",
+    "id": "印度尼西亚语",
+    "ig": "Igbo",
+    "ilo": "伊洛果语",
+    "is": "冰岛语",
+    "it": "意大利语",
+    "iw": "希伯来语",
+    "ja": "日语",
+    "jv": "爪哇语",
+    "jw": "爪哇语",
+    "ka": "格鲁吉亚语",
+    "kk": "哈萨克语",
+    "km": "高棉语",
+    "kn": "卡纳达语",
+    "ko": "韩语",
+    "kri": "Krio",
+    "ku": "库尔德语（库尔曼吉语）",
+    "ktu": "吉土巴语",
+    "ky": "吉尔吉斯语",
+    "la": "拉丁语",
+    "lb": "卢森堡语",
+    "lg": "干达语（卢干达语）",
+    "li": "林堡语",
+    "lij": "利古里亚语",
+    "lmo": "伦巴第语",
+    "ln": "林加拉语",
+    "lo": "老挝语",
+    "lt": "立陶宛语",
+    "ltg": "拉特加莱语",
+    "luo": "Luo",
+    "lus": "米佐语",
+    "lv": "拉脱维亚语",
+    "mai": "迈蒂利语",
+    "mak": "马卡萨",
+    "mg": "马尔加什语",
+    "mi": "毛利语",
+    "min": "米南语",
+    "mk": "马其顿语",
+    "ml": "马拉雅拉姆语",
+    "mn": "蒙古语",
+    "mr": "马拉地语",
+    "ms": "马来语",
+    "mt": "马耳他语",
+    "my": "缅甸语",
+    "ne": "尼泊尔语",
+    "new": "尼泊尔语（尼瓦尔语）",
+    "nl": "荷兰语",
+    "no": "挪威语",
+    "nr": "恩德贝莱语（南部）",
+    "nso": "北索托语（塞佩蒂语）",
+    "nus": "努尔语",
+    "ny": "齐切瓦语（尼扬贾语）",
+    "oc": "奥克斯坦语",
+    "om": "Oromo",
+    "or": "奥里亚语（奥里亚）",
+    "pa": "旁遮普语",
+    "pag": "邦阿西楠语",
+    "pam": "邦板牙语",
+    "pap": "Papiamento",
+    "pl": "波兰语",
+    "ps": "Pashto",
+    "pt": "葡萄牙语",
+    "pt-BR": "葡萄牙语（巴西）",
+    "pt-PT": "葡萄牙语（葡萄牙）",
+    "qu": "克丘亚语",
+    "ro": "罗马尼亚语",
+    "rom": "罗姆语",
+    "rn": "Rundi",
+    "ru": "俄语",
+    "rw": "卢旺达语",
+    "sa": "梵语",
+    "scn": "西西里语",
+    "sd": "信德语",
+    "sg": "Sango",
+    "shn": "掸语",
+    "si": "僧伽罗语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语",
+    "sm": "萨摩亚语",
+    "sn": "修纳语",
+    "so": "索马里语",
+    "sq": "阿尔巴尼亚语",
+    "sr": "塞尔维亚语",
+    "ss": "斯瓦特语",
+    "st": "塞索托语",
+    "su": "巽他语",
+    "sv": "瑞典语",
+    "sw": "斯瓦希里语",
+    "szl": "西里西亚语",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "tet": "德顿语",
+    "tg": "塔吉克语",
+    "th": "泰语",
+    "ti": "提格里尼亚语",
+    "tk": "土库曼语",
+    "tl": "菲律宾语（塔加拉语）",
+    "tn": "茨瓦纳语",
+    "tr": "土耳其语",
+    "ts": "聪加语",
+    "tt": "鞑靼语",
+    "ug": "维吾尔语",
+    "uk": "乌克兰语",
+    "ur": "乌尔都语",
+    "uz": "乌兹别克语",
+    "vi": "越南语",
+    "xh": "科萨语",
+    "yi": "意第绪语",
+    "yo": "约鲁巴语",
+    "yua": "尤卡坦玛雅语",
+    "yue": "粤语",
+    "zh": "简体中文",
+    "zh-TW": "中文（繁体）",
+    "zu": "祖鲁语"
+        :type Target: str
+        :param _UserExtPara: 用户拓展参数
+        :type UserExtPara: str
+        """
+        self._SourceText = None
+        self._Source = None
+        self._Target = None
+        self._UserExtPara = None
+
+    @property
+    def SourceText(self):
+        r"""待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+        :rtype: str
+        """
+        return self._SourceText
+
+    @SourceText.setter
+    def SourceText(self, SourceText):
+        self._SourceText = SourceText
+
+    @property
+    def Source(self):
+        r"""源语言，支持： 
+    "auto": "自动识别（识别为一种语言）",
+    "ab": "阿布哈兹语",
+    "ace": "亚齐语",
+    "ach": "阿乔利语",
+    "af": "南非荷兰语",
+    "ak": "契维语（阿坎语）",
+    "am": "Amharic",
+    "ar": "阿拉伯语",
+    "as": "阿萨姆语",
+    "ay": "艾马拉语",
+    "az": "阿塞拜疆语",
+    "ba": "巴什基尔语",
+    "ban": "巴厘语",
+    "bbc": "巴塔克托巴语",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "保加利亚语",
+    "bho": "博杰普尔语",
+    "bik": "Bikol",
+    "bm": "班巴拉语",
+    "bn": "孟加拉语",
+    "br": "布列塔尼语",
+    "bs": "波斯尼亚语",
+    "btx": "巴塔克卡罗语",
+    "bts": "巴塔克西马隆贡语",
+    "bua": "布里亚特语",
+    "ca": "加泰罗尼亚语",
+    "ceb": "宿务语",
+    "cgg": "Kiga",
+    "chm": "草原马里语",
+    "ckb": "库尔德语（索拉尼语）",
+    "cnh": "哈卡钦语",
+    "co": "科西嘉语",
+    "crh": "克里米亚鞑靼语",
+    "crs": "塞舌尔克里奥尔语",
+    "cs": "捷克语",
+    "cv": "楚瓦什语",
+    "cy": "威尔士语",
+    "da": "丹麦语",
+    "de": "德语",
+    "din": "Dinka",
+    "doi": "多格来语",
+    "dov": "敦贝语",
+    "dv": "第维埃语",
+    "dz": "宗卡语",
+    "ee": "Ewe",
+    "el": "希腊语",
+    "en": "英语",
+    "eo": "世界语",
+    "es": "西班牙语",
+    "et": "爱沙尼亚语",
+    "eu": "巴斯克语",
+    "fa": "波斯语",
+    "ff": "富拉语",
+    "fi": "芬兰语",
+    "fil": "菲律宾语（塔加拉语）",
+    "fj": "斐济语",
+    "fr": "法语",
+    "fr-CA": "法语（加拿大）",
+    "fr-FR": "法语（法国）",
+    "fy": "弗里斯兰语",
+    "ga": "爱尔兰语",
+    "gaa": "加 (Ga) 语",
+    "gd": "苏格兰盖尔语",
+    "gl": "加利西亚语",
+    "gn": "瓜拉尼语",
+    "gom": "贡根语",
+    "gu": "古吉拉特语",
+    "gv": "马恩岛语",
+    "ha": "Hausa",
+    "haw": "夏威夷语",
+    "he": "希伯来语",
+    "hi": "印地语",
+    "hil": "希利盖农语",
+    "hmn": "苗语",
+    "hr": "克罗地亚语",
+    "hrx": "洪斯吕克语",
+    "ht": "海地克里奥尔语",
+    "hu": "匈牙利语",
+    "hy": "亚美尼亚语",
+    "id": "印度尼西亚语",
+    "ig": "Igbo",
+    "ilo": "伊洛果语",
+    "is": "冰岛语",
+    "it": "意大利语",
+    "iw": "希伯来语",
+    "ja": "日语",
+    "jv": "爪哇语",
+    "jw": "爪哇语",
+    "ka": "格鲁吉亚语",
+    "kk": "哈萨克语",
+    "km": "高棉语",
+    "kn": "卡纳达语",
+    "ko": "韩语",
+    "kri": "Krio",
+    "ku": "库尔德语（库尔曼吉语）",
+    "ktu": "吉土巴语",
+    "ky": "吉尔吉斯语",
+    "la": "拉丁语",
+    "lb": "卢森堡语",
+    "lg": "干达语（卢干达语）",
+    "li": "林堡语",
+    "lij": "利古里亚语",
+    "lmo": "伦巴第语",
+    "ln": "林加拉语",
+    "lo": "老挝语",
+    "lt": "立陶宛语",
+    "ltg": "拉特加莱语",
+    "luo": "Luo",
+    "lus": "米佐语",
+    "lv": "拉脱维亚语",
+    "mai": "迈蒂利语",
+    "mak": "马卡萨",
+    "mg": "马尔加什语",
+    "mi": "毛利语",
+    "min": "米南语",
+    "mk": "马其顿语",
+    "ml": "马拉雅拉姆语",
+    "mn": "蒙古语",
+    "mr": "马拉地语",
+    "ms": "马来语",
+    "mt": "马耳他语",
+    "my": "缅甸语",
+    "ne": "尼泊尔语",
+    "new": "尼泊尔语（尼瓦尔语）",
+    "nl": "荷兰语",
+    "no": "挪威语",
+    "nr": "恩德贝莱语（南部）",
+    "nso": "北索托语（塞佩蒂语）",
+    "nus": "努尔语",
+    "ny": "齐切瓦语（尼扬贾语）",
+    "oc": "奥克斯坦语",
+    "om": "Oromo",
+    "or": "奥里亚语（奥里亚）",
+    "pa": "旁遮普语",
+    "pag": "邦阿西楠语",
+    "pam": "邦板牙语",
+    "pap": "Papiamento",
+    "pl": "波兰语",
+    "ps": "Pashto",
+    "pt": "葡萄牙语",
+    "pt-BR": "葡萄牙语（巴西）",
+    "pt-PT": "葡萄牙语（葡萄牙）",
+    "qu": "克丘亚语",
+    "ro": "罗马尼亚语",
+    "rom": "罗姆语",
+    "rn": "Rundi",
+    "ru": "俄语",
+    "rw": "卢旺达语",
+    "sa": "梵语",
+    "scn": "西西里语",
+    "sd": "信德语",
+    "sg": "Sango",
+    "shn": "掸语",
+    "si": "僧伽罗语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语",
+    "sm": "萨摩亚语",
+    "sn": "修纳语",
+    "so": "索马里语",
+    "sq": "阿尔巴尼亚语",
+    "sr": "塞尔维亚语",
+    "ss": "斯瓦特语",
+    "st": "塞索托语",
+    "su": "巽他语",
+    "sv": "瑞典语",
+    "sw": "斯瓦希里语",
+    "szl": "西里西亚语",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "tet": "德顿语",
+    "tg": "塔吉克语",
+    "th": "泰语",
+    "ti": "提格里尼亚语",
+    "tk": "土库曼语",
+    "tl": "菲律宾语（塔加拉语）",
+    "tn": "茨瓦纳语",
+    "tr": "土耳其语",
+    "ts": "聪加语",
+    "tt": "鞑靼语",
+    "ug": "维吾尔语",
+    "uk": "乌克兰语",
+    "ur": "乌尔都语",
+    "uz": "乌兹别克语",
+    "vi": "越南语",
+    "xh": "科萨语",
+    "yi": "意第绪语",
+    "yo": "约鲁巴语",
+    "yua": "尤卡坦玛雅语",
+    "yue": "粤语",
+    "zh": "简体中文",
+    "zh-TW": "中文（繁体）",
+    "zu": "祖鲁语"
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""目标语言，支持：
+    "ab": "阿布哈兹语",
+    "ace": "亚齐语",
+    "ach": "阿乔利语",
+    "af": "南非荷兰语",
+    "ak": "契维语（阿坎语）",
+    "am": "Amharic",
+    "ar": "阿拉伯语",
+    "as": "阿萨姆语",
+    "ay": "艾马拉语",
+    "az": "阿塞拜疆语",
+    "ba": "巴什基尔语",
+    "ban": "巴厘语",
+    "bbc": "巴塔克托巴语",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "保加利亚语",
+    "bho": "博杰普尔语",
+    "bik": "Bikol",
+    "bm": "班巴拉语",
+    "bn": "孟加拉语",
+    "br": "布列塔尼语",
+    "bs": "波斯尼亚语",
+    "btx": "巴塔克卡罗语",
+    "bts": "巴塔克西马隆贡语",
+    "bua": "布里亚特语",
+    "ca": "加泰罗尼亚语",
+    "ceb": "宿务语",
+    "cgg": "Kiga",
+    "chm": "草原马里语",
+    "ckb": "库尔德语（索拉尼语）",
+    "cnh": "哈卡钦语",
+    "co": "科西嘉语",
+    "crh": "克里米亚鞑靼语",
+    "crs": "塞舌尔克里奥尔语",
+    "cs": "捷克语",
+    "cv": "楚瓦什语",
+    "cy": "威尔士语",
+    "da": "丹麦语",
+    "de": "德语",
+    "din": "Dinka",
+    "doi": "多格来语",
+    "dov": "敦贝语",
+    "dv": "第维埃语",
+    "dz": "宗卡语",
+    "ee": "Ewe",
+    "el": "希腊语",
+    "en": "英语",
+    "eo": "世界语",
+    "es": "西班牙语",
+    "et": "爱沙尼亚语",
+    "eu": "巴斯克语",
+    "fa": "波斯语",
+    "ff": "富拉语",
+    "fi": "芬兰语",
+    "fil": "菲律宾语（塔加拉语）",
+    "fj": "斐济语",
+    "fr": "法语",
+    "fr-CA": "法语（加拿大）",
+    "fr-FR": "法语（法国）",
+    "fy": "弗里斯兰语",
+    "ga": "爱尔兰语",
+    "gaa": "加 (Ga) 语",
+    "gd": "苏格兰盖尔语",
+    "gl": "加利西亚语",
+    "gn": "瓜拉尼语",
+    "gom": "贡根语",
+    "gu": "古吉拉特语",
+    "gv": "马恩岛语",
+    "ha": "Hausa",
+    "haw": "夏威夷语",
+    "he": "希伯来语",
+    "hi": "印地语",
+    "hil": "希利盖农语",
+    "hmn": "苗语",
+    "hr": "克罗地亚语",
+    "hrx": "洪斯吕克语",
+    "ht": "海地克里奥尔语",
+    "hu": "匈牙利语",
+    "hy": "亚美尼亚语",
+    "id": "印度尼西亚语",
+    "ig": "Igbo",
+    "ilo": "伊洛果语",
+    "is": "冰岛语",
+    "it": "意大利语",
+    "iw": "希伯来语",
+    "ja": "日语",
+    "jv": "爪哇语",
+    "jw": "爪哇语",
+    "ka": "格鲁吉亚语",
+    "kk": "哈萨克语",
+    "km": "高棉语",
+    "kn": "卡纳达语",
+    "ko": "韩语",
+    "kri": "Krio",
+    "ku": "库尔德语（库尔曼吉语）",
+    "ktu": "吉土巴语",
+    "ky": "吉尔吉斯语",
+    "la": "拉丁语",
+    "lb": "卢森堡语",
+    "lg": "干达语（卢干达语）",
+    "li": "林堡语",
+    "lij": "利古里亚语",
+    "lmo": "伦巴第语",
+    "ln": "林加拉语",
+    "lo": "老挝语",
+    "lt": "立陶宛语",
+    "ltg": "拉特加莱语",
+    "luo": "Luo",
+    "lus": "米佐语",
+    "lv": "拉脱维亚语",
+    "mai": "迈蒂利语",
+    "mak": "马卡萨",
+    "mg": "马尔加什语",
+    "mi": "毛利语",
+    "min": "米南语",
+    "mk": "马其顿语",
+    "ml": "马拉雅拉姆语",
+    "mn": "蒙古语",
+    "mr": "马拉地语",
+    "ms": "马来语",
+    "mt": "马耳他语",
+    "my": "缅甸语",
+    "ne": "尼泊尔语",
+    "new": "尼泊尔语（尼瓦尔语）",
+    "nl": "荷兰语",
+    "no": "挪威语",
+    "nr": "恩德贝莱语（南部）",
+    "nso": "北索托语（塞佩蒂语）",
+    "nus": "努尔语",
+    "ny": "齐切瓦语（尼扬贾语）",
+    "oc": "奥克斯坦语",
+    "om": "Oromo",
+    "or": "奥里亚语（奥里亚）",
+    "pa": "旁遮普语",
+    "pag": "邦阿西楠语",
+    "pam": "邦板牙语",
+    "pap": "Papiamento",
+    "pl": "波兰语",
+    "ps": "Pashto",
+    "pt": "葡萄牙语",
+    "pt-BR": "葡萄牙语（巴西）",
+    "pt-PT": "葡萄牙语（葡萄牙）",
+    "qu": "克丘亚语",
+    "ro": "罗马尼亚语",
+    "rom": "罗姆语",
+    "rn": "Rundi",
+    "ru": "俄语",
+    "rw": "卢旺达语",
+    "sa": "梵语",
+    "scn": "西西里语",
+    "sd": "信德语",
+    "sg": "Sango",
+    "shn": "掸语",
+    "si": "僧伽罗语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语",
+    "sm": "萨摩亚语",
+    "sn": "修纳语",
+    "so": "索马里语",
+    "sq": "阿尔巴尼亚语",
+    "sr": "塞尔维亚语",
+    "ss": "斯瓦特语",
+    "st": "塞索托语",
+    "su": "巽他语",
+    "sv": "瑞典语",
+    "sw": "斯瓦希里语",
+    "szl": "西里西亚语",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "tet": "德顿语",
+    "tg": "塔吉克语",
+    "th": "泰语",
+    "ti": "提格里尼亚语",
+    "tk": "土库曼语",
+    "tl": "菲律宾语（塔加拉语）",
+    "tn": "茨瓦纳语",
+    "tr": "土耳其语",
+    "ts": "聪加语",
+    "tt": "鞑靼语",
+    "ug": "维吾尔语",
+    "uk": "乌克兰语",
+    "ur": "乌尔都语",
+    "uz": "乌兹别克语",
+    "vi": "越南语",
+    "xh": "科萨语",
+    "yi": "意第绪语",
+    "yo": "约鲁巴语",
+    "yua": "尤卡坦玛雅语",
+    "yue": "粤语",
+    "zh": "简体中文",
+    "zh-TW": "中文（繁体）",
+    "zu": "祖鲁语"
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def UserExtPara(self):
+        r"""用户拓展参数
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        self._SourceText = params.get("SourceText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextTranslationResponse(AbstractModel):
+    r"""TextTranslation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetText: 翻译后的文本
+        :type TargetText: str
+        :param _Source: 源语言，详见入参Source
+        :type Source: str
+        :param _Target: 目标语言，详见入参Target
+        :type Target: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TargetText = None
+        self._Source = None
+        self._Target = None
+        self._RequestId = None
+
+    @property
+    def TargetText(self):
+        r"""翻译后的文本
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def Source(self):
+        r"""源语言，详见入参Source
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""目标语言，详见入参Target
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TargetText = params.get("TargetText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._RequestId = params.get("RequestId")
 
 
 class TextWatermarkTemplateInput(AbstractModel):

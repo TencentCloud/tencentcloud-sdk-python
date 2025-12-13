@@ -2710,6 +2710,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TextTranslation(
+            self,
+            request: models.TextTranslationRequest,
+            opts: Dict = None,
+    ) -> models.TextTranslationResponse:
+        """
+        文本翻译
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextTranslation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextTranslationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def WithdrawsWatermark(
             self,
             request: models.WithdrawsWatermarkRequest,

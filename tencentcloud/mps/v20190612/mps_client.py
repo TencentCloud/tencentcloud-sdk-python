@@ -3436,6 +3436,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextTranslation(self, request):
+        r"""文本翻译
+
+        :param request: Request instance for TextTranslation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.TextTranslationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextTranslationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextTranslation", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextTranslationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def WithdrawsWatermark(self, request):
         r"""提取视频中的盲水印。
 
