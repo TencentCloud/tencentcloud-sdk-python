@@ -4062,6 +4062,89 @@ class AppModel(AbstractModel):
         
 
 
+class AppModelDetailInfo(AbstractModel):
+    r"""模型详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称
+        :type ModelName: str
+        :param _ModelParams: 模型参数
+        :type ModelParams: :class:`tencentcloud.lke.v20231130.models.ModelParams`
+        :param _HistoryLimit: 限制
+        :type HistoryLimit: int
+        :param _AliasName: 模型别名
+        :type AliasName: str
+        """
+        self._ModelName = None
+        self._ModelParams = None
+        self._HistoryLimit = None
+        self._AliasName = None
+
+    @property
+    def ModelName(self):
+        r"""模型名称
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelParams(self):
+        r"""模型参数
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParams`
+        """
+        return self._ModelParams
+
+    @ModelParams.setter
+    def ModelParams(self, ModelParams):
+        self._ModelParams = ModelParams
+
+    @property
+    def HistoryLimit(self):
+        r"""限制
+        :rtype: int
+        """
+        return self._HistoryLimit
+
+    @HistoryLimit.setter
+    def HistoryLimit(self, HistoryLimit):
+        self._HistoryLimit = HistoryLimit
+
+    @property
+    def AliasName(self):
+        r"""模型别名
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        if params.get("ModelParams") is not None:
+            self._ModelParams = ModelParams()
+            self._ModelParams._deserialize(params.get("ModelParams"))
+        self._HistoryLimit = params.get("HistoryLimit")
+        self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttrLabel(AbstractModel):
     r"""标签详情信息
 
@@ -4195,7 +4278,7 @@ class AttrLabelDetail(AbstractModel):
         :param _IsUpdating: 标签是否在更新中
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdating: bool
-        :param _Status: 状态
+        :param _Status: 发布状态(1 待发布 2 发布中 3 已发布 4 发布失败)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StatusDesc: 状态描述
@@ -4227,6 +4310,8 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrKey(self):
+        warnings.warn("parameter `AttrKey` is deprecated", DeprecationWarning) 
+
         r"""标签标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4235,6 +4320,8 @@ class AttrLabelDetail(AbstractModel):
 
     @AttrKey.setter
     def AttrKey(self, AttrKey):
+        warnings.warn("parameter `AttrKey` is deprecated", DeprecationWarning) 
+
         self._AttrKey = AttrKey
 
     @property
@@ -4275,7 +4362,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""发布状态(1 待发布 2 发布中 3 已发布 4 发布失败)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5303,17 +5390,17 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _LabelName: 属性名称
+        :param _LabelName: 标签名称
         :type LabelName: str
-        :param _AttributeBizId: 属性ID
+        :param _AttributeBizId: 标签ID
         :type AttributeBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _LastLabelBizId: 滚动加载，最后一个属性标签ID
+        :param _LastLabelBizId: 最后一个标签ID。用于滚动加载：是一种分批、滚动式的存在性检查机制。客户端需要持续调用接口，并每次传入上一次返回的最后一个记录的ID，直到接口明确返回“存在”或“已检查全部数据且不存在”为止。
         :type LastLabelBizId: str
         """
         self._BotBizId = None
@@ -5325,7 +5412,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -5336,7 +5423,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LabelName(self):
-        r"""属性名称
+        r"""标签名称
         :rtype: str
         """
         return self._LabelName
@@ -5347,7 +5434,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        r"""属性ID
+        r"""标签ID
         :rtype: str
         """
         return self._AttributeBizId
@@ -5380,7 +5467,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LastLabelBizId(self):
-        r"""滚动加载，最后一个属性标签ID
+        r"""最后一个标签ID。用于滚动加载：是一种分批、滚动式的存在性检查机制。客户端需要持续调用接口，并每次传入上一次返回的最后一个记录的ID，直到接口明确返回“存在”或“已检查全部数据且不存在”为止。
         :rtype: str
         """
         return self._LastLabelBizId
@@ -5457,15 +5544,15 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _LabelBizId: 属性标签
+        :param _LabelBizId: 属性标签ID
         :type LabelBizId: str
-        :param _AttributeBizId: 属性ID
+        :param _AttributeBizId: 标签ID
         :type AttributeBizId: list of str
         """
         self._BotBizId = None
@@ -5476,7 +5563,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -5509,7 +5596,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def LabelBizId(self):
-        r"""属性标签
+        r"""属性标签ID
         :rtype: str
         """
         return self._LabelBizId
@@ -5520,7 +5607,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        r"""属性ID
+        r"""标签ID
         :rtype: list of str
         """
         return self._AttributeBizId
@@ -6059,7 +6146,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _AttrName: 标签名
         :type AttrName: str
@@ -6081,7 +6168,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -6807,13 +6894,13 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _Question: 拒答问题
 
 
         :type Question: str
-        :param _BusinessSource: 拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
+        :param _BusinessSource: 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
         :type BusinessSource: int
         :param _BusinessId: 拒答问题来源的数据源唯一id
 
@@ -6827,7 +6914,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -6851,7 +6938,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessSource(self):
-        r"""拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
+        r"""拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
         :rtype: int
         """
         return self._BusinessSource
@@ -7852,7 +7939,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _AttributeBizIds: 标签ID
         :type AttributeBizIds: list of str
@@ -7868,7 +7955,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -8277,7 +8364,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :type BotBizId: str
         :param _RejectedBizIds: 拒答问题来源的数据源唯一id
 
@@ -8290,7 +8377,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :rtype: str
         """
         return self._BotBizId
@@ -8974,19 +9061,20 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _AttributeBizId: 属性ID
+        :param _AttributeBizId: 标签ID
         :type AttributeBizId: str
-        :param _Limit: 每次加载的数量 
+        :param _Limit: 每次请求返回的最大标签数量​，限制单次接口返回的标签数量，避免数据量过大。取值范围：大于0。
+
         :type Limit: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _Query: 查询标签或相似标签
+        :param _Query: 搜索关键词，用于查询标签标准词或相似词
         :type Query: str
-        :param _LastLabelBizId: 滚动加载游标的标签ID
+        :param _LastLabelBizId: 滚动加载游标，上一次请求返回的最后一个标签ID
         :type LastLabelBizId: str
         :param _QueryScope: 查询范围 all(或者传空):标准词和相似词 standard:标准词 similar:相似词
         :type QueryScope: str
@@ -9002,7 +9090,7 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -9013,7 +9101,7 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        r"""属性ID
+        r"""标签ID
         :rtype: str
         """
         return self._AttributeBizId
@@ -9024,7 +9112,8 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每次加载的数量 
+        r"""每次请求返回的最大标签数量​，限制单次接口返回的标签数量，避免数据量过大。取值范围：大于0。
+
         :rtype: int
         """
         return self._Limit
@@ -9057,7 +9146,7 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询标签或相似标签
+        r"""搜索关键词，用于查询标签标准词或相似词
         :rtype: str
         """
         return self._Query
@@ -9068,7 +9157,7 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     @property
     def LastLabelBizId(self):
-        r"""滚动加载游标的标签ID
+        r"""滚动加载游标，上一次请求返回的最后一个标签ID
         :rtype: str
         """
         return self._LastLabelBizId
@@ -13148,9 +13237,9 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _ReplyBizId: 回复ID
+        :param _ReplyBizId: 回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
         :type ReplyBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -13164,7 +13253,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -13175,7 +13264,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def ReplyBizId(self):
-        r"""回复ID
+        r"""回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
         :rtype: str
         """
         return self._ReplyBizId
@@ -13279,7 +13368,7 @@ class DescribeWorkflowRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :type AppBizId: str
         :param _WorkflowRunId: 工作流运行实例ID
         :type WorkflowRunId: str
@@ -13304,7 +13393,7 @@ class DescribeWorkflowRunRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :rtype: str
         """
         return self._AppBizId
@@ -13378,7 +13467,7 @@ class DescribeWorkflowRunResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowRun: 工作流的详情
+        :param _WorkflowRun: 工作流运行实例详情
         :type WorkflowRun: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
         :param _NodeRuns: 节点列表
         :type NodeRuns: list of NodeRunBase
@@ -13394,7 +13483,7 @@ class DescribeWorkflowRunResponse(AbstractModel):
 
     @property
     def WorkflowRun(self):
-        r"""工作流的详情
+        r"""工作流运行实例详情
         :rtype: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
         """
         return self._WorkflowRun
@@ -13862,13 +13951,13 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _AttributeBizIds: 属性ID
+        :param _AttributeBizIds: 标签ID
         :type AttributeBizIds: list of str
         :param _Filters: 根据筛选数据导出
         :type Filters: :class:`tencentcloud.lke.v20231130.models.AttributeFilters`
@@ -13881,7 +13970,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -13914,7 +14003,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeBizIds(self):
-        r"""属性ID
+        r"""标签ID
         :rtype: list of str
         """
         return self._AttributeBizIds
@@ -14391,9 +14480,12 @@ class Filters(AbstractModel):
         :param _Reasons: 错误类型检索
 
         :type Reasons: list of str
+        :param _HandlingStatuses: 处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+        :type HandlingStatuses: list of int non-negative
         """
         self._Query = None
         self._Reasons = None
+        self._HandlingStatuses = None
 
     @property
     def Query(self):
@@ -14418,10 +14510,22 @@ class Filters(AbstractModel):
     def Reasons(self, Reasons):
         self._Reasons = Reasons
 
+    @property
+    def HandlingStatuses(self):
+        r"""处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+        :rtype: list of int non-negative
+        """
+        return self._HandlingStatuses
+
+    @HandlingStatuses.setter
+    def HandlingStatuses(self, HandlingStatuses):
+        self._HandlingStatuses = HandlingStatuses
+
 
     def _deserialize(self, params):
         self._Query = params.get("Query")
         self._Reasons = params.get("Reasons")
+        self._HandlingStatuses = params.get("HandlingStatuses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14439,7 +14543,7 @@ class GenerateQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _DocBizIds: 文档ID
         :type DocBizIds: list of str
@@ -14449,7 +14553,7 @@ class GenerateQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -16257,6 +16361,9 @@ class GetWsTokenResponse(AbstractModel):
         :type Pattern: str
         :param _SingleWorkflow: SingleWorkflow
         :type SingleWorkflow: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
+        :param _VisionModelInputLimit: 使用视觉模型时对话窗口输入字符限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisionModelInputLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16265,6 +16372,7 @@ class GetWsTokenResponse(AbstractModel):
         self._InputLenLimit = None
         self._Pattern = None
         self._SingleWorkflow = None
+        self._VisionModelInputLimit = None
         self._RequestId = None
 
     @property
@@ -16324,6 +16432,18 @@ class GetWsTokenResponse(AbstractModel):
         self._SingleWorkflow = SingleWorkflow
 
     @property
+    def VisionModelInputLimit(self):
+        r"""使用视觉模型时对话窗口输入字符限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VisionModelInputLimit
+
+    @VisionModelInputLimit.setter
+    def VisionModelInputLimit(self, VisionModelInputLimit):
+        self._VisionModelInputLimit = VisionModelInputLimit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16343,6 +16463,7 @@ class GetWsTokenResponse(AbstractModel):
         if params.get("SingleWorkflow") is not None:
             self._SingleWorkflow = KnowledgeQaSingleWorkflow()
             self._SingleWorkflow._deserialize(params.get("SingleWorkflow"))
+        self._VisionModelInputLimit = params.get("VisionModelInputLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -23433,11 +23554,11 @@ class ListSelectDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _FileName: 文档名称。可通过文档名称检索支持生成问答的文档，不支持xlsx、xls、csv格式
         :type FileName: str
-        :param _Status: 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
+        :param _Status: 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答（未填写时默认值为空数组）
         :type Status: list of int
         """
         self._BotBizId = None
@@ -23446,7 +23567,7 @@ class ListSelectDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -23468,7 +23589,7 @@ class ListSelectDocRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
+        r"""文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答（未填写时默认值为空数组）
         :rtype: list of int
         """
         return self._Status
@@ -23693,22 +23814,24 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码，取值范围：大于0
         :type PageNumber: int
-        :param _PageSize: 分页数量
+        :param _PageSize: 分页数量，取值范围：大于0
         :type PageSize: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _Query: 用户请求(问题或答案)
+        :param _Query: 用户请求(问题或答案)，按关键词检索，可匹配用户问题或答案
         :type Query: str
-        :param _Reasons: 错误类型检索
+        :param _Reasons: 按错误类型检索
         :type Reasons: list of str
-        :param _Status: 操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+        :param _Status: 按操作状态检索  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】，不填时默认值为0
         :type Status: int
+        :param _HandlingStatuses: 处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+        :type HandlingStatuses: list of int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -23718,10 +23841,11 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
         self._Query = None
         self._Reasons = None
         self._Status = None
+        self._HandlingStatuses = None
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -23732,7 +23856,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码，取值范围：大于0
         :rtype: int
         """
         return self._PageNumber
@@ -23743,7 +23867,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页数量
+        r"""分页数量，取值范围：大于0
         :rtype: int
         """
         return self._PageSize
@@ -23776,7 +23900,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""用户请求(问题或答案)
+        r"""用户请求(问题或答案)，按关键词检索，可匹配用户问题或答案
         :rtype: str
         """
         return self._Query
@@ -23787,7 +23911,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Reasons(self):
-        r"""错误类型检索
+        r"""按错误类型检索
         :rtype: list of str
         """
         return self._Reasons
@@ -23798,7 +23922,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+        r"""按操作状态检索  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】，不填时默认值为0
         :rtype: int
         """
         return self._Status
@@ -23806,6 +23930,17 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def HandlingStatuses(self):
+        r"""处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+        :rtype: list of int
+        """
+        return self._HandlingStatuses
+
+    @HandlingStatuses.setter
+    def HandlingStatuses(self, HandlingStatuses):
+        self._HandlingStatuses = HandlingStatuses
 
 
     def _deserialize(self, params):
@@ -23817,6 +23952,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
         self._Query = params.get("Query")
         self._Reasons = params.get("Reasons")
         self._Status = params.get("Status")
+        self._HandlingStatuses = params.get("HandlingStatuses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27248,6 +27384,46 @@ class MsgRecordReference(AbstractModel):
         self._DocBizId = params.get("DocBizId")
         self._QaBizId = params.get("QaBizId")
         self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NL2SQLModelConfig(AbstractModel):
+    r"""Nl2Sql模型配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: :class:`tencentcloud.lke.v20231130.models.AppModelDetailInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AppModelDetailInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = AppModelDetailInfo()
+            self._Model._deserialize(params.get("Model"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31627,12 +31803,16 @@ class SearchStrategy(AbstractModel):
         :param _RerankModel: 结果重排序模型
 注意：此字段可能返回 null，表示取不到有效值。
         :type RerankModel: str
+        :param _NatureLanguageToSqlModelConfig: NL2SQL模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatureLanguageToSqlModelConfig: :class:`tencentcloud.lke.v20231130.models.NL2SQLModelConfig`
         """
         self._StrategyType = None
         self._TableEnhancement = None
         self._EmbeddingModel = None
         self._RerankModelSwitch = None
         self._RerankModel = None
+        self._NatureLanguageToSqlModelConfig = None
 
     @property
     def StrategyType(self):
@@ -31694,6 +31874,18 @@ class SearchStrategy(AbstractModel):
     def RerankModel(self, RerankModel):
         self._RerankModel = RerankModel
 
+    @property
+    def NatureLanguageToSqlModelConfig(self):
+        r"""NL2SQL模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.NL2SQLModelConfig`
+        """
+        return self._NatureLanguageToSqlModelConfig
+
+    @NatureLanguageToSqlModelConfig.setter
+    def NatureLanguageToSqlModelConfig(self, NatureLanguageToSqlModelConfig):
+        self._NatureLanguageToSqlModelConfig = NatureLanguageToSqlModelConfig
+
 
     def _deserialize(self, params):
         self._StrategyType = params.get("StrategyType")
@@ -31701,6 +31893,9 @@ class SearchStrategy(AbstractModel):
         self._EmbeddingModel = params.get("EmbeddingModel")
         self._RerankModelSwitch = params.get("RerankModelSwitch")
         self._RerankModel = params.get("RerankModel")
+        if params.get("NatureLanguageToSqlModelConfig") is not None:
+            self._NatureLanguageToSqlModelConfig = NL2SQLModelConfig()
+            self._NatureLanguageToSqlModelConfig._deserialize(params.get("NatureLanguageToSqlModelConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

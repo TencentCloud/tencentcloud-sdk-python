@@ -992,6 +992,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDepartments(self, request):
+        r"""查询部门信息
+
+        :param request: Request instance for DescribeDepartments.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeDepartmentsRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeDepartmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDepartments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDepartmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceAccounts(self, request):
         r"""查询主机账号列表
 

@@ -781,6 +781,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDepartments(
+            self,
+            request: models.DescribeDepartmentsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDepartmentsResponse:
+        """
+        查询部门信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDepartments"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDepartmentsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceAccounts(
             self,
             request: models.DescribeDeviceAccountsRequest,

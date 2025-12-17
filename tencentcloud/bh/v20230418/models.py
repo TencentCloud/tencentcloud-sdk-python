@@ -6680,6 +6680,77 @@ class DepartmentManagerUser(AbstractModel):
         
 
 
+class Departments(AbstractModel):
+    r"""部门列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DepartmentSet: 部门列表
+        :type DepartmentSet: list of Department
+        :param _Enabled: 是否开启了部门管理 true - 已开启, false - 未开启
+        :type Enabled: bool
+        :param _RootManager: 当前操作UIN是否是根部门管理员
+        :type RootManager: bool
+        """
+        self._DepartmentSet = None
+        self._Enabled = None
+        self._RootManager = None
+
+    @property
+    def DepartmentSet(self):
+        r"""部门列表
+        :rtype: list of Department
+        """
+        return self._DepartmentSet
+
+    @DepartmentSet.setter
+    def DepartmentSet(self, DepartmentSet):
+        self._DepartmentSet = DepartmentSet
+
+    @property
+    def Enabled(self):
+        r"""是否开启了部门管理 true - 已开启, false - 未开启
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RootManager(self):
+        r"""当前操作UIN是否是根部门管理员
+        :rtype: bool
+        """
+        return self._RootManager
+
+    @RootManager.setter
+    def RootManager(self, RootManager):
+        self._RootManager = RootManager
+
+
+    def _deserialize(self, params):
+        if params.get("DepartmentSet") is not None:
+            self._DepartmentSet = []
+            for item in params.get("DepartmentSet"):
+                obj = Department()
+                obj._deserialize(item)
+                self._DepartmentSet.append(obj)
+        self._Enabled = params.get("Enabled")
+        self._RootManager = params.get("RootManager")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeployResourceRequest(AbstractModel):
     r"""DeployResource请求参数结构体
 
@@ -8187,6 +8258,57 @@ class DescribeCmdTemplatesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CmdTemplateSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDepartmentsRequest(AbstractModel):
+    r"""DescribeDepartments请求参数结构体
+
+    """
+
+
+class DescribeDepartmentsResponse(AbstractModel):
+    r"""DescribeDepartments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Departments: 部门列表
+        :type Departments: :class:`tencentcloud.bh.v20230418.models.Departments`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Departments = None
+        self._RequestId = None
+
+    @property
+    def Departments(self):
+        r"""部门列表
+        :rtype: :class:`tencentcloud.bh.v20230418.models.Departments`
+        """
+        return self._Departments
+
+    @Departments.setter
+    def Departments(self, Departments):
+        self._Departments = Departments
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Departments") is not None:
+            self._Departments = Departments()
+            self._Departments._deserialize(params.get("Departments"))
         self._RequestId = params.get("RequestId")
 
 

@@ -26,6 +26,29 @@ class LkeapClient(AbstractClient):
     _service = 'lkeap'
 
 
+    def CancelTask(self, request):
+        r"""文档解析任务取消
+
+        :param request: Request instance for CancelTask.
+        :type request: :class:`tencentcloud.lkeap.v20240522.models.CancelTaskRequest`
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.CancelTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChatCompletions(self, request):
         r"""### 接口功能
 
@@ -49,14 +72,10 @@ class LkeapClient(AbstractClient):
         - DeepSeek-V3.1-Terminus（model 参数值为 deepseek-v3.1-terminus）
             - DeepSeek-V3.1-Terminus 为685B 参数 MoE 模型，在保持模型原有能力的基础上，优化了语言一致性，Agent 能力等问题，输出效果相比前一版本更加稳定。
             -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
-        - DeepSeek-V3.2-Exp（model 参数值为 deepseek-v3.2-exp）
-            - DeepSeek-V3.2-Exp 为685B 参数 MoE 模型，在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
-            -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
-            -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
         - DeepSeek-V3.2（model 参数值为 deepseek-v3.2）
             - DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。
             -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
-            -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
+            -  默认单账号下 DeepSeek-V3.2 模型的限制为：QPM：15,000 ，TPM：300,000
         ### 计费说明
 
         - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://console.cloud.tencent.com/lkeap/settings)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
@@ -68,8 +87,6 @@ class LkeapClient(AbstractClient):
             - DeepSeek-V3.1 模型 | 输入：0.004元/千token | 输出：0.012元/千token
 
             - DeepSeek-V3.1-Terminus 模型 | 输入：0.004元/千token | 输出：0.012元/千token
-
-            - DeepSeek-V3.2-Exp 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 
             - DeepSeek-V3.2 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 

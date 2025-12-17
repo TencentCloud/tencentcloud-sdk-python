@@ -169,6 +169,63 @@ class AdvanceFilterRuleInfo(AbstractModel):
         
 
 
+class AdvancedConsumerConfiguration(AbstractModel):
+    r"""投递Ckafka 高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionHashStatus: Ckafka分区hash状态。 默认 false
+
+- true：开启根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+- false：关闭根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+        :type PartitionHashStatus: bool
+        :param _PartitionFields: 需要计算 hash 的字段列表。最大支持5个字段。
+        :type PartitionFields: list of str
+        """
+        self._PartitionHashStatus = None
+        self._PartitionFields = None
+
+    @property
+    def PartitionHashStatus(self):
+        r"""Ckafka分区hash状态。 默认 false
+
+- true：开启根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+- false：关闭根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+        :rtype: bool
+        """
+        return self._PartitionHashStatus
+
+    @PartitionHashStatus.setter
+    def PartitionHashStatus(self, PartitionHashStatus):
+        self._PartitionHashStatus = PartitionHashStatus
+
+    @property
+    def PartitionFields(self):
+        r"""需要计算 hash 的字段列表。最大支持5个字段。
+        :rtype: list of str
+        """
+        return self._PartitionFields
+
+    @PartitionFields.setter
+    def PartitionFields(self, PartitionFields):
+        self._PartitionFields = PartitionFields
+
+
+    def _deserialize(self, params):
+        self._PartitionHashStatus = params.get("PartitionHashStatus")
+        self._PartitionFields = params.get("PartitionFields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmAnalysisConfig(AbstractModel):
     r"""告警多维分析一些配置信息
 
@@ -719,6 +776,32 @@ class AlarmNotice(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
+        :param _DeliverStatus: 投递日志开关。
+
+参数值：
+
+1：关闭
+
+2：开启 
+
+        :type DeliverStatus: int
+        :param _DeliverFlag: 投递日志标识。
+
+参数值：
+
+1：未启用
+
+2：已启用
+
+3：投递异常
+        :type DeliverFlag: int
+        :param _AlarmShieldCount: 通知渠道组配置的告警屏蔽统计状态数量信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldCount: :class:`tencentcloud.cls.v20201016.models.AlarmShieldCount`
+        :param _CallbackPrioritize: 统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :type CallbackPrioritize: bool
         """
         self._Name = None
         self._Tags = None
@@ -732,6 +815,10 @@ class AlarmNotice(AbstractModel):
         self._AlarmNoticeDeliverConfig = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._DeliverStatus = None
+        self._DeliverFlag = None
+        self._AlarmShieldCount = None
+        self._CallbackPrioritize = None
 
     @property
     def Name(self):
@@ -870,6 +957,68 @@ class AlarmNotice(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def DeliverStatus(self):
+        r"""投递日志开关。
+
+参数值：
+
+1：关闭
+
+2：开启 
+
+        :rtype: int
+        """
+        return self._DeliverStatus
+
+    @DeliverStatus.setter
+    def DeliverStatus(self, DeliverStatus):
+        self._DeliverStatus = DeliverStatus
+
+    @property
+    def DeliverFlag(self):
+        r"""投递日志标识。
+
+参数值：
+
+1：未启用
+
+2：已启用
+
+3：投递异常
+        :rtype: int
+        """
+        return self._DeliverFlag
+
+    @DeliverFlag.setter
+    def DeliverFlag(self, DeliverFlag):
+        self._DeliverFlag = DeliverFlag
+
+    @property
+    def AlarmShieldCount(self):
+        r"""通知渠道组配置的告警屏蔽统计状态数量信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AlarmShieldCount`
+        """
+        return self._AlarmShieldCount
+
+    @AlarmShieldCount.setter
+    def AlarmShieldCount(self, AlarmShieldCount):
+        self._AlarmShieldCount = AlarmShieldCount
+
+    @property
+    def CallbackPrioritize(self):
+        r"""统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :rtype: bool
+        """
+        return self._CallbackPrioritize
+
+    @CallbackPrioritize.setter
+    def CallbackPrioritize(self, CallbackPrioritize):
+        self._CallbackPrioritize = CallbackPrioritize
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -906,6 +1055,12 @@ class AlarmNotice(AbstractModel):
             self._AlarmNoticeDeliverConfig._deserialize(params.get("AlarmNoticeDeliverConfig"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._DeliverStatus = params.get("DeliverStatus")
+        self._DeliverFlag = params.get("DeliverFlag")
+        if params.get("AlarmShieldCount") is not None:
+            self._AlarmShieldCount = AlarmShieldCount()
+            self._AlarmShieldCount._deserialize(params.get("AlarmShieldCount"))
+        self._CallbackPrioritize = params.get("CallbackPrioritize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -959,6 +1114,87 @@ class AlarmNoticeDeliverConfig(AbstractModel):
             self._DeliverConfig = DeliverConfig()
             self._DeliverConfig._deserialize(params.get("DeliverConfig"))
         self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmShieldCount(AbstractModel):
+    r"""告警屏蔽统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合检索条件的告警屏蔽总数量
+        :type TotalCount: int
+        :param _InvalidCount: 告警屏蔽未生效数量
+        :type InvalidCount: int
+        :param _ValidCount: 告警屏蔽生效中数量
+        :type ValidCount: int
+        :param _ExpireCount: 告警屏蔽已过期数量
+        :type ExpireCount: int
+        """
+        self._TotalCount = None
+        self._InvalidCount = None
+        self._ValidCount = None
+        self._ExpireCount = None
+
+    @property
+    def TotalCount(self):
+        r"""符合检索条件的告警屏蔽总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InvalidCount(self):
+        r"""告警屏蔽未生效数量
+        :rtype: int
+        """
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
+    @property
+    def ValidCount(self):
+        r"""告警屏蔽生效中数量
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def ExpireCount(self):
+        r"""告警屏蔽已过期数量
+        :rtype: int
+        """
+        return self._ExpireCount
+
+    @ExpireCount.setter
+    def ExpireCount(self, ExpireCount):
+        self._ExpireCount = ExpireCount
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._InvalidCount = params.get("InvalidCount")
+        self._ValidCount = params.get("ValidCount")
+        self._ExpireCount = params.get("ExpireCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5308,6 +5544,10 @@ class CreateAlarmNoticeRequest(AbstractModel):
 -      1：关闭
 -      2：开启（默认值）
         :type AlarmShieldStatus: int
+        :param _CallbackPrioritize: 统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :type CallbackPrioritize: bool
         """
         self._Name = None
         self._Tags = None
@@ -5319,6 +5559,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self._DeliverStatus = None
         self._DeliverConfig = None
         self._AlarmShieldStatus = None
+        self._CallbackPrioritize = None
 
     @property
     def Name(self):
@@ -5442,6 +5683,19 @@ class CreateAlarmNoticeRequest(AbstractModel):
     def AlarmShieldStatus(self, AlarmShieldStatus):
         self._AlarmShieldStatus = AlarmShieldStatus
 
+    @property
+    def CallbackPrioritize(self):
+        r"""统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :rtype: bool
+        """
+        return self._CallbackPrioritize
+
+    @CallbackPrioritize.setter
+    def CallbackPrioritize(self, CallbackPrioritize):
+        self._CallbackPrioritize = CallbackPrioritize
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -5476,6 +5730,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
             self._DeliverConfig = DeliverConfig()
             self._DeliverConfig._deserialize(params.get("DeliverConfig"))
         self._AlarmShieldStatus = params.get("AlarmShieldStatus")
+        self._CallbackPrioritize = params.get("CallbackPrioritize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7213,12 +7468,21 @@ class CreateConsumerRequest(AbstractModel):
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         :param _Compression: 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
         :type Compression: int
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+        :type ExternalId: str
+        :param _AdvancedConfig: 高级配置项
+        :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
         """
         self._TopicId = None
         self._NeedContent = None
         self._Content = None
         self._Ckafka = None
         self._Compression = None
+        self._RoleArn = None
+        self._ExternalId = None
+        self._AdvancedConfig = None
 
     @property
     def TopicId(self):
@@ -7279,6 +7543,39 @@ class CreateConsumerRequest(AbstractModel):
     def Compression(self, Compression):
         self._Compression = Compression
 
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def AdvancedConfig(self):
+        r"""高级配置项
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -7290,6 +7587,11 @@ class CreateConsumerRequest(AbstractModel):
             self._Ckafka = Ckafka()
             self._Ckafka._deserialize(params.get("Ckafka"))
         self._Compression = params.get("Compression")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AdvancedConsumerConfiguration()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8684,12 +8986,15 @@ class CreateIndexRequest(AbstractModel):
 * 1:包含所有元数据字段
 * 2:不包含任何元数据字段
         :type MetadataFlag: int
+        :param _CoverageField: 自定义日志解析异常存储字段。
+        :type CoverageField: str
         """
         self._TopicId = None
         self._Rule = None
         self._Status = None
         self._IncludeInternalFields = None
         self._MetadataFlag = None
+        self._CoverageField = None
 
     @property
     def TopicId(self):
@@ -8752,6 +9057,17 @@ class CreateIndexRequest(AbstractModel):
     def MetadataFlag(self, MetadataFlag):
         self._MetadataFlag = MetadataFlag
 
+    @property
+    def CoverageField(self):
+        r"""自定义日志解析异常存储字段。
+        :rtype: str
+        """
+        return self._CoverageField
+
+    @CoverageField.setter
+    def CoverageField(self, CoverageField):
+        self._CoverageField = CoverageField
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -8761,6 +9077,7 @@ class CreateIndexRequest(AbstractModel):
         self._Status = params.get("Status")
         self._IncludeInternalFields = params.get("IncludeInternalFields")
         self._MetadataFlag = params.get("MetadataFlag")
+        self._CoverageField = params.get("CoverageField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9860,6 +10177,10 @@ class CreateShipperRequest(AbstractModel):
 - INTELLIGENT_TIERING：智能分层存储
 - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+        :type ExternalId: str
         """
         self._TopicId = None
         self._Bucket = None
@@ -9875,6 +10196,8 @@ class CreateShipperRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._StorageType = None
+        self._RoleArn = None
+        self._ExternalId = None
 
     @property
     def TopicId(self):
@@ -10047,6 +10370,28 @@ class CreateShipperRequest(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -10072,6 +10417,8 @@ class CreateShipperRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._StorageType = params.get("StorageType")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13962,32 +14309,32 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li> name
+        :param _Filters: name
 按照【通知渠道组名称】进行过滤。
 类型：String
 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
-必选：否</li>
-<li> alarmNoticeId
+必选：否
+alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
-必选：否</li>
-<li> uid
+必选：否
+uid
 按照【接收用户ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
-必选：否</li>
-<li> groupId
+必选：否
+groupId
 按照【接收用户组ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
-必选：否</li>
+必选：否
 
-<li> deliverFlag
+deliverFlag
 按照【投递状态】进行过滤。
 类型：String
 必选：否
-可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
+可选值： "1":未启用,  "2": 已启用, "3":投递异常
 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -13995,39 +14342,44 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页单页限制数目，默认值为20，最大值100。
         :type Limit: int
+        :param _HasAlarmShieldCount: 是否需要返回通知渠道组配置的告警屏蔽统计状态数量信息。
+- true：需要返回；
+- false：不返回（默认false）。
+        :type HasAlarmShieldCount: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._HasAlarmShieldCount = None
 
     @property
     def Filters(self):
-        r"""<li> name
+        r"""name
 按照【通知渠道组名称】进行过滤。
 类型：String
 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
-必选：否</li>
-<li> alarmNoticeId
+必选：否
+alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
-必选：否</li>
-<li> uid
+必选：否
+uid
 按照【接收用户ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
-必选：否</li>
-<li> groupId
+必选：否
+groupId
 按照【接收用户组ID】进行过滤。
 类型：String
 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
-必选：否</li>
+必选：否
 
-<li> deliverFlag
+deliverFlag
 按照【投递状态】进行过滤。
 类型：String
 必选：否
-可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
+可选值： "1":未启用,  "2": 已启用, "3":投递异常
 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
@@ -14060,6 +14412,19 @@ class DescribeAlarmNoticesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def HasAlarmShieldCount(self):
+        r"""是否需要返回通知渠道组配置的告警屏蔽统计状态数量信息。
+- true：需要返回；
+- false：不返回（默认false）。
+        :rtype: bool
+        """
+        return self._HasAlarmShieldCount
+
+    @HasAlarmShieldCount.setter
+    def HasAlarmShieldCount(self, HasAlarmShieldCount):
+        self._HasAlarmShieldCount = HasAlarmShieldCount
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -14070,6 +14435,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._HasAlarmShieldCount = params.get("HasAlarmShieldCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16636,6 +17002,8 @@ class DescribeIndexResponse(AbstractModel):
 * 1:包含所有元数据字段
 * 2:不包含任何元数据字段
         :type MetadataFlag: int
+        :param _CoverageField: 自定义日志解析异常存储字段。
+        :type CoverageField: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16645,6 +17013,7 @@ class DescribeIndexResponse(AbstractModel):
         self._ModifyTime = None
         self._IncludeInternalFields = None
         self._MetadataFlag = None
+        self._CoverageField = None
         self._RequestId = None
 
     @property
@@ -16721,6 +17090,17 @@ class DescribeIndexResponse(AbstractModel):
         self._MetadataFlag = MetadataFlag
 
     @property
+    def CoverageField(self):
+        r"""自定义日志解析异常存储字段。
+        :rtype: str
+        """
+        return self._CoverageField
+
+    @CoverageField.setter
+    def CoverageField(self, CoverageField):
+        self._CoverageField = CoverageField
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16741,6 +17121,7 @@ class DescribeIndexResponse(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._IncludeInternalFields = params.get("IncludeInternalFields")
         self._MetadataFlag = params.get("MetadataFlag")
+        self._CoverageField = params.get("CoverageField")
         self._RequestId = params.get("RequestId")
 
 
@@ -23804,6 +24185,8 @@ class LogsetInfo(AbstractModel):
         :type LogsetName: str
         :param _CreateTime: 创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :type CreateTime: str
+        :param _AssumerUin: 若AssumerUin非空，则表示创建该日志集的服务方Uin
+        :type AssumerUin: int
         :param _AssumerName: 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :type AssumerName: str
         :param _Tags: 日志集绑定的标签
@@ -23812,14 +24195,18 @@ class LogsetInfo(AbstractModel):
         :type TopicCount: int
         :param _RoleName: 若AssumerName非空，则表示创建该日志集的服务方角色
         :type RoleName: str
+        :param _MetricTopicCount: 日志集下指标主题的数目
+        :type MetricTopicCount: int
         """
         self._LogsetId = None
         self._LogsetName = None
         self._CreateTime = None
+        self._AssumerUin = None
         self._AssumerName = None
         self._Tags = None
         self._TopicCount = None
         self._RoleName = None
+        self._MetricTopicCount = None
 
     @property
     def LogsetId(self):
@@ -23853,6 +24240,17 @@ class LogsetInfo(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def AssumerUin(self):
+        r"""若AssumerUin非空，则表示创建该日志集的服务方Uin
+        :rtype: int
+        """
+        return self._AssumerUin
+
+    @AssumerUin.setter
+    def AssumerUin(self, AssumerUin):
+        self._AssumerUin = AssumerUin
 
     @property
     def AssumerName(self):
@@ -23898,11 +24296,23 @@ class LogsetInfo(AbstractModel):
     def RoleName(self, RoleName):
         self._RoleName = RoleName
 
+    @property
+    def MetricTopicCount(self):
+        r"""日志集下指标主题的数目
+        :rtype: int
+        """
+        return self._MetricTopicCount
+
+    @MetricTopicCount.setter
+    def MetricTopicCount(self, MetricTopicCount):
+        self._MetricTopicCount = MetricTopicCount
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
         self._LogsetName = params.get("LogsetName")
         self._CreateTime = params.get("CreateTime")
+        self._AssumerUin = params.get("AssumerUin")
         self._AssumerName = params.get("AssumerName")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -23912,6 +24322,7 @@ class LogsetInfo(AbstractModel):
                 self._Tags.append(obj)
         self._TopicCount = params.get("TopicCount")
         self._RoleName = params.get("RoleName")
+        self._MetricTopicCount = params.get("MetricTopicCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24614,6 +25025,10 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         1：关闭
         2：开启（默认开启）
         :type AlarmShieldStatus: int
+        :param _CallbackPrioritize: 统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :type CallbackPrioritize: bool
         """
         self._AlarmNoticeId = None
         self._Tags = None
@@ -24626,6 +25041,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self._DeliverStatus = None
         self._DeliverConfig = None
         self._AlarmShieldStatus = None
+        self._CallbackPrioritize = None
 
     @property
     def AlarmNoticeId(self):
@@ -24766,6 +25182,19 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     def AlarmShieldStatus(self, AlarmShieldStatus):
         self._AlarmShieldStatus = AlarmShieldStatus
 
+    @property
+    def CallbackPrioritize(self):
+        r"""统一设定自定义回调参数。
+-  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+-  false:优先使用告警策略中单独配置的请求头及请求内容。
+        :rtype: bool
+        """
+        return self._CallbackPrioritize
+
+    @CallbackPrioritize.setter
+    def CallbackPrioritize(self, CallbackPrioritize):
+        self._CallbackPrioritize = CallbackPrioritize
+
 
     def _deserialize(self, params):
         self._AlarmNoticeId = params.get("AlarmNoticeId")
@@ -24801,6 +25230,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
             self._DeliverConfig = DeliverConfig()
             self._DeliverConfig._deserialize(params.get("DeliverConfig"))
         self._AlarmShieldStatus = params.get("AlarmShieldStatus")
+        self._CallbackPrioritize = params.get("CallbackPrioritize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26326,6 +26756,12 @@ class ModifyConsumerRequest(AbstractModel):
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         :param _Compression: 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
         :type Compression: int
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+        :type ExternalId: str
+        :param _AdvancedConfig: 高级配置
+        :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
         """
         self._TopicId = None
         self._Effective = None
@@ -26333,6 +26769,9 @@ class ModifyConsumerRequest(AbstractModel):
         self._Content = None
         self._Ckafka = None
         self._Compression = None
+        self._RoleArn = None
+        self._ExternalId = None
+        self._AdvancedConfig = None
 
     @property
     def TopicId(self):
@@ -26404,6 +26843,39 @@ class ModifyConsumerRequest(AbstractModel):
     def Compression(self, Compression):
         self._Compression = Compression
 
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def AdvancedConfig(self):
+        r"""高级配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -26416,6 +26888,11 @@ class ModifyConsumerRequest(AbstractModel):
             self._Ckafka = Ckafka()
             self._Ckafka._deserialize(params.get("Ckafka"))
         self._Compression = params.get("Compression")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AdvancedConsumerConfiguration()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27318,12 +27795,15 @@ class ModifyIndexRequest(AbstractModel):
 * 1:包含所有元数据字段
 * 2:不包含任何元数据字段
         :type MetadataFlag: int
+        :param _CoverageField: 自定义日志解析异常存储字段。
+        :type CoverageField: str
         """
         self._TopicId = None
         self._Status = None
         self._Rule = None
         self._IncludeInternalFields = None
         self._MetadataFlag = None
+        self._CoverageField = None
 
     @property
     def TopicId(self):
@@ -27387,6 +27867,17 @@ class ModifyIndexRequest(AbstractModel):
     def MetadataFlag(self, MetadataFlag):
         self._MetadataFlag = MetadataFlag
 
+    @property
+    def CoverageField(self):
+        r"""自定义日志解析异常存储字段。
+        :rtype: str
+        """
+        return self._CoverageField
+
+    @CoverageField.setter
+    def CoverageField(self, CoverageField):
+        self._CoverageField = CoverageField
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -27396,6 +27887,7 @@ class ModifyIndexRequest(AbstractModel):
             self._Rule._deserialize(params.get("Rule"))
         self._IncludeInternalFields = params.get("IncludeInternalFields")
         self._MetadataFlag = params.get("MetadataFlag")
+        self._CoverageField = params.get("CoverageField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28556,6 +29048,10 @@ class ModifyShipperRequest(AbstractModel):
 - INTELLIGENT_TIERING：智能分层存储
 - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+        :type ExternalId: str
         """
         self._ShipperId = None
         self._Bucket = None
@@ -28570,6 +29066,8 @@ class ModifyShipperRequest(AbstractModel):
         self._Content = None
         self._FilenameMode = None
         self._StorageType = None
+        self._RoleArn = None
+        self._ExternalId = None
 
     @property
     def ShipperId(self):
@@ -28730,6 +29228,28 @@ class ModifyShipperRequest(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
 
     def _deserialize(self, params):
         self._ShipperId = params.get("ShipperId")
@@ -28754,6 +29274,8 @@ class ModifyShipperRequest(AbstractModel):
             self._Content._deserialize(params.get("Content"))
         self._FilenameMode = params.get("FilenameMode")
         self._StorageType = params.get("StorageType")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28799,8 +29321,7 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 主题ID
-- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+        :param _TopicId:  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
         :type TopicId: str
         :param _TopicName: 主题名称
 输入限制：
@@ -28820,6 +29341,8 @@ class ModifyTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param _Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
         :type Period: int
+        :param _StorageType: 存储类型：cold 低频存储，hot 标准存储
+        :type StorageType: str
         :param _Describes: 主题描述
         :type Describes: str
         :param _HotPeriod: 0：日志主题关闭日志沉降。
@@ -28841,6 +29364,11 @@ class ModifyTopicRequest(AbstractModel):
         :param _CancelTopicAsyncTaskID: 取消切换存储任务的id
 - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
         :type CancelTopicAsyncTaskID: str
+        :param _Encryption: 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+只支持传入1：kms-cls 云产品秘钥加密
+        :type Encryption: int
+        :param _IsSourceFrom: 开启记录公网来源ip和服务端接收时间
+        :type IsSourceFrom: bool
         """
         self._TopicId = None
         self._TopicName = None
@@ -28849,17 +29377,19 @@ class ModifyTopicRequest(AbstractModel):
         self._AutoSplit = None
         self._MaxSplitPartitions = None
         self._Period = None
+        self._StorageType = None
         self._Describes = None
         self._HotPeriod = None
         self._IsWebTracking = None
         self._Extends = None
         self._PartitionCount = None
         self._CancelTopicAsyncTaskID = None
+        self._Encryption = None
+        self._IsSourceFrom = None
 
     @property
     def TopicId(self):
-        r"""主题ID
-- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+        r""" 主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -28941,6 +29471,17 @@ class ModifyTopicRequest(AbstractModel):
         self._Period = Period
 
     @property
+    def StorageType(self):
+        r"""存储类型：cold 低频存储，hot 标准存储
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
     def Describes(self):
         r"""主题描述
         :rtype: str
@@ -29015,6 +29556,29 @@ class ModifyTopicRequest(AbstractModel):
     def CancelTopicAsyncTaskID(self, CancelTopicAsyncTaskID):
         self._CancelTopicAsyncTaskID = CancelTopicAsyncTaskID
 
+    @property
+    def Encryption(self):
+        r"""加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+只支持传入1：kms-cls 云产品秘钥加密
+        :rtype: int
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def IsSourceFrom(self):
+        r"""开启记录公网来源ip和服务端接收时间
+        :rtype: bool
+        """
+        return self._IsSourceFrom
+
+    @IsSourceFrom.setter
+    def IsSourceFrom(self, IsSourceFrom):
+        self._IsSourceFrom = IsSourceFrom
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -29029,6 +29593,7 @@ class ModifyTopicRequest(AbstractModel):
         self._AutoSplit = params.get("AutoSplit")
         self._MaxSplitPartitions = params.get("MaxSplitPartitions")
         self._Period = params.get("Period")
+        self._StorageType = params.get("StorageType")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._IsWebTracking = params.get("IsWebTracking")
@@ -29037,6 +29602,8 @@ class ModifyTopicRequest(AbstractModel):
             self._Extends._deserialize(params.get("Extends"))
         self._PartitionCount = params.get("PartitionCount")
         self._CancelTopicAsyncTaskID = params.get("CancelTopicAsyncTaskID")
+        self._Encryption = params.get("Encryption")
+        self._IsSourceFrom = params.get("IsSourceFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33187,6 +33754,16 @@ MAZ_STANDARD_IA：低频存储（多 AZ）
 INTELLIGENT_TIERING：智能分层存储
 MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+        :type ExternalId: str
+        :param _TaskStatus: 任务运行状态。支持`0`,`1`,`2`
+
+- `0`: 停止
+- `1`: 运行中
+- `2`: 异常
+        :type TaskStatus: int
         """
         self._ShipperId = None
         self._TopicId = None
@@ -33208,6 +33785,9 @@ MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         self._RemainTime = None
         self._HistoryStatus = None
         self._StorageType = None
+        self._RoleArn = None
+        self._ExternalId = None
+        self._TaskStatus = None
 
     @property
     def ShipperId(self):
@@ -33443,6 +34023,43 @@ MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def TaskStatus(self):
+        r"""任务运行状态。支持`0`,`1`,`2`
+
+- `0`: 停止
+- `1`: 运行中
+- `2`: 异常
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         self._ShipperId = params.get("ShipperId")
@@ -33474,6 +34091,9 @@ MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         self._RemainTime = params.get("RemainTime")
         self._HistoryStatus = params.get("HistoryStatus")
         self._StorageType = params.get("StorageType")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33982,10 +34602,11 @@ class TopicInfo(AbstractModel):
         :type PartitionCount: int
         :param _Index: 主题是否开启索引（主题类型需为日志主题）
         :type Index: bool
+        :param _AssumerUin: AssumerUin非空则表示创建该日志主题的服务方Uin
+        :type AssumerUin: int
         :param _AssumerName: 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :type AssumerName: str
-        :param _CreateTime: 创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: 创建时间。格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _Status: 主题是否开启采集，true：开启采集；false：关闭采集。
 创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
@@ -33993,6 +34614,8 @@ class TopicInfo(AbstractModel):
         :type Status: bool
         :param _Tags: 主题绑定的标签信息
         :type Tags: list of Tag
+        :param _RoleName: RoleName非空则表示创建该日志主题的服务方使用的角色
+        :type RoleName: str
         :param _AutoSplit: 该主题是否开启自动分裂
         :type AutoSplit: bool
         :param _MaxSplitPartitions: 若开启自动分裂的话，该主题能够允许的最大分区数
@@ -34032,16 +34655,20 @@ HotPeriod=0为没有开启日志沉降。
         :param _EffectiveDate: 异步迁移完成后，预计生效日期
 时间格式：yyyy-MM-dd HH:mm:ss
         :type EffectiveDate: str
+        :param _IsSourceFrom: IsSourceFrom 开启记录公网来源ip和服务端接收时间
+        :type IsSourceFrom: bool
         """
         self._LogsetId = None
         self._TopicId = None
         self._TopicName = None
         self._PartitionCount = None
         self._Index = None
+        self._AssumerUin = None
         self._AssumerName = None
         self._CreateTime = None
         self._Status = None
         self._Tags = None
+        self._RoleName = None
         self._AutoSplit = None
         self._MaxSplitPartitions = None
         self._StorageType = None
@@ -34055,6 +34682,7 @@ HotPeriod=0为没有开启日志沉降。
         self._TopicAsyncTaskID = None
         self._MigrationStatus = None
         self._EffectiveDate = None
+        self._IsSourceFrom = None
 
     @property
     def LogsetId(self):
@@ -34112,6 +34740,17 @@ HotPeriod=0为没有开启日志沉降。
         self._Index = Index
 
     @property
+    def AssumerUin(self):
+        r"""AssumerUin非空则表示创建该日志主题的服务方Uin
+        :rtype: int
+        """
+        return self._AssumerUin
+
+    @AssumerUin.setter
+    def AssumerUin(self, AssumerUin):
+        self._AssumerUin = AssumerUin
+
+    @property
     def AssumerName(self):
         r"""云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :rtype: str
@@ -34124,8 +34763,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def CreateTime(self):
-        r"""创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""创建时间。格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -34157,6 +34795,17 @@ HotPeriod=0为没有开启日志沉降。
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def RoleName(self):
+        r"""RoleName非空则表示创建该日志主题的服务方使用的角色
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
     @property
     def AutoSplit(self):
@@ -34314,6 +34963,17 @@ HotPeriod=0为没有开启日志沉降。
     def EffectiveDate(self, EffectiveDate):
         self._EffectiveDate = EffectiveDate
 
+    @property
+    def IsSourceFrom(self):
+        r"""IsSourceFrom 开启记录公网来源ip和服务端接收时间
+        :rtype: bool
+        """
+        return self._IsSourceFrom
+
+    @IsSourceFrom.setter
+    def IsSourceFrom(self, IsSourceFrom):
+        self._IsSourceFrom = IsSourceFrom
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -34321,6 +34981,7 @@ HotPeriod=0为没有开启日志沉降。
         self._TopicName = params.get("TopicName")
         self._PartitionCount = params.get("PartitionCount")
         self._Index = params.get("Index")
+        self._AssumerUin = params.get("AssumerUin")
         self._AssumerName = params.get("AssumerName")
         self._CreateTime = params.get("CreateTime")
         self._Status = params.get("Status")
@@ -34330,6 +34991,7 @@ HotPeriod=0为没有开启日志沉降。
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._RoleName = params.get("RoleName")
         self._AutoSplit = params.get("AutoSplit")
         self._MaxSplitPartitions = params.get("MaxSplitPartitions")
         self._StorageType = params.get("StorageType")
@@ -34345,6 +35007,7 @@ HotPeriod=0为没有开启日志沉降。
         self._TopicAsyncTaskID = params.get("TopicAsyncTaskID")
         self._MigrationStatus = params.get("MigrationStatus")
         self._EffectiveDate = params.get("EffectiveDate")
+        self._IsSourceFrom = params.get("IsSourceFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

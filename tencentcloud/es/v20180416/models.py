@@ -884,21 +884,51 @@ class CosBackup(AbstractModel):
         :type IsAutoBackup: bool
         :param _BackupTime: 自动备份执行时间（精确到小时）, e.g. "22:00"
         :type BackupTime: str
+        :param _SnapshotName: 备份快照前缀
+        :type SnapshotName: str
         :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
         :type EsRepositoryType: int
+        :param _PaasEsRepository: 托管快照仓库名称
+        :type PaasEsRepository: str
         :param _UserEsRepository: 客户快照仓库名称
         :type UserEsRepository: str
         :param _StorageDuration: 快照存储周期 单位天
         :type StorageDuration: int
         :param _AutoBackupInterval: 自动备份频率单位小时
         :type AutoBackupInterval: int
+        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+        :type CosRetention: int
+        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+        :type RetainUntilDate: str
+        :param _RetentionGraceTime: 锁定宽限期
+        :type RetentionGraceTime: int
+        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+        :type RemoteCos: int
+        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+        :type RemoteCosRegion: str
+        :param _StrategyName: 策略名称
+        :type StrategyName: str
+        :param _Indices: 备份索引列表，如果不填表示备份所有索引
+        :type Indices: str
+        :param _CreateTime: 策略创建时间
+        :type CreateTime: str
         """
         self._IsAutoBackup = None
         self._BackupTime = None
+        self._SnapshotName = None
         self._EsRepositoryType = None
+        self._PaasEsRepository = None
         self._UserEsRepository = None
         self._StorageDuration = None
         self._AutoBackupInterval = None
+        self._CosRetention = None
+        self._RetainUntilDate = None
+        self._RetentionGraceTime = None
+        self._RemoteCos = None
+        self._RemoteCosRegion = None
+        self._StrategyName = None
+        self._Indices = None
+        self._CreateTime = None
 
     @property
     def IsAutoBackup(self):
@@ -923,6 +953,17 @@ class CosBackup(AbstractModel):
         self._BackupTime = BackupTime
 
     @property
+    def SnapshotName(self):
+        r"""备份快照前缀
+        :rtype: str
+        """
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
     def EsRepositoryType(self):
         r"""0 腾讯云仓库; 1 客户仓库
         :rtype: int
@@ -932,6 +973,17 @@ class CosBackup(AbstractModel):
     @EsRepositoryType.setter
     def EsRepositoryType(self, EsRepositoryType):
         self._EsRepositoryType = EsRepositoryType
+
+    @property
+    def PaasEsRepository(self):
+        r"""托管快照仓库名称
+        :rtype: str
+        """
+        return self._PaasEsRepository
+
+    @PaasEsRepository.setter
+    def PaasEsRepository(self, PaasEsRepository):
+        self._PaasEsRepository = PaasEsRepository
 
     @property
     def UserEsRepository(self):
@@ -966,14 +1018,112 @@ class CosBackup(AbstractModel):
     def AutoBackupInterval(self, AutoBackupInterval):
         self._AutoBackupInterval = AutoBackupInterval
 
+    @property
+    def CosRetention(self):
+        r"""备份锁定 0 不锁定; 1 锁定
+        :rtype: int
+        """
+        return self._CosRetention
+
+    @CosRetention.setter
+    def CosRetention(self, CosRetention):
+        self._CosRetention = CosRetention
+
+    @property
+    def RetainUntilDate(self):
+        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+        :rtype: str
+        """
+        return self._RetainUntilDate
+
+    @RetainUntilDate.setter
+    def RetainUntilDate(self, RetainUntilDate):
+        self._RetainUntilDate = RetainUntilDate
+
+    @property
+    def RetentionGraceTime(self):
+        r"""锁定宽限期
+        :rtype: int
+        """
+        return self._RetentionGraceTime
+
+    @RetentionGraceTime.setter
+    def RetentionGraceTime(self, RetentionGraceTime):
+        self._RetentionGraceTime = RetentionGraceTime
+
+    @property
+    def RemoteCos(self):
+        r"""跨地域备份 0 不跨地域; 1 跨地域
+        :rtype: int
+        """
+        return self._RemoteCos
+
+    @RemoteCos.setter
+    def RemoteCos(self, RemoteCos):
+        self._RemoteCos = RemoteCos
+
+    @property
+    def RemoteCosRegion(self):
+        r"""跨地域备份地域名称 ap-guangzhou
+        :rtype: str
+        """
+        return self._RemoteCosRegion
+
+    @RemoteCosRegion.setter
+    def RemoteCosRegion(self, RemoteCosRegion):
+        self._RemoteCosRegion = RemoteCosRegion
+
+    @property
+    def StrategyName(self):
+        r"""策略名称
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def Indices(self):
+        r"""备份索引列表，如果不填表示备份所有索引
+        :rtype: str
+        """
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+    @property
+    def CreateTime(self):
+        r"""策略创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._IsAutoBackup = params.get("IsAutoBackup")
         self._BackupTime = params.get("BackupTime")
+        self._SnapshotName = params.get("SnapshotName")
         self._EsRepositoryType = params.get("EsRepositoryType")
+        self._PaasEsRepository = params.get("PaasEsRepository")
         self._UserEsRepository = params.get("UserEsRepository")
         self._StorageDuration = params.get("StorageDuration")
         self._AutoBackupInterval = params.get("AutoBackupInterval")
+        self._CosRetention = params.get("CosRetention")
+        self._RetainUntilDate = params.get("RetainUntilDate")
+        self._RetentionGraceTime = params.get("RetentionGraceTime")
+        self._RemoteCos = params.get("RemoteCos")
+        self._RemoteCosRegion = params.get("RemoteCosRegion")
+        self._StrategyName = params.get("StrategyName")
+        self._Indices = params.get("Indices")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1147,10 +1297,34 @@ class CreateClusterSnapshotRequest(AbstractModel):
         :type SnapshotName: str
         :param _Indices: 索引名称
         :type Indices: str
+        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+        :type EsRepositoryType: int
+        :param _UserEsRepository: 客户快照仓库名称
+        :type UserEsRepository: str
+        :param _StorageDuration: 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        :type StorageDuration: int
+        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+        :type CosRetention: int
+        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+        :type RetainUntilDate: str
+        :param _RetentionGraceTime: 锁定宽限期,单位天
+        :type RetentionGraceTime: int
+        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+        :type RemoteCos: int
+        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+        :type RemoteCosRegion: str
         """
         self._InstanceId = None
         self._SnapshotName = None
         self._Indices = None
+        self._EsRepositoryType = None
+        self._UserEsRepository = None
+        self._StorageDuration = None
+        self._CosRetention = None
+        self._RetainUntilDate = None
+        self._RetentionGraceTime = None
+        self._RemoteCos = None
+        self._RemoteCosRegion = None
 
     @property
     def InstanceId(self):
@@ -1185,11 +1359,107 @@ class CreateClusterSnapshotRequest(AbstractModel):
     def Indices(self, Indices):
         self._Indices = Indices
 
+    @property
+    def EsRepositoryType(self):
+        r"""0 腾讯云仓库; 1 客户仓库
+        :rtype: int
+        """
+        return self._EsRepositoryType
+
+    @EsRepositoryType.setter
+    def EsRepositoryType(self, EsRepositoryType):
+        self._EsRepositoryType = EsRepositoryType
+
+    @property
+    def UserEsRepository(self):
+        r"""客户快照仓库名称
+        :rtype: str
+        """
+        return self._UserEsRepository
+
+    @UserEsRepository.setter
+    def UserEsRepository(self, UserEsRepository):
+        self._UserEsRepository = UserEsRepository
+
+    @property
+    def StorageDuration(self):
+        r"""快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        :rtype: int
+        """
+        return self._StorageDuration
+
+    @StorageDuration.setter
+    def StorageDuration(self, StorageDuration):
+        self._StorageDuration = StorageDuration
+
+    @property
+    def CosRetention(self):
+        r"""备份锁定 0 不锁定; 1 锁定
+        :rtype: int
+        """
+        return self._CosRetention
+
+    @CosRetention.setter
+    def CosRetention(self, CosRetention):
+        self._CosRetention = CosRetention
+
+    @property
+    def RetainUntilDate(self):
+        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+        :rtype: str
+        """
+        return self._RetainUntilDate
+
+    @RetainUntilDate.setter
+    def RetainUntilDate(self, RetainUntilDate):
+        self._RetainUntilDate = RetainUntilDate
+
+    @property
+    def RetentionGraceTime(self):
+        r"""锁定宽限期,单位天
+        :rtype: int
+        """
+        return self._RetentionGraceTime
+
+    @RetentionGraceTime.setter
+    def RetentionGraceTime(self, RetentionGraceTime):
+        self._RetentionGraceTime = RetentionGraceTime
+
+    @property
+    def RemoteCos(self):
+        r"""跨地域备份 0 不跨地域; 1 跨地域
+        :rtype: int
+        """
+        return self._RemoteCos
+
+    @RemoteCos.setter
+    def RemoteCos(self, RemoteCos):
+        self._RemoteCos = RemoteCos
+
+    @property
+    def RemoteCosRegion(self):
+        r"""跨地域备份地域名称 ap-guangzhou
+        :rtype: str
+        """
+        return self._RemoteCosRegion
+
+    @RemoteCosRegion.setter
+    def RemoteCosRegion(self, RemoteCosRegion):
+        self._RemoteCosRegion = RemoteCosRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SnapshotName = params.get("SnapshotName")
         self._Indices = params.get("Indices")
+        self._EsRepositoryType = params.get("EsRepositoryType")
+        self._UserEsRepository = params.get("UserEsRepository")
+        self._StorageDuration = params.get("StorageDuration")
+        self._CosRetention = params.get("CosRetention")
+        self._RetainUntilDate = params.get("RetainUntilDate")
+        self._RetentionGraceTime = params.get("RetentionGraceTime")
+        self._RemoteCos = params.get("RemoteCos")
+        self._RemoteCosRegion = params.get("RemoteCosRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18982,6 +19252,48 @@ SUCCESS     备份成功
         :param _UserBackUp: 是否用户备份
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserBackUp: str
+        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsRepositoryType: int
+        :param _PaasEsRepository: 托管快照仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaasEsRepository: str
+        :param _UserEsRepository: 客户快照仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserEsRepository: str
+        :param _StorageDuration: 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageDuration: int
+        :param _AutoBackupInterval: 自动备份频率, 如果是0,则等效24
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoBackupInterval: int
+        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosRetention: int
+        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetainUntilDate: str
+        :param _RetentionGraceTime: 锁定宽限期,单位天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionGraceTime: int
+        :param _IsLocked: 是否已经备份锁定 0 不锁定; 1 锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLocked: int
+        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteCos: int
+        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteCosRegion: str
+        :param _CosEncryption: 备份加密 0 不加密; 1 加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosEncryption: int
+        :param _KmsKey: kms密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKey: str
+        :param _StrategyName: 策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
         """
         self._SnapshotName = None
         self._Uuid = None
@@ -18998,6 +19310,20 @@ SUCCESS     备份成功
         self._SuccessfulShards = None
         self._Failures = None
         self._UserBackUp = None
+        self._EsRepositoryType = None
+        self._PaasEsRepository = None
+        self._UserEsRepository = None
+        self._StorageDuration = None
+        self._AutoBackupInterval = None
+        self._CosRetention = None
+        self._RetainUntilDate = None
+        self._RetentionGraceTime = None
+        self._IsLocked = None
+        self._RemoteCos = None
+        self._RemoteCosRegion = None
+        self._CosEncryption = None
+        self._KmsKey = None
+        self._StrategyName = None
 
     @property
     def SnapshotName(self):
@@ -19187,6 +19513,174 @@ SUCCESS     备份成功
     def UserBackUp(self, UserBackUp):
         self._UserBackUp = UserBackUp
 
+    @property
+    def EsRepositoryType(self):
+        r"""0 腾讯云仓库; 1 客户仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EsRepositoryType
+
+    @EsRepositoryType.setter
+    def EsRepositoryType(self, EsRepositoryType):
+        self._EsRepositoryType = EsRepositoryType
+
+    @property
+    def PaasEsRepository(self):
+        r"""托管快照仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PaasEsRepository
+
+    @PaasEsRepository.setter
+    def PaasEsRepository(self, PaasEsRepository):
+        self._PaasEsRepository = PaasEsRepository
+
+    @property
+    def UserEsRepository(self):
+        r"""客户快照仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserEsRepository
+
+    @UserEsRepository.setter
+    def UserEsRepository(self, UserEsRepository):
+        self._UserEsRepository = UserEsRepository
+
+    @property
+    def StorageDuration(self):
+        r"""快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StorageDuration
+
+    @StorageDuration.setter
+    def StorageDuration(self, StorageDuration):
+        self._StorageDuration = StorageDuration
+
+    @property
+    def AutoBackupInterval(self):
+        r"""自动备份频率, 如果是0,则等效24
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AutoBackupInterval
+
+    @AutoBackupInterval.setter
+    def AutoBackupInterval(self, AutoBackupInterval):
+        self._AutoBackupInterval = AutoBackupInterval
+
+    @property
+    def CosRetention(self):
+        r"""备份锁定 0 不锁定; 1 锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CosRetention
+
+    @CosRetention.setter
+    def CosRetention(self, CosRetention):
+        self._CosRetention = CosRetention
+
+    @property
+    def RetainUntilDate(self):
+        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RetainUntilDate
+
+    @RetainUntilDate.setter
+    def RetainUntilDate(self, RetainUntilDate):
+        self._RetainUntilDate = RetainUntilDate
+
+    @property
+    def RetentionGraceTime(self):
+        r"""锁定宽限期,单位天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetentionGraceTime
+
+    @RetentionGraceTime.setter
+    def RetentionGraceTime(self, RetentionGraceTime):
+        self._RetentionGraceTime = RetentionGraceTime
+
+    @property
+    def IsLocked(self):
+        r"""是否已经备份锁定 0 不锁定; 1 锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsLocked
+
+    @IsLocked.setter
+    def IsLocked(self, IsLocked):
+        self._IsLocked = IsLocked
+
+    @property
+    def RemoteCos(self):
+        r"""跨地域备份 0 不跨地域; 1 跨地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RemoteCos
+
+    @RemoteCos.setter
+    def RemoteCos(self, RemoteCos):
+        self._RemoteCos = RemoteCos
+
+    @property
+    def RemoteCosRegion(self):
+        r"""跨地域备份地域名称 ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RemoteCosRegion
+
+    @RemoteCosRegion.setter
+    def RemoteCosRegion(self, RemoteCosRegion):
+        self._RemoteCosRegion = RemoteCosRegion
+
+    @property
+    def CosEncryption(self):
+        r"""备份加密 0 不加密; 1 加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CosEncryption
+
+    @CosEncryption.setter
+    def CosEncryption(self, CosEncryption):
+        self._CosEncryption = CosEncryption
+
+    @property
+    def KmsKey(self):
+        r"""kms密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsKey
+
+    @KmsKey.setter
+    def KmsKey(self, KmsKey):
+        self._KmsKey = KmsKey
+
+    @property
+    def StrategyName(self):
+        r"""策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
 
     def _deserialize(self, params):
         self._SnapshotName = params.get("SnapshotName")
@@ -19209,6 +19703,20 @@ SUCCESS     备份成功
                 obj._deserialize(item)
                 self._Failures.append(obj)
         self._UserBackUp = params.get("UserBackUp")
+        self._EsRepositoryType = params.get("EsRepositoryType")
+        self._PaasEsRepository = params.get("PaasEsRepository")
+        self._UserEsRepository = params.get("UserEsRepository")
+        self._StorageDuration = params.get("StorageDuration")
+        self._AutoBackupInterval = params.get("AutoBackupInterval")
+        self._CosRetention = params.get("CosRetention")
+        self._RetainUntilDate = params.get("RetainUntilDate")
+        self._RetentionGraceTime = params.get("RetentionGraceTime")
+        self._IsLocked = params.get("IsLocked")
+        self._RemoteCos = params.get("RemoteCos")
+        self._RemoteCosRegion = params.get("RemoteCosRegion")
+        self._CosEncryption = params.get("CosEncryption")
+        self._KmsKey = params.get("KmsKey")
+        self._StrategyName = params.get("StrategyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

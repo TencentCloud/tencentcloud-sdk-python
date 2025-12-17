@@ -957,6 +957,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTargetGroupInstanceStatus(
+            self,
+            request: models.DescribeTargetGroupInstanceStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTargetGroupInstanceStatusResponse:
+        """
+        查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTargetGroupInstanceStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTargetGroupInstanceStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTargetGroupInstances(
             self,
             request: models.DescribeTargetGroupInstancesRequest,

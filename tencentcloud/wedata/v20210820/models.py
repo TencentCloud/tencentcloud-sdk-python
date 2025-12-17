@@ -44934,6 +44934,163 @@ class DescribeTaskDetailDsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskInstancesStatusDto(AbstractModel):
+    r"""分组获取编排空间测试运行记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Instances: 根据任务信息获取实例状态信息实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of ParamGetTaskInstancesStatusInfoResponseInstance
+        """
+        self._Instances = None
+
+    @property
+    def Instances(self):
+        r"""根据任务信息获取实例状态信息实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamGetTaskInstancesStatusInfoResponseInstance
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = ParamGetTaskInstancesStatusInfoResponseInstance()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskInstancesStatusRequest(AbstractModel):
+    r"""DescribeTaskInstancesStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordIdList: 任务列表
+        :type RecordIdList: list of str
+        :param _WorkflowId: 工作流id
+        :type WorkflowId: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        """
+        self._RecordIdList = None
+        self._WorkflowId = None
+        self._ProjectId = None
+
+    @property
+    def RecordIdList(self):
+        r"""任务列表
+        :rtype: list of str
+        """
+        return self._RecordIdList
+
+    @RecordIdList.setter
+    def RecordIdList(self, RecordIdList):
+        self._RecordIdList = RecordIdList
+
+    @property
+    def WorkflowId(self):
+        r"""工作流id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._RecordIdList = params.get("RecordIdList")
+        self._WorkflowId = params.get("WorkflowId")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskInstancesStatusResponse(AbstractModel):
+    r"""DescribeTaskInstancesStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 实例列表
+        :type Data: list of DescribeTaskInstancesStatusDto
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""实例列表
+        :rtype: list of DescribeTaskInstancesStatusDto
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeTaskInstancesStatusDto()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskLineageRequest(AbstractModel):
     r"""DescribeTaskLineage请求参数结构体
 
@@ -77617,6 +77774,95 @@ class PairDto(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamGetTaskInstancesStatusInfoResponseInstance(AbstractModel):
+    r"""根据任务信息获取实例状态信息实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _RecordId: 记录编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _TaskId: 任务编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._InstanceId = None
+        self._Status = None
+        self._RecordId = None
+        self._TaskId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Status(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RecordId(self):
+        r"""记录编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def TaskId(self):
+        r"""任务编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Status = params.get("Status")
+        self._RecordId = params.get("RecordId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

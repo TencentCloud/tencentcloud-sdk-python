@@ -2579,6 +2579,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeControlPlaneLogs(self, request):
+        r"""查询插件日志采集配置
+
+        :param request: Request instance for DescribeControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeControlPlaneLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeECMInstances(self, request):
         r"""获取ECM实例相关信息
 
@@ -4166,6 +4189,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableControlPlaneLogs(self, request):
+        r"""删除插件日志采集配置
+
+        :param request: Request instance for DisableControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableControlPlaneLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableEncryptionProtection(self, request):
         r"""关闭加密信息保护
 
@@ -4295,6 +4341,29 @@ class TkeClient(AbstractClient):
             body = self.call("EnableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClusterDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableControlPlaneLogs(self, request):
+        r"""创建插件日志采集配置
+
+        :param request: Request instance for EnableControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableControlPlaneLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

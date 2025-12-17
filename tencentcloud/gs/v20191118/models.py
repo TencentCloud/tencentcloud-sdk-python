@@ -2699,24 +2699,13 @@ class CreateAndroidInstanceAcceleratorTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserIP: 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
-        :type UserIP: str
         :param _AndroidInstanceIds: 实例 ID 列表。每次请求的实例的上限为 500。
         :type AndroidInstanceIds: list of str
+        :param _UserIP: 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
+        :type UserIP: str
         """
-        self._UserIP = None
         self._AndroidInstanceIds = None
-
-    @property
-    def UserIP(self):
-        r"""用户IP，用户客户端的公网IP，用于就近选择起始加速节点
-        :rtype: str
-        """
-        return self._UserIP
-
-    @UserIP.setter
-    def UserIP(self, UserIP):
-        self._UserIP = UserIP
+        self._UserIP = None
 
     @property
     def AndroidInstanceIds(self):
@@ -2729,10 +2718,21 @@ class CreateAndroidInstanceAcceleratorTokenRequest(AbstractModel):
     def AndroidInstanceIds(self, AndroidInstanceIds):
         self._AndroidInstanceIds = AndroidInstanceIds
 
+    @property
+    def UserIP(self):
+        r"""用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
+        :rtype: str
+        """
+        return self._UserIP
+
+    @UserIP.setter
+    def UserIP(self, UserIP):
+        self._UserIP = UserIP
+
 
     def _deserialize(self, params):
-        self._UserIP = params.get("UserIP")
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._UserIP = params.get("UserIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2750,6 +2750,8 @@ class CreateAndroidInstanceAcceleratorTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Token: token
+        :type Token: str
         :param _AcceleratorInfo: 加速信息
         :type AcceleratorInfo: str
         :param _AndroidInstanceErrors: 安卓实例错误列表。列表包含有问题的安卓实例 ID 以及发生的错误信息。
@@ -2757,9 +2759,21 @@ class CreateAndroidInstanceAcceleratorTokenResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Token = None
         self._AcceleratorInfo = None
         self._AndroidInstanceErrors = None
         self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""token
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
 
     @property
     def AcceleratorInfo(self):
@@ -2796,6 +2810,7 @@ class CreateAndroidInstanceAcceleratorTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Token = params.get("Token")
         self._AcceleratorInfo = params.get("AcceleratorInfo")
         if params.get("AndroidInstanceErrors") is not None:
             self._AndroidInstanceErrors = []

@@ -79,6 +79,24 @@ class IgtmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePackageAndPay(
+            self,
+            request: models.CreatePackageAndPayRequest,
+            opts: Dict = None,
+    ) -> models.CreatePackageAndPayResponse:
+        """
+        购买套餐并支付，此接口会在余额扣费，谨慎调用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePackageAndPay"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePackageAndPayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateStrategy(
             self,
             request: models.CreateStrategyRequest,
@@ -470,6 +488,24 @@ class IgtmClient(AbstractClient):
         kwargs["action"] = "ModifyMonitor"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPackageAutoRenew(
+            self,
+            request: models.ModifyPackageAutoRenewRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPackageAutoRenewResponse:
+        """
+        设置自动续费接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPackageAutoRenew"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPackageAutoRenewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

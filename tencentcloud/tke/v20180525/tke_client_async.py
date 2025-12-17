@@ -2023,6 +2023,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeControlPlaneLogs(
+            self,
+            request: models.DescribeControlPlaneLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeControlPlaneLogsResponse:
+        """
+        查询插件日志采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeControlPlaneLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeControlPlaneLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeECMInstances(
             self,
             request: models.DescribeECMInstancesRequest,
@@ -3265,6 +3283,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableControlPlaneLogs(
+            self,
+            request: models.DisableControlPlaneLogsRequest,
+            opts: Dict = None,
+    ) -> models.DisableControlPlaneLogsResponse:
+        """
+        删除插件日志采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableControlPlaneLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableControlPlaneLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisableEncryptionProtection(
             self,
             request: models.DisableEncryptionProtectionRequest,
@@ -3368,6 +3404,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "EnableClusterDeletionProtection"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableClusterDeletionProtectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableControlPlaneLogs(
+            self,
+            request: models.EnableControlPlaneLogsRequest,
+            opts: Dict = None,
+    ) -> models.EnableControlPlaneLogsResponse:
+        """
+        创建插件日志采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableControlPlaneLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableControlPlaneLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

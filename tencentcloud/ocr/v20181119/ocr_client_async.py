@@ -374,6 +374,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExtractDocAgent(
+            self,
+            request: models.ExtractDocAgentRequest,
+            opts: Dict = None,
+    ) -> models.ExtractDocAgentResponse:
+        """
+        用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExtractDocAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExtractDocAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExtractDocBasic(
             self,
             request: models.ExtractDocBasicRequest,

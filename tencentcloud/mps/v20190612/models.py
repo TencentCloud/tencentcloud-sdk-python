@@ -21425,7 +21425,7 @@ class CreateScheduleRequest(AbstractModel):
         :type OutputDir: str
         :param _TaskNotifyConfig: 任务的事件通知配置，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :type ResourceId: str
         """
         self._ScheduleName = None
@@ -21505,7 +21505,7 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -21831,7 +21831,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -22264,7 +22264,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -53638,7 +53638,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -54101,7 +54101,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -59084,7 +59084,7 @@ class ProcessMediaRequest(AbstractModel):
 <li> Online：实时任务</li>
 <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
         :type TaskType: str
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :type ResourceId: str
         :param _SkipMateData: 是否跳过元信息获取，可选值： 
 0：表示不跳过 
@@ -59300,7 +59300,7 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -61259,7 +61259,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -61691,7 +61691,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `en-AU`：英语（澳大利亚）
 `en-CA`：英语（加拿大）
 `en-GH`：英语（加纳）
-`en-HK`：英语（香港）
+`en-HK`：英语（中国香港）
 `en-IN`：英语（印度）
 `en-IE`：英语（爱尔兰）
 `en-KE`：英语（肯尼亚）
@@ -71675,7 +71675,7 @@ class TextTranslationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+        :param _SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
         :type SourceText: str
         :param _Source: 源语言，支持： 
     "auto": "自动识别（识别为一种语言）",
@@ -72076,7 +72076,7 @@ class TextTranslationRequest(AbstractModel):
 
     @property
     def SourceText(self):
-        r"""待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+        r"""待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
         :rtype: str
         """
         return self._SourceText

@@ -10040,6 +10040,105 @@ class DescribeRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
+    r"""DescribeTargetGroupInstanceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetGroupId: 目标组唯一id
+        :type TargetGroupId: str
+        :param _TargetGroupInstanceIps: 目标组绑定的后端服务ip列表
+        :type TargetGroupInstanceIps: list of str
+        """
+        self._TargetGroupId = None
+        self._TargetGroupInstanceIps = None
+
+    @property
+    def TargetGroupId(self):
+        r"""目标组唯一id
+        :rtype: str
+        """
+        return self._TargetGroupId
+
+    @TargetGroupId.setter
+    def TargetGroupId(self, TargetGroupId):
+        self._TargetGroupId = TargetGroupId
+
+    @property
+    def TargetGroupInstanceIps(self):
+        r"""目标组绑定的后端服务ip列表
+        :rtype: list of str
+        """
+        return self._TargetGroupInstanceIps
+
+    @TargetGroupInstanceIps.setter
+    def TargetGroupInstanceIps(self, TargetGroupInstanceIps):
+        self._TargetGroupInstanceIps = TargetGroupInstanceIps
+
+
+    def _deserialize(self, params):
+        self._TargetGroupId = params.get("TargetGroupId")
+        self._TargetGroupInstanceIps = params.get("TargetGroupInstanceIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
+    r"""DescribeTargetGroupInstanceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetGroupInstanceSet: 健康检查后端rs状态列表
+        :type TargetGroupInstanceSet: list of TargetGroupInstanceStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TargetGroupInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TargetGroupInstanceSet(self):
+        r"""健康检查后端rs状态列表
+        :rtype: list of TargetGroupInstanceStatus
+        """
+        return self._TargetGroupInstanceSet
+
+    @TargetGroupInstanceSet.setter
+    def TargetGroupInstanceSet(self, TargetGroupInstanceSet):
+        self._TargetGroupInstanceSet = TargetGroupInstanceSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TargetGroupInstanceSet") is not None:
+            self._TargetGroupInstanceSet = []
+            for item in params.get("TargetGroupInstanceSet"):
+                obj = TargetGroupInstanceStatus()
+                obj._deserialize(item)
+                self._TargetGroupInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTargetGroupInstancesRequest(AbstractModel):
     r"""DescribeTargetGroupInstances请求参数结构体
 
@@ -22475,6 +22574,112 @@ v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时�
         self._Port = params.get("Port")
         self._Weight = params.get("Weight")
         self._NewPort = params.get("NewPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetGroupInstanceStatus(AbstractModel):
+    r"""用于目标组后端rs健康检查状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIp: 后端rs的IP
+        :type InstanceIp: str
+        :param _Status: 健康检查状态，参数值及含义如下：
+● on：表示探测中。
+● off：表示健康检查关闭。
+● health：表示健康。
+● unhealth：表示异常。
+        :type Status: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Port: 端口
+        :type Port: int
+        :param _EniId: 网卡ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EniId: str
+        """
+        self._InstanceIp = None
+        self._Status = None
+        self._InstanceId = None
+        self._Port = None
+        self._EniId = None
+
+    @property
+    def InstanceIp(self):
+        r"""后端rs的IP
+        :rtype: str
+        """
+        return self._InstanceIp
+
+    @InstanceIp.setter
+    def InstanceIp(self, InstanceIp):
+        self._InstanceIp = InstanceIp
+
+    @property
+    def Status(self):
+        r"""健康检查状态，参数值及含义如下：
+● on：表示探测中。
+● off：表示健康检查关闭。
+● health：表示健康。
+● unhealth：表示异常。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EniId(self):
+        r"""网卡ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EniId
+
+    @EniId.setter
+    def EniId(self, EniId):
+        self._EniId = EniId
+
+
+    def _deserialize(self, params):
+        self._InstanceIp = params.get("InstanceIp")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Port = params.get("Port")
+        self._EniId = params.get("EniId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5022,6 +5022,102 @@ class CommonName(AbstractModel):
         
 
 
+class ComponentLogConfig(AbstractModel):
+    r"""组件日志采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 组件名称
+        :type Name: str
+        :param _LogLevel: 日志级别，对于支持动态调整日志级别的组件，开启日志时可指定该参数
+        :type LogLevel: int
+        :param _LogSetId: 日志集ID。如果不指定，则自动创建
+        :type LogSetId: str
+        :param _TopicId: 日志主题ID。如果不指定，则自动创建
+        :type TopicId: str
+        :param _TopicRegion: topic 所属region。 该参数可实现日志跨地域投递
+        :type TopicRegion: str
+        """
+        self._Name = None
+        self._LogLevel = None
+        self._LogSetId = None
+        self._TopicId = None
+        self._TopicRegion = None
+
+    @property
+    def Name(self):
+        r"""组件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LogLevel(self):
+        r"""日志级别，对于支持动态调整日志级别的组件，开启日志时可指定该参数
+        :rtype: int
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def LogSetId(self):
+        r"""日志集ID。如果不指定，则自动创建
+        :rtype: str
+        """
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID。如果不指定，则自动创建
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicRegion(self):
+        r"""topic 所属region。 该参数可实现日志跨地域投递
+        :rtype: str
+        """
+        return self._TopicRegion
+
+    @TopicRegion.setter
+    def TopicRegion(self, TopicRegion):
+        self._TopicRegion = TopicRegion
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._LogLevel = params.get("LogLevel")
+        self._LogSetId = params.get("LogSetId")
+        self._TopicId = params.get("TopicId")
+        self._TopicRegion = params.get("TopicRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Container(AbstractModel):
     r"""EKS Instance Container容器
 
@@ -18365,6 +18461,105 @@ class DescribeClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeControlPlaneLogsRequest(AbstractModel):
+    r"""DescribeControlPlaneLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterType: 集群类型。当前只支持tke
+        :type ClusterType: str
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        r"""集群类型。当前只支持tke
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeControlPlaneLogsResponse(AbstractModel):
+    r"""DescribeControlPlaneLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Details: 日志采集配置查询结果
+        :type Details: list of ComponentLogConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Details(self):
+        r"""日志采集配置查询结果
+        :rtype: list of ComponentLogConfig
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = ComponentLogConfig()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeECMInstancesRequest(AbstractModel):
     r"""DescribeECMInstances请求参数结构体
 
@@ -27562,6 +27757,115 @@ class DisableClusterDeletionProtectionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableControlPlaneLogsRequest(AbstractModel):
+    r"""DisableControlPlaneLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterType: 集群类型。当前只支持tke
+        :type ClusterType: str
+        :param _ComponentNames: 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :type ComponentNames: list of str
+        :param _DeleteLogSetAndTopic: 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
+        :type DeleteLogSetAndTopic: bool
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._ComponentNames = None
+        self._DeleteLogSetAndTopic = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        r"""集群类型。当前只支持tke
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ComponentNames(self):
+        r"""组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :rtype: list of str
+        """
+        return self._ComponentNames
+
+    @ComponentNames.setter
+    def ComponentNames(self, ComponentNames):
+        self._ComponentNames = ComponentNames
+
+    @property
+    def DeleteLogSetAndTopic(self):
+        r"""是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
+        :rtype: bool
+        """
+        return self._DeleteLogSetAndTopic
+
+    @DeleteLogSetAndTopic.setter
+    def DeleteLogSetAndTopic(self, DeleteLogSetAndTopic):
+        self._DeleteLogSetAndTopic = DeleteLogSetAndTopic
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        self._ComponentNames = params.get("ComponentNames")
+        self._DeleteLogSetAndTopic = params.get("DeleteLogSetAndTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableControlPlaneLogsResponse(AbstractModel):
+    r"""DisableControlPlaneLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DisableEncryptionProtectionRequest(AbstractModel):
     r"""DisableEncryptionProtection请求参数结构体
 
@@ -29859,6 +30163,105 @@ class EnableClusterDeletionProtectionRequest(AbstractModel):
 
 class EnableClusterDeletionProtectionResponse(AbstractModel):
     r"""EnableClusterDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableControlPlaneLogsRequest(AbstractModel):
+    r"""EnableControlPlaneLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterType: 集群类型。当前只支持tke
+        :type ClusterType: str
+        :param _Components: 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :type Components: list of ComponentLogConfig
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._Components = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        r"""集群类型。当前只支持tke
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def Components(self):
+        r"""各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :rtype: list of ComponentLogConfig
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = ComponentLogConfig()
+                obj._deserialize(item)
+                self._Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableControlPlaneLogsResponse(AbstractModel):
+    r"""EnableControlPlaneLogs返回参数结构体
 
     """
 

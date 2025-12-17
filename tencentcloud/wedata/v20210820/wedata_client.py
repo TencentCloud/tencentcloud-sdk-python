@@ -4330,6 +4330,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskInstancesStatus(self, request):
+        r"""分组获取编排空间调试任务实例状态信息
+
+        :param request: Request instance for DescribeTaskInstancesStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskInstancesStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskInstancesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskInstancesStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskInstancesStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskLineage(self, request):
         r"""通过任务查询表的血缘关系
 

@@ -1308,6 +1308,27 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcUsageData(
+            self,
+            request: models.DescribeAigcUsageDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcUsageDataResponse:
+        """
+        该接口返回查询时间范围内AIGC的统计信息。
+           1. 可以查询最近365天内的AIGC统计数据。
+           2. 查询时间跨度不超过90天。
+           3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcUsageData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllClass(
             self,
             request: models.DescribeAllClassRequest,

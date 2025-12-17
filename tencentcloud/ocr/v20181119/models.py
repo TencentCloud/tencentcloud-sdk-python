@@ -8509,6 +8509,185 @@ class EstateCertOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExtractDocAgentRequest(AbstractModel):
+    r"""ExtractDocAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ItemNames: 自定义抽取需要的字段名称、字段类型、字段提示词。
+        :type ItemNames: list of ItemNames
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+        :type PdfPageNumber: int
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._ItemNames = None
+        self._PdfPageNumber = None
+
+    @property
+    def ImageBase64(self):
+        r"""图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ItemNames(self):
+        r"""自定义抽取需要的字段名称、字段类型、字段提示词。
+        :rtype: list of ItemNames
+        """
+        return self._ItemNames
+
+    @ItemNames.setter
+    def ItemNames(self, ItemNames):
+        self._ItemNames = ItemNames
+
+    @property
+    def PdfPageNumber(self):
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        if params.get("ItemNames") is not None:
+            self._ItemNames = []
+            for item in params.get("ItemNames"):
+                obj = ItemNames()
+                obj._deserialize(item)
+                self._ItemNames.append(obj)
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractDocAgentResponse(AbstractModel):
+    r"""ExtractDocAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :type Angle: float
+        :param _StructuralList: 配置结构化文本信息。
+        :type StructuralList: list of GroupInfo
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._StructuralList = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StructuralList(self):
+        r"""配置结构化文本信息。
+        :rtype: list of GroupInfo
+        """
+        return self._StructuralList
+
+    @StructuralList.setter
+    def StructuralList(self, StructuralList):
+        self._StructuralList = StructuralList
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self._StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._StructuralList.append(obj)
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RequestId = params.get("RequestId")
+
+
 class ExtractDocBasicRequest(AbstractModel):
     r"""ExtractDocBasic请求参数结构体
 

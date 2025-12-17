@@ -10734,7 +10734,7 @@ class UserIdAndUserName(AbstractModel):
         :param _Status: 停启用状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _FirstModify: 首次登陆是否修改密码
+        :param _FirstModify: 首次登录是否修改密码
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstModify: int
         :param _PhoneNumber: 手机号码
@@ -10749,16 +10749,16 @@ class UserIdAndUserName(AbstractModel):
         :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param _UpdatedUser: 更改人
+        :param _UpdatedUser: 修改人
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedUser: str
         :param _UpdatedAt: 更改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param _GlobalUserName: 全局角色
+        :param _GlobalUserName: 系统全局角色
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalUserName: str
-        :param _GlobalUserCode: 全局角色编码
+        :param _GlobalUserCode: 系统全局角色编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalUserCode: str
         :param _Mobile: 手机号
@@ -10882,7 +10882,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def FirstModify(self):
-        r"""首次登陆是否修改密码
+        r"""首次登录是否修改密码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10942,7 +10942,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UpdatedUser(self):
-        r"""更改人
+        r"""修改人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10966,7 +10966,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def GlobalUserName(self):
-        r"""全局角色
+        r"""系统全局角色
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10978,7 +10978,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def GlobalUserCode(self):
-        r"""全局角色编码
+        r"""系统全局角色编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

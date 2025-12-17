@@ -25,6 +25,24 @@ class EvtClient(AbstractClient):
     _endpoint = 'evt.tencentcloudapi.com'
     _service = 'evt'
 
+    async def CompleteApproval(
+            self,
+            request: models.CompleteApprovalRequest,
+            opts: Dict = None,
+    ) -> models.CompleteApprovalResponse:
+        """
+        执行审批
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CompleteApproval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CompleteApprovalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRoleUser(
             self,
             request: models.CreateRoleUserRequest,

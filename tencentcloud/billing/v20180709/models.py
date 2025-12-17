@@ -14298,6 +14298,8 @@ class CostDetail(AbstractModel):
         :type ComponentSet: list of CostComponentSet
         :param _ProductCode: 子产品名称代码
         :type ProductCode: str
+        :param _Tags: 标签信息	
+        :type Tags: list of BillTagInfo
         """
         self._PayerUin = None
         self._BusinessCodeName = None
@@ -14315,6 +14317,7 @@ class CostDetail(AbstractModel):
         self._FeeEndTime = None
         self._ComponentSet = None
         self._ProductCode = None
+        self._Tags = None
 
     @property
     def PayerUin(self):
@@ -14492,6 +14495,17 @@ class CostDetail(AbstractModel):
     def ProductCode(self, ProductCode):
         self._ProductCode = ProductCode
 
+    @property
+    def Tags(self):
+        r"""标签信息	
+        :rtype: list of BillTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._PayerUin = params.get("PayerUin")
@@ -14515,6 +14529,12 @@ class CostDetail(AbstractModel):
                 obj._deserialize(item)
                 self._ComponentSet.append(obj)
         self._ProductCode = params.get("ProductCode")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

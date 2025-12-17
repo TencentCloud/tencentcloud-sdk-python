@@ -11156,6 +11156,118 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         
 
 
+class AigcUsageDataItem(AbstractModel):
+    r"""AIGC 统计数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specification: AIGC规格。
+取值有：
+<li>Qwen2.0</li>
+<li>Gem2.5</li>
+<li>Gem3.0_1K</li>
+<li>Gem3.0_2K</li>
+<li>Gem3.0_4K</li>
+<li>Seedream4.0</li>
+<li>Sora2</li>
+<li>Veo3.1Standard</li>
+<li>Veo3.1Fast</li>
+<li>Kling2.5pro_720P</li>
+<li>Kling2.5pro_1080P</li>
+<li>Kling2.0&2.1std_720P</li>
+<li>Kling2.0&2.1pro_1080P</li>
+<li>Hailuo02&2.3_1080P</li>
+<li>Hailuo02&2.3_768P</li>
+<li>Hailuo2.3fast_768P</li>
+<li>Hailuo2.3fast_1080P</li>
+<li>Seedance3.0pro</li>
+<li>Jimeng4.0</li>
+<li>Jimeng3.0pro</li>
+<li>Vidu2.0_720P</li>
+<li>Vidu2.0_1080P</li>
+<li>ViduQ2pro_720P</li>
+<li>ViduQ2pro_1080P</li>
+<li>ViduQ2turbo_720P</li>
+<li>ViduQ2turbo_1080P</li>
+<li> unknown</li>
+        :type Specification: str
+        :param _DataSet: 用量数据。
+        :type DataSet: list of TaskStatDataItem
+        """
+        self._Specification = None
+        self._DataSet = None
+
+    @property
+    def Specification(self):
+        r"""AIGC规格。
+取值有：
+<li>Qwen2.0</li>
+<li>Gem2.5</li>
+<li>Gem3.0_1K</li>
+<li>Gem3.0_2K</li>
+<li>Gem3.0_4K</li>
+<li>Seedream4.0</li>
+<li>Sora2</li>
+<li>Veo3.1Standard</li>
+<li>Veo3.1Fast</li>
+<li>Kling2.5pro_720P</li>
+<li>Kling2.5pro_1080P</li>
+<li>Kling2.0&2.1std_720P</li>
+<li>Kling2.0&2.1pro_1080P</li>
+<li>Hailuo02&2.3_1080P</li>
+<li>Hailuo02&2.3_768P</li>
+<li>Hailuo2.3fast_768P</li>
+<li>Hailuo2.3fast_1080P</li>
+<li>Seedance3.0pro</li>
+<li>Jimeng4.0</li>
+<li>Jimeng3.0pro</li>
+<li>Vidu2.0_720P</li>
+<li>Vidu2.0_1080P</li>
+<li>ViduQ2pro_720P</li>
+<li>ViduQ2pro_1080P</li>
+<li>ViduQ2turbo_720P</li>
+<li>ViduQ2turbo_1080P</li>
+<li> unknown</li>
+        :rtype: str
+        """
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def DataSet(self):
+        r"""用量数据。
+        :rtype: list of TaskStatDataItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+
+    def _deserialize(self, params):
+        self._Specification = params.get("Specification")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoOutputConfig(AbstractModel):
     r"""AIGC 生视频任务的输出媒体文件配置。
 
@@ -26868,6 +26980,135 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcUsageDataRequest(AbstractModel):
+    r"""DescribeAigcUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type EndTime: str
+        :param _AigcType: AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+        :type AigcType: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AigcType = None
+        self._SubAppId = None
+
+    @property
+    def StartTime(self):
+        r"""起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AigcType(self):
+        r"""AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AigcType = params.get("AigcType")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcUsageDataResponse(AbstractModel):
+    r"""DescribeAigcUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AigcUsageDataSet: AIGC统计数据。
+        :type AigcUsageDataSet: list of AigcUsageDataItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AigcUsageDataSet = None
+        self._RequestId = None
+
+    @property
+    def AigcUsageDataSet(self):
+        r"""AIGC统计数据。
+        :rtype: list of AigcUsageDataItem
+        """
+        return self._AigcUsageDataSet
+
+    @AigcUsageDataSet.setter
+    def AigcUsageDataSet(self, AigcUsageDataSet):
+        self._AigcUsageDataSet = AigcUsageDataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AigcUsageDataSet") is not None:
+            self._AigcUsageDataSet = []
+            for item in params.get("AigcUsageDataSet"):
+                obj = AigcUsageDataItem()
+                obj._deserialize(item)
+                self._AigcUsageDataSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

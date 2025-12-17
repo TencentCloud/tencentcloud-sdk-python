@@ -1649,6 +1649,32 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcUsageData(self, request):
+        r"""该接口返回查询时间范围内AIGC的统计信息。
+           1. 可以查询最近365天内的AIGC统计数据。
+           2. 查询时间跨度不超过90天。
+           3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+
+        :param request: Request instance for DescribeAigcUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcUsageData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllClass(self, request):
         r"""* 获得用户的所有分类信息。
 

@@ -1379,7 +1379,7 @@ tool_calls 标识函数调用。
 
 
 class Content(AbstractModel):
-    r"""可以传入多种类型的内容，如图片、文本。
+    r"""可以传入多种类型的内容，目前支持文本、图片、视频。
 
     """
 
@@ -1388,20 +1388,20 @@ class Content(AbstractModel):
         :param _Type: 内容类型
 注意：
 需包含至少一个 Type 为"text"的参数。
-参数值可选范围：[text", "image_url","video_url"]
+参数值可选范围：["text", "image_url","video_url","video_frames"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _Text: 当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 image_url 时，当前字段内容需保持为空，传递内容不生效。
+        :param _Text: 当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _ImageUrl: 图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
-如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 text 时，当前字段内容需保持为空，传递内容不生效。
+如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
-        :param _VideoUrl: 当type为video_url时使用，标识具体的视频链接内容
+        :param _VideoUrl: 当 Type 为 video_url 时使用，标识具体的视频链接内容，如"https://your-video-path.mp4"。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoUrl: :class:`tencentcloud.hunyuan.v20230901.models.VideoUrl`
-        :param _VideoFrames: 当type为video_frames时使用，标识具体的视频内图像帧内容
+        :param _VideoFrames: 当 Type 为 video_frames 时使用，标识具体的视频内图像帧内容，当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoFrames: :class:`tencentcloud.hunyuan.v20230901.models.VideoFrames`
         """
@@ -1416,7 +1416,7 @@ class Content(AbstractModel):
         r"""内容类型
 注意：
 需包含至少一个 Type 为"text"的参数。
-参数值可选范围：[text", "image_url","video_url"]
+参数值可选范围：["text", "image_url","video_url","video_frames"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1428,7 +1428,7 @@ class Content(AbstractModel):
 
     @property
     def Text(self):
-        r"""当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 image_url 时，当前字段内容需保持为空，传递内容不生效。
+        r"""当 Type 为 text 时使用，表示具体的文本内容。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1441,7 +1441,7 @@ class Content(AbstractModel):
     @property
     def ImageUrl(self):
         r"""图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
-如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 text 时，当前字段内容需保持为空，传递内容不生效。
+如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
         """
@@ -1453,7 +1453,7 @@ class Content(AbstractModel):
 
     @property
     def VideoUrl(self):
-        r"""当type为video_url时使用，标识具体的视频链接内容
+        r"""当 Type 为 video_url 时使用，标识具体的视频链接内容，如"https://your-video-path.mp4"。当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.VideoUrl`
         """
@@ -1465,7 +1465,7 @@ class Content(AbstractModel):
 
     @property
     def VideoFrames(self):
-        r"""当type为video_frames时使用，标识具体的视频内图像帧内容
+        r"""当 Type 为 video_frames 时使用，标识具体的视频内图像帧内容，当 Type 为 其他类型 时，当前字段内容需保持为空，传递内容不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.VideoFrames`
         """
@@ -4400,7 +4400,7 @@ class Message(AbstractModel):
         :type Role: str
         :param _Content: 文本内容
         :type Content: str
-        :param _Contents: 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        :param _Contents: 多种类型内容（目前支持文本、图片和视频），图片支持混元图生文系列模型，视频支持混元视频生文系列模型，详情参考[产品概述](https://cloud.tencent.com/document/product/1729/104753)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of Content
         :param _ToolCallId: 当role为tool时传入，标识具体的函数调用
@@ -4447,7 +4447,7 @@ class Message(AbstractModel):
 
     @property
     def Contents(self):
-        r"""多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        r"""多种类型内容（目前支持文本、图片和视频），图片支持混元图生文系列模型，视频支持混元视频生文系列模型，详情参考[产品概述](https://cloud.tencent.com/document/product/1729/104753)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Content
         """
@@ -7985,14 +7985,14 @@ class VideoFrames(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Frames: 视频图像帧列表，图像帧传url
+        :param _Frames: 视频图像帧列表，图像帧传url，最大支持传入数量为512帧
         :type Frames: list of str
         """
         self._Frames = None
 
     @property
     def Frames(self):
-        r"""视频图像帧列表，图像帧传url
+        r"""视频图像帧列表，图像帧传url，最大支持传入数量为512帧
         :rtype: list of str
         """
         return self._Frames
@@ -8021,7 +8021,7 @@ class VideoUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 视频的url，如"https://your-video-path.mp/4"
+        :param _Url: 视频的url，如"https://your-video-path.mp4"，视频文件大小不超过100M。
         :type Url: str
         :param _Fps: 控制视频抽帧频率，取值范围为 0.1 ~5，表示每隔 1/fps 秒抽取一帧，默认为 1s抽取一帧
         :type Fps: float
@@ -8031,7 +8031,7 @@ class VideoUrl(AbstractModel):
 
     @property
     def Url(self):
-        r"""视频的url，如"https://your-video-path.mp/4"
+        r"""视频的url，如"https://your-video-path.mp4"，视频文件大小不超过100M。
         :rtype: str
         """
         return self._Url

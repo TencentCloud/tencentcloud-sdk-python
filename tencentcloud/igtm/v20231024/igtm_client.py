@@ -95,6 +95,29 @@ class IgtmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePackageAndPay(self, request):
+        r"""购买套餐并支付，此接口会在余额扣费，谨慎调用
+
+        :param request: Request instance for CreatePackageAndPay.
+        :type request: :class:`tencentcloud.igtm.v20231024.models.CreatePackageAndPayRequest`
+        :rtype: :class:`tencentcloud.igtm.v20231024.models.CreatePackageAndPayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePackageAndPay", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePackageAndPayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStrategy(self, request):
         r"""新建策略接口
 
@@ -592,6 +615,29 @@ class IgtmClient(AbstractClient):
             body = self.call("ModifyMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPackageAutoRenew(self, request):
+        r"""设置自动续费接口
+
+        :param request: Request instance for ModifyPackageAutoRenew.
+        :type request: :class:`tencentcloud.igtm.v20231024.models.ModifyPackageAutoRenewRequest`
+        :rtype: :class:`tencentcloud.igtm.v20231024.models.ModifyPackageAutoRenewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPackageAutoRenew", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPackageAutoRenewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

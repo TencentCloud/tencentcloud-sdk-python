@@ -3394,6 +3394,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTaskInstancesStatus(
+            self,
+            request: models.DescribeTaskInstancesStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTaskInstancesStatusResponse:
+        """
+        分组获取编排空间调试任务实例状态信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTaskInstancesStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTaskInstancesStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTaskLineage(
             self,
             request: models.DescribeTaskLineageRequest,

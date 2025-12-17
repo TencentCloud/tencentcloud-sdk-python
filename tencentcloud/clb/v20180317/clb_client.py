@@ -1203,6 +1203,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTargetGroupInstanceStatus(self, request):
+        r"""查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
+
+        :param request: Request instance for DescribeTargetGroupInstanceStatus.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstanceStatusRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstanceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTargetGroupInstanceStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTargetGroupInstanceStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTargetGroupInstances(self, request):
         r"""获取目标组绑定的服务器信息
 

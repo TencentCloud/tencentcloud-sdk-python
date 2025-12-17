@@ -27,23 +27,32 @@ class ActivityRecordItem(AbstractModel):
         r"""
         :param _Uin: 用户uin
         :type Uin: str
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _ActivityId: 活动id
         :type ActivityId: int
+        :param _ActivityName: 活动名称（唯一英文标识）
+        :type ActivityName: str
         :param _Status: 自定义状态码
         :type Status: int
         :param _SubStatus: 自定义子状态码
         :type SubStatus: str
         :param _SubStatusInt: 整型子状态码
         :type SubStatusInt: int
-        :param _IsDeleted: 是否软删除
+        :param _IsDeleted: 是否已删除
         :type IsDeleted: bool
+        :param _CreateTime: 活动参与时间
+        :type CreateTime: str
         """
         self._Uin = None
+        self._EnvId = None
         self._ActivityId = None
+        self._ActivityName = None
         self._Status = None
         self._SubStatus = None
         self._SubStatusInt = None
         self._IsDeleted = None
+        self._CreateTime = None
 
     @property
     def Uin(self):
@@ -57,6 +66,17 @@ class ActivityRecordItem(AbstractModel):
         self._Uin = Uin
 
     @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
     def ActivityId(self):
         r"""活动id
         :rtype: int
@@ -66,6 +86,17 @@ class ActivityRecordItem(AbstractModel):
     @ActivityId.setter
     def ActivityId(self, ActivityId):
         self._ActivityId = ActivityId
+
+    @property
+    def ActivityName(self):
+        r"""活动名称（唯一英文标识）
+        :rtype: str
+        """
+        return self._ActivityName
+
+    @ActivityName.setter
+    def ActivityName(self, ActivityName):
+        self._ActivityName = ActivityName
 
     @property
     def Status(self):
@@ -102,7 +133,7 @@ class ActivityRecordItem(AbstractModel):
 
     @property
     def IsDeleted(self):
-        r"""是否软删除
+        r"""是否已删除
         :rtype: bool
         """
         return self._IsDeleted
@@ -111,14 +142,28 @@ class ActivityRecordItem(AbstractModel):
     def IsDeleted(self, IsDeleted):
         self._IsDeleted = IsDeleted
 
+    @property
+    def CreateTime(self):
+        r"""活动参与时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
+        self._EnvId = params.get("EnvId")
         self._ActivityId = params.get("ActivityId")
+        self._ActivityName = params.get("ActivityName")
         self._Status = params.get("Status")
         self._SubStatus = params.get("SubStatus")
         self._SubStatusInt = params.get("SubStatusInt")
         self._IsDeleted = params.get("IsDeleted")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

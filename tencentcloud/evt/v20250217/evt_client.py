@@ -26,6 +26,29 @@ class EvtClient(AbstractClient):
     _service = 'evt'
 
 
+    def CompleteApproval(self, request):
+        r"""执行审批
+
+        :param request: Request instance for CompleteApproval.
+        :type request: :class:`tencentcloud.evt.v20250217.models.CompleteApprovalRequest`
+        :rtype: :class:`tencentcloud.evt.v20250217.models.CompleteApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CompleteApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.CompleteApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRoleUser(self, request):
         r"""创建人员
 

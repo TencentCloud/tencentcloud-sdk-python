@@ -557,6 +557,8 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type MachineType: str
         :param _AutomationService: 原生节点池安装节点自动化助手开关
         :type AutomationService: bool
+        :param _Password: 原生节点池密码
+        :type Password: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -581,6 +583,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._KeyIds = None
         self._MachineType = None
         self._AutomationService = None
+        self._Password = None
 
     @property
     def Scaling(self):
@@ -835,6 +838,17 @@ class CreateNativeNodePoolParam(AbstractModel):
     def AutomationService(self, AutomationService):
         self._AutomationService = AutomationService
 
+    @property
+    def Password(self):
+        r"""原生节点池密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -879,6 +893,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._KeyIds = params.get("KeyIds")
         self._MachineType = params.get("MachineType")
         self._AutomationService = params.get("AutomationService")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7380,6 +7395,8 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type KeyIds: list of str
         :param _GPUConfigs: 节点池 GPU 配置
         :type GPUConfigs: list of GPUConfig
+        :param _Password: 原生节点池密码
+        :type Password: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -7402,6 +7419,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._DataDisks = None
         self._KeyIds = None
         self._GPUConfigs = None
+        self._Password = None
 
     @property
     def Scaling(self):
@@ -7637,6 +7655,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
     def GPUConfigs(self, GPUConfigs):
         self._GPUConfigs = GPUConfigs
 
+    @property
+    def Password(self):
+        r"""原生节点池密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -7682,6 +7711,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 obj = GPUConfig()
                 obj._deserialize(item)
                 self._GPUConfigs.append(obj)
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

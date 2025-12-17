@@ -3234,24 +3234,17 @@ class CasterLayoutInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LayoutIndex: 布局Index。
+        :param _LayoutIndex: <p>布局Index。</p>取值范围：[1, 1000]
         :type LayoutIndex: int
-        :param _LayoutTemplateId: 布局模板Id。
-有效值[1，20，21，31，32，41]
-当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。
-
+        :param _LayoutTemplateId: <p>布局模板Id。有效值[1，20，21，31，32，41]当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。</p>
         :type LayoutTemplateId: int
-        :param _InputIndexList: 布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
-已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
+        :param _InputIndexList: <p>布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。</p>
         :type InputIndexList: str
-        :param _LayoutParams: 详细的布局参数列表。
+        :param _LayoutParams: <p>详细的布局参数列表。</p>
         :type LayoutParams: list of CasterLayoutParam
-        :param _LayoutWidth: 布局输出的宽度，单位为像素。
-默认为1280像素。
-注：该值仅在画中画布局，且未设置PgmWidth时生效。
+        :param _LayoutWidth: <p>布局输出的宽度，单位为像素。默认为1280像素。注：该值仅在画中画布局，且未设置PgmWidth时生效。</p>
         :type LayoutWidth: int
-        :param _LayoutHeight: 布局输出的高度，单位为像素。
-注：该参数仅在画中画布局，且未设置PgmHeight时生效。
+        :param _LayoutHeight: <p>布局输出的高度，单位为像素。注：该参数仅在画中画布局，且未设置PgmHeight时生效。</p>
         :type LayoutHeight: int
         """
         self._LayoutIndex = None
@@ -3263,7 +3256,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutIndex(self):
-        r"""布局Index。
+        r"""<p>布局Index。</p>取值范围：[1, 1000]
         :rtype: int
         """
         return self._LayoutIndex
@@ -3274,10 +3267,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutTemplateId(self):
-        r"""布局模板Id。
-有效值[1，20，21，31，32，41]
-当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。
-
+        r"""<p>布局模板Id。有效值[1，20，21，31，32，41]当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。</p>
         :rtype: int
         """
         return self._LayoutTemplateId
@@ -3288,8 +3278,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def InputIndexList(self):
-        r"""布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
-已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
+        r"""<p>布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。</p>
         :rtype: str
         """
         return self._InputIndexList
@@ -3300,7 +3289,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutParams(self):
-        r"""详细的布局参数列表。
+        r"""<p>详细的布局参数列表。</p>
         :rtype: list of CasterLayoutParam
         """
         return self._LayoutParams
@@ -3311,9 +3300,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutWidth(self):
-        r"""布局输出的宽度，单位为像素。
-默认为1280像素。
-注：该值仅在画中画布局，且未设置PgmWidth时生效。
+        r"""<p>布局输出的宽度，单位为像素。默认为1280像素。注：该值仅在画中画布局，且未设置PgmWidth时生效。</p>
         :rtype: int
         """
         return self._LayoutWidth
@@ -3324,8 +3311,7 @@ class CasterLayoutInfo(AbstractModel):
 
     @property
     def LayoutHeight(self):
-        r"""布局输出的高度，单位为像素。
-注：该参数仅在画中画布局，且未设置PgmHeight时生效。
+        r"""<p>布局输出的高度，单位为像素。注：该参数仅在画中画布局，且未设置PgmHeight时生效。</p>
         :rtype: int
         """
         return self._LayoutHeight

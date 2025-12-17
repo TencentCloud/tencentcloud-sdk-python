@@ -668,6 +668,9 @@ RESOURCENOTFOUND_FREEZESERVICE = 'ResourceNotFound.FreezeService'
 # 用户不支持此接口。
 RESOURCENOTFOUND_INVALIDUSER = 'ResourceNotFound.InvalidUser'
 
+# 预付费客户，未绑定套餐包
+RESOURCENOTFOUND_NOTBINDPACKAGE = 'ResourceNotFound.NotBindPackage'
+
 # 播放域名不存在。
 RESOURCENOTFOUND_PLAYDOMAINNORECORD = 'ResourceNotFound.PlayDomainNoRecord'
 

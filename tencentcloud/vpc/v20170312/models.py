@@ -8667,6 +8667,8 @@ class CloneSecurityGroupRequest(AbstractModel):
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
         :type Tags: list of Tag
+        :param _IsCloneTags: 是否克隆标签。
+        :type IsCloneTags: bool
         """
         self._SecurityGroupId = None
         self._GroupName = None
@@ -8674,6 +8676,7 @@ class CloneSecurityGroupRequest(AbstractModel):
         self._ProjectId = None
         self._RemoteRegion = None
         self._Tags = None
+        self._IsCloneTags = None
 
     @property
     def SecurityGroupId(self):
@@ -8742,6 +8745,17 @@ class CloneSecurityGroupRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsCloneTags(self):
+        r"""是否克隆标签。
+        :rtype: bool
+        """
+        return self._IsCloneTags
+
+    @IsCloneTags.setter
+    def IsCloneTags(self, IsCloneTags):
+        self._IsCloneTags = IsCloneTags
+
 
     def _deserialize(self, params):
         self._SecurityGroupId = params.get("SecurityGroupId")
@@ -8755,6 +8769,7 @@ class CloneSecurityGroupRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsCloneTags = params.get("IsCloneTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16180,6 +16195,8 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def IsPassService(self):
+        warnings.warn("parameter `IsPassService` is deprecated", DeprecationWarning) 
+
         r"""~~是否是PassService类型。该字段已废弃，请不要使用该字段。~~
         :rtype: bool
         """
@@ -16187,6 +16204,8 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @IsPassService.setter
     def IsPassService(self, IsPassService):
+        warnings.warn("parameter `IsPassService` is deprecated", DeprecationWarning) 
+
         self._IsPassService = IsPassService
 
     @property
@@ -28387,6 +28406,7 @@ class DescribeHaVipsRequest(AbstractModel):
         :param _HaVipIds: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
         :type HaVipIds: list of str
         :param _Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
+<li>type- String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
 
@@ -28414,6 +28434,7 @@ class DescribeHaVipsRequest(AbstractModel):
     @property
     def Filters(self):
         r"""过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
+<li>type- String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -33234,6 +33255,182 @@ class DescribeRouteListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRoutePoliciesRequest(AbstractModel):
+    r"""DescribeRoutePolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutePolicyIds: 路由策略实例唯一ID。形如：rrp-q7ywkx31。每次请求的实例的上限为100。参数不支持同时指定RoutePolicyIds和Filters。
+        :type RoutePolicyIds: list of str
+        :param _Filters: 过滤条件，不支持同时指定RoutePolicyIds和Filters参数。
+支持的过滤条件如下：
+<li>route-policy-name：路由策略实例名称，支持模糊查询。</li>
+<li>route-policy-description：路由策略实例描述，支持模糊查询。</li>
+<li>route-policy-id ：路由策略实例ID，例如：rrp-q7ywkx3w。</li>
+
+  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: str
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: str
+        :param _NeedRoutePolicyEntry: 是否返回路由策略条目。默认为False。当该参数为False时，仍然会返回空的返回空的RoutePolicyEntrySet。
+        :type NeedRoutePolicyEntry: bool
+        """
+        self._RoutePolicyIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._NeedRoutePolicyEntry = None
+
+    @property
+    def RoutePolicyIds(self):
+        r"""路由策略实例唯一ID。形如：rrp-q7ywkx31。每次请求的实例的上限为100。参数不支持同时指定RoutePolicyIds和Filters。
+        :rtype: list of str
+        """
+        return self._RoutePolicyIds
+
+    @RoutePolicyIds.setter
+    def RoutePolicyIds(self, RoutePolicyIds):
+        self._RoutePolicyIds = RoutePolicyIds
+
+    @property
+    def Filters(self):
+        r"""过滤条件，不支持同时指定RoutePolicyIds和Filters参数。
+支持的过滤条件如下：
+<li>route-policy-name：路由策略实例名称，支持模糊查询。</li>
+<li>route-policy-description：路由策略实例描述，支持模糊查询。</li>
+<li>route-policy-id ：路由策略实例ID，例如：rrp-q7ywkx3w。</li>
+
+  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NeedRoutePolicyEntry(self):
+        r"""是否返回路由策略条目。默认为False。当该参数为False时，仍然会返回空的返回空的RoutePolicyEntrySet。
+        :rtype: bool
+        """
+        return self._NeedRoutePolicyEntry
+
+    @NeedRoutePolicyEntry.setter
+    def NeedRoutePolicyEntry(self, NeedRoutePolicyEntry):
+        self._NeedRoutePolicyEntry = NeedRoutePolicyEntry
+
+
+    def _deserialize(self, params):
+        self._RoutePolicyIds = params.get("RoutePolicyIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._NeedRoutePolicyEntry = params.get("NeedRoutePolicyEntry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoutePoliciesResponse(AbstractModel):
+    r"""DescribeRoutePolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _RoutePolicySet: 路由策略对象。
+        :type RoutePolicySet: list of RoutePolicy
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RoutePolicySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的对象数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RoutePolicySet(self):
+        r"""路由策略对象。
+        :rtype: list of RoutePolicy
+        """
+        return self._RoutePolicySet
+
+    @RoutePolicySet.setter
+    def RoutePolicySet(self, RoutePolicySet):
+        self._RoutePolicySet = RoutePolicySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RoutePolicySet") is not None:
+            self._RoutePolicySet = []
+            for item in params.get("RoutePolicySet"):
+                obj = RoutePolicy()
+                obj._deserialize(item)
+                self._RoutePolicySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRoutePolicyEntriesRequest(AbstractModel):
     r"""DescribeRoutePolicyEntries请求参数结构体
 
@@ -33763,6 +33960,7 @@ class DescribeRouteTablesRequest(AbstractModel):
 <li>association.main - String - （过滤条件）是否主路由表。</li>
 <li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
+<li>visible - String - （过滤条件）是否可见。</li>
 <li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
 目前我们支持的类型有：
 LOCAL: 本地路由
@@ -33776,6 +33974,7 @@ NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
 CCN：云联网；
 LOCAL_GATEWAY：本地网关。
+GWLB_ENDPOINT：网关负载均衡终端节点。
 </li>
         :type Filters: list of Filter
         :param _RouteTableIds: 路由表实例ID，例如：rtb-azd4dt1c。
@@ -33802,6 +34001,7 @@ LOCAL_GATEWAY：本地网关。
 <li>association.main - String - （过滤条件）是否主路由表。</li>
 <li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
+<li>visible - String - （过滤条件）是否可见。</li>
 <li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
 目前我们支持的类型有：
 LOCAL: 本地路由
@@ -33815,6 +34015,7 @@ NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
 CCN：云联网；
 LOCAL_GATEWAY：本地网关。
+GWLB_ENDPOINT：网关负载均衡终端节点。
 </li>
         :rtype: list of Filter
         """
@@ -37974,6 +38175,8 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def VpcEndpointServiceUserSet(self):
+        warnings.warn("parameter `VpcEndpointServiceUserSet` is deprecated", DeprecationWarning) 
+
         r"""白名单对象数组。已废弃
         :rtype: list of VpcEndPointServiceUser
         """
@@ -37981,6 +38184,8 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @VpcEndpointServiceUserSet.setter
     def VpcEndpointServiceUserSet(self, VpcEndpointServiceUserSet):
+        warnings.warn("parameter `VpcEndpointServiceUserSet` is deprecated", DeprecationWarning) 
+
         self._VpcEndpointServiceUserSet = VpcEndpointServiceUserSet
 
     @property
@@ -61686,7 +61891,7 @@ class ReplaceHighPriorityRouteTableAssociationRequest(AbstractModel):
         r"""
         :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
         :type HighPriorityRouteTableId: str
-        :param _SubnetId: 子网唯一 ID
+        :param _SubnetId: 子网唯一 ID。对于存在子网唯一ID的场景，该参数为必选。对于不存在子网ID的特殊场景，SubnetId和CidrBlock参数至少提供一个，二选一。
         :type SubnetId: str
         """
         self._HighPriorityRouteTableId = None
@@ -61705,7 +61910,7 @@ class ReplaceHighPriorityRouteTableAssociationRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网唯一 ID
+        r"""子网唯一 ID。对于存在子网唯一ID的场景，该参数为必选。对于不存在子网ID的特殊场景，SubnetId和CidrBlock参数至少提供一个，二选一。
         :rtype: str
         """
         return self._SubnetId
@@ -62040,24 +62245,13 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
-        :type SubnetId: str
         :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
+        :param _SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。对于存在子网唯一ID的子网，该参数为必选；否则， SubnetId和CidrBlock必选二选一。
+        :type SubnetId: str
         """
-        self._SubnetId = None
         self._RouteTableId = None
-
-    @property
-    def SubnetId(self):
-        r"""子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
-        :rtype: str
-        """
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
+        self._SubnetId = None
 
     @property
     def RouteTableId(self):
@@ -62070,10 +62264,21 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
     def RouteTableId(self, RouteTableId):
         self._RouteTableId = RouteTableId
 
+    @property
+    def SubnetId(self):
+        r"""子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。对于存在子网唯一ID的子网，该参数为必选；否则， SubnetId和CidrBlock必选二选一。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
 
     def _deserialize(self, params):
-        self._SubnetId = params.get("SubnetId")
         self._RouteTableId = params.get("RouteTableId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62247,12 +62452,15 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
         :type SecurityGroupId: str
         :param _SecurityGroupPolicySet: 安全组规则集合对象。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
-        :param _OriginalSecurityGroupPolicySet: 旧的安全组规则集合对象，可选，日志记录用。
+        :param _OriginalSecurityGroupPolicySet: 旧的安全组规则集合对象，当更新优先级时为必选，且修改顺序与SecurityGroupPolicySet参数顺序一一对应，入参长度需要与SecurityGroupPolicySet参数保持一致。
         :type OriginalSecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param _UpdateType: 更新类型，默认 Policy  Policy：只更新内容  Priority：只更新优先级  Both：内容和优先级都更新
+        :type UpdateType: str
         """
         self._SecurityGroupId = None
         self._SecurityGroupPolicySet = None
         self._OriginalSecurityGroupPolicySet = None
+        self._UpdateType = None
 
     @property
     def SecurityGroupId(self):
@@ -62278,7 +62486,7 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def OriginalSecurityGroupPolicySet(self):
-        r"""旧的安全组规则集合对象，可选，日志记录用。
+        r"""旧的安全组规则集合对象，当更新优先级时为必选，且修改顺序与SecurityGroupPolicySet参数顺序一一对应，入参长度需要与SecurityGroupPolicySet参数保持一致。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
         """
         return self._OriginalSecurityGroupPolicySet
@@ -62286,6 +62494,17 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
     @OriginalSecurityGroupPolicySet.setter
     def OriginalSecurityGroupPolicySet(self, OriginalSecurityGroupPolicySet):
         self._OriginalSecurityGroupPolicySet = OriginalSecurityGroupPolicySet
+
+    @property
+    def UpdateType(self):
+        r"""更新类型，默认 Policy  Policy：只更新内容  Priority：只更新优先级  Both：内容和优先级都更新
+        :rtype: str
+        """
+        return self._UpdateType
+
+    @UpdateType.setter
+    def UpdateType(self, UpdateType):
+        self._UpdateType = UpdateType
 
 
     def _deserialize(self, params):
@@ -62296,6 +62515,7 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
         if params.get("OriginalSecurityGroupPolicySet") is not None:
             self._OriginalSecurityGroupPolicySet = SecurityGroupPolicySet()
             self._OriginalSecurityGroupPolicySet._deserialize(params.get("OriginalSecurityGroupPolicySet"))
+        self._UpdateType = params.get("UpdateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

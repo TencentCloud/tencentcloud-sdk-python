@@ -530,6 +530,9 @@ class Cluster(AbstractModel):
         :type SlaveZones: list of SlaveZone
         :param _LogCOSBucket: 集群的日志cos存储
         :type LogCOSBucket: str
+        :param _CdcId: Cdc集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self._ClusterId = None
         self._Name = None
@@ -588,6 +591,7 @@ class Cluster(AbstractModel):
         self._DeploymentMode = None
         self._SlaveZones = None
         self._LogCOSBucket = None
+        self._CdcId = None
 
     @property
     def ClusterId(self):
@@ -1250,6 +1254,18 @@ class Cluster(AbstractModel):
     def LogCOSBucket(self, LogCOSBucket):
         self._LogCOSBucket = LogCOSBucket
 
+    @property
+    def CdcId(self):
+        r"""Cdc集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1355,6 +1371,7 @@ class Cluster(AbstractModel):
                 obj._deserialize(item)
                 self._SlaveZones.append(obj)
         self._LogCOSBucket = params.get("LogCOSBucket")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

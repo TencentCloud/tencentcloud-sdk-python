@@ -3452,6 +3452,8 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         :type HostStandbyCount: int
         :param _HostNormalCount: 普通宿主机数量
         :type HostNormalCount: int
+        :param _HostAbnormalCount: 异常宿主机数量
+        :type HostAbnormalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3464,6 +3466,7 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         self._HostDetailInfo = None
         self._HostStandbyCount = None
         self._HostNormalCount = None
+        self._HostAbnormalCount = None
         self._RequestId = None
 
     @property
@@ -3566,6 +3569,17 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         self._HostNormalCount = HostNormalCount
 
     @property
+    def HostAbnormalCount(self):
+        r"""异常宿主机数量
+        :rtype: int
+        """
+        return self._HostAbnormalCount
+
+    @HostAbnormalCount.setter
+    def HostAbnormalCount(self, HostAbnormalCount):
+        self._HostAbnormalCount = HostAbnormalCount
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3601,6 +3615,7 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
                 self._HostDetailInfo.append(obj)
         self._HostStandbyCount = params.get("HostStandbyCount")
         self._HostNormalCount = params.get("HostNormalCount")
+        self._HostAbnormalCount = params.get("HostAbnormalCount")
         self._RequestId = params.get("RequestId")
 
 

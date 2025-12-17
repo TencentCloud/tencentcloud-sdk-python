@@ -460,6 +460,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractDocAgent(self, request):
+        r"""用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+
+        :param request: Request instance for ExtractDocAgent.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ExtractDocAgentRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ExtractDocAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractDocAgent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractDocAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExtractDocBasic(self, request):
         r"""本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocBasic)。
 
