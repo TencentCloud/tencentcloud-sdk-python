@@ -34635,6 +34635,8 @@ class TopicInfo(AbstractModel):
 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
 HotPeriod=0为没有开启日志沉降。
         :type HotPeriod: int
+        :param _KeyId: kms-cls服务秘钥id
+        :type KeyId: str
         :param _BizType: 主题类型。
 - 0: 日志主题 
 - 1: 指标主题
@@ -34676,6 +34678,7 @@ HotPeriod=0为没有开启日志沉降。
         self._SubAssumerName = None
         self._Describes = None
         self._HotPeriod = None
+        self._KeyId = None
         self._BizType = None
         self._IsWebTracking = None
         self._Extends = None
@@ -34890,6 +34893,17 @@ HotPeriod=0为没有开启日志沉降。
         self._HotPeriod = HotPeriod
 
     @property
+    def KeyId(self):
+        r"""kms-cls服务秘钥id
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
     def BizType(self):
         r"""主题类型。
 - 0: 日志主题 
@@ -34999,6 +35013,7 @@ HotPeriod=0为没有开启日志沉降。
         self._SubAssumerName = params.get("SubAssumerName")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
+        self._KeyId = params.get("KeyId")
         self._BizType = params.get("BizType")
         self._IsWebTracking = params.get("IsWebTracking")
         if params.get("Extends") is not None:

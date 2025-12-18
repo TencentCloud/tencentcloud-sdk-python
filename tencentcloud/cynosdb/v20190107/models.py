@@ -31223,6 +31223,8 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         :type MaxRoCount: int
         :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
         :type AutoArchive: str
+        :param _UpgradeType: 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+        :type UpgradeType: str
         """
         self._ClusterId = None
         self._AutoPause = None
@@ -31236,6 +31238,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MinRoCount = None
         self._MaxRoCount = None
         self._AutoArchive = None
+        self._UpgradeType = None
 
     @property
     def ClusterId(self):
@@ -31371,6 +31374,17 @@ class ModifyServerlessStrategyRequest(AbstractModel):
     def AutoArchive(self, AutoArchive):
         self._AutoArchive = AutoArchive
 
+    @property
+    def UpgradeType(self):
+        r"""升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+        :rtype: str
+        """
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -31385,6 +31399,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MinRoCount = params.get("MinRoCount")
         self._MaxRoCount = params.get("MaxRoCount")
         self._AutoArchive = params.get("AutoArchive")
+        self._UpgradeType = params.get("UpgradeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31404,14 +31419,19 @@ class ModifyServerlessStrategyResponse(AbstractModel):
         r"""
         :param _FlowId: 异步流程id
         :type FlowId: int
+        :param _TaskId: 任务id
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
+        warnings.warn("parameter `FlowId` is deprecated", DeprecationWarning) 
+
         r"""异步流程id
         :rtype: int
         """
@@ -31419,7 +31439,20 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     @FlowId.setter
     def FlowId(self, FlowId):
+        warnings.warn("parameter `FlowId` is deprecated", DeprecationWarning) 
+
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -31435,6 +31468,7 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

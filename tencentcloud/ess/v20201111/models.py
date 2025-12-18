@@ -10344,12 +10344,30 @@ class CreateFlowGroupByFilesRequest(AbstractModel):
 <li>是否通知其他签署方</li>
 </ul>
         :type FlowGroupOptions: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
+        :param _UserFlowType: 用户自定义合同类型。
+
+自定义合同类型配置的地方如链接图所示。[点击查看自定义合同类型管理的位置](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
+
+注意：
+如果传递了自定义合同类型，则每一个子合同设置的自定义合同类型将会失效，已最外层定义的为准。
+例如：
+这份合同组有三个子合同，设置合同类型为<font color="blue">人事/劳务</font>
+第一份子合同设置的合同自定义合同类型是<font color="blue">采购</font>
+第二份和第三份子合同设置的合同自定义合同类型是<font color="blue">人事/劳务</font>
+但最终这个合同组的合同类型是<font color="blue">人事/劳务</font>
+
+
+
+
+
+        :type UserFlowType: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
         """
         self._Operator = None
         self._FlowGroupName = None
         self._FlowGroupInfos = None
         self._Agent = None
         self._FlowGroupOptions = None
+        self._UserFlowType = None
 
     @property
     def Operator(self):
@@ -10413,6 +10431,32 @@ class CreateFlowGroupByFilesRequest(AbstractModel):
     def FlowGroupOptions(self, FlowGroupOptions):
         self._FlowGroupOptions = FlowGroupOptions
 
+    @property
+    def UserFlowType(self):
+        r"""用户自定义合同类型。
+
+自定义合同类型配置的地方如链接图所示。[点击查看自定义合同类型管理的位置](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
+
+注意：
+如果传递了自定义合同类型，则每一个子合同设置的自定义合同类型将会失效，已最外层定义的为准。
+例如：
+这份合同组有三个子合同，设置合同类型为<font color="blue">人事/劳务</font>
+第一份子合同设置的合同自定义合同类型是<font color="blue">采购</font>
+第二份和第三份子合同设置的合同自定义合同类型是<font color="blue">人事/劳务</font>
+但最终这个合同组的合同类型是<font color="blue">人事/劳务</font>
+
+
+
+
+
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10431,6 +10475,9 @@ class CreateFlowGroupByFilesRequest(AbstractModel):
         if params.get("FlowGroupOptions") is not None:
             self._FlowGroupOptions = FlowGroupOptions()
             self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10543,12 +10590,18 @@ class CreateFlowGroupByTemplatesRequest(AbstractModel):
 <li>是否通知其他签署方</li>
 </ul>
         :type FlowGroupOptions: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
+        :param _UserFlowType: 用户自定义合同类型。  
+自定义合同类型配置的地方如链接图所示。[点击查看自定义合同类型管理的位置](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)  
+
+注意： 如果传递了自定义合同类型，则每一个子合同对应模板上面的自定义合同类型将会失效，已最外层定义的为准。 例如： 这份合同组有三个子合同，设置合同类型为<font color="blue">人事/劳务</font> 第一份子合同选择的模板的合同自定义合同类型是<font color="blue">采购</font> 第二份和第三份子合同选择的模板的合同自定义合同类型是<font color="blue">人事/劳务</font> 但最终这个合同组的合同类型是<font color="blue">人事/劳务</font>
+        :type UserFlowType: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
         """
         self._Operator = None
         self._FlowGroupName = None
         self._FlowGroupInfos = None
         self._Agent = None
         self._FlowGroupOptions = None
+        self._UserFlowType = None
 
     @property
     def Operator(self):
@@ -10612,6 +10665,20 @@ class CreateFlowGroupByTemplatesRequest(AbstractModel):
     def FlowGroupOptions(self, FlowGroupOptions):
         self._FlowGroupOptions = FlowGroupOptions
 
+    @property
+    def UserFlowType(self):
+        r"""用户自定义合同类型。  
+自定义合同类型配置的地方如链接图所示。[点击查看自定义合同类型管理的位置](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)  
+
+注意： 如果传递了自定义合同类型，则每一个子合同对应模板上面的自定义合同类型将会失效，已最外层定义的为准。 例如： 这份合同组有三个子合同，设置合同类型为<font color="blue">人事/劳务</font> 第一份子合同选择的模板的合同自定义合同类型是<font color="blue">采购</font> 第二份和第三份子合同选择的模板的合同自定义合同类型是<font color="blue">人事/劳务</font> 但最终这个合同组的合同类型是<font color="blue">人事/劳务</font>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10630,6 +10697,9 @@ class CreateFlowGroupByTemplatesRequest(AbstractModel):
         if params.get("FlowGroupOptions") is not None:
             self._FlowGroupOptions = FlowGroupOptions()
             self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11646,7 +11716,7 @@ class CreateFlowRequest(AbstractModel):
 
 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
         :type RemindedOn: int
-        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64格式编码，支持的最大数据大小为 20480长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
         :type UserData: str
@@ -11828,7 +11898,7 @@ class CreateFlowRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64格式编码，支持的最大数据大小为 20480长度。
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
         :rtype: str

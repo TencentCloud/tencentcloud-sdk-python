@@ -475,6 +475,8 @@ class DataSourceDetail(AbstractModel):
         :param _DbSourceType: DB来源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbSourceType: str
+        :param _StagingSwitch: 模型预览状态开关
+        :type StagingSwitch: bool
         """
         self._Id = None
         self._Title = None
@@ -514,6 +516,7 @@ class DataSourceDetail(AbstractModel):
         self._PreviewTableName = None
         self._PublishedTableName = None
         self._DbSourceType = None
+        self._StagingSwitch = None
 
     @property
     def Id(self):
@@ -959,6 +962,17 @@ class DataSourceDetail(AbstractModel):
     def DbSourceType(self, DbSourceType):
         self._DbSourceType = DbSourceType
 
+    @property
+    def StagingSwitch(self):
+        r"""模型预览状态开关
+        :rtype: bool
+        """
+        return self._StagingSwitch
+
+    @StagingSwitch.setter
+    def StagingSwitch(self, StagingSwitch):
+        self._StagingSwitch = StagingSwitch
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1011,6 +1025,7 @@ class DataSourceDetail(AbstractModel):
         self._PreviewTableName = params.get("PreviewTableName")
         self._PublishedTableName = params.get("PublishedTableName")
         self._DbSourceType = params.get("DbSourceType")
+        self._StagingSwitch = params.get("StagingSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

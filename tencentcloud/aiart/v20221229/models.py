@@ -3779,7 +3779,8 @@ class SubmitTextToImageJobRequest(AbstractModel):
         :type Prompt: str
         :param _Resolution: 生成图分辨率，默认1024:1024：
  - 宽高维度均在 [512, 2048] 像素范围内;
- - 宽高乘积（即图像面积）不超过 1024×1024 像素;
+ - 如果宽高乘积（即图像面积）超过 1024×1024 像素，则宽高维度须在 [1024, 2048] 像素范围内;
+ - 宽高乘积（即图像面积）不超过 2048×2048 像素;
         :type Resolution: str
         :param _Seed: 随机种子，默认随机。
 不传：随机种子生成。
@@ -3826,7 +3827,8 @@ class SubmitTextToImageJobRequest(AbstractModel):
     def Resolution(self):
         r"""生成图分辨率，默认1024:1024：
  - 宽高维度均在 [512, 2048] 像素范围内;
- - 宽高乘积（即图像面积）不超过 1024×1024 像素;
+ - 如果宽高乘积（即图像面积）超过 1024×1024 像素，则宽高维度须在 [1024, 2048] 像素范围内;
+ - 宽高乘积（即图像面积）不超过 2048×2048 像素;
         :rtype: str
         """
         return self._Resolution

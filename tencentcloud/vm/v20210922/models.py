@@ -64,6 +64,8 @@ class AudioResult(AbstractModel):
         :type LabelResults: list of LabelResult
         :param _HitType: 审核命中类型
         :type HitType: str
+        :param _Sentences: ASR句子的起止时间
+        :type Sentences: list of Sentence
         """
         self._HitFlag = None
         self._Label = None
@@ -84,6 +86,7 @@ class AudioResult(AbstractModel):
         self._SubTagCode = None
         self._LabelResults = None
         self._HitType = None
+        self._Sentences = None
 
     @property
     def HitFlag(self):
@@ -295,6 +298,17 @@ class AudioResult(AbstractModel):
     def HitType(self, HitType):
         self._HitType = HitType
 
+    @property
+    def Sentences(self):
+        r"""ASR句子的起止时间
+        :rtype: list of Sentence
+        """
+        return self._Sentences
+
+    @Sentences.setter
+    def Sentences(self, Sentences):
+        self._Sentences = Sentences
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -351,6 +365,12 @@ class AudioResult(AbstractModel):
                 obj._deserialize(item)
                 self._LabelResults.append(obj)
         self._HitType = params.get("HitType")
+        if params.get("Sentences") is not None:
+            self._Sentences = []
+            for item in params.get("Sentences"):
+                obj = Sentence()
+                obj._deserialize(item)
+                self._Sentences.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3109,6 +3129,72 @@ class SegmentCosUrlList(AbstractModel):
         self._ImageBlockUrl = params.get("ImageBlockUrl")
         self._AudioBlockUrl = params.get("AudioBlockUrl")
         self._AsrUrl = params.get("AsrUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sentence(AbstractModel):
+    r"""ASR识别结果在音频中的起止时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: ASR句子
+        :type Text: str
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._Text = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Text(self):
+        r"""ASR句子
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def StartTime(self):
+        r"""起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

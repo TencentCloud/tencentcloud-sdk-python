@@ -15510,6 +15510,8 @@ postMoveIn 按量计费迁入资源
         :param _ResourceId: 订单对应的资源id, 查询参数Limit超过200，将返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: list of str
+        :param _ZoneCode: 订单对应的可用区Id
+        :type ZoneCode: str
         """
         self._OrderId = None
         self._Status = None
@@ -15537,6 +15539,7 @@ postMoveIn 按量计费迁入资源
         self._ProductName = None
         self._SubProductName = None
         self._ResourceId = None
+        self._ZoneCode = None
 
     @property
     def OrderId(self):
@@ -15837,6 +15840,17 @@ postMoveIn 按量计费迁入资源
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def ZoneCode(self):
+        r"""订单对应的可用区Id
+        :rtype: str
+        """
+        return self._ZoneCode
+
+    @ZoneCode.setter
+    def ZoneCode(self, ZoneCode):
+        self._ZoneCode = ZoneCode
+
 
     def _deserialize(self, params):
         self._OrderId = params.get("OrderId")
@@ -15870,6 +15884,7 @@ postMoveIn 按量计费迁入资源
         self._ProductName = params.get("ProductName")
         self._SubProductName = params.get("SubProductName")
         self._ResourceId = params.get("ResourceId")
+        self._ZoneCode = params.get("ZoneCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25358,6 +25373,8 @@ class DescribeDealsByCondRequest(AbstractModel):
         :type BigDealId: str
         :param _ResourceId: 资源id
         :type ResourceId: str
+        :param _StatusSet: 订单状态
+        :type StatusSet: list of int
         """
         self._StartTime = None
         self._EndTime = None
@@ -25367,6 +25384,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self._OrderId = None
         self._BigDealId = None
         self._ResourceId = None
+        self._StatusSet = None
 
     @property
     def StartTime(self):
@@ -25468,6 +25486,17 @@ class DescribeDealsByCondRequest(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def StatusSet(self):
+        r"""订单状态
+        :rtype: list of int
+        """
+        return self._StatusSet
+
+    @StatusSet.setter
+    def StatusSet(self, StatusSet):
+        self._StatusSet = StatusSet
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -25478,6 +25507,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self._OrderId = params.get("OrderId")
         self._BigDealId = params.get("BigDealId")
         self._ResourceId = params.get("ResourceId")
+        self._StatusSet = params.get("StatusSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

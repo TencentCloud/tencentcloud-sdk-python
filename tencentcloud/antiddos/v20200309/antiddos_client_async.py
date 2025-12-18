@@ -61,6 +61,24 @@ class AntiddosClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBgpInstance(
+            self,
+            request: models.CreateBgpInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateBgpInstanceResponse:
+        """
+        通过API 购买高防包接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBgpInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBgpInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBlackWhiteIpList(
             self,
             request: models.CreateBlackWhiteIpListRequest,
@@ -740,6 +758,24 @@ class AntiddosClient(AbstractClient):
         kwargs["action"] = "DescribeBgpBizTrend"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBgpBizTrendResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBgpInstances(
+            self,
+            request: models.DescribeBgpInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBgpInstancesResponse:
+        """
+        购买后，查询购买的高防包实例信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBgpInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBgpInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

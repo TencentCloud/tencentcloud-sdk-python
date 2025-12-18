@@ -892,6 +892,8 @@ class CosBackup(AbstractModel):
         :type PaasEsRepository: str
         :param _UserEsRepository: 客户快照仓库名称
         :type UserEsRepository: str
+        :param _CosBasePath: cos存储文件夹目录
+        :type CosBasePath: str
         :param _StorageDuration: 快照存储周期 单位天
         :type StorageDuration: int
         :param _AutoBackupInterval: 自动备份频率单位小时
@@ -919,6 +921,7 @@ class CosBackup(AbstractModel):
         self._EsRepositoryType = None
         self._PaasEsRepository = None
         self._UserEsRepository = None
+        self._CosBasePath = None
         self._StorageDuration = None
         self._AutoBackupInterval = None
         self._CosRetention = None
@@ -995,6 +998,17 @@ class CosBackup(AbstractModel):
     @UserEsRepository.setter
     def UserEsRepository(self, UserEsRepository):
         self._UserEsRepository = UserEsRepository
+
+    @property
+    def CosBasePath(self):
+        r"""cos存储文件夹目录
+        :rtype: str
+        """
+        return self._CosBasePath
+
+    @CosBasePath.setter
+    def CosBasePath(self, CosBasePath):
+        self._CosBasePath = CosBasePath
 
     @property
     def StorageDuration(self):
@@ -1114,6 +1128,7 @@ class CosBackup(AbstractModel):
         self._EsRepositoryType = params.get("EsRepositoryType")
         self._PaasEsRepository = params.get("PaasEsRepository")
         self._UserEsRepository = params.get("UserEsRepository")
+        self._CosBasePath = params.get("CosBasePath")
         self._StorageDuration = params.get("StorageDuration")
         self._AutoBackupInterval = params.get("AutoBackupInterval")
         self._CosRetention = params.get("CosRetention")

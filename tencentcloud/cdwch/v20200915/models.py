@@ -1177,6 +1177,10 @@ class CnInstanceInfo(AbstractModel):
         :type InstanceID: str
         :param _Resources: 无
         :type Resources: list of CNResource
+        :param _IsSecondaryZone: desc
+        :type IsSecondaryZone: str
+        :param _SecondaryZoneInfo: desc
+        :type SecondaryZoneInfo: str
         """
         self._ID = None
         self._InstanceType = None
@@ -1186,6 +1190,8 @@ class CnInstanceInfo(AbstractModel):
         self._InstanceStateInfo = None
         self._InstanceID = None
         self._Resources = None
+        self._IsSecondaryZone = None
+        self._SecondaryZoneInfo = None
 
     @property
     def ID(self):
@@ -1275,6 +1281,28 @@ class CnInstanceInfo(AbstractModel):
     def Resources(self, Resources):
         self._Resources = Resources
 
+    @property
+    def IsSecondaryZone(self):
+        r"""desc
+        :rtype: str
+        """
+        return self._IsSecondaryZone
+
+    @IsSecondaryZone.setter
+    def IsSecondaryZone(self, IsSecondaryZone):
+        self._IsSecondaryZone = IsSecondaryZone
+
+    @property
+    def SecondaryZoneInfo(self):
+        r"""desc
+        :rtype: str
+        """
+        return self._SecondaryZoneInfo
+
+    @SecondaryZoneInfo.setter
+    def SecondaryZoneInfo(self, SecondaryZoneInfo):
+        self._SecondaryZoneInfo = SecondaryZoneInfo
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -1292,6 +1320,8 @@ class CnInstanceInfo(AbstractModel):
                 obj = CNResource()
                 obj._deserialize(item)
                 self._Resources.append(obj)
+        self._IsSecondaryZone = params.get("IsSecondaryZone")
+        self._SecondaryZoneInfo = params.get("SecondaryZoneInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -899,6 +899,7 @@ class CreateRecTaskRequest(AbstractModel):
         :param _SpeakerDiarization: 是否开启说话人分离
 0：不开启；
 1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect/16k_zh_en，且ChannelNum=1时可用）；
+3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）
 默认值为 0
 
 注意：
@@ -1005,6 +1006,14 @@ class CreateRecTaskRequest(AbstractModel):
 1. 本功能配置完成后，预计在10分钟后生效
 
         :type ReplaceTextId: str
+        :param _SpeakerRoles: 开启角色分离能力
+配合SpeakerDiarization: 3 使用，ASR增值服务，可传入一组声纹信息进行角色认证，仅支持16k_zh_en引擎。
+需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 
+RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 
+RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。 
+示例： 
+"{\"EngineModelType\":\"16k_zh_en\",\"ChannelNum\":1,\"ResTextFormat\":1,\"SourceType\":0,\"Url\":\"需要进行ASR识别的音频链接\",\"SpeakerDiarization\":3,\"SpeakerRoles\":[{\"RoleAudioUrl\":\"需要认证角色的声纹音频地址\",\"RoleName\":\"需要认证角色的名称\"}]}"
+        :type SpeakerRoles: list of SpeakerRoleInfo
         """
         self._EngineModelType = None
         self._ChannelNum = None
@@ -1030,6 +1039,7 @@ class CreateRecTaskRequest(AbstractModel):
         self._HotwordList = None
         self._KeyWordLibIdList = None
         self._ReplaceTextId = None
+        self._SpeakerRoles = None
 
     @property
     def EngineModelType(self):
@@ -1193,6 +1203,7 @@ class CreateRecTaskRequest(AbstractModel):
         r"""是否开启说话人分离
 0：不开启；
 1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect/16k_zh_en，且ChannelNum=1时可用）；
+3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）
 默认值为 0
 
 注意：
@@ -1445,6 +1456,23 @@ class CreateRecTaskRequest(AbstractModel):
     def ReplaceTextId(self, ReplaceTextId):
         self._ReplaceTextId = ReplaceTextId
 
+    @property
+    def SpeakerRoles(self):
+        r"""开启角色分离能力
+配合SpeakerDiarization: 3 使用，ASR增值服务，可传入一组声纹信息进行角色认证，仅支持16k_zh_en引擎。
+需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 
+RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 
+RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。 
+示例： 
+"{\"EngineModelType\":\"16k_zh_en\",\"ChannelNum\":1,\"ResTextFormat\":1,\"SourceType\":0,\"Url\":\"需要进行ASR识别的音频链接\",\"SpeakerDiarization\":3,\"SpeakerRoles\":[{\"RoleAudioUrl\":\"需要认证角色的声纹音频地址\",\"RoleName\":\"需要认证角色的名称\"}]}"
+        :rtype: list of SpeakerRoleInfo
+        """
+        return self._SpeakerRoles
+
+    @SpeakerRoles.setter
+    def SpeakerRoles(self, SpeakerRoles):
+        self._SpeakerRoles = SpeakerRoles
+
 
     def _deserialize(self, params):
         self._EngineModelType = params.get("EngineModelType")
@@ -1471,6 +1499,12 @@ class CreateRecTaskRequest(AbstractModel):
         self._HotwordList = params.get("HotwordList")
         self._KeyWordLibIdList = params.get("KeyWordLibIdList")
         self._ReplaceTextId = params.get("ReplaceTextId")
+        if params.get("SpeakerRoles") is not None:
+            self._SpeakerRoles = []
+            for item in params.get("SpeakerRoles"):
+                obj = SpeakerRoleInfo()
+                obj._deserialize(item)
+                self._SpeakerRoles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4473,6 +4507,57 @@ class SetVocabStateResponse(AbstractModel):
     def _deserialize(self, params):
         self._VocabId = params.get("VocabId")
         self._RequestId = params.get("RequestId")
+
+
+class SpeakerRoleInfo(AbstractModel):
+    r"""说话人注册角色声纹信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleAudioUrl: 音频url地址，建议不超过30秒，最大45秒
+        :type RoleAudioUrl: str
+        :param _RoleName: 不超过30字节
+        :type RoleName: str
+        """
+        self._RoleAudioUrl = None
+        self._RoleName = None
+
+    @property
+    def RoleAudioUrl(self):
+        r"""音频url地址，建议不超过30秒，最大45秒
+        :rtype: str
+        """
+        return self._RoleAudioUrl
+
+    @RoleAudioUrl.setter
+    def RoleAudioUrl(self, RoleAudioUrl):
+        self._RoleAudioUrl = RoleAudioUrl
+
+    @property
+    def RoleName(self):
+        r"""不超过30字节
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._RoleAudioUrl = params.get("RoleAudioUrl")
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Task(AbstractModel):

@@ -72,6 +72,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBgpInstance(self, request):
+        r"""通过API 购买高防包接口
+
+        :param request: Request instance for CreateBgpInstance.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBgpInstanceRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateBgpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBgpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBgpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlackWhiteIpList(self, request):
         r"""添加DDoS防护的IP黑白名单
 
@@ -937,6 +960,29 @@ class AntiddosClient(AbstractClient):
             body = self.call("DescribeBgpBizTrend", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBgpBizTrendResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBgpInstances(self, request):
+        r"""购买后，查询购买的高防包实例信息
+
+        :param request: Request instance for DescribeBgpInstances.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpInstancesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBgpInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBgpInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
