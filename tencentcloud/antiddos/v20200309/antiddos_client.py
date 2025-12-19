@@ -1613,6 +1613,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeListProtectThresholdConfigNew(self, request):
+        r"""获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+
+        :param request: Request instance for DescribeListProtectThresholdConfigNew.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigNewRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeListProtectThresholdConfigNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeListProtectThresholdConfigNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeListProtocolBlockConfig(self, request):
         r"""获取DDoS防护的协议封禁配置列表
 

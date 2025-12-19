@@ -681,72 +681,6 @@ class AdministrationData(AbstractModel):
         
 
 
-class AdministrativeDetail(AbstractModel):
-    r"""行政区划详情
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AdministrativeTypeCode: 行政区域类型编码
-        :type AdministrativeTypeCode: str
-        :param _AdministrativeCode: 行政区域编码
-        :type AdministrativeCode: str
-        :param _AdministrativeName: 行政区域名称
-        :type AdministrativeName: str
-        """
-        self._AdministrativeTypeCode = None
-        self._AdministrativeCode = None
-        self._AdministrativeName = None
-
-    @property
-    def AdministrativeTypeCode(self):
-        r"""行政区域类型编码
-        :rtype: str
-        """
-        return self._AdministrativeTypeCode
-
-    @AdministrativeTypeCode.setter
-    def AdministrativeTypeCode(self, AdministrativeTypeCode):
-        self._AdministrativeTypeCode = AdministrativeTypeCode
-
-    @property
-    def AdministrativeCode(self):
-        r"""行政区域编码
-        :rtype: str
-        """
-        return self._AdministrativeCode
-
-    @AdministrativeCode.setter
-    def AdministrativeCode(self, AdministrativeCode):
-        self._AdministrativeCode = AdministrativeCode
-
-    @property
-    def AdministrativeName(self):
-        r"""行政区域名称
-        :rtype: str
-        """
-        return self._AdministrativeName
-
-    @AdministrativeName.setter
-    def AdministrativeName(self, AdministrativeName):
-        self._AdministrativeName = AdministrativeName
-
-
-    def _deserialize(self, params):
-        self._AdministrativeTypeCode = params.get("AdministrativeTypeCode")
-        self._AdministrativeCode = params.get("AdministrativeCode")
-        self._AdministrativeName = params.get("AdministrativeName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AlarmInfo(AbstractModel):
     r"""告警信息
 
@@ -6411,145 +6345,6 @@ class DescribeCameraExtendInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeCityWorkspaceListRequest(AbstractModel):
-    r"""DescribeCityWorkspaceList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AdministrativeCodeSet: 行政区编码集合
-        :type AdministrativeCodeSet: list of str
-        :param _ApplicationToken: 应用token
-        :type ApplicationToken: str
-        """
-        self._AdministrativeCodeSet = None
-        self._ApplicationToken = None
-
-    @property
-    def AdministrativeCodeSet(self):
-        r"""行政区编码集合
-        :rtype: list of str
-        """
-        return self._AdministrativeCodeSet
-
-    @AdministrativeCodeSet.setter
-    def AdministrativeCodeSet(self, AdministrativeCodeSet):
-        self._AdministrativeCodeSet = AdministrativeCodeSet
-
-    @property
-    def ApplicationToken(self):
-        r"""应用token
-        :rtype: str
-        """
-        return self._ApplicationToken
-
-    @ApplicationToken.setter
-    def ApplicationToken(self, ApplicationToken):
-        self._ApplicationToken = ApplicationToken
-
-
-    def _deserialize(self, params):
-        self._AdministrativeCodeSet = params.get("AdministrativeCodeSet")
-        self._ApplicationToken = params.get("ApplicationToken")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCityWorkspaceListRes(AbstractModel):
-    r"""通过城市id查询工作空间列表
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _WorkspaceSet: 通过城市id查询工作空间列表结果
-        :type WorkspaceSet: list of WorkspaceInfo
-        """
-        self._WorkspaceSet = None
-
-    @property
-    def WorkspaceSet(self):
-        r"""通过城市id查询工作空间列表结果
-        :rtype: list of WorkspaceInfo
-        """
-        return self._WorkspaceSet
-
-    @WorkspaceSet.setter
-    def WorkspaceSet(self, WorkspaceSet):
-        self._WorkspaceSet = WorkspaceSet
-
-
-    def _deserialize(self, params):
-        if params.get("WorkspaceSet") is not None:
-            self._WorkspaceSet = []
-            for item in params.get("WorkspaceSet"):
-                obj = WorkspaceInfo()
-                obj._deserialize(item)
-                self._WorkspaceSet.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCityWorkspaceListResponse(AbstractModel):
-    r"""DescribeCityWorkspaceList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: 工作空间信息集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRes`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""工作空间信息集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRes`
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self._Result = DescribeCityWorkspaceListRes()
-            self._Result._deserialize(params.get("Result"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDeviceGroupListRequest(AbstractModel):
     r"""DescribeDeviceGroupList请求参数结构体
 
@@ -11811,10 +11606,24 @@ class DescribeVideoRecordStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 获取历史流结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.VideoRecordStreamRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""获取历史流结果
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.VideoRecordStreamRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -11829,6 +11638,9 @@ class DescribeVideoRecordStreamResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = VideoRecordStreamRes()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -20061,137 +19873,6 @@ class VideoRecordStreamRes(AbstractModel):
             self._RAW = RawInfo()
             self._RAW._deserialize(params.get("RAW"))
         self._Stream = params.get("Stream")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WorkspaceInfo(AbstractModel):
-    r"""工作空间信息描述
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _WorkspaceId: 工作空间Id
-        :type WorkspaceId: int
-        :param _ChineseName: 工作空间中文名字
-        :type ChineseName: str
-        :param _Description: 工作空间描述
-        :type Description: str
-        :param _Status: 工作空间是否删除状态
-        :type Status: int
-        :param _ParkName: 该工作空间绑定的区/县的行政区名字
-        :type ParkName: str
-        :param _ParkNum: 该工作空间绑定的区/县的行政区编码
-        :type ParkNum: str
-        :param _AdministrativeDetailSet: 获取该工作空间绑定的区/县的上级行政区划信息
-        :type AdministrativeDetailSet: list of AdministrativeDetail
-        """
-        self._WorkspaceId = None
-        self._ChineseName = None
-        self._Description = None
-        self._Status = None
-        self._ParkName = None
-        self._ParkNum = None
-        self._AdministrativeDetailSet = None
-
-    @property
-    def WorkspaceId(self):
-        r"""工作空间Id
-        :rtype: int
-        """
-        return self._WorkspaceId
-
-    @WorkspaceId.setter
-    def WorkspaceId(self, WorkspaceId):
-        self._WorkspaceId = WorkspaceId
-
-    @property
-    def ChineseName(self):
-        r"""工作空间中文名字
-        :rtype: str
-        """
-        return self._ChineseName
-
-    @ChineseName.setter
-    def ChineseName(self, ChineseName):
-        self._ChineseName = ChineseName
-
-    @property
-    def Description(self):
-        r"""工作空间描述
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def Status(self):
-        r"""工作空间是否删除状态
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ParkName(self):
-        r"""该工作空间绑定的区/县的行政区名字
-        :rtype: str
-        """
-        return self._ParkName
-
-    @ParkName.setter
-    def ParkName(self, ParkName):
-        self._ParkName = ParkName
-
-    @property
-    def ParkNum(self):
-        r"""该工作空间绑定的区/县的行政区编码
-        :rtype: str
-        """
-        return self._ParkNum
-
-    @ParkNum.setter
-    def ParkNum(self, ParkNum):
-        self._ParkNum = ParkNum
-
-    @property
-    def AdministrativeDetailSet(self):
-        r"""获取该工作空间绑定的区/县的上级行政区划信息
-        :rtype: list of AdministrativeDetail
-        """
-        return self._AdministrativeDetailSet
-
-    @AdministrativeDetailSet.setter
-    def AdministrativeDetailSet(self, AdministrativeDetailSet):
-        self._AdministrativeDetailSet = AdministrativeDetailSet
-
-
-    def _deserialize(self, params):
-        self._WorkspaceId = params.get("WorkspaceId")
-        self._ChineseName = params.get("ChineseName")
-        self._Description = params.get("Description")
-        self._Status = params.get("Status")
-        self._ParkName = params.get("ParkName")
-        self._ParkNum = params.get("ParkNum")
-        if params.get("AdministrativeDetailSet") is not None:
-            self._AdministrativeDetailSet = []
-            for item in params.get("AdministrativeDetailSet"):
-                obj = AdministrativeDetail()
-                obj._deserialize(item)
-                self._AdministrativeDetailSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

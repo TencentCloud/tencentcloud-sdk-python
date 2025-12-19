@@ -373,6 +373,8 @@ class CfwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAllAccessControlRuleResponse:
         """
+        业务废弃
+
         全部删除规则
         """
         

@@ -7417,7 +7417,7 @@ class CreateWorkflowRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type AppBizId: str
         :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
         :type RunEnv: int
@@ -7433,7 +7433,7 @@ class CreateWorkflowRunRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._AppBizId
@@ -19730,19 +19730,19 @@ class ListAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码，取值范围：大于0
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量，取值范围：大于0
         :type PageSize: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _Query: 查询内容
+        :param _Query: 查询内容，同时匹配标签内容和标签值内容
         :type Query: str
-        :param _LabelSize: 每个属性同步拉取的标签值数量
+        :param _LabelSize: 每个标签同步拉取的标签值数量。即在展示标签列表时，为每一个标签加载多少个具体的标签值。
         :type LabelSize: int
         """
         self._BotBizId = None
@@ -19755,7 +19755,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -19766,7 +19766,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码，取值范围：大于0
         :rtype: int
         """
         return self._PageNumber
@@ -19777,7 +19777,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量，取值范围：大于0
         :rtype: int
         """
         return self._PageSize
@@ -19810,7 +19810,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
+        r"""查询内容，同时匹配标签内容和标签值内容
         :rtype: str
         """
         return self._Query
@@ -19821,7 +19821,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def LabelSize(self):
-        r"""每个属性同步拉取的标签值数量
+        r"""每个标签同步拉取的标签值数量。即在展示标签列表时，为每一个标签加载多少个具体的标签值。
         :rtype: int
         """
         return self._LabelSize
@@ -19919,17 +19919,17 @@ class ListChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :type AppBizId: str
         :param _BotBizId: 应用ID
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 分页数量
+        :param _PageSize: 分页数量（取值范围为1-200）
         :type PageSize: int
-        :param _ChannelType: 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+        :param _ChannelType: 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 。（默认为[]）
         :type ChannelType: list of int non-negative
-        :param _ChannelStatus: 渠道状态 1未发布 2运行中 3已下线
+        :param _ChannelStatus: 渠道状态 1未发布 2运行中 3已下线 （默认为[]）
         :type ChannelStatus: list of int non-negative
         """
         self._AppBizId = None
@@ -19941,7 +19941,7 @@ class ListChannelRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :rtype: str
         """
         return self._AppBizId
@@ -19967,7 +19967,7 @@ class ListChannelRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -19978,7 +19978,7 @@ class ListChannelRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页数量
+        r"""分页数量（取值范围为1-200）
         :rtype: int
         """
         return self._PageSize
@@ -19989,7 +19989,7 @@ class ListChannelRequest(AbstractModel):
 
     @property
     def ChannelType(self):
-        r"""渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+        r"""渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 。（默认为[]）
         :rtype: list of int non-negative
         """
         return self._ChannelType
@@ -20000,7 +20000,7 @@ class ListChannelRequest(AbstractModel):
 
     @property
     def ChannelStatus(self):
-        r"""渠道状态 1未发布 2运行中 3已下线
+        r"""渠道状态 1未发布 2运行中 3已下线 （默认为[]）
         :rtype: list of int non-negative
         """
         return self._ChannelStatus
@@ -22273,21 +22273,21 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量（取值范围为1-200）
         :type PageSize: int
-        :param _Query: 查询内容
+        :param _Query: 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :type Query: str
-        :param _ReleaseBizId: 发布单ID
+        :param _ReleaseBizId: 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :type ReleaseBizId: str
         :param _Actions: 状态(1新增2更新3删除)
         :type Actions: list of int non-negative
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。Unix 时间戳，单位是秒，默认为空。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。Unix 时间戳，单位是秒，默认为空。
         :type EndTime: str
         """
         self._BotBizId = None
@@ -22301,7 +22301,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :rtype: str
         """
         return self._BotBizId
@@ -22312,7 +22312,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -22323,7 +22323,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量（取值范围为1-200）
         :rtype: int
         """
         return self._PageSize
@@ -22334,7 +22334,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
+        r"""查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :rtype: str
         """
         return self._Query
@@ -22345,7 +22345,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        r"""发布单ID
+        r"""发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :rtype: str
         """
         return self._ReleaseBizId
@@ -22367,7 +22367,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._StartTime
@@ -22378,7 +22378,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._EndTime
@@ -22477,13 +22477,11 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :type BotBizId: str
-        :param _PageNumber: 页码
-
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 每页数量
-
+        :param _PageSize: 每页数量（取值范围1-200）
         :type PageSize: int
         :param _Query: 查询内容
 
@@ -22496,7 +22494,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :rtype: str
         """
         return self._BotBizId
@@ -22507,8 +22505,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
-
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -22519,8 +22516,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
-
+        r"""每页数量（取值范围1-200）
         :rtype: int
         """
         return self._PageSize
@@ -22627,23 +22623,23 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量（取值范围为1-200）
         :type PageSize: int
-        :param _Query: 查询内容
+        :param _Query: 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :type Query: str
-        :param _ReleaseBizId: 发布单ID
+        :param _ReleaseBizId: 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :type ReleaseBizId: str
         :param _Actions: 状态(1新增2更新3删除)
         :type Actions: list of int non-negative
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。Unix 时间戳，单位是秒，默认为空。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。Unix 时间戳，单位是秒，默认为空。
         :type EndTime: str
-        :param _ReleaseStatus: 发布状态
+        :param _ReleaseStatus: 发布状态(2 待发布 3 发布中 4 已发布 5 发布失败)，默认为空
         :type ReleaseStatus: list of int non-negative
         """
         self._BotBizId = None
@@ -22658,7 +22654,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :rtype: str
         """
         return self._BotBizId
@@ -22669,7 +22665,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -22680,7 +22676,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量（取值范围为1-200）
         :rtype: int
         """
         return self._PageSize
@@ -22691,7 +22687,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
+        r"""查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :rtype: str
         """
         return self._Query
@@ -22702,7 +22698,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        r"""发布单ID
+        r"""发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :rtype: str
         """
         return self._ReleaseBizId
@@ -22724,7 +22720,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._StartTime
@@ -22735,7 +22731,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._EndTime
@@ -22746,7 +22742,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态
+        r"""发布状态(2 待发布 3 发布中 4 已发布 5 发布失败)，默认为空
         :rtype: list of int non-negative
         """
         return self._ReleaseStatus
@@ -22846,21 +22842,21 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量（取值范围为1-200）
         :type PageSize: int
-        :param _Query: 查询内容
+        :param _Query: 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :type Query: str
-        :param _ReleaseBizId: 发布单ID
+        :param _ReleaseBizId: 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :type ReleaseBizId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。Unix 时间戳，单位是秒，默认为空。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。Unix 时间戳，单位是秒，默认为空。
         :type EndTime: str
-        :param _Actions: 状态(1新增2修改3删除)
+        :param _Actions: 状态(1新增2修改3删除)，其和ReleaseStatus的区别为： Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据 / 内容本身的发布状态
         :type Actions: list of int non-negative
         """
         self._BotBizId = None
@@ -22874,7 +22870,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :rtype: str
         """
         return self._BotBizId
@@ -22885,7 +22881,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -22896,7 +22892,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量（取值范围为1-200）
         :rtype: int
         """
         return self._PageSize
@@ -22907,7 +22903,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
+        r"""查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :rtype: str
         """
         return self._Query
@@ -22918,7 +22914,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        r"""发布单ID
+        r"""发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :rtype: str
         """
         return self._ReleaseBizId
@@ -22929,7 +22925,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._StartTime
@@ -22940,7 +22936,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._EndTime
@@ -22951,7 +22947,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        r"""状态(1新增2修改3删除)
+        r"""状态(1新增2修改3删除)，其和ReleaseStatus的区别为： Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据 / 内容本身的发布状态
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -23206,23 +23202,23 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（必须大于0）
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量（取值范围为1-200）
         :type PageSize: int
-        :param _Query: 查询内容
+        :param _Query: 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :type Query: str
-        :param _ReleaseBizId: 发布单ID
+        :param _ReleaseBizId: 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :type ReleaseBizId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。Unix 时间戳，单位是秒，默认为空。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。Unix 时间戳，单位是秒，默认为空。
         :type EndTime: str
-        :param _Actions: 状态(1新增2修改3删除)
+        :param _Actions: 状态(1新增2修改3删除)，其和ReleaseStatus的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
         :type Actions: list of int non-negative
-        :param _ReleaseStatus: 发布状态(4发布成功5发布失败)
+        :param _ReleaseStatus: 发布状态(4发布成功5发布失败)。其和Actions的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
         :type ReleaseStatus: list of int non-negative
         """
         self._BotBizId = None
@@ -23237,7 +23233,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
         :rtype: str
         """
         return self._BotBizId
@@ -23248,7 +23244,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（必须大于0）
         :rtype: int
         """
         return self._PageNumber
@@ -23259,7 +23255,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量（取值范围为1-200）
         :rtype: int
         """
         return self._PageSize
@@ -23270,7 +23266,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
+        r"""查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
         :rtype: str
         """
         return self._Query
@@ -23281,7 +23277,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        r"""发布单ID
+        r"""发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
         :rtype: str
         """
         return self._ReleaseBizId
@@ -23292,7 +23288,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._StartTime
@@ -23303,7 +23299,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: str
         """
         return self._EndTime
@@ -23314,7 +23310,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        r"""状态(1新增2修改3删除)
+        r"""状态(1新增2修改3删除)，其和ReleaseStatus的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -23325,7 +23321,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态(4发布成功5发布失败)
+        r"""发布状态(4发布成功5发布失败)。其和Actions的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
         :rtype: list of int non-negative
         """
         return self._ReleaseStatus
@@ -24329,13 +24325,13 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type AppBizId: str
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量(取值范围1-200)
         :type PageSize: int
         :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
         :type RunEnv: int
-        :param _Page: 页码
+        :param _Page: 页码(必须大于0)
         :type Page: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -24351,7 +24347,7 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._AppBizId
@@ -24362,7 +24358,7 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量(取值范围1-200)
         :rtype: int
         """
         return self._PageSize
@@ -24384,7 +24380,7 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码
+        r"""页码(必须大于0)
         :rtype: int
         """
         return self._Page
@@ -26532,13 +26528,13 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _Question: 拒答问题
 
 
         :type Question: str
-        :param _RejectedBizId: 拒答问题来源的数据源唯一id
+        :param _RejectedBizId: 拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
 
 
 
@@ -26550,7 +26546,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -26574,7 +26570,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     @property
     def RejectedBizId(self):
-        r"""拒答问题来源的数据源唯一id
+        r"""拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
 
 
 
@@ -29357,7 +29353,7 @@ class RateMsgRecordRequest(AbstractModel):
         r"""
         :param _BotAppKey: 应用appKey
         :type BotAppKey: str
-        :param _RecordId: 消息ID 【大模型回复答案的RecordID】
+        :param _RecordId: 消息ID 【大模型回复答案的RecordID】可以通过[GetMsgRecord](https://cloud.tencent.com/document/product/1759/105090)接口获取
         :type RecordId: str
         :param _Score: 0: 取消前置状态 ; 1: 点赞;   2: 点踩;   
 注：
@@ -29389,7 +29385,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""消息ID 【大模型回复答案的RecordID】
+        r"""消息ID 【大模型回复答案的RecordID】可以通过[GetMsgRecord](https://cloud.tencent.com/document/product/1759/105090)接口获取
         :rtype: str
         """
         return self._RecordId
@@ -34323,11 +34319,14 @@ class VerifyQARequest(AbstractModel):
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
+        :param _KnowledgeBizId: 用于操作共享知识库
+        :type KnowledgeBizId: str
         """
         self._List = None
         self._BotBizId = None
         self._LoginUin = None
         self._LoginSubAccountUin = None
+        self._KnowledgeBizId = None
 
     @property
     def List(self):
@@ -34373,6 +34372,17 @@ class VerifyQARequest(AbstractModel):
     def LoginSubAccountUin(self, LoginSubAccountUin):
         self._LoginSubAccountUin = LoginSubAccountUin
 
+    @property
+    def KnowledgeBizId(self):
+        r"""用于操作共享知识库
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
 
     def _deserialize(self, params):
         if params.get("List") is not None:
@@ -34384,6 +34394,7 @@ class VerifyQARequest(AbstractModel):
         self._BotBizId = params.get("BotBizId")
         self._LoginUin = params.get("LoginUin")
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

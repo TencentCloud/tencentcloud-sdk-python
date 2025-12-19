@@ -316,6 +316,85 @@ class CreateRoleUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRoleUserRequest(AbstractModel):
+    r"""DeleteRoleUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleSystemId: <p>自定义角色体系的ID</p>
+        :type RoleSystemId: int
+        :param _UserId: <p>需要删除的自定义用户ID</p>
+        :type UserId: str
+        """
+        self._RoleSystemId = None
+        self._UserId = None
+
+    @property
+    def RoleSystemId(self):
+        r"""<p>自定义角色体系的ID</p>
+        :rtype: int
+        """
+        return self._RoleSystemId
+
+    @RoleSystemId.setter
+    def RoleSystemId(self, RoleSystemId):
+        self._RoleSystemId = RoleSystemId
+
+    @property
+    def UserId(self):
+        r"""<p>需要删除的自定义用户ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._RoleSystemId = params.get("RoleSystemId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoleUserResponse(AbstractModel):
+    r"""DeleteRoleUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UserAttribute(AbstractModel):
     r"""人员属性
 

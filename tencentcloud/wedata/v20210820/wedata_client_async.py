@@ -2257,6 +2257,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLineageInfo(
+            self,
+            request: models.DescribeLineageInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLineageInfoResponse:
+        """
+        通用血缘查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLineageInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLineageInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeManualTriggerRecordPage(
             self,
             request: models.DescribeManualTriggerRecordPageRequest,

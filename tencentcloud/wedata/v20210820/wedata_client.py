@@ -2878,6 +2878,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLineageInfo(self, request):
+        r"""通用血缘查询接口
+
+        :param request: Request instance for DescribeLineageInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeLineageInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeLineageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLineageInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLineageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeManualTriggerRecordPage(self, request):
         r"""查询手动任务触发记录
 

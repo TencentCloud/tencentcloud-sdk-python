@@ -403,26 +403,6 @@ class WeilingwithClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeCityWorkspaceList(
-            self,
-            request: models.DescribeCityWorkspaceListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCityWorkspaceListResponse:
-        """
-        老微瓴后续不继续更新
-
-        通过城市id查询工作空间列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCityWorkspaceList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCityWorkspaceListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDeviceGroupList(
             self,
             request: models.DescribeDeviceGroupListRequest,

@@ -10523,6 +10523,7 @@ class PhoneVerificationResponse(AbstractModel):
 -9: 没有记录。
 -11: 验证中心服务繁忙。
 -12: 认证次数超过当日限制，请次日重试。
+-13：该号段不支持验证
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
@@ -10561,6 +10562,7 @@ OtherMismatch：其他不一致。
 -9: 没有记录。
 -11: 验证中心服务繁忙。
 -12: 认证次数超过当日限制，请次日重试。
+-13：该号段不支持验证
         :rtype: str
         """
         return self._Result

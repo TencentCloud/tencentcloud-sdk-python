@@ -865,6 +865,10 @@ class AutoScalingGroup(AbstractModel):
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: 实例名称序号相关设置。
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: 实例主机名序号相关设置。
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -898,6 +902,8 @@ class AutoScalingGroup(AbstractModel):
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupId(self):
@@ -1276,6 +1282,28 @@ class AutoScalingGroup(AbstractModel):
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
 
+    @property
+    def HostNameIndexSettings(self):
+        r"""实例主机名序号相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -1326,6 +1354,10 @@ class AutoScalingGroup(AbstractModel):
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2138,6 +2170,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: 实例名称序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: 实例主机名序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupName = None
         self._LaunchConfigurationId = None
@@ -2164,6 +2200,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupName(self):
@@ -2466,6 +2504,28 @@ class CreateAutoScalingGroupRequest(AbstractModel):
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
 
+    @property
+    def HostNameIndexSettings(self):
+        r"""实例主机名序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupName = params.get("AutoScalingGroupName")
@@ -2509,6 +2569,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7394,6 +7458,102 @@ class ForwardLoadBalancerIdentification(AbstractModel):
         
 
 
+class HostNameIndexSettings(AbstractModel):
+    r"""实例主机名称序号相关设置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否开启实例主机名创建序号，默认不开启。取值范围：
+
+TRUE：表示开启实例主机名创建序号
+FALSE：表示不开启实例主机名创建序号
+        :type Enabled: bool
+        :param _BeginIndex: 初始序号。
+序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
+序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为固定位数的最大数字。
+当序号递增后超出取值范围时，扩容活动会失败。
+
+首次开启实例主机名称序号：默认值为 0。
+非首次开启实例主机名称序号：若不指定该参数，沿用历史序号。
+下调初始序号可能会造成伸缩组内实例主机名称序号重复。
+        :type BeginIndex: int
+        :param _IndexLength: 实例主机名递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。
+取值范围：0-8，最大为整数8。
+采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
+
+假设设置为3，那么序号形如：001、002 ... 010、011 ... 100 ... 999，序号上限为999;
+假设设置为0，对应的序号为1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :type IndexLength: int
+        """
+        self._Enabled = None
+        self._BeginIndex = None
+        self._IndexLength = None
+
+    @property
+    def Enabled(self):
+        r"""是否开启实例主机名创建序号，默认不开启。取值范围：
+
+TRUE：表示开启实例主机名创建序号
+FALSE：表示不开启实例主机名创建序号
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def BeginIndex(self):
+        r"""初始序号。
+序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
+序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为固定位数的最大数字。
+当序号递增后超出取值范围时，扩容活动会失败。
+
+首次开启实例主机名称序号：默认值为 0。
+非首次开启实例主机名称序号：若不指定该参数，沿用历史序号。
+下调初始序号可能会造成伸缩组内实例主机名称序号重复。
+        :rtype: int
+        """
+        return self._BeginIndex
+
+    @BeginIndex.setter
+    def BeginIndex(self, BeginIndex):
+        self._BeginIndex = BeginIndex
+
+    @property
+    def IndexLength(self):
+        r"""实例主机名递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。
+取值范围：0-8，最大为整数8。
+采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
+
+假设设置为3，那么序号形如：001、002 ... 010、011 ... 100 ... 999，序号上限为999;
+假设设置为0，对应的序号为1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :rtype: int
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._BeginIndex = params.get("BeginIndex")
+        self._IndexLength = params.get("IndexLength")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostNameSettings(AbstractModel):
     r"""云服务器主机名（HostName）的相关设置
 
@@ -9927,6 +10087,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: 实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -9951,6 +10115,8 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupId(self):
@@ -10233,6 +10399,28 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
 
+    @property
+    def HostNameIndexSettings(self):
+        r"""实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -10264,6 +10452,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

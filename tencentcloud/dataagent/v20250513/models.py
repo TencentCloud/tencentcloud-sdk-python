@@ -1088,6 +1088,105 @@ class FileInfo(AbstractModel):
         
 
 
+class GetJobsByKnowledgeBaseIdRequest(AbstractModel):
+    r"""GetJobsByKnowledgeBaseId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
+        """
+        self._InstanceId = None
+        self._KnowledgeBaseId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetJobsByKnowledgeBaseIdResponse(AbstractModel):
+    r"""GetJobsByKnowledgeBaseId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Jobs: 任务列表详情
+        :type Jobs: list of UploadJob
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Jobs = None
+        self._RequestId = None
+
+    @property
+    def Jobs(self):
+        r"""任务列表详情
+        :rtype: list of UploadJob
+        """
+        return self._Jobs
+
+    @Jobs.setter
+    def Jobs(self, Jobs):
+        self._Jobs = Jobs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Jobs") is not None:
+            self._Jobs = []
+            for item in params.get("Jobs"):
+                obj = UploadJob()
+                obj._deserialize(item)
+                self._Jobs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class GetKnowledgeBaseFileListRequest(AbstractModel):
     r"""GetKnowledgeBaseFileList请求参数结构体
 

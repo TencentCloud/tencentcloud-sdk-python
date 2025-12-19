@@ -509,31 +509,6 @@ class WeilingwithClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCityWorkspaceList(self, request):
-        r"""老微瓴后续不继续更新
-
-        通过城市id查询工作空间列表
-
-        :param request: Request instance for DescribeCityWorkspaceList.
-        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRequest`
-        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCityWorkspaceList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCityWorkspaceListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDeviceGroupList(self, request):
         r"""设备分组列表
 

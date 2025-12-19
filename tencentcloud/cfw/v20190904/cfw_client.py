@@ -464,7 +464,9 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAllAccessControlRule(self, request):
-        r"""全部删除规则
+        r"""业务废弃
+
+        全部删除规则
 
         :param request: Request instance for DeleteAllAccessControlRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`

@@ -70,3 +70,26 @@ class EvtClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRoleUser(self, request):
+        r"""删除自定义用户
+
+        :param request: Request instance for DeleteRoleUser.
+        :type request: :class:`tencentcloud.evt.v20250217.models.DeleteRoleUserRequest`
+        :rtype: :class:`tencentcloud.evt.v20250217.models.DeleteRoleUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoleUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoleUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

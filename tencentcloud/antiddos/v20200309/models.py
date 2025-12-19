@@ -13812,6 +13812,180 @@ class DescribeListPortAclListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeListProtectThresholdConfigNewRequest(AbstractModel):
+    r"""DescribeListProtectThresholdConfigNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param _Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param _FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param _FilterIp: IP搜索
+        :type FilterIp: str
+        :param _FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）
+        :type FilterDomain: str
+        :param _FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）
+        :type FilterProtocol: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._FilterInstanceId = None
+        self._FilterIp = None
+        self._FilterDomain = None
+        self._FilterProtocol = None
+
+    @property
+    def Offset(self):
+        r"""页起始偏移，取值为(页码-1)*一页条数
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FilterInstanceId(self):
+        r"""资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :rtype: str
+        """
+        return self._FilterInstanceId
+
+    @FilterInstanceId.setter
+    def FilterInstanceId(self, FilterInstanceId):
+        self._FilterInstanceId = FilterInstanceId
+
+    @property
+    def FilterIp(self):
+        r"""IP搜索
+        :rtype: str
+        """
+        return self._FilterIp
+
+    @FilterIp.setter
+    def FilterIp(self, FilterIp):
+        self._FilterIp = FilterIp
+
+    @property
+    def FilterDomain(self):
+        r"""域名搜索(查询域名与协议的CC防护阈值时使用）
+        :rtype: str
+        """
+        return self._FilterDomain
+
+    @FilterDomain.setter
+    def FilterDomain(self, FilterDomain):
+        self._FilterDomain = FilterDomain
+
+    @property
+    def FilterProtocol(self):
+        r"""协议搜索(查询域名与协议的CC防护阈值时使用）
+        :rtype: str
+        """
+        return self._FilterProtocol
+
+    @FilterProtocol.setter
+    def FilterProtocol(self, FilterProtocol):
+        self._FilterProtocol = FilterProtocol
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FilterInstanceId = params.get("FilterInstanceId")
+        self._FilterIp = params.get("FilterIp")
+        self._FilterDomain = params.get("FilterDomain")
+        self._FilterProtocol = params.get("FilterProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeListProtectThresholdConfigNewResponse(AbstractModel):
+    r"""DescribeListProtectThresholdConfigNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _ConfigList: 防护阈值配置列表
+        :type ConfigList: list of ProtectThresholdRelationNew
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._ConfigList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ConfigList(self):
+        r"""防护阈值配置列表
+        :rtype: list of ProtectThresholdRelationNew
+        """
+        return self._ConfigList
+
+    @ConfigList.setter
+    def ConfigList(self, ConfigList):
+        self._ConfigList = ConfigList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("ConfigList") is not None:
+            self._ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ProtectThresholdRelationNew()
+                obj._deserialize(item)
+                self._ConfigList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeListProtocolBlockConfigRequest(AbstractModel):
     r"""DescribeListProtocolBlockConfig请求参数结构体
 
@@ -18017,6 +18191,87 @@ class Layer7Rule(AbstractModel):
         
 
 
+class ListenerCcThresholdConfig(AbstractModel):
+    r"""域名与协议纬度的CC防护阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Protocol: 协议（可取值https）
+        :type Protocol: str
+        :param _CCEnable: 开关状态（0：关闭，1：开启）
+        :type CCEnable: int
+        :param _CCThreshold: cc防护阈值
+        :type CCThreshold: int
+        """
+        self._Domain = None
+        self._Protocol = None
+        self._CCEnable = None
+        self._CCThreshold = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Protocol(self):
+        r"""协议（可取值https）
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CCEnable(self):
+        r"""开关状态（0：关闭，1：开启）
+        :rtype: int
+        """
+        return self._CCEnable
+
+    @CCEnable.setter
+    def CCEnable(self, CCEnable):
+        self._CCEnable = CCEnable
+
+    @property
+    def CCThreshold(self):
+        r"""cc防护阈值
+        :rtype: int
+        """
+        return self._CCThreshold
+
+    @CCThreshold.setter
+    def CCThreshold(self, CCThreshold):
+        self._CCThreshold = CCThreshold
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Protocol = params.get("Protocol")
+        self._CCEnable = params.get("CCEnable")
+        self._CCThreshold = params.get("CCThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyCCLevelPolicyRequest(AbstractModel):
     r"""ModifyCCLevelPolicy请求参数结构体
 
@@ -20884,6 +21139,332 @@ class PortSegment(AbstractModel):
     def _deserialize(self, params):
         self._BeginPort = params.get("BeginPort")
         self._EndPort = params.get("EndPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtectThresholdRelationNew(AbstractModel):
+    r"""防护阈值配置相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DDoSLevel: DDoS防护等级，取值[
+low(宽松)
+middle(适中)
+high(严格)
+]
+        :type DDoSLevel: str
+        :param _DDoSThreshold: DDoS清洗阈值，单位Mbps
+        :type DDoSThreshold: int
+        :param _DDoSAI: DDoS的AI防护开关，取值[
+on(开启)
+off(关闭)
+]
+        :type DDoSAI: str
+        :param _CCEnable: CC清洗开关，取值[
+0(关闭)
+1(开启)
+]
+        :type CCEnable: int
+        :param _CCThreshold: CC清洗阈值，单位QPS
+        :type CCThreshold: int
+        :param _InstanceDetailList: 所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
+        :param _ListenerCcThresholdList: 域名与协议纬度的防护阈值
+        :type ListenerCcThresholdList: list of ListenerCcThresholdConfig
+        :param _SynFloodThreshold: SYN FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynFloodThreshold: int
+        :param _SynFloodPktThreshold: SYN FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynFloodPktThreshold: int
+        :param _UdpFloodThreshold: UDP FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UdpFloodThreshold: int
+        :param _UdpFloodPktThreshold: UDP FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UdpFloodPktThreshold: int
+        :param _AckFloodThreshold: ACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AckFloodThreshold: int
+        :param _AckFloodPktThreshold: ACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AckFloodPktThreshold: int
+        :param _SynAckFloodThreshold: SYNACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynAckFloodThreshold: int
+        :param _SynAckFloodPktThreshold: SYNACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynAckFloodPktThreshold: int
+        :param _RstFloodThreshold: RST FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RstFloodThreshold: int
+        :param _RstFloodPktThreshold: RST FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RstFloodPktThreshold: int
+        """
+        self._DDoSLevel = None
+        self._DDoSThreshold = None
+        self._DDoSAI = None
+        self._CCEnable = None
+        self._CCThreshold = None
+        self._InstanceDetailList = None
+        self._ListenerCcThresholdList = None
+        self._SynFloodThreshold = None
+        self._SynFloodPktThreshold = None
+        self._UdpFloodThreshold = None
+        self._UdpFloodPktThreshold = None
+        self._AckFloodThreshold = None
+        self._AckFloodPktThreshold = None
+        self._SynAckFloodThreshold = None
+        self._SynAckFloodPktThreshold = None
+        self._RstFloodThreshold = None
+        self._RstFloodPktThreshold = None
+
+    @property
+    def DDoSLevel(self):
+        r"""DDoS防护等级，取值[
+low(宽松)
+middle(适中)
+high(严格)
+]
+        :rtype: str
+        """
+        return self._DDoSLevel
+
+    @DDoSLevel.setter
+    def DDoSLevel(self, DDoSLevel):
+        self._DDoSLevel = DDoSLevel
+
+    @property
+    def DDoSThreshold(self):
+        r"""DDoS清洗阈值，单位Mbps
+        :rtype: int
+        """
+        return self._DDoSThreshold
+
+    @DDoSThreshold.setter
+    def DDoSThreshold(self, DDoSThreshold):
+        self._DDoSThreshold = DDoSThreshold
+
+    @property
+    def DDoSAI(self):
+        r"""DDoS的AI防护开关，取值[
+on(开启)
+off(关闭)
+]
+        :rtype: str
+        """
+        return self._DDoSAI
+
+    @DDoSAI.setter
+    def DDoSAI(self, DDoSAI):
+        self._DDoSAI = DDoSAI
+
+    @property
+    def CCEnable(self):
+        r"""CC清洗开关，取值[
+0(关闭)
+1(开启)
+]
+        :rtype: int
+        """
+        return self._CCEnable
+
+    @CCEnable.setter
+    def CCEnable(self, CCEnable):
+        self._CCEnable = CCEnable
+
+    @property
+    def CCThreshold(self):
+        r"""CC清洗阈值，单位QPS
+        :rtype: int
+        """
+        return self._CCThreshold
+
+    @CCThreshold.setter
+    def CCThreshold(self, CCThreshold):
+        self._CCThreshold = CCThreshold
+
+    @property
+    def InstanceDetailList(self):
+        r"""所属的资源实例
+        :rtype: list of InstanceRelation
+        """
+        return self._InstanceDetailList
+
+    @InstanceDetailList.setter
+    def InstanceDetailList(self, InstanceDetailList):
+        self._InstanceDetailList = InstanceDetailList
+
+    @property
+    def ListenerCcThresholdList(self):
+        r"""域名与协议纬度的防护阈值
+        :rtype: list of ListenerCcThresholdConfig
+        """
+        return self._ListenerCcThresholdList
+
+    @ListenerCcThresholdList.setter
+    def ListenerCcThresholdList(self, ListenerCcThresholdList):
+        self._ListenerCcThresholdList = ListenerCcThresholdList
+
+    @property
+    def SynFloodThreshold(self):
+        r"""SYN FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SynFloodThreshold
+
+    @SynFloodThreshold.setter
+    def SynFloodThreshold(self, SynFloodThreshold):
+        self._SynFloodThreshold = SynFloodThreshold
+
+    @property
+    def SynFloodPktThreshold(self):
+        r"""SYN FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SynFloodPktThreshold
+
+    @SynFloodPktThreshold.setter
+    def SynFloodPktThreshold(self, SynFloodPktThreshold):
+        self._SynFloodPktThreshold = SynFloodPktThreshold
+
+    @property
+    def UdpFloodThreshold(self):
+        r"""UDP FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UdpFloodThreshold
+
+    @UdpFloodThreshold.setter
+    def UdpFloodThreshold(self, UdpFloodThreshold):
+        self._UdpFloodThreshold = UdpFloodThreshold
+
+    @property
+    def UdpFloodPktThreshold(self):
+        r"""UDP FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UdpFloodPktThreshold
+
+    @UdpFloodPktThreshold.setter
+    def UdpFloodPktThreshold(self, UdpFloodPktThreshold):
+        self._UdpFloodPktThreshold = UdpFloodPktThreshold
+
+    @property
+    def AckFloodThreshold(self):
+        r"""ACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AckFloodThreshold
+
+    @AckFloodThreshold.setter
+    def AckFloodThreshold(self, AckFloodThreshold):
+        self._AckFloodThreshold = AckFloodThreshold
+
+    @property
+    def AckFloodPktThreshold(self):
+        r"""ACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AckFloodPktThreshold
+
+    @AckFloodPktThreshold.setter
+    def AckFloodPktThreshold(self, AckFloodPktThreshold):
+        self._AckFloodPktThreshold = AckFloodPktThreshold
+
+    @property
+    def SynAckFloodThreshold(self):
+        r"""SYNACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SynAckFloodThreshold
+
+    @SynAckFloodThreshold.setter
+    def SynAckFloodThreshold(self, SynAckFloodThreshold):
+        self._SynAckFloodThreshold = SynAckFloodThreshold
+
+    @property
+    def SynAckFloodPktThreshold(self):
+        r"""SYNACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SynAckFloodPktThreshold
+
+    @SynAckFloodPktThreshold.setter
+    def SynAckFloodPktThreshold(self, SynAckFloodPktThreshold):
+        self._SynAckFloodPktThreshold = SynAckFloodPktThreshold
+
+    @property
+    def RstFloodThreshold(self):
+        r"""RST FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RstFloodThreshold
+
+    @RstFloodThreshold.setter
+    def RstFloodThreshold(self, RstFloodThreshold):
+        self._RstFloodThreshold = RstFloodThreshold
+
+    @property
+    def RstFloodPktThreshold(self):
+        r"""RST FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RstFloodPktThreshold
+
+    @RstFloodPktThreshold.setter
+    def RstFloodPktThreshold(self, RstFloodPktThreshold):
+        self._RstFloodPktThreshold = RstFloodPktThreshold
+
+
+    def _deserialize(self, params):
+        self._DDoSLevel = params.get("DDoSLevel")
+        self._DDoSThreshold = params.get("DDoSThreshold")
+        self._DDoSAI = params.get("DDoSAI")
+        self._CCEnable = params.get("CCEnable")
+        self._CCThreshold = params.get("CCThreshold")
+        if params.get("InstanceDetailList") is not None:
+            self._InstanceDetailList = []
+            for item in params.get("InstanceDetailList"):
+                obj = InstanceRelation()
+                obj._deserialize(item)
+                self._InstanceDetailList.append(obj)
+        if params.get("ListenerCcThresholdList") is not None:
+            self._ListenerCcThresholdList = []
+            for item in params.get("ListenerCcThresholdList"):
+                obj = ListenerCcThresholdConfig()
+                obj._deserialize(item)
+                self._ListenerCcThresholdList.append(obj)
+        self._SynFloodThreshold = params.get("SynFloodThreshold")
+        self._SynFloodPktThreshold = params.get("SynFloodPktThreshold")
+        self._UdpFloodThreshold = params.get("UdpFloodThreshold")
+        self._UdpFloodPktThreshold = params.get("UdpFloodPktThreshold")
+        self._AckFloodThreshold = params.get("AckFloodThreshold")
+        self._AckFloodPktThreshold = params.get("AckFloodPktThreshold")
+        self._SynAckFloodThreshold = params.get("SynAckFloodThreshold")
+        self._SynAckFloodPktThreshold = params.get("SynAckFloodPktThreshold")
+        self._RstFloodThreshold = params.get("RstFloodThreshold")
+        self._RstFloodPktThreshold = params.get("RstFloodPktThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

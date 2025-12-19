@@ -1267,6 +1267,24 @@ class AntiddosClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeListProtectThresholdConfigNew(
+            self,
+            request: models.DescribeListProtectThresholdConfigNewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeListProtectThresholdConfigNewResponse:
+        """
+        获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeListProtectThresholdConfigNew"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeListProtectThresholdConfigNewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeListProtocolBlockConfig(
             self,
             request: models.DescribeListProtocolBlockConfigRequest,

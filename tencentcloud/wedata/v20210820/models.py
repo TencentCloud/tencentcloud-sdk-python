@@ -33537,6 +33537,224 @@ class DescribeIntegrationVersionNodesInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLineageInfoRequest(AbstractModel):
+    r"""DescribeLineageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceOriId: 实体原始唯一ID
+        :type ResourceOriId: str
+        :param _ResourceType: 实体类型
+        :type ResourceType: str
+        :param _QualifiedId: 血缘唯一ID
+        :type QualifiedId: str
+        :param _Direction: 查询方向
+        :type Direction: str
+        :param _InputDepth: 查询入度
+        :type InputDepth: int
+        :param _OutputDepth: 查询出度
+        :type OutputDepth: int
+        :param _Platform: 数据来源
+        :type Platform: str
+        :param _LineageType: 血缘类型（分页使用）
+        :type LineageType: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        """
+        self._ResourceOriId = None
+        self._ResourceType = None
+        self._QualifiedId = None
+        self._Direction = None
+        self._InputDepth = None
+        self._OutputDepth = None
+        self._Platform = None
+        self._LineageType = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ResourceOriId(self):
+        r"""实体原始唯一ID
+        :rtype: str
+        """
+        return self._ResourceOriId
+
+    @ResourceOriId.setter
+    def ResourceOriId(self, ResourceOriId):
+        self._ResourceOriId = ResourceOriId
+
+    @property
+    def ResourceType(self):
+        r"""实体类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def QualifiedId(self):
+        r"""血缘唯一ID
+        :rtype: str
+        """
+        return self._QualifiedId
+
+    @QualifiedId.setter
+    def QualifiedId(self, QualifiedId):
+        self._QualifiedId = QualifiedId
+
+    @property
+    def Direction(self):
+        r"""查询方向
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def InputDepth(self):
+        r"""查询入度
+        :rtype: int
+        """
+        return self._InputDepth
+
+    @InputDepth.setter
+    def InputDepth(self, InputDepth):
+        self._InputDepth = InputDepth
+
+    @property
+    def OutputDepth(self):
+        r"""查询出度
+        :rtype: int
+        """
+        return self._OutputDepth
+
+    @OutputDepth.setter
+    def OutputDepth(self, OutputDepth):
+        self._OutputDepth = OutputDepth
+
+    @property
+    def Platform(self):
+        r"""数据来源
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def LineageType(self):
+        r"""血缘类型（分页使用）
+        :rtype: str
+        """
+        return self._LineageType
+
+    @LineageType.setter
+    def LineageType(self, LineageType):
+        self._LineageType = LineageType
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ResourceOriId = params.get("ResourceOriId")
+        self._ResourceType = params.get("ResourceType")
+        self._QualifiedId = params.get("QualifiedId")
+        self._Direction = params.get("Direction")
+        self._InputDepth = params.get("InputDepth")
+        self._OutputDepth = params.get("OutputDepth")
+        self._Platform = params.get("Platform")
+        self._LineageType = params.get("LineageType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLineageInfoResponse(AbstractModel):
+    r"""DescribeLineageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 血缘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.LineageCommonInfoVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""血缘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageCommonInfoVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = LineageCommonInfoVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeManualTriggerRecordPageRequest(AbstractModel):
     r"""DescribeManualTriggerRecordPage请求参数结构体
 
@@ -66738,6 +66956,295 @@ class LifecycleInfo(AbstractModel):
         
 
 
+class LineageCommonInfoVO(AbstractModel):
+    r"""LineageCommonInfoVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentResource: 当前节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentResource: :class:`tencentcloud.wedata.v20210820.models.LineageResouce`
+        :param _ParentSet: 上游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSet: list of LineageNodeInfoVO
+        :param _ChildSet: 下游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildSet: list of LineageNodeInfoVO
+        :param _DownStreamCount: 下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownStreamCount: int
+        :param _UpStreamCount: 上游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpStreamCount: int
+        :param _StreamCountFlag: 父/子节点是否展示上下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamCountFlag: bool
+        """
+        self._CurrentResource = None
+        self._ParentSet = None
+        self._ChildSet = None
+        self._DownStreamCount = None
+        self._UpStreamCount = None
+        self._StreamCountFlag = None
+
+    @property
+    def CurrentResource(self):
+        r"""当前节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageResouce`
+        """
+        return self._CurrentResource
+
+    @CurrentResource.setter
+    def CurrentResource(self, CurrentResource):
+        self._CurrentResource = CurrentResource
+
+    @property
+    def ParentSet(self):
+        r"""上游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageNodeInfoVO
+        """
+        return self._ParentSet
+
+    @ParentSet.setter
+    def ParentSet(self, ParentSet):
+        self._ParentSet = ParentSet
+
+    @property
+    def ChildSet(self):
+        r"""下游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageNodeInfoVO
+        """
+        return self._ChildSet
+
+    @ChildSet.setter
+    def ChildSet(self, ChildSet):
+        self._ChildSet = ChildSet
+
+    @property
+    def DownStreamCount(self):
+        r"""下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DownStreamCount
+
+    @DownStreamCount.setter
+    def DownStreamCount(self, DownStreamCount):
+        self._DownStreamCount = DownStreamCount
+
+    @property
+    def UpStreamCount(self):
+        r"""上游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpStreamCount
+
+    @UpStreamCount.setter
+    def UpStreamCount(self, UpStreamCount):
+        self._UpStreamCount = UpStreamCount
+
+    @property
+    def StreamCountFlag(self):
+        r"""父/子节点是否展示上下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._StreamCountFlag
+
+    @StreamCountFlag.setter
+    def StreamCountFlag(self, StreamCountFlag):
+        self._StreamCountFlag = StreamCountFlag
+
+
+    def _deserialize(self, params):
+        if params.get("CurrentResource") is not None:
+            self._CurrentResource = LineageResouce()
+            self._CurrentResource._deserialize(params.get("CurrentResource"))
+        if params.get("ParentSet") is not None:
+            self._ParentSet = []
+            for item in params.get("ParentSet"):
+                obj = LineageNodeInfoVO()
+                obj._deserialize(item)
+                self._ParentSet.append(obj)
+        if params.get("ChildSet") is not None:
+            self._ChildSet = []
+            for item in params.get("ChildSet"):
+                obj = LineageNodeInfoVO()
+                obj._deserialize(item)
+                self._ChildSet.append(obj)
+        self._DownStreamCount = params.get("DownStreamCount")
+        self._UpStreamCount = params.get("UpStreamCount")
+        self._StreamCountFlag = params.get("StreamCountFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineageNodeInfoVO(AbstractModel):
+    r"""LineageNodeInfoVo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentResource: 当前资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentResource: :class:`tencentcloud.wedata.v20210820.models.LineageResouce`
+        :param _Relation: 关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Relation: :class:`tencentcloud.wedata.v20210820.models.LineageRelationVO`
+        :param _DownStreamCount: 上游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownStreamCount: int
+        :param _UpStreamCount: 下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpStreamCount: int
+        :param _ParentSet: 上游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSet: list of LineageNodeInfoVO
+        :param _ChildSet: 下游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildSet: list of LineageNodeInfoVO
+        :param _StreamCountFlag: 父/子节点是否展示上下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamCountFlag: bool
+        """
+        self._CurrentResource = None
+        self._Relation = None
+        self._DownStreamCount = None
+        self._UpStreamCount = None
+        self._ParentSet = None
+        self._ChildSet = None
+        self._StreamCountFlag = None
+
+    @property
+    def CurrentResource(self):
+        r"""当前资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageResouce`
+        """
+        return self._CurrentResource
+
+    @CurrentResource.setter
+    def CurrentResource(self, CurrentResource):
+        self._CurrentResource = CurrentResource
+
+    @property
+    def Relation(self):
+        r"""关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageRelationVO`
+        """
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+    @property
+    def DownStreamCount(self):
+        r"""上游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DownStreamCount
+
+    @DownStreamCount.setter
+    def DownStreamCount(self, DownStreamCount):
+        self._DownStreamCount = DownStreamCount
+
+    @property
+    def UpStreamCount(self):
+        r"""下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpStreamCount
+
+    @UpStreamCount.setter
+    def UpStreamCount(self, UpStreamCount):
+        self._UpStreamCount = UpStreamCount
+
+    @property
+    def ParentSet(self):
+        r"""上游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageNodeInfoVO
+        """
+        return self._ParentSet
+
+    @ParentSet.setter
+    def ParentSet(self, ParentSet):
+        self._ParentSet = ParentSet
+
+    @property
+    def ChildSet(self):
+        r"""下游节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageNodeInfoVO
+        """
+        return self._ChildSet
+
+    @ChildSet.setter
+    def ChildSet(self, ChildSet):
+        self._ChildSet = ChildSet
+
+    @property
+    def StreamCountFlag(self):
+        r"""父/子节点是否展示上下游数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._StreamCountFlag
+
+    @StreamCountFlag.setter
+    def StreamCountFlag(self, StreamCountFlag):
+        self._StreamCountFlag = StreamCountFlag
+
+
+    def _deserialize(self, params):
+        if params.get("CurrentResource") is not None:
+            self._CurrentResource = LineageResouce()
+            self._CurrentResource._deserialize(params.get("CurrentResource"))
+        if params.get("Relation") is not None:
+            self._Relation = LineageRelationVO()
+            self._Relation._deserialize(params.get("Relation"))
+        self._DownStreamCount = params.get("DownStreamCount")
+        self._UpStreamCount = params.get("UpStreamCount")
+        if params.get("ParentSet") is not None:
+            self._ParentSet = []
+            for item in params.get("ParentSet"):
+                obj = LineageNodeInfoVO()
+                obj._deserialize(item)
+                self._ParentSet.append(obj)
+        if params.get("ChildSet") is not None:
+            self._ChildSet = []
+            for item in params.get("ChildSet"):
+                obj = LineageNodeInfoVO()
+                obj._deserialize(item)
+                self._ChildSet.append(obj)
+        self._StreamCountFlag = params.get("StreamCountFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LineageParamRecord(AbstractModel):
     r"""血缘参数记录
 
@@ -66781,6 +67288,500 @@ class LineageParamRecord(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineageProcessVO(AbstractModel):
+    r"""LineageProcessVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessId: 原始唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: str
+        :param _ProcessType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessType: str
+        :param _ProcessSubType: 任务子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessSubType: str
+        :param _ProcessName: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessName: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _QualifiedId: 唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualifiedId: str
+        :param _Platform: 来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: str
+        :param _ProcessProperties: 额外扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessProperties: list of LineageProperty
+        """
+        self._ProcessId = None
+        self._ProcessType = None
+        self._ProcessSubType = None
+        self._ProcessName = None
+        self._Description = None
+        self._QualifiedId = None
+        self._Platform = None
+        self._ProcessProperties = None
+
+    @property
+    def ProcessId(self):
+        r"""原始唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def ProcessType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
+    @property
+    def ProcessSubType(self):
+        r"""任务子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProcessSubType
+
+    @ProcessSubType.setter
+    def ProcessSubType(self, ProcessSubType):
+        self._ProcessSubType = ProcessSubType
+
+    @property
+    def ProcessName(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def QualifiedId(self):
+        r"""唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QualifiedId
+
+    @QualifiedId.setter
+    def QualifiedId(self, QualifiedId):
+        self._QualifiedId = QualifiedId
+
+    @property
+    def Platform(self):
+        r"""来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ProcessProperties(self):
+        r"""额外扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageProperty
+        """
+        return self._ProcessProperties
+
+    @ProcessProperties.setter
+    def ProcessProperties(self, ProcessProperties):
+        self._ProcessProperties = ProcessProperties
+
+
+    def _deserialize(self, params):
+        self._ProcessId = params.get("ProcessId")
+        self._ProcessType = params.get("ProcessType")
+        self._ProcessSubType = params.get("ProcessSubType")
+        self._ProcessName = params.get("ProcessName")
+        self._Description = params.get("Description")
+        self._QualifiedId = params.get("QualifiedId")
+        self._Platform = params.get("Platform")
+        if params.get("ProcessProperties") is not None:
+            self._ProcessProperties = []
+            for item in params.get("ProcessProperties"):
+                obj = LineageProperty()
+                obj._deserialize(item)
+                self._ProcessProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineageProperty(AbstractModel):
+    r"""LineageProperty额外扩展参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 属性名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""属性名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineageRelationVO(AbstractModel):
+    r"""LineageRelationVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelationId: 关联ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationId: str
+        :param _SourceQualifiedId: 源端唯一血缘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceQualifiedId: str
+        :param _TargetQualifiedId: 目标端唯一血缘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetQualifiedId: str
+        :param _Processes: 血缘加工过程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Processes: list of LineageProcessVO
+        """
+        self._RelationId = None
+        self._SourceQualifiedId = None
+        self._TargetQualifiedId = None
+        self._Processes = None
+
+    @property
+    def RelationId(self):
+        r"""关联ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelationId
+
+    @RelationId.setter
+    def RelationId(self, RelationId):
+        self._RelationId = RelationId
+
+    @property
+    def SourceQualifiedId(self):
+        r"""源端唯一血缘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceQualifiedId
+
+    @SourceQualifiedId.setter
+    def SourceQualifiedId(self, SourceQualifiedId):
+        self._SourceQualifiedId = SourceQualifiedId
+
+    @property
+    def TargetQualifiedId(self):
+        r"""目标端唯一血缘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetQualifiedId
+
+    @TargetQualifiedId.setter
+    def TargetQualifiedId(self, TargetQualifiedId):
+        self._TargetQualifiedId = TargetQualifiedId
+
+    @property
+    def Processes(self):
+        r"""血缘加工过程
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageProcessVO
+        """
+        return self._Processes
+
+    @Processes.setter
+    def Processes(self, Processes):
+        self._Processes = Processes
+
+
+    def _deserialize(self, params):
+        self._RelationId = params.get("RelationId")
+        self._SourceQualifiedId = params.get("SourceQualifiedId")
+        self._TargetQualifiedId = params.get("TargetQualifiedId")
+        if params.get("Processes") is not None:
+            self._Processes = []
+            for item in params.get("Processes"):
+                obj = LineageProcessVO()
+                obj._deserialize(item)
+                self._Processes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineageResouce(AbstractModel):
+    r"""血缘实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceOriId: 实体原始唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceOriId: str
+        :param _ResourceName: 业务名称：库名.表名｜指标名称｜模型名称|字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _ResourceType: 实体类型
+TABLE|METRIC|MODEL|SERVICE|COLUMN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _QualifiedId: 血缘全局唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualifiedId: str
+        :param _Description: 描述：表类型｜指标描述｜模型描述|字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Platform: 来源：WEDATA|THIRD
+默认wedata
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _ResourceProperties: resource 额外扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceProperties: list of LineageProperty
+        """
+        self._ResourceOriId = None
+        self._ResourceName = None
+        self._ResourceType = None
+        self._QualifiedId = None
+        self._Description = None
+        self._Platform = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ResourceProperties = None
+
+    @property
+    def ResourceOriId(self):
+        r"""实体原始唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceOriId
+
+    @ResourceOriId.setter
+    def ResourceOriId(self, ResourceOriId):
+        self._ResourceOriId = ResourceOriId
+
+    @property
+    def ResourceName(self):
+        r"""业务名称：库名.表名｜指标名称｜模型名称|字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceType(self):
+        r"""实体类型
+TABLE|METRIC|MODEL|SERVICE|COLUMN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def QualifiedId(self):
+        r"""血缘全局唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QualifiedId
+
+    @QualifiedId.setter
+    def QualifiedId(self, QualifiedId):
+        self._QualifiedId = QualifiedId
+
+    @property
+    def Description(self):
+        r"""描述：表类型｜指标描述｜模型描述|字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Platform(self):
+        r"""来源：WEDATA|THIRD
+默认wedata
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ResourceProperties(self):
+        r"""resource 额外扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LineageProperty
+        """
+        return self._ResourceProperties
+
+    @ResourceProperties.setter
+    def ResourceProperties(self, ResourceProperties):
+        self._ResourceProperties = ResourceProperties
+
+
+    def _deserialize(self, params):
+        self._ResourceOriId = params.get("ResourceOriId")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceType = params.get("ResourceType")
+        self._QualifiedId = params.get("QualifiedId")
+        self._Description = params.get("Description")
+        self._Platform = params.get("Platform")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ResourceProperties") is not None:
+            self._ResourceProperties = []
+            for item in params.get("ResourceProperties"):
+                obj = LineageProperty()
+                obj._deserialize(item)
+                self._ResourceProperties.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

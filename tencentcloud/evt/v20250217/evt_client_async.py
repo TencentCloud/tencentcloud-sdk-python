@@ -60,3 +60,21 @@ class EvtClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRoleUser(
+            self,
+            request: models.DeleteRoleUserRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRoleUserResponse:
+        """
+        删除自定义用户
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRoleUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRoleUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

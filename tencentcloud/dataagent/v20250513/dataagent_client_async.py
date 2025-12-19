@@ -115,6 +115,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetJobsByKnowledgeBaseId(
+            self,
+            request: models.GetJobsByKnowledgeBaseIdRequest,
+            opts: Dict = None,
+    ) -> models.GetJobsByKnowledgeBaseIdResponse:
+        """
+        根据知识库id查询jobs 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetJobsByKnowledgeBaseId"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetJobsByKnowledgeBaseIdResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetKnowledgeBaseFileList(
             self,
             request: models.GetKnowledgeBaseFileListRequest,
