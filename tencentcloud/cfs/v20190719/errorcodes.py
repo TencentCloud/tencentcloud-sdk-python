@@ -371,7 +371,7 @@ INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = 'InvalidParameterValue.TagValueLim
 # 该可用区无法提供服务。
 INVALIDPARAMETERVALUE_UNAVAILABLEREGION = 'InvalidParameterValue.UnavailableRegion'
 
-# 该地域无法提供服务。
+# 该地域或可用区无法提供服务。
 INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 
 # 生命周期数据任务数超限

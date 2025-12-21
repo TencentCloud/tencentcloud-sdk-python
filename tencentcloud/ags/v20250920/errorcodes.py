@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
+# 请求未CAM授权
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -22,6 +28,9 @@ FAILEDOPERATION_DUPLICATEREQUEST = 'FailedOperation.DuplicateRequest'
 
 # 请求正在处理中（幂等性检查）
 FAILEDOPERATION_REQUESTINPROGRESS = 'FailedOperation.RequestInProgress'
+
+# 沙箱实例存储配置挂载失败
+FAILEDOPERATION_STORAGEMOUNT = 'FailedOperation.StorageMount'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -35,8 +44,17 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # InstanceIds 参数格式错误或 ID 列表超过最大数量限制
 INVALIDPARAMETERVALUE_INSTANCEIDS = 'InvalidParameterValue.InstanceIds'
 
+# MountOption部分参数填写错误
+INVALIDPARAMETERVALUE_MOUNTOPTION = 'InvalidParameterValue.MountOption'
+
+# Role Arn格式不满足腾讯云规范
+INVALIDPARAMETERVALUE_ROLEARN = 'InvalidParameterValue.RoleArn'
+
 # 沙箱工具名称不可用，可能是已经存在
 INVALIDPARAMETERVALUE_SANDBOXTOOL = 'InvalidParameterValue.SandboxTool'
+
+# StorageMount部分参数错误
+INVALIDPARAMETERVALUE_STORAGEMOUNT = 'InvalidParameterValue.StorageMount'
 
 # 超时时间格式错误或超过最大限制
 INVALIDPARAMETERVALUE_TIMEOUT = 'InvalidParameterValue.Timeout'
@@ -56,6 +74,9 @@ LIMITEXCEEDED_SANDBOXINSTANCE = 'LimitExceeded.SandboxInstance'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 缺少角色Arn
+MISSINGPARAMETER_ROLEARN = 'MissingParameter.RoleArn'
+
 # 沙箱工具正在使用中
 RESOURCEINUSE_SANDBOXTOOL = 'ResourceInUse.SandboxTool'
 
@@ -67,6 +88,9 @@ RESOURCENOTFOUND_SANDBOXINSTANCE = 'ResourceNotFound.SandboxInstance'
 
 # 沙箱工具不存在
 RESOURCENOTFOUND_SANDBOXTOOL = 'ResourceNotFound.SandboxTool'
+
+# 指定的StorageMount不存在
+RESOURCENOTFOUND_STORAGEMOUNT = 'ResourceNotFound.StorageMount'
 
 # 沙箱工具不可用
 RESOURCEUNAVAILABLE_SANDBOXTOOL = 'ResourceUnavailable.SandboxTool'

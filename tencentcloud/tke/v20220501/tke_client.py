@@ -164,6 +164,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterMachines(self, request):
+        r"""查询托原生点列表
+
+        :param request: Request instance for DescribeClusterMachines.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeClusterMachinesRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeClusterMachinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterMachines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterMachinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusters(self, request):
         r"""查询集群列表
 

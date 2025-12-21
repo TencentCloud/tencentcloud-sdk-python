@@ -3630,18 +3630,14 @@ class BusinessLogConfig(AbstractModel):
         :param _ConfigPath: 配置项日志路径
         :type ConfigPath: str
         :param _ConfigDesc: 配置项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigDesc: str
         :param _ConfigTags: 配置项标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigTags: str
         :param _ConfigPipeline: 配置项对应的ES管道
         :type ConfigPipeline: str
         :param _ConfigCreateTime: 配置项创建时间，格式为yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigCreateTime: str
         :param _ConfigUpdateTime: 配置项更新时间，格式为yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigUpdateTime: str
         :param _ConfigSchema: 配置项解析规则
         :type ConfigSchema: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfigSchema`
@@ -3662,6 +3658,8 @@ class BusinessLogConfig(AbstractModel):
         :type FilebeatCloseInactive: int
         :param _FilebeatCleanInactive: filebeat clean_inactive参数
         :type FilebeatCleanInactive: int
+        :param _CustomMultilinePattern: 是否开启自定义pattern
+        :type CustomMultilinePattern: bool
         """
         self._ConfigId = None
         self._ConfigName = None
@@ -3680,6 +3678,7 @@ class BusinessLogConfig(AbstractModel):
         self._FilebeatHarvesterLimit = None
         self._FilebeatCloseInactive = None
         self._FilebeatCleanInactive = None
+        self._CustomMultilinePattern = None
 
     @property
     def ConfigId(self):
@@ -3717,7 +3716,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigDesc(self):
         r"""配置项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigDesc
@@ -3729,7 +3727,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigTags(self):
         r"""配置项标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigTags
@@ -3752,7 +3749,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigCreateTime(self):
         r"""配置项创建时间，格式为yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigCreateTime
@@ -3764,7 +3760,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigUpdateTime(self):
         r"""配置项更新时间，格式为yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigUpdateTime
@@ -3877,6 +3872,17 @@ class BusinessLogConfig(AbstractModel):
     def FilebeatCleanInactive(self, FilebeatCleanInactive):
         self._FilebeatCleanInactive = FilebeatCleanInactive
 
+    @property
+    def CustomMultilinePattern(self):
+        r"""是否开启自定义pattern
+        :rtype: bool
+        """
+        return self._CustomMultilinePattern
+
+    @CustomMultilinePattern.setter
+    def CustomMultilinePattern(self, CustomMultilinePattern):
+        self._CustomMultilinePattern = CustomMultilinePattern
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -3908,6 +3914,7 @@ class BusinessLogConfig(AbstractModel):
         self._FilebeatHarvesterLimit = params.get("FilebeatHarvesterLimit")
         self._FilebeatCloseInactive = params.get("FilebeatCloseInactive")
         self._FilebeatCleanInactive = params.get("FilebeatCleanInactive")
+        self._CustomMultilinePattern = params.get("CustomMultilinePattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4114,18 +4121,14 @@ class BusinessLogConfigSchema(AbstractModel):
         :param _SchemaType: 解析规则类型。可选值 0（SPRING_BOOT：默认Spring Boot格式），1（NONE：无解析规则），4（NGINX_ACCESS：nginx access日志），5（CUSTOM_LOGBACK：自定义Logback），6（CUSTOM_LOG4J：自定义Log4J），7（CUSTOM_LOG4J2：自定义Log4J2），8（TEXT：单行/多行文本），9（ENVOY_MSGW_ACCESS：envoy access日志）。
         :type SchemaType: int
         :param _SchemaContent: 解析规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaContent: str
         :param _SchemaDateFormat: 解析规则时间格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaDateFormat: str
         :param _SchemaMultilinePattern: 解析规则对应的多行匹配规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaMultilinePattern: str
         :param _SchemaCreateTime: 解析规则创建时间，格式为yyyy-MM-dd HH:mm:ss
         :type SchemaCreateTime: str
         :param _SchemaPatternLayout: 用户填写的解析规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaPatternLayout: str
         """
         self._SchemaType = None
@@ -4149,7 +4152,6 @@ class BusinessLogConfigSchema(AbstractModel):
     @property
     def SchemaContent(self):
         r"""解析规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaContent
@@ -4161,7 +4163,6 @@ class BusinessLogConfigSchema(AbstractModel):
     @property
     def SchemaDateFormat(self):
         r"""解析规则时间格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaDateFormat
@@ -4173,7 +4174,6 @@ class BusinessLogConfigSchema(AbstractModel):
     @property
     def SchemaMultilinePattern(self):
         r"""解析规则对应的多行匹配规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaMultilinePattern
@@ -4196,7 +4196,6 @@ class BusinessLogConfigSchema(AbstractModel):
     @property
     def SchemaPatternLayout(self):
         r"""用户填写的解析规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaPatternLayout

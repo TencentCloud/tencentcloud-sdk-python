@@ -133,6 +133,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterMachines(
+            self,
+            request: models.DescribeClusterMachinesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterMachinesResponse:
+        """
+        查询托原生点列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterMachines"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterMachinesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusters(
             self,
             request: models.DescribeClustersRequest,

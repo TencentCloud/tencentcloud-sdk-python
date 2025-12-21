@@ -3885,27 +3885,36 @@ class CreateScheduledActionRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param _ScheduledActionName: 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
         :type ScheduledActionName: str
-        :param _MaxSize: 当定时任务触发时，设置的伸缩组最大实例数。
-        :type MaxSize: int
         :param _MinSize: 当定时任务触发时，设置的伸缩组最小实例数。
         :type MinSize: int
-        :param _DesiredCapacity: 当定时任务触发时，设置的伸缩组期望实例数。
-        :type DesiredCapacity: int
         :param _StartTime: 定时任务的首次触发时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
         :type StartTime: str
+        :param _DesiredCapacity: 当定时任务触发时，设置的伸缩组期望实例数。
+        :type DesiredCapacity: int
+        :param _MaxSize: 当定时任务触发时，设置的伸缩组最大实例数。
+        :type MaxSize: int
         :param _EndTime: 定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br><br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
         :type EndTime: str
         :param _Recurrence: 定时任务的重复方式。为标准 Cron 格式。定时任务中的 [Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119) 为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
         :type Recurrence: str
+        :param _DisableUpdateDesiredCapacity: 停用期望数更新。默认值为 False，表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :type DisableUpdateDesiredCapacity: bool
         """
         self._AutoScalingGroupId = None
         self._ScheduledActionName = None
-        self._MaxSize = None
         self._MinSize = None
-        self._DesiredCapacity = None
         self._StartTime = None
+        self._DesiredCapacity = None
+        self._MaxSize = None
         self._EndTime = None
         self._Recurrence = None
+        self._DisableUpdateDesiredCapacity = None
 
     @property
     def AutoScalingGroupId(self):
@@ -3932,17 +3941,6 @@ class CreateScheduledActionRequest(AbstractModel):
         self._ScheduledActionName = ScheduledActionName
 
     @property
-    def MaxSize(self):
-        r"""当定时任务触发时，设置的伸缩组最大实例数。
-        :rtype: int
-        """
-        return self._MaxSize
-
-    @MaxSize.setter
-    def MaxSize(self, MaxSize):
-        self._MaxSize = MaxSize
-
-    @property
     def MinSize(self):
         r"""当定时任务触发时，设置的伸缩组最小实例数。
         :rtype: int
@@ -3952,6 +3950,17 @@ class CreateScheduledActionRequest(AbstractModel):
     @MinSize.setter
     def MinSize(self, MinSize):
         self._MinSize = MinSize
+
+    @property
+    def StartTime(self):
+        r"""定时任务的首次触发时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
 
     @property
     def DesiredCapacity(self):
@@ -3965,15 +3974,15 @@ class CreateScheduledActionRequest(AbstractModel):
         self._DesiredCapacity = DesiredCapacity
 
     @property
-    def StartTime(self):
-        r"""定时任务的首次触发时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
-        :rtype: str
+    def MaxSize(self):
+        r"""当定时任务触发时，设置的伸缩组最大实例数。
+        :rtype: int
         """
-        return self._StartTime
+        return self._MaxSize
 
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
 
     @property
     def EndTime(self):
@@ -3997,16 +4006,34 @@ class CreateScheduledActionRequest(AbstractModel):
     def Recurrence(self, Recurrence):
         self._Recurrence = Recurrence
 
+    @property
+    def DisableUpdateDesiredCapacity(self):
+        r"""停用期望数更新。默认值为 False，表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :rtype: bool
+        """
+        return self._DisableUpdateDesiredCapacity
+
+    @DisableUpdateDesiredCapacity.setter
+    def DisableUpdateDesiredCapacity(self, DisableUpdateDesiredCapacity):
+        self._DisableUpdateDesiredCapacity = DisableUpdateDesiredCapacity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
         self._ScheduledActionName = params.get("ScheduledActionName")
-        self._MaxSize = params.get("MaxSize")
         self._MinSize = params.get("MinSize")
-        self._DesiredCapacity = params.get("DesiredCapacity")
         self._StartTime = params.get("StartTime")
+        self._DesiredCapacity = params.get("DesiredCapacity")
+        self._MaxSize = params.get("MaxSize")
         self._EndTime = params.get("EndTime")
         self._Recurrence = params.get("Recurrence")
+        self._DisableUpdateDesiredCapacity = params.get("DisableUpdateDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7470,21 +7497,18 @@ class HostNameIndexSettings(AbstractModel):
 TRUE：表示开启实例主机名创建序号
 FALSE：表示不开启实例主机名创建序号
         :type Enabled: bool
-        :param _BeginIndex: 初始序号。
-序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
-序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为固定位数的最大数字。
-当序号递增后超出取值范围时，扩容活动会失败。
-
-首次开启实例主机名称序号：默认值为 0。
-非首次开启实例主机名称序号：若不指定该参数，沿用历史序号。
-下调初始序号可能会造成伸缩组内实例主机名称序号重复。
+        :param _BeginIndex: 初始序号。取值范围与 IndexLength 参数有关：
+- IndexLength 为 0 时，取值范围为 [0, 99999999]。
+- IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为指定位数的最大数字。
+初始序号默认值如下：
+- 首次启用递增序号：初始序号默认值为 0 （ 展示位数与 IndexLength 有关，例如 IndexLength 为  4，展示值为 0000）
+- 非首次开启递增序号：顺延之前的递增序号，例如上次使用递增至序号 069，则新的初始序号默认值为 070。
+注意：修改初始序号可能会造成伸缩组内序号重复。
         :type BeginIndex: int
-        :param _IndexLength: 实例主机名递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。
-取值范围：0-8，最大为整数8。
-采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
-
-假设设置为3，那么序号形如：001、002 ... 010、011 ... 100 ... 999，序号上限为999;
-假设设置为0，对应的序号为1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :param _IndexLength: 递增序号长度，默认为0，表示不指定序号长度。 取值范围：0-8，最大为整数8。 
+- 长度设置为3，序号展示形式为：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999
+- 长度设置为0，序号展示形式为：0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999
+注意：递增序号持续超出上限会导致扩容失败，请不要设置过小的递增序号长度。
         :type IndexLength: int
         """
         self._Enabled = None
@@ -7507,14 +7531,13 @@ FALSE：表示不开启实例主机名创建序号
 
     @property
     def BeginIndex(self):
-        r"""初始序号。
-序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
-序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为固定位数的最大数字。
-当序号递增后超出取值范围时，扩容活动会失败。
-
-首次开启实例主机名称序号：默认值为 0。
-非首次开启实例主机名称序号：若不指定该参数，沿用历史序号。
-下调初始序号可能会造成伸缩组内实例主机名称序号重复。
+        r"""初始序号。取值范围与 IndexLength 参数有关：
+- IndexLength 为 0 时，取值范围为 [0, 99999999]。
+- IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为指定位数的最大数字。
+初始序号默认值如下：
+- 首次启用递增序号：初始序号默认值为 0 （ 展示位数与 IndexLength 有关，例如 IndexLength 为  4，展示值为 0000）
+- 非首次开启递增序号：顺延之前的递增序号，例如上次使用递增至序号 069，则新的初始序号默认值为 070。
+注意：修改初始序号可能会造成伸缩组内序号重复。
         :rtype: int
         """
         return self._BeginIndex
@@ -7525,12 +7548,10 @@ FALSE：表示不开启实例主机名创建序号
 
     @property
     def IndexLength(self):
-        r"""实例主机名递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。
-取值范围：0-8，最大为整数8。
-采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
-
-假设设置为3，那么序号形如：001、002 ... 010、011 ... 100 ... 999，序号上限为999;
-假设设置为0，对应的序号为1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        r"""递增序号长度，默认为0，表示不指定序号长度。 取值范围：0-8，最大为整数8。 
+- 长度设置为3，序号展示形式为：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999
+- 长度设置为0，序号展示形式为：0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999
+注意：递增序号持续超出上限会导致扩容失败，请不要设置过小的递增序号长度。
         :rtype: int
         """
         return self._IndexLength
@@ -7573,18 +7594,16 @@ class HostNameSettings(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNameStyle: str
         :param _HostNameSuffix: 云服务器的主机名后缀。
-HostNameSettings的该入参非必选，未选时不设置主机名后缀。
-<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的首尾字符，不能连续使用。</li> 
+<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的尾字符，不能连续使用。</li> 
 <li> 不支持 Windows 实例。</li> 
 <li>其他类型（Linux 等）实例：字符长度为[1, 39]，且与 HostName 的长度和不能超过 41，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
-假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNameSuffix: str
-        :param _HostNameDelimiter: 云服务器的主机名分隔符。
-默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为主机名的分隔符。如果不设置，则默认采用点号（.）分隔符。
-通过分割符连接多段。
-
-假设原主机名为“product-as-host”，分隔符HostNameDelimiter为“-”，设置主机名后缀"suffix"，那么最终主机名为“product-as-host-suffix”。
+        :param _HostNameDelimiter: 云服务器的主机名分隔符。默认的分隔符是点号（.），可选短横线（-）或空字符串。
+分隔符用于拼接主机名，递增序号，后缀。假设主机名为 testGpu4090 ，递增序号为 0007，后缀为 server：
+- 分隔符为英文点号（.），最终拼接为 testGpu4090.007.server
+- 分隔符为短横线（-），最终拼接为 testGpu4090-007-server
+- 分隔符为空字符串，最终拼接为 testGpu4090007server
         :type HostNameDelimiter: str
         """
         self._HostName = None
@@ -7624,11 +7643,9 @@ HostNameSettings的该入参非必选，未选时不设置主机名后缀。
     @property
     def HostNameSuffix(self):
         r"""云服务器的主机名后缀。
-HostNameSettings的该入参非必选，未选时不设置主机名后缀。
-<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的首尾字符，不能连续使用。</li> 
+<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的尾字符，不能连续使用。</li> 
 <li> 不支持 Windows 实例。</li> 
 <li>其他类型（Linux 等）实例：字符长度为[1, 39]，且与 HostName 的长度和不能超过 41，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
-假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7640,11 +7657,11 @@ HostNameSettings的该入参非必选，未选时不设置主机名后缀。
 
     @property
     def HostNameDelimiter(self):
-        r"""云服务器的主机名分隔符。
-默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为主机名的分隔符。如果不设置，则默认采用点号（.）分隔符。
-通过分割符连接多段。
-
-假设原主机名为“product-as-host”，分隔符HostNameDelimiter为“-”，设置主机名后缀"suffix"，那么最终主机名为“product-as-host-suffix”。
+        r"""云服务器的主机名分隔符。默认的分隔符是点号（.），可选短横线（-）或空字符串。
+分隔符用于拼接主机名，递增序号，后缀。假设主机名为 testGpu4090 ，递增序号为 0007，后缀为 server：
+- 分隔符为英文点号（.），最终拼接为 testGpu4090.007.server
+- 分隔符为短横线（-），最终拼接为 testGpu4090-007-server
+- 分隔符为空字符串，最终拼接为 testGpu4090007server
         :rtype: str
         """
         return self._HostNameDelimiter
@@ -8159,19 +8176,19 @@ class InstanceNameIndexSettings(AbstractModel):
 **TRUE**：表示开启实例创建序号; **FALSE**：表示不开启实例创建序号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
-        :param _BeginIndex: 初始序号。取值范围为 [0, 99999999]。
-
-当序号递增后超出取值范围时，扩容活动会失败。
-
-首次开启实例名称序号：默认值为 0。
-非首次开启实例名称序号：若不指定该参数，沿用历史序号。
-下调初始序号可能会造成伸缩组内实例名称序号重复。
+        :param _BeginIndex: 初始序号。取值范围与 IndexLength 参数有关：
+- IndexLength 为 0 时，取值范围为 [0, 99999999]。
+- IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为指定位数的最大数字。
+初始序号默认值如下：
+- 首次启用递增序号：初始序号默认值为 0 （ 展示位数与 IndexLength 有关，例如 IndexLength 为  4，展示值为 0000）
+- 非首次开启递增序号：顺延之前的递增序号，例如上次使用递增至序号 069，则新的初始序号默认值为 070。
+注意：修改初始序号可能会造成伸缩组内序号重复。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginIndex: int
-        :param _IndexLength: 实例名称递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。 取值范围：0-8，最大为整数8。 采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
-
-假设设置为3，那么序号形如：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999; 
-假设设置为0，对应的序号为0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        :param _IndexLength: 递增序号长度，默认为0，表示不指定序号长度。 取值范围：0-8，最大为整数8。 
+- 长度设置为3，序号展示形式为：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999
+- 长度设置为0，序号展示形式为：0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999
+注意：递增序号持续超出上限会导致扩容失败，请不要设置过小的递增序号长度。
         :type IndexLength: int
         """
         self._Enabled = None
@@ -8194,13 +8211,13 @@ class InstanceNameIndexSettings(AbstractModel):
 
     @property
     def BeginIndex(self):
-        r"""初始序号。取值范围为 [0, 99999999]。
-
-当序号递增后超出取值范围时，扩容活动会失败。
-
-首次开启实例名称序号：默认值为 0。
-非首次开启实例名称序号：若不指定该参数，沿用历史序号。
-下调初始序号可能会造成伸缩组内实例名称序号重复。
+        r"""初始序号。取值范围与 IndexLength 参数有关：
+- IndexLength 为 0 时，取值范围为 [0, 99999999]。
+- IndexLength 为 [1, 8] 时，取值范围为为 [0, 10^IndexLength-1]，最大值即为指定位数的最大数字。
+初始序号默认值如下：
+- 首次启用递增序号：初始序号默认值为 0 （ 展示位数与 IndexLength 有关，例如 IndexLength 为  4，展示值为 0000）
+- 非首次开启递增序号：顺延之前的递增序号，例如上次使用递增至序号 069，则新的初始序号默认值为 070。
+注意：修改初始序号可能会造成伸缩组内序号重复。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8212,10 +8229,10 @@ class InstanceNameIndexSettings(AbstractModel):
 
     @property
     def IndexLength(self):
-        r"""实例名称递增序号位数，默认为0，表示不指定序号位数。不指定序号时，采用默认值0。 取值范围：0-8，最大为整数8。 采用取值1-8时，会检查序号是否超过此序号位数的最大数字。
-
-假设设置为3，那么序号形如：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999; 
-假设设置为0，对应的序号为0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999。
+        r"""递增序号长度，默认为0，表示不指定序号长度。 取值范围：0-8，最大为整数8。 
+- 长度设置为3，序号展示形式为：000、001、002 ... 010、011 ... 100 ... 999，序号上限为999
+- 长度设置为0，序号展示形式为：0、1、2 ... 10、11 ... 100 ... 1000 ...10000 ... 99999999，序号上限为99999999
+注意：递增序号持续超出上限会导致扩容失败，请不要设置过小的递增序号长度。
         :rtype: int
         """
         return self._IndexLength
@@ -8255,13 +8272,13 @@ ORIGINAL，AS 直接将入参中所填的 InstanceName 传递给 CVM，CVM 可�
 UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 InstanceName 可以保证唯一。
         :type InstanceNameStyle: str
         :param _InstanceNameSuffix: 云服务器实例名后缀。字符长度为[1,105]，且与 InstanceName 的长度和不能超过107。
-
-假设后缀名称为 suffix，原实例名为 test.0，最终实例名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNameSuffix: str
-        :param _InstanceNameDelimiter: 云服务器实例名分隔符。 默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为实例名的分隔符。如果不设置，则默认采用点号（.）分隔符。 通过分割符连接多段。
-
-假设原实例名为“product-as-instance”，分隔符InstanceNameDelimiter为“-”，设置实例名后缀"suffix"，那么最终实例名为“product-as-instance-suffix”。
+        :param _InstanceNameDelimiter: 云服务器的实例名分隔符。默认的分隔符是点号（.），可选短横线（-）或空字符串。
+分隔符用于拼接实例名，递增序号，后缀。假设实例名为 testGpu4090 ，递增序号为 0007，后缀为 server：
+- 分隔符为英文点号（.），最终拼接为 testGpu4090.007.server
+- 分隔符为短横线（-），最终拼接为 testGpu4090-007-server
+- 分隔符为空字符串，最终拼接为 testGpu4090007server
         :type InstanceNameDelimiter: str
         """
         self._InstanceName = None
@@ -8298,8 +8315,6 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
     @property
     def InstanceNameSuffix(self):
         r"""云服务器实例名后缀。字符长度为[1,105]，且与 InstanceName 的长度和不能超过107。
-
-假设后缀名称为 suffix，原实例名为 test.0，最终实例名为 test.0.suffix。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8311,9 +8326,11 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
 
     @property
     def InstanceNameDelimiter(self):
-        r"""云服务器实例名分隔符。 默认的分隔符是点号（.），可选短横线（-）。仅有点号（.）和短横线（-）能作为实例名的分隔符。如果不设置，则默认采用点号（.）分隔符。 通过分割符连接多段。
-
-假设原实例名为“product-as-instance”，分隔符InstanceNameDelimiter为“-”，设置实例名后缀"suffix"，那么最终实例名为“product-as-instance-suffix”。
+        r"""云服务器的实例名分隔符。默认的分隔符是点号（.），可选短横线（-）或空字符串。
+分隔符用于拼接实例名，递增序号，后缀。假设实例名为 testGpu4090 ，递增序号为 0007，后缀为 server：
+- 分隔符为英文点号（.），最终拼接为 testGpu4090.007.server
+- 分隔符为短横线（-），最终拼接为 testGpu4090-007-server
+- 分隔符为空字符串，最终拼接为 testGpu4090007server
         :rtype: str
         """
         return self._InstanceNameDelimiter
@@ -11935,6 +11952,14 @@ class ModifyScheduledActionRequest(AbstractModel):
         :type EndTime: str
         :param _Recurrence: 定时任务的重复方式。为标准 Cron 格式，[Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119)为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
         :type Recurrence: str
+        :param _DisableUpdateDesiredCapacity: 停用期望数更新。默认值为 False，表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :type DisableUpdateDesiredCapacity: bool
         """
         self._ScheduledActionId = None
         self._ScheduledActionName = None
@@ -11944,6 +11969,7 @@ class ModifyScheduledActionRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Recurrence = None
+        self._DisableUpdateDesiredCapacity = None
 
     @property
     def ScheduledActionId(self):
@@ -12033,6 +12059,23 @@ class ModifyScheduledActionRequest(AbstractModel):
     def Recurrence(self, Recurrence):
         self._Recurrence = Recurrence
 
+    @property
+    def DisableUpdateDesiredCapacity(self):
+        r"""停用期望数更新。默认值为 False，表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :rtype: bool
+        """
+        return self._DisableUpdateDesiredCapacity
+
+    @DisableUpdateDesiredCapacity.setter
+    def DisableUpdateDesiredCapacity(self, DisableUpdateDesiredCapacity):
+        self._DisableUpdateDesiredCapacity = DisableUpdateDesiredCapacity
+
 
     def _deserialize(self, params):
         self._ScheduledActionId = params.get("ScheduledActionId")
@@ -12043,6 +12086,7 @@ class ModifyScheduledActionRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Recurrence = params.get("Recurrence")
+        self._DisableUpdateDesiredCapacity = params.get("DisableUpdateDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13732,6 +13776,14 @@ class ScheduledAction(AbstractModel):
 <li>CRONTAB：代表定时任务为重复执行。</li>
 <li>ONCE：代表定时任务为单次执行。</li>
         :type ScheduledType: str
+        :param _DisableUpdateDesiredCapacity: 停用期望数更新。表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :type DisableUpdateDesiredCapacity: bool
         """
         self._ScheduledActionId = None
         self._ScheduledActionName = None
@@ -13744,6 +13796,7 @@ class ScheduledAction(AbstractModel):
         self._MinSize = None
         self._CreatedTime = None
         self._ScheduledType = None
+        self._DisableUpdateDesiredCapacity = None
 
     @property
     def ScheduledActionId(self):
@@ -13868,6 +13921,23 @@ class ScheduledAction(AbstractModel):
     def ScheduledType(self, ScheduledType):
         self._ScheduledType = ScheduledType
 
+    @property
+    def DisableUpdateDesiredCapacity(self):
+        r"""停用期望数更新。表示定时任务触发时期望实例数正常更新。
+该值为 True 时，定时任务触发时不会主动修改期望实例数，但可能会因最大最小值机制修改期望实例数。
+以下案例的前提都是停用期望数更新为 True：
+
+- 定时任务触发时，原期望数为 5，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 5 小于最小值 10，最终新期望数为 10。
+- 定时任务触发时，原期望数为 25，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，但原期望数 25 大于最大值 20，最终新期望数为 20。
+- 定时任务触发时，原期望数为 13，定时任务将最小值改为 10，最大值改为 20，期望数改为 15，由于停用期望数更新，15不生效，期望数保持为 13 。
+        :rtype: bool
+        """
+        return self._DisableUpdateDesiredCapacity
+
+    @DisableUpdateDesiredCapacity.setter
+    def DisableUpdateDesiredCapacity(self, DisableUpdateDesiredCapacity):
+        self._DisableUpdateDesiredCapacity = DisableUpdateDesiredCapacity
+
 
     def _deserialize(self, params):
         self._ScheduledActionId = params.get("ScheduledActionId")
@@ -13881,6 +13951,7 @@ class ScheduledAction(AbstractModel):
         self._MinSize = params.get("MinSize")
         self._CreatedTime = params.get("CreatedTime")
         self._ScheduledType = params.get("ScheduledType")
+        self._DisableUpdateDesiredCapacity = params.get("DisableUpdateDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

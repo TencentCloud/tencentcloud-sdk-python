@@ -31191,12 +31191,13 @@ class Staff(AbstractModel):
         :param _UserId: 员工在电子签平台的用户ID
         :type UserId: str
         :param _DisplayName: 显示的员工名
-注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+注意：该字段返回的是打码信息
         :type DisplayName: str
         :param _Mobile: 员工手机号
-注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+注意：该字段返回的是打码信息
         :type Mobile: str
         :param _Email: 员工邮箱
+注意：该字段返回的是打码信息
         :type Email: str
         :param _OpenId: 员工在第三方应用平台的用户ID
         :type OpenId: str
@@ -31239,7 +31240,7 @@ class Staff(AbstractModel):
     @property
     def DisplayName(self):
         r"""显示的员工名
-注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+注意：该字段返回的是打码信息
         :rtype: str
         """
         return self._DisplayName
@@ -31251,7 +31252,7 @@ class Staff(AbstractModel):
     @property
     def Mobile(self):
         r"""员工手机号
-注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+注意：该字段返回的是打码信息
         :rtype: str
         """
         return self._Mobile
@@ -31263,6 +31264,7 @@ class Staff(AbstractModel):
     @property
     def Email(self):
         r"""员工邮箱
+注意：该字段返回的是打码信息
         :rtype: str
         """
         return self._Email

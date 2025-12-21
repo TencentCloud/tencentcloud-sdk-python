@@ -4605,6 +4605,100 @@ class DeleteReplicationInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteReplicationRuleRequest(AbstractModel):
+    r"""DeleteReplicationRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceRegistryId: 源实例ID
+        :type SourceRegistryId: str
+        :param _RuleName: 同步规则名称
+        :type RuleName: str
+        :param _Description: 规则描述
+        :type Description: str
+        """
+        self._SourceRegistryId = None
+        self._RuleName = None
+        self._Description = None
+
+    @property
+    def SourceRegistryId(self):
+        r"""源实例ID
+        :rtype: str
+        """
+        return self._SourceRegistryId
+
+    @SourceRegistryId.setter
+    def SourceRegistryId(self, SourceRegistryId):
+        self._SourceRegistryId = SourceRegistryId
+
+    @property
+    def RuleName(self):
+        r"""同步规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SourceRegistryId = params.get("SourceRegistryId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReplicationRuleResponse(AbstractModel):
+    r"""DeleteReplicationRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRepositoryPersonalRequest(AbstractModel):
     r"""DeleteRepositoryPersonal请求参数结构体
 
@@ -8699,6 +8793,139 @@ class DescribeReplicationInstancesResponse(AbstractModel):
                 obj = ReplicationRegistry()
                 obj._deserialize(item)
                 self._ReplicationRegistries.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplicationPoliciesRequest(AbstractModel):
+    r"""DescribeReplicationPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例ID
+        :type RegistryId: str
+        :param _Page: 页数，默认为1
+        :type Page: int
+        :param _PageSize: 每页展示个数，默认为100
+        :type PageSize: int
+        """
+        self._RegistryId = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def RegistryId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Page(self):
+        r"""页数，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页展示个数，默认为100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationPoliciesResponse(AbstractModel):
+    r"""DescribeReplicationPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicationPolicyInfoList: 实例同步策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationPolicyInfoList: list of ReplicationPolicyInfo
+        :param _TotalCount: 策略总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReplicationPolicyInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ReplicationPolicyInfoList(self):
+        r"""实例同步策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReplicationPolicyInfo
+        """
+        return self._ReplicationPolicyInfoList
+
+    @ReplicationPolicyInfoList.setter
+    def ReplicationPolicyInfoList(self, ReplicationPolicyInfoList):
+        self._ReplicationPolicyInfoList = ReplicationPolicyInfoList
+
+    @property
+    def TotalCount(self):
+        r"""策略总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReplicationPolicyInfoList") is not None:
+            self._ReplicationPolicyInfoList = []
+            for item in params.get("ReplicationPolicyInfoList"):
+                obj = ReplicationPolicyInfo()
+                obj._deserialize(item)
+                self._ReplicationPolicyInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13933,6 +14160,61 @@ class Permission(AbstractModel):
         
 
 
+class PolicyFilter(AbstractModel):
+    r"""策略过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 策略过滤类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: 策略过滤值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""策略过滤类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""策略过滤值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Region(AbstractModel):
     r"""地域信息
 
@@ -14810,6 +15092,202 @@ class ReplicationLog(AbstractModel):
         self._Status = params.get("Status")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplicationPolicyInfo(AbstractModel):
+    r"""实例复制/实例同步策略信息ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _Name: 策略名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: 策略描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Filters: 策略过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filters: list of PolicyFilter
+        :param _Override: 是否覆盖对端同名镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Override: bool
+        :param _Enabled: 是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _SrcResource: 源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcResource: str
+        :param _DestResource: 目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestResource: str
+        :param _CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Description = None
+        self._Filters = None
+        self._Override = None
+        self._Enabled = None
+        self._SrcResource = None
+        self._DestResource = None
+        self._CreationTime = None
+        self._UpdateTime = None
+
+    @property
+    def ID(self):
+        r"""策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""策略名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""策略描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Filters(self):
+        r"""策略过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PolicyFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Override(self):
+        r"""是否覆盖对端同名镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def Enabled(self):
+        r"""是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def SrcResource(self):
+        r"""源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SrcResource
+
+    @SrcResource.setter
+    def SrcResource(self, SrcResource):
+        self._SrcResource = SrcResource
+
+    @property
+    def DestResource(self):
+        r"""目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DestResource
+
+    @DestResource.setter
+    def DestResource(self, DestResource):
+        self._DestResource = DestResource
+
+    @property
+    def CreationTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = PolicyFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Override = params.get("Override")
+        self._Enabled = params.get("Enabled")
+        self._SrcResource = params.get("SrcResource")
+        self._DestResource = params.get("DestResource")
+        self._CreationTime = params.get("CreationTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

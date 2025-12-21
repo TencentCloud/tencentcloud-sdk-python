@@ -208,6 +208,72 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CosStorageSource(AbstractModel):
+    r"""沙箱实例对象存储挂载配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Endpoint: 对象存储访问域名
+        :type Endpoint: str
+        :param _BucketName: 对象存储桶名称
+        :type BucketName: str
+        :param _BucketPath: 对象存储桶路径，必须为以/起始的绝对路径
+        :type BucketPath: str
+        """
+        self._Endpoint = None
+        self._BucketName = None
+        self._BucketPath = None
+
+    @property
+    def Endpoint(self):
+        r"""对象存储访问域名
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def BucketName(self):
+        r"""对象存储桶名称
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketPath(self):
+        r"""对象存储桶路径，必须为以/起始的绝对路径
+        :rtype: str
+        """
+        return self._BucketPath
+
+    @BucketPath.setter
+    def BucketPath(self, BucketPath):
+        self._BucketPath = BucketPath
+
+
+    def _deserialize(self, params):
+        self._Endpoint = params.get("Endpoint")
+        self._BucketName = params.get("BucketName")
+        self._BucketPath = params.get("BucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAPIKeyRequest(AbstractModel):
     r"""CreateAPIKey请求参数结构体
 
@@ -338,6 +404,10 @@ class CreateSandboxToolRequest(AbstractModel):
         :type Tags: list of Tag
         :param _ClientToken: 幂等性 Token，长度不超过 64 字符
         :type ClientToken: str
+        :param _RoleArn: 角色ARN
+        :type RoleArn: str
+        :param _StorageMounts: 沙箱工具存储配置
+        :type StorageMounts: list of StorageMount
         """
         self._ToolName = None
         self._ToolType = None
@@ -346,6 +416,8 @@ class CreateSandboxToolRequest(AbstractModel):
         self._DefaultTimeout = None
         self._Tags = None
         self._ClientToken = None
+        self._RoleArn = None
+        self._StorageMounts = None
 
     @property
     def ToolName(self):
@@ -424,6 +496,28 @@ class CreateSandboxToolRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def RoleArn(self):
+        r"""角色ARN
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def StorageMounts(self):
+        r"""沙箱工具存储配置
+        :rtype: list of StorageMount
+        """
+        return self._StorageMounts
+
+    @StorageMounts.setter
+    def StorageMounts(self, StorageMounts):
+        self._StorageMounts = StorageMounts
+
 
     def _deserialize(self, params):
         self._ToolName = params.get("ToolName")
@@ -440,6 +534,13 @@ class CreateSandboxToolRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._ClientToken = params.get("ClientToken")
+        self._RoleArn = params.get("RoleArn")
+        if params.get("StorageMounts") is not None:
+            self._StorageMounts = []
+            for item in params.get("StorageMounts"):
+                obj = StorageMount()
+                obj._deserialize(item)
+                self._StorageMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1054,6 +1155,87 @@ class Filter(AbstractModel):
         
 
 
+class MountOption(AbstractModel):
+    r"""沙箱实例存储挂载配置可选项，用于覆盖沙箱工具的存储配置的部分选项，并提供子路径挂载配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 指定沙箱工具中的存储配置名称
+        :type Name: str
+        :param _MountPath: 沙箱实例本地挂载路径（可选），默认继承工具中的存储配置
+        :type MountPath: str
+        :param _SubPath: 沙箱实例存储挂载子路径（可选）
+        :type SubPath: str
+        :param _ReadOnly: 沙箱实例存储挂载读写权限（可选），默认继承工具存储配置
+        :type ReadOnly: bool
+        """
+        self._Name = None
+        self._MountPath = None
+        self._SubPath = None
+        self._ReadOnly = None
+
+    @property
+    def Name(self):
+        r"""指定沙箱工具中的存储配置名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MountPath(self):
+        r"""沙箱实例本地挂载路径（可选），默认继承工具中的存储配置
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+    @property
+    def SubPath(self):
+        r"""沙箱实例存储挂载子路径（可选）
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+    @property
+    def ReadOnly(self):
+        r"""沙箱实例存储挂载读写权限（可选），默认继承工具存储配置
+        :rtype: bool
+        """
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._MountPath = params.get("MountPath")
+        self._SubPath = params.get("SubPath")
+        self._ReadOnly = params.get("ReadOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetworkConfiguration(AbstractModel):
     r"""沙箱网络配置
 
@@ -1061,14 +1243,17 @@ class NetworkConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkMode: 网络模式（当前支持 PUBLIC）
+        :param _NetworkMode: 网络模式（当前支持 PUBLIC, VPC, SANDBOX）
         :type NetworkMode: str
+        :param _VpcConfig: VPC网络相关配置
+        :type VpcConfig: :class:`tencentcloud.ags.v20250920.models.VPCConfig`
         """
         self._NetworkMode = None
+        self._VpcConfig = None
 
     @property
     def NetworkMode(self):
-        r"""网络模式（当前支持 PUBLIC）
+        r"""网络模式（当前支持 PUBLIC, VPC, SANDBOX）
         :rtype: str
         """
         return self._NetworkMode
@@ -1077,9 +1262,23 @@ class NetworkConfiguration(AbstractModel):
     def NetworkMode(self, NetworkMode):
         self._NetworkMode = NetworkMode
 
+    @property
+    def VpcConfig(self):
+        r"""VPC网络相关配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.VPCConfig`
+        """
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
 
     def _deserialize(self, params):
         self._NetworkMode = params.get("NetworkMode")
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = VPCConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1115,6 +1314,8 @@ class SandboxInstance(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 更新时间（ISO 8601 格式）
         :type UpdateTime: str
+        :param _MountOptions: 存储挂载选项
+        :type MountOptions: list of MountOption
         """
         self._InstanceId = None
         self._ToolId = None
@@ -1125,6 +1326,7 @@ class SandboxInstance(AbstractModel):
         self._StopReason = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._MountOptions = None
 
     @property
     def InstanceId(self):
@@ -1225,6 +1427,17 @@ class SandboxInstance(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def MountOptions(self):
+        r"""存储挂载选项
+        :rtype: list of MountOption
+        """
+        return self._MountOptions
+
+    @MountOptions.setter
+    def MountOptions(self, MountOptions):
+        self._MountOptions = MountOptions
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1236,6 +1449,12 @@ class SandboxInstance(AbstractModel):
         self._StopReason = params.get("StopReason")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("MountOptions") is not None:
+            self._MountOptions = []
+            for item in params.get("MountOptions"):
+                obj = MountOption()
+                obj._deserialize(item)
+                self._MountOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1273,6 +1492,10 @@ class SandboxTool(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 沙箱工具更新时间，格式：ISO8601
         :type UpdateTime: str
+        :param _RoleArn: 沙箱工具绑定角色ARN
+        :type RoleArn: str
+        :param _StorageMounts: 沙箱工具中实例存储挂载配置
+        :type StorageMounts: list of StorageMount
         """
         self._ToolId = None
         self._ToolName = None
@@ -1284,6 +1507,8 @@ class SandboxTool(AbstractModel):
         self._Tags = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._RoleArn = None
+        self._StorageMounts = None
 
     @property
     def ToolId(self):
@@ -1395,6 +1620,28 @@ class SandboxTool(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def RoleArn(self):
+        r"""沙箱工具绑定角色ARN
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def StorageMounts(self):
+        r"""沙箱工具中实例存储挂载配置
+        :rtype: list of StorageMount
+        """
+        return self._StorageMounts
+
+    @StorageMounts.setter
+    def StorageMounts(self, StorageMounts):
+        self._StorageMounts = StorageMounts
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -1414,6 +1661,13 @@ class SandboxTool(AbstractModel):
                 self._Tags.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._RoleArn = params.get("RoleArn")
+        if params.get("StorageMounts") is not None:
+            self._StorageMounts = []
+            for item in params.get("StorageMounts"):
+                obj = StorageMount()
+                obj._deserialize(item)
+                self._StorageMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1439,11 +1693,14 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type Timeout: str
         :param _ClientToken: 幂等性 Token，长度不超过 64 字符
         :type ClientToken: str
+        :param _MountOptions: 沙箱实例存储挂载配置
+        :type MountOptions: list of MountOption
         """
         self._ToolId = None
         self._ToolName = None
         self._Timeout = None
         self._ClientToken = None
+        self._MountOptions = None
 
     @property
     def ToolId(self):
@@ -1489,12 +1746,29 @@ class StartSandboxInstanceRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def MountOptions(self):
+        r"""沙箱实例存储挂载配置
+        :rtype: list of MountOption
+        """
+        return self._MountOptions
+
+    @MountOptions.setter
+    def MountOptions(self, MountOptions):
+        self._MountOptions = MountOptions
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
         self._ToolName = params.get("ToolName")
         self._Timeout = params.get("Timeout")
         self._ClientToken = params.get("ClientToken")
+        if params.get("MountOptions") is not None:
+            self._MountOptions = []
+            for item in params.get("MountOptions"):
+                obj = MountOption()
+                obj._deserialize(item)
+                self._MountOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1612,6 +1886,127 @@ class StopSandboxInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class StorageMount(AbstractModel):
+    r"""沙箱工具中实例存储挂载配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 存储挂载配置名称
+        :type Name: str
+        :param _StorageSource: 存储配置
+        :type StorageSource: :class:`tencentcloud.ags.v20250920.models.StorageSource`
+        :param _MountPath: 沙箱实例本地挂载路径
+        :type MountPath: str
+        :param _ReadOnly: 存储挂载读写权限配置，默认为false
+        :type ReadOnly: bool
+        """
+        self._Name = None
+        self._StorageSource = None
+        self._MountPath = None
+        self._ReadOnly = None
+
+    @property
+    def Name(self):
+        r"""存储挂载配置名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StorageSource(self):
+        r"""存储配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.StorageSource`
+        """
+        return self._StorageSource
+
+    @StorageSource.setter
+    def StorageSource(self, StorageSource):
+        self._StorageSource = StorageSource
+
+    @property
+    def MountPath(self):
+        r"""沙箱实例本地挂载路径
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+    @property
+    def ReadOnly(self):
+        r"""存储挂载读写权限配置，默认为false
+        :rtype: bool
+        """
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("StorageSource") is not None:
+            self._StorageSource = StorageSource()
+            self._StorageSource._deserialize(params.get("StorageSource"))
+        self._MountPath = params.get("MountPath")
+        self._ReadOnly = params.get("ReadOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageSource(AbstractModel):
+    r"""挂载存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cos: 对象存储桶配置
+        :type Cos: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
+        """
+        self._Cos = None
+
+    @property
+    def Cos(self):
+        r"""对象存储桶配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
+        """
+        return self._Cos
+
+    @Cos.setter
+    def Cos(self, Cos):
+        self._Cos = Cos
+
+
+    def _deserialize(self, params):
+        if params.get("Cos") is not None:
+            self._Cos = CosStorageSource()
+            self._Cos._deserialize(params.get("Cos"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):
@@ -1858,3 +2253,54 @@ class UpdateSandboxToolResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VPCConfig(AbstractModel):
+    r"""沙箱工具VPC相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubnetIds: VPC子网ID列表
+        :type SubnetIds: list of str
+        :param _SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
+        """
+        self._SubnetIds = None
+        self._SecurityGroupIds = None
+
+    @property
+    def SubnetIds(self):
+        r"""VPC子网ID列表
+        :rtype: list of str
+        """
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def SecurityGroupIds(self):
+        r"""安全组ID列表
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._SubnetIds = params.get("SubnetIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

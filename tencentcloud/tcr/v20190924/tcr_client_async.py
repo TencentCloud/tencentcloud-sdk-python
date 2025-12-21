@@ -727,6 +727,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteReplicationRule(
+            self,
+            request: models.DeleteReplicationRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteReplicationRuleResponse:
+        """
+        删除实例同步规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteReplicationRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteReplicationRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRepository(
             self,
             request: models.DeleteRepositoryRequest,
@@ -1354,6 +1372,24 @@ class TcrClient(AbstractClient):
         kwargs["action"] = "DescribeReplicationInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReplicationInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReplicationPolicies(
+            self,
+            request: models.DescribeReplicationPoliciesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReplicationPoliciesResponse:
+        """
+        获取实例同步规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReplicationPolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReplicationPoliciesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

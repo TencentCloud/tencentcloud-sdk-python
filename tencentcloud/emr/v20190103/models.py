@@ -9769,6 +9769,328 @@ class DescribeHBaseTableOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHBaseTableRequestMetricRequest(AbstractModel):
+    r"""DescribeHBaseTableRequestMetric请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _TableName: Hbase表名
+        :type TableName: str
+        :param _RegionServer: Hbase的RegionServer服务
+        :type RegionServer: str
+        :param _Downsample: 获取监控的数据粒度
+        :type Downsample: str
+        :param _StartTime: 查询监控数据起始时间戳
+        :type StartTime: int
+        :param _EndTime: 查询监控数据结束时间戳
+        :type EndTime: int
+        """
+        self._InstanceId = None
+        self._TableName = None
+        self._RegionServer = None
+        self._Downsample = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TableName(self):
+        r"""Hbase表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RegionServer(self):
+        r"""Hbase的RegionServer服务
+        :rtype: str
+        """
+        return self._RegionServer
+
+    @RegionServer.setter
+    def RegionServer(self, RegionServer):
+        self._RegionServer = RegionServer
+
+    @property
+    def Downsample(self):
+        r"""获取监控的数据粒度
+        :rtype: str
+        """
+        return self._Downsample
+
+    @Downsample.setter
+    def Downsample(self, Downsample):
+        self._Downsample = Downsample
+
+    @property
+    def StartTime(self):
+        r"""查询监控数据起始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询监控数据结束时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TableName = params.get("TableName")
+        self._RegionServer = params.get("RegionServer")
+        self._Downsample = params.get("Downsample")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHBaseTableRequestMetricResponse(AbstractModel):
+    r"""DescribeHBaseTableRequestMetric返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricDataList: Hbase监控指标返回包装结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDataList: list of HBaseMetricData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetricDataList = None
+        self._RequestId = None
+
+    @property
+    def MetricDataList(self):
+        r"""Hbase监控指标返回包装结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HBaseMetricData
+        """
+        return self._MetricDataList
+
+    @MetricDataList.setter
+    def MetricDataList(self, MetricDataList):
+        self._MetricDataList = MetricDataList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MetricDataList") is not None:
+            self._MetricDataList = []
+            for item in params.get("MetricDataList"):
+                obj = HBaseMetricData()
+                obj._deserialize(item)
+                self._MetricDataList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHBaseTableStoreSizeMetricRequest(AbstractModel):
+    r"""DescribeHBaseTableStoreSizeMetric请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _TableName: Hbase表名
+        :type TableName: str
+        :param _RegionServer: Hbase的RegionServer服务
+        :type RegionServer: str
+        :param _Downsample: 获取监控的数据粒度
+        :type Downsample: str
+        :param _StartTime: 查询监控数据起始时间戳
+        :type StartTime: int
+        :param _EndTime: 查询监控数据结束时间戳
+        :type EndTime: int
+        """
+        self._InstanceId = None
+        self._TableName = None
+        self._RegionServer = None
+        self._Downsample = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TableName(self):
+        r"""Hbase表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RegionServer(self):
+        r"""Hbase的RegionServer服务
+        :rtype: str
+        """
+        return self._RegionServer
+
+    @RegionServer.setter
+    def RegionServer(self, RegionServer):
+        self._RegionServer = RegionServer
+
+    @property
+    def Downsample(self):
+        r"""获取监控的数据粒度
+        :rtype: str
+        """
+        return self._Downsample
+
+    @Downsample.setter
+    def Downsample(self, Downsample):
+        self._Downsample = Downsample
+
+    @property
+    def StartTime(self):
+        r"""查询监控数据起始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询监控数据结束时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TableName = params.get("TableName")
+        self._RegionServer = params.get("RegionServer")
+        self._Downsample = params.get("Downsample")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHBaseTableStoreSizeMetricResponse(AbstractModel):
+    r"""DescribeHBaseTableStoreSizeMetric返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricDataList: Hbase监控指标返回包装结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDataList: list of HBaseMetricData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetricDataList = None
+        self._RequestId = None
+
+    @property
+    def MetricDataList(self):
+        r"""Hbase监控指标返回包装结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HBaseMetricData
+        """
+        return self._MetricDataList
+
+    @MetricDataList.setter
+    def MetricDataList(self, MetricDataList):
+        self._MetricDataList = MetricDataList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MetricDataList") is not None:
+            self._MetricDataList = []
+            for item in params.get("MetricDataList"):
+                obj = HBaseMetricData()
+                obj._deserialize(item)
+                self._MetricDataList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHDFSStorageInfoRequest(AbstractModel):
     r"""DescribeHDFSStorageInfo请求参数结构体
 
@@ -18023,6 +18345,87 @@ class GroupInfos(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._GroupType = params.get("GroupType")
         self._GroupTypeDesc = params.get("GroupTypeDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HBaseMetricData(AbstractModel):
+    r"""HBase监控数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名称，如 read_request_rate
+        :type MetricName: str
+        :param _MetricDesc: 指标描述，如 read request rate
+        :type MetricDesc: str
+        :param _Timestamps: 时间戳数组
+        :type Timestamps: list of int
+        :param _Values: 数值数组
+        :type Values: list of float
+        """
+        self._MetricName = None
+        self._MetricDesc = None
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def MetricName(self):
+        r"""指标名称，如 read_request_rate
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def MetricDesc(self):
+        r"""指标描述，如 read request rate
+        :rtype: str
+        """
+        return self._MetricDesc
+
+    @MetricDesc.setter
+    def MetricDesc(self, MetricDesc):
+        self._MetricDesc = MetricDesc
+
+    @property
+    def Timestamps(self):
+        r"""时间戳数组
+        :rtype: list of int
+        """
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        r"""数值数组
+        :rtype: list of float
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._MetricDesc = params.get("MetricDesc")
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

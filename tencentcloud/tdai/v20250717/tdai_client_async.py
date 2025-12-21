@@ -331,6 +331,24 @@ class TdaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartAgentTask(
+            self,
+            request: models.StartAgentTaskRequest,
+            opts: Dict = None,
+    ) -> models.StartAgentTaskResponse:
+        """
+        该接口用于启动一个智能体的任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartAgentTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartAgentTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TerminateAgentInstance(
             self,
             request: models.TerminateAgentInstanceRequest,

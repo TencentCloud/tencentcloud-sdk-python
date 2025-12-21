@@ -880,6 +880,117 @@ class AndroidInstanceAppInfo(AbstractModel):
         
 
 
+class AndroidInstanceBackup(AbstractModel):
+    r"""安卓实例备份
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 备份ID
+        :type BackupId: str
+        :param _State: 备份状态
+        :type State: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _Size: 大小，单位 Byte
+        :type Size: int
+        :param _AndroidInstanceId: 备份的安卓实例 ID
+        :type AndroidInstanceId: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self._BackupId = None
+        self._State = None
+        self._Zone = None
+        self._Size = None
+        self._AndroidInstanceId = None
+        self._CreateTime = None
+
+    @property
+    def BackupId(self):
+        r"""备份ID
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def State(self):
+        r"""备份状态
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Size(self):
+        r"""大小，单位 Byte
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def AndroidInstanceId(self):
+        r"""备份的安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._State = params.get("State")
+        self._Zone = params.get("Zone")
+        self._Size = params.get("Size")
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidInstanceDevice(AbstractModel):
     r"""安卓实例设备信息
 
@@ -5100,10 +5211,38 @@ class DescribeAndroidInstanceBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Backups: 备份列表
+        :type Backups: list of AndroidInstanceBackup
+        :param _TotalCount: 备份总数
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Backups = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def Backups(self):
+        r"""备份列表
+        :rtype: list of AndroidInstanceBackup
+        """
+        return self._Backups
+
+    @Backups.setter
+    def Backups(self, Backups):
+        self._Backups = Backups
+
+    @property
+    def TotalCount(self):
+        r"""备份总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -5118,6 +5257,13 @@ class DescribeAndroidInstanceBackupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Backups") is not None:
+            self._Backups = []
+            for item in params.get("Backups"):
+                obj = AndroidInstanceBackup()
+                obj._deserialize(item)
+                self._Backups.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

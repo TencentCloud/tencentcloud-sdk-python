@@ -923,6 +923,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteReplicationRule(self, request):
+        r"""删除实例同步规则
+
+        :param request: Request instance for DeleteReplicationRule.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationRuleRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReplicationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReplicationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRepository(self, request):
         r"""删除镜像仓库
 
@@ -1721,6 +1744,29 @@ class TcrClient(AbstractClient):
             body = self.call("DescribeReplicationInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReplicationInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReplicationPolicies(self, request):
+        r"""获取实例同步规则列表
+
+        :param request: Request instance for DescribeReplicationPolicies.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationPoliciesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReplicationPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReplicationPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

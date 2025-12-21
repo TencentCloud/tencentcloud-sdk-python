@@ -650,6 +650,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHBaseTableRequestMetric(self, request):
+        r"""Hbase的表粒度读取和写入速率
+
+        :param request: Request instance for DescribeHBaseTableRequestMetric.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableRequestMetricRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableRequestMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHBaseTableRequestMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHBaseTableRequestMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHBaseTableStoreSizeMetric(self, request):
+        r"""查询Hbase的表粒度StoreSize大小监控指标数据
+
+        :param request: Request instance for DescribeHBaseTableStoreSizeMetric.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableStoreSizeMetricRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableStoreSizeMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHBaseTableStoreSizeMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHBaseTableStoreSizeMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHDFSStorageInfo(self, request):
         r"""查询HDFS存储文件信息
 

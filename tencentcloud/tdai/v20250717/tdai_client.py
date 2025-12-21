@@ -412,6 +412,29 @@ class TdaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartAgentTask(self, request):
+        r"""该接口用于启动一个智能体的任务
+
+        :param request: Request instance for StartAgentTask.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.StartAgentTaskRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.StartAgentTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAgentTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAgentTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateAgentInstance(self, request):
         r"""本接口（TerminateAgentInstance）用于下线智能体实例，通常在用户需要下线智能体实例时使用。
 

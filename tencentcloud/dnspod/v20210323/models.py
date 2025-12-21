@@ -6136,7 +6136,7 @@ SPAM：封禁
         :type RecordCountBegin: int
         :param _RecordCountEnd: 要获取域名的记录数查询区间终点。
         :type RecordCountEnd: int
-        :param _ProjectId: 项目ID
+        :param _ProjectId: 项目ID，"帐号中心-项目管理"拿到项目ID
         :type ProjectId: int
         :param _Tags: 标签过滤
         :type Tags: list of TagItemFilter
@@ -6327,7 +6327,7 @@ SPAM：封禁
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""项目ID，"帐号中心-项目管理"拿到项目ID
         :rtype: int
         """
         return self._ProjectId
@@ -12053,7 +12053,7 @@ class DomainListItem(AbstractModel):
         :type Name: str
         :param _Status: 域名的状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM
         :type Status: str
-        :param _TTL: 域名默认的解析记录默认TTL值
+        :param _TTL: 域名默认的解析记录默认TTL值，单位：秒
         :type TTL: int
         :param _CNAMESpeedup: 是否开启CNAME加速，开启：ENABLE，未开启：DISABLE
         :type CNAMESpeedup: str
@@ -12154,7 +12154,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def TTL(self):
-        r"""域名默认的解析记录默认TTL值
+        r"""域名默认的解析记录默认TTL值，单位：秒
         :rtype: int
         """
         return self._TTL

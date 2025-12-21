@@ -2862,27 +2862,25 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 限制数目 最大200
+        :param _Limit: <p>限制数目 最大200</p>
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
+        :param _CreatTimeRangeStart: <p>下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】</p>
         :type CreatTimeRangeStart: str
-        :param _CreatTimeRangeEnd: 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
+        :param _CreatTimeRangeEnd: <p>下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】</p>
         :type CreatTimeRangeEnd: str
-        :param _Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: <p>0:下单时间降序；其他：下单时间升序</p>
         :type Order: int
-        :param _Status: 子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)
-
-控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)
+        :param _Status: <p>子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)</p><p>控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)</p>
         :type Status: int
-        :param _OwnerUins: 下单人账号ID列表
+        :param _OwnerUins: <p>下单人账号ID列表</p>
         :type OwnerUins: list of str
-        :param _DealNames: 子订单号列表
+        :param _DealNames: <p>子订单号列表</p>
         :type DealNames: list of str
-        :param _BigDealIds: 大订单号列表
+        :param _BigDealIds: <p>大订单号列表</p>
         :type BigDealIds: list of str
-        :param _PayerMode: 支付方式，0：自付；1：代付
+        :param _PayerMode: <p>支付方式，0：自付；1：代付</p>
         :type PayerMode: int
         """
         self._Offset = None
@@ -2898,7 +2896,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -2909,7 +2907,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目 最大200
+        r"""<p>限制数目 最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -2920,7 +2918,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        r"""下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
+        r"""<p>下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】</p>
         :rtype: str
         """
         return self._CreatTimeRangeStart
@@ -2931,7 +2929,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
-        r"""下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
+        r"""<p>下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】</p>
         :rtype: str
         """
         return self._CreatTimeRangeEnd
@@ -2942,7 +2940,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""0:下单时间降序；其他：下单时间升序
+        r"""<p>0:下单时间降序；其他：下单时间升序</p>
         :rtype: int
         """
         return self._Order
@@ -2953,9 +2951,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)
-
-控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)
+        r"""<p>子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)</p><p>控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)</p>
         :rtype: int
         """
         return self._Status
@@ -2966,7 +2962,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def OwnerUins(self):
-        r"""下单人账号ID列表
+        r"""<p>下单人账号ID列表</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -2977,7 +2973,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""子订单号列表
+        r"""<p>子订单号列表</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -2988,7 +2984,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""大订单号列表
+        r"""<p>大订单号列表</p>
         :rtype: list of str
         """
         return self._BigDealIds
@@ -2999,7 +2995,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def PayerMode(self):
-        r"""支付方式，0：自付；1：代付
+        r"""<p>支付方式，0：自付；1：代付</p>
         :rtype: int
         """
         return self._PayerMode
@@ -3037,9 +3033,9 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentDealSet: 订单数组
+        :param _AgentDealSet: <p>订单数组</p>
         :type AgentDealSet: list of AgentDealNewElem
-        :param _TotalCount: 符合条件的订单总数量
+        :param _TotalCount: <p>符合条件的订单总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3050,7 +3046,7 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     @property
     def AgentDealSet(self):
-        r"""订单数组
+        r"""<p>订单数组</p>
         :rtype: list of AgentDealNewElem
         """
         return self._AgentDealSet
@@ -3061,7 +3057,7 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的订单总数量
+        r"""<p>符合条件的订单总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3214,23 +3210,23 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 限制数目 最大100
+        :param _Limit: <p>限制数目 最大100</p>
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+        :param _CreatTimeRangeStart: <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
         :type CreatTimeRangeStart: str
-        :param _CreatTimeRangeEnd: 下单时间范围终止点
+        :param _CreatTimeRangeEnd: <p>下单时间范围终止点</p>
         :type CreatTimeRangeEnd: str
-        :param _Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: <p>0:下单时间降序；其他：下单时间升序</p>
         :type Order: int
-        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
         :type Status: int
-        :param _OwnerUins: 下单人账号ID列表
+        :param _OwnerUins: <p>下单人账号ID列表</p>
         :type OwnerUins: list of str
-        :param _DealNames: 子订单号列表
+        :param _DealNames: <p>子订单号列表</p>
         :type DealNames: list of str
-        :param _BigDealIds: 大订单号列表
+        :param _BigDealIds: <p>大订单号列表</p>
         :type BigDealIds: list of str
         """
         self._Offset = None
@@ -3245,7 +3241,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -3256,7 +3252,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目 最大100
+        r"""<p>限制数目 最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -3267,7 +3263,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        r"""下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+        r"""<p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
         :rtype: str
         """
         return self._CreatTimeRangeStart
@@ -3278,7 +3274,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
-        r"""下单时间范围终止点
+        r"""<p>下单时间范围终止点</p>
         :rtype: str
         """
         return self._CreatTimeRangeEnd
@@ -3289,7 +3285,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Order(self):
-        r"""0:下单时间降序；其他：下单时间升序
+        r"""<p>0:下单时间降序；其他：下单时间升序</p>
         :rtype: int
         """
         return self._Order
@@ -3300,7 +3296,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Status(self):
-        r"""订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        r"""<p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
         :rtype: int
         """
         return self._Status
@@ -3311,7 +3307,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def OwnerUins(self):
-        r"""下单人账号ID列表
+        r"""<p>下单人账号ID列表</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -3322,7 +3318,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""子订单号列表
+        r"""<p>子订单号列表</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -3333,7 +3329,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""大订单号列表
+        r"""<p>大订单号列表</p>
         :rtype: list of str
         """
         return self._BigDealIds
@@ -3370,9 +3366,9 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentPayDealSet: 订单数组
+        :param _AgentPayDealSet: <p>订单数组</p>
         :type AgentPayDealSet: list of AgentDealNewElem
-        :param _TotalCount: 符合条件的订单总数量
+        :param _TotalCount: <p>符合条件的订单总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3383,7 +3379,7 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     @property
     def AgentPayDealSet(self):
-        r"""订单数组
+        r"""<p>订单数组</p>
         :rtype: list of AgentDealNewElem
         """
         return self._AgentPayDealSet
@@ -3394,7 +3390,7 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的订单总数量
+        r"""<p>符合条件的订单总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3512,23 +3508,23 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: 下单人账号ID
+        :param _OwnerUin: <p>下单人账号ID</p>
         :type OwnerUin: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 限制数目 最大100
+        :param _Limit: <p>限制数目 最大100</p>
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+        :param _CreatTimeRangeStart: <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
         :type CreatTimeRangeStart: str
-        :param _CreatTimeRangeEnd: 下单时间范围终止点
+        :param _CreatTimeRangeEnd: <p>下单时间范围终止点</p>
         :type CreatTimeRangeEnd: str
-        :param _Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: <p>0:下单时间降序；其他：下单时间升序</p>
         :type Order: int
-        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
         :type Status: int
-        :param _DealNames: 子订单号列表
+        :param _DealNames: <p>子订单号列表</p>
         :type DealNames: list of str
-        :param _BigDealIds: 大订单号列表
+        :param _BigDealIds: <p>大订单号列表</p>
         :type BigDealIds: list of str
         """
         self._OwnerUin = None
@@ -3543,7 +3539,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""下单人账号ID
+        r"""<p>下单人账号ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -3554,7 +3550,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -3565,7 +3561,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目 最大100
+        r"""<p>限制数目 最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -3576,7 +3572,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        r"""下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+        r"""<p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
         :rtype: str
         """
         return self._CreatTimeRangeStart
@@ -3587,7 +3583,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
-        r"""下单时间范围终止点
+        r"""<p>下单时间范围终止点</p>
         :rtype: str
         """
         return self._CreatTimeRangeEnd
@@ -3598,7 +3594,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Order(self):
-        r"""0:下单时间降序；其他：下单时间升序
+        r"""<p>0:下单时间降序；其他：下单时间升序</p>
         :rtype: int
         """
         return self._Order
@@ -3609,7 +3605,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Status(self):
-        r"""订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        r"""<p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
         :rtype: int
         """
         return self._Status
@@ -3620,7 +3616,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""子订单号列表
+        r"""<p>子订单号列表</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -3631,7 +3627,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""大订单号列表
+        r"""<p>大订单号列表</p>
         :rtype: list of str
         """
         return self._BigDealIds
@@ -3668,9 +3664,9 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentPayDealSet: 订单数组
+        :param _AgentPayDealSet: <p>订单数组</p>
         :type AgentPayDealSet: list of AgentDealNewElem
-        :param _TotalCount: 符合条件的订单总数量
+        :param _TotalCount: <p>符合条件的订单总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3681,7 +3677,7 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     @property
     def AgentPayDealSet(self):
-        r"""订单数组
+        r"""<p>订单数组</p>
         :rtype: list of AgentDealNewElem
         """
         return self._AgentPayDealSet
@@ -3692,7 +3688,7 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的订单总数量
+        r"""<p>符合条件的订单总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4063,11 +4059,11 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: <p>返佣月份，如2018-02</p>
         :type RebateMonth: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 限制数目
+        :param _Limit: <p>限制数目</p>
         :type Limit: int
         """
         self._RebateMonth = None
@@ -4076,7 +4072,7 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def RebateMonth(self):
-        r"""返佣月份，如2018-02
+        r"""<p>返佣月份，如2018-02</p>
         :rtype: str
         """
         return self._RebateMonth
@@ -4087,7 +4083,7 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -4098,7 +4094,7 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目
+        r"""<p>限制数目</p>
         :rtype: int
         """
         return self._Limit
@@ -4129,9 +4125,9 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RebateInfoSet: 返佣信息列表
+        :param _RebateInfoSet: <p>返佣信息列表</p>
         :type RebateInfoSet: list of RebateInfoElemNew
-        :param _TotalCount: 符合查询条件返佣信息数目
+        :param _TotalCount: <p>符合查询条件返佣信息数目</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4142,7 +4138,7 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     @property
     def RebateInfoSet(self):
-        r"""返佣信息列表
+        r"""<p>返佣信息列表</p>
         :rtype: list of RebateInfoElemNew
         """
         return self._RebateInfoSet
@@ -4153,7 +4149,7 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件返佣信息数目
+        r"""<p>符合查询条件返佣信息数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4192,11 +4188,11 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: <p>返佣月份，如2018-02</p>
         :type RebateMonth: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 限制数目
+        :param _Limit: <p>限制数目</p>
         :type Limit: int
         """
         self._RebateMonth = None
@@ -4205,7 +4201,7 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def RebateMonth(self):
-        r"""返佣月份，如2018-02
+        r"""<p>返佣月份，如2018-02</p>
         :rtype: str
         """
         return self._RebateMonth
@@ -4216,7 +4212,7 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -4227,7 +4223,7 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目
+        r"""<p>限制数目</p>
         :rtype: int
         """
         return self._Limit
@@ -4258,9 +4254,9 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RebateInfoSet: 返佣信息列表
+        :param _RebateInfoSet: <p>返佣信息列表</p>
         :type RebateInfoSet: list of RebateInfoElem
-        :param _TotalCount: 符合查询条件返佣信息数目
+        :param _TotalCount: <p>符合查询条件返佣信息数目</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4271,7 +4267,7 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     @property
     def RebateInfoSet(self):
-        r"""返佣信息列表
+        r"""<p>返佣信息列表</p>
         :rtype: list of RebateInfoElem
         """
         return self._RebateInfoSet
@@ -4282,7 +4278,7 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件返佣信息数目
+        r"""<p>符合查询条件返佣信息数目</p>
         :rtype: int
         """
         return self._TotalCount

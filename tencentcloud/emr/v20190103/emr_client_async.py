@@ -514,6 +514,42 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHBaseTableRequestMetric(
+            self,
+            request: models.DescribeHBaseTableRequestMetricRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHBaseTableRequestMetricResponse:
+        """
+        Hbase的表粒度读取和写入速率
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHBaseTableRequestMetric"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHBaseTableRequestMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHBaseTableStoreSizeMetric(
+            self,
+            request: models.DescribeHBaseTableStoreSizeMetricRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHBaseTableStoreSizeMetricResponse:
+        """
+        查询Hbase的表粒度StoreSize大小监控指标数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHBaseTableStoreSizeMetric"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHBaseTableStoreSizeMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHDFSStorageInfo(
             self,
             request: models.DescribeHDFSStorageInfoRequest,
