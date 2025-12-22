@@ -875,26 +875,6 @@ class TcaplusdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RollbackTables(
-            self,
-            request: models.RollbackTablesRequest,
-            opts: Dict = None,
-    ) -> models.RollbackTablesResponse:
-        """
-        不再使用
-
-        表格数据回档
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RollbackTables"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RollbackTablesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def SetBackupExpireRule(
             self,
             request: models.SetBackupExpireRuleRequest,

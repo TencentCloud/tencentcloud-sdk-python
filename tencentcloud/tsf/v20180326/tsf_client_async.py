@@ -2084,26 +2084,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeInovcationIndicators(
-            self,
-            request: models.DescribeInovcationIndicatorsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeInovcationIndicatorsResponse:
-        """
-        废弃接口
-
-        废弃
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeInovcationIndicators"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeInovcationIndicatorsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeInstances(
             self,
             request: models.DescribeInstancesRequest,

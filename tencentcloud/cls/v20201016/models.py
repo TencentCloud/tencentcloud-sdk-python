@@ -2363,6 +2363,135 @@ class ApplyConfigToMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AppointLabel(AbstractModel):
+    r"""元数据Pod label标签结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 指定标签类型。
+
+- 0：所有Pod label，Keys字段无效
+- 1：指定Pod label，Keys字段不能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Keys: 元数据Pod标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+
+-  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+-  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        """
+        self._Type = None
+        self._Keys = None
+
+    @property
+    def Type(self):
+        r"""指定标签类型。
+
+- 0：所有Pod label，Keys字段无效
+- 1：指定Pod label，Keys字段不能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keys(self):
+        r"""元数据Pod标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+
+-  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+-  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaseMetricCollectConfig(AbstractModel):
+    r"""指标采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 机器组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _Configs: 基础监控采集配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configs: list of MetricCollectConfig
+        """
+        self._GroupId = None
+        self._Configs = None
+
+    @property
+    def GroupId(self):
+        r"""机器组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Configs(self):
+        r"""基础监控采集配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricCollectConfig
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = MetricCollectConfig()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallBackInfo(AbstractModel):
     r"""回调配置
 
@@ -3269,6 +3398,120 @@ class Column(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CommitConsumerOffsetsRequest(AbstractModel):
+    r"""CommitConsumerOffsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 消费组标识
+        :type ConsumerGroup: str
+        :param _Consumer: 消费机器名称
+        :type Consumer: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _TopicPartitionOffsetsInfo: topic分区点位信息
+        :type TopicPartitionOffsetsInfo: list of TopicPartitionOffsetInfo
+        """
+        self._ConsumerGroup = None
+        self._Consumer = None
+        self._LogsetId = None
+        self._TopicPartitionOffsetsInfo = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Consumer(self):
+        r"""消费机器名称
+        :rtype: str
+        """
+        return self._Consumer
+
+    @Consumer.setter
+    def Consumer(self, Consumer):
+        self._Consumer = Consumer
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicPartitionOffsetsInfo(self):
+        r"""topic分区点位信息
+        :rtype: list of TopicPartitionOffsetInfo
+        """
+        return self._TopicPartitionOffsetsInfo
+
+    @TopicPartitionOffsetsInfo.setter
+    def TopicPartitionOffsetsInfo(self, TopicPartitionOffsetsInfo):
+        self._TopicPartitionOffsetsInfo = TopicPartitionOffsetsInfo
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Consumer = params.get("Consumer")
+        self._LogsetId = params.get("LogsetId")
+        if params.get("TopicPartitionOffsetsInfo") is not None:
+            self._TopicPartitionOffsetsInfo = []
+            for item in params.get("TopicPartitionOffsetsInfo"):
+                obj = TopicPartitionOffsetInfo()
+                obj._deserialize(item)
+                self._TopicPartitionOffsetsInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommitConsumerOffsetsResponse(AbstractModel):
+    r"""CommitConsumerOffsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CompressInfo(AbstractModel):
@@ -4681,6 +4924,291 @@ class ConsumerGroup(AbstractModel):
         self._Group = params.get("Group")
         self._State = params.get("State")
         self._ProtocolName = params.get("ProtocolName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerGroupInfo(AbstractModel):
+    r"""消费组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 消费组标识
+        :type ConsumerGroup: str
+        :param _Timeout: 消费者心跳超时时间（秒）
+        :type Timeout: int
+        :param _Topics: topic列表
+        :type Topics: list of str
+        """
+        self._ConsumerGroup = None
+        self._Timeout = None
+        self._Topics = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Timeout(self):
+        r"""消费者心跳超时时间（秒）
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Topics(self):
+        r"""topic列表
+        :rtype: list of str
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Timeout = params.get("Timeout")
+        self._Topics = params.get("Topics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerInfo(AbstractModel):
+    r"""投递规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerId: 投递规则ID
+        :type ConsumerId: str
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _Effective: 投递任务是否生效
+        :type Effective: bool
+        :param _Ckafka: CKafka的描述
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param _NeedContent: 是否投递日志的元数据信息
+        :type NeedContent: bool
+        :param _Content: 如果需要投递元数据信息，元数据信息的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: int
+        :param _CreateTime: 投递任务创建毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleArn: str
+        :param _ExternalId: 外部ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalId: str
+        :param _TaskStatus: 任务运行状态。支持`0`,`1`,`2` - `0`: 停止 - `1`: 运行中 - `2`: 异常	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: int
+        :param _AdvancedConfig: 高级配置
+        :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        """
+        self._ConsumerId = None
+        self._TopicId = None
+        self._Effective = None
+        self._Ckafka = None
+        self._NeedContent = None
+        self._Content = None
+        self._Compression = None
+        self._CreateTime = None
+        self._RoleArn = None
+        self._ExternalId = None
+        self._TaskStatus = None
+        self._AdvancedConfig = None
+
+    @property
+    def ConsumerId(self):
+        r"""投递规则ID
+        :rtype: str
+        """
+        return self._ConsumerId
+
+    @ConsumerId.setter
+    def ConsumerId(self, ConsumerId):
+        self._ConsumerId = ConsumerId
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Effective(self):
+        r"""投递任务是否生效
+        :rtype: bool
+        """
+        return self._Effective
+
+    @Effective.setter
+    def Effective(self, Effective):
+        self._Effective = Effective
+
+    @property
+    def Ckafka(self):
+        r"""CKafka的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
+        return self._Ckafka
+
+    @Ckafka.setter
+    def Ckafka(self, Ckafka):
+        self._Ckafka = Ckafka
+
+    @property
+    def NeedContent(self):
+        r"""是否投递日志的元数据信息
+        :rtype: bool
+        """
+        return self._NeedContent
+
+    @NeedContent.setter
+    def NeedContent(self, NeedContent):
+        self._NeedContent = NeedContent
+
+    @property
+    def Content(self):
+        r"""如果需要投递元数据信息，元数据信息的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Compression(self):
+        r"""压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def CreateTime(self):
+        r"""投递任务创建毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RoleArn(self):
+        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""外部ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def TaskStatus(self):
+        r"""任务运行状态。支持`0`,`1`,`2` - `0`: 停止 - `1`: 运行中 - `2`: 异常	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def AdvancedConfig(self):
+        r"""高级配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
+
+    def _deserialize(self, params):
+        self._ConsumerId = params.get("ConsumerId")
+        self._TopicId = params.get("TopicId")
+        self._Effective = params.get("Effective")
+        if params.get("Ckafka") is not None:
+            self._Ckafka = Ckafka()
+            self._Ckafka._deserialize(params.get("Ckafka"))
+        self._NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self._Content = ConsumerContent()
+            self._Content._deserialize(params.get("Content"))
+        self._Compression = params.get("Compression")
+        self._CreateTime = params.get("CreateTime")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
+        self._TaskStatus = params.get("TaskStatus")
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AdvancedConsumerConfiguration()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7447,6 +7975,132 @@ class CreateConsoleSharingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateConsumerGroupRequest(AbstractModel):
+    r"""CreateConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 创建的消费者组标识
+限制： 字母数字下划线，不允许数字开头，长度限制256
+        :type ConsumerGroup: str
+        :param _Timeout: 消费者心跳超时时间（秒）
+        :type Timeout: int
+        :param _Topics: 创建的消费者组包含的日志主题列表
+        :type Topics: list of str
+        :param _LogsetId: 日志集Id（日志主题所属的日志集）
+        :type LogsetId: str
+        """
+        self._ConsumerGroup = None
+        self._Timeout = None
+        self._Topics = None
+        self._LogsetId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""创建的消费者组标识
+限制： 字母数字下划线，不允许数字开头，长度限制256
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Timeout(self):
+        r"""消费者心跳超时时间（秒）
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Topics(self):
+        r"""创建的消费者组包含的日志主题列表
+        :rtype: list of str
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def LogsetId(self):
+        r"""日志集Id（日志主题所属的日志集）
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Timeout = params.get("Timeout")
+        self._Topics = params.get("Topics")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerGroupResponse(AbstractModel):
+    r"""CreateConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 消费组标识
+        :type ConsumerGroup: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerGroup = None
+        self._RequestId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConsumerRequest(AbstractModel):
     r"""CreateConsumer请求参数结构体
 
@@ -8760,6 +9414,200 @@ class CreateDlcDeliverResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEsRechargeRequest(AbstractModel):
+    r"""CreateEsRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        :param _Name: 名称：长度不超过64字符。
+        :type Name: str
+        :param _Index: 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :type Index: str
+        :param _Query: es查询语句。
+        :type Query: str
+        :param _EsInfo: es集群配置信息。
+        :type EsInfo: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        :param _ImportInfo: es导入信息。
+        :type ImportInfo: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        :param _TimeInfo: es导入时间字段信息。
+        :type TimeInfo: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。默认开启。
+        :type HasServicesLog: int
+        """
+        self._TopicId = None
+        self._Name = None
+        self._Index = None
+        self._Query = None
+        self._EsInfo = None
+        self._ImportInfo = None
+        self._TimeInfo = None
+        self._HasServicesLog = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过64字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Index(self):
+        r"""索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Query(self):
+        r"""es查询语句。
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def EsInfo(self):
+        r"""es集群配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        """
+        return self._EsInfo
+
+    @EsInfo.setter
+    def EsInfo(self, EsInfo):
+        self._EsInfo = EsInfo
+
+    @property
+    def ImportInfo(self):
+        r"""es导入信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        """
+        return self._ImportInfo
+
+    @ImportInfo.setter
+    def ImportInfo(self, ImportInfo):
+        self._ImportInfo = ImportInfo
+
+    @property
+    def TimeInfo(self):
+        r"""es导入时间字段信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        """
+        return self._TimeInfo
+
+    @TimeInfo.setter
+    def TimeInfo(self, TimeInfo):
+        self._TimeInfo = TimeInfo
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。默认开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Index = params.get("Index")
+        self._Query = params.get("Query")
+        if params.get("EsInfo") is not None:
+            self._EsInfo = EsInfo()
+            self._EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("ImportInfo") is not None:
+            self._ImportInfo = EsImportInfo()
+            self._ImportInfo._deserialize(params.get("ImportInfo"))
+        if params.get("TimeInfo") is not None:
+            self._TimeInfo = EsTimeInfo()
+            self._TimeInfo._deserialize(params.get("TimeInfo"))
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEsRechargeResponse(AbstractModel):
+    r"""CreateEsRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 配置id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""配置id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateExportRequest(AbstractModel):
     r"""CreateExport请求参数结构体
 
@@ -8960,6 +9808,168 @@ class CreateExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ExportId = params.get("ExportId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHostMetricConfigRequest(AbstractModel):
+    r"""CreateHostMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _Name: 名称。
+
+- 长度不超过 64字符。
+        :type Name: str
+        :param _MachineGroupIds: 机器组id列表。最多支持100个机器组。
+        :type MachineGroupIds: list of str
+        :param _Interval: 采集频率。单位:ms。 最小支持5000ms
+        :type Interval: int
+        :param _HostMetricItems: 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+        :type HostMetricItems: list of HostMetricItem
+        """
+        self._TopicId = None
+        self._Name = None
+        self._MachineGroupIds = None
+        self._Interval = None
+        self._HostMetricItems = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""名称。
+
+- 长度不超过 64字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MachineGroupIds(self):
+        r"""机器组id列表。最多支持100个机器组。
+        :rtype: list of str
+        """
+        return self._MachineGroupIds
+
+    @MachineGroupIds.setter
+    def MachineGroupIds(self, MachineGroupIds):
+        self._MachineGroupIds = MachineGroupIds
+
+    @property
+    def Interval(self):
+        r"""采集频率。单位:ms。 最小支持5000ms
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def HostMetricItems(self):
+        r"""采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+        :rtype: list of HostMetricItem
+        """
+        return self._HostMetricItems
+
+    @HostMetricItems.setter
+    def HostMetricItems(self, HostMetricItems):
+        self._HostMetricItems = HostMetricItems
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._MachineGroupIds = params.get("MachineGroupIds")
+        self._Interval = params.get("Interval")
+        if params.get("HostMetricItems") is not None:
+            self._HostMetricItems = []
+            for item in params.get("HostMetricItems"):
+                obj = HostMetricItem()
+                obj._deserialize(item)
+                self._HostMetricItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHostMetricConfigResponse(AbstractModel):
+    r"""CreateHostMetricConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: 主机指标采集配置id
+        :type ConfigId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConfigId = None
+        self._RequestId = None
+
+    @property
+    def ConfigId(self):
+        r"""主机指标采集配置id
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
         self._RequestId = params.get("RequestId")
 
 
@@ -9750,6 +10760,465 @@ class CreateMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMetricConfigRequest(AbstractModel):
+    r"""CreateMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _Source: 采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :type Source: int
+        :param _GroupIds: 机器组id。
+        :type GroupIds: list of str
+        :param _Type: 监控类型。支持 ：`0`、`1`，不支持修改
+- 0:基础监控
+- 1:自定义监控, 
+        :type Type: int
+        :param _Flag: 采集配置方式。支持 ：`0`、`1`，不支持修改
+- 0:普通配置方式，Type字段只能为：``1`
+- 1:YAML导入方式， Type 可以是：`0`或者`1`
+        :type Flag: int
+        :param _Name: 名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+        :type Name: str
+        :param _Spec: 采集对象, Flag=0时生效
+        :type Spec: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        :param _MetricRelabels: 标签处理, Flag=0时生效
+        :type MetricRelabels: list of Relabeling
+        :param _MetricLabel: 自定义元数据, Flag=0时生效
+        :type MetricLabel: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        :param _Scheme: 通信协议 http、https; Flag=0时生效
+        :type Scheme: str
+        :param _ScrapeInterval: 采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：60s
+        :type ScrapeInterval: str
+        :param _ScrapeTimeout: 采集超时时间， Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：30s
+        :type ScrapeTimeout: str
+        :param _HonorLabels: Prometheus如何处理标签之间的冲突。当Flag=0时生效，支持`true`,`false`
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+        :type HonorLabels: bool
+        :param _YamlSpec: 采集配置yaml格式字符串, Flag=1时必填
+        :type YamlSpec: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        """
+        self._TopicId = None
+        self._Source = None
+        self._GroupIds = None
+        self._Type = None
+        self._Flag = None
+        self._Name = None
+        self._Spec = None
+        self._MetricRelabels = None
+        self._MetricLabel = None
+        self._Scheme = None
+        self._ScrapeInterval = None
+        self._ScrapeTimeout = None
+        self._HonorLabels = None
+        self._YamlSpec = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Source(self):
+        r"""采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def GroupIds(self):
+        r"""机器组id。
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def Type(self):
+        r"""监控类型。支持 ：`0`、`1`，不支持修改
+- 0:基础监控
+- 1:自定义监控, 
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Flag(self):
+        r"""采集配置方式。支持 ：`0`、`1`，不支持修改
+- 0:普通配置方式，Type字段只能为：``1`
+- 1:YAML导入方式， Type 可以是：`0`或者`1`
+        :rtype: int
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Spec(self):
+        r"""采集对象, Flag=0时生效
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def MetricRelabels(self):
+        r"""标签处理, Flag=0时生效
+        :rtype: list of Relabeling
+        """
+        return self._MetricRelabels
+
+    @MetricRelabels.setter
+    def MetricRelabels(self, MetricRelabels):
+        self._MetricRelabels = MetricRelabels
+
+    @property
+    def MetricLabel(self):
+        r"""自定义元数据, Flag=0时生效
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        """
+        return self._MetricLabel
+
+    @MetricLabel.setter
+    def MetricLabel(self, MetricLabel):
+        self._MetricLabel = MetricLabel
+
+    @property
+    def Scheme(self):
+        r"""通信协议 http、https; Flag=0时生效
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def ScrapeInterval(self):
+        r"""采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：60s
+        :rtype: str
+        """
+        return self._ScrapeInterval
+
+    @ScrapeInterval.setter
+    def ScrapeInterval(self, ScrapeInterval):
+        self._ScrapeInterval = ScrapeInterval
+
+    @property
+    def ScrapeTimeout(self):
+        r"""采集超时时间， Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：30s
+        :rtype: str
+        """
+        return self._ScrapeTimeout
+
+    @ScrapeTimeout.setter
+    def ScrapeTimeout(self, ScrapeTimeout):
+        self._ScrapeTimeout = ScrapeTimeout
+
+    @property
+    def HonorLabels(self):
+        r"""Prometheus如何处理标签之间的冲突。当Flag=0时生效，支持`true`,`false`
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+        :rtype: bool
+        """
+        return self._HonorLabels
+
+    @HonorLabels.setter
+    def HonorLabels(self, HonorLabels):
+        self._HonorLabels = HonorLabels
+
+    @property
+    def YamlSpec(self):
+        r"""采集配置yaml格式字符串, Flag=1时必填
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        """
+        return self._YamlSpec
+
+    @YamlSpec.setter
+    def YamlSpec(self, YamlSpec):
+        self._YamlSpec = YamlSpec
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Source = params.get("Source")
+        self._GroupIds = params.get("GroupIds")
+        self._Type = params.get("Type")
+        self._Flag = params.get("Flag")
+        self._Name = params.get("Name")
+        if params.get("Spec") is not None:
+            self._Spec = MetricSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("MetricRelabels") is not None:
+            self._MetricRelabels = []
+            for item in params.get("MetricRelabels"):
+                obj = Relabeling()
+                obj._deserialize(item)
+                self._MetricRelabels.append(obj)
+        if params.get("MetricLabel") is not None:
+            self._MetricLabel = MetricConfigLabel()
+            self._MetricLabel._deserialize(params.get("MetricLabel"))
+        self._Scheme = params.get("Scheme")
+        self._ScrapeInterval = params.get("ScrapeInterval")
+        self._ScrapeTimeout = params.get("ScrapeTimeout")
+        self._HonorLabels = params.get("HonorLabels")
+        if params.get("YamlSpec") is not None:
+            self._YamlSpec = MetricYamlSpec()
+            self._YamlSpec._deserialize(params.get("YamlSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetricConfigResponse(AbstractModel):
+    r"""CreateMetricConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigIds: 指标采集配置id列表。
+        :type ConfigIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConfigIds = None
+        self._RequestId = None
+
+    @property
+    def ConfigIds(self):
+        r"""指标采集配置id列表。
+        :rtype: list of str
+        """
+        return self._ConfigIds
+
+    @ConfigIds.setter
+    def ConfigIds(self, ConfigIds):
+        self._ConfigIds = ConfigIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConfigIds = params.get("ConfigIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMetricSubscribeRequest(AbstractModel):
+    r"""CreateMetricSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :type Name: str
+        :param _TopicId: 日志主题id。
+        :type TopicId: str
+        :param _Namespace: 云产品命名空间。
+        :type Namespace: str
+        :param _Metrics: 数据库配置信息。
+        :type Metrics: list of MetricConfig
+        :param _InstanceInfo: 实例配置配置。
+        :type InstanceInfo: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        self._Name = None
+        self._TopicId = None
+        self._Namespace = None
+        self._Metrics = None
+        self._InstanceInfo = None
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Namespace(self):
+        r"""云产品命名空间。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metrics(self):
+        r"""数据库配置信息。
+        :rtype: list of MetricConfig
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def InstanceInfo(self):
+        r"""实例配置配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TopicId = params.get("TopicId")
+        self._Namespace = params.get("Namespace")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricConfig()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = InstanceConfig()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetricSubscribeResponse(AbstractModel):
+    r"""CreateMetricSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 配置id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""配置id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNoticeContentRequest(AbstractModel):
     r"""CreateNoticeContent请求参数结构体
 
@@ -10472,6 +11941,238 @@ class CreateShipperResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSplunkDeliverRequest(AbstractModel):
+    r"""CreateSplunkDeliver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _Name: splunk投递任务名称；
+name有如下限制：
+- 不能为空
+- 长度不大于64
+- 只能包含aA-zZ、下划线、-、0-9
+        :type Name: str
+        :param _NetInfo: Splunk投递任务-目标配置-网络信息
+        :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        :param _MetadataInfo: Splunk投递任务元信息
+        :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        :param _HasServiceLog: 是否开启服务日志 1:关闭；2:开启 ;默认开启
+        :type HasServiceLog: int
+        :param _IndexAck: 高级配置-是否启用索引器；1-不启用；2-启用；
+默认：1
+        :type IndexAck: int
+        :param _Source: 高级配置-数据来源；不超过64个字符
+        :type Source: str
+        :param _SourceType: 高级配置-数据来源类型；不超过64个字符
+        :type SourceType: str
+        :param _Index: 高级配置-Splunk写入的索引；不超过64个字符
+        :type Index: str
+        :param _Channel: 高级配置-通道
+需满足限制：如果启用索引器，那么Channel必填
+        :type Channel: str
+        """
+        self._TopicId = None
+        self._Name = None
+        self._NetInfo = None
+        self._MetadataInfo = None
+        self._HasServiceLog = None
+        self._IndexAck = None
+        self._Source = None
+        self._SourceType = None
+        self._Index = None
+        self._Channel = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""splunk投递任务名称；
+name有如下限制：
+- 不能为空
+- 长度不大于64
+- 只能包含aA-zZ、下划线、-、0-9
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NetInfo(self):
+        r"""Splunk投递任务-目标配置-网络信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        """
+        return self._NetInfo
+
+    @NetInfo.setter
+    def NetInfo(self, NetInfo):
+        self._NetInfo = NetInfo
+
+    @property
+    def MetadataInfo(self):
+        r"""Splunk投递任务元信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        """
+        return self._MetadataInfo
+
+    @MetadataInfo.setter
+    def MetadataInfo(self, MetadataInfo):
+        self._MetadataInfo = MetadataInfo
+
+    @property
+    def HasServiceLog(self):
+        r"""是否开启服务日志 1:关闭；2:开启 ;默认开启
+        :rtype: int
+        """
+        return self._HasServiceLog
+
+    @HasServiceLog.setter
+    def HasServiceLog(self, HasServiceLog):
+        self._HasServiceLog = HasServiceLog
+
+    @property
+    def IndexAck(self):
+        r"""高级配置-是否启用索引器；1-不启用；2-启用；
+默认：1
+        :rtype: int
+        """
+        return self._IndexAck
+
+    @IndexAck.setter
+    def IndexAck(self, IndexAck):
+        self._IndexAck = IndexAck
+
+    @property
+    def Source(self):
+        r"""高级配置-数据来源；不超过64个字符
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceType(self):
+        r"""高级配置-数据来源类型；不超过64个字符
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Index(self):
+        r"""高级配置-Splunk写入的索引；不超过64个字符
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Channel(self):
+        r"""高级配置-通道
+需满足限制：如果启用索引器，那么Channel必填
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        if params.get("NetInfo") is not None:
+            self._NetInfo = NetInfo()
+            self._NetInfo._deserialize(params.get("NetInfo"))
+        if params.get("MetadataInfo") is not None:
+            self._MetadataInfo = MetadataInfo()
+            self._MetadataInfo._deserialize(params.get("MetadataInfo"))
+        self._HasServiceLog = params.get("HasServiceLog")
+        self._IndexAck = params.get("IndexAck")
+        self._Source = params.get("Source")
+        self._SourceType = params.get("SourceType")
+        self._Index = params.get("Index")
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSplunkDeliverResponse(AbstractModel):
+    r"""CreateSplunkDeliver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: splunk投递任务id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""splunk投递任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicRequest(AbstractModel):
     r"""CreateTopic请求参数结构体
 
@@ -11060,6 +12761,173 @@ class CsvInfo(AbstractModel):
         self._Delimiter = params.get("Delimiter")
         self._EscapeChar = params.get("EscapeChar")
         self._NonExistingField = params.get("NonExistingField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomLabel(AbstractModel):
+    r"""自定义标签结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签的键。
+- 必须以字母或下划线开头，但不可以双下划线（__）开头，后面可以跟任意字母，数字或下划线。
+- 最大支持256个字符。
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 标签的值。
+- 最大支持256个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签的键。
+- 必须以字母或下划线开头，但不可以双下划线（__）开头，后面可以跟任意字母，数字或下划线。
+- 最大支持256个字符。
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签的值。
+- 最大支持256个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomMetricSpec(AbstractModel):
+    r"""自定义指标采集对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Port: 端口。取值范围 [1,65535]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param _Path: Metric地址。校验格式：`^/[a-zA-Z0-9-_./]*$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Namespaces: 命名空间列表。
+- 最大支持100个
+- namespace 校验格式 `[a-z0-9]([-a-z0-9]*[a-z0-9])?` ， 长度不能超过63
+- namespace 不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespaces: list of str
+        :param _PodLabel: Pod标签。
+- 最大支持100个
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLabel: list of Label
+        """
+        self._Port = None
+        self._Path = None
+        self._Namespaces = None
+        self._PodLabel = None
+
+    @property
+    def Port(self):
+        r"""端口。取值范围 [1,65535]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Path(self):
+        r"""Metric地址。校验格式：`^/[a-zA-Z0-9-_./]*$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Namespaces(self):
+        r"""命名空间列表。
+- 最大支持100个
+- namespace 校验格式 `[a-z0-9]([-a-z0-9]*[a-z0-9])?` ， 长度不能超过63
+- namespace 不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Namespaces
+
+    @Namespaces.setter
+    def Namespaces(self, Namespaces):
+        self._Namespaces = Namespaces
+
+    @property
+    def PodLabel(self):
+        r"""Pod标签。
+- 最大支持100个
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
+        return self._PodLabel
+
+    @PodLabel.setter
+    def PodLabel(self, PodLabel):
+        self._PodLabel = PodLabel
+
+
+    def _deserialize(self, params):
+        self._Port = params.get("Port")
+        self._Path = params.get("Path")
+        self._Namespaces = params.get("Namespaces")
+        if params.get("PodLabel") is not None:
+            self._PodLabel = []
+            for item in params.get("PodLabel"):
+                obj = Label()
+                obj._deserialize(item)
+                self._PodLabel.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13079,6 +14947,85 @@ class DeleteConsoleSharingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteConsumerGroupRequest(AbstractModel):
+    r"""DeleteConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 需要删除的消费者组标识
+        :type ConsumerGroup: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        """
+        self._ConsumerGroup = None
+        self._LogsetId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""需要删除的消费者组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerGroupResponse(AbstractModel):
+    r"""DeleteConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteConsumerRequest(AbstractModel):
     r"""DeleteConsumer请求参数结构体
 
@@ -13439,6 +15386,89 @@ class DeleteDlcDeliverResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteEsRechargeRequest(AbstractModel):
+    r"""DeleteEsRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TopicId: 任务配置的日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""任务配置的日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEsRechargeResponse(AbstractModel):
+    r"""DeleteEsRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteExportRequest(AbstractModel):
     r"""DeleteExport请求参数结构体
 
@@ -13481,6 +15511,89 @@ class DeleteExportRequest(AbstractModel):
 
 class DeleteExportResponse(AbstractModel):
     r"""DeleteExport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteHostMetricConfigRequest(AbstractModel):
+    r"""DeleteHostMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _ConfigId: 采集配置id。
+        :type ConfigId: str
+        """
+        self._TopicId = None
+        self._ConfigId = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ConfigId(self):
+        r"""采集配置id。
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHostMetricConfigResponse(AbstractModel):
+    r"""DeleteHostMetricConfig返回参数结构体
 
     """
 
@@ -13875,6 +15988,168 @@ class DeleteMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteMetricConfigRequest(AbstractModel):
+    r"""DeleteMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _ConfigId: 指标采集配置id。
+        :type ConfigId: str
+        """
+        self._TopicId = None
+        self._ConfigId = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ConfigId(self):
+        r"""指标采集配置id。
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMetricConfigResponse(AbstractModel):
+    r"""DeleteMetricConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMetricSubscribeRequest(AbstractModel):
+    r"""DeleteMetricSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 指标采集任务id
+        :type TaskId: str
+        :param _TopicId: 指标采集任务配置的日志主题id。
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""指标采集任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""指标采集任务配置的日志主题id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMetricSubscribeResponse(AbstractModel):
+    r"""DeleteMetricSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNoticeContentRequest(AbstractModel):
     r"""DeleteNoticeContent请求参数结构体
 
@@ -14058,6 +16333,87 @@ class DeleteShipperRequest(AbstractModel):
 
 class DeleteShipperResponse(AbstractModel):
     r"""DeleteShipper返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSplunkDeliverRequest(AbstractModel):
+    r"""DeleteSplunkDeliver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSplunkDeliverResponse(AbstractModel):
+    r"""DeleteSplunkDeliver返回参数结构体
 
     """
 
@@ -15180,6 +17536,314 @@ class DescribeCloudProductLogTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterBaseMetricConfigsRequest(AbstractModel):
+    r"""DescribeClusterBaseMetricConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 机器组id
+        :type GroupId: str
+        :param _Filters: <li> topicId按照【指标主题id】进行过滤。类型：String  必选：否</li>
+<li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._GroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GroupId(self):
+        r"""机器组id
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Filters(self):
+        r"""<li> topicId按照【指标主题id】进行过滤。类型：String  必选：否</li>
+<li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterBaseMetricConfigsResponse(AbstractModel):
+    r"""DescribeClusterBaseMetricConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Datas: 指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datas: list of BaseMetricCollectConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Datas(self):
+        r"""指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BaseMetricCollectConfig
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = BaseMetricCollectConfig()
+                obj._deserialize(item)
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterMetricConfigsRequest(AbstractModel):
+    r"""DescribeClusterMetricConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 机器组id
+        :type GroupId: str
+        :param _Filters: <li> configId按照【指标采集配置id】进行过滤。类型：String  必选：否</li>
+<li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+<li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._GroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GroupId(self):
+        r"""机器组id
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Filters(self):
+        r"""<li> configId按照【指标采集配置id】进行过滤。类型：String  必选：否</li>
+<li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+<li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterMetricConfigsResponse(AbstractModel):
+    r"""DescribeClusterMetricConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Datas: 指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datas: list of MetricCollectConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Datas(self):
+        r"""指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricCollectConfig
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = MetricCollectConfig()
+                obj._deserialize(item)
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeConfigExtrasRequest(AbstractModel):
     r"""DescribeConfigExtras请求参数结构体
 
@@ -15689,6 +18353,298 @@ class DescribeConsoleSharingListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConsumerGroupsRequest(AbstractModel):
+    r"""DescribeConsumerGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: 日志集Id（日志主题所属的日志集）
+        :type LogsetId: str
+        :param _Topics: topic列表
+        :type Topics: list of str
+        """
+        self._LogsetId = None
+        self._Topics = None
+
+    @property
+    def LogsetId(self):
+        r"""日志集Id（日志主题所属的日志集）
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Topics(self):
+        r"""topic列表
+        :rtype: list of str
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._Topics = params.get("Topics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerGroupsResponse(AbstractModel):
+    r"""DescribeConsumerGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroupsInfo: 消费组详情列表
+        :type ConsumerGroupsInfo: list of ConsumerGroupInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerGroupsInfo = None
+        self._RequestId = None
+
+    @property
+    def ConsumerGroupsInfo(self):
+        r"""消费组详情列表
+        :rtype: list of ConsumerGroupInfo
+        """
+        return self._ConsumerGroupsInfo
+
+    @ConsumerGroupsInfo.setter
+    def ConsumerGroupsInfo(self, ConsumerGroupsInfo):
+        self._ConsumerGroupsInfo = ConsumerGroupsInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConsumerGroupsInfo") is not None:
+            self._ConsumerGroupsInfo = []
+            for item in params.get("ConsumerGroupsInfo"):
+                obj = ConsumerGroupInfo()
+                obj._deserialize(item)
+                self._ConsumerGroupsInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerOffsetsRequest(AbstractModel):
+    r"""DescribeConsumerOffsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 日志主题对应的消费组标识
+        :type ConsumerGroup: str
+        :param _From: 时间戳(秒级时间戳)
+        :type From: str
+        :param _LogsetId: 日志集id(日志主题对应的id)
+        :type LogsetId: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _PartitionId: 分区id
+        :type PartitionId: str
+        """
+        self._ConsumerGroup = None
+        self._From = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._PartitionId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""日志主题对应的消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def From(self):
+        r"""时间戳(秒级时间戳)
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def LogsetId(self):
+        r"""日志集id(日志主题对应的id)
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def PartitionId(self):
+        r"""分区id
+        :rtype: str
+        """
+        return self._PartitionId
+
+    @PartitionId.setter
+    def PartitionId(self, PartitionId):
+        self._PartitionId = PartitionId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._From = params.get("From")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._PartitionId = params.get("PartitionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerOffsetsResponse(AbstractModel):
+    r"""DescribeConsumerOffsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 消费者组标识
+        :type ConsumerGroup: str
+        :param _TopicPartitionOffsetsInfo: 消费点位信息
+        :type TopicPartitionOffsetsInfo: list of TopicPartitionOffsetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerGroup = None
+        self._TopicPartitionOffsetsInfo = None
+        self._RequestId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费者组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def TopicPartitionOffsetsInfo(self):
+        r"""消费点位信息
+        :rtype: list of TopicPartitionOffsetInfo
+        """
+        return self._TopicPartitionOffsetsInfo
+
+    @TopicPartitionOffsetsInfo.setter
+    def TopicPartitionOffsetsInfo(self, TopicPartitionOffsetsInfo):
+        self._TopicPartitionOffsetsInfo = TopicPartitionOffsetsInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        if params.get("TopicPartitionOffsetsInfo") is not None:
+            self._TopicPartitionOffsetsInfo = []
+            for item in params.get("TopicPartitionOffsetsInfo"):
+                obj = TopicPartitionOffsetInfo()
+                obj._deserialize(item)
+                self._TopicPartitionOffsetsInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerPreviewRequest(AbstractModel):
+    r"""DescribeConsumerPreview请求参数结构体
+
+    """
+
+
+class DescribeConsumerPreviewResponse(AbstractModel):
+    r"""DescribeConsumerPreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeConsumerRequest(AbstractModel):
     r"""DescribeConsumer请求参数结构体
 
@@ -15835,6 +18791,174 @@ class DescribeConsumerResponse(AbstractModel):
             self._Ckafka = Ckafka()
             self._Ckafka._deserialize(params.get("Ckafka"))
         self._Compression = params.get("Compression")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumersRequest(AbstractModel):
+    r"""DescribeConsumers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: - consumerId
+按照【投递规则ID】进行过滤。
+类型：String
+必选：否
+
+- topicId
+按照【日志主题】进行过滤。
+类型：String
+必选：否
+
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+类型：String
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param _Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""- consumerId
+按照【投递规则ID】进行过滤。
+类型：String
+必选：否
+
+- topicId
+按照【日志主题】进行过滤。
+类型：String
+必选：否
+
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+类型：String
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumersResponse(AbstractModel):
+    r"""DescribeConsumers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Consumers: 投递规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consumers: list of ConsumerInfo
+        :param _TotalCount: 本次查询获取到的总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Consumers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Consumers(self):
+        r"""投递规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerInfo
+        """
+        return self._Consumers
+
+    @Consumers.setter
+    def Consumers(self, Consumers):
+        self._Consumers = Consumers
+
+    @property
+    def TotalCount(self):
+        r"""本次查询获取到的总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Consumers") is not None:
+            self._Consumers = []
+            for item in params.get("Consumers"):
+                obj = ConsumerInfo()
+                obj._deserialize(item)
+                self._Consumers.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -16807,6 +19931,344 @@ class DescribeDlcDeliversResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEsRechargePreviewRequest(AbstractModel):
+    r"""DescribeEsRechargePreview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称：长度不超过64字符。
+        :type Name: str
+        :param _TopicId: 日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        :param _Index: 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :type Index: str
+        :param _Query: es查询语句。
+        :type Query: str
+        :param _EsInfo: es集群配置信息。
+        :type EsInfo: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        :param _ImportInfo: es导入信息。
+        :type ImportInfo: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        :param _TimeInfo: es导入时间字段信息。
+        :type TimeInfo: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        """
+        self._Name = None
+        self._TopicId = None
+        self._Index = None
+        self._Query = None
+        self._EsInfo = None
+        self._ImportInfo = None
+        self._TimeInfo = None
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过64字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Index(self):
+        r"""索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Query(self):
+        r"""es查询语句。
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def EsInfo(self):
+        r"""es集群配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        """
+        return self._EsInfo
+
+    @EsInfo.setter
+    def EsInfo(self, EsInfo):
+        self._EsInfo = EsInfo
+
+    @property
+    def ImportInfo(self):
+        r"""es导入信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        """
+        return self._ImportInfo
+
+    @ImportInfo.setter
+    def ImportInfo(self, ImportInfo):
+        self._ImportInfo = ImportInfo
+
+    @property
+    def TimeInfo(self):
+        r"""es导入时间字段信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        """
+        return self._TimeInfo
+
+    @TimeInfo.setter
+    def TimeInfo(self, TimeInfo):
+        self._TimeInfo = TimeInfo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TopicId = params.get("TopicId")
+        self._Index = params.get("Index")
+        self._Query = params.get("Query")
+        if params.get("EsInfo") is not None:
+            self._EsInfo = EsInfo()
+            self._EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("ImportInfo") is not None:
+            self._ImportInfo = EsImportInfo()
+            self._ImportInfo._deserialize(params.get("ImportInfo"))
+        if params.get("TimeInfo") is not None:
+            self._TimeInfo = EsTimeInfo()
+            self._TimeInfo._deserialize(params.get("TimeInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEsRechargePreviewResponse(AbstractModel):
+    r"""DescribeEsRechargePreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 预览数据信息
+        :type Data: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""预览数据信息
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEsRechargesRequest(AbstractModel):
+    r"""DescribeEsRecharges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        :param _Filters: -  taskId按照【配置id】进行过滤。类型：String  必选：否
+-  name按照【配置名称】进行过滤。类型：String 必选：否
+-  statusFlag按照【配置状态标记】进行过滤。类型：String 必选：否
+-  每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""-  taskId按照【配置id】进行过滤。类型：String  必选：否
+-  name按照【配置名称】进行过滤。类型：String 必选：否
+-  statusFlag按照【配置状态标记】进行过滤。类型：String 必选：否
+-  每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEsRechargesResponse(AbstractModel):
+    r"""DescribeEsRecharges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Infos: es导入配置信息
+        :type Infos: list of EsRechargeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Infos(self):
+        r"""es导入配置信息
+        :rtype: list of EsRechargeInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = EsRechargeInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExportsRequest(AbstractModel):
     r"""DescribeExports请求参数结构体
 
@@ -16935,6 +20397,165 @@ class DescribeExportsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Exports.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostMetricConfigsRequest(AbstractModel):
+    r"""DescribeHostMetricConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _Filters: - configId按照【配置id】进行过滤。类型：String  必选：否
+- name按照【配置名称】进行过滤。类型：String 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""- configId按照【配置id】进行过滤。类型：String  必选：否
+- name按照【配置名称】进行过滤。类型：String 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostMetricConfigsResponse(AbstractModel):
+    r"""DescribeHostMetricConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Infos: 指标订阅配置信息
+        :type Infos: list of HostMetricConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Infos(self):
+        r"""指标订阅配置信息
+        :rtype: list of HostMetricConfig
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = HostMetricConfig()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17472,6 +21093,40 @@ class DescribeKafkaConsumerGroupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKafkaConsumerPreviewRequest(AbstractModel):
+    r"""DescribeKafkaConsumerPreview请求参数结构体
+
+    """
+
+
+class DescribeKafkaConsumerPreviewResponse(AbstractModel):
+    r"""DescribeKafkaConsumerPreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKafkaConsumerRequest(AbstractModel):
     r"""DescribeKafkaConsumer请求参数结构体
 
@@ -17599,6 +21254,40 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         if params.get("ConsumerContent") is not None:
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKafkaConsumerTopicsRequest(AbstractModel):
+    r"""DescribeKafkaConsumerTopics请求参数结构体
+
+    """
+
+
+class DescribeKafkaConsumerTopicsResponse(AbstractModel):
+    r"""DescribeKafkaConsumerTopics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -18924,6 +22613,381 @@ class DescribeMachinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMetricCorrectDimensionRequest(AbstractModel):
+    r"""DescribeMetricCorrectDimension请求参数结构体
+
+    """
+
+
+class DescribeMetricCorrectDimensionResponse(AbstractModel):
+    r"""DescribeMetricCorrectDimension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMetricSubscribePreviewRequest(AbstractModel):
+    r"""DescribeMetricSubscribePreview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 云产品命名空间。
+        :type Namespace: str
+        :param _Metrics: 数据库配置信息。
+        :type Metrics: list of MetricConfig
+        :param _InstanceInfo: 实例配置配置。
+        :type InstanceInfo: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        self._Namespace = None
+        self._Metrics = None
+        self._InstanceInfo = None
+
+    @property
+    def Namespace(self):
+        r"""云产品命名空间。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metrics(self):
+        r"""数据库配置信息。
+        :rtype: list of MetricConfig
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def InstanceInfo(self):
+        r"""实例配置配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricConfig()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = InstanceConfig()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetricSubscribePreviewResponse(AbstractModel):
+    r"""DescribeMetricSubscribePreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _SuccessCount: 成功数量
+        :type SuccessCount: int
+        :param _FailCount: 失败数量
+        :type FailCount: int
+        :param _SuccessInstances: 成功实例数据
+        :type SuccessInstances: list of InstanceData
+        :param _FailInstances: 失败实例数据
+        :type FailInstances: list of InstanceData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._SuccessInstances = None
+        self._FailInstances = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessCount(self):
+        r"""成功数量
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""失败数量
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def SuccessInstances(self):
+        r"""成功实例数据
+        :rtype: list of InstanceData
+        """
+        return self._SuccessInstances
+
+    @SuccessInstances.setter
+    def SuccessInstances(self, SuccessInstances):
+        self._SuccessInstances = SuccessInstances
+
+    @property
+    def FailInstances(self):
+        r"""失败实例数据
+        :rtype: list of InstanceData
+        """
+        return self._FailInstances
+
+    @FailInstances.setter
+    def FailInstances(self, FailInstances):
+        self._FailInstances = FailInstances
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        if params.get("SuccessInstances") is not None:
+            self._SuccessInstances = []
+            for item in params.get("SuccessInstances"):
+                obj = InstanceData()
+                obj._deserialize(item)
+                self._SuccessInstances.append(obj)
+        if params.get("FailInstances") is not None:
+            self._FailInstances = []
+            for item in params.get("FailInstances"):
+                obj = InstanceData()
+                obj._deserialize(item)
+                self._FailInstances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMetricSubscribesRequest(AbstractModel):
+    r"""DescribeMetricSubscribes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _Filters: <br><li> taskId按照【配置id】进行过滤。类型：String  必选：否</li>
+<br><li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+<br><li> status按照【配置状态标记】进行过滤。类型：String 必选：否</li>
+<br><li> 每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""<br><li> taskId按照【配置id】进行过滤。类型：String  必选：否</li>
+<br><li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+<br><li> status按照【配置状态标记】进行过滤。类型：String 必选：否</li>
+<br><li> 每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetricSubscribesResponse(AbstractModel):
+    r"""DescribeMetricSubscribes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Datas: 指标订阅配置信息
+        :type Datas: list of MetricSubscribeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Datas(self):
+        r"""指标订阅配置信息
+        :rtype: list of MetricSubscribeInfo
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = MetricSubscribeInfo()
+                obj._deserialize(item)
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNoticeContentsRequest(AbstractModel):
     r"""DescribeNoticeContents请求参数结构体
 
@@ -19641,6 +23705,577 @@ class DescribeShippersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSplunkDeliversRequest(AbstractModel):
+    r"""DescribeSplunkDelivers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _Filters: - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
+- name 按照【任务名称】进行过滤。 类型：String 必选：否  
+- statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
+ 每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""- taskId 按照【任务id】进行过滤。 类型：String 必选：否  
+- name 按照【任务名称】进行过滤。 类型：String 必选：否  
+- statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
+ 每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSplunkDeliversResponse(AbstractModel):
+    r"""DescribeSplunkDelivers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Splunk投递任务信息列表
+        :type Infos: list of SplunkDeliverInfo
+        :param _Total: 符合条件的任务总数。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Splunk投递任务信息列表
+        :rtype: list of SplunkDeliverInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""符合条件的任务总数。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SplunkDeliverInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSplunkPreviewRequest(AbstractModel):
+    r"""DescribeSplunkPreview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _MetadataInfo: splunk投递任务-元信息
+        :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        """
+        self._TopicId = None
+        self._MetadataInfo = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def MetadataInfo(self):
+        r"""splunk投递任务-元信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        """
+        return self._MetadataInfo
+
+    @MetadataInfo.setter
+    def MetadataInfo(self, MetadataInfo):
+        self._MetadataInfo = MetadataInfo
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("MetadataInfo") is not None:
+            self._MetadataInfo = MetadataInfo()
+            self._MetadataInfo._deserialize(params.get("MetadataInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSplunkPreviewResponse(AbstractModel):
+    r"""DescribeSplunkPreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PreviewInfos: 预览结果
+        :type PreviewInfos: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PreviewInfos = None
+        self._RequestId = None
+
+    @property
+    def PreviewInfos(self):
+        r"""预览结果
+        :rtype: list of str
+        """
+        return self._PreviewInfos
+
+    @PreviewInfos.setter
+    def PreviewInfos(self, PreviewInfos):
+        self._PreviewInfos = PreviewInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PreviewInfos = params.get("PreviewInfos")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopicBaseMetricConfigsRequest(AbstractModel):
+    r"""DescribeTopicBaseMetricConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _Filters: groupId按照【机器组id】进行过滤。类型：String  必选：否
+每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""groupId按照【机器组id】进行过滤。类型：String  必选：否
+每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicBaseMetricConfigsResponse(AbstractModel):
+    r"""DescribeTopicBaseMetricConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Datas: 指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datas: list of BaseMetricCollectConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Datas(self):
+        r"""指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BaseMetricCollectConfig
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = BaseMetricCollectConfig()
+                obj._deserialize(item)
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopicMetricConfigsRequest(AbstractModel):
+    r"""DescribeTopicMetricConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _Filters: configId按照【指标采集配置id】进行过滤。类型：String  必选：否
+name按照【配置名称】进行过滤。类型：String 必选：否
+每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""configId按照【指标采集配置id】进行过滤。类型：String  必选：否
+name按照【配置名称】进行过滤。类型：String 必选：否
+每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicMetricConfigsResponse(AbstractModel):
+    r"""DescribeTopicMetricConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Datas: 指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datas: list of MetricCollectConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Datas(self):
+        r"""指标采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricCollectConfig
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = MetricCollectConfig()
+                obj._deserialize(item)
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicsRequest(AbstractModel):
     r"""DescribeTopics请求参数结构体
 
@@ -19993,6 +24628,61 @@ class DescribeWebCallbacksResponse(AbstractModel):
                 self._WebCallbacks.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class Dimension(AbstractModel):
+    r"""云产品实例维度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 实例维度名称,此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 实例维度值,此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""实例维度名称,此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""实例维度值,此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DlcDeliverInfo(AbstractModel):
@@ -20709,6 +25399,631 @@ class EnvInfo(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsImportInfo(AbstractModel):
+    r"""Es导入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 导入模式。
+1. 导入历史数据
+2. 导入实时数据
+        :type Type: int
+        :param _StartTime: 开始时间。 单位:秒级时间戳。
+
+        :type StartTime: int
+        :param _EndTime: 结束时间。 单位：秒级时间戳。
+        :type EndTime: int
+        :param _MaxDelay: 最大延迟时间。单位：s
+
+导入模式为 2: 导入实时数据时必填
+        :type MaxDelay: int
+        :param _CheckInterval: 检查间隔。单位：s
+
+导入模式为 2: 导入实时数据时必填
+        :type CheckInterval: int
+        """
+        self._Type = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MaxDelay = None
+        self._CheckInterval = None
+
+    @property
+    def Type(self):
+        r"""导入模式。
+1. 导入历史数据
+2. 导入实时数据
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StartTime(self):
+        r"""开始时间。 单位:秒级时间戳。
+
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间。 单位：秒级时间戳。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MaxDelay(self):
+        r"""最大延迟时间。单位：s
+
+导入模式为 2: 导入实时数据时必填
+        :rtype: int
+        """
+        return self._MaxDelay
+
+    @MaxDelay.setter
+    def MaxDelay(self, MaxDelay):
+        self._MaxDelay = MaxDelay
+
+    @property
+    def CheckInterval(self):
+        r"""检查间隔。单位：s
+
+导入模式为 2: 导入实时数据时必填
+        :rtype: int
+        """
+        return self._CheckInterval
+
+    @CheckInterval.setter
+    def CheckInterval(self, CheckInterval):
+        self._CheckInterval = CheckInterval
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MaxDelay = params.get("MaxDelay")
+        self._CheckInterval = params.get("CheckInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsInfo(AbstractModel):
+    r"""es集群配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EsType: es类型。 1:云es, 2:自建es
+        :type EsType: int
+        :param _AccessMode: 访问方式 1:内网, 2:外网。自建es必填
+        :type AccessMode: int
+        :param _InstanceId: 实例id。云es实例必填
+        :type InstanceId: str
+        :param _User: 用户名。
+        :type User: str
+        :param _Address: 访问地址。自建es必填
+        :type Address: str
+        :param _Port: 访问端口。自建es必填
+        :type Port: int
+        :param _VpcId: 所属网络。自建es且访问方式为内网访问时必填
+        :type VpcId: str
+        :param _VirtualGatewayType: 网络服务类型。自建es且访问方式为内网访问时必填。
+负载均衡 CLB:1025 云服务器CVM:0
+        :type VirtualGatewayType: int
+        :param _Password: 密码。
+        :type Password: str
+        """
+        self._EsType = None
+        self._AccessMode = None
+        self._InstanceId = None
+        self._User = None
+        self._Address = None
+        self._Port = None
+        self._VpcId = None
+        self._VirtualGatewayType = None
+        self._Password = None
+
+    @property
+    def EsType(self):
+        r"""es类型。 1:云es, 2:自建es
+        :rtype: int
+        """
+        return self._EsType
+
+    @EsType.setter
+    def EsType(self, EsType):
+        self._EsType = EsType
+
+    @property
+    def AccessMode(self):
+        r"""访问方式 1:内网, 2:外网。自建es必填
+        :rtype: int
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def InstanceId(self):
+        r"""实例id。云es实例必填
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        r"""用户名。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Address(self):
+        r"""访问地址。自建es必填
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Port(self):
+        r"""访问端口。自建es必填
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def VpcId(self):
+        r"""所属网络。自建es且访问方式为内网访问时必填
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VirtualGatewayType(self):
+        r"""网络服务类型。自建es且访问方式为内网访问时必填。
+负载均衡 CLB:1025 云服务器CVM:0
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def Password(self):
+        r"""密码。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._EsType = params.get("EsType")
+        self._AccessMode = params.get("AccessMode")
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Address = params.get("Address")
+        self._Port = params.get("Port")
+        self._VpcId = params.get("VpcId")
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsRechargeInfo(AbstractModel):
+    r"""es导入配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id。
+        :type TaskId: str
+        :param _Uin: 主账号id。
+        :type Uin: int
+        :param _TopicId: 日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        :param _Name: 配置名称。
+        :type Name: str
+        :param _Index: es索引。
+        :type Index: str
+        :param _Query: es查询语句。
+        :type Query: str
+        :param _EsInfo: es集群信息。
+        :type EsInfo: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        :param _ImportInfo: es导入信息。
+        :type ImportInfo: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        :param _TimeInfo: es导入时间配置信息。
+        :type TimeInfo: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        :param _Status: 任务状态。
+1. 运行中
+2. 暂停
+3. 完成
+4. 异常
+        :type Status: int
+        :param _Progress: 任务进度 0~100 百分比。100：表示完成。
+        :type Progress: int
+        :param _SubUin: 子账号id。
+        :type SubUin: int
+        :param _CreateTime: 创建时间。
+        :type CreateTime: int
+        :param _UpdateTime: 修改时间。
+        :type UpdateTime: int
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
+        :type HasServicesLog: int
+        """
+        self._TaskId = None
+        self._Uin = None
+        self._TopicId = None
+        self._Name = None
+        self._Index = None
+        self._Query = None
+        self._EsInfo = None
+        self._ImportInfo = None
+        self._TimeInfo = None
+        self._Status = None
+        self._Progress = None
+        self._SubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskId(self):
+        r"""任务id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Uin(self):
+        r"""主账号id。
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""配置名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Index(self):
+        r"""es索引。
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Query(self):
+        r"""es查询语句。
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def EsInfo(self):
+        r"""es集群信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        """
+        return self._EsInfo
+
+    @EsInfo.setter
+    def EsInfo(self, EsInfo):
+        self._EsInfo = EsInfo
+
+    @property
+    def ImportInfo(self):
+        r"""es导入信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        """
+        return self._ImportInfo
+
+    @ImportInfo.setter
+    def ImportInfo(self, ImportInfo):
+        self._ImportInfo = ImportInfo
+
+    @property
+    def TimeInfo(self):
+        r"""es导入时间配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        """
+        return self._TimeInfo
+
+    @TimeInfo.setter
+    def TimeInfo(self, TimeInfo):
+        self._TimeInfo = TimeInfo
+
+    @property
+    def Status(self):
+        r"""任务状态。
+1. 运行中
+2. 暂停
+3. 完成
+4. 异常
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""任务进度 0~100 百分比。100：表示完成。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def SubUin(self):
+        r"""子账号id。
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""修改时间。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Uin = params.get("Uin")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Index = params.get("Index")
+        self._Query = params.get("Query")
+        if params.get("EsInfo") is not None:
+            self._EsInfo = EsInfo()
+            self._EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("ImportInfo") is not None:
+            self._ImportInfo = EsImportInfo()
+            self._ImportInfo._deserialize(params.get("ImportInfo"))
+        if params.get("TimeInfo") is not None:
+            self._TimeInfo = EsTimeInfo()
+            self._TimeInfo._deserialize(params.get("TimeInfo"))
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._SubUin = params.get("SubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsTimeInfo(AbstractModel):
+    r"""Es导入时间字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 时间类型 1: 日志采集时间 2: 指定日志字段
+        :type Type: int
+        :param _TimeKey: 日志时间字段。
+
+时间类型为 2: 指定日志字段时必填
+        :type TimeKey: str
+        :param _TimeFormat: 日志时间格式。
+
+时间类型为 2: 指定日志字段时必填
+        :type TimeFormat: str
+        :param _TimeZone: 时间字段时区。
+
+时间类型为 2: 指定日志字段时必填
+        :type TimeZone: str
+        """
+        self._Type = None
+        self._TimeKey = None
+        self._TimeFormat = None
+        self._TimeZone = None
+
+    @property
+    def Type(self):
+        r"""时间类型 1: 日志采集时间 2: 指定日志字段
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeKey(self):
+        r"""日志时间字段。
+
+时间类型为 2: 指定日志字段时必填
+        :rtype: str
+        """
+        return self._TimeKey
+
+    @TimeKey.setter
+    def TimeKey(self, TimeKey):
+        self._TimeKey = TimeKey
+
+    @property
+    def TimeFormat(self):
+        r"""日志时间格式。
+
+时间类型为 2: 指定日志字段时必填
+        :rtype: str
+        """
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+    @property
+    def TimeZone(self):
+        r"""时间字段时区。
+
+时间类型为 2: 指定日志字段时必填
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TimeKey = params.get("TimeKey")
+        self._TimeFormat = params.get("TimeFormat")
+        self._TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22258,6 +27573,55 @@ class GetAlarmLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetMetricLabelValuesRequest(AbstractModel):
+    r"""GetMetricLabelValues请求参数结构体
+
+    """
+
+
+class GetMetricLabelValuesResponse(AbstractModel):
+    r"""GetMetricLabelValues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 时序metric label values
+        :type Values: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Values = None
+        self._RequestId = None
+
+    @property
+    def Values(self):
+        r"""时序metric label values
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        self._RequestId = params.get("RequestId")
+
+
 class GroupPartitionInfo(AbstractModel):
     r"""kafka协议消费组区分信息
 
@@ -22535,6 +27899,422 @@ class HostFileInfo(AbstractModel):
         self._LogPath = params.get("LogPath")
         self._FilePattern = params.get("FilePattern")
         self._CustomLabels = params.get("CustomLabels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostMetricConfig(AbstractModel):
+    r"""主机指标采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: 采集配置 id
+        :type ConfigId: str
+        :param _Name: 采集配置名称
+        :type Name: str
+        :param _Interval: 采集频率,单位ms
+        :type Interval: int
+        :param _HostMetricItems: 采集项.
+        :type HostMetricItems: list of HostMetricItem
+        :param _MachineGroupIds: 机器组 id 列表
+        :type MachineGroupIds: list of str
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 修改时间
+        :type UpdateTime: int
+        """
+        self._ConfigId = None
+        self._Name = None
+        self._Interval = None
+        self._HostMetricItems = None
+        self._MachineGroupIds = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ConfigId(self):
+        r"""采集配置 id
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Name(self):
+        r"""采集配置名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Interval(self):
+        r"""采集频率,单位ms
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def HostMetricItems(self):
+        r"""采集项.
+        :rtype: list of HostMetricItem
+        """
+        return self._HostMetricItems
+
+    @HostMetricItems.setter
+    def HostMetricItems(self, HostMetricItems):
+        self._HostMetricItems = HostMetricItems
+
+    @property
+    def MachineGroupIds(self):
+        r"""机器组 id 列表
+        :rtype: list of str
+        """
+        return self._MachineGroupIds
+
+    @MachineGroupIds.setter
+    def MachineGroupIds(self, MachineGroupIds):
+        self._MachineGroupIds = MachineGroupIds
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""修改时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        self._Name = params.get("Name")
+        self._Interval = params.get("Interval")
+        if params.get("HostMetricItems") is not None:
+            self._HostMetricItems = []
+            for item in params.get("HostMetricItems"):
+                obj = HostMetricItem()
+                obj._deserialize(item)
+                self._HostMetricItems.append(obj)
+        self._MachineGroupIds = params.get("MachineGroupIds")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostMetricItem(AbstractModel):
+    r"""主机指标采集项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 主机指标采集项类型。支持"cpu"，"mem"，"net"，"disk"，"system"。
+
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""主机指标采集项类型。支持"cpu"，"mem"，"net"，"disk"，"system"。
+
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Instance(AbstractModel):
+    r"""实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 实例信息
+        :type Values: list of str
+        """
+        self._Values = None
+
+    @property
+    def Values(self):
+        r"""实例信息
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceConfig(AbstractModel):
+    r"""实例配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceDimension: 实例维度
+        :type InstanceDimension: list of str
+        :param _Instances: 实例值
+        :type Instances: list of Instance
+        """
+        self._InstanceDimension = None
+        self._Instances = None
+
+    @property
+    def InstanceDimension(self):
+        r"""实例维度
+        :rtype: list of str
+        """
+        return self._InstanceDimension
+
+    @InstanceDimension.setter
+    def InstanceDimension(self, InstanceDimension):
+        self._InstanceDimension = InstanceDimension
+
+    @property
+    def Instances(self):
+        r"""实例值
+        :rtype: list of Instance
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+
+    def _deserialize(self, params):
+        self._InstanceDimension = params.get("InstanceDimension")
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = Instance()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceData(AbstractModel):
+    r"""云产品指标订阅预览结果实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 云监控指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param _CLSMetricName: CLS指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSMetricName: str
+        :param _Namespace: 云产品命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Dimensions: 实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: list of Dimension
+        :param _Period: 周期,单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param _Value: 指标统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param _ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        """
+        self._MetricName = None
+        self._CLSMetricName = None
+        self._Namespace = None
+        self._Dimensions = None
+        self._Period = None
+        self._Value = None
+        self._ErrMsg = None
+
+    @property
+    def MetricName(self):
+        r"""云监控指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def CLSMetricName(self):
+        r"""CLS指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CLSMetricName
+
+    @CLSMetricName.setter
+    def CLSMetricName(self, CLSMetricName):
+        self._CLSMetricName = CLSMetricName
+
+    @property
+    def Namespace(self):
+        r"""云产品命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Dimensions(self):
+        r"""实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Dimension
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def Period(self):
+        r"""周期,单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Value(self):
+        r"""指标统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ErrMsg(self):
+        r"""错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._CLSMetricName = params.get("CLSMetricName")
+        self._Namespace = params.get("Namespace")
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
+        self._Period = params.get("Period")
+        self._Value = params.get("Value")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23249,6 +29029,92 @@ class KeyValueInfo(AbstractModel):
         if params.get("Value") is not None:
             self._Value = ValueInfo()
             self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Label(AbstractModel):
+    r"""标签结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+
+-  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+-  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Operate: 标签键值直接的比较关系。 不同业务场景支持的比较符不同，具体支持那些参考接口业务描述。
+例如：`in`、`notin`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operate: str
+        :param _Values: 标签的值.
+- 最大支持63个字符。
+- 格式：`([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Operate = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+
+-  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+-  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+- key不能重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operate(self):
+        r"""标签键值直接的比较关系。 不同业务场景支持的比较符不同，具体支持那些参考接口业务描述。
+例如：`in`、`notin`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Values(self):
+        r"""标签的值.
+- 最大支持63个字符。
+- 格式：`([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operate = params.get("Operate")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24927,6 +30793,607 @@ class MetaTagInfo(AbstractModel):
         
 
 
+class MetadataInfo(AbstractModel):
+    r"""Splunk任务投递元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 数据格式,rawlog/json
+        :type Format: str
+        :param _MetaFields: 投递字段，包括\_\_SOURCE\_\_、\_\_FILENAME\_\_
+、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKG\_ID\_\_
+        :type MetaFields: list of str
+        :param _EnableTag: 是否投递__TAG__字段
+        :type EnableTag: bool
+        :param _TagJsonTiled: JSON是否平铺，投递__TAG__字段时必填
+        :type TagJsonTiled: bool
+        """
+        self._Format = None
+        self._MetaFields = None
+        self._EnableTag = None
+        self._TagJsonTiled = None
+
+    @property
+    def Format(self):
+        r"""数据格式,rawlog/json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def MetaFields(self):
+        r"""投递字段，包括\_\_SOURCE\_\_、\_\_FILENAME\_\_
+、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKG\_ID\_\_
+        :rtype: list of str
+        """
+        return self._MetaFields
+
+    @MetaFields.setter
+    def MetaFields(self, MetaFields):
+        self._MetaFields = MetaFields
+
+    @property
+    def EnableTag(self):
+        r"""是否投递__TAG__字段
+        :rtype: bool
+        """
+        return self._EnableTag
+
+    @EnableTag.setter
+    def EnableTag(self, EnableTag):
+        self._EnableTag = EnableTag
+
+    @property
+    def TagJsonTiled(self):
+        r"""JSON是否平铺，投递__TAG__字段时必填
+        :rtype: bool
+        """
+        return self._TagJsonTiled
+
+    @TagJsonTiled.setter
+    def TagJsonTiled(self, TagJsonTiled):
+        self._TagJsonTiled = TagJsonTiled
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._MetaFields = params.get("MetaFields")
+        self._EnableTag = params.get("EnableTag")
+        self._TagJsonTiled = params.get("TagJsonTiled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricCollectConfig(AbstractModel):
+    r"""指标采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: 采集配置id
+        :type ConfigId: str
+        :param _TopicIds: 日志主题id。
+        :type TopicIds: list of str
+        :param _Source: 采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :type Source: int
+        :param _GroupIds: 机器组id。
+        :type GroupIds: list of str
+        :param _Type: 监控类型。支持 ：`0`、`1`，不支持修改
+
+- 0:基础监控
+- 1:自定义监控, 
+        :type Type: int
+        :param _Flag: 采集配置方式。支持 ：`0`、`1`，不支持修改
+- 0:普通配置方式，Type字段只能为：`1`
+- 1:YAML导入方式，Type 可以是：`0`或者`1`
+        :type Flag: int
+        :param _Name: 名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Spec: 采集对象, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        :param _MetricRelabels: 标签处理, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricRelabels: list of Relabeling
+        :param _MetricLabel: 自定义元数据, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricLabel: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        :param _Scheme: 通信协议 `http`、`https`；Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: str
+        :param _ScrapeInterval: 采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrapeInterval: str
+        :param _ScrapeTimeout: 采集超时时间。  Flag=0 && Type=1时生效
+- format:`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrapeTimeout: str
+        :param _HonorLabels: Prometheus如何处理标签之间的冲突。当Flag=0生效，支持`true`,`false`
+
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HonorLabels: bool
+        :param _YamlSpec: 采集配置yaml格式字符串, Flag=1时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YamlSpec: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        :param _Operate: 操作状态,0:应用,1:暂停
+        :type Operate: int
+        :param _CreateTime: 创建时间戳 秒级
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间戳 秒级
+        :type UpdateTime: int
+        """
+        self._ConfigId = None
+        self._TopicIds = None
+        self._Source = None
+        self._GroupIds = None
+        self._Type = None
+        self._Flag = None
+        self._Name = None
+        self._Spec = None
+        self._MetricRelabels = None
+        self._MetricLabel = None
+        self._Scheme = None
+        self._ScrapeInterval = None
+        self._ScrapeTimeout = None
+        self._HonorLabels = None
+        self._YamlSpec = None
+        self._Operate = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ConfigId(self):
+        r"""采集配置id
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def TopicIds(self):
+        r"""日志主题id。
+        :rtype: list of str
+        """
+        return self._TopicIds
+
+    @TopicIds.setter
+    def TopicIds(self, TopicIds):
+        self._TopicIds = TopicIds
+
+    @property
+    def Source(self):
+        r"""采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def GroupIds(self):
+        r"""机器组id。
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def Type(self):
+        r"""监控类型。支持 ：`0`、`1`，不支持修改
+
+- 0:基础监控
+- 1:自定义监控, 
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Flag(self):
+        r"""采集配置方式。支持 ：`0`、`1`，不支持修改
+- 0:普通配置方式，Type字段只能为：`1`
+- 1:YAML导入方式，Type 可以是：`0`或者`1`
+        :rtype: int
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Spec(self):
+        r"""采集对象, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def MetricRelabels(self):
+        r"""标签处理, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Relabeling
+        """
+        return self._MetricRelabels
+
+    @MetricRelabels.setter
+    def MetricRelabels(self, MetricRelabels):
+        self._MetricRelabels = MetricRelabels
+
+    @property
+    def MetricLabel(self):
+        r"""自定义元数据, Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        """
+        return self._MetricLabel
+
+    @MetricLabel.setter
+    def MetricLabel(self, MetricLabel):
+        self._MetricLabel = MetricLabel
+
+    @property
+    def Scheme(self):
+        r"""通信协议 `http`、`https`；Flag=0时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def ScrapeInterval(self):
+        r"""采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScrapeInterval
+
+    @ScrapeInterval.setter
+    def ScrapeInterval(self, ScrapeInterval):
+        self._ScrapeInterval = ScrapeInterval
+
+    @property
+    def ScrapeTimeout(self):
+        r"""采集超时时间。  Flag=0 && Type=1时生效
+- format:`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScrapeTimeout
+
+    @ScrapeTimeout.setter
+    def ScrapeTimeout(self, ScrapeTimeout):
+        self._ScrapeTimeout = ScrapeTimeout
+
+    @property
+    def HonorLabels(self):
+        r"""Prometheus如何处理标签之间的冲突。当Flag=0生效，支持`true`,`false`
+
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HonorLabels
+
+    @HonorLabels.setter
+    def HonorLabels(self, HonorLabels):
+        self._HonorLabels = HonorLabels
+
+    @property
+    def YamlSpec(self):
+        r"""采集配置yaml格式字符串, Flag=1时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        """
+        return self._YamlSpec
+
+    @YamlSpec.setter
+    def YamlSpec(self, YamlSpec):
+        self._YamlSpec = YamlSpec
+
+    @property
+    def Operate(self):
+        r"""操作状态,0:应用,1:暂停
+        :rtype: int
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def CreateTime(self):
+        r"""创建时间戳 秒级
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间戳 秒级
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        self._TopicIds = params.get("TopicIds")
+        self._Source = params.get("Source")
+        self._GroupIds = params.get("GroupIds")
+        self._Type = params.get("Type")
+        self._Flag = params.get("Flag")
+        self._Name = params.get("Name")
+        if params.get("Spec") is not None:
+            self._Spec = MetricSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("MetricRelabels") is not None:
+            self._MetricRelabels = []
+            for item in params.get("MetricRelabels"):
+                obj = Relabeling()
+                obj._deserialize(item)
+                self._MetricRelabels.append(obj)
+        if params.get("MetricLabel") is not None:
+            self._MetricLabel = MetricConfigLabel()
+            self._MetricLabel._deserialize(params.get("MetricLabel"))
+        self._Scheme = params.get("Scheme")
+        self._ScrapeInterval = params.get("ScrapeInterval")
+        self._ScrapeTimeout = params.get("ScrapeTimeout")
+        self._HonorLabels = params.get("HonorLabels")
+        if params.get("YamlSpec") is not None:
+            self._YamlSpec = MetricYamlSpec()
+            self._YamlSpec._deserialize(params.get("YamlSpec"))
+        self._Operate = params.get("Operate")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricConfig(AbstractModel):
+    r"""指标配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _Periods: 统计周期,单位:秒（s）
+        :type Periods: list of int non-negative
+        :param _MetricLabels: 自定义指标标签
+        :type MetricLabels: list of MetricLabel
+        """
+        self._MetricName = None
+        self._Periods = None
+        self._MetricLabels = None
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Periods(self):
+        r"""统计周期,单位:秒（s）
+        :rtype: list of int non-negative
+        """
+        return self._Periods
+
+    @Periods.setter
+    def Periods(self, Periods):
+        self._Periods = Periods
+
+    @property
+    def MetricLabels(self):
+        r"""自定义指标标签
+        :rtype: list of MetricLabel
+        """
+        return self._MetricLabels
+
+    @MetricLabels.setter
+    def MetricLabels(self, MetricLabels):
+        self._MetricLabels = MetricLabels
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._Periods = params.get("Periods")
+        if params.get("MetricLabels") is not None:
+            self._MetricLabels = []
+            for item in params.get("MetricLabels"):
+                obj = MetricLabel()
+                obj._deserialize(item)
+                self._MetricLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricConfigLabel(AbstractModel):
+    r"""指标采集label配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Metadata: 元数据。
+支持
+- `namespace`
+- `pod_name`
+- `pod_ip`
+- `pod_uid`
+- `container_name`
+- `container_id`
+- `image_name`
+- `cluster_id`
+- `node_id`
+- `node_ip`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: list of str
+        :param _Label: 元数据Pod Label信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: :class:`tencentcloud.cls.v20201016.models.AppointLabel`
+        :param _CustomLabels: 自定义label信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLabels: list of CustomLabel
+        """
+        self._Metadata = None
+        self._Label = None
+        self._CustomLabels = None
+
+    @property
+    def Metadata(self):
+        r"""元数据。
+支持
+- `namespace`
+- `pod_name`
+- `pod_ip`
+- `pod_uid`
+- `container_name`
+- `container_id`
+- `image_name`
+- `cluster_id`
+- `node_id`
+- `node_ip`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def Label(self):
+        r"""元数据Pod Label信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AppointLabel`
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def CustomLabels(self):
+        r"""自定义label信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomLabel
+        """
+        return self._CustomLabels
+
+    @CustomLabels.setter
+    def CustomLabels(self, CustomLabels):
+        self._CustomLabels = CustomLabels
+
+
+    def _deserialize(self, params):
+        self._Metadata = params.get("Metadata")
+        if params.get("Label") is not None:
+            self._Label = AppointLabel()
+            self._Label._deserialize(params.get("Label"))
+        if params.get("CustomLabels") is not None:
+            self._CustomLabels = []
+            for item in params.get("CustomLabels"):
+                obj = CustomLabel()
+                obj._deserialize(item)
+                self._CustomLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetricLabel(AbstractModel):
     r"""过滤器
 
@@ -24968,6 +31435,377 @@ class MetricLabel(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricSpec(AbstractModel):
+    r"""采集对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomSpecs: 自定义指标采集配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomSpecs: list of CustomMetricSpec
+        """
+        self._CustomSpecs = None
+
+    @property
+    def CustomSpecs(self):
+        r"""自定义指标采集配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomMetricSpec
+        """
+        return self._CustomSpecs
+
+    @CustomSpecs.setter
+    def CustomSpecs(self, CustomSpecs):
+        self._CustomSpecs = CustomSpecs
+
+
+    def _deserialize(self, params):
+        if params.get("CustomSpecs") is not None:
+            self._CustomSpecs = []
+            for item in params.get("CustomSpecs"):
+                obj = CustomMetricSpec()
+                obj._deserialize(item)
+                self._CustomSpecs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricSubscribeInfo(AbstractModel):
+    r"""指标订阅配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 订阅任务id。
+        :type TaskId: str
+        :param _TopicId: 日志主题id。
+        :type TopicId: str
+        :param _Name: 订阅任务名称。
+        :type Name: str
+        :param _Namespace: 云产品命名空间。
+        :type Namespace: str
+        :param _Metrics: 指标配置信息。
+        :type Metrics: list of MetricConfig
+        :param _InstanceInfo: 实例配置信息。
+        :type InstanceInfo: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        :param _Enable: 订阅任务开关。1:暂停 2:启用
+        :type Enable: int
+        :param _Status: 订阅任务运行状态。0:创建中 1:暂停 2:运行中 3:异常
+        :type Status: int
+        :param _ErrMsg: 订阅任务运行异常时的错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param _CreateTime: 创建时间（秒级时间戳）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间（秒级时间戳）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._Namespace = None
+        self._Metrics = None
+        self._InstanceInfo = None
+        self._Enable = None
+        self._Status = None
+        self._ErrMsg = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""订阅任务id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""订阅任务名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        r"""云产品命名空间。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metrics(self):
+        r"""指标配置信息。
+        :rtype: list of MetricConfig
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def InstanceInfo(self):
+        r"""实例配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+    @property
+    def Enable(self):
+        r"""订阅任务开关。1:暂停 2:启用
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Status(self):
+        r"""订阅任务运行状态。0:创建中 1:暂停 2:运行中 3:异常
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrMsg(self):
+        r"""订阅任务运行异常时的错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def CreateTime(self):
+        r"""创建时间（秒级时间戳）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间（秒级时间戳）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricConfig()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = InstanceConfig()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        self._Enable = params.get("Enable")
+        self._Status = params.get("Status")
+        self._ErrMsg = params.get("ErrMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricYamlSpec(AbstractModel):
+    r"""指标采集yaml格式配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: yaml监控类型。
+支持：
+- PodMonitor
+- ServiceMonitor
+- ScrapeConfig
+- ScrapeConfig-prometheus
+
+`PodMonitor `,`ServiceMonitor `,`ScrapeConfig ` 属于prometheus-operator
+`ScrapeConfig-prometheus` 属于prometheus
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Spec: 配置yaml格式。
+例如：Type: ServiceMonitor
+
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: test
+  namespace: test
+  labels:
+    k8s-app1: test
+    k8s-app2: test
+spec:
+  endpoints:
+    - interval: 15s
+      port: 8080-8080-tcp
+      path: /metrics
+      relabelings:
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_app
+          targetLabel: application
+  namespaceSelector:
+    matchNames:
+      - test
+  selector:
+    matchLabels:
+      app: test
+```
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        """
+        self._Type = None
+        self._Spec = None
+
+    @property
+    def Type(self):
+        r"""yaml监控类型。
+支持：
+- PodMonitor
+- ServiceMonitor
+- ScrapeConfig
+- ScrapeConfig-prometheus
+
+`PodMonitor `,`ServiceMonitor `,`ScrapeConfig ` 属于prometheus-operator
+`ScrapeConfig-prometheus` 属于prometheus
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Spec(self):
+        r"""配置yaml格式。
+例如：Type: ServiceMonitor
+
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: test
+  namespace: test
+  labels:
+    k8s-app1: test
+    k8s-app2: test
+spec:
+  endpoints:
+    - interval: 15s
+      port: 8080-8080-tcp
+      path: /metrics
+      relabelings:
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_app
+          targetLabel: application
+  namespaceSelector:
+    matchNames:
+      - test
+  selector:
+    matchLabels:
+      app: test
+```
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Spec = params.get("Spec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26733,6 +33571,115 @@ class ModifyConsoleSharingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyConsumerGroupRequest(AbstractModel):
+    r"""ModifyConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 更新的目标消费者组标识
+        :type ConsumerGroup: str
+        :param _Timeout: 消费者心跳超时时间（秒）
+        :type Timeout: int
+        :param _Topics: 更新的消费者组包含的日志主题列表
+        :type Topics: list of str
+        :param _LogsetId: 日志集Id（日志主题所属的日志集）
+        :type LogsetId: str
+        """
+        self._ConsumerGroup = None
+        self._Timeout = None
+        self._Topics = None
+        self._LogsetId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""更新的目标消费者组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Timeout(self):
+        r"""消费者心跳超时时间（秒）
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Topics(self):
+        r"""更新的消费者组包含的日志主题列表
+        :rtype: list of str
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def LogsetId(self):
+        r"""日志集Id（日志主题所属的日志集）
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Timeout = params.get("Timeout")
+        self._Topics = params.get("Topics")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerGroupResponse(AbstractModel):
+    r"""ModifyConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyConsumerRequest(AbstractModel):
     r"""ModifyConsumer请求参数结构体
 
@@ -27771,6 +34718,379 @@ class ModifyDlcDeliverResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyEsRechargeRequest(AbstractModel):
+    r"""ModifyEsRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 导入任务id。
+        :type TaskId: str
+        :param _TopicId: 日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :type TopicId: str
+        :param _Name: 名称：长度不超过64字符。
+        :type Name: str
+        :param _Index: 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :type Index: str
+        :param _Query: es查询语句。
+        :type Query: str
+        :param _EsInfo: es集群配置信息。
+        :type EsInfo: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        :param _ImportInfo: es导入信息。
+        :type ImportInfo: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        :param _TimeInfo: es导入时间字段信息。
+        :type TimeInfo: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        :param _Status: 任务状态。1:运行， 2:暂停
+        :type Status: int
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
+        :type HasServicesLog: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._Index = None
+        self._Query = None
+        self._EsInfo = None
+        self._ImportInfo = None
+        self._TimeInfo = None
+        self._Status = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskId(self):
+        r"""导入任务id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过64字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Index(self):
+        r"""索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Query(self):
+        r"""es查询语句。
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def EsInfo(self):
+        r"""es集群配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsInfo`
+        """
+        return self._EsInfo
+
+    @EsInfo.setter
+    def EsInfo(self, EsInfo):
+        self._EsInfo = EsInfo
+
+    @property
+    def ImportInfo(self):
+        r"""es导入信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsImportInfo`
+        """
+        return self._ImportInfo
+
+    @ImportInfo.setter
+    def ImportInfo(self, ImportInfo):
+        self._ImportInfo = ImportInfo
+
+    @property
+    def TimeInfo(self):
+        r"""es导入时间字段信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EsTimeInfo`
+        """
+        return self._TimeInfo
+
+    @TimeInfo.setter
+    def TimeInfo(self, TimeInfo):
+        self._TimeInfo = TimeInfo
+
+    @property
+    def Status(self):
+        r"""任务状态。1:运行， 2:暂停
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Index = params.get("Index")
+        self._Query = params.get("Query")
+        if params.get("EsInfo") is not None:
+            self._EsInfo = EsInfo()
+            self._EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("ImportInfo") is not None:
+            self._ImportInfo = EsImportInfo()
+            self._ImportInfo._deserialize(params.get("ImportInfo"))
+        if params.get("TimeInfo") is not None:
+            self._TimeInfo = EsTimeInfo()
+            self._TimeInfo._deserialize(params.get("TimeInfo"))
+        self._Status = params.get("Status")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEsRechargeResponse(AbstractModel):
+    r"""ModifyEsRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHostMetricConfigRequest(AbstractModel):
+    r"""ModifyHostMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _ConfigId: 采集配置id
+        :type ConfigId: str
+        :param _Name: 名称。
+
+- 长度不超过 64字符。
+        :type Name: str
+        :param _MachineGroupIds: 机器组id列表。最多支持100个机器组。
+        :type MachineGroupIds: list of str
+        :param _Interval: 采集频率。单位:ms。 最小支持5000ms
+        :type Interval: int
+        :param _HostMetricItems: 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+
+        :type HostMetricItems: list of HostMetricItem
+        """
+        self._TopicId = None
+        self._ConfigId = None
+        self._Name = None
+        self._MachineGroupIds = None
+        self._Interval = None
+        self._HostMetricItems = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ConfigId(self):
+        r"""采集配置id
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Name(self):
+        r"""名称。
+
+- 长度不超过 64字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MachineGroupIds(self):
+        r"""机器组id列表。最多支持100个机器组。
+        :rtype: list of str
+        """
+        return self._MachineGroupIds
+
+    @MachineGroupIds.setter
+    def MachineGroupIds(self, MachineGroupIds):
+        self._MachineGroupIds = MachineGroupIds
+
+    @property
+    def Interval(self):
+        r"""采集频率。单位:ms。 最小支持5000ms
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def HostMetricItems(self):
+        r"""采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+- cpu：CPU
+- mem：内存
+- net：网络
+- disk：磁盘
+- system：系统
+
+        :rtype: list of HostMetricItem
+        """
+        return self._HostMetricItems
+
+    @HostMetricItems.setter
+    def HostMetricItems(self, HostMetricItems):
+        self._HostMetricItems = HostMetricItems
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ConfigId = params.get("ConfigId")
+        self._Name = params.get("Name")
+        self._MachineGroupIds = params.get("MachineGroupIds")
+        self._Interval = params.get("Interval")
+        if params.get("HostMetricItems") is not None:
+            self._HostMetricItems = []
+            for item in params.get("HostMetricItems"):
+                obj = HostMetricItem()
+                obj._deserialize(item)
+                self._HostMetricItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHostMetricConfigResponse(AbstractModel):
+    r"""ModifyHostMetricConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     r"""ModifyIndex请求参数结构体
 
@@ -28665,6 +35985,448 @@ class ModifyMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMetricConfigRequest(AbstractModel):
+    r"""ModifyMetricConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :type TopicId: str
+        :param _ConfigId: 指标采集配置id
+        :type ConfigId: str
+        :param _Source: 采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :type Source: int
+        :param _GroupIds: 机器组id。
+        :type GroupIds: list of str
+        :param _Operate: 操作状态,0:应用,1:暂停
+        :type Operate: int
+        :param _Spec: 采集对象, Flag=0时生效
+        :type Spec: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        :param _MetricRelabels: 标签处理, Flag=0时生效
+        :type MetricRelabels: list of Relabeling
+        :param _MetricLabel: 自定义元数据, Flag=0时生效
+        :type MetricLabel: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        :param _Scheme: 通信协议 `http`、`https`；Flag=0时生效
+        :type Scheme: str
+        :param _ScrapeInterval: 采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：60s
+        :type ScrapeInterval: str
+        :param _ScrapeTimeout: 采集超时时间。   Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+        :type ScrapeTimeout: str
+        :param _HonorLabels: Prometheus如何处理标签之间的冲突。当Flag=0 && Type=1时生效，支持`true`,`false`
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+        :type HonorLabels: bool
+        :param _YamlSpec: 采集配置yaml格式字符串, Flag=1时必填
+        :type YamlSpec: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        """
+        self._TopicId = None
+        self._ConfigId = None
+        self._Source = None
+        self._GroupIds = None
+        self._Operate = None
+        self._Spec = None
+        self._MetricRelabels = None
+        self._MetricLabel = None
+        self._Scheme = None
+        self._ScrapeInterval = None
+        self._ScrapeTimeout = None
+        self._HonorLabels = None
+        self._YamlSpec = None
+
+    @property
+    def TopicId(self):
+        r"""指标日志主题id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ConfigId(self):
+        r"""指标采集配置id
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Source(self):
+        r"""采集配置来源。支持 ：`0`、`1`
+- 0:自建k8s
+- 1:TKE
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def GroupIds(self):
+        r"""机器组id。
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def Operate(self):
+        r"""操作状态,0:应用,1:暂停
+        :rtype: int
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Spec(self):
+        r"""采集对象, Flag=0时生效
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def MetricRelabels(self):
+        r"""标签处理, Flag=0时生效
+        :rtype: list of Relabeling
+        """
+        return self._MetricRelabels
+
+    @MetricRelabels.setter
+    def MetricRelabels(self, MetricRelabels):
+        self._MetricRelabels = MetricRelabels
+
+    @property
+    def MetricLabel(self):
+        r"""自定义元数据, Flag=0时生效
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricConfigLabel`
+        """
+        return self._MetricLabel
+
+    @MetricLabel.setter
+    def MetricLabel(self, MetricLabel):
+        self._MetricLabel = MetricLabel
+
+    @property
+    def Scheme(self):
+        r"""通信协议 `http`、`https`；Flag=0时生效
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def ScrapeInterval(self):
+        r"""采集频率,  Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+- 默认：60s
+        :rtype: str
+        """
+        return self._ScrapeInterval
+
+    @ScrapeInterval.setter
+    def ScrapeInterval(self, ScrapeInterval):
+        self._ScrapeInterval = ScrapeInterval
+
+    @property
+    def ScrapeTimeout(self):
+        r"""采集超时时间。   Flag=0时生效
+- 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+        :rtype: str
+        """
+        return self._ScrapeTimeout
+
+    @ScrapeTimeout.setter
+    def ScrapeTimeout(self, ScrapeTimeout):
+        self._ScrapeTimeout = ScrapeTimeout
+
+    @property
+    def HonorLabels(self):
+        r"""Prometheus如何处理标签之间的冲突。当Flag=0 && Type=1时生效，支持`true`,`false`
+- `false`:配置数据中冲突的标签重命名
+- `true`:忽略冲突的服务器端标签
+        :rtype: bool
+        """
+        return self._HonorLabels
+
+    @HonorLabels.setter
+    def HonorLabels(self, HonorLabels):
+        self._HonorLabels = HonorLabels
+
+    @property
+    def YamlSpec(self):
+        r"""采集配置yaml格式字符串, Flag=1时必填
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetricYamlSpec`
+        """
+        return self._YamlSpec
+
+    @YamlSpec.setter
+    def YamlSpec(self, YamlSpec):
+        self._YamlSpec = YamlSpec
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ConfigId = params.get("ConfigId")
+        self._Source = params.get("Source")
+        self._GroupIds = params.get("GroupIds")
+        self._Operate = params.get("Operate")
+        if params.get("Spec") is not None:
+            self._Spec = MetricSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("MetricRelabels") is not None:
+            self._MetricRelabels = []
+            for item in params.get("MetricRelabels"):
+                obj = Relabeling()
+                obj._deserialize(item)
+                self._MetricRelabels.append(obj)
+        if params.get("MetricLabel") is not None:
+            self._MetricLabel = MetricConfigLabel()
+            self._MetricLabel._deserialize(params.get("MetricLabel"))
+        self._Scheme = params.get("Scheme")
+        self._ScrapeInterval = params.get("ScrapeInterval")
+        self._ScrapeTimeout = params.get("ScrapeTimeout")
+        self._HonorLabels = params.get("HonorLabels")
+        if params.get("YamlSpec") is not None:
+            self._YamlSpec = MetricYamlSpec()
+            self._YamlSpec._deserialize(params.get("YamlSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMetricConfigResponse(AbstractModel):
+    r"""ModifyMetricConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMetricSubscribeRequest(AbstractModel):
+    r"""ModifyMetricSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 指标采集任务的日志主题id。必填字段
+        :type TopicId: str
+        :param _TaskId: 指标采集任务id。必填字段
+        :type TaskId: str
+        :param _Name: 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :type Name: str
+        :param _Namespace: 云产品命名空间。
+        :type Namespace: str
+        :param _Metrics: 指标配置信息。
+        :type Metrics: list of MetricConfig
+        :param _InstanceInfo: 实例配置信息。
+        :type InstanceInfo: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        :param _Enable: 任务状态。
+
+1： 未启用
+
+2： 启用
+        :type Enable: int
+        """
+        self._TopicId = None
+        self._TaskId = None
+        self._Name = None
+        self._Namespace = None
+        self._Metrics = None
+        self._InstanceInfo = None
+        self._Enable = None
+
+    @property
+    def TopicId(self):
+        r"""指标采集任务的日志主题id。必填字段
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TaskId(self):
+        r"""指标采集任务id。必填字段
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        r"""名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        r"""云产品命名空间。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metrics(self):
+        r"""指标配置信息。
+        :rtype: list of MetricConfig
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def InstanceInfo(self):
+        r"""实例配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.InstanceConfig`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+    @property
+    def Enable(self):
+        r"""任务状态。
+
+1： 未启用
+
+2： 启用
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricConfig()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = InstanceConfig()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMetricSubscribeResponse(AbstractModel):
+    r"""ModifyMetricSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNoticeContentRequest(AbstractModel):
     r"""ModifyNoticeContent请求参数结构体
 
@@ -29288,6 +37050,253 @@ class ModifyShipperRequest(AbstractModel):
 
 class ModifyShipperResponse(AbstractModel):
     r"""ModifyShipper返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySplunkDeliverRequest(AbstractModel):
+    r"""ModifySplunkDeliver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _Name: 投递任务名称
+name有以下限制：
+- 不能为空
+- 长度不大于64
+- 只能包含aA-zZ、下划线、-、0-9
+        :type Name: str
+        :param _Enable: 投递任务启用状态；0:禁用；1:启用
+        :type Enable: int
+        :param _NetInfo: splunk投递任务-目标配置
+        :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        :param _MetadataInfo: splunk投递任务元信息
+        :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        :param _HasServiceLog: 是否启用服务日志；1:关闭；2:开启
+        :type HasServiceLog: int
+        :param _IndexAck: 高级配置-是否启用索引器;
+1-不开启；2-开启；默认为：1
+        :type IndexAck: int
+        :param _Source: 高级配置-数据来源；不超过64个字符
+        :type Source: str
+        :param _SourceType: 高级配置-数据来源类型；不超过64个字符
+        :type SourceType: str
+        :param _Index: 高级配置-Splunk写入的索引；不超过64个字符
+        :type Index: str
+        :param _Channel: 高级配置-通道。
+需满足限制：如果启用索引器，该值不能为空
+        :type Channel: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._Enable = None
+        self._NetInfo = None
+        self._MetadataInfo = None
+        self._HasServiceLog = None
+        self._IndexAck = None
+        self._Source = None
+        self._SourceType = None
+        self._Index = None
+        self._Channel = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""投递任务名称
+name有以下限制：
+- 不能为空
+- 长度不大于64
+- 只能包含aA-zZ、下划线、-、0-9
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enable(self):
+        r"""投递任务启用状态；0:禁用；1:启用
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def NetInfo(self):
+        r"""splunk投递任务-目标配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        """
+        return self._NetInfo
+
+    @NetInfo.setter
+    def NetInfo(self, NetInfo):
+        self._NetInfo = NetInfo
+
+    @property
+    def MetadataInfo(self):
+        r"""splunk投递任务元信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        """
+        return self._MetadataInfo
+
+    @MetadataInfo.setter
+    def MetadataInfo(self, MetadataInfo):
+        self._MetadataInfo = MetadataInfo
+
+    @property
+    def HasServiceLog(self):
+        r"""是否启用服务日志；1:关闭；2:开启
+        :rtype: int
+        """
+        return self._HasServiceLog
+
+    @HasServiceLog.setter
+    def HasServiceLog(self, HasServiceLog):
+        self._HasServiceLog = HasServiceLog
+
+    @property
+    def IndexAck(self):
+        r"""高级配置-是否启用索引器;
+1-不开启；2-开启；默认为：1
+        :rtype: int
+        """
+        return self._IndexAck
+
+    @IndexAck.setter
+    def IndexAck(self, IndexAck):
+        self._IndexAck = IndexAck
+
+    @property
+    def Source(self):
+        r"""高级配置-数据来源；不超过64个字符
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceType(self):
+        r"""高级配置-数据来源类型；不超过64个字符
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Index(self):
+        r"""高级配置-Splunk写入的索引；不超过64个字符
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Channel(self):
+        r"""高级配置-通道。
+需满足限制：如果启用索引器，该值不能为空
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Enable = params.get("Enable")
+        if params.get("NetInfo") is not None:
+            self._NetInfo = NetInfo()
+            self._NetInfo._deserialize(params.get("NetInfo"))
+        if params.get("MetadataInfo") is not None:
+            self._MetadataInfo = MetadataInfo()
+            self._MetadataInfo._deserialize(params.get("MetadataInfo"))
+        self._HasServiceLog = params.get("HasServiceLog")
+        self._IndexAck = params.get("IndexAck")
+        self._Source = params.get("Source")
+        self._SourceType = params.get("SourceType")
+        self._Index = params.get("Index")
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySplunkDeliverResponse(AbstractModel):
+    r"""ModifySplunkDeliver返回参数结构体
 
     """
 
@@ -30076,6 +38085,140 @@ class MultiTopicSearchInformation(AbstractModel):
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
         self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetInfo(AbstractModel):
+    r"""Splunk投递任务-目标配置网络信息相关
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 网络地址
+        :type Host: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Token: 认证token
+        :type Token: str
+        :param _NetType: 网络类型;1：内网；2:外网
+        :type NetType: int
+        :param _VpcId: 所属网络；如果网络类型为内网，该字段必填
+        :type VpcId: str
+        :param _VirtualGatewayType: 网络服务类型；如果网络类型为内网，该字段必填
+- 0:云上cvm
+- 3:云上专线网关
+- 11:云联网
+- 1025:云上clb
+        :type VirtualGatewayType: int
+        :param _IsSSL: 认证机制，是否使用SSL，默认不使用
+        :type IsSSL: bool
+        """
+        self._Host = None
+        self._Port = None
+        self._Token = None
+        self._NetType = None
+        self._VpcId = None
+        self._VirtualGatewayType = None
+        self._IsSSL = None
+
+    @property
+    def Host(self):
+        r"""网络地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Token(self):
+        r"""认证token
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def NetType(self):
+        r"""网络类型;1：内网；2:外网
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""所属网络；如果网络类型为内网，该字段必填
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VirtualGatewayType(self):
+        r"""网络服务类型；如果网络类型为内网，该字段必填
+- 0:云上cvm
+- 3:云上专线网关
+- 11:云联网
+- 1025:云上clb
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def IsSSL(self):
+        r"""认证机制，是否使用SSL，默认不使用
+        :rtype: bool
+        """
+        return self._IsSSL
+
+    @IsSSL.setter
+    def IsSSL(self, IsSSL):
+        self._IsSSL = IsSSL
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Token = params.get("Token")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._IsSSL = params.get("IsSSL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31150,6 +39293,61 @@ class PartitionInfo(AbstractModel):
         
 
 
+class PartitionOffsetInfo(AbstractModel):
+    r"""PartitionOffsetInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionId: 分区id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionId: int
+        :param _Offset: offset点位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        """
+        self._PartitionId = None
+        self._Offset = None
+
+    @property
+    def PartitionId(self):
+        r"""分区id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PartitionId
+
+    @PartitionId.setter
+    def PartitionId(self, PartitionId):
+        self._PartitionId = PartitionId
+
+    @property
+    def Offset(self):
+        r"""offset点位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._PartitionId = params.get("PartitionId")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PreviewKafkaRechargeRequest(AbstractModel):
     r"""PreviewKafkaRecharge请求参数结构体
 
@@ -31841,6 +40039,173 @@ class QueryRangeMetricResponse(AbstractModel):
         self._ResultType = params.get("ResultType")
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class Relabeling(AbstractModel):
+    r"""标签重新标记配置。
+    允许动态重写目标、警报、抓取样本和远程写入样本的标签集。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 基于正则表达式匹配执行的动作。
+- replace: Label替换, 必填: SourceLabels, Separator, Regex, TargetLabel, Replacement
+- labeldrop: 丢弃Label, 必填: Regex
+- labelkeep: 保留Label, 必填: Regex
+- lowercase: 小写化, 必填: SourceLabels, Separator, TargetLabel
+- uppercase: 大写化, 必填: SourceLabels, Separator, TargetLabel
+- dropequal: 丢弃指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+- keepequal: 保留指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+- drop: 丢弃指标-正则匹配, 必填: SourceLabels, Separator, Regex
+- keep: 保留指标-正则匹配, 必填: SourceLabels, Separator, Regex
+- hashmod:哈希取模, 必填: SourceLabels, Separator, TargetLabel, Modulus
+- labelmap:Label映射, 必填: Regex, Replacement
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _SourceLabels: 原始label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceLabels: list of str
+        :param _Separator: 原始label连接符。 必填时不能为空串， 长度不能超过256
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Separator: str
+        :param _TargetLabel: 目标label。必填时不能为空串，校验格式：`^[a-zA-Z_][a-zA-Z0-9_]*$` ， 长度不能超过256
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetLabel: str
+        :param _Replacement: 替换值。如果正则表达式匹配，则对其执行替换操作。
+- 必填时不能为空串，长度不能超过256
+- 当action为LabelMap时， Replacement 校验格式：`^(?:(?:[a-zA-Z_]|\$(?:\{\w+\}|\w+))+\w*)+$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replacement: str
+        :param _Regex: 正则表达式。提取与之匹配值。必填时不能为空串，校验必须是一个合法的 RE2 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: str
+        :param _Modulus: 获取源标签值的哈希值。必填时不能为空,不能为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modulus: int
+        """
+        self._Action = None
+        self._SourceLabels = None
+        self._Separator = None
+        self._TargetLabel = None
+        self._Replacement = None
+        self._Regex = None
+        self._Modulus = None
+
+    @property
+    def Action(self):
+        r"""基于正则表达式匹配执行的动作。
+- replace: Label替换, 必填: SourceLabels, Separator, Regex, TargetLabel, Replacement
+- labeldrop: 丢弃Label, 必填: Regex
+- labelkeep: 保留Label, 必填: Regex
+- lowercase: 小写化, 必填: SourceLabels, Separator, TargetLabel
+- uppercase: 大写化, 必填: SourceLabels, Separator, TargetLabel
+- dropequal: 丢弃指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+- keepequal: 保留指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+- drop: 丢弃指标-正则匹配, 必填: SourceLabels, Separator, Regex
+- keep: 保留指标-正则匹配, 必填: SourceLabels, Separator, Regex
+- hashmod:哈希取模, 必填: SourceLabels, Separator, TargetLabel, Modulus
+- labelmap:Label映射, 必填: Regex, Replacement
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def SourceLabels(self):
+        r"""原始label
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SourceLabels
+
+    @SourceLabels.setter
+    def SourceLabels(self, SourceLabels):
+        self._SourceLabels = SourceLabels
+
+    @property
+    def Separator(self):
+        r"""原始label连接符。 必填时不能为空串， 长度不能超过256
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Separator
+
+    @Separator.setter
+    def Separator(self, Separator):
+        self._Separator = Separator
+
+    @property
+    def TargetLabel(self):
+        r"""目标label。必填时不能为空串，校验格式：`^[a-zA-Z_][a-zA-Z0-9_]*$` ， 长度不能超过256
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetLabel
+
+    @TargetLabel.setter
+    def TargetLabel(self, TargetLabel):
+        self._TargetLabel = TargetLabel
+
+    @property
+    def Replacement(self):
+        r"""替换值。如果正则表达式匹配，则对其执行替换操作。
+- 必填时不能为空串，长度不能超过256
+- 当action为LabelMap时， Replacement 校验格式：`^(?:(?:[a-zA-Z_]|\$(?:\{\w+\}|\w+))+\w*)+$`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Replacement
+
+    @Replacement.setter
+    def Replacement(self, Replacement):
+        self._Replacement = Replacement
+
+    @property
+    def Regex(self):
+        r"""正则表达式。提取与之匹配值。必填时不能为空串，校验必须是一个合法的 RE2 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+    @property
+    def Modulus(self):
+        r"""获取源标签值的哈希值。必填时不能为空,不能为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Modulus
+
+    @Modulus.setter
+    def Modulus(self, Modulus):
+        self._Modulus = Modulus
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._SourceLabels = params.get("SourceLabels")
+        self._Separator = params.get("Separator")
+        self._TargetLabel = params.get("TargetLabel")
+        self._Replacement = params.get("Replacement")
+        self._Regex = params.get("Regex")
+        self._Modulus = params.get("Modulus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RetryShipperTaskRequest(AbstractModel):
@@ -33693,6 +42058,157 @@ class SearchLogTopics(AbstractModel):
         
 
 
+class SendConsumerHeartbeatRequest(AbstractModel):
+    r"""SendConsumerHeartbeat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 上报心跳的消费组标识
+        :type ConsumerGroup: str
+        :param _Consumer: 上报心跳的消费者名称
+（字母数字下划线，不允许数字、_开头， 长度小于256）
+        :type Consumer: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        :param _TopicPartitionsInfo: topic 分区信息
+        :type TopicPartitionsInfo: list of TopicPartitionInfo
+        """
+        self._ConsumerGroup = None
+        self._Consumer = None
+        self._LogsetId = None
+        self._TopicPartitionsInfo = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""上报心跳的消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Consumer(self):
+        r"""上报心跳的消费者名称
+（字母数字下划线，不允许数字、_开头， 长度小于256）
+        :rtype: str
+        """
+        return self._Consumer
+
+    @Consumer.setter
+    def Consumer(self, Consumer):
+        self._Consumer = Consumer
+
+    @property
+    def LogsetId(self):
+        r"""日志集ID
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicPartitionsInfo(self):
+        r"""topic 分区信息
+        :rtype: list of TopicPartitionInfo
+        """
+        return self._TopicPartitionsInfo
+
+    @TopicPartitionsInfo.setter
+    def TopicPartitionsInfo(self, TopicPartitionsInfo):
+        self._TopicPartitionsInfo = TopicPartitionsInfo
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Consumer = params.get("Consumer")
+        self._LogsetId = params.get("LogsetId")
+        if params.get("TopicPartitionsInfo") is not None:
+            self._TopicPartitionsInfo = []
+            for item in params.get("TopicPartitionsInfo"):
+                obj = TopicPartitionInfo()
+                obj._deserialize(item)
+                self._TopicPartitionsInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendConsumerHeartbeatResponse(AbstractModel):
+    r"""SendConsumerHeartbeat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 日志主题对应的消费组标识
+        :type ConsumerGroup: str
+        :param _TopicPartitionsInfo: 分区信息
+        :type TopicPartitionsInfo: list of TopicPartitionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerGroup = None
+        self._TopicPartitionsInfo = None
+        self._RequestId = None
+
+    @property
+    def ConsumerGroup(self):
+        r"""日志主题对应的消费组标识
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def TopicPartitionsInfo(self):
+        r"""分区信息
+        :rtype: list of TopicPartitionInfo
+        """
+        return self._TopicPartitionsInfo
+
+    @TopicPartitionsInfo.setter
+    def TopicPartitionsInfo(self, TopicPartitionsInfo):
+        self._TopicPartitionsInfo = TopicPartitionsInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        if params.get("TopicPartitionsInfo") is not None:
+            self._TopicPartitionsInfo = []
+            for item in params.get("TopicPartitionsInfo"):
+                obj = TopicPartitionInfo()
+                obj._deserialize(item)
+                self._TopicPartitionsInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ShipperInfo(AbstractModel):
     r"""投递规则
 
@@ -34401,6 +42917,271 @@ class SplitPartitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SplunkDeliverInfo(AbstractModel):
+    r"""Splunk投递任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Uin: 用户id
+        :type Uin: int
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _Status: 任务状态；1.运行中；2:暂停；3：异常
+        :type Status: int
+        :param _Enable: 启用状态；0:禁用；1:启用
+        :type Enable: int
+        :param _CreateTime: 创建时间；单位：秒
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间；单位：秒
+        :type UpdateTime: int
+        :param _NetInfo: splunk投递任务-目标配置
+        :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        :param _Metadata: splunk投递任务元信息
+        :type Metadata: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        :param _HasServiceLog: 是否启用服务日志；1:关闭；2:开启
+        :type HasServiceLog: int
+        :param _Source: 高级配置-数据来源；
+        :type Source: str
+        :param _SourceType: 高级配置-数据来源类型；
+        :type SourceType: str
+        :param _Index: 高级配置-Splunk写入的索引
+        :type Index: str
+        :param _IndexAck: 高级配置-是否启用索引器；1-不开启；2-开启；
+        :type IndexAck: int
+        :param _Channel: 高级配置-通道
+        :type Channel: str
+        """
+        self._TaskId = None
+        self._Name = None
+        self._Uin = None
+        self._TopicId = None
+        self._Status = None
+        self._Enable = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._NetInfo = None
+        self._Metadata = None
+        self._HasServiceLog = None
+        self._Source = None
+        self._SourceType = None
+        self._Index = None
+        self._IndexAck = None
+        self._Channel = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uin(self):
+        r"""用户id
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Status(self):
+        r"""任务状态；1.运行中；2:暂停；3：异常
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Enable(self):
+        r"""启用状态；0:禁用；1:启用
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CreateTime(self):
+        r"""创建时间；单位：秒
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间；单位：秒
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def NetInfo(self):
+        r"""splunk投递任务-目标配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
+        """
+        return self._NetInfo
+
+    @NetInfo.setter
+    def NetInfo(self, NetInfo):
+        self._NetInfo = NetInfo
+
+    @property
+    def Metadata(self):
+        r"""splunk投递任务元信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def HasServiceLog(self):
+        r"""是否启用服务日志；1:关闭；2:开启
+        :rtype: int
+        """
+        return self._HasServiceLog
+
+    @HasServiceLog.setter
+    def HasServiceLog(self, HasServiceLog):
+        self._HasServiceLog = HasServiceLog
+
+    @property
+    def Source(self):
+        r"""高级配置-数据来源；
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceType(self):
+        r"""高级配置-数据来源类型；
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Index(self):
+        r"""高级配置-Splunk写入的索引
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def IndexAck(self):
+        r"""高级配置-是否启用索引器；1-不开启；2-开启；
+        :rtype: int
+        """
+        return self._IndexAck
+
+    @IndexAck.setter
+    def IndexAck(self, IndexAck):
+        self._IndexAck = IndexAck
+
+    @property
+    def Channel(self):
+        r"""高级配置-通道
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._Uin = params.get("Uin")
+        self._TopicId = params.get("TopicId")
+        self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("NetInfo") is not None:
+            self._NetInfo = NetInfo()
+            self._NetInfo._deserialize(params.get("NetInfo"))
+        if params.get("Metadata") is not None:
+            self._Metadata = MetadataInfo()
+            self._Metadata._deserialize(params.get("Metadata"))
+        self._HasServiceLog = params.get("HasServiceLog")
+        self._Source = params.get("Source")
+        self._SourceType = params.get("SourceType")
+        self._Index = params.get("Index")
+        self._IndexAck = params.get("IndexAck")
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     r"""创建资源实例时同时绑定的标签对说明
 
@@ -35023,6 +43804,121 @@ HotPeriod=0为没有开启日志沉降。
         self._MigrationStatus = params.get("MigrationStatus")
         self._EffectiveDate = params.get("EffectiveDate")
         self._IsSourceFrom = params.get("IsSourceFrom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicPartitionInfo(AbstractModel):
+    r"""Partitions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicID: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicID: str
+        :param _Partitions: 分区id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: list of int non-negative
+        """
+        self._TopicID = None
+        self._Partitions = None
+
+    @property
+    def TopicID(self):
+        r"""日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicID
+
+    @TopicID.setter
+    def TopicID(self, TopicID):
+        self._TopicID = TopicID
+
+    @property
+    def Partitions(self):
+        r"""分区id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+
+    def _deserialize(self, params):
+        self._TopicID = params.get("TopicID")
+        self._Partitions = params.get("Partitions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicPartitionOffsetInfo(AbstractModel):
+    r"""TopicPartitionOffsetInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicID: 日志主题id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicID: str
+        :param _PartitionOffsets: 分区点位信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionOffsets: list of PartitionOffsetInfo
+        """
+        self._TopicID = None
+        self._PartitionOffsets = None
+
+    @property
+    def TopicID(self):
+        r"""日志主题id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicID
+
+    @TopicID.setter
+    def TopicID(self, TopicID):
+        self._TopicID = TopicID
+
+    @property
+    def PartitionOffsets(self):
+        r"""分区点位信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PartitionOffsetInfo
+        """
+        return self._PartitionOffsets
+
+    @PartitionOffsets.setter
+    def PartitionOffsets(self, PartitionOffsets):
+        self._PartitionOffsets = PartitionOffsets
+
+
+    def _deserialize(self, params):
+        self._TopicID = params.get("TopicID")
+        if params.get("PartitionOffsets") is not None:
+            self._PartitionOffsets = []
+            for item in params.get("PartitionOffsets"):
+                obj = PartitionOffsetInfo()
+                obj._deserialize(item)
+                self._PartitionOffsets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

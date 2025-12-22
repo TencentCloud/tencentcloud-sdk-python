@@ -61,6 +61,60 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCloudRunServer(
+            self,
+            request: models.DeleteCloudRunServerRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudRunServerResponse:
+        """
+        删除云托管服务：包括服务下的版本，镜像，流水线
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudRunServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudRunServerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudRunVersions(
+            self,
+            request: models.DeleteCloudRunVersionsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudRunVersionsResponse:
+        """
+        批量删除版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudRunVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudRunVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudRunDeployRecord(
+            self,
+            request: models.DescribeCloudRunDeployRecordRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudRunDeployRecordResponse:
+        """
+        查询云托管部署记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudRunDeployRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudRunDeployRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudRunEnvs(
             self,
             request: models.DescribeCloudRunEnvsRequest,
@@ -74,6 +128,42 @@ class TcbrClient(AbstractClient):
         kwargs["action"] = "DescribeCloudRunEnvs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudRunEnvsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudRunPodList(
+            self,
+            request: models.DescribeCloudRunPodListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudRunPodListResponse:
+        """
+        查询云托管Pod实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudRunPodList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudRunPodListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudRunProcessLog(
+            self,
+            request: models.DescribeCloudRunProcessLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudRunProcessLogResponse:
+        """
+        查询运行日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudRunProcessLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudRunProcessLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -133,6 +223,24 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeReleaseOrder(
+            self,
+            request: models.DescribeReleaseOrderRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReleaseOrderResponse:
+        """
+        查询发布单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReleaseOrder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReleaseOrderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeServerManageTask(
             self,
             request: models.DescribeServerManageTaskRequest,
@@ -146,6 +254,24 @@ class TcbrClient(AbstractClient):
         kwargs["action"] = "DescribeServerManageTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeServerManageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVersionDetail(
+            self,
+            request: models.DescribeVersionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVersionDetailResponse:
+        """
+        查询版本详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVersionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVersionDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -182,6 +308,42 @@ class TcbrClient(AbstractClient):
         kwargs["action"] = "ReleaseGray"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ReleaseGrayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchClsLog(
+            self,
+            request: models.SearchClsLogRequest,
+            opts: Dict = None,
+    ) -> models.SearchClsLogResponse:
+        """
+        查询日志信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchClsLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchClsLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitServerRollback(
+            self,
+            request: models.SubmitServerRollbackRequest,
+            opts: Dict = None,
+    ) -> models.SubmitServerRollbackResponse:
+        """
+        回滚版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitServerRollback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitServerRollbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

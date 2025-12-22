@@ -5235,6 +5235,8 @@ class AssetRiskItem(AbstractModel):
         :type RiskRuleId: str
         :param _Classify: 处置分类
         :type Classify: str
+        :param _StandardTerms: 等保合规
+        :type StandardTerms: list of StandardTerm
         """
         self._AppId = None
         self._Provider = None
@@ -5251,6 +5253,7 @@ class AssetRiskItem(AbstractModel):
         self._Severity = None
         self._RiskRuleId = None
         self._Classify = None
+        self._StandardTerms = None
 
     @property
     def AppId(self):
@@ -5417,6 +5420,17 @@ class AssetRiskItem(AbstractModel):
     def Classify(self, Classify):
         self._Classify = Classify
 
+    @property
+    def StandardTerms(self):
+        r"""等保合规
+        :rtype: list of StandardTerm
+        """
+        return self._StandardTerms
+
+    @StandardTerms.setter
+    def StandardTerms(self, StandardTerms):
+        self._StandardTerms = StandardTerms
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -5434,6 +5448,12 @@ class AssetRiskItem(AbstractModel):
         self._Severity = params.get("Severity")
         self._RiskRuleId = params.get("RiskRuleId")
         self._Classify = params.get("Classify")
+        if params.get("StandardTerms") is not None:
+            self._StandardTerms = []
+            for item in params.get("StandardTerms"):
+                obj = StandardTerm()
+                obj._deserialize(item)
+                self._StandardTerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9859,6 +9879,8 @@ class CheckViewRiskItem(AbstractModel):
         :type EventType: str
         :param _Classify: 处置分类
         :type Classify: str
+        :param _StandardTerms: cspm规范条款
+        :type StandardTerms: list of StandardTerm
         """
         self._RiskRuleId = None
         self._RiskTitle = None
@@ -9874,6 +9896,7 @@ class CheckViewRiskItem(AbstractModel):
         self._AssetType = None
         self._EventType = None
         self._Classify = None
+        self._StandardTerms = None
 
     @property
     def RiskRuleId(self):
@@ -10029,6 +10052,17 @@ class CheckViewRiskItem(AbstractModel):
     def Classify(self, Classify):
         self._Classify = Classify
 
+    @property
+    def StandardTerms(self):
+        r"""cspm规范条款
+        :rtype: list of StandardTerm
+        """
+        return self._StandardTerms
+
+    @StandardTerms.setter
+    def StandardTerms(self, StandardTerms):
+        self._StandardTerms = StandardTerms
+
 
     def _deserialize(self, params):
         self._RiskRuleId = params.get("RiskRuleId")
@@ -10045,6 +10079,12 @@ class CheckViewRiskItem(AbstractModel):
         self._AssetType = params.get("AssetType")
         self._EventType = params.get("EventType")
         self._Classify = params.get("Classify")
+        if params.get("StandardTerms") is not None:
+            self._StandardTerms = []
+            for item in params.get("StandardTerms"):
+                obj = StandardTerm()
+                obj._deserialize(item)
+                self._StandardTerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13935,11 +13975,14 @@ class DescribeAssetRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _AssetRiskList: 资产视角下风险列表
         :type AssetRiskList: list of AssetRiskItem
+        :param _StandardNameList: 等保规范名称集合
+        :type StandardNameList: list of StandardItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._AssetRiskList = None
+        self._StandardNameList = None
         self._RequestId = None
 
     @property
@@ -13965,6 +14008,17 @@ class DescribeAssetRiskListResponse(AbstractModel):
         self._AssetRiskList = AssetRiskList
 
     @property
+    def StandardNameList(self):
+        r"""等保规范名称集合
+        :rtype: list of StandardItem
+        """
+        return self._StandardNameList
+
+    @StandardNameList.setter
+    def StandardNameList(self, StandardNameList):
+        self._StandardNameList = StandardNameList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13984,6 +14038,12 @@ class DescribeAssetRiskListResponse(AbstractModel):
                 obj = AssetRiskItem()
                 obj._deserialize(item)
                 self._AssetRiskList.append(obj)
+        if params.get("StandardNameList") is not None:
+            self._StandardNameList = []
+            for item in params.get("StandardNameList"):
+                obj = StandardItem()
+                obj._deserialize(item)
+                self._StandardNameList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15265,11 +15325,14 @@ class DescribeCheckViewRisksResponse(AbstractModel):
         :type TotalCount: int
         :param _CheckViewRiskList: 检查视角下风险列表
         :type CheckViewRiskList: list of CheckViewRiskItem
+        :param _StandardNameList: 检查视角下cspm规范标签列表
+        :type StandardNameList: list of StandardItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._CheckViewRiskList = None
+        self._StandardNameList = None
         self._RequestId = None
 
     @property
@@ -15295,6 +15358,17 @@ class DescribeCheckViewRisksResponse(AbstractModel):
         self._CheckViewRiskList = CheckViewRiskList
 
     @property
+    def StandardNameList(self):
+        r"""检查视角下cspm规范标签列表
+        :rtype: list of StandardItem
+        """
+        return self._StandardNameList
+
+    @StandardNameList.setter
+    def StandardNameList(self, StandardNameList):
+        self._StandardNameList = StandardNameList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15314,6 +15388,12 @@ class DescribeCheckViewRisksResponse(AbstractModel):
                 obj = CheckViewRiskItem()
                 obj._deserialize(item)
                 self._CheckViewRiskList.append(obj)
+        if params.get("StandardNameList") is not None:
+            self._StandardNameList = []
+            for item in params.get("StandardNameList"):
+                obj = StandardItem()
+                obj._deserialize(item)
+                self._StandardNameList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -32937,6 +33017,108 @@ class SourceIPVpcInfo(AbstractModel):
         self._AppID = params.get("AppID")
         self._VpcID = params.get("VpcID")
         self._VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardItem(AbstractModel):
+    r"""CSPM规范
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 规范ID
+        :type ID: int
+        :param _Name: 规范名称
+        :type Name: str
+        """
+        self._ID = None
+        self._Name = None
+
+    @property
+    def ID(self):
+        r"""规范ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""规范名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardTerm(AbstractModel):
+    r"""CSPM条款
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: 标签
+        :type Tag: str
+        :param _Terms: 条款
+        :type Terms: list of str
+        """
+        self._Tag = None
+        self._Terms = None
+
+    @property
+    def Tag(self):
+        r"""标签
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Terms(self):
+        r"""条款
+        :rtype: list of str
+        """
+        return self._Terms
+
+    @Terms.setter
+    def Terms(self, Terms):
+        self._Terms = Terms
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        self._Terms = params.get("Terms")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

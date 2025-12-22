@@ -735,6 +735,299 @@ class DatabasesInfo(AbstractModel):
         
 
 
+class DeleteCloudRunServerRequest(AbstractModel):
+    r"""DeleteCloudRunServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _OperatorRemark: 操作人信息
+        :type OperatorRemark: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._OperatorRemark = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def OperatorRemark(self):
+        r"""操作人信息
+        :rtype: str
+        """
+        return self._OperatorRemark
+
+    @OperatorRemark.setter
+    def OperatorRemark(self, OperatorRemark):
+        self._OperatorRemark = OperatorRemark
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudRunServerResponse(AbstractModel):
+    r"""DeleteCloudRunServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除结果：success / failed
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""删除结果：success / failed
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudRunVersionsRequest(AbstractModel):
+    r"""DeleteCloudRunVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 Id
+        :type EnvId: str
+        :param _IsDeleteServer: 是否删除服务，只有最后一个版本的时候才生效
+        :type IsDeleteServer: bool
+        :param _IsDeleteImage: 只有删除服务的时候，才生效
+        :type IsDeleteImage: bool
+        :param _SimpleVersions: 删除版本的信息
+        :type SimpleVersions: list of SimpleVersion
+        :param _OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        """
+        self._EnvId = None
+        self._IsDeleteServer = None
+        self._IsDeleteImage = None
+        self._SimpleVersions = None
+        self._OperatorRemark = None
+
+    @property
+    def EnvId(self):
+        r"""环境 Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def IsDeleteServer(self):
+        r"""是否删除服务，只有最后一个版本的时候才生效
+        :rtype: bool
+        """
+        return self._IsDeleteServer
+
+    @IsDeleteServer.setter
+    def IsDeleteServer(self, IsDeleteServer):
+        self._IsDeleteServer = IsDeleteServer
+
+    @property
+    def IsDeleteImage(self):
+        r"""只有删除服务的时候，才生效
+        :rtype: bool
+        """
+        return self._IsDeleteImage
+
+    @IsDeleteImage.setter
+    def IsDeleteImage(self, IsDeleteImage):
+        self._IsDeleteImage = IsDeleteImage
+
+    @property
+    def SimpleVersions(self):
+        r"""删除版本的信息
+        :rtype: list of SimpleVersion
+        """
+        return self._SimpleVersions
+
+    @SimpleVersions.setter
+    def SimpleVersions(self, SimpleVersions):
+        self._SimpleVersions = SimpleVersions
+
+    @property
+    def OperatorRemark(self):
+        r"""操作备注
+        :rtype: str
+        """
+        return self._OperatorRemark
+
+    @OperatorRemark.setter
+    def OperatorRemark(self, OperatorRemark):
+        self._OperatorRemark = OperatorRemark
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._IsDeleteServer = params.get("IsDeleteServer")
+        self._IsDeleteImage = params.get("IsDeleteImage")
+        if params.get("SimpleVersions") is not None:
+            self._SimpleVersions = []
+            for item in params.get("SimpleVersions"):
+                obj = SimpleVersion()
+                obj._deserialize(item)
+                self._SimpleVersions.append(obj)
+        self._OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudRunVersionsResponse(AbstractModel):
+    r"""DeleteCloudRunVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: succ | fail | partial
+        :type Result: str
+        :param _FailVersions: 删除失败的版本列表
+        :type FailVersions: list of FailDeleteVersions
+        :param _SuccessVersions: 删除成功的版本列表
+        :type SuccessVersions: list of SuccessDeleteVersions
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._FailVersions = None
+        self._SuccessVersions = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""succ | fail | partial
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def FailVersions(self):
+        r"""删除失败的版本列表
+        :rtype: list of FailDeleteVersions
+        """
+        return self._FailVersions
+
+    @FailVersions.setter
+    def FailVersions(self, FailVersions):
+        self._FailVersions = FailVersions
+
+    @property
+    def SuccessVersions(self):
+        r"""删除成功的版本列表
+        :rtype: list of SuccessDeleteVersions
+        """
+        return self._SuccessVersions
+
+    @SuccessVersions.setter
+    def SuccessVersions(self, SuccessVersions):
+        self._SuccessVersions = SuccessVersions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        if params.get("FailVersions") is not None:
+            self._FailVersions = []
+            for item in params.get("FailVersions"):
+                obj = FailDeleteVersions()
+                obj._deserialize(item)
+                self._FailVersions.append(obj)
+        if params.get("SuccessVersions") is not None:
+            self._SuccessVersions = []
+            for item in params.get("SuccessVersions"):
+                obj = SuccessDeleteVersions()
+                obj._deserialize(item)
+                self._SuccessVersions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DeployParam(AbstractModel):
     r"""部署参数
 
@@ -880,6 +1173,293 @@ class DeployParam(AbstractModel):
         
 
 
+class DeployRecord(AbstractModel):
+    r"""云托管实例的部署记录, 包括扩缩容状态和流量分配情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployId: 部署Id
+        :type DeployId: str
+        :param _DeployTime: 部署开始时间
+        :type DeployTime: str
+        :param _Status: 状态：running/deploying/deploy_failed
+        :type Status: str
+        :param _RunId: 部署运行Id 用户查询部署日志
+        :type RunId: str
+        :param _BuildId: 构建Id
+        :type BuildId: int
+        :param _FlowRatio: 流量比例
+        :type FlowRatio: int
+        :param _ImageUrl: 镜像url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param _ScaleStatus: 缩容状态 缩容为 zero 否则为空
+        :type ScaleStatus: str
+        :param _HasTraffic: 是否分配流量
+        :type HasTraffic: bool
+        :param _TrafficType: 流量分配方式, FLOW: 百分比分配; URL_PARAMS: 匹配 query 参数; HEADERS: 匹配请求 Header
+        :type TrafficType: str
+        :param _IsReleasing: 当前版本是否在发布中
+        :type IsReleasing: bool
+        """
+        self._DeployId = None
+        self._DeployTime = None
+        self._Status = None
+        self._RunId = None
+        self._BuildId = None
+        self._FlowRatio = None
+        self._ImageUrl = None
+        self._ScaleStatus = None
+        self._HasTraffic = None
+        self._TrafficType = None
+        self._IsReleasing = None
+
+    @property
+    def DeployId(self):
+        r"""部署Id
+        :rtype: str
+        """
+        return self._DeployId
+
+    @DeployId.setter
+    def DeployId(self, DeployId):
+        self._DeployId = DeployId
+
+    @property
+    def DeployTime(self):
+        r"""部署开始时间
+        :rtype: str
+        """
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def Status(self):
+        r"""状态：running/deploying/deploy_failed
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RunId(self):
+        r"""部署运行Id 用户查询部署日志
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
+    def BuildId(self):
+        r"""构建Id
+        :rtype: int
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def FlowRatio(self):
+        r"""流量比例
+        :rtype: int
+        """
+        return self._FlowRatio
+
+    @FlowRatio.setter
+    def FlowRatio(self, FlowRatio):
+        self._FlowRatio = FlowRatio
+
+    @property
+    def ImageUrl(self):
+        r"""镜像url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ScaleStatus(self):
+        r"""缩容状态 缩容为 zero 否则为空
+        :rtype: str
+        """
+        return self._ScaleStatus
+
+    @ScaleStatus.setter
+    def ScaleStatus(self, ScaleStatus):
+        self._ScaleStatus = ScaleStatus
+
+    @property
+    def HasTraffic(self):
+        r"""是否分配流量
+        :rtype: bool
+        """
+        return self._HasTraffic
+
+    @HasTraffic.setter
+    def HasTraffic(self, HasTraffic):
+        self._HasTraffic = HasTraffic
+
+    @property
+    def TrafficType(self):
+        r"""流量分配方式, FLOW: 百分比分配; URL_PARAMS: 匹配 query 参数; HEADERS: 匹配请求 Header
+        :rtype: str
+        """
+        return self._TrafficType
+
+    @TrafficType.setter
+    def TrafficType(self, TrafficType):
+        self._TrafficType = TrafficType
+
+    @property
+    def IsReleasing(self):
+        r"""当前版本是否在发布中
+        :rtype: bool
+        """
+        return self._IsReleasing
+
+    @IsReleasing.setter
+    def IsReleasing(self, IsReleasing):
+        self._IsReleasing = IsReleasing
+
+
+    def _deserialize(self, params):
+        self._DeployId = params.get("DeployId")
+        self._DeployTime = params.get("DeployTime")
+        self._Status = params.get("Status")
+        self._RunId = params.get("RunId")
+        self._BuildId = params.get("BuildId")
+        self._FlowRatio = params.get("FlowRatio")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ScaleStatus = params.get("ScaleStatus")
+        self._HasTraffic = params.get("HasTraffic")
+        self._TrafficType = params.get("TrafficType")
+        self._IsReleasing = params.get("IsReleasing")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudRunDeployRecordRequest(AbstractModel):
+    r"""DescribeCloudRunDeployRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudRunDeployRecordResponse(AbstractModel):
+    r"""DescribeCloudRunDeployRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecords: 部署列表
+        :type DeployRecords: list of DeployRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeployRecords = None
+        self._RequestId = None
+
+    @property
+    def DeployRecords(self):
+        r"""部署列表
+        :rtype: list of DeployRecord
+        """
+        return self._DeployRecords
+
+    @DeployRecords.setter
+    def DeployRecords(self, DeployRecords):
+        self._DeployRecords = DeployRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeployRecords") is not None:
+            self._DeployRecords = []
+            for item in params.get("DeployRecords"):
+                obj = DeployRecord()
+                obj._deserialize(item)
+                self._DeployRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudRunEnvsRequest(AbstractModel):
     r"""DescribeCloudRunEnvs请求参数结构体
 
@@ -993,6 +1573,263 @@ class DescribeCloudRunEnvsResponse(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self._EnvList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudRunPodListRequest(AbstractModel):
+    r"""DescribeCloudRunPodList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _VersionName: 版本名
+        :type VersionName: str
+        :param _PageSize: 默认为10， 最大为50
+不传或传0时 取默认10
+大于50时取50
+        :type PageSize: int
+        :param _PageNum: 不传或传0时 会默认为1
+        :type PageNum: int
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._VersionName = None
+        self._PageSize = None
+        self._PageNum = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def PageSize(self):
+        r"""默认为10， 最大为50
+不传或传0时 取默认10
+大于50时取50
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        r"""不传或传0时 会默认为1
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._VersionName = params.get("VersionName")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudRunPodListResponse(AbstractModel):
+    r"""DescribeCloudRunPodList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodList: pod实例列表
+        :type PodList: list of VersionPodInstance
+        :param _TotalCount: pod总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PodList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PodList(self):
+        r"""pod实例列表
+        :rtype: list of VersionPodInstance
+        """
+        return self._PodList
+
+    @PodList.setter
+    def PodList(self, PodList):
+        self._PodList = PodList
+
+    @property
+    def TotalCount(self):
+        r"""pod总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PodList") is not None:
+            self._PodList = []
+            for item in params.get("PodList"):
+                obj = VersionPodInstance()
+                obj._deserialize(item)
+                self._PodList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudRunProcessLogRequest(AbstractModel):
+    r"""DescribeCloudRunProcessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 Id
+        :type EnvId: str
+        :param _RunId: 操作 Id
+        :type RunId: str
+        """
+        self._EnvId = None
+        self._RunId = None
+
+    @property
+    def EnvId(self):
+        r"""环境 Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def RunId(self):
+        r"""操作 Id
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._RunId = params.get("RunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudRunProcessLogResponse(AbstractModel):
+    r"""DescribeCloudRunProcessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Logs: 运行日志列表
+        :type Logs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Logs = None
+        self._RequestId = None
+
+    @property
+    def Logs(self):
+        r"""运行日志列表
+        :rtype: list of str
+        """
+        return self._Logs
+
+    @Logs.setter
+    def Logs(self, Logs):
+        self._Logs = Logs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Logs = params.get("Logs")
         self._RequestId = params.get("RequestId")
 
 
@@ -1403,6 +2240,147 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeReleaseOrderRequest(AbstractModel):
+    r"""DescribeReleaseOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _Status: 发布单状态
+        :type Status: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._Status = None
+
+    @property
+    def EnvId(self):
+        r"""环境 Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def Status(self):
+        r"""发布单状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReleaseOrderResponse(AbstractModel):
+    r"""DescribeReleaseOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsExist: 是否存在
+        :type IsExist: bool
+        :param _ReleaseOrderInfo: 发布单信息
+        :type ReleaseOrderInfo: :class:`tencentcloud.tcbr.v20220217.models.ReleaseOrderInfo`
+        :param _LastReleasedSuccessTime: 上一次成功发布时间
+        :type LastReleasedSuccessTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsExist = None
+        self._ReleaseOrderInfo = None
+        self._LastReleasedSuccessTime = None
+        self._RequestId = None
+
+    @property
+    def IsExist(self):
+        r"""是否存在
+        :rtype: bool
+        """
+        return self._IsExist
+
+    @IsExist.setter
+    def IsExist(self, IsExist):
+        self._IsExist = IsExist
+
+    @property
+    def ReleaseOrderInfo(self):
+        r"""发布单信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ReleaseOrderInfo`
+        """
+        return self._ReleaseOrderInfo
+
+    @ReleaseOrderInfo.setter
+    def ReleaseOrderInfo(self, ReleaseOrderInfo):
+        self._ReleaseOrderInfo = ReleaseOrderInfo
+
+    @property
+    def LastReleasedSuccessTime(self):
+        r"""上一次成功发布时间
+        :rtype: str
+        """
+        return self._LastReleasedSuccessTime
+
+    @LastReleasedSuccessTime.setter
+    def LastReleasedSuccessTime(self, LastReleasedSuccessTime):
+        self._LastReleasedSuccessTime = LastReleasedSuccessTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsExist = params.get("IsExist")
+        if params.get("ReleaseOrderInfo") is not None:
+            self._ReleaseOrderInfo = ReleaseOrderInfo()
+            self._ReleaseOrderInfo._deserialize(params.get("ReleaseOrderInfo"))
+        self._LastReleasedSuccessTime = params.get("LastReleasedSuccessTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerManageTaskRequest(AbstractModel):
     r"""DescribeServerManageTask请求参数结构体
 
@@ -1541,6 +2519,405 @@ class DescribeServerManageTaskResponse(AbstractModel):
         if params.get("Task") is not None:
             self._Task = ServerManageTaskInfo()
             self._Task._deserialize(params.get("Task"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVersionDetailRequest(AbstractModel):
+    r"""DescribeVersionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _VersionName: 版本名
+        :type VersionName: str
+        :param _Channel: channel
+        :type Channel: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._VersionName = None
+        self._Channel = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Channel(self):
+        r"""channel
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._VersionName = params.get("VersionName")
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVersionDetailResponse(AbstractModel):
+    r"""DescribeVersionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 版本名
+        :type Name: str
+        :param _Port: 端口号
+        :type Port: int
+        :param _Cpu: cpu 规格
+        :type Cpu: float
+        :param _Mem: mem 规格
+        :type Mem: float
+        :param _MinNum: 最小副本数
+        :type MinNum: int
+        :param _MaxNum: 最大副本数
+        :type MaxNum: int
+        :param _PolicyDetails: 扩缩容策略
+        :type PolicyDetails: list of HpaPolicy
+        :param _Dockerfile: Dockerfile path
+        :type Dockerfile: str
+        :param _BuildDir: 目标目录
+        :type BuildDir: str
+        :param _EnvParams: 环境变量
+        :type EnvParams: str
+        :param _Status: 状态
+        :type Status: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param _LogPath: 日志采集路径
+        :type LogPath: str
+        :param _EntryPoint: entryPoint
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntryPoint: str
+        :param _Cmd: Cmd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cmd: str
+        :param _VpcConf: vpc conf
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        :param _VolumesConf: volume conf
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumesConf: list of VolumeConf
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Port = None
+        self._Cpu = None
+        self._Mem = None
+        self._MinNum = None
+        self._MaxNum = None
+        self._PolicyDetails = None
+        self._Dockerfile = None
+        self._BuildDir = None
+        self._EnvParams = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._LogPath = None
+        self._EntryPoint = None
+        self._Cmd = None
+        self._VpcConf = None
+        self._VolumesConf = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Port(self):
+        r"""端口号
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Cpu(self):
+        r"""cpu 规格
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""mem 规格
+        :rtype: float
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def MinNum(self):
+        r"""最小副本数
+        :rtype: int
+        """
+        return self._MinNum
+
+    @MinNum.setter
+    def MinNum(self, MinNum):
+        self._MinNum = MinNum
+
+    @property
+    def MaxNum(self):
+        r"""最大副本数
+        :rtype: int
+        """
+        return self._MaxNum
+
+    @MaxNum.setter
+    def MaxNum(self, MaxNum):
+        self._MaxNum = MaxNum
+
+    @property
+    def PolicyDetails(self):
+        r"""扩缩容策略
+        :rtype: list of HpaPolicy
+        """
+        return self._PolicyDetails
+
+    @PolicyDetails.setter
+    def PolicyDetails(self, PolicyDetails):
+        self._PolicyDetails = PolicyDetails
+
+    @property
+    def Dockerfile(self):
+        r"""Dockerfile path
+        :rtype: str
+        """
+        return self._Dockerfile
+
+    @Dockerfile.setter
+    def Dockerfile(self, Dockerfile):
+        self._Dockerfile = Dockerfile
+
+    @property
+    def BuildDir(self):
+        r"""目标目录
+        :rtype: str
+        """
+        return self._BuildDir
+
+    @BuildDir.setter
+    def BuildDir(self, BuildDir):
+        self._BuildDir = BuildDir
+
+    @property
+    def EnvParams(self):
+        r"""环境变量
+        :rtype: str
+        """
+        return self._EnvParams
+
+    @EnvParams.setter
+    def EnvParams(self, EnvParams):
+        self._EnvParams = EnvParams
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def LogPath(self):
+        r"""日志采集路径
+        :rtype: str
+        """
+        return self._LogPath
+
+    @LogPath.setter
+    def LogPath(self, LogPath):
+        self._LogPath = LogPath
+
+    @property
+    def EntryPoint(self):
+        r"""entryPoint
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EntryPoint
+
+    @EntryPoint.setter
+    def EntryPoint(self, EntryPoint):
+        self._EntryPoint = EntryPoint
+
+    @property
+    def Cmd(self):
+        r"""Cmd
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def VpcConf(self):
+        r"""vpc conf
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        """
+        return self._VpcConf
+
+    @VpcConf.setter
+    def VpcConf(self, VpcConf):
+        self._VpcConf = VpcConf
+
+    @property
+    def VolumesConf(self):
+        r"""volume conf
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VolumeConf
+        """
+        return self._VolumesConf
+
+    @VolumesConf.setter
+    def VolumesConf(self, VolumesConf):
+        self._VolumesConf = VolumesConf
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Port = params.get("Port")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._MinNum = params.get("MinNum")
+        self._MaxNum = params.get("MaxNum")
+        if params.get("PolicyDetails") is not None:
+            self._PolicyDetails = []
+            for item in params.get("PolicyDetails"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self._PolicyDetails.append(obj)
+        self._Dockerfile = params.get("Dockerfile")
+        self._BuildDir = params.get("BuildDir")
+        self._EnvParams = params.get("EnvParams")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._LogPath = params.get("LogPath")
+        self._EntryPoint = params.get("EntryPoint")
+        self._Cmd = params.get("Cmd")
+        if params.get("VpcConf") is not None:
+            self._VpcConf = VpcConf()
+            self._VpcConf._deserialize(params.get("VpcConf"))
+        if params.get("VolumesConf") is not None:
+            self._VolumesConf = []
+            for item in params.get("VolumesConf"):
+                obj = VolumeConf()
+                obj._deserialize(item)
+                self._VolumesConf.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2340,6 +3717,89 @@ class EnvInfo(AbstractModel):
         
 
 
+class FailDeleteVersions(AbstractModel):
+    r"""删除失败版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 删除失败版本信息
+        :type Version: :class:`tencentcloud.tcbr.v20220217.models.SimpleVersion`
+        :param _ErrorCode: 删除失败错误码
+        :type ErrorCode: int
+        :param _ErrorMsg: 删除失败错误信息
+        :type ErrorMsg: str
+        :param _RequestId: 删除操作 RequestId
+        :type RequestId: str
+        """
+        self._Version = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""删除失败版本信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.SimpleVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ErrorCode(self):
+        r"""删除失败错误码
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        r"""删除失败错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""删除操作 RequestId
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = SimpleVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionInfo(AbstractModel):
     r"""函数的信息
 
@@ -2434,6 +3894,221 @@ class HpaPolicy(AbstractModel):
     def _deserialize(self, params):
         self._PolicyType = params.get("PolicyType")
         self._PolicyThreshold = params.get("PolicyThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogObject(AbstractModel):
+    r"""CLS日志单条信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志属于的 topic ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _TopicName: 日志主题的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _Timestamp: 日志时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _Content: 日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _FileName: 采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _Source: 日志来源设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _PkgLogId: 日志唯一标识
+        :type PkgLogId: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+        self._Timestamp = None
+        self._Content = None
+        self._FileName = None
+        self._Source = None
+        self._PkgLogId = None
+
+    @property
+    def TopicId(self):
+        r"""日志属于的 topic ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""日志主题的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Timestamp(self):
+        r"""日志时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Content(self):
+        r"""日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileName(self):
+        r"""采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Source(self):
+        r"""日志来源设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def PkgLogId(self):
+        r"""日志唯一标识
+        :rtype: str
+        """
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Timestamp = params.get("Timestamp")
+        self._Content = params.get("Content")
+        self._FileName = params.get("FileName")
+        self._Source = params.get("Source")
+        self._PkgLogId = params.get("PkgLogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogResObject(AbstractModel):
+    r"""CLS日志结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: 获取更多检索结果的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param _ListOver: 搜索结果是否已经全部返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListOver: bool
+        :param _Results: 日志内容信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of LogObject
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Results = None
+
+    @property
+    def Context(self):
+        r"""获取更多检索结果的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""搜索结果是否已经全部返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Results(self):
+        r"""日志内容信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogObject
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = LogObject()
+                obj._deserialize(item)
+                self._Results.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2581,6 +4256,72 @@ class ObjectKV(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ObjectKVPriority(AbstractModel):
+    r"""通用键值权重对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键值对Key
+        :type Key: str
+        :param _Value: 键值对Value
+        :type Value: str
+        :param _Priority: 键值对权重
+        :type Priority: int
+        """
+        self._Key = None
+        self._Value = None
+        self._Priority = None
+
+    @property
+    def Key(self):
+        r"""键值对Key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""键值对Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Priority(self):
+        r"""键值对权重
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2940,6 +4681,201 @@ class ReleaseGrayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReleaseOrderInfo(AbstractModel):
+    r"""发布单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 发布单Id
+        :type Id: int
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _CurrentVersion: 当前版本
+        :type CurrentVersion: :class:`tencentcloud.tcbr.v20220217.models.VersionInfo`
+        :param _ReleaseVersion: 发布版本
+        :type ReleaseVersion: :class:`tencentcloud.tcbr.v20220217.models.VersionInfo`
+        :param _GrayStatus: 灰度状态
+        :type GrayStatus: str
+        :param _ReleaseStatus: 发布状态
+        :type ReleaseStatus: str
+        :param _TrafficTypeValues: 流量值
+        :type TrafficTypeValues: list of ObjectKV
+        :param _TrafficType: 流量类型
+        :type TrafficType: str
+        :param _FlowRatio: 百分比
+        :type FlowRatio: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _IsReleasing: 是否发布中
+        :type IsReleasing: bool
+        """
+        self._Id = None
+        self._ServerName = None
+        self._CurrentVersion = None
+        self._ReleaseVersion = None
+        self._GrayStatus = None
+        self._ReleaseStatus = None
+        self._TrafficTypeValues = None
+        self._TrafficType = None
+        self._FlowRatio = None
+        self._CreateTime = None
+        self._IsReleasing = None
+
+    @property
+    def Id(self):
+        r"""发布单Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def CurrentVersion(self):
+        r"""当前版本
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.VersionInfo`
+        """
+        return self._CurrentVersion
+
+    @CurrentVersion.setter
+    def CurrentVersion(self, CurrentVersion):
+        self._CurrentVersion = CurrentVersion
+
+    @property
+    def ReleaseVersion(self):
+        r"""发布版本
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.VersionInfo`
+        """
+        return self._ReleaseVersion
+
+    @ReleaseVersion.setter
+    def ReleaseVersion(self, ReleaseVersion):
+        self._ReleaseVersion = ReleaseVersion
+
+    @property
+    def GrayStatus(self):
+        r"""灰度状态
+        :rtype: str
+        """
+        return self._GrayStatus
+
+    @GrayStatus.setter
+    def GrayStatus(self, GrayStatus):
+        self._GrayStatus = GrayStatus
+
+    @property
+    def ReleaseStatus(self):
+        r"""发布状态
+        :rtype: str
+        """
+        return self._ReleaseStatus
+
+    @ReleaseStatus.setter
+    def ReleaseStatus(self, ReleaseStatus):
+        self._ReleaseStatus = ReleaseStatus
+
+    @property
+    def TrafficTypeValues(self):
+        r"""流量值
+        :rtype: list of ObjectKV
+        """
+        return self._TrafficTypeValues
+
+    @TrafficTypeValues.setter
+    def TrafficTypeValues(self, TrafficTypeValues):
+        self._TrafficTypeValues = TrafficTypeValues
+
+    @property
+    def TrafficType(self):
+        r"""流量类型
+        :rtype: str
+        """
+        return self._TrafficType
+
+    @TrafficType.setter
+    def TrafficType(self, TrafficType):
+        self._TrafficType = TrafficType
+
+    @property
+    def FlowRatio(self):
+        r"""百分比
+        :rtype: int
+        """
+        return self._FlowRatio
+
+    @FlowRatio.setter
+    def FlowRatio(self, FlowRatio):
+        self._FlowRatio = FlowRatio
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsReleasing(self):
+        r"""是否发布中
+        :rtype: bool
+        """
+        return self._IsReleasing
+
+    @IsReleasing.setter
+    def IsReleasing(self, IsReleasing):
+        self._IsReleasing = IsReleasing
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ServerName = params.get("ServerName")
+        if params.get("CurrentVersion") is not None:
+            self._CurrentVersion = VersionInfo()
+            self._CurrentVersion._deserialize(params.get("CurrentVersion"))
+        if params.get("ReleaseVersion") is not None:
+            self._ReleaseVersion = VersionInfo()
+            self._ReleaseVersion._deserialize(params.get("ReleaseVersion"))
+        self._GrayStatus = params.get("GrayStatus")
+        self._ReleaseStatus = params.get("ReleaseStatus")
+        if params.get("TrafficTypeValues") is not None:
+            self._TrafficTypeValues = []
+            for item in params.get("TrafficTypeValues"):
+                obj = ObjectKV()
+                obj._deserialize(item)
+                self._TrafficTypeValues.append(obj)
+        self._TrafficType = params.get("TrafficType")
+        self._FlowRatio = params.get("FlowRatio")
+        self._CreateTime = params.get("CreateTime")
+        self._IsReleasing = params.get("IsReleasing")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RepositoryInfo(AbstractModel):
     r"""代码仓库信息
 
@@ -3004,6 +4940,207 @@ class RepositoryInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SearchClsLogRequest(AbstractModel):
+    r"""SearchClsLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _QueryString: 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
+        :type QueryString: str
+        :param _Limit: 单次要返回的日志条数，单次返回的最大条数为100
+        :type Limit: int
+        :param _Context: 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+        :type Context: str
+        :param _Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc
+        :type Sort: str
+        :param _UseLucene: 是否使用Lucene语法，默认为false
+        :type UseLucene: bool
+        :param _LogType: 日志类型
+        :type LogType: int
+        """
+        self._EnvId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._QueryString = None
+        self._Limit = None
+        self._Context = None
+        self._Sort = None
+        self._UseLucene = None
+        self._LogType = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QueryString(self):
+        r"""查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def Limit(self):
+        r"""单次要返回的日志条数，单次返回的最大条数为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Context(self):
+        r"""加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Sort(self):
+        r"""按时间排序 asc（升序）或者 desc（降序），默认为 desc
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def UseLucene(self):
+        r"""是否使用Lucene语法，默认为false
+        :rtype: bool
+        """
+        return self._UseLucene
+
+    @UseLucene.setter
+    def UseLucene(self, UseLucene):
+        self._UseLucene = UseLucene
+
+    @property
+    def LogType(self):
+        r"""日志类型
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QueryString = params.get("QueryString")
+        self._Limit = params.get("Limit")
+        self._Context = params.get("Context")
+        self._Sort = params.get("Sort")
+        self._UseLucene = params.get("UseLucene")
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClsLogResponse(AbstractModel):
+    r"""SearchClsLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogResults: 日志内容结果
+        :type LogResults: :class:`tencentcloud.tcbr.v20220217.models.LogResObject`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogResults = None
+        self._RequestId = None
+
+    @property
+    def LogResults(self):
+        r"""日志内容结果
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.LogResObject`
+        """
+        return self._LogResults
+
+    @LogResults.setter
+    def LogResults(self, LogResults):
+        self._LogResults = LogResults
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LogResults") is not None:
+            self._LogResults = LogResObject()
+            self._LogResults._deserialize(params.get("LogResults"))
+        self._RequestId = params.get("RequestId")
 
 
 class ServerBaseConfig(AbstractModel):
@@ -3948,6 +6085,72 @@ class ServerManageTaskInfo(AbstractModel):
         
 
 
+class SimpleVersion(AbstractModel):
+    r"""删除版本时需要的简化信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 要删除版本的环境 Id
+        :type EnvId: str
+        :param _ServerName: 要删除版本的服务名
+        :type ServerName: str
+        :param _VersionName: 要删除版本的版本名
+        :type VersionName: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._VersionName = None
+
+    @property
+    def EnvId(self):
+        r"""要删除版本的环境 Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""要删除版本的服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def VersionName(self):
+        r"""要删除版本的版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticStorageInfo(AbstractModel):
     r"""静态CDN资源信息
 
@@ -4117,6 +6320,213 @@ class StorageInfo(AbstractModel):
         self._Bucket = params.get("Bucket")
         self._CdnDomain = params.get("CdnDomain")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitServerRollbackRequest(AbstractModel):
+    r"""SubmitServerRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _CurrentVersionName: 当前版本
+        :type CurrentVersionName: str
+        :param _RollbackVersionName: 回滚版本
+        :type RollbackVersionName: str
+        :param _OperatorRemark: 操作标识
+        :type OperatorRemark: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._CurrentVersionName = None
+        self._RollbackVersionName = None
+        self._OperatorRemark = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def CurrentVersionName(self):
+        r"""当前版本
+        :rtype: str
+        """
+        return self._CurrentVersionName
+
+    @CurrentVersionName.setter
+    def CurrentVersionName(self, CurrentVersionName):
+        self._CurrentVersionName = CurrentVersionName
+
+    @property
+    def RollbackVersionName(self):
+        r"""回滚版本
+        :rtype: str
+        """
+        return self._RollbackVersionName
+
+    @RollbackVersionName.setter
+    def RollbackVersionName(self, RollbackVersionName):
+        self._RollbackVersionName = RollbackVersionName
+
+    @property
+    def OperatorRemark(self):
+        r"""操作标识
+        :rtype: str
+        """
+        return self._OperatorRemark
+
+    @OperatorRemark.setter
+    def OperatorRemark(self, OperatorRemark):
+        self._OperatorRemark = OperatorRemark
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._CurrentVersionName = params.get("CurrentVersionName")
+        self._RollbackVersionName = params.get("RollbackVersionName")
+        self._OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitServerRollbackResponse(AbstractModel):
+    r"""SubmitServerRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class SuccessDeleteVersions(AbstractModel):
+    r"""删除成功的版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 版本简化信息
+        :type Version: :class:`tencentcloud.tcbr.v20220217.models.SimpleVersion`
+        :param _RequestId: 删除版本的 RequestId
+        :type RequestId: str
+        :param _Result: 删除版本结果
+        :type Result: str
+        """
+        self._Version = None
+        self._RequestId = None
+        self._Result = None
+
+    @property
+    def Version(self):
+        r"""版本简化信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.SimpleVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        r"""删除版本的 RequestId
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def Result(self):
+        r"""删除版本结果
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = SimpleVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4672,6 +7082,385 @@ class VersionFlowInfo(AbstractModel):
             self._UrlParam = ObjectKV()
             self._UrlParam._deserialize(params.get("UrlParam"))
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VersionInfo(AbstractModel):
+    r"""版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionName: 版本名
+        :type VersionName: str
+        :param _FlowRatio: 流量比例
+        :type FlowRatio: int
+        :param _Status: 版本状态
+        :type Status: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param _BuildId: 构建Id
+        :type BuildId: int
+        :param _UploadType: 上传方式
+        :type UploadType: str
+        :param _Remark: 操作标识
+        :type Remark: str
+        :param _UrlParam: 测试参数
+        :type UrlParam: :class:`tencentcloud.tcbr.v20220217.models.ObjectKV`
+        :param _Priority: 权重
+        :type Priority: int
+        :param _IsDefaultPriority: 是否默认
+        :type IsDefaultPriority: bool
+        :param _FlowParams: 流量参数
+        :type FlowParams: list of ObjectKVPriority
+        :param _MinReplicas: 最小副本数
+        :type MinReplicas: int
+        :param _MaxReplicas: 最大副本数
+        :type MaxReplicas: int
+        :param _RunId: 操作Id
+        :type RunId: str
+        :param _Percent: 百分比
+        :type Percent: int
+        :param _CurrentReplicas: 当前副本数
+        :type CurrentReplicas: int
+        :param _Architecture: 架构类型
+        :type Architecture: str
+        """
+        self._VersionName = None
+        self._FlowRatio = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._BuildId = None
+        self._UploadType = None
+        self._Remark = None
+        self._UrlParam = None
+        self._Priority = None
+        self._IsDefaultPriority = None
+        self._FlowParams = None
+        self._MinReplicas = None
+        self._MaxReplicas = None
+        self._RunId = None
+        self._Percent = None
+        self._CurrentReplicas = None
+        self._Architecture = None
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def FlowRatio(self):
+        r"""流量比例
+        :rtype: int
+        """
+        return self._FlowRatio
+
+    @FlowRatio.setter
+    def FlowRatio(self, FlowRatio):
+        self._FlowRatio = FlowRatio
+
+    @property
+    def Status(self):
+        r"""版本状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def BuildId(self):
+        r"""构建Id
+        :rtype: int
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def UploadType(self):
+        r"""上传方式
+        :rtype: str
+        """
+        return self._UploadType
+
+    @UploadType.setter
+    def UploadType(self, UploadType):
+        self._UploadType = UploadType
+
+    @property
+    def Remark(self):
+        r"""操作标识
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def UrlParam(self):
+        r"""测试参数
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ObjectKV`
+        """
+        return self._UrlParam
+
+    @UrlParam.setter
+    def UrlParam(self, UrlParam):
+        self._UrlParam = UrlParam
+
+    @property
+    def Priority(self):
+        r"""权重
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def IsDefaultPriority(self):
+        r"""是否默认
+        :rtype: bool
+        """
+        return self._IsDefaultPriority
+
+    @IsDefaultPriority.setter
+    def IsDefaultPriority(self, IsDefaultPriority):
+        self._IsDefaultPriority = IsDefaultPriority
+
+    @property
+    def FlowParams(self):
+        r"""流量参数
+        :rtype: list of ObjectKVPriority
+        """
+        return self._FlowParams
+
+    @FlowParams.setter
+    def FlowParams(self, FlowParams):
+        self._FlowParams = FlowParams
+
+    @property
+    def MinReplicas(self):
+        r"""最小副本数
+        :rtype: int
+        """
+        return self._MinReplicas
+
+    @MinReplicas.setter
+    def MinReplicas(self, MinReplicas):
+        self._MinReplicas = MinReplicas
+
+    @property
+    def MaxReplicas(self):
+        r"""最大副本数
+        :rtype: int
+        """
+        return self._MaxReplicas
+
+    @MaxReplicas.setter
+    def MaxReplicas(self, MaxReplicas):
+        self._MaxReplicas = MaxReplicas
+
+    @property
+    def RunId(self):
+        r"""操作Id
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
+    def Percent(self):
+        r"""百分比
+        :rtype: int
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def CurrentReplicas(self):
+        r"""当前副本数
+        :rtype: int
+        """
+        return self._CurrentReplicas
+
+    @CurrentReplicas.setter
+    def CurrentReplicas(self, CurrentReplicas):
+        self._CurrentReplicas = CurrentReplicas
+
+    @property
+    def Architecture(self):
+        r"""架构类型
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+
+    def _deserialize(self, params):
+        self._VersionName = params.get("VersionName")
+        self._FlowRatio = params.get("FlowRatio")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._BuildId = params.get("BuildId")
+        self._UploadType = params.get("UploadType")
+        self._Remark = params.get("Remark")
+        if params.get("UrlParam") is not None:
+            self._UrlParam = ObjectKV()
+            self._UrlParam._deserialize(params.get("UrlParam"))
+        self._Priority = params.get("Priority")
+        self._IsDefaultPriority = params.get("IsDefaultPriority")
+        if params.get("FlowParams") is not None:
+            self._FlowParams = []
+            for item in params.get("FlowParams"):
+                obj = ObjectKVPriority()
+                obj._deserialize(item)
+                self._FlowParams.append(obj)
+        self._MinReplicas = params.get("MinReplicas")
+        self._MaxReplicas = params.get("MaxReplicas")
+        self._RunId = params.get("RunId")
+        self._Percent = params.get("Percent")
+        self._CurrentReplicas = params.get("CurrentReplicas")
+        self._Architecture = params.get("Architecture")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VersionPodInstance(AbstractModel):
+    r"""版本Pod实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Webshell: 实例webshell链接
+        :type Webshell: str
+        :param _PodId: 实例Id
+        :type PodId: str
+        :param _Status: 实例状态
+        :type Status: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self._Webshell = None
+        self._PodId = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def Webshell(self):
+        r"""实例webshell链接
+        :rtype: str
+        """
+        return self._Webshell
+
+    @Webshell.setter
+    def Webshell(self, Webshell):
+        self._Webshell = Webshell
+
+    @property
+    def PodId(self):
+        r"""实例Id
+        :rtype: str
+        """
+        return self._PodId
+
+    @PodId.setter
+    def PodId(self, PodId):
+        self._PodId = PodId
+
+    @property
+    def Status(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Webshell = params.get("Webshell")
+        self._PodId = params.get("PodId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10867,12 +10867,19 @@ class MediaReplacementInfo(AbstractModel):
         :param _PreprocessOperation: 预处理操作。
 注：目前该功能暂不支持，请勿使用。
         :type PreprocessOperation: :class:`tencentcloud.cme.v20191029.models.MediaPreprocessOperation`
+        :param _MuteSwitch: 静音开关，仅对视频类型媒体生效。取值有：
+<li>ON：视频媒体开启静音，该段媒体在导出中会屏蔽音频；</li>
+<li>OFF：视频媒体关闭静音；</li>
+
+注：默认为 OFF，即不对视频媒体的音频做静音处理。
+        :type MuteSwitch: str
         """
         self._MediaType = None
         self._MaterialId = None
         self._MediaUrl = None
         self._StartTimeOffset = None
         self._PreprocessOperation = None
+        self._MuteSwitch = None
 
     @property
     def MediaType(self):
@@ -10937,6 +10944,21 @@ class MediaReplacementInfo(AbstractModel):
     def PreprocessOperation(self, PreprocessOperation):
         self._PreprocessOperation = PreprocessOperation
 
+    @property
+    def MuteSwitch(self):
+        r"""静音开关，仅对视频类型媒体生效。取值有：
+<li>ON：视频媒体开启静音，该段媒体在导出中会屏蔽音频；</li>
+<li>OFF：视频媒体关闭静音；</li>
+
+注：默认为 OFF，即不对视频媒体的音频做静音处理。
+        :rtype: str
+        """
+        return self._MuteSwitch
+
+    @MuteSwitch.setter
+    def MuteSwitch(self, MuteSwitch):
+        self._MuteSwitch = MuteSwitch
+
 
     def _deserialize(self, params):
         self._MediaType = params.get("MediaType")
@@ -10946,6 +10968,7 @@ class MediaReplacementInfo(AbstractModel):
         if params.get("PreprocessOperation") is not None:
             self._PreprocessOperation = MediaPreprocessOperation()
             self._PreprocessOperation._deserialize(params.get("PreprocessOperation"))
+        self._MuteSwitch = params.get("MuteSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

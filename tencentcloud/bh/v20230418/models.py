@@ -12458,6 +12458,57 @@ class EnableIntranetAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnvInternetAccessSetting(AbstractModel):
+    r"""大区环境网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisableExternalAccess: true：不能访问公网
+        :type DisableExternalAccess: bool
+        :param _DisableDownloadDataAcl: true：不能创建数据下载权限
+        :type DisableDownloadDataAcl: bool
+        """
+        self._DisableExternalAccess = None
+        self._DisableDownloadDataAcl = None
+
+    @property
+    def DisableExternalAccess(self):
+        r"""true：不能访问公网
+        :rtype: bool
+        """
+        return self._DisableExternalAccess
+
+    @DisableExternalAccess.setter
+    def DisableExternalAccess(self, DisableExternalAccess):
+        self._DisableExternalAccess = DisableExternalAccess
+
+    @property
+    def DisableDownloadDataAcl(self):
+        r"""true：不能创建数据下载权限
+        :rtype: bool
+        """
+        return self._DisableDownloadDataAcl
+
+    @DisableDownloadDataAcl.setter
+    def DisableDownloadDataAcl(self, DisableDownloadDataAcl):
+        self._DisableDownloadDataAcl = DisableDownloadDataAcl
+
+
+    def _deserialize(self, params):
+        self._DisableExternalAccess = params.get("DisableExternalAccess")
+        self._DisableDownloadDataAcl = params.get("DisableDownloadDataAcl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalDevice(AbstractModel):
     r"""主机参数，导入外部主机时使用
 
@@ -16861,6 +16912,8 @@ class Resource(AbstractModel):
         :type IntranetPrivateIpSet: list of str
         :param _IntranetVpcId: 开通内网访问的vpc
         :type IntranetVpcId: str
+        :param _IntranetSubnetId: 开通内网访问的subnetId
+        :type IntranetSubnetId: str
         :param _IntranetVpcCidr: 开通内网访问vpc的网段
         :type IntranetVpcCidr: str
         :param _DomainName: 堡垒机内网ip自定义域名
@@ -16929,6 +16982,7 @@ class Resource(AbstractModel):
         self._IntranetAccess = None
         self._IntranetPrivateIpSet = None
         self._IntranetVpcId = None
+        self._IntranetSubnetId = None
         self._IntranetVpcCidr = None
         self._DomainName = None
         self._ShareClb = None
@@ -17374,6 +17428,17 @@ class Resource(AbstractModel):
         self._IntranetVpcId = IntranetVpcId
 
     @property
+    def IntranetSubnetId(self):
+        r"""开通内网访问的subnetId
+        :rtype: str
+        """
+        return self._IntranetSubnetId
+
+    @IntranetSubnetId.setter
+    def IntranetSubnetId(self, IntranetSubnetId):
+        self._IntranetSubnetId = IntranetSubnetId
+
+    @property
     def IntranetVpcCidr(self):
         r"""开通内网访问vpc的网段
         :rtype: str
@@ -17573,6 +17638,7 @@ class Resource(AbstractModel):
         self._IntranetAccess = params.get("IntranetAccess")
         self._IntranetPrivateIpSet = params.get("IntranetPrivateIpSet")
         self._IntranetVpcId = params.get("IntranetVpcId")
+        self._IntranetSubnetId = params.get("IntranetSubnetId")
         self._IntranetVpcCidr = params.get("IntranetVpcCidr")
         self._DomainName = params.get("DomainName")
         self._ShareClb = params.get("ShareClb")
@@ -20839,9 +20905,12 @@ class SecuritySetting(AbstractModel):
         :type AuthModeGM: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
         :param _Reconnection: 资产重连次数
         :type Reconnection: :class:`tencentcloud.bh.v20230418.models.ReconnectionSetting`
+        :param _EnvInternetAccess: 大区环境网络设置
+        :type EnvInternetAccess: :class:`tencentcloud.bh.v20230418.models.EnvInternetAccessSetting`
         """
         self._AuthModeGM = None
         self._Reconnection = None
+        self._EnvInternetAccess = None
 
     @property
     def AuthModeGM(self):
@@ -20865,6 +20934,17 @@ class SecuritySetting(AbstractModel):
     def Reconnection(self, Reconnection):
         self._Reconnection = Reconnection
 
+    @property
+    def EnvInternetAccess(self):
+        r"""大区环境网络设置
+        :rtype: :class:`tencentcloud.bh.v20230418.models.EnvInternetAccessSetting`
+        """
+        return self._EnvInternetAccess
+
+    @EnvInternetAccess.setter
+    def EnvInternetAccess(self, EnvInternetAccess):
+        self._EnvInternetAccess = EnvInternetAccess
+
 
     def _deserialize(self, params):
         if params.get("AuthModeGM") is not None:
@@ -20873,6 +20953,9 @@ class SecuritySetting(AbstractModel):
         if params.get("Reconnection") is not None:
             self._Reconnection = ReconnectionSetting()
             self._Reconnection._deserialize(params.get("Reconnection"))
+        if params.get("EnvInternetAccess") is not None:
+            self._EnvInternetAccess = EnvInternetAccessSetting()
+            self._EnvInternetAccess._deserialize(params.get("EnvInternetAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

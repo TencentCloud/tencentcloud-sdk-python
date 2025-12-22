@@ -152,6 +152,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVideoEditJob(
+            self,
+            request: models.DescribeVideoEditJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoEditJobResponse:
+        """
+        用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoEditJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoEditJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVideoFaceFusionJob(
             self,
             request: models.DescribeVideoFaceFusionJobRequest,
@@ -313,6 +331,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitTemplateToVideoJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitTemplateToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitVideoEditJob(
+            self,
+            request: models.SubmitVideoEditJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitVideoEditJobResponse:
+        """
+        用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitVideoEditJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitVideoEditJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

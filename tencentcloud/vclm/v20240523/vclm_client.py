@@ -188,6 +188,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVideoEditJob(self, request):
+        r"""用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+
+        :param request: Request instance for DescribeVideoEditJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoEditJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoEditJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoEditJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoEditJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoFaceFusionJob(self, request):
         r"""查询视频人脸融合任务
 
@@ -390,6 +413,29 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitTemplateToVideoJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitTemplateToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitVideoEditJob(self, request):
+        r"""用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+
+        :param request: Request instance for SubmitVideoEditJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoEditJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoEditJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitVideoEditJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitVideoEditJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

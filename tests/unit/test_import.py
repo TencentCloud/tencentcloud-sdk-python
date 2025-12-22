@@ -959,6 +959,11 @@ def test_import_rce_v20201103():
     from tencentcloud.rce.v20201103 import models
 
 
+def test_import_rce_v20250425():
+    from tencentcloud.rce.v20250425 import rce_client
+    from tencentcloud.rce.v20250425 import models
+
+
 def test_import_redis_v20180412():
     from tencentcloud.redis.v20180412 import redis_client
     from tencentcloud.redis.v20180412 import models

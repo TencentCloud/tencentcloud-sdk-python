@@ -6646,6 +6646,7 @@ class CreateQARequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BotBizId: 应用ID
+若要操作共享知识库，传KnowledgeBizId
         :type BotBizId: str
         :param _Question: 问题
         :type Question: str
@@ -6661,7 +6662,7 @@ class CreateQARequest(AbstractModel):
         :type DocBizId: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
-        :param _ExpireStart: 有效开始时间，unix时间戳
+        :param _ExpireStart: 有效开始时间，单位是unix时间戳。默认值为0，表示问答为永久有效.
         :type ExpireStart: str
         :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
         :type ExpireEnd: str
@@ -6669,6 +6670,8 @@ class CreateQARequest(AbstractModel):
         :type SimilarQuestions: list of str
         :param _QuestionDesc: 问题描述
         :type QuestionDesc: str
+        :param _EnableScope: 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._Question = None
@@ -6682,10 +6685,12 @@ class CreateQARequest(AbstractModel):
         self._ExpireEnd = None
         self._SimilarQuestions = None
         self._QuestionDesc = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
         r"""应用ID
+若要操作共享知识库，传KnowledgeBizId
         :rtype: str
         """
         return self._BotBizId
@@ -6773,7 +6778,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def ExpireStart(self):
-        r"""有效开始时间，unix时间戳
+        r"""有效开始时间，单位是unix时间戳。默认值为0，表示问答为永久有效.
         :rtype: str
         """
         return self._ExpireStart
@@ -6815,6 +6820,17 @@ class CreateQARequest(AbstractModel):
     def QuestionDesc(self, QuestionDesc):
         self._QuestionDesc = QuestionDesc
 
+    @property
+    def EnableScope(self):
+        r"""问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -6834,6 +6850,7 @@ class CreateQARequest(AbstractModel):
         self._ExpireEnd = params.get("ExpireEnd")
         self._SimilarQuestions = params.get("SimilarQuestions")
         self._QuestionDesc = params.get("QuestionDesc")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10146,6 +10163,14 @@ class DescribeDocResponse(AbstractModel):
         :param _UpdatePeriodInfo: 文档更新频率
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
+        :param _CateBizIdPath: 从根节点开始的路径分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CateBizIdPath: list of str
+        :param _CateNamePath: 从根节点开始的路径分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CateNamePath: list of str
+        :param _EnableScope: 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10177,6 +10202,9 @@ class DescribeDocResponse(AbstractModel):
         self._IsDownload = None
         self._SplitRule = None
         self._UpdatePeriodInfo = None
+        self._CateBizIdPath = None
+        self._CateNamePath = None
+        self._EnableScope = None
         self._RequestId = None
 
     @property
@@ -10491,6 +10519,41 @@ class DescribeDocResponse(AbstractModel):
         self._UpdatePeriodInfo = UpdatePeriodInfo
 
     @property
+    def CateBizIdPath(self):
+        r"""从根节点开始的路径分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CateBizIdPath
+
+    @CateBizIdPath.setter
+    def CateBizIdPath(self, CateBizIdPath):
+        self._CateBizIdPath = CateBizIdPath
+
+    @property
+    def CateNamePath(self):
+        r"""从根节点开始的路径分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CateNamePath
+
+    @CateNamePath.setter
+    def CateNamePath(self, CateNamePath):
+        self._CateNamePath = CateNamePath
+
+    @property
+    def EnableScope(self):
+        r"""文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10538,6 +10601,9 @@ class DescribeDocResponse(AbstractModel):
         if params.get("UpdatePeriodInfo") is not None:
             self._UpdatePeriodInfo = UpdatePeriodInfo()
             self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
+        self._CateBizIdPath = params.get("CateBizIdPath")
+        self._CateNamePath = params.get("CateNamePath")
+        self._EnableScope = params.get("EnableScope")
         self._RequestId = params.get("RequestId")
 
 
@@ -10965,6 +11031,17 @@ class DescribeQAResponse(AbstractModel):
         :type QuestionDesc: str
         :param _IsDisabled: 问答是否停用，false:未停用，true已停用
         :type IsDisabled: bool
+        :param _CateBizIdPath: 从根节点开始的路径分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CateBizIdPath: list of str
+        :param _CateNamePath: 从根节点开始的路径分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CateNamePath: list of str
+        :param _EnableScope: 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScope: int
+        :param _DocEnableScope: 问答关联的文档生效域
+        :type DocEnableScope: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10998,6 +11075,10 @@ class DescribeQAResponse(AbstractModel):
         self._VideoAuditStatus = None
         self._QuestionDesc = None
         self._IsDisabled = None
+        self._CateBizIdPath = None
+        self._CateNamePath = None
+        self._EnableScope = None
+        self._DocEnableScope = None
         self._RequestId = None
 
     @property
@@ -11346,6 +11427,53 @@ class DescribeQAResponse(AbstractModel):
         self._IsDisabled = IsDisabled
 
     @property
+    def CateBizIdPath(self):
+        r"""从根节点开始的路径分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CateBizIdPath
+
+    @CateBizIdPath.setter
+    def CateBizIdPath(self, CateBizIdPath):
+        self._CateBizIdPath = CateBizIdPath
+
+    @property
+    def CateNamePath(self):
+        r"""从根节点开始的路径分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CateNamePath
+
+    @CateNamePath.setter
+    def CateNamePath(self, CateNamePath):
+        self._CateNamePath = CateNamePath
+
+    @property
+    def EnableScope(self):
+        r"""问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
+    @property
+    def DocEnableScope(self):
+        r"""问答关联的文档生效域
+        :rtype: int
+        """
+        return self._DocEnableScope
+
+    @DocEnableScope.setter
+    def DocEnableScope(self, DocEnableScope):
+        self._DocEnableScope = DocEnableScope
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11403,6 +11531,10 @@ class DescribeQAResponse(AbstractModel):
         self._VideoAuditStatus = params.get("VideoAuditStatus")
         self._QuestionDesc = params.get("QuestionDesc")
         self._IsDisabled = params.get("IsDisabled")
+        self._CateBizIdPath = params.get("CateBizIdPath")
+        self._CateNamePath = params.get("CateNamePath")
+        self._EnableScope = params.get("EnableScope")
+        self._DocEnableScope = params.get("DocEnableScope")
         self._RequestId = params.get("RequestId")
 
 
@@ -20359,6 +20491,9 @@ class ListDocItem(AbstractModel):
         :type IsDisabled: bool
         :param _StaffName: 员工名称
         :type StaffName: str
+        :param _EnableScope: 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScope: int
         """
         self._DocBizId = None
         self._FileName = None
@@ -20396,6 +20531,7 @@ class ListDocItem(AbstractModel):
         self._AttributeFlags = None
         self._IsDisabled = None
         self._StaffName = None
+        self._EnableScope = None
 
     @property
     def DocBizId(self):
@@ -20824,6 +20960,18 @@ class ListDocItem(AbstractModel):
     def StaffName(self, StaffName):
         self._StaffName = StaffName
 
+    @property
+    def EnableScope(self):
+        r"""文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -20867,6 +21015,7 @@ class ListDocItem(AbstractModel):
         self._AttributeFlags = params.get("AttributeFlags")
         self._IsDisabled = params.get("IsDisabled")
         self._StaffName = params.get("StaffName")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20884,11 +21033,11 @@ class ListDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码(必须大于0)
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 每页数量(取值范围1-200)
         :type PageSize: int
         :param _Query: 查询内容
 
@@ -20898,7 +21047,7 @@ class ListDocRequest(AbstractModel):
         :type Status: list of int
         :param _QueryType: 查询类型 filename 文档、 attribute 标签
         :type QueryType: str
-        :param _CateBizId: 分类ID
+        :param _CateBizId: 分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
         :type CateBizId: str
         :param _FileTypes: 文件类型分类筛选
         :type FileTypes: list of str
@@ -20906,6 +21055,8 @@ class ListDocRequest(AbstractModel):
         :type FilterFlag: list of DocFilterFlag
         :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
         :type ShowCurrCate: int
+        :param _EnableScope: 文档生效域；不检索默认为0
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -20917,10 +21068,11 @@ class ListDocRequest(AbstractModel):
         self._FileTypes = None
         self._FilterFlag = None
         self._ShowCurrCate = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -20931,7 +21083,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码(必须大于0)
         :rtype: int
         """
         return self._PageNumber
@@ -20942,7 +21094,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""每页数量(取值范围1-200)
         :rtype: int
         """
         return self._PageSize
@@ -20988,7 +21140,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        r"""分类ID
+        r"""分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
         :rtype: str
         """
         return self._CateBizId
@@ -21030,6 +21182,17 @@ class ListDocRequest(AbstractModel):
     def ShowCurrCate(self, ShowCurrCate):
         self._ShowCurrCate = ShowCurrCate
 
+    @property
+    def EnableScope(self):
+        r"""文档生效域；不检索默认为0
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -21047,6 +21210,7 @@ class ListDocRequest(AbstractModel):
                 obj._deserialize(item)
                 self._FilterFlag.append(obj)
         self._ShowCurrCate = params.get("ShowCurrCate")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21431,22 +21595,26 @@ class ListQARequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BotBizId: 应用ID
+若要操作共享知识库，传KnowledgeBizId
         :type BotBizId: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（取值范围>0）
         :type PageNumber: int
-        :param _PageSize: 每页大小
+        :param _PageSize: 每页大小(取值范围1-200)
         :type PageSize: int
         :param _Query: 查询问题
 
 输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
         :type Query: str
         :param _AcceptStatus: 校验状态(1未校验2采纳3不采纳)
+如果不填默认值为空数组，表示不筛选，返回所有状态
         :type AcceptStatus: list of int
         :param _ReleaseStatus: 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+如果不填默认值为空数组，表示不筛选返回所有状态
         :type ReleaseStatus: list of int
         :param _DocBizId: 文档ID
         :type DocBizId: str
         :param _Source: 来源(1 文档生成 2 批量导入 3 手动添加)
+不填默认值为0，表示不过滤，返回所有状态
         :type Source: int
         :param _QueryAnswer: 查询答案
         :type QueryAnswer: str
@@ -21455,9 +21623,12 @@ class ListQARequest(AbstractModel):
         :param _QaBizIds: QA业务ID列表
         :type QaBizIds: list of str
         :param _QueryType: 查询类型 filename 名称、 attribute 标签
+如果不填默认值为"filename"
         :type QueryType: str
         :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
         :type ShowCurrCate: int
+        :param _EnableScope: // 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -21472,10 +21643,12 @@ class ListQARequest(AbstractModel):
         self._QaBizIds = None
         self._QueryType = None
         self._ShowCurrCate = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
         r"""应用ID
+若要操作共享知识库，传KnowledgeBizId
         :rtype: str
         """
         return self._BotBizId
@@ -21486,7 +21659,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""页码（取值范围>0）
         :rtype: int
         """
         return self._PageNumber
@@ -21497,7 +21670,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小
+        r"""每页大小(取值范围1-200)
         :rtype: int
         """
         return self._PageSize
@@ -21522,6 +21695,7 @@ class ListQARequest(AbstractModel):
     @property
     def AcceptStatus(self):
         r"""校验状态(1未校验2采纳3不采纳)
+如果不填默认值为空数组，表示不筛选，返回所有状态
         :rtype: list of int
         """
         return self._AcceptStatus
@@ -21533,6 +21707,7 @@ class ListQARequest(AbstractModel):
     @property
     def ReleaseStatus(self):
         r"""发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+如果不填默认值为空数组，表示不筛选返回所有状态
         :rtype: list of int
         """
         return self._ReleaseStatus
@@ -21555,6 +21730,7 @@ class ListQARequest(AbstractModel):
     @property
     def Source(self):
         r"""来源(1 文档生成 2 批量导入 3 手动添加)
+不填默认值为0，表示不过滤，返回所有状态
         :rtype: int
         """
         return self._Source
@@ -21599,6 +21775,7 @@ class ListQARequest(AbstractModel):
     @property
     def QueryType(self):
         r"""查询类型 filename 名称、 attribute 标签
+如果不填默认值为"filename"
         :rtype: str
         """
         return self._QueryType
@@ -21618,6 +21795,17 @@ class ListQARequest(AbstractModel):
     def ShowCurrCate(self, ShowCurrCate):
         self._ShowCurrCate = ShowCurrCate
 
+    @property
+    def EnableScope(self):
+        r"""// 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -21633,6 +21821,7 @@ class ListQARequest(AbstractModel):
         self._QaBizIds = params.get("QaBizIds")
         self._QueryType = params.get("QueryType")
         self._ShowCurrCate = params.get("ShowCurrCate")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21821,6 +22010,11 @@ class ListQaItem(AbstractModel):
         :type IsDisabled: bool
         :param _StaffName: 员工名称
         :type StaffName: str
+        :param _EnableScope: 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScope: int
+        :param _DocEnableScope: 问答关联的文档生效域
+        :type DocEnableScope: int
         """
         self._QaBizId = None
         self._Question = None
@@ -21846,6 +22040,8 @@ class ListQaItem(AbstractModel):
         self._SimilarQuestionTips = None
         self._IsDisabled = None
         self._StaffName = None
+        self._EnableScope = None
+        self._DocEnableScope = None
 
     @property
     def QaBizId(self):
@@ -22111,6 +22307,29 @@ class ListQaItem(AbstractModel):
     def StaffName(self, StaffName):
         self._StaffName = StaffName
 
+    @property
+    def EnableScope(self):
+        r"""问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
+    @property
+    def DocEnableScope(self):
+        r"""问答关联的文档生效域
+        :rtype: int
+        """
+        return self._DocEnableScope
+
+    @DocEnableScope.setter
+    def DocEnableScope(self, DocEnableScope):
+        self._DocEnableScope = DocEnableScope
+
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
@@ -22142,6 +22361,8 @@ class ListQaItem(AbstractModel):
         self._SimilarQuestionTips = params.get("SimilarQuestionTips")
         self._IsDisabled = params.get("IsDisabled")
         self._StaffName = params.get("StaffName")
+        self._EnableScope = params.get("EnableScope")
+        self._DocEnableScope = params.get("DocEnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25769,13 +25990,13 @@ class ModifyDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
         :param _IsRefer: 是否引用链接
         :type IsRefer: bool
-        :param _AttrRange: 标签适用范围，需要传参为1
+        :param _AttrRange: 标签适用范围，1:全部，2:按条件。默认为1。
         :type AttrRange: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -25788,9 +26009,9 @@ class ModifyDocRequest(AbstractModel):
         :param _ReferUrlType: 外部引用链接类型 0：系统链接 1：自定义链接
 值为1时，WebUrl 字段不能为空，否则不生效。
         :type ReferUrlType: int
-        :param _ExpireStart: 有效开始时间，unix时间戳
+        :param _ExpireStart: 有效开始时间，单位为unix时间戳
         :type ExpireStart: str
-        :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
+        :param _ExpireEnd: 有效结束时间，单位为unix时间戳，默认值为0代表永久有效
         :type ExpireEnd: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
@@ -25802,6 +26023,8 @@ class ModifyDocRequest(AbstractModel):
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         :param _SplitRule: 自定义切分规则
         :type SplitRule: str
+        :param _EnableScope: 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._DocBizId = None
@@ -25819,10 +26042,11 @@ class ModifyDocRequest(AbstractModel):
         self._ModifyTypes = None
         self._UpdatePeriodInfo = None
         self._SplitRule = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -25855,7 +26079,7 @@ class ModifyDocRequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        r"""标签适用范围，需要传参为1
+        r"""标签适用范围，1:全部，2:按条件。默认为1。
         :rtype: int
         """
         return self._AttrRange
@@ -25922,7 +26146,7 @@ class ModifyDocRequest(AbstractModel):
 
     @property
     def ExpireStart(self):
-        r"""有效开始时间，unix时间戳
+        r"""有效开始时间，单位为unix时间戳
         :rtype: str
         """
         return self._ExpireStart
@@ -25933,7 +26157,7 @@ class ModifyDocRequest(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        r"""有效结束时间，unix时间戳，0代表永久有效
+        r"""有效结束时间，单位为unix时间戳，默认值为0代表永久有效
         :rtype: str
         """
         return self._ExpireEnd
@@ -25997,6 +26221,17 @@ class ModifyDocRequest(AbstractModel):
     def SplitRule(self, SplitRule):
         self._SplitRule = SplitRule
 
+    @property
+    def EnableScope(self):
+        r"""文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -26022,6 +26257,7 @@ class ModifyDocRequest(AbstractModel):
             self._UpdatePeriodInfo = UpdatePeriodInfo()
             self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
         self._SplitRule = params.get("SplitRule")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26278,6 +26514,7 @@ class ModifyQARequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BotBizId: 应用ID
+若要操作共享知识库，传KnowledgeBizId
         :type BotBizId: str
         :param _QaBizId: 问答ID
         :type QaBizId: str
@@ -26288,6 +26525,8 @@ class ModifyQARequest(AbstractModel):
         :param _CustomParam: 自定义参数
         :type CustomParam: str
         :param _AttrRange: 标签适用范围 1：全部，2：按条件
+默认值：当没有属性标签，labelRefers为空时，默认值为1
+有属性标签，labelRefers不为空，默认值为2
         :type AttrRange: int
         :param _AttrLabels: 标签引用
         :type AttrLabels: list of AttrLabelRefer
@@ -26295,14 +26534,16 @@ class ModifyQARequest(AbstractModel):
         :type DocBizId: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
-        :param _ExpireStart: 有效开始时间，unix时间戳
+        :param _ExpireStart: 有效开始时间，单位是unix时间戳，默认值为0，代表永久有效
         :type ExpireStart: str
-        :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
+        :param _ExpireEnd: 有效结束时间，单位是unix时间戳，默认值为0，代表永久有效
         :type ExpireEnd: str
         :param _SimilarQuestionModify: 相似问修改信息(相似问没有修改则不传)
         :type SimilarQuestionModify: :class:`tencentcloud.lke.v20231130.models.SimilarQuestionModify`
         :param _QuestionDesc: 问题描述
         :type QuestionDesc: str
+        :param _EnableScope: 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._QaBizId = None
@@ -26317,10 +26558,12 @@ class ModifyQARequest(AbstractModel):
         self._ExpireEnd = None
         self._SimilarQuestionModify = None
         self._QuestionDesc = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
         r"""应用ID
+若要操作共享知识库，传KnowledgeBizId
         :rtype: str
         """
         return self._BotBizId
@@ -26376,6 +26619,8 @@ class ModifyQARequest(AbstractModel):
     @property
     def AttrRange(self):
         r"""标签适用范围 1：全部，2：按条件
+默认值：当没有属性标签，labelRefers为空时，默认值为1
+有属性标签，labelRefers不为空，默认值为2
         :rtype: int
         """
         return self._AttrRange
@@ -26419,7 +26664,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def ExpireStart(self):
-        r"""有效开始时间，unix时间戳
+        r"""有效开始时间，单位是unix时间戳，默认值为0，代表永久有效
         :rtype: str
         """
         return self._ExpireStart
@@ -26430,7 +26675,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        r"""有效结束时间，unix时间戳，0代表永久有效
+        r"""有效结束时间，单位是unix时间戳，默认值为0，代表永久有效
         :rtype: str
         """
         return self._ExpireEnd
@@ -26461,6 +26706,17 @@ class ModifyQARequest(AbstractModel):
     def QuestionDesc(self, QuestionDesc):
         self._QuestionDesc = QuestionDesc
 
+    @property
+    def EnableScope(self):
+        r"""问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -26483,6 +26739,7 @@ class ModifyQARequest(AbstractModel):
             self._SimilarQuestionModify = SimilarQuestionModify()
             self._SimilarQuestionModify._deserialize(params.get("SimilarQuestionModify"))
         self._QuestionDesc = params.get("QuestionDesc")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31085,9 +31342,9 @@ class SaveDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
-        :param _FileName: 文件名
+        :param _FileName: 文件名，需要包含文件扩展名
         :type FileName: str
         :param _FileType: 文档支持下面类型
 pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
@@ -31108,7 +31365,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type CosHash: str
         :param _Size: 文件大小
         :type Size: str
-        :param _AttrRange: 标签适用范围，需要传参为1
+        :param _AttrRange: 标签适用范围，1:全部，2:按条件。默认为1。
         :type AttrRange: int
         :param _Source: 来源（0 从本地文档导入），默认值为0
         :type Source: int
@@ -31119,13 +31376,13 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :param _ReferUrlType: 外部引用链接类型 0：系统链接 1：自定义链接
 值为1时，WebUrl 字段不能为空，否则不生效。
         :type ReferUrlType: int
-        :param _ExpireStart: 有效开始时间，unix秒级时间戳
+        :param _ExpireStart: 有效开始时间，unix秒级时间戳，默认为0
         :type ExpireStart: str
-        :param _ExpireEnd: 有效结束时间，unix秒级时间戳，0代表永久有效
+        :param _ExpireEnd: 有效结束时间，unix秒级时间戳，默认为0代表永久有效
         :type ExpireEnd: str
-        :param _IsRefer: 是否引用链接
+        :param _IsRefer: 是否显示引用的文档来源(false不显示 true显示）默认false
         :type IsRefer: bool
-        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
         :type Opt: int
         :param _CateBizId: 分类ID
         :type CateBizId: str
@@ -31219,8 +31476,10 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 |--------------|--------|----------------------------------------------------------------------|
 | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
         :type SplitRule: str
-        :param _UpdatePeriodInfo: 文档更新频率
+        :param _UpdatePeriodInfo: 文档更新频率，默认值为0不更新
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
+        :param _EnableScope: 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._FileName = None
@@ -31243,10 +31502,11 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._DuplicateFileHandles = None
         self._SplitRule = None
         self._UpdatePeriodInfo = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -31257,7 +31517,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def FileName(self):
-        r"""文件名
+        r"""文件名，需要包含文件扩展名
         :rtype: str
         """
         return self._FileName
@@ -31332,7 +31592,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def AttrRange(self):
-        r"""标签适用范围，需要传参为1
+        r"""标签适用范围，1:全部，2:按条件。默认为1。
         :rtype: int
         """
         return self._AttrRange
@@ -31388,7 +31648,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireStart(self):
-        r"""有效开始时间，unix秒级时间戳
+        r"""有效开始时间，unix秒级时间戳，默认为0
         :rtype: str
         """
         return self._ExpireStart
@@ -31399,7 +31659,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireEnd(self):
-        r"""有效结束时间，unix秒级时间戳，0代表永久有效
+        r"""有效结束时间，unix秒级时间戳，默认为0代表永久有效
         :rtype: str
         """
         return self._ExpireEnd
@@ -31410,7 +31670,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def IsRefer(self):
-        r"""是否引用链接
+        r"""是否显示引用的文档来源(false不显示 true显示）默认false
         :rtype: bool
         """
         return self._IsRefer
@@ -31421,7 +31681,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Opt(self):
-        r"""文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+        r"""文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
         :rtype: int
         """
         return self._Opt
@@ -31560,7 +31820,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def UpdatePeriodInfo(self):
-        r"""文档更新频率
+        r"""文档更新频率，默认值为0不更新
         :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         return self._UpdatePeriodInfo
@@ -31568,6 +31828,17 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
     @UpdatePeriodInfo.setter
     def UpdatePeriodInfo(self, UpdatePeriodInfo):
         self._UpdatePeriodInfo = UpdatePeriodInfo
+
+    @property
+    def EnableScope(self):
+        r"""文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
 
 
     def _deserialize(self, params):
@@ -31604,6 +31875,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         if params.get("UpdatePeriodInfo") is not None:
             self._UpdatePeriodInfo = UpdatePeriodInfo()
             self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

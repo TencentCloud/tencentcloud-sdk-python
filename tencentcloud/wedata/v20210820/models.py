@@ -2664,7 +2664,14 @@ class Apply(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyId: str
         :param _Metadata: 扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: str
+        :param _CreateTimestamp: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimestamp: int
+        :param _ApproveTimestamp: 审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveTimestamp: int
         """
         self._ApplicantId = None
         self._ApplicantName = None
@@ -2685,6 +2692,8 @@ class Apply(AbstractModel):
         self._ApproveProjectName = None
         self._ApplyId = None
         self._Metadata = None
+        self._CreateTimestamp = None
+        self._ApproveTimestamp = None
 
     @property
     def ApplicantId(self):
@@ -2895,6 +2904,7 @@ class Apply(AbstractModel):
     @property
     def Metadata(self):
         r"""扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Metadata
@@ -2902,6 +2912,30 @@ class Apply(AbstractModel):
     @Metadata.setter
     def Metadata(self, Metadata):
         self._Metadata = Metadata
+
+    @property
+    def CreateTimestamp(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def ApproveTimestamp(self):
+        r"""审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ApproveTimestamp
+
+    @ApproveTimestamp.setter
+    def ApproveTimestamp(self, ApproveTimestamp):
+        self._ApproveTimestamp = ApproveTimestamp
 
 
     def _deserialize(self, params):
@@ -2924,6 +2958,8 @@ class Apply(AbstractModel):
         self._ApproveProjectName = params.get("ApproveProjectName")
         self._ApplyId = params.get("ApplyId")
         self._Metadata = params.get("Metadata")
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._ApproveTimestamp = params.get("ApproveTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3914,6 +3950,12 @@ class BaseClusterInfo(AbstractModel):
         :param _CdwUserName: cdw账号（用于展示）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdwUserName: str
+        :param _CreateTimestamp: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimestamp: int
+        :param _UpdateTimestamp: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTimestamp: int
         """
         self._ClusterId = None
         self._ClusterType = None
@@ -3932,6 +3974,8 @@ class BaseClusterInfo(AbstractModel):
         self._ExtraConf = None
         self._RangerUserName = None
         self._CdwUserName = None
+        self._CreateTimestamp = None
+        self._UpdateTimestamp = None
 
     @property
     def ClusterId(self):
@@ -4137,6 +4181,30 @@ class BaseClusterInfo(AbstractModel):
     def CdwUserName(self, CdwUserName):
         self._CdwUserName = CdwUserName
 
+    @property
+    def CreateTimestamp(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def UpdateTimestamp(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTimestamp
+
+    @UpdateTimestamp.setter
+    def UpdateTimestamp(self, UpdateTimestamp):
+        self._UpdateTimestamp = UpdateTimestamp
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -4156,6 +4224,8 @@ class BaseClusterInfo(AbstractModel):
         self._ExtraConf = params.get("ExtraConf")
         self._RangerUserName = params.get("RangerUserName")
         self._CdwUserName = params.get("CdwUserName")
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._UpdateTimestamp = params.get("UpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4200,6 +4270,8 @@ class BaseProject(AbstractModel):
         :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: str
+        :param _ScheduleMode: 项目调度模式，task：任务模式 workflow：工作流模式
+        :type ScheduleMode: str
         """
         self._ProjectName = None
         self._DisplayName = None
@@ -4210,6 +4282,7 @@ class BaseProject(AbstractModel):
         self._CreateTime = None
         self._Status = None
         self._Model = None
+        self._ScheduleMode = None
 
     @property
     def ProjectName(self):
@@ -4319,6 +4392,17 @@ class BaseProject(AbstractModel):
     def Model(self, Model):
         self._Model = Model
 
+    @property
+    def ScheduleMode(self):
+        r"""项目调度模式，task：任务模式 workflow：工作流模式
+        :rtype: str
+        """
+        return self._ScheduleMode
+
+    @ScheduleMode.setter
+    def ScheduleMode(self, ScheduleMode):
+        self._ScheduleMode = ScheduleMode
+
 
     def _deserialize(self, params):
         self._ProjectName = params.get("ProjectName")
@@ -4330,6 +4414,7 @@ class BaseProject(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Status = params.get("Status")
         self._Model = params.get("Model")
+        self._ScheduleMode = params.get("ScheduleMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23251,6 +23336,88 @@ class DependencyConfigDsDTO(AbstractModel):
         
 
 
+class DependencyConfigTimeoutDTO(AbstractModel):
+    r"""超时弱依赖配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeoutType: 超时类型
+WAIT_TOTAL_TIMEOUT 等待总时长
+
+RUNNING_TIMEOUT 运行时长
+
+WAIT_TIME_POINT_TIMEOUT 等待超过配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutType: str
+        :param _TimeoutValue: 超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutValue: int
+        :param _TimeoutPoint: 固定时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutPoint: str
+        """
+        self._TimeoutType = None
+        self._TimeoutValue = None
+        self._TimeoutPoint = None
+
+    @property
+    def TimeoutType(self):
+        r"""超时类型
+WAIT_TOTAL_TIMEOUT 等待总时长
+
+RUNNING_TIMEOUT 运行时长
+
+WAIT_TIME_POINT_TIMEOUT 等待超过配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeoutType
+
+    @TimeoutType.setter
+    def TimeoutType(self, TimeoutType):
+        self._TimeoutType = TimeoutType
+
+    @property
+    def TimeoutValue(self):
+        r"""超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TimeoutValue
+
+    @TimeoutValue.setter
+    def TimeoutValue(self, TimeoutValue):
+        self._TimeoutValue = TimeoutValue
+
+    @property
+    def TimeoutPoint(self):
+        r"""固定时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeoutPoint
+
+    @TimeoutPoint.setter
+    def TimeoutPoint(self, TimeoutPoint):
+        self._TimeoutPoint = TimeoutPoint
+
+
+    def _deserialize(self, params):
+        self._TimeoutType = params.get("TimeoutType")
+        self._TimeoutValue = params.get("TimeoutValue")
+        self._TimeoutPoint = params.get("TimeoutPoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DependencyStrategyDs(AbstractModel):
     r"""依赖配置策略
 
@@ -23270,10 +23437,14 @@ class DependencyStrategyDs(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskDependencyExecutingTimeoutValue: int
+        :param _DependencyConfigTimeoutTypeList: 超时依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyConfigTimeoutTypeList: list of DependencyConfigTimeoutDTO
         """
         self._PollingNullStrategy = None
         self._TaskDependencyExecutingStrategies = None
         self._TaskDependencyExecutingTimeoutValue = None
+        self._DependencyConfigTimeoutTypeList = None
 
     @property
     def PollingNullStrategy(self):
@@ -23314,11 +23485,29 @@ class DependencyStrategyDs(AbstractModel):
     def TaskDependencyExecutingTimeoutValue(self, TaskDependencyExecutingTimeoutValue):
         self._TaskDependencyExecutingTimeoutValue = TaskDependencyExecutingTimeoutValue
 
+    @property
+    def DependencyConfigTimeoutTypeList(self):
+        r"""超时依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DependencyConfigTimeoutDTO
+        """
+        return self._DependencyConfigTimeoutTypeList
+
+    @DependencyConfigTimeoutTypeList.setter
+    def DependencyConfigTimeoutTypeList(self, DependencyConfigTimeoutTypeList):
+        self._DependencyConfigTimeoutTypeList = DependencyConfigTimeoutTypeList
+
 
     def _deserialize(self, params):
         self._PollingNullStrategy = params.get("PollingNullStrategy")
         self._TaskDependencyExecutingStrategies = params.get("TaskDependencyExecutingStrategies")
         self._TaskDependencyExecutingTimeoutValue = params.get("TaskDependencyExecutingTimeoutValue")
+        if params.get("DependencyConfigTimeoutTypeList") is not None:
+            self._DependencyConfigTimeoutTypeList = []
+            for item in params.get("DependencyConfigTimeoutTypeList"):
+                obj = DependencyConfigTimeoutDTO()
+                obj._deserialize(item)
+                self._DependencyConfigTimeoutTypeList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30229,12 +30418,15 @@ class DescribeFormVersionParamRequest(AbstractModel):
         :type Page: int
         :param _Size: 页号
         :type Size: int
+        :param _Source: 来源 studio(Studio脚本)/codeTemplate(代码模版)
+        :type Source: str
         """
         self._ProjectId = None
         self._CodeTemplateId = None
         self._OriginalParams = None
         self._Page = None
         self._Size = None
+        self._Source = None
 
     @property
     def ProjectId(self):
@@ -30291,6 +30483,17 @@ class DescribeFormVersionParamRequest(AbstractModel):
     def Size(self, Size):
         self._Size = Size
 
+    @property
+    def Source(self):
+        r"""来源 studio(Studio脚本)/codeTemplate(代码模版)
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -30298,6 +30501,7 @@ class DescribeFormVersionParamRequest(AbstractModel):
         self._OriginalParams = params.get("OriginalParams")
         self._Page = params.get("Page")
         self._Size = params.get("Size")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80075,6 +80279,9 @@ class Project(AbstractModel):
         :param _WorkspaceExt: 项目扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceExt: list of WorkspaceExt
+        :param _CreateTimestamp: 创建时间时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimestamp: int
         """
         self._TenantId = None
         self._ProjectId = None
@@ -80093,6 +80300,7 @@ class Project(AbstractModel):
         self._SecondModuleList = None
         self._Owner = None
         self._WorkspaceExt = None
+        self._CreateTimestamp = None
 
     @property
     def TenantId(self):
@@ -80297,6 +80505,18 @@ class Project(AbstractModel):
     def WorkspaceExt(self, WorkspaceExt):
         self._WorkspaceExt = WorkspaceExt
 
+    @property
+    def CreateTimestamp(self):
+        r"""创建时间时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
 
     def _deserialize(self, params):
         self._TenantId = params.get("TenantId")
@@ -80337,6 +80557,7 @@ class Project(AbstractModel):
                 obj = WorkspaceExt()
                 obj._deserialize(item)
                 self._WorkspaceExt.append(obj)
+        self._CreateTimestamp = params.get("CreateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80582,6 +80803,12 @@ class ProjectUserRole(AbstractModel):
         :param _IsProjectOwner: 是否项目负责人
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsProjectOwner: bool
+        :param _CreateTimestamp: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimestamp: int
+        :param _Status: 用户状态 0:历史 1:正常 2:已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self._Roles = None
         self._UserName = None
@@ -80595,6 +80822,8 @@ class ProjectUserRole(AbstractModel):
         self._OwnerUin = None
         self._AppId = None
         self._IsProjectOwner = None
+        self._CreateTimestamp = None
+        self._Status = None
 
     @property
     def Roles(self):
@@ -80740,6 +80969,30 @@ class ProjectUserRole(AbstractModel):
     def IsProjectOwner(self, IsProjectOwner):
         self._IsProjectOwner = IsProjectOwner
 
+    @property
+    def CreateTimestamp(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def Status(self):
+        r"""用户状态 0:历史 1:正常 2:已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         if params.get("Roles") is not None:
@@ -80759,6 +81012,8 @@ class ProjectUserRole(AbstractModel):
         self._OwnerUin = params.get("OwnerUin")
         self._AppId = params.get("AppId")
         self._IsProjectOwner = params.get("IsProjectOwner")
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

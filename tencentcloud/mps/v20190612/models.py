@@ -1962,6 +1962,102 @@ class AddBlindWatermarkConfig(AbstractModel):
         
 
 
+class AddOnImageInput(AbstractModel):
+    r"""图片处理编排中使用的输入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 图片路径。
+        :type Image: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        self._Image = None
+
+    @property
+    def Image(self):
+        r"""图片路径。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = MediaInputInfo()
+            self._Image._deserialize(params.get("Image"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOnParameter(AbstractModel):
+    r"""图片处理附加输入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageSet: 附加图片输入。
+        :type ImageSet: list of AddOnImageInput
+        :param _OutputConfig: 图片处理输出配置。
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.ImageProcessOutputConfig`
+        """
+        self._ImageSet = None
+        self._OutputConfig = None
+
+    @property
+    def ImageSet(self):
+        r"""附加图片输入。
+        :rtype: list of AddOnImageInput
+        """
+        return self._ImageSet
+
+    @ImageSet.setter
+    def ImageSet(self, ImageSet):
+        self._ImageSet = ImageSet
+
+    @property
+    def OutputConfig(self):
+        r"""图片处理输出配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageProcessOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        if params.get("ImageSet") is not None:
+            self._ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = AddOnImageInput()
+                obj._deserialize(item)
+                self._ImageSet.append(obj)
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = ImageProcessOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddOnSubtitle(AbstractModel):
     r"""外挂字幕。
 
@@ -41654,6 +41750,88 @@ class ImageEraseLogoConfig(AbstractModel):
         
 
 
+class ImageProcessOutputConfig(AbstractModel):
+    r"""图片处理编排输出配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AspectRatio: 输出图片的宽高比。可以配合ImageWidth 和 ImageHeight 使用，规则如下：
+
+1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
+2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
+3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
+
+可取值：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9
+
+支持该参数 ScheduleId: 30010(扩图)
+        :type AspectRatio: str
+        :param _ImageHeight: 图片输出高度，单位：像素。
+        :type ImageHeight: int
+        :param _ImageWidth: 图片输出宽度，单位：像素。
+        :type ImageWidth: int
+        """
+        self._AspectRatio = None
+        self._ImageHeight = None
+        self._ImageWidth = None
+
+    @property
+    def AspectRatio(self):
+        r"""输出图片的宽高比。可以配合ImageWidth 和 ImageHeight 使用，规则如下：
+
+1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
+2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
+3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
+
+可取值：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9
+
+支持该参数 ScheduleId: 30010(扩图)
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def ImageHeight(self):
+        r"""图片输出高度，单位：像素。
+        :rtype: int
+        """
+        return self._ImageHeight
+
+    @ImageHeight.setter
+    def ImageHeight(self, ImageHeight):
+        self._ImageHeight = ImageHeight
+
+    @property
+    def ImageWidth(self):
+        r"""图片输出宽度，单位：像素。
+        :rtype: int
+        """
+        return self._ImageWidth
+
+    @ImageWidth.setter
+    def ImageWidth(self, ImageWidth):
+        self._ImageWidth = ImageWidth
+
+
+    def _deserialize(self, params):
+        self._AspectRatio = params.get("AspectRatio")
+        self._ImageHeight = params.get("ImageHeight")
+        self._ImageWidth = params.get("ImageWidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageProcessTaskOutput(AbstractModel):
     r"""图片处理结果信息
 
@@ -58483,6 +58661,14 @@ class ProcessImageRequest(AbstractModel):
         :type ResourceId: str
         :param _ImageTask: 图片处理参数。
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _ScheduleId: 图片处理编排场景 ID。
+
+- 30000：文字水印擦除
+- 30010：图片扩展
+- 30100：换装场景
+        :type ScheduleId: int
+        :param _AddOnParameter: 图片处理附加参数。
+        :type AddOnParameter: :class:`tencentcloud.mps.v20190612.models.AddOnParameter`
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -58491,6 +58677,8 @@ class ProcessImageRequest(AbstractModel):
         self._Definition = None
         self._ResourceId = None
         self._ImageTask = None
+        self._ScheduleId = None
+        self._AddOnParameter = None
 
     @property
     def InputInfo(self):
@@ -58577,6 +58765,32 @@ class ProcessImageRequest(AbstractModel):
     def ImageTask(self, ImageTask):
         self._ImageTask = ImageTask
 
+    @property
+    def ScheduleId(self):
+        r"""图片处理编排场景 ID。
+
+- 30000：文字水印擦除
+- 30010：图片扩展
+- 30100：换装场景
+        :rtype: int
+        """
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
+    @property
+    def AddOnParameter(self):
+        r"""图片处理附加参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AddOnParameter`
+        """
+        return self._AddOnParameter
+
+    @AddOnParameter.setter
+    def AddOnParameter(self, AddOnParameter):
+        self._AddOnParameter = AddOnParameter
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -58592,6 +58806,10 @@ class ProcessImageRequest(AbstractModel):
         if params.get("ImageTask") is not None:
             self._ImageTask = ImageTaskInput()
             self._ImageTask._deserialize(params.get("ImageTask"))
+        self._ScheduleId = params.get("ScheduleId")
+        if params.get("AddOnParameter") is not None:
+            self._AddOnParameter = AddOnParameter()
+            self._AddOnParameter._deserialize(params.get("AddOnParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

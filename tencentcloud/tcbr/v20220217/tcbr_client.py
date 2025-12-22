@@ -72,6 +72,75 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudRunServer(self, request):
+        r"""删除云托管服务：包括服务下的版本，镜像，流水线
+
+        :param request: Request instance for DeleteCloudRunServer.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DeleteCloudRunServerRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeleteCloudRunServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudRunServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudRunServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudRunVersions(self, request):
+        r"""批量删除版本
+
+        :param request: Request instance for DeleteCloudRunVersions.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DeleteCloudRunVersionsRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeleteCloudRunVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudRunVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudRunVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudRunDeployRecord(self, request):
+        r"""查询云托管部署记录
+
+        :param request: Request instance for DescribeCloudRunDeployRecord.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunDeployRecordRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunDeployRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudRunDeployRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudRunDeployRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudRunEnvs(self, request):
         r"""获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 
@@ -86,6 +155,52 @@ class TcbrClient(AbstractClient):
             body = self.call("DescribeCloudRunEnvs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudRunEnvsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudRunPodList(self, request):
+        r"""查询云托管Pod实例列表
+
+        :param request: Request instance for DescribeCloudRunPodList.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunPodListRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunPodListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudRunPodList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudRunPodListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudRunProcessLog(self, request):
+        r"""查询运行日志
+
+        :param request: Request instance for DescribeCloudRunProcessLog.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunProcessLogRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeCloudRunProcessLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudRunProcessLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudRunProcessLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -164,6 +279,29 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReleaseOrder(self, request):
+        r"""查询发布单
+
+        :param request: Request instance for DescribeReleaseOrder.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeReleaseOrderRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeReleaseOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReleaseOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReleaseOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerManageTask(self, request):
         r"""查询服务管理任务信息
 
@@ -178,6 +316,29 @@ class TcbrClient(AbstractClient):
             body = self.call("DescribeServerManageTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServerManageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVersionDetail(self, request):
+        r"""查询版本详情
+
+        :param request: Request instance for DescribeVersionDetail.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeVersionDetailRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeVersionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVersionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVersionDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -224,6 +385,52 @@ class TcbrClient(AbstractClient):
             body = self.call("ReleaseGray", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseGrayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchClsLog(self, request):
+        r"""查询日志信息
+
+        :param request: Request instance for SearchClsLog.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.SearchClsLogRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.SearchClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchClsLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchClsLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitServerRollback(self, request):
+        r"""回滚版本
+
+        :param request: Request instance for SubmitServerRollback.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.SubmitServerRollbackRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.SubmitServerRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitServerRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitServerRollbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

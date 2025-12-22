@@ -1926,7 +1926,7 @@ class DescribeChatDetailRequest(AbstractModel):
         :param _StreamingId: 流ID
         :type StreamingId: str
         :param _BeginStreamingTokenId: 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
-        :type BeginStreamingTokenId: str
+        :type BeginStreamingTokenId: int
         :param _TokenLimit: 单次获取的token数量，默认2000
         :type TokenLimit: int
         """
@@ -1972,7 +1972,7 @@ class DescribeChatDetailRequest(AbstractModel):
     @property
     def BeginStreamingTokenId(self):
         r"""开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
-        :rtype: str
+        :rtype: int
         """
         return self._BeginStreamingTokenId
 

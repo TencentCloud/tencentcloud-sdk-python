@@ -67,7 +67,7 @@ class Ai3dClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeReduceFaceJobResponse:
         """
-        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
         默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
         """
         
@@ -86,7 +86,7 @@ class Ai3dClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTextureTo3DJobResponse:
         """
-        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
         默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
         """
         
@@ -235,7 +235,7 @@ class Ai3dClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SubmitReduceFaceJobResponse:
         """
-        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
         默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
         """
         
@@ -254,7 +254,7 @@ class Ai3dClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SubmitTextureTo3DJobResponse:
         """
-        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
         默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
         """
         

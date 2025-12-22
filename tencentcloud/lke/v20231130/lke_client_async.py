@@ -122,6 +122,9 @@ class LkeClient(AbstractClient):
     ) -> models.CreateQAResponse:
         """
         录入问答
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}
@@ -1276,6 +1279,9 @@ class LkeClient(AbstractClient):
     ) -> models.ListQAResponse:
         """
         问答列表
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}

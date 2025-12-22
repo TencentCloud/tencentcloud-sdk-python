@@ -2655,31 +2655,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeInovcationIndicators(self, request):
-        r"""废弃接口
-
-        废弃
-
-        :param request: Request instance for DescribeInovcationIndicators.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInovcationIndicatorsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInovcationIndicatorsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInovcationIndicators", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInovcationIndicatorsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInstances(self, request):
         r"""无
 

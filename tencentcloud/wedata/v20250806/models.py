@@ -4118,7 +4118,7 @@ class CreateResourceFileRequest(AbstractModel):
         :param _ParentFolderPath: 项目中资源文件上传的路径, 取值示例: /wedata/qxxxm/, 根目录,请使用/即可
         :type ParentFolderPath: str
         :param _ResourceFile: - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
--   手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
+-   手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
 
         :type ResourceFile: str
         :param _BundleId: bundle客户端ID
@@ -4193,7 +4193,7 @@ class CreateResourceFileRequest(AbstractModel):
     @property
     def ResourceFile(self):
         r"""- 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
--   手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
+-   手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
 
         :rtype: str
         """
@@ -4972,12 +4972,20 @@ class CreateTaskBaseAttribute(AbstractModel):
         :type OwnerUin: str
         :param _TaskDescription: 任务描述
         :type TaskDescription: str
+        :param _TaskFolderPath: 任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+
+        :type TaskFolderPath: str
         """
         self._TaskName = None
         self._TaskTypeId = None
         self._WorkflowId = None
         self._OwnerUin = None
         self._TaskDescription = None
+        self._TaskFolderPath = None
 
     @property
     def TaskName(self):
@@ -5063,6 +5071,22 @@ class CreateTaskBaseAttribute(AbstractModel):
     def TaskDescription(self, TaskDescription):
         self._TaskDescription = TaskDescription
 
+    @property
+    def TaskFolderPath(self):
+        r"""任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -5070,6 +5094,7 @@ class CreateTaskBaseAttribute(AbstractModel):
         self._WorkflowId = params.get("WorkflowId")
         self._OwnerUin = params.get("OwnerUin")
         self._TaskDescription = params.get("TaskDescription")
+        self._TaskFolderPath = params.get("TaskFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5478,8 +5503,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         :type ExecutionStartTime: str
         :param _ExecutionEndTime: 执行时间 右闭区间，默认 23:59
         :type ExecutionEndTime: str
-        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
-        :type ScheduleRunType: str
         :param _CalendarOpen: 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
         :type CalendarOpen: str
         :param _CalendarId: 日历调度 日历 ID
@@ -5490,16 +5513,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         :type UpstreamDependencyConfigList: list of DependencyTaskBrief
         :param _EventListenerList: 事件数组
         :type EventListenerList: list of EventListener
-        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-        :type RunPriority: str
-        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
-        :type RetryWait: str
-        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
-        :type MaxRetryAttempts: str
-        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-        :type ExecutionTTL: str
-        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-        :type WaitExecutionTotalTTL: str
         :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
         :type AllowRedoType: str
         :param _ParamTaskOutList: 输出参数数组
@@ -5512,6 +5525,30 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 * T_PLUS_0: T+0生成,默认策略
 * T_PLUS_1: T+1生成
         :type InitStrategy: str
+        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :type ScheduleRunType: str
+        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :type RunPriority: str
+        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :type RetryWait: str
+        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
+        :type MaxRetryAttempts: str
+        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :type ExecutionTTL: str
+        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :type WaitExecutionTotalTTL: str
+        :param _ScheduleType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :type ScheduleType: int
+        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :type RunPriorityType: int
+        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :type RetryWaitMinute: int
+        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :type MaxRetryNumber: int
+        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :type ExecutionTTLMinute: int
+        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :type WaitExecutionTotalTTLMinute: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -5520,22 +5557,28 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._EndTime = None
         self._ExecutionStartTime = None
         self._ExecutionEndTime = None
-        self._ScheduleRunType = None
         self._CalendarOpen = None
         self._CalendarId = None
         self._SelfDepend = None
         self._UpstreamDependencyConfigList = None
         self._EventListenerList = None
-        self._RunPriority = None
-        self._RetryWait = None
-        self._MaxRetryAttempts = None
-        self._ExecutionTTL = None
-        self._WaitExecutionTotalTTL = None
         self._AllowRedoType = None
         self._ParamTaskOutList = None
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
         self._InitStrategy = None
+        self._ScheduleRunType = None
+        self._RunPriority = None
+        self._RetryWait = None
+        self._MaxRetryAttempts = None
+        self._ExecutionTTL = None
+        self._WaitExecutionTotalTTL = None
+        self._ScheduleType = None
+        self._RunPriorityType = None
+        self._RetryWaitMinute = None
+        self._MaxRetryNumber = None
+        self._ExecutionTTLMinute = None
+        self._WaitExecutionTotalTTLMinute = None
 
     @property
     def CycleType(self):
@@ -5626,17 +5669,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._ExecutionEndTime = ExecutionEndTime
 
     @property
-    def ScheduleRunType(self):
-        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
-        :rtype: str
-        """
-        return self._ScheduleRunType
-
-    @ScheduleRunType.setter
-    def ScheduleRunType(self, ScheduleRunType):
-        self._ScheduleRunType = ScheduleRunType
-
-    @property
     def CalendarOpen(self):
         r"""日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
         :rtype: str
@@ -5690,61 +5722,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     @EventListenerList.setter
     def EventListenerList(self, EventListenerList):
         self._EventListenerList = EventListenerList
-
-    @property
-    def RunPriority(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-        :rtype: str
-        """
-        return self._RunPriority
-
-    @RunPriority.setter
-    def RunPriority(self, RunPriority):
-        self._RunPriority = RunPriority
-
-    @property
-    def RetryWait(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
-        :rtype: str
-        """
-        return self._RetryWait
-
-    @RetryWait.setter
-    def RetryWait(self, RetryWait):
-        self._RetryWait = RetryWait
-
-    @property
-    def MaxRetryAttempts(self):
-        r"""重试策略 最大尝试次数, 默认: 4
-        :rtype: str
-        """
-        return self._MaxRetryAttempts
-
-    @MaxRetryAttempts.setter
-    def MaxRetryAttempts(self, MaxRetryAttempts):
-        self._MaxRetryAttempts = MaxRetryAttempts
-
-    @property
-    def ExecutionTTL(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-        :rtype: str
-        """
-        return self._ExecutionTTL
-
-    @ExecutionTTL.setter
-    def ExecutionTTL(self, ExecutionTTL):
-        self._ExecutionTTL = ExecutionTTL
-
-    @property
-    def WaitExecutionTotalTTL(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-        :rtype: str
-        """
-        return self._WaitExecutionTotalTTL
-
-    @WaitExecutionTotalTTL.setter
-    def WaitExecutionTotalTTL(self, WaitExecutionTotalTTL):
-        self._WaitExecutionTotalTTL = WaitExecutionTotalTTL
 
     @property
     def AllowRedoType(self):
@@ -5803,6 +5780,162 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def InitStrategy(self, InitStrategy):
         self._InitStrategy = InitStrategy
 
+    @property
+    def ScheduleRunType(self):
+        warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
+
+        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :rtype: str
+        """
+        return self._ScheduleRunType
+
+    @ScheduleRunType.setter
+    def ScheduleRunType(self, ScheduleRunType):
+        warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
+
+        self._ScheduleRunType = ScheduleRunType
+
+    @property
+    def RunPriority(self):
+        warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
+
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :rtype: str
+        """
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
+
+        self._RunPriority = RunPriority
+
+    @property
+    def RetryWait(self):
+        warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
+
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        :rtype: str
+        """
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
+
+        self._RetryWait = RetryWait
+
+    @property
+    def MaxRetryAttempts(self):
+        warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
+
+        r"""重试策略 最大尝试次数, 默认: 4
+        :rtype: str
+        """
+        return self._MaxRetryAttempts
+
+    @MaxRetryAttempts.setter
+    def MaxRetryAttempts(self, MaxRetryAttempts):
+        warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
+
+        self._MaxRetryAttempts = MaxRetryAttempts
+
+    @property
+    def ExecutionTTL(self):
+        warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
+
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :rtype: str
+        """
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
+
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def WaitExecutionTotalTTL(self):
+        warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
+
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :rtype: str
+        """
+        return self._WaitExecutionTotalTTL
+
+    @WaitExecutionTotalTTL.setter
+    def WaitExecutionTotalTTL(self, WaitExecutionTotalTTL):
+        warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
+
+        self._WaitExecutionTotalTTL = WaitExecutionTotalTTL
+
+    @property
+    def ScheduleType(self):
+        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def RunPriorityType(self):
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :rtype: int
+        """
+        return self._RunPriorityType
+
+    @RunPriorityType.setter
+    def RunPriorityType(self, RunPriorityType):
+        self._RunPriorityType = RunPriorityType
+
+    @property
+    def RetryWaitMinute(self):
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        :rtype: int
+        """
+        return self._RetryWaitMinute
+
+    @RetryWaitMinute.setter
+    def RetryWaitMinute(self, RetryWaitMinute):
+        self._RetryWaitMinute = RetryWaitMinute
+
+    @property
+    def MaxRetryNumber(self):
+        r"""重试策略 最大尝试次数, 默认: 4
+        :rtype: int
+        """
+        return self._MaxRetryNumber
+
+    @MaxRetryNumber.setter
+    def MaxRetryNumber(self, MaxRetryNumber):
+        self._MaxRetryNumber = MaxRetryNumber
+
+    @property
+    def ExecutionTTLMinute(self):
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :rtype: int
+        """
+        return self._ExecutionTTLMinute
+
+    @ExecutionTTLMinute.setter
+    def ExecutionTTLMinute(self, ExecutionTTLMinute):
+        self._ExecutionTTLMinute = ExecutionTTLMinute
+
+    @property
+    def WaitExecutionTotalTTLMinute(self):
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :rtype: int
+        """
+        return self._WaitExecutionTotalTTLMinute
+
+    @WaitExecutionTotalTTLMinute.setter
+    def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
+        self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -5812,7 +5945,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
         self._ExecutionEndTime = params.get("ExecutionEndTime")
-        self._ScheduleRunType = params.get("ScheduleRunType")
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarId = params.get("CalendarId")
         self._SelfDepend = params.get("SelfDepend")
@@ -5828,11 +5960,6 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
                 obj = EventListener()
                 obj._deserialize(item)
                 self._EventListenerList.append(obj)
-        self._RunPriority = params.get("RunPriority")
-        self._RetryWait = params.get("RetryWait")
-        self._MaxRetryAttempts = params.get("MaxRetryAttempts")
-        self._ExecutionTTL = params.get("ExecutionTTL")
-        self._WaitExecutionTotalTTL = params.get("WaitExecutionTotalTTL")
         self._AllowRedoType = params.get("AllowRedoType")
         if params.get("ParamTaskOutList") is not None:
             self._ParamTaskOutList = []
@@ -5853,6 +5980,18 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
         self._InitStrategy = params.get("InitStrategy")
+        self._ScheduleRunType = params.get("ScheduleRunType")
+        self._RunPriority = params.get("RunPriority")
+        self._RetryWait = params.get("RetryWait")
+        self._MaxRetryAttempts = params.get("MaxRetryAttempts")
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._WaitExecutionTotalTTL = params.get("WaitExecutionTotalTTL")
+        self._ScheduleType = params.get("ScheduleType")
+        self._RunPriorityType = params.get("RunPriorityType")
+        self._RetryWaitMinute = params.get("RetryWaitMinute")
+        self._MaxRetryNumber = params.get("MaxRetryNumber")
+        self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
+        self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29230,6 +29369,13 @@ class TaskBaseAttribute(AbstractModel):
         :param _CreateUserUin: 创建用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserUin: str
+        :param _TaskFolderPath: 任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderPath: str
         """
         self._TaskId = None
         self._TaskTypeId = None
@@ -29249,6 +29395,7 @@ class TaskBaseAttribute(AbstractModel):
         self._TaskDescription = None
         self._UpdateUserUin = None
         self._CreateUserUin = None
+        self._TaskFolderPath = None
 
     @property
     def TaskId(self):
@@ -29500,6 +29647,22 @@ class TaskBaseAttribute(AbstractModel):
     def CreateUserUin(self, CreateUserUin):
         self._CreateUserUin = CreateUserUin
 
+    @property
+    def TaskFolderPath(self):
+        r"""任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -29520,6 +29683,7 @@ class TaskBaseAttribute(AbstractModel):
         self._TaskDescription = params.get("TaskDescription")
         self._UpdateUserUin = params.get("UpdateUserUin")
         self._CreateUserUin = params.get("CreateUserUin")
+        self._TaskFolderPath = params.get("TaskFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32296,9 +32460,6 @@ CRONTAB_CYCLE: crontab表达式类型
         :param _ExecutionEndTime: 执行时间 右闭区间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScheduleRunType: int
         :param _CalendarOpen: 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarOpen: str
@@ -32314,27 +32475,12 @@ CRONTAB_CYCLE: crontab表达式类型
         :param _UpstreamDependencyConfigList: 上游依赖数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamDependencyConfigList: list of DependencyTaskBrief
-        :param _DownStreamDependencyConfigList: 下游依赖数组
+        :param _DownstreamDependencyConfigList: 下游依赖数组
 注意：此字段可能返回 null，表示取不到有效值。
-        :type DownStreamDependencyConfigList: list of DependencyTaskBrief
+        :type DownstreamDependencyConfigList: list of DependencyTaskBrief
         :param _EventListenerList: 事件数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventListenerList: list of EventListener
-        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RunPriority: int
-        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RetryWait: int
-        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxRetryAttempts: int
-        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExecutionTTL: int
-        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WaitExecutionTotalTTL: str
         :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowRedoType: str
@@ -32352,6 +32498,45 @@ CRONTAB_CYCLE: crontab表达式类型
 * T_PLUS_1: T+1生成
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitStrategy: str
+        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleRunType: int
+        :param _DownStreamDependencyConfigList: （废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownStreamDependencyConfigList: list of DependencyTaskBrief
+        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriority: int
+        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWait: int
+        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetryAttempts: int
+        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTL: int
+        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitExecutionTotalTTL: str
+        :param _ScheduleType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleType: int
+        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriorityType: int
+        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWaitMinute: int
+        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetryNumber: int
+        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTLMinute: int
+        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitExecutionTotalTTLMinute: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -32360,24 +32545,31 @@ CRONTAB_CYCLE: crontab表达式类型
         self._EndTime = None
         self._ExecutionStartTime = None
         self._ExecutionEndTime = None
-        self._ScheduleRunType = None
         self._CalendarOpen = None
         self._CalendarId = None
         self._CalendarName = None
         self._SelfDepend = None
         self._UpstreamDependencyConfigList = None
-        self._DownStreamDependencyConfigList = None
+        self._DownstreamDependencyConfigList = None
         self._EventListenerList = None
-        self._RunPriority = None
-        self._RetryWait = None
-        self._MaxRetryAttempts = None
-        self._ExecutionTTL = None
-        self._WaitExecutionTotalTTL = None
         self._AllowRedoType = None
         self._ParamTaskOutList = None
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
         self._InitStrategy = None
+        self._ScheduleRunType = None
+        self._DownStreamDependencyConfigList = None
+        self._RunPriority = None
+        self._RetryWait = None
+        self._MaxRetryAttempts = None
+        self._ExecutionTTL = None
+        self._WaitExecutionTotalTTL = None
+        self._ScheduleType = None
+        self._RunPriorityType = None
+        self._RetryWaitMinute = None
+        self._MaxRetryNumber = None
+        self._ExecutionTTLMinute = None
+        self._WaitExecutionTotalTTLMinute = None
 
     @property
     def CycleType(self):
@@ -32473,18 +32665,6 @@ CRONTAB_CYCLE: crontab表达式类型
         self._ExecutionEndTime = ExecutionEndTime
 
     @property
-    def ScheduleRunType(self):
-        r"""调度类型: 0 正常调度 1 空跑调度
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._ScheduleRunType
-
-    @ScheduleRunType.setter
-    def ScheduleRunType(self, ScheduleRunType):
-        self._ScheduleRunType = ScheduleRunType
-
-    @property
     def CalendarOpen(self):
         r"""日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
@@ -32545,16 +32725,16 @@ CRONTAB_CYCLE: crontab表达式类型
         self._UpstreamDependencyConfigList = UpstreamDependencyConfigList
 
     @property
-    def DownStreamDependencyConfigList(self):
+    def DownstreamDependencyConfigList(self):
         r"""下游依赖数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyTaskBrief
         """
-        return self._DownStreamDependencyConfigList
+        return self._DownstreamDependencyConfigList
 
-    @DownStreamDependencyConfigList.setter
-    def DownStreamDependencyConfigList(self, DownStreamDependencyConfigList):
-        self._DownStreamDependencyConfigList = DownStreamDependencyConfigList
+    @DownstreamDependencyConfigList.setter
+    def DownstreamDependencyConfigList(self, DownstreamDependencyConfigList):
+        self._DownstreamDependencyConfigList = DownstreamDependencyConfigList
 
     @property
     def EventListenerList(self):
@@ -32567,66 +32747,6 @@ CRONTAB_CYCLE: crontab表达式类型
     @EventListenerList.setter
     def EventListenerList(self, EventListenerList):
         self._EventListenerList = EventListenerList
-
-    @property
-    def RunPriority(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._RunPriority
-
-    @RunPriority.setter
-    def RunPriority(self, RunPriority):
-        self._RunPriority = RunPriority
-
-    @property
-    def RetryWait(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._RetryWait
-
-    @RetryWait.setter
-    def RetryWait(self, RetryWait):
-        self._RetryWait = RetryWait
-
-    @property
-    def MaxRetryAttempts(self):
-        r"""重试策略 最大尝试次数, 默认: 4
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._MaxRetryAttempts
-
-    @MaxRetryAttempts.setter
-    def MaxRetryAttempts(self, MaxRetryAttempts):
-        self._MaxRetryAttempts = MaxRetryAttempts
-
-    @property
-    def ExecutionTTL(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._ExecutionTTL
-
-    @ExecutionTTL.setter
-    def ExecutionTTL(self, ExecutionTTL):
-        self._ExecutionTTL = ExecutionTTL
-
-    @property
-    def WaitExecutionTotalTTL(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._WaitExecutionTotalTTL
-
-    @WaitExecutionTotalTTL.setter
-    def WaitExecutionTotalTTL(self, WaitExecutionTotalTTL):
-        self._WaitExecutionTotalTTL = WaitExecutionTotalTTL
 
     @property
     def AllowRedoType(self):
@@ -32690,6 +32810,190 @@ CRONTAB_CYCLE: crontab表达式类型
     def InitStrategy(self, InitStrategy):
         self._InitStrategy = InitStrategy
 
+    @property
+    def ScheduleRunType(self):
+        warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
+
+        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScheduleRunType
+
+    @ScheduleRunType.setter
+    def ScheduleRunType(self, ScheduleRunType):
+        warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
+
+        self._ScheduleRunType = ScheduleRunType
+
+    @property
+    def DownStreamDependencyConfigList(self):
+        warnings.warn("parameter `DownStreamDependencyConfigList` is deprecated", DeprecationWarning) 
+
+        r"""（废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DependencyTaskBrief
+        """
+        return self._DownStreamDependencyConfigList
+
+    @DownStreamDependencyConfigList.setter
+    def DownStreamDependencyConfigList(self, DownStreamDependencyConfigList):
+        warnings.warn("parameter `DownStreamDependencyConfigList` is deprecated", DeprecationWarning) 
+
+        self._DownStreamDependencyConfigList = DownStreamDependencyConfigList
+
+    @property
+    def RunPriority(self):
+        warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
+
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
+
+        self._RunPriority = RunPriority
+
+    @property
+    def RetryWait(self):
+        warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
+
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
+
+        self._RetryWait = RetryWait
+
+    @property
+    def MaxRetryAttempts(self):
+        warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
+
+        r"""重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxRetryAttempts
+
+    @MaxRetryAttempts.setter
+    def MaxRetryAttempts(self, MaxRetryAttempts):
+        warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
+
+        self._MaxRetryAttempts = MaxRetryAttempts
+
+    @property
+    def ExecutionTTL(self):
+        warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
+
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
+
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def WaitExecutionTotalTTL(self):
+        warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
+
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WaitExecutionTotalTTL
+
+    @WaitExecutionTotalTTL.setter
+    def WaitExecutionTotalTTL(self, WaitExecutionTotalTTL):
+        warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
+
+        self._WaitExecutionTotalTTL = WaitExecutionTotalTTL
+
+    @property
+    def ScheduleType(self):
+        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def RunPriorityType(self):
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunPriorityType
+
+    @RunPriorityType.setter
+    def RunPriorityType(self, RunPriorityType):
+        self._RunPriorityType = RunPriorityType
+
+    @property
+    def RetryWaitMinute(self):
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryWaitMinute
+
+    @RetryWaitMinute.setter
+    def RetryWaitMinute(self, RetryWaitMinute):
+        self._RetryWaitMinute = RetryWaitMinute
+
+    @property
+    def MaxRetryNumber(self):
+        r"""重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxRetryNumber
+
+    @MaxRetryNumber.setter
+    def MaxRetryNumber(self, MaxRetryNumber):
+        self._MaxRetryNumber = MaxRetryNumber
+
+    @property
+    def ExecutionTTLMinute(self):
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutionTTLMinute
+
+    @ExecutionTTLMinute.setter
+    def ExecutionTTLMinute(self, ExecutionTTLMinute):
+        self._ExecutionTTLMinute = ExecutionTTLMinute
+
+    @property
+    def WaitExecutionTotalTTLMinute(self):
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WaitExecutionTotalTTLMinute
+
+    @WaitExecutionTotalTTLMinute.setter
+    def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
+        self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -32699,7 +33003,6 @@ CRONTAB_CYCLE: crontab表达式类型
         self._EndTime = params.get("EndTime")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
         self._ExecutionEndTime = params.get("ExecutionEndTime")
-        self._ScheduleRunType = params.get("ScheduleRunType")
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarId = params.get("CalendarId")
         self._CalendarName = params.get("CalendarName")
@@ -32710,23 +33013,18 @@ CRONTAB_CYCLE: crontab表达式类型
                 obj = DependencyTaskBrief()
                 obj._deserialize(item)
                 self._UpstreamDependencyConfigList.append(obj)
-        if params.get("DownStreamDependencyConfigList") is not None:
-            self._DownStreamDependencyConfigList = []
-            for item in params.get("DownStreamDependencyConfigList"):
+        if params.get("DownstreamDependencyConfigList") is not None:
+            self._DownstreamDependencyConfigList = []
+            for item in params.get("DownstreamDependencyConfigList"):
                 obj = DependencyTaskBrief()
                 obj._deserialize(item)
-                self._DownStreamDependencyConfigList.append(obj)
+                self._DownstreamDependencyConfigList.append(obj)
         if params.get("EventListenerList") is not None:
             self._EventListenerList = []
             for item in params.get("EventListenerList"):
                 obj = EventListener()
                 obj._deserialize(item)
                 self._EventListenerList.append(obj)
-        self._RunPriority = params.get("RunPriority")
-        self._RetryWait = params.get("RetryWait")
-        self._MaxRetryAttempts = params.get("MaxRetryAttempts")
-        self._ExecutionTTL = params.get("ExecutionTTL")
-        self._WaitExecutionTotalTTL = params.get("WaitExecutionTotalTTL")
         self._AllowRedoType = params.get("AllowRedoType")
         if params.get("ParamTaskOutList") is not None:
             self._ParamTaskOutList = []
@@ -32747,6 +33045,24 @@ CRONTAB_CYCLE: crontab表达式类型
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
         self._InitStrategy = params.get("InitStrategy")
+        self._ScheduleRunType = params.get("ScheduleRunType")
+        if params.get("DownStreamDependencyConfigList") is not None:
+            self._DownStreamDependencyConfigList = []
+            for item in params.get("DownStreamDependencyConfigList"):
+                obj = DependencyTaskBrief()
+                obj._deserialize(item)
+                self._DownStreamDependencyConfigList.append(obj)
+        self._RunPriority = params.get("RunPriority")
+        self._RetryWait = params.get("RetryWait")
+        self._MaxRetryAttempts = params.get("MaxRetryAttempts")
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._WaitExecutionTotalTTL = params.get("WaitExecutionTotalTTL")
+        self._ScheduleType = params.get("ScheduleType")
+        self._RunPriorityType = params.get("RunPriorityType")
+        self._RetryWaitMinute = params.get("RetryWaitMinute")
+        self._MaxRetryNumber = params.get("MaxRetryNumber")
+        self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
+        self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34551,7 +34867,7 @@ class UpdateResourceFileRequest(AbstractModel):
         :param _ResourceId: 资源文件ID,可通过ListResourceFiles接口获取
         :type ResourceId: str
         :param _ResourceFile: - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
--  手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
+-  手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
      /datastudio/resource/projectId/parentFolderPath/name 
 
         :type ResourceFile: str
@@ -34594,7 +34910,7 @@ class UpdateResourceFileRequest(AbstractModel):
     @property
     def ResourceFile(self):
         r"""- 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
--  手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
+-  手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
      /datastudio/resource/projectId/parentFolderPath/name 
 
         :rtype: str
@@ -35300,10 +35616,15 @@ class UpdateTaskBaseAttribute(AbstractModel):
         :type OwnerUin: str
         :param _TaskDescription: 任务描述
         :type TaskDescription: str
+        :param _TaskFolderPath: 注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :type TaskFolderPath: str
         """
         self._TaskName = None
         self._OwnerUin = None
         self._TaskDescription = None
+        self._TaskFolderPath = None
 
     @property
     def TaskName(self):
@@ -35338,11 +35659,25 @@ class UpdateTaskBaseAttribute(AbstractModel):
     def TaskDescription(self, TaskDescription):
         self._TaskDescription = TaskDescription
 
+    @property
+    def TaskFolderPath(self):
+        r"""注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
         self._OwnerUin = params.get("OwnerUin")
         self._TaskDescription = params.get("TaskDescription")
+        self._TaskFolderPath = params.get("TaskFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

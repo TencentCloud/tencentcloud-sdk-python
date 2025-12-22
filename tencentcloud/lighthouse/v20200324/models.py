@@ -7682,6 +7682,10 @@ class DescribeInstancesRequest(AbstractModel):
 <li> tag:tag-key</li>按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 类型：String
 必选：否
+<li>bundle-id</li>按照【套餐 ID】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -7742,6 +7746,10 @@ class DescribeInstancesRequest(AbstractModel):
 <li> tag:tag-key</li>按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 类型：String
 必选：否
+<li>bundle-id</li>按照【套餐 ID】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
         :rtype: list of Filter
         """

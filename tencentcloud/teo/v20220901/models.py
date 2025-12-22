@@ -12299,29 +12299,38 @@ class CreatePrefetchTaskRequest(AbstractModel):
         :param _ZoneId: 站点 ID。
 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
         :type ZoneId: str
-        :param _Targets: 要预热的资源列表，每个元素格式类似如下:
-http://www.example.com/example.txt。参数值当前必填。
+        :param _Targets: 要预热的资源列表，必填。每个元素格式类似如下:
+http://www.example.com/example.txt。
 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
         :type Targets: list of str
+        :param _Mode: 预热模式，取值有：
+<li>default：默认模式，即预热到中间层；</li>
+<li>edge：边缘预热模式，即预热到边缘和中间层。</li>不填写时，默认值为 default。
+注意事项：
+1.预热至边缘产生的边缘层流量，会计入计费流量；
+2.边缘预热默认分配单独的预热额度 1000 条/天，不消费常规预热额度。
+说明：
+该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :type Mode: str
         :param _EncodeUrl: 是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
         :type EncodeUrl: bool
-        :param _Headers: 附带的http头部信息。
+        :param _Headers: 若需要携带 HTTP 头部信息预热，可入参该参数，否则放空即可。
         :type Headers: list of Header
         :param _PrefetchMediaSegments: 媒体分片预热控制，取值有：
 <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
 <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
-
 注意事项：
 1. 支持的描述文件为 M3U8，对应分片为 TS；
 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
 3. 递归解析深度不超过 3 层；
 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
-
+说明：
 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
         :type PrefetchMediaSegments: str
         """
         self._ZoneId = None
         self._Targets = None
+        self._Mode = None
         self._EncodeUrl = None
         self._Headers = None
         self._PrefetchMediaSegments = None
@@ -12340,8 +12349,8 @@ http://www.example.com/example.txt。参数值当前必填。
 
     @property
     def Targets(self):
-        r"""要预热的资源列表，每个元素格式类似如下:
-http://www.example.com/example.txt。参数值当前必填。
+        r"""要预热的资源列表，必填。每个元素格式类似如下:
+http://www.example.com/example.txt。
 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
         :rtype: list of str
         """
@@ -12350,6 +12359,24 @@ http://www.example.com/example.txt。参数值当前必填。
     @Targets.setter
     def Targets(self, Targets):
         self._Targets = Targets
+
+    @property
+    def Mode(self):
+        r"""预热模式，取值有：
+<li>default：默认模式，即预热到中间层；</li>
+<li>edge：边缘预热模式，即预热到边缘和中间层。</li>不填写时，默认值为 default。
+注意事项：
+1.预热至边缘产生的边缘层流量，会计入计费流量；
+2.边缘预热默认分配单独的预热额度 1000 条/天，不消费常规预热额度。
+说明：
+该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
     @property
     def EncodeUrl(self):
@@ -12368,7 +12395,7 @@ http://www.example.com/example.txt。参数值当前必填。
 
     @property
     def Headers(self):
-        r"""附带的http头部信息。
+        r"""若需要携带 HTTP 头部信息预热，可入参该参数，否则放空即可。
         :rtype: list of Header
         """
         return self._Headers
@@ -12382,13 +12409,12 @@ http://www.example.com/example.txt。参数值当前必填。
         r"""媒体分片预热控制，取值有：
 <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
 <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
-
 注意事项：
 1. 支持的描述文件为 M3U8，对应分片为 TS；
 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
 3. 递归解析深度不超过 3 层；
 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
-
+说明：
 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
         :rtype: str
         """
@@ -12402,6 +12428,7 @@ http://www.example.com/example.txt。参数值当前必填。
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._Targets = params.get("Targets")
+        self._Mode = params.get("Mode")
         self._EncodeUrl = params.get("EncodeUrl")
         if params.get("Headers") is not None:
             self._Headers = []
@@ -36175,6 +36202,8 @@ class LoadBalancer(AbstractModel):
         :type L4UsedList: list of str
         :param _L7UsedList: 该负载均衡实例绑定的七层域名列表。
         :type L7UsedList: list of str
+        :param _References: 负载均衡被引用实例的列表。
+        :type References: list of OriginGroupReference
         """
         self._InstanceId = None
         self._Name = None
@@ -36186,6 +36215,7 @@ class LoadBalancer(AbstractModel):
         self._Status = None
         self._L4UsedList = None
         self._L7UsedList = None
+        self._References = None
 
     @property
     def InstanceId(self):
@@ -36305,6 +36335,17 @@ class LoadBalancer(AbstractModel):
     def L7UsedList(self, L7UsedList):
         self._L7UsedList = L7UsedList
 
+    @property
+    def References(self):
+        r"""负载均衡被引用实例的列表。
+        :rtype: list of OriginGroupReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -36324,6 +36365,12 @@ class LoadBalancer(AbstractModel):
         self._Status = params.get("Status")
         self._L4UsedList = params.get("L4UsedList")
         self._L7UsedList = params.get("L7UsedList")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = OriginGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45367,27 +45414,36 @@ class OriginGroupReference(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceType: 引用服务类型，取值有：
-<li>AccelerationDomain: 加速域名；</li>
-<li>RuleEngine: 规则引擎；</li>
-<li>Loadbalance: 负载均衡；</li>
-<li>ApplicationProxy: 四层代理。</li>
+<li>acceleration-domain: 加速域名；</li>
+<li>rule-engine: 规则引擎；</li>
+<li>load-balancer: 负载均衡；</li>
+<li>application-proxy: 四层代理。</li>
         :type InstanceType: str
         :param _InstanceId: 引用类型的实例ID。
         :type InstanceId: str
-        :param _InstanceName: 应用类型的实例名称。
+        :param _InstanceName: 引用类型的实例名称。
         :type InstanceName: str
+        :param _ZoneId: 引用站点ID。
+        :type ZoneId: str
+        :param _ZoneName: 引用站点名称。
+        :type ZoneName: str
+        :param _AliasZoneName: 引用站点别名。
+        :type AliasZoneName: str
         """
         self._InstanceType = None
         self._InstanceId = None
         self._InstanceName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._AliasZoneName = None
 
     @property
     def InstanceType(self):
         r"""引用服务类型，取值有：
-<li>AccelerationDomain: 加速域名；</li>
-<li>RuleEngine: 规则引擎；</li>
-<li>Loadbalance: 负载均衡；</li>
-<li>ApplicationProxy: 四层代理。</li>
+<li>acceleration-domain: 加速域名；</li>
+<li>rule-engine: 规则引擎；</li>
+<li>load-balancer: 负载均衡；</li>
+<li>application-proxy: 四层代理。</li>
         :rtype: str
         """
         return self._InstanceType
@@ -45409,7 +45465,7 @@ class OriginGroupReference(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""应用类型的实例名称。
+        r"""引用类型的实例名称。
         :rtype: str
         """
         return self._InstanceName
@@ -45418,11 +45474,47 @@ class OriginGroupReference(AbstractModel):
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
 
+    @property
+    def ZoneId(self):
+        r"""引用站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""引用站点名称。
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def AliasZoneName(self):
+        r"""引用站点别名。
+        :rtype: str
+        """
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._AliasZoneName = params.get("AliasZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

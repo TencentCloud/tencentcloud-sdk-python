@@ -279,6 +279,32 @@ class BackUpJobDisplay(AbstractModel):
         :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
         :param _IsolationCount: 隔离次数
         :type IsolationCount: int
+        :param _EnableSecurityLock: 是否开启安全锁
+        :type EnableSecurityLock: int
+        :param _GracePeriod: 宽限期天数
+        :type GracePeriod: int
+        :param _GraceStartTime: 宽限期开始时间
+        :type GraceStartTime: str
+        :param _IsWithinGracePeriod: 是否在宽限期内
+        :type IsWithinGracePeriod: bool
+        :param _UseManagedBucket: 是否使用托管桶
+        :type UseManagedBucket: bool
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: 实例状态描述
+        :type InstanceStatusDesc: str
+        :param _DataRemoteRegion: 备份远程桶地域
+        :type DataRemoteRegion: str
+        :param _BucketEncryption: 桶加密状态信息
+        :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
+        :param _Encryption: 备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+        :type Encryption: str
+        :param _EncryptionEnabled: 是否开通加密存储：0-未开通，1-已开通
+        :type EncryptionEnabled: bool
         """
         self._JobId = None
         self._Snapshot = None
@@ -296,6 +322,19 @@ class BackUpJobDisplay(AbstractModel):
         self._ErrorReason = None
         self._SnapshotRemainPolicy = None
         self._IsolationCount = None
+        self._EnableSecurityLock = None
+        self._GracePeriod = None
+        self._GraceStartTime = None
+        self._IsWithinGracePeriod = None
+        self._UseManagedBucket = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._DataRemoteRegion = None
+        self._BucketEncryption = None
+        self._Encryption = None
+        self._EncryptionEnabled = None
 
     @property
     def JobId(self):
@@ -473,6 +512,149 @@ class BackUpJobDisplay(AbstractModel):
     def IsolationCount(self, IsolationCount):
         self._IsolationCount = IsolationCount
 
+    @property
+    def EnableSecurityLock(self):
+        r"""是否开启安全锁
+        :rtype: int
+        """
+        return self._EnableSecurityLock
+
+    @EnableSecurityLock.setter
+    def EnableSecurityLock(self, EnableSecurityLock):
+        self._EnableSecurityLock = EnableSecurityLock
+
+    @property
+    def GracePeriod(self):
+        r"""宽限期天数
+        :rtype: int
+        """
+        return self._GracePeriod
+
+    @GracePeriod.setter
+    def GracePeriod(self, GracePeriod):
+        self._GracePeriod = GracePeriod
+
+    @property
+    def GraceStartTime(self):
+        r"""宽限期开始时间
+        :rtype: str
+        """
+        return self._GraceStartTime
+
+    @GraceStartTime.setter
+    def GraceStartTime(self, GraceStartTime):
+        self._GraceStartTime = GraceStartTime
+
+    @property
+    def IsWithinGracePeriod(self):
+        r"""是否在宽限期内
+        :rtype: bool
+        """
+        return self._IsWithinGracePeriod
+
+    @IsWithinGracePeriod.setter
+    def IsWithinGracePeriod(self, IsWithinGracePeriod):
+        self._IsWithinGracePeriod = IsWithinGracePeriod
+
+    @property
+    def UseManagedBucket(self):
+        r"""是否使用托管桶
+        :rtype: bool
+        """
+        return self._UseManagedBucket
+
+    @UseManagedBucket.setter
+    def UseManagedBucket(self, UseManagedBucket):
+        self._UseManagedBucket = UseManagedBucket
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""实例状态描述
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def DataRemoteRegion(self):
+        r"""备份远程桶地域
+        :rtype: str
+        """
+        return self._DataRemoteRegion
+
+    @DataRemoteRegion.setter
+    def DataRemoteRegion(self, DataRemoteRegion):
+        self._DataRemoteRegion = DataRemoteRegion
+
+    @property
+    def BucketEncryption(self):
+        r"""桶加密状态信息
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
+        """
+        return self._BucketEncryption
+
+    @BucketEncryption.setter
+    def BucketEncryption(self, BucketEncryption):
+        self._BucketEncryption = BucketEncryption
+
+    @property
+    def Encryption(self):
+        r"""备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+        :rtype: str
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptionEnabled(self):
+        r"""是否开通加密存储：0-未开通，1-已开通
+        :rtype: bool
+        """
+        return self._EncryptionEnabled
+
+    @EncryptionEnabled.setter
+    def EncryptionEnabled(self, EncryptionEnabled):
+        self._EncryptionEnabled = EncryptionEnabled
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -497,6 +679,21 @@ class BackUpJobDisplay(AbstractModel):
             self._SnapshotRemainPolicy = SnapshotRemainPolicy()
             self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
         self._IsolationCount = params.get("IsolationCount")
+        self._EnableSecurityLock = params.get("EnableSecurityLock")
+        self._GracePeriod = params.get("GracePeriod")
+        self._GraceStartTime = params.get("GraceStartTime")
+        self._IsWithinGracePeriod = params.get("IsWithinGracePeriod")
+        self._UseManagedBucket = params.get("UseManagedBucket")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._DataRemoteRegion = params.get("DataRemoteRegion")
+        if params.get("BucketEncryption") is not None:
+            self._BucketEncryption = BucketEncryptionInfo()
+            self._BucketEncryption._deserialize(params.get("BucketEncryption"))
+        self._Encryption = params.get("Encryption")
+        self._EncryptionEnabled = params.get("EncryptionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -627,6 +824,8 @@ class BackupStatus(AbstractModel):
         :type BackupJobId: int
         :param _TaskId: 实例对应Snapshot的id
         :type TaskId: int
+        :param _UploadBytes: 上传大小
+        :type UploadBytes: int
         """
         self._JobId = None
         self._SnapshotName = None
@@ -644,6 +843,7 @@ class BackupStatus(AbstractModel):
         self._Timeout = None
         self._BackupJobId = None
         self._TaskId = None
+        self._UploadBytes = None
 
     @property
     def JobId(self):
@@ -821,6 +1021,17 @@ class BackupStatus(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def UploadBytes(self):
+        r"""上传大小
+        :rtype: int
+        """
+        return self._UploadBytes
+
+    @UploadBytes.setter
+    def UploadBytes(self, UploadBytes):
+        self._UploadBytes = UploadBytes
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -839,6 +1050,7 @@ class BackupStatus(AbstractModel):
         self._Timeout = params.get("Timeout")
         self._BackupJobId = params.get("BackupJobId")
         self._TaskId = params.get("TaskId")
+        self._UploadBytes = params.get("UploadBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1016,6 +1228,87 @@ class BindUser(AbstractModel):
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BucketEncryptionInfo(AbstractModel):
+    r"""桶加密状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsEncrypted: 是否已加密
+        :type IsEncrypted: bool
+        :param _EncryptionType: 加密类型：SSE-COS/SSE-KMS/disabled
+        :type EncryptionType: str
+        :param _LastOperation: 最后操作类型：enable/disable
+        :type LastOperation: str
+        :param _LastUpdateTime: 最后更新时间
+        :type LastUpdateTime: str
+        """
+        self._IsEncrypted = None
+        self._EncryptionType = None
+        self._LastOperation = None
+        self._LastUpdateTime = None
+
+    @property
+    def IsEncrypted(self):
+        r"""是否已加密
+        :rtype: bool
+        """
+        return self._IsEncrypted
+
+    @IsEncrypted.setter
+    def IsEncrypted(self, IsEncrypted):
+        self._IsEncrypted = IsEncrypted
+
+    @property
+    def EncryptionType(self):
+        r"""加密类型：SSE-COS/SSE-KMS/disabled
+        :rtype: str
+        """
+        return self._EncryptionType
+
+    @EncryptionType.setter
+    def EncryptionType(self, EncryptionType):
+        self._EncryptionType = EncryptionType
+
+    @property
+    def LastOperation(self):
+        r"""最后操作类型：enable/disable
+        :rtype: str
+        """
+        return self._LastOperation
+
+    @LastOperation.setter
+    def LastOperation(self, LastOperation):
+        self._LastOperation = LastOperation
+
+    @property
+    def LastUpdateTime(self):
+        r"""最后更新时间
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+
+    def _deserialize(self, params):
+        self._IsEncrypted = params.get("IsEncrypted")
+        self._EncryptionType = params.get("EncryptionType")
+        self._LastOperation = params.get("LastOperation")
+        self._LastUpdateTime = params.get("LastUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2092,6 +2385,12 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
         :param _DataRemoteRegion: 备份数据所在地域，当前地域应该为空
         :type DataRemoteRegion: str
+        :param _BucketType: 托管桶类型：standard-标准，maz-多可用区
+        :type BucketType: str
+        :param _EnableSecurityLock: 是否开启安全锁：0-未开启，1-开启
+        :type EnableSecurityLock: int
+        :param _GracePeriod: 宽限期（天数）
+        :type GracePeriod: int
         """
         self._InstanceId = None
         self._OperationType = None
@@ -2111,6 +2410,9 @@ class CreateBackUpScheduleRequest(AbstractModel):
         self._CosBucket = None
         self._SnapshotRemainPolicy = None
         self._DataRemoteRegion = None
+        self._BucketType = None
+        self._EnableSecurityLock = None
+        self._GracePeriod = None
 
     @property
     def InstanceId(self):
@@ -2343,6 +2645,39 @@ class CreateBackUpScheduleRequest(AbstractModel):
     def DataRemoteRegion(self, DataRemoteRegion):
         self._DataRemoteRegion = DataRemoteRegion
 
+    @property
+    def BucketType(self):
+        r"""托管桶类型：standard-标准，maz-多可用区
+        :rtype: str
+        """
+        return self._BucketType
+
+    @BucketType.setter
+    def BucketType(self, BucketType):
+        self._BucketType = BucketType
+
+    @property
+    def EnableSecurityLock(self):
+        r"""是否开启安全锁：0-未开启，1-开启
+        :rtype: int
+        """
+        return self._EnableSecurityLock
+
+    @EnableSecurityLock.setter
+    def EnableSecurityLock(self, EnableSecurityLock):
+        self._EnableSecurityLock = EnableSecurityLock
+
+    @property
+    def GracePeriod(self):
+        r"""宽限期（天数）
+        :rtype: int
+        """
+        return self._GracePeriod
+
+    @GracePeriod.setter
+    def GracePeriod(self, GracePeriod):
+        self._GracePeriod = GracePeriod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2376,6 +2711,9 @@ class CreateBackUpScheduleRequest(AbstractModel):
             self._SnapshotRemainPolicy = SnapshotRemainPolicy()
             self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
         self._DataRemoteRegion = params.get("DataRemoteRegion")
+        self._BucketType = params.get("BucketType")
+        self._EnableSecurityLock = params.get("EnableSecurityLock")
+        self._GracePeriod = params.get("GracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3907,6 +4245,8 @@ class DescribeBackUpJobRequest(AbstractModel):
         :type EndTime: str
         :param _JobIdFiltersStr: jobid的string类型
         :type JobIdFiltersStr: str
+        :param _EncryptionFilters: 0-未加密；1-已加密
+        :type EncryptionFilters: list of int
         """
         self._InstanceId = None
         self._ApplicationType = None
@@ -3915,6 +4255,7 @@ class DescribeBackUpJobRequest(AbstractModel):
         self._BeginTime = None
         self._EndTime = None
         self._JobIdFiltersStr = None
+        self._EncryptionFilters = None
 
     @property
     def InstanceId(self):
@@ -3996,6 +4337,17 @@ class DescribeBackUpJobRequest(AbstractModel):
     def JobIdFiltersStr(self, JobIdFiltersStr):
         self._JobIdFiltersStr = JobIdFiltersStr
 
+    @property
+    def EncryptionFilters(self):
+        r"""0-未加密；1-已加密
+        :rtype: list of int
+        """
+        return self._EncryptionFilters
+
+    @EncryptionFilters.setter
+    def EncryptionFilters(self, EncryptionFilters):
+        self._EncryptionFilters = EncryptionFilters
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4005,6 +4357,7 @@ class DescribeBackUpJobRequest(AbstractModel):
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._JobIdFiltersStr = params.get("JobIdFiltersStr")
+        self._EncryptionFilters = params.get("EncryptionFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4028,12 +4381,15 @@ class DescribeBackUpJobResponse(AbstractModel):
         :type ErrorMsg: str
         :param _TotalCount: 总数
         :type TotalCount: int
+        :param _CurrentTime: 当前时间
+        :type CurrentTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackUpJobs = None
         self._ErrorMsg = None
         self._TotalCount = None
+        self._CurrentTime = None
         self._RequestId = None
 
     @property
@@ -4070,6 +4426,17 @@ class DescribeBackUpJobResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def CurrentTime(self):
+        r"""当前时间
+        :rtype: str
+        """
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4090,6 +4457,7 @@ class DescribeBackUpJobResponse(AbstractModel):
                 self._BackUpJobs.append(obj)
         self._ErrorMsg = params.get("ErrorMsg")
         self._TotalCount = params.get("TotalCount")
+        self._CurrentTime = params.get("CurrentTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -4105,8 +4473,11 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
 1-备份恢复（包括周期备份和一次性备份）；
 2-数据迁移（包括跨集群迁移和cos迁移）
         :type ApplicationType: int
+        :param _EncryptionFilters: 0-未加密；1-已加密
+        :type EncryptionFilters: list of int
         """
         self._ApplicationType = None
+        self._EncryptionFilters = None
 
     @property
     def ApplicationType(self):
@@ -4122,9 +4493,21 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
     def ApplicationType(self, ApplicationType):
         self._ApplicationType = ApplicationType
 
+    @property
+    def EncryptionFilters(self):
+        r"""0-未加密；1-已加密
+        :rtype: list of int
+        """
+        return self._EncryptionFilters
+
+    @EncryptionFilters.setter
+    def EncryptionFilters(self, EncryptionFilters):
+        self._EncryptionFilters = EncryptionFilters
+
 
     def _deserialize(self, params):
         self._ApplicationType = params.get("ApplicationType")
+        self._EncryptionFilters = params.get("EncryptionFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4142,10 +4525,38 @@ class DescribeBackUpSchedulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CurrentTime: 当前系统时间
+        :type CurrentTime: str
+        :param _BucketEncryption: 桶加密状态信息
+        :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._CurrentTime = None
+        self._BucketEncryption = None
         self._RequestId = None
+
+    @property
+    def CurrentTime(self):
+        r"""当前系统时间
+        :rtype: str
+        """
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
+    def BucketEncryption(self):
+        r"""桶加密状态信息
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
+        """
+        return self._BucketEncryption
+
+    @BucketEncryption.setter
+    def BucketEncryption(self, BucketEncryption):
+        self._BucketEncryption = BucketEncryption
 
     @property
     def RequestId(self):
@@ -4160,6 +4571,10 @@ class DescribeBackUpSchedulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CurrentTime = params.get("CurrentTime")
+        if params.get("BucketEncryption") is not None:
+            self._BucketEncryption = BucketEncryptionInfo()
+            self._BucketEncryption._deserialize(params.get("BucketEncryption"))
         self._RequestId = params.get("RequestId")
 
 
@@ -9278,6 +9693,12 @@ Changing  变更中
         :type CosPkgCapacity: int
         :param _UseManagedBucket: 集群是否使用托管桶
         :type UseManagedBucket: bool
+        :param _InstanceType: 集群类型
+        :type InstanceType: str
+        :param _MasterInstance: 对应主集群
+        :type MasterInstance: str
+        :param _SlaveInstances: 对应备集群
+        :type SlaveInstances: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9336,6 +9757,9 @@ Changing  变更中
         self._IsMasterNonVM = None
         self._CosPkgCapacity = None
         self._UseManagedBucket = None
+        self._InstanceType = None
+        self._MasterInstance = None
+        self._SlaveInstances = None
 
     @property
     def InstanceId(self):
@@ -9977,6 +10401,39 @@ Changing  变更中
     def UseManagedBucket(self, UseManagedBucket):
         self._UseManagedBucket = UseManagedBucket
 
+    @property
+    def InstanceType(self):
+        r"""集群类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MasterInstance(self):
+        r"""对应主集群
+        :rtype: str
+        """
+        return self._MasterInstance
+
+    @MasterInstance.setter
+    def MasterInstance(self, MasterInstance):
+        self._MasterInstance = MasterInstance
+
+    @property
+    def SlaveInstances(self):
+        r"""对应备集群
+        :rtype: list of str
+        """
+        return self._SlaveInstances
+
+    @SlaveInstances.setter
+    def SlaveInstances(self, SlaveInstances):
+        self._SlaveInstances = SlaveInstances
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10049,6 +10506,9 @@ Changing  变更中
         self._IsMasterNonVM = params.get("IsMasterNonVM")
         self._CosPkgCapacity = params.get("CosPkgCapacity")
         self._UseManagedBucket = params.get("UseManagedBucket")
+        self._InstanceType = params.get("InstanceType")
+        self._MasterInstance = params.get("MasterInstance")
+        self._SlaveInstances = params.get("SlaveInstances")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11944,6 +12404,8 @@ class NodeInfo(AbstractModel):
         :type CreateTime: str
         :param _VirtualZone: 虚拟可用区
         :type VirtualZone: str
+        :param _HasFDB: 是否有fdb
+        :type HasFDB: bool
         """
         self._Ip = None
         self._Status = None
@@ -11957,6 +12419,7 @@ class NodeInfo(AbstractModel):
         self._ComputeGroupId = None
         self._CreateTime = None
         self._VirtualZone = None
+        self._HasFDB = None
 
     @property
     def Ip(self):
@@ -12090,6 +12553,17 @@ class NodeInfo(AbstractModel):
     def VirtualZone(self, VirtualZone):
         self._VirtualZone = VirtualZone
 
+    @property
+    def HasFDB(self):
+        r"""是否有fdb
+        :rtype: bool
+        """
+        return self._HasFDB
+
+    @HasFDB.setter
+    def HasFDB(self, HasFDB):
+        self._HasFDB = HasFDB
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -12104,6 +12578,7 @@ class NodeInfo(AbstractModel):
         self._ComputeGroupId = params.get("ComputeGroupId")
         self._CreateTime = params.get("CreateTime")
         self._VirtualZone = params.get("VirtualZone")
+        self._HasFDB = params.get("HasFDB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12145,6 +12620,8 @@ class NodeInfos(AbstractModel):
         :type RIp: str
         :param _VirtualZone: 虚拟可用区
         :type VirtualZone: str
+        :param _HasFDB: 是否有fdb
+        :type HasFDB: bool
         """
         self._NodeName = None
         self._Status = None
@@ -12158,6 +12635,7 @@ class NodeInfos(AbstractModel):
         self._ComputeGroupId = None
         self._RIp = None
         self._VirtualZone = None
+        self._HasFDB = None
 
     @property
     def NodeName(self):
@@ -12291,6 +12769,17 @@ class NodeInfos(AbstractModel):
     def VirtualZone(self, VirtualZone):
         self._VirtualZone = VirtualZone
 
+    @property
+    def HasFDB(self):
+        r"""是否有fdb
+        :rtype: bool
+        """
+        return self._HasFDB
+
+    @HasFDB.setter
+    def HasFDB(self, HasFDB):
+        self._HasFDB = HasFDB
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -12305,6 +12794,7 @@ class NodeInfos(AbstractModel):
         self._ComputeGroupId = params.get("ComputeGroupId")
         self._RIp = params.get("RIp")
         self._VirtualZone = params.get("VirtualZone")
+        self._HasFDB = params.get("HasFDB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

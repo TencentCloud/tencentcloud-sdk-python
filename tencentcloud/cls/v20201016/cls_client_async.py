@@ -115,6 +115,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CommitConsumerOffsets(
+            self,
+            request: models.CommitConsumerOffsetsRequest,
+            opts: Dict = None,
+    ) -> models.CommitConsumerOffsetsResponse:
+        """
+        提交消费点位
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CommitConsumerOffsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CommitConsumerOffsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAlarm(
             self,
             request: models.CreateAlarmRequest,
@@ -266,6 +284,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateConsumerGroup(
+            self,
+            request: models.CreateConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsumerGroupResponse:
+        """
+        消费组心跳
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCosRecharge(
             self,
             request: models.CreateCosRechargeRequest,
@@ -356,6 +392,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEsRecharge(
+            self,
+            request: models.CreateEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.CreateEsRechargeResponse:
+        """
+        创建es导入配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateExport(
             self,
             request: models.CreateExportRequest,
@@ -369,6 +423,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateHostMetricConfig(
+            self,
+            request: models.CreateHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateHostMetricConfigResponse:
+        """
+        创建主机指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -446,6 +518,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMetricConfig(
+            self,
+            request: models.CreateMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetricConfigResponse:
+        """
+        创建指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMetricSubscribe(
+            self,
+            request: models.CreateMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetricSubscribeResponse:
+        """
+        创建指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNoticeContent(
             self,
             request: models.CreateNoticeContentRequest,
@@ -495,6 +603,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateShipper"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateShipperResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSplunkDeliver(
+            self,
+            request: models.CreateSplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.CreateSplunkDeliverResponse:
+        """
+        创建Splunk投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSplunkDeliverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -698,6 +824,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteConsumerGroup(
+            self,
+            request: models.DeleteConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsumerGroupResponse:
+        """
+        删除消费组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCosRecharge(
             self,
             request: models.DeleteCosRechargeRequest,
@@ -770,6 +914,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteEsRecharge(
+            self,
+            request: models.DeleteEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEsRechargeResponse:
+        """
+        删除es导入配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteExport(
             self,
             request: models.DeleteExportRequest,
@@ -783,6 +945,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteHostMetricConfig(
+            self,
+            request: models.DeleteHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteHostMetricConfigResponse:
+        """
+        删除主机指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -878,6 +1058,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteMetricConfig(
+            self,
+            request: models.DeleteMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMetricConfigResponse:
+        """
+        删除指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMetricSubscribe(
+            self,
+            request: models.DeleteMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMetricSubscribeResponse:
+        """
+        删除指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteNoticeContent(
             self,
             request: models.DeleteNoticeContentRequest,
@@ -927,6 +1143,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteShipper"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteShipperResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSplunkDeliver(
+            self,
+            request: models.DeleteSplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSplunkDeliverResponse:
+        """
+        删除Splunk投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSplunkDeliverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1058,6 +1292,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterBaseMetricConfigs(
+            self,
+            request: models.DescribeClusterBaseMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterBaseMetricConfigsResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterBaseMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterBaseMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterMetricConfigs(
+            self,
+            request: models.DescribeClusterMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterMetricConfigsResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConfigExtras(
             self,
             request: models.DescribeConfigExtrasRequest,
@@ -1143,6 +1413,78 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerGroups(
+            self,
+            request: models.DescribeConsumerGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerGroupsResponse:
+        """
+        获取消费组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerOffsets(
+            self,
+            request: models.DescribeConsumerOffsetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerOffsetsResponse:
+        """
+        获取消费组点位信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerOffsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerOffsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerPreview(
+            self,
+            request: models.DescribeConsumerPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerPreviewResponse:
+        """
+        本接口用于kafka投递数据预览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumers(
+            self,
+            request: models.DescribeConsumersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumersResponse:
+        """
+        获取投递规则信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1238,6 +1580,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEsRechargePreview(
+            self,
+            request: models.DescribeEsRechargePreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEsRechargePreviewResponse:
+        """
+        es导入预览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEsRechargePreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEsRechargePreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEsRecharges(
+            self,
+            request: models.DescribeEsRechargesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEsRechargesResponse:
+        """
+        获取es导入配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEsRecharges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEsRechargesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExports(
             self,
             request: models.DescribeExportsRequest,
@@ -1251,6 +1629,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeExports"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeExportsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostMetricConfigs(
+            self,
+            request: models.DescribeHostMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostMetricConfigsResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostMetricConfigsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1323,6 +1719,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeKafkaConsumerGroupList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeKafkaConsumerGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerPreview(
+            self,
+            request: models.DescribeKafkaConsumerPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerPreviewResponse:
+        """
+        kafka协议消费预览接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerTopics(
+            self,
+            request: models.DescribeKafkaConsumerTopicsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerTopicsResponse:
+        """
+        本接口用于获取kafka协议消费主题信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerTopics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerTopicsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1455,6 +1887,60 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMetricCorrectDimension(
+            self,
+            request: models.DescribeMetricCorrectDimensionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricCorrectDimensionResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricCorrectDimension"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricCorrectDimensionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMetricSubscribePreview(
+            self,
+            request: models.DescribeMetricSubscribePreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricSubscribePreviewResponse:
+        """
+        创建指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricSubscribePreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricSubscribePreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMetricSubscribes(
+            self,
+            request: models.DescribeMetricSubscribesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricSubscribesResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricSubscribes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricSubscribesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNoticeContents(
             self,
             request: models.DescribeNoticeContentsRequest,
@@ -1545,6 +2031,78 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSplunkDelivers(
+            self,
+            request: models.DescribeSplunkDeliversRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSplunkDeliversResponse:
+        """
+        获取Splunk投递任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSplunkDelivers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSplunkDeliversResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSplunkPreview(
+            self,
+            request: models.DescribeSplunkPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSplunkPreviewResponse:
+        """
+        splunk投递任务预览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSplunkPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSplunkPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopicBaseMetricConfigs(
+            self,
+            request: models.DescribeTopicBaseMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicBaseMetricConfigsResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicBaseMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicBaseMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopicMetricConfigs(
+            self,
+            request: models.DescribeTopicMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicMetricConfigsResponse:
+        """
+        获取指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTopics(
             self,
             request: models.DescribeTopicsRequest,
@@ -1594,6 +2152,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "GetAlarmLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetAlarmLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMetricLabelValues(
+            self,
+            request: models.GetMetricLabelValuesRequest,
+            opts: Dict = None,
+    ) -> models.GetMetricLabelValuesResponse:
+        """
+        获取时序label values列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMetricLabelValues"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMetricLabelValuesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1761,6 +2337,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyConsumerGroup(
+            self,
+            request: models.ModifyConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyConsumerGroupResponse:
+        """
+        更新消费组信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCosRecharge(
             self,
             request: models.ModifyCosRechargeRequest,
@@ -1828,6 +2422,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyDlcDeliver"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDlcDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEsRecharge(
+            self,
+            request: models.ModifyEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEsRechargeResponse:
+        """
+        修改es导入配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyHostMetricConfig(
+            self,
+            request: models.ModifyHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyHostMetricConfigResponse:
+        """
+        修改主机指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1942,6 +2572,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMetricConfig(
+            self,
+            request: models.ModifyMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMetricConfigResponse:
+        """
+        创建指标采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMetricSubscribe(
+            self,
+            request: models.ModifyMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMetricSubscribeResponse:
+        """
+        修改指标订阅配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNoticeContent(
             self,
             request: models.ModifyNoticeContentRequest,
@@ -1991,6 +2657,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyShipper"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyShipperResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySplunkDeliver(
+            self,
+            request: models.ModifySplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.ModifySplunkDeliverResponse:
+        """
+        修改splunk投递任务相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySplunkDeliverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2175,6 +2859,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "SearchLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SendConsumerHeartbeat(
+            self,
+            request: models.SendConsumerHeartbeatRequest,
+            opts: Dict = None,
+    ) -> models.SendConsumerHeartbeatResponse:
+        """
+        消费组心跳
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendConsumerHeartbeat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendConsumerHeartbeatResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

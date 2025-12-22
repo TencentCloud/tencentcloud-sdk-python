@@ -980,6 +980,130 @@ class DescribeTemplateToVideoJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVideoEditJobRequest(AbstractModel):
+    r"""DescribeVideoEditJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoEditJobResponse(AbstractModel):
+    r"""DescribeVideoEditJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。  WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type Status: str
+        :param _ResultVideoUrl: 结果视频URL。有效期 24 小时。
+        :type ResultVideoUrl: str
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ResultVideoUrl = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态。  WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResultVideoUrl(self):
+        r"""结果视频URL。有效期 24 小时。
+        :rtype: str
+        """
+        return self._ResultVideoUrl
+
+    @ResultVideoUrl.setter
+    def ResultVideoUrl(self, ResultVideoUrl):
+        self._ResultVideoUrl = ResultVideoUrl
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ResultVideoUrl = params.get("ResultVideoUrl")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoFaceFusionJobRequest(AbstractModel):
     r"""DescribeVideoFaceFusionJob请求参数结构体
 
@@ -2945,6 +3069,169 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
 class SubmitTemplateToVideoJobResponse(AbstractModel):
     r"""SubmitTemplateToVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitVideoEditJobRequest(AbstractModel):
+    r"""SubmitVideoEditJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: 输入视频
+
+- 视频格式：MP4
+- 视频时长：5s以内
+- 视频分辨率：无限制（待验证是否可以无损输出）
+        :type VideoUrl: str
+        :param _Prompt: 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
+支持风格迁移、替换、元素增加、删除控制
+        :type Prompt: str
+        :param _Image: 图片base64或者图片url
+
+- Base64 和 Url 必须提供一个，如果都提供以Url为准。
+- 上传图url大小不超过 8M
+- 支持jpg，png，jpeg，webp，bmp，tiff 格式
+- 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
+        :type Image: :class:`tencentcloud.vclm.v20240523.models.Image`
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        self._VideoUrl = None
+        self._Prompt = None
+        self._Image = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def VideoUrl(self):
+        r"""输入视频
+
+- 视频格式：MP4
+- 视频时长：5s以内
+- 视频分辨率：无限制（待验证是否可以无损输出）
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def Prompt(self):
+        r"""视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
+支持风格迁移、替换、元素增加、删除控制
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Image(self):
+        r"""图片base64或者图片url
+
+- Base64 和 Url 必须提供一个，如果都提供以Url为准。
+- 上传图url大小不超过 8M
+- 支持jpg，png，jpeg，webp，bmp，tiff 格式
+- 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.Image`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def LogoAdd(self):
+        r"""为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        r"""标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        self._Prompt = params.get("Prompt")
+        if params.get("Image") is not None:
+            self._Image = Image()
+            self._Image._deserialize(params.get("Image"))
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitVideoEditJobResponse(AbstractModel):
+    r"""SubmitVideoEditJob返回参数结构体
 
     """
 

@@ -1111,31 +1111,6 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RollbackTables(self, request):
-        r"""不再使用
-
-        表格数据回档
-
-        :param request: Request instance for RollbackTables.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.RollbackTablesRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.RollbackTablesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RollbackTables", params, headers=headers)
-            response = json.loads(body)
-            model = models.RollbackTablesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SetBackupExpireRule(self, request):
         r"""新增、删除、修改备份过期策略， ClusterId必须为具体的集群Id（appid）
 

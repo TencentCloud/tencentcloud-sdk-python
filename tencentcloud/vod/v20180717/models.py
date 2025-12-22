@@ -11186,12 +11186,14 @@ class AigcUsageDataItem(AbstractModel):
 <li>Gem3.0_2K</li>
 <li>Gem3.0_4K</li>
 <li>Sora2</li>
-<li>Veo3.1Standard</li>
 <li>Veo3.1Fast</li>
+<li>Veo3.1Standard</li>
 <li>Kling2.5pro_720P</li>
 <li>Kling2.5pro_1080P</li>
+<li>KlingO1_1080P</li>
 <li>Kling2.0&2.1std_720P</li>
 <li>Kling2.0&2.1pro_1080P</li>
+<li>KlingO1_720P</li>
 <li>Hailuo02&2.3_1080P</li>
 <li>Hailuo02&2.3_768P</li>
 <li>Hailuo2.3fast_768P</li>
@@ -11204,6 +11206,16 @@ class AigcUsageDataItem(AbstractModel):
 <li>ViduQ2pro_1080P</li>
 <li>ViduQ2turbo_720P</li>
 <li>ViduQ2turbo_1080P</li>
+<li>Hunyuan1.5_720P</li>
+<li>Hunyuan1.5_1080P</li>
+<li>Hunyuan3.0_1K</li>
+<li>Hunyuan3.0_2K</li>
+<li>Hunyuan3.0_4K</li>
+<li>Mingmou1.0_1080P</li>
+<li>Mingmou1.0_1K</li>
+<li>Mingmou1.0_2K</li>
+<li>Mingmou1.0_4K</li>
+<li>Mingmou1.0_720P</li>
 <li> unknown</li>
         :type Specification: str
         :param _DataSet: 用量数据。
@@ -11222,12 +11234,14 @@ class AigcUsageDataItem(AbstractModel):
 <li>Gem3.0_2K</li>
 <li>Gem3.0_4K</li>
 <li>Sora2</li>
-<li>Veo3.1Standard</li>
 <li>Veo3.1Fast</li>
+<li>Veo3.1Standard</li>
 <li>Kling2.5pro_720P</li>
 <li>Kling2.5pro_1080P</li>
+<li>KlingO1_1080P</li>
 <li>Kling2.0&2.1std_720P</li>
 <li>Kling2.0&2.1pro_1080P</li>
+<li>KlingO1_720P</li>
 <li>Hailuo02&2.3_1080P</li>
 <li>Hailuo02&2.3_768P</li>
 <li>Hailuo2.3fast_768P</li>
@@ -11240,6 +11254,16 @@ class AigcUsageDataItem(AbstractModel):
 <li>ViduQ2pro_1080P</li>
 <li>ViduQ2turbo_720P</li>
 <li>ViduQ2turbo_1080P</li>
+<li>Hunyuan1.5_720P</li>
+<li>Hunyuan1.5_1080P</li>
+<li>Hunyuan3.0_1K</li>
+<li>Hunyuan3.0_2K</li>
+<li>Hunyuan3.0_4K</li>
+<li>Mingmou1.0_1080P</li>
+<li>Mingmou1.0_1K</li>
+<li>Mingmou1.0_2K</li>
+<li>Mingmou1.0_4K</li>
+<li>Mingmou1.0_720P</li>
 <li> unknown</li>
         :rtype: str
         """
@@ -18479,9 +18503,9 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type ModelVersion: str
         :param _FileInfos: AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时最多指定3个。
         :type FileInfos: list of AigcImageTaskInputFileInfo
-        :param _Prompt: 生成图片的提示词。最大支持2000字符，当 FileInfos 为空时，此参数必填。
+        :param _Prompt: 生成图片的提示词。当 FileInfos 为空时，此参数必填。
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成图片的提示词。最大支持500个字符。
+        :param _NegativePrompt: 要阻止模型生成图片的提示词。
         :type NegativePrompt: str
         :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
         :type EnhancePrompt: str
@@ -18565,7 +18589,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成图片的提示词。最大支持2000字符，当 FileInfos 为空时，此参数必填。
+        r"""生成图片的提示词。当 FileInfos 为空时，此参数必填。
         :rtype: str
         """
         return self._Prompt
@@ -18576,7 +18600,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成图片的提示词。最大支持500个字符。
+        r"""要阻止模型生成图片的提示词。
         :rtype: str
         """
         return self._NegativePrompt
@@ -18734,9 +18758,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora。</li>
+        :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1；</li><li>当 ModelName 是 OS，可选值为 2.0；</li>
+        :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
         :param _FileInfos: AIGC 生视频任务的输入图片的文件信息。说明
 1. 当 ModelName 是 GV 时，最大长度为 3；其他情况下最大长度为1。
@@ -18747,9 +18771,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 2. 图片大小需小于5M。
 3. 图片格式的取值为：jpeg，jpg, png, webp。
         :type LastFrameFileId: str
-        :param _Prompt: 生成图片的提示词。最大支持2000个字符，当 FileInfos 为空时，此参数必填。
+        :param _Prompt: 生成图片的提示词。当 FileInfos 为空时，此参数必填。
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成图片的提示词。最大支持500个字符。
+        :param _NegativePrompt: 要阻止模型生成图片的提示词。
         :type NegativePrompt: str
         :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
         :type EnhancePrompt: str
@@ -18791,7 +18815,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora。</li>
+        r"""模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
         :rtype: str
         """
         return self._ModelName
@@ -18802,7 +18826,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1；</li><li>当 ModelName 是 OS，可选值为 2.0；</li>
+        r"""模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :rtype: str
         """
         return self._ModelVersion
@@ -18840,7 +18864,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成图片的提示词。最大支持2000个字符，当 FileInfos 为空时，此参数必填。
+        r"""生成图片的提示词。当 FileInfos 为空时，此参数必填。
         :rtype: str
         """
         return self._Prompt
@@ -18851,7 +18875,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成图片的提示词。最大支持500个字符。
+        r"""要阻止模型生成图片的提示词。
         :rtype: str
         """
         return self._NegativePrompt
