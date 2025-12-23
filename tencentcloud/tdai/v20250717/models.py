@@ -204,6 +204,137 @@ class Agent(AbstractModel):
         
 
 
+class AgentDutyTask(AbstractModel):
+    r"""智能体值守任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _StartTime: 任务开始运行时间
+        :type StartTime: str
+        :param _FinishTime: 任务结束时间
+        :type FinishTime: str
+        :param _Status: 任务状态
+        :type Status: str
+        :param _ResultExtraKey: 对外展示的Extra信息
+        :type ResultExtraKey: list of str
+        :param _Extra: 业务的额外敏感信息
+        :type Extra: list of ExtraInfo
+        """
+        self._TaskId = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._FinishTime = None
+        self._Status = None
+        self._ResultExtraKey = None
+        self._Extra = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        r"""任务开始运行时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FinishTime(self):
+        r"""任务结束时间
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def Status(self):
+        r"""任务状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResultExtraKey(self):
+        r"""对外展示的Extra信息
+        :rtype: list of str
+        """
+        return self._ResultExtraKey
+
+    @ResultExtraKey.setter
+    def ResultExtraKey(self, ResultExtraKey):
+        self._ResultExtraKey = ResultExtraKey
+
+    @property
+    def Extra(self):
+        r"""业务的额外敏感信息
+        :rtype: list of ExtraInfo
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
+        self._Status = params.get("Status")
+        self._ResultExtraKey = params.get("ResultExtraKey")
+        if params.get("Extra") is not None:
+            self._Extra = []
+            for item in params.get("Extra"):
+                obj = ExtraInfo()
+                obj._deserialize(item)
+                self._Extra.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentInstance(AbstractModel):
     r"""智能体实例
 
@@ -1318,10 +1449,24 @@ class DescribeAgentDutyTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AgentDutyTask: 任务详细信息
+        :type AgentDutyTask: :class:`tencentcloud.tdai.v20250717.models.AgentDutyTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AgentDutyTask = None
         self._RequestId = None
+
+    @property
+    def AgentDutyTask(self):
+        r"""任务详细信息
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.AgentDutyTask`
+        """
+        return self._AgentDutyTask
+
+    @AgentDutyTask.setter
+    def AgentDutyTask(self, AgentDutyTask):
+        self._AgentDutyTask = AgentDutyTask
 
     @property
     def RequestId(self):
@@ -1336,6 +1481,9 @@ class DescribeAgentDutyTaskDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AgentDutyTask") is not None:
+            self._AgentDutyTask = AgentDutyTask()
+            self._AgentDutyTask._deserialize(params.get("AgentDutyTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2337,6 +2485,87 @@ class DescribeReportUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
+
+
+class ExtraInfo(AbstractModel):
+    r"""智能体值守任务额外信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 出参额外信息的Key
+        :type Key: str
+        :param _Description: 额外信息描述
+        :type Description: str
+        :param _Value: ExtraInfo的值
+        :type Value: str
+        :param _ValueType: 值的数据结构类型
+        :type ValueType: str
+        """
+        self._Key = None
+        self._Description = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Key(self):
+        r"""出参额外信息的Key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Description(self):
+        r"""额外信息描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Value(self):
+        r"""ExtraInfo的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        r"""值的数据结构类型
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Description = params.get("Description")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfos(AbstractModel):

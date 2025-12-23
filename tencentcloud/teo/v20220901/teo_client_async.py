@@ -2077,6 +2077,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePrefetchOriginLimit(
+            self,
+            request: models.DescribePrefetchOriginLimitRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrefetchOriginLimitResponse:
+        """
+        本接口用于查询回源限速限制，该功能白名单内测中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrefetchOriginLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrefetchOriginLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePrefetchTasks(
             self,
             request: models.DescribePrefetchTasksRequest,
@@ -3308,6 +3326,25 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyPlan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPrefetchOriginLimit(
+            self,
+            request: models.ModifyPrefetchOriginLimitRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPrefetchOriginLimitResponse:
+        """
+        本接口用于配置回源限速限制，该功能白名单内测中。
+        可通过此接口创建、修改与删除预热回源限速限制，每个账号最多支持 100 条限制。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPrefetchOriginLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPrefetchOriginLimitResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

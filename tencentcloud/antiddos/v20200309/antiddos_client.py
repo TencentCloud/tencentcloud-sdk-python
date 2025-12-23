@@ -1614,7 +1614,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListProtectThresholdConfigNew(self, request):
-        r"""获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+        r"""获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等。
 
         :param request: Request instance for DescribeListProtectThresholdConfigNew.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigNewRequest`

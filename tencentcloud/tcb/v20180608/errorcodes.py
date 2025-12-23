@@ -122,6 +122,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 请求的云托管服务未找到
+RESOURCENOTFOUND_SERVERNOTFOUND = 'ResourceNotFound.ServerNotFound'
+
 # 主题不存在
 RESOURCENOTFOUND_TOPICNOTEXIST = 'ResourceNotFound.TopicNotExist'
 

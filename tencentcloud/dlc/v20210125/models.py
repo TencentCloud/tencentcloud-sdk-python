@@ -19263,9 +19263,15 @@ class DescribeNativeSparkSessionsRequest(AbstractModel):
         :type DataEngineId: str
         :param _ResourceGroupId: 资源组ID
         :type ResourceGroupId: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _UserUin: 用户Uin
+        :type UserUin: str
         """
         self._DataEngineId = None
         self._ResourceGroupId = None
+        self._ProjectId = None
+        self._UserUin = None
 
     @property
     def DataEngineId(self):
@@ -19289,10 +19295,34 @@ class DescribeNativeSparkSessionsRequest(AbstractModel):
     def ResourceGroupId(self, ResourceGroupId):
         self._ResourceGroupId = ResourceGroupId
 
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserUin(self):
+        r"""用户Uin
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
 
     def _deserialize(self, params):
         self._DataEngineId = params.get("DataEngineId")
         self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ProjectId = params.get("ProjectId")
+        self._UserUin = params.get("UserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

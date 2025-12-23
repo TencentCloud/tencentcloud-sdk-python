@@ -202,27 +202,25 @@ class CreateCloudRunEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PackageType: Trial,Standard,Professional,Enterprise
+        :param _PackageType: <p>Trial,Standard,Professional,Enterprise</p>
         :type PackageType: str
-        :param _Alias: 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+        :param _Alias: <p>环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符</p>
         :type Alias: str
-        :param _FreeQuota: 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+        :param _FreeQuota: <p>用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。</p>
         :type FreeQuota: str
-        :param _Flag: 订单标记。建议使用方统一转大小写之后再判断。
-QuickStart：快速启动来源
-Activity：活动来源
+        :param _Flag: <p>订单标记。建议使用方统一转大小写之后再判断。QuickStart：快速启动来源Activity：活动来源</p>
         :type Flag: str
-        :param _VpcId: 私有网络Id
+        :param _VpcId: <p>私有网络Id</p>
         :type VpcId: str
-        :param _SubNetIds: 子网列表
+        :param _SubNetIds: <p>子网列表</p>
         :type SubNetIds: list of str
-        :param _ReqKey: 请求key 用于防重
+        :param _ReqKey: <p>请求key 用于防重</p>
         :type ReqKey: str
-        :param _Source: 来源：wechat | cloud | weda
+        :param _Source: <p>来源：wechat | cloud | weda</p>
         :type Source: str
-        :param _Channel: 渠道：wechat | cloud | weda
+        :param _Channel: <p>渠道：wechat | cloud | weda</p>
         :type Channel: str
-        :param _EnvId: 环境ID 云开发平台必填
+        :param _EnvId: <p>环境ID 云开发平台必填</p>
         :type EnvId: str
         """
         self._PackageType = None
@@ -238,7 +236,7 @@ Activity：活动来源
 
     @property
     def PackageType(self):
-        r"""Trial,Standard,Professional,Enterprise
+        r"""<p>Trial,Standard,Professional,Enterprise</p>
         :rtype: str
         """
         return self._PackageType
@@ -249,7 +247,7 @@ Activity：活动来源
 
     @property
     def Alias(self):
-        r"""环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+        r"""<p>环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符</p>
         :rtype: str
         """
         return self._Alias
@@ -260,7 +258,7 @@ Activity：活动来源
 
     @property
     def FreeQuota(self):
-        r"""用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+        r"""<p>用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。</p>
         :rtype: str
         """
         return self._FreeQuota
@@ -271,9 +269,7 @@ Activity：活动来源
 
     @property
     def Flag(self):
-        r"""订单标记。建议使用方统一转大小写之后再判断。
-QuickStart：快速启动来源
-Activity：活动来源
+        r"""<p>订单标记。建议使用方统一转大小写之后再判断。QuickStart：快速启动来源Activity：活动来源</p>
         :rtype: str
         """
         return self._Flag
@@ -284,7 +280,7 @@ Activity：活动来源
 
     @property
     def VpcId(self):
-        r"""私有网络Id
+        r"""<p>私有网络Id</p>
         :rtype: str
         """
         return self._VpcId
@@ -295,7 +291,7 @@ Activity：活动来源
 
     @property
     def SubNetIds(self):
-        r"""子网列表
+        r"""<p>子网列表</p>
         :rtype: list of str
         """
         return self._SubNetIds
@@ -306,7 +302,7 @@ Activity：活动来源
 
     @property
     def ReqKey(self):
-        r"""请求key 用于防重
+        r"""<p>请求key 用于防重</p>
         :rtype: str
         """
         return self._ReqKey
@@ -317,7 +313,7 @@ Activity：活动来源
 
     @property
     def Source(self):
-        r"""来源：wechat | cloud | weda
+        r"""<p>来源：wechat | cloud | weda</p>
         :rtype: str
         """
         return self._Source
@@ -328,7 +324,7 @@ Activity：活动来源
 
     @property
     def Channel(self):
-        r"""渠道：wechat | cloud | weda
+        r"""<p>渠道：wechat | cloud | weda</p>
         :rtype: str
         """
         return self._Channel
@@ -339,7 +335,7 @@ Activity：活动来源
 
     @property
     def EnvId(self):
-        r"""环境ID 云开发平台必填
+        r"""<p>环境ID 云开发平台必填</p>
         :rtype: str
         """
         return self._EnvId
@@ -377,9 +373,9 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境Id
+        :param _EnvId: <p>环境Id</p>
         :type EnvId: str
-        :param _TranId: 后付费订单号
+        :param _TranId: <p>后付费订单号</p>
         :type TranId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -390,7 +386,7 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境Id
+        r"""<p>环境Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -401,7 +397,7 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""后付费订单号
+        r"""<p>后付费订单号</p>
         :rtype: str
         """
         return self._TranId
@@ -435,17 +431,17 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境Id
+        :param _EnvId: <p>环境Id</p>
         :type EnvId: str
-        :param _ServerName: 服务名
+        :param _ServerName: <p>服务名</p>
         :type ServerName: str
-        :param _DeployInfo: 部署信息
+        :param _DeployInfo: <p>部署信息</p>
         :type DeployInfo: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
-        :param _ServerConfig: 服务配置信息(已废弃)
+        :param _ServerConfig: <p>服务配置信息(已废弃)</p>
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
-        :param _Items: 服务配置信息
+        :param _Items: <p>服务配置信息</p>
         :type Items: list of DiffConfigItem
-        :param _VpcInfo: vpc 信息
+        :param _VpcInfo: <p>vpc 信息</p>
         :type VpcInfo: :class:`tencentcloud.tcbr.v20220217.models.CreateVpcInfo`
         """
         self._EnvId = None
@@ -457,7 +453,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境Id
+        r"""<p>环境Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -468,7 +464,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServerName
@@ -479,7 +475,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def DeployInfo(self):
-        r"""部署信息
+        r"""<p>部署信息</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
         """
         return self._DeployInfo
@@ -490,7 +486,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
-        r"""服务配置信息(已废弃)
+        r"""<p>服务配置信息(已废弃)</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         """
         return self._ServerConfig
@@ -501,7 +497,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def Items(self):
-        r"""服务配置信息
+        r"""<p>服务配置信息</p>
         :rtype: list of DiffConfigItem
         """
         return self._Items
@@ -512,7 +508,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def VpcInfo(self):
-        r"""vpc 信息
+        r"""<p>vpc 信息</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.CreateVpcInfo`
         """
         return self._VpcInfo
@@ -557,7 +553,7 @@ class CreateCloudRunServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 一键部署任务Id，微信云托管，暂时用不到
+        :param _TaskId: <p>一键部署任务Id，微信云托管，暂时用不到</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -567,7 +563,7 @@ class CreateCloudRunServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""一键部署任务Id，微信云托管，暂时用不到
+        r"""<p>一键部署任务Id，微信云托管，暂时用不到</p>
         :rtype: int
         """
         return self._TaskId
@@ -2151,14 +2147,14 @@ class DescribeEnvBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境 Id
+        :param _EnvId: <p>环境 Id</p>
         :type EnvId: str
         """
         self._EnvId = None
 
     @property
     def EnvId(self):
-        r"""环境 Id
+        r"""<p>环境 Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -2187,9 +2183,9 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvBaseInfo: 环境基础信息
+        :param _EnvBaseInfo: <p>环境基础信息</p>
         :type EnvBaseInfo: :class:`tencentcloud.tcbr.v20220217.models.EnvBaseInfo`
-        :param _IsExist: 是否存在
+        :param _IsExist: <p>是否存在</p>
         :type IsExist: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2200,7 +2196,7 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
 
     @property
     def EnvBaseInfo(self):
-        r"""环境基础信息
+        r"""<p>环境基础信息</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.EnvBaseInfo`
         """
         return self._EnvBaseInfo
@@ -2211,7 +2207,7 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
 
     @property
     def IsExist(self):
-        r"""是否存在
+        r"""<p>是否存在</p>
         :rtype: bool
         """
         return self._IsExist
@@ -6823,17 +6819,17 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境Id
+        :param _EnvId: <p>环境Id</p>
         :type EnvId: str
-        :param _ServerName: 服务名
+        :param _ServerName: <p>服务名</p>
         :type ServerName: str
-        :param _DeployInfo: 部署信息
+        :param _DeployInfo: <p>部署信息</p>
         :type DeployInfo: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
-        :param _ServerConfig: 服务配置信息(已废弃)
+        :param _ServerConfig: <p>服务配置信息(已废弃)</p>
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
-        :param _Business: 业务类型，默认tcr
+        :param _Business: <p>业务类型，默认tcr</p>
         :type Business: str
-        :param _Items: 服务配置信息
+        :param _Items: <p>服务配置信息</p>
         :type Items: list of DiffConfigItem
         """
         self._EnvId = None
@@ -6845,7 +6841,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境Id
+        r"""<p>环境Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -6856,7 +6852,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServerName
@@ -6867,7 +6863,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def DeployInfo(self):
-        r"""部署信息
+        r"""<p>部署信息</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
         """
         return self._DeployInfo
@@ -6878,7 +6874,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
-        r"""服务配置信息(已废弃)
+        r"""<p>服务配置信息(已废弃)</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         """
         return self._ServerConfig
@@ -6889,7 +6885,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def Business(self):
-        r"""业务类型，默认tcr
+        r"""<p>业务类型，默认tcr</p>
         :rtype: str
         """
         return self._Business
@@ -6900,7 +6896,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def Items(self):
-        r"""服务配置信息
+        r"""<p>服务配置信息</p>
         :rtype: list of DiffConfigItem
         """
         return self._Items
@@ -6943,9 +6939,9 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境Id
+        :param _EnvId: <p>环境Id</p>
         :type EnvId: str
-        :param _TaskId: 一键部署任务Id，暂时用不到
+        :param _TaskId: <p>一键部署任务Id，暂时用不到</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6956,7 +6952,7 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境Id
+        r"""<p>环境Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -6967,7 +6963,7 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""一键部署任务Id，暂时用不到
+        r"""<p>一键部署任务Id，暂时用不到</p>
         :rtype: int
         """
         return self._TaskId

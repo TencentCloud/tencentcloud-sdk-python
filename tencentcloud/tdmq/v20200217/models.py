@@ -16614,7 +16614,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         :type NamespaceId: str
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 限制条数
+        :param _Limit: 单次查询最大条数。取值范围：[0~100]，默认值为20
         :type Limit: int
         :param _FilterTopic: 主题名称，输入此参数可查询该主题下所有的订阅组
         :type FilterTopic: str
@@ -16678,7 +16678,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制条数
+        r"""单次查询最大条数。取值范围：[0~100]，默认值为20
         :rtype: int
         """
         return self._Limit
@@ -34247,11 +34247,17 @@ UNKNOWN: 查询不到消费状态
         :param _ExceptionDesc: 异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionDesc: str
+        :param _ConsumeStatusSource: 消费状态来源，枚举值如下：
+
+- DIFF_OFFSET：通过服务端offset计算
+- TRACE_REPORT：通过上报的轨迹判断
+        :type ConsumeStatusSource: str
         """
         self._Group = None
         self._ConsumeStatus = None
         self._TrackType = None
         self._ExceptionDesc = None
+        self._ConsumeStatusSource = None
 
     @property
     def Group(self):
@@ -34304,12 +34310,27 @@ UNKNOWN: 查询不到消费状态
     def ExceptionDesc(self, ExceptionDesc):
         self._ExceptionDesc = ExceptionDesc
 
+    @property
+    def ConsumeStatusSource(self):
+        r"""消费状态来源，枚举值如下：
+
+- DIFF_OFFSET：通过服务端offset计算
+- TRACE_REPORT：通过上报的轨迹判断
+        :rtype: str
+        """
+        return self._ConsumeStatusSource
+
+    @ConsumeStatusSource.setter
+    def ConsumeStatusSource(self, ConsumeStatusSource):
+        self._ConsumeStatusSource = ConsumeStatusSource
+
 
     def _deserialize(self, params):
         self._Group = params.get("Group")
         self._ConsumeStatus = params.get("ConsumeStatus")
         self._TrackType = params.get("TrackType")
         self._ExceptionDesc = params.get("ExceptionDesc")
+        self._ConsumeStatusSource = params.get("ConsumeStatusSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

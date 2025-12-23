@@ -12279,11 +12279,17 @@ class MessageTrackItem(AbstractModel):
         :param _ExceptionDesc: 异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionDesc: str
+        :param _ConsumeStatusSource: 消费状态来源，枚举值如下：
+
+- DIFF_OFFSET：通过服务端offset计算
+- TRACE_REPORT：通过上报的轨迹判断
+        :type ConsumeStatusSource: str
         """
         self._ConsumerGroup = None
         self._ConsumeStatus = None
         self._TrackType = None
         self._ExceptionDesc = None
+        self._ConsumeStatusSource = None
 
     @property
     def ConsumerGroup(self):
@@ -12330,12 +12336,27 @@ class MessageTrackItem(AbstractModel):
     def ExceptionDesc(self, ExceptionDesc):
         self._ExceptionDesc = ExceptionDesc
 
+    @property
+    def ConsumeStatusSource(self):
+        r"""消费状态来源，枚举值如下：
+
+- DIFF_OFFSET：通过服务端offset计算
+- TRACE_REPORT：通过上报的轨迹判断
+        :rtype: str
+        """
+        return self._ConsumeStatusSource
+
+    @ConsumeStatusSource.setter
+    def ConsumeStatusSource(self, ConsumeStatusSource):
+        self._ConsumeStatusSource = ConsumeStatusSource
+
 
     def _deserialize(self, params):
         self._ConsumerGroup = params.get("ConsumerGroup")
         self._ConsumeStatus = params.get("ConsumeStatus")
         self._TrackType = params.get("TrackType")
         self._ExceptionDesc = params.get("ExceptionDesc")
+        self._ConsumeStatusSource = params.get("ConsumeStatusSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12655,22 +12676,22 @@ class ModifyConsumerGroupRequest(AbstractModel):
         r"""
         :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
-        :type ConsumerGroup: str
         :param _ConsumeEnable: 是否开启消费
         :type ConsumeEnable: bool
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
         :type ConsumeMessageOrderly: bool
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        :type ConsumerGroup: str
         :param _MaxRetryTimes: 最大重试次数，取值范围0～1000
         :type MaxRetryTimes: int
         :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
         """
         self._InstanceId = None
-        self._ConsumerGroup = None
         self._ConsumeEnable = None
         self._ConsumeMessageOrderly = None
+        self._ConsumerGroup = None
         self._MaxRetryTimes = None
         self._Remark = None
 
@@ -12684,17 +12705,6 @@ class ModifyConsumerGroupRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
-
-    @property
-    def ConsumerGroup(self):
-        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
-        :rtype: str
-        """
-        return self._ConsumerGroup
-
-    @ConsumerGroup.setter
-    def ConsumerGroup(self, ConsumerGroup):
-        self._ConsumerGroup = ConsumerGroup
 
     @property
     def ConsumeEnable(self):
@@ -12718,6 +12728,17 @@ class ModifyConsumerGroupRequest(AbstractModel):
     @ConsumeMessageOrderly.setter
     def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
         self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def ConsumerGroup(self):
+        r"""消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
 
     @property
     def MaxRetryTimes(self):
@@ -12744,9 +12765,9 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._ConsumerGroup = params.get("ConsumerGroup")
         self._ConsumeEnable = params.get("ConsumeEnable")
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._ConsumerGroup = params.get("ConsumerGroup")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())

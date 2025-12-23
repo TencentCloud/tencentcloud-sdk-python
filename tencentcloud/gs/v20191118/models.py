@@ -4090,7 +4090,7 @@ class CreateSessionRequest(AbstractModel):
         :type MinBitrate: int
         :param _Fps: 帧率，可设置为30、45、60、90、120、144
         :type Fps: int
-        :param _UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :param _UserIp: 【推荐填写】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
         :param _Optimization: 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
         :type Optimization: int
@@ -4258,7 +4258,7 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def UserIp(self):
-        r"""【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        r"""【推荐填写】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :rtype: str
         """
         return self._UserIp
@@ -11313,7 +11313,7 @@ class TrylockWorkerRequest(AbstractModel):
         :type GameRegion: str
         :param _SetNo: 【废弃】资源池编号
         :type SetNo: int
-        :param _UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :param _UserIp: 【推荐填写】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
         :param _GroupId: 分组ID
         :type GroupId: str
@@ -11371,7 +11371,7 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        r"""【推荐填写】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :rtype: str
         """
         return self._UserIp

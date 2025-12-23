@@ -2749,6 +2749,199 @@ class BasicAuth(AbstractModel):
         
 
 
+class BindProgressResponse(AbstractModel):
+    r"""绑定状态Response
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Steps: 绑定步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Steps: list of BindProgressStep
+        :param _ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Status: 集群绑定状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._Steps = None
+        self._ClusterId = None
+        self._Status = None
+
+    @property
+    def Steps(self):
+        r"""绑定步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BindProgressStep
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Status(self):
+        r"""集群绑定状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = BindProgressStep()
+                obj._deserialize(item)
+                self._Steps.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindProgressStep(AbstractModel):
+    r"""绑定进度参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndAt: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndAt: str
+        :param _FailedMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMsg: str
+        :param _LifeState: 状态
+        :type LifeState: str
+        :param _StartAt: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartAt: str
+        :param _Step: 任务进程
+"prepare_env"   // 准备环境,安装instance EKS
+"check_target"  // 检查target是否为running
+"install_crd"   // 安装需要测crd
+"install_rbac"  // 安装rbac
+"install_agent" // 安装agent
+"install_cr"    // 安装prometheus CR
+"install_basic" // 安装基础采集信息，标记target状态为normal
+        :type Step: str
+        """
+        self._EndAt = None
+        self._FailedMsg = None
+        self._LifeState = None
+        self._StartAt = None
+        self._Step = None
+
+    @property
+    def EndAt(self):
+        r"""结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndAt
+
+    @EndAt.setter
+    def EndAt(self, EndAt):
+        self._EndAt = EndAt
+
+    @property
+    def FailedMsg(self):
+        r"""错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailedMsg
+
+    @FailedMsg.setter
+    def FailedMsg(self, FailedMsg):
+        self._FailedMsg = FailedMsg
+
+    @property
+    def LifeState(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._LifeState
+
+    @LifeState.setter
+    def LifeState(self, LifeState):
+        self._LifeState = LifeState
+
+    @property
+    def StartAt(self):
+        r"""开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def Step(self):
+        r"""任务进程
+"prepare_env"   // 准备环境,安装instance EKS
+"check_target"  // 检查target是否为running
+"install_crd"   // 安装需要测crd
+"install_rbac"  // 安装rbac
+"install_agent" // 安装agent
+"install_cr"    // 安装prometheus CR
+"install_basic" // 安装基础采集信息，标记target状态为normal
+        :rtype: str
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._EndAt = params.get("EndAt")
+        self._FailedMsg = params.get("FailedMsg")
+        self._LifeState = params.get("LifeState")
+        self._StartAt = params.get("StartAt")
+        self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindPrometheusManagedGrafanaRequest(AbstractModel):
     r"""BindPrometheusManagedGrafana请求参数结构体
 
@@ -14229,6 +14422,51 @@ class DescribeClusterAgentCreatingProgressRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: prom实例id
+        :type InstanceId: str
+        :param _ClusterIds: 集群ids
+        :type ClusterIds: list of str
+        """
+        self._InstanceId = None
+        self._ClusterIds = None
+
+    @property
+    def InstanceId(self):
+        r"""prom实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterIds(self):
+        r"""集群ids
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
     r"""DescribeClusterAgentCreatingProgress返回参数结构体
@@ -14237,10 +14475,24 @@ class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Response: 绑定状态response
+        :type Response: list of BindProgressResponse
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Response = None
         self._RequestId = None
+
+    @property
+    def Response(self):
+        r"""绑定状态response
+        :rtype: list of BindProgressResponse
+        """
+        return self._Response
+
+    @Response.setter
+    def Response(self, Response):
+        self._Response = Response
 
     @property
     def RequestId(self):
@@ -14255,6 +14507,12 @@ class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Response") is not None:
+            self._Response = []
+            for item in params.get("Response"):
+                obj = BindProgressResponse()
+                obj._deserialize(item)
+                self._Response.append(obj)
         self._RequestId = params.get("RequestId")
 
 

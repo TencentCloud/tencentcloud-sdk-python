@@ -16310,6 +16310,36 @@ class DescribeAccountBalanceRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TempCredit: 是否查询临时额度
+        :type TempCredit: bool
+        """
+        self._TempCredit = None
+
+    @property
+    def TempCredit(self):
+        r"""是否查询临时额度
+        :rtype: bool
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+
+    def _deserialize(self, params):
+        self._TempCredit = params.get("TempCredit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAccountBalanceResponse(AbstractModel):
     r"""DescribeAccountBalance返回参数结构体
@@ -16344,6 +16374,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type CreditBalance: float
         :param _RealCreditBalance: 真实可用信用额度,单位 分
         :type RealCreditBalance: float
+        :param _TempCredit: 临时额度，单位 分
+        :type TempCredit: float
+        :param _TempAmountInfoList: 临时额度详情
+        :type TempAmountInfoList: list of UinTempAmountModel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16360,6 +16394,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = None
         self._CreditBalance = None
         self._RealCreditBalance = None
+        self._TempCredit = None
+        self._TempAmountInfoList = None
         self._RequestId = None
 
     @property
@@ -16514,6 +16550,28 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._RealCreditBalance = RealCreditBalance
 
     @property
+    def TempCredit(self):
+        r"""临时额度，单位 分
+        :rtype: float
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+    @property
+    def TempAmountInfoList(self):
+        r"""临时额度详情
+        :rtype: list of UinTempAmountModel
+        """
+        return self._TempAmountInfoList
+
+    @TempAmountInfoList.setter
+    def TempAmountInfoList(self, TempAmountInfoList):
+        self._TempAmountInfoList = TempAmountInfoList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16539,6 +16597,13 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._TempCredit = params.get("TempCredit")
+        if params.get("TempAmountInfoList") is not None:
+            self._TempAmountInfoList = []
+            for item in params.get("TempAmountInfoList"):
+                obj = UinTempAmountModel()
+                obj._deserialize(item)
+                self._TempAmountInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23921,14 +23986,14 @@ class DescribeCostDetailRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量
         :type Offset: int
-        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        :param _BeginTime: 周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
         :type BeginTime: str
-        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        :param _EndTime: 周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
         :type EndTime: str
         :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
-        :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
         :type Month: str
         :param _ProductCode: 查询指定产品信息
         :type ProductCode: str
@@ -23971,7 +24036,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        r"""周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
         :rtype: str
         """
         return self._BeginTime
@@ -23982,7 +24047,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
+        r"""周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
         :rtype: str
         """
         return self._EndTime
@@ -24005,7 +24070,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
         :rtype: str
         """
         return self._Month
@@ -31205,6 +31270,87 @@ class TagsForm(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UinTempAmountModel(AbstractModel):
+    r"""临时额度详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 用户uin
+        :type Uin: str
+        :param _TempAmount: 临时额度
+        :type TempAmount: float
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._Uin = None
+        self._TempAmount = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Uin(self):
+        r"""用户uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TempAmount(self):
+        r"""临时额度
+        :rtype: float
+        """
+        return self._TempAmount
+
+    @TempAmount.setter
+    def TempAmount(self, TempAmount):
+        self._TempAmount = TempAmount
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._TempAmount = params.get("TempAmount")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

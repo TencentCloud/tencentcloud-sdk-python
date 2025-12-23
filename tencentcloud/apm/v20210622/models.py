@@ -5575,7 +5575,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         :param _BusinessName: 业务自身服务名，控制台用户请填写taw
         :type BusinessName: str
-        :param _Limit: 单页项目个数，默认为10000，合法取值范围为0～10000
+        :param _Limit: 单页项目个数，默认为1000，合法取值范围为1～1000
         :type Limit: int
         :param _Offset: 分页
         :type Offset: int
@@ -5667,7 +5667,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单页项目个数，默认为10000，合法取值范围为0～10000
+        r"""单页项目个数，默认为1000，合法取值范围为1～1000
         :rtype: int
         """
         return self._Limit

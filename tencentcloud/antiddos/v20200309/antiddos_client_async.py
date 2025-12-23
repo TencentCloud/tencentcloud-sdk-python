@@ -1273,7 +1273,7 @@ class AntiddosClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeListProtectThresholdConfigNewResponse:
         """
-        获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+        获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等。
         """
         
         kwargs = {}

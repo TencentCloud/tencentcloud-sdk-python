@@ -45,6 +45,24 @@ class AiartClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTemplateToImageJob(
+            self,
+            request: models.DescribeTemplateToImageJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTemplateToImageJobResponse:
+        """
+        查询图片特效任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTemplateToImageJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTemplateToImageJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GenerateAvatar(
             self,
             request: models.GenerateAvatarRequest,
@@ -378,6 +396,24 @@ class AiartClient(AbstractClient):
         kwargs["action"] = "SubmitMemeJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitMemeJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitTemplateToImageJob(
+            self,
+            request: models.SubmitTemplateToImageJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitTemplateToImageJobResponse:
+        """
+        提交图片特效任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitTemplateToImageJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitTemplateToImageJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

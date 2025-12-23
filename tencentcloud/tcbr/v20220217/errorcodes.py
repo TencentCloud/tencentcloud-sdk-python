@@ -44,6 +44,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 请求的云托管服务未找到
+RESOURCENOTFOUND_SERVERNOTFOUND = 'ResourceNotFound.ServerNotFound'
+
 # 请求参数中的云托管版本未找到
 RESOURCENOTFOUND_VERSIONNOTFOUND = 'ResourceNotFound.VersionNotFound'
 

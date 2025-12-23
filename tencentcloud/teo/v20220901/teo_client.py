@@ -2638,6 +2638,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePrefetchOriginLimit(self, request):
+        r"""本接口用于查询回源限速限制，该功能白名单内测中。
+
+        :param request: Request instance for DescribePrefetchOriginLimit.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribePrefetchOriginLimitRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribePrefetchOriginLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrefetchOriginLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrefetchOriginLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrefetchTasks(self, request):
         r"""DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
 
@@ -4200,6 +4223,30 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyPlan", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPrefetchOriginLimit(self, request):
+        r"""本接口用于配置回源限速限制，该功能白名单内测中。
+        可通过此接口创建、修改与删除预热回源限速限制，每个账号最多支持 100 条限制。
+
+        :param request: Request instance for ModifyPrefetchOriginLimit.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyPrefetchOriginLimitRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyPrefetchOriginLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrefetchOriginLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPrefetchOriginLimitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

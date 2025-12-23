@@ -13827,9 +13827,9 @@ class DescribeListProtectThresholdConfigNewRequest(AbstractModel):
         :type FilterInstanceId: str
         :param _FilterIp: IP搜索
         :type FilterIp: str
-        :param _FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）
+        :param _FilterDomain: 域名搜索，查询域名与协议的CC防护阈值时使用
         :type FilterDomain: str
-        :param _FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）
+        :param _FilterProtocol: 协议搜索，查询域名与协议的CC防护阈值时使用
         :type FilterProtocol: str
         """
         self._Offset = None
@@ -13885,7 +13885,7 @@ class DescribeListProtectThresholdConfigNewRequest(AbstractModel):
 
     @property
     def FilterDomain(self):
-        r"""域名搜索(查询域名与协议的CC防护阈值时使用）
+        r"""域名搜索，查询域名与协议的CC防护阈值时使用
         :rtype: str
         """
         return self._FilterDomain
@@ -13896,7 +13896,7 @@ class DescribeListProtectThresholdConfigNewRequest(AbstractModel):
 
     @property
     def FilterProtocol(self):
-        r"""协议搜索(查询域名与协议的CC防护阈值时使用）
+        r"""协议搜索，查询域名与协议的CC防护阈值时使用
         :rtype: str
         """
         return self._FilterProtocol

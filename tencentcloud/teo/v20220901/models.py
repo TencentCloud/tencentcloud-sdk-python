@@ -24215,6 +24215,159 @@ class DescribePlansResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrefetchOriginLimitRequest(AbstractModel):
+    r"""DescribePrefetchOriginLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目，默认值：20，上限：100。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>domain-name：按照域名过滤。domain-name 形如：www.qq.com，不支持模糊查询；</li>
+<li>area：按照限制加速区域过滤，不支持模糊查询。可选项：<br> Overseas：全球可用区（不含中国大陆）；<br> MainlandChina：中国大陆可用区。</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量，默认为 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询限制数目，默认值：20，上限：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>domain-name：按照域名过滤。domain-name 形如：www.qq.com，不支持模糊查询；</li>
+<li>area：按照限制加速区域过滤，不支持模糊查询。可选项：<br> Overseas：全球可用区（不含中国大陆）；<br> MainlandChina：中国大陆可用区。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrefetchOriginLimitResponse(AbstractModel):
+    r"""DescribePrefetchOriginLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 回源限速限制总数。
+        :type TotalCount: int
+        :param _Limits: 回源限速限制详情List。
+        :type Limits: list of PrefetchOriginLimit
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Limits = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""回源限速限制总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Limits(self):
+        r"""回源限速限制详情List。
+        :rtype: list of PrefetchOriginLimit
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Limits") is not None:
+            self._Limits = []
+            for item in params.get("Limits"):
+                obj = PrefetchOriginLimit()
+                obj._deserialize(item)
+                self._Limits.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrefetchTasksRequest(AbstractModel):
     r"""DescribePrefetchTasks请求参数结构体
 
@@ -41226,6 +41379,144 @@ class ModifyPlanResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPrefetchOriginLimitRequest(AbstractModel):
+    r"""ModifyPrefetchOriginLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _DomainName: 加速域名。
+        :type DomainName: str
+        :param _Area: 回源限速限制的加速区域。
+预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+<li>Overseas：全球可用区（不含中国大陆）；</li>
+<li>MainlandChina：中国大陆可用区。</li>
+        :type Area: str
+        :param _Bandwidth: 回源限速带宽。
+预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+        :type Bandwidth: int
+        :param _Enabled: 回源限速限制控制开关。
+用于启用/删除本条回源限速限制，取值有：
+<li>on：启用限制；</li>
+<li>off：删除限制。</li>
+        :type Enabled: str
+        """
+        self._ZoneId = None
+        self._DomainName = None
+        self._Area = None
+        self._Bandwidth = None
+        self._Enabled = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DomainName(self):
+        r"""加速域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Area(self):
+        r"""回源限速限制的加速区域。
+预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+<li>Overseas：全球可用区（不含中国大陆）；</li>
+<li>MainlandChina：中国大陆可用区。</li>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Bandwidth(self):
+        r"""回源限速带宽。
+预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Enabled(self):
+        r"""回源限速限制控制开关。
+用于启用/删除本条回源限速限制，取值有：
+<li>on：启用限制；</li>
+<li>off：删除限制。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._Area = params.get("Area")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrefetchOriginLimitResponse(AbstractModel):
+    r"""ModifyPrefetchOriginLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
     r"""ModifyRealtimeLogDeliveryTask请求参数结构体
 
@@ -47041,6 +47332,125 @@ class PostMaxSizeParameters(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrefetchOriginLimit(AbstractModel):
+    r"""回源限速限制详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _DomainName: 加速域名。
+        :type DomainName: str
+        :param _Area: 回源限速限制的加速区域。
+预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+<li>Overseas：全球可用区（不含中国大陆）；</li>
+<li>MainlandChina：中国大陆可用区。</li>
+        :type Area: str
+        :param _Bandwidth: 回源限速带宽。
+预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+        :type Bandwidth: int
+        :param _CreateTime: 回源限速限制创建的时间。
+        :type CreateTime: str
+        :param _UpdateTime: 回源限速限制更新的时间。
+        :type UpdateTime: str
+        """
+        self._ZoneId = None
+        self._DomainName = None
+        self._Area = None
+        self._Bandwidth = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DomainName(self):
+        r"""加速域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Area(self):
+        r"""回源限速限制的加速区域。
+预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+<li>Overseas：全球可用区（不含中国大陆）；</li>
+<li>MainlandChina：中国大陆可用区。</li>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Bandwidth(self):
+        r"""回源限速带宽。
+预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def CreateTime(self):
+        r"""回源限速限制创建的时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""回源限速限制更新的时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._Area = params.get("Area")
+        self._Bandwidth = params.get("Bandwidth")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

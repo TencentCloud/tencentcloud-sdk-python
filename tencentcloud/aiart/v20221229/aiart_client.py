@@ -51,6 +51,29 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTemplateToImageJob(self, request):
+        r"""查询图片特效任务
+
+        :param request: Request instance for DescribeTemplateToImageJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.DescribeTemplateToImageJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.DescribeTemplateToImageJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTemplateToImageJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTemplateToImageJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GenerateAvatar(self, request):
         r"""百变头像接口将根据输入的人像照片，生成风格百变的头像。
         百变头像默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
@@ -460,6 +483,29 @@ class AiartClient(AbstractClient):
             body = self.call("SubmitMemeJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitMemeJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitTemplateToImageJob(self, request):
+        r"""提交图片特效任务
+
+        :param request: Request instance for SubmitTemplateToImageJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitTemplateToImageJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitTemplateToImageJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTemplateToImageJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTemplateToImageJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

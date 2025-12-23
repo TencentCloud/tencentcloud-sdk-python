@@ -216,6 +216,138 @@ class ChangeClothesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTemplateToImageJobRequest(AbstractModel):
+    r"""DescribeTemplateToImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTemplateToImageJobResponse(AbstractModel):
+    r"""DescribeTemplateToImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type Status: str
+        :param _ErrorCode: 任务处理失败错误码。
+
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务处理失败错误信息。
+
+        :type ErrorMessage: str
+        :param _ResultImage: 生成图 URL 列表，有效期1小时，请及时保存。
+
+        :type ResultImage: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""任务处理失败错误码。
+
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务处理失败错误信息。
+
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultImage(self):
+        r"""生成图 URL 列表，有效期1小时，请及时保存。
+
+        :rtype: list of str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class FaceInfo(AbstractModel):
     r"""融合信息
 
@@ -3741,6 +3873,148 @@ class SubmitMemeJobResponse(AbstractModel):
     @property
     def JobId(self):
         r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitTemplateToImageJobRequest(AbstractModel):
+    r"""SubmitTemplateToImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type Image: :class:`tencentcloud.aiart.v20221229.models.Image`
+        :param _Style: 绘画风格当前仅支持美术馆风格（gallerying）。
+        :type Style: str
+        :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        self._Image = None
+        self._Style = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Image(self):
+        r"""算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.Image`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Style(self):
+        r"""绘画风格当前仅支持美术馆风格（gallerying）。
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def LogoAdd(self):
+        r"""为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        r"""标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = Image()
+            self._Image._deserialize(params.get("Image"))
+        self._Style = params.get("Style")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitTemplateToImageJobResponse(AbstractModel):
+    r"""SubmitTemplateToImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务 ID。
         :rtype: str
         """
         return self._JobId

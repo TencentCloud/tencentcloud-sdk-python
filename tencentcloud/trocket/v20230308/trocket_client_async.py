@@ -1125,12 +1125,13 @@ class TrocketClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTopicListByGroupResponse:
         """
-        根据消费组获取主题列表，Filter参数使用说明如下：
+        查询消费组订阅的主题列表，Filter参数使用说明如下：
 
         - TopicName 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 
         Filters示例：
         [{ "Name": "TopicName", "Values": ["test_topic"] }]
+        当前 API 适用集群：5.x 集群。4.x 集群的查询消费组订阅的主题列表接口文档见 [DescribeRocketMQTopicsByGroup](https://cloud.tencent.com/document/product/1179/108863)。
         """
         
         kwargs = {}
