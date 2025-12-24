@@ -66,6 +66,8 @@ class AudioResult(AbstractModel):
         :type HitType: str
         :param _Sentences: ASR句子的起止时间
         :type Sentences: list of Sentence
+        :param _RequestId: 切片请求ID
+        :type RequestId: str
         """
         self._HitFlag = None
         self._Label = None
@@ -87,6 +89,7 @@ class AudioResult(AbstractModel):
         self._LabelResults = None
         self._HitType = None
         self._Sentences = None
+        self._RequestId = None
 
     @property
     def HitFlag(self):
@@ -309,6 +312,17 @@ class AudioResult(AbstractModel):
     def Sentences(self, Sentences):
         self._Sentences = Sentences
 
+    @property
+    def RequestId(self):
+        r"""切片请求ID
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -371,6 +385,7 @@ class AudioResult(AbstractModel):
                 obj = Sentence()
                 obj._deserialize(item)
                 self._Sentences.append(obj)
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1801,6 +1816,8 @@ Block 确认违规
         :type RecognitionResults: list of RecognitionResult
         :param _HitType: 审核命中类型
         :type HitType: str
+        :param _RequestId: 截帧请求ID
+        :type RequestId: str
         """
         self._HitFlag = None
         self._Label = None
@@ -1812,6 +1829,7 @@ Block 确认违规
         self._SubLabel = None
         self._RecognitionResults = None
         self._HitType = None
+        self._RequestId = None
 
     @property
     def HitFlag(self):
@@ -1935,6 +1953,17 @@ Block 确认违规
     def HitType(self, HitType):
         self._HitType = HitType
 
+    @property
+    def RequestId(self):
+        r"""截帧请求ID
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -1957,6 +1986,7 @@ Block 确认违规
                 obj._deserialize(item)
                 self._RecognitionResults.append(obj)
         self._HitType = params.get("HitType")
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

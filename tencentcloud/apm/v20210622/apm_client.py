@@ -464,6 +464,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopologyNew(self, request):
+        r"""根据应用名查询服务拓扑图
+
+        :param request: Request instance for DescribeTopologyNew.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeTopologyNewRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeTopologyNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopologyNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopologyNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApmApplicationConfig(self, request):
         r"""修改应用配置接口
 

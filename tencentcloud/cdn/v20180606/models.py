@@ -3027,6 +3027,44 @@ hex：十六进制
         
 
 
+class AutoGuard(AbstractModel):
+    r"""流量防盗刷配置（仅限大陆地区）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 流量防盗刷配置开关，取值有： on：开启 off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""流量防盗刷配置开关，取值有： on：开启 off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AvifAdapter(AbstractModel):
     r"""图片优化-AvifAdapter配置
 
@@ -11116,6 +11154,10 @@ off：不支持
         :param _ParamFilter: 参数黑名单
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        :param _AutoGuard: 流量一键防盗刷配置
+        :type AutoGuard: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        :param _GeoBlocker: 区域访问控制配置
+        :type GeoBlocker: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
         """
         self._ResourceId = None
         self._AppId = None
@@ -11184,6 +11226,8 @@ off：不支持
         self._HttpsBilling = None
         self._OthersPrivateAccess = None
         self._ParamFilter = None
+        self._AutoGuard = None
+        self._GeoBlocker = None
 
     @property
     def ResourceId(self):
@@ -12008,6 +12052,28 @@ off：不支持
     def ParamFilter(self, ParamFilter):
         self._ParamFilter = ParamFilter
 
+    @property
+    def AutoGuard(self):
+        r"""流量一键防盗刷配置
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        """
+        return self._AutoGuard
+
+    @AutoGuard.setter
+    def AutoGuard(self, AutoGuard):
+        self._AutoGuard = AutoGuard
+
+    @property
+    def GeoBlocker(self):
+        r"""区域访问控制配置
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
+        """
+        return self._GeoBlocker
+
+    @GeoBlocker.setter
+    def GeoBlocker(self, GeoBlocker):
+        self._GeoBlocker = GeoBlocker
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -12187,6 +12253,12 @@ off：不支持
         if params.get("ParamFilter") is not None:
             self._ParamFilter = ParamFilter()
             self._ParamFilter._deserialize(params.get("ParamFilter"))
+        if params.get("AutoGuard") is not None:
+            self._AutoGuard = AutoGuard()
+            self._AutoGuard._deserialize(params.get("AutoGuard"))
+        if params.get("GeoBlocker") is not None:
+            self._GeoBlocker = GeoBlocker()
+            self._GeoBlocker._deserialize(params.get("GeoBlocker"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13943,6 +14015,177 @@ https：强制 https 跳转
         self._RedirectType = params.get("RedirectType")
         self._RedirectStatusCode = params.get("RedirectStatusCode")
         self._CarryHeaders = params.get("CarryHeaders")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeoBlockStrategy(AbstractModel):
+    r"""区域访问控制策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlockType: 规则类型
+whitelist: 白名单
+blacklist: 黑名单
+        :type BlockType: str
+        :param _RulePaths: 生效规则
+        :type RulePaths: list of str
+        :param _RuleType: 生效类型
+all: 全部
+directory: 目录
+        :type RuleType: str
+        :param _Districts: 生效区域，可选值有: CN-AH CN-BJ CN-CQ CN-FJ CN-GD CN-GS CN-GX CN-GZ CN-HA CN-HB CN-HE CN-HI CN-HK CN-HL CN-HN CN-JL CN-JS CN-JX CN-LN CN-MO CN-NM CN-NX CN-QH CN-SC CN-SD CN-SH CN-SN CN-SX CN-TJ CN-TW CN-XJ CN-XZ CN-YN CN-ZJ AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI CV KH CM CA KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MK MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW
+        :type Districts: list of str
+        """
+        self._BlockType = None
+        self._RulePaths = None
+        self._RuleType = None
+        self._Districts = None
+
+    @property
+    def BlockType(self):
+        r"""规则类型
+whitelist: 白名单
+blacklist: 黑名单
+        :rtype: str
+        """
+        return self._BlockType
+
+    @BlockType.setter
+    def BlockType(self, BlockType):
+        self._BlockType = BlockType
+
+    @property
+    def RulePaths(self):
+        r"""生效规则
+        :rtype: list of str
+        """
+        return self._RulePaths
+
+    @RulePaths.setter
+    def RulePaths(self, RulePaths):
+        self._RulePaths = RulePaths
+
+    @property
+    def RuleType(self):
+        r"""生效类型
+all: 全部
+directory: 目录
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Districts(self):
+        r"""生效区域，可选值有: CN-AH CN-BJ CN-CQ CN-FJ CN-GD CN-GS CN-GX CN-GZ CN-HA CN-HB CN-HE CN-HI CN-HK CN-HL CN-HN CN-JL CN-JS CN-JX CN-LN CN-MO CN-NM CN-NX CN-QH CN-SC CN-SD CN-SH CN-SN CN-SX CN-TJ CN-TW CN-XJ CN-XZ CN-YN CN-ZJ AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI CV KH CM CA KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MK MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW
+        :rtype: list of str
+        """
+        return self._Districts
+
+    @Districts.setter
+    def Districts(self, Districts):
+        self._Districts = Districts
+
+
+    def _deserialize(self, params):
+        self._BlockType = params.get("BlockType")
+        self._RulePaths = params.get("RulePaths")
+        self._RuleType = params.get("RuleType")
+        self._Districts = params.get("Districts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeoBlocker(AbstractModel):
+    r"""区域访问控制配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: IP 黑白名单配置开关，取值有
+on：开启
+off：关闭
+        :type Switch: str
+        :param _BlockRules: [
+    {
+      "BlockType": "whitelist",
+      "RulePaths": [
+        "*"
+      ],
+      "RuleType": "all",
+      "Districts": [
+        "CN-HK"
+      ]
+    }
+  ]
+        :type BlockRules: list of GeoBlockStrategy
+        """
+        self._Switch = None
+        self._BlockRules = None
+
+    @property
+    def Switch(self):
+        r"""IP 黑白名单配置开关，取值有
+on：开启
+off：关闭
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def BlockRules(self):
+        r"""[
+    {
+      "BlockType": "whitelist",
+      "RulePaths": [
+        "*"
+      ],
+      "RuleType": "all",
+      "Districts": [
+        "CN-HK"
+      ]
+    }
+  ]
+        :rtype: list of GeoBlockStrategy
+        """
+        return self._BlockRules
+
+    @BlockRules.setter
+    def BlockRules(self, BlockRules):
+        self._BlockRules = BlockRules
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("BlockRules") is not None:
+            self._BlockRules = []
+            for item in params.get("BlockRules"):
+                obj = GeoBlockStrategy()
+                obj._deserialize(item)
+                self._BlockRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25176,6 +25419,10 @@ global：全球加速
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         :param _ParamFilter: 参数黑名单
         :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        :param _AutoGuard: 流量防盗刷配置
+        :type AutoGuard: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        :param _GeoBlocker: 区域访问控制配置
+        :type GeoBlocker: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
         """
         self._Domain = None
         self._ProjectId = None
@@ -25227,6 +25474,8 @@ global：全球加速
         self._OthersPrivateAccess = None
         self._HttpsBilling = None
         self._ParamFilter = None
+        self._AutoGuard = None
+        self._GeoBlocker = None
 
     @property
     def Domain(self):
@@ -25786,6 +26035,28 @@ global：全球加速
     def ParamFilter(self, ParamFilter):
         self._ParamFilter = ParamFilter
 
+    @property
+    def AutoGuard(self):
+        r"""流量防盗刷配置
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        """
+        return self._AutoGuard
+
+    @AutoGuard.setter
+    def AutoGuard(self, AutoGuard):
+        self._AutoGuard = AutoGuard
+
+    @property
+    def GeoBlocker(self):
+        r"""区域访问控制配置
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
+        """
+        return self._GeoBlocker
+
+    @GeoBlocker.setter
+    def GeoBlocker(self, GeoBlocker):
+        self._GeoBlocker = GeoBlocker
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -25928,6 +26199,12 @@ global：全球加速
         if params.get("ParamFilter") is not None:
             self._ParamFilter = ParamFilter()
             self._ParamFilter._deserialize(params.get("ParamFilter"))
+        if params.get("AutoGuard") is not None:
+            self._AutoGuard = AutoGuard()
+            self._AutoGuard._deserialize(params.get("AutoGuard"))
+        if params.get("GeoBlocker") is not None:
+            self._GeoBlocker = GeoBlocker()
+            self._GeoBlocker._deserialize(params.get("GeoBlocker"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

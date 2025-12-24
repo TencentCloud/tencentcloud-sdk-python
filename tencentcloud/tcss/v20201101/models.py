@@ -55504,6 +55504,8 @@ class HostInfo(AbstractModel):
         :type DefendStatus: str
         :param _CoresCnt: 核数
         :type CoresCnt: int
+        :param _LastOnlineTime: 最近在线时间
+        :type LastOnlineTime: str
         """
         self._HostID = None
         self._HostIP = None
@@ -55528,6 +55530,7 @@ class HostInfo(AbstractModel):
         self._ChargeCoresCnt = None
         self._DefendStatus = None
         self._CoresCnt = None
+        self._LastOnlineTime = None
 
     @property
     def HostID(self):
@@ -55784,6 +55787,17 @@ class HostInfo(AbstractModel):
     def CoresCnt(self, CoresCnt):
         self._CoresCnt = CoresCnt
 
+    @property
+    def LastOnlineTime(self):
+        r"""最近在线时间
+        :rtype: str
+        """
+        return self._LastOnlineTime
+
+    @LastOnlineTime.setter
+    def LastOnlineTime(self, LastOnlineTime):
+        self._LastOnlineTime = LastOnlineTime
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -55816,6 +55830,7 @@ class HostInfo(AbstractModel):
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         self._DefendStatus = params.get("DefendStatus")
         self._CoresCnt = params.get("CoresCnt")
+        self._LastOnlineTime = params.get("LastOnlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

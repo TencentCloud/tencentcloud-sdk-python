@@ -3441,6 +3441,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePullTransformPushInfoList(self, request):
+        r"""查询拉流转推任务流数据统计信息。
+
+        :param request: Request instance for DescribePullTransformPushInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePullTransformPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePullTransformPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePullTransformPushInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePullTransformPushInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePushBandwidthAndFluxList(self, request):
         r"""直播推流带宽和流量数据查询。
         推流计费会先取全球推流用量和全球播放用量进行比较，满足计费条件后再按各地区用量出账。详情参见[计费文档](https://cloud.tencent.com/document/product/267/34175)。

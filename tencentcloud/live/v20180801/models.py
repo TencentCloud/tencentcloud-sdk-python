@@ -23275,6 +23275,128 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePullTransformPushInfoListRequest(AbstractModel):
+    r"""DescribePullTransformPushInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: utc开始时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+支持最近一个月的查询。
+        :type StartTime: str
+        :param _EndTime: utc结束时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+支持最近一个月的查询，时间跨度为一个月。
+        :type EndTime: str
+        :param _TaskId: 拉流转推任务Id。
+        :type TaskId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+
+    @property
+    def StartTime(self):
+        r"""utc开始时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+支持最近一个月的查询。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""utc结束时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+支持最近一个月的查询，时间跨度为一个月。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        r"""拉流转推任务Id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePullTransformPushInfoListResponse(AbstractModel):
+    r"""DescribePullTransformPushInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: 拉流任务流信息列表。
+        :type DataInfoList: list of TurnPushInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        r"""拉流任务流信息列表。
+        :rtype: list of TurnPushInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TurnPushInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePullTransformPushInfoRequest(AbstractModel):
     r"""DescribePullTransformPushInfo请求参数结构体
 
@@ -40337,6 +40459,117 @@ class TransitionTypeInfo(AbstractModel):
         self._TransitionType = params.get("TransitionType")
         self._SourceUrl = params.get("SourceUrl")
         self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnPushInfo(AbstractModel):
+    r"""拉流转推任务流数据信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoFps: 视频帧率，单位fps。
+        :type VideoFps: int
+        :param _AudioFps: 音频帧率，单位fps。
+        :type AudioFps: int
+        :param _VideoRate: 视频码率，单位bps。
+        :type VideoRate: int
+        :param _AudioRate: 音频码率，单位bps。
+        :type AudioRate: int
+        :param _StreamFlag: 流标识。
+        :type StreamFlag: str
+        :param _Time: 时间，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。
+        :type Time: str
+        """
+        self._VideoFps = None
+        self._AudioFps = None
+        self._VideoRate = None
+        self._AudioRate = None
+        self._StreamFlag = None
+        self._Time = None
+
+    @property
+    def VideoFps(self):
+        r"""视频帧率，单位fps。
+        :rtype: int
+        """
+        return self._VideoFps
+
+    @VideoFps.setter
+    def VideoFps(self, VideoFps):
+        self._VideoFps = VideoFps
+
+    @property
+    def AudioFps(self):
+        r"""音频帧率，单位fps。
+        :rtype: int
+        """
+        return self._AudioFps
+
+    @AudioFps.setter
+    def AudioFps(self, AudioFps):
+        self._AudioFps = AudioFps
+
+    @property
+    def VideoRate(self):
+        r"""视频码率，单位bps。
+        :rtype: int
+        """
+        return self._VideoRate
+
+    @VideoRate.setter
+    def VideoRate(self, VideoRate):
+        self._VideoRate = VideoRate
+
+    @property
+    def AudioRate(self):
+        r"""音频码率，单位bps。
+        :rtype: int
+        """
+        return self._AudioRate
+
+    @AudioRate.setter
+    def AudioRate(self, AudioRate):
+        self._AudioRate = AudioRate
+
+    @property
+    def StreamFlag(self):
+        r"""流标识。
+        :rtype: str
+        """
+        return self._StreamFlag
+
+    @StreamFlag.setter
+    def StreamFlag(self, StreamFlag):
+        self._StreamFlag = StreamFlag
+
+    @property
+    def Time(self):
+        r"""时间，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._VideoFps = params.get("VideoFps")
+        self._AudioFps = params.get("AudioFps")
+        self._VideoRate = params.get("VideoRate")
+        self._AudioRate = params.get("AudioRate")
+        self._StreamFlag = params.get("StreamFlag")
+        self._Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -205,42 +205,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateWxCloudBaseRunEnv(
-            self,
-            request: models.CreateWxCloudBaseRunEnvRequest,
-            opts: Dict = None,
-    ) -> models.CreateWxCloudBaseRunEnvResponse:
-        """
-        创建微信云托管
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateWxCloudBaseRunEnv"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateWxCloudBaseRunEnvResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateWxCloudBaseRunServerDBCluster(
-            self,
-            request: models.CreateWxCloudBaseRunServerDBClusterRequest,
-            opts: Dict = None,
-    ) -> models.CreateWxCloudBaseRunServerDBClusterResponse:
-        """
-        开通微信云托管MySQL数据库服务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateWxCloudBaseRunServerDBCluster"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateWxCloudBaseRunServerDBClusterResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteCloudBaseProjectLatestVersion(
             self,
             request: models.DeleteCloudBaseProjectLatestVersionRequest,
@@ -457,96 +421,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeCloudBaseRunAllVpcs(
-            self,
-            request: models.DescribeCloudBaseRunAllVpcsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunAllVpcsResponse:
-        """
-        查询环境下所有的vpc列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunAllVpcs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunAllVpcsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunConfForGateWay(
-            self,
-            request: models.DescribeCloudBaseRunConfForGateWayRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunConfForGateWayResponse:
-        """
-        独立网关中拉取云托管服务对应的配置信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunConfForGateWay"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunConfForGateWayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunOneClickTaskExternal(
-            self,
-            request: models.DescribeCloudBaseRunOneClickTaskExternalRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunOneClickTaskExternalResponse:
-        """
-        查询一键部署任务 （特定接口：外部查询使用）
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunOneClickTaskExternal"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunOneClickTaskExternalResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunOperationTypes(
-            self,
-            request: models.DescribeCloudBaseRunOperationTypesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunOperationTypesResponse:
-        """
-        查询服务、版本和操作类型
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunOperationTypes"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunOperationTypesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunPodList(
-            self,
-            request: models.DescribeCloudBaseRunPodListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunPodListResponse:
-        """
-        查询云托管服务版本容器列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunPodList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunPodListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeCloudBaseRunResource(
             self,
             request: models.DescribeCloudBaseRunResourceRequest,
@@ -601,24 +475,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeCloudBaseRunServerDomainName(
-            self,
-            request: models.DescribeCloudBaseRunServerDomainNameRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunServerDomainNameResponse:
-        """
-        查询微信云托管服务域名
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunServerDomainName"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunServerDomainNameResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeCloudBaseRunServerVersion(
             self,
             request: models.DescribeCloudBaseRunServerVersionRequest,
@@ -650,24 +506,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeCloudBaseRunVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudBaseRunVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunVersionRsByCondition(
-            self,
-            request: models.DescribeCloudBaseRunVersionRsByConditionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunVersionRsByConditionResponse:
-        """
-        DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunVersionRsByCondition"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunVersionRsByConditionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1055,42 +893,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeWxCloudBaseRunEnvs(
-            self,
-            request: models.DescribeWxCloudBaseRunEnvsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeWxCloudBaseRunEnvsResponse:
-        """
-        查询微信云托管环境信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeWxCloudBaseRunEnvs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeWxCloudBaseRunEnvsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeWxCloudBaseRunSubNets(
-            self,
-            request: models.DescribeWxCloudBaseRunSubNetsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeWxCloudBaseRunSubNetsResponse:
-        """
-        查询微信云托管子网
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeWxCloudBaseRunSubNets"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeWxCloudBaseRunSubNetsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeWxGatewayRoutes(
             self,
             request: models.DescribeWxGatewayRoutesRequest,
@@ -1374,24 +1176,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ReplaceActivityRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ReplaceActivityRecordResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RollUpdateCloudBaseRunServerVersion(
-            self,
-            request: models.RollUpdateCloudBaseRunServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.RollUpdateCloudBaseRunServerVersionResponse:
-        """
-        针对特定的版本，进行滚动更新
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RollUpdateCloudBaseRunServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RollUpdateCloudBaseRunServerVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

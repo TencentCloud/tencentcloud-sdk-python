@@ -878,6 +878,24 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCostSummaryByTag(
+            self,
+            request: models.DescribeCostSummaryByTagRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCostSummaryByTagResponse:
+        """
+        获取按标签汇总消耗详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCostSummaryByTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCostSummaryByTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDealsByCond(
             self,
             request: models.DescribeDealsByCondRequest,

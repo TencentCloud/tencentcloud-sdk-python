@@ -34686,9 +34686,12 @@ class QueryInternalTableWarehouseRequest(AbstractModel):
         :type DatabaseName: str
         :param _TableName: 表名
         :type TableName: str
+        :param _DatasourceConnectionName: catalog名称
+        :type DatasourceConnectionName: str
         """
         self._DatabaseName = None
         self._TableName = None
+        self._DatasourceConnectionName = None
 
     @property
     def DatabaseName(self):
@@ -34712,10 +34715,22 @@ class QueryInternalTableWarehouseRequest(AbstractModel):
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def DatasourceConnectionName(self):
+        r"""catalog名称
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
         self._TableName = params.get("TableName")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -49,6 +49,29 @@ class DbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBackupPlan(self, request):
+        r"""该接口用于创建备份计划。
+
+        :param request: Request instance for CreateBackupPlan.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.CreateBackupPlanRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.CreateBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConnectTestJob(self, request):
         r"""该接口用于创建连通性检测任务，请在创建备份计划前，通过该接口来检测你的源端实例是否连通性正常。
 
@@ -86,6 +109,52 @@ class DbsClient(AbstractClient):
             body = self.call("DescribeBackupCheckJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupPlans(self, request):
+        r"""本接口（DescribeBackupPlans）用于查询备份计划列表。
+
+        :param request: Request instance for DescribeBackupPlans.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeBackupPlansRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeBackupPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupPlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupPlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConnectTestResult(self, request):
+        r"""该接口用于查询连通性检测任务的结果
+
+        :param request: Request instance for DescribeConnectTestResult.
+        :type request: :class:`tencentcloud.dbs.v20211108.models.DescribeConnectTestResultRequest`
+        :rtype: :class:`tencentcloud.dbs.v20211108.models.DescribeConnectTestResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConnectTestResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConnectTestResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

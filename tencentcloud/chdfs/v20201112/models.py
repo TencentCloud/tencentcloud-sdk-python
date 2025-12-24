@@ -1447,9 +1447,12 @@ class DescribeAccessGroupsRequest(AbstractModel):
         :type VpcId: str
         :param _OwnerUin: 资源所属者Uin
         :type OwnerUin: int
+        :param _AccessGroupIdMarker: 起始权限组ID标记
+        :type AccessGroupIdMarker: str
         """
         self._VpcId = None
         self._OwnerUin = None
+        self._AccessGroupIdMarker = None
 
     @property
     def VpcId(self):
@@ -1474,10 +1477,22 @@ class DescribeAccessGroupsRequest(AbstractModel):
     def OwnerUin(self, OwnerUin):
         self._OwnerUin = OwnerUin
 
+    @property
+    def AccessGroupIdMarker(self):
+        r"""起始权限组ID标记
+        :rtype: str
+        """
+        return self._AccessGroupIdMarker
+
+    @AccessGroupIdMarker.setter
+    def AccessGroupIdMarker(self, AccessGroupIdMarker):
+        self._AccessGroupIdMarker = AccessGroupIdMarker
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._OwnerUin = params.get("OwnerUin")
+        self._AccessGroupIdMarker = params.get("AccessGroupIdMarker")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1497,10 +1512,16 @@ class DescribeAccessGroupsResponse(AbstractModel):
         r"""
         :param _AccessGroups: 权限组列表
         :type AccessGroups: list of AccessGroup
+        :param _IsOver: 标识是否已获取全量
+        :type IsOver: bool
+        :param _NextAccessGroupIdMarker: 下一次请求起始权限组ID标记
+        :type NextAccessGroupIdMarker: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AccessGroups = None
+        self._IsOver = None
+        self._NextAccessGroupIdMarker = None
         self._RequestId = None
 
     @property
@@ -1513,6 +1534,28 @@ class DescribeAccessGroupsResponse(AbstractModel):
     @AccessGroups.setter
     def AccessGroups(self, AccessGroups):
         self._AccessGroups = AccessGroups
+
+    @property
+    def IsOver(self):
+        r"""标识是否已获取全量
+        :rtype: bool
+        """
+        return self._IsOver
+
+    @IsOver.setter
+    def IsOver(self, IsOver):
+        self._IsOver = IsOver
+
+    @property
+    def NextAccessGroupIdMarker(self):
+        r"""下一次请求起始权限组ID标记
+        :rtype: str
+        """
+        return self._NextAccessGroupIdMarker
+
+    @NextAccessGroupIdMarker.setter
+    def NextAccessGroupIdMarker(self, NextAccessGroupIdMarker):
+        self._NextAccessGroupIdMarker = NextAccessGroupIdMarker
 
     @property
     def RequestId(self):
@@ -1533,6 +1576,8 @@ class DescribeAccessGroupsResponse(AbstractModel):
                 obj = AccessGroup()
                 obj._deserialize(item)
                 self._AccessGroups.append(obj)
+        self._IsOver = params.get("IsOver")
+        self._NextAccessGroupIdMarker = params.get("NextAccessGroupIdMarker")
         self._RequestId = params.get("RequestId")
 
 
@@ -1796,6 +1841,36 @@ class DescribeFileSystemsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _FileSystemIdMarker: 起始文件系统ID标记
+        :type FileSystemIdMarker: str
+        """
+        self._FileSystemIdMarker = None
+
+    @property
+    def FileSystemIdMarker(self):
+        r"""起始文件系统ID标记
+        :rtype: str
+        """
+        return self._FileSystemIdMarker
+
+    @FileSystemIdMarker.setter
+    def FileSystemIdMarker(self, FileSystemIdMarker):
+        self._FileSystemIdMarker = FileSystemIdMarker
+
+
+    def _deserialize(self, params):
+        self._FileSystemIdMarker = params.get("FileSystemIdMarker")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeFileSystemsResponse(AbstractModel):
     r"""DescribeFileSystems返回参数结构体
@@ -1806,10 +1881,16 @@ class DescribeFileSystemsResponse(AbstractModel):
         r"""
         :param _FileSystems: 文件系统列表
         :type FileSystems: list of FileSystem
+        :param _IsOver: 标识是否已获取全量
+        :type IsOver: bool
+        :param _NextFileSystemIdMarker: 下一次请求起始文件系统ID标记
+        :type NextFileSystemIdMarker: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FileSystems = None
+        self._IsOver = None
+        self._NextFileSystemIdMarker = None
         self._RequestId = None
 
     @property
@@ -1822,6 +1903,28 @@ class DescribeFileSystemsResponse(AbstractModel):
     @FileSystems.setter
     def FileSystems(self, FileSystems):
         self._FileSystems = FileSystems
+
+    @property
+    def IsOver(self):
+        r"""标识是否已获取全量
+        :rtype: bool
+        """
+        return self._IsOver
+
+    @IsOver.setter
+    def IsOver(self, IsOver):
+        self._IsOver = IsOver
+
+    @property
+    def NextFileSystemIdMarker(self):
+        r"""下一次请求起始文件系统ID标记
+        :rtype: str
+        """
+        return self._NextFileSystemIdMarker
+
+    @NextFileSystemIdMarker.setter
+    def NextFileSystemIdMarker(self, NextFileSystemIdMarker):
+        self._NextFileSystemIdMarker = NextFileSystemIdMarker
 
     @property
     def RequestId(self):
@@ -1842,6 +1945,8 @@ class DescribeFileSystemsResponse(AbstractModel):
                 obj = FileSystem()
                 obj._deserialize(item)
                 self._FileSystems.append(obj)
+        self._IsOver = params.get("IsOver")
+        self._NextFileSystemIdMarker = params.get("NextFileSystemIdMarker")
         self._RequestId = params.get("RequestId")
 
 
@@ -2219,8 +2324,11 @@ class DescribeRestoreTasksRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统ID
         :type FileSystemId: str
+        :param _RestoreTaskIdMarker: 起始回热任务ID标记
+        :type RestoreTaskIdMarker: int
         """
         self._FileSystemId = None
+        self._RestoreTaskIdMarker = None
 
     @property
     def FileSystemId(self):
@@ -2233,9 +2341,21 @@ class DescribeRestoreTasksRequest(AbstractModel):
     def FileSystemId(self, FileSystemId):
         self._FileSystemId = FileSystemId
 
+    @property
+    def RestoreTaskIdMarker(self):
+        r"""起始回热任务ID标记
+        :rtype: int
+        """
+        return self._RestoreTaskIdMarker
+
+    @RestoreTaskIdMarker.setter
+    def RestoreTaskIdMarker(self, RestoreTaskIdMarker):
+        self._RestoreTaskIdMarker = RestoreTaskIdMarker
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
+        self._RestoreTaskIdMarker = params.get("RestoreTaskIdMarker")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2255,10 +2375,16 @@ class DescribeRestoreTasksResponse(AbstractModel):
         r"""
         :param _RestoreTasks: 回热任务列表
         :type RestoreTasks: list of RestoreTask
+        :param _IsOver: 标识是否已获取全量
+        :type IsOver: bool
+        :param _NextRestoreTaskIdMarker: 下一次请求起始回热任务ID标记
+        :type NextRestoreTaskIdMarker: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RestoreTasks = None
+        self._IsOver = None
+        self._NextRestoreTaskIdMarker = None
         self._RequestId = None
 
     @property
@@ -2271,6 +2397,28 @@ class DescribeRestoreTasksResponse(AbstractModel):
     @RestoreTasks.setter
     def RestoreTasks(self, RestoreTasks):
         self._RestoreTasks = RestoreTasks
+
+    @property
+    def IsOver(self):
+        r"""标识是否已获取全量
+        :rtype: bool
+        """
+        return self._IsOver
+
+    @IsOver.setter
+    def IsOver(self, IsOver):
+        self._IsOver = IsOver
+
+    @property
+    def NextRestoreTaskIdMarker(self):
+        r"""下一次请求起始回热任务ID标记
+        :rtype: int
+        """
+        return self._NextRestoreTaskIdMarker
+
+    @NextRestoreTaskIdMarker.setter
+    def NextRestoreTaskIdMarker(self, NextRestoreTaskIdMarker):
+        self._NextRestoreTaskIdMarker = NextRestoreTaskIdMarker
 
     @property
     def RequestId(self):
@@ -2291,6 +2439,8 @@ class DescribeRestoreTasksResponse(AbstractModel):
                 obj = RestoreTask()
                 obj._deserialize(item)
                 self._RestoreTasks.append(obj)
+        self._IsOver = params.get("IsOver")
+        self._NextRestoreTaskIdMarker = params.get("NextRestoreTaskIdMarker")
         self._RequestId = params.get("RequestId")
 
 

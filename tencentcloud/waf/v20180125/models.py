@@ -9156,6 +9156,12 @@ class ClbObject(AbstractModel):
         :type ModifyTime: str
         :param _AddTime: 创建时间
         :type AddTime: str
+        :param _MemberAppId: 跨账号时，表示成员账号的appid
+        :type MemberAppId: int
+        :param _MemberUin: 跨账号时，表示成员账号的uin
+        :type MemberUin: str
+        :param _MemberNickName: 跨账号时，表示成员账号的昵称
+        :type MemberNickName: str
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -9182,6 +9188,9 @@ class ClbObject(AbstractModel):
         self._NumericalVpcId = None
         self._ModifyTime = None
         self._AddTime = None
+        self._MemberAppId = None
+        self._MemberUin = None
+        self._MemberNickName = None
 
     @property
     def ObjectId(self):
@@ -9458,6 +9467,39 @@ class ClbObject(AbstractModel):
     def AddTime(self, AddTime):
         self._AddTime = AddTime
 
+    @property
+    def MemberAppId(self):
+        r"""跨账号时，表示成员账号的appid
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""跨账号时，表示成员账号的uin
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberNickName(self):
+        r"""跨账号时，表示成员账号的昵称
+        :rtype: str
+        """
+        return self._MemberNickName
+
+    @MemberNickName.setter
+    def MemberNickName(self, MemberNickName):
+        self._MemberNickName = MemberNickName
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -9485,6 +9527,9 @@ class ClbObject(AbstractModel):
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._ModifyTime = params.get("ModifyTime")
         self._AddTime = params.get("AddTime")
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
+        self._MemberNickName = params.get("MemberNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22457,10 +22502,16 @@ class DescribeObjectsRequest(AbstractModel):
         :type Order: str
         :param _By: 根据哪个字段排序
         :type By: str
+        :param _MemberAppIdList: 集团成员列表
+        :type MemberAppIdList: list of int non-negative
+        :param _IsCrossAccount: 1代表跨账号情况，0代表单账号情况
+        :type IsCrossAccount: int
         """
         self._Filters = None
         self._Order = None
         self._By = None
+        self._MemberAppIdList = None
+        self._IsCrossAccount = None
 
     @property
     def Filters(self):
@@ -22495,6 +22546,28 @@ class DescribeObjectsRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def MemberAppIdList(self):
+        r"""集团成员列表
+        :rtype: list of int non-negative
+        """
+        return self._MemberAppIdList
+
+    @MemberAppIdList.setter
+    def MemberAppIdList(self, MemberAppIdList):
+        self._MemberAppIdList = MemberAppIdList
+
+    @property
+    def IsCrossAccount(self):
+        r"""1代表跨账号情况，0代表单账号情况
+        :rtype: int
+        """
+        return self._IsCrossAccount
+
+    @IsCrossAccount.setter
+    def IsCrossAccount(self, IsCrossAccount):
+        self._IsCrossAccount = IsCrossAccount
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -22505,6 +22578,8 @@ class DescribeObjectsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Order = params.get("Order")
         self._By = params.get("By")
+        self._MemberAppIdList = params.get("MemberAppIdList")
+        self._IsCrossAccount = params.get("IsCrossAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35756,6 +35831,10 @@ class LoadBalancer(AbstractModel):
         :type LoadBalancerType: str
         :param _LoadBalancerDomain: 负载均衡的域名
         :type LoadBalancerDomain: str
+        :param _MemberAppId: 监听器所属成员id
+        :type MemberAppId: int
+        :param _MemberUin: 监听器所属成员的uin
+        :type MemberUin: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -35769,6 +35848,8 @@ class LoadBalancer(AbstractModel):
         self._NumericalVpcId = None
         self._LoadBalancerType = None
         self._LoadBalancerDomain = None
+        self._MemberAppId = None
+        self._MemberUin = None
 
     @property
     def LoadBalancerId(self):
@@ -35902,6 +35983,28 @@ class LoadBalancer(AbstractModel):
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def MemberAppId(self):
+        r"""监听器所属成员id
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""监听器所属成员的uin
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -35916,6 +36019,8 @@ class LoadBalancer(AbstractModel):
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35986,6 +36091,14 @@ class LoadBalancerPackageNew(AbstractModel):
         :type LoadBalancerType: str
         :param _LoadBalancerDomain: 负载均衡器的域名
         :type LoadBalancerDomain: str
+        :param _MemberAppId: 监听器所属appid
+        :type MemberAppId: int
+        :param _MemberUin: 监听器自身所属uin
+        :type MemberUin: str
+        :param _Appid: 监听器被接入的waf账号
+        :type Appid: int
+        :param _MemberNickName: 集团账号昵称
+        :type MemberNickName: str
         """
         self._ListenerId = None
         self._ListenerName = None
@@ -35999,6 +36112,10 @@ class LoadBalancerPackageNew(AbstractModel):
         self._NumericalVpcId = None
         self._LoadBalancerType = None
         self._LoadBalancerDomain = None
+        self._MemberAppId = None
+        self._MemberUin = None
+        self._Appid = None
+        self._MemberNickName = None
 
     @property
     def ListenerId(self):
@@ -36161,6 +36278,50 @@ class LoadBalancerPackageNew(AbstractModel):
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def MemberAppId(self):
+        r"""监听器所属appid
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""监听器自身所属uin
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Appid(self):
+        r"""监听器被接入的waf账号
+        :rtype: int
+        """
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def MemberNickName(self):
+        r"""集团账号昵称
+        :rtype: str
+        """
+        return self._MemberNickName
+
+    @MemberNickName.setter
+    def MemberNickName(self, MemberNickName):
+        self._MemberNickName = MemberNickName
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -36175,6 +36336,10 @@ class LoadBalancerPackageNew(AbstractModel):
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
+        self._Appid = params.get("Appid")
+        self._MemberNickName = params.get("MemberNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42257,6 +42422,10 @@ class ModifyObjectRequest(AbstractModel):
         :type Proxy: int
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
         :type IpHeaders: list of str
+        :param _MemberAppId: 对象所属集团成员appid
+        :type MemberAppId: int
+        :param _MemberUin: 对象所属集团成员uin
+        :type MemberUin: str
         """
         self._ObjectId = None
         self._OpType = None
@@ -42264,6 +42433,8 @@ class ModifyObjectRequest(AbstractModel):
         self._InstanceId = None
         self._Proxy = None
         self._IpHeaders = None
+        self._MemberAppId = None
+        self._MemberUin = None
 
     @property
     def ObjectId(self):
@@ -42331,6 +42502,28 @@ class ModifyObjectRequest(AbstractModel):
     def IpHeaders(self, IpHeaders):
         self._IpHeaders = IpHeaders
 
+    @property
+    def MemberAppId(self):
+        r"""对象所属集团成员appid
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""对象所属集团成员uin
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -42339,6 +42532,8 @@ class ModifyObjectRequest(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Proxy = params.get("Proxy")
         self._IpHeaders = params.get("IpHeaders")
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

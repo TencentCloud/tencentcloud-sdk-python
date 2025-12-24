@@ -416,6 +416,9 @@ RESOURCEINSUFFICIENT_REQUESTREJECTION = 'ResourceInsufficient.RequestRejection'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 资源不存在。
+RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
+
 # 没有操作SdkAppId的权限。
 UNAUTHORIZEDOPERATION_SDKAPPID = 'UnauthorizedOperation.SdkAppId'
 

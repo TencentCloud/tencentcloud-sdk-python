@@ -368,6 +368,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTopologyNew(
+            self,
+            request: models.DescribeTopologyNewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopologyNewResponse:
+        """
+        根据应用名查询服务拓扑图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopologyNew"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopologyNewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyApmApplicationConfig(
             self,
             request: models.ModifyApmApplicationConfigRequest,

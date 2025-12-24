@@ -77,6 +77,9 @@ FAILEDOPERATION_DUPLICATESERVICE = 'FailedOperation.DuplicateService'
 # 请勿填写重复的标签名
 FAILEDOPERATION_DUPLICATETAGFIELD = 'FailedOperation.DuplicateTagField'
 
+# 拓扑图中心节点不存在。
+FAILEDOPERATION_FOCUSNODENOTFOUND = 'FailedOperation.FocusNodeNotFound'
+
 # 该业务系统不允许修改
 FAILEDOPERATION_INSTANCECANNOTMODIFY = 'FailedOperation.InstanceCannotModify'
 

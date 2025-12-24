@@ -611,6 +611,339 @@ class BackupPeriod(AbstractModel):
         
 
 
+class BackupPlanInfo(AbstractModel):
+    r"""备份计划信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域信息。
+        :type Region: str
+        :param _BackupPlanId: 备份计划 ID。
+        :type BackupPlanId: str
+        :param _BackupPlanName: 备份计划名称。
+        :type BackupPlanName: str
+        :param _Status: 备份计划状态。可能的取值为：
+"notStarted" - 未启动;
+"checking" - 校验中;
+"checkPass" - 校验通过;
+"checkNotPass" - 校验未通过;
+"running" - 运行中;
+"fullBacking" - 全量备份中;
+"isolating" - 隔离中;
+"isolated" - 已隔离;
+"offlining" - 下线中;
+"offlined" - 已下线;
+"paused" - 已暂停。
+        :type Status: str
+        :param _DatabaseType: 数据库类型。
+        :type DatabaseType: str
+        :param _AccessType: 访问类型。可能的取值为：
+"extranet" - 外网;
+"cvm" - cvm 自建实例;
+"dcg" - 专线接入;
+"vpncloud" - 云vpn接入;
+"cdb" - 腾讯云数据库实例;
+"ccn" - 云联网。
+        :type AccessType: str
+        :param _SourceInfo: 源实例信息。
+        :type SourceInfo: list of str
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _ExpireTime: 到期时间。
+        :type ExpireTime: str
+        :param _OfflineTime: 下线时间。
+        :type OfflineTime: str
+        :param _InstanceClass: 实例规格类型。可能的取值为：["micro", "small", "medium", "large", "xlarge"]。
+        :type InstanceClass: str
+        :param _BackupMethod: 备份方式。可能的取值为：
+"logical" - 逻辑备份;
+"physical" - 物理备份。
+        :type BackupMethod: str
+        :param _Tags: 标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _AutoRenewFlag: 自动续费标记。可能的取值为：
+0 - 未开启自动续费;
+1 - 已开启自动续费;
+2 - 已关闭自动续费。
+        :type AutoRenewFlag: int
+        :param _EnableIncrement: 是否开启增量备份标记。
+        :type EnableIncrement: bool
+        :param _PayType: 付费类型。可能的取值为：
+"prePay" - 预付费类型;
+"postPay" - 后付费类型。
+        :type PayType: str
+        :param _SetSourceInfo: 源端信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetSourceInfo: list of str
+        """
+        self._Region = None
+        self._BackupPlanId = None
+        self._BackupPlanName = None
+        self._Status = None
+        self._DatabaseType = None
+        self._AccessType = None
+        self._SourceInfo = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._InstanceClass = None
+        self._BackupMethod = None
+        self._Tags = None
+        self._AutoRenewFlag = None
+        self._EnableIncrement = None
+        self._PayType = None
+        self._SetSourceInfo = None
+
+    @property
+    def Region(self):
+        r"""地域信息。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BackupPlanId(self):
+        r"""备份计划 ID。
+        :rtype: str
+        """
+        return self._BackupPlanId
+
+    @BackupPlanId.setter
+    def BackupPlanId(self, BackupPlanId):
+        self._BackupPlanId = BackupPlanId
+
+    @property
+    def BackupPlanName(self):
+        r"""备份计划名称。
+        :rtype: str
+        """
+        return self._BackupPlanName
+
+    @BackupPlanName.setter
+    def BackupPlanName(self, BackupPlanName):
+        self._BackupPlanName = BackupPlanName
+
+    @property
+    def Status(self):
+        r"""备份计划状态。可能的取值为：
+"notStarted" - 未启动;
+"checking" - 校验中;
+"checkPass" - 校验通过;
+"checkNotPass" - 校验未通过;
+"running" - 运行中;
+"fullBacking" - 全量备份中;
+"isolating" - 隔离中;
+"isolated" - 已隔离;
+"offlining" - 下线中;
+"offlined" - 已下线;
+"paused" - 已暂停。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DatabaseType(self):
+        r"""数据库类型。
+        :rtype: str
+        """
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def AccessType(self):
+        r"""访问类型。可能的取值为：
+"extranet" - 外网;
+"cvm" - cvm 自建实例;
+"dcg" - 专线接入;
+"vpncloud" - 云vpn接入;
+"cdb" - 腾讯云数据库实例;
+"ccn" - 云联网。
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def SourceInfo(self):
+        r"""源实例信息。
+        :rtype: list of str
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        r"""到期时间。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        r"""下线时间。
+        :rtype: str
+        """
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def InstanceClass(self):
+        r"""实例规格类型。可能的取值为：["micro", "small", "medium", "large", "xlarge"]。
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def BackupMethod(self):
+        r"""备份方式。可能的取值为：
+"logical" - 逻辑备份;
+"physical" - 物理备份。
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def Tags(self):
+        r"""标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenewFlag(self):
+        r"""自动续费标记。可能的取值为：
+0 - 未开启自动续费;
+1 - 已开启自动续费;
+2 - 已关闭自动续费。
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def EnableIncrement(self):
+        r"""是否开启增量备份标记。
+        :rtype: bool
+        """
+        return self._EnableIncrement
+
+    @EnableIncrement.setter
+    def EnableIncrement(self, EnableIncrement):
+        self._EnableIncrement = EnableIncrement
+
+    @property
+    def PayType(self):
+        r"""付费类型。可能的取值为：
+"prePay" - 预付费类型;
+"postPay" - 后付费类型。
+        :rtype: str
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def SetSourceInfo(self):
+        r"""源端信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SetSourceInfo
+
+    @SetSourceInfo.setter
+    def SetSourceInfo(self, SetSourceInfo):
+        self._SetSourceInfo = SetSourceInfo
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._BackupPlanId = params.get("BackupPlanId")
+        self._BackupPlanName = params.get("BackupPlanName")
+        self._Status = params.get("Status")
+        self._DatabaseType = params.get("DatabaseType")
+        self._AccessType = params.get("AccessType")
+        self._SourceInfo = params.get("SourceInfo")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._InstanceClass = params.get("InstanceClass")
+        self._BackupMethod = params.get("BackupMethod")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._EnableIncrement = params.get("EnableIncrement")
+        self._PayType = params.get("PayType")
+        self._SetSourceInfo = params.get("SetSourceInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupStrategy(AbstractModel):
     r"""备份策略
 
@@ -816,6 +1149,8 @@ class ConfigureBackupPlanRequest(AbstractModel):
         :type BackupPlanId: str
         :param _BackupPlanName: 备份计划名称。支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
         :type BackupPlanName: str
+        :param _UpperParallel: 全量备份并发数上限。
+        :type UpperParallel: int
         :param _SourceEndPoint: 备份源实例信息。
         :type SourceEndPoint: :class:`tencentcloud.dbs.v20211108.models.BackupEndpoint`
         :param _BackupObject: 备份对象信息。
@@ -827,6 +1162,7 @@ class ConfigureBackupPlanRequest(AbstractModel):
         """
         self._BackupPlanId = None
         self._BackupPlanName = None
+        self._UpperParallel = None
         self._SourceEndPoint = None
         self._BackupObject = None
         self._BackupStrategy = None
@@ -853,6 +1189,17 @@ class ConfigureBackupPlanRequest(AbstractModel):
     @BackupPlanName.setter
     def BackupPlanName(self, BackupPlanName):
         self._BackupPlanName = BackupPlanName
+
+    @property
+    def UpperParallel(self):
+        r"""全量备份并发数上限。
+        :rtype: int
+        """
+        return self._UpperParallel
+
+    @UpperParallel.setter
+    def UpperParallel(self, UpperParallel):
+        self._UpperParallel = UpperParallel
 
     @property
     def SourceEndPoint(self):
@@ -902,6 +1249,7 @@ class ConfigureBackupPlanRequest(AbstractModel):
     def _deserialize(self, params):
         self._BackupPlanId = params.get("BackupPlanId")
         self._BackupPlanName = params.get("BackupPlanName")
+        self._UpperParallel = params.get("UpperParallel")
         if params.get("SourceEndPoint") is not None:
             self._SourceEndPoint = BackupEndpoint()
             self._SourceEndPoint._deserialize(params.get("SourceEndPoint"))
@@ -947,6 +1295,328 @@ class ConfigureBackupPlanResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ConnectTestResult(AbstractModel):
+    r"""连通性检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: int
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        :param _IsPass: <p>是否通过。0 表示未通过，1 表示通过。</p>
+        :type IsPass: int
+        :param _Addr: <p>源端地址</p>
+        :type Addr: str
+        :param _SNatIp: <p>源地址转换IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SNatIp: str
+        :param _TestItems: <p>检测结果集</p>
+        :type TestItems: list of TestItem
+        """
+        self._TaskId = None
+        self._Status = None
+        self._IsPass = None
+        self._Addr = None
+        self._SNatIp = None
+        self._TestItems = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsPass(self):
+        r"""<p>是否通过。0 表示未通过，1 表示通过。</p>
+        :rtype: int
+        """
+        return self._IsPass
+
+    @IsPass.setter
+    def IsPass(self, IsPass):
+        self._IsPass = IsPass
+
+    @property
+    def Addr(self):
+        r"""<p>源端地址</p>
+        :rtype: str
+        """
+        return self._Addr
+
+    @Addr.setter
+    def Addr(self, Addr):
+        self._Addr = Addr
+
+    @property
+    def SNatIp(self):
+        r"""<p>源地址转换IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SNatIp
+
+    @SNatIp.setter
+    def SNatIp(self, SNatIp):
+        self._SNatIp = SNatIp
+
+    @property
+    def TestItems(self):
+        r"""<p>检测结果集</p>
+        :rtype: list of TestItem
+        """
+        return self._TestItems
+
+    @TestItems.setter
+    def TestItems(self, TestItems):
+        self._TestItems = TestItems
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._IsPass = params.get("IsPass")
+        self._Addr = params.get("Addr")
+        self._SNatIp = params.get("SNatIp")
+        if params.get("TestItems") is not None:
+            self._TestItems = []
+            for item in params.get("TestItems"):
+                obj = TestItem()
+                obj._deserialize(item)
+                self._TestItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupPlanRequest(AbstractModel):
+    r"""CreateBackupPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseType: 源端数据库类型。当前支持值为: ["mysql","cynosdbmysql","percona","mariadb","tdsqlmysql"]。
+        :type DatabaseType: str
+        :param _BackupMethod: 备份方式。当前仅支持"logical"，即逻辑备份。
+        :type BackupMethod: str
+        :param _InstanceClass: 规格。当前支持值为: ["micro","small","medium","large","xlarge"]。默认为"small"。
+        :type InstanceClass: str
+        :param _Period: 购买时长，单位为月，默认值为1。
+        :type Period: int
+        :param _PayType: 计费模式。当前仅支持"prepay"，即包年包月。
+        :type PayType: str
+        :param _Count: 购买数量。取值范围为[1, 10]，默认值为1。
+        :type Count: int
+        :param _AutoRenew: 自动续费标识。1 - 开启自动续费；0 - 不开启自动续费。
+        :type AutoRenew: int
+        :param _Tags: 标签值。
+        :type Tags: list of Tag
+        """
+        self._DatabaseType = None
+        self._BackupMethod = None
+        self._InstanceClass = None
+        self._Period = None
+        self._PayType = None
+        self._Count = None
+        self._AutoRenew = None
+        self._Tags = None
+
+    @property
+    def DatabaseType(self):
+        r"""源端数据库类型。当前支持值为: ["mysql","cynosdbmysql","percona","mariadb","tdsqlmysql"]。
+        :rtype: str
+        """
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def BackupMethod(self):
+        r"""备份方式。当前仅支持"logical"，即逻辑备份。
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def InstanceClass(self):
+        r"""规格。当前支持值为: ["micro","small","medium","large","xlarge"]。默认为"small"。
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def Period(self):
+        r"""购买时长，单位为月，默认值为1。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def PayType(self):
+        r"""计费模式。当前仅支持"prepay"，即包年包月。
+        :rtype: str
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Count(self):
+        r"""购买数量。取值范围为[1, 10]，默认值为1。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AutoRenew(self):
+        r"""自动续费标识。1 - 开启自动续费；0 - 不开启自动续费。
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Tags(self):
+        r"""标签值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DatabaseType = params.get("DatabaseType")
+        self._BackupMethod = params.get("BackupMethod")
+        self._InstanceClass = params.get("InstanceClass")
+        self._Period = params.get("Period")
+        self._PayType = params.get("PayType")
+        self._Count = params.get("Count")
+        self._AutoRenew = params.get("AutoRenew")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupPlanResponse(AbstractModel):
+    r"""CreateBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单参数。
+        :type OrderId: str
+        :param _BackupPlanIds: 资源ID。
+        :type BackupPlanIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._BackupPlanIds = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        r"""订单参数。
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BackupPlanIds(self):
+        r"""资源ID。
+        :rtype: list of str
+        """
+        return self._BackupPlanIds
+
+    @BackupPlanIds.setter
+    def BackupPlanIds(self, BackupPlanIds):
+        self._BackupPlanIds = BackupPlanIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._BackupPlanIds = params.get("BackupPlanIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -1155,6 +1825,314 @@ class DescribeBackupCheckJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupPlansRequest(AbstractModel):
+    r"""DescribeBackupPlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupPlanId: 过滤条件，备份计划 ID。
+        :type BackupPlanId: str
+        :param _Status: 过滤条件，备份计划状态。
+        :type Status: list of str
+        :param _DatabaseType: 过滤条件，数据库类型。
+        :type DatabaseType: list of str
+        :param _AccessType: 过滤条件，接入访问类型。
+        :type AccessType: list of str
+        :param _BackupPlanName: 过滤条件，备份计划名称。
+        :type BackupPlanName: str
+        :param _TagFilters: 过滤条件，标签键值。
+        :type TagFilters: list of TagFilter
+        :param _Limit: 分页参数。取值范围为(0, 100]，默认值为20。
+        :type Limit: int
+        :param _Offset: 分页参数。默认值为0。
+        :type Offset: int
+        """
+        self._BackupPlanId = None
+        self._Status = None
+        self._DatabaseType = None
+        self._AccessType = None
+        self._BackupPlanName = None
+        self._TagFilters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def BackupPlanId(self):
+        r"""过滤条件，备份计划 ID。
+        :rtype: str
+        """
+        return self._BackupPlanId
+
+    @BackupPlanId.setter
+    def BackupPlanId(self, BackupPlanId):
+        self._BackupPlanId = BackupPlanId
+
+    @property
+    def Status(self):
+        r"""过滤条件，备份计划状态。
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DatabaseType(self):
+        r"""过滤条件，数据库类型。
+        :rtype: list of str
+        """
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def AccessType(self):
+        r"""过滤条件，接入访问类型。
+        :rtype: list of str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def BackupPlanName(self):
+        r"""过滤条件，备份计划名称。
+        :rtype: str
+        """
+        return self._BackupPlanName
+
+    @BackupPlanName.setter
+    def BackupPlanName(self, BackupPlanName):
+        self._BackupPlanName = BackupPlanName
+
+    @property
+    def TagFilters(self):
+        r"""过滤条件，标签键值。
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def Limit(self):
+        r"""分页参数。取值范围为(0, 100]，默认值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页参数。默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._BackupPlanId = params.get("BackupPlanId")
+        self._Status = params.get("Status")
+        self._DatabaseType = params.get("DatabaseType")
+        self._AccessType = params.get("AccessType")
+        self._BackupPlanName = params.get("BackupPlanName")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupPlansResponse(AbstractModel):
+    r"""DescribeBackupPlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 备份计划数量。
+        :type TotalCount: int
+        :param _Items: 备份计划详情。
+        :type Items: list of BackupPlanInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""备份计划数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""备份计划详情。
+        :rtype: list of BackupPlanInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = BackupPlanInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConnectTestResultRequest(AbstractModel):
+    r"""DescribeConnectTestResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: <p>连通性检测任务 ID。</p>
+        :type TaskIds: list of int
+        """
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        r"""<p>连通性检测任务 ID。</p>
+        :rtype: list of int
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectTestResultResponse(AbstractModel):
+    r"""DescribeConnectTestResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>任务总数。</p>
+        :type TotalCount: int
+        :param _Items: <p>检测结果详情。</p>
+        :type Items: list of ConnectTestResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>任务总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>检测结果详情。</p>
+        :rtype: list of ConnectTestResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConnectTestResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class StartBackupCheckJobRequest(AbstractModel):
     r"""StartBackupCheckJob请求参数结构体
 
@@ -1345,6 +2323,174 @@ class StorageStrategy(AbstractModel):
         self._StorageType = params.get("StorageType")
         self._Encryption = params.get("Encryption")
         self._BackupRetentionPeriod = params.get("BackupRetentionPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键。
+        :type TagKey: str
+        :param _TagValue: 标签值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagFilter(AbstractModel):
+    r"""标签过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键。
+        :type TagKey: str
+        :param _TagValue: 标签值。
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值。
+        :rtype: list of str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestItem(AbstractModel):
+    r"""检测步骤详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TestName: <p>检测步骤名称</p>
+        :type TestName: str
+        :param _Code: <p>错误码</p>
+        :type Code: int
+        :param _Message: <p>错误信息</p>
+        :type Message: str
+        """
+        self._TestName = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def TestName(self):
+        r"""<p>检测步骤名称</p>
+        :rtype: str
+        """
+        return self._TestName
+
+    @TestName.setter
+    def TestName(self, TestName):
+        self._TestName = TestName
+
+    @property
+    def Code(self):
+        r"""<p>错误码</p>
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._TestName = params.get("TestName")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

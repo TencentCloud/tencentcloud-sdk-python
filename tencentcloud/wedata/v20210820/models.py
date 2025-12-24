@@ -1885,6 +1885,164 @@ class AlarmExtDsVO(AbstractModel):
         
 
 
+class AlarmGroup(AbstractModel):
+    r"""告警分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmWays: 告警方式,1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群；告警方式code列表（默认1.邮件）
+        :type AlarmWays: list of str
+        :param _AlarmRecipientType: 告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）
+        :type AlarmRecipientType: int
+        :param _AlarmRecipients: 告警接收人
+        :type AlarmRecipients: list of str
+        :param _AlarmRecipientIds: 告警接收人ID
+        :type AlarmRecipientIds: list of str
+        :param _AlarmEscalationRecipients: 告警升级人
+        :type AlarmEscalationRecipients: list of str
+        :param _AlarmEscalationRecipientIds: 告警升级人ID
+        :type AlarmEscalationRecipientIds: list of str
+        :param _AlarmEscalationInterval: 告警升级间隔
+        :type AlarmEscalationInterval: int
+        :param _NotificationFatigue: 告警通知疲劳度配置。
+        :type NotificationFatigue: :class:`tencentcloud.wedata.v20210820.models.NotificationFatigue`
+        :param _AlarmMessageRule: 告警渠道规则 json 格式
+        :type AlarmMessageRule: str
+        """
+        self._AlarmWays = None
+        self._AlarmRecipientType = None
+        self._AlarmRecipients = None
+        self._AlarmRecipientIds = None
+        self._AlarmEscalationRecipients = None
+        self._AlarmEscalationRecipientIds = None
+        self._AlarmEscalationInterval = None
+        self._NotificationFatigue = None
+        self._AlarmMessageRule = None
+
+    @property
+    def AlarmWays(self):
+        r"""告警方式,1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群；告警方式code列表（默认1.邮件）
+        :rtype: list of str
+        """
+        return self._AlarmWays
+
+    @AlarmWays.setter
+    def AlarmWays(self, AlarmWays):
+        self._AlarmWays = AlarmWays
+
+    @property
+    def AlarmRecipientType(self):
+        r"""告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）
+        :rtype: int
+        """
+        return self._AlarmRecipientType
+
+    @AlarmRecipientType.setter
+    def AlarmRecipientType(self, AlarmRecipientType):
+        self._AlarmRecipientType = AlarmRecipientType
+
+    @property
+    def AlarmRecipients(self):
+        r"""告警接收人
+        :rtype: list of str
+        """
+        return self._AlarmRecipients
+
+    @AlarmRecipients.setter
+    def AlarmRecipients(self, AlarmRecipients):
+        self._AlarmRecipients = AlarmRecipients
+
+    @property
+    def AlarmRecipientIds(self):
+        r"""告警接收人ID
+        :rtype: list of str
+        """
+        return self._AlarmRecipientIds
+
+    @AlarmRecipientIds.setter
+    def AlarmRecipientIds(self, AlarmRecipientIds):
+        self._AlarmRecipientIds = AlarmRecipientIds
+
+    @property
+    def AlarmEscalationRecipients(self):
+        r"""告警升级人
+        :rtype: list of str
+        """
+        return self._AlarmEscalationRecipients
+
+    @AlarmEscalationRecipients.setter
+    def AlarmEscalationRecipients(self, AlarmEscalationRecipients):
+        self._AlarmEscalationRecipients = AlarmEscalationRecipients
+
+    @property
+    def AlarmEscalationRecipientIds(self):
+        r"""告警升级人ID
+        :rtype: list of str
+        """
+        return self._AlarmEscalationRecipientIds
+
+    @AlarmEscalationRecipientIds.setter
+    def AlarmEscalationRecipientIds(self, AlarmEscalationRecipientIds):
+        self._AlarmEscalationRecipientIds = AlarmEscalationRecipientIds
+
+    @property
+    def AlarmEscalationInterval(self):
+        r"""告警升级间隔
+        :rtype: int
+        """
+        return self._AlarmEscalationInterval
+
+    @AlarmEscalationInterval.setter
+    def AlarmEscalationInterval(self, AlarmEscalationInterval):
+        self._AlarmEscalationInterval = AlarmEscalationInterval
+
+    @property
+    def NotificationFatigue(self):
+        r"""告警通知疲劳度配置。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.NotificationFatigue`
+        """
+        return self._NotificationFatigue
+
+    @NotificationFatigue.setter
+    def NotificationFatigue(self, NotificationFatigue):
+        self._NotificationFatigue = NotificationFatigue
+
+    @property
+    def AlarmMessageRule(self):
+        r"""告警渠道规则 json 格式
+        :rtype: str
+        """
+        return self._AlarmMessageRule
+
+    @AlarmMessageRule.setter
+    def AlarmMessageRule(self, AlarmMessageRule):
+        self._AlarmMessageRule = AlarmMessageRule
+
+
+    def _deserialize(self, params):
+        self._AlarmWays = params.get("AlarmWays")
+        self._AlarmRecipientType = params.get("AlarmRecipientType")
+        self._AlarmRecipients = params.get("AlarmRecipients")
+        self._AlarmRecipientIds = params.get("AlarmRecipientIds")
+        self._AlarmEscalationRecipients = params.get("AlarmEscalationRecipients")
+        self._AlarmEscalationRecipientIds = params.get("AlarmEscalationRecipientIds")
+        self._AlarmEscalationInterval = params.get("AlarmEscalationInterval")
+        if params.get("NotificationFatigue") is not None:
+            self._NotificationFatigue = NotificationFatigue()
+            self._NotificationFatigue._deserialize(params.get("NotificationFatigue"))
+        self._AlarmMessageRule = params.get("AlarmMessageRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmIndicatorInfo(AbstractModel):
     r"""告警指标
 
@@ -2282,6 +2440,78 @@ class AlarmInfo(AbstractModel):
         self._TriggerType = params.get("TriggerType")
         self._AlarmId = params.get("AlarmId")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmQuietInterval(AbstractModel):
+    r"""告警免打扰时间区间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DaysOfWeek: ISO标准，1表示周一，7表示周日。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DaysOfWeek: list of int
+        :param _StartTime: 开始时间，精度时分秒，格式 HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间，精度时分秒，格式 HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._DaysOfWeek = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DaysOfWeek(self):
+        r"""ISO标准，1表示周一，7表示周日。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._DaysOfWeek
+
+    @DaysOfWeek.setter
+    def DaysOfWeek(self, DaysOfWeek):
+        self._DaysOfWeek = DaysOfWeek
+
+    @property
+    def StartTime(self):
+        r"""开始时间，精度时分秒，格式 HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，精度时分秒，格式 HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DaysOfWeek = params.get("DaysOfWeek")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3868,6 +4098,78 @@ class AttributeItemDsVO(AbstractModel):
     @property
     def Description(self):
         r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttributeItemOpsDto(AbstractModel):
+    r"""任务扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 属性键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Description: 属性描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        r"""属性键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        r"""属性描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19535,6 +19837,9 @@ class DatabaseInfo(AbstractModel):
         :param _SchemaName: 模式名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
+        :param _ShowEnableCatalog: 是否展示目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShowEnableCatalog: bool
         """
         self._DatasourceName = None
         self._DatasourceId = None
@@ -19547,6 +19852,7 @@ class DatabaseInfo(AbstractModel):
         self._DsEnvType = None
         self._ClusterDeployType = None
         self._SchemaName = None
+        self._ShowEnableCatalog = None
 
     @property
     def DatasourceName(self):
@@ -19680,6 +19986,18 @@ class DatabaseInfo(AbstractModel):
     def SchemaName(self, SchemaName):
         self._SchemaName = SchemaName
 
+    @property
+    def ShowEnableCatalog(self):
+        r"""是否展示目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ShowEnableCatalog
+
+    @ShowEnableCatalog.setter
+    def ShowEnableCatalog(self, ShowEnableCatalog):
+        self._ShowEnableCatalog = ShowEnableCatalog
+
 
     def _deserialize(self, params):
         self._DatasourceName = params.get("DatasourceName")
@@ -19693,6 +20011,7 @@ class DatabaseInfo(AbstractModel):
         self._DsEnvType = params.get("DsEnvType")
         self._ClusterDeployType = params.get("ClusterDeployType")
         self._SchemaName = params.get("SchemaName")
+        self._ShowEnableCatalog = params.get("ShowEnableCatalog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39251,9 +39570,15 @@ class DescribeRuleExecResultsRequest(AbstractModel):
         :type RuleGroupExecId: int
         :param _ProjectId: 项目Id
         :type ProjectId: str
+        :param _Filters: 过滤条件	
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段
+        :type OrderFields: list of OrderField
         """
         self._RuleGroupExecId = None
         self._ProjectId = None
+        self._Filters = None
+        self._OrderFields = None
 
     @property
     def RuleGroupExecId(self):
@@ -39277,10 +39602,44 @@ class DescribeRuleExecResultsRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Filters(self):
+        r"""过滤条件	
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
 
     def _deserialize(self, params):
         self._RuleGroupExecId = params.get("RuleGroupExecId")
         self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62458,6 +62817,18 @@ class InstanceOpsDto(AbstractModel):
         :type InstanceSchedulerDesc: str
         :param _Privileges: 当前用户对该实例的权限列表
         :type Privileges: list of str
+        :param _TaskExecutionId: 任务执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExecutionId: str
+        :param _DlcTaskId: dlc taskid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcTaskId: str
+        :param _DlcSparkJobId: dlc jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcSparkJobId: str
+        :param _Ext: 扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
         """
         self._TaskId = None
         self._TaskName = None
@@ -62527,6 +62898,10 @@ class InstanceOpsDto(AbstractModel):
         self._InstanceCycleType = None
         self._InstanceSchedulerDesc = None
         self._Privileges = None
+        self._TaskExecutionId = None
+        self._DlcTaskId = None
+        self._DlcSparkJobId = None
+        self._Ext = None
 
     @property
     def TaskId(self):
@@ -63340,6 +63715,54 @@ class InstanceOpsDto(AbstractModel):
     def Privileges(self, Privileges):
         self._Privileges = Privileges
 
+    @property
+    def TaskExecutionId(self):
+        r"""任务执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskExecutionId
+
+    @TaskExecutionId.setter
+    def TaskExecutionId(self, TaskExecutionId):
+        self._TaskExecutionId = TaskExecutionId
+
+    @property
+    def DlcTaskId(self):
+        r"""dlc taskid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DlcTaskId
+
+    @DlcTaskId.setter
+    def DlcTaskId(self, DlcTaskId):
+        self._DlcTaskId = DlcTaskId
+
+    @property
+    def DlcSparkJobId(self):
+        r"""dlc jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DlcSparkJobId
+
+    @DlcSparkJobId.setter
+    def DlcSparkJobId(self, DlcSparkJobId):
+        self._DlcSparkJobId = DlcSparkJobId
+
+    @property
+    def Ext(self):
+        r"""扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
+        """
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -63424,6 +63847,12 @@ class InstanceOpsDto(AbstractModel):
         self._InstanceCycleType = params.get("InstanceCycleType")
         self._InstanceSchedulerDesc = params.get("InstanceSchedulerDesc")
         self._Privileges = params.get("Privileges")
+        self._TaskExecutionId = params.get("TaskExecutionId")
+        self._DlcTaskId = params.get("DlcTaskId")
+        self._DlcSparkJobId = params.get("DlcSparkJobId")
+        if params.get("Ext") is not None:
+            self._Ext = StrToStrMap()
+            self._Ext._deserialize(params.get("Ext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67088,6 +67517,201 @@ class KillScheduleInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LabelTag(AbstractModel):
+    r"""资产标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: 标签id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: int
+        :param _TagName: 标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param _TagDesc: 标签描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagDesc: str
+        :param _TagValueId: 标签值Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValueId: int
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        :param _TagIsDeleted: 标签是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagIsDeleted: bool
+        :param _TagValueIsDeleted: 标签值是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValueIsDeleted: bool
+        """
+        self._TagId = None
+        self._TagName = None
+        self._TagDesc = None
+        self._TagValueId = None
+        self._TagValue = None
+        self._TagIsDeleted = None
+        self._TagValueIsDeleted = None
+
+    @property
+    def TagId(self):
+        r"""标签id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def TagName(self):
+        r"""标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def TagDesc(self):
+        r"""标签描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagDesc
+
+    @TagDesc.setter
+    def TagDesc(self, TagDesc):
+        self._TagDesc = TagDesc
+
+    @property
+    def TagValueId(self):
+        r"""标签值Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TagValueId
+
+    @TagValueId.setter
+    def TagValueId(self, TagValueId):
+        self._TagValueId = TagValueId
+
+    @property
+    def TagValue(self):
+        r"""标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def TagIsDeleted(self):
+        r"""标签是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TagIsDeleted
+
+    @TagIsDeleted.setter
+    def TagIsDeleted(self, TagIsDeleted):
+        self._TagIsDeleted = TagIsDeleted
+
+    @property
+    def TagValueIsDeleted(self):
+        r"""标签值是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TagValueIsDeleted
+
+    @TagValueIsDeleted.setter
+    def TagValueIsDeleted(self, TagValueIsDeleted):
+        self._TagValueIsDeleted = TagValueIsDeleted
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        self._TagName = params.get("TagName")
+        self._TagDesc = params.get("TagDesc")
+        self._TagValueId = params.get("TagValueId")
+        self._TagValue = params.get("TagValue")
+        self._TagIsDeleted = params.get("TagIsDeleted")
+        self._TagValueIsDeleted = params.get("TagValueIsDeleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelValueSelection(AbstractModel):
+    r"""标签值选择列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: 标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelId: int
+        :param _LabelValue: 标签值ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        """
+        self._LabelId = None
+        self._LabelValue = None
+
+    @property
+    def LabelId(self):
+        r"""标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelValue(self):
+        r"""标签值ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        self._LabelValue = params.get("LabelValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LifecycleInfo(AbstractModel):
     r"""表生命周期相关信息
 
@@ -69535,6 +70159,108 @@ class MQPackageVO(AbstractModel):
         
 
 
+class MakePlanAlarmRule(AbstractModel):
+    r"""补录计划告警规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmLevel: 告警的级别
+1 -- 普通
+2 -- 重要
+3 -- 紧急
+        :type AlarmLevel: int
+        :param _AlarmTypes: 告警的类型，补录计划支持：
+start：启动告警
+failure：失败告警
+success：成功告警
+overtime：超过配置时间告警
+
+        :type AlarmTypes: list of str
+        :param _ExtInfo: 告警超时时间
+        :type ExtInfo: str
+        :param _AlarmGroup: 告警接受人 升级人配置信息
+        :type AlarmGroup: list of AlarmGroup
+        """
+        self._AlarmLevel = None
+        self._AlarmTypes = None
+        self._ExtInfo = None
+        self._AlarmGroup = None
+
+    @property
+    def AlarmLevel(self):
+        r"""告警的级别
+1 -- 普通
+2 -- 重要
+3 -- 紧急
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmTypes(self):
+        r"""告警的类型，补录计划支持：
+start：启动告警
+failure：失败告警
+success：成功告警
+overtime：超过配置时间告警
+
+        :rtype: list of str
+        """
+        return self._AlarmTypes
+
+    @AlarmTypes.setter
+    def AlarmTypes(self, AlarmTypes):
+        self._AlarmTypes = AlarmTypes
+
+    @property
+    def ExtInfo(self):
+        r"""告警超时时间
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def AlarmGroup(self):
+        r"""告警接受人 升级人配置信息
+        :rtype: list of AlarmGroup
+        """
+        return self._AlarmGroup
+
+    @AlarmGroup.setter
+    def AlarmGroup(self, AlarmGroup):
+        self._AlarmGroup = AlarmGroup
+
+
+    def _deserialize(self, params):
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmTypes = params.get("AlarmTypes")
+        self._ExtInfo = params.get("ExtInfo")
+        if params.get("AlarmGroup") is not None:
+            self._AlarmGroup = []
+            for item in params.get("AlarmGroup"):
+                obj = AlarmGroup()
+                obj._deserialize(item)
+                self._AlarmGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MakePlanInstanceOpsDtoCollection(AbstractModel):
     r"""补录计划实例集合
 
@@ -69766,6 +70492,22 @@ REVERSE： 实例数据时间逆序
         :param _TimeType: 补录计划时间范围的类型： 
 DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
         :type TimeType: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _FailurePercent: 失败百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailurePercent: int
+        :param _AlarmRule: 补录计划的告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRule: :class:`tencentcloud.wedata.v20210820.models.MakePlanAlarmRule`
+        :param _RunType: 运行类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunType: int
+        :param _RunDateTime: 定时运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunDateTime: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -69798,6 +70540,12 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
         self._ScheduleTimeZone = None
         self._AppParam = None
         self._TimeType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FailurePercent = None
+        self._AlarmRule = None
+        self._RunType = None
+        self._RunDateTime = None
 
     @property
     def PlanId(self):
@@ -70174,6 +70922,76 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
     def TimeType(self, TimeType):
         self._TimeType = TimeType
 
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FailurePercent(self):
+        r"""失败百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailurePercent
+
+    @FailurePercent.setter
+    def FailurePercent(self, FailurePercent):
+        self._FailurePercent = FailurePercent
+
+    @property
+    def AlarmRule(self):
+        r"""补录计划的告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MakePlanAlarmRule`
+        """
+        return self._AlarmRule
+
+    @AlarmRule.setter
+    def AlarmRule(self, AlarmRule):
+        self._AlarmRule = AlarmRule
+
+    @property
+    def RunType(self):
+        r"""运行类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def RunDateTime(self):
+        r"""定时运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunDateTime
+
+    @RunDateTime.setter
+    def RunDateTime(self, RunDateTime):
+        self._RunDateTime = RunDateTime
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -70217,6 +71035,14 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._AppParam = params.get("AppParam")
         self._TimeType = params.get("TimeType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FailurePercent = params.get("FailurePercent")
+        if params.get("AlarmRule") is not None:
+            self._AlarmRule = MakePlanAlarmRule()
+            self._AlarmRule._deserialize(params.get("AlarmRule"))
+        self._RunType = params.get("RunType")
+        self._RunDateTime = params.get("RunDateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70374,15 +71200,19 @@ class MakePlanTaskOpsDto(AbstractModel):
         :param _SuccessPercent: 补录任务实例成功百分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessPercent: int
-        :param _InstanceTotalCount: 预计生成的总实例个数，由于是异步生成，-1代表实例还未完完全生成
+        :param _InstanceTotalCount: 预计生成的总实例个数，由于是异步生成，-1代表实例还未完全生成
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTotalCount: int
+        :param _FailurePercent: 补录任务实例失败百分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailurePercent: int
         """
         self._TaskBaseInfo = None
         self._InstanceCount = None
         self._CompletePercent = None
         self._SuccessPercent = None
         self._InstanceTotalCount = None
+        self._FailurePercent = None
 
     @property
     def TaskBaseInfo(self):
@@ -70434,7 +71264,7 @@ class MakePlanTaskOpsDto(AbstractModel):
 
     @property
     def InstanceTotalCount(self):
-        r"""预计生成的总实例个数，由于是异步生成，-1代表实例还未完完全生成
+        r"""预计生成的总实例个数，由于是异步生成，-1代表实例还未完全生成
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70443,6 +71273,18 @@ class MakePlanTaskOpsDto(AbstractModel):
     @InstanceTotalCount.setter
     def InstanceTotalCount(self, InstanceTotalCount):
         self._InstanceTotalCount = InstanceTotalCount
+
+    @property
+    def FailurePercent(self):
+        r"""补录任务实例失败百分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailurePercent
+
+    @FailurePercent.setter
+    def FailurePercent(self, FailurePercent):
+        self._FailurePercent = FailurePercent
 
 
     def _deserialize(self, params):
@@ -70453,6 +71295,7 @@ class MakePlanTaskOpsDto(AbstractModel):
         self._CompletePercent = params.get("CompletePercent")
         self._SuccessPercent = params.get("SuccessPercent")
         self._InstanceTotalCount = params.get("InstanceTotalCount")
+        self._FailurePercent = params.get("FailurePercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72951,6 +73794,10 @@ class ModifyRuleRequest(AbstractModel):
         :type TargetSchemaName: str
         :param _TargetTableName: 目标表名
         :type TargetTableName: str
+        :param _CatalogName: 目录
+        :type CatalogName: str
+        :param _TargetCatalogName: 目标目录
+        :type TargetCatalogName: str
         """
         self._ProjectId = None
         self._RuleId = None
@@ -72978,6 +73825,8 @@ class ModifyRuleRequest(AbstractModel):
         self._TargetDatabaseName = None
         self._TargetSchemaName = None
         self._TargetTableName = None
+        self._CatalogName = None
+        self._TargetCatalogName = None
 
     @property
     def ProjectId(self):
@@ -73265,6 +74114,28 @@ class ModifyRuleRequest(AbstractModel):
     def TargetTableName(self, TargetTableName):
         self._TargetTableName = TargetTableName
 
+    @property
+    def CatalogName(self):
+        r"""目录
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def TargetCatalogName(self):
+        r"""目标目录
+        :rtype: str
+        """
+        return self._TargetCatalogName
+
+    @TargetCatalogName.setter
+    def TargetCatalogName(self, TargetCatalogName):
+        self._TargetCatalogName = TargetCatalogName
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -73297,6 +74168,8 @@ class ModifyRuleRequest(AbstractModel):
         self._TargetDatabaseName = params.get("TargetDatabaseName")
         self._TargetSchemaName = params.get("TargetSchemaName")
         self._TargetTableName = params.get("TargetTableName")
+        self._CatalogName = params.get("CatalogName")
+        self._TargetCatalogName = params.get("TargetCatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76192,6 +77065,83 @@ class MoveTasksToFolderResponse(AbstractModel):
     def _deserialize(self, params):
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class NotificationFatigue(AbstractModel):
+    r"""任务告警通知疲劳度配置，包括通知次数、间隔、免打扰时间。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotifyCount: 通知次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyCount: int
+        :param _NotifyInterval: 通知间隔，单位分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyInterval: int
+        :param _QuietIntervals: 免打扰时间，例如示例值每周一、周二的00:00到09:00免打扰
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuietIntervals: list of AlarmQuietInterval
+        """
+        self._NotifyCount = None
+        self._NotifyInterval = None
+        self._QuietIntervals = None
+
+    @property
+    def NotifyCount(self):
+        r"""通知次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NotifyCount
+
+    @NotifyCount.setter
+    def NotifyCount(self, NotifyCount):
+        self._NotifyCount = NotifyCount
+
+    @property
+    def NotifyInterval(self):
+        r"""通知间隔，单位分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NotifyInterval
+
+    @NotifyInterval.setter
+    def NotifyInterval(self, NotifyInterval):
+        self._NotifyInterval = NotifyInterval
+
+    @property
+    def QuietIntervals(self):
+        r"""免打扰时间，例如示例值每周一、周二的00:00到09:00免打扰
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmQuietInterval
+        """
+        return self._QuietIntervals
+
+    @QuietIntervals.setter
+    def QuietIntervals(self, QuietIntervals):
+        self._QuietIntervals = QuietIntervals
+
+
+    def _deserialize(self, params):
+        self._NotifyCount = params.get("NotifyCount")
+        self._NotifyInterval = params.get("NotifyInterval")
+        if params.get("QuietIntervals") is not None:
+            self._QuietIntervals = []
+            for item in params.get("QuietIntervals"):
+                obj = AlarmQuietInterval()
+                obj._deserialize(item)
+                self._QuietIntervals.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OfflineInstance(AbstractModel):
@@ -85834,6 +86784,18 @@ class Rule(AbstractModel):
         :param _FailMsg: 失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailMsg: str
+        :param _GroupType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: 目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _TargetCatalogName: 目标目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCatalogName: str
         """
         self._RuleId = None
         self._RuleGroupId = None
@@ -85889,6 +86851,10 @@ class Rule(AbstractModel):
         self._DatasourceName = None
         self._DatabaseName = None
         self._FailMsg = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
+        self._TargetCatalogName = None
 
     @property
     def RuleId(self):
@@ -86538,6 +87504,54 @@ class Rule(AbstractModel):
     def FailMsg(self, FailMsg):
         self._FailMsg = FailMsg
 
+    @property
+    def GroupType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def TargetCatalogName(self):
+        r"""目标目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetCatalogName
+
+    @TargetCatalogName.setter
+    def TargetCatalogName(self, TargetCatalogName):
+        self._TargetCatalogName = TargetCatalogName
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -86602,6 +87616,10 @@ class Rule(AbstractModel):
         self._DatasourceName = params.get("DatasourceName")
         self._DatabaseName = params.get("DatabaseName")
         self._FailMsg = params.get("FailMsg")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
+        self._TargetCatalogName = params.get("TargetCatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87141,6 +88159,15 @@ class RuleExecResult(AbstractModel):
         :param _FinishTime: 执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
+        :param _GroupType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: 目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
         """
         self._RuleExecId = None
         self._RuleGroupExecId = None
@@ -87175,6 +88202,9 @@ class RuleExecResult(AbstractModel):
         self._RuleGroupTableId = None
         self._MonitorType = None
         self._FinishTime = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
 
     @property
     def RuleExecId(self):
@@ -87572,6 +88602,42 @@ class RuleExecResult(AbstractModel):
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
 
+    @property
+    def GroupType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._RuleExecId = params.get("RuleExecId")
@@ -87611,6 +88677,9 @@ class RuleExecResult(AbstractModel):
         self._RuleGroupTableId = params.get("RuleGroupTableId")
         self._MonitorType = params.get("MonitorType")
         self._FinishTime = params.get("FinishTime")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88328,6 +89397,15 @@ class RuleGroup(AbstractModel):
         :param _CreateUserName: 监控创建人
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserName: str
+        :param _GroupType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -88359,6 +89437,9 @@ class RuleGroup(AbstractModel):
         self._EnableRuleCount = None
         self._Description = None
         self._CreateUserName = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
 
     @property
     def RuleGroupId(self):
@@ -88720,6 +89801,42 @@ class RuleGroup(AbstractModel):
     def CreateUserName(self, CreateUserName):
         self._CreateUserName = CreateUserName
 
+    @property
+    def GroupType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -88756,6 +89873,9 @@ class RuleGroup(AbstractModel):
         self._EnableRuleCount = params.get("EnableRuleCount")
         self._Description = params.get("Description")
         self._CreateUserName = params.get("CreateUserName")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88773,7 +89893,15 @@ class RuleGroupConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelMonitorType: 模型检测类型
+        :param _AnalysisType: 分析类型，可选值：
+INFERENCE-推理表
+TIME_SERIES-时序表
+SNAPSHOT-快照表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisType: str
+        :param _ModelMonitorType: 模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+CLAASSIFICATION-分类
+REGRESSION-回归
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelMonitorType: str
         :param _PredictColumn: 预测列
@@ -88824,10 +89952,17 @@ class RuleGroupConfig(AbstractModel):
         :param _PositiveValue: 正类值
 注意：此字段可能返回 null，表示取不到有效值。
         :type PositiveValue: str
-        :param _FeatureColumn: 特征列
+        :param _FeatureColumn: 数值型特征列
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureColumn: str
+        :param _CategoricalFeatureColumn: 分类型特征列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoricalFeatureColumn: str
+        :param _BaseCatalog: 目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseCatalog: str
         """
+        self._AnalysisType = None
         self._ModelMonitorType = None
         self._PredictColumn = None
         self._PredictColumnType = None
@@ -88846,10 +89981,29 @@ class RuleGroupConfig(AbstractModel):
         self._ProtectionValue = None
         self._PositiveValue = None
         self._FeatureColumn = None
+        self._CategoricalFeatureColumn = None
+        self._BaseCatalog = None
+
+    @property
+    def AnalysisType(self):
+        r"""分析类型，可选值：
+INFERENCE-推理表
+TIME_SERIES-时序表
+SNAPSHOT-快照表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AnalysisType
+
+    @AnalysisType.setter
+    def AnalysisType(self, AnalysisType):
+        self._AnalysisType = AnalysisType
 
     @property
     def ModelMonitorType(self):
-        r"""模型检测类型
+        r"""模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+CLAASSIFICATION-分类
+REGRESSION-回归
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -89053,7 +90207,7 @@ class RuleGroupConfig(AbstractModel):
 
     @property
     def FeatureColumn(self):
-        r"""特征列
+        r"""数值型特征列
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -89063,8 +90217,33 @@ class RuleGroupConfig(AbstractModel):
     def FeatureColumn(self, FeatureColumn):
         self._FeatureColumn = FeatureColumn
 
+    @property
+    def CategoricalFeatureColumn(self):
+        r"""分类型特征列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CategoricalFeatureColumn
+
+    @CategoricalFeatureColumn.setter
+    def CategoricalFeatureColumn(self, CategoricalFeatureColumn):
+        self._CategoricalFeatureColumn = CategoricalFeatureColumn
+
+    @property
+    def BaseCatalog(self):
+        r"""目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BaseCatalog
+
+    @BaseCatalog.setter
+    def BaseCatalog(self, BaseCatalog):
+        self._BaseCatalog = BaseCatalog
+
 
     def _deserialize(self, params):
+        self._AnalysisType = params.get("AnalysisType")
         self._ModelMonitorType = params.get("ModelMonitorType")
         self._PredictColumn = params.get("PredictColumn")
         self._PredictColumnType = params.get("PredictColumnType")
@@ -89083,6 +90262,8 @@ class RuleGroupConfig(AbstractModel):
         self._ProtectionValue = params.get("ProtectionValue")
         self._PositiveValue = params.get("PositiveValue")
         self._FeatureColumn = params.get("FeatureColumn")
+        self._CategoricalFeatureColumn = params.get("CategoricalFeatureColumn")
+        self._BaseCatalog = params.get("BaseCatalog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -89743,6 +90924,9 @@ class RuleGroupExecStrategy(AbstractModel):
         :param _EngineParam: 引擎参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineParam: str
+        :param _CatalogName: catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -89771,6 +90955,7 @@ class RuleGroupExecStrategy(AbstractModel):
         self._ScheduleTimeZone = None
         self._GroupConfig = None
         self._EngineParam = None
+        self._CatalogName = None
 
     @property
     def RuleGroupId(self):
@@ -90096,6 +91281,18 @@ class RuleGroupExecStrategy(AbstractModel):
     def EngineParam(self, EngineParam):
         self._EngineParam = EngineParam
 
+    @property
+    def CatalogName(self):
+        r"""catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -90132,6 +91329,7 @@ class RuleGroupExecStrategy(AbstractModel):
             self._GroupConfig = RuleGroupConfig()
             self._GroupConfig._deserialize(params.get("GroupConfig"))
         self._EngineParam = params.get("EngineParam")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -99681,6 +100879,39 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _ColumnCount: 字段数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnCount: int
+        :param _TablePermissionFlag: 权限标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePermissionFlag: bool
+        :param _AssetStatus: 资产状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatus: int
+        :param _AssetLevel: 资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetLevel: int
+        :param _AssetCode: 资产code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCode: str
+        :param _AssetAuditStatus: 审批状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetAuditStatus: str
+        :param _PublishedTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishedTime: str
+        :param _TagInfoList: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInfoList: list of LabelTag
+        :param _LabelValueSelections: 标签值选择列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValueSelections: list of LabelValueSelection
+        :param _Namespace: 命名空间 - 对应TC-Catalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _MetaFrom: Catalog来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaFrom: str
+        :param _EngineCreator: 引擎侧创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineCreator: str
         """
         self._TableId = None
         self._TableName = None
@@ -99751,6 +100982,17 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._DataLayerUuid = None
         self._DataLayerName = None
         self._ColumnCount = None
+        self._TablePermissionFlag = None
+        self._AssetStatus = None
+        self._AssetLevel = None
+        self._AssetCode = None
+        self._AssetAuditStatus = None
+        self._PublishedTime = None
+        self._TagInfoList = None
+        self._LabelValueSelections = None
+        self._Namespace = None
+        self._MetaFrom = None
+        self._EngineCreator = None
 
     @property
     def TableId(self):
@@ -100581,6 +101823,138 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def ColumnCount(self, ColumnCount):
         self._ColumnCount = ColumnCount
 
+    @property
+    def TablePermissionFlag(self):
+        r"""权限标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TablePermissionFlag
+
+    @TablePermissionFlag.setter
+    def TablePermissionFlag(self, TablePermissionFlag):
+        self._TablePermissionFlag = TablePermissionFlag
+
+    @property
+    def AssetStatus(self):
+        r"""资产状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetStatus
+
+    @AssetStatus.setter
+    def AssetStatus(self, AssetStatus):
+        self._AssetStatus = AssetStatus
+
+    @property
+    def AssetLevel(self):
+        r"""资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetLevel
+
+    @AssetLevel.setter
+    def AssetLevel(self, AssetLevel):
+        self._AssetLevel = AssetLevel
+
+    @property
+    def AssetCode(self):
+        r"""资产code
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetCode
+
+    @AssetCode.setter
+    def AssetCode(self, AssetCode):
+        self._AssetCode = AssetCode
+
+    @property
+    def AssetAuditStatus(self):
+        r"""审批状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetAuditStatus
+
+    @AssetAuditStatus.setter
+    def AssetAuditStatus(self, AssetAuditStatus):
+        self._AssetAuditStatus = AssetAuditStatus
+
+    @property
+    def PublishedTime(self):
+        r"""发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublishedTime
+
+    @PublishedTime.setter
+    def PublishedTime(self, PublishedTime):
+        self._PublishedTime = PublishedTime
+
+    @property
+    def TagInfoList(self):
+        r"""标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LabelTag
+        """
+        return self._TagInfoList
+
+    @TagInfoList.setter
+    def TagInfoList(self, TagInfoList):
+        self._TagInfoList = TagInfoList
+
+    @property
+    def LabelValueSelections(self):
+        r"""标签值选择列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LabelValueSelection
+        """
+        return self._LabelValueSelections
+
+    @LabelValueSelections.setter
+    def LabelValueSelections(self, LabelValueSelections):
+        self._LabelValueSelections = LabelValueSelections
+
+    @property
+    def Namespace(self):
+        r"""命名空间 - 对应TC-Catalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def MetaFrom(self):
+        r"""Catalog来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetaFrom
+
+    @MetaFrom.setter
+    def MetaFrom(self, MetaFrom):
+        self._MetaFrom = MetaFrom
+
+    @property
+    def EngineCreator(self):
+        r"""引擎侧创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineCreator
+
+    @EngineCreator.setter
+    def EngineCreator(self, EngineCreator):
+        self._EngineCreator = EngineCreator
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -100673,6 +102047,27 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._DataLayerUuid = params.get("DataLayerUuid")
         self._DataLayerName = params.get("DataLayerName")
         self._ColumnCount = params.get("ColumnCount")
+        self._TablePermissionFlag = params.get("TablePermissionFlag")
+        self._AssetStatus = params.get("AssetStatus")
+        self._AssetLevel = params.get("AssetLevel")
+        self._AssetCode = params.get("AssetCode")
+        self._AssetAuditStatus = params.get("AssetAuditStatus")
+        self._PublishedTime = params.get("PublishedTime")
+        if params.get("TagInfoList") is not None:
+            self._TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = LabelTag()
+                obj._deserialize(item)
+                self._TagInfoList.append(obj)
+        if params.get("LabelValueSelections") is not None:
+            self._LabelValueSelections = []
+            for item in params.get("LabelValueSelections"):
+                obj = LabelValueSelection()
+                obj._deserialize(item)
+                self._LabelValueSelections.append(obj)
+        self._Namespace = params.get("Namespace")
+        self._MetaFrom = params.get("MetaFrom")
+        self._EngineCreator = params.get("EngineCreator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -101163,6 +102558,9 @@ class TableQualityDetail(AbstractModel):
         :param _RuleGroupTableId: 规则表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupTableId: str
+        :param _CatalogName: catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
         """
         self._DatabaseId = None
         self._DatabaseName = None
@@ -101176,6 +102574,7 @@ class TableQualityDetail(AbstractModel):
         self._DsEnvType = None
         self._SchemaName = None
         self._RuleGroupTableId = None
+        self._CatalogName = None
 
     @property
     def DatabaseId(self):
@@ -101321,6 +102720,18 @@ class TableQualityDetail(AbstractModel):
     def RuleGroupTableId(self, RuleGroupTableId):
         self._RuleGroupTableId = RuleGroupTableId
 
+    @property
+    def CatalogName(self):
+        r"""catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._DatabaseId = params.get("DatabaseId")
@@ -101335,6 +102746,7 @@ class TableQualityDetail(AbstractModel):
         self._DsEnvType = params.get("DsEnvType")
         self._SchemaName = params.get("SchemaName")
         self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -105242,6 +106654,107 @@ class TaskExtInfo(AbstractModel):
         
 
 
+class TaskExtOpsDto(AbstractModel):
+    r"""任务扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Properties: 任务属性（key-value 形式）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
+        :param _DryRunExtAttributes: 任务试运行-扩展业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunExtAttributes: list of AttributeItemOpsDto
+        :param _DryRunParameter: 任务试运行动态传参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunParameter: list of AttributeItemOpsDto
+        """
+        self._TaskId = None
+        self._Properties = None
+        self._DryRunExtAttributes = None
+        self._DryRunParameter = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Properties(self):
+        r"""任务属性（key-value 形式）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def DryRunExtAttributes(self):
+        r"""任务试运行-扩展业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttributeItemOpsDto
+        """
+        return self._DryRunExtAttributes
+
+    @DryRunExtAttributes.setter
+    def DryRunExtAttributes(self, DryRunExtAttributes):
+        self._DryRunExtAttributes = DryRunExtAttributes
+
+    @property
+    def DryRunParameter(self):
+        r"""任务试运行动态传参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttributeItemOpsDto
+        """
+        return self._DryRunParameter
+
+    @DryRunParameter.setter
+    def DryRunParameter(self, DryRunParameter):
+        self._DryRunParameter = DryRunParameter
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("Properties") is not None:
+            self._Properties = StrToStrMap()
+            self._Properties._deserialize(params.get("Properties"))
+        if params.get("DryRunExtAttributes") is not None:
+            self._DryRunExtAttributes = []
+            for item in params.get("DryRunExtAttributes"):
+                obj = AttributeItemOpsDto()
+                obj._deserialize(item)
+                self._DryRunExtAttributes.append(obj)
+        if params.get("DryRunParameter") is not None:
+            self._DryRunParameter = []
+            for item in params.get("DryRunParameter"):
+                obj = AttributeItemOpsDto()
+                obj._deserialize(item)
+                self._DryRunParameter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskFormParams(AbstractModel):
     r"""任务参数
 
@@ -107334,6 +108847,12 @@ CAN_MANAGE : 有权限管理操作
         :param _BundleInfo: bundle客户端信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
+        :param _WorkflowType: 工作流类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowType: str
+        :param _TaskExtDTO: 任务扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExtDTO: :class:`tencentcloud.wedata.v20210820.models.TaskExtOpsDto`
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -107430,6 +108949,8 @@ CAN_MANAGE : 有权限管理操作
         self._Privileges = None
         self._BundleId = None
         self._BundleInfo = None
+        self._WorkflowType = None
+        self._TaskExtDTO = None
 
     @property
     def TaskId(self):
@@ -108572,6 +110093,30 @@ CAN_MANAGE : 有权限管理操作
     def BundleInfo(self, BundleInfo):
         self._BundleInfo = BundleInfo
 
+    @property
+    def WorkflowType(self):
+        r"""工作流类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowType
+
+    @WorkflowType.setter
+    def WorkflowType(self, WorkflowType):
+        self._WorkflowType = WorkflowType
+
+    @property
+    def TaskExtDTO(self):
+        r"""任务扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskExtOpsDto`
+        """
+        return self._TaskExtDTO
+
+    @TaskExtDTO.setter
+    def TaskExtDTO(self, TaskExtDTO):
+        self._TaskExtDTO = TaskExtDTO
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -108691,6 +110236,10 @@ CAN_MANAGE : 有权限管理操作
         self._Privileges = params.get("Privileges")
         self._BundleId = params.get("BundleId")
         self._BundleInfo = params.get("BundleInfo")
+        self._WorkflowType = params.get("WorkflowType")
+        if params.get("TaskExtDTO") is not None:
+            self._TaskExtDTO = TaskExtOpsDto()
+            self._TaskExtDTO._deserialize(params.get("TaskExtDTO"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

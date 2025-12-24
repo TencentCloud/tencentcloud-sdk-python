@@ -2784,12 +2784,15 @@ class DescribeRelatedUsersRequest(AbstractModel):
         :type PageSize: int
         :param _EnvType: 环境类型
         :type EnvType: str
+        :param _RoleStringId: 新角色id
+        :type RoleStringId: str
         """
         self._RoleId = None
         self._EnvId = None
         self._PageNo = None
         self._PageSize = None
         self._EnvType = None
+        self._RoleStringId = None
 
     @property
     def RoleId(self):
@@ -2846,6 +2849,17 @@ class DescribeRelatedUsersRequest(AbstractModel):
     def EnvType(self, EnvType):
         self._EnvType = EnvType
 
+    @property
+    def RoleStringId(self):
+        r"""新角色id
+        :rtype: str
+        """
+        return self._RoleStringId
+
+    @RoleStringId.setter
+    def RoleStringId(self, RoleStringId):
+        self._RoleStringId = RoleStringId
+
 
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
@@ -2853,6 +2867,7 @@ class DescribeRelatedUsersRequest(AbstractModel):
         self._PageNo = params.get("PageNo")
         self._PageSize = params.get("PageSize")
         self._EnvType = params.get("EnvType")
+        self._RoleStringId = params.get("RoleStringId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

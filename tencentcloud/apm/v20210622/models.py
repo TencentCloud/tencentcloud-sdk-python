@@ -3170,6 +3170,133 @@ class ApmTag(AbstractModel):
         
 
 
+class CVMMeta(AbstractModel):
+    r"""CVM元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _InstanceID: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        """
+        self._Region = None
+        self._InstanceID = None
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceID(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentTopologyView(AbstractModel):
+    r"""包含了视图中节点组件类型的数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 服务纬度的节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: int
+        :param _Database: 数据库节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: int
+        :param _MQ: 消息队列节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MQ: int
+        """
+        self._Service = None
+        self._Database = None
+        self._MQ = None
+
+    @property
+    def Service(self):
+        r"""服务纬度的节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Database(self):
+        r"""数据库节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def MQ(self):
+        r"""消息队列节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MQ
+
+    @MQ.setter
+    def MQ(self, MQ):
+        self._MQ = MQ
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._Database = params.get("Database")
+        self._MQ = params.get("MQ")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateApmInstanceRequest(AbstractModel):
     r"""CreateApmInstance请求参数结构体
 
@@ -6509,6 +6636,402 @@ class DescribeTagValuesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopologyNewRequest(AbstractModel):
+    r"""DescribeTopologyNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 业务系统 ID
+        :type InstanceId: str
+        :param _StartTime: 查询开始时间
+        :type StartTime: int
+        :param _EndTime: 查询结束时间
+        :type EndTime: int
+        :param _ServiceName: 应用名
+        :type ServiceName: str
+        :param _UpLevel: 上游层级
+        :type UpLevel: int
+        :param _ServiceInstance: 应用实例信息
+        :type ServiceInstance: str
+        :param _DownLevel: 下游层级
+        :type DownLevel: int
+        :param _View: 视角
+        :type View: str
+        :param _Filters: 过滤器
+        :type Filters: list of Filter
+        :param _Topic: 表示Topic（MQ拓扑图用）
+        :type Topic: str
+        :param _Selectors: 视图筛选列表
+        :type Selectors: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        :param _Id: 视图ID
+        :type Id: str
+        :param _TraceID: TraceID
+        :type TraceID: str
+        :param _IsSlowTopFive: 查询top5慢响应节点
+        :type IsSlowTopFive: bool
+        :param _GetResource: 是否获取资源层信息
+        :type GetResource: bool
+        :param _Tags: 根据应用标签过滤
+        :type Tags: list of ApmTag
+        :param _Hidden: 不显示的节点类型
+        :type Hidden: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ServiceName = None
+        self._UpLevel = None
+        self._ServiceInstance = None
+        self._DownLevel = None
+        self._View = None
+        self._Filters = None
+        self._Topic = None
+        self._Selectors = None
+        self._Id = None
+        self._TraceID = None
+        self._IsSlowTopFive = None
+        self._GetResource = None
+        self._Tags = None
+        self._Hidden = None
+
+    @property
+    def InstanceId(self):
+        r"""业务系统 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ServiceName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def UpLevel(self):
+        r"""上游层级
+        :rtype: int
+        """
+        return self._UpLevel
+
+    @UpLevel.setter
+    def UpLevel(self, UpLevel):
+        self._UpLevel = UpLevel
+
+    @property
+    def ServiceInstance(self):
+        r"""应用实例信息
+        :rtype: str
+        """
+        return self._ServiceInstance
+
+    @ServiceInstance.setter
+    def ServiceInstance(self, ServiceInstance):
+        self._ServiceInstance = ServiceInstance
+
+    @property
+    def DownLevel(self):
+        r"""下游层级
+        :rtype: int
+        """
+        return self._DownLevel
+
+    @DownLevel.setter
+    def DownLevel(self, DownLevel):
+        self._DownLevel = DownLevel
+
+    @property
+    def View(self):
+        r"""视角
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filters(self):
+        r"""过滤器
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Topic(self):
+        r"""表示Topic（MQ拓扑图用）
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Selectors(self):
+        r"""视图筛选列表
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        return self._Selectors
+
+    @Selectors.setter
+    def Selectors(self, Selectors):
+        self._Selectors = Selectors
+
+    @property
+    def Id(self):
+        r"""视图ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TraceID(self):
+        r"""TraceID
+        :rtype: str
+        """
+        return self._TraceID
+
+    @TraceID.setter
+    def TraceID(self, TraceID):
+        self._TraceID = TraceID
+
+    @property
+    def IsSlowTopFive(self):
+        r"""查询top5慢响应节点
+        :rtype: bool
+        """
+        return self._IsSlowTopFive
+
+    @IsSlowTopFive.setter
+    def IsSlowTopFive(self, IsSlowTopFive):
+        self._IsSlowTopFive = IsSlowTopFive
+
+    @property
+    def GetResource(self):
+        r"""是否获取资源层信息
+        :rtype: bool
+        """
+        return self._GetResource
+
+    @GetResource.setter
+    def GetResource(self, GetResource):
+        self._GetResource = GetResource
+
+    @property
+    def Tags(self):
+        r"""根据应用标签过滤
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Hidden(self):
+        r"""不显示的节点类型
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ServiceName = params.get("ServiceName")
+        self._UpLevel = params.get("UpLevel")
+        self._ServiceInstance = params.get("ServiceInstance")
+        self._DownLevel = params.get("DownLevel")
+        self._View = params.get("View")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Topic = params.get("Topic")
+        if params.get("Selectors") is not None:
+            self._Selectors = Selectors()
+            self._Selectors._deserialize(params.get("Selectors"))
+        self._Id = params.get("Id")
+        self._TraceID = params.get("TraceID")
+        self._IsSlowTopFive = params.get("IsSlowTopFive")
+        self._GetResource = params.get("GetResource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Hidden") is not None:
+            self._Hidden = Selectors()
+            self._Hidden._deserialize(params.get("Hidden"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopologyNewResponse(AbstractModel):
+    r"""DescribeTopologyNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: 节点集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nodes: list of TopologyNode
+        :param _Edges: 边集合
+        :type Edges: list of TopologyEdgeNew
+        :param _TopologyModifyFlag: 拓扑图是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopologyModifyFlag: int
+        :param _Selectors: 节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Selectors: :class:`tencentcloud.apm.v20210622.models.SelectorView`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Nodes = None
+        self._Edges = None
+        self._TopologyModifyFlag = None
+        self._Selectors = None
+        self._RequestId = None
+
+    @property
+    def Nodes(self):
+        r"""节点集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopologyNode
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Edges(self):
+        r"""边集合
+        :rtype: list of TopologyEdgeNew
+        """
+        return self._Edges
+
+    @Edges.setter
+    def Edges(self, Edges):
+        self._Edges = Edges
+
+    @property
+    def TopologyModifyFlag(self):
+        r"""拓扑图是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TopologyModifyFlag
+
+    @TopologyModifyFlag.setter
+    def TopologyModifyFlag(self, TopologyModifyFlag):
+        self._TopologyModifyFlag = TopologyModifyFlag
+
+    @property
+    def Selectors(self):
+        r"""节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SelectorView`
+        """
+        return self._Selectors
+
+    @Selectors.setter
+    def Selectors(self, Selectors):
+        self._Selectors = Selectors
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = TopologyNode()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
+        if params.get("Edges") is not None:
+            self._Edges = []
+            for item in params.get("Edges"):
+                obj = TopologyEdgeNew()
+                obj._deserialize(item)
+                self._Edges.append(obj)
+        self._TopologyModifyFlag = params.get("TopologyModifyFlag")
+        if params.get("Selectors") is not None:
+            self._Selectors = SelectorView()
+            self._Selectors._deserialize(params.get("Selectors"))
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     r"""查询过滤参数
 
@@ -8937,6 +9460,61 @@ class OrderBy(AbstractModel):
         
 
 
+class Position(AbstractModel):
+    r"""节点位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 节点位置横坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type X: float
+        :param _Y: 节点位置纵坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Y: float
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        r"""节点位置横坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""节点位置纵坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryMetricItem(AbstractModel):
     r"""查询
 
@@ -8993,6 +9571,164 @@ class QueryMetricItem(AbstractModel):
         self._MetricName = params.get("MetricName")
         self._Compares = params.get("Compares")
         self._Compare = params.get("Compare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Resource(AbstractModel):
+    r"""资源层信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: list of str
+        :param _TKEMeta: tke资源层信息
+        :type TKEMeta: list of TkeMeta
+        :param _CVMMeta: cvm资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMMeta: list of CVMMeta
+        """
+        self._Type = None
+        self._TKEMeta = None
+        self._CVMMeta = None
+
+    @property
+    def Type(self):
+        r"""资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TKEMeta(self):
+        r"""tke资源层信息
+        :rtype: list of TkeMeta
+        """
+        return self._TKEMeta
+
+    @TKEMeta.setter
+    def TKEMeta(self, TKEMeta):
+        self._TKEMeta = TKEMeta
+
+    @property
+    def CVMMeta(self):
+        r"""cvm资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CVMMeta
+        """
+        return self._CVMMeta
+
+    @CVMMeta.setter
+    def CVMMeta(self, CVMMeta):
+        self._CVMMeta = CVMMeta
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("TKEMeta") is not None:
+            self._TKEMeta = []
+            for item in params.get("TKEMeta"):
+                obj = TkeMeta()
+                obj._deserialize(item)
+                self._TKEMeta.append(obj)
+        if params.get("CVMMeta") is not None:
+            self._CVMMeta = []
+            for item in params.get("CVMMeta"):
+                obj = CVMMeta()
+                obj._deserialize(item)
+                self._CVMMeta.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SelectorView(AbstractModel):
+    r"""包含了节点的组件数量和健康度数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: 组件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Component: :class:`tencentcloud.apm.v20210622.models.ComponentTopologyView`
+        """
+        self._Component = None
+
+    @property
+    def Component(self):
+        r"""组件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ComponentTopologyView`
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        if params.get("Component") is not None:
+            self._Component = ComponentTopologyView()
+            self._Component._deserialize(params.get("Component"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Selectors(AbstractModel):
+    r"""视图方案勾选情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: 组件勾选情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Component: list of str
+        """
+        self._Component = None
+
+    @property
+    def Component(self):
+        r"""组件勾选情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        self._Component = params.get("Component")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9709,3 +10445,717 @@ class TerminateApmInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TkeMeta(AbstractModel):
+    r"""tke资源元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+        :type Region: str
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _PodName: pod name
+        :type PodName: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Deployment: 工作负载
+        :type Deployment: str
+        :param _PodIP: pod ip
+        :type PodIP: str
+        :param _NodeIP: node ip
+        :type NodeIP: str
+        """
+        self._Region = None
+        self._ClusterID = None
+        self._PodName = None
+        self._Namespace = None
+        self._Deployment = None
+        self._PodIP = None
+        self._NodeIP = None
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodName(self):
+        r"""pod name
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Deployment(self):
+        r"""工作负载
+        :rtype: str
+        """
+        return self._Deployment
+
+    @Deployment.setter
+    def Deployment(self, Deployment):
+        self._Deployment = Deployment
+
+    @property
+    def PodIP(self):
+        r"""pod ip
+        :rtype: str
+        """
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeIP(self):
+        r"""node ip
+        :rtype: str
+        """
+        return self._NodeIP
+
+    @NodeIP.setter
+    def NodeIP(self, NodeIP):
+        self._NodeIP = NodeIP
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._ClusterID = params.get("ClusterID")
+        self._PodName = params.get("PodName")
+        self._Namespace = params.get("Namespace")
+        self._Deployment = params.get("Deployment")
+        self._PodIP = params.get("PodIP")
+        self._NodeIP = params.get("NodeIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyEdgeNew(AbstractModel):
+    r"""拓扑图边定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: 源节点
+        :type Source: str
+        :param _Id: 边ID
+        :type Id: str
+        :param _Weight: 边权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: float
+        :param _Target: 目标节点
+        :type Target: str
+        :param _Duration: 响应时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: float
+        :param _ErrRate: 错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrRate: float
+        :param _Qps: 吞吐量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: float
+        :param _Type: 边类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Color: 边颜色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Color: str
+        :param _SqlRequestCount: Sql调用数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlRequestCount: float
+        :param _SqlErrorRequestCount: Sql调用错误数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlErrorRequestCount: float
+        :param _SourceComp: 边上源节点类型 应用/MQ/DB
+        :type SourceComp: str
+        :param _TargetComp: 边上目标节点类型 应用/MQ/DB
+        :type TargetComp: str
+        """
+        self._Source = None
+        self._Id = None
+        self._Weight = None
+        self._Target = None
+        self._Duration = None
+        self._ErrRate = None
+        self._Qps = None
+        self._Type = None
+        self._Color = None
+        self._SqlRequestCount = None
+        self._SqlErrorRequestCount = None
+        self._SourceComp = None
+        self._TargetComp = None
+
+    @property
+    def Source(self):
+        r"""源节点
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Id(self):
+        r"""边ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Weight(self):
+        r"""边权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Target(self):
+        r"""目标节点
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Duration(self):
+        r"""响应时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ErrRate(self):
+        r"""错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ErrRate
+
+    @ErrRate.setter
+    def ErrRate(self, ErrRate):
+        self._ErrRate = ErrRate
+
+    @property
+    def Qps(self):
+        r"""吞吐量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def Type(self):
+        r"""边类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Color(self):
+        r"""边颜色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def SqlRequestCount(self):
+        r"""Sql调用数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._SqlRequestCount
+
+    @SqlRequestCount.setter
+    def SqlRequestCount(self, SqlRequestCount):
+        self._SqlRequestCount = SqlRequestCount
+
+    @property
+    def SqlErrorRequestCount(self):
+        r"""Sql调用错误数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._SqlErrorRequestCount
+
+    @SqlErrorRequestCount.setter
+    def SqlErrorRequestCount(self, SqlErrorRequestCount):
+        self._SqlErrorRequestCount = SqlErrorRequestCount
+
+    @property
+    def SourceComp(self):
+        r"""边上源节点类型 应用/MQ/DB
+        :rtype: str
+        """
+        return self._SourceComp
+
+    @SourceComp.setter
+    def SourceComp(self, SourceComp):
+        self._SourceComp = SourceComp
+
+    @property
+    def TargetComp(self):
+        r"""边上目标节点类型 应用/MQ/DB
+        :rtype: str
+        """
+        return self._TargetComp
+
+    @TargetComp.setter
+    def TargetComp(self, TargetComp):
+        self._TargetComp = TargetComp
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Id = params.get("Id")
+        self._Weight = params.get("Weight")
+        self._Target = params.get("Target")
+        self._Duration = params.get("Duration")
+        self._ErrRate = params.get("ErrRate")
+        self._Qps = params.get("Qps")
+        self._Type = params.get("Type")
+        self._Color = params.get("Color")
+        self._SqlRequestCount = params.get("SqlRequestCount")
+        self._SqlErrorRequestCount = params.get("SqlErrorRequestCount")
+        self._SourceComp = params.get("SourceComp")
+        self._TargetComp = params.get("TargetComp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyNode(AbstractModel):
+    r"""拓扑图边节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrRate: 错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrRate: float
+        :param _Kind: 节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param _Name: 节点名
+        :type Name: str
+        :param _Weight: 节点权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: float
+        :param _Color: 节点颜色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Color: str
+        :param _Duration: 响应时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: float
+        :param _Qps: 吞吐量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: float
+        :param _Type: 节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Id: 节点ID
+        :type Id: str
+        :param _Size: 节点大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: str
+        :param _IsModule: 节点是否为组件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsModule: bool
+        :param _Position: 节点位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: :class:`tencentcloud.apm.v20210622.models.Position`
+        :param _Tags: 节点标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApmTag
+        :param _CanDrillDown: 节点是否可以下钻
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDrillDown: bool
+        :param _Resource: 资源层信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.apm.v20210622.models.Resource`
+        :param _NodeView: 拓扑节点视图名字
+        :type NodeView: str
+        :param _ConsumerDuration: MQ 消费者视角的响应时间 ms
+        :type ConsumerDuration: float
+        :param _ConsumerErrRate: MQ 消费者视角的错误率 %
+        :type ConsumerErrRate: float
+        :param _ConsumerQps: MQ 消费者视角的吞吐量
+        :type ConsumerQps: float
+        :param _ServiceId: 应用 ID
+        :type ServiceId: str
+        """
+        self._ErrRate = None
+        self._Kind = None
+        self._Name = None
+        self._Weight = None
+        self._Color = None
+        self._Duration = None
+        self._Qps = None
+        self._Type = None
+        self._Id = None
+        self._Size = None
+        self._IsModule = None
+        self._Position = None
+        self._Tags = None
+        self._CanDrillDown = None
+        self._Resource = None
+        self._NodeView = None
+        self._ConsumerDuration = None
+        self._ConsumerErrRate = None
+        self._ConsumerQps = None
+        self._ServiceId = None
+
+    @property
+    def ErrRate(self):
+        r"""错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ErrRate
+
+    @ErrRate.setter
+    def ErrRate(self, ErrRate):
+        self._ErrRate = ErrRate
+
+    @property
+    def Kind(self):
+        r"""节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Name(self):
+        r"""节点名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Weight(self):
+        r"""节点权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Color(self):
+        r"""节点颜色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Duration(self):
+        r"""响应时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Qps(self):
+        r"""吞吐量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def Type(self):
+        r"""节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Id(self):
+        r"""节点ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Size(self):
+        r"""节点大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def IsModule(self):
+        r"""节点是否为组件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsModule
+
+    @IsModule.setter
+    def IsModule(self, IsModule):
+        self._IsModule = IsModule
+
+    @property
+    def Position(self):
+        r"""节点位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Position`
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Tags(self):
+        r"""节点标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CanDrillDown(self):
+        r"""节点是否可以下钻
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanDrillDown
+
+    @CanDrillDown.setter
+    def CanDrillDown(self, CanDrillDown):
+        self._CanDrillDown = CanDrillDown
+
+    @property
+    def Resource(self):
+        r"""资源层信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Resource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def NodeView(self):
+        r"""拓扑节点视图名字
+        :rtype: str
+        """
+        return self._NodeView
+
+    @NodeView.setter
+    def NodeView(self, NodeView):
+        self._NodeView = NodeView
+
+    @property
+    def ConsumerDuration(self):
+        r"""MQ 消费者视角的响应时间 ms
+        :rtype: float
+        """
+        return self._ConsumerDuration
+
+    @ConsumerDuration.setter
+    def ConsumerDuration(self, ConsumerDuration):
+        self._ConsumerDuration = ConsumerDuration
+
+    @property
+    def ConsumerErrRate(self):
+        r"""MQ 消费者视角的错误率 %
+        :rtype: float
+        """
+        return self._ConsumerErrRate
+
+    @ConsumerErrRate.setter
+    def ConsumerErrRate(self, ConsumerErrRate):
+        self._ConsumerErrRate = ConsumerErrRate
+
+    @property
+    def ConsumerQps(self):
+        r"""MQ 消费者视角的吞吐量
+        :rtype: float
+        """
+        return self._ConsumerQps
+
+    @ConsumerQps.setter
+    def ConsumerQps(self, ConsumerQps):
+        self._ConsumerQps = ConsumerQps
+
+    @property
+    def ServiceId(self):
+        r"""应用 ID
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ErrRate = params.get("ErrRate")
+        self._Kind = params.get("Kind")
+        self._Name = params.get("Name")
+        self._Weight = params.get("Weight")
+        self._Color = params.get("Color")
+        self._Duration = params.get("Duration")
+        self._Qps = params.get("Qps")
+        self._Type = params.get("Type")
+        self._Id = params.get("Id")
+        self._Size = params.get("Size")
+        self._IsModule = params.get("IsModule")
+        if params.get("Position") is not None:
+            self._Position = Position()
+            self._Position._deserialize(params.get("Position"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CanDrillDown = params.get("CanDrillDown")
+        if params.get("Resource") is not None:
+            self._Resource = Resource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._NodeView = params.get("NodeView")
+        self._ConsumerDuration = params.get("ConsumerDuration")
+        self._ConsumerErrRate = params.get("ConsumerErrRate")
+        self._ConsumerQps = params.get("ConsumerQps")
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

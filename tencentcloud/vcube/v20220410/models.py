@@ -1845,6 +1845,36 @@ class DeleteApplicationAndVideoLicenseRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _LicenseId: license唯一标识
+        :type LicenseId: int
+        """
+        self._LicenseId = None
+
+    @property
+    def LicenseId(self):
+        r"""license唯一标识
+        :rtype: int
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
+
+    def _deserialize(self, params):
+        self._LicenseId = params.get("LicenseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteApplicationAndVideoLicenseResponse(AbstractModel):
     r"""DeleteApplicationAndVideoLicense返回参数结构体

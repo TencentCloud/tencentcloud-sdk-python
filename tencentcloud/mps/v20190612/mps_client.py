@@ -3344,6 +3344,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeAudio(self, request):
+        r"""同步接口，返回语音识别结果
+
+        :param request: Request instance for RecognizeAudio.
+        :type request: :class:`tencentcloud.mps.v20190612.models.RecognizeAudioRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RecognizeAudioResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeAudio", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeAudioResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeMediaForZhiXue(self, request):
         r"""智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
 

@@ -43,6 +43,24 @@ class DbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBackupPlan(
+            self,
+            request: models.CreateBackupPlanRequest,
+            opts: Dict = None,
+    ) -> models.CreateBackupPlanResponse:
+        """
+        该接口用于创建备份计划。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBackupPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBackupPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateConnectTestJob(
             self,
             request: models.CreateConnectTestJobRequest,
@@ -74,6 +92,42 @@ class DbsClient(AbstractClient):
         kwargs["action"] = "DescribeBackupCheckJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBackupCheckJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBackupPlans(
+            self,
+            request: models.DescribeBackupPlansRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupPlansResponse:
+        """
+        本接口（DescribeBackupPlans）用于查询备份计划列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupPlans"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupPlansResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConnectTestResult(
+            self,
+            request: models.DescribeConnectTestResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConnectTestResultResponse:
+        """
+        该接口用于查询连通性检测任务的结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConnectTestResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConnectTestResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

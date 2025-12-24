@@ -2720,6 +2720,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePullTransformPushInfoList(
+            self,
+            request: models.DescribePullTransformPushInfoListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePullTransformPushInfoListResponse:
+        """
+        查询拉流转推任务流数据统计信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePullTransformPushInfoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePullTransformPushInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePushBandwidthAndFluxList(
             self,
             request: models.DescribePushBandwidthAndFluxListRequest,

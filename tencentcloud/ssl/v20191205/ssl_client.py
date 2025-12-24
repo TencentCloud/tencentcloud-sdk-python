@@ -1506,7 +1506,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateInstance(self, request):
-        r"""更新证书内容（证书ID不变）并更新关联的云资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""当前接口需联系加白使用并且只支持更新证书的CLB资源，更新证书内容（证书ID不变）并更新关联的云资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
 
         :param request: Request instance for UploadUpdateCertificateInstance.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateInstanceRequest`

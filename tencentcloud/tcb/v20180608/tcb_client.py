@@ -256,52 +256,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateWxCloudBaseRunEnv(self, request):
-        r"""创建微信云托管
-
-        :param request: Request instance for CreateWxCloudBaseRunEnv.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunEnvRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunEnvResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateWxCloudBaseRunEnv", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateWxCloudBaseRunEnvResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateWxCloudBaseRunServerDBCluster(self, request):
-        r"""开通微信云托管MySQL数据库服务
-
-        :param request: Request instance for CreateWxCloudBaseRunServerDBCluster.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunServerDBClusterRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunServerDBClusterResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateWxCloudBaseRunServerDBCluster", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateWxCloudBaseRunServerDBClusterResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteCloudBaseProjectLatestVersion(self, request):
         r"""删除云项目
 
@@ -578,121 +532,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCloudBaseRunAllVpcs(self, request):
-        r"""查询环境下所有的vpc列表
-
-        :param request: Request instance for DescribeCloudBaseRunAllVpcs.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunAllVpcsRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunAllVpcsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunAllVpcs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunAllVpcsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCloudBaseRunConfForGateWay(self, request):
-        r"""独立网关中拉取云托管服务对应的配置信息
-
-        :param request: Request instance for DescribeCloudBaseRunConfForGateWay.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunConfForGateWay", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunConfForGateWayResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCloudBaseRunOneClickTaskExternal(self, request):
-        r"""查询一键部署任务 （特定接口：外部查询使用）
-
-        :param request: Request instance for DescribeCloudBaseRunOneClickTaskExternal.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOneClickTaskExternalRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOneClickTaskExternalResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunOneClickTaskExternal", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunOneClickTaskExternalResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCloudBaseRunOperationTypes(self, request):
-        r"""查询服务、版本和操作类型
-
-        :param request: Request instance for DescribeCloudBaseRunOperationTypes.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOperationTypesRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOperationTypesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunOperationTypes", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunOperationTypesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCloudBaseRunPodList(self, request):
-        r"""查询云托管服务版本容器列表
-
-        :param request: Request instance for DescribeCloudBaseRunPodList.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunPodListRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunPodListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunPodList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunPodListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeCloudBaseRunResource(self, request):
         r"""查看容器托管的集群状态
 
@@ -762,29 +601,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCloudBaseRunServerDomainName(self, request):
-        r"""查询微信云托管服务域名
-
-        :param request: Request instance for DescribeCloudBaseRunServerDomainName.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerDomainNameRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerDomainNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunServerDomainName", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunServerDomainNameResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeCloudBaseRunServerVersion(self, request):
         r"""查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 
@@ -822,29 +638,6 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeCloudBaseRunVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudBaseRunVersionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCloudBaseRunVersionRsByCondition(self, request):
-        r"""DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
-
-        :param request: Request instance for DescribeCloudBaseRunVersionRsByCondition.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRsByConditionRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRsByConditionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudBaseRunVersionRsByCondition", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudBaseRunVersionRsByConditionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1341,52 +1134,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeWxCloudBaseRunEnvs(self, request):
-        r"""查询微信云托管环境信息
-
-        :param request: Request instance for DescribeWxCloudBaseRunEnvs.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunEnvsRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunEnvsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeWxCloudBaseRunEnvs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeWxCloudBaseRunEnvsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeWxCloudBaseRunSubNets(self, request):
-        r"""查询微信云托管子网
-
-        :param request: Request instance for DescribeWxCloudBaseRunSubNets.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunSubNetsRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunSubNetsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeWxCloudBaseRunSubNets", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeWxCloudBaseRunSubNetsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeWxGatewayRoutes(self, request):
         r"""查看安全网关路由
 
@@ -1746,29 +1493,6 @@ class TcbClient(AbstractClient):
             body = self.call("ReplaceActivityRecord", params, headers=headers)
             response = json.loads(body)
             model = models.ReplaceActivityRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RollUpdateCloudBaseRunServerVersion(self, request):
-        r"""针对特定的版本，进行滚动更新
-
-        :param request: Request instance for RollUpdateCloudBaseRunServerVersion.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.RollUpdateCloudBaseRunServerVersionRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.RollUpdateCloudBaseRunServerVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RollUpdateCloudBaseRunServerVersion", params, headers=headers)
-            response = json.loads(body)
-            model = models.RollUpdateCloudBaseRunServerVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

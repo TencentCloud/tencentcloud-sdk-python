@@ -2638,6 +2638,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RecognizeAudio(
+            self,
+            request: models.RecognizeAudioRequest,
+            opts: Dict = None,
+    ) -> models.RecognizeAudioResponse:
+        """
+        同步接口，返回语音识别结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RecognizeAudio"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RecognizeAudioResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RecognizeMediaForZhiXue(
             self,
             request: models.RecognizeMediaForZhiXueRequest,

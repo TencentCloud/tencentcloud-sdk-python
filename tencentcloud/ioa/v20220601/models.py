@@ -299,6 +299,10 @@ class AggrSoftDeviceRow(AbstractModel):
         :type UpgradeSoftId: int
         :param _RemarkName: 终端备注名
         :type RemarkName: str
+        :param _SoftwareId: 软件id
+        :type SoftwareId: int
+        :param _OsType: 0:win 2:mac
+        :type OsType: int
         """
         self._DeviceName = None
         self._LastLoginAccount = None
@@ -318,6 +322,8 @@ class AggrSoftDeviceRow(AbstractModel):
         self._NewVersion = None
         self._UpgradeSoftId = None
         self._RemarkName = None
+        self._SoftwareId = None
+        self._OsType = None
 
     @property
     def DeviceName(self):
@@ -532,6 +538,28 @@ class AggrSoftDeviceRow(AbstractModel):
     def RemarkName(self, RemarkName):
         self._RemarkName = RemarkName
 
+    @property
+    def SoftwareId(self):
+        r"""软件id
+        :rtype: int
+        """
+        return self._SoftwareId
+
+    @SoftwareId.setter
+    def SoftwareId(self, SoftwareId):
+        self._SoftwareId = SoftwareId
+
+    @property
+    def OsType(self):
+        r"""0:win 2:mac
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -552,6 +580,8 @@ class AggrSoftDeviceRow(AbstractModel):
         self._NewVersion = params.get("NewVersion")
         self._UpgradeSoftId = params.get("UpgradeSoftId")
         self._RemarkName = params.get("RemarkName")
+        self._SoftwareId = params.get("SoftwareId")
+        self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10098,6 +10128,10 @@ class SoftwareInformationData(AbstractModel):
         :type Id: int
         :param _PiracyRisk: 盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
         :type PiracyRisk: int
+        :param _DeviceId: 设备id
+        :type DeviceId: int
+        :param _OsType: 平台类型
+        :type OsType: int
         """
         self._Name = None
         self._InstallDate = None
@@ -10107,6 +10141,8 @@ class SoftwareInformationData(AbstractModel):
         self._CorpName = None
         self._Id = None
         self._PiracyRisk = None
+        self._DeviceId = None
+        self._OsType = None
 
     @property
     def Name(self):
@@ -10196,6 +10232,28 @@ class SoftwareInformationData(AbstractModel):
     def PiracyRisk(self, PiracyRisk):
         self._PiracyRisk = PiracyRisk
 
+    @property
+    def DeviceId(self):
+        r"""设备id
+        :rtype: int
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def OsType(self):
+        r"""平台类型
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10206,6 +10264,8 @@ class SoftwareInformationData(AbstractModel):
         self._CorpName = params.get("CorpName")
         self._Id = params.get("Id")
         self._PiracyRisk = params.get("PiracyRisk")
+        self._DeviceId = params.get("DeviceId")
+        self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

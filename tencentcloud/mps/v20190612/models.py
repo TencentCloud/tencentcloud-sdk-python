@@ -62632,6 +62632,419 @@ class RawWatermarkParameter(AbstractModel):
         
 
 
+class RecognizeAudioRequest(AbstractModel):
+    r"""RecognizeAudio请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: base64编码的音频数据
+        :type AudioData: str
+        :param _Source: 识别目标语言，为空默认 auto 自动识别语种。
+注：如果自动识别语种识别效果不佳，可以指定语种提高准确率
+
+当前支持语言：
+auto: 自动识别
+zh: 简体中文
+en: 英语
+ja: 日语
+ko: 韩语
+vi: 越南语
+ms: 马来语
+id: 印度尼西亚语
+fil: 菲律宾语
+th: 泰语
+pt: 葡萄牙语
+tr: 土耳其语
+ar: 阿拉伯语
+es: 西班牙语
+hi: 印地语
+fr: 法语
+de: 德语
+it: 意大利语
+yue: 粤语
+ru: 俄语
+af: 南非荷兰语
+sq: 阿尔巴尼亚语
+am: 阿姆哈拉语
+hy: 亚美尼亚语
+az: 阿塞拜疆语
+eu: 巴斯克语
+bn: 孟加拉语
+bs: 波斯尼亚语
+bg: 保加利亚语
+my: 缅甸语
+ca: 加泰罗尼亚语
+hr: 克罗地亚语
+cs: 捷克语
+da: 丹麦语
+nl: 荷兰语
+et: 爱沙尼亚语
+fi: 芬兰语
+gl: 加利西亚语
+ka: 格鲁吉亚语
+el: 希腊语
+gu: 古吉拉特语
+iw: 希伯来语
+hu: 匈牙利语
+is: 冰岛语
+jv: 爪哇语
+kn: 卡纳达语
+kk: 哈萨克语
+km: 高棉语
+rw: 卢旺达语
+lo: 老挝语
+lv: 拉脱维亚语
+lt: 立陶宛语
+mk: 马其顿语
+ml: 马拉雅拉姆语
+mr: 马拉地语
+mn: 蒙古语
+ne: 尼泊尔语
+no: 博克马尔挪威语
+fa: 波斯语
+pl: 波兰语
+ro: 罗马尼亚语
+sr: 塞尔维亚语
+si: 僧伽罗语
+sk: 斯洛伐克语
+sl: 斯洛文尼亚语
+st: 南索托语
+su: 巽他语
+sw: 斯瓦希里语
+sv: 瑞典语
+ta: 泰米尔语
+te: 泰卢固语
+ts: 聪加语
+uk: 乌克兰语
+ur: 乌尔都语
+uz: 乌兹别克语
+ve: 文达语
+xh: 科萨语
+zu: 祖鲁语
+
+        :type Source: str
+        :param _AudioFormat: 音频数据格式，默认为 pcm
+
+支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+        :type AudioFormat: str
+        :param _UserExtPara: 扩展参数，默认不填，特殊需求使用
+        :type UserExtPara: str
+        """
+        self._AudioData = None
+        self._Source = None
+        self._AudioFormat = None
+        self._UserExtPara = None
+
+    @property
+    def AudioData(self):
+        r"""base64编码的音频数据
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def Source(self):
+        r"""识别目标语言，为空默认 auto 自动识别语种。
+注：如果自动识别语种识别效果不佳，可以指定语种提高准确率
+
+当前支持语言：
+auto: 自动识别
+zh: 简体中文
+en: 英语
+ja: 日语
+ko: 韩语
+vi: 越南语
+ms: 马来语
+id: 印度尼西亚语
+fil: 菲律宾语
+th: 泰语
+pt: 葡萄牙语
+tr: 土耳其语
+ar: 阿拉伯语
+es: 西班牙语
+hi: 印地语
+fr: 法语
+de: 德语
+it: 意大利语
+yue: 粤语
+ru: 俄语
+af: 南非荷兰语
+sq: 阿尔巴尼亚语
+am: 阿姆哈拉语
+hy: 亚美尼亚语
+az: 阿塞拜疆语
+eu: 巴斯克语
+bn: 孟加拉语
+bs: 波斯尼亚语
+bg: 保加利亚语
+my: 缅甸语
+ca: 加泰罗尼亚语
+hr: 克罗地亚语
+cs: 捷克语
+da: 丹麦语
+nl: 荷兰语
+et: 爱沙尼亚语
+fi: 芬兰语
+gl: 加利西亚语
+ka: 格鲁吉亚语
+el: 希腊语
+gu: 古吉拉特语
+iw: 希伯来语
+hu: 匈牙利语
+is: 冰岛语
+jv: 爪哇语
+kn: 卡纳达语
+kk: 哈萨克语
+km: 高棉语
+rw: 卢旺达语
+lo: 老挝语
+lv: 拉脱维亚语
+lt: 立陶宛语
+mk: 马其顿语
+ml: 马拉雅拉姆语
+mr: 马拉地语
+mn: 蒙古语
+ne: 尼泊尔语
+no: 博克马尔挪威语
+fa: 波斯语
+pl: 波兰语
+ro: 罗马尼亚语
+sr: 塞尔维亚语
+si: 僧伽罗语
+sk: 斯洛伐克语
+sl: 斯洛文尼亚语
+st: 南索托语
+su: 巽他语
+sw: 斯瓦希里语
+sv: 瑞典语
+ta: 泰米尔语
+te: 泰卢固语
+ts: 聪加语
+uk: 乌克兰语
+ur: 乌尔都语
+uz: 乌兹别克语
+ve: 文达语
+xh: 科萨语
+zu: 祖鲁语
+
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def AudioFormat(self):
+        r"""音频数据格式，默认为 pcm
+
+支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+        :rtype: str
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def UserExtPara(self):
+        r"""扩展参数，默认不填，特殊需求使用
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._Source = params.get("Source")
+        self._AudioFormat = params.get("AudioFormat")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeAudioResponse(AbstractModel):
+    r"""RecognizeAudio返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 整段音频的识别结果
+        :type Text: str
+        :param _AudioLength: 音频长度，单位秒
+        :type AudioLength: float
+        :param _Sentence: 分句的识别结果
+        :type Sentence: list of RecognizeAudioSentence
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Text = None
+        self._AudioLength = None
+        self._Sentence = None
+        self._RequestId = None
+
+    @property
+    def Text(self):
+        r"""整段音频的识别结果
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def AudioLength(self):
+        r"""音频长度，单位秒
+        :rtype: float
+        """
+        return self._AudioLength
+
+    @AudioLength.setter
+    def AudioLength(self, AudioLength):
+        self._AudioLength = AudioLength
+
+    @property
+    def Sentence(self):
+        r"""分句的识别结果
+        :rtype: list of RecognizeAudioSentence
+        """
+        return self._Sentence
+
+    @Sentence.setter
+    def Sentence(self, Sentence):
+        self._Sentence = Sentence
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._AudioLength = params.get("AudioLength")
+        if params.get("Sentence") is not None:
+            self._Sentence = []
+            for item in params.get("Sentence"):
+                obj = RecognizeAudioSentence()
+                obj._deserialize(item)
+                self._Sentence.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeAudioSentence(AbstractModel):
+    r"""识别音频单句结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 在音频中的起始时间，单位秒
+        :type Start: float
+        :param _End: 在音频中的截止时间，单位秒
+        :type End: float
+        :param _Text: 音频识别结果
+        :type Text: str
+        :param _WordsInfo: 字词时间戳结果
+        :type WordsInfo: list of WordResult
+        """
+        self._Start = None
+        self._End = None
+        self._Text = None
+        self._WordsInfo = None
+
+    @property
+    def Start(self):
+        r"""在音频中的起始时间，单位秒
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""在音频中的截止时间，单位秒
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Text(self):
+        r"""音频识别结果
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def WordsInfo(self):
+        r"""字词时间戳结果
+        :rtype: list of WordResult
+        """
+        return self._WordsInfo
+
+    @WordsInfo.setter
+    def WordsInfo(self, WordsInfo):
+        self._WordsInfo = WordsInfo
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Text = params.get("Text")
+        if params.get("WordsInfo") is not None:
+            self._WordsInfo = []
+            for item in params.get("WordsInfo"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._WordsInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecognizeMediaForZhiXueRequest(AbstractModel):
     r"""RecognizeMediaForZhiXue请求参数结构体
 

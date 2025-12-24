@@ -25403,6 +25403,152 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCostSummaryByTagRequest(AbstractModel):
+    r"""DescribeCostSummaryByTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2025-12，EndTime 为 2025-12，查询结果是 2025 年 12 月数据。
+        :type BeginTime: str
+        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2025-12，EndTime 为 2025-12，查询结果是 2025 年 12 月数据。
+        :type EndTime: str
+        :param _TagKey: 分账标签键，用户自定义
+        :type TagKey: str
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._TagKey = None
+
+    @property
+    def BeginTime(self):
+        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2025-12，EndTime 为 2025-12，查询结果是 2025 年 12 月数据。
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2025-12，EndTime 为 2025-12，查询结果是 2025 年 12 月数据。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TagKey(self):
+        r"""分账标签键，用户自定义
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostSummaryByTagResponse(AbstractModel):
+    r"""DescribeCostSummaryByTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: 数据是否准备好，0准备中，1已就绪。
+        :type Ready: int
+        :param _SummaryOverview: 各标签值消耗分布详情
+        :type SummaryOverview: list of TagSummaryOverviewItem
+        :param _SummaryTotal: 总计
+        :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._SummaryOverview = None
+        self._SummaryTotal = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        r"""数据是否准备好，0准备中，1已就绪。
+        :rtype: int
+        """
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def SummaryOverview(self):
+        r"""各标签值消耗分布详情
+        :rtype: list of TagSummaryOverviewItem
+        """
+        return self._SummaryOverview
+
+    @SummaryOverview.setter
+    def SummaryOverview(self, SummaryOverview):
+        self._SummaryOverview = SummaryOverview
+
+    @property
+    def SummaryTotal(self):
+        r"""总计
+        :rtype: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
+        """
+        return self._SummaryTotal
+
+    @SummaryTotal.setter
+    def SummaryTotal(self, SummaryTotal):
+        self._SummaryTotal = SummaryTotal
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("SummaryOverview") is not None:
+            self._SummaryOverview = []
+            for item in params.get("SummaryOverview"):
+                obj = TagSummaryOverviewItem()
+                obj._deserialize(item)
+                self._SummaryOverview.append(obj)
+        if params.get("SummaryTotal") is not None:
+            self._SummaryTotal = SummaryTotal()
+            self._SummaryTotal._deserialize(params.get("SummaryTotal"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDealsByCondRequest(AbstractModel):
     r"""DescribeDealsByCond请求参数结构体
 

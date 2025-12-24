@@ -66,6 +66,8 @@ class AudioResult(AbstractModel):
         :type HitType: str
         :param _Sentences: ASR句子的起止时间
         :type Sentences: list of Sentence
+        :param _RequestId: 切片请求ID
+        :type RequestId: str
         """
         self._HitFlag = None
         self._Label = None
@@ -87,6 +89,7 @@ class AudioResult(AbstractModel):
         self._SubTagCode = None
         self._HitType = None
         self._Sentences = None
+        self._RequestId = None
 
     @property
     def HitFlag(self):
@@ -309,6 +312,17 @@ class AudioResult(AbstractModel):
     def Sentences(self, Sentences):
         self._Sentences = Sentences
 
+    @property
+    def RequestId(self):
+        r"""切片请求ID
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -371,6 +385,7 @@ class AudioResult(AbstractModel):
                 obj = Sentence()
                 obj._deserialize(item)
                 self._Sentences.append(obj)
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

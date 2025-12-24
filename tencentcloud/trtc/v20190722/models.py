@@ -15155,6 +15155,10 @@ class StartStreamIngestRequest(AbstractModel):
         :type MaxDuration: int
         :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
         :type Volume: int
+        :param _EnableProgress: 开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+        :type EnableProgress: bool
+        :param _Tempo: 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        :type Tempo: float
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -15171,6 +15175,8 @@ class StartStreamIngestRequest(AbstractModel):
         self._RepeatNum = None
         self._MaxDuration = None
         self._Volume = None
+        self._EnableProgress = None
+        self._Tempo = None
 
     @property
     def SdkAppId(self):
@@ -15355,6 +15361,28 @@ class StartStreamIngestRequest(AbstractModel):
     def Volume(self, Volume):
         self._Volume = Volume
 
+    @property
+    def EnableProgress(self):
+        r"""开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+        :rtype: bool
+        """
+        return self._EnableProgress
+
+    @EnableProgress.setter
+    def EnableProgress(self, EnableProgress):
+        self._EnableProgress = EnableProgress
+
+    @property
+    def Tempo(self):
+        r"""播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        :rtype: float
+        """
+        return self._Tempo
+
+    @Tempo.setter
+    def Tempo(self, Tempo):
+        self._Tempo = Tempo
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -15376,6 +15404,8 @@ class StartStreamIngestRequest(AbstractModel):
         self._RepeatNum = params.get("RepeatNum")
         self._MaxDuration = params.get("MaxDuration")
         self._Volume = params.get("Volume")
+        self._EnableProgress = params.get("EnableProgress")
+        self._Tempo = params.get("Tempo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18140,12 +18170,18 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type Volume: int
         :param _IsPause: 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
         :type IsPause: bool
+        :param _EnableProgress: 是否开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+        :type EnableProgress: bool
+        :param _Tempo: 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        :type Tempo: float
         """
         self._SdkAppId = None
         self._TaskId = None
         self._StreamUrl = None
         self._Volume = None
         self._IsPause = None
+        self._EnableProgress = None
+        self._Tempo = None
 
     @property
     def SdkAppId(self):
@@ -18202,6 +18238,28 @@ class UpdateStreamIngestRequest(AbstractModel):
     def IsPause(self, IsPause):
         self._IsPause = IsPause
 
+    @property
+    def EnableProgress(self):
+        r"""是否开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+        :rtype: bool
+        """
+        return self._EnableProgress
+
+    @EnableProgress.setter
+    def EnableProgress(self, EnableProgress):
+        self._EnableProgress = EnableProgress
+
+    @property
+    def Tempo(self):
+        r"""播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        :rtype: float
+        """
+        return self._Tempo
+
+    @Tempo.setter
+    def Tempo(self, Tempo):
+        self._Tempo = Tempo
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -18209,6 +18267,8 @@ class UpdateStreamIngestRequest(AbstractModel):
         self._StreamUrl = params.get("StreamUrl")
         self._Volume = params.get("Volume")
         self._IsPause = params.get("IsPause")
+        self._EnableProgress = params.get("EnableProgress")
+        self._Tempo = params.get("Tempo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18960,7 +19020,7 @@ class VoiceCloneRequest(AbstractModel):
         :type SdkAppId: int
         :param _VoiceName: 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
         :type VoiceName: str
-        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
         :type PromptAudio: str
         :param _APIKey: TTS的API密钥
         :type APIKey: str
@@ -19003,7 +19063,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def PromptAudio(self):
-        r"""声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+        r"""声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
         :rtype: str
         """
         return self._PromptAudio
