@@ -3801,6 +3801,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyObjects(self, request):
+        r"""批量修改防护对象
+
+        :param request: Request instance for ModifyObjects.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyObjectsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyObjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOwaspRuleStatus(self, request):
         r"""更新规则的开关
 

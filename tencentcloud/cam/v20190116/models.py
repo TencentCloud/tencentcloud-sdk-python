@@ -2205,10 +2205,13 @@ class CreatePolicyRequest(AbstractModel):
         :type PolicyDocument: str
         :param _Description: 策略描述
         :type Description: str
+        :param _Tags: 策略关联的标签列表
+        :type Tags: list of Tag
         """
         self._PolicyName = None
         self._PolicyDocument = None
         self._Description = None
+        self._Tags = None
 
     @property
     def PolicyName(self):
@@ -2243,11 +2246,28 @@ class CreatePolicyRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Tags(self):
+        r"""策略关联的标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._PolicyName = params.get("PolicyName")
         self._PolicyDocument = params.get("PolicyDocument")
         self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5783,6 +5803,8 @@ class GetPolicyResponse(AbstractModel):
         :type PresetAlias: str
         :param _IsServiceLinkedRolePolicy: 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
         :type IsServiceLinkedRolePolicy: int
+        :param _Tags: 策略关联的标签列表
+        :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5794,6 +5816,7 @@ class GetPolicyResponse(AbstractModel):
         self._PolicyDocument = None
         self._PresetAlias = None
         self._IsServiceLinkedRolePolicy = None
+        self._Tags = None
         self._RequestId = None
 
     @property
@@ -5886,6 +5909,17 @@ class GetPolicyResponse(AbstractModel):
         self._IsServiceLinkedRolePolicy = IsServiceLinkedRolePolicy
 
     @property
+    def Tags(self):
+        r"""策略关联的标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5906,6 +5940,12 @@ class GetPolicyResponse(AbstractModel):
         self._PolicyDocument = params.get("PolicyDocument")
         self._PresetAlias = params.get("PresetAlias")
         self._IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11421,7 +11461,6 @@ class StrategyInfo(AbstractModel):
         :param _PolicyName: 策略名称。
         :type PolicyName: str
         :param _AddTime: 策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _Type: 策略类型。1 表示自定义策略，2 表示预设策略。
         :type Type: int
@@ -11456,6 +11495,8 @@ class StrategyInfo(AbstractModel):
         :param _UpdateTime: 最后编辑时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -11472,6 +11513,7 @@ class StrategyInfo(AbstractModel):
         self._AttachEntityCount = None
         self._AttachEntityBoundaryCount = None
         self._UpdateTime = None
+        self._Tags = None
 
     @property
     def PolicyId(self):
@@ -11498,7 +11540,6 @@ class StrategyInfo(AbstractModel):
     @property
     def AddTime(self):
         r"""策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -11648,6 +11689,17 @@ class StrategyInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Tags(self):
+        r"""标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
@@ -11665,6 +11717,12 @@ class StrategyInfo(AbstractModel):
         self._AttachEntityCount = params.get("AttachEntityCount")
         self._AttachEntityBoundaryCount = params.get("AttachEntityBoundaryCount")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11981,6 +12039,57 @@ class SubAccountUser(AbstractModel):
         self._UserType = params.get("UserType")
         self._LastLoginIp = params.get("LastLoginIp")
         self._LastLoginTime = params.get("LastLoginTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

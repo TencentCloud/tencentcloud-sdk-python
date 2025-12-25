@@ -3823,6 +3823,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetOptimizerPolicy(self, request):
+        r"""设置优化策略的接口
+
+        :param request: Request instance for SetOptimizerPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SetOptimizerPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SetOptimizerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetOptimizerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetOptimizerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SuspendResumeDataEngine(self, request):
         r"""本接口用于控制挂起或启动数据引擎
 

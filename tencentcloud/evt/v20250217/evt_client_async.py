@@ -78,3 +78,21 @@ class EvtClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def PutMessage(
+            self,
+            request: models.PutMessageRequest,
+            opts: Dict = None,
+    ) -> models.PutMessageResponse:
+        """
+        推送事件数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PutMessage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PutMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

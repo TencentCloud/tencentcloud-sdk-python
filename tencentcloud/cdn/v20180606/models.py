@@ -3037,8 +3037,12 @@ class AutoGuard(AbstractModel):
         :param _Switch: 流量防盗刷配置开关，取值有： on：开启 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
+        :param _FilterRules: 流量防盗刷配置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of FilterRules
         """
         self._Switch = None
+        self._FilterRules = None
 
     @property
     def Switch(self):
@@ -3052,9 +3056,27 @@ class AutoGuard(AbstractModel):
     def Switch(self, Switch):
         self._Switch = Switch
 
+    @property
+    def FilterRules(self):
+        r"""流量防盗刷配置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FilterRules
+        """
+        return self._FilterRules
+
+    @FilterRules.setter
+    def FilterRules(self, FilterRules):
+        self._FilterRules = FilterRules
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self._FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRules()
+                obj._deserialize(item)
+                self._FilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13857,6 +13879,78 @@ class ExtraLogset(AbstractModel):
                 obj = TopicInfo()
                 obj._deserialize(item)
                 self._Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterRules(AbstractModel):
+    r"""防盗刷配置规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterType: 封禁类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        :param _RuleType: 封禁规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param _RulePaths: 封禁规则路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        """
+        self._FilterType = None
+        self._RuleType = None
+        self._RulePaths = None
+
+    @property
+    def FilterType(self):
+        r"""封禁类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def RuleType(self):
+        r"""封禁规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RulePaths(self):
+        r"""封禁规则路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RulePaths
+
+    @RulePaths.setter
+    def RulePaths(self, RulePaths):
+        self._RulePaths = RulePaths
+
+
+    def _deserialize(self, params):
+        self._FilterType = params.get("FilterType")
+        self._RuleType = params.get("RuleType")
+        self._RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

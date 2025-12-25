@@ -42572,6 +42572,120 @@ class ModifyObjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyObjectsRequest(AbstractModel):
+    r"""ModifyObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectId: 修改对象标识
+        :type ObjectId: list of str
+        :param _OpType: 改动作类型:InstanceId绑定实例；UnbindInstance解绑实例。
+        :type OpType: str
+        :param _InstanceId: 新的实例ID，如果和已绑定的实例相同认为修改成功
+        :type InstanceId: str
+        :param _Objects: 对象列表，仅跨账号接入使用
+        :type Objects: list of Object
+        """
+        self._ObjectId = None
+        self._OpType = None
+        self._InstanceId = None
+        self._Objects = None
+
+    @property
+    def ObjectId(self):
+        r"""修改对象标识
+        :rtype: list of str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def OpType(self):
+        r"""改动作类型:InstanceId绑定实例；UnbindInstance解绑实例。
+        :rtype: str
+        """
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def InstanceId(self):
+        r"""新的实例ID，如果和已绑定的实例相同认为修改成功
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Objects(self):
+        r"""对象列表，仅跨账号接入使用
+        :rtype: list of Object
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+
+    def _deserialize(self, params):
+        self._ObjectId = params.get("ObjectId")
+        self._OpType = params.get("OpType")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Objects") is not None:
+            self._Objects = []
+            for item in params.get("Objects"):
+                obj = Object()
+                obj._deserialize(item)
+                self._Objects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyObjectsResponse(AbstractModel):
+    r"""ModifyObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOwaspRuleStatusRequest(AbstractModel):
     r"""ModifyOwaspRuleStatus请求参数结构体
 
@@ -45131,6 +45245,87 @@ class NetworkConfig(AbstractModel):
         self._AntiDDosEip = params.get("AntiDDosEip")
         self._AntiDDosEipStatus = params.get("AntiDDosEipStatus")
         self._VipStatus = params.get("VipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Object(AbstractModel):
+    r"""对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectId: 对象id
+        :type ObjectId: str
+        :param _MemberAppId: 成员appid
+        :type MemberAppId: int
+        :param _MemberUin: 成员uin
+        :type MemberUin: str
+        :param _MemberNickName: 成员昵称
+        :type MemberNickName: str
+        """
+        self._ObjectId = None
+        self._MemberAppId = None
+        self._MemberUin = None
+        self._MemberNickName = None
+
+    @property
+    def ObjectId(self):
+        r"""对象id
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def MemberAppId(self):
+        r"""成员appid
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""成员uin
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberNickName(self):
+        r"""成员昵称
+        :rtype: str
+        """
+        return self._MemberNickName
+
+    @MemberNickName.setter
+    def MemberNickName(self, MemberNickName):
+        self._MemberNickName = MemberNickName
+
+
+    def _deserialize(self, params):
+        self._ObjectId = params.get("ObjectId")
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
+        self._MemberNickName = params.get("MemberNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

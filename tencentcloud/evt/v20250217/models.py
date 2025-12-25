@@ -395,6 +395,115 @@ class DeleteRoleUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PutMessageRequest(AbstractModel):
+    r"""PutMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: <p>事件ID</p>
+        :type EventId: str
+        :param _Data: <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+        :type Data: str
+        :param _Source: <p>数据推送来源，会在生成的单据中展示数据来源</p>
+        :type Source: str
+        """
+        self._EventId = None
+        self._Data = None
+        self._Source = None
+
+    @property
+    def EventId(self):
+        r"""<p>事件ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Data(self):
+        r"""<p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Source(self):
+        r"""<p>数据推送来源，会在生成的单据中展示数据来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._Data = params.get("Data")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutMessageResponse(AbstractModel):
+    r"""PutMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TicketId: <p>满足条件时生成的事件单id，不满足条件时为空</p>
+        :type TicketId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TicketId = None
+        self._RequestId = None
+
+    @property
+    def TicketId(self):
+        r"""<p>满足条件时生成的事件单id，不满足条件时为空</p>
+        :rtype: str
+        """
+        return self._TicketId
+
+    @TicketId.setter
+    def TicketId(self, TicketId):
+        self._TicketId = TicketId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TicketId = params.get("TicketId")
+        self._RequestId = params.get("RequestId")
+
+
 class UserAttribute(AbstractModel):
     r"""人员属性
 

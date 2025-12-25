@@ -93,3 +93,26 @@ class EvtClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PutMessage(self, request):
+        r"""推送事件数据
+
+        :param request: Request instance for PutMessage.
+        :type request: :class:`tencentcloud.evt.v20250217.models.PutMessageRequest`
+        :rtype: :class:`tencentcloud.evt.v20250217.models.PutMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PutMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.PutMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

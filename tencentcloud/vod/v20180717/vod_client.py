@@ -1750,7 +1750,7 @@ class VodClient(AbstractClient):
 
     def DescribeCDNUsageData(self, request):
         r"""该接口用于查询点播 CDN 的流量、带宽等统计数据。
-           1. 可以查询最近365天内的 CDN 用量数据。
+           1. CDN 用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
            2. 查询时间跨度不超过90天。
            3. 可以指定用量数据的时间粒度，支持5分钟、1小时、1天的时间粒度。
            4. 流量为查询时间粒度内的总流量，带宽为查询时间粒度内的峰值带宽。
@@ -2433,7 +2433,7 @@ class VodClient(AbstractClient):
 
     def DescribeMediaProcessUsageData(self, request):
         r"""该接口返回查询时间范围内每天使用的视频处理用量信息。
-           1. 可以查询最近365天内的视频处理统计数据。
+           1. 视频处理用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
            2. 查询时间跨度不超过90天。
 
         :param request: Request instance for DescribeMediaProcessUsageData.
@@ -2720,7 +2720,7 @@ class VodClient(AbstractClient):
 
     def DescribeStorageDetails(self, request):
         r"""该接口返回查询时间范围内使用的点播存储空间，单位：字节。
-            1. 可以查询最近365天内的存储空间数据；
+            1. 存储用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们；
             2. 查询时间跨度不超过90天；
             3. 分钟粒度查询跨度不超过7天；
 

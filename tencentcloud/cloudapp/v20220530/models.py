@@ -163,43 +163,43 @@ class License(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LicenseId: License ID
+        :param _LicenseId: <p>License ID</p>
         :type LicenseId: str
-        :param _LicenseMode: 软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table>
+        :param _LicenseMode: <p>软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table></p>
         :type LicenseMode: str
-        :param _LicenseStatus: 软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table>
+        :param _LicenseStatus: <p>软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table></p>
         :type LicenseStatus: str
-        :param _ProviderId: 软件供应方 ID。
+        :param _ProviderId: <p>软件供应方 ID。</p>
         :type ProviderId: int
-        :param _SoftwarePackageId: 软件包 ID。
+        :param _SoftwarePackageId: <p>软件包 ID。</p>
         :type SoftwarePackageId: str
-        :param _SoftwarePackageVersion: 软件包版本。
+        :param _SoftwarePackageVersion: <p>软件包版本。</p>
         :type SoftwarePackageVersion: str
-        :param _AuthorizedUserUin: 被授权的用户 UIN。
+        :param _AuthorizedUserUin: <p>被授权的用户 UIN。</p>
         :type AuthorizedUserUin: str
-        :param _AuthorizedCloudappId: 被授权的应用实例 ID。
+        :param _AuthorizedCloudappId: <p>被授权的应用实例 ID。</p>
         :type AuthorizedCloudappId: str
-        :param _AuthorizedCloudappRoleId: 被授权的角色 ID。
+        :param _AuthorizedCloudappRoleId: <p>被授权的角色 ID。</p>
         :type AuthorizedCloudappRoleId: str
-        :param _AuthorizedSpecification: 被授权的软件规格，具体字段请参考结构SaleParam
+        :param _AuthorizedSpecification: <p>被授权的软件规格，具体字段请参考结构SaleParam</p>
         :type AuthorizedSpecification: list of SaleParam
-        :param _BillingMode: 被授权的软件的计费模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>线上计费，软件的授权从腾讯云线上购买，支持续费、退款等操作。</td></tr><tr><td>2</td><td>线下计费，软件的授权线下签订合同购买，定向客户交付，无法从线上续费和退款。</td></tr><tr><td>4</td><td>免费</td></tr></tbody></table>
+        :param _BillingMode: <p>被授权的软件的计费模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>线上计费，软件的授权从腾讯云线上购买，支持续费、退款等操作。</td></tr><tr><td>2</td><td>线下计费，软件的授权线下签订合同购买，定向客户交付，无法从线上续费和退款。</td></tr><tr><td>4</td><td>免费</td></tr></tbody></table></p>
         :type BillingMode: int
-        :param _LifeSpan: 授权时长（单位由LifeSpanUnit确定，枚举值有Y年/M月/D日三种）
+        :param _LifeSpan: <p>授权时长（单位由LifeSpanUnit确定，枚举值有Y年/M月/D日三种）</p>
         :type LifeSpan: int
-        :param _IssueDate: 授权颁发时间。
+        :param _IssueDate: <p>授权颁发时间。</p>
         :type IssueDate: str
-        :param _ActivationDate: 授权激活时间，如从未激活则返回 null。
+        :param _ActivationDate: <p>授权激活时间，如从未激活则返回 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivationDate: str
-        :param _ExpirationDate: 授权过期时间
+        :param _ExpirationDate: <p>授权过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpirationDate: str
-        :param _LifeSpanUnit: 授权时长单位，枚举值有Y年/M月/D日三种
+        :param _LifeSpanUnit: <p>授权时长单位，枚举值有Y年/M月/D日三种</p>
         :type LifeSpanUnit: str
-        :param _LicenseType: 授权的类型：Standard正式版/Development开发版/Trial体验版
+        :param _LicenseType: <p>授权的类型：Standard正式版/Development开发版/Trial体验版</p>
         :type LicenseType: str
-        :param _LicenseLevel: 授权的层级：Master 主授权；Child 子授权/增强型授权
+        :param _LicenseLevel: <p>授权的层级：Master 主授权；Child 子授权/增强型授权</p>
         :type LicenseLevel: str
         """
         self._LicenseId = None
@@ -223,7 +223,7 @@ class License(AbstractModel):
 
     @property
     def LicenseId(self):
-        r"""License ID
+        r"""<p>License ID</p>
         :rtype: str
         """
         return self._LicenseId
@@ -234,7 +234,7 @@ class License(AbstractModel):
 
     @property
     def LicenseMode(self):
-        r"""软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table>
+        r"""<p>软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table></p>
         :rtype: str
         """
         return self._LicenseMode
@@ -245,7 +245,7 @@ class License(AbstractModel):
 
     @property
     def LicenseStatus(self):
-        r"""软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table>
+        r"""<p>软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table></p>
         :rtype: str
         """
         return self._LicenseStatus
@@ -256,7 +256,7 @@ class License(AbstractModel):
 
     @property
     def ProviderId(self):
-        r"""软件供应方 ID。
+        r"""<p>软件供应方 ID。</p>
         :rtype: int
         """
         return self._ProviderId
@@ -267,7 +267,7 @@ class License(AbstractModel):
 
     @property
     def SoftwarePackageId(self):
-        r"""软件包 ID。
+        r"""<p>软件包 ID。</p>
         :rtype: str
         """
         return self._SoftwarePackageId
@@ -278,7 +278,7 @@ class License(AbstractModel):
 
     @property
     def SoftwarePackageVersion(self):
-        r"""软件包版本。
+        r"""<p>软件包版本。</p>
         :rtype: str
         """
         return self._SoftwarePackageVersion
@@ -289,7 +289,7 @@ class License(AbstractModel):
 
     @property
     def AuthorizedUserUin(self):
-        r"""被授权的用户 UIN。
+        r"""<p>被授权的用户 UIN。</p>
         :rtype: str
         """
         return self._AuthorizedUserUin
@@ -300,7 +300,7 @@ class License(AbstractModel):
 
     @property
     def AuthorizedCloudappId(self):
-        r"""被授权的应用实例 ID。
+        r"""<p>被授权的应用实例 ID。</p>
         :rtype: str
         """
         return self._AuthorizedCloudappId
@@ -311,7 +311,7 @@ class License(AbstractModel):
 
     @property
     def AuthorizedCloudappRoleId(self):
-        r"""被授权的角色 ID。
+        r"""<p>被授权的角色 ID。</p>
         :rtype: str
         """
         return self._AuthorizedCloudappRoleId
@@ -322,7 +322,7 @@ class License(AbstractModel):
 
     @property
     def AuthorizedSpecification(self):
-        r"""被授权的软件规格，具体字段请参考结构SaleParam
+        r"""<p>被授权的软件规格，具体字段请参考结构SaleParam</p>
         :rtype: list of SaleParam
         """
         return self._AuthorizedSpecification
@@ -333,7 +333,7 @@ class License(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""被授权的软件的计费模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>线上计费，软件的授权从腾讯云线上购买，支持续费、退款等操作。</td></tr><tr><td>2</td><td>线下计费，软件的授权线下签订合同购买，定向客户交付，无法从线上续费和退款。</td></tr><tr><td>4</td><td>免费</td></tr></tbody></table>
+        r"""<p>被授权的软件的计费模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>线上计费，软件的授权从腾讯云线上购买，支持续费、退款等操作。</td></tr><tr><td>2</td><td>线下计费，软件的授权线下签订合同购买，定向客户交付，无法从线上续费和退款。</td></tr><tr><td>4</td><td>免费</td></tr></tbody></table></p>
         :rtype: int
         """
         return self._BillingMode
@@ -344,7 +344,7 @@ class License(AbstractModel):
 
     @property
     def LifeSpan(self):
-        r"""授权时长（单位由LifeSpanUnit确定，枚举值有Y年/M月/D日三种）
+        r"""<p>授权时长（单位由LifeSpanUnit确定，枚举值有Y年/M月/D日三种）</p>
         :rtype: int
         """
         return self._LifeSpan
@@ -355,7 +355,7 @@ class License(AbstractModel):
 
     @property
     def IssueDate(self):
-        r"""授权颁发时间。
+        r"""<p>授权颁发时间。</p>
         :rtype: str
         """
         return self._IssueDate
@@ -366,7 +366,7 @@ class License(AbstractModel):
 
     @property
     def ActivationDate(self):
-        r"""授权激活时间，如从未激活则返回 null。
+        r"""<p>授权激活时间，如从未激活则返回 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -378,7 +378,7 @@ class License(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        r"""授权过期时间
+        r"""<p>授权过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -390,7 +390,7 @@ class License(AbstractModel):
 
     @property
     def LifeSpanUnit(self):
-        r"""授权时长单位，枚举值有Y年/M月/D日三种
+        r"""<p>授权时长单位，枚举值有Y年/M月/D日三种</p>
         :rtype: str
         """
         return self._LifeSpanUnit
@@ -401,7 +401,7 @@ class License(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""授权的类型：Standard正式版/Development开发版/Trial体验版
+        r"""<p>授权的类型：Standard正式版/Development开发版/Trial体验版</p>
         :rtype: str
         """
         return self._LicenseType
@@ -412,7 +412,7 @@ class License(AbstractModel):
 
     @property
     def LicenseLevel(self):
-        r"""授权的层级：Master 主授权；Child 子授权/增强型授权
+        r"""<p>授权的层级：Master 主授权；Child 子授权/增强型授权</p>
         :rtype: str
         """
         return self._LicenseLevel

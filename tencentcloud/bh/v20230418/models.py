@@ -3998,14 +3998,14 @@ class CreateAssetSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Category: 同步资产类别，1 - 主机资产, 2 - 数据库资产
+        :param _Category: 同步资产类别，1 - 主机资产, 2 - 数据库资产，3-容器资产
         :type Category: int
         """
         self._Category = None
 
     @property
     def Category(self):
-        r"""同步资产类别，1 - 主机资产, 2 - 数据库资产
+        r"""同步资产类别，1 - 主机资产, 2 - 数据库资产，3-容器资产
         :rtype: int
         """
         return self._Category
@@ -12516,7 +12516,7 @@ class ExternalDevice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OsName: 操作系统名称，只能是Linux、Windows或MySQL
+        :param _OsName: 操作系统名称，只能是主机（Linux、Windows）、数据库（MySQL、SQL Server、MariaDB、PostgreSQL、MongoDBReplicaSet、MongoDBSharded、Redis）、容器（TKE、EKS）
         :type OsName: str
         :param _Ip: IP地址
         :type Ip: str
@@ -12565,7 +12565,7 @@ class ExternalDevice(AbstractModel):
 
     @property
     def OsName(self):
-        r"""操作系统名称，只能是Linux、Windows或MySQL
+        r"""操作系统名称，只能是主机（Linux、Windows）、数据库（MySQL、SQL Server、MariaDB、PostgreSQL、MongoDBReplicaSet、MongoDBSharded、Redis）、容器（TKE、EKS）
         :rtype: str
         """
         return self._OsName

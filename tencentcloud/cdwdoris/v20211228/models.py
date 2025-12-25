@@ -9699,6 +9699,8 @@ Changing  变更中
         :type MasterInstance: str
         :param _SlaveInstances: 对应备集群
         :type SlaveInstances: list of str
+        :param _SyncerIp: ccr服务部署节点ip
+        :type SyncerIp: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9760,6 +9762,7 @@ Changing  变更中
         self._InstanceType = None
         self._MasterInstance = None
         self._SlaveInstances = None
+        self._SyncerIp = None
 
     @property
     def InstanceId(self):
@@ -10434,6 +10437,17 @@ Changing  变更中
     def SlaveInstances(self, SlaveInstances):
         self._SlaveInstances = SlaveInstances
 
+    @property
+    def SyncerIp(self):
+        r"""ccr服务部署节点ip
+        :rtype: str
+        """
+        return self._SyncerIp
+
+    @SyncerIp.setter
+    def SyncerIp(self, SyncerIp):
+        self._SyncerIp = SyncerIp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10509,6 +10523,7 @@ Changing  变更中
         self._InstanceType = params.get("InstanceType")
         self._MasterInstance = params.get("MasterInstance")
         self._SlaveInstances = params.get("SlaveInstances")
+        self._SyncerIp = params.get("SyncerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -16973,26 +16973,25 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡的唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
+        :param _LoadBalancerId: <p>负载均衡的唯一ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口获取。</p>
         :type LoadBalancerId: str
-        :param _LoadBalancerName: 负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
+        :param _LoadBalancerName: <p>负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。</p>
         :type LoadBalancerName: str
-        :param _TargetRegionInfo: 设置负载均衡跨地域绑定1.0的后端服务信息
+        :param _TargetRegionInfo: <p>设置负载均衡跨地域绑定1.0的后端服务信息</p>
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
-        :param _InternetChargeInfo: 网络计费相关参数
+        :param _InternetChargeInfo: <p>网络计费相关参数</p>
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _LoadBalancerPassToTarget: Target是否放通来自CLB的流量。
-开启放通（true）：只验证CLB上的安全组；
-不开启放通（false）：需同时验证CLB和后端实例上的安全组。
-不填则不修改。
+        :param _LoadBalancerPassToTarget: <p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。不填则不修改。</p>
         :type LoadBalancerPassToTarget: bool
-        :param _SnatPro: 是否开启跨地域绑定2.0功能。不填则不修改。
+        :param _SwitchFlag: <p>不同计费模式之间的切换：0表示不切换，1表示预付费和后付费切换，2表示后付费之间切换。默认值：0</p>
+        :type SwitchFlag: int
+        :param _SnatPro: <p>是否开启跨地域绑定2.0功能。不填则不修改。</p>
         :type SnatPro: bool
-        :param _DeleteProtect: 是否开启删除保护，不填则不修改。
+        :param _DeleteProtect: <p>是否开启删除保护，不填则不修改。</p>
         :type DeleteProtect: bool
-        :param _ModifyClassicDomain: 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
+        :param _ModifyClassicDomain: <p>将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。</p>
         :type ModifyClassicDomain: bool
-        :param _AssociateEndpoint: 关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+        :param _AssociateEndpoint: <p>关联的终端节点Id，可通过<a href="https://cloud.tencent.com/document/product/215/54679">DescribeVpcEndPoint</a>接口查询。传空字符串代表解除关联。</p>
         :type AssociateEndpoint: str
         """
         self._LoadBalancerId = None
@@ -17000,6 +16999,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._TargetRegionInfo = None
         self._InternetChargeInfo = None
         self._LoadBalancerPassToTarget = None
+        self._SwitchFlag = None
         self._SnatPro = None
         self._DeleteProtect = None
         self._ModifyClassicDomain = None
@@ -17007,7 +17007,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡的唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
+        r"""<p>负载均衡的唯一ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口获取。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -17018,7 +17018,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        r"""负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
+        r"""<p>负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -17029,7 +17029,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def TargetRegionInfo(self):
-        r"""设置负载均衡跨地域绑定1.0的后端服务信息
+        r"""<p>设置负载均衡跨地域绑定1.0的后端服务信息</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         """
         return self._TargetRegionInfo
@@ -17040,7 +17040,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def InternetChargeInfo(self):
-        r"""网络计费相关参数
+        r"""<p>网络计费相关参数</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetChargeInfo
@@ -17051,10 +17051,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def LoadBalancerPassToTarget(self):
-        r"""Target是否放通来自CLB的流量。
-开启放通（true）：只验证CLB上的安全组；
-不开启放通（false）：需同时验证CLB和后端实例上的安全组。
-不填则不修改。
+        r"""<p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。不填则不修改。</p>
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget
@@ -17064,8 +17061,19 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._LoadBalancerPassToTarget = LoadBalancerPassToTarget
 
     @property
+    def SwitchFlag(self):
+        r"""<p>不同计费模式之间的切换：0表示不切换，1表示预付费和后付费切换，2表示后付费之间切换。默认值：0</p>
+        :rtype: int
+        """
+        return self._SwitchFlag
+
+    @SwitchFlag.setter
+    def SwitchFlag(self, SwitchFlag):
+        self._SwitchFlag = SwitchFlag
+
+    @property
     def SnatPro(self):
-        r"""是否开启跨地域绑定2.0功能。不填则不修改。
+        r"""<p>是否开启跨地域绑定2.0功能。不填则不修改。</p>
         :rtype: bool
         """
         return self._SnatPro
@@ -17076,7 +17084,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def DeleteProtect(self):
-        r"""是否开启删除保护，不填则不修改。
+        r"""<p>是否开启删除保护，不填则不修改。</p>
         :rtype: bool
         """
         return self._DeleteProtect
@@ -17087,7 +17095,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def ModifyClassicDomain(self):
-        r"""将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
+        r"""<p>将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。</p>
         :rtype: bool
         """
         return self._ModifyClassicDomain
@@ -17098,7 +17106,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def AssociateEndpoint(self):
-        r"""关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+        r"""<p>关联的终端节点Id，可通过<a href="https://cloud.tencent.com/document/product/215/54679">DescribeVpcEndPoint</a>接口查询。传空字符串代表解除关联。</p>
         :rtype: str
         """
         return self._AssociateEndpoint
@@ -17118,6 +17126,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
             self._InternetChargeInfo = InternetAccessible()
             self._InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self._SwitchFlag = params.get("SwitchFlag")
         self._SnatPro = params.get("SnatPro")
         self._DeleteProtect = params.get("DeleteProtect")
         self._ModifyClassicDomain = params.get("ModifyClassicDomain")
@@ -17139,7 +17148,7 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 切换负载均衡计费方式时，可用此参数查询切换任务是否成功。
+        :param _DealName: <p>切换负载均衡计费方式时，可用此参数查询切换任务是否成功。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17150,7 +17159,7 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""切换负载均衡计费方式时，可用此参数查询切换任务是否成功。
+        r"""<p>切换负载均衡计费方式时，可用此参数查询切换任务是否成功。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

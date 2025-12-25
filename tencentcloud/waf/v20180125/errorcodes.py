@@ -107,6 +107,9 @@ INTERNALERROR_SEARCHFAILED = 'InternalError.SearchFailed'
 # InternalError.ServerBusy
 INTERNALERROR_SERVERBUSY = 'InternalError.ServerBusy'
 
+# 查询资产中心发生内部错误
+INTERNALERROR_SSACALLFAILED = 'InternalError.SsaCallFailed'
+
 # InternalError.Unknown
 INTERNALERROR_UNKNOWN = 'InternalError.Unknown'
 

@@ -2980,6 +2980,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyObjects(
+            self,
+            request: models.ModifyObjectsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyObjectsResponse:
+        """
+        批量修改防护对象
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyObjects"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyObjectsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyOwaspRuleStatus(
             self,
             request: models.ModifyOwaspRuleStatusRequest,

@@ -1494,13 +1494,53 @@ class DescribeAgentDutyTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: agent实例ID
+        :type InstanceId: str
+        :param _ChatId: 会话ID
+        :type ChatId: str
         :param _Offset: 查询开始位置
         :type Offset: int
         :param _Limit: 列表查询数量
         :type Limit: int
+        :param _StartTime: 任务启动时间
+        :type StartTime: str
+        :param _EndTime: 任务结束时间
+        :type EndTime: str
+        :param _AgentTaskType: 任务类型
+        :type AgentTaskType: str
+        :param _Parameters: 业务参数
+        :type Parameters: list of Parameter
         """
+        self._InstanceId = None
+        self._ChatId = None
         self._Offset = None
         self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AgentTaskType = None
+        self._Parameters = None
+
+    @property
+    def InstanceId(self):
+        r"""agent实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ChatId(self):
+        r"""会话ID
+        :rtype: str
+        """
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
 
     @property
     def Offset(self):
@@ -1524,10 +1564,65 @@ class DescribeAgentDutyTasksRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def StartTime(self):
+        r"""任务启动时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""任务结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AgentTaskType(self):
+        r"""任务类型
+        :rtype: str
+        """
+        return self._AgentTaskType
+
+    @AgentTaskType.setter
+    def AgentTaskType(self, AgentTaskType):
+        self._AgentTaskType = AgentTaskType
+
+    @property
+    def Parameters(self):
+        r"""业务参数
+        :rtype: list of Parameter
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ChatId = params.get("ChatId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AgentTaskType = params.get("AgentTaskType")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1547,10 +1642,13 @@ class DescribeAgentDutyTasksResponse(AbstractModel):
         r"""
         :param _TotalCount: 查询结果总数量
         :type TotalCount: int
+        :param _DutyTasks: 任务详细信息
+        :type DutyTasks: list of AgentDutyTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._DutyTasks = None
         self._RequestId = None
 
     @property
@@ -1563,6 +1661,17 @@ class DescribeAgentDutyTasksResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def DutyTasks(self):
+        r"""任务详细信息
+        :rtype: list of AgentDutyTask
+        """
+        return self._DutyTasks
+
+    @DutyTasks.setter
+    def DutyTasks(self, DutyTasks):
+        self._DutyTasks = DutyTasks
 
     @property
     def RequestId(self):
@@ -1578,6 +1687,12 @@ class DescribeAgentDutyTasksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("DutyTasks") is not None:
+            self._DutyTasks = []
+            for item in params.get("DutyTasks"):
+                obj = AgentDutyTask()
+                obj._deserialize(item)
+                self._DutyTasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 

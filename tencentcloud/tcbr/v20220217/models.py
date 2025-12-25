@@ -2525,13 +2525,13 @@ class DescribeVersionDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境Id
+        :param _EnvId: <p>环境Id</p>
         :type EnvId: str
-        :param _ServerName: 服务名
+        :param _ServerName: <p>服务名</p>
         :type ServerName: str
-        :param _VersionName: 版本名
+        :param _VersionName: <p>版本名</p>
         :type VersionName: str
-        :param _Channel: channel
+        :param _Channel: <p>channel</p>
         :type Channel: str
         """
         self._EnvId = None
@@ -2541,7 +2541,7 @@ class DescribeVersionDetailRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境Id
+        r"""<p>环境Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -2552,7 +2552,7 @@ class DescribeVersionDetailRequest(AbstractModel):
 
     @property
     def ServerName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServerName
@@ -2563,7 +2563,7 @@ class DescribeVersionDetailRequest(AbstractModel):
 
     @property
     def VersionName(self):
-        r"""版本名
+        r"""<p>版本名</p>
         :rtype: str
         """
         return self._VersionName
@@ -2574,7 +2574,7 @@ class DescribeVersionDetailRequest(AbstractModel):
 
     @property
     def Channel(self):
-        r"""channel
+        r"""<p>channel</p>
         :rtype: str
         """
         return self._Channel
@@ -2606,46 +2606,49 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 版本名
+        :param _Name: <p>版本名</p>
         :type Name: str
-        :param _Port: 端口号
+        :param _Port: <p>端口号</p>
         :type Port: int
-        :param _Cpu: cpu 规格
+        :param _Cpu: <p>cpu 规格</p>
         :type Cpu: float
-        :param _Mem: mem 规格
+        :param _Mem: <p>mem 规格</p>
         :type Mem: float
-        :param _MinNum: 最小副本数
+        :param _MinNum: <p>最小副本数</p>
         :type MinNum: int
-        :param _MaxNum: 最大副本数
+        :param _MaxNum: <p>最大副本数</p>
         :type MaxNum: int
-        :param _PolicyDetails: 扩缩容策略
+        :param _PolicyDetails: <p>扩缩容策略</p>
         :type PolicyDetails: list of HpaPolicy
-        :param _Dockerfile: Dockerfile path
+        :param _Dockerfile: <p>Dockerfile path</p>
         :type Dockerfile: str
-        :param _BuildDir: 目标目录
+        :param _BuildDir: <p>目标目录</p>
         :type BuildDir: str
-        :param _EnvParams: 环境变量
+        :param _EnvParams: <p>环境变量</p>
         :type EnvParams: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _UpdatedTime: 更新时间
+        :param _UpdatedTime: <p>更新时间</p>
         :type UpdatedTime: str
-        :param _LogPath: 日志采集路径
+        :param _LogPath: <p>日志采集路径</p>
         :type LogPath: str
-        :param _EntryPoint: entryPoint
+        :param _EntryPoint: <p>entryPoint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EntryPoint: str
-        :param _Cmd: Cmd
+        :param _Cmd: <p>Cmd</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cmd: str
-        :param _VpcConf: vpc conf
+        :param _VpcConf: <p>vpc conf</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
-        :param _VolumesConf: volume conf
+        :param _VolumesConf: <p>volume conf</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumesConf: list of VolumeConf
+        :param _BuildPacks: <p>buildpack 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildPacks: :class:`tencentcloud.tcbr.v20220217.models.BuildPacksInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2667,11 +2670,12 @@ class DescribeVersionDetailResponse(AbstractModel):
         self._Cmd = None
         self._VpcConf = None
         self._VolumesConf = None
+        self._BuildPacks = None
         self._RequestId = None
 
     @property
     def Name(self):
-        r"""版本名
+        r"""<p>版本名</p>
         :rtype: str
         """
         return self._Name
@@ -2682,7 +2686,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口号
+        r"""<p>端口号</p>
         :rtype: int
         """
         return self._Port
@@ -2693,7 +2697,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""cpu 规格
+        r"""<p>cpu 规格</p>
         :rtype: float
         """
         return self._Cpu
@@ -2704,7 +2708,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Mem(self):
-        r"""mem 规格
+        r"""<p>mem 规格</p>
         :rtype: float
         """
         return self._Mem
@@ -2715,7 +2719,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def MinNum(self):
-        r"""最小副本数
+        r"""<p>最小副本数</p>
         :rtype: int
         """
         return self._MinNum
@@ -2726,7 +2730,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def MaxNum(self):
-        r"""最大副本数
+        r"""<p>最大副本数</p>
         :rtype: int
         """
         return self._MaxNum
@@ -2737,7 +2741,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def PolicyDetails(self):
-        r"""扩缩容策略
+        r"""<p>扩缩容策略</p>
         :rtype: list of HpaPolicy
         """
         return self._PolicyDetails
@@ -2748,7 +2752,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Dockerfile(self):
-        r"""Dockerfile path
+        r"""<p>Dockerfile path</p>
         :rtype: str
         """
         return self._Dockerfile
@@ -2759,7 +2763,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def BuildDir(self):
-        r"""目标目录
+        r"""<p>目标目录</p>
         :rtype: str
         """
         return self._BuildDir
@@ -2770,7 +2774,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def EnvParams(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: str
         """
         return self._EnvParams
@@ -2781,7 +2785,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -2792,7 +2796,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -2803,7 +2807,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -2814,7 +2818,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def LogPath(self):
-        r"""日志采集路径
+        r"""<p>日志采集路径</p>
         :rtype: str
         """
         return self._LogPath
@@ -2825,7 +2829,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def EntryPoint(self):
-        r"""entryPoint
+        r"""<p>entryPoint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2837,7 +2841,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""Cmd
+        r"""<p>Cmd</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2849,7 +2853,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def VpcConf(self):
-        r"""vpc conf
+        r"""<p>vpc conf</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
         """
@@ -2861,7 +2865,7 @@ class DescribeVersionDetailResponse(AbstractModel):
 
     @property
     def VolumesConf(self):
-        r"""volume conf
+        r"""<p>volume conf</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeConf
         """
@@ -2870,6 +2874,18 @@ class DescribeVersionDetailResponse(AbstractModel):
     @VolumesConf.setter
     def VolumesConf(self, VolumesConf):
         self._VolumesConf = VolumesConf
+
+    @property
+    def BuildPacks(self):
+        r"""<p>buildpack 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.BuildPacksInfo`
+        """
+        return self._BuildPacks
+
+    @BuildPacks.setter
+    def BuildPacks(self, BuildPacks):
+        self._BuildPacks = BuildPacks
 
     @property
     def RequestId(self):
@@ -2914,6 +2930,9 @@ class DescribeVersionDetailResponse(AbstractModel):
                 obj = VolumeConf()
                 obj._deserialize(item)
                 self._VolumesConf.append(obj)
+        if params.get("BuildPacks") is not None:
+            self._BuildPacks = BuildPacksInfo()
+            self._BuildPacks._deserialize(params.get("BuildPacks"))
         self._RequestId = params.get("RequestId")
 
 

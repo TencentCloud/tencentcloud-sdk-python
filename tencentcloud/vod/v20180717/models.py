@@ -11216,6 +11216,19 @@ class AigcUsageDataItem(AbstractModel):
 <li>Mingmou1.0_2K</li>
 <li>Mingmou1.0_4K</li>
 <li>Mingmou1.0_720P</li>
+<li>Seedance1.5ProAudioOn_480P</li>
+<li>Seedance1.5ProAudioOff_480P</li>
+<li>Seedance1.5ProAudioOn_720P</li>
+<li>Seedance1.5ProAudioOff_720P</li>
+<li>Seedance1.0Pro_480P</li>
+<li>Seedance1.0Pro_720P</li>
+<li>Seedance1.0Pro_1080P</li>
+<li>Seedance1.0ProFast480P</li>
+<li>Seedance1.0ProFast720P</li>
+<li>Seedance1.0ProFast1080P</li>
+<li>Seedance1.0Lite480P</li>
+<li>Seedance1.0Lite720P</li>
+<li>Seedance1.0Lite1080P</li>
 <li> unknown</li>
         :type Specification: str
         :param _DataSet: 用量数据。
@@ -11264,6 +11277,19 @@ class AigcUsageDataItem(AbstractModel):
 <li>Mingmou1.0_2K</li>
 <li>Mingmou1.0_4K</li>
 <li>Mingmou1.0_720P</li>
+<li>Seedance1.5ProAudioOn_480P</li>
+<li>Seedance1.5ProAudioOff_480P</li>
+<li>Seedance1.5ProAudioOn_720P</li>
+<li>Seedance1.5ProAudioOff_720P</li>
+<li>Seedance1.0Pro_480P</li>
+<li>Seedance1.0Pro_720P</li>
+<li>Seedance1.0Pro_1080P</li>
+<li>Seedance1.0ProFast480P</li>
+<li>Seedance1.0ProFast720P</li>
+<li>Seedance1.0ProFast1080P</li>
+<li>Seedance1.0Lite480P</li>
+<li>Seedance1.0Lite720P</li>
+<li>Seedance1.0Lite1080P</li>
 <li> unknown</li>
         :rtype: str
         """
