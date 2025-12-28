@@ -7910,7 +7910,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 说明：此参数和 SpecifiedBackupId 参数需要2选1进行设置。
         :type SpecifiedRollbackTime: str
         :param _SpecifiedBackupId: 如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
-说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
+说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。
         :type SpecifiedBackupId: int
         :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
         :type UniqVpcId: str
@@ -7936,7 +7936,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type SlaveZone: str
         :param _BackupZone: 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
         :type BackupZone: str
-        :param _DeviceType: 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型。
+        :param _DeviceType: 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。不指定则默认为通用型。
         :type DeviceType: str
         :param _InstanceNodes: 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
         :type InstanceNodes: int
@@ -7952,12 +7952,14 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type PayType: str
         :param _Period: 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
         :type Period: int
-        :param _ClusterTopology: 集群版节点拓扑配置。
+        :param _ClusterTopology: 云盘版节点拓扑配置。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _SrcRegion: 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
         :type SrcRegion: str
         :param _SpecifiedSubBackupId: 异地数据备份id
         :type SpecifiedSubBackupId: int
+        :param _MasterZone: 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+        :type MasterZone: str
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -7985,6 +7987,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._ClusterTopology = None
         self._SrcRegion = None
         self._SpecifiedSubBackupId = None
+        self._MasterZone = None
 
     @property
     def InstanceId(self):
@@ -8012,7 +8015,7 @@ class CreateCloneInstanceRequest(AbstractModel):
     @property
     def SpecifiedBackupId(self):
         r"""如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
-说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
+说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。
         :rtype: int
         """
         return self._SpecifiedBackupId
@@ -8155,7 +8158,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型。
+        r"""克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。不指定则默认为通用型。
         :rtype: str
         """
         return self._DeviceType
@@ -8243,7 +8246,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def ClusterTopology(self):
-        r"""集群版节点拓扑配置。
+        r"""云盘版节点拓扑配置。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         return self._ClusterTopology
@@ -8273,6 +8276,17 @@ class CreateCloneInstanceRequest(AbstractModel):
     @SpecifiedSubBackupId.setter
     def SpecifiedSubBackupId(self, SpecifiedSubBackupId):
         self._SpecifiedSubBackupId = SpecifiedSubBackupId
+
+    @property
+    def MasterZone(self):
+        r"""新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
 
 
     def _deserialize(self, params):
@@ -8309,6 +8323,7 @@ class CreateCloneInstanceRequest(AbstractModel):
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._SrcRegion = params.get("SrcRegion")
         self._SpecifiedSubBackupId = params.get("SpecifiedSubBackupId")
+        self._MasterZone = params.get("MasterZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34068,7 +34083,10 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
         r"""
         :param _ProxyGroupId: 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
         :type ProxyGroupId: str
-        :param _ProxyAddressId: 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
+        :param _ProxyAddressId: 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+说明：
+1. 对于双节点实例而言，此参数为非必填，如果不传则会对所有代理组地址进行负载均衡。
+2. 对于云盘版实例而言，此参数为必填。
         :type ProxyAddressId: str
         """
         self._ProxyGroupId = None
@@ -34087,7 +34105,10 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
+        r"""代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+说明：
+1. 对于双节点实例而言，此参数为非必填，如果不传则会对所有代理组地址进行负载均衡。
+2. 对于云盘版实例而言，此参数为必填。
         :rtype: str
         """
         return self._ProxyAddressId

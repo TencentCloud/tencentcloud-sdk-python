@@ -441,6 +441,10 @@ class ApmAppConfig(AbstractModel):
         :type DbStatementParametersEnabled: bool
         :param _SlowSQLThresholds: 慢SQL阈值
         :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: 脱敏规则
+        :type DesensitizationRule: str
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -496,6 +500,8 @@ class ApmAppConfig(AbstractModel):
         self._DisableCpuUsed = None
         self._DbStatementParametersEnabled = None
         self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
 
     @property
     def InstanceKey(self):
@@ -1114,6 +1120,28 @@ class ApmAppConfig(AbstractModel):
     def SlowSQLThresholds(self, SlowSQLThresholds):
         self._SlowSQLThresholds = SlowSQLThresholds
 
+    @property
+    def EnableDesensitizationRule(self):
+        r"""是否开启脱敏规则
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""脱敏规则
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1182,6 +1210,8 @@ class ApmAppConfig(AbstractModel):
                 obj = ApmTag()
                 obj._deserialize(item)
                 self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1245,6 +1275,10 @@ class ApmApplicationConfigView(AbstractModel):
         :type DbStatementParametersEnabled: bool
         :param _SlowSQLThresholds: 慢SQL阈值
         :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: 脱敏规则
+        :type DesensitizationRule: str
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1269,6 +1303,8 @@ class ApmApplicationConfigView(AbstractModel):
         self._DisableCpuUsed = None
         self._DbStatementParametersEnabled = None
         self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
 
     @property
     def InstanceKey(self):
@@ -1523,6 +1559,28 @@ class ApmApplicationConfigView(AbstractModel):
     def SlowSQLThresholds(self, SlowSQLThresholds):
         self._SlowSQLThresholds = SlowSQLThresholds
 
+    @property
+    def EnableDesensitizationRule(self):
+        r"""是否开启脱敏规则
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""脱敏规则
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1558,6 +1616,8 @@ class ApmApplicationConfigView(AbstractModel):
                 obj = ApmTag()
                 obj._deserialize(item)
                 self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7425,6 +7485,10 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type DbStatementParametersEnabled: bool
         :param _SlowSQLThresholds: 慢SQL阈值
         :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: 脱敏规则
+        :type DesensitizationRule: str
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -7477,6 +7541,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._DisableCpuUsed = None
         self._DbStatementParametersEnabled = None
         self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
 
     @property
     def InstanceId(self):
@@ -8039,6 +8105,28 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def SlowSQLThresholds(self, SlowSQLThresholds):
         self._SlowSQLThresholds = SlowSQLThresholds
 
+    @property
+    def EnableDesensitizationRule(self):
+        r"""是否开启脱敏规则
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""脱敏规则
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8104,6 +8192,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
                 obj = ApmTag()
                 obj._deserialize(item)
                 self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

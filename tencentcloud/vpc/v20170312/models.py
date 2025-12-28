@@ -56978,6 +56978,8 @@ class NatGateway(AbstractModel):
         :type RestrictState: str
         :param _NatProductVersion: NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
         :type NatProductVersion: int
+        :param _StrictSnatMode: true代表仅允许匹配SNAT规则的内网IP的流量进行转发，false代表所有内网IP发起的流量都进行转发。默认为false。
+        :type StrictSnatMode: bool
         :param _SmartScheduleMode: 是否启用根据目的网段选择SNAT使用的EIP功能	
         :type SmartScheduleMode: bool
         :param _DedicatedClusterId: NAT实例归属的专属集群id
@@ -56988,6 +56990,12 @@ class NatGateway(AbstractModel):
         :type ConnectionStateTimeouts: :class:`tencentcloud.vpc.v20170312.models.ConnectionStateTimeouts`
         :param _ExclusiveType: 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
         :type ExclusiveType: str
+        :param _AutoScaling: 标准型NAT网关自动扩容
+        :type AutoScaling: bool
+        :param _ICMPProxy: 是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，当前适用于标准型NAT网关
+        :type ICMPProxy: bool
+        :param _PublicAddressAffinity: true代表同一个私网IP访问同一个公网目的IP时，固定使用同一个NAT网关上的弹性公网IP；false代表这种情况下使用的弹性公网IP不固定。默认为true。
+        :type PublicAddressAffinity: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -57009,11 +57017,15 @@ class NatGateway(AbstractModel):
         self._ExclusiveGatewayBandwidth = None
         self._RestrictState = None
         self._NatProductVersion = None
+        self._StrictSnatMode = None
         self._SmartScheduleMode = None
         self._DedicatedClusterId = None
         self._DeletionProtectionEnabled = None
         self._ConnectionStateTimeouts = None
         self._ExclusiveType = None
+        self._AutoScaling = None
+        self._ICMPProxy = None
+        self._PublicAddressAffinity = None
 
     @property
     def NatGatewayId(self):
@@ -57238,6 +57250,17 @@ class NatGateway(AbstractModel):
         self._NatProductVersion = NatProductVersion
 
     @property
+    def StrictSnatMode(self):
+        r"""true代表仅允许匹配SNAT规则的内网IP的流量进行转发，false代表所有内网IP发起的流量都进行转发。默认为false。
+        :rtype: bool
+        """
+        return self._StrictSnatMode
+
+    @StrictSnatMode.setter
+    def StrictSnatMode(self, StrictSnatMode):
+        self._StrictSnatMode = StrictSnatMode
+
+    @property
     def SmartScheduleMode(self):
         r"""是否启用根据目的网段选择SNAT使用的EIP功能	
         :rtype: bool
@@ -57292,6 +57315,39 @@ class NatGateway(AbstractModel):
     def ExclusiveType(self, ExclusiveType):
         self._ExclusiveType = ExclusiveType
 
+    @property
+    def AutoScaling(self):
+        r"""标准型NAT网关自动扩容
+        :rtype: bool
+        """
+        return self._AutoScaling
+
+    @AutoScaling.setter
+    def AutoScaling(self, AutoScaling):
+        self._AutoScaling = AutoScaling
+
+    @property
+    def ICMPProxy(self):
+        r"""是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，当前适用于标准型NAT网关
+        :rtype: bool
+        """
+        return self._ICMPProxy
+
+    @ICMPProxy.setter
+    def ICMPProxy(self, ICMPProxy):
+        self._ICMPProxy = ICMPProxy
+
+    @property
+    def PublicAddressAffinity(self):
+        r"""true代表同一个私网IP访问同一个公网目的IP时，固定使用同一个NAT网关上的弹性公网IP；false代表这种情况下使用的弹性公网IP不固定。默认为true。
+        :rtype: bool
+        """
+        return self._PublicAddressAffinity
+
+    @PublicAddressAffinity.setter
+    def PublicAddressAffinity(self, PublicAddressAffinity):
+        self._PublicAddressAffinity = PublicAddressAffinity
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -57334,6 +57390,7 @@ class NatGateway(AbstractModel):
         self._ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
         self._RestrictState = params.get("RestrictState")
         self._NatProductVersion = params.get("NatProductVersion")
+        self._StrictSnatMode = params.get("StrictSnatMode")
         self._SmartScheduleMode = params.get("SmartScheduleMode")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
@@ -57341,6 +57398,9 @@ class NatGateway(AbstractModel):
             self._ConnectionStateTimeouts = ConnectionStateTimeouts()
             self._ConnectionStateTimeouts._deserialize(params.get("ConnectionStateTimeouts"))
         self._ExclusiveType = params.get("ExclusiveType")
+        self._AutoScaling = params.get("AutoScaling")
+        self._ICMPProxy = params.get("ICMPProxy")
+        self._PublicAddressAffinity = params.get("PublicAddressAffinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -19078,6 +19078,102 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewLoadBalancersRequest(AbstractModel):
+    r"""RenewLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerIds: 负载均衡实例唯一ID数组，最多支持20个。
+        :type LoadBalancerIds: list of str
+        :param _LBChargePrepaid: 负载均衡实例的预付费相关属性。
+        :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        self._LoadBalancerIds = None
+        self._LBChargePrepaid = None
+
+    @property
+    def LoadBalancerIds(self):
+        r"""负载均衡实例唯一ID数组，最多支持20个。
+        :rtype: list of str
+        """
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def LBChargePrepaid(self):
+        r"""负载均衡实例的预付费相关属性。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        return self._LBChargePrepaid
+
+    @LBChargePrepaid.setter
+    def LBChargePrepaid(self, LBChargePrepaid):
+        self._LBChargePrepaid = LBChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("LBChargePrepaid") is not None:
+            self._LBChargePrepaid = LBChargePrepaid()
+            self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewLoadBalancersResponse(AbstractModel):
+    r"""RenewLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 订单号。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""订单号。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
 class ReplaceCertForLoadBalancersRequest(AbstractModel):
     r"""ReplaceCertForLoadBalancers请求参数结构体
 

@@ -27768,7 +27768,7 @@ class DisableControlPlaneLogsRequest(AbstractModel):
         :type ClusterId: str
         :param _ClusterType: 集群类型。当前只支持tke
         :type ClusterType: str
-        :param _ComponentNames: 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :param _ComponentNames: 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
         :type ComponentNames: list of str
         :param _DeleteLogSetAndTopic: 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
         :type DeleteLogSetAndTopic: bool
@@ -27802,7 +27802,7 @@ class DisableControlPlaneLogsRequest(AbstractModel):
 
     @property
     def ComponentNames(self):
-        r"""组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        r"""组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
         :rtype: list of str
         """
         return self._ComponentNames
@@ -30200,7 +30200,7 @@ class EnableControlPlaneLogsRequest(AbstractModel):
         :type ClusterId: str
         :param _ClusterType: 集群类型。当前只支持tke
         :type ClusterType: str
-        :param _Components: 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        :param _Components: 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
         :type Components: list of ComponentLogConfig
         """
         self._ClusterId = None
@@ -30231,7 +30231,7 @@ class EnableControlPlaneLogsRequest(AbstractModel):
 
     @property
     def Components(self):
-        r"""各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+        r"""组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
         :rtype: list of ComponentLogConfig
         """
         return self._Components

@@ -16148,11 +16148,14 @@ class LicensePlateInfo(AbstractModel):
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
         :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :type Color: str
+        :param _LicensePlateCategory: 车牌类别， 如： 实体车牌、非实体车牌
+        :type LicensePlateCategory: str
         """
         self._Number = None
         self._Confidence = None
         self._Rect = None
         self._Color = None
+        self._LicensePlateCategory = None
 
     @property
     def Number(self):
@@ -16198,6 +16201,17 @@ class LicensePlateInfo(AbstractModel):
     def Color(self, Color):
         self._Color = Color
 
+    @property
+    def LicensePlateCategory(self):
+        r"""车牌类别， 如： 实体车牌、非实体车牌
+        :rtype: str
+        """
+        return self._LicensePlateCategory
+
+    @LicensePlateCategory.setter
+    def LicensePlateCategory(self, LicensePlateCategory):
+        self._LicensePlateCategory = LicensePlateCategory
+
 
     def _deserialize(self, params):
         self._Number = params.get("Number")
@@ -16206,6 +16220,7 @@ class LicensePlateInfo(AbstractModel):
             self._Rect = Rect()
             self._Rect._deserialize(params.get("Rect"))
         self._Color = params.get("Color")
+        self._LicensePlateCategory = params.get("LicensePlateCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16280,10 +16295,12 @@ class LicensePlateOCRResponse(AbstractModel):
         :type Confidence: int
         :param _Rect: 文本行在原图片中的像素坐标框。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :type Color: str
         :param _LicensePlateInfos: 全部车牌信息。
         :type LicensePlateInfos: list of LicensePlateInfo
+        :param _LicensePlateCategory: 车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+        :type LicensePlateCategory: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16292,6 +16309,7 @@ class LicensePlateOCRResponse(AbstractModel):
         self._Rect = None
         self._Color = None
         self._LicensePlateInfos = None
+        self._LicensePlateCategory = None
         self._RequestId = None
 
     @property
@@ -16329,7 +16347,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :rtype: str
         """
         return self._Color
@@ -16348,6 +16366,17 @@ class LicensePlateOCRResponse(AbstractModel):
     @LicensePlateInfos.setter
     def LicensePlateInfos(self, LicensePlateInfos):
         self._LicensePlateInfos = LicensePlateInfos
+
+    @property
+    def LicensePlateCategory(self):
+        r"""车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+        :rtype: str
+        """
+        return self._LicensePlateCategory
+
+    @LicensePlateCategory.setter
+    def LicensePlateCategory(self, LicensePlateCategory):
+        self._LicensePlateCategory = LicensePlateCategory
 
     @property
     def RequestId(self):
@@ -16374,6 +16403,7 @@ class LicensePlateOCRResponse(AbstractModel):
                 obj = LicensePlateInfo()
                 obj._deserialize(item)
                 self._LicensePlateInfos.append(obj)
+        self._LicensePlateCategory = params.get("LicensePlateCategory")
         self._RequestId = params.get("RequestId")
 
 

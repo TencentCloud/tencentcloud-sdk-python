@@ -367,26 +367,6 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteAllAccessControlRule(
-            self,
-            request: models.DeleteAllAccessControlRuleRequest,
-            opts: Dict = None,
-    ) -> models.DeleteAllAccessControlRuleResponse:
-        """
-        业务废弃
-
-        全部删除规则
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteAllAccessControlRule"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteAllAccessControlRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteBlockIgnoreRuleList(
             self,
             request: models.DeleteBlockIgnoreRuleListRequest,

@@ -79,27 +79,6 @@ class CdnClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateDiagnoseUrl(
-            self,
-            request: models.CreateDiagnoseUrlRequest,
-            opts: Dict = None,
-    ) -> models.CreateDiagnoseUrlResponse:
-        """
-        以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        CreateDiagnoseUrl 用于添加域名诊断任务URL。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateDiagnoseUrl"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateDiagnoseUrlResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateEdgePackTask(
             self,
             request: models.CreateEdgePackTaskRequest,
@@ -294,27 +273,6 @@ class CdnClient(AbstractClient):
         kwargs["action"] = "DescribeCertDomains"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCertDomainsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeDiagnoseReport(
-            self,
-            request: models.DescribeDiagnoseReportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDiagnoseReportResponse:
-        """
-        以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        DescribeDiagnoseReport 用于获取指定报告id的内容。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDiagnoseReport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDiagnoseReportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -773,27 +731,6 @@ class CdnClient(AbstractClient):
         kwargs["action"] = "ListClsTopicDomains"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListClsTopicDomainsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListDiagnoseReport(
-            self,
-            request: models.ListDiagnoseReportRequest,
-            opts: Dict = None,
-    ) -> models.ListDiagnoseReportResponse:
-        """
-        以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListDiagnoseReport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListDiagnoseReportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

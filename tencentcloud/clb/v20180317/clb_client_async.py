@@ -1585,6 +1585,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewLoadBalancers(
+            self,
+            request: models.RenewLoadBalancersRequest,
+            opts: Dict = None,
+    ) -> models.RenewLoadBalancersResponse:
+        """
+        API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewLoadBalancers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewLoadBalancersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReplaceCertForLoadBalancers(
             self,
             request: models.ReplaceCertForLoadBalancersRequest,

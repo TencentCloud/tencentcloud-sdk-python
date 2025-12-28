@@ -11907,10 +11907,25 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 1. 推荐使用小于10M的图片；
 2. 图片格式的取值为：jpeg，jpg, png。
         :type Url: str
+        :param _ReferenceType: 参考类型，GV模型适用。
+注意：
+
+当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :type ReferenceType: str
+        :param _ObjectId: 主体id.
+适用模型：Vidu-q2.
+当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+        :type ObjectId: str
+        :param _VoiceId: 适用于Vidu-q2模型。
+当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        :type VoiceId: str
         """
         self._Type = None
         self._FileId = None
         self._Url = None
+        self._ReferenceType = None
+        self._ObjectId = None
+        self._VoiceId = None
 
     @property
     def Type(self):
@@ -11950,11 +11965,53 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def ReferenceType(self):
+        r"""参考类型，GV模型适用。
+注意：
+
+当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def ObjectId(self):
+        r"""主体id.
+适用模型：Vidu-q2.
+当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def VoiceId(self):
+        r"""适用于Vidu-q2模型。
+当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._ReferenceType = params.get("ReferenceType")
+        self._ObjectId = params.get("ObjectId")
+        self._VoiceId = params.get("VoiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18788,9 +18845,15 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type ModelName: str
         :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
-        :param _FileInfos: AIGC 生视频任务的输入图片的文件信息。说明
-1. 当 ModelName 是 GV 时，最大长度为 3；其他情况下最大长度为1。
-2. 当 ModelName 是 GV 时，并且长度大于1时，则不能再指定 LastFrameFileId 参数。
+        :param _FileInfos: 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+
+支持多图输入的模型：
+1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
+2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+
+注意：
+1. 图片大小不超过10M。
+2. 支持的图片格式：jpeg、png。
         :type FileInfos: list of AigcVideoTaskInputFileInfo
         :param _LastFrameFileId: 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。说明：
 1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
@@ -18802,9 +18865,10 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 2. 图片大小需小于5M。
 3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
         :type LastFrameUrl: str
-        :param _Prompt: 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+        :param _Prompt: 生成视频的提示词。当 FileInfos 为空时，此参数必填。
+示例值：move the picture
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成图片的提示词。
+        :param _NegativePrompt: 要阻止模型生成视频的提示词。
         :type NegativePrompt: str
         :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
         :type EnhancePrompt: str
@@ -18818,6 +18882,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type TasksPriority: int
         :param _ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
+        :param _InputRegion: 输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
+        :type InputRegion: str
         """
         self._SubAppId = None
         self._ModelName = None
@@ -18833,6 +18899,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._SessionContext = None
         self._TasksPriority = None
         self._ExtInfo = None
+        self._InputRegion = None
 
     @property
     def SubAppId(self):
@@ -18869,9 +18936,15 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""AIGC 生视频任务的输入图片的文件信息。说明
-1. 当 ModelName 是 GV 时，最大长度为 3；其他情况下最大长度为1。
-2. 当 ModelName 是 GV 时，并且长度大于1时，则不能再指定 LastFrameFileId 参数。
+        r"""最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+
+支持多图输入的模型：
+1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
+2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+
+注意：
+1. 图片大小不超过10M。
+2. 支持的图片格式：jpeg、png。
         :rtype: list of AigcVideoTaskInputFileInfo
         """
         return self._FileInfos
@@ -18910,7 +18983,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成图片的提示词。当 FileInfos 为空时，此参数必填。
+        r"""生成视频的提示词。当 FileInfos 为空时，此参数必填。
+示例值：move the picture
         :rtype: str
         """
         return self._Prompt
@@ -18921,7 +18995,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成图片的提示词。
+        r"""要阻止模型生成视频的提示词。
         :rtype: str
         """
         return self._NegativePrompt
@@ -18996,6 +19070,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
     def ExtInfo(self, ExtInfo):
         self._ExtInfo = ExtInfo
 
+    @property
+    def InputRegion(self):
+        r"""输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -19019,6 +19104,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")
         self._ExtInfo = params.get("ExtInfo")
+        self._InputRegion = params.get("InputRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

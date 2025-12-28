@@ -95,32 +95,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateDiagnoseUrl(self, request):
-        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        CreateDiagnoseUrl 用于添加域名诊断任务URL。
-
-        :param request: Request instance for CreateDiagnoseUrl.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateDiagnoseUrlRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateDiagnoseUrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateDiagnoseUrl", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateDiagnoseUrlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateEdgePackTask(self, request):
         r"""动态打包任务提交接口
 
@@ -361,32 +335,6 @@ class CdnClient(AbstractClient):
             body = self.call("DescribeCertDomains", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCertDomainsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDiagnoseReport(self, request):
-        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        DescribeDiagnoseReport 用于获取指定报告id的内容。
-
-        :param request: Request instance for DescribeDiagnoseReport.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDiagnoseReportRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDiagnoseReportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDiagnoseReport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDiagnoseReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -965,32 +913,6 @@ class CdnClient(AbstractClient):
             body = self.call("ListClsTopicDomains", params, headers=headers)
             response = json.loads(body)
             model = models.ListClsTopicDomainsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListDiagnoseReport(self, request):
-        r"""以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
-
-        ### <font color=red>**该接口已废弃** </font><br>
-        ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
-
-        :param request: Request instance for ListDiagnoseReport.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListDiagnoseReportRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListDiagnoseReportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListDiagnoseReport", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListDiagnoseReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2331,6 +2331,8 @@ class AiAnalysisResult(AbstractModel):
 <li>Dubbing：智能译制</li>
 <li>VideoRemake: 视频去重</li>
 <li>VideoComprehension: 视频（音频）理解</li>
+<li>Cutout：视频抠图</li>
+<li>Reel：智能成片</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2371,6 +2373,12 @@ class AiAnalysisResult(AbstractModel):
         :param _VideoComprehensionTask: 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
+        :param _CutoutTask: 视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CutoutTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
+        :param _ReelTask: 视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReelTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2386,6 +2394,8 @@ class AiAnalysisResult(AbstractModel):
         self._DubbingTask = None
         self._VideoRemakeTask = None
         self._VideoComprehensionTask = None
+        self._CutoutTask = None
+        self._ReelTask = None
 
     @property
     def Type(self):
@@ -2400,6 +2410,8 @@ class AiAnalysisResult(AbstractModel):
 <li>Dubbing：智能译制</li>
 <li>VideoRemake: 视频去重</li>
 <li>VideoComprehension: 视频（音频）理解</li>
+<li>Cutout：视频抠图</li>
+<li>Reel：智能成片</li>
         :rtype: str
         """
         return self._Type
@@ -2564,6 +2576,30 @@ class AiAnalysisResult(AbstractModel):
     def VideoComprehensionTask(self, VideoComprehensionTask):
         self._VideoComprehensionTask = VideoComprehensionTask
 
+    @property
+    def CutoutTask(self):
+        r"""视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
+        """
+        return self._CutoutTask
+
+    @CutoutTask.setter
+    def CutoutTask(self, CutoutTask):
+        self._CutoutTask = CutoutTask
+
+    @property
+    def ReelTask(self):
+        r"""视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
+        """
+        return self._ReelTask
+
+    @ReelTask.setter
+    def ReelTask(self, ReelTask):
+        self._ReelTask = ReelTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2606,6 +2642,12 @@ class AiAnalysisResult(AbstractModel):
         if params.get("VideoComprehensionTask") is not None:
             self._VideoComprehensionTask = AiAnalysisTaskVideoComprehensionResult()
             self._VideoComprehensionTask._deserialize(params.get("VideoComprehensionTask"))
+        if params.get("CutoutTask") is not None:
+            self._CutoutTask = AiAnalysisTaskCutoutResult()
+            self._CutoutTask._deserialize(params.get("CutoutTask"))
+        if params.get("ReelTask") is not None:
+            self._ReelTask = AiAnalysisTaskReelResult()
+            self._ReelTask._deserialize(params.get("ReelTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3011,6 +3053,242 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskCoverOutput()
             self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutInput(AbstractModel):
+    r"""智能抠图任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频智能抠图模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""视频智能抠图模板 ID。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutOutput(AbstractModel):
+    r"""视频抠图结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 视频智能抠图文件路径。
+        :type Path: str
+        :param _OutputStorage: 视频智能抠图的存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        r"""视频智能抠图文件路径。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        r"""视频智能抠图的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutResult(AbstractModel):
+    r"""视频抠图结果数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Input: 抠图任务输入
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutInput`
+        :param _Output: 抠图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
+        :param _Progress: 任务进度
+        :type Progress: int
+        :param _BeginProcessTime: 任务开始执行的时间，采用 ISO 日期格式。
+        :type BeginProcessTime: str
+        :param _FinishTime: 任务结束执行的时间，采用 ISO 日期格式。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""抠图任务输入
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""抠图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""任务进度
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""任务开始执行的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""任务结束执行的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskCutoutInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskCutoutOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4542,6 +4820,282 @@ class AiAnalysisTaskInput(AbstractModel):
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelInput(AbstractModel):
+    r"""智能成片任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能成片模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""智能成片模板 ID。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelOutput(AbstractModel):
+    r"""智能成片结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoPath: 成片视频路径。
+        :type VideoPath: str
+        :param _ScriptPath: 脚本文件路径
+
+        :type ScriptPath: str
+        :param _OutputStorage: 成片视频存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._VideoPath = None
+        self._ScriptPath = None
+        self._OutputStorage = None
+
+    @property
+    def VideoPath(self):
+        r"""成片视频路径。
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def ScriptPath(self):
+        r"""脚本文件路径
+
+        :rtype: str
+        """
+        return self._ScriptPath
+
+    @ScriptPath.setter
+    def ScriptPath(self, ScriptPath):
+        self._ScriptPath = ScriptPath
+
+    @property
+    def OutputStorage(self):
+        r"""成片视频存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._VideoPath = params.get("VideoPath")
+        self._ScriptPath = params.get("ScriptPath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelResult(AbstractModel):
+    r"""智能成片结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 智能成片任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
+        :param _Output: 智能成片任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCodeExt: str
+        :param _Progress: 任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param _BeginProcessTime: 任务开始执行的时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginProcessTime: str
+        :param _FinishTime: 任务执行完毕的时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._ErrCodeExt = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""智能成片任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""智能成片任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ErrCodeExt(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Progress(self):
+        r"""任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""任务开始执行的时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""任务执行完毕的时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskReelInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskReelOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61692,7 +62246,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -61779,7 +62332,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -61813,6 +62365,9 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
 **注意**：不传的情况下默认类型为 ASR识别字幕
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -61822,6 +62377,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._AsrHotWordsConfigure = None
         self._ExtInfo = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def SubtitleType(self):
@@ -62151,7 +62707,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -62238,7 +62793,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -62306,6 +62860,18 @@ ASR识别和纯字幕翻译当前支持以下语言：
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""字幕OCR提取框选区域配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
 
     def _deserialize(self, params):
         self._SubtitleType = params.get("SubtitleType")
@@ -62318,6 +62884,9 @@ ASR识别和纯字幕翻译当前支持以下语言：
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._ExtInfo = params.get("ExtInfo")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66359,6 +66928,79 @@ off：关闭
         
 
 
+class SelectingSubtitleAreasConfig(AbstractModel):
+    r"""字幕OCR提取框选区域配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoAreas: 自动选择自定义区域。
+对选定区域，利用AI模型自动检测其中存在的选择目标并提取。
+        :type AutoAreas: list of EraseArea
+        :param _SampleWidth: 示例视频或图片的宽，单位像素值
+        :type SampleWidth: int
+        :param _SampleHeight: 示例视频或图片的高，单位像素值
+        :type SampleHeight: int
+        """
+        self._AutoAreas = None
+        self._SampleWidth = None
+        self._SampleHeight = None
+
+    @property
+    def AutoAreas(self):
+        r"""自动选择自定义区域。
+对选定区域，利用AI模型自动检测其中存在的选择目标并提取。
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def SampleWidth(self):
+        r"""示例视频或图片的宽，单位像素值
+        :rtype: int
+        """
+        return self._SampleWidth
+
+    @SampleWidth.setter
+    def SampleWidth(self, SampleWidth):
+        self._SampleWidth = SampleWidth
+
+    @property
+    def SampleHeight(self):
+        r"""示例视频或图片的高，单位像素值
+        :rtype: int
+        """
+        return self._SampleHeight
+
+    @SampleHeight.setter
+    def SampleHeight(self, SampleHeight):
+        self._SampleHeight = SampleHeight
+
+
+    def _deserialize(self, params):
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        self._SampleWidth = params.get("SampleWidth")
+        self._SampleHeight = params.get("SampleHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SharpEnhanceConfig(AbstractModel):
     r"""细节增强配置
 
@@ -68556,7 +69198,7 @@ class SmartSubtitleTemplateItem(AbstractModel):
         :param _SubtitleFormat: 智能字幕文件格式
 - vtt: WebVTT 格式
 - srt: SRT格式
-- original：与源字幕文件一致（用于纯字幕翻译模版）
+- original：与源字幕文件一致（用于纯字幕翻译模板）
 - 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFormat: str
@@ -68610,7 +69252,11 @@ OFF: 关闭翻译
         :param _ProcessType: 字幕处理类型：
 - 0：ASR识别字幕
 - 1：纯字幕翻译
+- 2:  OCR识别字幕
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Definition = None
         self._Name = None
@@ -68627,6 +69273,7 @@ OFF: 关闭翻译
         self._UpdateTime = None
         self._AliasName = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Definition(self):
@@ -68744,7 +69391,7 @@ OFF: 关闭翻译
         r"""智能字幕文件格式
 - vtt: WebVTT 格式
 - srt: SRT格式
-- original：与源字幕文件一致（用于纯字幕翻译模版）
+- original：与源字幕文件一致（用于纯字幕翻译模板）
 - 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -68861,6 +69508,7 @@ OFF: 关闭翻译
         r"""字幕处理类型：
 - 0：ASR识别字幕
 - 1：纯字幕翻译
+- 2:  OCR识别字幕
         :rtype: int
         """
         return self._ProcessType
@@ -68868,6 +69516,18 @@ OFF: 关闭翻译
     @ProcessType.setter
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
+
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""字幕OCR提取框选区域配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
 
 
     def _deserialize(self, params):
@@ -68888,6 +69548,9 @@ OFF: 关闭翻译
         self._UpdateTime = params.get("UpdateTime")
         self._AliasName = params.get("AliasName")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

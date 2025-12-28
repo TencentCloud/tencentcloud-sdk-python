@@ -463,31 +463,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteAllAccessControlRule(self, request):
-        r"""业务废弃
-
-        全部删除规则
-
-        :param request: Request instance for DeleteAllAccessControlRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAllAccessControlRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteAllAccessControlRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteBlockIgnoreRuleList(self, request):
         r"""批量删除入侵防御封禁列表、放通列表规则
 
