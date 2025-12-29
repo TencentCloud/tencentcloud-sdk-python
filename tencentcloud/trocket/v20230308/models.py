@@ -7867,11 +7867,11 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询条件列表
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
         """
         self._Filters = None
@@ -7880,7 +7880,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询条件列表
+        r"""过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -7891,7 +7891,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询起始位置
+        r"""查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -7902,7 +7902,7 @@ class DescribeMigrationTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询结果限制数量
+        r"""查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit

@@ -1630,6 +1630,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PlaySoundCall(self, request):
+        r"""对与座席通话中的会话，进行放音
+
+        :param request: Request instance for PlaySoundCall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.PlaySoundCallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.PlaySoundCallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PlaySoundCall", params, headers=headers)
+            response = json.loads(body)
+            model = models.PlaySoundCallResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetExtensionPassword(self, request):
         r"""重置话机注册密码
 

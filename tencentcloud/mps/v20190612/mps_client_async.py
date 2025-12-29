@@ -152,6 +152,42 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcImageTask(
+            self,
+            request: models.CreateAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcImageTaskResponse:
+        """
+        调用该接口用于创建AIGC生图片任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAigcVideoTask(
+            self,
+            request: models.CreateAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcVideoTaskResponse:
+        """
+        调用该接口，用于创建AI生视频任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcVideoTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAnimatedGraphicsTemplate(
             self,
             request: models.CreateAnimatedGraphicsTemplateRequest,
@@ -1150,6 +1186,42 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcImageTask(
+            self,
+            request: models.DescribeAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcImageTaskResponse:
+        """
+        调用该接口，查询AIGC生图片任务进度以及获取生成结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcVideoTask(
+            self,
+            request: models.DescribeAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcVideoTaskResponse:
+        """
+        调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcVideoTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

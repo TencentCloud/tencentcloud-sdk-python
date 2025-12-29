@@ -13672,10 +13672,24 @@ class CreatePrivateNatGatewayTranslationAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TranslationAclRuleSet: 创建成功的访问控制列表。
+        :type TranslationAclRuleSet: list of TranslationAclRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TranslationAclRuleSet = None
         self._RequestId = None
+
+    @property
+    def TranslationAclRuleSet(self):
+        r"""创建成功的访问控制列表。
+        :rtype: list of TranslationAclRule
+        """
+        return self._TranslationAclRuleSet
+
+    @TranslationAclRuleSet.setter
+    def TranslationAclRuleSet(self, TranslationAclRuleSet):
+        self._TranslationAclRuleSet = TranslationAclRuleSet
 
     @property
     def RequestId(self):
@@ -13690,6 +13704,12 @@ class CreatePrivateNatGatewayTranslationAclRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("TranslationAclRuleSet") is not None:
+            self._TranslationAclRuleSet = []
+            for item in params.get("TranslationAclRuleSet"):
+                obj = TranslationAclRule()
+                obj._deserialize(item)
+                self._TranslationAclRuleSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -32223,6 +32243,8 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         :type Limit: int
         :param _Description: ACL规则描述
         :type Description: str
+        :param _Filters: 过滤条件。<li>AclRuleId - Integer - ACL规则ID。</li>
+        :type Filters: list of Filter
         """
         self._NatGatewayId = None
         self._TranslationDirection = None
@@ -32232,6 +32254,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Description = None
+        self._Filters = None
 
     @property
     def NatGatewayId(self):
@@ -32321,6 +32344,17 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Filters(self):
+        r"""过滤条件。<li>AclRuleId - Integer - ACL规则ID。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -32331,6 +32365,12 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Description = params.get("Description")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

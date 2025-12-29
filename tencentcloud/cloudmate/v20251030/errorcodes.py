@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,17 @@
 # limitations under the License.
 
 
-__version__ = '3.1.22'
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 参数内容超出限制
+INVALIDPARAMETERVALUE_OUTOFRANGE = 'InvalidParameterValue.OutOfRange'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 空间不存在
+RESOURCENOTFOUND_WORKSPACENOTEXIST = 'ResourceNotFound.WorkspaceNotExist'

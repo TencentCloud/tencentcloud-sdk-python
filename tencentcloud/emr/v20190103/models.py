@@ -2495,6 +2495,9 @@ class CloudResource(AbstractModel):
         :param _Disks: 所选数据盘信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Disks: list of Disk
+        :param _Tolerations: 容忍
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tolerations: list of Toleration
         """
         self._ComponentName = None
         self._PodNumber = None
@@ -2505,6 +2508,7 @@ class CloudResource(AbstractModel):
         self._ExternalAccess = None
         self._Affinity = None
         self._Disks = None
+        self._Tolerations = None
 
     @property
     def ComponentName(self):
@@ -2609,6 +2613,18 @@ class CloudResource(AbstractModel):
     def Disks(self, Disks):
         self._Disks = Disks
 
+    @property
+    def Tolerations(self):
+        r"""容忍
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
 
     def _deserialize(self, params):
         self._ComponentName = params.get("ComponentName")
@@ -2631,6 +2647,12 @@ class CloudResource(AbstractModel):
                 obj = Disk()
                 obj._deserialize(item)
                 self._Disks.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13879,7 +13901,7 @@ class DescribeServiceNodeInfosRequest(AbstractModel):
 "-3"代表存在隐患
 "-4"代表未探测
         :type HealthStateId: str
-        :param _ServiceName: 服务组件名称，都是大写例如YARN
+        :param _ServiceName: 服务组件名称应采用全大写形式（例如：YARN），api调用时须与 ServiceGroupType 在两者之中任选其一并保证必填。
         :type ServiceName: str
         :param _NodeTypeName: 节点名称master,core,task,common,router
         :type NodeTypeName: str
@@ -14006,7 +14028,7 @@ class DescribeServiceNodeInfosRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务组件名称，都是大写例如YARN
+        r"""服务组件名称应采用全大写形式（例如：YARN），api调用时须与 ServiceGroupType 在两者之中任选其一并保证必填。
         :rtype: str
         """
         return self._ServiceName
@@ -28259,6 +28281,61 @@ class Order(AbstractModel):
         
 
 
+class OtherAccountInfo(AbstractModel):
+    r"""其他账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OtherUin: 其他账号UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherUin: str
+        :param _RoleName: 其他账号授权角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        """
+        self._OtherUin = None
+        self._RoleName = None
+
+    @property
+    def OtherUin(self):
+        r"""其他账号UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OtherUin
+
+    @OtherUin.setter
+    def OtherUin(self, OtherUin):
+        self._OtherUin = OtherUin
+
+    @property
+    def RoleName(self):
+        r"""其他账号授权角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._OtherUin = params.get("OtherUin")
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutterResource(AbstractModel):
     r"""资源详情
 
@@ -29286,6 +29363,8 @@ class PodNewSpec(AbstractModel):
         :type SubnetId: str
         :param _PodName: pod name
         :type PodName: str
+        :param _OtherAccountInfo: 其他账号授权信息
+        :type OtherAccountInfo: :class:`tencentcloud.emr.v20190103.models.OtherAccountInfo`
         """
         self._ResourceProviderIdentifier = None
         self._ResourceProviderType = None
@@ -29299,6 +29378,7 @@ class PodNewSpec(AbstractModel):
         self._VpcId = None
         self._SubnetId = None
         self._PodName = None
+        self._OtherAccountInfo = None
 
     @property
     def ResourceProviderIdentifier(self):
@@ -29435,6 +29515,17 @@ class PodNewSpec(AbstractModel):
     def PodName(self, PodName):
         self._PodName = PodName
 
+    @property
+    def OtherAccountInfo(self):
+        r"""其他账号授权信息
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OtherAccountInfo`
+        """
+        return self._OtherAccountInfo
+
+    @OtherAccountInfo.setter
+    def OtherAccountInfo(self, OtherAccountInfo):
+        self._OtherAccountInfo = OtherAccountInfo
+
 
     def _deserialize(self, params):
         self._ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
@@ -29456,6 +29547,9 @@ class PodNewSpec(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._PodName = params.get("PodName")
+        if params.get("OtherAccountInfo") is not None:
+            self._OtherAccountInfo = OtherAccountInfo()
+            self._OtherAccountInfo._deserialize(params.get("OtherAccountInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38565,6 +38659,102 @@ class TkeLabel(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Toleration(AbstractModel):
+    r"""Tolerations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Value: 值
+        :type Value: str
+        :param _Operator: 操作符
+        :type Operator: str
+        :param _Effect: 污点排斥效果
+        :type Effect: str
+        :param _TolerationSeconds: 驱逐等待时间
+        :type TolerationSeconds: int
+        """
+        self._Key = None
+        self._Value = None
+        self._Operator = None
+        self._Effect = None
+        self._TolerationSeconds = None
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Operator(self):
+        r"""操作符
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Effect(self):
+        r"""污点排斥效果
+        :rtype: str
+        """
+        return self._Effect
+
+    @Effect.setter
+    def Effect(self, Effect):
+        self._Effect = Effect
+
+    @property
+    def TolerationSeconds(self):
+        r"""驱逐等待时间
+        :rtype: int
+        """
+        return self._TolerationSeconds
+
+    @TolerationSeconds.setter
+    def TolerationSeconds(self, TolerationSeconds):
+        self._TolerationSeconds = TolerationSeconds
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Operator = params.get("Operator")
+        self._Effect = params.get("Effect")
+        self._TolerationSeconds = params.get("TolerationSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

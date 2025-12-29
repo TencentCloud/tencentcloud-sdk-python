@@ -1997,7 +1997,7 @@ class ClbClient(AbstractClient):
 
 
     def RenewLoadBalancers(self, request):
-        r"""API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        r"""本接口 (RenewLoadBalancers) 用于续费包年包月实例。
 
         :param request: Request instance for RenewLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.RenewLoadBalancersRequest`

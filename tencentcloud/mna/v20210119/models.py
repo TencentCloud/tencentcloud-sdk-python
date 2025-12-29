@@ -367,7 +367,9 @@ class AddDeviceRequest(AbstractModel):
         :type Remark: str
         :param _DataKey: 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
         :type DataKey: str
-        :param _Encrypted: 是否设置预置密钥
+        :param _Encrypted: 是否设置预置密钥。
+true：设置预置密钥；
+false：不设置预置密钥。
         :type Encrypted: bool
         :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
 具体含义：
@@ -432,7 +434,9 @@ class AddDeviceRequest(AbstractModel):
 
     @property
     def Encrypted(self):
-        r"""是否设置预置密钥
+        r"""是否设置预置密钥。
+true：设置预置密钥；
+false：不设置预置密钥。
         :rtype: bool
         """
         return self._Encrypted
@@ -3796,8 +3800,12 @@ class GetGroupDetailRequest(AbstractModel):
         :param _GroupId: 分组ID
         :type GroupId: str
         :param _PageSize: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+示例值：1
+
         :type PageSize: int
         :param _PageNumber: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+示例值：10
+
         :type PageNumber: int
         :param _KeyWord: 搜索关键字
         :type KeyWord: str
@@ -3821,6 +3829,8 @@ class GetGroupDetailRequest(AbstractModel):
     @property
     def PageSize(self):
         r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+示例值：1
+
         :rtype: int
         """
         return self._PageSize
@@ -3832,6 +3842,8 @@ class GetGroupDetailRequest(AbstractModel):
     @property
     def PageNumber(self):
         r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+示例值：10
+
         :rtype: int
         """
         return self._PageNumber
@@ -3970,8 +3982,10 @@ class GetGroupListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _PageSize: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+示例值：10
         :type PageSize: int
         :param _PageNumber: 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+示例值：1
         :type PageNumber: int
         :param _Keyword: 搜索分组的关键字，为空时匹配所有分组
         :type Keyword: str
@@ -3983,6 +3997,7 @@ class GetGroupListRequest(AbstractModel):
     @property
     def PageSize(self):
         r"""每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+示例值：10
         :rtype: int
         """
         return self._PageSize
@@ -3994,6 +4009,7 @@ class GetGroupListRequest(AbstractModel):
     @property
     def PageNumber(self):
         r"""当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+示例值：1
         :rtype: int
         """
         return self._PageNumber

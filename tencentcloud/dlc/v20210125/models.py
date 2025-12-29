@@ -11649,6 +11649,20 @@ class DataEngineInfo(AbstractModel):
         :type IsAIEngine: int
         :param _ScheduleElasticityConf: 引擎资源弹性伸缩策略
         :type ScheduleElasticityConf: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
+        :param _GPUInfo: GPU 信息
+        :type GPUInfo: :class:`tencentcloud.dlc.v20210125.models.GPUInfo`
+        :param _EngineResourceUsedGPU: GPU 使用量
+        :type EngineResourceUsedGPU: int
+        :param _GPUTotalSize: GPU 总规格
+        :type GPUTotalSize: int
+        :param _InstanceModel: GPU 机型
+        :type InstanceModel: str
+        :param _NodeNum: 节点数量
+        :type NodeNum: int
+        :param _SizeWithElastic: 引擎规格，包含负载弹性或分时弹性
+        :type SizeWithElastic: int
+        :param _MaxElasticSize: 最大弹性值，包含负载弹性或分时弹性
+        :type MaxElasticSize: int
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -11710,6 +11724,13 @@ class DataEngineInfo(AbstractModel):
         self._IsAIGateway = None
         self._IsAIEngine = None
         self._ScheduleElasticityConf = None
+        self._GPUInfo = None
+        self._EngineResourceUsedGPU = None
+        self._GPUTotalSize = None
+        self._InstanceModel = None
+        self._NodeNum = None
+        self._SizeWithElastic = None
+        self._MaxElasticSize = None
 
     @property
     def DataEngineName(self):
@@ -12417,6 +12438,83 @@ class DataEngineInfo(AbstractModel):
     def ScheduleElasticityConf(self, ScheduleElasticityConf):
         self._ScheduleElasticityConf = ScheduleElasticityConf
 
+    @property
+    def GPUInfo(self):
+        r"""GPU 信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GPUInfo`
+        """
+        return self._GPUInfo
+
+    @GPUInfo.setter
+    def GPUInfo(self, GPUInfo):
+        self._GPUInfo = GPUInfo
+
+    @property
+    def EngineResourceUsedGPU(self):
+        r"""GPU 使用量
+        :rtype: int
+        """
+        return self._EngineResourceUsedGPU
+
+    @EngineResourceUsedGPU.setter
+    def EngineResourceUsedGPU(self, EngineResourceUsedGPU):
+        self._EngineResourceUsedGPU = EngineResourceUsedGPU
+
+    @property
+    def GPUTotalSize(self):
+        r"""GPU 总规格
+        :rtype: int
+        """
+        return self._GPUTotalSize
+
+    @GPUTotalSize.setter
+    def GPUTotalSize(self, GPUTotalSize):
+        self._GPUTotalSize = GPUTotalSize
+
+    @property
+    def InstanceModel(self):
+        r"""GPU 机型
+        :rtype: str
+        """
+        return self._InstanceModel
+
+    @InstanceModel.setter
+    def InstanceModel(self, InstanceModel):
+        self._InstanceModel = InstanceModel
+
+    @property
+    def NodeNum(self):
+        r"""节点数量
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def SizeWithElastic(self):
+        r"""引擎规格，包含负载弹性或分时弹性
+        :rtype: int
+        """
+        return self._SizeWithElastic
+
+    @SizeWithElastic.setter
+    def SizeWithElastic(self, SizeWithElastic):
+        self._SizeWithElastic = SizeWithElastic
+
+    @property
+    def MaxElasticSize(self):
+        r"""最大弹性值，包含负载弹性或分时弹性
+        :rtype: int
+        """
+        return self._MaxElasticSize
+
+    @MaxElasticSize.setter
+    def MaxElasticSize(self, MaxElasticSize):
+        self._MaxElasticSize = MaxElasticSize
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -12500,6 +12598,15 @@ class DataEngineInfo(AbstractModel):
         if params.get("ScheduleElasticityConf") is not None:
             self._ScheduleElasticityConf = ScheduleElasticityConf()
             self._ScheduleElasticityConf._deserialize(params.get("ScheduleElasticityConf"))
+        if params.get("GPUInfo") is not None:
+            self._GPUInfo = GPUInfo()
+            self._GPUInfo._deserialize(params.get("GPUInfo"))
+        self._EngineResourceUsedGPU = params.get("EngineResourceUsedGPU")
+        self._GPUTotalSize = params.get("GPUTotalSize")
+        self._InstanceModel = params.get("InstanceModel")
+        self._NodeNum = params.get("NodeNum")
+        self._SizeWithElastic = params.get("SizeWithElastic")
+        self._MaxElasticSize = params.get("MaxElasticSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27425,12 +27532,15 @@ class ElasticPlan(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
         :type EndTime: str
+        :param _ElasticLimit: 分时弹性上限
+        :type ElasticLimit: int
         """
         self._MinElasticClusters = None
         self._MaxElasticClusters = None
         self._TolerableQueueTime = None
         self._StartTime = None
         self._EndTime = None
+        self._ElasticLimit = None
 
     @property
     def MinElasticClusters(self):
@@ -27487,6 +27597,17 @@ class ElasticPlan(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def ElasticLimit(self):
+        r"""分时弹性上限
+        :rtype: int
+        """
+        return self._ElasticLimit
+
+    @ElasticLimit.setter
+    def ElasticLimit(self, ElasticLimit):
+        self._ElasticLimit = ElasticLimit
+
 
     def _deserialize(self, params):
         self._MinElasticClusters = params.get("MinElasticClusters")
@@ -27494,6 +27615,7 @@ class ElasticPlan(AbstractModel):
         self._TolerableQueueTime = params.get("TolerableQueueTime")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._ElasticLimit = params.get("ElasticLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28134,6 +28256,147 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUInfo(AbstractModel):
+    r"""GPU 机型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        :param _Model: 机型
+        :type Model: str
+        :param _CU: cu
+        :type CU: int
+        :param _Type: gpu 机型
+        :type Type: str
+        :param _Num: 数量
+        :type Num: int
+        :param _GPUMemory: 显存
+        :type GPUMemory: int
+        :param _InstanceType: 机型
+        :type InstanceType: str
+        :param _SaleStatus: 售卖情况（1-缺货，2-低库存，3-充足）
+        :type SaleStatus: int
+        """
+        self._BillingItem = None
+        self._Model = None
+        self._CU = None
+        self._Type = None
+        self._Num = None
+        self._GPUMemory = None
+        self._InstanceType = None
+        self._SaleStatus = None
+
+    @property
+    def BillingItem(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def Model(self):
+        r"""机型
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def CU(self):
+        r"""cu
+        :rtype: int
+        """
+        return self._CU
+
+    @CU.setter
+    def CU(self, CU):
+        self._CU = CU
+
+    @property
+    def Type(self):
+        r"""gpu 机型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Num(self):
+        r"""数量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def GPUMemory(self):
+        r"""显存
+        :rtype: int
+        """
+        return self._GPUMemory
+
+    @GPUMemory.setter
+    def GPUMemory(self, GPUMemory):
+        self._GPUMemory = GPUMemory
+
+    @property
+    def InstanceType(self):
+        r"""机型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SaleStatus(self):
+        r"""售卖情况（1-缺货，2-低库存，3-充足）
+        :rtype: int
+        """
+        return self._SaleStatus
+
+    @SaleStatus.setter
+    def SaleStatus(self, SaleStatus):
+        self._SaleStatus = SaleStatus
+
+
+    def _deserialize(self, params):
+        self._BillingItem = params.get("BillingItem")
+        self._Model = params.get("Model")
+        self._CU = params.get("CU")
+        self._Type = params.get("Type")
+        self._Num = params.get("Num")
+        self._GPUMemory = params.get("GPUMemory")
+        self._InstanceType = params.get("InstanceType")
+        self._SaleStatus = params.get("SaleStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36535,8 +36798,12 @@ class SmartOptimizerWrittenPolicy(AbstractModel):
         r"""
         :param _WrittenEnable: none/enable/disable/default
         :type WrittenEnable: str
+        :param _AdvancePolicy: 用户自定义高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancePolicy: :class:`tencentcloud.dlc.v20210125.models.WrittenAdvancePolicy`
         """
         self._WrittenEnable = None
+        self._AdvancePolicy = None
 
     @property
     def WrittenEnable(self):
@@ -36549,9 +36816,24 @@ class SmartOptimizerWrittenPolicy(AbstractModel):
     def WrittenEnable(self, WrittenEnable):
         self._WrittenEnable = WrittenEnable
 
+    @property
+    def AdvancePolicy(self):
+        r"""用户自定义高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.WrittenAdvancePolicy`
+        """
+        return self._AdvancePolicy
+
+    @AdvancePolicy.setter
+    def AdvancePolicy(self, AdvancePolicy):
+        self._AdvancePolicy = AdvancePolicy
+
 
     def _deserialize(self, params):
         self._WrittenEnable = params.get("WrittenEnable")
+        if params.get("AdvancePolicy") is not None:
+            self._AdvancePolicy = WrittenAdvancePolicy()
+            self._AdvancePolicy._deserialize(params.get("AdvancePolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36773,6 +37055,72 @@ class Sort(AbstractModel):
     def _deserialize(self, params):
         self._Field = params.get("Field")
         self._Asc = params.get("Asc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SortOrder(AbstractModel):
+    r"""合并策略sort类型的规则定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Column: sort的数据表列名称
+        :type Column: str
+        :param _SortDirection: 按照升序或者降序进行排序
+        :type SortDirection: str
+        :param _NullOrder: null值放在开头或者末尾
+        :type NullOrder: str
+        """
+        self._Column = None
+        self._SortDirection = None
+        self._NullOrder = None
+
+    @property
+    def Column(self):
+        r"""sort的数据表列名称
+        :rtype: str
+        """
+        return self._Column
+
+    @Column.setter
+    def Column(self, Column):
+        self._Column = Column
+
+    @property
+    def SortDirection(self):
+        r"""按照升序或者降序进行排序
+        :rtype: str
+        """
+        return self._SortDirection
+
+    @SortDirection.setter
+    def SortDirection(self, SortDirection):
+        self._SortDirection = SortDirection
+
+    @property
+    def NullOrder(self):
+        r"""null值放在开头或者末尾
+        :rtype: str
+        """
+        return self._NullOrder
+
+    @NullOrder.setter
+    def NullOrder(self, NullOrder):
+        self._NullOrder = NullOrder
+
+
+    def _deserialize(self, params):
+        self._Column = params.get("Column")
+        self._SortDirection = params.get("SortDirection")
+        self._NullOrder = params.get("NullOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46875,6 +47223,199 @@ class WorkGroups(AbstractModel):
                 obj._deserialize(item)
                 self._WorkGroupSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WrittenAdvancePolicy(AbstractModel):
+    r"""Smart Optimizer高级参数配置数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompactEnable: 是否启用合并
+        :type CompactEnable: str
+        :param _DeleteEnable: 是否启用历史数据清理
+        :type DeleteEnable: str
+        :param _MinInputFiles: 合并最新文件数量
+        :type MinInputFiles: int
+        :param _TargetFileSizeBytes: 合并文件目录文件大小
+        :type TargetFileSizeBytes: int
+        :param _RetainLast: 保留过期时间的快照数量
+        :type RetainLast: int
+        :param _BeforeDays: 快照过期时间
+        :type BeforeDays: int
+        :param _ExpiredSnapshotsIntervalMin: 快照过期执行周期
+        :type ExpiredSnapshotsIntervalMin: int
+        :param _RemoveOrphanIntervalMin: 移除孤立文件执行周期
+        :type RemoveOrphanIntervalMin: int
+        :param _CowCompactEnable: 是否开启COW表合并
+        :type CowCompactEnable: str
+        :param _CompactStrategy: 文件合并策略
+        :type CompactStrategy: str
+        :param _SortOrders: sort合并策略的规则定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SortOrders: list of SortOrder
+        """
+        self._CompactEnable = None
+        self._DeleteEnable = None
+        self._MinInputFiles = None
+        self._TargetFileSizeBytes = None
+        self._RetainLast = None
+        self._BeforeDays = None
+        self._ExpiredSnapshotsIntervalMin = None
+        self._RemoveOrphanIntervalMin = None
+        self._CowCompactEnable = None
+        self._CompactStrategy = None
+        self._SortOrders = None
+
+    @property
+    def CompactEnable(self):
+        r"""是否启用合并
+        :rtype: str
+        """
+        return self._CompactEnable
+
+    @CompactEnable.setter
+    def CompactEnable(self, CompactEnable):
+        self._CompactEnable = CompactEnable
+
+    @property
+    def DeleteEnable(self):
+        r"""是否启用历史数据清理
+        :rtype: str
+        """
+        return self._DeleteEnable
+
+    @DeleteEnable.setter
+    def DeleteEnable(self, DeleteEnable):
+        self._DeleteEnable = DeleteEnable
+
+    @property
+    def MinInputFiles(self):
+        r"""合并最新文件数量
+        :rtype: int
+        """
+        return self._MinInputFiles
+
+    @MinInputFiles.setter
+    def MinInputFiles(self, MinInputFiles):
+        self._MinInputFiles = MinInputFiles
+
+    @property
+    def TargetFileSizeBytes(self):
+        r"""合并文件目录文件大小
+        :rtype: int
+        """
+        return self._TargetFileSizeBytes
+
+    @TargetFileSizeBytes.setter
+    def TargetFileSizeBytes(self, TargetFileSizeBytes):
+        self._TargetFileSizeBytes = TargetFileSizeBytes
+
+    @property
+    def RetainLast(self):
+        r"""保留过期时间的快照数量
+        :rtype: int
+        """
+        return self._RetainLast
+
+    @RetainLast.setter
+    def RetainLast(self, RetainLast):
+        self._RetainLast = RetainLast
+
+    @property
+    def BeforeDays(self):
+        r"""快照过期时间
+        :rtype: int
+        """
+        return self._BeforeDays
+
+    @BeforeDays.setter
+    def BeforeDays(self, BeforeDays):
+        self._BeforeDays = BeforeDays
+
+    @property
+    def ExpiredSnapshotsIntervalMin(self):
+        r"""快照过期执行周期
+        :rtype: int
+        """
+        return self._ExpiredSnapshotsIntervalMin
+
+    @ExpiredSnapshotsIntervalMin.setter
+    def ExpiredSnapshotsIntervalMin(self, ExpiredSnapshotsIntervalMin):
+        self._ExpiredSnapshotsIntervalMin = ExpiredSnapshotsIntervalMin
+
+    @property
+    def RemoveOrphanIntervalMin(self):
+        r"""移除孤立文件执行周期
+        :rtype: int
+        """
+        return self._RemoveOrphanIntervalMin
+
+    @RemoveOrphanIntervalMin.setter
+    def RemoveOrphanIntervalMin(self, RemoveOrphanIntervalMin):
+        self._RemoveOrphanIntervalMin = RemoveOrphanIntervalMin
+
+    @property
+    def CowCompactEnable(self):
+        r"""是否开启COW表合并
+        :rtype: str
+        """
+        return self._CowCompactEnable
+
+    @CowCompactEnable.setter
+    def CowCompactEnable(self, CowCompactEnable):
+        self._CowCompactEnable = CowCompactEnable
+
+    @property
+    def CompactStrategy(self):
+        r"""文件合并策略
+        :rtype: str
+        """
+        return self._CompactStrategy
+
+    @CompactStrategy.setter
+    def CompactStrategy(self, CompactStrategy):
+        self._CompactStrategy = CompactStrategy
+
+    @property
+    def SortOrders(self):
+        r"""sort合并策略的规则定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SortOrder
+        """
+        return self._SortOrders
+
+    @SortOrders.setter
+    def SortOrders(self, SortOrders):
+        self._SortOrders = SortOrders
+
+
+    def _deserialize(self, params):
+        self._CompactEnable = params.get("CompactEnable")
+        self._DeleteEnable = params.get("DeleteEnable")
+        self._MinInputFiles = params.get("MinInputFiles")
+        self._TargetFileSizeBytes = params.get("TargetFileSizeBytes")
+        self._RetainLast = params.get("RetainLast")
+        self._BeforeDays = params.get("BeforeDays")
+        self._ExpiredSnapshotsIntervalMin = params.get("ExpiredSnapshotsIntervalMin")
+        self._RemoveOrphanIntervalMin = params.get("RemoveOrphanIntervalMin")
+        self._CowCompactEnable = params.get("CowCompactEnable")
+        self._CompactStrategy = params.get("CompactStrategy")
+        if params.get("SortOrders") is not None:
+            self._SortOrders = []
+            for item in params.get("SortOrders"):
+                obj = SortOrder()
+                obj._deserialize(item)
+                self._SortOrders.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

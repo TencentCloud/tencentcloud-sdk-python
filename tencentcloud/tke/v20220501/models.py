@@ -7902,8 +7902,12 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _KeyIds: ssh公钥id数组
         :type KeyIds: list of str
+        :param _DeletePolicy: 节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
+        :type DeletePolicy: str
         :param _GPUConfigs: 节点池 GPU 配置
         :type GPUConfigs: list of GPUConfig
+        :param _AutomationService: 原生节点池安装自动化助手开关状态
+        :type AutomationService: bool
         :param _Password: 原生节点池密码
         :type Password: str
         """
@@ -7927,7 +7931,9 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._UpdateExistedNode = None
         self._DataDisks = None
         self._KeyIds = None
+        self._DeletePolicy = None
         self._GPUConfigs = None
+        self._AutomationService = None
         self._Password = None
 
     @property
@@ -8154,6 +8160,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._KeyIds = KeyIds
 
     @property
+    def DeletePolicy(self):
+        r"""节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
+        :rtype: str
+        """
+        return self._DeletePolicy
+
+    @DeletePolicy.setter
+    def DeletePolicy(self, DeletePolicy):
+        self._DeletePolicy = DeletePolicy
+
+    @property
     def GPUConfigs(self):
         r"""节点池 GPU 配置
         :rtype: list of GPUConfig
@@ -8163,6 +8180,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
     @GPUConfigs.setter
     def GPUConfigs(self, GPUConfigs):
         self._GPUConfigs = GPUConfigs
+
+    @property
+    def AutomationService(self):
+        r"""原生节点池安装自动化助手开关状态
+        :rtype: bool
+        """
+        return self._AutomationService
+
+    @AutomationService.setter
+    def AutomationService(self, AutomationService):
+        self._AutomationService = AutomationService
 
     @property
     def Password(self):
@@ -8214,12 +8242,14 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
         self._KeyIds = params.get("KeyIds")
+        self._DeletePolicy = params.get("DeletePolicy")
         if params.get("GPUConfigs") is not None:
             self._GPUConfigs = []
             for item in params.get("GPUConfigs"):
                 obj = GPUConfig()
                 obj._deserialize(item)
                 self._GPUConfigs.append(obj)
+        self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

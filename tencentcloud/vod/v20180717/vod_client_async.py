@@ -608,6 +608,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSceneAigcImageTask(
+            self,
+            request: models.CreateSceneAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSceneAigcImageTaskResponse:
+        """
+        该接口用于生成场景化 AIGC 图片。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用。</b>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSceneAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSceneAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSnapshotByTimeOffsetTemplate(
             self,
             request: models.CreateSnapshotByTimeOffsetTemplateRequest,

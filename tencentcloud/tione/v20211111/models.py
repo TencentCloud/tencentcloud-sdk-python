@@ -1834,6 +1834,8 @@ HYBRID_PAID:
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
         :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :type VolumeMounts: list of VolumeMount
+        :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :type SchedulingStrategy: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1877,6 +1879,7 @@ HYBRID_PAID:
         self._RollingUpdate = None
         self._Sidecar = None
         self._VolumeMounts = None
+        self._SchedulingStrategy = None
 
     @property
     def ServiceGroupId(self):
@@ -2363,6 +2366,17 @@ HYBRID_PAID:
     def VolumeMounts(self, VolumeMounts):
         self._VolumeMounts = VolumeMounts
 
+    @property
+    def SchedulingStrategy(self):
+        r"""调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :rtype: str
+        """
+        return self._SchedulingStrategy
+
+    @SchedulingStrategy.setter
+    def SchedulingStrategy(self, SchedulingStrategy):
+        self._SchedulingStrategy = SchedulingStrategy
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2451,6 +2465,7 @@ HYBRID_PAID:
                 obj = VolumeMount()
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
+        self._SchedulingStrategy = params.get("SchedulingStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10695,6 +10710,89 @@ class ExposePortConfig(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启暴露容器服务端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _ClbId: clb id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbId: str
+        :param _ClbHost: clb domain
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbHost: str
+        """
+        self._Enable = None
+        self._VpcId = None
+        self._ClbId = None
+        self._ClbHost = None
+
+    @property
+    def Enable(self):
+        r"""是否开启暴露容器服务端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VpcId(self):
+        r"""vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ClbId(self):
+        r"""clb id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClbId
+
+    @ClbId.setter
+    def ClbId(self, ClbId):
+        self._ClbId = ClbId
+
+    @property
+    def ClbHost(self):
+        r"""clb domain
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClbHost
+
+    @ClbHost.setter
+    def ClbHost(self, ClbHost):
+        self._ClbHost = ClbHost
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._VpcId = params.get("VpcId")
+        self._ClbId = params.get("ClbId")
+        self._ClbHost = params.get("ClbHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class Filter(AbstractModel):
     r"""过滤器
@@ -14657,6 +14755,8 @@ HYBRID_PAID:
         :type ResourceGroupId: str
         :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
         :type VolumeMounts: list of VolumeMount
+        :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :type SchedulingStrategy: str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14692,6 +14792,7 @@ HYBRID_PAID:
         self._Sidecar = None
         self._ResourceGroupId = None
         self._VolumeMounts = None
+        self._SchedulingStrategy = None
 
     @property
     def ServiceId(self):
@@ -15090,6 +15191,17 @@ HYBRID_PAID:
     def VolumeMounts(self, VolumeMounts):
         self._VolumeMounts = VolumeMounts
 
+    @property
+    def SchedulingStrategy(self):
+        r"""调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :rtype: str
+        """
+        return self._SchedulingStrategy
+
+    @SchedulingStrategy.setter
+    def SchedulingStrategy(self, SchedulingStrategy):
+        self._SchedulingStrategy = SchedulingStrategy
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -15165,6 +15277,7 @@ HYBRID_PAID:
                 obj = VolumeMount()
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
+        self._SchedulingStrategy = params.get("SchedulingStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18665,6 +18778,10 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         :param _EnableRDMA: 是否开启rdma
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRDMA: bool
+        :param _RootDisk: root disk size(GB)
+        :type RootDisk: int
+        :param _DataDisk: data disk size(GB)
+        :type DataDisk: int
         """
         self._Cpu = None
         self._Memory = None
@@ -18673,6 +18790,8 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         self._RealGpu = None
         self._RealGpuDetailSet = None
         self._EnableRDMA = None
+        self._RootDisk = None
+        self._DataDisk = None
 
     @property
     def Cpu(self):
@@ -18761,6 +18880,28 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
     def EnableRDMA(self, EnableRDMA):
         self._EnableRDMA = EnableRDMA
 
+    @property
+    def RootDisk(self):
+        r"""root disk size(GB)
+        :rtype: int
+        """
+        return self._RootDisk
+
+    @RootDisk.setter
+    def RootDisk(self, RootDisk):
+        self._RootDisk = RootDisk
+
+    @property
+    def DataDisk(self):
+        r"""data disk size(GB)
+        :rtype: int
+        """
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -18775,6 +18916,8 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
                 obj._deserialize(item)
                 self._RealGpuDetailSet.append(obj)
         self._EnableRDMA = params.get("EnableRDMA")
+        self._RootDisk = params.get("RootDisk")
+        self._DataDisk = params.get("DataDisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19257,10 +19400,8 @@ class Service(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessStatus: str
         :param _ServiceLimit: 已废弃,以ServiceInfo中的对应为准
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         :param _ScheduledAction: 已废弃,以ServiceInfo中的对应为准
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         :param _CreateFailedReason: 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19595,7 +19736,6 @@ DEFAULT: 其他来源
         warnings.warn("parameter `ServiceLimit` is deprecated", DeprecationWarning) 
 
         r"""已废弃,以ServiceInfo中的对应为准
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         """
         return self._ServiceLimit
@@ -19611,7 +19751,6 @@ DEFAULT: 其他来源
         warnings.warn("parameter `ScheduledAction` is deprecated", DeprecationWarning) 
 
         r"""已废弃,以ServiceInfo中的对应为准
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         """
         return self._ScheduledAction
@@ -20797,22 +20936,16 @@ HYBRID_PAID:
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
         :param _InstanceType: 后付费实例对应的机型规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _ModelInfo: 模型信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
         :param _LogEnable: 是否启用日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogEnable: bool
         :param _LogConfig: 日志配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         :param _AuthorizationEnable: 是否开启鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationEnable: bool
         :param _HorizontalPodAutoscaler: hpa配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
         :param _Status: 服务的状态描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20894,6 +21027,10 @@ HYBRID_PAID:
         :type InstancePerReplicas: int
         :param _VolumeMounts: 批量数据盘挂载配置
         :type VolumeMounts: list of VolumeMount
+        :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :type SchedulingStrategy: str
+        :param _NodeCount: 服务实际运行的节点数
+        :type NodeCount: int
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -20934,6 +21071,8 @@ HYBRID_PAID:
         self._RollingUpdate = None
         self._InstancePerReplicas = None
         self._VolumeMounts = None
+        self._SchedulingStrategy = None
+        self._NodeCount = None
 
     @property
     def Replicas(self):
@@ -20993,7 +21132,6 @@ HYBRID_PAID:
     @property
     def InstanceType(self):
         r"""后付费实例对应的机型规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -21005,7 +21143,6 @@ HYBRID_PAID:
     @property
     def ModelInfo(self):
         r"""模型信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
         """
         return self._ModelInfo
@@ -21017,7 +21154,6 @@ HYBRID_PAID:
     @property
     def LogEnable(self):
         r"""是否启用日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LogEnable
@@ -21029,7 +21165,6 @@ HYBRID_PAID:
     @property
     def LogConfig(self):
         r"""日志配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._LogConfig
@@ -21041,7 +21176,6 @@ HYBRID_PAID:
     @property
     def AuthorizationEnable(self):
         r"""是否开启鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AuthorizationEnable
@@ -21053,7 +21187,6 @@ HYBRID_PAID:
     @property
     def HorizontalPodAutoscaler(self):
         r"""hpa配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
         """
         return self._HorizontalPodAutoscaler
@@ -21411,6 +21544,28 @@ HYBRID_PAID:
     def VolumeMounts(self, VolumeMounts):
         self._VolumeMounts = VolumeMounts
 
+    @property
+    def SchedulingStrategy(self):
+        r"""调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :rtype: str
+        """
+        return self._SchedulingStrategy
+
+    @SchedulingStrategy.setter
+    def SchedulingStrategy(self, SchedulingStrategy):
+        self._SchedulingStrategy = SchedulingStrategy
+
+    @property
+    def NodeCount(self):
+        r"""服务实际运行的节点数
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -21502,6 +21657,8 @@ HYBRID_PAID:
                 obj = VolumeMount()
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
+        self._SchedulingStrategy = params.get("SchedulingStrategy")
+        self._NodeCount = params.get("NodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

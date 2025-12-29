@@ -10582,6 +10582,65 @@ class AigcImageOutputConfig(AbstractModel):
         
 
 
+class AigcImageSceneInfo(AbstractModel):
+    r"""场景化 AIGC 生图配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: AI生图场景类型，可选值：
+- change_clothes：AI换衣。
+        :type Type: str
+        :param _ChangeClothesConfig: 当 Type 为 change_clothes 时有效，则该项为必填，表示AI 换衣生图配置参数。
+
+
+        :type ChangeClothesConfig: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
+        """
+        self._Type = None
+        self._ChangeClothesConfig = None
+
+    @property
+    def Type(self):
+        r"""AI生图场景类型，可选值：
+- change_clothes：AI换衣。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ChangeClothesConfig(self):
+        r"""当 Type 为 change_clothes 时有效，则该项为必填，表示AI 换衣生图配置参数。
+
+
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
+        """
+        return self._ChangeClothesConfig
+
+    @ChangeClothesConfig.setter
+    def ChangeClothesConfig(self, ChangeClothesConfig):
+        self._ChangeClothesConfig = ChangeClothesConfig
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("ChangeClothesConfig") is not None:
+            self._ChangeClothesConfig = ChangeClothesConfig()
+            self._ChangeClothesConfig._deserialize(params.get("ChangeClothesConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcImageTask(AbstractModel):
     r"""AIGC 生图任务信息
 
@@ -15100,6 +15159,47 @@ class CdnLogInfo(AbstractModel):
         self._Url = params.get("Url")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeClothesConfig(AbstractModel):
+    r"""AI 换衣参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClothesFileInfos: 输入需要更换的**衣物**图片列表。目前最大支持4张图片。
+        :type ClothesFileInfos: list of SceneAigcImageTaskInputFileInfo
+        """
+        self._ClothesFileInfos = None
+
+    @property
+    def ClothesFileInfos(self):
+        r"""输入需要更换的**衣物**图片列表。目前最大支持4张图片。
+        :rtype: list of SceneAigcImageTaskInputFileInfo
+        """
+        return self._ClothesFileInfos
+
+    @ClothesFileInfos.setter
+    def ClothesFileInfos(self, ClothesFileInfos):
+        self._ClothesFileInfos = ClothesFileInfos
+
+
+    def _deserialize(self, params):
+        if params.get("ClothesFileInfos") is not None:
+            self._ClothesFileInfos = []
+            for item in params.get("ClothesFileInfos"):
+                obj = SceneAigcImageTaskInputFileInfo()
+                obj._deserialize(item)
+                self._ClothesFileInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22948,6 +23048,203 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSceneAigcImageTaskRequest(AbstractModel):
+    r"""CreateSceneAigcImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: **点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。**
+        :type SubAppId: int
+        :param _SceneInfo: 场景化生图参数配置。
+        :type SceneInfo: :class:`tencentcloud.vod.v20180717.models.AigcImageSceneInfo`
+        :param _FileInfos: 输入图片列表，支持的图片格式：jpg、jpeg、png、webp。不同的场景需要不同的输入数据：
+
+- change_clothes：只能输入1张**模特**图片。
+        :type FileInfos: list of SceneAigcImageTaskInputFileInfo
+        :param _OutputConfig: 场景化生图任务的输出媒体文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageOutputConfig`
+        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._SceneInfo = None
+        self._FileInfos = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""**点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。**
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SceneInfo(self):
+        r"""场景化生图参数配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageSceneInfo`
+        """
+        return self._SceneInfo
+
+    @SceneInfo.setter
+    def SceneInfo(self, SceneInfo):
+        self._SceneInfo = SceneInfo
+
+    @property
+    def FileInfos(self):
+        r"""输入图片列表，支持的图片格式：jpg、jpeg、png、webp。不同的场景需要不同的输入数据：
+
+- change_clothes：只能输入1张**模特**图片。
+        :rtype: list of SceneAigcImageTaskInputFileInfo
+        """
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def OutputConfig(self):
+        r"""场景化生图任务的输出媒体文件配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        r"""保留字段，特殊用途时使用。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("SceneInfo") is not None:
+            self._SceneInfo = AigcImageSceneInfo()
+            self._SceneInfo._deserialize(params.get("SceneInfo"))
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = SceneAigcImageTaskInputFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = SceneAigcImageOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSceneAigcImageTaskResponse(AbstractModel):
+    r"""CreateSceneAigcImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -69983,6 +70280,169 @@ class SampleSnapshotTemplate(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneAigcImageOutputConfig(AbstractModel):
+    r"""AIGC 场景化生图任务的输出媒体文件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
+默认值：Temporary
+        :type StorageMode: str
+        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self._StorageMode = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def StorageMode(self):
+        r"""存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
+默认值：Temporary
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def MediaName(self):
+        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneAigcImageTaskInputFileInfo(AbstractModel):
+    r"""AIGC场景化生图任务输入文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        :type Type: str
+        :param _FileId: 图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+说明：
+1. 推荐使用小于7M的图片；
+2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :type FileId: str
+        :param _Url: 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+说明：
+1. 推荐使用小于7M的图片；
+2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+说明：
+1. 推荐使用小于7M的图片；
+2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+说明：
+1. 推荐使用小于7M的图片；
+2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

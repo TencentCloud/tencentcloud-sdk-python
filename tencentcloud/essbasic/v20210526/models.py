@@ -26471,7 +26471,7 @@ class IntentionQuestion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为250个字符。
         :type Question: str
         :param _Answers:  当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
         :type Answers: list of str
@@ -26481,7 +26481,7 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Question(self):
-        r"""当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        r"""当选择语音问答模式时，系统自动播报的问题文本，最大长度为250个字符。
         :rtype: str
         """
         return self._Question

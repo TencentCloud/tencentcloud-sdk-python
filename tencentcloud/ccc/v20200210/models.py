@@ -15673,6 +15673,115 @@ class PhoneNumBuyInfo(AbstractModel):
         
 
 
+class PlaySoundCallRequest(AbstractModel):
+    r"""PlaySoundCall请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 会话ID
+        :type SessionId: str
+        :param _FileId: 音频文件 ID，参见管理端-电话客服-放音文件管理
+        :type FileId: int
+        :param _PlayTimes: 放音次数，默认 1 次
+        :type PlayTimes: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._FileId = None
+        self._PlayTimes = None
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        r"""会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def FileId(self):
+        r"""音频文件 ID，参见管理端-电话客服-放音文件管理
+        :rtype: int
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def PlayTimes(self):
+        r"""放音次数，默认 1 次
+        :rtype: int
+        """
+        return self._PlayTimes
+
+    @PlayTimes.setter
+    def PlayTimes(self, PlayTimes):
+        self._PlayTimes = PlayTimes
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._FileId = params.get("FileId")
+        self._PlayTimes = params.get("PlayTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaySoundCallResponse(AbstractModel):
+    r"""PlaySoundCall返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResetExtensionPasswordRequest(AbstractModel):
     r"""ResetExtensionPassword请求参数结构体
 
@@ -18398,6 +18507,10 @@ NotExists
         :type VoicemailRecordURL: list of str
         :param _VoicemailAsrURL: 通话中语音留言ASR文本信息地址
         :type VoicemailAsrURL: list of str
+        :param _AIAgentId: 如果是智能体相关通话，这里是智能体 ID
+        :type AIAgentId: int
+        :param _AIAgentName: 如果是智能体相关通话，这里是智能体名称
+        :type AIAgentName: str
         """
         self._Caller = None
         self._Callee = None
@@ -18437,6 +18550,8 @@ NotExists
         self._QueuedSkillGroupName = None
         self._VoicemailRecordURL = None
         self._VoicemailAsrURL = None
+        self._AIAgentId = None
+        self._AIAgentName = None
 
     @property
     def Caller(self):
@@ -18942,6 +19057,28 @@ NotExists
     def VoicemailAsrURL(self, VoicemailAsrURL):
         self._VoicemailAsrURL = VoicemailAsrURL
 
+    @property
+    def AIAgentId(self):
+        r"""如果是智能体相关通话，这里是智能体 ID
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
+    @property
+    def AIAgentName(self):
+        r"""如果是智能体相关通话，这里是智能体名称
+        :rtype: str
+        """
+        return self._AIAgentName
+
+    @AIAgentName.setter
+    def AIAgentName(self, AIAgentName):
+        self._AIAgentName = AIAgentName
+
 
     def _deserialize(self, params):
         self._Caller = params.get("Caller")
@@ -18999,6 +19136,8 @@ NotExists
         self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")
         self._VoicemailRecordURL = params.get("VoicemailRecordURL")
         self._VoicemailAsrURL = params.get("VoicemailAsrURL")
+        self._AIAgentId = params.get("AIAgentId")
+        self._AIAgentName = params.get("AIAgentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

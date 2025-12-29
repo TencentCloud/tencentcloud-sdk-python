@@ -359,6 +359,11 @@ def test_import_cloudhsm_v20191112():
     from tencentcloud.cloudhsm.v20191112 import models
 
 
+def test_import_cloudmate_v20251030():
+    from tencentcloud.cloudmate.v20251030 import cloudmate_client
+    from tencentcloud.cloudmate.v20251030 import models
+
+
 def test_import_cloudstudio_v20230508():
     from tencentcloud.cloudstudio.v20230508 import cloudstudio_client
     from tencentcloud.cloudstudio.v20230508 import models

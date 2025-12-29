@@ -3867,6 +3867,8 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
         :type HotwordList: str
         :param _InputSampleRate: 支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
         :type InputSampleRate: int
+        :param _ReplaceTextId: 替换词id。用于调用对应的替换词表。
+        :type ReplaceTextId: str
         """
         self._EngSerViceType = None
         self._SourceType = None
@@ -3887,6 +3889,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
         self._ReinforceHotword = None
         self._HotwordList = None
         self._InputSampleRate = None
+        self._ReplaceTextId = None
 
     @property
     def EngSerViceType(self):
@@ -4149,6 +4152,17 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
     def InputSampleRate(self, InputSampleRate):
         self._InputSampleRate = InputSampleRate
 
+    @property
+    def ReplaceTextId(self):
+        r"""替换词id。用于调用对应的替换词表。
+        :rtype: str
+        """
+        return self._ReplaceTextId
+
+    @ReplaceTextId.setter
+    def ReplaceTextId(self, ReplaceTextId):
+        self._ReplaceTextId = ReplaceTextId
+
 
     def _deserialize(self, params):
         self._EngSerViceType = params.get("EngSerViceType")
@@ -4170,6 +4184,7 @@ hotword_list：临时热词表。每次请求时直接传入临时热词表来�
         self._ReinforceHotword = params.get("ReinforceHotword")
         self._HotwordList = params.get("HotwordList")
         self._InputSampleRate = params.get("InputSampleRate")
+        self._ReplaceTextId = params.get("ReplaceTextId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

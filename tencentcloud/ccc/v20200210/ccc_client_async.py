@@ -1284,6 +1284,24 @@ class CccClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PlaySoundCall(
+            self,
+            request: models.PlaySoundCallRequest,
+            opts: Dict = None,
+    ) -> models.PlaySoundCallResponse:
+        """
+        对与座席通话中的会话，进行放音
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PlaySoundCall"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PlaySoundCallResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetExtensionPassword(
             self,
             request: models.ResetExtensionPasswordRequest,

@@ -143,6 +143,9 @@ class LkeClient(AbstractClient):
     ) -> models.CreateQACateResponse:
         """
         创建QA分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}
@@ -864,6 +867,9 @@ class LkeClient(AbstractClient):
     ) -> models.ExportQAListResponse:
         """
         导出QA列表
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}
@@ -882,6 +888,9 @@ class LkeClient(AbstractClient):
     ) -> models.ExportUnsatisfiedReplyResponse:
         """
         导出不满意回复
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}
@@ -1098,7 +1107,10 @@ class LkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GroupQAResponse:
         """
-        QA分组
+        用户将多个问答批量的分类到知识库的具体分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}
@@ -1300,6 +1312,9 @@ class LkeClient(AbstractClient):
     ) -> models.ListQACateResponse:
         """
         获取QA分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
         """
         
         kwargs = {}

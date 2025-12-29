@@ -596,6 +596,9 @@ UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = 'UnsupportedOperation.ClusterStateUn
 # 该版本不支持cos备份。集群需要重启来允许cos备份。
 UNSUPPORTEDOPERATION_COSBACKUP = 'UnsupportedOperation.CosBackUp'
 
+# cvm当前运行状态不支持
+UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = 'UnsupportedOperation.CvmStateNotSupported'
+
 # 有关机的cvm
 UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = 'UnsupportedOperation.CvmStatusStopped'
 
@@ -607,6 +610,15 @@ UNSUPPORTEDOPERATION_DIAGNOSENOTOPEN = 'UnsupportedOperation.DiagnoseNotOpen'
 
 # 节点磁盘可用空间不足
 UNSUPPORTEDOPERATION_DISKFREESPACEINSUFFICIENT = 'UnsupportedOperation.DiskFreeSpaceInsufficient'
+
+# 该操作仅支持弹性云盘
+UNSUPPORTEDOPERATION_DISKNOTPORTABLE = 'UnsupportedOperation.DiskNotPortable'
+
+# 当前磁盘状态不支持
+UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = 'UnsupportedOperation.DiskStateNotSupported'
+
+# 磁盘类型变更路径不支持
+UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = 'UnsupportedOperation.DiskTypeChangePathNotSupported'
 
 # 不支持的读硬盘配置。
 UNSUPPORTEDOPERATION_DISKUSE = 'UnsupportedOperation.DiskUse'
@@ -643,6 +655,9 @@ UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = 'UnsupportedOperation.MultiZonesUpgrade
 
 # 抱歉，您需要前往ES控制台购买页完成确认认证，我们才能为您提供所选的腾讯云服务。如果对于确认流程有任何疑问，可以联系我们：https://www.tencentcloud.com/zh/contact-us。
 UNSUPPORTEDOPERATION_NOTAGREEMENT = 'UnsupportedOperation.NotAgreement'
+
+# 该操作仅支持数据盘
+UNSUPPORTEDOPERATION_NOTDATADISK = 'UnsupportedOperation.NotDataDisk'
 
 # 用户同步日志的配置passLogstashId为空，不支持该操作。
 UNSUPPORTEDOPERATION_PASSLOGSTASHID = 'UnsupportedOperation.PassLogstashId'

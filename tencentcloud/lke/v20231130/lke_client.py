@@ -169,6 +169,9 @@ class LkeClient(AbstractClient):
 
     def CreateQACate(self, request):
         r"""创建QA分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 
         :param request: Request instance for CreateQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateQACateRequest`
@@ -1090,6 +1093,9 @@ class LkeClient(AbstractClient):
 
     def ExportQAList(self, request):
         r"""导出QA列表
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 
         :param request: Request instance for ExportQAList.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportQAListRequest`
@@ -1113,6 +1119,9 @@ class LkeClient(AbstractClient):
 
     def ExportUnsatisfiedReply(self, request):
         r"""导出不满意回复
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 
         :param request: Request instance for ExportUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportUnsatisfiedReplyRequest`
@@ -1389,7 +1398,10 @@ class LkeClient(AbstractClient):
 
 
     def GroupQA(self, request):
-        r"""QA分组
+        r"""用户将多个问答批量的分类到知识库的具体分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 
         :param request: Request instance for GroupQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.GroupQARequest`
@@ -1646,6 +1658,9 @@ class LkeClient(AbstractClient):
 
     def ListQACate(self, request):
         r"""获取QA分类
+        知识库相关背景知识介绍
+        “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+        “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 
         :param request: Request instance for ListQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListQACateRequest`

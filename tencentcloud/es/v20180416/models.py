@@ -11171,11 +11171,23 @@ class InstallInstanceModelRequest(AbstractModel):
         :type ModelNames: list of str
         :param _TaskTypes: 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
         :type TaskTypes: list of str
+        :param _HuggingFaceModelNames: HuggingFace模型名称
+        :type HuggingFaceModelNames: list of str
+        :param _ModelDescription: 模型描述
+        :type ModelDescription: str
+        :param _ModelSourceType: 模型来源：UserModel、HuggingFace和PlatformModel
+        :type ModelSourceType: str
+        :param _UploadedCosPaths: 已上传的模型路径
+        :type UploadedCosPaths: list of str
         """
         self._InstanceId = None
         self._UsrCosModelUrlList = None
         self._ModelNames = None
         self._TaskTypes = None
+        self._HuggingFaceModelNames = None
+        self._ModelDescription = None
+        self._ModelSourceType = None
+        self._UploadedCosPaths = None
 
     @property
     def InstanceId(self):
@@ -11221,12 +11233,60 @@ class InstallInstanceModelRequest(AbstractModel):
     def TaskTypes(self, TaskTypes):
         self._TaskTypes = TaskTypes
 
+    @property
+    def HuggingFaceModelNames(self):
+        r"""HuggingFace模型名称
+        :rtype: list of str
+        """
+        return self._HuggingFaceModelNames
+
+    @HuggingFaceModelNames.setter
+    def HuggingFaceModelNames(self, HuggingFaceModelNames):
+        self._HuggingFaceModelNames = HuggingFaceModelNames
+
+    @property
+    def ModelDescription(self):
+        r"""模型描述
+        :rtype: str
+        """
+        return self._ModelDescription
+
+    @ModelDescription.setter
+    def ModelDescription(self, ModelDescription):
+        self._ModelDescription = ModelDescription
+
+    @property
+    def ModelSourceType(self):
+        r"""模型来源：UserModel、HuggingFace和PlatformModel
+        :rtype: str
+        """
+        return self._ModelSourceType
+
+    @ModelSourceType.setter
+    def ModelSourceType(self, ModelSourceType):
+        self._ModelSourceType = ModelSourceType
+
+    @property
+    def UploadedCosPaths(self):
+        r"""已上传的模型路径
+        :rtype: list of str
+        """
+        return self._UploadedCosPaths
+
+    @UploadedCosPaths.setter
+    def UploadedCosPaths(self, UploadedCosPaths):
+        self._UploadedCosPaths = UploadedCosPaths
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._UsrCosModelUrlList = params.get("UsrCosModelUrlList")
         self._ModelNames = params.get("ModelNames")
         self._TaskTypes = params.get("TaskTypes")
+        self._HuggingFaceModelNames = params.get("HuggingFaceModelNames")
+        self._ModelDescription = params.get("ModelDescription")
+        self._ModelSourceType = params.get("ModelSourceType")
+        self._UploadedCosPaths = params.get("UploadedCosPaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

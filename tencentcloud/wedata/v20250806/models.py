@@ -760,6 +760,18 @@ class AlarmRuleDetail(AbstractModel):
         :type ReconciliationExtInfo: list of ReconciliationStrategyInfo
         :param _MonitorWhiteTasks: 监控对象的白名单配置
         :type MonitorWhiteTasks: list of MonitorWhiteTask
+        :param _WorkflowCompletionTimeCycleExtInfo: 3.0 Workflow 完成时间（周期）告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowCompletionTimeCycleExtInfo: list of TimeOutStrategyInfo
+        :param _WorkflowExecutionTrigger: 工作流执行触发告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionTrigger: int
+        :param _WorkflowExecutionFailureTrigger: 工作流执行失败告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionFailureTrigger: int
+        :param _WorkflowExecutionSuccessTrigger: 工作流执行成功告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionSuccessTrigger: int
         """
         self._Trigger = None
         self._DataBackfillOrRerunTrigger = None
@@ -768,6 +780,10 @@ class AlarmRuleDetail(AbstractModel):
         self._ProjectInstanceStatisticsAlarmInfoList = None
         self._ReconciliationExtInfo = None
         self._MonitorWhiteTasks = None
+        self._WorkflowCompletionTimeCycleExtInfo = None
+        self._WorkflowExecutionTrigger = None
+        self._WorkflowExecutionFailureTrigger = None
+        self._WorkflowExecutionSuccessTrigger = None
 
     @property
     def Trigger(self):
@@ -858,6 +874,54 @@ class AlarmRuleDetail(AbstractModel):
     def MonitorWhiteTasks(self, MonitorWhiteTasks):
         self._MonitorWhiteTasks = MonitorWhiteTasks
 
+    @property
+    def WorkflowCompletionTimeCycleExtInfo(self):
+        r"""3.0 Workflow 完成时间（周期）告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TimeOutStrategyInfo
+        """
+        return self._WorkflowCompletionTimeCycleExtInfo
+
+    @WorkflowCompletionTimeCycleExtInfo.setter
+    def WorkflowCompletionTimeCycleExtInfo(self, WorkflowCompletionTimeCycleExtInfo):
+        self._WorkflowCompletionTimeCycleExtInfo = WorkflowCompletionTimeCycleExtInfo
+
+    @property
+    def WorkflowExecutionTrigger(self):
+        r"""工作流执行触发告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WorkflowExecutionTrigger
+
+    @WorkflowExecutionTrigger.setter
+    def WorkflowExecutionTrigger(self, WorkflowExecutionTrigger):
+        self._WorkflowExecutionTrigger = WorkflowExecutionTrigger
+
+    @property
+    def WorkflowExecutionFailureTrigger(self):
+        r"""工作流执行失败告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WorkflowExecutionFailureTrigger
+
+    @WorkflowExecutionFailureTrigger.setter
+    def WorkflowExecutionFailureTrigger(self, WorkflowExecutionFailureTrigger):
+        self._WorkflowExecutionFailureTrigger = WorkflowExecutionFailureTrigger
+
+    @property
+    def WorkflowExecutionSuccessTrigger(self):
+        r"""工作流执行成功告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WorkflowExecutionSuccessTrigger
+
+    @WorkflowExecutionSuccessTrigger.setter
+    def WorkflowExecutionSuccessTrigger(self, WorkflowExecutionSuccessTrigger):
+        self._WorkflowExecutionSuccessTrigger = WorkflowExecutionSuccessTrigger
+
 
     def _deserialize(self, params):
         self._Trigger = params.get("Trigger")
@@ -892,6 +956,15 @@ class AlarmRuleDetail(AbstractModel):
                 obj = MonitorWhiteTask()
                 obj._deserialize(item)
                 self._MonitorWhiteTasks.append(obj)
+        if params.get("WorkflowCompletionTimeCycleExtInfo") is not None:
+            self._WorkflowCompletionTimeCycleExtInfo = []
+            for item in params.get("WorkflowCompletionTimeCycleExtInfo"):
+                obj = TimeOutStrategyInfo()
+                obj._deserialize(item)
+                self._WorkflowCompletionTimeCycleExtInfo.append(obj)
+        self._WorkflowExecutionTrigger = params.get("WorkflowExecutionTrigger")
+        self._WorkflowExecutionFailureTrigger = params.get("WorkflowExecutionFailureTrigger")
+        self._WorkflowExecutionSuccessTrigger = params.get("WorkflowExecutionSuccessTrigger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33560,12 +33633,26 @@ class TimeOutStrategyInfo(AbstractModel):
         :param _ScheduleTimeZone: 超时时间对应的时区配置， 如 UTC+7, 默认为UTC+8
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
+        :param _Second: 秒（用于 Spark Streaming 策略）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Second: int
+        :param _Times: 次数（用于 Spark Streaming 重试次数超限策略，ruleType=10）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Times: int
+        :param _AlarmTriggerFrequency: 告警触发频率（用于 Spark Streaming 策略 ruleType=8/9/10）
+         * 单位：分钟，范围：5-1440
+         * 告警触发后，在该时间内暂停检测，避免告警风暴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmTriggerFrequency: int
         """
         self._RuleType = None
         self._Type = None
         self._Hour = None
         self._Min = None
         self._ScheduleTimeZone = None
+        self._Second = None
+        self._Times = None
+        self._AlarmTriggerFrequency = None
 
     @property
     def RuleType(self):
@@ -33632,6 +33719,44 @@ class TimeOutStrategyInfo(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def Second(self):
+        r"""秒（用于 Spark Streaming 策略）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Second
+
+    @Second.setter
+    def Second(self, Second):
+        self._Second = Second
+
+    @property
+    def Times(self):
+        r"""次数（用于 Spark Streaming 重试次数超限策略，ruleType=10）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def AlarmTriggerFrequency(self):
+        r"""告警触发频率（用于 Spark Streaming 策略 ruleType=8/9/10）
+         * 单位：分钟，范围：5-1440
+         * 告警触发后，在该时间内暂停检测，避免告警风暴
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmTriggerFrequency
+
+    @AlarmTriggerFrequency.setter
+    def AlarmTriggerFrequency(self, AlarmTriggerFrequency):
+        self._AlarmTriggerFrequency = AlarmTriggerFrequency
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -33639,6 +33764,9 @@ class TimeOutStrategyInfo(AbstractModel):
         self._Hour = params.get("Hour")
         self._Min = params.get("Min")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._Second = params.get("Second")
+        self._Times = params.get("Times")
+        self._AlarmTriggerFrequency = params.get("AlarmTriggerFrequency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

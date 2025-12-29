@@ -1281,7 +1281,20 @@ class DescribeEventsRequest(AbstractModel):
         :type NextToken: int
         :param _MaxResults: 返回日志的最大条数（最大 50 条）
         :type MaxResults: int
-        :param _LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+        :param _LookupAttributes: 检索条件（目前支持：
+RequestId：请求 ID
+EventName：事件名称
+ActionType：操作类型（Write：写；Read：读）
+PrincipalId：子账号、ResourceType：资源类型
+ResourceId：资源Id
+ResourceName：资源名称
+AccessKeyId：密钥 ID
+SensitiveAction：是否敏感操作
+ApiErrorCode：API 错误码
+CamErrorCode：CAM 错误码
+SourceIPAddress：请求IP
+Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）
+备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
         :type LookupAttributes: list of LookupAttribute
         :param _IsReturnLocation: 是否返回 IP 归属地（1 返回，0 不返回）
         :type IsReturnLocation: int
@@ -1339,7 +1352,20 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def LookupAttributes(self):
-        r"""检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+        r"""检索条件（目前支持：
+RequestId：请求 ID
+EventName：事件名称
+ActionType：操作类型（Write：写；Read：读）
+PrincipalId：子账号、ResourceType：资源类型
+ResourceId：资源Id
+ResourceName：资源名称
+AccessKeyId：密钥 ID
+SensitiveAction：是否敏感操作
+ApiErrorCode：API 错误码
+CamErrorCode：CAM 错误码
+SourceIPAddress：请求IP
+Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）
+备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
         :rtype: list of LookupAttribute
         """
         return self._LookupAttributes
@@ -2545,7 +2571,7 @@ class LookupAttribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+        :param _AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ActionType、PrincipalId、ResourceId、ResourceName、AccessKeyId、SensitiveAction、ApiErrorCode、CamErrorCode、SourceIPAddress、Tags
         :type AttributeKey: str
         :param _AttributeValue: AttributeValue的值
         :type AttributeValue: str
@@ -2555,7 +2581,7 @@ class LookupAttribute(AbstractModel):
 
     @property
     def AttributeKey(self):
-        r"""AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+        r"""AttributeKey的有效取值范围是:RequestId、EventName、ActionType、PrincipalId、ResourceId、ResourceName、AccessKeyId、SensitiveAction、ApiErrorCode、CamErrorCode、SourceIPAddress、Tags
         :rtype: str
         """
         return self._AttributeKey

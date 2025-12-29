@@ -759,6 +759,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSceneAigcImageTask(self, request):
+        r"""该接口用于生成场景化 AIGC 图片。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用。</b>
+
+        :param request: Request instance for CreateSceneAigcImageTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSceneAigcImageTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSceneAigcImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSceneAigcImageTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSceneAigcImageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSnapshotByTimeOffsetTemplate(self, request):
         r"""创建用户自定义指定时间点截图模板，数量上限：16。
 

@@ -15468,9 +15468,7 @@ class CreateOrganizationBatchSignUrlRequest(AbstractModel):
 
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 请指定需执行批量签署的流程ID，数量范围为1-100。
-您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
-用户将利用链接对这些合同实施批量操作。
+        :param _FlowIds: 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
         :type FlowIds: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -15490,14 +15488,14 @@ UserId必须是传入合同（FlowId）中的签署人。
         :param _Mobile: 员工手机号，必须与姓名一起使用。
  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
         :type Mobile: str
-        :param _RecipientIds: 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
-您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
-若传了此参数，则可以不传 UserId, Name, Mobile等参数
+        :param _RecipientIds: 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
         :type RecipientIds: list of str
         :param _FlowGroupId: 合同组Id，传入此参数则可以不传FlowIds
         :type FlowGroupId: str
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
         :type CanBatchReject: bool
+        :param _DynamicSignOption: 动态签署方领取链接配置。
+        :type DynamicSignOption: :class:`tencentcloud.ess.v20201111.models.DynamicSignOption`
         """
         self._Operator = None
         self._FlowIds = None
@@ -15508,6 +15506,7 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._RecipientIds = None
         self._FlowGroupId = None
         self._CanBatchReject = None
+        self._DynamicSignOption = None
 
     @property
     def Operator(self):
@@ -15525,9 +15524,7 @@ UserId必须是传入合同（FlowId）中的签署人。
 
     @property
     def FlowIds(self):
-        r"""请指定需执行批量签署的流程ID，数量范围为1-100。
-您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
-用户将利用链接对这些合同实施批量操作。
+        r"""请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
         :rtype: list of str
         """
         return self._FlowIds
@@ -15592,9 +15589,7 @@ UserId必须是传入合同（FlowId）中的签署人。
 
     @property
     def RecipientIds(self):
-        r"""为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
-您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
-若传了此参数，则可以不传 UserId, Name, Mobile等参数
+        r"""为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
         :rtype: list of str
         """
         return self._RecipientIds
@@ -15625,6 +15620,17 @@ UserId必须是传入合同（FlowId）中的签署人。
     def CanBatchReject(self, CanBatchReject):
         self._CanBatchReject = CanBatchReject
 
+    @property
+    def DynamicSignOption(self):
+        r"""动态签署方领取链接配置。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DynamicSignOption`
+        """
+        return self._DynamicSignOption
+
+    @DynamicSignOption.setter
+    def DynamicSignOption(self, DynamicSignOption):
+        self._DynamicSignOption = DynamicSignOption
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -15640,6 +15646,9 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._RecipientIds = params.get("RecipientIds")
         self._FlowGroupId = params.get("FlowGroupId")
         self._CanBatchReject = params.get("CanBatchReject")
+        if params.get("DynamicSignOption") is not None:
+            self._DynamicSignOption = DynamicSignOption()
+            self._DynamicSignOption._deserialize(params.get("DynamicSignOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28143,6 +28152,57 @@ class DynamicFlowApproverResult(AbstractModel):
         
 
 
+class DynamicSignOption(AbstractModel):
+    r"""动态签署领取链接配置，当全部签署方均为动态签署方时生效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicReceiveType: 多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+        :type DynamicReceiveType: int
+        :param _OrganizationName: 动态签署方时，预设的企业名称，预设企业名称后，只允许对应的企业员工进行领取签署。
+        :type OrganizationName: str
+        """
+        self._DynamicReceiveType = None
+        self._OrganizationName = None
+
+    @property
+    def DynamicReceiveType(self):
+        r"""多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+        :rtype: int
+        """
+        return self._DynamicReceiveType
+
+    @DynamicReceiveType.setter
+    def DynamicReceiveType(self, DynamicReceiveType):
+        self._DynamicReceiveType = DynamicReceiveType
+
+    @property
+    def OrganizationName(self):
+        r"""动态签署方时，预设的企业名称，预设企业名称后，只允许对应的企业员工进行领取签署。
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+
+    def _deserialize(self, params):
+        self._DynamicReceiveType = params.get("DynamicReceiveType")
+        self._OrganizationName = params.get("OrganizationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbedUrlOption(AbstractModel):
     r"""个性化参数
 
@@ -33891,7 +33951,7 @@ class IntentionQuestion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为250个字符。
         :type Question: str
         :param _Answers:  当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
         :type Answers: list of str
@@ -33901,7 +33961,7 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Question(self):
-        r"""当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        r"""当选择语音问答模式时，系统自动播报的问题文本，最大长度为250个字符。
         :rtype: str
         """
         return self._Question

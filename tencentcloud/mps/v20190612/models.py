@@ -12068,6 +12068,376 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AigcImageExtraParam(AbstractModel):
+    r"""用于AIGC创作图片时用到的扩展参数信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AspectRatio: 指定所生成视频的宽高比。
+
+不同模型支持的宽高比:
+1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
+2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
+
+注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+        :type AspectRatio: str
+        :param _Resolution: 指定图片输出分辨率。
+
+支持该参数的模型：
+支持选择: 720P, 1080P, 2K, 4K。
+
+1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
+    2K
+    2048x2048 （1:1）
+    2304x1728（4:3）
+    2496x1664 （3:2）
+    2560x1440 （16:9）
+    3024x1296 （21:9）
+    4K
+    4096x4096 （1:1）
+    4694x3520（4:3）
+    4992x3328 （3:2）
+    5404x3040 （16:9）
+    6198x2656 （21:9）
+        :type Resolution: str
+        """
+        self._AspectRatio = None
+        self._Resolution = None
+
+    @property
+    def AspectRatio(self):
+        r"""指定所生成视频的宽高比。
+
+不同模型支持的宽高比:
+1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
+2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
+
+注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Resolution(self):
+        r"""指定图片输出分辨率。
+
+支持该参数的模型：
+支持选择: 720P, 1080P, 2K, 4K。
+
+1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
+    2K
+    2048x2048 （1:1）
+    2304x1728（4:3）
+    2496x1664 （3:2）
+    2560x1440 （16:9）
+    3024x1296 （21:9）
+    4K
+    4096x4096 （1:1）
+    4694x3520（4:3）
+    4992x3328 （3:2）
+    5404x3040 （16:9）
+    6198x2656 （21:9）
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._AspectRatio = params.get("AspectRatio")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcImageInfo(AbstractModel):
+    r"""用于AIGC创作的图片信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+        :type ImageUrl: str
+        :param _ReferenceType: 参考类型。
+注意：
+1. 当模型使用Vidu的q2多参考生图时，也可用于指定主体id。
+2. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :type ReferenceType: str
+        """
+        self._ImageUrl = None
+        self._ReferenceType = None
+
+    @property
+    def ImageUrl(self):
+        r"""用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReferenceType(self):
+        r"""参考类型。
+注意：
+1. 当模型使用Vidu的q2多参考生图时，也可用于指定主体id。
+2. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcStoreCosParam(AbstractModel):
+    r"""Aigc结果文件上传COS时，需传入的信息。 需创建并授权LVB_QCSRole角色。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketName: 存储至 cos 的 bucket 桶名称。需要cos存储时，该值必填。 示例值：bucket。
+        :type CosBucketName: str
+        :param _CosBucketRegion: 存储至 cos 的 bucket 区域。与bucket所属区域相同，上传cos时必填。 示例值：ap-guangzhou
+        :type CosBucketRegion: str
+        :param _CosBucketPath: 存储至 cos 的 bucket 路径。
+可选。
+示例值：my_file
+        :type CosBucketPath: str
+        """
+        self._CosBucketName = None
+        self._CosBucketRegion = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketName(self):
+        r"""存储至 cos 的 bucket 桶名称。需要cos存储时，该值必填。 示例值：bucket。
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketRegion(self):
+        r"""存储至 cos 的 bucket 区域。与bucket所属区域相同，上传cos时必填。 示例值：ap-guangzhou
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketPath(self):
+        r"""存储至 cos 的 bucket 路径。
+可选。
+示例值：my_file
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoExtraParam(AbstractModel):
+    r"""用于AIGC创作视频时用到的扩展参数信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resolution: 生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
+
+不同模型支持的分辨率选项:
+1. Kling 720P(默认), 1080P。
+2. Hailuo 768P(默认), 1080P。
+3. Jimeng 1080P(默认)。
+4. Vidu 720P(默认)，1080P。
+5. GV 720P(默认),1080P。
+6. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
+
+注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+        :type Resolution: str
+        :param _AspectRatio: 指定所生成视频的宽高比。 
+
+不同模型对于此参数的支持：
+1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
+2. Hailuo 暂不支持。
+3. Jimeng ["16:9"、"4:3"、"1:1"、"3:4"、"9:16"、"21:9"]
+4. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
+5. GV 16:9(默认值)、9:16。
+6. OS 仅文生视频支持, 16:9(默认), 9:16。
+
+注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+        :type AspectRatio: str
+        """
+        self._Resolution = None
+        self._AspectRatio = None
+
+    @property
+    def Resolution(self):
+        r"""生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
+
+不同模型支持的分辨率选项:
+1. Kling 720P(默认), 1080P。
+2. Hailuo 768P(默认), 1080P。
+3. Jimeng 1080P(默认)。
+4. Vidu 720P(默认)，1080P。
+5. GV 720P(默认),1080P。
+6. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
+
+注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def AspectRatio(self):
+        r"""指定所生成视频的宽高比。 
+
+不同模型对于此参数的支持：
+1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
+2. Hailuo 暂不支持。
+3. Jimeng ["16:9"、"4:3"、"1:1"、"3:4"、"9:16"、"21:9"]
+4. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
+5. GV 16:9(默认值)、9:16。
+6. OS 仅文生视频支持, 16:9(默认), 9:16。
+
+注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+
+    def _deserialize(self, params):
+        self._Resolution = params.get("Resolution")
+        self._AspectRatio = params.get("AspectRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoReferenceImageInfo(AbstractModel):
+    r"""用于AIGC生视频创作的参考图片信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+        :type ImageUrl: str
+        :param _ReferenceType: 参考类型。
+注意：
+1. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :type ReferenceType: str
+        """
+        self._ImageUrl = None
+        self._ReferenceType = None
+
+    @property
+    def ImageUrl(self):
+        r"""用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReferenceType(self):
+        r"""参考类型。
+注意：
+1. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     r"""转动图任务类型。
 
@@ -18616,6 +18986,587 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcImageTaskRequest(AbstractModel):
+    r"""CreateAigcImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称。
+当前支持的模型列表：
+GEM，
+Jimeng，
+Qwen。
+        :type ModelName: str
+        :param _ModelVersion: 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+
+1. GEM， 可选[2.5,3.0]。
+2. Jimeng，可选[4.0]。
+        :type ModelVersion: str
+        :param _Prompt: 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+        :type Prompt: str
+        :param _NegativePrompt: 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+        :type NegativePrompt: str
+        :param _EnhancePrompt: 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :type EnhancePrompt: bool
+        :param _ImageInfos: 用于传入参考的资源图片信息，默认支持传入一张图片。
+
+支持多图输入的模型：
+1. GEM，可支持最多3张图片输入作为资源图。
+
+注意：
+1. 推荐图片小于7M，各模型限制不同。
+2. 图片格式支持：jpeg, png, webp。
+        :type ImageInfos: list of AigcImageInfo
+        :param _ExtraParameters: 用于传入模型要求的额外参数。
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
+        :param _StoreCosParam: 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _Operator: 接口操作者名称。
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._EnhancePrompt = None
+        self._ImageInfos = None
+        self._ExtraParameters = None
+        self._StoreCosParam = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""模型名称。
+当前支持的模型列表：
+GEM，
+Jimeng，
+Qwen。
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+
+1. GEM， 可选[2.5,3.0]。
+2. Jimeng，可选[4.0]。
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Prompt(self):
+        r"""生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        r"""用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def EnhancePrompt(self):
+        r"""默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :rtype: bool
+        """
+        return self._EnhancePrompt
+
+    @EnhancePrompt.setter
+    def EnhancePrompt(self, EnhancePrompt):
+        self._EnhancePrompt = EnhancePrompt
+
+    @property
+    def ImageInfos(self):
+        r"""用于传入参考的资源图片信息，默认支持传入一张图片。
+
+支持多图输入的模型：
+1. GEM，可支持最多3张图片输入作为资源图。
+
+注意：
+1. 推荐图片小于7M，各模型限制不同。
+2. 图片格式支持：jpeg, png, webp。
+        :rtype: list of AigcImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def ExtraParameters(self):
+        r"""用于传入模型要求的额外参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def StoreCosParam(self):
+        r"""文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def Operator(self):
+        r"""接口操作者名称。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._EnhancePrompt = params.get("EnhancePrompt")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcImageExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcImageTaskResponse(AbstractModel):
+    r"""CreateAigcImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 返回的任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""返回的任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAigcVideoTaskRequest(AbstractModel):
+    r"""CreateAigcVideoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称。
+当前支持的模型列表:
+Hailuo，
+Kling，
+Jimeng，
+Vidu，
+OS，
+GV。
+        :type ModelName: str
+        :param _ModelVersion: 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+1. Hailuo， 可选[02、2.3]。
+2. Kling，可选[2.0、2.1、2.5]。
+3. Jimeng, 可选[3.0pro]。
+4. Vidu,可选[q2、q2-pro、q2-turbo]。
+4. GV, 可选[3.1]。
+5. OS，可选[2.0]。
+        :type ModelVersion: str
+        :param _Prompt: 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+        :type Prompt: str
+        :param _NegativePrompt: 用于描述您想要阻止模型生成的内容。
+注意：部分模型支持。
+例如：
+顶部照明、明亮的色彩
+人物、动物
+多辆汽车、风。
+        :type NegativePrompt: str
+        :param _EnhancePrompt: 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :type EnhancePrompt: bool
+        :param _ImageUrl: 用于指导视频生成的图片 URL。该URL需外网可访问。
+注意：
+1. 推荐图片大小不超过10M，不同模型大小限制不相同。
+2. 支持的图片格式：jpeg、png。
+3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+        :type ImageUrl: str
+        :param _LastImageUrl: 模型将以此参数传入的图片作为尾帧画面来生成视频。
+支持此参数的模型：
+1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
+2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+3. Vidu, q2-pro, q2-turbo 支持首尾帧。
+
+注意：
+1. 推荐图片大小不超过10M，各模型限制不同。
+2. 支持的图片格式：jpeg、png。
+        :type LastImageUrl: str
+        :param _ImageInfos: 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+
+支持多图输入的模型：
+1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
+2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
+
+注意：
+1. 图片大小不超过10M。
+2. 支持的图片格式：jpeg、png。
+        :type ImageInfos: list of AigcVideoReferenceImageInfo
+        :param _Duration: 生成视频的时长。
+注意：
+1. Kling支持 5、10秒。默认: 5秒。
+2. Jimeng支持5、10秒。 默认: 5秒。
+3. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
+4. Vidu支持1-10秒。
+4. GV支持 8秒。 默认：8秒。
+5. OS支持4、8、12秒。 默认：8秒。
+        :type Duration: int
+        :param _ExtraParameters: 用于传入模型要求的额外参数。
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
+        :param _StoreCosParam: 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _Operator: 接口操作者名称。
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._EnhancePrompt = None
+        self._ImageUrl = None
+        self._LastImageUrl = None
+        self._ImageInfos = None
+        self._Duration = None
+        self._ExtraParameters = None
+        self._StoreCosParam = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""模型名称。
+当前支持的模型列表:
+Hailuo，
+Kling，
+Jimeng，
+Vidu，
+OS，
+GV。
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+1. Hailuo， 可选[02、2.3]。
+2. Kling，可选[2.0、2.1、2.5]。
+3. Jimeng, 可选[3.0pro]。
+4. Vidu,可选[q2、q2-pro、q2-turbo]。
+4. GV, 可选[3.1]。
+5. OS，可选[2.0]。
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Prompt(self):
+        r"""生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        r"""用于描述您想要阻止模型生成的内容。
+注意：部分模型支持。
+例如：
+顶部照明、明亮的色彩
+人物、动物
+多辆汽车、风。
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def EnhancePrompt(self):
+        r"""默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :rtype: bool
+        """
+        return self._EnhancePrompt
+
+    @EnhancePrompt.setter
+    def EnhancePrompt(self, EnhancePrompt):
+        self._EnhancePrompt = EnhancePrompt
+
+    @property
+    def ImageUrl(self):
+        r"""用于指导视频生成的图片 URL。该URL需外网可访问。
+注意：
+1. 推荐图片大小不超过10M，不同模型大小限制不相同。
+2. 支持的图片格式：jpeg、png。
+3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def LastImageUrl(self):
+        r"""模型将以此参数传入的图片作为尾帧画面来生成视频。
+支持此参数的模型：
+1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
+2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+3. Vidu, q2-pro, q2-turbo 支持首尾帧。
+
+注意：
+1. 推荐图片大小不超过10M，各模型限制不同。
+2. 支持的图片格式：jpeg、png。
+        :rtype: str
+        """
+        return self._LastImageUrl
+
+    @LastImageUrl.setter
+    def LastImageUrl(self, LastImageUrl):
+        self._LastImageUrl = LastImageUrl
+
+    @property
+    def ImageInfos(self):
+        r"""最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+
+支持多图输入的模型：
+1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
+2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
+
+注意：
+1. 图片大小不超过10M。
+2. 支持的图片格式：jpeg、png。
+        :rtype: list of AigcVideoReferenceImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def Duration(self):
+        r"""生成视频的时长。
+注意：
+1. Kling支持 5、10秒。默认: 5秒。
+2. Jimeng支持5、10秒。 默认: 5秒。
+3. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
+4. Vidu支持1-10秒。
+4. GV支持 8秒。 默认：8秒。
+5. OS支持4、8、12秒。 默认：8秒。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExtraParameters(self):
+        r"""用于传入模型要求的额外参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def StoreCosParam(self):
+        r"""文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def Operator(self):
+        r"""接口操作者名称。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._EnhancePrompt = params.get("EnhancePrompt")
+        self._ImageUrl = params.get("ImageUrl")
+        self._LastImageUrl = params.get("LastImageUrl")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcVideoReferenceImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        self._Duration = params.get("Duration")
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcVideoExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcVideoTaskResponse(AbstractModel):
+    r"""CreateAigcVideoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务创建成功后，返回的任务ID。
+调用查询接口，轮询获取任务进度及生成结果。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务创建成功后，返回的任务ID。
+调用查询接口，轮询获取任务进度及生成结果。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
     r"""CreateAnimatedGraphicsTemplate请求参数结构体
 
@@ -22706,7 +23657,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -22793,7 +23743,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -22821,6 +23770,8 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
 **注意**：不传的情况下默认类型为 ASR识别字幕
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -22831,6 +23782,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._TranslateSwitch = None
         self._TranslateDstLanguage = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Name(self):
@@ -23193,7 +24145,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -23280,7 +24231,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -23324,6 +24274,17 @@ ASR识别和纯字幕翻译当前支持以下语言：
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""字幕OCR提取框选区域配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -23337,6 +24298,9 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._TranslateSwitch = params.get("TranslateSwitch")
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27280,6 +28244,239 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcImageTaskRequest(AbstractModel):
+    r"""DescribeAigcImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 创建的AIGC生图片任务ID。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""创建的AIGC生图片任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcImageTaskResponse(AbstractModel):
+    r"""DescribeAigcImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+        :type Status: str
+        :param _ImageUrls: 当任务状态为 DONE时，返回的图片Url列表，图片存储12小时，请尽快取走使用。
+        :type ImageUrls: list of str
+        :param _Message: 当任务状态为 FAIL时，返回失败信息。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ImageUrls = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ImageUrls(self):
+        r"""当任务状态为 DONE时，返回的图片Url列表，图片存储12小时，请尽快取走使用。
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def Message(self):
+        r"""当任务状态为 FAIL时，返回失败信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ImageUrls = params.get("ImageUrls")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcVideoTaskRequest(AbstractModel):
+    r"""DescribeAigcVideoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 创建AIGC生视频任务时，返回的任务ID。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""创建AIGC生视频任务时，返回的任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcVideoTaskResponse(AbstractModel):
+    r"""DescribeAigcVideoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+        :type Status: str
+        :param _VideoUrls: 当任务状态为 DONE时，返回视频Url列表，视频存储12小时，请尽快取走使用。
+        :type VideoUrls: list of str
+        :param _Resolution: 输出视频的分辨率。示例：1080*720；
+        :type Resolution: str
+        :param _Message: 当任务状态为 FAIL时，返回失败信息。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._VideoUrls = None
+        self._Resolution = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VideoUrls(self):
+        r"""当任务状态为 DONE时，返回视频Url列表，视频存储12小时，请尽快取走使用。
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+    @property
+    def Resolution(self):
+        r"""输出视频的分辨率。示例：1080*720；
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Message(self):
+        r"""当任务状态为 FAIL时，返回失败信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._VideoUrls = params.get("VideoUrls")
+        self._Resolution = params.get("Resolution")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -54586,7 +55783,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -54673,7 +55869,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -54701,6 +55896,8 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
 **注意**：不传的情况下，默认是ASR方式
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -54712,6 +55909,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._AsrHotWordsConfigure = None
         self._TranslateDstLanguage = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Definition(self):
@@ -55085,7 +56283,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `iw`：希伯来语
 `ja`：日语
 `jv`：爪哇语
-`jw`：爪哇语
 `ka`：格鲁吉亚语
 `kk`：哈萨克语
 `km`：高棉语
@@ -55172,7 +56369,6 @@ ASR识别和纯字幕翻译当前支持以下语言：
 `th`：泰语
 `ti`：提格里尼亚语
 `tk`：土库曼语
-`tl`：菲律宾语（塔加拉语）
 `tn`：茨瓦纳语
 `tr`：土耳其语
 `ts`：聪加语
@@ -55216,6 +56412,17 @@ ASR识别和纯字幕翻译当前支持以下语言：
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""字幕OCR提取框选区域配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -55230,6 +56437,9 @@ ASR识别和纯字幕翻译当前支持以下语言：
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
