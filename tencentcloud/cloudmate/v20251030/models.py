@@ -261,7 +261,7 @@ class CloudMateAgentResponse(AbstractModel):
         r"""
         :param _SessionId: 会话ID，用于后续继续对话
         :type SessionId: str
-        :param _Timestamp: unix时间戳
+        :param _Timestamp: Unix 时间戳
         :type Timestamp: int
         :param _Content: 诊断内容
         :type Content: :class:`tencentcloud.cloudmate.v20251030.models.ChatContent`
@@ -298,7 +298,7 @@ class CloudMateAgentResponse(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""unix时间戳
+        r"""Unix 时间戳
         :rtype: int
         """
         return self._Timestamp

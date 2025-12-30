@@ -6179,13 +6179,15 @@ class DeployCertificateInstanceRequest(AbstractModel):
 - live：Domain，例：["live1.tencent.com", "live2.tencent.com"]
 - vod：Domain， 例：["vod1.tencent.com", "vod2.tencent.com"]
 - waf：Domain， 例：["waf1.tencent.com", "waf2.tencent.com"]
-- apigateway：ServiceId|Domain， 例：["service-8sk7cqmd|apigw1.tencent.com", "service-8sk7cqmd|apigw2.ninghhuang.online"]
+- apigateway：ServiceId|Domain， 例：["service-8sk7cqmd|apigw1.tencent.com", "service-8sk7cqmd|apigw2.minghuang.online"]
 - teo：Domain， 例：["edgeone1.tencent.com", "edgeone2.tencent.com"]
 - tke：ClusterId|NameSpace|SecretName， 例：["cls-42sa0ae0|default|test-tencent"]
 - cos：Region|Bucket|Domain， 例：["ap-hongkong|ssl-server-1251810746|tencent.com"]
 - lighthouse：Region|InstanceId|Domain， 例：["ap-shanghai|lhins-nh7lql34|tencent.com"]
 - tse：GatewayId|CertificateId， 例：["gateway-s1da9151|fa61bc05-cc54-4eea-c932-24de52577372"]
 - tcb：Type|Region|EnvId|Domain， 例：["AccessService|ap-shanghai|ceshi-4s5h0ymg11c839c7|tencent.com"]
+- mqtt: InstanceId|CertId, 例：["mqtt-rdnwp7kb|gehs6jsx"]
+- gaap: InstanceId|ListenerId 例：["ga-a3e4z3ae|lsr-a73amjob"]
 
         :type InstanceIdList: list of str
         :param _ResourceType: 证书部署云资源支持的云资源类型， 不传则默认部署clb：
@@ -6202,7 +6204,8 @@ class DeployCertificateInstanceRequest(AbstractModel):
 - lighthouse
 - tse
 - tcb
-<dx-alert infotype="explain" title="">当云资源类型传入clb、waf、apigateway、cos、lighthouse、tke、tse、tcb 时，公共参数Region必传。</dx-alert>
+- mqtt
+<dx-alert infotype="explain" title="">当云资源类型传入clb、waf、apigateway、cos、lighthouse、tke、tse、tcb、mqtt 时，公共参数Region必传。</dx-alert>
         :type ResourceType: str
         :param _Status: 部署云资源状态：
 云直播：
@@ -6239,13 +6242,15 @@ class DeployCertificateInstanceRequest(AbstractModel):
 - live：Domain，例：["live1.tencent.com", "live2.tencent.com"]
 - vod：Domain， 例：["vod1.tencent.com", "vod2.tencent.com"]
 - waf：Domain， 例：["waf1.tencent.com", "waf2.tencent.com"]
-- apigateway：ServiceId|Domain， 例：["service-8sk7cqmd|apigw1.tencent.com", "service-8sk7cqmd|apigw2.ninghhuang.online"]
+- apigateway：ServiceId|Domain， 例：["service-8sk7cqmd|apigw1.tencent.com", "service-8sk7cqmd|apigw2.minghuang.online"]
 - teo：Domain， 例：["edgeone1.tencent.com", "edgeone2.tencent.com"]
 - tke：ClusterId|NameSpace|SecretName， 例：["cls-42sa0ae0|default|test-tencent"]
 - cos：Region|Bucket|Domain， 例：["ap-hongkong|ssl-server-1251810746|tencent.com"]
 - lighthouse：Region|InstanceId|Domain， 例：["ap-shanghai|lhins-nh7lql34|tencent.com"]
 - tse：GatewayId|CertificateId， 例：["gateway-s1da9151|fa61bc05-cc54-4eea-c932-24de52577372"]
 - tcb：Type|Region|EnvId|Domain， 例：["AccessService|ap-shanghai|ceshi-4s5h0ymg11c839c7|tencent.com"]
+- mqtt: InstanceId|CertId, 例：["mqtt-rdnwp7kb|gehs6jsx"]
+- gaap: InstanceId|ListenerId 例：["ga-a3e4z3ae|lsr-a73amjob"]
 
         :rtype: list of str
         """
@@ -6271,7 +6276,8 @@ class DeployCertificateInstanceRequest(AbstractModel):
 - lighthouse
 - tse
 - tcb
-<dx-alert infotype="explain" title="">当云资源类型传入clb、waf、apigateway、cos、lighthouse、tke、tse、tcb 时，公共参数Region必传。</dx-alert>
+- mqtt
+<dx-alert infotype="explain" title="">当云资源类型传入clb、waf、apigateway、cos、lighthouse、tke、tse、tcb、mqtt 时，公共参数Region必传。</dx-alert>
         :rtype: str
         """
         return self._ResourceType
@@ -6757,6 +6763,8 @@ class DeployRecordDetail(AbstractModel):
         :type OldAlgorithm: str
         :param _InstanceStatus: 实例状态，不同云产品状态不一样
         :type InstanceStatus: str
+        :param _ListenerStatus: 监听器状态
+        :type ListenerStatus: str
         """
         self._Id = None
         self._CertId = None
@@ -6783,6 +6791,7 @@ class DeployRecordDetail(AbstractModel):
         self._Algorithm = None
         self._OldAlgorithm = None
         self._InstanceStatus = None
+        self._ListenerStatus = None
 
     @property
     def Id(self):
@@ -7059,6 +7068,17 @@ class DeployRecordDetail(AbstractModel):
     def InstanceStatus(self, InstanceStatus):
         self._InstanceStatus = InstanceStatus
 
+    @property
+    def ListenerStatus(self):
+        r"""监听器状态
+        :rtype: str
+        """
+        return self._ListenerStatus
+
+    @ListenerStatus.setter
+    def ListenerStatus(self, ListenerStatus):
+        self._ListenerStatus = ListenerStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7086,6 +7106,7 @@ class DeployRecordDetail(AbstractModel):
         self._Algorithm = params.get("Algorithm")
         self._OldAlgorithm = params.get("OldAlgorithm")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._ListenerStatus = params.get("ListenerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7734,27 +7755,15 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
+        :param _TaskId: <p>任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果</p>
         :type TaskId: str
-        :param _Limit: 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+        :param _Limit: <p>每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例</p>
         :type Limit: str
-        :param _Offset: 当前偏移量，默认为0
+        :param _Offset: <p>当前偏移量，默认为0</p>
         :type Offset: str
-        :param _ResourceTypes: 查询资源类型的结果详情， 不传则查询所有，取值支持：
-- clb
-- cdn
-- ddos
-- live
-- vod
-- waf
-- apigateway
-- teo
-- tke
-- cos
-- tse
-- tcb
+        :param _ResourceTypes: <p>查询资源类型的结果详情， 不传则查询所有，取值支持：- clb- cdn- ddos- live- vod- waf- apigateway- teo- tke- cos- tse- tcb</p>
         :type ResourceTypes: list of str
-        :param _Regions: 查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
+        :param _Regions: <p>查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持</p>
         :type Regions: list of str
         """
         self._TaskId = None
@@ -7765,7 +7774,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
+        r"""<p>任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果</p>
         :rtype: str
         """
         return self._TaskId
@@ -7776,7 +7785,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+        r"""<p>每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例</p>
         :rtype: str
         """
         return self._Limit
@@ -7787,7 +7796,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""当前偏移量，默认为0
+        r"""<p>当前偏移量，默认为0</p>
         :rtype: str
         """
         return self._Offset
@@ -7798,19 +7807,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        r"""查询资源类型的结果详情， 不传则查询所有，取值支持：
-- clb
-- cdn
-- ddos
-- live
-- vod
-- waf
-- apigateway
-- teo
-- tke
-- cos
-- tse
-- tcb
+        r"""<p>查询资源类型的结果详情， 不传则查询所有，取值支持：- clb- cdn- ddos- live- vod- waf- apigateway- teo- tke- cos- tse- tcb</p>
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -7821,7 +7818,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Regions(self):
-        r"""查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
+        r"""<p>查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持</p>
         :rtype: list of str
         """
         return self._Regions
@@ -7854,34 +7851,42 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CLB: 关联clb资源详情	
+        :param _CLB: <p>关联clb资源详情   </p>
         :type CLB: list of ClbInstanceList
-        :param _CDN: 关联cdn资源详情	
+        :param _CDN: <p>关联cdn资源详情   </p>
         :type CDN: list of CdnInstanceList
-        :param _WAF: 关联waf资源详情	
+        :param _WAF: <p>关联waf资源详情   </p>
         :type WAF: list of WafInstanceList
-        :param _DDOS: 关联ddos资源详情	
+        :param _DDOS: <p>关联ddos资源详情  </p>
         :type DDOS: list of DdosInstanceList
-        :param _LIVE: 关联live资源详情	
+        :param _LIVE: <p>关联live资源详情  </p>
         :type LIVE: list of LiveInstanceList
-        :param _VOD: 关联vod资源详情	
+        :param _VOD: <p>关联vod资源详情   </p>
         :type VOD: list of VODInstanceList
-        :param _TKE: 关联tke资源详情	
+        :param _TKE: <p>关联tke资源详情   </p>
         :type TKE: list of TkeInstanceList
-        :param _APIGATEWAY: 关联apigateway资源详情	
+        :param _APIGATEWAY: <p>关联apigateway资源详情    </p>
         :type APIGATEWAY: list of ApiGatewayInstanceList
-        :param _TCB: 关联tcb资源详情	
+        :param _TCB: <p>关联tcb资源详情   </p>
         :type TCB: list of TCBInstanceList
-        :param _TEO: 关联teo资源详情	
+        :param _TEO: <p>关联teo资源详情   </p>
         :type TEO: list of TeoInstanceList
-        :param _Status: 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        :param _Status: <p>关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因</p>
         :type Status: int
-        :param _CacheTime: 当前结果缓存时间
+        :param _CacheTime: <p>当前结果缓存时间</p>
         :type CacheTime: str
-        :param _TSE: 关联tse资源详情	
+        :param _TSE: <p>关联tse资源详情   </p>
         :type TSE: list of TSEInstanceList
-        :param _COS: 关联的COS资源详情
+        :param _COS: <p>关联的COS资源详情</p>
         :type COS: list of COSInstanceList
+        :param _TDMQ: <p>关联的TDMQ - Rabbit资源详情</p>
+        :type TDMQ: list of TDMQInstanceList
+        :param _MQTT: <p>关联的MQTT资源详情</p>
+        :type MQTT: list of MQTTInstanceList
+        :param _GAAP: <p>关联的GAAP资源详情</p>
+        :type GAAP: list of GAAPInstanceList
+        :param _SCF: <p>关联的SCF资源详情</p>
+        :type SCF: list of SCFInstanceList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7899,11 +7904,15 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         self._CacheTime = None
         self._TSE = None
         self._COS = None
+        self._TDMQ = None
+        self._MQTT = None
+        self._GAAP = None
+        self._SCF = None
         self._RequestId = None
 
     @property
     def CLB(self):
-        r"""关联clb资源详情	
+        r"""<p>关联clb资源详情   </p>
         :rtype: list of ClbInstanceList
         """
         return self._CLB
@@ -7914,7 +7923,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CDN(self):
-        r"""关联cdn资源详情	
+        r"""<p>关联cdn资源详情   </p>
         :rtype: list of CdnInstanceList
         """
         return self._CDN
@@ -7925,7 +7934,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def WAF(self):
-        r"""关联waf资源详情	
+        r"""<p>关联waf资源详情   </p>
         :rtype: list of WafInstanceList
         """
         return self._WAF
@@ -7936,7 +7945,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def DDOS(self):
-        r"""关联ddos资源详情	
+        r"""<p>关联ddos资源详情  </p>
         :rtype: list of DdosInstanceList
         """
         return self._DDOS
@@ -7947,7 +7956,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def LIVE(self):
-        r"""关联live资源详情	
+        r"""<p>关联live资源详情  </p>
         :rtype: list of LiveInstanceList
         """
         return self._LIVE
@@ -7958,7 +7967,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def VOD(self):
-        r"""关联vod资源详情	
+        r"""<p>关联vod资源详情   </p>
         :rtype: list of VODInstanceList
         """
         return self._VOD
@@ -7969,7 +7978,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TKE(self):
-        r"""关联tke资源详情	
+        r"""<p>关联tke资源详情   </p>
         :rtype: list of TkeInstanceList
         """
         return self._TKE
@@ -7980,7 +7989,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def APIGATEWAY(self):
-        r"""关联apigateway资源详情	
+        r"""<p>关联apigateway资源详情    </p>
         :rtype: list of ApiGatewayInstanceList
         """
         return self._APIGATEWAY
@@ -7991,7 +8000,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TCB(self):
-        r"""关联tcb资源详情	
+        r"""<p>关联tcb资源详情   </p>
         :rtype: list of TCBInstanceList
         """
         return self._TCB
@@ -8002,7 +8011,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TEO(self):
-        r"""关联teo资源详情	
+        r"""<p>关联teo资源详情   </p>
         :rtype: list of TeoInstanceList
         """
         return self._TEO
@@ -8013,7 +8022,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        r"""<p>关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因</p>
         :rtype: int
         """
         return self._Status
@@ -8024,7 +8033,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CacheTime(self):
-        r"""当前结果缓存时间
+        r"""<p>当前结果缓存时间</p>
         :rtype: str
         """
         return self._CacheTime
@@ -8035,7 +8044,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TSE(self):
-        r"""关联tse资源详情	
+        r"""<p>关联tse资源详情   </p>
         :rtype: list of TSEInstanceList
         """
         return self._TSE
@@ -8046,7 +8055,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def COS(self):
-        r"""关联的COS资源详情
+        r"""<p>关联的COS资源详情</p>
         :rtype: list of COSInstanceList
         """
         return self._COS
@@ -8054,6 +8063,50 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @COS.setter
     def COS(self, COS):
         self._COS = COS
+
+    @property
+    def TDMQ(self):
+        r"""<p>关联的TDMQ - Rabbit资源详情</p>
+        :rtype: list of TDMQInstanceList
+        """
+        return self._TDMQ
+
+    @TDMQ.setter
+    def TDMQ(self, TDMQ):
+        self._TDMQ = TDMQ
+
+    @property
+    def MQTT(self):
+        r"""<p>关联的MQTT资源详情</p>
+        :rtype: list of MQTTInstanceList
+        """
+        return self._MQTT
+
+    @MQTT.setter
+    def MQTT(self, MQTT):
+        self._MQTT = MQTT
+
+    @property
+    def GAAP(self):
+        r"""<p>关联的GAAP资源详情</p>
+        :rtype: list of GAAPInstanceList
+        """
+        return self._GAAP
+
+    @GAAP.setter
+    def GAAP(self, GAAP):
+        self._GAAP = GAAP
+
+    @property
+    def SCF(self):
+        r"""<p>关联的SCF资源详情</p>
+        :rtype: list of SCFInstanceList
+        """
+        return self._SCF
+
+    @SCF.setter
+    def SCF(self, SCF):
+        self._SCF = SCF
 
     @property
     def RequestId(self):
@@ -8142,6 +8195,30 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
                 obj = COSInstanceList()
                 obj._deserialize(item)
                 self._COS.append(obj)
+        if params.get("TDMQ") is not None:
+            self._TDMQ = []
+            for item in params.get("TDMQ"):
+                obj = TDMQInstanceList()
+                obj._deserialize(item)
+                self._TDMQ.append(obj)
+        if params.get("MQTT") is not None:
+            self._MQTT = []
+            for item in params.get("MQTT"):
+                obj = MQTTInstanceList()
+                obj._deserialize(item)
+                self._MQTT.append(obj)
+        if params.get("GAAP") is not None:
+            self._GAAP = []
+            for item in params.get("GAAP"):
+                obj = GAAPInstanceList()
+                obj._deserialize(item)
+                self._GAAP.append(obj)
+        if params.get("SCF") is not None:
+            self._SCF = []
+            for item in params.get("SCF"):
+                obj = SCFInstanceList()
+                obj._deserialize(item)
+                self._SCF.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15629,6 +15706,259 @@ class Filter(AbstractModel):
         
 
 
+class GAAPInstanceDetail(AbstractModel):
+    r"""GAAP实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ListenerList: 监听器列表
+        :type ListenerList: list of GAAPListenerDetail
+        :param _InstanceName: 加速实例名称
+        :type InstanceName: str
+        """
+        self._InstanceId = None
+        self._ListenerList = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ListenerList(self):
+        r"""监听器列表
+        :rtype: list of GAAPListenerDetail
+        """
+        return self._ListenerList
+
+    @ListenerList.setter
+    def ListenerList(self, ListenerList):
+        self._ListenerList = ListenerList
+
+    @property
+    def InstanceName(self):
+        r"""加速实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ListenerList") is not None:
+            self._ListenerList = []
+            for item in params.get("ListenerList"):
+                obj = GAAPListenerDetail()
+                obj._deserialize(item)
+                self._ListenerList.append(obj)
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GAAPInstanceList(AbstractModel):
+    r"""GAAP实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: 实例详情
+        :type InstanceList: list of GAAPInstanceDetail
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Error: 错误信息	
+        :type Error: str
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Error = None
+
+    @property
+    def InstanceList(self):
+        r"""实例详情
+        :rtype: list of GAAPInstanceDetail
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Error(self):
+        r"""错误信息	
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = GAAPInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GAAPListenerDetail(AbstractModel):
+    r"""GAAP监听器详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenerStatus: 监听器状态
+        :type ListenerStatus: str
+        :param _ListenerId: 监听器ID
+        :type ListenerId: str
+        :param _ListenerName: 监听器名称
+        :type ListenerName: str
+        :param _NoMatchDomains: 不匹配的域名列表
+        :type NoMatchDomains: list of str
+        :param _CertIdList: 实例绑定的证书列表	
+        :type CertIdList: list of str
+        :param _Protocol: 监听器协议
+        :type Protocol: str
+        """
+        self._ListenerStatus = None
+        self._ListenerId = None
+        self._ListenerName = None
+        self._NoMatchDomains = None
+        self._CertIdList = None
+        self._Protocol = None
+
+    @property
+    def ListenerStatus(self):
+        r"""监听器状态
+        :rtype: str
+        """
+        return self._ListenerStatus
+
+    @ListenerStatus.setter
+    def ListenerStatus(self, ListenerStatus):
+        self._ListenerStatus = ListenerStatus
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        r"""监听器名称
+        :rtype: str
+        """
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def NoMatchDomains(self):
+        r"""不匹配的域名列表
+        :rtype: list of str
+        """
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+    @property
+    def CertIdList(self):
+        r"""实例绑定的证书列表	
+        :rtype: list of str
+        """
+        return self._CertIdList
+
+    @CertIdList.setter
+    def CertIdList(self, CertIdList):
+        self._CertIdList = CertIdList
+
+    @property
+    def Protocol(self):
+        r"""监听器协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._ListenerStatus = params.get("ListenerStatus")
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        self._CertIdList = params.get("CertIdList")
+        self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayCertificate(AbstractModel):
     r"""云原生网关证书信息
 
@@ -16023,6 +16353,203 @@ class LiveInstanceList(AbstractModel):
                 obj = LiveInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTInstanceDetail(AbstractModel):
+    r"""MQTT实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _NoMatchDomains: 不匹配的域名列表
+        :type NoMatchDomains: list of str
+        :param _ServerCertIdList: 服务端证书列表
+        :type ServerCertIdList: list of str
+        :param _CaCertIdList: ca证书列表
+        :type CaCertIdList: list of str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceStatus = None
+        self._NoMatchDomains = None
+        self._ServerCertIdList = None
+        self._CaCertIdList = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def NoMatchDomains(self):
+        r"""不匹配的域名列表
+        :rtype: list of str
+        """
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+    @property
+    def ServerCertIdList(self):
+        r"""服务端证书列表
+        :rtype: list of str
+        """
+        return self._ServerCertIdList
+
+    @ServerCertIdList.setter
+    def ServerCertIdList(self, ServerCertIdList):
+        self._ServerCertIdList = ServerCertIdList
+
+    @property
+    def CaCertIdList(self):
+        r"""ca证书列表
+        :rtype: list of str
+        """
+        return self._CaCertIdList
+
+    @CaCertIdList.setter
+    def CaCertIdList(self, CaCertIdList):
+        self._CaCertIdList = CaCertIdList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        self._ServerCertIdList = params.get("ServerCertIdList")
+        self._CaCertIdList = params.get("CaCertIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTInstanceList(AbstractModel):
+    r"""MQTT实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+        :type Region: str
+        :param _InstanceList: 实例详情
+        :type InstanceList: list of MQTTInstanceDetail
+        :param _TotalCount: 地域下总数
+        :type TotalCount: int
+        :param _Error: 错误信息
+        :type Error: str
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Error = None
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        r"""实例详情
+        :rtype: list of MQTTInstanceDetail
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        r"""地域下总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Error(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = MQTTInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18083,6 +18610,173 @@ class RootCertificates(AbstractModel):
         
 
 
+class SCFInstanceDetail(AbstractModel):
+    r"""SCF实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID
+        :type CertificateId: str
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Region: 地域
+        :type Region: str
+        """
+        self._CertificateId = None
+        self._Protocol = None
+        self._Domain = None
+        self._Region = None
+
+    @property
+    def CertificateId(self):
+        r"""证书ID
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def Protocol(self):
+        r"""协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._Protocol = params.get("Protocol")
+        self._Domain = params.get("Domain")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SCFInstanceList(AbstractModel):
+    r"""SCF实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _InstanceList: <p>SCF实例详情</p>
+        :type InstanceList: list of SCFInstanceDetail
+        :param _Error: <p>错误信息</p>
+        :type Error: str
+        :param _TotalCount: <p>地域下总数</p>
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._Error = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        r"""<p>SCF实例详情</p>
+        :rtype: list of SCFInstanceDetail
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def Error(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def TotalCount(self):
+        r"""<p>地域下总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = SCFInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._Error = params.get("Error")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubmitAuditManagerRequest(AbstractModel):
     r"""SubmitAuditManager请求参数结构体
 
@@ -19858,6 +20552,203 @@ class TCBInstanceList(AbstractModel):
         
 
 
+class TDMQInstanceDetail(AbstractModel):
+    r"""TDMQ - Rabbit实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _CertId: 服务端证书ID
+        :type CertId: str
+        :param _CaCertId: CA证书ID
+        :type CaCertId: str
+        :param _NoMatchDomains: 不匹配的域名列表
+        :type NoMatchDomains: list of str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceStatus = None
+        self._CertId = None
+        self._CaCertId = None
+        self._NoMatchDomains = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def CertId(self):
+        r"""服务端证书ID
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CaCertId(self):
+        r"""CA证书ID
+        :rtype: str
+        """
+        return self._CaCertId
+
+    @CaCertId.setter
+    def CaCertId(self, CaCertId):
+        self._CaCertId = CaCertId
+
+    @property
+    def NoMatchDomains(self):
+        r"""不匹配的域名列表
+        :rtype: list of str
+        """
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._CertId = params.get("CertId")
+        self._CaCertId = params.get("CaCertId")
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDMQInstanceList(AbstractModel):
+    r"""TDMQ - Rabbit实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+        :type Region: str
+        :param _InstanceList: 实例详情
+        :type InstanceList: list of TDMQInstanceDetail
+        :param _TotalCount: 地域下总数
+        :type TotalCount: int
+        :param _Error: 错误信息
+        :type Error: str
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Error = None
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        r"""实例详情
+        :rtype: list of TDMQInstanceDetail
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        r"""地域下总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Error(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TDMQInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TSEInstanceDetail(AbstractModel):
     r"""tse实例详情
 
@@ -20669,7 +21560,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
         :type CertificateId: str
         :param _Regions: 需要部署的地域列表（废弃）
         :type Regions: list of str
-        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
+        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
         :type ResourceTypesRegions: list of ResourceTypeRegions
         :param _CertificatePublicKey: 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
         :type CertificatePublicKey: str
@@ -20749,7 +21640,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
+        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -21196,6 +22087,10 @@ class UpdateRecordDetail(AbstractModel):
         :type Algorithm: str
         :param _OldAlgorithm: 旧证书加密算法
         :type OldAlgorithm: str
+        :param _InstanceStatus: 实例状态，不同云产品状态不一样	
+        :type InstanceStatus: str
+        :param _ListenerStatus: 监听器状态
+        :type ListenerStatus: str
         """
         self._Id = None
         self._CertId = None
@@ -21222,6 +22117,8 @@ class UpdateRecordDetail(AbstractModel):
         self._Url = None
         self._Algorithm = None
         self._OldAlgorithm = None
+        self._InstanceStatus = None
+        self._ListenerStatus = None
 
     @property
     def Id(self):
@@ -21530,6 +22427,28 @@ class UpdateRecordDetail(AbstractModel):
     def OldAlgorithm(self, OldAlgorithm):
         self._OldAlgorithm = OldAlgorithm
 
+    @property
+    def InstanceStatus(self):
+        r"""实例状态，不同云产品状态不一样	
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def ListenerStatus(self):
+        r"""监听器状态
+        :rtype: str
+        """
+        return self._ListenerStatus
+
+    @ListenerStatus.setter
+    def ListenerStatus(self, ListenerStatus):
+        self._ListenerStatus = ListenerStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -21557,6 +22476,8 @@ class UpdateRecordDetail(AbstractModel):
         self._Url = params.get("Url")
         self._Algorithm = params.get("Algorithm")
         self._OldAlgorithm = params.get("OldAlgorithm")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._ListenerStatus = params.get("ListenerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

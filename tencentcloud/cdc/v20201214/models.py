@@ -574,59 +574,51 @@ class CreateSiteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 站点名称
+        :param _Name: <p>站点名称</p>
         :type Name: str
-        :param _Country: 站点所在国家
+        :param _Country: <p>站点所在国家</p>
         :type Country: str
-        :param _Province: 站点所在省份
+        :param _Province: <p>站点所在省份</p>
         :type Province: str
-        :param _City: 站点所在城市
+        :param _City: <p>站点所在城市</p>
         :type City: str
-        :param _AddressLine: 站点所在地区的详细地址信息
+        :param _AddressLine: <p>站点所在地区的详细地址信息</p>
         :type AddressLine: str
-        :param _Description: 站点描述
+        :param _Description: <p>站点描述</p>
         :type Description: str
-        :param _Note: 注意事项
+        :param _Note: <p>注意事项</p>
         :type Note: str
-        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
+        :param _FiberType: <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"</p>
         :type FiberType: str
-        :param _OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :param _OpticalStandard: <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
         :type OpticalStandard: str
-        :param _PowerConnectors: 电源连接器类型
+        :param _PowerConnectors: <p>电源连接器类型</p>
         :type PowerConnectors: str
-        :param _PowerFeedDrop: 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+        :param _PowerFeedDrop: <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
         :type PowerFeedDrop: str
-        :param _MaxWeight: 最大承重(KG)
+        :param _MaxWeight: <p>最大承重(KG)</p>
         :type MaxWeight: int
-        :param _PowerDrawKva: 功耗(KW)
+        :param _PowerDrawKva: <p>功耗(KW)</p>
         :type PowerDrawKva: int
-        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度(Gbps)
+        :param _UplinkSpeedGbps: <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
         :type UplinkSpeedGbps: int
-        :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :param _UplinkCount: <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
         :type UplinkCount: int
-        :param _ConditionRequirement: 是否满足下面环境条件：
-1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-2、确定的机架位置包含:
-温度范围为 41 到 104°F (5 到 40°C)。
-湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+        :param _ConditionRequirement: <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。</p>
         :type ConditionRequirement: bool
-        :param _DimensionRequirement: 是否满足下面的尺寸条件：
-您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        :param _DimensionRequirement: <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
         :type DimensionRequirement: bool
-        :param _RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :param _RedundantNetworking: <p>是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。</p>
         :type RedundantNetworking: bool
-        :param _PostalCode: 站点所在地区的邮编
+        :param _PostalCode: <p>站点所在地区的邮编</p>
         :type PostalCode: int
-        :param _OptionalAddressLine: 站点所在地区的详细地址信息（补充）
+        :param _OptionalAddressLine: <p>站点所在地区的详细地址信息（补充）</p>
         :type OptionalAddressLine: str
-        :param _NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
+        :param _NeedHelp: <p>是否需要腾讯云团队协助完成机架支撑工作</p>
         :type NeedHelp: bool
-        :param _RedundantPower: 是否电源冗余
+        :param _RedundantPower: <p>是否电源冗余</p>
         :type RedundantPower: bool
-        :param _BreakerRequirement: 上游断路器是否具备
+        :param _BreakerRequirement: <p>上游断路器是否具备</p>
         :type BreakerRequirement: bool
         """
         self._Name = None
@@ -655,7 +647,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""站点名称
+        r"""<p>站点名称</p>
         :rtype: str
         """
         return self._Name
@@ -666,7 +658,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Country(self):
-        r"""站点所在国家
+        r"""<p>站点所在国家</p>
         :rtype: str
         """
         return self._Country
@@ -677,7 +669,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Province(self):
-        r"""站点所在省份
+        r"""<p>站点所在省份</p>
         :rtype: str
         """
         return self._Province
@@ -688,7 +680,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def City(self):
-        r"""站点所在城市
+        r"""<p>站点所在城市</p>
         :rtype: str
         """
         return self._City
@@ -699,7 +691,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def AddressLine(self):
-        r"""站点所在地区的详细地址信息
+        r"""<p>站点所在地区的详细地址信息</p>
         :rtype: str
         """
         return self._AddressLine
@@ -710,7 +702,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""站点描述
+        r"""<p>站点描述</p>
         :rtype: str
         """
         return self._Description
@@ -721,7 +713,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Note(self):
-        r"""注意事项
+        r"""<p>注意事项</p>
         :rtype: str
         """
         return self._Note
@@ -732,7 +724,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def FiberType(self):
-        r"""您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
+        r"""<p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"</p>
         :rtype: str
         """
         return self._FiberType
@@ -743,7 +735,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def OpticalStandard(self):
-        r"""您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        r"""<p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
         :rtype: str
         """
         return self._OpticalStandard
@@ -754,7 +746,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerConnectors(self):
-        r"""电源连接器类型
+        r"""<p>电源连接器类型</p>
         :rtype: str
         """
         return self._PowerConnectors
@@ -765,7 +757,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
-        r"""从机架上方还是下方供电。取值范围：["UP","DOWN"]
+        r"""<p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -776,7 +768,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def MaxWeight(self):
-        r"""最大承重(KG)
+        r"""<p>最大承重(KG)</p>
         :rtype: int
         """
         return self._MaxWeight
@@ -787,7 +779,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerDrawKva(self):
-        r"""功耗(KW)
+        r"""<p>功耗(KW)</p>
         :rtype: int
         """
         return self._PowerDrawKva
@@ -798,7 +790,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
-        r"""网络到腾讯云Region区域的上行链路速度(Gbps)
+        r"""<p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -809,7 +801,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def UplinkCount(self):
-        r"""将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        r"""<p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
         :rtype: int
         """
         return self._UplinkCount
@@ -820,12 +812,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def ConditionRequirement(self):
-        r"""是否满足下面环境条件：
-1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-2、确定的机架位置包含:
-温度范围为 41 到 104°F (5 到 40°C)。
-湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+        r"""<p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。</p>
         :rtype: bool
         """
         return self._ConditionRequirement
@@ -836,10 +823,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def DimensionRequirement(self):
-        r"""是否满足下面的尺寸条件：
-您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        r"""<p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
         :rtype: bool
         """
         return self._DimensionRequirement
@@ -850,7 +834,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def RedundantNetworking(self):
-        r"""是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        r"""<p>是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。</p>
         :rtype: bool
         """
         return self._RedundantNetworking
@@ -861,7 +845,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PostalCode(self):
-        r"""站点所在地区的邮编
+        r"""<p>站点所在地区的邮编</p>
         :rtype: int
         """
         return self._PostalCode
@@ -872,7 +856,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def OptionalAddressLine(self):
-        r"""站点所在地区的详细地址信息（补充）
+        r"""<p>站点所在地区的详细地址信息（补充）</p>
         :rtype: str
         """
         return self._OptionalAddressLine
@@ -883,7 +867,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def NeedHelp(self):
-        r"""是否需要腾讯云团队协助完成机架支撑工作
+        r"""<p>是否需要腾讯云团队协助完成机架支撑工作</p>
         :rtype: bool
         """
         return self._NeedHelp
@@ -894,7 +878,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def RedundantPower(self):
-        r"""是否电源冗余
+        r"""<p>是否电源冗余</p>
         :rtype: bool
         """
         return self._RedundantPower
@@ -905,7 +889,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def BreakerRequirement(self):
-        r"""上游断路器是否具备
+        r"""<p>上游断路器是否具备</p>
         :rtype: bool
         """
         return self._BreakerRequirement
@@ -956,7 +940,7 @@ class CreateSiteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SiteId: 创建Site生成的id
+        :param _SiteId: <p>创建Site生成的id</p>
         :type SiteId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -966,7 +950,7 @@ class CreateSiteResponse(AbstractModel):
 
     @property
     def SiteId(self):
-        r"""创建Site生成的id
+        r"""<p>创建Site生成的id</p>
         :rtype: str
         """
         return self._SiteId
@@ -3626,15 +3610,15 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 模糊匹配专用集群配置名称
+        :param _Name: <p>模糊匹配专用集群配置名称</p>
         :type Name: str
-        :param _DedicatedClusterTypeIds: 待查询的专用集群配置id列表
+        :param _DedicatedClusterTypeIds: <p>待查询的专用集群配置id列表</p>
         :type DedicatedClusterTypeIds: list of str
-        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: <p>偏移量，默认为0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
         :type Limit: int
-        :param _IsCompute: 是否只查询计算规格类型
+        :param _IsCompute: <p>是否只查询计算规格类型</p>
         :type IsCompute: bool
         """
         self._Name = None
@@ -3645,7 +3629,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模糊匹配专用集群配置名称
+        r"""<p>模糊匹配专用集群配置名称</p>
         :rtype: str
         """
         return self._Name
@@ -3656,7 +3640,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def DedicatedClusterTypeIds(self):
-        r"""待查询的专用集群配置id列表
+        r"""<p>待查询的专用集群配置id列表</p>
         :rtype: list of str
         """
         return self._DedicatedClusterTypeIds
@@ -3667,7 +3651,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""<p>偏移量，默认为0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
         :rtype: int
         """
         return self._Offset
@@ -3678,7 +3662,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        r"""<p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
         :rtype: int
         """
         return self._Limit
@@ -3689,7 +3673,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def IsCompute(self):
-        r"""是否只查询计算规格类型
+        r"""<p>是否只查询计算规格类型</p>
         :rtype: bool
         """
         return self._IsCompute
@@ -3722,9 +3706,9 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DedicatedClusterTypeSet: 专用集群配置列表
+        :param _DedicatedClusterTypeSet: <p>专用集群配置列表</p>
         :type DedicatedClusterTypeSet: list of DedicatedClusterType
-        :param _TotalCount: 符合条件的个数
+        :param _TotalCount: <p>符合条件的个数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3735,7 +3719,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def DedicatedClusterTypeSet(self):
-        r"""专用集群配置列表
+        r"""<p>专用集群配置列表</p>
         :rtype: list of DedicatedClusterType
         """
         return self._DedicatedClusterTypeSet
@@ -3746,7 +3730,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的个数
+        r"""<p>符合条件的个数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5242,43 +5226,35 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SiteId: 机房ID
+        :param _SiteId: <p>机房ID</p>
         :type SiteId: str
-        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :param _FiberType: <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。</p>
         :type FiberType: str
-        :param _OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :param _OpticalStandard: <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
         :type OpticalStandard: str
-        :param _PowerConnectors: 电源连接器类型
+        :param _PowerConnectors: <p>电源连接器类型</p>
         :type PowerConnectors: str
-        :param _PowerFeedDrop: 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+        :param _PowerFeedDrop: <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
         :type PowerFeedDrop: str
-        :param _MaxWeight: 最大承重(KG)
+        :param _MaxWeight: <p>最大承重(KG)</p>
         :type MaxWeight: int
-        :param _PowerDrawKva: 功耗(KW)
+        :param _PowerDrawKva: <p>功耗(KW)</p>
         :type PowerDrawKva: int
-        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度(Gbps)
+        :param _UplinkSpeedGbps: <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
         :type UplinkSpeedGbps: int
-        :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :param _UplinkCount: <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
         :type UplinkCount: int
-        :param _ConditionRequirement: 是否满足下面环境条件：
-1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-2、确定的机架位置包含:
-温度范围为 41 到 104°F (5 到 40°C)。
-湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
+        :param _ConditionRequirement: <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。</p>
         :type ConditionRequirement: bool
-        :param _DimensionRequirement: 是否满足下面的尺寸条件：
-您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        :param _DimensionRequirement: <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
         :type DimensionRequirement: bool
-        :param _RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
+        :param _RedundantNetworking: <p>是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。</p>
         :type RedundantNetworking: bool
-        :param _NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
+        :param _NeedHelp: <p>是否需要腾讯云团队协助完成机架支撑工作</p>
         :type NeedHelp: bool
-        :param _RedundantPower: 是否电源冗余
+        :param _RedundantPower: <p>是否电源冗余</p>
         :type RedundantPower: bool
-        :param _BreakerRequirement: 上游断路器是否具备
+        :param _BreakerRequirement: <p>上游断路器是否具备</p>
         :type BreakerRequirement: bool
         """
         self._SiteId = None
@@ -5299,7 +5275,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
-        r"""机房ID
+        r"""<p>机房ID</p>
         :rtype: str
         """
         return self._SiteId
@@ -5310,7 +5286,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def FiberType(self):
-        r"""您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        r"""<p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。</p>
         :rtype: str
         """
         return self._FiberType
@@ -5321,7 +5297,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def OpticalStandard(self):
-        r"""您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        r"""<p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
         :rtype: str
         """
         return self._OpticalStandard
@@ -5332,7 +5308,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerConnectors(self):
-        r"""电源连接器类型
+        r"""<p>电源连接器类型</p>
         :rtype: str
         """
         return self._PowerConnectors
@@ -5343,7 +5319,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
-        r"""从机架上方还是下方供电。取值范围：["UP","DOWN"]
+        r"""<p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -5354,7 +5330,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def MaxWeight(self):
-        r"""最大承重(KG)
+        r"""<p>最大承重(KG)</p>
         :rtype: int
         """
         return self._MaxWeight
@@ -5365,7 +5341,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerDrawKva(self):
-        r"""功耗(KW)
+        r"""<p>功耗(KW)</p>
         :rtype: int
         """
         return self._PowerDrawKva
@@ -5376,7 +5352,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
-        r"""网络到腾讯云Region区域的上行链路速度(Gbps)
+        r"""<p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -5387,7 +5363,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def UplinkCount(self):
-        r"""将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        r"""<p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
         :rtype: int
         """
         return self._UplinkCount
@@ -5398,12 +5374,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def ConditionRequirement(self):
-        r"""是否满足下面环境条件：
-1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-2、确定的机架位置包含:
-温度范围为 41 到 104°F (5 到 40°C)。
-湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
+        r"""<p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。</p>
         :rtype: bool
         """
         return self._ConditionRequirement
@@ -5414,10 +5385,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def DimensionRequirement(self):
-        r"""是否满足下面的尺寸条件：
-您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        r"""<p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
         :rtype: bool
         """
         return self._DimensionRequirement
@@ -5428,7 +5396,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def RedundantNetworking(self):
-        r"""是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
+        r"""<p>是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。</p>
         :rtype: bool
         """
         return self._RedundantNetworking
@@ -5439,7 +5407,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def NeedHelp(self):
-        r"""是否需要腾讯云团队协助完成机架支撑工作
+        r"""<p>是否需要腾讯云团队协助完成机架支撑工作</p>
         :rtype: bool
         """
         return self._NeedHelp
@@ -5450,7 +5418,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def RedundantPower(self):
-        r"""是否电源冗余
+        r"""<p>是否电源冗余</p>
         :rtype: bool
         """
         return self._RedundantPower
@@ -5461,7 +5429,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def BreakerRequirement(self):
-        r"""上游断路器是否具备
+        r"""<p>上游断路器是否具备</p>
         :rtype: bool
         """
         return self._BreakerRequirement

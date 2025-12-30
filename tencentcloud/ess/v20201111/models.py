@@ -4404,6 +4404,138 @@ class ContractReviewWebUrlOption(AbstractModel):
         
 
 
+class ContractSummary(AbstractModel):
+    r"""合同摘要
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 提取内容分类：
+Base 合同信息
+Identity 主体信息
+Performance 履约条款
+        :type Name: str
+        :param _Infos: 详细信息
+        :type Infos: list of ContractSummaryInfo
+        """
+        self._Name = None
+        self._Infos = None
+
+    @property
+    def Name(self):
+        r"""提取内容分类：
+Base 合同信息
+Identity 主体信息
+Performance 履约条款
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Infos(self):
+        r"""详细信息
+        :rtype: list of ContractSummaryInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = ContractSummaryInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContractSummaryInfo(AbstractModel):
+    r"""合同摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 字段 key
+        :type Key: str
+        :param _Value: 字段值
+        :type Value: str
+        :param _Identity: 主体信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Identity: :class:`tencentcloud.ess.v20201111.models.Identity`
+        """
+        self._Key = None
+        self._Value = None
+        self._Identity = None
+
+    @property
+    def Key(self):
+        r"""字段 key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""字段值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Identity(self):
+        r"""主体信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Identity`
+        """
+        return self._Identity
+
+    @Identity.setter
+    def Identity(self, Identity):
+        self._Identity = Identity
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        if params.get("Identity") is not None:
+            self._Identity = Identity()
+            self._Identity._deserialize(params.get("Identity"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBatchAdminChangeInvitationsRequest(AbstractModel):
     r"""CreateBatchAdminChangeInvitations请求参数结构体
 
@@ -23054,6 +23186,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         :param _ApprovedLists: 通过项信息(详细引文信息)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovedLists: list of OutputReference
+        :param _Summaries: 摘要信息
+        :type Summaries: list of ContractSummary
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23071,6 +23205,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._HighRiskCount = None
         self._TotalRiskCount = None
         self._ApprovedLists = None
+        self._Summaries = None
         self._RequestId = None
 
     @property
@@ -23249,6 +23384,17 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._ApprovedLists = ApprovedLists
 
     @property
+    def Summaries(self):
+        r"""摘要信息
+        :rtype: list of ContractSummary
+        """
+        return self._Summaries
+
+    @Summaries.setter
+    def Summaries(self, Summaries):
+        self._Summaries = Summaries
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -23287,6 +23433,12 @@ class DescribeContractReviewTaskResponse(AbstractModel):
                 obj = OutputReference()
                 obj._deserialize(item)
                 self._ApprovedLists.append(obj)
+        if params.get("Summaries") is not None:
+            self._Summaries = []
+            for item in params.get("Summaries"):
+                obj = ContractSummary()
+                obj._deserialize(item)
+                self._Summaries.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -33508,6 +33660,446 @@ CurrentOrg：在普通企业场景下返回此值；或者在集团企业的场�
         
 
 
+class Identity(AbstractModel):
+    r"""主体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreditCode: 统一社会信用代码
+        :type CreditCode: str
+        :param _OrgCode: 组织机构代码
+        :type OrgCode: str
+        :param _RegNo: 营业执照注册编号
+        :type RegNo: str
+        :param _EntName: 企业名称
+        :type EntName: str
+        :param _LegalRepName: 修改人法人代表姓名
+        :type LegalRepName: str
+        :param _OpState: 渠道经营状态
+        :type OpState: str
+        :param _OpFromDate: 经营期限自(格式YYYY-MM-DD)
+        :type OpFromDate: str
+        :param _OpToDate: 经营期限至
+        :type OpToDate: str
+        :param _EstabDate: 成立日期(格式YYYY-MM-DD)
+        :type EstabDate: str
+        :param _ApprDate: 核准日期(格式YYYY-MM-DD)
+        :type ApprDate: str
+        :param _RevoDate: 吊销日期(格式YYYY-MM-DD)
+        :type RevoDate: str
+        :param _CancelDate: 注销日期(格式YYYY-MM-DD)
+        :type CancelDate: str
+        :param _RegOrg: 登记机关
+        :type RegOrg: str
+        :param _EntTypeCode: 企业类型编码
+        :type EntTypeCode: str
+        :param _EntType: 企业类型
+        :type EntType: str
+        :param _BizScope: 经营业务范围
+        :type BizScope: str
+        :param _LicenseBizItem: 许可经营项目
+        :type LicenseBizItem: str
+        :param _RegAreaCode: 注册地址行政编号
+        :type RegAreaCode: str
+        :param _RegAddress: 注册地址
+        :type RegAddress: str
+        :param _RegCapitalCurtype: 注册资本币种
+        :type RegCapitalCurtype: str
+        :param _RegCapital: 注册资本（万元）
+        :type RegCapital: str
+        :param _PaidCapital: 实收资本（万元）
+        :type PaidCapital: str
+        :param _OriRegNo: 原注册号
+        :type OriRegNo: str
+        :param _EntNameEng: 企业英文名称
+        :type EntNameEng: str
+        :param _OriEntName: 曾用名
+        :type OriEntName: str
+        :param _OpStateCode: 企业经营状态枚举。常见值如下：
+未定义的状态 = 0
+正常  = 1
+注销 = 2
+吊销 = 3
+吊销后注销 = 4
+撤销 = 5
+其他 = 99
+        :type OpStateCode: int
+        :param _SearchDate: 查询日期(格式YYYY-MM-DD)
+        :type SearchDate: str
+        """
+        self._CreditCode = None
+        self._OrgCode = None
+        self._RegNo = None
+        self._EntName = None
+        self._LegalRepName = None
+        self._OpState = None
+        self._OpFromDate = None
+        self._OpToDate = None
+        self._EstabDate = None
+        self._ApprDate = None
+        self._RevoDate = None
+        self._CancelDate = None
+        self._RegOrg = None
+        self._EntTypeCode = None
+        self._EntType = None
+        self._BizScope = None
+        self._LicenseBizItem = None
+        self._RegAreaCode = None
+        self._RegAddress = None
+        self._RegCapitalCurtype = None
+        self._RegCapital = None
+        self._PaidCapital = None
+        self._OriRegNo = None
+        self._EntNameEng = None
+        self._OriEntName = None
+        self._OpStateCode = None
+        self._SearchDate = None
+
+    @property
+    def CreditCode(self):
+        r"""统一社会信用代码
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def OrgCode(self):
+        r"""组织机构代码
+        :rtype: str
+        """
+        return self._OrgCode
+
+    @OrgCode.setter
+    def OrgCode(self, OrgCode):
+        self._OrgCode = OrgCode
+
+    @property
+    def RegNo(self):
+        r"""营业执照注册编号
+        :rtype: str
+        """
+        return self._RegNo
+
+    @RegNo.setter
+    def RegNo(self, RegNo):
+        self._RegNo = RegNo
+
+    @property
+    def EntName(self):
+        r"""企业名称
+        :rtype: str
+        """
+        return self._EntName
+
+    @EntName.setter
+    def EntName(self, EntName):
+        self._EntName = EntName
+
+    @property
+    def LegalRepName(self):
+        r"""修改人法人代表姓名
+        :rtype: str
+        """
+        return self._LegalRepName
+
+    @LegalRepName.setter
+    def LegalRepName(self, LegalRepName):
+        self._LegalRepName = LegalRepName
+
+    @property
+    def OpState(self):
+        r"""渠道经营状态
+        :rtype: str
+        """
+        return self._OpState
+
+    @OpState.setter
+    def OpState(self, OpState):
+        self._OpState = OpState
+
+    @property
+    def OpFromDate(self):
+        r"""经营期限自(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._OpFromDate
+
+    @OpFromDate.setter
+    def OpFromDate(self, OpFromDate):
+        self._OpFromDate = OpFromDate
+
+    @property
+    def OpToDate(self):
+        r"""经营期限至
+        :rtype: str
+        """
+        return self._OpToDate
+
+    @OpToDate.setter
+    def OpToDate(self, OpToDate):
+        self._OpToDate = OpToDate
+
+    @property
+    def EstabDate(self):
+        r"""成立日期(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._EstabDate
+
+    @EstabDate.setter
+    def EstabDate(self, EstabDate):
+        self._EstabDate = EstabDate
+
+    @property
+    def ApprDate(self):
+        r"""核准日期(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._ApprDate
+
+    @ApprDate.setter
+    def ApprDate(self, ApprDate):
+        self._ApprDate = ApprDate
+
+    @property
+    def RevoDate(self):
+        r"""吊销日期(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._RevoDate
+
+    @RevoDate.setter
+    def RevoDate(self, RevoDate):
+        self._RevoDate = RevoDate
+
+    @property
+    def CancelDate(self):
+        r"""注销日期(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._CancelDate
+
+    @CancelDate.setter
+    def CancelDate(self, CancelDate):
+        self._CancelDate = CancelDate
+
+    @property
+    def RegOrg(self):
+        r"""登记机关
+        :rtype: str
+        """
+        return self._RegOrg
+
+    @RegOrg.setter
+    def RegOrg(self, RegOrg):
+        self._RegOrg = RegOrg
+
+    @property
+    def EntTypeCode(self):
+        r"""企业类型编码
+        :rtype: str
+        """
+        return self._EntTypeCode
+
+    @EntTypeCode.setter
+    def EntTypeCode(self, EntTypeCode):
+        self._EntTypeCode = EntTypeCode
+
+    @property
+    def EntType(self):
+        r"""企业类型
+        :rtype: str
+        """
+        return self._EntType
+
+    @EntType.setter
+    def EntType(self, EntType):
+        self._EntType = EntType
+
+    @property
+    def BizScope(self):
+        r"""经营业务范围
+        :rtype: str
+        """
+        return self._BizScope
+
+    @BizScope.setter
+    def BizScope(self, BizScope):
+        self._BizScope = BizScope
+
+    @property
+    def LicenseBizItem(self):
+        r"""许可经营项目
+        :rtype: str
+        """
+        return self._LicenseBizItem
+
+    @LicenseBizItem.setter
+    def LicenseBizItem(self, LicenseBizItem):
+        self._LicenseBizItem = LicenseBizItem
+
+    @property
+    def RegAreaCode(self):
+        r"""注册地址行政编号
+        :rtype: str
+        """
+        return self._RegAreaCode
+
+    @RegAreaCode.setter
+    def RegAreaCode(self, RegAreaCode):
+        self._RegAreaCode = RegAreaCode
+
+    @property
+    def RegAddress(self):
+        r"""注册地址
+        :rtype: str
+        """
+        return self._RegAddress
+
+    @RegAddress.setter
+    def RegAddress(self, RegAddress):
+        self._RegAddress = RegAddress
+
+    @property
+    def RegCapitalCurtype(self):
+        r"""注册资本币种
+        :rtype: str
+        """
+        return self._RegCapitalCurtype
+
+    @RegCapitalCurtype.setter
+    def RegCapitalCurtype(self, RegCapitalCurtype):
+        self._RegCapitalCurtype = RegCapitalCurtype
+
+    @property
+    def RegCapital(self):
+        r"""注册资本（万元）
+        :rtype: str
+        """
+        return self._RegCapital
+
+    @RegCapital.setter
+    def RegCapital(self, RegCapital):
+        self._RegCapital = RegCapital
+
+    @property
+    def PaidCapital(self):
+        r"""实收资本（万元）
+        :rtype: str
+        """
+        return self._PaidCapital
+
+    @PaidCapital.setter
+    def PaidCapital(self, PaidCapital):
+        self._PaidCapital = PaidCapital
+
+    @property
+    def OriRegNo(self):
+        r"""原注册号
+        :rtype: str
+        """
+        return self._OriRegNo
+
+    @OriRegNo.setter
+    def OriRegNo(self, OriRegNo):
+        self._OriRegNo = OriRegNo
+
+    @property
+    def EntNameEng(self):
+        r"""企业英文名称
+        :rtype: str
+        """
+        return self._EntNameEng
+
+    @EntNameEng.setter
+    def EntNameEng(self, EntNameEng):
+        self._EntNameEng = EntNameEng
+
+    @property
+    def OriEntName(self):
+        r"""曾用名
+        :rtype: str
+        """
+        return self._OriEntName
+
+    @OriEntName.setter
+    def OriEntName(self, OriEntName):
+        self._OriEntName = OriEntName
+
+    @property
+    def OpStateCode(self):
+        r"""企业经营状态枚举。常见值如下：
+未定义的状态 = 0
+正常  = 1
+注销 = 2
+吊销 = 3
+吊销后注销 = 4
+撤销 = 5
+其他 = 99
+        :rtype: int
+        """
+        return self._OpStateCode
+
+    @OpStateCode.setter
+    def OpStateCode(self, OpStateCode):
+        self._OpStateCode = OpStateCode
+
+    @property
+    def SearchDate(self):
+        r"""查询日期(格式YYYY-MM-DD)
+        :rtype: str
+        """
+        return self._SearchDate
+
+    @SearchDate.setter
+    def SearchDate(self, SearchDate):
+        self._SearchDate = SearchDate
+
+
+    def _deserialize(self, params):
+        self._CreditCode = params.get("CreditCode")
+        self._OrgCode = params.get("OrgCode")
+        self._RegNo = params.get("RegNo")
+        self._EntName = params.get("EntName")
+        self._LegalRepName = params.get("LegalRepName")
+        self._OpState = params.get("OpState")
+        self._OpFromDate = params.get("OpFromDate")
+        self._OpToDate = params.get("OpToDate")
+        self._EstabDate = params.get("EstabDate")
+        self._ApprDate = params.get("ApprDate")
+        self._RevoDate = params.get("RevoDate")
+        self._CancelDate = params.get("CancelDate")
+        self._RegOrg = params.get("RegOrg")
+        self._EntTypeCode = params.get("EntTypeCode")
+        self._EntType = params.get("EntType")
+        self._BizScope = params.get("BizScope")
+        self._LicenseBizItem = params.get("LicenseBizItem")
+        self._RegAreaCode = params.get("RegAreaCode")
+        self._RegAddress = params.get("RegAddress")
+        self._RegCapitalCurtype = params.get("RegCapitalCurtype")
+        self._RegCapital = params.get("RegCapital")
+        self._PaidCapital = params.get("PaidCapital")
+        self._OriRegNo = params.get("OriRegNo")
+        self._EntNameEng = params.get("EntNameEng")
+        self._OriEntName = params.get("OriEntName")
+        self._OpStateCode = params.get("OpStateCode")
+        self._SearchDate = params.get("SearchDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntegrateRole(AbstractModel):
     r"""企业角色数据信息
 
@@ -37104,6 +37696,16 @@ class OutputRisk(AbstractModel):
         :type RiskBasis: str
         :param _RiskLevelId: 风险等级id。1 为最高风险等级，0 为最低风险等级，从[2,n]数字越大风险等级逐渐降低。
         :type RiskLevelId: int
+        :param _RiskLabels: 风险标签
+        :type RiskLabels: list of str
+        :param _RiskOrigin: 风险来源 0:模型标注的风险 1:人工标注的风险
+        :type RiskOrigin: int
+        :param _Creator: 创建人
+        :type Creator: str
+        :param _CreatorId: 创建人ID
+        :type CreatorId: str
+        :param _CreatedOn: 创建时间
+        :type CreatedOn: int
         """
         self._RiskId = None
         self._RiskName = None
@@ -37115,6 +37717,11 @@ class OutputRisk(AbstractModel):
         self._Positions = None
         self._RiskBasis = None
         self._RiskLevelId = None
+        self._RiskLabels = None
+        self._RiskOrigin = None
+        self._Creator = None
+        self._CreatorId = None
+        self._CreatedOn = None
 
     @property
     def RiskId(self):
@@ -37232,6 +37839,61 @@ class OutputRisk(AbstractModel):
     def RiskLevelId(self, RiskLevelId):
         self._RiskLevelId = RiskLevelId
 
+    @property
+    def RiskLabels(self):
+        r"""风险标签
+        :rtype: list of str
+        """
+        return self._RiskLabels
+
+    @RiskLabels.setter
+    def RiskLabels(self, RiskLabels):
+        self._RiskLabels = RiskLabels
+
+    @property
+    def RiskOrigin(self):
+        r"""风险来源 0:模型标注的风险 1:人工标注的风险
+        :rtype: int
+        """
+        return self._RiskOrigin
+
+    @RiskOrigin.setter
+    def RiskOrigin(self, RiskOrigin):
+        self._RiskOrigin = RiskOrigin
+
+    @property
+    def Creator(self):
+        r"""创建人
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorId(self):
+        r"""创建人ID
+        :rtype: str
+        """
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def CreatedOn(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -37249,6 +37911,11 @@ class OutputRisk(AbstractModel):
                 self._Positions.append(obj)
         self._RiskBasis = params.get("RiskBasis")
         self._RiskLevelId = params.get("RiskLevelId")
+        self._RiskLabels = params.get("RiskLabels")
+        self._RiskOrigin = params.get("RiskOrigin")
+        self._Creator = params.get("Creator")
+        self._CreatorId = params.get("CreatorId")
+        self._CreatedOn = params.get("CreatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37787,6 +38454,12 @@ class PositionInfo(AbstractModel):
         :type PageIndex: int
         :param _Id: 系统生成的唯一ID值
         :type Id: str
+        :param _Begin: 开始位置
+        :type Begin: int
+        :param _End: 结束位置
+        :type End: int
+        :param _DocType: 文档类型，1：pdf，2：doc 文档
+        :type DocType: int
         """
         self._X = None
         self._Y = None
@@ -37794,6 +38467,9 @@ class PositionInfo(AbstractModel):
         self._Height = None
         self._PageIndex = None
         self._Id = None
+        self._Begin = None
+        self._End = None
+        self._DocType = None
 
     @property
     def X(self):
@@ -37861,6 +38537,39 @@ class PositionInfo(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def Begin(self):
+        r"""开始位置
+        :rtype: int
+        """
+        return self._Begin
+
+    @Begin.setter
+    def Begin(self, Begin):
+        self._Begin = Begin
+
+    @property
+    def End(self):
+        r"""结束位置
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def DocType(self):
+        r"""文档类型，1：pdf，2：doc 文档
+        :rtype: int
+        """
+        return self._DocType
+
+    @DocType.setter
+    def DocType(self, DocType):
+        self._DocType = DocType
+
 
     def _deserialize(self, params):
         self._X = params.get("X")
@@ -37869,6 +38578,9 @@ class PositionInfo(AbstractModel):
         self._Height = params.get("Height")
         self._PageIndex = params.get("PageIndex")
         self._Id = params.get("Id")
+        self._Begin = params.get("Begin")
+        self._End = params.get("End")
+        self._DocType = params.get("DocType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

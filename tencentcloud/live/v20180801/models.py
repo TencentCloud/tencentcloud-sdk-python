@@ -21290,21 +21290,13 @@ class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
-2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+        :param _StartTime: <p>开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 <a href="https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F">ISO 日期格式说明</a>2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
-2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+        :param _EndTime: <p>结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 <a href="https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F">ISO 日期格式说明</a>2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。</p>
         :type EndTime: str
-        :param _PushDomains: 推流域名列表，若不填，表示查询所有域名总体数据。
-指定域名时返回1小时粒度数据。
+        :param _PushDomains: <p>推流域名列表，若不填，表示查询所有域名总体数据。指定域名时返回1小时粒度数据。</p>
         :type PushDomains: list of str
-        :param _MainlandOrOversea: 可选值：
-Mainland：查询中国大陆（境内）数据，
-Oversea：则查询国际/港澳台（境外）数据，
-默认：查询全球地区（境内+境外）的数据。
+        :param _MainlandOrOversea: <p>可选值：Mainland：查询中国大陆（境内）数据，Oversea：则查询国际/港澳台（境外）数据，默认：查询全球地区（境内+境外）的数据。</p>
         :type MainlandOrOversea: str
         """
         self._StartTime = None
@@ -21314,9 +21306,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def StartTime(self):
-        r"""开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
-2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+        r"""<p>开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 <a href="https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F">ISO 日期格式说明</a>2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -21327,9 +21317,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def EndTime(self):
-        r"""结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
-2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+        r"""<p>结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 <a href="https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F">ISO 日期格式说明</a>2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -21340,8 +21328,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def PushDomains(self):
-        r"""推流域名列表，若不填，表示查询所有域名总体数据。
-指定域名时返回1小时粒度数据。
+        r"""<p>推流域名列表，若不填，表示查询所有域名总体数据。指定域名时返回1小时粒度数据。</p>
         :rtype: list of str
         """
         return self._PushDomains
@@ -21352,10 +21339,7 @@ Oversea：则查询国际/港澳台（境外）数据，
 
     @property
     def MainlandOrOversea(self):
-        r"""可选值：
-Mainland：查询中国大陆（境内）数据，
-Oversea：则查询国际/港澳台（境外）数据，
-默认：查询全球地区（境内+境外）的数据。
+        r"""<p>可选值：Mainland：查询中国大陆（境内）数据，Oversea：则查询国际/港澳台（境外）数据，默认：查询全球地区（境内+境外）的数据。</p>
         :rtype: str
         """
         return self._MainlandOrOversea
@@ -21387,7 +21371,7 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataInfoList: 统计数据列表。
+        :param _DataInfoList: <p>统计数据列表。</p>
         :type DataInfoList: list of TranscodeTotalInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21397,7 +21381,7 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        r"""统计数据列表。
+        r"""<p>统计数据列表。</p>
         :rtype: list of TranscodeTotalInfo
         """
         return self._DataInfoList

@@ -1505,8 +1505,20 @@ class ExtraParam(AbstractModel):
         r"""
         :param _UserDesignatedUrl: 预签名的上传url，支持把视频直接传到客户指定的地址。
         :type UserDesignatedUrl: str
+        :param _CallbackUrl: 回调地址
+需要您在创建任务时主动设置 CallbackUrl，请求方法为 POST，当视频生成结束时，我们将向此地址发送生成结果。
+数据格式如下：
+{
+    "JobId": "1397428070633955328",
+    "Status": "DONE",
+    "ErrorCode": "",
+    "ErrorMessage": "",
+    "ResultVideoUrl": "https://vcg.cos.tencentcos.cn/template_to_video/fa80b846-b933-4981-afad-8a39b46ef2ca.mp4"
+}
+        :type CallbackUrl: str
         """
         self._UserDesignatedUrl = None
+        self._CallbackUrl = None
 
     @property
     def UserDesignatedUrl(self):
@@ -1519,9 +1531,30 @@ class ExtraParam(AbstractModel):
     def UserDesignatedUrl(self, UserDesignatedUrl):
         self._UserDesignatedUrl = UserDesignatedUrl
 
+    @property
+    def CallbackUrl(self):
+        r"""回调地址
+需要您在创建任务时主动设置 CallbackUrl，请求方法为 POST，当视频生成结束时，我们将向此地址发送生成结果。
+数据格式如下：
+{
+    "JobId": "1397428070633955328",
+    "Status": "DONE",
+    "ErrorCode": "",
+    "ErrorMessage": "",
+    "ResultVideoUrl": "https://vcg.cos.tencentcos.cn/template_to_video/fa80b846-b933-4981-afad-8a39b46ef2ca.mp4"
+}
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
 
     def _deserialize(self, params):
         self._UserDesignatedUrl = params.get("UserDesignatedUrl")
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3141,6 +3174,8 @@ class SubmitVideoEditJobRequest(AbstractModel):
         :param _Prompt: 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
 支持风格迁移、替换、元素增加、删除控制
         :type Prompt: str
+        :param _Images: 图片数组
+        :type Images: list of Image
         :param _Image: 图片base64或者图片url
 
 - Base64 和 Url 必须提供一个，如果都提供以Url为准。
@@ -3155,6 +3190,7 @@ class SubmitVideoEditJobRequest(AbstractModel):
         """
         self._VideoUrl = None
         self._Prompt = None
+        self._Images = None
         self._Image = None
         self._LogoAdd = None
         self._LogoParam = None
@@ -3185,6 +3221,17 @@ class SubmitVideoEditJobRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def Images(self):
+        r"""图片数组
+        :rtype: list of Image
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
 
     @property
     def Image(self):
@@ -3228,6 +3275,12 @@ class SubmitVideoEditJobRequest(AbstractModel):
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
         self._Prompt = params.get("Prompt")
+        if params.get("Images") is not None:
+            self._Images = []
+            for item in params.get("Images"):
+                obj = Image()
+                obj._deserialize(item)
+                self._Images.append(obj)
         if params.get("Image") is not None:
             self._Image = Image()
             self._Image._deserialize(params.get("Image"))

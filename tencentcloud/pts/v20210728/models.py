@@ -1576,6 +1576,86 @@ class CreateEnvironmentRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _Name: 环境名
+        :type Name: str
+        :param _EnvVars: 环境变量
+        :type EnvVars: list of EnvVar
+        :param _Description: 环境描述
+        :type Description: str
+        """
+        self._ProjectId = None
+        self._Name = None
+        self._EnvVars = None
+        self._Description = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        r"""环境名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnvVars(self):
+        r"""环境变量
+        :rtype: list of EnvVar
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def Description(self):
+        r"""环境描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateEnvironmentResponse(AbstractModel):
     r"""CreateEnvironment返回参数结构体
@@ -1584,10 +1664,24 @@ class CreateEnvironmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._EnvId = None
         self._RequestId = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def RequestId(self):
@@ -1602,6 +1696,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7330,6 +7425,87 @@ class DomainNameConfig(AbstractModel):
         if params.get("DNSConfig") is not None:
             self._DNSConfig = DNSConfig()
             self._DNSConfig._deserialize(params.get("DNSConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvVar(AbstractModel):
+    r"""环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 变量引用键，建议为 C_IDENTIFIER 全大写风格
+        :type Name: str
+        :param _Type: 默认 NORMAL，支持 NORMAL、PASSWORD 类型
+        :type Type: str
+        :param _Value: 变量引用值
+        :type Value: str
+        :param _Description: 描述内容
+        :type Description: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""变量引用键，建议为 C_IDENTIFIER 全大写风格
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""默认 NORMAL，支持 NORMAL、PASSWORD 类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""变量引用值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        r"""描述内容
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

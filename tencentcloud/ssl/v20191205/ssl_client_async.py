@@ -398,7 +398,7 @@ class SslClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCertificateBindResourceTaskDetailResponse:
         """
-        查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
+        查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos、gaap、mqtt、scf、tdmq
         """
         
         kwargs = {}

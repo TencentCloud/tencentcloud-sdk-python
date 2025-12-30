@@ -2236,6 +2236,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceGroupUsageInfo(self, request):
+        r"""本接口根据资源组ID查询资源组CU使用情况
+
+        :param request: Request instance for DescribeResourceGroupUsageInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeResourceGroupUsageInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeResourceGroupUsageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGroupUsageInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGroupUsageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResultDownload(self, request):
         r"""查询结果下载任务
 

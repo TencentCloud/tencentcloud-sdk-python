@@ -6530,6 +6530,10 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         :type FlowGroupId: str
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
         :type CanBatchReject: bool
+        :param _DynamicSignOption: 动态签署方领取链接配置。
+        :type DynamicSignOption: :class:`tencentcloud.essbasic.v20210526.models.DynamicSignOption`
+        :param _RecipientIds: 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。 注：生成动态签署方领取时此参数必传。
+        :type RecipientIds: list of str
         """
         self._Agent = None
         self._FlowIds = None
@@ -6538,6 +6542,8 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         self._Mobile = None
         self._FlowGroupId = None
         self._CanBatchReject = None
+        self._DynamicSignOption = None
+        self._RecipientIds = None
 
     @property
     def Agent(self):
@@ -6624,6 +6630,28 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
     def CanBatchReject(self, CanBatchReject):
         self._CanBatchReject = CanBatchReject
 
+    @property
+    def DynamicSignOption(self):
+        r"""动态签署方领取链接配置。
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DynamicSignOption`
+        """
+        return self._DynamicSignOption
+
+    @DynamicSignOption.setter
+    def DynamicSignOption(self, DynamicSignOption):
+        self._DynamicSignOption = DynamicSignOption
+
+    @property
+    def RecipientIds(self):
+        r"""为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。 注：生成动态签署方领取时此参数必传。
+        :rtype: list of str
+        """
+        return self._RecipientIds
+
+    @RecipientIds.setter
+    def RecipientIds(self, RecipientIds):
+        self._RecipientIds = RecipientIds
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -6635,6 +6663,10 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         self._Mobile = params.get("Mobile")
         self._FlowGroupId = params.get("FlowGroupId")
         self._CanBatchReject = params.get("CanBatchReject")
+        if params.get("DynamicSignOption") is not None:
+            self._DynamicSignOption = DynamicSignOption()
+            self._DynamicSignOption._deserialize(params.get("DynamicSignOption"))
+        self._RecipientIds = params.get("RecipientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22105,6 +22137,57 @@ class DynamicFlowResult(AbstractModel):
                 obj = DynamicFlowApproverResult()
                 obj._deserialize(item)
                 self._DynamicFlowApproverList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicSignOption(AbstractModel):
+    r"""动态签署领取链接配置，当全部签署方均为动态签署方时生效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicReceiveType: 多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+        :type DynamicReceiveType: int
+        :param _OrganizationOpenId: 动态签署方时，预设的企业OpenId，预设企业OpenId后，只允许对应的企业员工进行领取签署。
+        :type OrganizationOpenId: str
+        """
+        self._DynamicReceiveType = None
+        self._OrganizationOpenId = None
+
+    @property
+    def DynamicReceiveType(self):
+        r"""多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+        :rtype: int
+        """
+        return self._DynamicReceiveType
+
+    @DynamicReceiveType.setter
+    def DynamicReceiveType(self, DynamicReceiveType):
+        self._DynamicReceiveType = DynamicReceiveType
+
+    @property
+    def OrganizationOpenId(self):
+        r"""动态签署方时，预设的企业OpenId，预设企业OpenId后，只允许对应的企业员工进行领取签署。
+        :rtype: str
+        """
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+
+    def _deserialize(self, params):
+        self._DynamicReceiveType = params.get("DynamicReceiveType")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1755,6 +1755,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeResourceGroupUsageInfo(
+            self,
+            request: models.DescribeResourceGroupUsageInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGroupUsageInfoResponse:
+        """
+        本接口根据资源组ID查询资源组CU使用情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGroupUsageInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGroupUsageInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResultDownload(
             self,
             request: models.DescribeResultDownloadRequest,

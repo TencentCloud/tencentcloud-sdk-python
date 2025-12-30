@@ -9094,10 +9094,24 @@ class CreateGlobalMaintenanceWindowAndExclusionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ID: 维护窗口ID
+        :type ID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ID = None
         self._RequestId = None
+
+    @property
+    def ID(self):
+        r"""维护窗口ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
 
     @property
     def RequestId(self):
@@ -9112,6 +9126,7 @@ class CreateGlobalMaintenanceWindowAndExclusionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ID = params.get("ID")
         self._RequestId = params.get("RequestId")
 
 
@@ -20917,7 +20932,8 @@ class DescribeGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 最大输出条目数，默认为20
         :type Limit: int
-        :param _Filters: 筛选项
+        :param _Filters: 筛选项，支持按照以下字段过滤：
+- "ID"：维护窗口ID，如：10
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -20948,7 +20964,8 @@ class DescribeGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""筛选项
+        r"""筛选项，支持按照以下字段过滤：
+- "ID"：维护窗口ID，如：10
         :rtype: list of Filter
         """
         return self._Filters

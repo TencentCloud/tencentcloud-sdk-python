@@ -73130,6 +73130,8 @@ class VpnGatewayRoute(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
         :type UpdateTime: str
+        :param _Description: 路由备注
+        :type Description: str
         """
         self._DestinationCidrBlock = None
         self._InstanceType = None
@@ -73140,6 +73142,7 @@ class VpnGatewayRoute(AbstractModel):
         self._Type = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Description = None
 
     @property
     def DestinationCidrBlock(self):
@@ -73240,6 +73243,17 @@ class VpnGatewayRoute(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Description(self):
+        r"""路由备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._DestinationCidrBlock = params.get("DestinationCidrBlock")
@@ -73251,6 +73265,7 @@ class VpnGatewayRoute(AbstractModel):
         self._Type = params.get("Type")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73272,9 +73287,12 @@ class VpnGatewayRouteModify(AbstractModel):
         :type RouteId: str
         :param _Status: VPN网关状态, ENABLE 启用, DISABLE禁用。
         :type Status: str
+        :param _Description: VPN路由备注
+        :type Description: str
         """
         self._RouteId = None
         self._Status = None
+        self._Description = None
 
     @property
     def RouteId(self):
@@ -73298,10 +73316,22 @@ class VpnGatewayRouteModify(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Description(self):
+        r"""VPN路由备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._RouteId = params.get("RouteId")
         self._Status = params.get("Status")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

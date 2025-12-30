@@ -26,6 +26,29 @@ class LkeClient(AbstractClient):
     _service = 'lke'
 
 
+    def CallbackWorkflowToolNode(self, request):
+        r"""工作流工具节点异步回调
+
+        :param request: Request instance for CallbackWorkflowToolNode.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CallbackWorkflowToolNodeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CallbackWorkflowToolNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CallbackWorkflowToolNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.CallbackWorkflowToolNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckAttributeLabelExist(self, request):
         r"""检查属性下的标签名是否存在
 

@@ -54548,10 +54548,8 @@ class TsfPageBusinessLogV2(AbstractModel):
         :param _Content: 业务日志列表
         :type Content: list of BusinessLogV2
         :param _ScrollId: 游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollId: str
         :param _Status: 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SearchAfter: 查询es时，使用searchAfter返回的游标
         :type SearchAfter: list of str
@@ -54587,7 +54585,6 @@ class TsfPageBusinessLogV2(AbstractModel):
     @property
     def ScrollId(self):
         r"""游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScrollId
@@ -54599,7 +54596,6 @@ class TsfPageBusinessLogV2(AbstractModel):
     @property
     def Status(self):
         r"""查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -55680,10 +55676,8 @@ class TsfPageStdoutLogV2(AbstractModel):
         :param _Content: 标准输出日志列表
         :type Content: list of StdoutLogV2
         :param _ScrollId: 游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollId: str
         :param _Status: 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SearchAfter: 查询es使用searchAfter时，游标
         :type SearchAfter: list of str
@@ -55719,7 +55713,6 @@ class TsfPageStdoutLogV2(AbstractModel):
     @property
     def ScrollId(self):
         r"""游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScrollId
@@ -55731,7 +55724,6 @@ class TsfPageStdoutLogV2(AbstractModel):
     @property
     def Status(self):
         r"""查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status

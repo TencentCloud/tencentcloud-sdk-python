@@ -25,6 +25,24 @@ class LkeClient(AbstractClient):
     _endpoint = 'lke.tencentcloudapi.com'
     _service = 'lke'
 
+    async def CallbackWorkflowToolNode(
+            self,
+            request: models.CallbackWorkflowToolNodeRequest,
+            opts: Dict = None,
+    ) -> models.CallbackWorkflowToolNodeResponse:
+        """
+        工作流工具节点异步回调
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CallbackWorkflowToolNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CallbackWorkflowToolNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckAttributeLabelExist(
             self,
             request: models.CheckAttributeLabelExistRequest,

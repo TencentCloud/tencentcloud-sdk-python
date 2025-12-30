@@ -18995,6 +18995,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         r"""
         :param _ModelName: 模型名称。
 当前支持的模型列表：
+Hunyuan,
 GEM，
 Jimeng，
 Qwen。
@@ -19040,6 +19041,7 @@ Qwen。
     def ModelName(self):
         r"""模型名称。
 当前支持的模型列表：
+Hunyuan,
 GEM，
 Jimeng，
 Qwen。
@@ -19231,6 +19233,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         r"""
         :param _ModelName: 模型名称。
 当前支持的模型列表:
+Hunyuan,
 Hailuo，
 Kling，
 Jimeng，
@@ -19316,6 +19319,7 @@ GV。
     def ModelName(self):
         r"""模型名称。
 当前支持的模型列表:
+Hunyuan,
 Hailuo，
 Kling，
 Jimeng，
