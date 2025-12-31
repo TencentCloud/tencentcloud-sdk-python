@@ -3165,16 +3165,21 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoUrl: 输入视频
-
-- 视频格式：MP4
-- 视频时长：5s以内
-- 视频分辨率：无限制（待验证是否可以无损输出）
+        :param _VideoUrl: 参考视频URL。默认为待编辑视频。
+- 视频格式：支持MP4
+- 视频时长：输入视频时长≤5秒
+- 视频大小：不超过200M
+- 视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p
         :type VideoUrl: str
-        :param _Prompt: 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
-支持风格迁移、替换、元素增加、删除控制
+        :param _Prompt: 视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力
+- 最多支持200个 utf-8 字符（首尾空格不计入字符数）
+- 不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图
         :type Prompt: str
-        :param _Images: 图片数组
+        :param _Images: 参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。
+- 支持传入图片Base64编码或图片URL
+- 图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式
+- 图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。
+示例值：[{ "Url": "https://console.cloud.tencent.com/cos/image.png"}]
         :type Images: list of Image
         :param _Image: 图片base64或者图片url
 
@@ -3183,9 +3188,16 @@ class SubmitVideoEditJobRequest(AbstractModel):
 - 支持jpg，png，jpeg，webp，bmp，tiff 格式
 - 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
         :type Image: :class:`tencentcloud.vclm.v20240523.models.Image`
-        :param _LogoAdd: 为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
+1：添加标识；
+0：不添加标识；
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+
         :type LogoAdd: int
-        :param _LogoParam: 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :param _LogoParam: 标识内容设置。
+默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成。
+
         :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         self._VideoUrl = None
@@ -3197,11 +3209,11 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        r"""输入视频
-
-- 视频格式：MP4
-- 视频时长：5s以内
-- 视频分辨率：无限制（待验证是否可以无损输出）
+        r"""参考视频URL。默认为待编辑视频。
+- 视频格式：支持MP4
+- 视频时长：输入视频时长≤5秒
+- 视频大小：不超过200M
+- 视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p
         :rtype: str
         """
         return self._VideoUrl
@@ -3212,8 +3224,9 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
-支持风格迁移、替换、元素增加、删除控制
+        r"""视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力
+- 最多支持200个 utf-8 字符（首尾空格不计入字符数）
+- 不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图
         :rtype: str
         """
         return self._Prompt
@@ -3224,7 +3237,11 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""图片数组
+        r"""参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。
+- 支持传入图片Base64编码或图片URL
+- 图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式
+- 图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。
+示例值：[{ "Url": "https://console.cloud.tencent.com/cos/image.png"}]
         :rtype: list of Image
         """
         return self._Images
@@ -3235,6 +3252,8 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @property
     def Image(self):
+        warnings.warn("parameter `Image` is deprecated", DeprecationWarning) 
+
         r"""图片base64或者图片url
 
 - Base64 和 Url 必须提供一个，如果都提供以Url为准。
@@ -3247,11 +3266,18 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @Image.setter
     def Image(self, Image):
+        warnings.warn("parameter `Image` is deprecated", DeprecationWarning) 
+
         self._Image = Image
 
     @property
     def LogoAdd(self):
-        r"""为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        r"""为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
+1：添加标识；
+0：不添加标识；
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+
         :rtype: int
         """
         return self._LogoAdd
@@ -3262,7 +3288,9 @@ class SubmitVideoEditJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        r"""标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        r"""标识内容设置。
+默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成。
+
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         return self._LogoParam

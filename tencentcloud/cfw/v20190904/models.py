@@ -403,6 +403,102 @@ class AcListsData(AbstractModel):
         
 
 
+class AccessInstanceInfo(AbstractModel):
+    r"""接入防火墙实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceType: 实例类型VPC or DIRECTCONNECT等类型
+        :type InstanceType: str
+        :param _InstanceRegion: 实例所在地域
+        :type InstanceRegion: str
+        :param _AccessCidrMode: 接入防火墙的网段模式：0-不接入，1-接入实例关联的所有网段，2-接入用户自定义的网段
+        :type AccessCidrMode: int
+        :param _AccessCidrList: 接入防火墙的网段列表
+        :type AccessCidrList: list of str
+        """
+        self._InstanceId = None
+        self._InstanceType = None
+        self._InstanceRegion = None
+        self._AccessCidrMode = None
+        self._AccessCidrList = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        r"""实例类型VPC or DIRECTCONNECT等类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceRegion(self):
+        r"""实例所在地域
+        :rtype: str
+        """
+        return self._InstanceRegion
+
+    @InstanceRegion.setter
+    def InstanceRegion(self, InstanceRegion):
+        self._InstanceRegion = InstanceRegion
+
+    @property
+    def AccessCidrMode(self):
+        r"""接入防火墙的网段模式：0-不接入，1-接入实例关联的所有网段，2-接入用户自定义的网段
+        :rtype: int
+        """
+        return self._AccessCidrMode
+
+    @AccessCidrMode.setter
+    def AccessCidrMode(self, AccessCidrMode):
+        self._AccessCidrMode = AccessCidrMode
+
+    @property
+    def AccessCidrList(self):
+        r"""接入防火墙的网段列表
+        :rtype: list of str
+        """
+        return self._AccessCidrList
+
+    @AccessCidrList.setter
+    def AccessCidrList(self, AccessCidrList):
+        self._AccessCidrList = AccessCidrList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceRegion = params.get("InstanceRegion")
+        self._AccessCidrMode = params.get("AccessCidrMode")
+        self._AccessCidrList = params.get("AccessCidrList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddAclRuleRequest(AbstractModel):
     r"""AddAclRule请求参数结构体
 
@@ -1721,6 +1817,231 @@ class BlockIgnoreRule(AbstractModel):
             self._CustomRule = CustomWhiteRule()
             self._CustomRule._deserialize(params.get("CustomRule"))
         self._FwType = params.get("FwType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnAssociatedInstance(AbstractModel):
+    r"""CCN关联的实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InsType: 实例类型
+        :type InsType: str
+        :param _CidrLst: 实例的网段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrLst: list of str
+        :param _InstanceRegion: 实例所属地域
+        :type InstanceRegion: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InsType = None
+        self._CidrLst = None
+        self._InstanceRegion = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InsType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InsType
+
+    @InsType.setter
+    def InsType(self, InsType):
+        self._InsType = InsType
+
+    @property
+    def CidrLst(self):
+        r"""实例的网段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CidrLst
+
+    @CidrLst.setter
+    def CidrLst(self, CidrLst):
+        self._CidrLst = CidrLst
+
+    @property
+    def InstanceRegion(self):
+        r"""实例所属地域
+        :rtype: str
+        """
+        return self._InstanceRegion
+
+    @InstanceRegion.setter
+    def InstanceRegion(self, InstanceRegion):
+        self._InstanceRegion = InstanceRegion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InsType = params.get("InsType")
+        self._CidrLst = params.get("CidrLst")
+        self._InstanceRegion = params.get("InstanceRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnSwitchInfo(AbstractModel):
+    r"""ccn实例开关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: ccn的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
+        :param _SwitchMode: 开关接入模式，1:自动接入,2:手动接入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchMode: int
+        :param _RoutingMode: 引流路由方法 0:多路由表, 1:策略路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingMode: int
+        :param _RegionCidrConfigs: 地域级别CIDR配置
+        :type RegionCidrConfigs: list of RegionCidrConfig
+        :param _InterconnectPairs: 互联集合对列表
+        :type InterconnectPairs: list of InterconnectPair
+        :param _FwVpcCidr: 引流通用CIDR(废弃)
+        :type FwVpcCidr: str
+        """
+        self._CcnId = None
+        self._SwitchMode = None
+        self._RoutingMode = None
+        self._RegionCidrConfigs = None
+        self._InterconnectPairs = None
+        self._FwVpcCidr = None
+
+    @property
+    def CcnId(self):
+        r"""ccn的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def SwitchMode(self):
+        r"""开关接入模式，1:自动接入,2:手动接入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
+    @property
+    def RoutingMode(self):
+        r"""引流路由方法 0:多路由表, 1:策略路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+    @property
+    def RegionCidrConfigs(self):
+        r"""地域级别CIDR配置
+        :rtype: list of RegionCidrConfig
+        """
+        return self._RegionCidrConfigs
+
+    @RegionCidrConfigs.setter
+    def RegionCidrConfigs(self, RegionCidrConfigs):
+        self._RegionCidrConfigs = RegionCidrConfigs
+
+    @property
+    def InterconnectPairs(self):
+        r"""互联集合对列表
+        :rtype: list of InterconnectPair
+        """
+        return self._InterconnectPairs
+
+    @InterconnectPairs.setter
+    def InterconnectPairs(self, InterconnectPairs):
+        self._InterconnectPairs = InterconnectPairs
+
+    @property
+    def FwVpcCidr(self):
+        r"""引流通用CIDR(废弃)
+        :rtype: str
+        """
+        return self._FwVpcCidr
+
+    @FwVpcCidr.setter
+    def FwVpcCidr(self, FwVpcCidr):
+        self._FwVpcCidr = FwVpcCidr
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._SwitchMode = params.get("SwitchMode")
+        self._RoutingMode = params.get("RoutingMode")
+        if params.get("RegionCidrConfigs") is not None:
+            self._RegionCidrConfigs = []
+            for item in params.get("RegionCidrConfigs"):
+                obj = RegionCidrConfig()
+                obj._deserialize(item)
+                self._RegionCidrConfigs.append(obj)
+        if params.get("InterconnectPairs") is not None:
+            self._InterconnectPairs = []
+            for item in params.get("InterconnectPairs"):
+                obj = InterconnectPair()
+                obj._deserialize(item)
+                self._InterconnectPairs.append(obj)
+        self._FwVpcCidr = params.get("FwVpcCidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8530,6 +8851,320 @@ class DescribeBlockStaticListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCcnAssociatedInstancesRequest(AbstractModel):
+    r"""DescribeCcnAssociatedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        """
+        self._CcnId = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnAssociatedInstancesResponse(AbstractModel):
+    r"""DescribeCcnAssociatedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 实例总数
+        :type Total: int
+        :param _CcnAssociatedInstances: 云联网关联的实例信息
+        :type CcnAssociatedInstances: list of CcnAssociatedInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._CcnAssociatedInstances = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""实例总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def CcnAssociatedInstances(self):
+        r"""云联网关联的实例信息
+        :rtype: list of CcnAssociatedInstance
+        """
+        return self._CcnAssociatedInstances
+
+    @CcnAssociatedInstances.setter
+    def CcnAssociatedInstances(self, CcnAssociatedInstances):
+        self._CcnAssociatedInstances = CcnAssociatedInstances
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("CcnAssociatedInstances") is not None:
+            self._CcnAssociatedInstances = []
+            for item in params.get("CcnAssociatedInstances"):
+                obj = CcnAssociatedInstance()
+                obj._deserialize(item)
+                self._CcnAssociatedInstances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnInstanceRegionStatusRequest(AbstractModel):
+    r"""DescribeCcnInstanceRegionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _InstanceIds: 要查询引流网络部署状态的云联网关联的实例ID列表
+        :type InstanceIds: list of str
+        :param _RoutingMode: 引流路由方法 0:多路由表, 1:策略路由
+        :type RoutingMode: int
+        """
+        self._CcnId = None
+        self._InstanceIds = None
+        self._RoutingMode = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def InstanceIds(self):
+        r"""要查询引流网络部署状态的云联网关联的实例ID列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def RoutingMode(self):
+        r"""引流路由方法 0:多路由表, 1:策略路由
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._RoutingMode = params.get("RoutingMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnInstanceRegionStatusResponse(AbstractModel):
+    r"""DescribeCcnInstanceRegionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 地域总数量
+        :type Total: int
+        :param _RegionFwStatus: 地域防火墙引流网络状态列表
+        :type RegionFwStatus: list of RegionFwStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RegionFwStatus = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""地域总数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RegionFwStatus(self):
+        r"""地域防火墙引流网络状态列表
+        :rtype: list of RegionFwStatus
+        """
+        return self._RegionFwStatus
+
+    @RegionFwStatus.setter
+    def RegionFwStatus(self, RegionFwStatus):
+        self._RegionFwStatus = RegionFwStatus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("RegionFwStatus") is not None:
+            self._RegionFwStatus = []
+            for item in params.get("RegionFwStatus"):
+                obj = RegionFwStatus()
+                obj._deserialize(item)
+                self._RegionFwStatus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnVpcFwSwitchRequest(AbstractModel):
+    r"""DescribeCcnVpcFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        """
+        self._CcnId = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnVpcFwSwitchResponse(AbstractModel):
+    r"""DescribeCcnVpcFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterconnectPairs: 互联对配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterconnectPairs: list of InterconnectPair
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InterconnectPairs = None
+        self._RequestId = None
+
+    @property
+    def InterconnectPairs(self):
+        r"""互联对配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InterconnectPair
+        """
+        return self._InterconnectPairs
+
+    @InterconnectPairs.setter
+    def InterconnectPairs(self, InterconnectPairs):
+        self._InterconnectPairs = InterconnectPairs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InterconnectPairs") is not None:
+            self._InterconnectPairs = []
+            for item in params.get("InterconnectPairs"):
+                obj = InterconnectPair()
+                obj._deserialize(item)
+                self._InterconnectPairs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCfwEipsRequest(AbstractModel):
     r"""DescribeCfwEips请求参数结构体
 
@@ -12708,6 +13343,92 @@ class DescribeSourceAssetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSwitchErrorRequest(AbstractModel):
+    r"""DescribeSwitchError请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FwType: EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+        :type FwType: str
+        """
+        self._FwType = None
+
+    @property
+    def FwType(self):
+        r"""EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+
+    def _deserialize(self, params):
+        self._FwType = params.get("FwType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSwitchErrorResponse(AbstractModel):
+    r"""DescribeSwitchError返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 错误信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of SwitchError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""错误信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SwitchError
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SwitchError()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSwitchListsRequest(AbstractModel):
     r"""DescribeSwitchLists请求参数结构体
 
@@ -13708,6 +14429,74 @@ class DescribeVpcAcRuleResponse(AbstractModel):
                 obj = VpcRuleItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVpcFwCcnPolicyWhiteListRequest(AbstractModel):
+    r"""DescribeVpcFwCcnPolicyWhiteList请求参数结构体
+
+    """
+
+
+class DescribeVpcFwCcnPolicyWhiteListResponse(AbstractModel):
+    r"""DescribeVpcFwCcnPolicyWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupportCcnPolicy: 支持自动接入和策略路由的CCN列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportCcnPolicy: list of str
+        :param _SupportCcnPolicyCidr: 自动接入中支持自定义cidr的CCN列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportCcnPolicyCidr: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SupportCcnPolicy = None
+        self._SupportCcnPolicyCidr = None
+        self._RequestId = None
+
+    @property
+    def SupportCcnPolicy(self):
+        r"""支持自动接入和策略路由的CCN列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SupportCcnPolicy
+
+    @SupportCcnPolicy.setter
+    def SupportCcnPolicy(self, SupportCcnPolicy):
+        self._SupportCcnPolicy = SupportCcnPolicy
+
+    @property
+    def SupportCcnPolicyCidr(self):
+        r"""自动接入中支持自定义cidr的CCN列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SupportCcnPolicyCidr
+
+    @SupportCcnPolicyCidr.setter
+    def SupportCcnPolicyCidr(self, SupportCcnPolicyCidr):
+        self._SupportCcnPolicyCidr = SupportCcnPolicyCidr
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SupportCcnPolicy = params.get("SupportCcnPolicy")
+        self._SupportCcnPolicyCidr = params.get("SupportCcnPolicyCidr")
         self._RequestId = params.get("RequestId")
 
 
@@ -16279,6 +17068,82 @@ class IntArray(AbstractModel):
         
 
 
+class InterconnectPair(AbstractModel):
+    r"""接入防火墙的互联集合对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupA: 集合A
+        :type GroupA: list of AccessInstanceInfo
+        :param _GroupB: 集合B
+        :type GroupB: list of AccessInstanceInfo
+        :param _InterconnectMode: 互联模式："CrossConnect": 交叉互联（组A内每个实例和组B内每个实例互联），"FullMesh": 全互联（组A实际和组B内容一致，相当于组内两两互联）
+        :type InterconnectMode: str
+        """
+        self._GroupA = None
+        self._GroupB = None
+        self._InterconnectMode = None
+
+    @property
+    def GroupA(self):
+        r"""集合A
+        :rtype: list of AccessInstanceInfo
+        """
+        return self._GroupA
+
+    @GroupA.setter
+    def GroupA(self, GroupA):
+        self._GroupA = GroupA
+
+    @property
+    def GroupB(self):
+        r"""集合B
+        :rtype: list of AccessInstanceInfo
+        """
+        return self._GroupB
+
+    @GroupB.setter
+    def GroupB(self, GroupB):
+        self._GroupB = GroupB
+
+    @property
+    def InterconnectMode(self):
+        r"""互联模式："CrossConnect": 交叉互联（组A内每个实例和组B内每个实例互联），"FullMesh": 全互联（组A实际和组B内容一致，相当于组内两两互联）
+        :rtype: str
+        """
+        return self._InterconnectMode
+
+    @InterconnectMode.setter
+    def InterconnectMode(self, InterconnectMode):
+        self._InterconnectMode = InterconnectMode
+
+
+    def _deserialize(self, params):
+        if params.get("GroupA") is not None:
+            self._GroupA = []
+            for item in params.get("GroupA"):
+                obj = AccessInstanceInfo()
+                obj._deserialize(item)
+                self._GroupA.append(obj)
+        if params.get("GroupB") is not None:
+            self._GroupB = []
+            for item in params.get("GroupB"):
+                obj = AccessInstanceInfo()
+                obj._deserialize(item)
+                self._GroupB.append(obj)
+        self._InterconnectMode = params.get("InterconnectMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntrusionDefenseRule(AbstractModel):
     r"""入侵防御封禁列表、放通列表添加规则入参
 
@@ -18102,6 +18967,90 @@ class ModifyBlockTopRequest(AbstractModel):
 
 class ModifyBlockTopResponse(AbstractModel):
     r"""ModifyBlockTop返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterVpcFwSwitchRequest(AbstractModel):
+    r"""ModifyClusterVpcFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 开关，0：关闭，1：开启
+        :type Enable: int
+        :param _CcnSwitch: 集群模式vpc间防火墙ccn开关信息
+        :type CcnSwitch: list of CcnSwitchInfo
+        """
+        self._Enable = None
+        self._CcnSwitch = None
+
+    @property
+    def Enable(self):
+        r"""开关，0：关闭，1：开启
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CcnSwitch(self):
+        r"""集群模式vpc间防火墙ccn开关信息
+        :rtype: list of CcnSwitchInfo
+        """
+        return self._CcnSwitch
+
+    @CcnSwitch.setter
+    def CcnSwitch(self, CcnSwitch):
+        self._CcnSwitch = CcnSwitch
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        if params.get("CcnSwitch") is not None:
+            self._CcnSwitch = []
+            for item in params.get("CcnSwitch"):
+                obj = CcnSwitchInfo()
+                obj._deserialize(item)
+                self._CcnSwitch.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterVpcFwSwitchResponse(AbstractModel):
+    r"""ModifyClusterVpcFwSwitch返回参数结构体
 
     """
 
@@ -21754,6 +22703,152 @@ class NewModeItems(AbstractModel):
         self._VpcList = params.get("VpcList")
         self._Eips = params.get("Eips")
         self._AddCount = params.get("AddCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionCidrConfig(AbstractModel):
+    r"""引流地域CIDR配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 引流地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _CidrMode: CIDR模式：0-跳过，1-自动，2-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrMode: int
+        :param _CustomCidr: 自定义CIDR（CidrMode=2时必填），其它时候为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomCidr: str
+        """
+        self._Region = None
+        self._CidrMode = None
+        self._CustomCidr = None
+
+    @property
+    def Region(self):
+        r"""引流地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def CidrMode(self):
+        r"""CIDR模式：0-跳过，1-自动，2-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CidrMode
+
+    @CidrMode.setter
+    def CidrMode(self, CidrMode):
+        self._CidrMode = CidrMode
+
+    @property
+    def CustomCidr(self):
+        r"""自定义CIDR（CidrMode=2时必填），其它时候为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomCidr
+
+    @CustomCidr.setter
+    def CustomCidr(self, CustomCidr):
+        self._CustomCidr = CustomCidr
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._CidrMode = params.get("CidrMode")
+        self._CustomCidr = params.get("CustomCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionFwStatus(AbstractModel):
+    r"""地域的防火墙引流网络状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+        :type Region: str
+        :param _Status: 引流网络部署状态
+1. "NotDeployed"  防火墙集群未部署
+2. "Deployed"        防火墙集群已部署，但未创建引流网络
+3. "Auto"                防火墙集群已部署，并自动选择网段创建了引流网络
+4. "Custom"            防火墙集群已部署，并根据用户自定义网段创建了引流网络
+        :type Status: str
+        :param _Cidr: 引流网络的cidr，如果没有部署引流网络则为空
+        :type Cidr: str
+        """
+        self._Region = None
+        self._Status = None
+        self._Cidr = None
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        r"""引流网络部署状态
+1. "NotDeployed"  防火墙集群未部署
+2. "Deployed"        防火墙集群已部署，但未创建引流网络
+3. "Auto"                防火墙集群已部署，并自动选择网段创建了引流网络
+4. "Custom"            防火墙集群已部署，并根据用户自定义网段创建了引流网络
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cidr(self):
+        r"""引流网络的cidr，如果没有部署引流网络则为空
+        :rtype: str
+        """
+        return self._Cidr
+
+    @Cidr.setter
+    def Cidr(self, Cidr):
+        self._Cidr = Cidr
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._Cidr = params.get("Cidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25580,6 +26675,95 @@ class StorageHistogramShow(AbstractModel):
         
 
 
+class SwitchError(AbstractModel):
+    r"""开关切换错误
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrIns: 开关唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrIns: str
+        :param _ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param _ErrKey: 错误类型区分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrKey: str
+        :param _InsertTime: 错误时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: str
+        """
+        self._ErrIns = None
+        self._ErrMsg = None
+        self._ErrKey = None
+        self._InsertTime = None
+
+    @property
+    def ErrIns(self):
+        r"""开关唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrIns
+
+    @ErrIns.setter
+    def ErrIns(self, ErrIns):
+        self._ErrIns = ErrIns
+
+    @property
+    def ErrMsg(self):
+        r"""错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def ErrKey(self):
+        r"""错误类型区分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrKey
+
+    @ErrKey.setter
+    def ErrKey(self, ErrKey):
+        self._ErrKey = ErrKey
+
+    @property
+    def InsertTime(self):
+        r"""错误时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+
+    def _deserialize(self, params):
+        self._ErrIns = params.get("ErrIns")
+        self._ErrMsg = params.get("ErrMsg")
+        self._ErrKey = params.get("ErrKey")
+        self._InsertTime = params.get("InsertTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SwitchListsData(AbstractModel):
     r"""防火墙开关列表对象
 
@@ -26388,6 +27572,155 @@ class UnHandleEventDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCheckCcnNonDirectFlagRequest(AbstractModel):
+    r"""UpdateCheckCcnNonDirectFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        """
+        self._CcnId = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCheckCcnNonDirectFlagResponse(AbstractModel):
+    r"""UpdateCheckCcnNonDirectFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 检测更新状态
+"Checked"：重新检测完成
+"Checking": 正在重新检测中，请稍后刷新状态查看
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        r"""检测更新状态
+"Checked"：重新检测完成
+"Checking": 正在重新检测中，请稍后刷新状态查看
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateClusterVpcFwRequest(AbstractModel):
+    r"""UpdateClusterVpcFw请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnSwitch: ccn防火墙开关配置信息
+        :type CcnSwitch: :class:`tencentcloud.cfw.v20190904.models.CcnSwitchInfo`
+        """
+        self._CcnSwitch = None
+
+    @property
+    def CcnSwitch(self):
+        r"""ccn防火墙开关配置信息
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CcnSwitchInfo`
+        """
+        return self._CcnSwitch
+
+    @CcnSwitch.setter
+    def CcnSwitch(self, CcnSwitch):
+        self._CcnSwitch = CcnSwitch
+
+
+    def _deserialize(self, params):
+        if params.get("CcnSwitch") is not None:
+            self._CcnSwitch = CcnSwitchInfo()
+            self._CcnSwitch._deserialize(params.get("CcnSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateClusterVpcFwResponse(AbstractModel):
+    r"""UpdateClusterVpcFw返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class VpcDnsInfo(AbstractModel):

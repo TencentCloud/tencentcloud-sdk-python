@@ -637,6 +637,62 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCcnAssociatedInstances(
+            self,
+            request: models.DescribeCcnAssociatedInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnAssociatedInstancesResponse:
+        """
+        查询云联网关联的实例信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnAssociatedInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnAssociatedInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCcnInstanceRegionStatus(
+            self,
+            request: models.DescribeCcnInstanceRegionStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnInstanceRegionStatusResponse:
+        """
+        查询CCN关联实例的地域防火墙引流网络部署状态
+        1.根据CCN ID和实例ID列表，返回实例对应地域的防火墙引流网络部署状态
+        2.如果传入实例ID列表为空，则返回CCN关联的所有实例的地域防火墙引流网络部署状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnInstanceRegionStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnInstanceRegionStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCcnVpcFwSwitch(
+            self,
+            request: models.DescribeCcnVpcFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnVpcFwSwitchResponse:
+        """
+        查询CCN VPC防火墙开关配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnVpcFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnVpcFwSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCfwEips(
             self,
             request: models.DescribeCfwEipsRequest,
@@ -1105,6 +1161,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSwitchError(
+            self,
+            request: models.DescribeSwitchErrorRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSwitchErrorResponse:
+        """
+        互联网边界防火墙开关横幅错误信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSwitchError"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSwitchErrorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSwitchLists(
             self,
             request: models.DescribeSwitchListsRequest,
@@ -1208,6 +1282,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeVpcAcRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVpcAcRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVpcFwCcnPolicyWhiteList(
+            self,
+            request: models.DescribeVpcFwCcnPolicyWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVpcFwCcnPolicyWhiteListResponse:
+        """
+        查询VPC防火墙策略路由功能开白的CCN列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVpcFwCcnPolicyWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVpcFwCcnPolicyWhiteListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1445,6 +1537,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyBlockTop"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBlockTopResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterVpcFwSwitch(
+            self,
+            request: models.ModifyClusterVpcFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterVpcFwSwitchResponse:
+        """
+        修改集群模式VPC防火墙开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterVpcFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterVpcFwSwitchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2043,6 +2153,42 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "SyncFwOperate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncFwOperateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateCheckCcnNonDirectFlag(
+            self,
+            request: models.UpdateCheckCcnNonDirectFlagRequest,
+            opts: Dict = None,
+    ) -> models.UpdateCheckCcnNonDirectFlagResponse:
+        """
+        重新检测CCN中接入VPC防火墙的VPC实例非同城直通标记
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateCheckCcnNonDirectFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateCheckCcnNonDirectFlagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateClusterVpcFw(
+            self,
+            request: models.UpdateClusterVpcFwRequest,
+            opts: Dict = None,
+    ) -> models.UpdateClusterVpcFwResponse:
+        """
+        修改更新CCN中VPC防火墙策略配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateClusterVpcFw"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateClusterVpcFwResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

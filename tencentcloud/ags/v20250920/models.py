@@ -392,7 +392,7 @@ class CreateSandboxToolRequest(AbstractModel):
         r"""
         :param _ToolName: 沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
         :type ToolName: str
-        :param _ToolType: 沙箱工具类型，目前支持：browser、code-interpreter
+        :param _ToolType: 沙箱工具类型，目前支持：browser、code-interpreter、custom
         :type ToolType: str
         :param _NetworkConfiguration: 网络配置
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
@@ -408,6 +408,8 @@ class CreateSandboxToolRequest(AbstractModel):
         :type RoleArn: str
         :param _StorageMounts: 沙箱工具存储配置
         :type StorageMounts: list of StorageMount
+        :param _CustomConfiguration: 沙箱工具自定义配置
+        :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         self._ToolName = None
         self._ToolType = None
@@ -418,6 +420,7 @@ class CreateSandboxToolRequest(AbstractModel):
         self._ClientToken = None
         self._RoleArn = None
         self._StorageMounts = None
+        self._CustomConfiguration = None
 
     @property
     def ToolName(self):
@@ -432,7 +435,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def ToolType(self):
-        r"""沙箱工具类型，目前支持：browser、code-interpreter
+        r"""沙箱工具类型，目前支持：browser、code-interpreter、custom
         :rtype: str
         """
         return self._ToolType
@@ -518,6 +521,17 @@ class CreateSandboxToolRequest(AbstractModel):
     def StorageMounts(self, StorageMounts):
         self._StorageMounts = StorageMounts
 
+    @property
+    def CustomConfiguration(self):
+        r"""沙箱工具自定义配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        """
+        return self._CustomConfiguration
+
+    @CustomConfiguration.setter
+    def CustomConfiguration(self, CustomConfiguration):
+        self._CustomConfiguration = CustomConfiguration
+
 
     def _deserialize(self, params):
         self._ToolName = params.get("ToolName")
@@ -541,6 +555,9 @@ class CreateSandboxToolRequest(AbstractModel):
                 obj = StorageMount()
                 obj._deserialize(item)
                 self._StorageMounts.append(obj)
+        if params.get("CustomConfiguration") is not None:
+            self._CustomConfiguration = CustomConfiguration()
+            self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -592,6 +609,331 @@ class CreateSandboxToolResponse(AbstractModel):
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomConfiguration(AbstractModel):
+    r"""沙箱自定义配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        :param _Command: 启动命令
+        :type Command: list of str
+        :param _Args: 启动参数
+        :type Args: list of str
+        :param _Env: 环境变量
+        :type Env: list of EnvVar
+        :param _Ports: 端口配置
+        :type Ports: list of PortConfiguration
+        :param _Resources: 资源配置
+        :type Resources: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
+        :param _Probe: 探针配置
+        :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        """
+        self._Image = None
+        self._ImageRegistryType = None
+        self._Command = None
+        self._Args = None
+        self._Env = None
+        self._Ports = None
+        self._Resources = None
+        self._Probe = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def Command(self):
+        r"""启动命令
+        :rtype: list of str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        r"""启动参数
+        :rtype: list of str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def Env(self):
+        r"""环境变量
+        :rtype: list of EnvVar
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Ports(self):
+        r"""端口配置
+        :rtype: list of PortConfiguration
+        """
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def Resources(self):
+        r"""资源配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Probe(self):
+        r"""探针配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        """
+        return self._Probe
+
+    @Probe.setter
+    def Probe(self, Probe):
+        self._Probe = Probe
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        if params.get("Ports") is not None:
+            self._Ports = []
+            for item in params.get("Ports"):
+                obj = PortConfiguration()
+                obj._deserialize(item)
+                self._Ports.append(obj)
+        if params.get("Resources") is not None:
+            self._Resources = ResourceConfiguration()
+            self._Resources._deserialize(params.get("Resources"))
+        if params.get("Probe") is not None:
+            self._Probe = ProbeConfiguration()
+            self._Probe._deserialize(params.get("Probe"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomConfigurationDetail(AbstractModel):
+    r"""沙箱自定义配置详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageRegistryType: 镜像仓库类型：`TCR`、`CCR`。
+        :type ImageRegistryType: str
+        :param _ImageDigest: 镜像 Digest
+        :type ImageDigest: str
+        :param _Command: 启动命令
+        :type Command: list of str
+        :param _Args: 启动参数
+        :type Args: list of str
+        :param _Env: 环境变量
+        :type Env: list of EnvVar
+        :param _Ports: 端口配置
+        :type Ports: list of PortConfiguration
+        :param _Resources: 资源配置
+        :type Resources: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
+        :param _Probe: 探针配置
+        :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        """
+        self._Image = None
+        self._ImageRegistryType = None
+        self._ImageDigest = None
+        self._Command = None
+        self._Args = None
+        self._Env = None
+        self._Ports = None
+        self._Resources = None
+        self._Probe = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`TCR`、`CCR`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def ImageDigest(self):
+        r"""镜像 Digest
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def Command(self):
+        r"""启动命令
+        :rtype: list of str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        r"""启动参数
+        :rtype: list of str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def Env(self):
+        r"""环境变量
+        :rtype: list of EnvVar
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Ports(self):
+        r"""端口配置
+        :rtype: list of PortConfiguration
+        """
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def Resources(self):
+        r"""资源配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Probe(self):
+        r"""探针配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        """
+        return self._Probe
+
+    @Probe.setter
+    def Probe(self, Probe):
+        self._Probe = Probe
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._ImageDigest = params.get("ImageDigest")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        if params.get("Ports") is not None:
+            self._Ports = []
+            for item in params.get("Ports"):
+                obj = PortConfiguration()
+                obj._deserialize(item)
+                self._Ports.append(obj)
+        if params.get("Resources") is not None:
+            self._Resources = ResourceConfiguration()
+            self._Resources._deserialize(params.get("Resources"))
+        if params.get("Probe") is not None:
+            self._Probe = ProbeConfiguration()
+            self._Probe._deserialize(params.get("Probe"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAPIKeyRequest(AbstractModel):
@@ -1104,6 +1446,57 @@ class DescribeSandboxToolListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnvVar(AbstractModel):
+    r"""环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 环境变量名
+        :type Name: str
+        :param _Value: 环境变量值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""环境变量名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""环境变量值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""过滤列表规则
 
@@ -1145,6 +1538,153 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpGetAction(AbstractModel):
+    r"""HTTP GET 探测动作配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 路径
+        :type Path: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Scheme: 协议
+        :type Scheme: str
+        """
+        self._Path = None
+        self._Port = None
+        self._Scheme = None
+
+    @property
+    def Path(self):
+        r"""路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Scheme(self):
+        r"""协议
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Port = params.get("Port")
+        self._Scheme = params.get("Scheme")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageStorageSource(AbstractModel):
+    r"""镜像卷挂载源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reference: 镜像地址
+        :type Reference: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        :param _SubPath: 镜像内部的路径
+        :type SubPath: str
+        :param _Digest: 镜像 Digest，请求时无需传入
+        :type Digest: str
+        """
+        self._Reference = None
+        self._ImageRegistryType = None
+        self._SubPath = None
+        self._Digest = None
+
+    @property
+    def Reference(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def SubPath(self):
+        r"""镜像内部的路径
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+    @property
+    def Digest(self):
+        r"""镜像 Digest，请求时无需传入
+        :rtype: str
+        """
+        return self._Digest
+
+    @Digest.setter
+    def Digest(self, Digest):
+        self._Digest = Digest
+
+
+    def _deserialize(self, params):
+        self._Reference = params.get("Reference")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._SubPath = params.get("SubPath")
+        self._Digest = params.get("Digest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1289,6 +1829,236 @@ class NetworkConfiguration(AbstractModel):
         
 
 
+class PortConfiguration(AbstractModel):
+    r"""端口配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 端口名
+        :type Name: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Protocol: 协议
+        :type Protocol: str
+        """
+        self._Name = None
+        self._Port = None
+        self._Protocol = None
+
+    @property
+    def Name(self):
+        r"""端口名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Protocol(self):
+        r"""协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Port = params.get("Port")
+        self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProbeConfiguration(AbstractModel):
+    r"""健康检查探针配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpGet: HTTP GET 探测配置
+        :type HttpGet: :class:`tencentcloud.ags.v20250920.models.HttpGetAction`
+        :param _ReadyTimeoutMs: 健康检查就绪超时
+        :type ReadyTimeoutMs: int
+        :param _ProbeTimeoutMs: 健康检查单次探测超时
+        :type ProbeTimeoutMs: int
+        :param _ProbePeriodMs: 健康检查间隔
+        :type ProbePeriodMs: int
+        :param _SuccessThreshold: 健康检查成功阈值
+        :type SuccessThreshold: int
+        :param _FailureThreshold: 健康检查失败阈值
+        :type FailureThreshold: int
+        """
+        self._HttpGet = None
+        self._ReadyTimeoutMs = None
+        self._ProbeTimeoutMs = None
+        self._ProbePeriodMs = None
+        self._SuccessThreshold = None
+        self._FailureThreshold = None
+
+    @property
+    def HttpGet(self):
+        r"""HTTP GET 探测配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.HttpGetAction`
+        """
+        return self._HttpGet
+
+    @HttpGet.setter
+    def HttpGet(self, HttpGet):
+        self._HttpGet = HttpGet
+
+    @property
+    def ReadyTimeoutMs(self):
+        r"""健康检查就绪超时
+        :rtype: int
+        """
+        return self._ReadyTimeoutMs
+
+    @ReadyTimeoutMs.setter
+    def ReadyTimeoutMs(self, ReadyTimeoutMs):
+        self._ReadyTimeoutMs = ReadyTimeoutMs
+
+    @property
+    def ProbeTimeoutMs(self):
+        r"""健康检查单次探测超时
+        :rtype: int
+        """
+        return self._ProbeTimeoutMs
+
+    @ProbeTimeoutMs.setter
+    def ProbeTimeoutMs(self, ProbeTimeoutMs):
+        self._ProbeTimeoutMs = ProbeTimeoutMs
+
+    @property
+    def ProbePeriodMs(self):
+        r"""健康检查间隔
+        :rtype: int
+        """
+        return self._ProbePeriodMs
+
+    @ProbePeriodMs.setter
+    def ProbePeriodMs(self, ProbePeriodMs):
+        self._ProbePeriodMs = ProbePeriodMs
+
+    @property
+    def SuccessThreshold(self):
+        r"""健康检查成功阈值
+        :rtype: int
+        """
+        return self._SuccessThreshold
+
+    @SuccessThreshold.setter
+    def SuccessThreshold(self, SuccessThreshold):
+        self._SuccessThreshold = SuccessThreshold
+
+    @property
+    def FailureThreshold(self):
+        r"""健康检查失败阈值
+        :rtype: int
+        """
+        return self._FailureThreshold
+
+    @FailureThreshold.setter
+    def FailureThreshold(self, FailureThreshold):
+        self._FailureThreshold = FailureThreshold
+
+
+    def _deserialize(self, params):
+        if params.get("HttpGet") is not None:
+            self._HttpGet = HttpGetAction()
+            self._HttpGet._deserialize(params.get("HttpGet"))
+        self._ReadyTimeoutMs = params.get("ReadyTimeoutMs")
+        self._ProbeTimeoutMs = params.get("ProbeTimeoutMs")
+        self._ProbePeriodMs = params.get("ProbePeriodMs")
+        self._SuccessThreshold = params.get("SuccessThreshold")
+        self._FailureThreshold = params.get("FailureThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceConfiguration(AbstractModel):
+    r"""资源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CPU: cpu 资源量
+        :type CPU: str
+        :param _Memory: 内存资源量
+        :type Memory: str
+        """
+        self._CPU = None
+        self._Memory = None
+
+    @property
+    def CPU(self):
+        r"""cpu 资源量
+        :rtype: str
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""内存资源量
+        :rtype: str
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+
+    def _deserialize(self, params):
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SandboxInstance(AbstractModel):
     r"""沙箱实例结构体
 
@@ -1316,6 +2086,8 @@ class SandboxInstance(AbstractModel):
         :type UpdateTime: str
         :param _MountOptions: 存储挂载选项
         :type MountOptions: list of MountOption
+        :param _CustomConfiguration: 沙箱实例自定义配置
+        :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         """
         self._InstanceId = None
         self._ToolId = None
@@ -1327,6 +2099,7 @@ class SandboxInstance(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._MountOptions = None
+        self._CustomConfiguration = None
 
     @property
     def InstanceId(self):
@@ -1438,6 +2211,17 @@ class SandboxInstance(AbstractModel):
     def MountOptions(self, MountOptions):
         self._MountOptions = MountOptions
 
+    @property
+    def CustomConfiguration(self):
+        r"""沙箱实例自定义配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
+        """
+        return self._CustomConfiguration
+
+    @CustomConfiguration.setter
+    def CustomConfiguration(self, CustomConfiguration):
+        self._CustomConfiguration = CustomConfiguration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1455,6 +2239,9 @@ class SandboxInstance(AbstractModel):
                 obj = MountOption()
                 obj._deserialize(item)
                 self._MountOptions.append(obj)
+        if params.get("CustomConfiguration") is not None:
+            self._CustomConfiguration = CustomConfigurationDetail()
+            self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1496,6 +2283,8 @@ class SandboxTool(AbstractModel):
         :type RoleArn: str
         :param _StorageMounts: 沙箱工具中实例存储挂载配置
         :type StorageMounts: list of StorageMount
+        :param _CustomConfiguration: 沙箱工具自定义配置
+        :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         """
         self._ToolId = None
         self._ToolName = None
@@ -1509,6 +2298,7 @@ class SandboxTool(AbstractModel):
         self._UpdateTime = None
         self._RoleArn = None
         self._StorageMounts = None
+        self._CustomConfiguration = None
 
     @property
     def ToolId(self):
@@ -1642,6 +2432,17 @@ class SandboxTool(AbstractModel):
     def StorageMounts(self, StorageMounts):
         self._StorageMounts = StorageMounts
 
+    @property
+    def CustomConfiguration(self):
+        r"""沙箱工具自定义配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
+        """
+        return self._CustomConfiguration
+
+    @CustomConfiguration.setter
+    def CustomConfiguration(self, CustomConfiguration):
+        self._CustomConfiguration = CustomConfiguration
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -1668,6 +2469,9 @@ class SandboxTool(AbstractModel):
                 obj = StorageMount()
                 obj._deserialize(item)
                 self._StorageMounts.append(obj)
+        if params.get("CustomConfiguration") is not None:
+            self._CustomConfiguration = CustomConfigurationDetail()
+            self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1695,12 +2499,15 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type ClientToken: str
         :param _MountOptions: 沙箱实例存储挂载配置
         :type MountOptions: list of MountOption
+        :param _CustomConfiguration: 沙箱实例自定义配置
+        :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         self._ToolId = None
         self._ToolName = None
         self._Timeout = None
         self._ClientToken = None
         self._MountOptions = None
+        self._CustomConfiguration = None
 
     @property
     def ToolId(self):
@@ -1757,6 +2564,17 @@ class StartSandboxInstanceRequest(AbstractModel):
     def MountOptions(self, MountOptions):
         self._MountOptions = MountOptions
 
+    @property
+    def CustomConfiguration(self):
+        r"""沙箱实例自定义配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        """
+        return self._CustomConfiguration
+
+    @CustomConfiguration.setter
+    def CustomConfiguration(self, CustomConfiguration):
+        self._CustomConfiguration = CustomConfiguration
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -1769,6 +2587,9 @@ class StartSandboxInstanceRequest(AbstractModel):
                 obj = MountOption()
                 obj._deserialize(item)
                 self._MountOptions.append(obj)
+        if params.get("CustomConfiguration") is not None:
+            self._CustomConfiguration = CustomConfiguration()
+            self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1980,8 +2801,11 @@ class StorageSource(AbstractModel):
         r"""
         :param _Cos: 对象存储桶配置
         :type Cos: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
+        :param _Image: 镜像卷配置
+        :type Image: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
         """
         self._Cos = None
+        self._Image = None
 
     @property
     def Cos(self):
@@ -1994,11 +2818,25 @@ class StorageSource(AbstractModel):
     def Cos(self, Cos):
         self._Cos = Cos
 
+    @property
+    def Image(self):
+        r"""镜像卷配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
 
     def _deserialize(self, params):
         if params.get("Cos") is not None:
             self._Cos = CosStorageSource()
             self._Cos._deserialize(params.get("Cos"))
+        if params.get("Image") is not None:
+            self._Image = ImageStorageSource()
+            self._Image._deserialize(params.get("Image"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2154,11 +2992,14 @@ class UpdateSandboxToolRequest(AbstractModel):
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
         :param _Tags: 标签
         :type Tags: list of Tag
+        :param _CustomConfiguration: 沙箱工具自定义配置
+        :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         self._ToolId = None
         self._Description = None
         self._NetworkConfiguration = None
         self._Tags = None
+        self._CustomConfiguration = None
 
     @property
     def ToolId(self):
@@ -2204,6 +3045,17 @@ class UpdateSandboxToolRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def CustomConfiguration(self):
+        r"""沙箱工具自定义配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        """
+        return self._CustomConfiguration
+
+    @CustomConfiguration.setter
+    def CustomConfiguration(self, CustomConfiguration):
+        self._CustomConfiguration = CustomConfiguration
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -2217,6 +3069,9 @@ class UpdateSandboxToolRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("CustomConfiguration") is not None:
+            self._CustomConfiguration = CustomConfiguration()
+            self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
