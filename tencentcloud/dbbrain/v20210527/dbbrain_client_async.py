@@ -1087,6 +1087,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRedisUnExpiredKeyStatistics(
+            self,
+            request: models.DescribeRedisUnExpiredKeyStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRedisUnExpiredKeyStatisticsResponse:
+        """
+        查询Redis全量Key的内存分布情况。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRedisUnExpiredKeyStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRedisUnExpiredKeyStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSecurityAuditLogDownloadUrls(
             self,
             request: models.DescribeSecurityAuditLogDownloadUrlsRequest,

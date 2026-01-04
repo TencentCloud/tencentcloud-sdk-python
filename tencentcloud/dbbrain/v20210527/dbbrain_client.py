@@ -1383,6 +1383,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedisUnExpiredKeyStatistics(self, request):
+        r"""查询Redis全量Key的内存分布情况。
+
+        :param request: Request instance for DescribeRedisUnExpiredKeyStatistics.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisUnExpiredKeyStatisticsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisUnExpiredKeyStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisUnExpiredKeyStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisUnExpiredKeyStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityAuditLogDownloadUrls(self, request):
         r"""查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
 

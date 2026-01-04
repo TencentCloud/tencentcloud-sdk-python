@@ -2027,6 +2027,30 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQGeneralSKUs(self, request):
+        r"""查询通用集群售卖规格。
+        当前 API 适用集群：4.x 通用集群。查询 5.x 集群的售卖规格接口文档见 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676)。
+
+        :param request: Request instance for DescribeRocketMQGeneralSKUs.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGeneralSKUsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGeneralSKUsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQGeneralSKUs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQGeneralSKUsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQGroups(self, request):
         r"""查询 RocketMQ 消费组列表。
         当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的消费组列表接口文档见 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535)。

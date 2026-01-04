@@ -10075,10 +10075,10 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _Date: 查询日期，如2021-05-27，最早可为前30天的日期。
-        :type Date: str
         :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
+        :param _Date: 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+        :type Date: str
         :param _SortBy: 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
         :type SortBy: str
         :param _KeyType: key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
@@ -10089,15 +10089,19 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         :type AsyncRequestId: int
         :param _ShardIds: 分片节点序号列表。当列表为空时，选择所有分片节点。
         :type ShardIds: list of int
+        :param _UnExpireKey: 是否仅查询未设置过期时间的大Key。
+当为true时，仅查询未设置过期时间的大Key，默认为false。
+        :type UnExpireKey: bool
         """
         self._InstanceId = None
-        self._Date = None
         self._Product = None
+        self._Date = None
         self._SortBy = None
         self._KeyType = None
         self._Limit = None
         self._AsyncRequestId = None
         self._ShardIds = None
+        self._UnExpireKey = None
 
     @property
     def InstanceId(self):
@@ -10111,17 +10115,6 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
-    def Date(self):
-        r"""查询日期，如2021-05-27，最早可为前30天的日期。
-        :rtype: str
-        """
-        return self._Date
-
-    @Date.setter
-    def Date(self, Date):
-        self._Date = Date
-
-    @property
     def Product(self):
         r"""服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :rtype: str
@@ -10131,6 +10124,17 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
     @Product.setter
     def Product(self, Product):
         self._Product = Product
+
+    @property
+    def Date(self):
+        r"""查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
     @property
     def SortBy(self):
@@ -10187,16 +10191,29 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
     def ShardIds(self, ShardIds):
         self._ShardIds = ShardIds
 
+    @property
+    def UnExpireKey(self):
+        r"""是否仅查询未设置过期时间的大Key。
+当为true时，仅查询未设置过期时间的大Key，默认为false。
+        :rtype: bool
+        """
+        return self._UnExpireKey
+
+    @UnExpireKey.setter
+    def UnExpireKey(self, UnExpireKey):
+        self._UnExpireKey = UnExpireKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._Date = params.get("Date")
         self._Product = params.get("Product")
+        self._Date = params.get("Date")
         self._SortBy = params.get("SortBy")
         self._KeyType = params.get("KeyType")
         self._Limit = params.get("Limit")
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._ShardIds = params.get("ShardIds")
+        self._UnExpireKey = params.get("UnExpireKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10744,6 +10761,150 @@ class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisUnExpiredKeyStatisticsRequest(AbstractModel):
+    r"""DescribeRedisUnExpiredKeyStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。可通过接口获取。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _Date: 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+        :type Date: str
+        :param _AsyncRequestId: 异步任务ID。当为空时，选择最近任务的ID。
+        :type AsyncRequestId: int
+        :param _ShardIds: 分片节点序号列表。当列表为空时，选择所有分片节点。
+        :type ShardIds: list of int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Date = None
+        self._AsyncRequestId = None
+        self._ShardIds = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID。可通过接口获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Date(self):
+        r"""查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AsyncRequestId(self):
+        r"""异步任务ID。当为空时，选择最近任务的ID。
+        :rtype: int
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def ShardIds(self):
+        r"""分片节点序号列表。当列表为空时，选择所有分片节点。
+        :rtype: list of int
+        """
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Date = params.get("Date")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._ShardIds = params.get("ShardIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisUnExpiredKeyStatisticsResponse(AbstractModel):
+    r"""DescribeRedisUnExpiredKeyStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SeriesData: 全量Key的聚合分布信息列表。
+        :type SeriesData: list of RedisGlobalKeyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SeriesData = None
+        self._RequestId = None
+
+    @property
+    def SeriesData(self):
+        r"""全量Key的聚合分布信息列表。
+        :rtype: list of RedisGlobalKeyInfo
+        """
+        return self._SeriesData
+
+    @SeriesData.setter
+    def SeriesData(self, SeriesData):
+        self._SeriesData = SeriesData
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SeriesData") is not None:
+            self._SeriesData = []
+            for item in params.get("SeriesData"):
+                obj = RedisGlobalKeyInfo()
+                obj._deserialize(item)
+                self._SeriesData.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18226,6 +18387,91 @@ class RedisCostCmd(AbstractModel):
     def _deserialize(self, params):
         self._Cmd = params.get("Cmd")
         self._MaxCost = params.get("MaxCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisGlobalKeyInfo(AbstractModel):
+    r"""Redis全量Key的聚合信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Capacity: 占用内存大小，单位Byte。
+        :type Capacity: int
+        :param _Count: Key个数。
+        :type Count: int
+        :param _RangeMax: 剩余过期时间范围的结束时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMax为空时，代表剩余过期时间大于等于RangeMin小时。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeMax: int
+        :param _RangeMin: 剩余过期时间范围的起始时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMin为空时，代表已过期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeMin: int
+        """
+        self._Capacity = None
+        self._Count = None
+        self._RangeMax = None
+        self._RangeMin = None
+
+    @property
+    def Capacity(self):
+        r"""占用内存大小，单位Byte。
+        :rtype: int
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def Count(self):
+        r"""Key个数。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RangeMax(self):
+        r"""剩余过期时间范围的结束时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMax为空时，代表剩余过期时间大于等于RangeMin小时。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RangeMax
+
+    @RangeMax.setter
+    def RangeMax(self, RangeMax):
+        self._RangeMax = RangeMax
+
+    @property
+    def RangeMin(self):
+        r"""剩余过期时间范围的起始时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMin为空时，代表已过期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RangeMin
+
+    @RangeMin.setter
+    def RangeMin(self, RangeMin):
+        self._RangeMin = RangeMin
+
+
+    def _deserialize(self, params):
+        self._Capacity = params.get("Capacity")
+        self._Count = params.get("Count")
+        self._RangeMax = params.get("RangeMax")
+        self._RangeMin = params.get("RangeMin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

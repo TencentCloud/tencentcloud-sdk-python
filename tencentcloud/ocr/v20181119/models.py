@@ -21250,6 +21250,9 @@ class PermanentResidencePermitInfo(AbstractModel):
         :type HolderNum: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         :param _Nationality: 国籍，外国人永久居留证 返回该字段
         :type Nationality: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
+        :param _EnName: 英文名
+示例值：Ming Li
+        :type EnName: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
         """
         self._Name = None
         self._Sex = None
@@ -21264,6 +21267,7 @@ class PermanentResidencePermitInfo(AbstractModel):
         self._PortraitImage = None
         self._HolderNum = None
         self._Nationality = None
+        self._EnName = None
 
     @property
     def Name(self):
@@ -21408,6 +21412,18 @@ class PermanentResidencePermitInfo(AbstractModel):
     def Nationality(self, Nationality):
         self._Nationality = Nationality
 
+    @property
+    def EnName(self):
+        r"""英文名
+示例值：Ming Li
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ContentInfo`
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
 
     def _deserialize(self, params):
         if params.get("Name") is not None:
@@ -21449,6 +21465,9 @@ class PermanentResidencePermitInfo(AbstractModel):
         if params.get("Nationality") is not None:
             self._Nationality = ContentInfo()
             self._Nationality._deserialize(params.get("Nationality"))
+        if params.get("EnName") is not None:
+            self._EnName = ContentInfo()
+            self._EnName._deserialize(params.get("EnName"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

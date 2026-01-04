@@ -675,6 +675,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCcnVpcFwPolicyLimit(
+            self,
+            request: models.DescribeCcnVpcFwPolicyLimitRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnVpcFwPolicyLimitResponse:
+        """
+        查询CCN中VPC防火墙接入策略配置时的规则数量限制
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnVpcFwPolicyLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnVpcFwPolicyLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCcnVpcFwSwitch(
             self,
             request: models.DescribeCcnVpcFwSwitchRequest,
@@ -724,6 +742,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeCfwInsStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCfwInsStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterVpcFwSwitchs(
+            self,
+            request: models.DescribeClusterVpcFwSwitchsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterVpcFwSwitchsResponse:
+        """
+        查询集群模式Vpc间防火墙开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterVpcFwSwitchs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterVpcFwSwitchsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

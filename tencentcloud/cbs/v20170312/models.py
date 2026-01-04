@@ -6387,13 +6387,13 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskIds: <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :type DiskIds: list of str
-        :param _DiskChargePrepaids: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
+        :param _DiskChargePrepaids: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
         :type DiskChargePrepaids: list of DiskChargePrepaid
-        :param _NewDeadline: 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+        :param _NewDeadline: <p>指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数<code>NewDeadline</code>和<code>DiskChargePrepaids</code>是两种指定询价时长的方式，两者必传一个。</p>
         :type NewDeadline: str
-        :param _ProjectId: 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
+        :param _ProjectId: <p>云硬盘所属项目ID。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。</p>
         :type ProjectId: int
         """
         self._DiskIds = None
@@ -6403,7 +6403,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        r"""云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        r"""<p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :rtype: list of str
         """
         return self._DiskIds
@@ -6414,7 +6414,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaids(self):
-        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
         :rtype: list of DiskChargePrepaid
         """
         return self._DiskChargePrepaids
@@ -6425,7 +6425,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def NewDeadline(self):
-        r"""指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+        r"""<p>指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数<code>NewDeadline</code>和<code>DiskChargePrepaids</code>是两种指定询价时长的方式，两者必传一个。</p>
         :rtype: str
         """
         return self._NewDeadline
@@ -6436,7 +6436,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
+        r"""<p>云硬盘所属项目ID。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -6473,7 +6473,7 @@ class InquiryPriceRenewDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskPrice: 描述了续费云盘的价格。
+        :param _DiskPrice: <p>描述了续费云盘的价格。</p>
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6483,7 +6483,7 @@ class InquiryPriceRenewDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
-        r"""描述了续费云盘的价格。
+        r"""<p>描述了续费云盘的价格。</p>
         :rtype: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
         """
         return self._DiskPrice
@@ -8084,9 +8084,9 @@ class RenewDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。
+        :param _DiskChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。</p>
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskId: <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :type DiskId: str
         """
         self._DiskChargePrepaid = None
@@ -8094,7 +8094,7 @@ class RenewDiskRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
-        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。</p>
         :rtype: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         """
         return self._DiskChargePrepaid
@@ -8105,7 +8105,7 @@ class RenewDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        r"""<p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :rtype: str
         """
         return self._DiskId

@@ -1596,6 +1596,25 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRocketMQGeneralSKUs(
+            self,
+            request: models.DescribeRocketMQGeneralSKUsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQGeneralSKUsResponse:
+        """
+        查询通用集群售卖规格。
+        当前 API 适用集群：4.x 通用集群。查询 5.x 集群的售卖规格接口文档见 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQGeneralSKUs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQGeneralSKUsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRocketMQGroups(
             self,
             request: models.DescribeRocketMQGroupsRequest,

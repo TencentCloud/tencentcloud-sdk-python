@@ -18696,7 +18696,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
 <li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
-        :param _FileInfos: AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时最多指定3个。
+        :param _FileInfos: AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
         :type FileInfos: list of AigcImageTaskInputFileInfo
         :param _Prompt: 生成图片的提示词。当 FileInfos 为空时，此参数必填。
         :type Prompt: str
@@ -18773,7 +18773,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时最多指定3个。
+        r"""AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
         :rtype: list of AigcImageTaskInputFileInfo
         """
         return self._FileInfos

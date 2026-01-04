@@ -49088,6 +49088,8 @@ class SuperNodeResource(AbstractModel):
         :type ResourceType: str
         :param _DisasterRecoverGroupId: 置放群组 ID，QuotaType为 exact 时有效，表示购买的精确配额需满足置放群组。可通过 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810) 接口返回值中的DisasterRecoverGroupId获取。
         :type DisasterRecoverGroupId: str
+        :param _PriceType: 定价类型
+        :type PriceType: str
         """
         self._NodeName = None
         self._Num = None
@@ -49098,6 +49100,7 @@ class SuperNodeResource(AbstractModel):
         self._ChargeType = None
         self._ResourceType = None
         self._DisasterRecoverGroupId = None
+        self._PriceType = None
 
     @property
     def NodeName(self):
@@ -49198,6 +49201,17 @@ class SuperNodeResource(AbstractModel):
     def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
         self._DisasterRecoverGroupId = DisasterRecoverGroupId
 
+    @property
+    def PriceType(self):
+        r"""定价类型
+        :rtype: str
+        """
+        return self._PriceType
+
+    @PriceType.setter
+    def PriceType(self, PriceType):
+        self._PriceType = PriceType
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -49209,6 +49223,7 @@ class SuperNodeResource(AbstractModel):
         self._ChargeType = params.get("ChargeType")
         self._ResourceType = params.get("ResourceType")
         self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._PriceType = params.get("PriceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

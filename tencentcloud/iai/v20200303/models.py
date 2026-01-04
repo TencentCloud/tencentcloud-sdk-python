@@ -3230,9 +3230,9 @@ class DetectFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageWidth: ，单位为：像素（px）。
+        :param _ImageWidth: 请求的图片宽度，单位为：像素（px）。
         :type ImageWidth: int
-        :param _ImageHeight: ，单位为：像素（px）。
+        :param _ImageHeight: 请求的图片高度，单位为：像素（px）。
         :type ImageHeight: int
         :param _FaceInfos: 人脸信息列表。
 - 包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
@@ -3250,7 +3250,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        r"""，单位为：像素（px）。
+        r"""请求的图片宽度，单位为：像素（px）。
         :rtype: int
         """
         return self._ImageWidth
@@ -3261,7 +3261,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        r"""，单位为：像素（px）。
+        r"""请求的图片高度，单位为：像素（px）。
         :rtype: int
         """
         return self._ImageHeight

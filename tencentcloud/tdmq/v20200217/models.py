@@ -16601,6 +16601,60 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQGeneralSKUsRequest(AbstractModel):
+    r"""DescribeRocketMQGeneralSKUs请求参数结构体
+
+    """
+
+
+class DescribeRocketMQGeneralSKUsResponse(AbstractModel):
+    r"""DescribeRocketMQGeneralSKUs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Skus: 商品配置信息
+        :type Skus: list of GeneralSKU
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Skus = None
+        self._RequestId = None
+
+    @property
+    def Skus(self):
+        r"""商品配置信息
+        :rtype: list of GeneralSKU
+        """
+        return self._Skus
+
+    @Skus.setter
+    def Skus(self, Skus):
+        self._Skus = Skus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Skus") is not None:
+            self._Skus = []
+            for item in params.get("Skus"):
+                obj = GeneralSKU()
+                obj._deserialize(item)
+                self._Skus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQGroupsRequest(AbstractModel):
     r"""DescribeRocketMQGroups请求参数结构体
 
@@ -22215,6 +22269,137 @@ class FilterSubscription(AbstractModel):
         
 
 
+class GeneralSKU(AbstractModel):
+    r"""通用集群售卖信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkuCode: 规格标识
+        :type SkuCode: str
+        :param _OnSale: 是否可售卖
+        :type OnSale: bool
+        :param _TpsLimit: TPS上限
+        :type TpsLimit: int
+        :param _TopicNumLimit: 主题数免费额度
+        :type TopicNumLimit: int
+        :param _TopicNumUpperLimit: 主题数上限
+        :type TopicNumUpperLimit: int
+        :param _PriceTags: 计费项信息
+        :type PriceTags: list of PriceTag
+        :param _NodeCount: 存储节点个数
+        :type NodeCount: int
+        """
+        self._SkuCode = None
+        self._OnSale = None
+        self._TpsLimit = None
+        self._TopicNumLimit = None
+        self._TopicNumUpperLimit = None
+        self._PriceTags = None
+        self._NodeCount = None
+
+    @property
+    def SkuCode(self):
+        r"""规格标识
+        :rtype: str
+        """
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def OnSale(self):
+        r"""是否可售卖
+        :rtype: bool
+        """
+        return self._OnSale
+
+    @OnSale.setter
+    def OnSale(self, OnSale):
+        self._OnSale = OnSale
+
+    @property
+    def TpsLimit(self):
+        r"""TPS上限
+        :rtype: int
+        """
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def TopicNumLimit(self):
+        r"""主题数免费额度
+        :rtype: int
+        """
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def TopicNumUpperLimit(self):
+        r"""主题数上限
+        :rtype: int
+        """
+        return self._TopicNumUpperLimit
+
+    @TopicNumUpperLimit.setter
+    def TopicNumUpperLimit(self, TopicNumUpperLimit):
+        self._TopicNumUpperLimit = TopicNumUpperLimit
+
+    @property
+    def PriceTags(self):
+        r"""计费项信息
+        :rtype: list of PriceTag
+        """
+        return self._PriceTags
+
+    @PriceTags.setter
+    def PriceTags(self, PriceTags):
+        self._PriceTags = PriceTags
+
+    @property
+    def NodeCount(self):
+        r"""存储节点个数
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+
+    def _deserialize(self, params):
+        self._SkuCode = params.get("SkuCode")
+        self._OnSale = params.get("OnSale")
+        self._TpsLimit = params.get("TpsLimit")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
+        if params.get("PriceTags") is not None:
+            self._PriceTags = []
+            for item in params.get("PriceTags"):
+                obj = PriceTag()
+                obj._deserialize(item)
+                self._PriceTags.append(obj)
+        self._NodeCount = params.get("NodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetTopicListRequest(AbstractModel):
     r"""GetTopicList请求参数结构体
 
@@ -26623,6 +26808,93 @@ class PartitionsTopic(AbstractModel):
         self._ProducerCount = params.get("ProducerCount")
         self._TotalSize = params.get("TotalSize")
         self._TopicType = params.get("TopicType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceTag(AbstractModel):
+    r"""价格标签信息，一个完整的价格标签包含计价类别和计费项标签。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 计价名称。枚举值如下：
+
+- tps：TPS基础价
+- stepTps：TPS步长
+        :type Name: str
+        :param _Category: 计价类别
+        :type Category: str
+        :param _Code: 计费项标签
+        :type Code: str
+        :param _Step: 计费项对应的步长数
+        :type Step: int
+        """
+        self._Name = None
+        self._Category = None
+        self._Code = None
+        self._Step = None
+
+    @property
+    def Name(self):
+        r"""计价名称。枚举值如下：
+
+- tps：TPS基础价
+- stepTps：TPS步长
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Category(self):
+        r"""计价类别
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Code(self):
+        r"""计费项标签
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Step(self):
+        r"""计费项对应的步长数
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Category = params.get("Category")
+        self._Code = params.get("Code")
+        self._Step = params.get("Step")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

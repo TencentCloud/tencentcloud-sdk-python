@@ -488,10 +488,19 @@ class AccessKeyAlarmCount(AbstractModel):
         :type AccessKey: str
         :param _AlarmCount: 告警数量
         :type AlarmCount: int
+        :param _AccessKeyStatus: 访问密钥状态 0 禁用 1 已启用 2 已删除
+        :type AccessKeyStatus: int
+        :param _AccessKeyCreateTime: AK创建时间
+        :type AccessKeyCreateTime: str
+        :param _LastAccessTime: AK最后使用时间，从未使用过则返回“-”
+        :type LastAccessTime: str
         """
         self._ID = None
         self._AccessKey = None
         self._AlarmCount = None
+        self._AccessKeyStatus = None
+        self._AccessKeyCreateTime = None
+        self._LastAccessTime = None
 
     @property
     def ID(self):
@@ -526,11 +535,47 @@ class AccessKeyAlarmCount(AbstractModel):
     def AlarmCount(self, AlarmCount):
         self._AlarmCount = AlarmCount
 
+    @property
+    def AccessKeyStatus(self):
+        r"""访问密钥状态 0 禁用 1 已启用 2 已删除
+        :rtype: int
+        """
+        return self._AccessKeyStatus
+
+    @AccessKeyStatus.setter
+    def AccessKeyStatus(self, AccessKeyStatus):
+        self._AccessKeyStatus = AccessKeyStatus
+
+    @property
+    def AccessKeyCreateTime(self):
+        r"""AK创建时间
+        :rtype: str
+        """
+        return self._AccessKeyCreateTime
+
+    @AccessKeyCreateTime.setter
+    def AccessKeyCreateTime(self, AccessKeyCreateTime):
+        self._AccessKeyCreateTime = AccessKeyCreateTime
+
+    @property
+    def LastAccessTime(self):
+        r"""AK最后使用时间，从未使用过则返回“-”
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
         self._AccessKey = params.get("AccessKey")
         self._AlarmCount = params.get("AlarmCount")
+        self._AccessKeyStatus = params.get("AccessKeyStatus")
+        self._AccessKeyCreateTime = params.get("AccessKeyCreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -983,6 +1028,10 @@ class AccessKeyRisk(AbstractModel):
         :type AppID: int
         :param _QueryParam: 对应风险的查询参数
         :type QueryParam: str
+        :param _CloudType: 云类型 0-腾讯云 4-阿里云
+        :type CloudType: int
+        :param _RelatedAK: 相关的AK列表，包含AK名和AK备注
+        :type RelatedAK: list of AKInfo
         """
         self._Name = None
         self._Level = None
@@ -1005,6 +1054,8 @@ class AccessKeyRisk(AbstractModel):
         self._CheckStatus = None
         self._AppID = None
         self._QueryParam = None
+        self._CloudType = None
+        self._RelatedAK = None
 
     @property
     def Name(self):
@@ -1244,6 +1295,28 @@ class AccessKeyRisk(AbstractModel):
     def QueryParam(self, QueryParam):
         self._QueryParam = QueryParam
 
+    @property
+    def CloudType(self):
+        r"""云类型 0-腾讯云 4-阿里云
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def RelatedAK(self):
+        r"""相关的AK列表，包含AK名和AK备注
+        :rtype: list of AKInfo
+        """
+        return self._RelatedAK
+
+    @RelatedAK.setter
+    def RelatedAK(self, RelatedAK):
+        self._RelatedAK = RelatedAK
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1267,6 +1340,13 @@ class AccessKeyRisk(AbstractModel):
         self._CheckStatus = params.get("CheckStatus")
         self._AppID = params.get("AppID")
         self._QueryParam = params.get("QueryParam")
+        self._CloudType = params.get("CloudType")
+        if params.get("RelatedAK") is not None:
+            self._RelatedAK = []
+            for item in params.get("RelatedAK"):
+                obj = AKInfo()
+                obj._deserialize(item)
+                self._RelatedAK.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

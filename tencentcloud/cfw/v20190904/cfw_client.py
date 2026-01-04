@@ -856,6 +856,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCcnVpcFwPolicyLimit(self, request):
+        r"""查询CCN中VPC防火墙接入策略配置时的规则数量限制
+
+        :param request: Request instance for DescribeCcnVpcFwPolicyLimit.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCcnVpcFwPolicyLimitRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeCcnVpcFwPolicyLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnVpcFwPolicyLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnVpcFwPolicyLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCcnVpcFwSwitch(self, request):
         r"""查询CCN VPC防火墙开关配置
 
@@ -916,6 +939,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeCfwInsStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCfwInsStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterVpcFwSwitchs(self, request):
+        r"""查询集群模式Vpc间防火墙开关
+
+        :param request: Request instance for DescribeClusterVpcFwSwitchs.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeClusterVpcFwSwitchsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeClusterVpcFwSwitchsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterVpcFwSwitchs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterVpcFwSwitchsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
