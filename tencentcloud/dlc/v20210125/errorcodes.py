@@ -398,6 +398,9 @@ INVALIDPARAMETER_INVALIDSQLNUM = 'InvalidParameter.InvalidSQLNum'
 # 单次获取SQL任务结果数量需大于0条，小于1000条
 INVALIDPARAMETER_INVALIDSQLTASKMAXRESULTS = 'InvalidParameter.InvalidSQLTaskMaxResults'
 
+# 指定的弹性范围不合规范
+INVALIDPARAMETER_INVALIDSCHEDULEDELASTICITYMINELASTICCLUSTERS = 'InvalidParameter.InvalidScheduledElasticityMinElasticClusters'
+
 # 当前Session仅支持: spark/pyspark/sparkr/sql类型
 INVALIDPARAMETER_INVALIDSESSIONKINDTYPE = 'InvalidParameter.InvalidSessionKindType'
 

@@ -157,6 +157,17 @@ class AccessKeyAlarm(AbstractModel):
         :type RuleKey: str
         :param _CloudType: 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
         :type CloudType: int
+        :param _AIStatus: 告警AI分析状态
+-1 分析失败
+0 未分析
+1 分析中
+2 分析成功，真实告警
+3 分析成功，可疑告警
+        :type AIStatus: int
+        :param _FirstAlarmTimestamp: 首次告警时间戳（秒级）
+        :type FirstAlarmTimestamp: int
+        :param _LastAlarmTimestamp: 最后告警时间戳（秒级）
+        :type LastAlarmTimestamp: int
         """
         self._Name = None
         self._Level = None
@@ -181,6 +192,9 @@ class AccessKeyAlarm(AbstractModel):
         self._Evidence = None
         self._RuleKey = None
         self._CloudType = None
+        self._AIStatus = None
+        self._FirstAlarmTimestamp = None
+        self._LastAlarmTimestamp = None
 
     @property
     def Name(self):
@@ -440,6 +454,44 @@ class AccessKeyAlarm(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def AIStatus(self):
+        r"""告警AI分析状态
+-1 分析失败
+0 未分析
+1 分析中
+2 分析成功，真实告警
+3 分析成功，可疑告警
+        :rtype: int
+        """
+        return self._AIStatus
+
+    @AIStatus.setter
+    def AIStatus(self, AIStatus):
+        self._AIStatus = AIStatus
+
+    @property
+    def FirstAlarmTimestamp(self):
+        r"""首次告警时间戳（秒级）
+        :rtype: int
+        """
+        return self._FirstAlarmTimestamp
+
+    @FirstAlarmTimestamp.setter
+    def FirstAlarmTimestamp(self, FirstAlarmTimestamp):
+        self._FirstAlarmTimestamp = FirstAlarmTimestamp
+
+    @property
+    def LastAlarmTimestamp(self):
+        r"""最后告警时间戳（秒级）
+        :rtype: int
+        """
+        return self._LastAlarmTimestamp
+
+    @LastAlarmTimestamp.setter
+    def LastAlarmTimestamp(self, LastAlarmTimestamp):
+        self._LastAlarmTimestamp = LastAlarmTimestamp
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -465,6 +517,9 @@ class AccessKeyAlarm(AbstractModel):
         self._Evidence = params.get("Evidence")
         self._RuleKey = params.get("RuleKey")
         self._CloudType = params.get("CloudType")
+        self._AIStatus = params.get("AIStatus")
+        self._FirstAlarmTimestamp = params.get("FirstAlarmTimestamp")
+        self._LastAlarmTimestamp = params.get("LastAlarmTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

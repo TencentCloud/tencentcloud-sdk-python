@@ -5190,11 +5190,14 @@ class DescribeTRTCMarketQualityDataRequest(AbstractModel):
 d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
 h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
         :type Period: str
+        :param _IsFloat: 返回数据是否为小数
+        :type IsFloat: bool
         """
         self._SdkAppId = None
         self._StartTime = None
         self._EndTime = None
         self._Period = None
+        self._IsFloat = None
 
     @property
     def SdkAppId(self):
@@ -5242,12 +5245,24 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def IsFloat(self):
+        r"""返回数据是否为小数
+        :rtype: bool
+        """
+        return self._IsFloat
+
+    @IsFloat.setter
+    def IsFloat(self, IsFloat):
+        self._IsFloat = IsFloat
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Period = params.get("Period")
+        self._IsFloat = params.get("IsFloat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12120,17 +12135,10 @@ class RecognizeConfig(AbstractModel):
 
 **基础语言引擎**：
 - "zh": 中文（简体）
-- "zh-TW": 中文（繁体）
-- "en": 英语
-- "16k_zh_edu"：中文教育
-- "16k_zh_medical"：中文医疗
-- "16k_zh_court"：中文法庭
 
 **标准语言引擎：**
 - "8k_zh_large": 普方大模型引擎. 当前模型同时支持中文等语言的识别，模型参数量极大，语言模型性能增强，针对电话音频中各类场景、各类中文方言的识别准确率极大提升.
 - "16k_zh_large": 普方英大模型引擎. 当前模型同时支持中文、英文、多种中文方言等语言的识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
-- "16k_multi_lang": 多语种大模型引擎. 当前模型同时支持英语、日语、韩语、阿拉伯语、菲律宾语、法语、印地语、印尼语、马来语、葡萄牙语、西班牙语、泰语、土耳其语、越南语、德语的识别，可实现15个语种的自动识别(句子/段落级别).
-- "16k_zh_en": 中英大模型引擎. 当前模型同时支持中文、英语识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
 
 **高级语言引擎：**
 - "zh-dialect": 中国方言
@@ -12212,17 +12220,10 @@ class RecognizeConfig(AbstractModel):
 
 **基础语言引擎**：
 - "zh": 中文（简体）
-- "zh-TW": 中文（繁体）
-- "en": 英语
-- "16k_zh_edu"：中文教育
-- "16k_zh_medical"：中文医疗
-- "16k_zh_court"：中文法庭
 
 **标准语言引擎：**
 - "8k_zh_large": 普方大模型引擎. 当前模型同时支持中文等语言的识别，模型参数量极大，语言模型性能增强，针对电话音频中各类场景、各类中文方言的识别准确率极大提升.
 - "16k_zh_large": 普方英大模型引擎. 当前模型同时支持中文、英文、多种中文方言等语言的识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
-- "16k_multi_lang": 多语种大模型引擎. 当前模型同时支持英语、日语、韩语、阿拉伯语、菲律宾语、法语、印地语、印尼语、马来语、葡萄牙语、西班牙语、泰语、土耳其语、越南语、德语的识别，可实现15个语种的自动识别(句子/段落级别).
-- "16k_zh_en": 中英大模型引擎. 当前模型同时支持中文、英语识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
 
 **高级语言引擎：**
 - "zh-dialect": 中国方言
@@ -13090,8 +13091,11 @@ class RowValues(AbstractModel):
         :param _RowValue: 数据值
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowValue: list of int
+        :param _RowValueFloat: 数据值
+        :type RowValueFloat: list of float
         """
         self._RowValue = None
+        self._RowValueFloat = None
 
     @property
     def RowValue(self):
@@ -13105,9 +13109,21 @@ class RowValues(AbstractModel):
     def RowValue(self, RowValue):
         self._RowValue = RowValue
 
+    @property
+    def RowValueFloat(self):
+        r"""数据值
+        :rtype: list of float
+        """
+        return self._RowValueFloat
+
+    @RowValueFloat.setter
+    def RowValueFloat(self, RowValueFloat):
+        self._RowValueFloat = RowValueFloat
+
 
     def _deserialize(self, params):
         self._RowValue = params.get("RowValue")
+        self._RowValueFloat = params.get("RowValueFloat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

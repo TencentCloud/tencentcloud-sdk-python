@@ -1337,6 +1337,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBotIdRule(self, request):
+        r"""获取BotId规则列表1
+
+        :param request: Request instance for DescribeBotIdRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotIdRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotIdRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBotIdRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBotIdRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBotSceneList(self, request):
         r"""获取BOT场景列表与概览
 

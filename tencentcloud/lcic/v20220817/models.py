@@ -8278,6 +8278,8 @@ class EventDataInfo(AbstractModel):
         :type RecordSize: int
         :param _RecordUrl: 录制url
         :type RecordUrl: str
+        :param _Reason: MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+        :type Reason: int
         """
         self._RoomId = None
         self._UserId = None
@@ -8285,6 +8287,7 @@ class EventDataInfo(AbstractModel):
         self._Duration = None
         self._RecordSize = None
         self._RecordUrl = None
+        self._Reason = None
 
     @property
     def RoomId(self):
@@ -8352,6 +8355,17 @@ class EventDataInfo(AbstractModel):
     def RecordUrl(self, RecordUrl):
         self._RecordUrl = RecordUrl
 
+    @property
+    def Reason(self):
+        r"""MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -8360,6 +8374,7 @@ class EventDataInfo(AbstractModel):
         self._Duration = params.get("Duration")
         self._RecordSize = params.get("RecordSize")
         self._RecordUrl = params.get("RecordUrl")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9554,9 +9554,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 
 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
         :type RemindedOn: int
-        :param _ApproverVerifyType: 指定个人签署方查看合同的校验方式
-<ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
-<li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
+        :param _ApproverVerifyType: 指定个人签署方查看合同的校验方式<ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能查看合同内容 </li><li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
         :type ApproverVerifyType: str
         :param _SignBeanTag: 签署方签署控件（印章/签名等）的生成方式：
 <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
@@ -9836,9 +9834,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def ApproverVerifyType(self):
-        r"""指定个人签署方查看合同的校验方式
-<ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
-<li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
+        r"""指定个人签署方查看合同的校验方式<ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能查看合同内容 </li><li>   **MobileCheck**  :  手机号验证, 用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>
         :rtype: str
         """
         return self._ApproverVerifyType

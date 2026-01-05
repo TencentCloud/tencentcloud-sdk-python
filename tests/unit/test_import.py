@@ -1394,6 +1394,11 @@ def test_import_weilingwith_v20230427():
     from tencentcloud.weilingwith.v20230427 import models
 
 
+def test_import_wimgs_v20251106():
+    from tencentcloud.wimgs.v20251106 import wimgs_client
+    from tencentcloud.wimgs.v20251106 import models
+
+
 def test_import_wsa_v20250508():
     from tencentcloud.wsa.v20250508 import wsa_client
     from tencentcloud.wsa.v20250508 import models

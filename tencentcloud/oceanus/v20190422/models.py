@@ -1835,6 +1835,8 @@ class ClusterSession(AbstractModel):
         :type TaskManagerCpu: float
         :param _TaskManagerMem: TaskManagerMem
         :type TaskManagerMem: float
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         """
         self._ClusterGroupSerialId = None
         self._AppId = None
@@ -1857,6 +1859,7 @@ class ClusterSession(AbstractModel):
         self._JobManagerMem = None
         self._TaskManagerCpu = None
         self._TaskManagerMem = None
+        self._JdkVersion = None
 
     @property
     def ClusterGroupSerialId(self):
@@ -2091,6 +2094,17 @@ class ClusterSession(AbstractModel):
     def TaskManagerMem(self, TaskManagerMem):
         self._TaskManagerMem = TaskManagerMem
 
+    @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
 
     def _deserialize(self, params):
         self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
@@ -2124,6 +2138,7 @@ class ClusterSession(AbstractModel):
         self._JobManagerMem = params.get("JobManagerMem")
         self._TaskManagerCpu = params.get("TaskManagerCpu")
         self._TaskManagerMem = params.get("TaskManagerMem")
+        self._JdkVersion = params.get("JdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2147,9 +2162,12 @@ class ClusterVersion(AbstractModel):
         :param _SupportedFlink: 集群支持的Flink版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportedFlink: list of str
+        :param _JdkSupportVersion: jdk支持版本
+        :type JdkSupportVersion: list of FlinkJdkVersion
         """
         self._Flink = None
         self._SupportedFlink = None
+        self._JdkSupportVersion = None
 
     @property
     def Flink(self):
@@ -2175,10 +2193,27 @@ class ClusterVersion(AbstractModel):
     def SupportedFlink(self, SupportedFlink):
         self._SupportedFlink = SupportedFlink
 
+    @property
+    def JdkSupportVersion(self):
+        r"""jdk支持版本
+        :rtype: list of FlinkJdkVersion
+        """
+        return self._JdkSupportVersion
+
+    @JdkSupportVersion.setter
+    def JdkSupportVersion(self, JdkSupportVersion):
+        self._JdkSupportVersion = JdkSupportVersion
+
 
     def _deserialize(self, params):
         self._Flink = params.get("Flink")
         self._SupportedFlink = params.get("SupportedFlink")
+        if params.get("JdkSupportVersion") is not None:
+            self._JdkSupportVersion = []
+            for item in params.get("JdkSupportVersion"):
+                obj = FlinkJdkVersion()
+                obj._deserialize(item)
+                self._JdkSupportVersion.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3012,6 +3047,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type JobManagerCpu: float
         :param _JobManagerMem: JobManager 内存
         :type JobManagerMem: float
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         :param _TaskManagerCpu: TaskManager cpu
         :type TaskManagerCpu: float
         :param _TaskManagerMem: TaskManager 内存
@@ -3056,6 +3093,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._FlinkVersion = None
         self._JobManagerCpu = None
         self._JobManagerMem = None
+        self._JdkVersion = None
         self._TaskManagerCpu = None
         self._TaskManagerMem = None
         self._UseOldSystemConnector = None
@@ -3405,6 +3443,17 @@ class CreateJobConfigRequest(AbstractModel):
         self._JobManagerMem = JobManagerMem
 
     @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
+    @property
     def TaskManagerCpu(self):
         r"""TaskManager cpu
         :rtype: float
@@ -3524,6 +3573,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._FlinkVersion = params.get("FlinkVersion")
         self._JobManagerCpu = params.get("JobManagerCpu")
         self._JobManagerMem = params.get("JobManagerMem")
+        self._JdkVersion = params.get("JdkVersion")
         self._TaskManagerCpu = params.get("TaskManagerCpu")
         self._TaskManagerMem = params.get("TaskManagerMem")
         self._UseOldSystemConnector = params.get("UseOldSystemConnector")
@@ -3614,6 +3664,10 @@ class CreateJobRequest(AbstractModel):
         :type Description: str
         :param _OpenJobDefaultAlarm: 开启默认告警
         :type OpenJobDefaultAlarm: int
+        :param _Uid: 用户Uid
+        :type Uid: int
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         """
         self._Name = None
         self._JobType = None
@@ -3627,6 +3681,8 @@ class CreateJobRequest(AbstractModel):
         self._Tags = None
         self._Description = None
         self._OpenJobDefaultAlarm = None
+        self._Uid = None
+        self._JdkVersion = None
 
     @property
     def Name(self):
@@ -3760,6 +3816,28 @@ class CreateJobRequest(AbstractModel):
     def OpenJobDefaultAlarm(self, OpenJobDefaultAlarm):
         self._OpenJobDefaultAlarm = OpenJobDefaultAlarm
 
+    @property
+    def Uid(self):
+        r"""用户Uid
+        :rtype: int
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3779,6 +3857,8 @@ class CreateJobRequest(AbstractModel):
                 self._Tags.append(obj)
         self._Description = params.get("Description")
         self._OpenJobDefaultAlarm = params.get("OpenJobDefaultAlarm")
+        self._Uid = params.get("Uid")
+        self._JdkVersion = params.get("JdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8616,6 +8696,57 @@ class Filter(AbstractModel):
         
 
 
+class FlinkJdkVersion(AbstractModel):
+    r"""flink jdk版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlinkVersion: flink版本
+        :type FlinkVersion: str
+        :param _JdkVersions: jdk版本
+        :type JdkVersions: list of str
+        """
+        self._FlinkVersion = None
+        self._JdkVersions = None
+
+    @property
+    def FlinkVersion(self):
+        r"""flink版本
+        :rtype: str
+        """
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def JdkVersions(self):
+        r"""jdk版本
+        :rtype: list of str
+        """
+        return self._JdkVersions
+
+    @JdkVersions.setter
+    def JdkVersions(self, JdkVersions):
+        self._JdkVersions = JdkVersions
+
+
+    def _deserialize(self, params):
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._JdkVersions = params.get("JdkVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayRefItem(AbstractModel):
     r"""Gateway引用资源信息
 
@@ -9093,7 +9224,7 @@ class JobConfig(AbstractModel):
         :param _COSBucket: 作业绑定的存储桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type COSBucket: str
-        :param _LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+        :param _LogCollect: 是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogCollect: int
         :param _MaxParallelism: 作业的最大并行度
@@ -9156,6 +9287,8 @@ class JobConfig(AbstractModel):
         :param _FlinkVersion: flink 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         :param _JobManagerCpu: jm使用cpu数目
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobManagerCpu: float
@@ -9209,6 +9342,7 @@ class JobConfig(AbstractModel):
         self._IndexName = None
         self._WorkspaceName = None
         self._FlinkVersion = None
+        self._JdkVersion = None
         self._JobManagerCpu = None
         self._JobManagerMem = None
         self._TaskManagerCpu = None
@@ -9360,7 +9494,7 @@ class JobConfig(AbstractModel):
 
     @property
     def LogCollect(self):
-        r"""是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+        r"""是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9611,6 +9745,17 @@ class JobConfig(AbstractModel):
         self._FlinkVersion = FlinkVersion
 
     @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
+    @property
     def JobManagerCpu(self):
         r"""jm使用cpu数目
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9748,6 +9893,7 @@ class JobConfig(AbstractModel):
         self._IndexName = params.get("IndexName")
         self._WorkspaceName = params.get("WorkspaceName")
         self._FlinkVersion = params.get("FlinkVersion")
+        self._JdkVersion = params.get("JdkVersion")
         self._JobManagerCpu = params.get("JobManagerCpu")
         self._JobManagerMem = params.get("JobManagerMem")
         self._TaskManagerCpu = params.get("TaskManagerCpu")
@@ -10383,6 +10529,10 @@ class JobV1(AbstractModel):
         :type ContinueAlarm: int
         :param _RestartCount: 作业重启次数
         :type RestartCount: int
+        :param _ExpectJobDefaultAlarmStatus: 期望是开启默认告警
+        :type ExpectJobDefaultAlarmStatus: int
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         """
         self._JobId = None
         self._Region = None
@@ -10426,6 +10576,8 @@ class JobV1(AbstractModel):
         self._ProgressDesc = None
         self._ContinueAlarm = None
         self._RestartCount = None
+        self._ExpectJobDefaultAlarmStatus = None
+        self._JdkVersion = None
 
     @property
     def JobId(self):
@@ -10929,6 +11081,28 @@ class JobV1(AbstractModel):
     def RestartCount(self, RestartCount):
         self._RestartCount = RestartCount
 
+    @property
+    def ExpectJobDefaultAlarmStatus(self):
+        r"""期望是开启默认告警
+        :rtype: int
+        """
+        return self._ExpectJobDefaultAlarmStatus
+
+    @ExpectJobDefaultAlarmStatus.setter
+    def ExpectJobDefaultAlarmStatus(self, ExpectJobDefaultAlarmStatus):
+        self._ExpectJobDefaultAlarmStatus = ExpectJobDefaultAlarmStatus
+
+    @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10980,6 +11154,8 @@ class JobV1(AbstractModel):
         self._ProgressDesc = params.get("ProgressDesc")
         self._ContinueAlarm = params.get("ContinueAlarm")
         self._RestartCount = params.get("RestartCount")
+        self._ExpectJobDefaultAlarmStatus = params.get("ExpectJobDefaultAlarmStatus")
+        self._JdkVersion = params.get("JdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11312,7 +11488,7 @@ class ModifyFolderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceFolderId: 文件夹ID（必填）
+        :param _SourceFolderId: 只有移动文件夹的场景必填，如果是批量移动作业的场景，非必填。
         :type SourceFolderId: str
         :param _TargetFolderId: 如需拖拽文件夹，需传入目标文件夹ID
         :type TargetFolderId: str
@@ -11334,7 +11510,7 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def SourceFolderId(self):
-        r"""文件夹ID（必填）
+        r"""只有移动文件夹的场景必填，如果是批量移动作业的场景，非必填。
         :rtype: str
         """
         return self._SourceFolderId
@@ -12979,6 +13155,8 @@ class ResourceRefDetail(AbstractModel):
         :type SystemProvide: int
         :param _Connector: Connector
         :type Connector: str
+        :param _ConnectorVersion: Connector版本
+        :type ConnectorVersion: str
         """
         self._ResourceId = None
         self._Version = None
@@ -12986,6 +13164,7 @@ class ResourceRefDetail(AbstractModel):
         self._Type = None
         self._SystemProvide = None
         self._Connector = None
+        self._ConnectorVersion = None
 
     @property
     def ResourceId(self):
@@ -13053,6 +13232,17 @@ class ResourceRefDetail(AbstractModel):
     def Connector(self, Connector):
         self._Connector = Connector
 
+    @property
+    def ConnectorVersion(self):
+        r"""Connector版本
+        :rtype: str
+        """
+        return self._ConnectorVersion
+
+    @ConnectorVersion.setter
+    def ConnectorVersion(self, ConnectorVersion):
+        self._ConnectorVersion = ConnectorVersion
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13061,6 +13251,7 @@ class ResourceRefDetail(AbstractModel):
         self._Type = params.get("Type")
         self._SystemProvide = params.get("SystemProvide")
         self._Connector = params.get("Connector")
+        self._ConnectorVersion = params.get("ConnectorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15028,6 +15219,8 @@ class SqlGatewayItem(AbstractModel):
         :type Cpu: float
         :param _Mem: Mem
         :type Mem: float
+        :param _JdkVersion: jdk版本
+        :type JdkVersion: str
         """
         self._SerialId = None
         self._FlinkVersion = None
@@ -15040,6 +15233,7 @@ class SqlGatewayItem(AbstractModel):
         self._Properties = None
         self._Cpu = None
         self._Mem = None
+        self._JdkVersion = None
 
     @property
     def SerialId(self):
@@ -15171,6 +15365,17 @@ class SqlGatewayItem(AbstractModel):
     def Mem(self, Mem):
         self._Mem = Mem
 
+    @property
+    def JdkVersion(self):
+        r"""jdk版本
+        :rtype: str
+        """
+        return self._JdkVersion
+
+    @JdkVersion.setter
+    def JdkVersion(self, JdkVersion):
+        self._JdkVersion = JdkVersion
+
 
     def _deserialize(self, params):
         self._SerialId = params.get("SerialId")
@@ -15194,6 +15399,7 @@ class SqlGatewayItem(AbstractModel):
                 self._Properties.append(obj)
         self._Cpu = params.get("Cpu")
         self._Mem = params.get("Mem")
+        self._JdkVersion = params.get("JdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

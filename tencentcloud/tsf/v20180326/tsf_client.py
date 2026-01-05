@@ -188,7 +188,9 @@ class TsfClient(AbstractClient):
 
 
     def ContinueRunFailedTaskBatch(self, request):
-        r"""对执行失败的任务批次执行续跑
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        对执行失败的任务批次执行续跑
 
         :param request: Request instance for ContinueRunFailedTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchRequest`
@@ -809,7 +811,9 @@ class TsfClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        r"""创建任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        创建任务
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskRequest`
@@ -832,7 +836,9 @@ class TsfClient(AbstractClient):
 
 
     def CreateTaskFlow(self, request):
-        r"""创建工作流
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        创建工作流
 
         :param request: Request instance for CreateTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowRequest`
@@ -1387,7 +1393,9 @@ class TsfClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        r"""删除任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        删除任务
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskRequest`
@@ -2288,7 +2296,9 @@ class TsfClient(AbstractClient):
 
 
     def DescribeFlowLastBatchState(self, request):
-        r"""查询工作流最新一个批次的状态信息
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        查询工作流最新一个批次的状态信息
 
         :param request: Request instance for DescribeFlowLastBatchState.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateRequest`
@@ -3484,7 +3494,9 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        r"""查询任务详情
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        查询任务详情
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailRequest`
@@ -3507,7 +3519,9 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskLastStatus(self, request):
-        r"""查询任务最近一次执行状态
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        查询任务最近一次执行状态
 
         :param request: Request instance for DescribeTaskLastStatus.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusRequest`
@@ -3530,7 +3544,9 @@ class TsfClient(AbstractClient):
 
 
     def DescribeTaskRecords(self, request):
-        r"""翻页查询任务列表
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        翻页查询任务列表
 
         :param request: Request instance for DescribeTaskRecords.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsRequest`
@@ -3738,7 +3754,9 @@ class TsfClient(AbstractClient):
 
 
     def DisableTask(self, request):
-        r"""停用任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        停用任务
 
         :param request: Request instance for DisableTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskRequest`
@@ -3761,7 +3779,9 @@ class TsfClient(AbstractClient):
 
 
     def DisableTaskFlow(self, request):
-        r"""停用工作流
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        停用工作流
 
         :param request: Request instance for DisableTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowRequest`
@@ -3922,7 +3942,9 @@ class TsfClient(AbstractClient):
 
 
     def EnableTask(self, request):
-        r"""启用任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        启用任务
 
         :param request: Request instance for EnableTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskRequest`
@@ -3945,7 +3967,9 @@ class TsfClient(AbstractClient):
 
 
     def EnableTaskFlow(self, request):
-        r"""启用工作流
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        启用工作流
 
         :param request: Request instance for EnableTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowRequest`
@@ -4014,7 +4038,9 @@ class TsfClient(AbstractClient):
 
 
     def ExecuteTask(self, request):
-        r"""手动执行一次任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        手动执行一次任务
 
         :param request: Request instance for ExecuteTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskRequest`
@@ -4037,7 +4063,9 @@ class TsfClient(AbstractClient):
 
 
     def ExecuteTaskFlow(self, request):
-        r"""执行一次工作流
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        执行一次工作流
 
         :param request: Request instance for ExecuteTaskFlow.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowRequest`
@@ -4359,7 +4387,9 @@ class TsfClient(AbstractClient):
 
 
     def ModifyTask(self, request):
-        r"""修改任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        修改任务
 
         :param request: Request instance for ModifyTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskRequest`
@@ -4454,7 +4484,9 @@ class TsfClient(AbstractClient):
 
 
     def RedoTask(self, request):
-        r"""重新执行任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        重新执行任务
 
         :param request: Request instance for RedoTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskRequest`
@@ -4477,7 +4509,9 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskBatch(self, request):
-        r"""重新执行任务批次
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        重新执行任务批次
 
         :param request: Request instance for RedoTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchRequest`
@@ -4500,7 +4534,9 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskExecute(self, request):
-        r"""重新执行在某个节点上执行任务。
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        重新执行在某个节点上执行任务。
 
         :param request: Request instance for RedoTaskExecute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteRequest`
@@ -4523,7 +4559,9 @@ class TsfClient(AbstractClient):
 
 
     def RedoTaskFlowBatch(self, request):
-        r"""重新执行工作流批次
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        重新执行工作流批次
 
         :param request: Request instance for RedoTaskFlowBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchRequest`
@@ -4960,7 +4998,9 @@ class TsfClient(AbstractClient):
 
 
     def StopTaskBatch(self, request):
-        r"""停止执行中的任务批次， 非运行中的任务不可调用。
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        停止执行中的任务批次， 非运行中的任务不可调用。
 
         :param request: Request instance for StopTaskBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchRequest`
@@ -4983,7 +5023,9 @@ class TsfClient(AbstractClient):
 
 
     def StopTaskExecute(self, request):
-        r"""停止正在某个节点上执行的任务
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        停止正在某个节点上执行的任务
 
         :param request: Request instance for StopTaskExecute.
         :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteRequest`
@@ -5006,7 +5048,9 @@ class TsfClient(AbstractClient):
 
 
     def TerminateTaskFlowBatch(self, request):
-        r"""停止一个工作流批次
+        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
+        停止一个工作流批次
 
         :param request: Request instance for TerminateTaskFlowBatch.
         :type request: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchRequest`

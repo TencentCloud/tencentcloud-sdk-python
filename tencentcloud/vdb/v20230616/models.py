@@ -1541,6 +1541,573 @@ class DescribeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePriceCreateInstanceRequest(AbstractModel):
+    r"""DescribePriceCreateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例类型。
+- base：免费测试版。
+- single：单机版。
+- cluster：高可用版。
+        :type InstanceType: str
+        :param _Cpu: 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+- 计算型： 1、2、4、8、16、24、32。
+- 标准型： 1、2、4、8、12、16。
+- 存储型： 1、2、4、6、8。
+        :type Cpu: int
+        :param _Memory: 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type Memory: int
+        :param _DiskSize: 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type DiskSize: int
+        :param _WorkerNodeNum: 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type WorkerNodeNum: int
+        :param _PayMode: 指定实例计费方式。
+- 0：按量付费。
+- 1：包年包月。
+        :type PayMode: int
+        :param _GoodsNum: 购买实例数量。
+        :type GoodsNum: int
+        :param _ProductType: 产品版本，0-标准版，1-容量增强版
+        :type ProductType: int
+        :param _Mode: 实例类型为高可用版，需指定可用区选项。
+- two：两可用区。
+- three：三可用区。
+        :type Mode: str
+        :param _PayPeriod: 若计费方式为包年包月，指定包年包月续费的时长。
+- 单位：月。
+- 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+        :type PayPeriod: int
+        """
+        self._InstanceType = None
+        self._Cpu = None
+        self._Memory = None
+        self._DiskSize = None
+        self._WorkerNodeNum = None
+        self._PayMode = None
+        self._GoodsNum = None
+        self._ProductType = None
+        self._Mode = None
+        self._PayPeriod = None
+
+    @property
+    def InstanceType(self):
+        r"""实例类型。
+- base：免费测试版。
+- single：单机版。
+- cluster：高可用版。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Cpu(self):
+        r"""指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+- 计算型： 1、2、4、8、16、24、32。
+- 标准型： 1、2、4、8、12、16。
+- 存储型： 1、2、4、6、8。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DiskSize(self):
+        r"""指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def WorkerNodeNum(self):
+        r"""指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._WorkerNodeNum
+
+    @WorkerNodeNum.setter
+    def WorkerNodeNum(self, WorkerNodeNum):
+        self._WorkerNodeNum = WorkerNodeNum
+
+    @property
+    def PayMode(self):
+        r"""指定实例计费方式。
+- 0：按量付费。
+- 1：包年包月。
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def GoodsNum(self):
+        r"""购买实例数量。
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ProductType(self):
+        r"""产品版本，0-标准版，1-容量增强版
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def Mode(self):
+        r"""实例类型为高可用版，需指定可用区选项。
+- two：两可用区。
+- three：三可用区。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def PayPeriod(self):
+        r"""若计费方式为包年包月，指定包年包月续费的时长。
+- 单位：月。
+- 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+        :rtype: int
+        """
+        return self._PayPeriod
+
+    @PayPeriod.setter
+    def PayPeriod(self, PayPeriod):
+        self._PayPeriod = PayPeriod
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._DiskSize = params.get("DiskSize")
+        self._WorkerNodeNum = params.get("WorkerNodeNum")
+        self._PayMode = params.get("PayMode")
+        self._GoodsNum = params.get("GoodsNum")
+        self._ProductType = params.get("ProductType")
+        self._Mode = params.get("Mode")
+        self._PayPeriod = params.get("PayPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePriceCreateInstanceResponse(AbstractModel):
+    r"""DescribePriceCreateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 优惠后价格，单位：分
+        :type Price: float
+        :param _OriginalPrice: 原价格，单位：分
+        :type OriginalPrice: float
+        :param _Currency: 币种。CNY-人民币，USD-美元
+        :type Currency: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._OriginalPrice = None
+        self._Currency = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""优惠后价格，单位：分
+        :rtype: float
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def OriginalPrice(self):
+        r"""原价格，单位：分
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def Currency(self):
+        r"""币种。CNY-人民币，USD-美元
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Price = params.get("Price")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._Currency = params.get("Currency")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePriceRenewInstanceRequest(AbstractModel):
+    r"""DescribePriceRenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _PayPeriod: 包年包月的时长，单位：月
+        :type PayPeriod: int
+        """
+        self._InstanceId = None
+        self._PayPeriod = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PayPeriod(self):
+        r"""包年包月的时长，单位：月
+        :rtype: int
+        """
+        return self._PayPeriod
+
+    @PayPeriod.setter
+    def PayPeriod(self, PayPeriod):
+        self._PayPeriod = PayPeriod
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PayPeriod = params.get("PayPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePriceRenewInstanceResponse(AbstractModel):
+    r"""DescribePriceRenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 优惠后价格，单位：分
+        :type Price: float
+        :param _OriginalPrice: 原价格，单位：分
+        :type OriginalPrice: float
+        :param _Currency: 币种。CNY-人民币，USD-美元
+        :type Currency: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._OriginalPrice = None
+        self._Currency = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""优惠后价格，单位：分
+        :rtype: float
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def OriginalPrice(self):
+        r"""原价格，单位：分
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def Currency(self):
+        r"""币种。CNY-人民币，USD-美元
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Price = params.get("Price")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._Currency = params.get("Currency")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePriceResizeInstanceRequest(AbstractModel):
+    r"""DescribePriceResizeInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Cpu: 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+- 计算型： 1、2、4、8、16、24、32。
+- 标准型： 1、2、4、8、12、16。
+- 存储型： 1、2、4、6、8。
+        :type Cpu: int
+        :param _Memory: 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type Memory: int
+        :param _DiskSize: 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type DiskSize: int
+        :param _WorkerNodeNum: 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :type WorkerNodeNum: int
+        """
+        self._InstanceId = None
+        self._Cpu = None
+        self._Memory = None
+        self._DiskSize = None
+        self._WorkerNodeNum = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Cpu(self):
+        r"""指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+- 计算型： 1、2、4、8、16、24、32。
+- 标准型： 1、2、4、8、12、16。
+- 存储型： 1、2、4、6、8。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DiskSize(self):
+        r"""指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def WorkerNodeNum(self):
+        r"""指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :rtype: int
+        """
+        return self._WorkerNodeNum
+
+    @WorkerNodeNum.setter
+    def WorkerNodeNum(self, WorkerNodeNum):
+        self._WorkerNodeNum = WorkerNodeNum
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._DiskSize = params.get("DiskSize")
+        self._WorkerNodeNum = params.get("WorkerNodeNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePriceResizeInstanceResponse(AbstractModel):
+    r"""DescribePriceResizeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 优惠后价格，单位：分
+        :type Price: float
+        :param _OriginalPrice: 原价格，单位：分
+        :type OriginalPrice: float
+        :param _Currency: 币种。CNY-人民币，USD-美元
+        :type Currency: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._OriginalPrice = None
+        self._Currency = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""优惠后价格，单位：分
+        :rtype: float
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def OriginalPrice(self):
+        r"""原价格，单位：分
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def Currency(self):
+        r"""币种。CNY-人民币，USD-美元
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Price = params.get("Price")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._Currency = params.get("Currency")
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyInstancesRequest(AbstractModel):
     r"""DestroyInstances请求参数结构体
 

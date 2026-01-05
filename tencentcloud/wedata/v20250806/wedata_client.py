@@ -72,6 +72,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AuthorizeDataSource(self, request):
+        r"""授权数据源
+
+        :param request: Request instance for AuthorizeDataSource.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.AuthorizeDataSourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.AuthorizeDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuthorizeDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.AuthorizeDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCodeFile(self, request):
         r"""新建代码文件
 
@@ -109,6 +132,29 @@ class WedataClient(AbstractClient):
             body = self.call("CreateCodeFolder", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCodeFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCodePermissions(self, request):
+        r"""配置CodeStudio实体权限
+
+        :param request: Request instance for CreateCodePermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateCodePermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateCodePermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCodePermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCodePermissionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -224,6 +270,29 @@ class WedataClient(AbstractClient):
             body = self.call("CreateProjectMember", params, headers=headers)
             response = json.loads(body)
             model = models.CreateProjectMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateQualityRuleGroup(self, request):
+        r"""创建监控任务
+
+        :param request: Request instance for CreateQualityRuleGroup.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleGroupRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQualityRuleGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQualityRuleGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -371,6 +440,75 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTaskFolder(self, request):
+        r"""创建文件夹
+
+        :param request: Request instance for CreateTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTriggerTask(self, request):
+        r"""创建任务接口
+
+        :param request: Request instance for CreateTriggerTask.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTriggerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTriggerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTriggerWorkflow(self, request):
+        r"""创建工作流
+
+        :param request: Request instance for CreateTriggerWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTriggerWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTriggerWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkflow(self, request):
         r"""创建工作流
 
@@ -417,6 +555,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWorkflowPermissions(self, request):
+        r"""数据开发配置权限
+
+        :param request: Request instance for CreateWorkflowPermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateWorkflowPermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateWorkflowPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkflowPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkflowPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCodeFile(self, request):
         r"""删除代码文件
 
@@ -454,6 +615,52 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteCodeFolder", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCodeFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCodePermissions(self, request):
+        r"""删除CodeStudio实体权限
+
+        :param request: Request instance for DeleteCodePermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteCodePermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteCodePermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCodePermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCodePermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataBackfillPlanAsync(self, request):
+        r"""删除补录计划
+
+        :param request: Request instance for DeleteDataBackfillPlanAsync.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteDataBackfillPlanAsyncRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteDataBackfillPlanAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataBackfillPlanAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataBackfillPlanAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -546,6 +753,52 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteProjectMember", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProjectMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteQualityRule(self, request):
+        r"""删除质量规则接口
+
+        :param request: Request instance for DeleteQualityRule.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQualityRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQualityRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteQualityRuleGroup(self, request):
+        r"""删除监控任务
+
+        :param request: Request instance for DeleteQualityRuleGroup.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleGroupRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQualityRuleGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQualityRuleGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +946,75 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteTaskFolder(self, request):
+        r"""删除数据开发任务文件夹
+
+        :param request: Request instance for DeleteTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTriggerTask(self, request):
+        r"""删除工作流调度任务
+
+        :param request: Request instance for DeleteTriggerTask.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTriggerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTriggerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTriggerWorkflow(self, request):
+        r"""删除工作流
+
+        :param request: Request instance for DeleteTriggerWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTriggerWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTriggerWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWorkflow(self, request):
         r"""删除工作流
 
@@ -730,6 +1052,52 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteWorkflowFolder", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWorkflowFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWorkflowPermissions(self, request):
+        r"""删除工作流文件夹权限
+
+        :param request: Request instance for DeleteWorkflowPermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteWorkflowPermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteWorkflowPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkflowPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkflowPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataSourceAuthority(self, request):
+        r"""查看数据源权限
+
+        :param request: Request instance for DescribeDataSourceAuthority.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DescribeDataSourceAuthorityRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DescribeDataSourceAuthorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataSourceAuthority", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataSourceAuthorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -946,6 +1314,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetMyCodeMaxPermission(self, request):
+        r"""查看当前用户对CodeStudio实体的最大权限
+
+        :param request: Request instance for GetMyCodeMaxPermission.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetMyCodeMaxPermissionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetMyCodeMaxPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetMyCodeMaxPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetMyCodeMaxPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetMyWorkflowMaxPermission(self, request):
+        r"""查询当前用户对工作流文件夹的递归最大权限
+
+        :param request: Request instance for GetMyWorkflowMaxPermission.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetMyWorkflowMaxPermissionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetMyWorkflowMaxPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetMyWorkflowMaxPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetMyWorkflowMaxPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetOpsAlarmRule(self, request):
         r"""根据告警规则id/名称查询单个告警规则信息
 
@@ -1038,6 +1452,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetOpsTriggerWorkflow(self, request):
+        r"""查询工作流任务详情
+
+        :param request: Request instance for GetOpsTriggerWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetOpsTriggerWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetOpsTriggerWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOpsTriggerWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOpsTriggerWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetOpsWorkflow(self, request):
         r"""根据工作流id，获取工作流调度详情。
 
@@ -1098,6 +1535,29 @@ class WedataClient(AbstractClient):
             body = self.call("GetResourceFile", params, headers=headers)
             response = json.loads(body)
             model = models.GetResourceFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetResourceFolder(self, request):
+        r"""查询资源文件文件夹详情
+
+        :param request: Request instance for GetResourceFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetResourceFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetResourceFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetResourceFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetResourceFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1268,6 +1728,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTaskFolder(self, request):
+        r"""查询任务文件夹详情
+
+        :param request: Request instance for GetTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTaskInstance(self, request):
         r"""调度实例详情
 
@@ -1337,6 +1820,144 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTriggerTask(self, request):
+        r"""获取任务详情接口
+
+        :param request: Request instance for GetTriggerTask.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTriggerTaskCode(self, request):
+        r"""获取工作流调度任务代码
+
+        :param request: Request instance for GetTriggerTaskCode.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskCodeRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerTaskCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerTaskCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTriggerTaskRun(self, request):
+        r"""查询任务执行详情
+
+        :param request: Request instance for GetTriggerTaskRun.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskRunRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerTaskRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerTaskRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTriggerTaskVersion(self, request):
+        r"""拉取任务版本列表
+
+        :param request: Request instance for GetTriggerTaskVersion.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskVersionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerTaskVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerTaskVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerTaskVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTriggerWorkflow(self, request):
+        r"""获取工作流信息
+
+        :param request: Request instance for GetTriggerWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTriggerWorkflowRun(self, request):
+        r"""查询工作流任务详情
+
+        :param request: Request instance for GetTriggerWorkflowRun.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetTriggerWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetTriggerWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTriggerWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTriggerWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetWorkflow(self, request):
         r"""获取工作流信息
 
@@ -1351,6 +1972,29 @@ class WedataClient(AbstractClient):
             body = self.call("GetWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.GetWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetWorkflowFolder(self, request):
+        r"""查询文件夹详情
+
+        :param request: Request instance for GetWorkflowFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.GetWorkflowFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetWorkflowFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWorkflowFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWorkflowFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1397,6 +2041,29 @@ class WedataClient(AbstractClient):
             body = self.call("KillTaskInstancesAsync", params, headers=headers)
             response = json.loads(body)
             model = models.KillTaskInstancesAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def KillTriggerWorkflowRuns(self, request):
+        r"""终止运行
+
+        :param request: Request instance for KillTriggerWorkflowRuns.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.KillTriggerWorkflowRunsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.KillTriggerWorkflowRunsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("KillTriggerWorkflowRuns", params, headers=headers)
+            response = json.loads(body)
+            model = models.KillTriggerWorkflowRunsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1466,6 +2133,29 @@ class WedataClient(AbstractClient):
             body = self.call("ListCodeFolderContents", params, headers=headers)
             response = json.loads(body)
             model = models.ListCodeFolderContentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListCodePermissions(self, request):
+        r"""查看CodeStudio实体权限
+
+        :param request: Request instance for ListCodePermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListCodePermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListCodePermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListCodePermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListCodePermissionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +2326,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListDownstreamTriggerTasks(self, request):
+        r"""获取任务直接下游详情
+
+        :param request: Request instance for ListDownstreamTriggerTasks.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListDownstreamTriggerTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListDownstreamTriggerTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDownstreamTriggerTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDownstreamTriggerTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListLineage(self, request):
         r"""获取资产血缘信息
 
@@ -1696,6 +2409,29 @@ class WedataClient(AbstractClient):
             body = self.call("ListOpsTasks", params, headers=headers)
             response = json.loads(body)
             model = models.ListOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListOpsTriggerWorkflows(self, request):
+        r"""查询工作流列表
+
+        :param request: Request instance for ListOpsTriggerWorkflows.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListOpsTriggerWorkflowsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListOpsTriggerWorkflowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOpsTriggerWorkflows", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOpsTriggerWorkflowsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1811,6 +2547,98 @@ class WedataClient(AbstractClient):
             body = self.call("ListProjects", params, headers=headers)
             response = json.loads(body)
             model = models.ListProjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQualityRuleGroupExecResultsByPage(self, request):
+        r"""规则组执行结果分页查询接口
+
+        :param request: Request instance for ListQualityRuleGroupExecResultsByPage.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupExecResultsByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupExecResultsByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQualityRuleGroupExecResultsByPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQualityRuleGroupExecResultsByPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQualityRuleGroupsTable(self, request):
+        r"""查询监控列表
+
+        :param request: Request instance for ListQualityRuleGroupsTable.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupsTableRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupsTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQualityRuleGroupsTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQualityRuleGroupsTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQualityRuleTemplates(self, request):
+        r"""【过滤条件】 {模板名称Name，查询使用Keyword进行模糊匹配} {模板类型type，1.系统模板 2.自定义模板} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
+
+        :param request: Request instance for ListQualityRuleTemplates.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQualityRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQualityRuleTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQualityRules(self, request):
+        r"""分页查询质量规则
+
+        :param request: Request instance for ListQualityRules.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListQualityRulesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQualityRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQualityRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1981,6 +2809,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTaskFolders(self, request):
+        r"""查询任务文件夹列表
+
+        :param request: Request instance for ListTaskFolders.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTaskFoldersRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTaskFoldersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTaskFolders", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTaskFoldersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTaskInstanceExecutions(self, request):
         r"""调度实例详情
 
@@ -2096,6 +2947,98 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTriggerTaskVersions(self, request):
+        r"""任务保存版本列表
+
+        :param request: Request instance for ListTriggerTaskVersions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskVersionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTriggerTaskVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTriggerTaskVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTriggerTasks(self, request):
+        r"""查询任务分页信息
+
+        :param request: Request instance for ListTriggerTasks.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTriggerTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTriggerTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTriggerWorkflowRuns(self, request):
+        r"""查询工作流运行
+
+        :param request: Request instance for ListTriggerWorkflowRuns.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowRunsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowRunsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTriggerWorkflowRuns", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTriggerWorkflowRunsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTriggerWorkflows(self, request):
+        r"""查询工作流列表
+
+        :param request: Request instance for ListTriggerWorkflows.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTriggerWorkflows", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTriggerWorkflowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListUpstreamOpsTasks(self, request):
         r"""获取任务直接上游
 
@@ -2165,6 +3108,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListUpstreamTriggerTasks(self, request):
+        r"""获取任务直接上游
+
+        :param request: Request instance for ListUpstreamTriggerTasks.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListUpstreamTriggerTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListUpstreamTriggerTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListUpstreamTriggerTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListUpstreamTriggerTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListWorkflowFolders(self, request):
         r"""查询文件夹列表
 
@@ -2188,6 +3154,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListWorkflowPermissions(self, request):
+        r"""查询工作流授权权限
+
+        :param request: Request instance for ListWorkflowPermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListWorkflowPermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListWorkflowPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListWorkflowPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListWorkflowPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListWorkflows(self, request):
         r"""查询工作流列表
 
@@ -2202,6 +3191,52 @@ class WedataClient(AbstractClient):
             body = self.call("ListWorkflows", params, headers=headers)
             response = json.loads(body)
             model = models.ListWorkflowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyQualityRule(self, request):
+        r"""更新质量规则接口
+
+        :param request: Request instance for ModifyQualityRule.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQualityRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQualityRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyQualityRuleGroup(self, request):
+        r"""创建监控任务
+
+        :param request: Request instance for ModifyQualityRuleGroup.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleGroupRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQualityRuleGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQualityRuleGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2294,6 +3329,52 @@ class WedataClient(AbstractClient):
             body = self.call("RerunTaskInstancesAsync", params, headers=headers)
             response = json.loads(body)
             model = models.RerunTaskInstancesAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RerunTriggerWorkflowRunAsync(self, request):
+        r"""重跑运行
+
+        :param request: Request instance for RerunTriggerWorkflowRunAsync.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.RerunTriggerWorkflowRunAsyncRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.RerunTriggerWorkflowRunAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RerunTriggerWorkflowRunAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.RerunTriggerWorkflowRunAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokeDataSourceAuthorization(self, request):
+        r"""回收数据源权限
+
+        :param request: Request instance for RevokeDataSourceAuthorization.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.RevokeDataSourceAuthorizationRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.RevokeDataSourceAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeDataSourceAuthorization", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokeDataSourceAuthorizationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2441,6 +3522,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitTriggerTask(self, request):
+        r"""提交工作流调度任务
+
+        :param request: Request instance for SubmitTriggerTask.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.SubmitTriggerTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.SubmitTriggerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTriggerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTriggerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateCodeFile(self, request):
         r"""更新代码文件
 
@@ -2547,6 +3651,29 @@ class WedataClient(AbstractClient):
             body = self.call("UpdateOpsTasksOwner", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOpsTasksOwnerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateOpsTriggerTasksOwner(self, request):
+        r"""查询任务执行详情
+
+        :param request: Request instance for UpdateOpsTriggerTasksOwner.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateOpsTriggerTasksOwnerRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateOpsTriggerTasksOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOpsTriggerTasksOwner", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOpsTriggerTasksOwnerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2708,6 +3835,144 @@ class WedataClient(AbstractClient):
             body = self.call("UpdateTask", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTaskFolder(self, request):
+        r"""更新任务文件夹
+
+        :param request: Request instance for UpdateTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTaskPartially(self, request):
+        r"""更新任务接口
+
+        :param request: Request instance for UpdateTaskPartially.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskPartiallyRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskPartiallyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTaskPartially", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTaskPartiallyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTriggerTask(self, request):
+        r"""更新任务接口
+
+        :param request: Request instance for UpdateTriggerTask.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTriggerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTriggerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTriggerTaskPartially(self, request):
+        r"""更新任务接口
+
+        :param request: Request instance for UpdateTriggerTaskPartially.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskPartiallyRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskPartiallyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTriggerTaskPartially", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTriggerTaskPartiallyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTriggerWorkflow(self, request):
+        r"""更新工作流（包括工作流基本信息与工作流参数）
+
+        :param request: Request instance for UpdateTriggerWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTriggerWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTriggerWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTriggerWorkflowPartially(self, request):
+        r"""更新工作流（包括工作流基本信息与工作流参数）
+
+        :param request: Request instance for UpdateTriggerWorkflowPartially.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartiallyRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartiallyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTriggerWorkflowPartially", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTriggerWorkflowPartiallyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

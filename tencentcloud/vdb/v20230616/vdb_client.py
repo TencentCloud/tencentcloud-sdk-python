@@ -164,6 +164,75 @@ class VdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePriceCreateInstance(self, request):
+        r"""查询新购实例价格
+
+        :param request: Request instance for DescribePriceCreateInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribePriceCreateInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribePriceCreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePriceCreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePriceCreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePriceRenewInstance(self, request):
+        r"""查询实例续费价格（包年包月）
+
+        :param request: Request instance for DescribePriceRenewInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribePriceRenewInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribePriceRenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePriceRenewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePriceRenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePriceResizeInstance(self, request):
+        r"""查询实例变配价格
+
+        :param request: Request instance for DescribePriceResizeInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribePriceResizeInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribePriceResizeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePriceResizeInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePriceResizeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyInstances(self, request):
         r"""本接口（DestroyInstances）用于销毁实例。
 

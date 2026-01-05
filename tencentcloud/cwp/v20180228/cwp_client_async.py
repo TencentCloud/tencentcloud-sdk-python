@@ -43,26 +43,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CancelIgnoreVul(
-            self,
-            request: models.CancelIgnoreVulRequest,
-            opts: Dict = None,
-    ) -> models.CancelIgnoreVulResponse:
-        """
-        产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-
-        取消漏洞忽略
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CancelIgnoreVul"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CancelIgnoreVulResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ChangeRuleEventsIgnoreStatus(
             self,
             request: models.ChangeRuleEventsIgnoreStatusRequest,
@@ -2280,24 +2260,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeAvailableExpertServiceDetail(
-            self,
-            request: models.DescribeAvailableExpertServiceDetailRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAvailableExpertServiceDetailResponse:
-        """
-        专家服务-可用订单详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAvailableExpertServiceDetail"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAvailableExpertServiceDetailResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeBanMode(
             self,
             request: models.DescribeBanModeRequest,
@@ -3162,24 +3124,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEmergencyResponseList(
-            self,
-            request: models.DescribeEmergencyResponseListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEmergencyResponseListResponse:
-        """
-        专家服务-应急响应列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEmergencyResponseList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEmergencyResponseListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEmergencyVulList(
             self,
             request: models.DescribeEmergencyVulListRequest,
@@ -3211,42 +3155,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeEventByTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEventByTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExpertServiceList(
-            self,
-            request: models.DescribeExpertServiceListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExpertServiceListResponse:
-        """
-        专家服务-安全管家列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExpertServiceList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExpertServiceListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExpertServiceOrderList(
-            self,
-            request: models.DescribeExpertServiceOrderListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExpertServiceOrderListResponse:
-        """
-        专家服务-专家服务订单列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExpertServiceOrderList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExpertServiceOrderListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4368,24 +4276,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeMonthInspectionReport(
-            self,
-            request: models.DescribeMonthInspectionReportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeMonthInspectionReportResponse:
-        """
-        专家服务-安全管家月巡检报告下载
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeMonthInspectionReport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeMonthInspectionReportResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeNetAttackSetting(
             self,
             request: models.DescribeNetAttackSettingRequest,
@@ -4615,24 +4505,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeProtectDirRelatedServer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProtectDirRelatedServerResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeProtectNetList(
-            self,
-            request: models.DescribeProtectNetListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeProtectNetListResponse:
-        """
-        专家服务-旗舰重保列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeProtectNetList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeProtectNetListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7693,26 +7565,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "GetLocalStorageItem"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetLocalStorageItemResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def IgnoreImpactedHosts(
-            self,
-            request: models.IgnoreImpactedHostsRequest,
-            opts: Dict = None,
-    ) -> models.IgnoreImpactedHostsResponse:
-        """
-        产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-
-        本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "IgnoreImpactedHosts"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.IgnoreImpactedHostsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -5912,6 +5912,363 @@ class BotIdConfig(AbstractModel):
         
 
 
+class BotIdDetail(AbstractModel):
+    r"""BOT-ID规则配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        :param _BotId: 规则名称
+        :type BotId: str
+        :param _Status: 规则开关
+        :type Status: bool
+        :param _Action: 规则动作
+        :type Action: str
+        :param _Level: 风险等级
+        :type Level: int
+        :param _BotIdType: 规则类型
+        :type BotIdType: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: int
+        :param _InsertTime: 插入时间
+        :type InsertTime: int
+        :param _Description: 规则描述
+        :type Description: str
+        :param _Influence: 影响
+        :type Influence: str
+        :param _Redirect: 重定向路径
+        :type Redirect: str
+        :param _HasEvent: 是否关联事件
+        :type HasEvent: bool
+        """
+        self._RuleId = None
+        self._BotId = None
+        self._Status = None
+        self._Action = None
+        self._Level = None
+        self._BotIdType = None
+        self._ModifyTime = None
+        self._InsertTime = None
+        self._Description = None
+        self._Influence = None
+        self._Redirect = None
+        self._HasEvent = None
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def BotId(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._BotId
+
+    @BotId.setter
+    def BotId(self, BotId):
+        self._BotId = BotId
+
+    @property
+    def Status(self):
+        r"""规则开关
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Action(self):
+        r"""规则动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Level(self):
+        r"""风险等级
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def BotIdType(self):
+        r"""规则类型
+        :rtype: str
+        """
+        return self._BotIdType
+
+    @BotIdType.setter
+    def BotIdType(self, BotIdType):
+        self._BotIdType = BotIdType
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+        :rtype: int
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def InsertTime(self):
+        r"""插入时间
+        :rtype: int
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def Description(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Influence(self):
+        r"""影响
+        :rtype: str
+        """
+        return self._Influence
+
+    @Influence.setter
+    def Influence(self, Influence):
+        self._Influence = Influence
+
+    @property
+    def Redirect(self):
+        r"""重定向路径
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+    @property
+    def HasEvent(self):
+        r"""是否关联事件
+        :rtype: bool
+        """
+        return self._HasEvent
+
+    @HasEvent.setter
+    def HasEvent(self, HasEvent):
+        self._HasEvent = HasEvent
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._BotId = params.get("BotId")
+        self._Status = params.get("Status")
+        self._Action = params.get("Action")
+        self._Level = params.get("Level")
+        self._BotIdType = params.get("BotIdType")
+        self._ModifyTime = params.get("ModifyTime")
+        self._InsertTime = params.get("InsertTime")
+        self._Description = params.get("Description")
+        self._Influence = params.get("Influence")
+        self._Redirect = params.get("Redirect")
+        self._HasEvent = params.get("HasEvent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotIdStat(AbstractModel):
+    r"""Bot-Id规则统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pattern: 模式：观察/拦截/自定义
+        :type Pattern: str
+        :param _TotalCount: 规则总数
+        :type TotalCount: int
+        :param _MonitorCount: 配置观察的规则数
+        :type MonitorCount: int
+        :param _InterceptCount: 配置拦截的规则数
+        :type InterceptCount: int
+        :param _RedirectCount: 配置重定向的规则数
+        :type RedirectCount: int
+        :param _CaptchaCount: 配置人机识别的规则数
+        :type CaptchaCount: int
+        :param _ProtectLevel: 全局防护等级
+        :type ProtectLevel: str
+        :param _GlobalRedirect: 全局重定向路径
+        :type GlobalRedirect: str
+        :param _JsChallengeCount: JS挑战的数目
+        :type JsChallengeCount: int
+        """
+        self._Pattern = None
+        self._TotalCount = None
+        self._MonitorCount = None
+        self._InterceptCount = None
+        self._RedirectCount = None
+        self._CaptchaCount = None
+        self._ProtectLevel = None
+        self._GlobalRedirect = None
+        self._JsChallengeCount = None
+
+    @property
+    def Pattern(self):
+        r"""模式：观察/拦截/自定义
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def TotalCount(self):
+        r"""规则总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MonitorCount(self):
+        r"""配置观察的规则数
+        :rtype: int
+        """
+        return self._MonitorCount
+
+    @MonitorCount.setter
+    def MonitorCount(self, MonitorCount):
+        self._MonitorCount = MonitorCount
+
+    @property
+    def InterceptCount(self):
+        r"""配置拦截的规则数
+        :rtype: int
+        """
+        return self._InterceptCount
+
+    @InterceptCount.setter
+    def InterceptCount(self, InterceptCount):
+        self._InterceptCount = InterceptCount
+
+    @property
+    def RedirectCount(self):
+        r"""配置重定向的规则数
+        :rtype: int
+        """
+        return self._RedirectCount
+
+    @RedirectCount.setter
+    def RedirectCount(self, RedirectCount):
+        self._RedirectCount = RedirectCount
+
+    @property
+    def CaptchaCount(self):
+        r"""配置人机识别的规则数
+        :rtype: int
+        """
+        return self._CaptchaCount
+
+    @CaptchaCount.setter
+    def CaptchaCount(self, CaptchaCount):
+        self._CaptchaCount = CaptchaCount
+
+    @property
+    def ProtectLevel(self):
+        r"""全局防护等级
+        :rtype: str
+        """
+        return self._ProtectLevel
+
+    @ProtectLevel.setter
+    def ProtectLevel(self, ProtectLevel):
+        self._ProtectLevel = ProtectLevel
+
+    @property
+    def GlobalRedirect(self):
+        r"""全局重定向路径
+        :rtype: str
+        """
+        return self._GlobalRedirect
+
+    @GlobalRedirect.setter
+    def GlobalRedirect(self, GlobalRedirect):
+        self._GlobalRedirect = GlobalRedirect
+
+    @property
+    def JsChallengeCount(self):
+        r"""JS挑战的数目
+        :rtype: int
+        """
+        return self._JsChallengeCount
+
+    @JsChallengeCount.setter
+    def JsChallengeCount(self, JsChallengeCount):
+        self._JsChallengeCount = JsChallengeCount
+
+
+    def _deserialize(self, params):
+        self._Pattern = params.get("Pattern")
+        self._TotalCount = params.get("TotalCount")
+        self._MonitorCount = params.get("MonitorCount")
+        self._InterceptCount = params.get("InterceptCount")
+        self._RedirectCount = params.get("RedirectCount")
+        self._CaptchaCount = params.get("CaptchaCount")
+        self._ProtectLevel = params.get("ProtectLevel")
+        self._GlobalRedirect = params.get("GlobalRedirect")
+        self._JsChallengeCount = params.get("JsChallengeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotMonitorPkg(AbstractModel):
     r"""BOT安全监测资源信息
 
@@ -17387,6 +17744,229 @@ class DescribeBatchIpAccessControlResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = BatchIpAccessControlData()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBotIdRuleRequest(AbstractModel):
+    r"""DescribeBotIdRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        :param _BotId: 规则名称
+        :type BotId: str
+        :param _Level: 风险等级筛选
+        :type Level: list of int
+        :param _BotIdType: 规则类型筛选
+        :type BotIdType: list of str
+        :param _Status: 规则开关-用于筛选: 0-全部 1-关闭 2-开启
+        :type Status: int
+        :param _RuleAction: 动作类型-用于筛选
+        :type RuleAction: list of str
+        """
+        self._Domain = None
+        self._SceneId = None
+        self._RuleId = None
+        self._BotId = None
+        self._Level = None
+        self._BotIdType = None
+        self._Status = None
+        self._RuleAction = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SceneId(self):
+        r"""场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def BotId(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._BotId
+
+    @BotId.setter
+    def BotId(self, BotId):
+        self._BotId = BotId
+
+    @property
+    def Level(self):
+        r"""风险等级筛选
+        :rtype: list of int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def BotIdType(self):
+        r"""规则类型筛选
+        :rtype: list of str
+        """
+        return self._BotIdType
+
+    @BotIdType.setter
+    def BotIdType(self, BotIdType):
+        self._BotIdType = BotIdType
+
+    @property
+    def Status(self):
+        r"""规则开关-用于筛选: 0-全部 1-关闭 2-开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleAction(self):
+        r"""动作类型-用于筛选
+        :rtype: list of str
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SceneId = params.get("SceneId")
+        self._RuleId = params.get("RuleId")
+        self._BotId = params.get("BotId")
+        self._Level = params.get("Level")
+        self._BotIdType = params.get("BotIdType")
+        self._Status = params.get("Status")
+        self._RuleAction = params.get("RuleAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBotIdRuleResponse(AbstractModel):
+    r"""DescribeBotIdRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BotIdDetail
+        :param _TotalCount: 符合条件的规则数量
+        :type TotalCount: int
+        :param _StatInfo: Bot规则数量统计信息
+        :type StatInfo: :class:`tencentcloud.waf.v20180125.models.BotIdStat`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._StatInfo = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BotIdDetail
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的规则数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def StatInfo(self):
+        r"""Bot规则数量统计信息
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotIdStat`
+        """
+        return self._StatInfo
+
+    @StatInfo.setter
+    def StatInfo(self, StatInfo):
+        self._StatInfo = StatInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BotIdDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        if params.get("StatInfo") is not None:
+            self._StatInfo = BotIdStat()
+            self._StatInfo._deserialize(params.get("StatInfo"))
         self._RequestId = params.get("RequestId")
 
 

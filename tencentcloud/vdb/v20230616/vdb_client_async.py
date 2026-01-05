@@ -133,6 +133,60 @@ class VdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePriceCreateInstance(
+            self,
+            request: models.DescribePriceCreateInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribePriceCreateInstanceResponse:
+        """
+        查询新购实例价格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePriceCreateInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePriceCreateInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePriceRenewInstance(
+            self,
+            request: models.DescribePriceRenewInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribePriceRenewInstanceResponse:
+        """
+        查询实例续费价格（包年包月）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePriceRenewInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePriceRenewInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePriceResizeInstance(
+            self,
+            request: models.DescribePriceResizeInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribePriceResizeInstanceResponse:
+        """
+        查询实例变配价格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePriceResizeInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePriceResizeInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroyInstances(
             self,
             request: models.DestroyInstancesRequest,

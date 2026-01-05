@@ -14562,6 +14562,8 @@ class BruteAttackInfo(AbstractModel):
         :type AttackStatusDesc: str
         :param _BanExpiredTime: 阻断过期时间（仅阻断中事件有效）
         :type BanExpiredTime: str
+        :param _IPAnalyse: IP分析
+        :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
         """
         self._Id = None
         self._Uuid = None
@@ -14590,6 +14592,7 @@ class BruteAttackInfo(AbstractModel):
         self._DataFrom = None
         self._AttackStatusDesc = None
         self._BanExpiredTime = None
+        self._IPAnalyse = None
 
     @property
     def Id(self):
@@ -14900,6 +14903,17 @@ class BruteAttackInfo(AbstractModel):
     def BanExpiredTime(self, BanExpiredTime):
         self._BanExpiredTime = BanExpiredTime
 
+    @property
+    def IPAnalyse(self):
+        r"""IP分析
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        """
+        return self._IPAnalyse
+
+    @IPAnalyse.setter
+    def IPAnalyse(self, IPAnalyse):
+        self._IPAnalyse = IPAnalyse
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -14931,6 +14945,9 @@ class BruteAttackInfo(AbstractModel):
         self._DataFrom = params.get("DataFrom")
         self._AttackStatusDesc = params.get("AttackStatusDesc")
         self._BanExpiredTime = params.get("BanExpiredTime")
+        if params.get("IPAnalyse") is not None:
+            self._IPAnalyse = IPAnalyse()
+            self._IPAnalyse._deserialize(params.get("IPAnalyse"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15679,70 +15696,6 @@ class CanNotSeparateInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class CancelIgnoreVulRequest(AbstractModel):
-    r"""CancelIgnoreVul请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EventIds: 漏洞事件id串，多个用英文逗号分隔
-        :type EventIds: str
-        """
-        self._EventIds = None
-
-    @property
-    def EventIds(self):
-        r"""漏洞事件id串，多个用英文逗号分隔
-        :rtype: str
-        """
-        return self._EventIds
-
-    @EventIds.setter
-    def EventIds(self, EventIds):
-        self._EventIds = EventIds
-
-
-    def _deserialize(self, params):
-        self._EventIds = params.get("EventIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CancelIgnoreVulResponse(AbstractModel):
-    r"""CancelIgnoreVul返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class ChangeRuleEventsIgnoreStatusRequest(AbstractModel):
@@ -18882,27 +18835,19 @@ class CreateVulFixTaskQuuids(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VulId: 漏洞id
-        :type VulId: int
         :param _Quuids: 需要修复漏洞的主机，所有主机必须有VulId的这个漏洞且是待修复状态。
         :type Quuids: list of str
+        :param _VulId: 漏洞id
+        :type VulId: int
         :param _FixMethod: 修复方式 0组件更新或者安装补丁,1禁用服务
         :type FixMethod: int
+        :param _KbId: kb id
+        :type KbId: int
         """
-        self._VulId = None
         self._Quuids = None
+        self._VulId = None
         self._FixMethod = None
-
-    @property
-    def VulId(self):
-        r"""漏洞id
-        :rtype: int
-        """
-        return self._VulId
-
-    @VulId.setter
-    def VulId(self, VulId):
-        self._VulId = VulId
+        self._KbId = None
 
     @property
     def Quuids(self):
@@ -18916,6 +18861,17 @@ class CreateVulFixTaskQuuids(AbstractModel):
         self._Quuids = Quuids
 
     @property
+    def VulId(self):
+        r"""漏洞id
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
     def FixMethod(self):
         r"""修复方式 0组件更新或者安装补丁,1禁用服务
         :rtype: int
@@ -18926,11 +18882,23 @@ class CreateVulFixTaskQuuids(AbstractModel):
     def FixMethod(self, FixMethod):
         self._FixMethod = FixMethod
 
+    @property
+    def KbId(self):
+        r"""kb id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
 
     def _deserialize(self, params):
-        self._VulId = params.get("VulId")
         self._Quuids = params.get("Quuids")
+        self._VulId = params.get("VulId")
         self._FixMethod = params.get("FixMethod")
+        self._KbId = params.get("KbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30406,135 +30374,6 @@ class DescribeAttackVulTypeListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeAvailableExpertServiceDetailRequest(AbstractModel):
-    r"""DescribeAvailableExpertServiceDetail请求参数结构体
-
-    """
-
-
-class DescribeAvailableExpertServiceDetailResponse(AbstractModel):
-    r"""DescribeAvailableExpertServiceDetail返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExpertService: 安全管家订单
-        :type ExpertService: list of ExpertServiceOrderInfo
-        :param _EmergencyResponse: 应急响应可用次数
-        :type EmergencyResponse: int
-        :param _ProtectNet: 旗舰护网可用次数
-        :type ProtectNet: int
-        :param _ExpertServiceBuy: 是否购买过安全管家
-        :type ExpertServiceBuy: bool
-        :param _EmergencyResponseBuy: 是否购买过应急响应
-        :type EmergencyResponseBuy: bool
-        :param _ProtectNetBuy: 是否购买过旗舰护网
-        :type ProtectNetBuy: bool
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ExpertService = None
-        self._EmergencyResponse = None
-        self._ProtectNet = None
-        self._ExpertServiceBuy = None
-        self._EmergencyResponseBuy = None
-        self._ProtectNetBuy = None
-        self._RequestId = None
-
-    @property
-    def ExpertService(self):
-        r"""安全管家订单
-        :rtype: list of ExpertServiceOrderInfo
-        """
-        return self._ExpertService
-
-    @ExpertService.setter
-    def ExpertService(self, ExpertService):
-        self._ExpertService = ExpertService
-
-    @property
-    def EmergencyResponse(self):
-        r"""应急响应可用次数
-        :rtype: int
-        """
-        return self._EmergencyResponse
-
-    @EmergencyResponse.setter
-    def EmergencyResponse(self, EmergencyResponse):
-        self._EmergencyResponse = EmergencyResponse
-
-    @property
-    def ProtectNet(self):
-        r"""旗舰护网可用次数
-        :rtype: int
-        """
-        return self._ProtectNet
-
-    @ProtectNet.setter
-    def ProtectNet(self, ProtectNet):
-        self._ProtectNet = ProtectNet
-
-    @property
-    def ExpertServiceBuy(self):
-        r"""是否购买过安全管家
-        :rtype: bool
-        """
-        return self._ExpertServiceBuy
-
-    @ExpertServiceBuy.setter
-    def ExpertServiceBuy(self, ExpertServiceBuy):
-        self._ExpertServiceBuy = ExpertServiceBuy
-
-    @property
-    def EmergencyResponseBuy(self):
-        r"""是否购买过应急响应
-        :rtype: bool
-        """
-        return self._EmergencyResponseBuy
-
-    @EmergencyResponseBuy.setter
-    def EmergencyResponseBuy(self, EmergencyResponseBuy):
-        self._EmergencyResponseBuy = EmergencyResponseBuy
-
-    @property
-    def ProtectNetBuy(self):
-        r"""是否购买过旗舰护网
-        :rtype: bool
-        """
-        return self._ProtectNetBuy
-
-    @ProtectNetBuy.setter
-    def ProtectNetBuy(self, ProtectNetBuy):
-        self._ProtectNetBuy = ProtectNetBuy
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ExpertService") is not None:
-            self._ExpertService = []
-            for item in params.get("ExpertService"):
-                obj = ExpertServiceOrderInfo()
-                obj._deserialize(item)
-                self._ExpertService.append(obj)
-        self._EmergencyResponse = params.get("EmergencyResponse")
-        self._ProtectNet = params.get("ProtectNet")
-        self._ExpertServiceBuy = params.get("ExpertServiceBuy")
-        self._EmergencyResponseBuy = params.get("EmergencyResponseBuy")
-        self._ProtectNetBuy = params.get("ProtectNetBuy")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeBanModeRequest(AbstractModel):
     r"""DescribeBanMode请求参数结构体
 
@@ -36985,174 +36824,6 @@ class DescribeESAggregationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeEmergencyResponseListRequest(AbstractModel):
-    r"""DescribeEmergencyResponseList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Filters: 过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :type Filters: list of Filters
-        :param _Limit: 需要返回的数量，最大值为100
-        :type Limit: int
-        :param _Offset: 排序步长
-        :type Offset: int
-        :param _Order: 排序方法
-        :type Order: str
-        :param _By: 排序字段 StartTime，EndTime
-        :type By: str
-        """
-        self._Filters = None
-        self._Limit = None
-        self._Offset = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def Filters(self):
-        r"""过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :rtype: list of Filters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Limit(self):
-        r"""需要返回的数量，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        r"""排序步长
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Order(self):
-        r"""排序方法
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        r"""排序字段 StartTime，EndTime
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeEmergencyResponseListResponse(AbstractModel):
-    r"""DescribeEmergencyResponseList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 总条数
-        :type TotalCount: int
-        :param _List: 应急响应列表
-        :type List: list of EmergencyResponseInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""总条数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""应急响应列表
-        :rtype: list of EmergencyResponseInfo
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = EmergencyResponseInfo()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeEmergencyVulListRequest(AbstractModel):
     r"""DescribeEmergencyVulList请求参数结构体
 
@@ -37463,308 +37134,6 @@ class DescribeEventByTableResponse(AbstractModel):
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Value = params.get("Value")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeExpertServiceListRequest(AbstractModel):
-    r"""DescribeExpertServiceList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Filters: 过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :type Filters: list of Filters
-        :param _Limit: 需要返回的数量，最大值为100
-        :type Limit: int
-        :param _Offset: 排序步长
-        :type Offset: int
-        :param _Order: 排序方法
-        :type Order: str
-        :param _By: 排序字段 StartTime，EndTime
-        :type By: str
-        """
-        self._Filters = None
-        self._Limit = None
-        self._Offset = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def Filters(self):
-        r"""过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :rtype: list of Filters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Limit(self):
-        r"""需要返回的数量，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        r"""排序步长
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Order(self):
-        r"""排序方法
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        r"""排序字段 StartTime，EndTime
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeExpertServiceListResponse(AbstractModel):
-    r"""DescribeExpertServiceList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 总条数
-        :type TotalCount: int
-        :param _List: 安全管家数据
-        :type List: list of SecurityButlerInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""总条数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""安全管家数据
-        :rtype: list of SecurityButlerInfo
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = SecurityButlerInfo()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeExpertServiceOrderListRequest(AbstractModel):
-    r"""DescribeExpertServiceOrderList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Filters: <li>InquireType- String - 是否必填：否 - 订单类型过滤，</li>
-        :type Filters: list of Filters
-        :param _Limit: 分页条数 最大100条
-        :type Limit: int
-        :param _Offset: 分页步长
-        :type Offset: int
-        """
-        self._Filters = None
-        self._Limit = None
-        self._Offset = None
-
-    @property
-    def Filters(self):
-        r"""<li>InquireType- String - 是否必填：否 - 订单类型过滤，</li>
-        :rtype: list of Filters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Limit(self):
-        r"""分页条数 最大100条
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        r"""分页步长
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeExpertServiceOrderListResponse(AbstractModel):
-    r"""DescribeExpertServiceOrderList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 总条数
-        :type TotalCount: int
-        :param _List: 订单列表
-        :type List: list of ExpertServiceOrderInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""总条数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""订单列表
-        :rtype: list of ExpertServiceOrderInfo
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = ExpertServiceOrderInfo()
-                obj._deserialize(item)
-                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41134,6 +40503,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type AutoBindRaspSwitch: bool
         :param _AutoOpenRaspSwitch: 是否自动新增机器开启rasp防护,false 关闭 true 开启
         :type AutoOpenRaspSwitch: bool
+        :param _AutoDowngradeSwitch: 是否自动缩容开关开启
+        :type AutoDowngradeSwitch: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41158,6 +40529,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._RepurchaseRenewSwitch = None
         self._AutoBindRaspSwitch = None
         self._AutoOpenRaspSwitch = None
+        self._AutoDowngradeSwitch = None
         self._RequestId = None
 
     @property
@@ -41392,6 +40764,17 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoOpenRaspSwitch = AutoOpenRaspSwitch
 
     @property
+    def AutoDowngradeSwitch(self):
+        r"""是否自动缩容开关开启
+        :rtype: bool
+        """
+        return self._AutoDowngradeSwitch
+
+    @AutoDowngradeSwitch.setter
+    def AutoDowngradeSwitch(self, AutoDowngradeSwitch):
+        self._AutoDowngradeSwitch = AutoDowngradeSwitch
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41425,6 +40808,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
         self._AutoBindRaspSwitch = params.get("AutoBindRaspSwitch")
         self._AutoOpenRaspSwitch = params.get("AutoOpenRaspSwitch")
+        self._AutoDowngradeSwitch = params.get("AutoDowngradeSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -45238,7 +44622,7 @@ ECM 边缘计算
 LH 轻量应用服务器
 Other 混合云专区
         :type MachineType: str
-        :param _MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai
+        :param _MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
         :type MachineRegion: str
         :param _Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
@@ -45286,7 +44670,7 @@ Other 混合云专区
 
     @property
     def MachineRegion(self):
-        r"""机器所属地域。如：ap-guangzhou，ap-shanghai
+        r"""机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
         :rtype: str
         """
         return self._MachineRegion
@@ -45451,7 +44835,7 @@ ECM 边缘计算
 LH 轻量应用服务器
 Other 混合云专区
         :type MachineType: str
-        :param _MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai
+        :param _MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shangha，非腾讯云主机使用：ap-others
         :type MachineRegion: str
         :param _Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
@@ -45490,7 +44874,7 @@ Other 混合云专区
 
     @property
     def MachineRegion(self):
-        r"""机器所属地域。如：ap-guangzhou，ap-shanghai
+        r"""机器所属地域。如：ap-guangzhou，ap-shangha，非腾讯云主机使用：ap-others
         :rtype: str
         """
         return self._MachineRegion
@@ -47004,120 +46388,6 @@ class DescribeMalwareWhiteListResponse(AbstractModel):
                 obj = MalwareWhiteListInfo()
                 obj._deserialize(item)
                 self._WhiteList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeMonthInspectionReportRequest(AbstractModel):
-    r"""DescribeMonthInspectionReport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Limit: 分页大小
-        :type Limit: int
-        :param _Offset: 分页步长
-        :type Offset: int
-        """
-        self._Limit = None
-        self._Offset = None
-
-    @property
-    def Limit(self):
-        r"""分页大小
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        r"""分页步长
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-
-    def _deserialize(self, params):
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMonthInspectionReportResponse(AbstractModel):
-    r"""DescribeMonthInspectionReport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 总条数
-        :type TotalCount: int
-        :param _List: 巡检报告列表
-        :type List: list of MonthInspectionReport
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""总条数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""巡检报告列表
-        :rtype: list of MonthInspectionReport
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = MonthInspectionReport()
-                obj._deserialize(item)
-                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -48791,174 +48061,6 @@ class DescribeProtectDirRelatedServerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeProtectNetListRequest(AbstractModel):
-    r"""DescribeProtectNetList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Filters: 过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :type Filters: list of Filters
-        :param _Limit: 需要返回的数量，最大值为100
-        :type Limit: int
-        :param _Offset: 排序步长
-        :type Offset: int
-        :param _Order: 排序方法
-        :type Order: str
-        :param _By: 排序字段 StartTime，EndTime
-        :type By: str
-        """
-        self._Filters = None
-        self._Limit = None
-        self._Offset = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def Filters(self):
-        r"""过滤条件。
-<li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
-<li>Uuids - String - 是否必填：否 - 主机id过滤</li>
-        :rtype: list of Filters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Limit(self):
-        r"""需要返回的数量，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        r"""排序步长
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Order(self):
-        r"""排序方法
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        r"""排序字段 StartTime，EndTime
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProtectNetListResponse(AbstractModel):
-    r"""DescribeProtectNetList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 总条数
-        :type TotalCount: int
-        :param _List: 安全管家数据
-        :type List: list of ProtectNetInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""总条数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""安全管家数据
-        :rtype: list of ProtectNetInfo
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = ProtectNetInfo()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribePublicProxyInstallCommandRequest(AbstractModel):
     r"""DescribePublicProxyInstallCommand请求参数结构体
 
@@ -50583,7 +49685,7 @@ class DescribeRaspMaxCpuResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RaspMaxCpu: rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :param _RaspMaxCpu: rasp当前最大cpu限制，大于0，小于等于100，默认100表示不限制
         :type RaspMaxCpu: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50593,7 +49695,7 @@ class DescribeRaspMaxCpuResponse(AbstractModel):
 
     @property
     def RaspMaxCpu(self):
-        r"""rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        r"""rasp当前最大cpu限制，大于0，小于等于100，默认100表示不限制
         :rtype: int
         """
         return self._RaspMaxCpu
@@ -52587,6 +51689,8 @@ class DescribeScanStateResponse(AbstractModel):
         :type RiskEventCount: int
         :param _ScanEndTime: 扫描结束时间
         :type ScanEndTime: str
+        :param _KBNumber: 任务扫描的KB编号
+        :type KBNumber: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -52598,6 +51702,7 @@ class DescribeScanStateResponse(AbstractModel):
         self._ScanBeginTime = None
         self._RiskEventCount = None
         self._ScanEndTime = None
+        self._KBNumber = None
         self._RequestId = None
 
     @property
@@ -52689,6 +51794,17 @@ class DescribeScanStateResponse(AbstractModel):
         self._ScanEndTime = ScanEndTime
 
     @property
+    def KBNumber(self):
+        r"""任务扫描的KB编号
+        :rtype: list of str
+        """
+        return self._KBNumber
+
+    @KBNumber.setter
+    def KBNumber(self, KBNumber):
+        self._KBNumber = KBNumber
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -52709,6 +51825,7 @@ class DescribeScanStateResponse(AbstractModel):
         self._ScanBeginTime = params.get("ScanBeginTime")
         self._RiskEventCount = params.get("RiskEventCount")
         self._ScanEndTime = params.get("ScanEndTime")
+        self._KBNumber = params.get("KBNumber")
         self._RequestId = params.get("RequestId")
 
 
@@ -52850,6 +51967,8 @@ class DescribeScanTaskDetailsResponse(AbstractModel):
         :type StoppingAll: bool
         :param _VulCount: 扫描出漏洞个数
         :type VulCount: int
+        :param _PatchInfo: 单独扫描kb时的信息
+        :type PatchInfo: list of PatchInfoDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -52868,6 +51987,7 @@ class DescribeScanTaskDetailsResponse(AbstractModel):
         self._Type = None
         self._StoppingAll = None
         self._VulCount = None
+        self._PatchInfo = None
         self._RequestId = None
 
     @property
@@ -53036,6 +52156,17 @@ class DescribeScanTaskDetailsResponse(AbstractModel):
         self._VulCount = VulCount
 
     @property
+    def PatchInfo(self):
+        r"""单独扫描kb时的信息
+        :rtype: list of PatchInfoDetail
+        """
+        return self._PatchInfo
+
+    @PatchInfo.setter
+    def PatchInfo(self, PatchInfo):
+        self._PatchInfo = PatchInfo
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -53073,6 +52204,12 @@ class DescribeScanTaskDetailsResponse(AbstractModel):
         self._Type = params.get("Type")
         self._StoppingAll = params.get("StoppingAll")
         self._VulCount = params.get("VulCount")
+        if params.get("PatchInfo") is not None:
+            self._PatchInfo = []
+            for item in params.get("PatchInfo"):
+                obj = PatchInfoDetail()
+                obj._deserialize(item)
+                self._PatchInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -58517,10 +57654,13 @@ class DescribeVulFixStatusRequest(AbstractModel):
         :type VulId: int
         :param _Quuid: 主机quuid 和VulId 组合可查 某主机最近一次修复任务详情
         :type Quuid: str
+        :param _KbId: 补丁 id
+        :type KbId: int
         """
         self._FixId = None
         self._VulId = None
         self._Quuid = None
+        self._KbId = None
 
     @property
     def FixId(self):
@@ -58555,11 +57695,23 @@ class DescribeVulFixStatusRequest(AbstractModel):
     def Quuid(self, Quuid):
         self._Quuid = Quuid
 
+    @property
+    def KbId(self):
+        r"""补丁 id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
 
     def _deserialize(self, params):
         self._FixId = params.get("FixId")
         self._VulId = params.get("VulId")
         self._Quuid = params.get("Quuid")
+        self._KbId = params.get("KbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62825,117 +61977,6 @@ class EffectiveMachineInfo(AbstractModel):
         
 
 
-class EmergencyResponseInfo(AbstractModel):
-    r"""专家服务-应急响应信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: 任务id
-        :type TaskId: str
-        :param _HostNum: 主机个数
-        :type HostNum: int
-        :param _Status: 服务状态 0未启动，·响应中，2响应完成
-        :type Status: int
-        :param _StartTime: 服务开始时间
-        :type StartTime: str
-        :param _EndTime: 服务结束时间
-        :type EndTime: str
-        :param _ReportPath: 报告下载地址
-        :type ReportPath: str
-        """
-        self._TaskId = None
-        self._HostNum = None
-        self._Status = None
-        self._StartTime = None
-        self._EndTime = None
-        self._ReportPath = None
-
-    @property
-    def TaskId(self):
-        r"""任务id
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def HostNum(self):
-        r"""主机个数
-        :rtype: int
-        """
-        return self._HostNum
-
-    @HostNum.setter
-    def HostNum(self, HostNum):
-        self._HostNum = HostNum
-
-    @property
-    def Status(self):
-        r"""服务状态 0未启动，·响应中，2响应完成
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StartTime(self):
-        r"""服务开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""服务结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ReportPath(self):
-        r"""报告下载地址
-        :rtype: str
-        """
-        return self._ReportPath
-
-    @ReportPath.setter
-    def ReportPath(self, ReportPath):
-        self._ReportPath = ReportPath
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._HostNum = params.get("HostNum")
-        self._Status = params.get("Status")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._ReportPath = params.get("ReportPath")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class EmergencyVul(AbstractModel):
     r"""应急漏洞信息
 
@@ -63253,132 +62294,6 @@ class EventStat(AbstractModel):
     def _deserialize(self, params):
         self._EventsNum = params.get("EventsNum")
         self._MachineAffectNum = params.get("MachineAffectNum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ExpertServiceOrderInfo(AbstractModel):
-    r"""专家服务订单信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _OrderId: 订单id
-        :type OrderId: int
-        :param _InquireType: 订单类型 1应急 2 旗舰重保 3 安全管家
-        :type InquireType: int
-        :param _InquireNum: 服务数量
-        :type InquireNum: int
-        :param _BeginTime: 服务开始时间
-        :type BeginTime: str
-        :param _EndTime: 服务结束时间
-        :type EndTime: str
-        :param _ServiceTime: 服务时长几个月
-        :type ServiceTime: int
-        :param _Status: 订单状态 0 未启动 1 服务中 2已过期 3完成，4退费销毁
-        :type Status: int
-        """
-        self._OrderId = None
-        self._InquireType = None
-        self._InquireNum = None
-        self._BeginTime = None
-        self._EndTime = None
-        self._ServiceTime = None
-        self._Status = None
-
-    @property
-    def OrderId(self):
-        r"""订单id
-        :rtype: int
-        """
-        return self._OrderId
-
-    @OrderId.setter
-    def OrderId(self, OrderId):
-        self._OrderId = OrderId
-
-    @property
-    def InquireType(self):
-        r"""订单类型 1应急 2 旗舰重保 3 安全管家
-        :rtype: int
-        """
-        return self._InquireType
-
-    @InquireType.setter
-    def InquireType(self, InquireType):
-        self._InquireType = InquireType
-
-    @property
-    def InquireNum(self):
-        r"""服务数量
-        :rtype: int
-        """
-        return self._InquireNum
-
-    @InquireNum.setter
-    def InquireNum(self, InquireNum):
-        self._InquireNum = InquireNum
-
-    @property
-    def BeginTime(self):
-        r"""服务开始时间
-        :rtype: str
-        """
-        return self._BeginTime
-
-    @BeginTime.setter
-    def BeginTime(self, BeginTime):
-        self._BeginTime = BeginTime
-
-    @property
-    def EndTime(self):
-        r"""服务结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ServiceTime(self):
-        r"""服务时长几个月
-        :rtype: int
-        """
-        return self._ServiceTime
-
-    @ServiceTime.setter
-    def ServiceTime(self, ServiceTime):
-        self._ServiceTime = ServiceTime
-
-    @property
-    def Status(self):
-        r"""订单状态 0 未启动 1 服务中 2已过期 3完成，4退费销毁
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._OrderId = params.get("OrderId")
-        self._InquireType = params.get("InquireType")
-        self._InquireNum = params.get("InquireNum")
-        self._BeginTime = params.get("BeginTime")
-        self._EndTime = params.get("EndTime")
-        self._ServiceTime = params.get("ServiceTime")
-        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73437,6 +72352,8 @@ XTI - 威胁情报
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         :param _Port: 请求目的端口
         :type Port: int
+        :param _IPAnalyse: ip分析
+        :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
         """
         self._Id = None
         self._Uuid = None
@@ -73460,6 +72377,7 @@ XTI - 威胁情报
         self._Desc = None
         self._MachineExtraInfo = None
         self._Port = None
+        self._IPAnalyse = None
 
     @property
     def Id(self):
@@ -73707,6 +72625,17 @@ XTI - 威胁情报
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def IPAnalyse(self):
+        r"""ip分析
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        """
+        return self._IPAnalyse
+
+    @IPAnalyse.setter
+    def IPAnalyse(self, IPAnalyse):
+        self._IPAnalyse = IPAnalyse
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -73733,6 +72662,9 @@ XTI - 威胁情报
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Port = params.get("Port")
+        if params.get("IPAnalyse") is not None:
+            self._IPAnalyse = IPAnalyse()
+            self._IPAnalyse._deserialize(params.get("IPAnalyse"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74256,6 +73188,108 @@ class HostTagInfo(AbstractModel):
         
 
 
+class IPAnalyse(AbstractModel):
+    r"""ip 分析
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 0 安全
+1 可疑
+2 恶意
+3 未知
+        :type Status: int
+        :param _Tags: 标签特征
+        :type Tags: list of str
+        :param _Family: 家族信息
+        :type Family: list of str
+        :param _Profile: 画像
+        :type Profile: list of str
+        :param _Isp: 运营商
+        :type Isp: str
+        """
+        self._Status = None
+        self._Tags = None
+        self._Family = None
+        self._Profile = None
+        self._Isp = None
+
+    @property
+    def Status(self):
+        r"""0 安全
+1 可疑
+2 恶意
+3 未知
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        r"""标签特征
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Family(self):
+        r"""家族信息
+        :rtype: list of str
+        """
+        return self._Family
+
+    @Family.setter
+    def Family(self, Family):
+        self._Family = Family
+
+    @property
+    def Profile(self):
+        r"""画像
+        :rtype: list of str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Isp(self):
+        r"""运营商
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Tags = params.get("Tags")
+        self._Family = params.get("Family")
+        self._Profile = params.get("Profile")
+        self._Isp = params.get("Isp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IgnoreBaselineRule(AbstractModel):
     r"""忽略的基线检测项信息
 
@@ -74350,70 +73384,6 @@ class IgnoreBaselineRule(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class IgnoreImpactedHostsRequest(AbstractModel):
-    r"""IgnoreImpactedHosts请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Ids: 漏洞ID数组。
-        :type Ids: list of int non-negative
-        """
-        self._Ids = None
-
-    @property
-    def Ids(self):
-        r"""漏洞ID数组。
-        :rtype: list of int non-negative
-        """
-        return self._Ids
-
-    @Ids.setter
-    def Ids(self, Ids):
-        self._Ids = Ids
-
-
-    def _deserialize(self, params):
-        self._Ids = params.get("Ids")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class IgnoreImpactedHostsResponse(AbstractModel):
-    r"""IgnoreImpactedHosts返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class IgnoreRuleEffectHostInfo(AbstractModel):
@@ -80173,6 +79143,11 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
 <li>CLOSE：关闭</li>
 <li>OPEN：打开</li>
         :type Status: str
+        :param _ProtectType: 加固防护模式
+PROVERSION_POSTPAY 专业版-按量计费
+PROVERSION_PREPAY 专业版-包年包月
+FLAGSHIP_PREPAY 旗舰版-包年包月
+        :type ProtectType: str
         :param _AutoRepurchaseSwitch: 自动加购/扩容授权开关,默认 1, 0关闭, 1开启
         :type AutoRepurchaseSwitch: int
         :param _AutoRepurchaseRenewSwitch: 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
@@ -80183,13 +79158,17 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
         :type AutoBindRaspSwitch: int
         :param _AutoOpenRaspSwitch: 新增机器自动开启rasp防护,默认关闭,0 关闭 1开启
         :type AutoOpenRaspSwitch: int
+        :param _AutoDowngradeSwitch: 自动缩容开关,0 关闭 1开启
+        :type AutoDowngradeSwitch: int
         """
         self._Status = None
+        self._ProtectType = None
         self._AutoRepurchaseSwitch = None
         self._AutoRepurchaseRenewSwitch = None
         self._RepurchaseRenewSwitch = None
         self._AutoBindRaspSwitch = None
         self._AutoOpenRaspSwitch = None
+        self._AutoDowngradeSwitch = None
 
     @property
     def Status(self):
@@ -80203,6 +79182,20 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ProtectType(self):
+        r"""加固防护模式
+PROVERSION_POSTPAY 专业版-按量计费
+PROVERSION_PREPAY 专业版-包年包月
+FLAGSHIP_PREPAY 旗舰版-包年包月
+        :rtype: str
+        """
+        return self._ProtectType
+
+    @ProtectType.setter
+    def ProtectType(self, ProtectType):
+        self._ProtectType = ProtectType
 
     @property
     def AutoRepurchaseSwitch(self):
@@ -80259,14 +79252,27 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     def AutoOpenRaspSwitch(self, AutoOpenRaspSwitch):
         self._AutoOpenRaspSwitch = AutoOpenRaspSwitch
 
+    @property
+    def AutoDowngradeSwitch(self):
+        r"""自动缩容开关,0 关闭 1开启
+        :rtype: int
+        """
+        return self._AutoDowngradeSwitch
+
+    @AutoDowngradeSwitch.setter
+    def AutoDowngradeSwitch(self, AutoDowngradeSwitch):
+        self._AutoDowngradeSwitch = AutoDowngradeSwitch
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._ProtectType = params.get("ProtectType")
         self._AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
         self._AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
         self._AutoBindRaspSwitch = params.get("AutoBindRaspSwitch")
         self._AutoOpenRaspSwitch = params.get("AutoOpenRaspSwitch")
+        self._AutoDowngradeSwitch = params.get("AutoDowngradeSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -84757,14 +83763,14 @@ class ModifyRaspMaxCpuRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RaspMaxCpu: rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :param _RaspMaxCpu: rasp当前最大cpu限制，大于0，小于等于100，默认100表示不限制
         :type RaspMaxCpu: int
         """
         self._RaspMaxCpu = None
 
     @property
     def RaspMaxCpu(self):
-        r"""rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        r"""rasp当前最大cpu限制，大于0，小于等于100，默认100表示不限制
         :rtype: int
         """
         return self._RaspMaxCpu
@@ -86080,6 +85086,8 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         :type Quuids: list of str
         :param _ExcludedQuuids: 需排除的机器列表	
         :type ExcludedQuuids: list of str
+        :param _MsgLanguage: 推送语言类型，中文zh，英文en
+        :type MsgLanguage: str
         """
         self._Id = None
         self._Name = None
@@ -86091,6 +85099,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         self._IsDisabled = None
         self._Quuids = None
         self._ExcludedQuuids = None
+        self._MsgLanguage = None
 
     @property
     def Id(self):
@@ -86202,6 +85211,17 @@ class ModifyWebHookPolicyRequest(AbstractModel):
     def ExcludedQuuids(self, ExcludedQuuids):
         self._ExcludedQuuids = ExcludedQuuids
 
+    @property
+    def MsgLanguage(self):
+        r"""推送语言类型，中文zh，英文en
+        :rtype: str
+        """
+        return self._MsgLanguage
+
+    @MsgLanguage.setter
+    def MsgLanguage(self, MsgLanguage):
+        self._MsgLanguage = MsgLanguage
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -86234,6 +85254,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         self._IsDisabled = params.get("IsDisabled")
         self._Quuids = params.get("Quuids")
         self._ExcludedQuuids = params.get("ExcludedQuuids")
+        self._MsgLanguage = params.get("MsgLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -86366,11 +85387,29 @@ class ModifyWebHookReceiverRequest(AbstractModel):
         :type Addr: str
         :param _IsModify: 是否修改
         :type IsModify: bool
+        :param _Type: 类型
+        :type Type: int
+        :param _SCFRegion: 目标地域
+        :type SCFRegion: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _FunctionName: 函数名称
+        :type FunctionName: str
+        :param _FunctionVersion: 函数版本
+        :type FunctionVersion: str
+        :param _Alias: 别名
+        :type Alias: str
         """
         self._Id = None
         self._Name = None
         self._Addr = None
         self._IsModify = None
+        self._Type = None
+        self._SCFRegion = None
+        self._Namespace = None
+        self._FunctionName = None
+        self._FunctionVersion = None
+        self._Alias = None
 
     @property
     def Id(self):
@@ -86416,12 +85455,84 @@ class ModifyWebHookReceiverRequest(AbstractModel):
     def IsModify(self, IsModify):
         self._IsModify = IsModify
 
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SCFRegion(self):
+        r"""目标地域
+        :rtype: str
+        """
+        return self._SCFRegion
+
+    @SCFRegion.setter
+    def SCFRegion(self, SCFRegion):
+        self._SCFRegion = SCFRegion
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def FunctionName(self):
+        r"""函数名称
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionVersion(self):
+        r"""函数版本
+        :rtype: str
+        """
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Alias(self):
+        r"""别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Addr = params.get("Addr")
         self._IsModify = params.get("IsModify")
+        self._Type = params.get("Type")
+        self._SCFRegion = params.get("SCFRegion")
+        self._Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -86907,72 +86018,6 @@ class ModifyWebPageProtectSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class MonthInspectionReport(AbstractModel):
-    r"""专家服务-月巡检报告
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReportName: 巡检报告名称
-        :type ReportName: str
-        :param _ReportPath: 巡检报告下载地址
-        :type ReportPath: str
-        :param _ModifyTime: 巡检报告更新时间
-        :type ModifyTime: str
-        """
-        self._ReportName = None
-        self._ReportPath = None
-        self._ModifyTime = None
-
-    @property
-    def ReportName(self):
-        r"""巡检报告名称
-        :rtype: str
-        """
-        return self._ReportName
-
-    @ReportName.setter
-    def ReportName(self, ReportName):
-        self._ReportName = ReportName
-
-    @property
-    def ReportPath(self):
-        r"""巡检报告下载地址
-        :rtype: str
-        """
-        return self._ReportPath
-
-    @ReportPath.setter
-    def ReportPath(self, ReportPath):
-        self._ReportPath = ReportPath
-
-    @property
-    def ModifyTime(self):
-        r"""巡检报告更新时间
-        :rtype: str
-        """
-        return self._ModifyTime
-
-    @ModifyTime.setter
-    def ModifyTime(self, ModifyTime):
-        self._ModifyTime = ModifyTime
-
-
-    def _deserialize(self, params):
-        self._ReportName = params.get("ReportName")
-        self._ReportPath = params.get("ReportPath")
-        self._ModifyTime = params.get("ModifyTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class NetAttackEvent(AbstractModel):
     r"""网络攻击事件
 
@@ -87014,6 +86059,10 @@ class NetAttackEvent(AbstractModel):
         :type Count: int
         :param _New: 是否今日新增主机
         :type New: bool
+        :param _RaspOpen: 是否开启应用防护，0关闭，1开启
+        :type RaspOpen: int
+        :param _IPAnalyse: ip分析
+        :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
         """
         self._Id = None
         self._Uuid = None
@@ -87032,6 +86081,8 @@ class NetAttackEvent(AbstractModel):
         self._Quuid = None
         self._Count = None
         self._New = None
+        self._RaspOpen = None
+        self._IPAnalyse = None
 
     @property
     def Id(self):
@@ -87220,6 +86271,28 @@ class NetAttackEvent(AbstractModel):
     def New(self, New):
         self._New = New
 
+    @property
+    def RaspOpen(self):
+        r"""是否开启应用防护，0关闭，1开启
+        :rtype: int
+        """
+        return self._RaspOpen
+
+    @RaspOpen.setter
+    def RaspOpen(self, RaspOpen):
+        self._RaspOpen = RaspOpen
+
+    @property
+    def IPAnalyse(self):
+        r"""ip分析
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        """
+        return self._IPAnalyse
+
+    @IPAnalyse.setter
+    def IPAnalyse(self, IPAnalyse):
+        self._IPAnalyse = IPAnalyse
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -87241,6 +86314,10 @@ class NetAttackEvent(AbstractModel):
         self._Quuid = params.get("Quuid")
         self._Count = params.get("Count")
         self._New = params.get("New")
+        self._RaspOpen = params.get("RaspOpen")
+        if params.get("IPAnalyse") is not None:
+            self._IPAnalyse = IPAnalyse()
+            self._IPAnalyse._deserialize(params.get("IPAnalyse"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87304,6 +86381,8 @@ class NetAttackEventInfo(AbstractModel):
         :type HostOpType: int
         :param _HostOpProcessTree: 进程树,需要用base64 解码
         :type HostOpProcessTree: str
+        :param _IPAnalyse: IP分析
+        :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
         """
         self._Status = None
         self._SrcIP = None
@@ -87328,6 +86407,7 @@ class NetAttackEventInfo(AbstractModel):
         self._Type = None
         self._HostOpType = None
         self._HostOpProcessTree = None
+        self._IPAnalyse = None
 
     @property
     def Status(self):
@@ -87582,6 +86662,17 @@ class NetAttackEventInfo(AbstractModel):
     def HostOpProcessTree(self, HostOpProcessTree):
         self._HostOpProcessTree = HostOpProcessTree
 
+    @property
+    def IPAnalyse(self):
+        r"""IP分析
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        """
+        return self._IPAnalyse
+
+    @IPAnalyse.setter
+    def IPAnalyse(self, IPAnalyse):
+        self._IPAnalyse = IPAnalyse
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -87609,6 +86700,9 @@ class NetAttackEventInfo(AbstractModel):
         self._Type = params.get("Type")
         self._HostOpType = params.get("HostOpType")
         self._HostOpProcessTree = params.get("HostOpProcessTree")
+        if params.get("IPAnalyse") is not None:
+            self._IPAnalyse = IPAnalyse()
+            self._IPAnalyse._deserialize(params.get("IPAnalyse"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88196,6 +87290,117 @@ class OsName(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._MachineOSType = params.get("MachineOSType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PatchInfoDetail(AbstractModel):
+    r"""补丁信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBNo: KB编号
+        :type KBNo: str
+        :param _Name: KB名称
+        :type Name: str
+        :param _PublishTime: 2025-05
+        :type PublishTime: str
+        :param _RelatedCveId: KB影响的漏洞
+        :type RelatedCveId: list of str
+        :param _KbDocUrl: KB说明文档
+        :type KbDocUrl: str
+        :param _Id: KB id编号
+        :type Id: int
+        """
+        self._KBNo = None
+        self._Name = None
+        self._PublishTime = None
+        self._RelatedCveId = None
+        self._KbDocUrl = None
+        self._Id = None
+
+    @property
+    def KBNo(self):
+        r"""KB编号
+        :rtype: str
+        """
+        return self._KBNo
+
+    @KBNo.setter
+    def KBNo(self, KBNo):
+        self._KBNo = KBNo
+
+    @property
+    def Name(self):
+        r"""KB名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PublishTime(self):
+        r"""2025-05
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def RelatedCveId(self):
+        r"""KB影响的漏洞
+        :rtype: list of str
+        """
+        return self._RelatedCveId
+
+    @RelatedCveId.setter
+    def RelatedCveId(self, RelatedCveId):
+        self._RelatedCveId = RelatedCveId
+
+    @property
+    def KbDocUrl(self):
+        r"""KB说明文档
+        :rtype: str
+        """
+        return self._KbDocUrl
+
+    @KbDocUrl.setter
+    def KbDocUrl(self, KbDocUrl):
+        self._KbDocUrl = KbDocUrl
+
+    @property
+    def Id(self):
+        r"""KB id编号
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._KBNo = params.get("KBNo")
+        self._Name = params.get("Name")
+        self._PublishTime = params.get("PublishTime")
+        self._RelatedCveId = params.get("RelatedCveId")
+        self._KbDocUrl = params.get("KbDocUrl")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90236,117 +89441,6 @@ class ProtectMachineInfo(AbstractModel):
         self._HostIp = params.get("HostIp")
         self._CreateTime = params.get("CreateTime")
         self._ExpireTime = params.get("ExpireTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProtectNetInfo(AbstractModel):
-    r"""专家服务-旗舰重保信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: 任务id
-        :type TaskId: str
-        :param _ProtectDays: 重保天数
-        :type ProtectDays: int
-        :param _Status: 重保状态 0未启动，1重保中，2已完成
-        :type Status: int
-        :param _StartTime: 重保启动时间
-        :type StartTime: str
-        :param _EndTime: 重保完成时间
-        :type EndTime: str
-        :param _ReportPath: 报告下载地址
-        :type ReportPath: str
-        """
-        self._TaskId = None
-        self._ProtectDays = None
-        self._Status = None
-        self._StartTime = None
-        self._EndTime = None
-        self._ReportPath = None
-
-    @property
-    def TaskId(self):
-        r"""任务id
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def ProtectDays(self):
-        r"""重保天数
-        :rtype: int
-        """
-        return self._ProtectDays
-
-    @ProtectDays.setter
-    def ProtectDays(self, ProtectDays):
-        self._ProtectDays = ProtectDays
-
-    @property
-    def Status(self):
-        r"""重保状态 0未启动，1重保中，2已完成
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StartTime(self):
-        r"""重保启动时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""重保完成时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ReportPath(self):
-        r"""报告下载地址
-        :rtype: str
-        """
-        return self._ReportPath
-
-    @ReportPath.setter
-    def ReportPath(self, ReportPath):
-        self._ReportPath = ReportPath
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._ProtectDays = params.get("ProtectDays")
-        self._Status = params.get("Status")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._ReportPath = params.get("ReportPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93351,10 +92445,13 @@ class RetryVulFixRequest(AbstractModel):
         :type Quuid: str
         :param _VulId: 漏洞id
         :type VulId: int
+        :param _KbId: Kb Id 
+        :type KbId: int
         """
         self._FixId = None
         self._Quuid = None
         self._VulId = None
+        self._KbId = None
 
     @property
     def FixId(self):
@@ -93389,11 +92486,23 @@ class RetryVulFixRequest(AbstractModel):
     def VulId(self, VulId):
         self._VulId = VulId
 
+    @property
+    def KbId(self):
+        r"""Kb Id 
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
 
     def _deserialize(self, params):
         self._FixId = params.get("FixId")
         self._Quuid = params.get("Quuid")
         self._VulId = params.get("VulId")
+        self._KbId = params.get("KbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96448,9 +95557,12 @@ class ScanVulAgainRequest(AbstractModel):
         :type EventIds: str
         :param _Uuids: 重新检查的机器uuid,多个逗号分隔
         :type Uuids: str
+        :param _EventType: 0漏洞,1windows 补丁
+        :type EventType: int
         """
         self._EventIds = None
         self._Uuids = None
+        self._EventType = None
 
     @property
     def EventIds(self):
@@ -96474,10 +95586,22 @@ class ScanVulAgainRequest(AbstractModel):
     def Uuids(self, Uuids):
         self._Uuids = Uuids
 
+    @property
+    def EventType(self):
+        r"""0漏洞,1windows 补丁
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
 
     def _deserialize(self, params):
         self._EventIds = params.get("EventIds")
         self._Uuids = params.get("Uuids")
+        self._EventType = params.get("EventType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96495,10 +95619,38 @@ class ScanVulAgainResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SuccessCount: 执行成功主机数
+        :type SuccessCount: int
+        :param _BasicVersionCount: 基础版(不支持)的主机数
+        :type BasicVersionCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SuccessCount = None
+        self._BasicVersionCount = None
         self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""执行成功主机数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def BasicVersionCount(self):
+        r"""基础版(不支持)的主机数
+        :rtype: int
+        """
+        return self._BasicVersionCount
+
+    @BasicVersionCount.setter
+    def BasicVersionCount(self, BasicVersionCount):
+        self._BasicVersionCount = BasicVersionCount
 
     @property
     def RequestId(self):
@@ -96513,6 +95665,8 @@ class ScanVulAgainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._BasicVersionCount = params.get("BasicVersionCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -96539,6 +95693,8 @@ class ScanVulRequest(AbstractModel):
         :type VulIds: list of int non-negative
         :param _ScanMethod: 0版本比对，2版本比对+poc
         :type ScanMethod: int
+        :param _KBNumber: kb编号
+        :type KBNumber: list of str
         """
         self._VulLevels = None
         self._HostType = None
@@ -96548,6 +95704,7 @@ class ScanVulRequest(AbstractModel):
         self._TimeoutPeriod = None
         self._VulIds = None
         self._ScanMethod = None
+        self._KBNumber = None
 
     @property
     def VulLevels(self):
@@ -96637,6 +95794,17 @@ class ScanVulRequest(AbstractModel):
     def ScanMethod(self, ScanMethod):
         self._ScanMethod = ScanMethod
 
+    @property
+    def KBNumber(self):
+        r"""kb编号
+        :rtype: list of str
+        """
+        return self._KBNumber
+
+    @KBNumber.setter
+    def KBNumber(self, KBNumber):
+        self._KBNumber = KBNumber
+
 
     def _deserialize(self, params):
         self._VulLevels = params.get("VulLevels")
@@ -96647,6 +95815,7 @@ class ScanVulRequest(AbstractModel):
         self._TimeoutPeriod = params.get("TimeoutPeriod")
         self._VulIds = params.get("VulIds")
         self._ScanMethod = params.get("ScanMethod")
+        self._KBNumber = params.get("KBNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -98990,177 +98159,6 @@ class SearchTemplate(AbstractModel):
         self._Flag = params.get("Flag")
         self._DisplayData = params.get("DisplayData")
         self._Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SecurityButlerInfo(AbstractModel):
-    r"""安全管家列表信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 数据id
-        :type Id: int
-        :param _OrderId: 订单id
-        :type OrderId: int
-        :param _Quuid: cvm id
-        :type Quuid: str
-        :param _Status: 服务状态 0-服务中,1-已到期 2已销毁
-        :type Status: int
-        :param _StartTime: 服务开始时间
-        :type StartTime: str
-        :param _EndTime: 服务结束时间
-        :type EndTime: str
-        :param _HostName: 主机名称
-        :type HostName: str
-        :param _HostIp: 主机Ip
-        :type HostIp: str
-        :param _Uuid: 主机 uuid
-        :type Uuid: str
-        :param _RiskCount: 主机风险数
-        :type RiskCount: int
-        """
-        self._Id = None
-        self._OrderId = None
-        self._Quuid = None
-        self._Status = None
-        self._StartTime = None
-        self._EndTime = None
-        self._HostName = None
-        self._HostIp = None
-        self._Uuid = None
-        self._RiskCount = None
-
-    @property
-    def Id(self):
-        r"""数据id
-        :rtype: int
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def OrderId(self):
-        r"""订单id
-        :rtype: int
-        """
-        return self._OrderId
-
-    @OrderId.setter
-    def OrderId(self, OrderId):
-        self._OrderId = OrderId
-
-    @property
-    def Quuid(self):
-        r"""cvm id
-        :rtype: str
-        """
-        return self._Quuid
-
-    @Quuid.setter
-    def Quuid(self, Quuid):
-        self._Quuid = Quuid
-
-    @property
-    def Status(self):
-        r"""服务状态 0-服务中,1-已到期 2已销毁
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StartTime(self):
-        r"""服务开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""服务结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def HostName(self):
-        r"""主机名称
-        :rtype: str
-        """
-        return self._HostName
-
-    @HostName.setter
-    def HostName(self, HostName):
-        self._HostName = HostName
-
-    @property
-    def HostIp(self):
-        r"""主机Ip
-        :rtype: str
-        """
-        return self._HostIp
-
-    @HostIp.setter
-    def HostIp(self, HostIp):
-        self._HostIp = HostIp
-
-    @property
-    def Uuid(self):
-        r"""主机 uuid
-        :rtype: str
-        """
-        return self._Uuid
-
-    @Uuid.setter
-    def Uuid(self, Uuid):
-        self._Uuid = Uuid
-
-    @property
-    def RiskCount(self):
-        r"""主机风险数
-        :rtype: int
-        """
-        return self._RiskCount
-
-    @RiskCount.setter
-    def RiskCount(self, RiskCount):
-        self._RiskCount = RiskCount
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._OrderId = params.get("OrderId")
-        self._Quuid = params.get("Quuid")
-        self._Status = params.get("Status")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._HostName = params.get("HostName")
-        self._HostIp = params.get("HostIp")
-        self._Uuid = params.get("Uuid")
-        self._RiskCount = params.get("RiskCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104401,7 +103399,7 @@ class VulEmergentMsgInfo(AbstractModel):
         r"""
         :param _VulId: 漏洞id
         :type VulId: int
-        :param _PublishTime: 漏洞纰漏时间
+        :param _PublishTime: 漏洞披露时间
         :type PublishTime: str
         :param _Name: 漏洞名
         :type Name: str
@@ -104411,6 +103409,10 @@ class VulEmergentMsgInfo(AbstractModel):
         :type SupportFix: int
         :param _SupportDefense: 是否支持自动防御 0:不支持 1:支持
         :type SupportDefense: int
+        :param _KbId: KB对应的ID
+        :type KbId: int
+        :param _KbNumber: KB号
+        :type KbNumber: str
         """
         self._VulId = None
         self._PublishTime = None
@@ -104418,6 +103420,8 @@ class VulEmergentMsgInfo(AbstractModel):
         self._NameEn = None
         self._SupportFix = None
         self._SupportDefense = None
+        self._KbId = None
+        self._KbNumber = None
 
     @property
     def VulId(self):
@@ -104432,7 +103436,7 @@ class VulEmergentMsgInfo(AbstractModel):
 
     @property
     def PublishTime(self):
-        r"""漏洞纰漏时间
+        r"""漏洞披露时间
         :rtype: str
         """
         return self._PublishTime
@@ -104485,6 +103489,28 @@ class VulEmergentMsgInfo(AbstractModel):
     def SupportDefense(self, SupportDefense):
         self._SupportDefense = SupportDefense
 
+    @property
+    def KbId(self):
+        r"""KB对应的ID
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def KbNumber(self):
+        r"""KB号
+        :rtype: str
+        """
+        return self._KbNumber
+
+    @KbNumber.setter
+    def KbNumber(self, KbNumber):
+        self._KbNumber = KbNumber
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
@@ -104493,6 +103519,8 @@ class VulEmergentMsgInfo(AbstractModel):
         self._NameEn = params.get("NameEn")
         self._SupportFix = params.get("SupportFix")
         self._SupportDefense = params.get("SupportDefense")
+        self._KbId = params.get("KbId")
+        self._KbNumber = params.get("KbNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104635,6 +103663,14 @@ class VulFixStatusInfo(AbstractModel):
         :type FixSuccessCnt: int
         :param _FixMethod: 修复方式 0组件更新或者安装补丁,1禁用服务
         :type FixMethod: int
+        :param _KbId: kb的ID
+        :type KbId: int
+        :param _KbNumber: kb号
+        :type KbNumber: str
+        :param _KbName: kb名字
+        :type KbName: str
+        :param _PreKbList: 前置kb列表
+        :type PreKbList: list of str
         """
         self._VulId = None
         self._VulName = None
@@ -104643,6 +103679,10 @@ class VulFixStatusInfo(AbstractModel):
         self._FailCnt = None
         self._FixSuccessCnt = None
         self._FixMethod = None
+        self._KbId = None
+        self._KbNumber = None
+        self._KbName = None
+        self._PreKbList = None
 
     @property
     def VulId(self):
@@ -104721,6 +103761,50 @@ class VulFixStatusInfo(AbstractModel):
     def FixMethod(self, FixMethod):
         self._FixMethod = FixMethod
 
+    @property
+    def KbId(self):
+        r"""kb的ID
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def KbNumber(self):
+        r"""kb号
+        :rtype: str
+        """
+        return self._KbNumber
+
+    @KbNumber.setter
+    def KbNumber(self, KbNumber):
+        self._KbNumber = KbNumber
+
+    @property
+    def KbName(self):
+        r"""kb名字
+        :rtype: str
+        """
+        return self._KbName
+
+    @KbName.setter
+    def KbName(self, KbName):
+        self._KbName = KbName
+
+    @property
+    def PreKbList(self):
+        r"""前置kb列表
+        :rtype: list of str
+        """
+        return self._PreKbList
+
+    @PreKbList.setter
+    def PreKbList(self, PreKbList):
+        self._PreKbList = PreKbList
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
@@ -104735,6 +103819,10 @@ class VulFixStatusInfo(AbstractModel):
         self._FailCnt = params.get("FailCnt")
         self._FixSuccessCnt = params.get("FixSuccessCnt")
         self._FixMethod = params.get("FixMethod")
+        self._KbId = params.get("KbId")
+        self._KbNumber = params.get("KbNumber")
+        self._KbName = params.get("KbName")
+        self._PreKbList = params.get("PreKbList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -105076,6 +104164,8 @@ class VulInfoHostInfo(AbstractModel):
         :type InstanceId: str
         :param _MachineType: 主机类型
         :type MachineType: str
+        :param _AgentStatus: agent是否在线；0不在线，1在线
+        :type AgentStatus: int
         """
         self._HostName = None
         self._HostIp = None
@@ -105085,6 +104175,7 @@ class VulInfoHostInfo(AbstractModel):
         self._Uuid = None
         self._InstanceId = None
         self._MachineType = None
+        self._AgentStatus = None
 
     @property
     def HostName(self):
@@ -105174,6 +104265,17 @@ class VulInfoHostInfo(AbstractModel):
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def AgentStatus(self):
+        r"""agent是否在线；0不在线，1在线
+        :rtype: int
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
@@ -105184,6 +104286,7 @@ class VulInfoHostInfo(AbstractModel):
         self._Uuid = params.get("Uuid")
         self._InstanceId = params.get("InstanceId")
         self._MachineType = params.get("MachineType")
+        self._AgentStatus = params.get("AgentStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -105265,6 +104368,10 @@ class VulInfoList(AbstractModel):
         :type VulFixSwitch: int
         :param _LatestFixTime: 最近修复时间
         :type LatestFixTime: str
+        :param _RaspOpenNodeCount: 漏洞对应机器的应用防护开启数量
+        :type RaspOpenNodeCount: int
+        :param _RaspClosedNodeCount: 漏洞对应机器的应用防护关闭数量
+        :type RaspClosedNodeCount: int
         """
         self._Ids = None
         self._Name = None
@@ -105294,6 +104401,8 @@ class VulInfoList(AbstractModel):
         self._Method = None
         self._VulFixSwitch = None
         self._LatestFixTime = None
+        self._RaspOpenNodeCount = None
+        self._RaspClosedNodeCount = None
 
     @property
     def Ids(self):
@@ -105611,6 +104720,28 @@ class VulInfoList(AbstractModel):
     def LatestFixTime(self, LatestFixTime):
         self._LatestFixTime = LatestFixTime
 
+    @property
+    def RaspOpenNodeCount(self):
+        r"""漏洞对应机器的应用防护开启数量
+        :rtype: int
+        """
+        return self._RaspOpenNodeCount
+
+    @RaspOpenNodeCount.setter
+    def RaspOpenNodeCount(self, RaspOpenNodeCount):
+        self._RaspOpenNodeCount = RaspOpenNodeCount
+
+    @property
+    def RaspClosedNodeCount(self):
+        r"""漏洞对应机器的应用防护关闭数量
+        :rtype: int
+        """
+        return self._RaspClosedNodeCount
+
+    @RaspClosedNodeCount.setter
+    def RaspClosedNodeCount(self, RaspClosedNodeCount):
+        self._RaspClosedNodeCount = RaspClosedNodeCount
+
 
     def _deserialize(self, params):
         self._Ids = params.get("Ids")
@@ -105641,6 +104772,8 @@ class VulInfoList(AbstractModel):
         self._Method = params.get("Method")
         self._VulFixSwitch = params.get("VulFixSwitch")
         self._LatestFixTime = params.get("LatestFixTime")
+        self._RaspOpenNodeCount = params.get("RaspOpenNodeCount")
+        self._RaspClosedNodeCount = params.get("RaspClosedNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -106524,6 +105657,8 @@ class WebHookPolicy(AbstractModel):
         :type HostCount: int
         :param _ExcludedQuuids: 需排除的机器列表
         :type ExcludedQuuids: list of str
+        :param _MsgLanguage: 推送语言类型，中文zh，英文en	
+        :type MsgLanguage: str
         """
         self._Id = None
         self._Name = None
@@ -106536,6 +105671,7 @@ class WebHookPolicy(AbstractModel):
         self._Quuids = None
         self._HostCount = None
         self._ExcludedQuuids = None
+        self._MsgLanguage = None
 
     @property
     def Id(self):
@@ -106658,6 +105794,17 @@ class WebHookPolicy(AbstractModel):
     def ExcludedQuuids(self, ExcludedQuuids):
         self._ExcludedQuuids = ExcludedQuuids
 
+    @property
+    def MsgLanguage(self):
+        r"""推送语言类型，中文zh，英文en	
+        :rtype: str
+        """
+        return self._MsgLanguage
+
+    @MsgLanguage.setter
+    def MsgLanguage(self, MsgLanguage):
+        self._MsgLanguage = MsgLanguage
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -106691,6 +105838,7 @@ class WebHookPolicy(AbstractModel):
         self._Quuids = params.get("Quuids")
         self._HostCount = params.get("HostCount")
         self._ExcludedQuuids = params.get("ExcludedQuuids")
+        self._MsgLanguage = params.get("MsgLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -106714,10 +105862,28 @@ class WebHookReceiver(AbstractModel):
         :type Name: str
         :param _Addr: webhook地址
         :type Addr: str
+        :param _Type: 类型
+        :type Type: int
+        :param _SCFRegion: 目标地域
+        :type SCFRegion: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _FunctionName: 函数名称
+        :type FunctionName: str
+        :param _FunctionVersion: 版本
+        :type FunctionVersion: str
+        :param _Alias: 别名
+        :type Alias: str
         """
         self._Id = None
         self._Name = None
         self._Addr = None
+        self._Type = None
+        self._SCFRegion = None
+        self._Namespace = None
+        self._FunctionName = None
+        self._FunctionVersion = None
+        self._Alias = None
 
     @property
     def Id(self):
@@ -106752,11 +105918,83 @@ class WebHookReceiver(AbstractModel):
     def Addr(self, Addr):
         self._Addr = Addr
 
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SCFRegion(self):
+        r"""目标地域
+        :rtype: str
+        """
+        return self._SCFRegion
+
+    @SCFRegion.setter
+    def SCFRegion(self, SCFRegion):
+        self._SCFRegion = SCFRegion
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def FunctionName(self):
+        r"""函数名称
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionVersion(self):
+        r"""版本
+        :rtype: str
+        """
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Alias(self):
+        r"""别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Addr = params.get("Addr")
+        self._Type = params.get("Type")
+        self._SCFRegion = params.get("SCFRegion")
+        self._Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -25,28 +25,22 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _AccountName: 账号名称。
+        :param _AccountName: <p>账号名称。</p>
         :type AccountName: str
-        :param _Remark: 账号描述信息。
+        :param _Remark: <p>账号描述信息。</p>
         :type Remark: str
-        :param _Privilege: 读写权限策略。
-- r：只读。
-- w：只写。
-- rw：读写。
+        :param _Privilege: <p>读写权限策略。- r：只读。- w：只写。- rw：读写。</p>
         :type Privilege: str
-        :param _ReadonlyPolicy: 只读路由策略。
-- master：主节点。
-- replication：从节点。
+        :param _ReadonlyPolicy: <p>只读路由策略。- master：主节点。- replication：从节点。</p>
         :type ReadonlyPolicy: list of str
-        :param _Status: 子账号状态.
-- 1：账号变更中。
-- 2：账号有效。
-- 4：账号已删除。
+        :param _Status: <p>子账号状态.- 1：账号变更中。- 2：账号有效。- 4：账号已删除。</p>
         :type Status: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>账号创建时间。</p><p>若该参数为空字符串，说明该账号创建于早期版本，未支持创建时间记录功能。</p>
         :type CreateTime: str
+        :param _PasswordLastModifiedTime: <p>账号最后修改密码的时间。</p><p>若该参数为空字符串，说明该账号创建于早期版本，未支持密码修改时间记录功能。</p>
+        :type PasswordLastModifiedTime: str
         """
         self._InstanceId = None
         self._AccountName = None
@@ -55,10 +49,11 @@ class Account(AbstractModel):
         self._ReadonlyPolicy = None
         self._Status = None
         self._CreateTime = None
+        self._PasswordLastModifiedTime = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -69,7 +64,7 @@ class Account(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""账号名称。
+        r"""<p>账号名称。</p>
         :rtype: str
         """
         return self._AccountName
@@ -80,7 +75,7 @@ class Account(AbstractModel):
 
     @property
     def Remark(self):
-        r"""账号描述信息。
+        r"""<p>账号描述信息。</p>
         :rtype: str
         """
         return self._Remark
@@ -91,10 +86,7 @@ class Account(AbstractModel):
 
     @property
     def Privilege(self):
-        r"""读写权限策略。
-- r：只读。
-- w：只写。
-- rw：读写。
+        r"""<p>读写权限策略。- r：只读。- w：只写。- rw：读写。</p>
         :rtype: str
         """
         return self._Privilege
@@ -105,9 +97,7 @@ class Account(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        r"""只读路由策略。
-- master：主节点。
-- replication：从节点。
+        r"""<p>只读路由策略。- master：主节点。- replication：从节点。</p>
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -118,10 +108,7 @@ class Account(AbstractModel):
 
     @property
     def Status(self):
-        r"""子账号状态.
-- 1：账号变更中。
-- 2：账号有效。
-- 4：账号已删除。
+        r"""<p>子账号状态.- 1：账号变更中。- 2：账号有效。- 4：账号已删除。</p>
         :rtype: int
         """
         return self._Status
@@ -132,7 +119,7 @@ class Account(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>账号创建时间。</p><p>若该参数为空字符串，说明该账号创建于早期版本，未支持创建时间记录功能。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -140,6 +127,17 @@ class Account(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def PasswordLastModifiedTime(self):
+        r"""<p>账号最后修改密码的时间。</p><p>若该参数为空字符串，说明该账号创建于早期版本，未支持密码修改时间记录功能。</p>
+        :rtype: str
+        """
+        return self._PasswordLastModifiedTime
+
+    @PasswordLastModifiedTime.setter
+    def PasswordLastModifiedTime(self, PasswordLastModifiedTime):
+        self._PasswordLastModifiedTime = PasswordLastModifiedTime
 
 
     def _deserialize(self, params):
@@ -150,6 +148,7 @@ class Account(AbstractModel):
         self._ReadonlyPolicy = params.get("ReadonlyPolicy")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._PasswordLastModifiedTime = params.get("PasswordLastModifiedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5075,11 +5074,11 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _Limit: 分页大小。默认值为20，最小值为1，最大值为100。
+        :param _Limit: <p>分页大小。默认值为20，最小值为1，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        :param _Offset: <p>分页偏移量。</p><ul><li>参数取值：Limit 的整数倍，offset=limit*(页码-1)。</li><li>默认值：0。</li></ul>
         :type Offset: int
         """
         self._InstanceId = None
@@ -5088,7 +5087,7 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5099,7 +5098,7 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小。默认值为20，最小值为1，最大值为100。
+        r"""<p>分页大小。默认值为20，最小值为1，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -5110,7 +5109,7 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        r"""<p>分页偏移量。</p><ul><li>参数取值：Limit 的整数倍，offset=limit*(页码-1)。</li><li>默认值：0。</li></ul>
         :rtype: int
         """
         return self._Offset
@@ -5141,9 +5140,9 @@ class DescribeInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Accounts: 账号详细信息。
+        :param _Accounts: <p>账号详细信息。</p>
         :type Accounts: list of Account
-        :param _TotalCount: 账号个数。
+        :param _TotalCount: <p>账号个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5154,7 +5153,7 @@ class DescribeInstanceAccountResponse(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""账号详细信息。
+        r"""<p>账号详细信息。</p>
         :rtype: list of Account
         """
         return self._Accounts
@@ -5165,7 +5164,7 @@ class DescribeInstanceAccountResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""账号个数。
+        r"""<p>账号个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7674,19 +7673,17 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+        :param _InstanceId: <p>指定实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis控制台</a> 在实例列表复制实例 ID。同时，InstanceId 与规格参数不能同时为空，至少提供一种。</p><ul><li>若仅指定 InstanceId：查询该实例当前规格的带宽。</li><li>若指定 InstanceId + 至少一个规格参数（ShardSize、ShardNum 或 ReplicateNum）：计算变更规格后的带宽。</li><li>若指定部分或所有规格参数（ShardSize、ShardNum、ReplicateNum 与 Type），而不指定 InstanceId：根据规格组合查询理论带宽。</li></ul>
         :type InstanceId: str
-        :param _ShardSize: 分片大小，单位：MB
+        :param _ShardSize: <p>分片大小。单位：MB。</p>
         :type ShardSize: int
-        :param _ShardNum: 分片数量。
+        :param _ShardNum: <p>分片数量。</p>
         :type ShardNum: int
-        :param _ReplicateNum: 复制组数量。
+        :param _ReplicateNum: <p>复制组数量。</p>
         :type ReplicateNum: int
-        :param _ReadOnlyWeight: 只读权重。
-- 100：开启从只读。
-- 0：关闭从只读。
+        :param _ReadOnlyWeight: <p>只读权重。- 100：开启从只读。- 0：关闭从只读。</p>
         :type ReadOnlyWeight: int
-        :param _Type: 实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+        :param _Type: <p>实例类型，同 <a href="https://cloud.tencent.com/document/api/239/20026">CreateInstances</a> 的Type。</p>
         :type Type: int
         """
         self._InstanceId = None
@@ -7698,7 +7695,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+        r"""<p>指定实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis控制台</a> 在实例列表复制实例 ID。同时，InstanceId 与规格参数不能同时为空，至少提供一种。</p><ul><li>若仅指定 InstanceId：查询该实例当前规格的带宽。</li><li>若指定 InstanceId + 至少一个规格参数（ShardSize、ShardNum 或 ReplicateNum）：计算变更规格后的带宽。</li><li>若指定部分或所有规格参数（ShardSize、ShardNum、ReplicateNum 与 Type），而不指定 InstanceId：根据规格组合查询理论带宽。</li></ul>
         :rtype: str
         """
         return self._InstanceId
@@ -7709,7 +7706,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def ShardSize(self):
-        r"""分片大小，单位：MB
+        r"""<p>分片大小。单位：MB。</p>
         :rtype: int
         """
         return self._ShardSize
@@ -7720,7 +7717,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def ShardNum(self):
-        r"""分片数量。
+        r"""<p>分片数量。</p>
         :rtype: int
         """
         return self._ShardNum
@@ -7731,7 +7728,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def ReplicateNum(self):
-        r"""复制组数量。
+        r"""<p>复制组数量。</p>
         :rtype: int
         """
         return self._ReplicateNum
@@ -7742,9 +7739,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def ReadOnlyWeight(self):
-        r"""只读权重。
-- 100：开启从只读。
-- 0：关闭从只读。
+        r"""<p>只读权重。- 100：开启从只读。- 0：关闭从只读。</p>
         :rtype: int
         """
         return self._ReadOnlyWeight
@@ -7755,7 +7750,7 @@ class DescribeInstanceSpecBandwidthRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+        r"""<p>实例类型，同 <a href="https://cloud.tencent.com/document/api/239/20026">CreateInstances</a> 的Type。</p>
         :rtype: int
         """
         return self._Type
@@ -7789,9 +7784,9 @@ class DescribeInstanceSpecBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bandwidth: 基础带宽。
+        :param _Bandwidth: <p>基础带宽。</p>
         :type Bandwidth: int
-        :param _ClientLimit: 链接限制。
+        :param _ClientLimit: <p>链接限制。</p>
         :type ClientLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7802,7 +7797,7 @@ class DescribeInstanceSpecBandwidthResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""基础带宽。
+        r"""<p>基础带宽。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -7813,7 +7808,7 @@ class DescribeInstanceSpecBandwidthResponse(AbstractModel):
 
     @property
     def ClientLimit(self):
-        r"""链接限制。
+        r"""<p>链接限制。</p>
         :rtype: int
         """
         return self._ClientLimit

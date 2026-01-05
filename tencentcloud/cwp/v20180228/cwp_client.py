@@ -49,31 +49,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CancelIgnoreVul(self, request):
-        r"""产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-
-        取消漏洞忽略
-
-        :param request: Request instance for CancelIgnoreVul.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CancelIgnoreVul", params, headers=headers)
-            response = json.loads(body)
-            model = models.CancelIgnoreVulResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ChangeRuleEventsIgnoreStatus(self, request):
         r"""根据检测项id或事件id批量忽略事件或取消忽略
 
@@ -2906,29 +2881,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAvailableExpertServiceDetail(self, request):
-        r"""专家服务-可用订单详情
-
-        :param request: Request instance for DescribeAvailableExpertServiceDetail.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAvailableExpertServiceDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAvailableExpertServiceDetailResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeBanMode(self, request):
         r"""获取爆破阻断模式
 
@@ -4033,29 +3985,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEmergencyResponseList(self, request):
-        r"""专家服务-应急响应列表
-
-        :param request: Request instance for DescribeEmergencyResponseList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEmergencyResponseList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEmergencyResponseListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeEmergencyVulList(self, request):
         r"""获取应急漏洞列表
 
@@ -4093,52 +4022,6 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeEventByTable", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEventByTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeExpertServiceList(self, request):
-        r"""专家服务-安全管家列表
-
-        :param request: Request instance for DescribeExpertServiceList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExpertServiceList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExpertServiceListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeExpertServiceOrderList(self, request):
-        r"""专家服务-专家服务订单列表
-
-        :param request: Request instance for DescribeExpertServiceOrderList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExpertServiceOrderList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExpertServiceOrderListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5574,29 +5457,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeMonthInspectionReport(self, request):
-        r"""专家服务-安全管家月巡检报告下载
-
-        :param request: Request instance for DescribeMonthInspectionReport.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeMonthInspectionReport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeMonthInspectionReportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeNetAttackSetting(self, request):
         r"""查询网络攻击设置
 
@@ -5887,29 +5747,6 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeProtectDirRelatedServer", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProtectDirRelatedServerResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeProtectNetList(self, request):
-        r"""专家服务-旗舰重保列表
-
-        :param request: Request instance for DescribeProtectNetList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeProtectNetList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeProtectNetListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -9820,31 +9657,6 @@ class CwpClient(AbstractClient):
             body = self.call("GetLocalStorageItem", params, headers=headers)
             response = json.loads(body)
             model = models.GetLocalStorageItemResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def IgnoreImpactedHosts(self, request):
-        r"""产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-
-        本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
-
-        :param request: Request instance for IgnoreImpactedHosts.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("IgnoreImpactedHosts", params, headers=headers)
-            response = json.loads(body)
-            model = models.IgnoreImpactedHostsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

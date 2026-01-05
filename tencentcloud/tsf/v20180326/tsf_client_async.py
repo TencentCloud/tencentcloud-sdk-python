@@ -157,6 +157,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ContinueRunFailedTaskBatchResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         对执行失败的任务批次执行续跑
         """
         
@@ -643,6 +645,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         创建任务
         """
         
@@ -661,6 +665,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateTaskFlowResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         创建工作流
         """
         
@@ -1096,6 +1102,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         删除任务
         """
         
@@ -1802,6 +1810,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeFlowLastBatchStateResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         查询工作流最新一个批次的状态信息
         """
         
@@ -2738,6 +2748,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTaskDetailResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         查询任务详情
         """
         
@@ -2756,6 +2768,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTaskLastStatusResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         查询任务最近一次执行状态
         """
         
@@ -2774,6 +2788,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTaskRecordsResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         翻页查询任务列表
         """
         
@@ -2937,6 +2953,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DisableTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         停用任务
         """
         
@@ -2955,6 +2973,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DisableTaskFlowResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         停用工作流
         """
         
@@ -3081,6 +3101,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         启用任务
         """
         
@@ -3099,6 +3121,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableTaskFlowResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         启用工作流
         """
         
@@ -3153,6 +3177,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExecuteTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         手动执行一次任务
         """
         
@@ -3171,6 +3197,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExecuteTaskFlowResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         执行一次工作流
         """
         
@@ -3423,6 +3451,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         修改任务
         """
         
@@ -3498,6 +3528,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RedoTaskResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         重新执行任务
         """
         
@@ -3516,6 +3548,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RedoTaskBatchResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         重新执行任务批次
         """
         
@@ -3534,6 +3568,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RedoTaskExecuteResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         重新执行在某个节点上执行任务。
         """
         
@@ -3552,6 +3588,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RedoTaskFlowBatchResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         重新执行工作流批次
         """
         
@@ -3894,6 +3932,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopTaskBatchResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         停止执行中的任务批次， 非运行中的任务不可调用。
         """
         
@@ -3912,6 +3952,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopTaskExecuteResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         停止正在某个节点上执行的任务
         """
         
@@ -3930,6 +3972,8 @@ class TsfClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TerminateTaskFlowBatchResponse:
         """
+        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+
         停止一个工作流批次
         """
         

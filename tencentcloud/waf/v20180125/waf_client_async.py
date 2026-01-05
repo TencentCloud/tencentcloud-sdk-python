@@ -1051,6 +1051,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBotIdRule(
+            self,
+            request: models.DescribeBotIdRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBotIdRuleResponse:
+        """
+        获取BotId规则列表1
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBotIdRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBotIdRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBotSceneList(
             self,
             request: models.DescribeBotSceneListRequest,

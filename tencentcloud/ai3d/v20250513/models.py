@@ -1183,6 +1183,8 @@ Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl
 triangle: 三角形面。
 quadrilateral: 四边形面与三角形面混合生成。
         :type PolygonType: str
+        :param _ResultFormat: 生成模型的格式，仅限制生成一种格式； 生成模型文件组默认返回obj、glb格式（开启时Geometry参数时，默认为glb格式）； 可选值：STL，USDZ，FBX；
+        :type ResultFormat: str
         """
         self._Prompt = None
         self._ImageBase64 = None
@@ -1192,6 +1194,7 @@ quadrilateral: 四边形面与三角形面混合生成。
         self._FaceCount = None
         self._GenerateType = None
         self._PolygonType = None
+        self._ResultFormat = None
 
     @property
     def Prompt(self):
@@ -1306,6 +1309,17 @@ quadrilateral: 四边形面与三角形面混合生成。
     def PolygonType(self, PolygonType):
         self._PolygonType = PolygonType
 
+    @property
+    def ResultFormat(self):
+        r"""生成模型的格式，仅限制生成一种格式； 生成模型文件组默认返回obj、glb格式（开启时Geometry参数时，默认为glb格式）； 可选值：STL，USDZ，FBX；
+        :rtype: str
+        """
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -1321,6 +1335,7 @@ quadrilateral: 四边形面与三角形面混合生成。
         self._FaceCount = params.get("FaceCount")
         self._GenerateType = params.get("GenerateType")
         self._PolygonType = params.get("PolygonType")
+        self._ResultFormat = params.get("ResultFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

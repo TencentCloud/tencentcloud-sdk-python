@@ -1126,6 +1126,178 @@ class AssociateResourceGroupToProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuthInfo(AbstractModel):
+    r"""权限用户项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthProjectIds: 授权给的目标项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthProjectIds: list of str
+        :param _AuthUsers: 授权给的项目下用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthUsers: list of str
+        """
+        self._AuthProjectIds = None
+        self._AuthUsers = None
+
+    @property
+    def AuthProjectIds(self):
+        r"""授权给的目标项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AuthProjectIds
+
+    @AuthProjectIds.setter
+    def AuthProjectIds(self, AuthProjectIds):
+        self._AuthProjectIds = AuthProjectIds
+
+    @property
+    def AuthUsers(self):
+        r"""授权给的项目下用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AuthUsers
+
+    @AuthUsers.setter
+    def AuthUsers(self, AuthUsers):
+        self._AuthUsers = AuthUsers
+
+
+    def _deserialize(self, params):
+        self._AuthProjectIds = params.get("AuthProjectIds")
+        self._AuthUsers = params.get("AuthUsers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizeDataSourceRequest(AbstractModel):
+    r"""AuthorizeDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceId: 数据源ID
+        :type DataSourceId: str
+        :param _AuthProjectId: 授权给的目标项目id
+        :type AuthProjectId: str
+        :param _AuthUsers: 授权项目下用户列表，格式为：项目id_用户id
+与AuthProjectId参数只能选填一个
+当授权给多个对象时，项目id必须一致
+        :type AuthUsers: list of str
+        """
+        self._DataSourceId = None
+        self._AuthProjectId = None
+        self._AuthUsers = None
+
+    @property
+    def DataSourceId(self):
+        r"""数据源ID
+        :rtype: str
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def AuthProjectId(self):
+        r"""授权给的目标项目id
+        :rtype: str
+        """
+        return self._AuthProjectId
+
+    @AuthProjectId.setter
+    def AuthProjectId(self, AuthProjectId):
+        self._AuthProjectId = AuthProjectId
+
+    @property
+    def AuthUsers(self):
+        r"""授权项目下用户列表，格式为：项目id_用户id
+与AuthProjectId参数只能选填一个
+当授权给多个对象时，项目id必须一致
+        :rtype: list of str
+        """
+        return self._AuthUsers
+
+    @AuthUsers.setter
+    def AuthUsers(self, AuthUsers):
+        self._AuthUsers = AuthUsers
+
+
+    def _deserialize(self, params):
+        self._DataSourceId = params.get("DataSourceId")
+        self._AuthProjectId = params.get("AuthProjectId")
+        self._AuthUsers = params.get("AuthUsers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizeDataSourceResponse(AbstractModel):
+    r"""AuthorizeDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataSourceStatus()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class BackfillInstance(AbstractModel):
     r"""单次补录实例详情
 
@@ -1359,6 +1531,87 @@ class BackfillInstanceCollection(AbstractModel):
         
 
 
+class BatchOperationOpsDto(AbstractModel):
+    r"""批量操作的结果返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: 批量操作成功数
+        :type SuccessCount: int
+        :param _FailedCount: 批量操作失败数
+        :type FailedCount: int
+        :param _TotalCount: 批量操作的总数
+        :type TotalCount: int
+        :param _AsyncActionId: 异步操作记录的唯一id
+        :type AsyncActionId: str
+        """
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._TotalCount = None
+        self._AsyncActionId = None
+
+    @property
+    def SuccessCount(self):
+        r"""批量操作成功数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""批量操作失败数
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def TotalCount(self):
+        r"""批量操作的总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AsyncActionId(self):
+        r"""异步操作记录的唯一id
+        :rtype: str
+        """
+        return self._AsyncActionId
+
+    @AsyncActionId.setter
+    def AsyncActionId(self, AsyncActionId):
+        self._AsyncActionId = AsyncActionId
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        self._TotalCount = params.get("TotalCount")
+        self._AsyncActionId = params.get("AsyncActionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindProject(AbstractModel):
     r"""关联绑定的project
 
@@ -1421,6 +1674,78 @@ class BindProject(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._ProjectName = params.get("ProjectName")
         self._ProjectDisplayName = params.get("ProjectDisplayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BizStateEnumInfoBrief(AbstractModel):
+    r"""工作流执行的业务枚举信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelKey: 标签key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelKey: str
+        :param _LabelValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param _Count: 标签总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self._LabelKey = None
+        self._LabelValue = None
+        self._Count = None
+
+    @property
+    def LabelKey(self):
+        r"""标签key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelKey
+
+    @LabelKey.setter
+    def LabelKey(self, LabelKey):
+        self._LabelKey = LabelKey
+
+    @property
+    def LabelValue(self):
+        r"""标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+    @property
+    def Count(self):
+        r"""标签总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._LabelKey = params.get("LabelKey")
+        self._LabelValue = params.get("LabelValue")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2205,6 +2530,78 @@ class CodeFolderNode(AbstractModel):
         
 
 
+class CodePermissionsResultItem(AbstractModel):
+    r"""数据探索文件授权结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Item: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: str
+        :param _Result: 该资源权限操作是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _Reason: 若是创建失败, 提供失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self._Item = None
+        self._Result = None
+        self._Reason = None
+
+    @property
+    def Item(self):
+        r"""资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        r"""该资源权限操作是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Reason(self):
+        r"""若是创建失败, 提供失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Item = params.get("Item")
+        self._Result = params.get("Result")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeStudioFileActionResult(AbstractModel):
     r"""CodeStudio文件对象操作结果
 
@@ -2353,6 +2750,44 @@ class CodeStudioFolderResult(AbstractModel):
         
 
 
+class CodeStudioMaxPermission(AbstractModel):
+    r"""用户对CodeStudio文件/文件夹的递归最大权限类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionType: 授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionType: str
+        """
+        self._PermissionType = None
+
+    @property
+    def PermissionType(self):
+        r"""授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PermissionType
+
+    @PermissionType.setter
+    def PermissionType(self, PermissionType):
+        self._PermissionType = PermissionType
+
+
+    def _deserialize(self, params):
+        self._PermissionType = params.get("PermissionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ColumnInfo(AbstractModel):
     r"""ColumnInfo
 
@@ -2464,6 +2899,334 @@ class ColumnInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Position = params.get("Position")
         self._IsPartition = params.get("IsPartition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonQualityOperateResult(AbstractModel):
+    r"""单条规则操作结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Msg: 文案提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Success: 操作是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Success: bool
+        """
+        self._Id = None
+        self._Name = None
+        self._Msg = None
+        self._Success = None
+
+    @property
+    def Id(self):
+        r"""id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Msg(self):
+        r"""文案提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Success(self):
+        r"""操作是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Msg = params.get("Msg")
+        self._Success = params.get("Success")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareQualityResult(AbstractModel):
+    r"""质量检查对比结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 对比结果项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CompareQualityResultItem
+        :param _TotalRows: 检测总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRows: int
+        :param _PassRows: 检测通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassRows: int
+        :param _TriggerRows: 检测不通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerRows: int
+        :param _ComputeExpression: 比较关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeExpression: str
+        """
+        self._Items = None
+        self._TotalRows = None
+        self._PassRows = None
+        self._TriggerRows = None
+        self._ComputeExpression = None
+
+    @property
+    def Items(self):
+        r"""对比结果项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CompareQualityResultItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalRows(self):
+        r"""检测总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRows
+
+    @TotalRows.setter
+    def TotalRows(self, TotalRows):
+        self._TotalRows = TotalRows
+
+    @property
+    def PassRows(self):
+        r"""检测通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PassRows
+
+    @PassRows.setter
+    def PassRows(self, PassRows):
+        self._PassRows = PassRows
+
+    @property
+    def TriggerRows(self):
+        r"""检测不通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerRows
+
+    @TriggerRows.setter
+    def TriggerRows(self, TriggerRows):
+        self._TriggerRows = TriggerRows
+
+    @property
+    def ComputeExpression(self):
+        r"""比较关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComputeExpression
+
+    @ComputeExpression.setter
+    def ComputeExpression(self, ComputeExpression):
+        self._ComputeExpression = ComputeExpression
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CompareQualityResultItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalRows = params.get("TotalRows")
+        self._PassRows = params.get("PassRows")
+        self._TriggerRows = params.get("TriggerRows")
+        self._ComputeExpression = params.get("ComputeExpression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareQualityResultItem(AbstractModel):
+    r"""对比结果项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FixResult: 对比结果， 1为真 2为假
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixResult: int
+        :param _ResultValue: 质量sql执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultValue: str
+        :param _Values: 阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of QualityThresholdValue
+        :param _Operator: 比较操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _CompareType: 比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param _ValueComputeType: 值比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueComputeType: int
+        """
+        self._FixResult = None
+        self._ResultValue = None
+        self._Values = None
+        self._Operator = None
+        self._CompareType = None
+        self._ValueComputeType = None
+
+    @property
+    def FixResult(self):
+        r"""对比结果， 1为真 2为假
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FixResult
+
+    @FixResult.setter
+    def FixResult(self, FixResult):
+        self._FixResult = FixResult
+
+    @property
+    def ResultValue(self):
+        r"""质量sql执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResultValue
+
+    @ResultValue.setter
+    def ResultValue(self, ResultValue):
+        self._ResultValue = ResultValue
+
+    @property
+    def Values(self):
+        r"""阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityThresholdValue
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Operator(self):
+        r"""比较操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def CompareType(self):
+        r"""比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompareType
+
+    @CompareType.setter
+    def CompareType(self, CompareType):
+        self._CompareType = CompareType
+
+    @property
+    def ValueComputeType(self):
+        r"""值比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ValueComputeType
+
+    @ValueComputeType.setter
+    def ValueComputeType(self, ValueComputeType):
+        self._ValueComputeType = ValueComputeType
+
+
+    def _deserialize(self, params):
+        self._FixResult = params.get("FixResult")
+        self._ResultValue = params.get("ResultValue")
+        if params.get("Values") is not None:
+            self._Values = []
+            for item in params.get("Values"):
+                obj = QualityThresholdValue()
+                obj._deserialize(item)
+                self._Values.append(obj)
+        self._Operator = params.get("Operator")
+        self._CompareType = params.get("CompareType")
+        self._ValueComputeType = params.get("ValueComputeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2761,6 +3524,110 @@ class CreateCodeFolderResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = CodeStudioFolderResult()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCodePermissionsRequest(AbstractModel):
+    r"""CreateCodePermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _AuthorizePermissionObjects: 权限操作对象
+        :type AuthorizePermissionObjects: list of ExploreAuthorizationObject
+        """
+        self._ProjectId = None
+        self._AuthorizePermissionObjects = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AuthorizePermissionObjects(self):
+        r"""权限操作对象
+        :rtype: list of ExploreAuthorizationObject
+        """
+        return self._AuthorizePermissionObjects
+
+    @AuthorizePermissionObjects.setter
+    def AuthorizePermissionObjects(self, AuthorizePermissionObjects):
+        self._AuthorizePermissionObjects = AuthorizePermissionObjects
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("AuthorizePermissionObjects") is not None:
+            self._AuthorizePermissionObjects = []
+            for item in params.get("AuthorizePermissionObjects"):
+                obj = ExploreAuthorizationObject()
+                obj._deserialize(item)
+                self._AuthorizePermissionObjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCodePermissionsResponse(AbstractModel):
+    r"""CreateCodePermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 授权结果列表
+        :type Data: list of CodePermissionsResultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""授权结果列表
+        :rtype: list of CodePermissionsResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CodePermissionsResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4173,6 +5040,150 @@ class CreateProjectResult(AbstractModel):
         
 
 
+class CreateQualityRuleGroupRequest(AbstractModel):
+    r"""CreateQualityRuleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupExecStrategyBOList: 任务参数
+        :type RuleGroupExecStrategyBOList: list of QualityRuleGroupExecStrategy
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self._RuleGroupExecStrategyBOList = None
+        self._ProjectId = None
+
+    @property
+    def RuleGroupExecStrategyBOList(self):
+        r"""任务参数
+        :rtype: list of QualityRuleGroupExecStrategy
+        """
+        return self._RuleGroupExecStrategyBOList
+
+    @RuleGroupExecStrategyBOList.setter
+    def RuleGroupExecStrategyBOList(self, RuleGroupExecStrategyBOList):
+        self._RuleGroupExecStrategyBOList = RuleGroupExecStrategyBOList
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleGroupExecStrategyBOList") is not None:
+            self._RuleGroupExecStrategyBOList = []
+            for item in params.get("RuleGroupExecStrategyBOList"):
+                obj = QualityRuleGroupExecStrategy()
+                obj._deserialize(item)
+                self._RuleGroupExecStrategyBOList.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityRuleGroupResponse(AbstractModel):
+    r"""CreateQualityRuleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleGroupResultVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleGroupResultVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateQualityRuleGroupResultVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQualityRuleGroupResultVO(AbstractModel):
+    r"""监控任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupResultList: 任务创建结构
+        :type RuleGroupResultList: list of QualityRuleGroupResult
+        """
+        self._RuleGroupResultList = None
+
+    @property
+    def RuleGroupResultList(self):
+        r"""任务创建结构
+        :rtype: list of QualityRuleGroupResult
+        """
+        return self._RuleGroupResultList
+
+    @RuleGroupResultList.setter
+    def RuleGroupResultList(self, RuleGroupResultList):
+        self._RuleGroupResultList = RuleGroupResultList
+
+
+    def _deserialize(self, params):
+        if params.get("RuleGroupResultList") is not None:
+            self._RuleGroupResultList = []
+            for item in params.get("RuleGroupResultList"):
+                obj = QualityRuleGroupResult()
+                obj._deserialize(item)
+                self._RuleGroupResultList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateResourceFileRequest(AbstractModel):
     r"""CreateResourceFile请求参数结构体
 
@@ -5374,6 +6385,209 @@ class CreateTaskConfiguration(AbstractModel):
         
 
 
+class CreateTaskFolderRequest(AbstractModel):
+    r"""CreateTaskFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _ParentTaskFolderPath: 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+        :type ParentTaskFolderPath: str
+        :param _TaskFolderName: 要创建的文件夹名字
+        :type TaskFolderName: str
+        :param _TaskFolderType: 任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+        :type TaskFolderType: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        """
+        self._ProjectId = None
+        self._ParentTaskFolderPath = None
+        self._TaskFolderName = None
+        self._TaskFolderType = None
+        self._WorkflowId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ParentTaskFolderPath(self):
+        r"""父文件夹绝对路径，如/abc/de，如果是根目录则传/
+        :rtype: str
+        """
+        return self._ParentTaskFolderPath
+
+    @ParentTaskFolderPath.setter
+    def ParentTaskFolderPath(self, ParentTaskFolderPath):
+        self._ParentTaskFolderPath = ParentTaskFolderPath
+
+    @property
+    def TaskFolderName(self):
+        r"""要创建的文件夹名字
+        :rtype: str
+        """
+        return self._TaskFolderName
+
+    @TaskFolderName.setter
+    def TaskFolderName(self, TaskFolderName):
+        self._TaskFolderName = TaskFolderName
+
+    @property
+    def TaskFolderType(self):
+        r"""任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+        :rtype: str
+        """
+        return self._TaskFolderType
+
+    @TaskFolderType.setter
+    def TaskFolderType(self, TaskFolderType):
+        self._TaskFolderType = TaskFolderType
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ParentTaskFolderPath = params.get("ParentTaskFolderPath")
+        self._TaskFolderName = params.get("TaskFolderName")
+        self._TaskFolderType = params.get("TaskFolderType")
+        self._WorkflowId = params.get("WorkflowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTaskFolderResponse(AbstractModel):
+    r"""CreateTaskFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建文件夹结果，如果创建失败则报错。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateTaskFolderResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""创建文件夹结果，如果创建失败则报错。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTaskFolderResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateTaskFolderResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTaskFolderResult(AbstractModel):
+    r"""创建任务文件夹结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskFolderId: 创建成功的文件夹ID。如果创建失败则报错。
+        :type TaskFolderId: str
+        """
+        self._TaskFolderId = None
+
+    @property
+    def TaskFolderId(self):
+        r"""创建成功的文件夹ID。如果创建失败则报错。
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+
+    def _deserialize(self, params):
+        self._TaskFolderId = params.get("TaskFolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateTaskRequest(AbstractModel):
     r"""CreateTask请求参数结构体
 
@@ -6075,6 +7289,945 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         
 
 
+class CreateTriggerTaskBaseAttribute(AbstractModel):
+    r"""创建任务基本属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _TaskTypeId: 任务类型ID：
+* 26:OfflineSynchronization
+* 30:Python
+* 32:DLC SQL
+* 35:Shell
+* 38:Shell Form Mode
+* 46:DLC Spark
+* 50:DLC PySpark
+* 130:Branch Node
+* 131:Merged Node
+* 132:Notebook
+* 133:SSH
+* 137:For-each
+* 139:DLC Spark Streaming
+* 140:Run Workflow
+        :type TaskTypeId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _OwnerUin: 任务负责人ID，默认为当前用户
+        :type OwnerUin: str
+        :param _TaskDescription: 任务描述
+        :type TaskDescription: str
+        :param _TaskFolderPath: 任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :type TaskFolderPath: str
+        """
+        self._TaskName = None
+        self._TaskTypeId = None
+        self._WorkflowId = None
+        self._OwnerUin = None
+        self._TaskDescription = None
+        self._TaskFolderPath = None
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型ID：
+* 26:OfflineSynchronization
+* 30:Python
+* 32:DLC SQL
+* 35:Shell
+* 38:Shell Form Mode
+* 46:DLC Spark
+* 50:DLC PySpark
+* 130:Branch Node
+* 131:Merged Node
+* 132:Notebook
+* 133:SSH
+* 137:For-each
+* 139:DLC Spark Streaming
+* 140:Run Workflow
+        :rtype: str
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def OwnerUin(self):
+        r"""任务负责人ID，默认为当前用户
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskDescription(self):
+        r"""任务描述
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+    @property
+    def TaskFolderPath(self):
+        r"""任务文件夹路径
+
+注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskDescription = params.get("TaskDescription")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerTaskConfiguration(AbstractModel):
+    r"""创建任务配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroup: 资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+        :type ResourceGroup: str
+        :param _CodeContent: 代码内容的Base64编码
+        :type CodeContent: str
+        :param _TaskExtConfigurationList: 任务扩展属性配置列表
+        :type TaskExtConfigurationList: list of TaskExtParameter
+        :param _DataCluster: 集群ID
+        :type DataCluster: str
+        :param _BrokerIp: 指定的运行节点
+        :type BrokerIp: str
+        :param _YarnQueue: 资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+        :type YarnQueue: str
+        :param _SourceServiceId: 来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :type SourceServiceId: str
+        :param _TargetServiceId: 目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :type TargetServiceId: str
+        :param _TaskSchedulingParameterList: 调度参数
+        :type TaskSchedulingParameterList: list of TaskSchedulingParameter
+        :param _BundleId: Bundle使用的ID
+        :type BundleId: str
+        :param _BundleInfo: Bundle信息
+        :type BundleInfo: str
+        """
+        self._ResourceGroup = None
+        self._CodeContent = None
+        self._TaskExtConfigurationList = None
+        self._DataCluster = None
+        self._BrokerIp = None
+        self._YarnQueue = None
+        self._SourceServiceId = None
+        self._TargetServiceId = None
+        self._TaskSchedulingParameterList = None
+        self._BundleId = None
+        self._BundleInfo = None
+
+    @property
+    def ResourceGroup(self):
+        r"""资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def CodeContent(self):
+        r"""代码内容的Base64编码
+        :rtype: str
+        """
+        return self._CodeContent
+
+    @CodeContent.setter
+    def CodeContent(self, CodeContent):
+        self._CodeContent = CodeContent
+
+    @property
+    def TaskExtConfigurationList(self):
+        r"""任务扩展属性配置列表
+        :rtype: list of TaskExtParameter
+        """
+        return self._TaskExtConfigurationList
+
+    @TaskExtConfigurationList.setter
+    def TaskExtConfigurationList(self, TaskExtConfigurationList):
+        self._TaskExtConfigurationList = TaskExtConfigurationList
+
+    @property
+    def DataCluster(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._DataCluster
+
+    @DataCluster.setter
+    def DataCluster(self, DataCluster):
+        self._DataCluster = DataCluster
+
+    @property
+    def BrokerIp(self):
+        r"""指定的运行节点
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def YarnQueue(self):
+        r"""资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+        :rtype: str
+        """
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def SourceServiceId(self):
+        r"""来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :rtype: str
+        """
+        return self._SourceServiceId
+
+    @SourceServiceId.setter
+    def SourceServiceId(self, SourceServiceId):
+        self._SourceServiceId = SourceServiceId
+
+    @property
+    def TargetServiceId(self):
+        r"""目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+        :rtype: str
+        """
+        return self._TargetServiceId
+
+    @TargetServiceId.setter
+    def TargetServiceId(self, TargetServiceId):
+        self._TargetServiceId = TargetServiceId
+
+    @property
+    def TaskSchedulingParameterList(self):
+        r"""调度参数
+        :rtype: list of TaskSchedulingParameter
+        """
+        return self._TaskSchedulingParameterList
+
+    @TaskSchedulingParameterList.setter
+    def TaskSchedulingParameterList(self, TaskSchedulingParameterList):
+        self._TaskSchedulingParameterList = TaskSchedulingParameterList
+
+    @property
+    def BundleId(self):
+        r"""Bundle使用的ID
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""Bundle信息
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+
+    def _deserialize(self, params):
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._CodeContent = params.get("CodeContent")
+        if params.get("TaskExtConfigurationList") is not None:
+            self._TaskExtConfigurationList = []
+            for item in params.get("TaskExtConfigurationList"):
+                obj = TaskExtParameter()
+                obj._deserialize(item)
+                self._TaskExtConfigurationList.append(obj)
+        self._DataCluster = params.get("DataCluster")
+        self._BrokerIp = params.get("BrokerIp")
+        self._YarnQueue = params.get("YarnQueue")
+        self._SourceServiceId = params.get("SourceServiceId")
+        self._TargetServiceId = params.get("TargetServiceId")
+        if params.get("TaskSchedulingParameterList") is not None:
+            self._TaskSchedulingParameterList = []
+            for item in params.get("TaskSchedulingParameterList"):
+                obj = TaskSchedulingParameter()
+                obj._deserialize(item)
+                self._TaskSchedulingParameterList.append(obj)
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerTaskRequest(AbstractModel):
+    r"""CreateTriggerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TriggerTaskBaseAttribute: 任务基本属性
+        :type TriggerTaskBaseAttribute: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskBaseAttribute`
+        :param _TriggerTaskConfiguration: 任务配置
+        :type TriggerTaskConfiguration: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskConfiguration`
+        :param _TriggerTaskSchedulerConfiguration: 任务调度配置
+        :type TriggerTaskSchedulerConfiguration: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskSchedulerConfiguration`
+        """
+        self._ProjectId = None
+        self._TriggerTaskBaseAttribute = None
+        self._TriggerTaskConfiguration = None
+        self._TriggerTaskSchedulerConfiguration = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TriggerTaskBaseAttribute(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskBaseAttribute`
+        """
+        return self._TriggerTaskBaseAttribute
+
+    @TriggerTaskBaseAttribute.setter
+    def TriggerTaskBaseAttribute(self, TriggerTaskBaseAttribute):
+        self._TriggerTaskBaseAttribute = TriggerTaskBaseAttribute
+
+    @property
+    def TriggerTaskConfiguration(self):
+        r"""任务配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskConfiguration`
+        """
+        return self._TriggerTaskConfiguration
+
+    @TriggerTaskConfiguration.setter
+    def TriggerTaskConfiguration(self, TriggerTaskConfiguration):
+        self._TriggerTaskConfiguration = TriggerTaskConfiguration
+
+    @property
+    def TriggerTaskSchedulerConfiguration(self):
+        r"""任务调度配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerTaskSchedulerConfiguration`
+        """
+        return self._TriggerTaskSchedulerConfiguration
+
+    @TriggerTaskSchedulerConfiguration.setter
+    def TriggerTaskSchedulerConfiguration(self, TriggerTaskSchedulerConfiguration):
+        self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("TriggerTaskBaseAttribute") is not None:
+            self._TriggerTaskBaseAttribute = CreateTriggerTaskBaseAttribute()
+            self._TriggerTaskBaseAttribute._deserialize(params.get("TriggerTaskBaseAttribute"))
+        if params.get("TriggerTaskConfiguration") is not None:
+            self._TriggerTaskConfiguration = CreateTriggerTaskConfiguration()
+            self._TriggerTaskConfiguration._deserialize(params.get("TriggerTaskConfiguration"))
+        if params.get("TriggerTaskSchedulerConfiguration") is not None:
+            self._TriggerTaskSchedulerConfiguration = CreateTriggerTaskSchedulerConfiguration()
+            self._TriggerTaskSchedulerConfiguration._deserialize(params.get("TriggerTaskSchedulerConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerTaskResponse(AbstractModel):
+    r"""CreateTriggerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
+    r"""创建任务调度配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpstreamDependencyConfigList: 上游依赖的任务数组
+        :type UpstreamDependencyConfigList: list of DependencyTriggerTaskBrief
+        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :type RunPriorityType: int
+        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :type RetryWaitMinute: int
+        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :type MaxRetryNumber: int
+        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :type ExecutionTTLMinute: int
+        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :type WaitExecutionTotalTTLMinute: int
+        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :type AllowRedoType: str
+        :param _ParamTaskOutList: 输出参数数组
+        :type ParamTaskOutList: list of OutTaskParameter
+        :param _ParamTaskInList: 输入参数数组
+        :type ParamTaskInList: list of InTaskParameter
+        :param _TaskOutputRegistryList: 产出登记
+        :type TaskOutputRegistryList: list of TaskDataRegistry
+        """
+        self._UpstreamDependencyConfigList = None
+        self._RunPriorityType = None
+        self._RetryWaitMinute = None
+        self._MaxRetryNumber = None
+        self._ExecutionTTLMinute = None
+        self._WaitExecutionTotalTTLMinute = None
+        self._AllowRedoType = None
+        self._ParamTaskOutList = None
+        self._ParamTaskInList = None
+        self._TaskOutputRegistryList = None
+
+    @property
+    def UpstreamDependencyConfigList(self):
+        r"""上游依赖的任务数组
+        :rtype: list of DependencyTriggerTaskBrief
+        """
+        return self._UpstreamDependencyConfigList
+
+    @UpstreamDependencyConfigList.setter
+    def UpstreamDependencyConfigList(self, UpstreamDependencyConfigList):
+        self._UpstreamDependencyConfigList = UpstreamDependencyConfigList
+
+    @property
+    def RunPriorityType(self):
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :rtype: int
+        """
+        return self._RunPriorityType
+
+    @RunPriorityType.setter
+    def RunPriorityType(self, RunPriorityType):
+        self._RunPriorityType = RunPriorityType
+
+    @property
+    def RetryWaitMinute(self):
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        :rtype: int
+        """
+        return self._RetryWaitMinute
+
+    @RetryWaitMinute.setter
+    def RetryWaitMinute(self, RetryWaitMinute):
+        self._RetryWaitMinute = RetryWaitMinute
+
+    @property
+    def MaxRetryNumber(self):
+        r"""重试策略 最大尝试次数, 默认: 4
+        :rtype: int
+        """
+        return self._MaxRetryNumber
+
+    @MaxRetryNumber.setter
+    def MaxRetryNumber(self, MaxRetryNumber):
+        self._MaxRetryNumber = MaxRetryNumber
+
+    @property
+    def ExecutionTTLMinute(self):
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :rtype: int
+        """
+        return self._ExecutionTTLMinute
+
+    @ExecutionTTLMinute.setter
+    def ExecutionTTLMinute(self, ExecutionTTLMinute):
+        self._ExecutionTTLMinute = ExecutionTTLMinute
+
+    @property
+    def WaitExecutionTotalTTLMinute(self):
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :rtype: int
+        """
+        return self._WaitExecutionTotalTTLMinute
+
+    @WaitExecutionTotalTTLMinute.setter
+    def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
+        self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
+
+    @property
+    def AllowRedoType(self):
+        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :rtype: str
+        """
+        return self._AllowRedoType
+
+    @AllowRedoType.setter
+    def AllowRedoType(self, AllowRedoType):
+        self._AllowRedoType = AllowRedoType
+
+    @property
+    def ParamTaskOutList(self):
+        r"""输出参数数组
+        :rtype: list of OutTaskParameter
+        """
+        return self._ParamTaskOutList
+
+    @ParamTaskOutList.setter
+    def ParamTaskOutList(self, ParamTaskOutList):
+        self._ParamTaskOutList = ParamTaskOutList
+
+    @property
+    def ParamTaskInList(self):
+        r"""输入参数数组
+        :rtype: list of InTaskParameter
+        """
+        return self._ParamTaskInList
+
+    @ParamTaskInList.setter
+    def ParamTaskInList(self, ParamTaskInList):
+        self._ParamTaskInList = ParamTaskInList
+
+    @property
+    def TaskOutputRegistryList(self):
+        r"""产出登记
+        :rtype: list of TaskDataRegistry
+        """
+        return self._TaskOutputRegistryList
+
+    @TaskOutputRegistryList.setter
+    def TaskOutputRegistryList(self, TaskOutputRegistryList):
+        self._TaskOutputRegistryList = TaskOutputRegistryList
+
+
+    def _deserialize(self, params):
+        if params.get("UpstreamDependencyConfigList") is not None:
+            self._UpstreamDependencyConfigList = []
+            for item in params.get("UpstreamDependencyConfigList"):
+                obj = DependencyTriggerTaskBrief()
+                obj._deserialize(item)
+                self._UpstreamDependencyConfigList.append(obj)
+        self._RunPriorityType = params.get("RunPriorityType")
+        self._RetryWaitMinute = params.get("RetryWaitMinute")
+        self._MaxRetryNumber = params.get("MaxRetryNumber")
+        self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
+        self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
+        self._AllowRedoType = params.get("AllowRedoType")
+        if params.get("ParamTaskOutList") is not None:
+            self._ParamTaskOutList = []
+            for item in params.get("ParamTaskOutList"):
+                obj = OutTaskParameter()
+                obj._deserialize(item)
+                self._ParamTaskOutList.append(obj)
+        if params.get("ParamTaskInList") is not None:
+            self._ParamTaskInList = []
+            for item in params.get("ParamTaskInList"):
+                obj = InTaskParameter()
+                obj._deserialize(item)
+                self._ParamTaskInList.append(obj)
+        if params.get("TaskOutputRegistryList") is not None:
+            self._TaskOutputRegistryList = []
+            for item in params.get("TaskOutputRegistryList"):
+                obj = TaskDataRegistry()
+                obj._deserialize(item)
+                self._TaskOutputRegistryList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerWorkflowRequest(AbstractModel):
+    r"""CreateTriggerWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowName: 工作流名称
+        :type WorkflowName: str
+        :param _ParentFolderPath: 所属文件夹路径
+        :type ParentFolderPath: str
+        :param _WorkflowDesc: 工作流描述
+        :type WorkflowDesc: str
+        :param _OwnerUin: 工作流负责人ID
+        :type OwnerUin: str
+        :param _WorkflowParams: 工作流参数
+        :type WorkflowParams: list of ParamInfo
+        :param _TriggerWorkflowSchedulerConfigurations: 统一调度信息
+        :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
+        :param _BundleId: BundleId项
+        :type BundleId: str
+        :param _BundleInfo: Bundle信息
+        :type BundleInfo: str
+        :param _GeneralTaskParams: 通用参数配置
+        :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        """
+        self._ProjectId = None
+        self._WorkflowName = None
+        self._ParentFolderPath = None
+        self._WorkflowDesc = None
+        self._OwnerUin = None
+        self._WorkflowParams = None
+        self._TriggerWorkflowSchedulerConfigurations = None
+        self._BundleId = None
+        self._BundleInfo = None
+        self._GeneralTaskParams = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def ParentFolderPath(self):
+        r"""所属文件夹路径
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
+    @property
+    def WorkflowDesc(self):
+        r"""工作流描述
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def OwnerUin(self):
+        r"""工作流负责人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流参数
+        :rtype: list of ParamInfo
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def TriggerWorkflowSchedulerConfigurations(self):
+        r"""统一调度信息
+        :rtype: list of WorkflowTriggerConfig
+        """
+        return self._TriggerWorkflowSchedulerConfigurations
+
+    @TriggerWorkflowSchedulerConfigurations.setter
+    def TriggerWorkflowSchedulerConfigurations(self, TriggerWorkflowSchedulerConfigurations):
+        self._TriggerWorkflowSchedulerConfigurations = TriggerWorkflowSchedulerConfigurations
+
+    @property
+    def BundleId(self):
+        r"""BundleId项
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""Bundle信息
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+    @property
+    def GeneralTaskParams(self):
+        r"""通用参数配置
+        :rtype: list of WorkflowGeneralTaskParam
+        """
+        return self._GeneralTaskParams
+
+    @GeneralTaskParams.setter
+    def GeneralTaskParams(self, GeneralTaskParams):
+        self._GeneralTaskParams = GeneralTaskParams
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._ParentFolderPath = params.get("ParentFolderPath")
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._OwnerUin = params.get("OwnerUin")
+        if params.get("WorkflowParams") is not None:
+            self._WorkflowParams = []
+            for item in params.get("WorkflowParams"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._WorkflowParams.append(obj)
+        if params.get("TriggerWorkflowSchedulerConfigurations") is not None:
+            self._TriggerWorkflowSchedulerConfigurations = []
+            for item in params.get("TriggerWorkflowSchedulerConfigurations"):
+                obj = WorkflowTriggerConfig()
+                obj._deserialize(item)
+                self._TriggerWorkflowSchedulerConfigurations.append(obj)
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        if params.get("GeneralTaskParams") is not None:
+            self._GeneralTaskParams = []
+            for item in params.get("GeneralTaskParams"):
+                obj = WorkflowGeneralTaskParam()
+                obj._deserialize(item)
+                self._GeneralTaskParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerWorkflowResponse(AbstractModel):
+    r"""CreateTriggerWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateTriggerWorkflowResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTriggerWorkflowResult(AbstractModel):
+    r"""创建工作流结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: 创建成功后的工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        """
+        self._WorkflowId = None
+
+    @property
+    def WorkflowId(self):
+        r"""创建成功后的工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateWorkflowFolderRequest(AbstractModel):
     r"""CreateWorkflowFolder请求参数结构体
 
@@ -6184,6 +8337,173 @@ class CreateWorkflowFolderResponse(AbstractModel):
             self._Data = CreateFolderResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class CreateWorkflowPermissionsRequest(AbstractModel):
+    r"""CreateWorkflowPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _EntityId: 授权实体ID
+        :type EntityId: str
+        :param _EntityType: 授权实体类型,folder/workflow
+        :type EntityType: str
+        :param _PermissionList: 授权信息数组
+        :type PermissionList: list of WorkflowPermission
+        """
+        self._ProjectId = None
+        self._EntityId = None
+        self._EntityType = None
+        self._PermissionList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EntityId(self):
+        r"""授权实体ID
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityType(self):
+        r"""授权实体类型,folder/workflow
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def PermissionList(self):
+        r"""授权信息数组
+        :rtype: list of WorkflowPermission
+        """
+        return self._PermissionList
+
+    @PermissionList.setter
+    def PermissionList(self, PermissionList):
+        self._PermissionList = PermissionList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._EntityId = params.get("EntityId")
+        self._EntityType = params.get("EntityType")
+        if params.get("PermissionList") is not None:
+            self._PermissionList = []
+            for item in params.get("PermissionList"):
+                obj = WorkflowPermission()
+                obj._deserialize(item)
+                self._PermissionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkflowPermissionsResponse(AbstractModel):
+    r"""CreateWorkflowPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 实体授权结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateWorkflowPermissionsResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""实体授权结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateWorkflowPermissionsResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateWorkflowPermissionsResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateWorkflowPermissionsResult(AbstractModel):
+    r"""工作流授权结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 实体授权结果，true/false
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""实体授权结果，true/false
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateWorkflowRequest(AbstractModel):
@@ -8073,6 +10393,206 @@ class DeleteCodeFolderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCodePermissionsRequest(AbstractModel):
+    r"""DeleteCodePermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _RecyclePolicySet: 回收的权限列表
+        :type RecyclePolicySet: list of ExploreAuthorizationRecycleObject
+        """
+        self._ProjectId = None
+        self._RecyclePolicySet = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RecyclePolicySet(self):
+        r"""回收的权限列表
+        :rtype: list of ExploreAuthorizationRecycleObject
+        """
+        return self._RecyclePolicySet
+
+    @RecyclePolicySet.setter
+    def RecyclePolicySet(self, RecyclePolicySet):
+        self._RecyclePolicySet = RecyclePolicySet
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("RecyclePolicySet") is not None:
+            self._RecyclePolicySet = []
+            for item in params.get("RecyclePolicySet"):
+                obj = ExploreAuthorizationRecycleObject()
+                obj._deserialize(item)
+                self._RecyclePolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCodePermissionsResponse(AbstractModel):
+    r"""DeleteCodePermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 权限回收结果
+        :type Data: list of CodePermissionsResultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""权限回收结果
+        :rtype: list of CodePermissionsResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CodePermissionsResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataBackfillPlanAsyncRequest(AbstractModel):
+    r"""DeleteDataBackfillPlanAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DataBackfillPlanId: 补录计划id
+        :type DataBackfillPlanId: str
+        """
+        self._ProjectId = None
+        self._DataBackfillPlanId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DataBackfillPlanId(self):
+        r"""补录计划id
+        :rtype: str
+        """
+        return self._DataBackfillPlanId
+
+    @DataBackfillPlanId.setter
+    def DataBackfillPlanId(self, DataBackfillPlanId):
+        self._DataBackfillPlanId = DataBackfillPlanId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._DataBackfillPlanId = params.get("DataBackfillPlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataBackfillPlanAsyncResponse(AbstractModel):
+    r"""DeleteDataBackfillPlanAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 删除执行计划返回的异步响应
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.OpsAsyncResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""删除执行计划返回的异步响应
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.OpsAsyncResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OpsAsyncResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDataSourceRequest(AbstractModel):
     r"""DeleteDataSource请求参数结构体
 
@@ -8465,6 +10985,294 @@ class DeleteProjectMemberResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteQualityRuleGroupRequest(AbstractModel):
+    r"""DeleteQualityRuleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _RuleGroupIdList: 监控任务id
+        :type RuleGroupIdList: list of int non-negative
+        """
+        self._ProjectId = None
+        self._RuleGroupIdList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RuleGroupIdList(self):
+        r"""监控任务id
+        :rtype: list of int non-negative
+        """
+        return self._RuleGroupIdList
+
+    @RuleGroupIdList.setter
+    def RuleGroupIdList(self, RuleGroupIdList):
+        self._RuleGroupIdList = RuleGroupIdList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._RuleGroupIdList = params.get("RuleGroupIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityRuleGroupResponse(AbstractModel):
+    r"""DeleteQualityRuleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 批量删除操作的具体执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleGroupResultVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""批量删除操作的具体执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteQualityRuleGroupResultVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteQualityRuleGroupResultVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteQualityRuleGroupResultVO(AbstractModel):
+    r"""批量规则操作的返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SumCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SumCount: int
+        :param _SuccessCount: 成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param _FailedCount: 失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param _Results: 操作详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of CommonQualityOperateResult
+        """
+        self._SumCount = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._Results = None
+
+    @property
+    def SumCount(self):
+        r"""总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SumCount
+
+    @SumCount.setter
+    def SumCount(self, SumCount):
+        self._SumCount = SumCount
+
+    @property
+    def SuccessCount(self):
+        r"""成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Results(self):
+        r"""操作详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonQualityOperateResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+
+    def _deserialize(self, params):
+        self._SumCount = params.get("SumCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = CommonQualityOperateResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityRuleRequest(AbstractModel):
+    r"""DeleteQualityRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 质量规则ID
+        :type RuleId: int
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self._RuleId = None
+        self._ProjectId = None
+
+    @property
+    def RuleId(self):
+        r"""质量规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityRuleResponse(AbstractModel):
+    r"""DeleteQualityRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -8969,6 +11777,155 @@ class DeleteSQLScriptResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteTaskFolderRequest(AbstractModel):
+    r"""DeleteTaskFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _TaskFolderId: 文件夹ID，可通过ListTaskFolders接口获取
+        :type TaskFolderId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._TaskFolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderId(self):
+        r"""文件夹ID，可通过ListTaskFolders接口获取
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTaskFolderResponse(AbstractModel):
+    r"""DeleteTaskFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 删除结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskFolderResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""删除结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskFolderResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteTaskFolderResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTaskFolderResult(AbstractModel):
+    r"""删除资源文件夹结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 删除状态,true表示成功，false表示失败
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""删除状态,true表示成功，false表示失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteTaskRequest(AbstractModel):
     r"""DeleteTask请求参数结构体
 
@@ -9149,6 +12106,282 @@ class DeleteTaskResult(AbstractModel):
         
 
 
+class DeleteTriggerTaskRequest(AbstractModel):
+    r"""DeleteTriggerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+和VirtualTaskId选填一个
+        :type TaskId: str
+        :param _OperateInform: 任务操作是否消息通知下游任务责任人true：通知
+false：不通知
+不传默认false
+        :type OperateInform: bool
+        :param _DeleteMode: 任务删除方式
+true：不针对下游任务实例进行强制失败
+false：针对下游任务实例进行强制失败
+不传默认false
+
+        :type DeleteMode: bool
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._OperateInform = None
+        self._DeleteMode = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+和VirtualTaskId选填一个
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def OperateInform(self):
+        r"""任务操作是否消息通知下游任务责任人true：通知
+false：不通知
+不传默认false
+        :rtype: bool
+        """
+        return self._OperateInform
+
+    @OperateInform.setter
+    def OperateInform(self, OperateInform):
+        self._OperateInform = OperateInform
+
+    @property
+    def DeleteMode(self):
+        r"""任务删除方式
+true：不针对下游任务实例进行强制失败
+false：针对下游任务实例进行强制失败
+不传默认false
+
+        :rtype: bool
+        """
+        return self._DeleteMode
+
+    @DeleteMode.setter
+    def DeleteMode(self, DeleteMode):
+        self._DeleteMode = DeleteMode
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._OperateInform = params.get("OperateInform")
+        self._DeleteMode = params.get("DeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTriggerTaskResponse(AbstractModel):
+    r"""DeleteTriggerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTriggerWorkflowRequest(AbstractModel):
+    r"""DeleteTriggerWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _WorkflowId: 工作流id
+        :type WorkflowId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTriggerWorkflowResponse(AbstractModel):
+    r"""DeleteTriggerWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否删除成功
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerWorkflowResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否删除成功
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteTriggerWorkflowResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteTriggerWorkflowResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTriggerWorkflowResult(AbstractModel):
+    r"""删除工作流结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 删除工作流是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""删除工作流是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteWorkflowFolderRequest(AbstractModel):
     r"""DeleteWorkflowFolder请求参数结构体
 
@@ -9243,6 +12476,239 @@ class DeleteWorkflowFolderResponse(AbstractModel):
             self._Data = DeleteFolderResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class DeleteWorkflowPermission(AbstractModel):
+    r"""要删除的数据开发授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionTargetType: 要删除的授权目标类型（用户：user，角色：role，组：group）
+        :type PermissionTargetType: str
+        :param _PermissionTargetId: 要删除的授权目标id(userId/roleId)
+        :type PermissionTargetId: str
+        :param _PermissionTypeList: 要删除的授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+        :type PermissionTypeList: list of str
+        """
+        self._PermissionTargetType = None
+        self._PermissionTargetId = None
+        self._PermissionTypeList = None
+
+    @property
+    def PermissionTargetType(self):
+        r"""要删除的授权目标类型（用户：user，角色：role，组：group）
+        :rtype: str
+        """
+        return self._PermissionTargetType
+
+    @PermissionTargetType.setter
+    def PermissionTargetType(self, PermissionTargetType):
+        self._PermissionTargetType = PermissionTargetType
+
+    @property
+    def PermissionTargetId(self):
+        r"""要删除的授权目标id(userId/roleId)
+        :rtype: str
+        """
+        return self._PermissionTargetId
+
+    @PermissionTargetId.setter
+    def PermissionTargetId(self, PermissionTargetId):
+        self._PermissionTargetId = PermissionTargetId
+
+    @property
+    def PermissionTypeList(self):
+        r"""要删除的授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+        :rtype: list of str
+        """
+        return self._PermissionTypeList
+
+    @PermissionTypeList.setter
+    def PermissionTypeList(self, PermissionTypeList):
+        self._PermissionTypeList = PermissionTypeList
+
+
+    def _deserialize(self, params):
+        self._PermissionTargetType = params.get("PermissionTargetType")
+        self._PermissionTargetId = params.get("PermissionTargetId")
+        self._PermissionTypeList = params.get("PermissionTypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkflowPermissionsRequest(AbstractModel):
+    r"""DeleteWorkflowPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _EntityId: 授权实体ID
+        :type EntityId: str
+        :param _EntityType: 授权实体类型,folder/workflow
+        :type EntityType: str
+        :param _DeletePermissionList: 删除权限数组
+        :type DeletePermissionList: list of DeleteWorkflowPermission
+        """
+        self._ProjectId = None
+        self._EntityId = None
+        self._EntityType = None
+        self._DeletePermissionList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EntityId(self):
+        r"""授权实体ID
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityType(self):
+        r"""授权实体类型,folder/workflow
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def DeletePermissionList(self):
+        r"""删除权限数组
+        :rtype: list of DeleteWorkflowPermission
+        """
+        return self._DeletePermissionList
+
+    @DeletePermissionList.setter
+    def DeletePermissionList(self, DeletePermissionList):
+        self._DeletePermissionList = DeletePermissionList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._EntityId = params.get("EntityId")
+        self._EntityType = params.get("EntityType")
+        if params.get("DeletePermissionList") is not None:
+            self._DeletePermissionList = []
+            for item in params.get("DeletePermissionList"):
+                obj = DeleteWorkflowPermission()
+                obj._deserialize(item)
+                self._DeletePermissionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkflowPermissionsResponse(AbstractModel):
+    r"""DeleteWorkflowPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 资源删除结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DeleteWorkflowPermissionsResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""资源删除结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteWorkflowPermissionsResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteWorkflowPermissionsResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWorkflowPermissionsResult(AbstractModel):
+    r"""数据开发权限删除结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 整体删除结果 true/false
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""整体删除结果 true/false
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteWorkflowRequest(AbstractModel):
@@ -9876,6 +13342,127 @@ class DependencyTaskBrief(AbstractModel):
         
 
 
+class DependencyTriggerTaskBrief(AbstractModel):
+    r"""依赖任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourceAuthorityRequest(AbstractModel):
+    r"""DescribeDataSourceAuthority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 对象唯一ID
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""对象唯一ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourceAuthorityResponse(AbstractModel):
+    r"""DescribeDataSourceAuthority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 数据源权限对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.AuthInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""数据源权限对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.AuthInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AuthInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DisableProjectRequest(AbstractModel):
     r"""DisableProject请求参数结构体
 
@@ -10228,6 +13815,110 @@ class EventListener(AbstractModel):
         
 
 
+class ExecutionActionBrief(AbstractModel):
+    r"""执行操作结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemId: 操作实体 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemId: str
+        :param _ItemName: 操作实体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemName: str
+        :param _ExecutionActionId: 操作 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionActionId: str
+        :param _ErrorMessage: 失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _OpStatus: 操作状态，true：成功，false：失败
+        :type OpStatus: bool
+        """
+        self._ItemId = None
+        self._ItemName = None
+        self._ExecutionActionId = None
+        self._ErrorMessage = None
+        self._OpStatus = None
+
+    @property
+    def ItemId(self):
+        r"""操作实体 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def ItemName(self):
+        r"""操作实体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ItemName
+
+    @ItemName.setter
+    def ItemName(self, ItemName):
+        self._ItemName = ItemName
+
+    @property
+    def ExecutionActionId(self):
+        r"""操作 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionActionId
+
+    @ExecutionActionId.setter
+    def ExecutionActionId(self, ExecutionActionId):
+        self._ExecutionActionId = ExecutionActionId
+
+    @property
+    def ErrorMessage(self):
+        r"""失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def OpStatus(self):
+        r"""操作状态，true：成功，false：失败
+        :rtype: bool
+        """
+        return self._OpStatus
+
+    @OpStatus.setter
+    def OpStatus(self, OpStatus):
+        self._OpStatus = OpStatus
+
+
+    def _deserialize(self, params):
+        self._ItemId = params.get("ItemId")
+        self._ItemName = params.get("ItemName")
+        self._ExecutionActionId = params.get("ExecutionActionId")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._OpStatus = params.get("OpStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecutorResourceGroupData(AbstractModel):
     r"""ExecutorResourceGroup分页对象
 
@@ -10514,6 +14205,561 @@ class ExecutorResourceGroupInfo(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubNet = params.get("SubNet")
         self._AutoRenewEnabled = params.get("AutoRenewEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreAuthorizationObject(AbstractModel):
+    r"""数据探索文件授权主体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 授权资源信息，包含resourceId和resourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        :param _AuthorizeSubjects: 授权详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizeSubjects: list of ExploreAuthorizeSubject
+        """
+        self._Resource = None
+        self._AuthorizeSubjects = None
+
+    @property
+    def Resource(self):
+        r"""授权资源信息，包含resourceId和resourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def AuthorizeSubjects(self):
+        r"""授权详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExploreAuthorizeSubject
+        """
+        return self._AuthorizeSubjects
+
+    @AuthorizeSubjects.setter
+    def AuthorizeSubjects(self, AuthorizeSubjects):
+        self._AuthorizeSubjects = AuthorizeSubjects
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = ExploreFileResource()
+            self._Resource._deserialize(params.get("Resource"))
+        if params.get("AuthorizeSubjects") is not None:
+            self._AuthorizeSubjects = []
+            for item in params.get("AuthorizeSubjects"):
+                obj = ExploreAuthorizeSubject()
+                obj._deserialize(item)
+                self._AuthorizeSubjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreAuthorizationRecycleObject(AbstractModel):
+    r"""数据探索文件回收策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 文件资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        :param _RecycleSubjects: 授权详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecycleSubjects: list of ExploreAuthorizeSubject
+        """
+        self._Resource = None
+        self._RecycleSubjects = None
+
+    @property
+    def Resource(self):
+        r"""文件资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def RecycleSubjects(self):
+        r"""授权详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExploreAuthorizeSubject
+        """
+        return self._RecycleSubjects
+
+    @RecycleSubjects.setter
+    def RecycleSubjects(self, RecycleSubjects):
+        self._RecycleSubjects = RecycleSubjects
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = ExploreFileResource()
+            self._Resource._deserialize(params.get("Resource"))
+        if params.get("RecycleSubjects") is not None:
+            self._RecycleSubjects = []
+            for item in params.get("RecycleSubjects"):
+                obj = ExploreAuthorizeSubject()
+                obj._deserialize(item)
+                self._RecycleSubjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreAuthorizeSubject(AbstractModel):
+    r"""数据探索文件授权主体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubjectType: 主体类型（用户：user，角色：role，组：group）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectType: str
+        :param _SubjectValues: 主体值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectValues: list of str
+        :param _Privileges: 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: list of str
+        """
+        self._SubjectType = None
+        self._SubjectValues = None
+        self._Privileges = None
+
+    @property
+    def SubjectType(self):
+        r"""主体类型（用户：user，角色：role，组：group）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubjectType
+
+    @SubjectType.setter
+    def SubjectType(self, SubjectType):
+        self._SubjectType = SubjectType
+
+    @property
+    def SubjectValues(self):
+        r"""主体值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SubjectValues
+
+    @SubjectValues.setter
+    def SubjectValues(self, SubjectValues):
+        self._SubjectValues = SubjectValues
+
+    @property
+    def Privileges(self):
+        r"""权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        self._SubjectType = params.get("SubjectType")
+        self._SubjectValues = params.get("SubjectValues")
+        self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreFilePermissionsPage(AbstractModel):
+    r"""数据探索文件权限列表分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Rows: 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of ExploreFilePrivilegeItem
+        :param _TotalCount: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Rows = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def PageNumber(self):
+        r"""分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Rows(self):
+        r"""权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExploreFilePrivilegeItem
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalCount(self):
+        r"""总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = ExploreFilePrivilegeItem()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreFilePrivilegeItem(AbstractModel):
+    r"""探索文件权限详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privileges: 权限点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: list of str
+        :param _RoleType: 用户：user 角色： role 组：group
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
+        :param _RoleId: 用户或角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param _Resource: 授权资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        :param _DeleteAble: 是否可以被删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteAble: bool
+        """
+        self._Privileges = None
+        self._RoleType = None
+        self._RoleId = None
+        self._Resource = None
+        self._DeleteAble = None
+
+    @property
+    def Privileges(self):
+        r"""权限点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def RoleType(self):
+        r"""用户：user 角色： role 组：group
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleId(self):
+        r"""用户或角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def Resource(self):
+        r"""授权资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def DeleteAble(self):
+        r"""是否可以被删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DeleteAble
+
+    @DeleteAble.setter
+    def DeleteAble(self, DeleteAble):
+        self._DeleteAble = DeleteAble
+
+
+    def _deserialize(self, params):
+        self._Privileges = params.get("Privileges")
+        self._RoleType = params.get("RoleType")
+        self._RoleId = params.get("RoleId")
+        if params.get("Resource") is not None:
+            self._Resource = ExploreFileResource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._DeleteAble = params.get("DeleteAble")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExploreFileResource(AbstractModel):
+    r"""数据探索文件资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型，只能是这两种类型: folder, script
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _ResourceId: 资源ID：目录id或脚本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceIdForPath: id全路径，用于递归鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIdForPath: str
+        :param _ResourceCFSPath: cfs路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceCFSPath: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceIdForPath = None
+        self._ResourceCFSPath = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型，只能是这两种类型: folder, script
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""资源ID：目录id或脚本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceIdForPath(self):
+        r"""id全路径，用于递归鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceIdForPath
+
+    @ResourceIdForPath.setter
+    def ResourceIdForPath(self, ResourceIdForPath):
+        self._ResourceIdForPath = ResourceIdForPath
+
+    @property
+    def ResourceCFSPath(self):
+        r"""cfs路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceCFSPath
+
+    @ResourceCFSPath.setter
+    def ResourceCFSPath(self, ResourceCFSPath):
+        self._ResourceCFSPath = ResourceCFSPath
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceIdForPath = params.get("ResourceIdForPath")
+        self._ResourceCFSPath = params.get("ResourceCFSPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    r"""通用过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤字段名称
+        :type Name: str
+        :param _Values: 过滤值列表
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""过滤字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""过滤值列表
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11135,6 +15381,215 @@ class GetDataSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetMyCodeMaxPermissionRequest(AbstractModel):
+    r"""GetMyCodeMaxPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _ResourceId: 授权资源唯一id，文件夹id或文件id、
+        :type ResourceId: str
+        """
+        self._ProjectId = None
+        self._ResourceId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ResourceId(self):
+        r"""授权资源唯一id，文件夹id或文件id、
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMyCodeMaxPermissionResponse(AbstractModel):
+    r"""GetMyCodeMaxPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 用户对CodeStudio文件/文件夹的递归最大权限类型
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CodeStudioMaxPermission`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""用户对CodeStudio文件/文件夹的递归最大权限类型
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CodeStudioMaxPermission`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CodeStudioMaxPermission()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetMyWorkflowMaxPermissionRequest(AbstractModel):
+    r"""GetMyWorkflowMaxPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _EntityId: 授权实体ID
+        :type EntityId: str
+        :param _EntityType: 授权实体类型,folder/workflow
+        :type EntityType: str
+        """
+        self._ProjectId = None
+        self._EntityId = None
+        self._EntityType = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EntityId(self):
+        r"""授权实体ID
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityType(self):
+        r"""授权实体类型,folder/workflow
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._EntityId = params.get("EntityId")
+        self._EntityType = params.get("EntityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMyWorkflowMaxPermissionResponse(AbstractModel):
+    r"""GetMyWorkflowMaxPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 当前用户对实体资源的递归最大权限类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.WorkflowMaxPermission`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""当前用户对实体资源的递归最大权限类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowMaxPermission`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = WorkflowMaxPermission()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetOpsAlarmRuleRequest(AbstractModel):
     r"""GetOpsAlarmRule请求参数结构体
 
@@ -11521,6 +15976,117 @@ class GetOpsTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetOpsTriggerWorkflowRequest(AbstractModel):
+    r"""GetOpsTriggerWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _WorkflowExecutionId: 工作流执行ID
+        :type WorkflowExecutionId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流执行ID
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetOpsTriggerWorkflowResponse(AbstractModel):
+    r"""GetOpsTriggerWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流任务信息
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskDAGBrief`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流任务信息
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskDAGBrief`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerTaskDAGBrief()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetOpsWorkflowRequest(AbstractModel):
     r"""GetOpsWorkflow请求参数结构体
 
@@ -11792,6 +16358,104 @@ class GetResourceFileResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = ResourceFile()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetResourceFolderRequest(AbstractModel):
+    r"""GetResourceFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _FolderId: 文件夹id
+        :type FolderId: str
+        """
+        self._ProjectId = None
+        self._FolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        r"""文件夹id
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourceFolderResponse(AbstractModel):
+    r"""GetResourceFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 资源文件夹信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ResourceFolderDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""资源文件夹信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ResourceFolderDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResourceFolderDetail()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -12406,6 +17070,119 @@ class GetTaskCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetTaskFolderRequest(AbstractModel):
+    r"""GetTaskFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _TaskFolderId: 文件夹ID
+        :type TaskFolderId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._TaskFolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderId(self):
+        r"""文件夹ID
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskFolderResponse(AbstractModel):
+    r"""GetTaskFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 文件夹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TaskFolderDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""文件夹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TaskFolderDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskFolderDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetTaskInstanceLogRequest(AbstractModel):
     r"""GetTaskInstanceLog请求参数结构体
 
@@ -12865,6 +17642,743 @@ class GetTaskVersionResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = TaskVersionDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerTaskCodeRequest(AbstractModel):
+    r"""GetTriggerTaskCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 所属项目id
+        :type ProjectId: str
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+
+    @property
+    def ProjectId(self):
+        r"""所属项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerTaskCodeResponse(AbstractModel):
+    r"""GetTriggerTaskCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 获取任务代码结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TaskCodeResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""获取任务代码结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TaskCodeResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskCodeResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerTaskRequest(AbstractModel):
+    r"""GetTriggerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerTaskResponse(AbstractModel):
+    r"""GetTriggerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTask`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerTask()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerTaskRunRequest(AbstractModel):
+    r"""GetTriggerTaskRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 工作空间 ID
+        :type ProjectId: str
+        :param _TaskExecutionId: 任务运行 ID
+        :type TaskExecutionId: str
+        """
+        self._ProjectId = None
+        self._TaskExecutionId = None
+
+    @property
+    def ProjectId(self):
+        r"""工作空间 ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskExecutionId(self):
+        r"""任务运行 ID
+        :rtype: str
+        """
+        return self._TaskExecutionId
+
+    @TaskExecutionId.setter
+    def TaskExecutionId(self, TaskExecutionId):
+        self._TaskExecutionId = TaskExecutionId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskExecutionId = params.get("TaskExecutionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerTaskRunResponse(AbstractModel):
+    r"""GetTriggerTaskRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流任务运行列表分页结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskRunBrief`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流任务运行列表分页结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskRunBrief`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerTaskRunBrief()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerTaskVersionRequest(AbstractModel):
+    r"""GetTriggerTaskVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _VersionId: 提交版本ID，不填默认拿最新提交版本
+        :type VersionId: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._VersionId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VersionId(self):
+        r"""提交版本ID，不填默认拿最新提交版本
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerTaskVersionResponse(AbstractModel):
+    r"""GetTriggerTaskVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 版本详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskVersionDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""版本详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskVersionDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerTaskVersionDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerWorkflowRequest(AbstractModel):
+    r"""GetTriggerWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID 通过ListWorkflows接口获取
+        :type WorkflowId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID 通过ListWorkflows接口获取
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerWorkflowResponse(AbstractModel):
+    r"""GetTriggerWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerWorkflowDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetTriggerWorkflowRunRequest(AbstractModel):
+    r"""GetTriggerWorkflowRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowExecutionId: 工作流执行ID
+        :type WorkflowExecutionId: str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _OrderFields: 排序条件
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._WorkflowExecutionId = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流执行ID
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序条件
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTriggerWorkflowRunResponse(AbstractModel):
+    r"""GetTriggerWorkflowRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流任务信息
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowTaskRunDetailBrief`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流任务信息
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowTaskRunDetailBrief`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerWorkflowTaskRunDetailBrief()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetWorkflowFolderRequest(AbstractModel):
+    r"""GetWorkflowFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _FolderId: 文件夹id
+        :type FolderId: str
+        """
+        self._ProjectId = None
+        self._FolderId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        r"""文件夹id
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWorkflowFolderResponse(AbstractModel):
+    r"""GetWorkflowFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 文件夹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.WorkflowFolderDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""文件夹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowFolderDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = WorkflowFolderDetail()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -14423,6 +19937,150 @@ class KillTaskInstancesAsyncResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = OpsAsyncResponse()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class KillTriggerWorkflowRunsRequest(AbstractModel):
+    r"""KillTriggerWorkflowRuns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID	
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _WorkflowExecutionIdList: 指定要停止的工作流执行ID
+        :type WorkflowExecutionIdList: list of str
+        :param _All: 当指定的工作流运行为空时，是否全部终止正在运行的工作流执行	
+        :type All: bool
+        :param _Pending: 当指定的工作流运行为空时，是否仅停止等待中的工作流运行
+        :type Pending: bool
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionIdList = None
+        self._All = None
+        self._Pending = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID	
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionIdList(self):
+        r"""指定要停止的工作流执行ID
+        :rtype: list of str
+        """
+        return self._WorkflowExecutionIdList
+
+    @WorkflowExecutionIdList.setter
+    def WorkflowExecutionIdList(self, WorkflowExecutionIdList):
+        self._WorkflowExecutionIdList = WorkflowExecutionIdList
+
+    @property
+    def All(self):
+        r"""当指定的工作流运行为空时，是否全部终止正在运行的工作流执行	
+        :rtype: bool
+        """
+        return self._All
+
+    @All.setter
+    def All(self, All):
+        self._All = All
+
+    @property
+    def Pending(self):
+        r"""当指定的工作流运行为空时，是否仅停止等待中的工作流运行
+        :rtype: bool
+        """
+        return self._Pending
+
+    @Pending.setter
+    def Pending(self, Pending):
+        self._Pending = Pending
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionIdList = params.get("WorkflowExecutionIdList")
+        self._All = params.get("All")
+        self._Pending = params.get("Pending")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillTriggerWorkflowRunsResponse(AbstractModel):
+    r"""KillTriggerWorkflowRuns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流运行操作结果
+        :type Data: list of ExecutionActionBrief
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流运行操作结果
+        :rtype: list of ExecutionActionBrief
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ExecutionActionBrief()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15985,6 +21643,149 @@ class ListCodeFolderContentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListCodePermissionsRequest(AbstractModel):
+    r"""ListCodePermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 返回数量，默认为20，最大值为100。要求500、1000或者更大
+        :type PageSize: int
+        :param _Resource: 授权资源
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        :param _Users: 用户筛选条件
+        :type Users: list of str
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Resource = None
+        self._Users = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""页码，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""返回数量，默认为20，最大值为100。要求500、1000或者更大
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Resource(self):
+        r"""授权资源
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ExploreFileResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Users(self):
+        r"""用户筛选条件
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Resource") is not None:
+            self._Resource = ExploreFileResource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCodePermissionsResponse(AbstractModel):
+    r"""ListCodePermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 权限列表
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ExploreFilePermissionsPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""权限列表
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ExploreFilePermissionsPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ExploreFilePermissionsPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListColumnLineageRequest(AbstractModel):
     r"""ListColumnLineage请求参数结构体
 
@@ -17202,6 +23003,134 @@ class ListDownstreamTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListDownstreamTriggerTasksRequest(AbstractModel):
+    r"""ListDownstreamTriggerTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _PageNumber: 分页页码
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNumber(self):
+        r"""分页页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDownstreamTriggerTasksResponse(AbstractModel):
+    r"""ListDownstreamTriggerTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 下游依赖详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerDependencyConfigPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""下游依赖详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerDependencyConfigPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerDependencyConfigPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListLineagePage(AbstractModel):
     r"""ListLineagePage
 
@@ -18206,6 +24135,159 @@ class ListOpsTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListOpsTriggerWorkflowsRequest(AbstractModel):
+    r"""ListOpsTriggerWorkflows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _Filters: 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段，排序字段名称 如下 任务数：TaskCount
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段，排序字段名称 如下 任务数：TaskCount
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListOpsTriggerWorkflowsResponse(AbstractModel):
+    r"""ListOpsTriggerWorkflows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerWorkflowResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListOpsWorkflowsRequest(AbstractModel):
     r"""ListOpsWorkflows请求参数结构体
 
@@ -19140,6 +25222,1879 @@ class ListProjectsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = ProjectBrief()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListQualityRuleGroupExecResult(AbstractModel):
+    r"""规则组执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupExecId: 规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExecId: int
+        :param _RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _TriggerType: 执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: int
+        :param _ExecTime: 执行时间 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTime: str
+        :param _Status: 执行状态（1.已提交 2.检测中 3.正常 4.异常）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _AlarmRuleCount: 异常规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRuleCount: int
+        :param _TotalRuleCount: 总规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRuleCount: int
+        :param _TableOwnerName: 源表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _TableName: 源表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableId: 表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _Permission: 有无权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: bool
+        :param _ExecDetail: 执行详情，调度计划或者关联生产任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        :param _EngineType: 实际执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
+        :param _RuleExecResultVOList: 规则执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecResultVOList: list of QualityRuleExecResult
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _RuleGroupTableId: 本地规则表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: int
+        :param _ClusterDeployType: 集群部署类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _DsEnvType: 数据库所属环境，0.未定义，1.生产 2.开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DsEnvType: int
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _InstanceStatus: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: str
+        :param _StartTime: 实例运行的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _FinishTime: 实例运行的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param _RuleGroupName: 监控名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupName: str
+        :param _RuleGroupExist: 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExist: int
+        :param _BizCatalogName: 类目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogName: str
+        :param _BizCatalogId: 类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogId: str
+        :param _FailMsg: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMsg: str
+        """
+        self._RuleGroupExecId = None
+        self._RuleGroupId = None
+        self._TriggerType = None
+        self._ExecTime = None
+        self._Status = None
+        self._AlarmRuleCount = None
+        self._TotalRuleCount = None
+        self._TableOwnerName = None
+        self._TableName = None
+        self._TableId = None
+        self._DatabaseId = None
+        self._DatasourceId = None
+        self._Permission = None
+        self._ExecDetail = None
+        self._EngineType = None
+        self._RuleExecResultVOList = None
+        self._DatabaseName = None
+        self._RuleGroupTableId = None
+        self._ClusterDeployType = None
+        self._InstanceId = None
+        self._DsEnvType = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._InstanceStatus = None
+        self._StartTime = None
+        self._FinishTime = None
+        self._RuleGroupName = None
+        self._RuleGroupExist = None
+        self._BizCatalogName = None
+        self._BizCatalogId = None
+        self._FailMsg = None
+
+    @property
+    def RuleGroupExecId(self):
+        r"""规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupExecId
+
+    @RuleGroupExecId.setter
+    def RuleGroupExecId(self, RuleGroupExecId):
+        self._RuleGroupExecId = RuleGroupExecId
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def TriggerType(self):
+        r"""执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def ExecTime(self):
+        r"""执行时间 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Status(self):
+        r"""执行状态（1.已提交 2.检测中 3.正常 4.异常）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AlarmRuleCount(self):
+        r"""异常规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmRuleCount
+
+    @AlarmRuleCount.setter
+    def AlarmRuleCount(self, AlarmRuleCount):
+        self._AlarmRuleCount = AlarmRuleCount
+
+    @property
+    def TotalRuleCount(self):
+        r"""总规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRuleCount
+
+    @TotalRuleCount.setter
+    def TotalRuleCount(self, TotalRuleCount):
+        self._TotalRuleCount = TotalRuleCount
+
+    @property
+    def TableOwnerName(self):
+        r"""源表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def TableName(self):
+        r"""源表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableId(self):
+        r"""表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def DatabaseId(self):
+        r"""数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def Permission(self):
+        r"""有无权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def ExecDetail(self):
+        r"""执行详情，调度计划或者关联生产任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecDetail
+
+    @ExecDetail.setter
+    def ExecDetail(self, ExecDetail):
+        self._ExecDetail = ExecDetail
+
+    @property
+    def EngineType(self):
+        r"""实际执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def RuleExecResultVOList(self):
+        r"""规则执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityRuleExecResult
+        """
+        return self._RuleExecResultVOList
+
+    @RuleExecResultVOList.setter
+    def RuleExecResultVOList(self, RuleExecResultVOList):
+        self._RuleExecResultVOList = RuleExecResultVOList
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def RuleGroupTableId(self):
+        r"""本地规则表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def ClusterDeployType(self):
+        r"""集群部署类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DsEnvType(self):
+        r"""数据库所属环境，0.未定义，1.生产 2.开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DsEnvType
+
+    @DsEnvType.setter
+    def DsEnvType(self, DsEnvType):
+        self._DsEnvType = DsEnvType
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def StartTime(self):
+        r"""实例运行的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FinishTime(self):
+        r"""实例运行的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RuleGroupName(self):
+        r"""监控名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def RuleGroupExist(self):
+        r"""判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupExist
+
+    @RuleGroupExist.setter
+    def RuleGroupExist(self, RuleGroupExist):
+        self._RuleGroupExist = RuleGroupExist
+
+    @property
+    def BizCatalogName(self):
+        r"""类目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizCatalogName
+
+    @BizCatalogName.setter
+    def BizCatalogName(self, BizCatalogName):
+        self._BizCatalogName = BizCatalogName
+
+    @property
+    def BizCatalogId(self):
+        r"""类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizCatalogId
+
+    @BizCatalogId.setter
+    def BizCatalogId(self, BizCatalogId):
+        self._BizCatalogId = BizCatalogId
+
+    @property
+    def FailMsg(self):
+        r"""失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailMsg
+
+    @FailMsg.setter
+    def FailMsg(self, FailMsg):
+        self._FailMsg = FailMsg
+
+
+    def _deserialize(self, params):
+        self._RuleGroupExecId = params.get("RuleGroupExecId")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._TriggerType = params.get("TriggerType")
+        self._ExecTime = params.get("ExecTime")
+        self._Status = params.get("Status")
+        self._AlarmRuleCount = params.get("AlarmRuleCount")
+        self._TotalRuleCount = params.get("TotalRuleCount")
+        self._TableOwnerName = params.get("TableOwnerName")
+        self._TableName = params.get("TableName")
+        self._TableId = params.get("TableId")
+        self._DatabaseId = params.get("DatabaseId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._Permission = params.get("Permission")
+        self._ExecDetail = params.get("ExecDetail")
+        self._EngineType = params.get("EngineType")
+        if params.get("RuleExecResultVOList") is not None:
+            self._RuleExecResultVOList = []
+            for item in params.get("RuleExecResultVOList"):
+                obj = QualityRuleExecResult()
+                obj._deserialize(item)
+                self._RuleExecResultVOList.append(obj)
+        self._DatabaseName = params.get("DatabaseName")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._ClusterDeployType = params.get("ClusterDeployType")
+        self._InstanceId = params.get("InstanceId")
+        self._DsEnvType = params.get("DsEnvType")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._RuleGroupExist = params.get("RuleGroupExist")
+        self._BizCatalogName = params.get("BizCatalogName")
+        self._BizCatalogId = params.get("BizCatalogId")
+        self._FailMsg = params.get("FailMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleGroupExecResultPage(AbstractModel):
+    r"""规则组执行结果分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 规则组执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ListQualityRuleGroupExecResult
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""规则组执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListQualityRuleGroupExecResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ListQualityRuleGroupExecResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleGroupExecResultsByPageRequest(AbstractModel):
+    r"""ListQualityRuleGroupExecResultsByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 分页序号，默认1
+        :type PageNumber: int
+        :param _PageSize: 分页大小，默认10
+        :type PageSize: int
+        :param _Filters: 过滤条件，支持的过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型；WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. InstanceId
+描述：规则组执行实例ID。
+取值：字符串
+
+3. ParentInstanceId
+描述：父实例ID。
+取值：字符串
+
+4. LifeCycleRunNum
+描述：生命周期运行号。
+取值：字符串
+
+5. InstanceStatus
+描述：实例状态。质量侧的实例状态，一个状态对应调度侧多个状态，具体参考取值说明
+取值：
+等待运行 - 
+["INITIAL", "EVENT_LISTENING", "DEPENDENCE", "ALLOCATED", "LAUNCHED", "BEFORE_ASPECT", "ISSUED"]；
+运行中 - ["RUNNING", "AFTER_ASPECT", "WAITING_AFTER_ASPECT"]
+失败 - ["FAILED", "EXPIRED", "KILL", "KILLING", "PENDING"]
+成功 - ["COMPLETED"]
+
+
+6. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+7. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+8. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+9. DatabaseId
+描述：数据库ID。
+取值：字符串
+
+10. SchemaName
+描述：Schema名称。
+取值：字符串
+
+11. ReceiverFlag
+描述：是否为当前登录用户的订阅。
+取值：true - 是；false - 否
+
+12. TableName
+描述：数据表名称，支持模糊匹配。
+取值：字符串
+
+13. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+14. RuleGroupExecId
+描述：规则组执行ID。
+取值：整数
+
+15. RuleGroupTableId
+描述：规则组表ID。
+取值：整数
+
+16. Keyword
+描述：关键字搜索，支持规则组执行Id、表名称、表负责人模糊搜索。如果keyword是纯数字，默认只匹配规则组执行Id。
+取值：字符串
+
+17. StartTime
+描述：实际运行时间，开始时间。
+取值：Unix时间戳（秒）
+
+18. EndTime
+描述：实际运行时间，结束时间。
+取值：Unix时间戳（秒）
+
+19. ScheduledStartTime
+描述：计划调度时间，开始时间。
+取值：Unix时间戳（秒）
+
+20. ScheduledEndTime
+描述：计划调度时间，结束时间。
+取值：Unix时间戳（秒）
+
+21. DsJobId
+描述：数据源任务ID。
+取值：字符串
+
+22. TriggerType
+描述：触发类型。
+取值：1 - 手动触发；2 - 调度事中触发；3 - 周期调度触发；
+
+23. Status
+描述：规则组执行状态。
+取值：0 - 初始状态，未提交；1 - 已提交；2 - 检测中；3 - 正常；4 - 异常；5 - 下发中；6 - 执行链路异常；7 - 未检测，没有执行结果；
+
+24. TableIds
+描述：数据表ID集合。
+取值：字符串，支持多个值（OR关系）
+
+25. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+26. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+27. CatalogName
+描述：数据目录名称。
+取值：字符串
+        :type Filters: list of Filter
+        :param _OrderFields: 通用排序， 
+支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""分页序号，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件，支持的过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型；WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. InstanceId
+描述：规则组执行实例ID。
+取值：字符串
+
+3. ParentInstanceId
+描述：父实例ID。
+取值：字符串
+
+4. LifeCycleRunNum
+描述：生命周期运行号。
+取值：字符串
+
+5. InstanceStatus
+描述：实例状态。质量侧的实例状态，一个状态对应调度侧多个状态，具体参考取值说明
+取值：
+等待运行 - 
+["INITIAL", "EVENT_LISTENING", "DEPENDENCE", "ALLOCATED", "LAUNCHED", "BEFORE_ASPECT", "ISSUED"]；
+运行中 - ["RUNNING", "AFTER_ASPECT", "WAITING_AFTER_ASPECT"]
+失败 - ["FAILED", "EXPIRED", "KILL", "KILLING", "PENDING"]
+成功 - ["COMPLETED"]
+
+
+6. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+7. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+8. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+9. DatabaseId
+描述：数据库ID。
+取值：字符串
+
+10. SchemaName
+描述：Schema名称。
+取值：字符串
+
+11. ReceiverFlag
+描述：是否为当前登录用户的订阅。
+取值：true - 是；false - 否
+
+12. TableName
+描述：数据表名称，支持模糊匹配。
+取值：字符串
+
+13. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+14. RuleGroupExecId
+描述：规则组执行ID。
+取值：整数
+
+15. RuleGroupTableId
+描述：规则组表ID。
+取值：整数
+
+16. Keyword
+描述：关键字搜索，支持规则组执行Id、表名称、表负责人模糊搜索。如果keyword是纯数字，默认只匹配规则组执行Id。
+取值：字符串
+
+17. StartTime
+描述：实际运行时间，开始时间。
+取值：Unix时间戳（秒）
+
+18. EndTime
+描述：实际运行时间，结束时间。
+取值：Unix时间戳（秒）
+
+19. ScheduledStartTime
+描述：计划调度时间，开始时间。
+取值：Unix时间戳（秒）
+
+20. ScheduledEndTime
+描述：计划调度时间，结束时间。
+取值：Unix时间戳（秒）
+
+21. DsJobId
+描述：数据源任务ID。
+取值：字符串
+
+22. TriggerType
+描述：触发类型。
+取值：1 - 手动触发；2 - 调度事中触发；3 - 周期调度触发；
+
+23. Status
+描述：规则组执行状态。
+取值：0 - 初始状态，未提交；1 - 已提交；2 - 检测中；3 - 正常；4 - 异常；5 - 下发中；6 - 执行链路异常；7 - 未检测，没有执行结果；
+
+24. TableIds
+描述：数据表ID集合。
+取值：字符串，支持多个值（OR关系）
+
+25. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+26. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+27. CatalogName
+描述：数据目录名称。
+取值：字符串
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""通用排序， 
+支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleGroupExecResultsByPageResponse(AbstractModel):
+    r"""ListQualityRuleGroupExecResultsByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则组执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupExecResultPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""规则组执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupExecResultPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListQualityRuleGroupExecResultPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListQualityRuleGroupsTableRequest(AbstractModel):
+    r"""ListQualityRuleGroupsTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _PageNumber: 分页序号，默认1
+        :type PageNumber: int
+        :param _PageSize: 分页大小，默认10
+        :type PageSize: int
+        :param _Filters: 过滤条件, 可选过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型；DASHBOARD-仪表盘类型；WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. DeployStatus
+描述：规则组部署状态，主要用于WORKFLOW_NODE类型的规则组
+取值：PRODUCTION - 生产环境；DRAFT - 草稿套
+
+3. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+4. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+5. TableOwnerName
+描述：表负责人名称，支持模糊匹配。
+取值：字符串
+
+6. TableOwnerAccount
+描述：表负责人账号ID。
+取值：整数，支持多个值（OR关系）
+
+7. TableOwnerFlag
+描述：是否为当前表负责人。
+取值：true - 是；false - 否
+
+8. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+9. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+10. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+11. SchemaName
+描述：Schema名称。
+取值：字符串
+
+12. TableName
+描述：数据源表名称，支持模糊匹配。
+取值：字符串
+
+13. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+14. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+
+        :type Filters: list of Filter
+        :param _OrderFields: 通用排序，
+支持的排序字段：
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""分页序号，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件, 可选过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型；DASHBOARD-仪表盘类型；WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. DeployStatus
+描述：规则组部署状态，主要用于WORKFLOW_NODE类型的规则组
+取值：PRODUCTION - 生产环境；DRAFT - 草稿套
+
+3. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+4. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+5. TableOwnerName
+描述：表负责人名称，支持模糊匹配。
+取值：字符串
+
+6. TableOwnerAccount
+描述：表负责人账号ID。
+取值：整数，支持多个值（OR关系）
+
+7. TableOwnerFlag
+描述：是否为当前表负责人。
+取值：true - 是；false - 否
+
+8. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+9. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+10. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+11. SchemaName
+描述：Schema名称。
+取值：字符串
+
+12. TableName
+描述：数据源表名称，支持模糊匹配。
+取值：字符串
+
+13. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+14. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""通用排序，
+支持的排序字段：
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleGroupsTableResponse(AbstractModel):
+    r"""ListQualityRuleGroupsTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 监控对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupsTableVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""监控对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupsTableVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = QualityRuleGroupsTableVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListQualityRuleTemplatesRequest(AbstractModel):
+    r"""ListQualityRuleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 工作空间ID
+        :type ProjectId: str
+        :param _PageNumber: 当前页，默认1
+        :type PageNumber: int
+        :param _PageSize: 每页记录数，默认10
+        :type PageSize: int
+        :param _OrderFields: 通用排序，
+支持的排序字段：
+CitationCount - 按引用数量排序
+UpdateTime - 按更新时间排序
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :type OrderFields: list of OrderField
+        :param _Filters: 通用过滤条件
+1. Id
+描述：模板ID。
+取值：模板的唯一标识
+
+2. Keyword
+描述：关键字搜索，支持模板名称模糊搜索。
+取值：字符串
+
+3. Type
+描述：模板类型。
+取值：1 - 系统模板；2 - 自定义模板；支持多个值（OR关系）
+
+4. QualityDim
+描述：质量检测维度。
+取值：1 - 准确性；2 - 唯一性；3 - 完整性；4 - 一致性；5 - 及时性；6 - 有效性；支持多个值（OR关系）
+
+5. SourceObjectType
+描述：规则适用的源数据对象类型。
+取值：1 - 常量；2 - 离线表级；3 - 离线字段级；4 - 库级；支持多个值（OR关系）
+
+6. SourceEngineTypes
+描述：模板适用的源数据引擎类型。
+取值：1 - MySQL；2 - Hive；4 - Spark；8 - Livy；16 - DLC；32 - Gbase；64 - TCHouse-P；128 - Doris；256 - TCHouse-D；512 - EMR_StarRocks；1024 - TCHouse-X；支持多个值（OR关系）
+
+        :type Filters: list of Filter
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._OrderFields = None
+        self._Filters = None
+
+    @property
+    def ProjectId(self):
+        r"""工作空间ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""当前页，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页记录数，默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def OrderFields(self):
+        r"""通用排序，
+支持的排序字段：
+CitationCount - 按引用数量排序
+UpdateTime - 按更新时间排序
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def Filters(self):
+        r"""通用过滤条件
+1. Id
+描述：模板ID。
+取值：模板的唯一标识
+
+2. Keyword
+描述：关键字搜索，支持模板名称模糊搜索。
+取值：字符串
+
+3. Type
+描述：模板类型。
+取值：1 - 系统模板；2 - 自定义模板；支持多个值（OR关系）
+
+4. QualityDim
+描述：质量检测维度。
+取值：1 - 准确性；2 - 唯一性；3 - 完整性；4 - 一致性；5 - 及时性；6 - 有效性；支持多个值（OR关系）
+
+5. SourceObjectType
+描述：规则适用的源数据对象类型。
+取值：1 - 常量；2 - 离线表级；3 - 离线字段级；4 - 库级；支持多个值（OR关系）
+
+6. SourceEngineTypes
+描述：模板适用的源数据引擎类型。
+取值：1 - MySQL；2 - Hive；4 - Spark；8 - Livy；16 - DLC；32 - Gbase；64 - TCHouse-P；128 - Doris；256 - TCHouse-D；512 - EMR_StarRocks；1024 - TCHouse-X；支持多个值（OR关系）
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleTemplatesResponse(AbstractModel):
+    r"""ListQualityRuleTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.QualityRuleTemplatePage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleTemplatePage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = QualityRuleTemplatePage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListQualityRulesRequest(AbstractModel):
+    r"""ListQualityRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 分页序号，默认1
+        :type PageNumber: int
+        :param _PageSize: 分页大小，默认10
+        :type PageSize: int
+        :param _Filters: 过滤条件，可选过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型，DASHBOARD - 仪表盘类型，WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. Operator
+描述：创建人ID。
+取值：用户ID，支持多个值（OR关系）
+
+3. Keyword
+描述：关键字搜索，支持规则名称模糊搜索。
+取值：字符串
+
+4. RuleName
+描述：规则名称。
+取值：字符串
+
+5. Type
+描述：规则类型。
+取值：1 - 系统模板，2 - 自定义SQL，3 - 自定义模板
+
+6. SourceObjectValue
+描述：数据对象，可以是字段名称或表名称。
+取值：字符串，支持多个值（OR关系）
+
+7. RuleGroupId
+描述：规则所属的规则组ID。
+取值：整数
+
+8. RuleGroupName
+描述：规则所属的规则组名称。
+取值：字符串
+
+9. TableId
+描述：数据表ID。
+取值：字符串，支持多个值（OR关系）
+
+10. TableName
+描述：数据表名称。
+取值：字符串
+
+11. SourceEngineType
+描述：数据源引擎类型。
+取值：整数，1 - MYSQL；2 - HIVE；4 - SPARK；8 - LIVY；16 - DLC；32 - GBASE；64 - TCHouse-P；128 - DORIS；256 - TCHouse-D；512 - EMR_STARROCKS；1024 - TCHouse-X；支持多个值（OR关系）
+
+12. DatasourceId
+描述：数据源ID。
+取值：整数
+
+13. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+14. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+15. SchemaName
+描述：Schema名称。
+取值：字符串
+
+16. RuleIds
+描述：规则ID集合。
+取值：整数，支持多个值（OR关系）
+
+17. RuleTemplateId
+描述：规则模板ID。
+取值：整数，支持多个值（OR关系）
+
+18. ReceiverUserId / ReceiverUserIdStr
+描述：订阅人用户ID。
+取值：整数
+
+19. StartTime
+描述：查询开始时间。
+取值：Unix时间戳（秒）
+
+20. EndTime
+描述：查询结束时间。
+取值：Unix时间戳（秒）
+
+21. ReceiverFlag
+描述：是否为当前登录用户的订阅。
+取值：
+true - 是
+false - 否
+
+22. MonitorType
+描述：规则的监控执行方式。
+取值：1 - 未配置；2 - 关联生产调度；3 - 离线周期检测；支持多个值（OR关系）
+支持多个值（OR关系）
+
+23. MonitorStatus
+描述：规则的监控状态。
+取值：
+true - 已启用
+false - 已禁用
+
+24. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+25. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+26. DeployStatus
+描述：规则部署状态，主要用于WORKFLOW_NODE类型的规则组（监控）上
+取值：PRODUCTION - 生产环境，DRAFT - 草稿态
+        :type Filters: list of Filter
+        :param _OrderFields: 通用排序，
+支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""分页序号，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件，可选过滤条件如下：
+1. GroupType
+描述：规则组类型，标识规则组所属的分类。
+取值：DEFAULT - 默认类型，DASHBOARD - 仪表盘类型，WORKFLOW_NODE - 编排空间工作流节点类型
+
+2. Operator
+描述：创建人ID。
+取值：用户ID，支持多个值（OR关系）
+
+3. Keyword
+描述：关键字搜索，支持规则名称模糊搜索。
+取值：字符串
+
+4. RuleName
+描述：规则名称。
+取值：字符串
+
+5. Type
+描述：规则类型。
+取值：1 - 系统模板，2 - 自定义SQL，3 - 自定义模板
+
+6. SourceObjectValue
+描述：数据对象，可以是字段名称或表名称。
+取值：字符串，支持多个值（OR关系）
+
+7. RuleGroupId
+描述：规则所属的规则组ID。
+取值：整数
+
+8. RuleGroupName
+描述：规则所属的规则组名称。
+取值：字符串
+
+9. TableId
+描述：数据表ID。
+取值：字符串，支持多个值（OR关系）
+
+10. TableName
+描述：数据表名称。
+取值：字符串
+
+11. SourceEngineType
+描述：数据源引擎类型。
+取值：整数，1 - MYSQL；2 - HIVE；4 - SPARK；8 - LIVY；16 - DLC；32 - GBASE；64 - TCHouse-P；128 - DORIS；256 - TCHouse-D；512 - EMR_STARROCKS；1024 - TCHouse-X；支持多个值（OR关系）
+
+12. DatasourceId
+描述：数据源ID。
+取值：整数
+
+13. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+14. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+15. SchemaName
+描述：Schema名称。
+取值：字符串
+
+16. RuleIds
+描述：规则ID集合。
+取值：整数，支持多个值（OR关系）
+
+17. RuleTemplateId
+描述：规则模板ID。
+取值：整数，支持多个值（OR关系）
+
+18. ReceiverUserId / ReceiverUserIdStr
+描述：订阅人用户ID。
+取值：整数
+
+19. StartTime
+描述：查询开始时间。
+取值：Unix时间戳（秒）
+
+20. EndTime
+描述：查询结束时间。
+取值：Unix时间戳（秒）
+
+21. ReceiverFlag
+描述：是否为当前登录用户的订阅。
+取值：
+true - 是
+false - 否
+
+22. MonitorType
+描述：规则的监控执行方式。
+取值：1 - 未配置；2 - 关联生产调度；3 - 离线周期检测；支持多个值（OR关系）
+支持多个值（OR关系）
+
+23. MonitorStatus
+描述：规则的监控状态。
+取值：
+true - 已启用
+false - 已禁用
+
+24. BizCatalogIds
+描述：业务目录ID。
+取值：整数，支持多个值（OR关系）
+
+25. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+26. DeployStatus
+描述：规则部署状态，主要用于WORKFLOW_NODE类型的规则组（监控）上
+取值：PRODUCTION - 生产环境，DRAFT - 草稿态
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""通用排序，
+支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRulesResponse(AbstractModel):
+    r"""ListQualityRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则质量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.QualityRulePage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""规则质量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRulePage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = QualityRulePage()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -20514,6 +28469,192 @@ class ListTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListTaskFoldersRequest(AbstractModel):
+    r"""ListTaskFolders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _ParentTaskFolderPath: 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+        :type ParentTaskFolderPath: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _TaskFolderType: 任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+
+
+        :type TaskFolderType: str
+        :param _PageNumber: 数据页数，大于等于1。默认1
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数，最小为10条，最大为200 条。默认10
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._ParentTaskFolderPath = None
+        self._WorkflowId = None
+        self._TaskFolderType = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ParentTaskFolderPath(self):
+        r"""父文件夹绝对路径，如/abc/de，如果是根目录则传/
+        :rtype: str
+        """
+        return self._ParentTaskFolderPath
+
+    @ParentTaskFolderPath.setter
+    def ParentTaskFolderPath(self, ParentTaskFolderPath):
+        self._ParentTaskFolderPath = ParentTaskFolderPath
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderType(self):
+        r"""任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+
+
+        :rtype: str
+        """
+        return self._TaskFolderType
+
+    @TaskFolderType.setter
+    def TaskFolderType(self, TaskFolderType):
+        self._TaskFolderType = TaskFolderType
+
+    @property
+    def PageNumber(self):
+        r"""数据页数，大于等于1。默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数，最小为10条，最大为200 条。默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ParentTaskFolderPath = params.get("ParentTaskFolderPath")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderType = params.get("TaskFolderType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTaskFoldersResponse(AbstractModel):
+    r"""ListTaskFolders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 分页的文件夹查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TaskFolderPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""分页的文件夹查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TaskFolderPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskFolderPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListTaskInfo(AbstractModel):
     r"""查询任务信息分页
 
@@ -21801,6 +29942,1139 @@ class ListTenantRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListTriggerTaskInfo(AbstractModel):
+    r"""查询任务信息分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 任务数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerTaskBaseAttribute
+        :param _PageNumber: 当前请求的数据页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 当前请求的数据页条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalCount: 满足查询条件的数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 满足查询条件的数据总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""任务数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerTaskBaseAttribute
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""当前请求的数据页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""当前请求的数据页条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""满足查询条件的数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""满足查询条件的数据总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerTaskBaseAttribute()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskVersions(AbstractModel):
+    r"""查询任务版本分页列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 记录列表	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerTaskVersion
+        :param _TotalCount: 满足查询条件的数据总条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 满足查询条件的数据总页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageCount: 当前页记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageCount: int
+        :param _PageSize: 当前请求的数据页条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _PageNumber: 当前请求的数据页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageCount = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def Items(self):
+        r"""记录列表	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerTaskVersion
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""满足查询条件的数据总条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""满足查询条件的数据总页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageCount(self):
+        r"""当前页记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def PageSize(self):
+        r"""当前请求的数据页条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""当前请求的数据页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerTaskVersion()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageCount = params.get("PageCount")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskVersionsRequest(AbstractModel):
+    r"""ListTriggerTaskVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TaskVersionType: 保存版本：SAVE
+提交版本：SUBMIT
+默认为SAVE
+        :type TaskVersionType: str
+        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1。
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._TaskVersionType = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskVersionType(self):
+        r"""保存版本：SAVE
+提交版本：SUBMIT
+默认为SAVE
+        :rtype: str
+        """
+        return self._TaskVersionType
+
+    @TaskVersionType.setter
+    def TaskVersionType(self, TaskVersionType):
+        self._TaskVersionType = TaskVersionType
+
+    @property
+    def PageNumber(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._TaskVersionType = params.get("TaskVersionType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskVersionsResponse(AbstractModel):
+    r"""ListTriggerTaskVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskVersions`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskVersions`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTriggerTaskVersions()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListTriggerTasksRequest(AbstractModel):
+    r"""ListTriggerTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :type PageSize: int
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _WorkflowId: 所属工作流ID
+        :type WorkflowId: str
+        :param _OwnerUin: 责任人ID
+        :type OwnerUin: str
+        :param _TaskTypeId: 任务类型
+        :type TaskTypeId: int
+        :param _Status: 任务状态
+* N: 新建 
+* Y: 调度中 
+
+        :type Status: str
+        :param _Submit: 提交状态
+        :type Submit: bool
+        :param _BundleId: BundleId信息
+        :type BundleId: str
+        :param _CreateUserUin: 创建人ID
+        :type CreateUserUin: str
+        :param _ModifyTime: 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :type ModifyTime: list of str
+        :param _CreateTime: 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :type CreateTime: list of str
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TaskName = None
+        self._WorkflowId = None
+        self._OwnerUin = None
+        self._TaskTypeId = None
+        self._Status = None
+        self._Submit = None
+        self._BundleId = None
+        self._CreateUserUin = None
+        self._ModifyTime = None
+        self._CreateTime = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowId(self):
+        r"""所属工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def OwnerUin(self):
+        r"""责任人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def Status(self):
+        r"""任务状态
+* N: 新建 
+* Y: 调度中 
+
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Submit(self):
+        r"""提交状态
+        :rtype: bool
+        """
+        return self._Submit
+
+    @Submit.setter
+    def Submit(self, Submit):
+        self._Submit = Submit
+
+    @property
+    def BundleId(self):
+        r"""BundleId信息
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :rtype: list of str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :rtype: list of str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._Status = params.get("Status")
+        self._Submit = params.get("Submit")
+        self._BundleId = params.get("BundleId")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTasksResponse(AbstractModel):
+    r"""ListTriggerTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTriggerTaskInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListTriggerWorkflowInfo(AbstractModel):
+    r"""查询工作流分页列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 列表item
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerWorkflowInfo
+        :param _TotalPageNumber: 满足查询条件的数据总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageNumber: 当前请求的数据页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 当前请求的数据页条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalCount: 满足查询条件的数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._Items = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+
+    @property
+    def Items(self):
+        r"""列表item
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerWorkflowInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalPageNumber(self):
+        r"""满足查询条件的数据总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""当前请求的数据页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""当前请求的数据页条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""满足查询条件的数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerWorkflowInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerWorkflowRunsRequest(AbstractModel):
+    r"""ListTriggerWorkflowRuns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _Filters: 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+        :type OrderFields: list of OrderField
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._Filters = None
+        self._OrderFields = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Filters(self):
+        r"""过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerWorkflowRunsResponse(AbstractModel):
+    r"""ListTriggerWorkflowRuns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 工作流运行查询结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowRunResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""工作流运行查询结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowRunResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerWorkflowRunResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListTriggerWorkflowsRequest(AbstractModel):
+    r"""ListTriggerWorkflows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :type PageSize: int
+        :param _Keyword: 搜索关键词
+        :type Keyword: str
+        :param _ParentFolderPath: 工作流所属文件夹
+        :type ParentFolderPath: str
+        :param _BundleId: bundleId项
+        :type BundleId: str
+        :param _OwnerUin: 负责人ID
+        :type OwnerUin: str
+        :param _CreateUserUin: 创建人ID
+        :type CreateUserUin: str
+        :param _ModifyTime: 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :type ModifyTime: list of str
+        :param _CreateTime: 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :type CreateTime: list of str
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+        self._ParentFolderPath = None
+        self._BundleId = None
+        self._OwnerUin = None
+        self._CreateUserUin = None
+        self._ModifyTime = None
+        self._CreateTime = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        r"""搜索关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ParentFolderPath(self):
+        r"""工作流所属文件夹
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
+    @property
+    def BundleId(self):
+        r"""bundleId项
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def OwnerUin(self):
+        r"""负责人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :rtype: list of str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :rtype: list of str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        self._ParentFolderPath = params.get("ParentFolderPath")
+        self._BundleId = params.get("BundleId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerWorkflowsResponse(AbstractModel):
+    r"""ListTriggerWorkflows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询工作流分页信息
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询工作流分页信息
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTriggerWorkflowInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListUpstreamOpsTasksRequest(AbstractModel):
     r"""ListUpstreamOpsTasks请求参数结构体
 
@@ -22194,6 +31468,134 @@ class ListUpstreamTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListUpstreamTriggerTasksRequest(AbstractModel):
+    r"""ListUpstreamTriggerTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1。
+        :type PageNumber: int
+        :param _PageSize: 请求的数据页数。默认值为1，取值大于等于1。
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNumber(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListUpstreamTriggerTasksResponse(AbstractModel):
+    r"""ListUpstreamTriggerTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 上游任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.TriggerDependencyConfigPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""上游任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerDependencyConfigPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TriggerDependencyConfigPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListWorkflowFoldersRequest(AbstractModel):
     r"""ListWorkflowFolders请求参数结构体
 
@@ -22429,6 +31831,147 @@ class ListWorkflowInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListWorkflowPermissionsRequest(AbstractModel):
+    r"""ListWorkflowPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _EntityId: 授权实体ID
+        :type EntityId: str
+        :param _EntityType: 授权实体类型,folder/workflow
+        :type EntityType: str
+        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._EntityId = None
+        self._EntityType = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EntityId(self):
+        r"""授权实体ID
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityType(self):
+        r"""授权实体类型,folder/workflow
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def PageNumber(self):
+        r"""请求的数据页数。默认值为1，取值大于等于1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._EntityId = params.get("EntityId")
+        self._EntityType = params.get("EntityType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListWorkflowPermissionsResponse(AbstractModel):
+    r"""ListWorkflowPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 分页的授权信息查询结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.WorkflowPermissionPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""分页的授权信息查询结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowPermissionPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = WorkflowPermissionPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ListWorkflowsRequest(AbstractModel):
@@ -22797,6 +32340,637 @@ class ModifyAlarmRuleResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyQualityRuleGroupRequest(AbstractModel):
+    r"""ModifyQualityRuleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupExecStrategyBOList: 任务参数
+        :type RuleGroupExecStrategyBOList: list of QualityRuleGroupExecStrategy
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self._RuleGroupExecStrategyBOList = None
+        self._ProjectId = None
+
+    @property
+    def RuleGroupExecStrategyBOList(self):
+        r"""任务参数
+        :rtype: list of QualityRuleGroupExecStrategy
+        """
+        return self._RuleGroupExecStrategyBOList
+
+    @RuleGroupExecStrategyBOList.setter
+    def RuleGroupExecStrategyBOList(self, RuleGroupExecStrategyBOList):
+        self._RuleGroupExecStrategyBOList = RuleGroupExecStrategyBOList
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleGroupExecStrategyBOList") is not None:
+            self._RuleGroupExecStrategyBOList = []
+            for item in params.get("RuleGroupExecStrategyBOList"):
+                obj = QualityRuleGroupExecStrategy()
+                obj._deserialize(item)
+                self._RuleGroupExecStrategyBOList.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityRuleGroupResponse(AbstractModel):
+    r"""ModifyQualityRuleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleGroupResultVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ModifyQualityRuleGroupResultVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ModifyQualityRuleGroupResultVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyQualityRuleGroupResultVO(AbstractModel):
+    r"""监控任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityRuleRequest(AbstractModel):
+    r"""ModifyQualityRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :type Type: int
+        :param _CompareRule: 报警触发条件
+        :type CompareRule: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :type AlarmLevel: int
+        :param _TableId: 数据表ID
+        :type TableId: str
+        :param _RuleTemplateId: 规则模板ID，当Type≠3（自定义SQL）时必填
+        :type RuleTemplateId: int
+        :param _QualityDim: 规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        :type QualityDim: int
+        :param _RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param _SourceObjectDataTypeName: 源字段详细类型，int、string
+        :type SourceObjectDataTypeName: str
+        :param _SourceObjectValue: 源字段名称
+        :type SourceObjectValue: str
+        :param _ConditionType: 检测范围，当Type=1(系统模板)时必填。 1.全表 2.条件扫描
+        :type ConditionType: int
+        :param _ConditionExpression: 条件扫描WHERE条件表达式，ConditionType=2(条件扫描)时必填
+        :type ConditionExpression: str
+        :param _CustomSql: 自定义SQL，Type=3（自定义SQL）时必填
+        :type CustomSql: str
+        :param _Description: 规则描述
+        :type Description: str
+        :param _TargetDatabaseId: 目标库Id
+        :type TargetDatabaseId: str
+        :param _TargetTableId: 目标表Id
+        :type TargetTableId: str
+        :param _TargetConditionExpr: 目标过滤条件表达式
+        :type TargetConditionExpr: str
+        :param _RelConditionExpr: 源字段与目标字段关联条件on表达式
+        :type RelConditionExpr: str
+        :param _FieldConfig: 自定义模版sql表达式字段替换参数，Type=2时必填
+        :type FieldConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        :param _TargetObjectValue: 目标字段名称  CITY
+        :type TargetObjectValue: str
+        :param _SourceEngineTypes: 该规则支持的执行引擎列表，Type=3（自定义SQL）时必填，可选值如下：1 - MYSQL2 - HIVE4 - SPARK8 - LIVY16 - DLC32 - GBASE64 - TCHouse-P128 - DORIS256 - TCHouse-D512 - EMR_STARROCKS1024 - TCHouse-X
+        :type SourceEngineTypes: list of int non-negative
+        :param _TargetDatabaseName: 目标库名
+        :type TargetDatabaseName: str
+        :param _TargetSchemaName: 目标模式名
+        :type TargetSchemaName: str
+        :param _TargetTableName: 目标表名
+        :type TargetTableName: str
+        :param _CatalogName: 数据目录名称，主要用于dlc数据源
+        :type CatalogName: str
+        :param _TargetCatalogName: 目标数据目录名称，主要用于dlc数据源
+        :type TargetCatalogName: str
+        """
+        self._ProjectId = None
+        self._RuleId = None
+        self._Name = None
+        self._Type = None
+        self._CompareRule = None
+        self._AlarmLevel = None
+        self._TableId = None
+        self._RuleTemplateId = None
+        self._QualityDim = None
+        self._RuleGroupId = None
+        self._SourceObjectDataTypeName = None
+        self._SourceObjectValue = None
+        self._ConditionType = None
+        self._ConditionExpression = None
+        self._CustomSql = None
+        self._Description = None
+        self._TargetDatabaseId = None
+        self._TargetTableId = None
+        self._TargetConditionExpr = None
+        self._RelConditionExpr = None
+        self._FieldConfig = None
+        self._TargetObjectValue = None
+        self._SourceEngineTypes = None
+        self._TargetDatabaseName = None
+        self._TargetSchemaName = None
+        self._TargetTableName = None
+        self._CatalogName = None
+        self._TargetCatalogName = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CompareRule(self):
+        r"""报警触发条件
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        """
+        return self._CompareRule
+
+    @CompareRule.setter
+    def CompareRule(self, CompareRule):
+        self._CompareRule = CompareRule
+
+    @property
+    def AlarmLevel(self):
+        r"""报警触发级别 1.低, 2.中, 3.高
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def TableId(self):
+        r"""数据表ID
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def RuleTemplateId(self):
+        r"""规则模板ID，当Type≠3（自定义SQL）时必填
+        :rtype: int
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def QualityDim(self):
+        r"""规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        :rtype: int
+        """
+        return self._QualityDim
+
+    @QualityDim.setter
+    def QualityDim(self, QualityDim):
+        self._QualityDim = QualityDim
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组ID
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def SourceObjectDataTypeName(self):
+        r"""源字段详细类型，int、string
+        :rtype: str
+        """
+        return self._SourceObjectDataTypeName
+
+    @SourceObjectDataTypeName.setter
+    def SourceObjectDataTypeName(self, SourceObjectDataTypeName):
+        self._SourceObjectDataTypeName = SourceObjectDataTypeName
+
+    @property
+    def SourceObjectValue(self):
+        r"""源字段名称
+        :rtype: str
+        """
+        return self._SourceObjectValue
+
+    @SourceObjectValue.setter
+    def SourceObjectValue(self, SourceObjectValue):
+        self._SourceObjectValue = SourceObjectValue
+
+    @property
+    def ConditionType(self):
+        r"""检测范围，当Type=1(系统模板)时必填。 1.全表 2.条件扫描
+        :rtype: int
+        """
+        return self._ConditionType
+
+    @ConditionType.setter
+    def ConditionType(self, ConditionType):
+        self._ConditionType = ConditionType
+
+    @property
+    def ConditionExpression(self):
+        r"""条件扫描WHERE条件表达式，ConditionType=2(条件扫描)时必填
+        :rtype: str
+        """
+        return self._ConditionExpression
+
+    @ConditionExpression.setter
+    def ConditionExpression(self, ConditionExpression):
+        self._ConditionExpression = ConditionExpression
+
+    @property
+    def CustomSql(self):
+        r"""自定义SQL，Type=3（自定义SQL）时必填
+        :rtype: str
+        """
+        return self._CustomSql
+
+    @CustomSql.setter
+    def CustomSql(self, CustomSql):
+        self._CustomSql = CustomSql
+
+    @property
+    def Description(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TargetDatabaseId(self):
+        r"""目标库Id
+        :rtype: str
+        """
+        return self._TargetDatabaseId
+
+    @TargetDatabaseId.setter
+    def TargetDatabaseId(self, TargetDatabaseId):
+        self._TargetDatabaseId = TargetDatabaseId
+
+    @property
+    def TargetTableId(self):
+        r"""目标表Id
+        :rtype: str
+        """
+        return self._TargetTableId
+
+    @TargetTableId.setter
+    def TargetTableId(self, TargetTableId):
+        self._TargetTableId = TargetTableId
+
+    @property
+    def TargetConditionExpr(self):
+        r"""目标过滤条件表达式
+        :rtype: str
+        """
+        return self._TargetConditionExpr
+
+    @TargetConditionExpr.setter
+    def TargetConditionExpr(self, TargetConditionExpr):
+        self._TargetConditionExpr = TargetConditionExpr
+
+    @property
+    def RelConditionExpr(self):
+        r"""源字段与目标字段关联条件on表达式
+        :rtype: str
+        """
+        return self._RelConditionExpr
+
+    @RelConditionExpr.setter
+    def RelConditionExpr(self, RelConditionExpr):
+        self._RelConditionExpr = RelConditionExpr
+
+    @property
+    def FieldConfig(self):
+        r"""自定义模版sql表达式字段替换参数，Type=2时必填
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        """
+        return self._FieldConfig
+
+    @FieldConfig.setter
+    def FieldConfig(self, FieldConfig):
+        self._FieldConfig = FieldConfig
+
+    @property
+    def TargetObjectValue(self):
+        r"""目标字段名称  CITY
+        :rtype: str
+        """
+        return self._TargetObjectValue
+
+    @TargetObjectValue.setter
+    def TargetObjectValue(self, TargetObjectValue):
+        self._TargetObjectValue = TargetObjectValue
+
+    @property
+    def SourceEngineTypes(self):
+        r"""该规则支持的执行引擎列表，Type=3（自定义SQL）时必填，可选值如下：1 - MYSQL2 - HIVE4 - SPARK8 - LIVY16 - DLC32 - GBASE64 - TCHouse-P128 - DORIS256 - TCHouse-D512 - EMR_STARROCKS1024 - TCHouse-X
+        :rtype: list of int non-negative
+        """
+        return self._SourceEngineTypes
+
+    @SourceEngineTypes.setter
+    def SourceEngineTypes(self, SourceEngineTypes):
+        self._SourceEngineTypes = SourceEngineTypes
+
+    @property
+    def TargetDatabaseName(self):
+        r"""目标库名
+        :rtype: str
+        """
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def TargetSchemaName(self):
+        r"""目标模式名
+        :rtype: str
+        """
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
+    @property
+    def TargetTableName(self):
+        r"""目标表名
+        :rtype: str
+        """
+        return self._TargetTableName
+
+    @TargetTableName.setter
+    def TargetTableName(self, TargetTableName):
+        self._TargetTableName = TargetTableName
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称，主要用于dlc数据源
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def TargetCatalogName(self):
+        r"""目标数据目录名称，主要用于dlc数据源
+        :rtype: str
+        """
+        return self._TargetCatalogName
+
+    @TargetCatalogName.setter
+    def TargetCatalogName(self, TargetCatalogName):
+        self._TargetCatalogName = TargetCatalogName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("CompareRule") is not None:
+            self._CompareRule = QualityCompareRule()
+            self._CompareRule._deserialize(params.get("CompareRule"))
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._TableId = params.get("TableId")
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._QualityDim = params.get("QualityDim")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self._SourceObjectValue = params.get("SourceObjectValue")
+        self._ConditionType = params.get("ConditionType")
+        self._ConditionExpression = params.get("ConditionExpression")
+        self._CustomSql = params.get("CustomSql")
+        self._Description = params.get("Description")
+        self._TargetDatabaseId = params.get("TargetDatabaseId")
+        self._TargetTableId = params.get("TargetTableId")
+        self._TargetConditionExpr = params.get("TargetConditionExpr")
+        self._RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self._FieldConfig = QualityRuleFieldConfig()
+            self._FieldConfig._deserialize(params.get("FieldConfig"))
+        self._TargetObjectValue = params.get("TargetObjectValue")
+        self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._TargetSchemaName = params.get("TargetSchemaName")
+        self._TargetTableName = params.get("TargetTableName")
+        self._CatalogName = params.get("CatalogName")
+        self._TargetCatalogName = params.get("TargetCatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityRuleResponse(AbstractModel):
+    r"""ModifyQualityRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class MonitorWhiteTask(AbstractModel):
@@ -24454,6 +34628,57 @@ class OpsWorkflows(AbstractModel):
         
 
 
+class OrderField(AbstractModel):
+    r"""通用排序字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 排序字段名称
+        :type Name: str
+        :param _Direction: 排序方向：ASC|DESC
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        r"""排序字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        r"""排序方向：ASC|DESC
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutTaskParameter(AbstractModel):
     r"""参数传递-输出参数
 
@@ -25738,6 +35963,4814 @@ class ProjectUsersBrief(AbstractModel):
         
 
 
+class QualityColumnValueConfig(AbstractModel):
+    r"""字段值变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldKey: 字段值key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldKey: str
+        :param _FieldValue: 字段值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldValue: str
+        :param _FieldDataType: 字段值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldDataType: str
+        """
+        self._FieldKey = None
+        self._FieldValue = None
+        self._FieldDataType = None
+
+    @property
+    def FieldKey(self):
+        r"""字段值key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldKey
+
+    @FieldKey.setter
+    def FieldKey(self, FieldKey):
+        self._FieldKey = FieldKey
+
+    @property
+    def FieldValue(self):
+        r"""字段值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldValue
+
+    @FieldValue.setter
+    def FieldValue(self, FieldValue):
+        self._FieldValue = FieldValue
+
+    @property
+    def FieldDataType(self):
+        r"""字段值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldDataType
+
+    @FieldDataType.setter
+    def FieldDataType(self, FieldDataType):
+        self._FieldDataType = FieldDataType
+
+
+    def _deserialize(self, params):
+        self._FieldKey = params.get("FieldKey")
+        self._FieldValue = params.get("FieldValue")
+        self._FieldDataType = params.get("FieldDataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityCompareRule(AbstractModel):
+    r"""对比规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 比较条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of QualityCompareRuleItem
+        :param _CycleStep: 周期性模板默认周期，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param _ComputeExpression: o 表示 或，a 表示 且，数字表示items下标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeExpression: str
+        """
+        self._Items = None
+        self._CycleStep = None
+        self._ComputeExpression = None
+
+    @property
+    def Items(self):
+        r"""比较条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityCompareRuleItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def CycleStep(self):
+        r"""周期性模板默认周期，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CycleStep
+
+    @CycleStep.setter
+    def CycleStep(self, CycleStep):
+        self._CycleStep = CycleStep
+
+    @property
+    def ComputeExpression(self):
+        r"""o 表示 或，a 表示 且，数字表示items下标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComputeExpression
+
+    @ComputeExpression.setter
+    def ComputeExpression(self, ComputeExpression):
+        self._ComputeExpression = ComputeExpression
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = QualityCompareRuleItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._CycleStep = params.get("CycleStep")
+        self._ComputeExpression = params.get("ComputeExpression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityCompareRuleItem(AbstractModel):
+    r"""比较条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompareType: 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param _Operator: 比较操作类型
+<  <=  ==  =>  > !=
+IRLCRO:在区间内(左闭右开)
+IRLORC:在区间内(左开右闭)
+IRLCRC:在区间内(左闭右闭)
+IRLORO:在区间内(左开右开)
+NRLCRO:不在区间内(左闭右开)
+NRLORC:不在区间内(左开右闭)
+NRLCRC:不在区间内(左闭右闭)
+NRLORO:不在区间内(左开右开)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _ValueComputeType: 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueComputeType: int
+        :param _ValueList: 比较阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueList: list of QualityThresholdValue
+        """
+        self._CompareType = None
+        self._Operator = None
+        self._ValueComputeType = None
+        self._ValueList = None
+
+    @property
+    def CompareType(self):
+        r"""比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompareType
+
+    @CompareType.setter
+    def CompareType(self, CompareType):
+        self._CompareType = CompareType
+
+    @property
+    def Operator(self):
+        r"""比较操作类型
+<  <=  ==  =>  > !=
+IRLCRO:在区间内(左闭右开)
+IRLORC:在区间内(左开右闭)
+IRLCRC:在区间内(左闭右闭)
+IRLORO:在区间内(左开右开)
+NRLCRO:不在区间内(左闭右开)
+NRLORC:不在区间内(左开右闭)
+NRLCRC:不在区间内(左闭右闭)
+NRLORO:不在区间内(左开右开)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ValueComputeType(self):
+        r"""质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ValueComputeType
+
+    @ValueComputeType.setter
+    def ValueComputeType(self, ValueComputeType):
+        self._ValueComputeType = ValueComputeType
+
+    @property
+    def ValueList(self):
+        r"""比较阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityThresholdValue
+        """
+        return self._ValueList
+
+    @ValueList.setter
+    def ValueList(self, ValueList):
+        self._ValueList = ValueList
+
+
+    def _deserialize(self, params):
+        self._CompareType = params.get("CompareType")
+        self._Operator = params.get("Operator")
+        self._ValueComputeType = params.get("ValueComputeType")
+        if params.get("ValueList") is not None:
+            self._ValueList = []
+            for item in params.get("ValueList"):
+                obj = QualityThresholdValue()
+                obj._deserialize(item)
+                self._ValueList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityFieldConfig(AbstractModel):
+    r"""字段变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldKey: 字段key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldKey: str
+        :param _FieldValue: 字段值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldValue: str
+        :param _FieldDataType: 字段值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldDataType: str
+        :param _ValueConfig: 字段值变量信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueConfig: :class:`tencentcloud.wedata.v20250806.models.QualityColumnValueConfig`
+        """
+        self._FieldKey = None
+        self._FieldValue = None
+        self._FieldDataType = None
+        self._ValueConfig = None
+
+    @property
+    def FieldKey(self):
+        r"""字段key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldKey
+
+    @FieldKey.setter
+    def FieldKey(self, FieldKey):
+        self._FieldKey = FieldKey
+
+    @property
+    def FieldValue(self):
+        r"""字段值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldValue
+
+    @FieldValue.setter
+    def FieldValue(self, FieldValue):
+        self._FieldValue = FieldValue
+
+    @property
+    def FieldDataType(self):
+        r"""字段值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldDataType
+
+    @FieldDataType.setter
+    def FieldDataType(self, FieldDataType):
+        self._FieldDataType = FieldDataType
+
+    @property
+    def ValueConfig(self):
+        r"""字段值变量信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityColumnValueConfig`
+        """
+        return self._ValueConfig
+
+    @ValueConfig.setter
+    def ValueConfig(self, ValueConfig):
+        self._ValueConfig = ValueConfig
+
+
+    def _deserialize(self, params):
+        self._FieldKey = params.get("FieldKey")
+        self._FieldValue = params.get("FieldValue")
+        self._FieldDataType = params.get("FieldDataType")
+        if params.get("ValueConfig") is not None:
+            self._ValueConfig = QualityColumnValueConfig()
+            self._ValueConfig._deserialize(params.get("ValueConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityProdSchedulerTask(AbstractModel):
+    r"""数据质量生产调度任务业务实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: 生产调度任务工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _TaskId: 生产调度任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 生产调度任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _CycleType: 生产调度任务周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: int
+        :param _TaskType: 生产任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _ScheduleTimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
+        :param _InChargeIdList: 负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeIdList: list of str
+        :param _InChargeNameList: 负责人name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeNameList: list of str
+        """
+        self._WorkflowId = None
+        self._TaskId = None
+        self._TaskName = None
+        self._CycleType = None
+        self._TaskType = None
+        self._ScheduleTimeZone = None
+        self._InChargeIdList = None
+        self._InChargeNameList = None
+
+    @property
+    def WorkflowId(self):
+        r"""生产调度任务工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskId(self):
+        r"""生产调度任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""生产调度任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def CycleType(self):
+        r"""生产调度任务周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def TaskType(self):
+        r"""生产任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ScheduleTimeZone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def InChargeIdList(self):
+        r"""负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeIdList
+
+    @InChargeIdList.setter
+    def InChargeIdList(self, InChargeIdList):
+        self._InChargeIdList = InChargeIdList
+
+    @property
+    def InChargeNameList(self):
+        r"""负责人name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeNameList
+
+    @InChargeNameList.setter
+    def InChargeNameList(self, InChargeNameList):
+        self._InChargeNameList = InChargeNameList
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._CycleType = params.get("CycleType")
+        self._TaskType = params.get("TaskType")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._InChargeIdList = params.get("InChargeIdList")
+        self._InChargeNameList = params.get("InChargeNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRule(AbstractModel):
+    r"""数据质量规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _TableId: 数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _Name: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _RuleTemplateId: 规则模板Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: int
+        :param _RuleTemplateContent: 规则模板概述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateContent: str
+        :param _QualityDim: 规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param _SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectType: int
+        :param _SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataType: int
+        :param _SourceObjectDataTypeName: 源字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param _SourceObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        :param _ConditionType: 检测范围 1.全表, 2.条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionType: int
+        :param _ConditionExpression: 条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionExpression: str
+        :param _CustomSql: 自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomSql: str
+        :param _CompareRule: 报警触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareRule: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param _Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Operator: 规则配置人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _TargetDatabaseId: 目标库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseId: str
+        :param _TargetDatabaseName: 目标库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseName: str
+        :param _TargetTableId: 目标表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableId: str
+        :param _TargetTableName: 目标表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableName: str
+        :param _TargetConditionExpr: 目标字段过滤条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConditionExpr: str
+        :param _RelConditionExpr: 源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelConditionExpr: str
+        :param _FieldConfig: 自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        :param _MultiSourceFlag: 是否关联多表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiSourceFlag: bool
+        :param _WhereFlag: 是否where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereFlag: bool
+        :param _TemplateSql: 模版原始SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateSql: str
+        :param _SubQualityDim: 模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubQualityDim: int
+        :param _TargetObjectType: 规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectType: int
+        :param _TargetObjectDataType: 规则适用的目标数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataType: int
+        :param _TargetObjectDataTypeName: 目标字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataTypeName: str
+        :param _TargetObjectValue: 目标字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectValue: str
+        :param _SourceEngineTypes: 源端对应的引擎类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceEngineTypes: list of int non-negative
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableOwnerName: 表负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _ExecStrategy: 执行策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecStrategy: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
+        :param _Subscription: 订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscription: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _DatasourceId: 数据源 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _DatabaseId: 数据库 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _MonitorStatus: 监控是否开启.0false,1true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorStatus: int
+        :param _TriggerCondition: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerCondition: str
+        :param _DsEnvType: 0或者未返回或者null：未定义，1：生产，2：开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DsEnvType: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TargetSchemaName: 目标模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSchemaName: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: 数据库名称 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _FailMsg: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMsg: str
+        :param _GroupType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: 数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _TargetCatalogName: 目标表的数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCatalogName: str
+        """
+        self._RuleId = None
+        self._RuleGroupId = None
+        self._TableId = None
+        self._Name = None
+        self._Type = None
+        self._RuleTemplateId = None
+        self._RuleTemplateContent = None
+        self._QualityDim = None
+        self._SourceObjectType = None
+        self._SourceObjectDataType = None
+        self._SourceObjectDataTypeName = None
+        self._SourceObjectValue = None
+        self._ConditionType = None
+        self._ConditionExpression = None
+        self._CustomSql = None
+        self._CompareRule = None
+        self._AlarmLevel = None
+        self._Description = None
+        self._Operator = None
+        self._TargetDatabaseId = None
+        self._TargetDatabaseName = None
+        self._TargetTableId = None
+        self._TargetTableName = None
+        self._TargetConditionExpr = None
+        self._RelConditionExpr = None
+        self._FieldConfig = None
+        self._MultiSourceFlag = None
+        self._WhereFlag = None
+        self._TemplateSql = None
+        self._SubQualityDim = None
+        self._TargetObjectType = None
+        self._TargetObjectDataType = None
+        self._TargetObjectDataTypeName = None
+        self._TargetObjectValue = None
+        self._SourceEngineTypes = None
+        self._TableName = None
+        self._TableOwnerName = None
+        self._ExecStrategy = None
+        self._Subscription = None
+        self._CreateTime = None
+        self._DatasourceId = None
+        self._DatabaseId = None
+        self._MonitorStatus = None
+        self._TriggerCondition = None
+        self._DsEnvType = None
+        self._DatasourceType = None
+        self._SchemaName = None
+        self._TargetSchemaName = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._UpdateTime = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._FailMsg = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
+        self._TargetCatalogName = None
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def TableId(self):
+        r"""数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Name(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleTemplateId(self):
+        r"""规则模板Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateContent(self):
+        r"""规则模板概述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleTemplateContent
+
+    @RuleTemplateContent.setter
+    def RuleTemplateContent(self, RuleTemplateContent):
+        self._RuleTemplateContent = RuleTemplateContent
+
+    @property
+    def QualityDim(self):
+        r"""规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QualityDim
+
+    @QualityDim.setter
+    def QualityDim(self, QualityDim):
+        self._QualityDim = QualityDim
+
+    @property
+    def SourceObjectType(self):
+        r"""规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceObjectType
+
+    @SourceObjectType.setter
+    def SourceObjectType(self, SourceObjectType):
+        self._SourceObjectType = SourceObjectType
+
+    @property
+    def SourceObjectDataType(self):
+        r"""规则适用的源数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceObjectDataType
+
+    @SourceObjectDataType.setter
+    def SourceObjectDataType(self, SourceObjectDataType):
+        self._SourceObjectDataType = SourceObjectDataType
+
+    @property
+    def SourceObjectDataTypeName(self):
+        r"""源字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectDataTypeName
+
+    @SourceObjectDataTypeName.setter
+    def SourceObjectDataTypeName(self, SourceObjectDataTypeName):
+        self._SourceObjectDataTypeName = SourceObjectDataTypeName
+
+    @property
+    def SourceObjectValue(self):
+        r"""源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectValue
+
+    @SourceObjectValue.setter
+    def SourceObjectValue(self, SourceObjectValue):
+        self._SourceObjectValue = SourceObjectValue
+
+    @property
+    def ConditionType(self):
+        r"""检测范围 1.全表, 2.条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConditionType
+
+    @ConditionType.setter
+    def ConditionType(self, ConditionType):
+        self._ConditionType = ConditionType
+
+    @property
+    def ConditionExpression(self):
+        r"""条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConditionExpression
+
+    @ConditionExpression.setter
+    def ConditionExpression(self, ConditionExpression):
+        self._ConditionExpression = ConditionExpression
+
+    @property
+    def CustomSql(self):
+        r"""自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomSql
+
+    @CustomSql.setter
+    def CustomSql(self, CustomSql):
+        self._CustomSql = CustomSql
+
+    @property
+    def CompareRule(self):
+        r"""报警触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        """
+        return self._CompareRule
+
+    @CompareRule.setter
+    def CompareRule(self, CompareRule):
+        self._CompareRule = CompareRule
+
+    @property
+    def AlarmLevel(self):
+        r"""报警触发级别 1.低, 2.中, 3.高
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def Description(self):
+        r"""规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Operator(self):
+        r"""规则配置人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TargetDatabaseId(self):
+        r"""目标库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDatabaseId
+
+    @TargetDatabaseId.setter
+    def TargetDatabaseId(self, TargetDatabaseId):
+        self._TargetDatabaseId = TargetDatabaseId
+
+    @property
+    def TargetDatabaseName(self):
+        r"""目标库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def TargetTableId(self):
+        r"""目标表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableId
+
+    @TargetTableId.setter
+    def TargetTableId(self, TargetTableId):
+        self._TargetTableId = TargetTableId
+
+    @property
+    def TargetTableName(self):
+        r"""目标表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableName
+
+    @TargetTableName.setter
+    def TargetTableName(self, TargetTableName):
+        self._TargetTableName = TargetTableName
+
+    @property
+    def TargetConditionExpr(self):
+        r"""目标字段过滤条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetConditionExpr
+
+    @TargetConditionExpr.setter
+    def TargetConditionExpr(self, TargetConditionExpr):
+        self._TargetConditionExpr = TargetConditionExpr
+
+    @property
+    def RelConditionExpr(self):
+        r"""源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelConditionExpr
+
+    @RelConditionExpr.setter
+    def RelConditionExpr(self, RelConditionExpr):
+        self._RelConditionExpr = RelConditionExpr
+
+    @property
+    def FieldConfig(self):
+        r"""自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        """
+        return self._FieldConfig
+
+    @FieldConfig.setter
+    def FieldConfig(self, FieldConfig):
+        self._FieldConfig = FieldConfig
+
+    @property
+    def MultiSourceFlag(self):
+        r"""是否关联多表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._MultiSourceFlag
+
+    @MultiSourceFlag.setter
+    def MultiSourceFlag(self, MultiSourceFlag):
+        self._MultiSourceFlag = MultiSourceFlag
+
+    @property
+    def WhereFlag(self):
+        r"""是否where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._WhereFlag
+
+    @WhereFlag.setter
+    def WhereFlag(self, WhereFlag):
+        self._WhereFlag = WhereFlag
+
+    @property
+    def TemplateSql(self):
+        r"""模版原始SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TemplateSql
+
+    @TemplateSql.setter
+    def TemplateSql(self, TemplateSql):
+        self._TemplateSql = TemplateSql
+
+    @property
+    def SubQualityDim(self):
+        r"""模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SubQualityDim
+
+    @SubQualityDim.setter
+    def SubQualityDim(self, SubQualityDim):
+        self._SubQualityDim = SubQualityDim
+
+    @property
+    def TargetObjectType(self):
+        r"""规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetObjectType
+
+    @TargetObjectType.setter
+    def TargetObjectType(self, TargetObjectType):
+        self._TargetObjectType = TargetObjectType
+
+    @property
+    def TargetObjectDataType(self):
+        r"""规则适用的目标数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetObjectDataType
+
+    @TargetObjectDataType.setter
+    def TargetObjectDataType(self, TargetObjectDataType):
+        self._TargetObjectDataType = TargetObjectDataType
+
+    @property
+    def TargetObjectDataTypeName(self):
+        r"""目标字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetObjectDataTypeName
+
+    @TargetObjectDataTypeName.setter
+    def TargetObjectDataTypeName(self, TargetObjectDataTypeName):
+        self._TargetObjectDataTypeName = TargetObjectDataTypeName
+
+    @property
+    def TargetObjectValue(self):
+        r"""目标字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetObjectValue
+
+    @TargetObjectValue.setter
+    def TargetObjectValue(self, TargetObjectValue):
+        self._TargetObjectValue = TargetObjectValue
+
+    @property
+    def SourceEngineTypes(self):
+        r"""源端对应的引擎类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._SourceEngineTypes
+
+    @SourceEngineTypes.setter
+    def SourceEngineTypes(self, SourceEngineTypes):
+        self._SourceEngineTypes = SourceEngineTypes
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableOwnerName(self):
+        r"""表负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def ExecStrategy(self):
+        r"""执行策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
+        """
+        return self._ExecStrategy
+
+    @ExecStrategy.setter
+    def ExecStrategy(self, ExecStrategy):
+        self._ExecStrategy = ExecStrategy
+
+    @property
+    def Subscription(self):
+        r"""订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
+        """
+        return self._Subscription
+
+    @Subscription.setter
+    def Subscription(self, Subscription):
+        self._Subscription = Subscription
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DatasourceId(self):
+        r"""数据源 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseId(self):
+        r"""数据库 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def MonitorStatus(self):
+        r"""监控是否开启.0false,1true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def TriggerCondition(self):
+        r"""触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
+
+    @property
+    def DsEnvType(self):
+        r"""0或者未返回或者null：未定义，1：生产，2：开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DsEnvType
+
+    @DsEnvType.setter
+    def DsEnvType(self, DsEnvType):
+        self._DsEnvType = DsEnvType
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TargetSchemaName(self):
+        r"""目标模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def FailMsg(self):
+        r"""失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailMsg
+
+    @FailMsg.setter
+    def FailMsg(self, FailMsg):
+        self._FailMsg = FailMsg
+
+    @property
+    def GroupType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""编排任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def TargetCatalogName(self):
+        r"""目标表的数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetCatalogName
+
+    @TargetCatalogName.setter
+    def TargetCatalogName(self, TargetCatalogName):
+        self._TargetCatalogName = TargetCatalogName
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._TableId = params.get("TableId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateContent = params.get("RuleTemplateContent")
+        self._QualityDim = params.get("QualityDim")
+        self._SourceObjectType = params.get("SourceObjectType")
+        self._SourceObjectDataType = params.get("SourceObjectDataType")
+        self._SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self._SourceObjectValue = params.get("SourceObjectValue")
+        self._ConditionType = params.get("ConditionType")
+        self._ConditionExpression = params.get("ConditionExpression")
+        self._CustomSql = params.get("CustomSql")
+        if params.get("CompareRule") is not None:
+            self._CompareRule = QualityCompareRule()
+            self._CompareRule._deserialize(params.get("CompareRule"))
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._Description = params.get("Description")
+        self._Operator = params.get("Operator")
+        self._TargetDatabaseId = params.get("TargetDatabaseId")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._TargetTableId = params.get("TargetTableId")
+        self._TargetTableName = params.get("TargetTableName")
+        self._TargetConditionExpr = params.get("TargetConditionExpr")
+        self._RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self._FieldConfig = QualityRuleFieldConfig()
+            self._FieldConfig._deserialize(params.get("FieldConfig"))
+        self._MultiSourceFlag = params.get("MultiSourceFlag")
+        self._WhereFlag = params.get("WhereFlag")
+        self._TemplateSql = params.get("TemplateSql")
+        self._SubQualityDim = params.get("SubQualityDim")
+        self._TargetObjectType = params.get("TargetObjectType")
+        self._TargetObjectDataType = params.get("TargetObjectDataType")
+        self._TargetObjectDataTypeName = params.get("TargetObjectDataTypeName")
+        self._TargetObjectValue = params.get("TargetObjectValue")
+        self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._TableName = params.get("TableName")
+        self._TableOwnerName = params.get("TableOwnerName")
+        if params.get("ExecStrategy") is not None:
+            self._ExecStrategy = QualityRuleGroupExecStrategy()
+            self._ExecStrategy._deserialize(params.get("ExecStrategy"))
+        if params.get("Subscription") is not None:
+            self._Subscription = QualityRuleGroupSubscribe()
+            self._Subscription._deserialize(params.get("Subscription"))
+        self._CreateTime = params.get("CreateTime")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseId = params.get("DatabaseId")
+        self._MonitorStatus = params.get("MonitorStatus")
+        self._TriggerCondition = params.get("TriggerCondition")
+        self._DsEnvType = params.get("DsEnvType")
+        self._DatasourceType = params.get("DatasourceType")
+        self._SchemaName = params.get("SchemaName")
+        self._TargetSchemaName = params.get("TargetSchemaName")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._UpdateTime = params.get("UpdateTime")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._FailMsg = params.get("FailMsg")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
+        self._TargetCatalogName = params.get("TargetCatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleExecResult(AbstractModel):
+    r"""规则执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleExecId: 规则执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecId: int
+        :param _RuleGroupExecId: 规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExecId: int
+        :param _RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _RuleType: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        :param _SourceObjectDataTypeName: 源字段详细类型，int string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param _SourceObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        :param _ConditionExpression: 条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionExpression: str
+        :param _ExecResultStatus: 检测结果（1:检测通过，2：触发规则，3：检测失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecResultStatus: int
+        :param _TriggerResult: 触发结果，告警发送成功, 阻断任务成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerResult: str
+        :param _CompareResult: 对比结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareResult: :class:`tencentcloud.wedata.v20250806.models.CompareQualityResult`
+        :param _TemplateName: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param _QualityDim: 质量维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param _TargetDBTableName: 目标表-库表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDBTableName: str
+        :param _TargetObjectValue: 目标表-字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectValue: str
+        :param _TargetObjectDataType: 目标表-字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataType: str
+        :param _FieldConfig: 自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        :param _RelConditionExpr: 源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelConditionExpr: str
+        :param _StartTime: 执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _AlarmLevel: 1/2/3:低/中/高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param _TriggerCondition: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerCondition: str
+        :param _RuleGroupName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupName: str
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _RuleGroupExist: 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExist: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _RuleGroupTableId: 数据表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: int
+        :param _MonitorType: 监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param _FinishTime: 执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param _GroupType: 监控任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 编排任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: 数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        """
+        self._RuleExecId = None
+        self._RuleGroupExecId = None
+        self._RuleGroupId = None
+        self._RuleId = None
+        self._RuleName = None
+        self._RuleType = None
+        self._SourceObjectDataTypeName = None
+        self._SourceObjectValue = None
+        self._ConditionExpression = None
+        self._ExecResultStatus = None
+        self._TriggerResult = None
+        self._CompareResult = None
+        self._TemplateName = None
+        self._QualityDim = None
+        self._TargetDBTableName = None
+        self._TargetObjectValue = None
+        self._TargetObjectDataType = None
+        self._FieldConfig = None
+        self._RelConditionExpr = None
+        self._StartTime = None
+        self._AlarmLevel = None
+        self._TriggerCondition = None
+        self._RuleGroupName = None
+        self._DatasourceId = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._RuleGroupExist = None
+        self._DatasourceType = None
+        self._RuleGroupTableId = None
+        self._MonitorType = None
+        self._FinishTime = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
+
+    @property
+    def RuleExecId(self):
+        r"""规则执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleExecId
+
+    @RuleExecId.setter
+    def RuleExecId(self, RuleExecId):
+        self._RuleExecId = RuleExecId
+
+    @property
+    def RuleGroupExecId(self):
+        r"""规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupExecId
+
+    @RuleGroupExecId.setter
+    def RuleGroupExecId(self, RuleGroupExecId):
+        self._RuleGroupExecId = RuleGroupExecId
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def SourceObjectDataTypeName(self):
+        r"""源字段详细类型，int string
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectDataTypeName
+
+    @SourceObjectDataTypeName.setter
+    def SourceObjectDataTypeName(self, SourceObjectDataTypeName):
+        self._SourceObjectDataTypeName = SourceObjectDataTypeName
+
+    @property
+    def SourceObjectValue(self):
+        r"""源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectValue
+
+    @SourceObjectValue.setter
+    def SourceObjectValue(self, SourceObjectValue):
+        self._SourceObjectValue = SourceObjectValue
+
+    @property
+    def ConditionExpression(self):
+        r"""条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConditionExpression
+
+    @ConditionExpression.setter
+    def ConditionExpression(self, ConditionExpression):
+        self._ConditionExpression = ConditionExpression
+
+    @property
+    def ExecResultStatus(self):
+        r"""检测结果（1:检测通过，2：触发规则，3：检测失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecResultStatus
+
+    @ExecResultStatus.setter
+    def ExecResultStatus(self, ExecResultStatus):
+        self._ExecResultStatus = ExecResultStatus
+
+    @property
+    def TriggerResult(self):
+        r"""触发结果，告警发送成功, 阻断任务成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerResult
+
+    @TriggerResult.setter
+    def TriggerResult(self, TriggerResult):
+        self._TriggerResult = TriggerResult
+
+    @property
+    def CompareResult(self):
+        r"""对比结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CompareQualityResult`
+        """
+        return self._CompareResult
+
+    @CompareResult.setter
+    def CompareResult(self, CompareResult):
+        self._CompareResult = CompareResult
+
+    @property
+    def TemplateName(self):
+        r"""模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def QualityDim(self):
+        r"""质量维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QualityDim
+
+    @QualityDim.setter
+    def QualityDim(self, QualityDim):
+        self._QualityDim = QualityDim
+
+    @property
+    def TargetDBTableName(self):
+        r"""目标表-库表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDBTableName
+
+    @TargetDBTableName.setter
+    def TargetDBTableName(self, TargetDBTableName):
+        self._TargetDBTableName = TargetDBTableName
+
+    @property
+    def TargetObjectValue(self):
+        r"""目标表-字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetObjectValue
+
+    @TargetObjectValue.setter
+    def TargetObjectValue(self, TargetObjectValue):
+        self._TargetObjectValue = TargetObjectValue
+
+    @property
+    def TargetObjectDataType(self):
+        r"""目标表-字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetObjectDataType
+
+    @TargetObjectDataType.setter
+    def TargetObjectDataType(self, TargetObjectDataType):
+        self._TargetObjectDataType = TargetObjectDataType
+
+    @property
+    def FieldConfig(self):
+        r"""自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        """
+        return self._FieldConfig
+
+    @FieldConfig.setter
+    def FieldConfig(self, FieldConfig):
+        self._FieldConfig = FieldConfig
+
+    @property
+    def RelConditionExpr(self):
+        r"""源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelConditionExpr
+
+    @RelConditionExpr.setter
+    def RelConditionExpr(self, RelConditionExpr):
+        self._RelConditionExpr = RelConditionExpr
+
+    @property
+    def StartTime(self):
+        r"""执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def AlarmLevel(self):
+        r"""1/2/3:低/中/高
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def TriggerCondition(self):
+        r"""触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
+
+    @property
+    def RuleGroupName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RuleGroupExist(self):
+        r"""判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupExist
+
+    @RuleGroupExist.setter
+    def RuleGroupExist(self, RuleGroupExist):
+        self._RuleGroupExist = RuleGroupExist
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def RuleGroupTableId(self):
+        r"""数据表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def MonitorType(self):
+        r"""监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def FinishTime(self):
+        r"""执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def GroupType(self):
+        r"""监控任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""编排任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._RuleExecId = params.get("RuleExecId")
+        self._RuleGroupExecId = params.get("RuleGroupExecId")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self._SourceObjectValue = params.get("SourceObjectValue")
+        self._ConditionExpression = params.get("ConditionExpression")
+        self._ExecResultStatus = params.get("ExecResultStatus")
+        self._TriggerResult = params.get("TriggerResult")
+        if params.get("CompareResult") is not None:
+            self._CompareResult = CompareQualityResult()
+            self._CompareResult._deserialize(params.get("CompareResult"))
+        self._TemplateName = params.get("TemplateName")
+        self._QualityDim = params.get("QualityDim")
+        self._TargetDBTableName = params.get("TargetDBTableName")
+        self._TargetObjectValue = params.get("TargetObjectValue")
+        self._TargetObjectDataType = params.get("TargetObjectDataType")
+        if params.get("FieldConfig") is not None:
+            self._FieldConfig = QualityRuleFieldConfig()
+            self._FieldConfig._deserialize(params.get("FieldConfig"))
+        self._RelConditionExpr = params.get("RelConditionExpr")
+        self._StartTime = params.get("StartTime")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._TriggerCondition = params.get("TriggerCondition")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._RuleGroupExist = params.get("RuleGroupExist")
+        self._DatasourceType = params.get("DatasourceType")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._MonitorType = params.get("MonitorType")
+        self._FinishTime = params.get("FinishTime")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleFieldConfig(AbstractModel):
+    r"""规则变量替换
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhereConfig: where变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereConfig: list of QualityFieldConfig
+        :param _TableConfig: 库表变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableConfig: list of QualityTableConfig
+        """
+        self._WhereConfig = None
+        self._TableConfig = None
+
+    @property
+    def WhereConfig(self):
+        r"""where变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityFieldConfig
+        """
+        return self._WhereConfig
+
+    @WhereConfig.setter
+    def WhereConfig(self, WhereConfig):
+        self._WhereConfig = WhereConfig
+
+    @property
+    def TableConfig(self):
+        r"""库表变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityTableConfig
+        """
+        return self._TableConfig
+
+    @TableConfig.setter
+    def TableConfig(self, TableConfig):
+        self._TableConfig = TableConfig
+
+
+    def _deserialize(self, params):
+        if params.get("WhereConfig") is not None:
+            self._WhereConfig = []
+            for item in params.get("WhereConfig"):
+                obj = QualityFieldConfig()
+                obj._deserialize(item)
+                self._WhereConfig.append(obj)
+        if params.get("TableConfig") is not None:
+            self._TableConfig = []
+            for item in params.get("TableConfig"):
+                obj = QualityTableConfig()
+                obj._deserialize(item)
+                self._TableConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupConfig(AbstractModel):
+    r"""任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AnalysisType: 分析类型，可选值：
+INFERENCE-推理表
+TIME_SERIES-时序表
+SNAPSHOT-快照表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisType: str
+        :param _ModelMonitorType: 模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+CLAASSIFICATION-分类
+REGRESSION-回归
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelMonitorType: str
+        :param _PredictColumn: 预测列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredictColumn: str
+        :param _PredictColumnType: 预测列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredictColumnType: str
+        :param _LabelColumn: 标签列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelColumn: str
+        :param _LabelColumnType: 标签列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelColumnType: str
+        :param _ModelIdColumn: 模型id列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelIdColumn: str
+        :param _ModelIdColumnType: 模型id列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelIdColumnType: str
+        :param _TimestampColumn: 时间戳列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampColumn: str
+        :param _TimestampColumnType: 时间戳列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampColumnType: str
+        :param _Granularity: 指标粒度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Granularity: int
+        :param _GranularityType: 指标粒度单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GranularityType: str
+        :param _BaseTable: 基准表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseTable: str
+        :param _BaseDb: 基准库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseDb: str
+        :param _ComparisonColumn: 对比列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComparisonColumn: str
+        :param _ComparisonColumnType: 对比列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComparisonColumnType: str
+        :param _ProtectionValue: 保护组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectionValue: str
+        :param _PositiveValue: 正类值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PositiveValue: str
+        :param _FeatureColumn: 特征列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureColumn: str
+        """
+        self._AnalysisType = None
+        self._ModelMonitorType = None
+        self._PredictColumn = None
+        self._PredictColumnType = None
+        self._LabelColumn = None
+        self._LabelColumnType = None
+        self._ModelIdColumn = None
+        self._ModelIdColumnType = None
+        self._TimestampColumn = None
+        self._TimestampColumnType = None
+        self._Granularity = None
+        self._GranularityType = None
+        self._BaseTable = None
+        self._BaseDb = None
+        self._ComparisonColumn = None
+        self._ComparisonColumnType = None
+        self._ProtectionValue = None
+        self._PositiveValue = None
+        self._FeatureColumn = None
+
+    @property
+    def AnalysisType(self):
+        r"""分析类型，可选值：
+INFERENCE-推理表
+TIME_SERIES-时序表
+SNAPSHOT-快照表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AnalysisType
+
+    @AnalysisType.setter
+    def AnalysisType(self, AnalysisType):
+        self._AnalysisType = AnalysisType
+
+    @property
+    def ModelMonitorType(self):
+        r"""模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+CLAASSIFICATION-分类
+REGRESSION-回归
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelMonitorType
+
+    @ModelMonitorType.setter
+    def ModelMonitorType(self, ModelMonitorType):
+        self._ModelMonitorType = ModelMonitorType
+
+    @property
+    def PredictColumn(self):
+        r"""预测列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PredictColumn
+
+    @PredictColumn.setter
+    def PredictColumn(self, PredictColumn):
+        self._PredictColumn = PredictColumn
+
+    @property
+    def PredictColumnType(self):
+        r"""预测列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PredictColumnType
+
+    @PredictColumnType.setter
+    def PredictColumnType(self, PredictColumnType):
+        self._PredictColumnType = PredictColumnType
+
+    @property
+    def LabelColumn(self):
+        r"""标签列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelColumn
+
+    @LabelColumn.setter
+    def LabelColumn(self, LabelColumn):
+        self._LabelColumn = LabelColumn
+
+    @property
+    def LabelColumnType(self):
+        r"""标签列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelColumnType
+
+    @LabelColumnType.setter
+    def LabelColumnType(self, LabelColumnType):
+        self._LabelColumnType = LabelColumnType
+
+    @property
+    def ModelIdColumn(self):
+        r"""模型id列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelIdColumn
+
+    @ModelIdColumn.setter
+    def ModelIdColumn(self, ModelIdColumn):
+        self._ModelIdColumn = ModelIdColumn
+
+    @property
+    def ModelIdColumnType(self):
+        r"""模型id列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelIdColumnType
+
+    @ModelIdColumnType.setter
+    def ModelIdColumnType(self, ModelIdColumnType):
+        self._ModelIdColumnType = ModelIdColumnType
+
+    @property
+    def TimestampColumn(self):
+        r"""时间戳列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimestampColumn
+
+    @TimestampColumn.setter
+    def TimestampColumn(self, TimestampColumn):
+        self._TimestampColumn = TimestampColumn
+
+    @property
+    def TimestampColumnType(self):
+        r"""时间戳列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimestampColumnType
+
+    @TimestampColumnType.setter
+    def TimestampColumnType(self, TimestampColumnType):
+        self._TimestampColumnType = TimestampColumnType
+
+    @property
+    def Granularity(self):
+        r"""指标粒度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GranularityType(self):
+        r"""指标粒度单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GranularityType
+
+    @GranularityType.setter
+    def GranularityType(self, GranularityType):
+        self._GranularityType = GranularityType
+
+    @property
+    def BaseTable(self):
+        r"""基准表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BaseTable
+
+    @BaseTable.setter
+    def BaseTable(self, BaseTable):
+        self._BaseTable = BaseTable
+
+    @property
+    def BaseDb(self):
+        r"""基准库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BaseDb
+
+    @BaseDb.setter
+    def BaseDb(self, BaseDb):
+        self._BaseDb = BaseDb
+
+    @property
+    def ComparisonColumn(self):
+        r"""对比列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComparisonColumn
+
+    @ComparisonColumn.setter
+    def ComparisonColumn(self, ComparisonColumn):
+        self._ComparisonColumn = ComparisonColumn
+
+    @property
+    def ComparisonColumnType(self):
+        r"""对比列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComparisonColumnType
+
+    @ComparisonColumnType.setter
+    def ComparisonColumnType(self, ComparisonColumnType):
+        self._ComparisonColumnType = ComparisonColumnType
+
+    @property
+    def ProtectionValue(self):
+        r"""保护组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProtectionValue
+
+    @ProtectionValue.setter
+    def ProtectionValue(self, ProtectionValue):
+        self._ProtectionValue = ProtectionValue
+
+    @property
+    def PositiveValue(self):
+        r"""正类值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PositiveValue
+
+    @PositiveValue.setter
+    def PositiveValue(self, PositiveValue):
+        self._PositiveValue = PositiveValue
+
+    @property
+    def FeatureColumn(self):
+        r"""特征列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FeatureColumn
+
+    @FeatureColumn.setter
+    def FeatureColumn(self, FeatureColumn):
+        self._FeatureColumn = FeatureColumn
+
+
+    def _deserialize(self, params):
+        self._AnalysisType = params.get("AnalysisType")
+        self._ModelMonitorType = params.get("ModelMonitorType")
+        self._PredictColumn = params.get("PredictColumn")
+        self._PredictColumnType = params.get("PredictColumnType")
+        self._LabelColumn = params.get("LabelColumn")
+        self._LabelColumnType = params.get("LabelColumnType")
+        self._ModelIdColumn = params.get("ModelIdColumn")
+        self._ModelIdColumnType = params.get("ModelIdColumnType")
+        self._TimestampColumn = params.get("TimestampColumn")
+        self._TimestampColumnType = params.get("TimestampColumnType")
+        self._Granularity = params.get("Granularity")
+        self._GranularityType = params.get("GranularityType")
+        self._BaseTable = params.get("BaseTable")
+        self._BaseDb = params.get("BaseDb")
+        self._ComparisonColumn = params.get("ComparisonColumn")
+        self._ComparisonColumnType = params.get("ComparisonColumnType")
+        self._ProtectionValue = params.get("ProtectionValue")
+        self._PositiveValue = params.get("PositiveValue")
+        self._FeatureColumn = params.get("FeatureColumn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupExecStrategy(AbstractModel):
+    r"""质量监控任务执行策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorType: 监控类型 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param _ExecutorGroupId: 执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _RuleGroupName: 监控任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupName: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _DatasourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _RuleGroupId: 监控任务的Id，编辑更新监控任务时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _ExecQueue: 计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecQueue: str
+        :param _ExecutorGroupName: 执行资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        :param _Tasks: 关联的生产调度任务列表，MonitorType=2时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of QualityProdSchedulerTask
+        :param _StartTime: 周期开始时间，MonitorType=3时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 周期结束时间，MonitorType=3时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CycleType: 调度周期类型，MonitorType=3时必填，具体可填值参考：
+I：按分钟调度
+H：按小时调度
+D：按天调度
+W：按周调度
+M：按月调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _DelayTime: 延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，
+计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）
+对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: int
+        :param _CycleStep: 间隔，MonitorType=3时必填，表示周期任务间隔时间
+周/月/天任务可选：1
+分钟任务可选：10，20，30
+小时任务可选：1，2，3，4，6，8，12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param _TaskAction: 时间指定，主要用于调度周期为周/月的任务
+调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开
+可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；
+
+调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开
+可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAction: str
+        :param _ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecEngineType: str
+        :param _ExecPlan: 执行计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecPlan: str
+        :param _RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _TriggerTypes: 触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：
+CYCLE：周期调度
+MAKE_UP：补录
+RERUN：重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTypes: list of str
+        :param _DlcGroupName: 数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcGroupName: str
+        :param _SchemaName: schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _Description: 任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ScheduleTimeZone: 时区，默认为UTC+8
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
+        :param _GroupConfig: 任务监控参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupConfig`
+        :param _EngineParam: 引擎参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineParam: str
+        :param _CatalogName: 数据目录名称，不填默认为DataLakeCatalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        """
+        self._MonitorType = None
+        self._ExecutorGroupId = None
+        self._RuleGroupName = None
+        self._DatabaseName = None
+        self._DatasourceId = None
+        self._TableName = None
+        self._RuleGroupId = None
+        self._ExecQueue = None
+        self._ExecutorGroupName = None
+        self._Tasks = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CycleType = None
+        self._DelayTime = None
+        self._CycleStep = None
+        self._TaskAction = None
+        self._ExecEngineType = None
+        self._ExecPlan = None
+        self._RuleId = None
+        self._RuleName = None
+        self._TriggerTypes = None
+        self._DlcGroupName = None
+        self._SchemaName = None
+        self._Description = None
+        self._ScheduleTimeZone = None
+        self._GroupConfig = None
+        self._EngineParam = None
+        self._CatalogName = None
+
+    @property
+    def MonitorType(self):
+        r"""监控类型 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def ExecutorGroupId(self):
+        r"""执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def RuleGroupName(self):
+        r"""监控任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceId(self):
+        r"""数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RuleGroupId(self):
+        r"""监控任务的Id，编辑更新监控任务时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def ExecQueue(self):
+        r"""计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecQueue
+
+    @ExecQueue.setter
+    def ExecQueue(self, ExecQueue):
+        self._ExecQueue = ExecQueue
+
+    @property
+    def ExecutorGroupName(self):
+        r"""执行资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def Tasks(self):
+        r"""关联的生产调度任务列表，MonitorType=2时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityProdSchedulerTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def StartTime(self):
+        r"""周期开始时间，MonitorType=3时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""周期结束时间，MonitorType=3时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CycleType(self):
+        r"""调度周期类型，MonitorType=3时必填，具体可填值参考：
+I：按分钟调度
+H：按小时调度
+D：按天调度
+W：按周调度
+M：按月调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def DelayTime(self):
+        r"""延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，
+计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）
+对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def CycleStep(self):
+        r"""间隔，MonitorType=3时必填，表示周期任务间隔时间
+周/月/天任务可选：1
+分钟任务可选：10，20，30
+小时任务可选：1，2，3，4，6，8，12
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CycleStep
+
+    @CycleStep.setter
+    def CycleStep(self, CycleStep):
+        self._CycleStep = CycleStep
+
+    @property
+    def TaskAction(self):
+        r"""时间指定，主要用于调度周期为周/月的任务
+调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开
+可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；
+
+调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开
+可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskAction
+
+    @TaskAction.setter
+    def TaskAction(self, TaskAction):
+        self._TaskAction = TaskAction
+
+    @property
+    def ExecEngineType(self):
+        r"""运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecEngineType
+
+    @ExecEngineType.setter
+    def ExecEngineType(self, ExecEngineType):
+        self._ExecEngineType = ExecEngineType
+
+    @property
+    def ExecPlan(self):
+        r"""执行计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecPlan
+
+    @ExecPlan.setter
+    def ExecPlan(self, ExecPlan):
+        self._ExecPlan = ExecPlan
+
+    @property
+    def RuleId(self):
+        r"""规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def TriggerTypes(self):
+        r"""触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：
+CYCLE：周期调度
+MAKE_UP：补录
+RERUN：重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TriggerTypes
+
+    @TriggerTypes.setter
+    def TriggerTypes(self, TriggerTypes):
+        self._TriggerTypes = TriggerTypes
+
+    @property
+    def DlcGroupName(self):
+        r"""数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DlcGroupName
+
+    @DlcGroupName.setter
+    def DlcGroupName(self, DlcGroupName):
+        self._DlcGroupName = DlcGroupName
+
+    @property
+    def SchemaName(self):
+        r"""schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Description(self):
+        r"""任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ScheduleTimeZone(self):
+        r"""时区，默认为UTC+8
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def GroupConfig(self):
+        r"""任务监控参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupConfig`
+        """
+        return self._GroupConfig
+
+    @GroupConfig.setter
+    def GroupConfig(self, GroupConfig):
+        self._GroupConfig = GroupConfig
+
+    @property
+    def EngineParam(self):
+        r"""引擎参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineParam
+
+    @EngineParam.setter
+    def EngineParam(self, EngineParam):
+        self._EngineParam = EngineParam
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称，不填默认为DataLakeCatalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._MonitorType = params.get("MonitorType")
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._TableName = params.get("TableName")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._ExecQueue = params.get("ExecQueue")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = QualityProdSchedulerTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CycleType = params.get("CycleType")
+        self._DelayTime = params.get("DelayTime")
+        self._CycleStep = params.get("CycleStep")
+        self._TaskAction = params.get("TaskAction")
+        self._ExecEngineType = params.get("ExecEngineType")
+        self._ExecPlan = params.get("ExecPlan")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._TriggerTypes = params.get("TriggerTypes")
+        self._DlcGroupName = params.get("DlcGroupName")
+        self._SchemaName = params.get("SchemaName")
+        self._Description = params.get("Description")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        if params.get("GroupConfig") is not None:
+            self._GroupConfig = QualityRuleGroupConfig()
+            self._GroupConfig._deserialize(params.get("GroupConfig"))
+        self._EngineParam = params.get("EngineParam")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupResult(AbstractModel):
+    r"""任务创建结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _RuleGroupTableId: 监控表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: int
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _MonitorType: 监控类型：1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param _ExecDetail: 执行描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        :param _FailMsg: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMsg: str
+        :param _CatalogName: 数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        """
+        self._Id = None
+        self._Name = None
+        self._RuleGroupTableId = None
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._MonitorType = None
+        self._ExecDetail = None
+        self._FailMsg = None
+        self._CatalogName = None
+
+    @property
+    def Id(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RuleGroupTableId(self):
+        r"""监控表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def MonitorType(self):
+        r"""监控类型：1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def ExecDetail(self):
+        r"""执行描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecDetail
+
+    @ExecDetail.setter
+    def ExecDetail(self, ExecDetail):
+        self._ExecDetail = ExecDetail
+
+    @property
+    def FailMsg(self):
+        r"""失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailMsg
+
+    @FailMsg.setter
+    def FailMsg(self, FailMsg):
+        self._FailMsg = FailMsg
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._MonitorType = params.get("MonitorType")
+        self._ExecDetail = params.get("ExecDetail")
+        self._FailMsg = params.get("FailMsg")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupSubscribe(AbstractModel):
+    r"""数据质量规则组订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _Receivers: 订阅接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Receivers: list of QualitySubscribeReceiver
+        :param _SubscribeType: 订阅方式 1.邮件email  2.短信sms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeType: list of int non-negative
+        :param _WebHooks: 群机器人配置的webhook信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebHooks: list of QualitySubscribeWebHook
+        :param _RuleId: 规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _AlarmMessageRule: 发送对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmMessageRule: str
+        """
+        self._RuleGroupId = None
+        self._Receivers = None
+        self._SubscribeType = None
+        self._WebHooks = None
+        self._RuleId = None
+        self._RuleName = None
+        self._AlarmMessageRule = None
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def Receivers(self):
+        r"""订阅接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualitySubscribeReceiver
+        """
+        return self._Receivers
+
+    @Receivers.setter
+    def Receivers(self, Receivers):
+        self._Receivers = Receivers
+
+    @property
+    def SubscribeType(self):
+        r"""订阅方式 1.邮件email  2.短信sms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._SubscribeType
+
+    @SubscribeType.setter
+    def SubscribeType(self, SubscribeType):
+        self._SubscribeType = SubscribeType
+
+    @property
+    def WebHooks(self):
+        r"""群机器人配置的webhook信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualitySubscribeWebHook
+        """
+        return self._WebHooks
+
+    @WebHooks.setter
+    def WebHooks(self, WebHooks):
+        self._WebHooks = WebHooks
+
+    @property
+    def RuleId(self):
+        r"""规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def AlarmMessageRule(self):
+        r"""发送对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmMessageRule
+
+    @AlarmMessageRule.setter
+    def AlarmMessageRule(self, AlarmMessageRule):
+        self._AlarmMessageRule = AlarmMessageRule
+
+
+    def _deserialize(self, params):
+        self._RuleGroupId = params.get("RuleGroupId")
+        if params.get("Receivers") is not None:
+            self._Receivers = []
+            for item in params.get("Receivers"):
+                obj = QualitySubscribeReceiver()
+                obj._deserialize(item)
+                self._Receivers.append(obj)
+        self._SubscribeType = params.get("SubscribeType")
+        if params.get("WebHooks") is not None:
+            self._WebHooks = []
+            for item in params.get("WebHooks"):
+                obj = QualitySubscribeWebHook()
+                obj._deserialize(item)
+                self._WebHooks.append(obj)
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._AlarmMessageRule = params.get("AlarmMessageRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupTableV2(AbstractModel):
+    r"""规则表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _RuleGroupId: 规则组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _TableId: 表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TableOwnerUserId: 表负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerUserId: int
+        :param _TableOwnerName: 表负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _DatasourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseId: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _RuleGroupCount: 监控数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupCount: int
+        :param _RuleCount: 规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCount: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _EnableRuleGroupCount: 生效监控数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRuleGroupCount: int
+        :param _CatalogName: 数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        """
+        self._Id = None
+        self._RuleGroupId = None
+        self._TableId = None
+        self._TableName = None
+        self._SchemaName = None
+        self._TableOwnerUserId = None
+        self._TableOwnerName = None
+        self._DatasourceId = None
+        self._DatasourceName = None
+        self._DatabaseId = None
+        self._DatabaseName = None
+        self._DatasourceType = None
+        self._InstanceId = None
+        self._RuleGroupCount = None
+        self._RuleCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._EnableRuleGroupCount = None
+        self._CatalogName = None
+
+    @property
+    def Id(self):
+        r"""id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def TableId(self):
+        r"""表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableOwnerUserId(self):
+        r"""表负责人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableOwnerUserId
+
+    @TableOwnerUserId.setter
+    def TableOwnerUserId(self, TableOwnerUserId):
+        self._TableOwnerUserId = TableOwnerUserId
+
+    @property
+    def TableOwnerName(self):
+        r"""表负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def DatasourceId(self):
+        r"""数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseId(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RuleGroupCount(self):
+        r"""监控数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupCount
+
+    @RuleGroupCount.setter
+    def RuleGroupCount(self, RuleGroupCount):
+        self._RuleGroupCount = RuleGroupCount
+
+    @property
+    def RuleCount(self):
+        r"""规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleCount
+
+    @RuleCount.setter
+    def RuleCount(self, RuleCount):
+        self._RuleCount = RuleCount
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def EnableRuleGroupCount(self):
+        r"""生效监控数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableRuleGroupCount
+
+    @EnableRuleGroupCount.setter
+    def EnableRuleGroupCount(self, EnableRuleGroupCount):
+        self._EnableRuleGroupCount = EnableRuleGroupCount
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._TableId = params.get("TableId")
+        self._TableName = params.get("TableName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableOwnerUserId = params.get("TableOwnerUserId")
+        self._TableOwnerName = params.get("TableOwnerName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseId = params.get("DatabaseId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceType = params.get("DatasourceType")
+        self._InstanceId = params.get("InstanceId")
+        self._RuleGroupCount = params.get("RuleGroupCount")
+        self._RuleCount = params.get("RuleCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._EnableRuleGroupCount = params.get("EnableRuleGroupCount")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupsTableVO(AbstractModel):
+    r"""规则组分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 监控对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of QualityRuleGroupTableV2
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""监控对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityRuleGroupTableV2
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = QualityRuleGroupTableV2()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRulePage(AbstractModel):
+    r"""数据质量规则分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of QualityRule
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityRule
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = QualityRule()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleTemplate(AbstractModel):
+    r"""规则模版
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: 规则模版ID
+        :type RuleTemplateId: int
+        :param _Name: 规则模版名称
+        :type Name: str
+        :param _Description: 规则模版描述
+        :type Description: str
+        :param _Type: 模版类型（1：系统模版，2：自定义）
+        :type Type: int
+        :param _SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :type SourceObjectType: int
+        :param _SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
+        :type SourceObjectDataType: int
+        :param _SourceContent: 规则模版源侧内容，区分引擎，JSON 结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceContent: str
+        :param _SourceEngineTypes: 源数据适用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceEngineTypes: list of int non-negative
+        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param _CompareType: 规则支持的比较方式类型（1：固定值比较，大于、小于，大于等于等 2：波动值比较，绝对值、上升、下降）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param _CitationCount: 引用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CitationCount: int
+        :param _UserId: 创建人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: int
+        :param _UserName: 创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _UpdateTime: 更新时间yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _WhereFlag: 是否添加where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereFlag: bool
+        :param _MultiSourceFlag: 是否关联多个库表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiSourceFlag: bool
+        :param _SqlExpression: 自定义模板SQL表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlExpression: str
+        :param _SubQualityDim: 模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubQualityDim: int
+        :param _ResolvedSqlExpression: sql表达式解析对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolvedSqlExpression: :class:`tencentcloud.wedata.v20250806.models.QualitySqlExpression`
+        :param _DatasourceTypes: 支持的数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceTypes: list of int
+        :param _UserIdStr: 创建人IdStr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIdStr: str
+        """
+        self._RuleTemplateId = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._SourceObjectType = None
+        self._SourceObjectDataType = None
+        self._SourceContent = None
+        self._SourceEngineTypes = None
+        self._QualityDim = None
+        self._CompareType = None
+        self._CitationCount = None
+        self._UserId = None
+        self._UserName = None
+        self._UpdateTime = None
+        self._WhereFlag = None
+        self._MultiSourceFlag = None
+        self._SqlExpression = None
+        self._SubQualityDim = None
+        self._ResolvedSqlExpression = None
+        self._DatasourceTypes = None
+        self._UserIdStr = None
+
+    @property
+    def RuleTemplateId(self):
+        r"""规则模版ID
+        :rtype: int
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def Name(self):
+        r"""规则模版名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""规则模版描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""模版类型（1：系统模版，2：自定义）
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SourceObjectType(self):
+        r"""规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :rtype: int
+        """
+        return self._SourceObjectType
+
+    @SourceObjectType.setter
+    def SourceObjectType(self, SourceObjectType):
+        self._SourceObjectType = SourceObjectType
+
+    @property
+    def SourceObjectDataType(self):
+        r"""规则适用的源数据对象类型（1：数值，2：字符串）
+        :rtype: int
+        """
+        return self._SourceObjectDataType
+
+    @SourceObjectDataType.setter
+    def SourceObjectDataType(self, SourceObjectDataType):
+        self._SourceObjectDataType = SourceObjectDataType
+
+    @property
+    def SourceContent(self):
+        r"""规则模版源侧内容，区分引擎，JSON 结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceContent
+
+    @SourceContent.setter
+    def SourceContent(self, SourceContent):
+        self._SourceContent = SourceContent
+
+    @property
+    def SourceEngineTypes(self):
+        r"""源数据适用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._SourceEngineTypes
+
+    @SourceEngineTypes.setter
+    def SourceEngineTypes(self, SourceEngineTypes):
+        self._SourceEngineTypes = SourceEngineTypes
+
+    @property
+    def QualityDim(self):
+        r"""规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QualityDim
+
+    @QualityDim.setter
+    def QualityDim(self, QualityDim):
+        self._QualityDim = QualityDim
+
+    @property
+    def CompareType(self):
+        r"""规则支持的比较方式类型（1：固定值比较，大于、小于，大于等于等 2：波动值比较，绝对值、上升、下降）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompareType
+
+    @CompareType.setter
+    def CompareType(self, CompareType):
+        self._CompareType = CompareType
+
+    @property
+    def CitationCount(self):
+        r"""引用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CitationCount
+
+    @CitationCount.setter
+    def CitationCount(self, CitationCount):
+        self._CitationCount = CitationCount
+
+    @property
+    def UserId(self):
+        r"""创建人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def WhereFlag(self):
+        r"""是否添加where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._WhereFlag
+
+    @WhereFlag.setter
+    def WhereFlag(self, WhereFlag):
+        self._WhereFlag = WhereFlag
+
+    @property
+    def MultiSourceFlag(self):
+        r"""是否关联多个库表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._MultiSourceFlag
+
+    @MultiSourceFlag.setter
+    def MultiSourceFlag(self, MultiSourceFlag):
+        self._MultiSourceFlag = MultiSourceFlag
+
+    @property
+    def SqlExpression(self):
+        r"""自定义模板SQL表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlExpression
+
+    @SqlExpression.setter
+    def SqlExpression(self, SqlExpression):
+        self._SqlExpression = SqlExpression
+
+    @property
+    def SubQualityDim(self):
+        r"""模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SubQualityDim
+
+    @SubQualityDim.setter
+    def SubQualityDim(self, SubQualityDim):
+        self._SubQualityDim = SubQualityDim
+
+    @property
+    def ResolvedSqlExpression(self):
+        r"""sql表达式解析对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualitySqlExpression`
+        """
+        return self._ResolvedSqlExpression
+
+    @ResolvedSqlExpression.setter
+    def ResolvedSqlExpression(self, ResolvedSqlExpression):
+        self._ResolvedSqlExpression = ResolvedSqlExpression
+
+    @property
+    def DatasourceTypes(self):
+        r"""支持的数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._DatasourceTypes
+
+    @DatasourceTypes.setter
+    def DatasourceTypes(self, DatasourceTypes):
+        self._DatasourceTypes = DatasourceTypes
+
+    @property
+    def UserIdStr(self):
+        r"""创建人IdStr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserIdStr
+
+    @UserIdStr.setter
+    def UserIdStr(self, UserIdStr):
+        self._UserIdStr = UserIdStr
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._SourceObjectType = params.get("SourceObjectType")
+        self._SourceObjectDataType = params.get("SourceObjectDataType")
+        self._SourceContent = params.get("SourceContent")
+        self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._QualityDim = params.get("QualityDim")
+        self._CompareType = params.get("CompareType")
+        self._CitationCount = params.get("CitationCount")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._UpdateTime = params.get("UpdateTime")
+        self._WhereFlag = params.get("WhereFlag")
+        self._MultiSourceFlag = params.get("MultiSourceFlag")
+        self._SqlExpression = params.get("SqlExpression")
+        self._SubQualityDim = params.get("SubQualityDim")
+        if params.get("ResolvedSqlExpression") is not None:
+            self._ResolvedSqlExpression = QualitySqlExpression()
+            self._ResolvedSqlExpression._deserialize(params.get("ResolvedSqlExpression"))
+        self._DatasourceTypes = params.get("DatasourceTypes")
+        self._UserIdStr = params.get("UserIdStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleTemplatePage(AbstractModel):
+    r"""RuleTemplatePage 结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+        :type TotalCount: int
+        :param _Items: 模版列表
+        :type Items: list of QualityRuleTemplate
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""模版列表
+        :rtype: list of QualityRuleTemplate
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = QualityRuleTemplate()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualitySqlExpression(AbstractModel):
+    r"""数据质量自定义规则时的sql表达式解析对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableExpressions: sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableExpressions: list of QualitySqlExpressionTable
+        :param _ParamExpressions: sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamExpressions: list of str
+        :param _SystemTemplateExpressions: 新增模型检测类系统模板sql中占位符集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemTemplateExpressions: list of str
+        """
+        self._TableExpressions = None
+        self._ParamExpressions = None
+        self._SystemTemplateExpressions = None
+
+    @property
+    def TableExpressions(self):
+        r"""sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualitySqlExpressionTable
+        """
+        return self._TableExpressions
+
+    @TableExpressions.setter
+    def TableExpressions(self, TableExpressions):
+        self._TableExpressions = TableExpressions
+
+    @property
+    def ParamExpressions(self):
+        r"""sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ParamExpressions
+
+    @ParamExpressions.setter
+    def ParamExpressions(self, ParamExpressions):
+        self._ParamExpressions = ParamExpressions
+
+    @property
+    def SystemTemplateExpressions(self):
+        r"""新增模型检测类系统模板sql中占位符集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SystemTemplateExpressions
+
+    @SystemTemplateExpressions.setter
+    def SystemTemplateExpressions(self, SystemTemplateExpressions):
+        self._SystemTemplateExpressions = SystemTemplateExpressions
+
+
+    def _deserialize(self, params):
+        if params.get("TableExpressions") is not None:
+            self._TableExpressions = []
+            for item in params.get("TableExpressions"):
+                obj = QualitySqlExpressionTable()
+                obj._deserialize(item)
+                self._TableExpressions.append(obj)
+        self._ParamExpressions = params.get("ParamExpressions")
+        self._SystemTemplateExpressions = params.get("SystemTemplateExpressions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualitySqlExpressionTable(AbstractModel):
+    r"""数据质量自定义规则时的sql表达式解析表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableExpression: sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableExpression: str
+        :param _ColumnExpression: sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnExpression: list of str
+        """
+        self._TableExpression = None
+        self._ColumnExpression = None
+
+    @property
+    def TableExpression(self):
+        r"""sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableExpression
+
+    @TableExpression.setter
+    def TableExpression(self, TableExpression):
+        self._TableExpression = TableExpression
+
+    @property
+    def ColumnExpression(self):
+        r"""sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ColumnExpression
+
+    @ColumnExpression.setter
+    def ColumnExpression(self, ColumnExpression):
+        self._ColumnExpression = ColumnExpression
+
+
+    def _deserialize(self, params):
+        self._TableExpression = params.get("TableExpression")
+        self._ColumnExpression = params.get("ColumnExpression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualitySubscribeReceiver(AbstractModel):
+    r"""订阅接收人
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverUserId: 接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUserId: int
+        :param _ReceiverName: 接收人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverName: str
+        :param _ReceiverUserIdStr: 接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUserIdStr: str
+        """
+        self._ReceiverUserId = None
+        self._ReceiverName = None
+        self._ReceiverUserIdStr = None
+
+    @property
+    def ReceiverUserId(self):
+        r"""接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReceiverUserId
+
+    @ReceiverUserId.setter
+    def ReceiverUserId(self, ReceiverUserId):
+        self._ReceiverUserId = ReceiverUserId
+
+    @property
+    def ReceiverName(self):
+        r"""接收人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReceiverName
+
+    @ReceiverName.setter
+    def ReceiverName(self, ReceiverName):
+        self._ReceiverName = ReceiverName
+
+    @property
+    def ReceiverUserIdStr(self):
+        r"""接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReceiverUserIdStr
+
+    @ReceiverUserIdStr.setter
+    def ReceiverUserIdStr(self, ReceiverUserIdStr):
+        self._ReceiverUserIdStr = ReceiverUserIdStr
+
+
+    def _deserialize(self, params):
+        self._ReceiverUserId = params.get("ReceiverUserId")
+        self._ReceiverName = params.get("ReceiverName")
+        self._ReceiverUserIdStr = params.get("ReceiverUserIdStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualitySubscribeWebHook(AbstractModel):
+    r"""群机器人订阅配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HookType: 群机器人类型，当前支持飞书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HookType: str
+        :param _HookAddress: 群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HookAddress: str
+        """
+        self._HookType = None
+        self._HookAddress = None
+
+    @property
+    def HookType(self):
+        r"""群机器人类型，当前支持飞书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HookType
+
+    @HookType.setter
+    def HookType(self, HookType):
+        self._HookType = HookType
+
+    @property
+    def HookAddress(self):
+        r"""群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HookAddress
+
+    @HookAddress.setter
+    def HookAddress(self, HookAddress):
+        self._HookAddress = HookAddress
+
+
+    def _deserialize(self, params):
+        self._HookType = params.get("HookType")
+        self._HookAddress = params.get("HookAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityTableConfig(AbstractModel):
+    r"""规则表变量替换
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseId: 数据库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _TableId: 表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableKey: 表Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableKey: str
+        :param _FieldConfig: 字段变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: list of QualityFieldConfig
+        """
+        self._DatabaseId = None
+        self._DatabaseName = None
+        self._TableId = None
+        self._TableName = None
+        self._TableKey = None
+        self._FieldConfig = None
+
+    @property
+    def DatabaseId(self):
+        r"""数据库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableId(self):
+        r"""表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableKey(self):
+        r"""表Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableKey
+
+    @TableKey.setter
+    def TableKey(self, TableKey):
+        self._TableKey = TableKey
+
+    @property
+    def FieldConfig(self):
+        r"""字段变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityFieldConfig
+        """
+        return self._FieldConfig
+
+    @FieldConfig.setter
+    def FieldConfig(self, FieldConfig):
+        self._FieldConfig = FieldConfig
+
+
+    def _deserialize(self, params):
+        self._DatabaseId = params.get("DatabaseId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableId = params.get("TableId")
+        self._TableName = params.get("TableName")
+        self._TableKey = params.get("TableKey")
+        if params.get("FieldConfig") is not None:
+            self._FieldConfig = []
+            for item in params.get("FieldConfig"):
+                obj = QualityFieldConfig()
+                obj._deserialize(item)
+                self._FieldConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityThresholdValue(AbstractModel):
+    r"""数据质量阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ValueType: 阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: int
+        :param _Value: 阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._ValueType = None
+        self._Value = None
+
+    @property
+    def ValueType(self):
+        r"""阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def Value(self):
+        r"""阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._ValueType = params.get("ValueType")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReconciliationStrategyInfo(AbstractModel):
     r"""离线集成对账告警规则
 
@@ -26311,6 +41344,197 @@ class RerunTaskInstancesAsyncResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RerunTriggerWorkflowRunAsyncRequest(AbstractModel):
+    r"""RerunTriggerWorkflowRunAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _WorkflowExecutionId: 工作流运行ID
+        :type WorkflowExecutionId: str
+        :param _ExecuteType: 运行方式：普通运行默认所有参数：1，高级运行可选任务范围和运行参数：2
+        :type ExecuteType: str
+        :param _AdvancedParams: 运行类型为高级运行时填写的自定义运行参数
+        :type AdvancedParams: list of SchedulingParameter
+        :param _TaskIds: 高级运行模式下本次需要运行指定的任务ID集合
+        :type TaskIds: list of str
+        :param _SchedulingResourceGroup: 指定调度资源组,为空时默认使用配置的原调度资源组
+        :type SchedulingResourceGroup: str
+        :param _IntegrationResourceGroup: 指定集成资源组,为空时默认使用配置的原集成资源组
+        :type IntegrationResourceGroup: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionId = None
+        self._ExecuteType = None
+        self._AdvancedParams = None
+        self._TaskIds = None
+        self._SchedulingResourceGroup = None
+        self._IntegrationResourceGroup = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流运行ID
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+    @property
+    def ExecuteType(self):
+        r"""运行方式：普通运行默认所有参数：1，高级运行可选任务范围和运行参数：2
+        :rtype: str
+        """
+        return self._ExecuteType
+
+    @ExecuteType.setter
+    def ExecuteType(self, ExecuteType):
+        self._ExecuteType = ExecuteType
+
+    @property
+    def AdvancedParams(self):
+        r"""运行类型为高级运行时填写的自定义运行参数
+        :rtype: list of SchedulingParameter
+        """
+        return self._AdvancedParams
+
+    @AdvancedParams.setter
+    def AdvancedParams(self, AdvancedParams):
+        self._AdvancedParams = AdvancedParams
+
+    @property
+    def TaskIds(self):
+        r"""高级运行模式下本次需要运行指定的任务ID集合
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def SchedulingResourceGroup(self):
+        r"""指定调度资源组,为空时默认使用配置的原调度资源组
+        :rtype: str
+        """
+        return self._SchedulingResourceGroup
+
+    @SchedulingResourceGroup.setter
+    def SchedulingResourceGroup(self, SchedulingResourceGroup):
+        self._SchedulingResourceGroup = SchedulingResourceGroup
+
+    @property
+    def IntegrationResourceGroup(self):
+        r"""指定集成资源组,为空时默认使用配置的原集成资源组
+        :rtype: str
+        """
+        return self._IntegrationResourceGroup
+
+    @IntegrationResourceGroup.setter
+    def IntegrationResourceGroup(self, IntegrationResourceGroup):
+        self._IntegrationResourceGroup = IntegrationResourceGroup
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        self._ExecuteType = params.get("ExecuteType")
+        if params.get("AdvancedParams") is not None:
+            self._AdvancedParams = []
+            for item in params.get("AdvancedParams"):
+                obj = SchedulingParameter()
+                obj._deserialize(item)
+                self._AdvancedParams.append(obj)
+        self._TaskIds = params.get("TaskIds")
+        self._SchedulingResourceGroup = params.get("SchedulingResourceGroup")
+        self._IntegrationResourceGroup = params.get("IntegrationResourceGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RerunTriggerWorkflowRunAsyncResponse(AbstractModel):
+    r"""RerunTriggerWorkflowRunAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.OpsAsyncResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""操作结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.OpsAsyncResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OpsAsyncResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceFile(AbstractModel):
     r"""资源文件详情
 
@@ -26854,6 +42078,132 @@ class ResourceFolder(AbstractModel):
         self._CreateUserName = params.get("CreateUserName")
         self._FolderPath = params.get("FolderPath")
         self._FolderName = params.get("FolderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceFolderDetail(AbstractModel):
+    r"""资源文件夹详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: 资源文件夹ID
+        :type FolderId: str
+        :param _CreateUserUin: 创建人ID
+        :type CreateUserUin: str
+        :param _CreateUserName: 创建人名称
+        :type CreateUserName: str
+        :param _FolderPath: 文件夹路径
+        :type FolderPath: str
+        :param _FolderName: 文件夹名称
+        :type FolderName: str
+        :param _ParentFolderPath: 父文件夹绝对路径,不包含文件名夹名
+        :type ParentFolderPath: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        """
+        self._FolderId = None
+        self._CreateUserUin = None
+        self._CreateUserName = None
+        self._FolderPath = None
+        self._FolderName = None
+        self._ParentFolderPath = None
+        self._ProjectId = None
+
+    @property
+    def FolderId(self):
+        r"""资源文件夹ID
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def CreateUserName(self):
+        r"""创建人名称
+        :rtype: str
+        """
+        return self._CreateUserName
+
+    @CreateUserName.setter
+    def CreateUserName(self, CreateUserName):
+        self._CreateUserName = CreateUserName
+
+    @property
+    def FolderPath(self):
+        r"""文件夹路径
+        :rtype: str
+        """
+        return self._FolderPath
+
+    @FolderPath.setter
+    def FolderPath(self, FolderPath):
+        self._FolderPath = FolderPath
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def ParentFolderPath(self):
+        r"""父文件夹绝对路径,不包含文件名夹名
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._CreateUserName = params.get("CreateUserName")
+        self._FolderPath = params.get("FolderPath")
+        self._FolderName = params.get("FolderName")
+        self._ParentFolderPath = params.get("ParentFolderPath")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27460,6 +42810,123 @@ class ResourceType(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RevokeDataSourceAuthorizationRequest(AbstractModel):
+    r"""RevokeDataSourceAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceId: 数据源id
+        :type DataSourceId: str
+        :param _RevokeProjectId: 回收的项目id，与UserUin参数只能填一个
+        :type RevokeProjectId: str
+        :param _RevokeUser: 回收项目下用户列表，格式为：项目id_用户id
+与RevokeProjectId参数只能填一个
+
+
+        :type RevokeUser: str
+        """
+        self._DataSourceId = None
+        self._RevokeProjectId = None
+        self._RevokeUser = None
+
+    @property
+    def DataSourceId(self):
+        r"""数据源id
+        :rtype: str
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def RevokeProjectId(self):
+        r"""回收的项目id，与UserUin参数只能填一个
+        :rtype: str
+        """
+        return self._RevokeProjectId
+
+    @RevokeProjectId.setter
+    def RevokeProjectId(self, RevokeProjectId):
+        self._RevokeProjectId = RevokeProjectId
+
+    @property
+    def RevokeUser(self):
+        r"""回收项目下用户列表，格式为：项目id_用户id
+与RevokeProjectId参数只能填一个
+
+
+        :rtype: str
+        """
+        return self._RevokeUser
+
+    @RevokeUser.setter
+    def RevokeUser(self, RevokeUser):
+        self._RevokeUser = RevokeUser
+
+
+    def _deserialize(self, params):
+        self._DataSourceId = params.get("DataSourceId")
+        self._RevokeProjectId = params.get("RevokeProjectId")
+        self._RevokeUser = params.get("RevokeUser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokeDataSourceAuthorizationResponse(AbstractModel):
+    r"""RevokeDataSourceAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 回收数据源响应体
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""回收数据源响应体
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataSourceStatus()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class RunSQLScriptRequest(AbstractModel):
@@ -28261,6 +43728,78 @@ class SQLStopResult(AbstractModel):
         
 
 
+class SchedulingParameter(AbstractModel):
+    r"""任务调度变量参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamKey: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamKey: str
+        :param _ParamValue: 参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamValue: str
+        :param _ExtProperties: 拓展参数json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtProperties: str
+        """
+        self._ParamKey = None
+        self._ParamValue = None
+        self._ExtProperties = None
+
+    @property
+    def ParamKey(self):
+        r"""参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamKey
+
+    @ParamKey.setter
+    def ParamKey(self, ParamKey):
+        self._ParamKey = ParamKey
+
+    @property
+    def ParamValue(self):
+        r"""参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+    @property
+    def ExtProperties(self):
+        r"""拓展参数json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtProperties
+
+    @ExtProperties.setter
+    def ExtProperties(self, ExtProperties):
+        self._ExtProperties = ExtProperties
+
+
+    def _deserialize(self, params):
+        self._ParamKey = params.get("ParamKey")
+        self._ParamValue = params.get("ParamValue")
+        self._ExtProperties = params.get("ExtProperties")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SchemaInfo(AbstractModel):
     r"""Schema信息
 
@@ -28985,6 +44524,119 @@ class SubmitTaskResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubmitTriggerTaskRequest(AbstractModel):
+    r"""SubmitTriggerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _VersionRemark: 版本备注
+        :type VersionRemark: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._VersionRemark = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VersionRemark(self):
+        r"""版本备注
+        :rtype: str
+        """
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._VersionRemark = params.get("VersionRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitTriggerTaskResponse(AbstractModel):
+    r"""SubmitTriggerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 成功或者失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.SubmitTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""成功或者失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.SubmitTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = SubmitTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class SystemRole(AbstractModel):
@@ -30790,6 +46442,389 @@ class TaskExtParameter(AbstractModel):
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
         self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFolder(AbstractModel):
+    r"""任务文件夹信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _TaskFolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderId: str
+        :param _TaskFolderPath: 文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderPath: str
+        :param _CreateUserUin: 创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        """
+        self._ProjectId = None
+        self._TaskFolderId = None
+        self._TaskFolderPath = None
+        self._CreateUserUin = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskFolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+    @property
+    def TaskFolderPath(self):
+        r"""文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        self._CreateUserUin = params.get("CreateUserUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFolderDetail(AbstractModel):
+    r"""任务文件夹详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _TaskFolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderId: str
+        :param _TaskFolderPath: 文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderPath: str
+        :param _CreateUserUin: 创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _ParentTaskFolderPath: 父文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentTaskFolderPath: str
+        :param _TaskFolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderName: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _TaskFolderType: 任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderType: str
+        """
+        self._ProjectId = None
+        self._TaskFolderId = None
+        self._TaskFolderPath = None
+        self._CreateUserUin = None
+        self._ParentTaskFolderPath = None
+        self._TaskFolderName = None
+        self._WorkflowId = None
+        self._TaskFolderType = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskFolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+    @property
+    def TaskFolderPath(self):
+        r"""文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def ParentTaskFolderPath(self):
+        r"""父文件夹绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentTaskFolderPath
+
+    @ParentTaskFolderPath.setter
+    def ParentTaskFolderPath(self, ParentTaskFolderPath):
+        self._ParentTaskFolderPath = ParentTaskFolderPath
+
+    @property
+    def TaskFolderName(self):
+        r"""文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderName
+
+    @TaskFolderName.setter
+    def TaskFolderName(self, TaskFolderName):
+        self._TaskFolderName = TaskFolderName
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderType(self):
+        r"""任务文件夹类型
+
+| 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+| ---------------- | ------------------------ |
+| ETL              | 集成任务                 |
+| EMR              | EMR                      |
+| DLC              | DLC                      |
+| SETATS           | SETATS                   |
+| TDSQL            | TDSQL                    |
+| TCHOUSE          | TCHOUSE                  |
+| GENERAL          | 通用                     |
+| TI_ONE           | TI-ONE机器学习           |
+| ACROSS_WORKFLOWS | 跨工作流                 |
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderType
+
+    @TaskFolderType.setter
+    def TaskFolderType(self, TaskFolderType):
+        self._TaskFolderType = TaskFolderType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._ParentTaskFolderPath = params.get("ParentTaskFolderPath")
+        self._TaskFolderName = params.get("TaskFolderName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderType = params.get("TaskFolderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFolderPage(AbstractModel):
+    r"""任务文件夹分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 数据页数，大于等于1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数，最小为10条，最大为200 条
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalCount: 文件夹总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _Items: 文件夹列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TaskFolder
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._Items = None
+
+    @property
+    def PageNumber(self):
+        r"""数据页数，大于等于1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数，最小为10条，最大为200 条
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""文件夹总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def Items(self):
+        r"""文件夹列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskFolder
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TaskFolder()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33828,6 +49863,4479 @@ class TrendData(AbstractModel):
         
 
 
+class TriggerDependencyConfigPage(AbstractModel):
+    r"""查询任务上游依赖详情分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 满足查询条件的数据总条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 满足查询条件的数据总页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageNumber: 当前请求的数据页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 当前请求的数据页条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Items: 分页数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerTaskDependDto
+        """
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""满足查询条件的数据总条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""满足查询条件的数据总页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""当前请求的数据页数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""当前请求的数据页条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        r"""分页数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerTaskDependDto
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerTaskDependDto()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTask(AbstractModel):
+    r"""任务对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerTaskBaseAttribute: 任务基本属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTaskBaseAttribute: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskBaseAttribute`
+        :param _TriggerTaskConfiguration: 任务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTaskConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        :param _TriggerTaskSchedulerConfiguration: 任务调度配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTaskSchedulerConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        self._TriggerTaskBaseAttribute = None
+        self._TriggerTaskConfiguration = None
+        self._TriggerTaskSchedulerConfiguration = None
+
+    @property
+    def TriggerTaskBaseAttribute(self):
+        r"""任务基本属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskBaseAttribute`
+        """
+        return self._TriggerTaskBaseAttribute
+
+    @TriggerTaskBaseAttribute.setter
+    def TriggerTaskBaseAttribute(self, TriggerTaskBaseAttribute):
+        self._TriggerTaskBaseAttribute = TriggerTaskBaseAttribute
+
+    @property
+    def TriggerTaskConfiguration(self):
+        r"""任务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        """
+        return self._TriggerTaskConfiguration
+
+    @TriggerTaskConfiguration.setter
+    def TriggerTaskConfiguration(self, TriggerTaskConfiguration):
+        self._TriggerTaskConfiguration = TriggerTaskConfiguration
+
+    @property
+    def TriggerTaskSchedulerConfiguration(self):
+        r"""任务调度配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        return self._TriggerTaskSchedulerConfiguration
+
+    @TriggerTaskSchedulerConfiguration.setter
+    def TriggerTaskSchedulerConfiguration(self, TriggerTaskSchedulerConfiguration):
+        self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerTaskBaseAttribute") is not None:
+            self._TriggerTaskBaseAttribute = TriggerTaskBaseAttribute()
+            self._TriggerTaskBaseAttribute._deserialize(params.get("TriggerTaskBaseAttribute"))
+        if params.get("TriggerTaskConfiguration") is not None:
+            self._TriggerTaskConfiguration = TriggerTaskConfiguration()
+            self._TriggerTaskConfiguration._deserialize(params.get("TriggerTaskConfiguration"))
+        if params.get("TriggerTaskSchedulerConfiguration") is not None:
+            self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration()
+            self._TriggerTaskSchedulerConfiguration._deserialize(params.get("TriggerTaskSchedulerConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskBaseAttribute(AbstractModel):
+    r"""任务基本属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskTypeId: 任务类型ID：
+
+- 26:OfflineSynchronization
+- 30:Python
+- 32:DLC SQL
+- 35:Shell
+- 38:Shell Form Mode
+- 46:DLC Spark
+- 50:DLC PySpark
+- 130:Branch Node
+- 131:Merged Node
+- 132:Notebook
+- 133:SSH
+- 137:For-each
+- 139:DLC Spark Streaming
+- 140:Run Workflow
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TaskLatestVersionNo: 最近一次保存版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLatestVersionNo: str
+        :param _TaskLatestSubmitVersionNo: 最近一次提交的版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLatestSubmitVersionNo: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _Status: 任务状态：
+* N: 新建
+* Y: 调度中
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Submit: 任务最新提交状态，任务是否已经提交：true/false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Submit: bool
+        :param _CreateTime: 任务创建时间，示例：2022-02-12 11:13:41
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _LastUpdateTime: 最后更新时间，示例：2025-08-13 16:34:06
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param _LastUpdateUserName: 最后更新人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateUserName: str
+        :param _LastOpsTime: 最后运维时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOpsTime: str
+        :param _LastOpsUserName: 最后运维人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOpsUserName: str
+        :param _OwnerUin: 任务负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _TaskDescription: 任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskDescription: str
+        :param _UpdateUserUin: 最近一次更新用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserUin: str
+        :param _CreateUserUin: 创建用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _TaskFolderPath: 任务文件夹路径
+
+注意：
+
+路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFolderPath: str
+        """
+        self._TaskId = None
+        self._TaskTypeId = None
+        self._WorkflowId = None
+        self._TaskName = None
+        self._TaskLatestVersionNo = None
+        self._TaskLatestSubmitVersionNo = None
+        self._WorkflowName = None
+        self._Status = None
+        self._Submit = None
+        self._CreateTime = None
+        self._LastUpdateTime = None
+        self._LastUpdateUserName = None
+        self._LastOpsTime = None
+        self._LastOpsUserName = None
+        self._OwnerUin = None
+        self._TaskDescription = None
+        self._UpdateUserUin = None
+        self._CreateUserUin = None
+        self._TaskFolderPath = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型ID：
+
+- 26:OfflineSynchronization
+- 30:Python
+- 32:DLC SQL
+- 35:Shell
+- 38:Shell Form Mode
+- 46:DLC Spark
+- 50:DLC PySpark
+- 130:Branch Node
+- 131:Merged Node
+- 132:Notebook
+- 133:SSH
+- 137:For-each
+- 139:DLC Spark Streaming
+- 140:Run Workflow
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskLatestVersionNo(self):
+        r"""最近一次保存版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskLatestVersionNo
+
+    @TaskLatestVersionNo.setter
+    def TaskLatestVersionNo(self, TaskLatestVersionNo):
+        self._TaskLatestVersionNo = TaskLatestVersionNo
+
+    @property
+    def TaskLatestSubmitVersionNo(self):
+        r"""最近一次提交的版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskLatestSubmitVersionNo
+
+    @TaskLatestSubmitVersionNo.setter
+    def TaskLatestSubmitVersionNo(self, TaskLatestSubmitVersionNo):
+        self._TaskLatestSubmitVersionNo = TaskLatestSubmitVersionNo
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def Status(self):
+        r"""任务状态：
+* N: 新建
+* Y: 调度中
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Submit(self):
+        r"""任务最新提交状态，任务是否已经提交：true/false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Submit
+
+    @Submit.setter
+    def Submit(self, Submit):
+        self._Submit = Submit
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间，示例：2022-02-12 11:13:41
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastUpdateTime(self):
+        r"""最后更新时间，示例：2025-08-13 16:34:06
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def LastUpdateUserName(self):
+        r"""最后更新人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdateUserName
+
+    @LastUpdateUserName.setter
+    def LastUpdateUserName(self, LastUpdateUserName):
+        self._LastUpdateUserName = LastUpdateUserName
+
+    @property
+    def LastOpsTime(self):
+        r"""最后运维时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastOpsTime
+
+    @LastOpsTime.setter
+    def LastOpsTime(self, LastOpsTime):
+        self._LastOpsTime = LastOpsTime
+
+    @property
+    def LastOpsUserName(self):
+        r"""最后运维人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastOpsUserName
+
+    @LastOpsUserName.setter
+    def LastOpsUserName(self, LastOpsUserName):
+        self._LastOpsUserName = LastOpsUserName
+
+    @property
+    def OwnerUin(self):
+        r"""任务负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskDescription(self):
+        r"""任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+    @property
+    def UpdateUserUin(self):
+        r"""最近一次更新用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateUserUin
+
+    @UpdateUserUin.setter
+    def UpdateUserUin(self, UpdateUserUin):
+        self._UpdateUserUin = UpdateUserUin
+
+    @property
+    def CreateUserUin(self):
+        r"""创建用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def TaskFolderPath(self):
+        r"""任务文件夹路径
+
+注意：
+
+路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskName = params.get("TaskName")
+        self._TaskLatestVersionNo = params.get("TaskLatestVersionNo")
+        self._TaskLatestSubmitVersionNo = params.get("TaskLatestSubmitVersionNo")
+        self._WorkflowName = params.get("WorkflowName")
+        self._Status = params.get("Status")
+        self._Submit = params.get("Submit")
+        self._CreateTime = params.get("CreateTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._LastUpdateUserName = params.get("LastUpdateUserName")
+        self._LastOpsTime = params.get("LastOpsTime")
+        self._LastOpsUserName = params.get("LastOpsUserName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskDescription = params.get("TaskDescription")
+        self._UpdateUserUin = params.get("UpdateUserUin")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskBrief(AbstractModel):
+    r"""任务概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _UserUinInCharge: 责任人user UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUinInCharge: str
+        :param _UserNameInCharge: 责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNameInCharge: str
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _TaskTypeId: 任务类型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _ExecutionState: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionState: str
+        :param _ExecutionStartTime: 运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskType = None
+        self._UserUinInCharge = None
+        self._UserNameInCharge = None
+        self._FolderId = None
+        self._FolderName = None
+        self._TaskTypeId = None
+        self._ExecutionState = None
+        self._ExecutionStartTime = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def WorkflowId(self):
+        r"""工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def TaskId(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def UserUinInCharge(self):
+        r"""责任人user UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUinInCharge
+
+    @UserUinInCharge.setter
+    def UserUinInCharge(self, UserUinInCharge):
+        self._UserUinInCharge = UserUinInCharge
+
+    @property
+    def UserNameInCharge(self):
+        r"""责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserNameInCharge
+
+    @UserNameInCharge.setter
+    def UserNameInCharge(self, UserNameInCharge):
+        self._UserNameInCharge = UserNameInCharge
+
+    @property
+    def FolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def ExecutionState(self):
+        r"""任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionState
+
+    @ExecutionState.setter
+    def ExecutionState(self, ExecutionState):
+        self._ExecutionState = ExecutionState
+
+    @property
+    def ExecutionStartTime(self):
+        r"""运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskType = params.get("TaskType")
+        self._UserUinInCharge = params.get("UserUinInCharge")
+        self._UserNameInCharge = params.get("UserNameInCharge")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._ExecutionState = params.get("ExecutionState")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskConfiguration(AbstractModel):
+    r"""任务配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CodeContent: 代码内容的Base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeContent: str
+        :param _TaskExtConfigurationList: 任务扩展属性配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExtConfigurationList: list of TaskExtParameter
+        :param _DataCluster: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataCluster: str
+        :param _BrokerIp: 指定的运行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
+        :param _YarnQueue: 资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnQueue: str
+        :param _SourceServiceId: 来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceId: str
+        :param _SourceServiceType: 来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceType: str
+        :param _SourceServiceName: 来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceName: str
+        :param _TargetServiceId: 目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceId: str
+        :param _TargetServiceType: 目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceType: str
+        :param _TargetServiceName: 目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceName: str
+        :param _ResourceGroup: 资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
+        :param _ResourceGroupName: 资源组名称： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param _TaskSchedulingParameterList: 调度参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskSchedulingParameterList: list of TaskSchedulingParameter
+        :param _BundleId: Bundle使用的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleId: str
+        :param _BundleInfo: Bundle信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleInfo: str
+        """
+        self._CodeContent = None
+        self._TaskExtConfigurationList = None
+        self._DataCluster = None
+        self._BrokerIp = None
+        self._YarnQueue = None
+        self._SourceServiceId = None
+        self._SourceServiceType = None
+        self._SourceServiceName = None
+        self._TargetServiceId = None
+        self._TargetServiceType = None
+        self._TargetServiceName = None
+        self._ResourceGroup = None
+        self._ResourceGroupName = None
+        self._TaskSchedulingParameterList = None
+        self._BundleId = None
+        self._BundleInfo = None
+
+    @property
+    def CodeContent(self):
+        r"""代码内容的Base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeContent
+
+    @CodeContent.setter
+    def CodeContent(self, CodeContent):
+        self._CodeContent = CodeContent
+
+    @property
+    def TaskExtConfigurationList(self):
+        r"""任务扩展属性配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskExtParameter
+        """
+        return self._TaskExtConfigurationList
+
+    @TaskExtConfigurationList.setter
+    def TaskExtConfigurationList(self, TaskExtConfigurationList):
+        self._TaskExtConfigurationList = TaskExtConfigurationList
+
+    @property
+    def DataCluster(self):
+        r"""集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataCluster
+
+    @DataCluster.setter
+    def DataCluster(self, DataCluster):
+        self._DataCluster = DataCluster
+
+    @property
+    def BrokerIp(self):
+        r"""指定的运行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def YarnQueue(self):
+        r"""资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def SourceServiceId(self):
+        r"""来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceServiceId
+
+    @SourceServiceId.setter
+    def SourceServiceId(self, SourceServiceId):
+        self._SourceServiceId = SourceServiceId
+
+    @property
+    def SourceServiceType(self):
+        r"""来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceServiceType
+
+    @SourceServiceType.setter
+    def SourceServiceType(self, SourceServiceType):
+        self._SourceServiceType = SourceServiceType
+
+    @property
+    def SourceServiceName(self):
+        r"""来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceServiceName
+
+    @SourceServiceName.setter
+    def SourceServiceName(self, SourceServiceName):
+        self._SourceServiceName = SourceServiceName
+
+    @property
+    def TargetServiceId(self):
+        r"""目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetServiceId
+
+    @TargetServiceId.setter
+    def TargetServiceId(self, TargetServiceId):
+        self._TargetServiceId = TargetServiceId
+
+    @property
+    def TargetServiceType(self):
+        r"""目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetServiceType
+
+    @TargetServiceType.setter
+    def TargetServiceType(self, TargetServiceType):
+        self._TargetServiceType = TargetServiceType
+
+    @property
+    def TargetServiceName(self):
+        r"""目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetServiceName
+
+    @TargetServiceName.setter
+    def TargetServiceName(self, TargetServiceName):
+        self._TargetServiceName = TargetServiceName
+
+    @property
+    def ResourceGroup(self):
+        r"""资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def ResourceGroupName(self):
+        r"""资源组名称： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupName
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def TaskSchedulingParameterList(self):
+        r"""调度参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskSchedulingParameter
+        """
+        return self._TaskSchedulingParameterList
+
+    @TaskSchedulingParameterList.setter
+    def TaskSchedulingParameterList(self, TaskSchedulingParameterList):
+        self._TaskSchedulingParameterList = TaskSchedulingParameterList
+
+    @property
+    def BundleId(self):
+        r"""Bundle使用的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""Bundle信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+
+    def _deserialize(self, params):
+        self._CodeContent = params.get("CodeContent")
+        if params.get("TaskExtConfigurationList") is not None:
+            self._TaskExtConfigurationList = []
+            for item in params.get("TaskExtConfigurationList"):
+                obj = TaskExtParameter()
+                obj._deserialize(item)
+                self._TaskExtConfigurationList.append(obj)
+        self._DataCluster = params.get("DataCluster")
+        self._BrokerIp = params.get("BrokerIp")
+        self._YarnQueue = params.get("YarnQueue")
+        self._SourceServiceId = params.get("SourceServiceId")
+        self._SourceServiceType = params.get("SourceServiceType")
+        self._SourceServiceName = params.get("SourceServiceName")
+        self._TargetServiceId = params.get("TargetServiceId")
+        self._TargetServiceType = params.get("TargetServiceType")
+        self._TargetServiceName = params.get("TargetServiceName")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("TaskSchedulingParameterList") is not None:
+            self._TaskSchedulingParameterList = []
+            for item in params.get("TaskSchedulingParameterList"):
+                obj = TaskSchedulingParameter()
+                obj._deserialize(item)
+                self._TaskSchedulingParameterList.append(obj)
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskDAGBrief(AbstractModel):
+    r"""工作流任务概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerTasks: 任务信息合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTasks: list of TriggerTaskBrief
+        :param _TriggerTaskLinks: 任务连接信息合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTaskLinks: list of TriggerTaskLinkBrief
+        """
+        self._TriggerTasks = None
+        self._TriggerTaskLinks = None
+
+    @property
+    def TriggerTasks(self):
+        r"""任务信息合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerTaskBrief
+        """
+        return self._TriggerTasks
+
+    @TriggerTasks.setter
+    def TriggerTasks(self, TriggerTasks):
+        self._TriggerTasks = TriggerTasks
+
+    @property
+    def TriggerTaskLinks(self):
+        r"""任务连接信息合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerTaskLinkBrief
+        """
+        return self._TriggerTaskLinks
+
+    @TriggerTaskLinks.setter
+    def TriggerTaskLinks(self, TriggerTaskLinks):
+        self._TriggerTaskLinks = TriggerTaskLinks
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerTasks") is not None:
+            self._TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = TriggerTaskBrief()
+                obj._deserialize(item)
+                self._TriggerTasks.append(obj)
+        if params.get("TriggerTaskLinks") is not None:
+            self._TriggerTaskLinks = []
+            for item in params.get("TriggerTaskLinks"):
+                obj = TriggerTaskLinkBrief()
+                obj._deserialize(item)
+                self._TriggerTaskLinks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskDependDto(AbstractModel):
+    r"""依赖的工作流调度任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _Status: 任务状态:
+- Y: 运行
+- N: 新建
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TaskTypeId: 任务类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _TaskTypeDesc: 任务类型描述
+ - 20 :  通用数据同步
+ - 25 :  ETLTaskType
+ - 26 :  ETLTaskType
+ - 30 :  python
+ - 31 :  pyspark
+ - 34 :  hivesql
+ - 35 :  shell
+ - 36 :  sparksql
+ - 21 :  jdbcsql
+ - 32 :  dlc
+ - 33 :  ImpalaTaskType
+ - 40 :  CDWTaskType
+ - 41 :  kettle
+ - 42 :  TCHouse-X
+ - 43 :  TCHouse-X SQL
+ - 46 :  dlcsparkTaskType
+ - 47 :  TiOneMachineLearningTaskType
+ - 48 :  Trino
+ - 50 :  DLCPyspark
+ - 23 :  TencentDistributedSQL
+ - 39 :  spark
+ - 92 :  MRTaskType
+ - 38 :  ShellScript
+ - 70 :  HiveSQLScrip
+ - 130 :  分支
+ - 131 :  归并
+ - 132 :  Notebook探索
+ - 133 :  SSH节点
+ - 134 :  StarRocks
+ - 137 :  For-each
+ - 10000 :  自定义业务通用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeDesc: str
+        :param _OwnerUin: 负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._ProjectId = None
+        self._Status = None
+        self._TaskTypeId = None
+        self._TaskTypeDesc = None
+        self._OwnerUin = None
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowId(self):
+        r"""工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Status(self):
+        r"""任务状态:
+- Y: 运行
+- N: 新建
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def TaskTypeDesc(self):
+        r"""任务类型描述
+ - 20 :  通用数据同步
+ - 25 :  ETLTaskType
+ - 26 :  ETLTaskType
+ - 30 :  python
+ - 31 :  pyspark
+ - 34 :  hivesql
+ - 35 :  shell
+ - 36 :  sparksql
+ - 21 :  jdbcsql
+ - 32 :  dlc
+ - 33 :  ImpalaTaskType
+ - 40 :  CDWTaskType
+ - 41 :  kettle
+ - 42 :  TCHouse-X
+ - 43 :  TCHouse-X SQL
+ - 46 :  dlcsparkTaskType
+ - 47 :  TiOneMachineLearningTaskType
+ - 48 :  Trino
+ - 50 :  DLCPyspark
+ - 23 :  TencentDistributedSQL
+ - 39 :  spark
+ - 92 :  MRTaskType
+ - 38 :  ShellScript
+ - 70 :  HiveSQLScrip
+ - 130 :  分支
+ - 131 :  归并
+ - 132 :  Notebook探索
+ - 133 :  SSH节点
+ - 134 :  StarRocks
+ - 137 :  For-each
+ - 10000 :  自定义业务通用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskTypeDesc
+
+    @TaskTypeDesc.setter
+    def TaskTypeDesc(self, TaskTypeDesc):
+        self._TaskTypeDesc = TaskTypeDesc
+
+    @property
+    def OwnerUin(self):
+        r"""负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._ProjectId = params.get("ProjectId")
+        self._Status = params.get("Status")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._TaskTypeDesc = params.get("TaskTypeDesc")
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskLinkBrief(AbstractModel):
+    r"""任务链接概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LinkId: 连接ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkId: str
+        :param _WorkflowId: 所属工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowVersionId: 所属工作流版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowVersionId: str
+        :param _UpstreamTaskId: 上游任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamTaskId: str
+        :param _DownstreamTaskId: 下游任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownstreamTaskId: str
+        """
+        self._LinkId = None
+        self._WorkflowId = None
+        self._WorkflowVersionId = None
+        self._UpstreamTaskId = None
+        self._DownstreamTaskId = None
+
+    @property
+    def LinkId(self):
+        r"""连接ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LinkId
+
+    @LinkId.setter
+    def LinkId(self, LinkId):
+        self._LinkId = LinkId
+
+    @property
+    def WorkflowId(self):
+        r"""所属工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowVersionId(self):
+        r"""所属工作流版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowVersionId
+
+    @WorkflowVersionId.setter
+    def WorkflowVersionId(self, WorkflowVersionId):
+        self._WorkflowVersionId = WorkflowVersionId
+
+    @property
+    def UpstreamTaskId(self):
+        r"""上游任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpstreamTaskId
+
+    @UpstreamTaskId.setter
+    def UpstreamTaskId(self, UpstreamTaskId):
+        self._UpstreamTaskId = UpstreamTaskId
+
+    @property
+    def DownstreamTaskId(self):
+        r"""下游任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownstreamTaskId
+
+    @DownstreamTaskId.setter
+    def DownstreamTaskId(self, DownstreamTaskId):
+        self._DownstreamTaskId = DownstreamTaskId
+
+
+    def _deserialize(self, params):
+        self._LinkId = params.get("LinkId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowVersionId = params.get("WorkflowVersionId")
+        self._UpstreamTaskId = params.get("UpstreamTaskId")
+        self._DownstreamTaskId = params.get("DownstreamTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskRunBrief(AbstractModel):
+    r"""工作流调度模式下的任务运行概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionId: 任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionId: str
+        :param _ExecutionState: 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionState: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowExecutionId: 工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionId: str
+        :param _TaskId: 任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _TaskVersionId: 任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskVersionId: str
+        :param _TriggerType: 触发类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _WaitTime: 等待时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitTime: str
+        :param _ResourceGroup: 所属资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
+        :param _ErrorCode: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param _ExecuteUserUin: 运行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
+        :param _CreaterUin: 创建人 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreaterUin: str
+        :param _JobId: 执行平台执行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param _CreateTime: 创建时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _DependenceFinishedTime: 依赖任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependenceFinishedTime: str
+        :param _QueueStartTime: 任务下发执行平台时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueStartTime: str
+        :param _PendingStartTime: 开始等待资源时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingStartTime: str
+        :param _ExecutionStartTime: 运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param _QueueCostTime: 排队时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueCostTime: str
+        :param _ExecutionTime: 运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTime: str
+        :param _AllCostTime: 总花费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllCostTime: str
+        :param _TimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: str
+        :param _DependOnList: 依赖上游任务 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependOnList: list of str
+        :param _RunParams: 运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunParams: str
+        :param _TaskTypeExtensions: 任务扩展信息，包含脚本路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeExtensions: str
+        :param _RetryTimes: 重试次数，为 0 则表示首次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryTimes: int
+        :param _LeftCoordinate: 左侧坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftCoordinate: float
+        :param _TopCoordinate: 顶部坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopCoordinate: float
+        :param _ResourceGroupId: 资源组 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param _ErrorCodeStr: 错误码描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeStr: str
+        :param _CreateUin: 创建人 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: str
+        :param _IssueTime: 下发执行平台时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssueTime: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _ExecuteUserName: 运行人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserName: str
+        :param _RerunTimes: 重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RerunTimes: int
+        :param _IsLatestExecution: 是否是最新一次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLatestExecution: bool
+        :param _TaskExecutionState: 任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExecutionState: str
+        :param _CycleType: 周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _UserNameInCharge: 责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNameInCharge: str
+        :param _UserUinInCharge: 责任人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUinInCharge: str
+        :param _ResourceGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param _Timezone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timezone: str
+        :param _FolderId: 文件夹id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _TaskTypeId: 任务类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _WorkflowParams: 工作流运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowParams: str
+        :param _SupportRerun: 是否支持重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportRerun: bool
+        :param _WorkflowExecutionState: 工作流运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionState: str
+        :param _ExecutionResult: 任务执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionResult: str
+        """
+        self._ExecutionId = None
+        self._ExecutionState = None
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionId = None
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskVersionId = None
+        self._TriggerType = None
+        self._WaitTime = None
+        self._ResourceGroup = None
+        self._ErrorCode = None
+        self._ExecuteUserUin = None
+        self._CreaterUin = None
+        self._JobId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._DependenceFinishedTime = None
+        self._QueueStartTime = None
+        self._PendingStartTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._QueueCostTime = None
+        self._ExecutionTime = None
+        self._AllCostTime = None
+        self._TimeZone = None
+        self._DependOnList = None
+        self._RunParams = None
+        self._TaskTypeExtensions = None
+        self._RetryTimes = None
+        self._LeftCoordinate = None
+        self._TopCoordinate = None
+        self._ResourceGroupId = None
+        self._ErrorCodeStr = None
+        self._CreateUin = None
+        self._IssueTime = None
+        self._TaskName = None
+        self._WorkflowName = None
+        self._ExecuteUserName = None
+        self._RerunTimes = None
+        self._IsLatestExecution = None
+        self._TaskExecutionState = None
+        self._CycleType = None
+        self._UserNameInCharge = None
+        self._UserUinInCharge = None
+        self._ResourceGroupName = None
+        self._Timezone = None
+        self._FolderId = None
+        self._FolderName = None
+        self._ProjectName = None
+        self._TaskTypeId = None
+        self._WorkflowParams = None
+        self._SupportRerun = None
+        self._WorkflowExecutionState = None
+        self._ExecutionResult = None
+
+    @property
+    def ExecutionId(self):
+        r"""任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def ExecutionState(self):
+        r"""执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionState
+
+    @ExecutionState.setter
+    def ExecutionState(self, ExecutionState):
+        self._ExecutionState = ExecutionState
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+    @property
+    def TaskId(self):
+        r"""任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskVersionId(self):
+        r"""任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskVersionId
+
+    @TaskVersionId.setter
+    def TaskVersionId(self, TaskVersionId):
+        self._TaskVersionId = TaskVersionId
+
+    @property
+    def TriggerType(self):
+        r"""触发类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def WaitTime(self):
+        r"""等待时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WaitTime
+
+    @WaitTime.setter
+    def WaitTime(self, WaitTime):
+        self._WaitTime = WaitTime
+
+    @property
+    def ResourceGroup(self):
+        r"""所属资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def ErrorCode(self):
+        r"""错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ExecuteUserUin(self):
+        r"""运行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
+    def CreaterUin(self):
+        r"""创建人 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreaterUin
+
+    @CreaterUin.setter
+    def CreaterUin(self, CreaterUin):
+        self._CreaterUin = CreaterUin
+
+    @property
+    def JobId(self):
+        r"""执行平台执行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DependenceFinishedTime(self):
+        r"""依赖任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependenceFinishedTime
+
+    @DependenceFinishedTime.setter
+    def DependenceFinishedTime(self, DependenceFinishedTime):
+        self._DependenceFinishedTime = DependenceFinishedTime
+
+    @property
+    def QueueStartTime(self):
+        r"""任务下发执行平台时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueStartTime
+
+    @QueueStartTime.setter
+    def QueueStartTime(self, QueueStartTime):
+        self._QueueStartTime = QueueStartTime
+
+    @property
+    def PendingStartTime(self):
+        r"""开始等待资源时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PendingStartTime
+
+    @PendingStartTime.setter
+    def PendingStartTime(self, PendingStartTime):
+        self._PendingStartTime = PendingStartTime
+
+    @property
+    def ExecutionStartTime(self):
+        r"""运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        r"""运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def QueueCostTime(self):
+        r"""排队时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueCostTime
+
+    @QueueCostTime.setter
+    def QueueCostTime(self, QueueCostTime):
+        self._QueueCostTime = QueueCostTime
+
+    @property
+    def ExecutionTime(self):
+        r"""运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def AllCostTime(self):
+        r"""总花费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AllCostTime
+
+    @AllCostTime.setter
+    def AllCostTime(self, AllCostTime):
+        self._AllCostTime = AllCostTime
+
+    @property
+    def TimeZone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def DependOnList(self):
+        r"""依赖上游任务 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DependOnList
+
+    @DependOnList.setter
+    def DependOnList(self, DependOnList):
+        self._DependOnList = DependOnList
+
+    @property
+    def RunParams(self):
+        r"""运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunParams
+
+    @RunParams.setter
+    def RunParams(self, RunParams):
+        self._RunParams = RunParams
+
+    @property
+    def TaskTypeExtensions(self):
+        r"""任务扩展信息，包含脚本路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskTypeExtensions
+
+    @TaskTypeExtensions.setter
+    def TaskTypeExtensions(self, TaskTypeExtensions):
+        self._TaskTypeExtensions = TaskTypeExtensions
+
+    @property
+    def RetryTimes(self):
+        r"""重试次数，为 0 则表示首次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+    @property
+    def LeftCoordinate(self):
+        r"""左侧坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LeftCoordinate
+
+    @LeftCoordinate.setter
+    def LeftCoordinate(self, LeftCoordinate):
+        self._LeftCoordinate = LeftCoordinate
+
+    @property
+    def TopCoordinate(self):
+        r"""顶部坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TopCoordinate
+
+    @TopCoordinate.setter
+    def TopCoordinate(self, TopCoordinate):
+        self._TopCoordinate = TopCoordinate
+
+    @property
+    def ResourceGroupId(self):
+        r"""资源组 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ErrorCodeStr(self):
+        r"""错误码描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+    @property
+    def CreateUin(self):
+        r"""创建人 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
+    @property
+    def IssueTime(self):
+        r"""下发执行平台时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IssueTime
+
+    @IssueTime.setter
+    def IssueTime(self, IssueTime):
+        self._IssueTime = IssueTime
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def ExecuteUserName(self):
+        r"""运行人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserName
+
+    @ExecuteUserName.setter
+    def ExecuteUserName(self, ExecuteUserName):
+        self._ExecuteUserName = ExecuteUserName
+
+    @property
+    def RerunTimes(self):
+        r"""重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RerunTimes
+
+    @RerunTimes.setter
+    def RerunTimes(self, RerunTimes):
+        self._RerunTimes = RerunTimes
+
+    @property
+    def IsLatestExecution(self):
+        r"""是否是最新一次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLatestExecution
+
+    @IsLatestExecution.setter
+    def IsLatestExecution(self, IsLatestExecution):
+        self._IsLatestExecution = IsLatestExecution
+
+    @property
+    def TaskExecutionState(self):
+        r"""任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskExecutionState
+
+    @TaskExecutionState.setter
+    def TaskExecutionState(self, TaskExecutionState):
+        self._TaskExecutionState = TaskExecutionState
+
+    @property
+    def CycleType(self):
+        r"""周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def UserNameInCharge(self):
+        r"""责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserNameInCharge
+
+    @UserNameInCharge.setter
+    def UserNameInCharge(self, UserNameInCharge):
+        self._UserNameInCharge = UserNameInCharge
+
+    @property
+    def UserUinInCharge(self):
+        r"""责任人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUinInCharge
+
+    @UserUinInCharge.setter
+    def UserUinInCharge(self, UserUinInCharge):
+        self._UserUinInCharge = UserUinInCharge
+
+    @property
+    def ResourceGroupName(self):
+        r"""资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def Timezone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timezone
+
+    @Timezone.setter
+    def Timezone(self, Timezone):
+        self._Timezone = Timezone
+
+    @property
+    def FolderId(self):
+        r"""文件夹id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def SupportRerun(self):
+        r"""是否支持重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportRerun
+
+    @SupportRerun.setter
+    def SupportRerun(self, SupportRerun):
+        self._SupportRerun = SupportRerun
+
+    @property
+    def WorkflowExecutionState(self):
+        r"""工作流运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowExecutionState
+
+    @WorkflowExecutionState.setter
+    def WorkflowExecutionState(self, WorkflowExecutionState):
+        self._WorkflowExecutionState = WorkflowExecutionState
+
+    @property
+    def ExecutionResult(self):
+        r"""任务执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionResult
+
+    @ExecutionResult.setter
+    def ExecutionResult(self, ExecutionResult):
+        self._ExecutionResult = ExecutionResult
+
+
+    def _deserialize(self, params):
+        self._ExecutionId = params.get("ExecutionId")
+        self._ExecutionState = params.get("ExecutionState")
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskVersionId = params.get("TaskVersionId")
+        self._TriggerType = params.get("TriggerType")
+        self._WaitTime = params.get("WaitTime")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._CreaterUin = params.get("CreaterUin")
+        self._JobId = params.get("JobId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._DependenceFinishedTime = params.get("DependenceFinishedTime")
+        self._QueueStartTime = params.get("QueueStartTime")
+        self._PendingStartTime = params.get("PendingStartTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._QueueCostTime = params.get("QueueCostTime")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._AllCostTime = params.get("AllCostTime")
+        self._TimeZone = params.get("TimeZone")
+        self._DependOnList = params.get("DependOnList")
+        self._RunParams = params.get("RunParams")
+        self._TaskTypeExtensions = params.get("TaskTypeExtensions")
+        self._RetryTimes = params.get("RetryTimes")
+        self._LeftCoordinate = params.get("LeftCoordinate")
+        self._TopCoordinate = params.get("TopCoordinate")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        self._CreateUin = params.get("CreateUin")
+        self._IssueTime = params.get("IssueTime")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowName = params.get("WorkflowName")
+        self._ExecuteUserName = params.get("ExecuteUserName")
+        self._RerunTimes = params.get("RerunTimes")
+        self._IsLatestExecution = params.get("IsLatestExecution")
+        self._TaskExecutionState = params.get("TaskExecutionState")
+        self._CycleType = params.get("CycleType")
+        self._UserNameInCharge = params.get("UserNameInCharge")
+        self._UserUinInCharge = params.get("UserUinInCharge")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._Timezone = params.get("Timezone")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._ProjectName = params.get("ProjectName")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._WorkflowParams = params.get("WorkflowParams")
+        self._SupportRerun = params.get("SupportRerun")
+        self._WorkflowExecutionState = params.get("WorkflowExecutionState")
+        self._ExecutionResult = params.get("ExecutionResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskSchedulerConfiguration(AbstractModel):
+    r"""任务调度配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpstreamDependencyConfigList: 上游依赖数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamDependencyConfigList: list of DependencyTriggerTaskBrief
+        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriorityType: int
+        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWaitMinute: int
+        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetryNumber: int
+        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTLMinute: int
+        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitExecutionTotalTTLMinute: int
+        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowRedoType: str
+        :param _ParamTaskOutList: 输出参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTaskOutList: list of OutTaskParameter
+        :param _ParamTaskInList: 输入参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTaskInList: list of InTaskParameter
+        :param _TaskOutputRegistryList: 产出登记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskOutputRegistryList: list of TaskDataRegistry
+        """
+        self._UpstreamDependencyConfigList = None
+        self._RunPriorityType = None
+        self._RetryWaitMinute = None
+        self._MaxRetryNumber = None
+        self._ExecutionTTLMinute = None
+        self._WaitExecutionTotalTTLMinute = None
+        self._AllowRedoType = None
+        self._ParamTaskOutList = None
+        self._ParamTaskInList = None
+        self._TaskOutputRegistryList = None
+
+    @property
+    def UpstreamDependencyConfigList(self):
+        r"""上游依赖数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DependencyTriggerTaskBrief
+        """
+        return self._UpstreamDependencyConfigList
+
+    @UpstreamDependencyConfigList.setter
+    def UpstreamDependencyConfigList(self, UpstreamDependencyConfigList):
+        self._UpstreamDependencyConfigList = UpstreamDependencyConfigList
+
+    @property
+    def RunPriorityType(self):
+        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunPriorityType
+
+    @RunPriorityType.setter
+    def RunPriorityType(self, RunPriorityType):
+        self._RunPriorityType = RunPriorityType
+
+    @property
+    def RetryWaitMinute(self):
+        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryWaitMinute
+
+    @RetryWaitMinute.setter
+    def RetryWaitMinute(self, RetryWaitMinute):
+        self._RetryWaitMinute = RetryWaitMinute
+
+    @property
+    def MaxRetryNumber(self):
+        r"""重试策略 最大尝试次数, 默认: 4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxRetryNumber
+
+    @MaxRetryNumber.setter
+    def MaxRetryNumber(self, MaxRetryNumber):
+        self._MaxRetryNumber = MaxRetryNumber
+
+    @property
+    def ExecutionTTLMinute(self):
+        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutionTTLMinute
+
+    @ExecutionTTLMinute.setter
+    def ExecutionTTLMinute(self, ExecutionTTLMinute):
+        self._ExecutionTTLMinute = ExecutionTTLMinute
+
+    @property
+    def WaitExecutionTotalTTLMinute(self):
+        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WaitExecutionTotalTTLMinute
+
+    @WaitExecutionTotalTTLMinute.setter
+    def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
+        self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
+
+    @property
+    def AllowRedoType(self):
+        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AllowRedoType
+
+    @AllowRedoType.setter
+    def AllowRedoType(self, AllowRedoType):
+        self._AllowRedoType = AllowRedoType
+
+    @property
+    def ParamTaskOutList(self):
+        r"""输出参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OutTaskParameter
+        """
+        return self._ParamTaskOutList
+
+    @ParamTaskOutList.setter
+    def ParamTaskOutList(self, ParamTaskOutList):
+        self._ParamTaskOutList = ParamTaskOutList
+
+    @property
+    def ParamTaskInList(self):
+        r"""输入参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InTaskParameter
+        """
+        return self._ParamTaskInList
+
+    @ParamTaskInList.setter
+    def ParamTaskInList(self, ParamTaskInList):
+        self._ParamTaskInList = ParamTaskInList
+
+    @property
+    def TaskOutputRegistryList(self):
+        r"""产出登记
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskDataRegistry
+        """
+        return self._TaskOutputRegistryList
+
+    @TaskOutputRegistryList.setter
+    def TaskOutputRegistryList(self, TaskOutputRegistryList):
+        self._TaskOutputRegistryList = TaskOutputRegistryList
+
+
+    def _deserialize(self, params):
+        if params.get("UpstreamDependencyConfigList") is not None:
+            self._UpstreamDependencyConfigList = []
+            for item in params.get("UpstreamDependencyConfigList"):
+                obj = DependencyTriggerTaskBrief()
+                obj._deserialize(item)
+                self._UpstreamDependencyConfigList.append(obj)
+        self._RunPriorityType = params.get("RunPriorityType")
+        self._RetryWaitMinute = params.get("RetryWaitMinute")
+        self._MaxRetryNumber = params.get("MaxRetryNumber")
+        self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
+        self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
+        self._AllowRedoType = params.get("AllowRedoType")
+        if params.get("ParamTaskOutList") is not None:
+            self._ParamTaskOutList = []
+            for item in params.get("ParamTaskOutList"):
+                obj = OutTaskParameter()
+                obj._deserialize(item)
+                self._ParamTaskOutList.append(obj)
+        if params.get("ParamTaskInList") is not None:
+            self._ParamTaskInList = []
+            for item in params.get("ParamTaskInList"):
+                obj = InTaskParameter()
+                obj._deserialize(item)
+                self._ParamTaskInList.append(obj)
+        if params.get("TaskOutputRegistryList") is not None:
+            self._TaskOutputRegistryList = []
+            for item in params.get("TaskOutputRegistryList"):
+                obj = TaskDataRegistry()
+                obj._deserialize(item)
+                self._TaskOutputRegistryList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskVersion(AbstractModel):
+    r"""任务版本列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: 保存时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _VersionNum: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionNum: str
+        :param _CreateUserUin: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _VersionId: 保存版本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param _VersionRemark: 版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRemark: str
+        :param _ApproveStatus: 审批状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveStatus: str
+        :param _Status: 生产状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _ApproveUserUin: 审批人（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveUserUin: str
+        """
+        self._CreateTime = None
+        self._VersionNum = None
+        self._CreateUserUin = None
+        self._VersionId = None
+        self._VersionRemark = None
+        self._ApproveStatus = None
+        self._Status = None
+        self._ApproveUserUin = None
+
+    @property
+    def CreateTime(self):
+        r"""保存时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def VersionNum(self):
+        r"""版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def VersionId(self):
+        r"""保存版本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionRemark(self):
+        r"""版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def ApproveStatus(self):
+        r"""审批状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def Status(self):
+        r"""生产状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApproveUserUin(self):
+        r"""审批人（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveUserUin
+
+    @ApproveUserUin.setter
+    def ApproveUserUin(self, ApproveUserUin):
+        self._ApproveUserUin = ApproveUserUin
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._VersionNum = params.get("VersionNum")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._VersionId = params.get("VersionId")
+        self._VersionRemark = params.get("VersionRemark")
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._Status = params.get("Status")
+        self._ApproveUserUin = params.get("ApproveUserUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerTaskVersionDetail(AbstractModel):
+    r"""任务版本列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _VersionNum: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionNum: str
+        :param _CreateUserUin: 版本创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _VersionId: 保存版本Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param _VersionRemark: 版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRemark: str
+        :param _ApproveStatus: 审批状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveStatus: str
+        :param _ApproveTime: 生产状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveTime: str
+        :param _ApproveUserUin: 审批人Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveUserUin: str
+        :param _Task: 版本的任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Task: :class:`tencentcloud.wedata.v20250806.models.TriggerTask`
+        """
+        self._CreateTime = None
+        self._VersionNum = None
+        self._CreateUserUin = None
+        self._VersionId = None
+        self._VersionRemark = None
+        self._ApproveStatus = None
+        self._ApproveTime = None
+        self._ApproveUserUin = None
+        self._Task = None
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def VersionNum(self):
+        r"""版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def CreateUserUin(self):
+        r"""版本创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def VersionId(self):
+        r"""保存版本Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionRemark(self):
+        r"""版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def ApproveStatus(self):
+        r"""审批状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def ApproveTime(self):
+        r"""生产状态（只有提交版本有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def ApproveUserUin(self):
+        r"""审批人Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveUserUin
+
+    @ApproveUserUin.setter
+    def ApproveUserUin(self, ApproveUserUin):
+        self._ApproveUserUin = ApproveUserUin
+
+    @property
+    def Task(self):
+        r"""版本的任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTask`
+        """
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._VersionNum = params.get("VersionNum")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._VersionId = params.get("VersionId")
+        self._VersionRemark = params.get("VersionRemark")
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._ApproveTime = params.get("ApproveTime")
+        self._ApproveUserUin = params.get("ApproveUserUin")
+        if params.get("Task") is not None:
+            self._Task = TriggerTask()
+            self._Task._deserialize(params.get("Task"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowBrief(AbstractModel):
+    r"""工作流概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _WorkflowId: 工作ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _TaskCount: 任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCount: int
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _WorkflowTriggerConfig: 调度配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowTriggerConfig: :class:`tencentcloud.wedata.v20250806.models.WorkflowTriggerConfig`
+        :param _UserNameInCharge: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNameInCharge: str
+        :param _UserUinInCharge: 责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUinInCharge: str
+        :param _WorkflowParams: 工作流参数
+        :type WorkflowParams: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._TaskCount = None
+        self._FolderId = None
+        self._FolderName = None
+        self._WorkflowTriggerConfig = None
+        self._UserNameInCharge = None
+        self._UserUinInCharge = None
+        self._WorkflowParams = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def TaskCount(self):
+        r"""任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def FolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def WorkflowTriggerConfig(self):
+        r"""调度配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowTriggerConfig`
+        """
+        return self._WorkflowTriggerConfig
+
+    @WorkflowTriggerConfig.setter
+    def WorkflowTriggerConfig(self, WorkflowTriggerConfig):
+        self._WorkflowTriggerConfig = WorkflowTriggerConfig
+
+    @property
+    def UserNameInCharge(self):
+        r"""责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserNameInCharge
+
+    @UserNameInCharge.setter
+    def UserNameInCharge(self, UserNameInCharge):
+        self._UserNameInCharge = UserNameInCharge
+
+    @property
+    def UserUinInCharge(self):
+        r"""责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUinInCharge
+
+    @UserUinInCharge.setter
+    def UserUinInCharge(self, UserUinInCharge):
+        self._UserUinInCharge = UserUinInCharge
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流参数
+        :rtype: str
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._TaskCount = params.get("TaskCount")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        if params.get("WorkflowTriggerConfig") is not None:
+            self._WorkflowTriggerConfig = WorkflowTriggerConfig()
+            self._WorkflowTriggerConfig._deserialize(params.get("WorkflowTriggerConfig"))
+        self._UserNameInCharge = params.get("UserNameInCharge")
+        self._UserUinInCharge = params.get("UserUinInCharge")
+        self._WorkflowParams = params.get("WorkflowParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowDetail(AbstractModel):
+    r"""查询工作流详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _OwnerUin: 责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _CreateUserUin: 创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _WorkflowParams: 工作流参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowParams: list of ParamInfo
+        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
+        :param _WorkflowDesc: 工作流描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowDesc: str
+        :param _Path: 工作流所属路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _BundleId: BundleId项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleId: str
+        :param _BundleInfo: BundleInfo项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleInfo: str
+        :param _GeneralTaskParams: 通用参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        :param _SchedulerStatus: Trigger 状态 启动ACTIVE，暂停PAUSED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerStatus: str
+        """
+        self._WorkflowName = None
+        self._OwnerUin = None
+        self._CreateUserUin = None
+        self._WorkflowParams = None
+        self._TriggerWorkflowSchedulerConfigurations = None
+        self._WorkflowDesc = None
+        self._Path = None
+        self._BundleId = None
+        self._BundleInfo = None
+        self._GeneralTaskParams = None
+        self._SchedulerStatus = None
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def OwnerUin(self):
+        r"""责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamInfo
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def TriggerWorkflowSchedulerConfigurations(self):
+        r"""统一调度参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkflowTriggerConfig
+        """
+        return self._TriggerWorkflowSchedulerConfigurations
+
+    @TriggerWorkflowSchedulerConfigurations.setter
+    def TriggerWorkflowSchedulerConfigurations(self, TriggerWorkflowSchedulerConfigurations):
+        self._TriggerWorkflowSchedulerConfigurations = TriggerWorkflowSchedulerConfigurations
+
+    @property
+    def WorkflowDesc(self):
+        r"""工作流描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def Path(self):
+        r"""工作流所属路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def BundleId(self):
+        r"""BundleId项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""BundleInfo项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+    @property
+    def GeneralTaskParams(self):
+        r"""通用参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkflowGeneralTaskParam
+        """
+        return self._GeneralTaskParams
+
+    @GeneralTaskParams.setter
+    def GeneralTaskParams(self, GeneralTaskParams):
+        self._GeneralTaskParams = GeneralTaskParams
+
+    @property
+    def SchedulerStatus(self):
+        r"""Trigger 状态 启动ACTIVE，暂停PAUSED
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+
+    def _deserialize(self, params):
+        self._WorkflowName = params.get("WorkflowName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreateUserUin = params.get("CreateUserUin")
+        if params.get("WorkflowParams") is not None:
+            self._WorkflowParams = []
+            for item in params.get("WorkflowParams"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._WorkflowParams.append(obj)
+        if params.get("TriggerWorkflowSchedulerConfigurations") is not None:
+            self._TriggerWorkflowSchedulerConfigurations = []
+            for item in params.get("TriggerWorkflowSchedulerConfigurations"):
+                obj = WorkflowTriggerConfig()
+                obj._deserialize(item)
+                self._TriggerWorkflowSchedulerConfigurations.append(obj)
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._Path = params.get("Path")
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        if params.get("GeneralTaskParams") is not None:
+            self._GeneralTaskParams = []
+            for item in params.get("GeneralTaskParams"):
+                obj = WorkflowGeneralTaskParam()
+                obj._deserialize(item)
+                self._GeneralTaskParams.append(obj)
+        self._SchedulerStatus = params.get("SchedulerStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowInfo(AbstractModel):
+    r"""获取工作流的列表信息item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _OwnerUin: 负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 最新修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _UpdateUserUin: 最后更新人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserUin: str
+        :param _WorkflowDesc: 工作流描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowDesc: str
+        :param _CreateUserUin: 创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        """
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._OwnerUin = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._UpdateUserUin = None
+        self._WorkflowDesc = None
+        self._CreateUserUin = None
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def OwnerUin(self):
+        r"""负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""最新修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def UpdateUserUin(self):
+        r"""最后更新人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateUserUin
+
+    @UpdateUserUin.setter
+    def UpdateUserUin(self, UpdateUserUin):
+        self._UpdateUserUin = UpdateUserUin
+
+    @property
+    def WorkflowDesc(self):
+        r"""工作流描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._UpdateUserUin = params.get("UpdateUserUin")
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._CreateUserUin = params.get("CreateUserUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowResult(AbstractModel):
+    r"""工作流列表查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Items: 工作流信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerWorkflowBrief
+        """
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        r"""工作流信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerWorkflowBrief
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerWorkflowBrief()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowRunBrief(AbstractModel):
+    r"""工作流运行概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _ExecutionId: 工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionId: str
+        :param _TriggerId: 触发器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerId: str
+        :param _TriggerType: 触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _CreateTime: 工作流触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExecutionStartTime: 执行开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 执行结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param _ExecutionCostTime: 运行时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionCostTime: str
+        :param _QueueCostTime: 并发排队花费时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueCostTime: str
+        :param _PendingCostTime: 等待资源花费时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingCostTime: str
+        :param _ExecutionState: 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionState: str
+        :param _ExecuteUserUin: 运行用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
+        :param _ExecuteUserName: 运行用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserName: str
+        :param _ErrorCodeStr: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeStr: str
+        :param _WorkflowParams: 运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowParams: str
+        :param _WorkflowVersionId: 工作流版本信息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowVersionId: str
+        :param _SupportRerun: 是否支持重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportRerun: bool
+        :param _RerunTimes: 重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RerunTimes: int
+        :param _SelectedTaskIds: 运行的任务范围,逗号分隔的任务ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectedTaskIds: list of str
+        :param _PendingStartTime: 等待并发开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingStartTime: str
+        :param _QueueStartTime: 排队等待开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueStartTime: str
+        :param _EndTime: 运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _PlannedSchedulingTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlannedSchedulingTime: str
+        :param _CycleType: 周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _UserNameInCharge: 责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNameInCharge: str
+        :param _UserUinInCharge: 责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUinInCharge: str
+        """
+        self._AppId = None
+        self._ProjectId = None
+        self._WorkflowName = None
+        self._WorkflowId = None
+        self._ExecutionId = None
+        self._TriggerId = None
+        self._TriggerType = None
+        self._CreateTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._ExecutionCostTime = None
+        self._QueueCostTime = None
+        self._PendingCostTime = None
+        self._ExecutionState = None
+        self._ExecuteUserUin = None
+        self._ExecuteUserName = None
+        self._ErrorCodeStr = None
+        self._WorkflowParams = None
+        self._WorkflowVersionId = None
+        self._SupportRerun = None
+        self._RerunTimes = None
+        self._SelectedTaskIds = None
+        self._PendingStartTime = None
+        self._QueueStartTime = None
+        self._EndTime = None
+        self._FolderId = None
+        self._FolderName = None
+        self._PlannedSchedulingTime = None
+        self._CycleType = None
+        self._UserNameInCharge = None
+        self._UserUinInCharge = None
+
+    @property
+    def AppId(self):
+        r"""用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def ExecutionId(self):
+        r"""工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def TriggerId(self):
+        r"""触发器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def TriggerType(self):
+        r"""触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def CreateTime(self):
+        r"""工作流触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExecutionStartTime(self):
+        r"""执行开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        r"""执行结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def ExecutionCostTime(self):
+        r"""运行时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionCostTime
+
+    @ExecutionCostTime.setter
+    def ExecutionCostTime(self, ExecutionCostTime):
+        self._ExecutionCostTime = ExecutionCostTime
+
+    @property
+    def QueueCostTime(self):
+        r"""并发排队花费时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueCostTime
+
+    @QueueCostTime.setter
+    def QueueCostTime(self, QueueCostTime):
+        self._QueueCostTime = QueueCostTime
+
+    @property
+    def PendingCostTime(self):
+        r"""等待资源花费时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PendingCostTime
+
+    @PendingCostTime.setter
+    def PendingCostTime(self, PendingCostTime):
+        self._PendingCostTime = PendingCostTime
+
+    @property
+    def ExecutionState(self):
+        r"""执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionState
+
+    @ExecutionState.setter
+    def ExecutionState(self, ExecutionState):
+        self._ExecutionState = ExecutionState
+
+    @property
+    def ExecuteUserUin(self):
+        r"""运行用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
+    def ExecuteUserName(self):
+        r"""运行用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserName
+
+    @ExecuteUserName.setter
+    def ExecuteUserName(self, ExecuteUserName):
+        self._ExecuteUserName = ExecuteUserName
+
+    @property
+    def ErrorCodeStr(self):
+        r"""错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+    @property
+    def WorkflowParams(self):
+        r"""运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def WorkflowVersionId(self):
+        r"""工作流版本信息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowVersionId
+
+    @WorkflowVersionId.setter
+    def WorkflowVersionId(self, WorkflowVersionId):
+        self._WorkflowVersionId = WorkflowVersionId
+
+    @property
+    def SupportRerun(self):
+        r"""是否支持重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportRerun
+
+    @SupportRerun.setter
+    def SupportRerun(self, SupportRerun):
+        self._SupportRerun = SupportRerun
+
+    @property
+    def RerunTimes(self):
+        r"""重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RerunTimes
+
+    @RerunTimes.setter
+    def RerunTimes(self, RerunTimes):
+        self._RerunTimes = RerunTimes
+
+    @property
+    def SelectedTaskIds(self):
+        r"""运行的任务范围,逗号分隔的任务ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SelectedTaskIds
+
+    @SelectedTaskIds.setter
+    def SelectedTaskIds(self, SelectedTaskIds):
+        self._SelectedTaskIds = SelectedTaskIds
+
+    @property
+    def PendingStartTime(self):
+        r"""等待并发开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PendingStartTime
+
+    @PendingStartTime.setter
+    def PendingStartTime(self, PendingStartTime):
+        self._PendingStartTime = PendingStartTime
+
+    @property
+    def QueueStartTime(self):
+        r"""排队等待开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueStartTime
+
+    @QueueStartTime.setter
+    def QueueStartTime(self, QueueStartTime):
+        self._QueueStartTime = QueueStartTime
+
+    @property
+    def EndTime(self):
+        r"""运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def PlannedSchedulingTime(self):
+        r"""计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PlannedSchedulingTime
+
+    @PlannedSchedulingTime.setter
+    def PlannedSchedulingTime(self, PlannedSchedulingTime):
+        self._PlannedSchedulingTime = PlannedSchedulingTime
+
+    @property
+    def CycleType(self):
+        r"""周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def UserNameInCharge(self):
+        r"""责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserNameInCharge
+
+    @UserNameInCharge.setter
+    def UserNameInCharge(self, UserNameInCharge):
+        self._UserNameInCharge = UserNameInCharge
+
+    @property
+    def UserUinInCharge(self):
+        r"""责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUinInCharge
+
+    @UserUinInCharge.setter
+    def UserUinInCharge(self, UserUinInCharge):
+        self._UserUinInCharge = UserUinInCharge
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._TriggerId = params.get("TriggerId")
+        self._TriggerType = params.get("TriggerType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._ExecutionCostTime = params.get("ExecutionCostTime")
+        self._QueueCostTime = params.get("QueueCostTime")
+        self._PendingCostTime = params.get("PendingCostTime")
+        self._ExecutionState = params.get("ExecutionState")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._ExecuteUserName = params.get("ExecuteUserName")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        self._WorkflowParams = params.get("WorkflowParams")
+        self._WorkflowVersionId = params.get("WorkflowVersionId")
+        self._SupportRerun = params.get("SupportRerun")
+        self._RerunTimes = params.get("RerunTimes")
+        self._SelectedTaskIds = params.get("SelectedTaskIds")
+        self._PendingStartTime = params.get("PendingStartTime")
+        self._QueueStartTime = params.get("QueueStartTime")
+        self._EndTime = params.get("EndTime")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._PlannedSchedulingTime = params.get("PlannedSchedulingTime")
+        self._CycleType = params.get("CycleType")
+        self._UserNameInCharge = params.get("UserNameInCharge")
+        self._UserUinInCharge = params.get("UserUinInCharge")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowRunResult(AbstractModel):
+    r"""查询工作流结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Items: 工作流运行以及相关任务运行信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TriggerWorkflowRunBrief
+        """
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        r"""工作流运行以及相关任务运行信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerWorkflowRunBrief
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TriggerWorkflowRunBrief()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerWorkflowTaskRunDetailBrief(AbstractModel):
+    r"""工作流任务运行详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerWorkflowRun: 工作流运行信息
+        :type TriggerWorkflowRun: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowRunBrief`
+        :param _TriggerTaskRuns: 任务运行信息
+        :type TriggerTaskRuns: list of TriggerTaskRunBrief
+        :param _BizStateEnumInfos: 业务状态枚举信息
+        :type BizStateEnumInfos: list of BizStateEnumInfoBrief
+        """
+        self._TriggerWorkflowRun = None
+        self._TriggerTaskRuns = None
+        self._BizStateEnumInfos = None
+
+    @property
+    def TriggerWorkflowRun(self):
+        r"""工作流运行信息
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerWorkflowRunBrief`
+        """
+        return self._TriggerWorkflowRun
+
+    @TriggerWorkflowRun.setter
+    def TriggerWorkflowRun(self, TriggerWorkflowRun):
+        self._TriggerWorkflowRun = TriggerWorkflowRun
+
+    @property
+    def TriggerTaskRuns(self):
+        r"""任务运行信息
+        :rtype: list of TriggerTaskRunBrief
+        """
+        return self._TriggerTaskRuns
+
+    @TriggerTaskRuns.setter
+    def TriggerTaskRuns(self, TriggerTaskRuns):
+        self._TriggerTaskRuns = TriggerTaskRuns
+
+    @property
+    def BizStateEnumInfos(self):
+        r"""业务状态枚举信息
+        :rtype: list of BizStateEnumInfoBrief
+        """
+        return self._BizStateEnumInfos
+
+    @BizStateEnumInfos.setter
+    def BizStateEnumInfos(self, BizStateEnumInfos):
+        self._BizStateEnumInfos = BizStateEnumInfos
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerWorkflowRun") is not None:
+            self._TriggerWorkflowRun = TriggerWorkflowRunBrief()
+            self._TriggerWorkflowRun._deserialize(params.get("TriggerWorkflowRun"))
+        if params.get("TriggerTaskRuns") is not None:
+            self._TriggerTaskRuns = []
+            for item in params.get("TriggerTaskRuns"):
+                obj = TriggerTaskRunBrief()
+                obj._deserialize(item)
+                self._TriggerTaskRuns.append(obj)
+        if params.get("BizStateEnumInfos") is not None:
+            self._BizStateEnumInfos = []
+            for item in params.get("BizStateEnumInfos"):
+                obj = BizStateEnumInfoBrief()
+                obj._deserialize(item)
+                self._BizStateEnumInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateCodeFileRequest(AbstractModel):
     r"""UpdateCodeFile请求参数结构体
 
@@ -34874,6 +55382,117 @@ class UpdateOpsTasksOwnerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateOpsTriggerTasksOwnerRequest(AbstractModel):
+    r"""UpdateOpsTriggerTasksOwner请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _OwnerIds: 负责人UIN
+        :type OwnerIds: list of str
+        :param _TaskIds: 将要修改的任务ID集合
+        :type TaskIds: list of str
+        """
+        self._ProjectId = None
+        self._OwnerIds = None
+        self._TaskIds = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def OwnerIds(self):
+        r"""负责人UIN
+        :rtype: list of str
+        """
+        return self._OwnerIds
+
+    @OwnerIds.setter
+    def OwnerIds(self, OwnerIds):
+        self._OwnerIds = OwnerIds
+
+    @property
+    def TaskIds(self):
+        r"""将要修改的任务ID集合
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._OwnerIds = params.get("OwnerIds")
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOpsTriggerTasksOwnerResponse(AbstractModel):
+    r"""UpdateOpsTriggerTasksOwner返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 批量操作结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.BatchOperationOpsDto`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""批量操作结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.BatchOperationOpsDto`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchOperationOpsDto()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateProjectRequest(AbstractModel):
     r"""UpdateProject请求参数结构体
 
@@ -35816,6 +56435,91 @@ class UpdateTaskBaseAttribute(AbstractModel):
         
 
 
+class UpdateTaskBaseAttributePart(AbstractModel):
+    r"""更新任务基本属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _OwnerUin: 任务负责人ID
+        :type OwnerUin: str
+        :param _TaskDescription: 任务描述
+        :type TaskDescription: str
+        :param _TaskFolderPath: 注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :type TaskFolderPath: str
+        """
+        self._TaskName = None
+        self._OwnerUin = None
+        self._TaskDescription = None
+        self._TaskFolderPath = None
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def OwnerUin(self):
+        r"""任务负责人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskDescription(self):
+        r"""任务描述
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+    @property
+    def TaskFolderPath(self):
+        r"""注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskDescription = params.get("TaskDescription")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateTaskBrief(AbstractModel):
     r"""更新任务对象入参
 
@@ -35886,6 +56590,370 @@ class UpdateTaskBrief(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateTaskFolderRequest(AbstractModel):
+    r"""UpdateTaskFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _TaskFolderId: 文件夹ID，可通过ListTaskFolders接口获取
+        :type TaskFolderId: str
+        :param _TaskFolderName: 更新后的任务文件夹名称
+        :type TaskFolderName: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._TaskFolderId = None
+        self._TaskFolderName = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderId(self):
+        r"""文件夹ID，可通过ListTaskFolders接口获取
+        :rtype: str
+        """
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+    @property
+    def TaskFolderName(self):
+        r"""更新后的任务文件夹名称
+        :rtype: str
+        """
+        return self._TaskFolderName
+
+    @TaskFolderName.setter
+    def TaskFolderName(self, TaskFolderName):
+        self._TaskFolderName = TaskFolderName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        self._TaskFolderName = params.get("TaskFolderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTaskFolderResponse(AbstractModel):
+    r"""UpdateTaskFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 更新文件夹结果，如果更新失败则报错。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskFolderResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""更新文件夹结果，如果更新失败则报错。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskFolderResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTaskFolderResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTaskFolderResult(AbstractModel):
+    r"""更新文件夹结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 更新状态,true表示更新成功，false表示更新失败
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""更新状态,true表示更新成功，false表示更新失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTaskPart(AbstractModel):
+    r"""更新任务对象入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskBaseAttribute: 任务基本属性
+        :type TaskBaseAttribute: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskBaseAttributePart`
+        :param _TaskConfiguration: 任务配置
+        :type TaskConfiguration: :class:`tencentcloud.wedata.v20250806.models.TaskConfiguration`
+        :param _TaskSchedulerConfiguration: 任务调度配置
+        :type TaskSchedulerConfiguration: :class:`tencentcloud.wedata.v20250806.models.TaskSchedulerConfiguration`
+        """
+        self._TaskBaseAttribute = None
+        self._TaskConfiguration = None
+        self._TaskSchedulerConfiguration = None
+
+    @property
+    def TaskBaseAttribute(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskBaseAttributePart`
+        """
+        return self._TaskBaseAttribute
+
+    @TaskBaseAttribute.setter
+    def TaskBaseAttribute(self, TaskBaseAttribute):
+        self._TaskBaseAttribute = TaskBaseAttribute
+
+    @property
+    def TaskConfiguration(self):
+        r"""任务配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TaskConfiguration`
+        """
+        return self._TaskConfiguration
+
+    @TaskConfiguration.setter
+    def TaskConfiguration(self, TaskConfiguration):
+        self._TaskConfiguration = TaskConfiguration
+
+    @property
+    def TaskSchedulerConfiguration(self):
+        r"""任务调度配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TaskSchedulerConfiguration`
+        """
+        return self._TaskSchedulerConfiguration
+
+    @TaskSchedulerConfiguration.setter
+    def TaskSchedulerConfiguration(self, TaskSchedulerConfiguration):
+        self._TaskSchedulerConfiguration = TaskSchedulerConfiguration
+
+
+    def _deserialize(self, params):
+        if params.get("TaskBaseAttribute") is not None:
+            self._TaskBaseAttribute = UpdateTaskBaseAttributePart()
+            self._TaskBaseAttribute._deserialize(params.get("TaskBaseAttribute"))
+        if params.get("TaskConfiguration") is not None:
+            self._TaskConfiguration = TaskConfiguration()
+            self._TaskConfiguration._deserialize(params.get("TaskConfiguration"))
+        if params.get("TaskSchedulerConfiguration") is not None:
+            self._TaskSchedulerConfiguration = TaskSchedulerConfiguration()
+            self._TaskSchedulerConfiguration._deserialize(params.get("TaskSchedulerConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTaskPartiallyRequest(AbstractModel):
+    r"""UpdateTaskPartially请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _NewSetting: 任务基本属性
+        :type NewSetting: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskPart`
+        :param _FieldToRemoveList: 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+        :type FieldToRemoveList: list of str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._NewSetting = None
+        self._FieldToRemoveList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def NewSetting(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskPart`
+        """
+        return self._NewSetting
+
+    @NewSetting.setter
+    def NewSetting(self, NewSetting):
+        self._NewSetting = NewSetting
+
+    @property
+    def FieldToRemoveList(self):
+        r"""删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+        :rtype: list of str
+        """
+        return self._FieldToRemoveList
+
+    @FieldToRemoveList.setter
+    def FieldToRemoveList(self, FieldToRemoveList):
+        self._FieldToRemoveList = FieldToRemoveList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        if params.get("NewSetting") is not None:
+            self._NewSetting = UpdateTaskPart()
+            self._NewSetting._deserialize(params.get("NewSetting"))
+        self._FieldToRemoveList = params.get("FieldToRemoveList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTaskPartiallyResponse(AbstractModel):
+    r"""UpdateTaskPartially返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateTaskRequest(AbstractModel):
@@ -36054,6 +57122,1107 @@ class UpdateTasksOwner(AbstractModel):
     @property
     def Status(self):
         r"""修改任务责任人结果
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskBaseAttribute(AbstractModel):
+    r"""更新任务基本属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _OwnerUin: 任务负责人ID
+        :type OwnerUin: str
+        :param _TaskDescription: 任务描述
+        :type TaskDescription: str
+        :param _TaskFolderPath: 注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :type TaskFolderPath: str
+        """
+        self._TaskName = None
+        self._OwnerUin = None
+        self._TaskDescription = None
+        self._TaskFolderPath = None
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def OwnerUin(self):
+        r"""任务负责人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskDescription(self):
+        r"""任务描述
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+    @property
+    def TaskFolderPath(self):
+        r"""注意：
+- 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+- 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+        :rtype: str
+        """
+        return self._TaskFolderPath
+
+    @TaskFolderPath.setter
+    def TaskFolderPath(self, TaskFolderPath):
+        self._TaskFolderPath = TaskFolderPath
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskDescription = params.get("TaskDescription")
+        self._TaskFolderPath = params.get("TaskFolderPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskBaseAttributePart(AbstractModel):
+    r"""更新任务基本属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _OwnerUin: 任务负责人ID
+        :type OwnerUin: str
+        :param _TaskDescription: 任务描述
+        :type TaskDescription: str
+        """
+        self._TaskName = None
+        self._OwnerUin = None
+        self._TaskDescription = None
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def OwnerUin(self):
+        r"""任务负责人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def TaskDescription(self):
+        r"""任务描述
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._TaskDescription = params.get("TaskDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskBrief(AbstractModel):
+    r"""更新任务对象入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerTaskBaseAttribute: 任务基本属性
+        :type TriggerTaskBaseAttribute: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBaseAttribute`
+        :param _TriggerTaskConfiguration: 任务配置
+        :type TriggerTaskConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        :param _TriggerTaskSchedulerConfiguration: 任务调度配置
+        :type TriggerTaskSchedulerConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        self._TriggerTaskBaseAttribute = None
+        self._TriggerTaskConfiguration = None
+        self._TriggerTaskSchedulerConfiguration = None
+
+    @property
+    def TriggerTaskBaseAttribute(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBaseAttribute`
+        """
+        return self._TriggerTaskBaseAttribute
+
+    @TriggerTaskBaseAttribute.setter
+    def TriggerTaskBaseAttribute(self, TriggerTaskBaseAttribute):
+        self._TriggerTaskBaseAttribute = TriggerTaskBaseAttribute
+
+    @property
+    def TriggerTaskConfiguration(self):
+        r"""任务配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        """
+        return self._TriggerTaskConfiguration
+
+    @TriggerTaskConfiguration.setter
+    def TriggerTaskConfiguration(self, TriggerTaskConfiguration):
+        self._TriggerTaskConfiguration = TriggerTaskConfiguration
+
+    @property
+    def TriggerTaskSchedulerConfiguration(self):
+        r"""任务调度配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        return self._TriggerTaskSchedulerConfiguration
+
+    @TriggerTaskSchedulerConfiguration.setter
+    def TriggerTaskSchedulerConfiguration(self, TriggerTaskSchedulerConfiguration):
+        self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerTaskBaseAttribute") is not None:
+            self._TriggerTaskBaseAttribute = UpdateTriggerTaskBaseAttribute()
+            self._TriggerTaskBaseAttribute._deserialize(params.get("TriggerTaskBaseAttribute"))
+        if params.get("TriggerTaskConfiguration") is not None:
+            self._TriggerTaskConfiguration = TriggerTaskConfiguration()
+            self._TriggerTaskConfiguration._deserialize(params.get("TriggerTaskConfiguration"))
+        if params.get("TriggerTaskSchedulerConfiguration") is not None:
+            self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration()
+            self._TriggerTaskSchedulerConfiguration._deserialize(params.get("TriggerTaskSchedulerConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskPart(AbstractModel):
+    r"""更新任务对象入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerTaskBaseAttribute: 任务基本属性
+        :type TriggerTaskBaseAttribute: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBaseAttributePart`
+        :param _TriggerTaskConfiguration: 任务配置
+        :type TriggerTaskConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        :param _TriggerTaskSchedulerConfiguration: 任务调度配置
+        :type TriggerTaskSchedulerConfiguration: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        self._TriggerTaskBaseAttribute = None
+        self._TriggerTaskConfiguration = None
+        self._TriggerTaskSchedulerConfiguration = None
+
+    @property
+    def TriggerTaskBaseAttribute(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBaseAttributePart`
+        """
+        return self._TriggerTaskBaseAttribute
+
+    @TriggerTaskBaseAttribute.setter
+    def TriggerTaskBaseAttribute(self, TriggerTaskBaseAttribute):
+        self._TriggerTaskBaseAttribute = TriggerTaskBaseAttribute
+
+    @property
+    def TriggerTaskConfiguration(self):
+        r"""任务配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskConfiguration`
+        """
+        return self._TriggerTaskConfiguration
+
+    @TriggerTaskConfiguration.setter
+    def TriggerTaskConfiguration(self, TriggerTaskConfiguration):
+        self._TriggerTaskConfiguration = TriggerTaskConfiguration
+
+    @property
+    def TriggerTaskSchedulerConfiguration(self):
+        r"""任务调度配置
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.TriggerTaskSchedulerConfiguration`
+        """
+        return self._TriggerTaskSchedulerConfiguration
+
+    @TriggerTaskSchedulerConfiguration.setter
+    def TriggerTaskSchedulerConfiguration(self, TriggerTaskSchedulerConfiguration):
+        self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerTaskBaseAttribute") is not None:
+            self._TriggerTaskBaseAttribute = UpdateTriggerTaskBaseAttributePart()
+            self._TriggerTaskBaseAttribute._deserialize(params.get("TriggerTaskBaseAttribute"))
+        if params.get("TriggerTaskConfiguration") is not None:
+            self._TriggerTaskConfiguration = TriggerTaskConfiguration()
+            self._TriggerTaskConfiguration._deserialize(params.get("TriggerTaskConfiguration"))
+        if params.get("TriggerTaskSchedulerConfiguration") is not None:
+            self._TriggerTaskSchedulerConfiguration = TriggerTaskSchedulerConfiguration()
+            self._TriggerTaskSchedulerConfiguration._deserialize(params.get("TriggerTaskSchedulerConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskPartiallyRequest(AbstractModel):
+    r"""UpdateTriggerTaskPartially请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _NewSetting: 任务基本属性
+        :type NewSetting: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskPart`
+        :param _FieldToRemoveList: 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+        :type FieldToRemoveList: list of str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._NewSetting = None
+        self._FieldToRemoveList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def NewSetting(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskPart`
+        """
+        return self._NewSetting
+
+    @NewSetting.setter
+    def NewSetting(self, NewSetting):
+        self._NewSetting = NewSetting
+
+    @property
+    def FieldToRemoveList(self):
+        r"""删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+        :rtype: list of str
+        """
+        return self._FieldToRemoveList
+
+    @FieldToRemoveList.setter
+    def FieldToRemoveList(self, FieldToRemoveList):
+        self._FieldToRemoveList = FieldToRemoveList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        if params.get("NewSetting") is not None:
+            self._NewSetting = UpdateTriggerTaskPart()
+            self._NewSetting._deserialize(params.get("NewSetting"))
+        self._FieldToRemoveList = params.get("FieldToRemoveList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskPartiallyResponse(AbstractModel):
+    r"""UpdateTriggerTaskPartially返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTriggerTaskRequest(AbstractModel):
+    r"""UpdateTriggerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _Task: 任务基本属性
+        :type Task: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBrief`
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._Task = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Task(self):
+        r"""任务基本属性
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerTaskBrief`
+        """
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        if params.get("Task") is not None:
+            self._Task = UpdateTriggerTaskBrief()
+            self._Task._deserialize(params.get("Task"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerTaskResponse(AbstractModel):
+    r"""UpdateTriggerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTaskResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTaskResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTriggerWorkflowPartially(AbstractModel):
+    r"""查询工作流详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowName: 工作流名称
+        :type WorkflowName: str
+        :param _OwnerUin: 责任人ID
+        :type OwnerUin: str
+        :param _WorkflowParams: 工作流参数数组
+        :type WorkflowParams: list of ParamInfo
+        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+        :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
+        :param _WorkflowDesc: 工作流描述
+        :type WorkflowDesc: str
+        :param _BundleId: BundleId项
+        :type BundleId: str
+        :param _BundleInfo: BundleInfo项
+        :type BundleInfo: str
+        :param _GeneralTaskParams: 通用参数
+        :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        """
+        self._WorkflowName = None
+        self._OwnerUin = None
+        self._WorkflowParams = None
+        self._TriggerWorkflowSchedulerConfigurations = None
+        self._WorkflowDesc = None
+        self._BundleId = None
+        self._BundleInfo = None
+        self._GeneralTaskParams = None
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def OwnerUin(self):
+        r"""责任人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流参数数组
+        :rtype: list of ParamInfo
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def TriggerWorkflowSchedulerConfigurations(self):
+        r"""统一调度参数
+        :rtype: list of WorkflowTriggerConfig
+        """
+        return self._TriggerWorkflowSchedulerConfigurations
+
+    @TriggerWorkflowSchedulerConfigurations.setter
+    def TriggerWorkflowSchedulerConfigurations(self, TriggerWorkflowSchedulerConfigurations):
+        self._TriggerWorkflowSchedulerConfigurations = TriggerWorkflowSchedulerConfigurations
+
+    @property
+    def WorkflowDesc(self):
+        r"""工作流描述
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def BundleId(self):
+        r"""BundleId项
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""BundleInfo项
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+    @property
+    def GeneralTaskParams(self):
+        r"""通用参数
+        :rtype: list of WorkflowGeneralTaskParam
+        """
+        return self._GeneralTaskParams
+
+    @GeneralTaskParams.setter
+    def GeneralTaskParams(self, GeneralTaskParams):
+        self._GeneralTaskParams = GeneralTaskParams
+
+
+    def _deserialize(self, params):
+        self._WorkflowName = params.get("WorkflowName")
+        self._OwnerUin = params.get("OwnerUin")
+        if params.get("WorkflowParams") is not None:
+            self._WorkflowParams = []
+            for item in params.get("WorkflowParams"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._WorkflowParams.append(obj)
+        if params.get("TriggerWorkflowSchedulerConfigurations") is not None:
+            self._TriggerWorkflowSchedulerConfigurations = []
+            for item in params.get("TriggerWorkflowSchedulerConfigurations"):
+                obj = WorkflowTriggerConfig()
+                obj._deserialize(item)
+                self._TriggerWorkflowSchedulerConfigurations.append(obj)
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        if params.get("GeneralTaskParams") is not None:
+            self._GeneralTaskParams = []
+            for item in params.get("GeneralTaskParams"):
+                obj = WorkflowGeneralTaskParam()
+                obj._deserialize(item)
+                self._GeneralTaskParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
+    r"""UpdateTriggerWorkflowPartially请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _NewSetting: 责任人ID
+        :type NewSetting: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartially`
+        :param _FieldToRemoveList: 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
+ // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
+ // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
+// 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+
+        :type FieldToRemoveList: list of str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._NewSetting = None
+        self._FieldToRemoveList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def NewSetting(self):
+        r"""责任人ID
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartially`
+        """
+        return self._NewSetting
+
+    @NewSetting.setter
+    def NewSetting(self, NewSetting):
+        self._NewSetting = NewSetting
+
+    @property
+    def FieldToRemoveList(self):
+        r"""删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
+ // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
+ // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
+// 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+
+        :rtype: list of str
+        """
+        return self._FieldToRemoveList
+
+    @FieldToRemoveList.setter
+    def FieldToRemoveList(self, FieldToRemoveList):
+        self._FieldToRemoveList = FieldToRemoveList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        if params.get("NewSetting") is not None:
+            self._NewSetting = UpdateTriggerWorkflowPartially()
+            self._NewSetting._deserialize(params.get("NewSetting"))
+        self._FieldToRemoveList = params.get("FieldToRemoveList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerWorkflowPartiallyResponse(AbstractModel):
+    r"""UpdateTriggerWorkflowPartially返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: true代表成功，false代表失败
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""true代表成功，false代表失败
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTriggerWorkflowResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTriggerWorkflowRequest(AbstractModel):
+    r"""UpdateTriggerWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+        :type WorkflowName: str
+        :param _OwnerUin: 责任人ID
+        :type OwnerUin: str
+        :param _WorkflowDesc: 备注
+        :type WorkflowDesc: str
+        :param _WorkflowParams: 工作流参数列表
+        :type WorkflowParams: list of ParamInfo
+        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+        :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
+        :param _BundleId: BundleId项
+        :type BundleId: str
+        :param _BundleInfo: Bundle信息
+        :type BundleInfo: str
+        :param _GeneralTaskParams: 通用参数配置
+        :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._OwnerUin = None
+        self._WorkflowDesc = None
+        self._WorkflowParams = None
+        self._TriggerWorkflowSchedulerConfigurations = None
+        self._BundleId = None
+        self._BundleInfo = None
+        self._GeneralTaskParams = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def OwnerUin(self):
+        r"""责任人ID
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def WorkflowDesc(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def WorkflowParams(self):
+        r"""工作流参数列表
+        :rtype: list of ParamInfo
+        """
+        return self._WorkflowParams
+
+    @WorkflowParams.setter
+    def WorkflowParams(self, WorkflowParams):
+        self._WorkflowParams = WorkflowParams
+
+    @property
+    def TriggerWorkflowSchedulerConfigurations(self):
+        r"""统一调度参数
+        :rtype: list of WorkflowTriggerConfig
+        """
+        return self._TriggerWorkflowSchedulerConfigurations
+
+    @TriggerWorkflowSchedulerConfigurations.setter
+    def TriggerWorkflowSchedulerConfigurations(self, TriggerWorkflowSchedulerConfigurations):
+        self._TriggerWorkflowSchedulerConfigurations = TriggerWorkflowSchedulerConfigurations
+
+    @property
+    def BundleId(self):
+        r"""BundleId项
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleInfo(self):
+        r"""Bundle信息
+        :rtype: str
+        """
+        return self._BundleInfo
+
+    @BundleInfo.setter
+    def BundleInfo(self, BundleInfo):
+        self._BundleInfo = BundleInfo
+
+    @property
+    def GeneralTaskParams(self):
+        r"""通用参数配置
+        :rtype: list of WorkflowGeneralTaskParam
+        """
+        return self._GeneralTaskParams
+
+    @GeneralTaskParams.setter
+    def GeneralTaskParams(self, GeneralTaskParams):
+        self._GeneralTaskParams = GeneralTaskParams
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._OwnerUin = params.get("OwnerUin")
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        if params.get("WorkflowParams") is not None:
+            self._WorkflowParams = []
+            for item in params.get("WorkflowParams"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._WorkflowParams.append(obj)
+        if params.get("TriggerWorkflowSchedulerConfigurations") is not None:
+            self._TriggerWorkflowSchedulerConfigurations = []
+            for item in params.get("TriggerWorkflowSchedulerConfigurations"):
+                obj = WorkflowTriggerConfig()
+                obj._deserialize(item)
+                self._TriggerWorkflowSchedulerConfigurations.append(obj)
+        self._BundleId = params.get("BundleId")
+        self._BundleInfo = params.get("BundleInfo")
+        if params.get("GeneralTaskParams") is not None:
+            self._GeneralTaskParams = []
+            for item in params.get("GeneralTaskParams"):
+                obj = WorkflowGeneralTaskParam()
+                obj._deserialize(item)
+                self._GeneralTaskParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerWorkflowResponse(AbstractModel):
+    r"""UpdateTriggerWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: true代表成功，false代表失败
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""true代表成功，false代表失败
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTriggerWorkflowResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTriggerWorkflowResult(AbstractModel):
+    r"""更新工作流结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 更新工作流结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""更新工作流结果
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Status
@@ -36711,6 +58880,119 @@ class WorkflowFolder(AbstractModel):
         
 
 
+class WorkflowFolderDetail(AbstractModel):
+    r"""文件夹详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _FolderId: 文件夹ID
+        :type FolderId: str
+        :param _FolderPath: 文件夹绝对路径
+        :type FolderPath: str
+        :param _CreateUserUin: 创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserUin: str
+        :param _ParentFolderPath: 父文件夹绝对路径
+        :type ParentFolderPath: str
+        :param _FolderName: 文件夹名称
+        :type FolderName: str
+        """
+        self._ProjectId = None
+        self._FolderId = None
+        self._FolderPath = None
+        self._CreateUserUin = None
+        self._ParentFolderPath = None
+        self._FolderName = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        r"""文件夹ID
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderPath(self):
+        r"""文件夹绝对路径
+        :rtype: str
+        """
+        return self._FolderPath
+
+    @FolderPath.setter
+    def FolderPath(self, FolderPath):
+        self._FolderPath = FolderPath
+
+    @property
+    def CreateUserUin(self):
+        r"""创建人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserUin
+
+    @CreateUserUin.setter
+    def CreateUserUin(self, CreateUserUin):
+        self._CreateUserUin = CreateUserUin
+
+    @property
+    def ParentFolderPath(self):
+        r"""父文件夹绝对路径
+        :rtype: str
+        """
+        return self._ParentFolderPath
+
+    @ParentFolderPath.setter
+    def ParentFolderPath(self, ParentFolderPath):
+        self._ParentFolderPath = ParentFolderPath
+
+    @property
+    def FolderName(self):
+        r"""文件夹名称
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        self._FolderPath = params.get("FolderPath")
+        self._CreateUserUin = params.get("CreateUserUin")
+        self._ParentFolderPath = params.get("ParentFolderPath")
+        self._FolderName = params.get("FolderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class WorkflowFolderPage(AbstractModel):
     r"""资源文件分页
 
@@ -36806,6 +59088,63 @@ class WorkflowFolderPage(AbstractModel):
                 obj = WorkflowFolder()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowGeneralTaskParam(AbstractModel):
+    r"""工作流SPARK_SQL参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 通用任务参数类型,目前只支持SPARK_SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: 通用任务参数内容, 不同参数用;
+分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""通用任务参数类型,目前只支持SPARK_SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""通用任务参数内容, 不同参数用;
+分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36980,6 +59319,217 @@ class WorkflowInfo(AbstractModel):
         self._UpdateUserUin = params.get("UpdateUserUin")
         self._WorkflowDesc = params.get("WorkflowDesc")
         self._CreateUserUin = params.get("CreateUserUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowMaxPermission(AbstractModel):
+    r"""用户对工作流文件夹的递归最大权限类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionType: 授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionType: str
+        """
+        self._PermissionType = None
+
+    @property
+    def PermissionType(self):
+        r"""授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PermissionType
+
+    @PermissionType.setter
+    def PermissionType(self, PermissionType):
+        self._PermissionType = PermissionType
+
+
+    def _deserialize(self, params):
+        self._PermissionType = params.get("PermissionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowPermission(AbstractModel):
+    r"""数据开发授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionTargetType: 授权目标类型（用户：user，角色：role）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionTargetType: str
+        :param _PermissionTargetId: 授权目标id数组(userId/roleId)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionTargetId: str
+        :param _PermissionTypeList: 授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionTypeList: list of str
+        """
+        self._PermissionTargetType = None
+        self._PermissionTargetId = None
+        self._PermissionTypeList = None
+
+    @property
+    def PermissionTargetType(self):
+        r"""授权目标类型（用户：user，角色：role）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PermissionTargetType
+
+    @PermissionTargetType.setter
+    def PermissionTargetType(self, PermissionTargetType):
+        self._PermissionTargetType = PermissionTargetType
+
+    @property
+    def PermissionTargetId(self):
+        r"""授权目标id数组(userId/roleId)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PermissionTargetId
+
+    @PermissionTargetId.setter
+    def PermissionTargetId(self, PermissionTargetId):
+        self._PermissionTargetId = PermissionTargetId
+
+    @property
+    def PermissionTypeList(self):
+        r"""授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PermissionTypeList
+
+    @PermissionTypeList.setter
+    def PermissionTypeList(self, PermissionTypeList):
+        self._PermissionTypeList = PermissionTypeList
+
+
+    def _deserialize(self, params):
+        self._PermissionTargetType = params.get("PermissionTargetType")
+        self._PermissionTargetId = params.get("PermissionTargetId")
+        self._PermissionTypeList = params.get("PermissionTypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowPermissionPage(AbstractModel):
+    r"""数据开发分页的权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 数据页数，大于等于1
+        :type PageNumber: int
+        :param _PageSize: 每页显示的数据条数，最小为10条，最大为200 条
+        :type PageSize: int
+        :param _TotalCount: 授权数据总数
+        :type TotalCount: int
+        :param _TotalPageNumber: 总页数
+        :type TotalPageNumber: int
+        :param _Items: 授权信息列表
+        :type Items: list of WorkflowPermission
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._Items = None
+
+    @property
+    def PageNumber(self):
+        r"""数据页数，大于等于1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页显示的数据条数，最小为10条，最大为200 条
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""授权数据总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def Items(self):
+        r"""授权信息列表
+        :rtype: list of WorkflowPermission
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = WorkflowPermission()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37694,6 +60244,278 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
         self._ExecutionEndTime = params.get("ExecutionEndTime")
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarId = params.get("CalendarId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowTriggerConfig(AbstractModel):
+    r"""工作流调度配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerMode: 触发方式，
+- 定时触发：TIME_TRIGGER
+- 持续运行：CONTINUE_RUN
+- 文件到达：FILE_ARRIVAL
+
+注意：
+- TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
+- FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMode: str
+        :param _ExtraInfo: WorkflowTriggerConfig转换成Json格式，对账使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: str
+        :param _ScheduleTimeZone: 调度时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
+        :param _StartTime: 调度生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 调度结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ConfigMode: 配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigMode: str
+        :param _CycleType: 周期类型：支持的类型为
+ONEOFF_CYCLE: 一次性
+YEAR_CYCLE: 年
+MONTH_CYCLE: 月
+WEEK_CYCLE: 周
+DAY_CYCLE: 天
+HOUR_CYCLE: 小时
+MINUTE_CYCLE: 分钟
+CRONTAB_CYCLE: crontab表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _CrontabExpression: cron表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrontabExpression: str
+        :param _TriggerId: triggerId, uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerId: str
+        :param _FileArrivalPath: 文件到达模式下	存储系统中的监听路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileArrivalPath: str
+        :param _TriggerMinimumIntervalSecond: 文件到达模式下	触发最短间隔时间（单位：秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMinimumIntervalSecond: int
+        :param _TriggerWaitTimeSecond: 文件到达模式下	触发等待时间（单位：秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerWaitTimeSecond: int
+        :param _SchedulerStatus: Trigger 状态 启动ACTIVE，暂停PAUSED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerStatus: str
+        """
+        self._TriggerMode = None
+        self._ExtraInfo = None
+        self._ScheduleTimeZone = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ConfigMode = None
+        self._CycleType = None
+        self._CrontabExpression = None
+        self._TriggerId = None
+        self._FileArrivalPath = None
+        self._TriggerMinimumIntervalSecond = None
+        self._TriggerWaitTimeSecond = None
+        self._SchedulerStatus = None
+
+    @property
+    def TriggerMode(self):
+        r"""触发方式，
+- 定时触发：TIME_TRIGGER
+- 持续运行：CONTINUE_RUN
+- 文件到达：FILE_ARRIVAL
+
+注意：
+- TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
+- FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
+    @property
+    def ExtraInfo(self):
+        r"""WorkflowTriggerConfig转换成Json格式，对账使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def ScheduleTimeZone(self):
+        r"""调度时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def StartTime(self):
+        r"""调度生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""调度结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ConfigMode(self):
+        r"""配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigMode
+
+    @ConfigMode.setter
+    def ConfigMode(self, ConfigMode):
+        self._ConfigMode = ConfigMode
+
+    @property
+    def CycleType(self):
+        r"""周期类型：支持的类型为
+ONEOFF_CYCLE: 一次性
+YEAR_CYCLE: 年
+MONTH_CYCLE: 月
+WEEK_CYCLE: 周
+DAY_CYCLE: 天
+HOUR_CYCLE: 小时
+MINUTE_CYCLE: 分钟
+CRONTAB_CYCLE: crontab表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def CrontabExpression(self):
+        r"""cron表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CrontabExpression
+
+    @CrontabExpression.setter
+    def CrontabExpression(self, CrontabExpression):
+        self._CrontabExpression = CrontabExpression
+
+    @property
+    def TriggerId(self):
+        r"""triggerId, uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def FileArrivalPath(self):
+        r"""文件到达模式下	存储系统中的监听路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileArrivalPath
+
+    @FileArrivalPath.setter
+    def FileArrivalPath(self, FileArrivalPath):
+        self._FileArrivalPath = FileArrivalPath
+
+    @property
+    def TriggerMinimumIntervalSecond(self):
+        r"""文件到达模式下	触发最短间隔时间（单位：秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerMinimumIntervalSecond
+
+    @TriggerMinimumIntervalSecond.setter
+    def TriggerMinimumIntervalSecond(self, TriggerMinimumIntervalSecond):
+        self._TriggerMinimumIntervalSecond = TriggerMinimumIntervalSecond
+
+    @property
+    def TriggerWaitTimeSecond(self):
+        r"""文件到达模式下	触发等待时间（单位：秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerWaitTimeSecond
+
+    @TriggerWaitTimeSecond.setter
+    def TriggerWaitTimeSecond(self, TriggerWaitTimeSecond):
+        self._TriggerWaitTimeSecond = TriggerWaitTimeSecond
+
+    @property
+    def SchedulerStatus(self):
+        r"""Trigger 状态 启动ACTIVE，暂停PAUSED
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+
+    def _deserialize(self, params):
+        self._TriggerMode = params.get("TriggerMode")
+        self._ExtraInfo = params.get("ExtraInfo")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ConfigMode = params.get("ConfigMode")
+        self._CycleType = params.get("CycleType")
+        self._CrontabExpression = params.get("CrontabExpression")
+        self._TriggerId = params.get("TriggerId")
+        self._FileArrivalPath = params.get("FileArrivalPath")
+        self._TriggerMinimumIntervalSecond = params.get("TriggerMinimumIntervalSecond")
+        self._TriggerWaitTimeSecond = params.get("TriggerWaitTimeSecond")
+        self._SchedulerStatus = params.get("SchedulerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

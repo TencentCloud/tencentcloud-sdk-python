@@ -17676,23 +17676,24 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组的ID。
+        :param _TargetGroupId: <p>目标组的ID。</p>
         :type TargetGroupId: str
-        :param _TargetGroupName: 目标组的新名称。
+        :param _TargetGroupName: <p>目标组的新名称。</p>
         :type TargetGroupName: str
-        :param _Port: 目标组的新默认端口。全监听目标组不支持此参数。
+        :param _Port: <p>目标组的新默认端口。全监听目标组不支持此参数。</p>
         :type Port: int
-        :param _ScheduleAlgorithm: 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
-<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur></p>
         :type ScheduleAlgorithm: str
-        :param _HealthCheck: 健康检查详情。
+        :param _HealthCheck: <p>健康检查详情。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _Weight: 后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
+        :param _Weight: <p>后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul></p>
         :type Weight: int
-        :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+        :param _KeepaliveEnable: <p>是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        :param _SessionExpireTime: <p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。</p>
         :type SessionExpireTime: int
+        :param _SnatEnable: <p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
+        :type SnatEnable: bool
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
@@ -17702,10 +17703,11 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         self._Weight = None
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupId(self):
-        r"""目标组的ID。
+        r"""<p>目标组的ID。</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -17716,7 +17718,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""目标组的新名称。
+        r"""<p>目标组的新名称。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -17727,7 +17729,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""目标组的新默认端口。全监听目标组不支持此参数。
+        r"""<p>目标组的新默认端口。全监听目标组不支持此参数。</p>
         :rtype: int
         """
         return self._Port
@@ -17738,8 +17740,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
-<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur></p>
         :rtype: str
         """
         return self._ScheduleAlgorithm
@@ -17750,7 +17751,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查详情。
+        r"""<p>健康检查详情。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -17761,7 +17762,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
+        r"""<p>后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul></p>
         :rtype: int
         """
         return self._Weight
@@ -17772,7 +17773,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+        r"""<p>是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -17783,7 +17784,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        r"""<p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -17791,6 +17792,17 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     @SessionExpireTime.setter
     def SessionExpireTime(self, SessionExpireTime):
         self._SessionExpireTime = SessionExpireTime
+
+    @property
+    def SnatEnable(self):
+        r"""<p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
 
 
     def _deserialize(self, params):
@@ -17804,6 +17816,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
