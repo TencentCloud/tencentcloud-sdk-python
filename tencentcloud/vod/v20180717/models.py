@@ -11432,6 +11432,8 @@ class AigcVideoOutputConfig(AbstractModel):
 1. 对于选择的分辨率超过模型可生成分辨率时，默认会启用增强。
 2. 对于模型可以直出的分辨率，也可以主动选择模型直出低分辨率，使用增强获得指定分辨率。
         :type EnhanceSwitch: str
+        :param _FrameInterpolate: 是否开启vidu智能插帧。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :type FrameInterpolate: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -11445,6 +11447,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._InputComplianceCheck = None
         self._OutputComplianceCheck = None
         self._EnhanceSwitch = None
+        self._FrameInterpolate = None
 
     @property
     def StorageMode(self):
@@ -11594,6 +11597,17 @@ class AigcVideoOutputConfig(AbstractModel):
     def EnhanceSwitch(self, EnhanceSwitch):
         self._EnhanceSwitch = EnhanceSwitch
 
+    @property
+    def FrameInterpolate(self):
+        r"""是否开启vidu智能插帧。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :rtype: str
+        """
+        return self._FrameInterpolate
+
+    @FrameInterpolate.setter
+    def FrameInterpolate(self, FrameInterpolate):
+        self._FrameInterpolate = FrameInterpolate
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
@@ -11608,6 +11622,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._InputComplianceCheck = params.get("InputComplianceCheck")
         self._OutputComplianceCheck = params.get("OutputComplianceCheck")
         self._EnhanceSwitch = params.get("EnhanceSwitch")
+        self._FrameInterpolate = params.get("FrameInterpolate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18667,13 +18682,11 @@ class CreateAigcImageTaskRequest(AbstractModel):
 <li>GEM：Gemini；</li>
 <li>Qwen：千问。</li>
 <li>Hunyuan：混元。</li>
-<li>Mingmou：明眸。</li>
         :type ModelName: str
         :param _ModelVersion: 模型版本。取值：
 <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-<li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
         :param _FileInfos: AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
         :type FileInfos: list of AigcImageTaskInputFileInfo
@@ -18724,7 +18737,6 @@ class CreateAigcImageTaskRequest(AbstractModel):
 <li>GEM：Gemini；</li>
 <li>Qwen：千问。</li>
 <li>Hunyuan：混元。</li>
-<li>Mingmou：明眸。</li>
         :rtype: str
         """
         return self._ModelName
@@ -18739,7 +18751,6 @@ class CreateAigcImageTaskRequest(AbstractModel):
 <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-<li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :rtype: str
         """
         return self._ModelVersion

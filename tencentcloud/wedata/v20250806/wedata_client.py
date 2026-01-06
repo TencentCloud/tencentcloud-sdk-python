@@ -739,6 +739,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteProject(self, request):
+        r"""删除项目
+
+        :param request: Request instance for DeleteProject.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.DeleteProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.DeleteProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteProjectMember(self, request):
         r"""删除项目用户
 

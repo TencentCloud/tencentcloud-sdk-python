@@ -583,6 +583,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteProject(
+            self,
+            request: models.DeleteProjectRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProjectResponse:
+        """
+        删除项目
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteProjectMember(
             self,
             request: models.DeleteProjectMemberRequest,

@@ -3600,13 +3600,11 @@ class GetTagKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :type PaginationToken: str
-        :param _MaxResults: 每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        :param _MaxResults: <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :type MaxResults: int
-        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
         """
         self._PaginationToken = None
@@ -3615,8 +3613,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        r"""<p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3627,8 +3624,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        r"""<p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -3639,7 +3635,7 @@ class GetTagKeysRequest(AbstractModel):
 
     @property
     def Category(self):
-        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""<p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :rtype: str
         """
         return self._Category
@@ -3670,9 +3666,9 @@ class GetTagKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
+        :param _PaginationToken: <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :type PaginationToken: str
-        :param _TagKeys: 标签键信息。
+        :param _TagKeys: <p>标签键信息。</p>
         :type TagKeys: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3683,7 +3679,7 @@ class GetTagKeysResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""<p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3694,7 +3690,7 @@ class GetTagKeysResponse(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键信息。
+        r"""<p>标签键信息。</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -3728,17 +3724,13 @@ class GetTagValuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKeys: 标签键。
-返回所有标签键列表对应的标签值。
-最大长度：20
+        :param _TagKeys: <p>标签键。返回所有标签键列表对应的标签值。最大长度：20</p>
         :type TagKeys: list of str
-        :param _PaginationToken: 从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :type PaginationToken: str
-        :param _MaxResults: 每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        :param _MaxResults: <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :type MaxResults: int
-        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
         """
         self._TagKeys = None
@@ -3748,9 +3740,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键。
-返回所有标签键列表对应的标签值。
-最大长度：20
+        r"""<p>标签键。返回所有标签键列表对应的标签值。最大长度：20</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -3761,8 +3751,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        r"""<p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3773,8 +3762,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        r"""<p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -3785,7 +3773,7 @@ class GetTagValuesRequest(AbstractModel):
 
     @property
     def Category(self):
-        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""<p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :rtype: str
         """
         return self._Category
@@ -3817,9 +3805,9 @@ class GetTagValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
+        :param _PaginationToken: <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :type PaginationToken: str
-        :param _Tags: 标签列表。
+        :param _Tags: <p>标签列表。</p>
         :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3830,7 +3818,7 @@ class GetTagValuesResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""<p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3841,7 +3829,7 @@ class GetTagValuesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表。
+        r"""<p>标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -3880,17 +3868,13 @@ class GetTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :type PaginationToken: str
-        :param _MaxResults: 每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        :param _MaxResults: <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :type MaxResults: int
-        :param _TagKeys: 标签键。
-返回所有标签键列表对应的标签。
-最大长度：20
+        :param _TagKeys: <p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
         :type TagKeys: list of str
-        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
         """
         self._PaginationToken = None
@@ -3900,8 +3884,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        r"""<p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3912,8 +3895,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每一页返回的数据最大条数，最大1000。
-缺省值：50。
+        r"""<p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -3924,9 +3906,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键。
-返回所有标签键列表对应的标签。
-最大长度：20
+        r"""<p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -3937,7 +3917,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def Category(self):
-        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""<p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :rtype: str
         """
         return self._Category
@@ -3969,9 +3949,9 @@ class GetTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
+        :param _PaginationToken: <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :type PaginationToken: str
-        :param _Tags: 标签列表。
+        :param _Tags: <p>标签列表。</p>
         :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3982,7 +3962,7 @@ class GetTagsResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""获取的下一页的Token值，如果当前是最后一页，返回为空
+        r"""<p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3993,7 +3973,7 @@ class GetTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表。
+        r"""<p>标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags

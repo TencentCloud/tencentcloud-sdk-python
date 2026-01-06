@@ -9724,11 +9724,14 @@ class DescribeScoresRequest(AbstractModel):
         :type ID: int
         :param _IsDemo: 该参数已废弃
         :type IsDemo: int
+        :param _IDList: 项目 ID 列表
+        :type IDList: list of int
         """
         self._EndTime = None
         self._StartTime = None
         self._ID = None
         self._IsDemo = None
+        self._IDList = None
 
     @property
     def EndTime(self):
@@ -9778,12 +9781,24 @@ class DescribeScoresRequest(AbstractModel):
 
         self._IsDemo = IsDemo
 
+    @property
+    def IDList(self):
+        r"""项目 ID 列表
+        :rtype: list of int
+        """
+        return self._IDList
+
+    @IDList.setter
+    def IDList(self, IDList):
+        self._IDList = IDList
+
 
     def _deserialize(self, params):
         self._EndTime = params.get("EndTime")
         self._StartTime = params.get("StartTime")
         self._ID = params.get("ID")
         self._IsDemo = params.get("IsDemo")
+        self._IDList = params.get("IDList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

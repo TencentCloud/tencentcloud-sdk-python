@@ -8504,7 +8504,7 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
         :type OrderField: str
         :param _Order: 排序方向; 枚举值: ASC | DESC；默认DESC
         :type Order: str
-        :param _Offset: 分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+        :param _Offset: 分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100...即每页左边为闭区间; 默认0
         :type Offset: int
         :param _Limit: 分页查询每页大小，最大20000; 默认10
         :type Limit: int
@@ -8556,7 +8556,7 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+        r"""分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100...即每页左边为闭区间; 默认0
         :rtype: int
         """
         return self._Offset

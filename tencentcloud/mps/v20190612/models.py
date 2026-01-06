@@ -12079,7 +12079,6 @@ class AigcImageExtraParam(AbstractModel):
 
 不同模型支持的宽高比:
 1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
 
 注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
         :type AspectRatio: str
@@ -12088,19 +12087,6 @@ class AigcImageExtraParam(AbstractModel):
 支持该参数的模型：
 支持选择: 720P, 1080P, 2K, 4K。
 
-1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
-    2K
-    2048x2048 （1:1）
-    2304x1728（4:3）
-    2496x1664 （3:2）
-    2560x1440 （16:9）
-    3024x1296 （21:9）
-    4K
-    4096x4096 （1:1）
-    4694x3520（4:3）
-    4992x3328 （3:2）
-    5404x3040 （16:9）
-    6198x2656 （21:9）
         :type Resolution: str
         """
         self._AspectRatio = None
@@ -12112,7 +12098,6 @@ class AigcImageExtraParam(AbstractModel):
 
 不同模型支持的宽高比:
 1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
 
 注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
         :rtype: str
@@ -12130,19 +12115,6 @@ class AigcImageExtraParam(AbstractModel):
 支持该参数的模型：
 支持选择: 720P, 1080P, 2K, 4K。
 
-1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
-    2K
-    2048x2048 （1:1）
-    2304x1728（4:3）
-    2496x1664 （3:2）
-    2560x1440 （16:9）
-    3024x1296 （21:9）
-    4K
-    4096x4096 （1:1）
-    4694x3520（4:3）
-    4992x3328 （3:2）
-    5404x3040 （16:9）
-    6198x2656 （21:9）
         :rtype: str
         """
         return self._Resolution
@@ -43531,10 +43503,13 @@ class ImageProcessOutputConfig(AbstractModel):
         :type ImageHeight: int
         :param _ImageWidth: 图片输出宽度，单位：像素。
         :type ImageWidth: int
+        :param _ImageSize: 图片输出分辨率，取值：1K/2K/4K。
+        :type ImageSize: str
         """
         self._AspectRatio = None
         self._ImageHeight = None
         self._ImageWidth = None
+        self._ImageSize = None
 
     @property
     def AspectRatio(self):
@@ -43577,11 +43552,23 @@ class ImageProcessOutputConfig(AbstractModel):
     def ImageWidth(self, ImageWidth):
         self._ImageWidth = ImageWidth
 
+    @property
+    def ImageSize(self):
+        r"""图片输出分辨率，取值：1K/2K/4K。
+        :rtype: str
+        """
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
 
     def _deserialize(self, params):
         self._AspectRatio = params.get("AspectRatio")
         self._ImageHeight = params.get("ImageHeight")
         self._ImageWidth = params.get("ImageWidth")
+        self._ImageSize = params.get("ImageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43607,10 +43594,13 @@ class ImageProcessTaskOutput(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _SignedUrl: 输出文件的URL。
         :type SignedUrl: str
+        :param _Content: 图生文任务的处理结果。
+        :type Content: str
         """
         self._Path = None
         self._OutputStorage = None
         self._SignedUrl = None
+        self._Content = None
 
     @property
     def Path(self):
@@ -43647,6 +43637,17 @@ class ImageProcessTaskOutput(AbstractModel):
     def SignedUrl(self, SignedUrl):
         self._SignedUrl = SignedUrl
 
+    @property
+    def Content(self):
+        r"""图生文任务的处理结果。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -43654,6 +43655,7 @@ class ImageProcessTaskOutput(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._SignedUrl = params.get("SignedUrl")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1169,11 +1169,12 @@ back：后视图；
         :param _EnablePBR: 是否开启 PBR材质生成，默认 false。
         :type EnablePBR: bool
         :param _FaceCount: 生成3D模型的面数，默认值为500000。
-可支持生成面数范围，参考值：40000-1500000。
+可支持生成面数范围，参考值：10000-1500000。
+GenerateType中选择LowPoly时，参考值：3000-1500000。
         :type FaceCount: int
         :param _GenerateType: 生成任务类型，默认Normal，参考值：
 Normal：可生成带纹理的几何模型。
-LowPoly：可生成智能减面后的模型。
+LowPoly：可生成智能拓扑后的模型，选择此参数时，面数最低可到达3000面。
 Geometry：可生成不带纹理的几何模型（白模），选择此任务时，EnablePBR参数不生效。
 Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。
         :type GenerateType: str
@@ -1270,7 +1271,8 @@ back：后视图；
     @property
     def FaceCount(self):
         r"""生成3D模型的面数，默认值为500000。
-可支持生成面数范围，参考值：40000-1500000。
+可支持生成面数范围，参考值：10000-1500000。
+GenerateType中选择LowPoly时，参考值：3000-1500000。
         :rtype: int
         """
         return self._FaceCount
@@ -1283,7 +1285,7 @@ back：后视图；
     def GenerateType(self):
         r"""生成任务类型，默认Normal，参考值：
 Normal：可生成带纹理的几何模型。
-LowPoly：可生成智能减面后的模型。
+LowPoly：可生成智能拓扑后的模型，选择此参数时，面数最低可到达3000面。
 Geometry：可生成不带纹理的几何模型（白模），选择此任务时，EnablePBR参数不生效。
 Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。
         :rtype: str

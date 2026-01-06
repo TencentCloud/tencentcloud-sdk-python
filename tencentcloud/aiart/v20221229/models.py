@@ -3911,6 +3911,8 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
         :type Image: :class:`tencentcloud.aiart.v20221229.models.Image`
         :param _Style: 绘画风格当前仅支持美术馆风格（gallerying）。
         :type Style: str
+        :param _Mode: 特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+        :type Mode: str
         :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
@@ -3923,6 +3925,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
         """
         self._Image = None
         self._Style = None
+        self._Mode = None
         self._LogoAdd = None
         self._LogoParam = None
 
@@ -3949,6 +3952,17 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
     @Style.setter
     def Style(self, Style):
         self._Style = Style
+
+    @property
+    def Mode(self):
+        r"""特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
     @property
     def LogoAdd(self):
@@ -3983,6 +3997,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
             self._Image = Image()
             self._Image._deserialize(params.get("Image"))
         self._Style = params.get("Style")
+        self._Mode = params.get("Mode")
         self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()

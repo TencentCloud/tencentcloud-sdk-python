@@ -44746,15 +44746,18 @@ class GatewayQos(AbstractModel):
         :type VpcId: str
         :param _IpAddress: 云服务器内网IP。
         :type IpAddress: str
-        :param _Bandwidth: 流控带宽值。
+        :param _Bandwidth: 网关流控出方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
         :type Bandwidth: int
         :param _CreateTime: 创建时间。
         :type CreateTime: str
+        :param _InBandwidth: 网关流控入方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
+        :type InBandwidth: int
         """
         self._VpcId = None
         self._IpAddress = None
         self._Bandwidth = None
         self._CreateTime = None
+        self._InBandwidth = None
 
     @property
     def VpcId(self):
@@ -44780,7 +44783,7 @@ class GatewayQos(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""流控带宽值。
+        r"""网关流控出方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
         :rtype: int
         """
         return self._Bandwidth
@@ -44800,12 +44803,24 @@ class GatewayQos(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def InBandwidth(self):
+        r"""网关流控入方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
+        :rtype: int
+        """
+        return self._InBandwidth
+
+    @InBandwidth.setter
+    def InBandwidth(self, InBandwidth):
+        self._InBandwidth = InBandwidth
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._IpAddress = params.get("IpAddress")
         self._Bandwidth = params.get("Bandwidth")
         self._CreateTime = params.get("CreateTime")
+        self._InBandwidth = params.get("InBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
