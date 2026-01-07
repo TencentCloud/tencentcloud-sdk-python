@@ -11876,6 +11876,8 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
         :type ScanType: list of str
         :param _Id: 扫描的镜像列表Id
         :type Id: list of int non-negative
+        :param _ExcludeIDs: 剔除扫描的镜像id列表
+        :type ExcludeIDs: list of int non-negative
         :param _IsLatest: 是否最新镜像
         :type IsLatest: bool
         :param _ScanScope: 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
@@ -11893,6 +11895,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
         self._Images = None
         self._ScanType = None
         self._Id = None
+        self._ExcludeIDs = None
         self._IsLatest = None
         self._ScanScope = None
         self._RegistryType = None
@@ -11947,6 +11950,17 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def ExcludeIDs(self):
+        r"""剔除扫描的镜像id列表
+        :rtype: list of int non-negative
+        """
+        return self._ExcludeIDs
+
+    @ExcludeIDs.setter
+    def ExcludeIDs(self, ExcludeIDs):
+        self._ExcludeIDs = ExcludeIDs
 
     @property
     def IsLatest(self):
@@ -12025,6 +12039,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
                 self._Images.append(obj)
         self._ScanType = params.get("ScanType")
         self._Id = params.get("Id")
+        self._ExcludeIDs = params.get("ExcludeIDs")
         self._IsLatest = params.get("IsLatest")
         self._ScanScope = params.get("ScanScope")
         self._RegistryType = params.get("RegistryType")

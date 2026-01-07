@@ -6517,7 +6517,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
         :type Filters: list of Filter
-        :param _Offset: 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+        :param _Offset: 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
         :type Offset: int
         :param _Limit: 分页查询每页大小，默认20
         :type Limit: int
@@ -6563,7 +6563,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+        r"""分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
         :rtype: int
         """
         return self._Offset
@@ -15332,6 +15332,467 @@ class ModifyModelServiceResponse(AbstractModel):
         if params.get("Service") is not None:
             self._Service = Service()
             self._Service._deserialize(params.get("Service"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNotebookRequest(AbstractModel):
+    r"""ModifyNotebook请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: notebook id
+        :type Id: str
+        :param _Name: 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :type Name: str
+        :param _ChargeType: （不允许修改）计算资源付费模式 ，可选值为：
+PREPAID：预付费，即包年包月
+POSTPAID_BY_HOUR：按小时后付费
+        :type ChargeType: str
+        :param _ResourceConf: 计算资源配置
+        :type ResourceConf: :class:`tencentcloud.tione.v20211111.models.ResourceConf`
+        :param _AutoStopping: 是否自动停止
+        :type AutoStopping: bool
+        :param _DirectInternetAccess: 是否访问公网
+        :type DirectInternetAccess: bool
+        :param _RootAccess: 是否ROOT权限
+        :type RootAccess: bool
+        :param _LogEnable: 是否上报日志
+        :type LogEnable: bool
+        :param _ResourceGroupId: 资源组ID(for预付费)
+        :type ResourceGroupId: str
+        :param _VpcId: （不允许修改）Vpc-Id
+        :type VpcId: str
+        :param _SubnetId: （不允许修改）子网Id
+        :type SubnetId: str
+        :param _VolumeSizeInGB: 存储卷大小，单位GB
+        :type VolumeSizeInGB: int
+        :param _VolumeSourceType: （不允许修改）存储的类型。取值包含： 
+    FREE:    预付费的免费存储
+    CLOUD_PREMIUM： 高性能云硬盘
+    CLOUD_SSD： SSD云硬盘
+    CFS:     CFS存储，包含NFS和turbo
+        :type VolumeSourceType: str
+        :param _VolumeSourceCFS: （不允许修改）CFS存储的配置
+        :type VolumeSourceCFS: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        :param _LogConfig: 日志配置
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param _LifecycleScriptId: 生命周期脚本的ID
+        :type LifecycleScriptId: str
+        :param _DefaultCodeRepoId: 默认GIT存储库的ID
+        :type DefaultCodeRepoId: str
+        :param _AdditionalCodeRepoIds: 其他GIT存储库的ID，最多3个
+        :type AdditionalCodeRepoIds: list of str
+        :param _AutomaticStopTime: 自动停止时间，单位小时
+        :type AutomaticStopTime: int
+        :param _Tags: 标签配置
+        :type Tags: list of Tag
+        :param _DataConfigs: 数据配置，只支持WEDATA_HDFS
+        :type DataConfigs: list of DataConfig
+        :param _ImageInfo: 镜像信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _ImageType: 镜像类型，包括SYSTEM、TCR、CCR
+        :type ImageType: str
+        :param _SSHConfig: SSH配置
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _Envs: 自定义环境变量
+        :type Envs: list of EnvVar
+        """
+        self._Id = None
+        self._Name = None
+        self._ChargeType = None
+        self._ResourceConf = None
+        self._AutoStopping = None
+        self._DirectInternetAccess = None
+        self._RootAccess = None
+        self._LogEnable = None
+        self._ResourceGroupId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._VolumeSizeInGB = None
+        self._VolumeSourceType = None
+        self._VolumeSourceCFS = None
+        self._LogConfig = None
+        self._LifecycleScriptId = None
+        self._DefaultCodeRepoId = None
+        self._AdditionalCodeRepoIds = None
+        self._AutomaticStopTime = None
+        self._Tags = None
+        self._DataConfigs = None
+        self._ImageInfo = None
+        self._ImageType = None
+        self._SSHConfig = None
+        self._Envs = None
+
+    @property
+    def Id(self):
+        r"""notebook id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ChargeType(self):
+        r"""（不允许修改）计算资源付费模式 ，可选值为：
+PREPAID：预付费，即包年包月
+POSTPAID_BY_HOUR：按小时后付费
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ResourceConf(self):
+        r"""计算资源配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConf`
+        """
+        return self._ResourceConf
+
+    @ResourceConf.setter
+    def ResourceConf(self, ResourceConf):
+        self._ResourceConf = ResourceConf
+
+    @property
+    def AutoStopping(self):
+        r"""是否自动停止
+        :rtype: bool
+        """
+        return self._AutoStopping
+
+    @AutoStopping.setter
+    def AutoStopping(self, AutoStopping):
+        self._AutoStopping = AutoStopping
+
+    @property
+    def DirectInternetAccess(self):
+        r"""是否访问公网
+        :rtype: bool
+        """
+        return self._DirectInternetAccess
+
+    @DirectInternetAccess.setter
+    def DirectInternetAccess(self, DirectInternetAccess):
+        self._DirectInternetAccess = DirectInternetAccess
+
+    @property
+    def RootAccess(self):
+        r"""是否ROOT权限
+        :rtype: bool
+        """
+        return self._RootAccess
+
+    @RootAccess.setter
+    def RootAccess(self, RootAccess):
+        self._RootAccess = RootAccess
+
+    @property
+    def LogEnable(self):
+        r"""是否上报日志
+        :rtype: bool
+        """
+        return self._LogEnable
+
+    @LogEnable.setter
+    def LogEnable(self, LogEnable):
+        self._LogEnable = LogEnable
+
+    @property
+    def ResourceGroupId(self):
+        r"""资源组ID(for预付费)
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def VpcId(self):
+        r"""（不允许修改）Vpc-Id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""（不允许修改）子网Id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VolumeSizeInGB(self):
+        r"""存储卷大小，单位GB
+        :rtype: int
+        """
+        return self._VolumeSizeInGB
+
+    @VolumeSizeInGB.setter
+    def VolumeSizeInGB(self, VolumeSizeInGB):
+        self._VolumeSizeInGB = VolumeSizeInGB
+
+    @property
+    def VolumeSourceType(self):
+        r"""（不允许修改）存储的类型。取值包含： 
+    FREE:    预付费的免费存储
+    CLOUD_PREMIUM： 高性能云硬盘
+    CLOUD_SSD： SSD云硬盘
+    CFS:     CFS存储，包含NFS和turbo
+        :rtype: str
+        """
+        return self._VolumeSourceType
+
+    @VolumeSourceType.setter
+    def VolumeSourceType(self, VolumeSourceType):
+        self._VolumeSourceType = VolumeSourceType
+
+    @property
+    def VolumeSourceCFS(self):
+        r"""（不允许修改）CFS存储的配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
+        return self._VolumeSourceCFS
+
+    @VolumeSourceCFS.setter
+    def VolumeSourceCFS(self, VolumeSourceCFS):
+        self._VolumeSourceCFS = VolumeSourceCFS
+
+    @property
+    def LogConfig(self):
+        r"""日志配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def LifecycleScriptId(self):
+        r"""生命周期脚本的ID
+        :rtype: str
+        """
+        return self._LifecycleScriptId
+
+    @LifecycleScriptId.setter
+    def LifecycleScriptId(self, LifecycleScriptId):
+        self._LifecycleScriptId = LifecycleScriptId
+
+    @property
+    def DefaultCodeRepoId(self):
+        r"""默认GIT存储库的ID
+        :rtype: str
+        """
+        return self._DefaultCodeRepoId
+
+    @DefaultCodeRepoId.setter
+    def DefaultCodeRepoId(self, DefaultCodeRepoId):
+        self._DefaultCodeRepoId = DefaultCodeRepoId
+
+    @property
+    def AdditionalCodeRepoIds(self):
+        r"""其他GIT存储库的ID，最多3个
+        :rtype: list of str
+        """
+        return self._AdditionalCodeRepoIds
+
+    @AdditionalCodeRepoIds.setter
+    def AdditionalCodeRepoIds(self, AdditionalCodeRepoIds):
+        self._AdditionalCodeRepoIds = AdditionalCodeRepoIds
+
+    @property
+    def AutomaticStopTime(self):
+        r"""自动停止时间，单位小时
+        :rtype: int
+        """
+        return self._AutomaticStopTime
+
+    @AutomaticStopTime.setter
+    def AutomaticStopTime(self, AutomaticStopTime):
+        self._AutomaticStopTime = AutomaticStopTime
+
+    @property
+    def Tags(self):
+        r"""标签配置
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DataConfigs(self):
+        r"""数据配置，只支持WEDATA_HDFS
+        :rtype: list of DataConfig
+        """
+        return self._DataConfigs
+
+    @DataConfigs.setter
+    def DataConfigs(self, DataConfigs):
+        self._DataConfigs = DataConfigs
+
+    @property
+    def ImageInfo(self):
+        r"""镜像信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def ImageType(self):
+        r"""镜像类型，包括SYSTEM、TCR、CCR
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def SSHConfig(self):
+        r"""SSH配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
+    @property
+    def Envs(self):
+        r"""自定义环境变量
+        :rtype: list of EnvVar
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ChargeType = params.get("ChargeType")
+        if params.get("ResourceConf") is not None:
+            self._ResourceConf = ResourceConf()
+            self._ResourceConf._deserialize(params.get("ResourceConf"))
+        self._AutoStopping = params.get("AutoStopping")
+        self._DirectInternetAccess = params.get("DirectInternetAccess")
+        self._RootAccess = params.get("RootAccess")
+        self._LogEnable = params.get("LogEnable")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._VolumeSizeInGB = params.get("VolumeSizeInGB")
+        self._VolumeSourceType = params.get("VolumeSourceType")
+        if params.get("VolumeSourceCFS") is not None:
+            self._VolumeSourceCFS = CFSConfig()
+            self._VolumeSourceCFS._deserialize(params.get("VolumeSourceCFS"))
+        if params.get("LogConfig") is not None:
+            self._LogConfig = LogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
+        self._LifecycleScriptId = params.get("LifecycleScriptId")
+        self._DefaultCodeRepoId = params.get("DefaultCodeRepoId")
+        self._AdditionalCodeRepoIds = params.get("AdditionalCodeRepoIds")
+        self._AutomaticStopTime = params.get("AutomaticStopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("DataConfigs") is not None:
+            self._DataConfigs = []
+            for item in params.get("DataConfigs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self._DataConfigs.append(obj)
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        self._ImageType = params.get("ImageType")
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNotebookResponse(AbstractModel):
+    r"""ModifyNotebook返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

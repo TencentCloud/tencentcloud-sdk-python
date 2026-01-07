@@ -86383,6 +86383,8 @@ class NetAttackEventInfo(AbstractModel):
         :type HostOpProcessTree: str
         :param _IPAnalyse: IP分析
         :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        :param _NetResponsePayload: 响应数据包 base64编码
+        :type NetResponsePayload: str
         """
         self._Status = None
         self._SrcIP = None
@@ -86408,6 +86410,7 @@ class NetAttackEventInfo(AbstractModel):
         self._HostOpType = None
         self._HostOpProcessTree = None
         self._IPAnalyse = None
+        self._NetResponsePayload = None
 
     @property
     def Status(self):
@@ -86673,6 +86676,17 @@ class NetAttackEventInfo(AbstractModel):
     def IPAnalyse(self, IPAnalyse):
         self._IPAnalyse = IPAnalyse
 
+    @property
+    def NetResponsePayload(self):
+        r"""响应数据包 base64编码
+        :rtype: str
+        """
+        return self._NetResponsePayload
+
+    @NetResponsePayload.setter
+    def NetResponsePayload(self, NetResponsePayload):
+        self._NetResponsePayload = NetResponsePayload
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -86703,6 +86717,7 @@ class NetAttackEventInfo(AbstractModel):
         if params.get("IPAnalyse") is not None:
             self._IPAnalyse = IPAnalyse()
             self._IPAnalyse._deserialize(params.get("IPAnalyse"))
+        self._NetResponsePayload = params.get("NetResponsePayload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

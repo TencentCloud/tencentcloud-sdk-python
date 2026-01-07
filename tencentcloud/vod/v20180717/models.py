@@ -18941,7 +18941,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
+        :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
         :type ModelName: str
         :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
@@ -19016,7 +19016,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>GV：Google Veo；</li><li>OS：OpenAI Sora；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
+        r"""模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
         :rtype: str
         """
         return self._ModelName
@@ -70652,7 +70652,9 @@ class SceneAigcImageOutputConfig(AbstractModel):
         :type ClassId: int
         :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ExpireTime: str
-        :param _AspectRatio: 指定所生成图片的宽高比。输入格式为 W:H。仅生商品图场景有效。
+        :param _AspectRatio: 指定所生成图片的宽高比。输入格式为 W:H。
+
+仅生商品图场景有效，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
         :type AspectRatio: str
         """
         self._StorageMode = None
@@ -70709,7 +70711,9 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""指定所生成图片的宽高比。输入格式为 W:H。仅生商品图场景有效。
+        r"""指定所生成图片的宽高比。输入格式为 W:H。
+
+仅生商品图场景有效，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
         :rtype: str
         """
         return self._AspectRatio

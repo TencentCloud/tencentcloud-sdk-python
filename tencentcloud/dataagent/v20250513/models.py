@@ -37,6 +37,8 @@ class AddChunkRequest(AbstractModel):
         :type Content: str
         :param _AfterChunkId: 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
         :type AfterChunkId: str
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
         """
         self._InstanceId = None
         self._FileId = None
@@ -44,6 +46,7 @@ class AddChunkRequest(AbstractModel):
         self._InsertPos = None
         self._Content = None
         self._AfterChunkId = None
+        self._KnowledgeBaseId = None
 
     @property
     def InstanceId(self):
@@ -111,6 +114,17 @@ class AddChunkRequest(AbstractModel):
     def AfterChunkId(self, AfterChunkId):
         self._AfterChunkId = AfterChunkId
 
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -119,6 +133,7 @@ class AddChunkRequest(AbstractModel):
         self._InsertPos = params.get("InsertPos")
         self._Content = params.get("Content")
         self._AfterChunkId = params.get("AfterChunkId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -706,10 +721,13 @@ class DeleteChunkRequest(AbstractModel):
         :type FileId: str
         :param _ChunkIds: 切片ID
         :type ChunkIds: list of str
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
         """
         self._InstanceId = None
         self._FileId = None
         self._ChunkIds = None
+        self._KnowledgeBaseId = None
 
     @property
     def InstanceId(self):
@@ -744,11 +762,23 @@ class DeleteChunkRequest(AbstractModel):
     def ChunkIds(self, ChunkIds):
         self._ChunkIds = ChunkIds
 
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._FileId = params.get("FileId")
         self._ChunkIds = params.get("ChunkIds")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1931,11 +1961,14 @@ class ModifyChunkRequest(AbstractModel):
         :type ChunkId: str
         :param _Content: 编辑后的文本
         :type Content: str
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
         """
         self._InstanceId = None
         self._FileId = None
         self._ChunkId = None
         self._Content = None
+        self._KnowledgeBaseId = None
 
     @property
     def InstanceId(self):
@@ -1981,12 +2014,24 @@ class ModifyChunkRequest(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._FileId = params.get("FileId")
         self._ChunkId = params.get("ChunkId")
         self._Content = params.get("Content")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2042,12 +2087,18 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
         :type KnowledgeBaseName: str
         :param _KnowledgeBaseDesc: 知识库描述，create和update时必填
         :type KnowledgeBaseDesc: str
+        :param _UseScope: 1仅自己使用，2指定用户，0全员
+        :type UseScope: int
+        :param _AuthorityUins: 可使用用户列表
+        :type AuthorityUins: list of str
         """
         self._InstanceId = None
         self._OperateType = None
         self._KnowledgeBaseId = None
         self._KnowledgeBaseName = None
         self._KnowledgeBaseDesc = None
+        self._UseScope = None
+        self._AuthorityUins = None
 
     @property
     def InstanceId(self):
@@ -2104,6 +2155,28 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
     def KnowledgeBaseDesc(self, KnowledgeBaseDesc):
         self._KnowledgeBaseDesc = KnowledgeBaseDesc
 
+    @property
+    def UseScope(self):
+        r"""1仅自己使用，2指定用户，0全员
+        :rtype: int
+        """
+        return self._UseScope
+
+    @UseScope.setter
+    def UseScope(self, UseScope):
+        self._UseScope = UseScope
+
+    @property
+    def AuthorityUins(self):
+        r"""可使用用户列表
+        :rtype: list of str
+        """
+        return self._AuthorityUins
+
+    @AuthorityUins.setter
+    def AuthorityUins(self, AuthorityUins):
+        self._AuthorityUins = AuthorityUins
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2111,6 +2184,8 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
         self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         self._KnowledgeBaseName = params.get("KnowledgeBaseName")
         self._KnowledgeBaseDesc = params.get("KnowledgeBaseDesc")
+        self._UseScope = params.get("UseScope")
+        self._AuthorityUins = params.get("AuthorityUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2175,9 +2250,12 @@ class QueryChunkListRequest(AbstractModel):
         :type Page: int
         :param _PageSize: 默认一页展示 10 条
         :type PageSize: int
+        :param _KnowledgeBaseId: 知识库id
+        :type KnowledgeBaseId: str
         """
         self._Page = None
         self._PageSize = None
+        self._KnowledgeBaseId = None
 
     @property
     def Page(self):
@@ -2201,10 +2279,22 @@ class QueryChunkListRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def KnowledgeBaseId(self):
+        r"""知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
 
     def _deserialize(self, params):
         self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

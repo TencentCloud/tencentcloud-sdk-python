@@ -1112,6 +1112,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyNotebook(self, request):
+        r"""修改Notebook
+
+        :param request: Request instance for ModifyNotebook.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNotebook", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNotebookResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyNotebookTags(self, request):
         r"""修改Notebook标签
 

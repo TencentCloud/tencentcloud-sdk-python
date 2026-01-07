@@ -7812,11 +7812,7 @@ class CreateDocumentRequest(AbstractModel):
         :type FormFields: list of FormField
         :param _NeedPreview: 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
         :type NeedPreview: bool
-        :param _PreviewType: 预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
-<li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>
-注: `1.此参数在NeedPreview 为true时有效`
-`2.动态表格控件不支持H5链接方式预览`
+        :param _PreviewType: 预览模式下产生的预览链接类型 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: `1.此参数在NeedPreview 为true时有效`
         :type PreviewType: int
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -7913,11 +7909,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def PreviewType(self):
-        r"""预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
-<li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>
-注: `1.此参数在NeedPreview 为true时有效`
-`2.动态表格控件不支持H5链接方式预览`
+        r"""预览模式下产生的预览链接类型 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: `1.此参数在NeedPreview 为true时有效`
         :rtype: int
         """
         return self._PreviewType
@@ -30623,6 +30615,7 @@ class FlowBrief(AbstractModel):
 <li> **8** : 等待填写</li>
 <li> **9** : 部分填写</li>
 <li> **10** : 已拒填</li>
+<li> **16** : 已失效（签署期间有签署人改名等原因导致）</li>
 <li> **21** : 已解除</li></ul>
         :type FlowStatus: int
         :param _CreatedOn: 合同流程创建时间，格式为Unix标准时间戳（秒）。
@@ -30712,6 +30705,7 @@ class FlowBrief(AbstractModel):
 <li> **8** : 等待填写</li>
 <li> **9** : 部分填写</li>
 <li> **10** : 已拒填</li>
+<li> **16** : 已失效（签署期间有签署人改名等原因导致）</li>
 <li> **21** : 已解除</li></ul>
         :rtype: int
         """
@@ -31588,7 +31582,21 @@ class FlowDetailInfo(AbstractModel):
         :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
 该字段将被废弃，不建议使用。	
         :type FlowType: str
-        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>	
+        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值 
+<ul>
+<li> **0** : 未开启流程(合同中不存在填写环节)</li> 
+<li> **1** : 待签署</li>
+ <li> **2** : 部分签署</li>
+ <li> **3** : 已拒签</li>
+ <li> **4** : 已签署</li> 
+<li> **5** : 已过期</li>
+ <li> **6** : 已撤销</li> 
+<li> **7** : 未开启流程(合同中存在填写环节)</li>
+ <li> **8** : 等待填写</li>
+ <li> **9** : 部分填写</li>
+ <li> **10** : 已拒填</li> 
+<li> **16** : 已失效（可能因为参与方修改姓名等原因）</li>
+ <li> **21** : 已解除</li></ul>	
         :type FlowStatus: int
         :param _FlowMessage: 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。	
         :type FlowMessage: str
@@ -31659,7 +31667,21 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
-        r"""合同流程当前的签署状态, 会存在下列的状态值 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>	
+        r"""合同流程当前的签署状态, 会存在下列的状态值 
+<ul>
+<li> **0** : 未开启流程(合同中不存在填写环节)</li> 
+<li> **1** : 待签署</li>
+ <li> **2** : 部分签署</li>
+ <li> **3** : 已拒签</li>
+ <li> **4** : 已签署</li> 
+<li> **5** : 已过期</li>
+ <li> **6** : 已撤销</li> 
+<li> **7** : 未开启流程(合同中存在填写环节)</li>
+ <li> **8** : 等待填写</li>
+ <li> **9** : 部分填写</li>
+ <li> **10** : 已拒填</li> 
+<li> **16** : 已失效（可能因为参与方修改姓名等原因）</li>
+ <li> **21** : 已解除</li></ul>	
         :rtype: int
         """
         return self._FlowStatus

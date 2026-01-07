@@ -876,6 +876,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyNotebook(
+            self,
+            request: models.ModifyNotebookRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotebookResponse:
+        """
+        修改Notebook
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotebook"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotebookResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNotebookTags(
             self,
             request: models.ModifyNotebookTagsRequest,

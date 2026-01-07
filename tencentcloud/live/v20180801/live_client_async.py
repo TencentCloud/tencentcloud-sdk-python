@@ -3079,6 +3079,27 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InsertTaskTemporaryFiles(
+            self,
+            request: models.InsertTaskTemporaryFilesRequest,
+            opts: Dict = None,
+    ) -> models.InsertTaskTemporaryFilesResponse:
+        """
+        可通过调用该接口，对点播源的直播拉流任务进行插播操作。
+        注意：
+        1. 仅支持对有效且运行中的点播源任务进行插播操作。
+        2. 拉转推插播文件时，事件及回调中的索引均保持为插播前的值。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InsertTaskTemporaryFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InsertTaskTemporaryFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCaster(
             self,
             request: models.ModifyCasterRequest,

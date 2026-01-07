@@ -1084,12 +1084,15 @@ class Concurrency(AbstractModel):
         :type GracefulStopSeconds: int
         :param _Resources: 资源数
         :type Resources: int
+        :param _Mode: 压力模型
+        :type Mode: str
         """
         self._Stages = None
         self._IterationCount = None
         self._MaxRequestsPerSecond = None
         self._GracefulStopSeconds = None
         self._Resources = None
+        self._Mode = None
 
     @property
     def Stages(self):
@@ -1147,6 +1150,17 @@ class Concurrency(AbstractModel):
     def Resources(self, Resources):
         self._Resources = Resources
 
+    @property
+    def Mode(self):
+        r"""压力模型
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
 
     def _deserialize(self, params):
         if params.get("Stages") is not None:
@@ -1159,6 +1173,7 @@ class Concurrency(AbstractModel):
         self._MaxRequestsPerSecond = params.get("MaxRequestsPerSecond")
         self._GracefulStopSeconds = params.get("GracefulStopSeconds")
         self._Resources = params.get("Resources")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10667,6 +10682,8 @@ class RequestsPerSecond(AbstractModel):
         :type TargetRequestsPerSecond: int
         :param _GracefulStopSeconds: 优雅关停的等待时间
         :type GracefulStopSeconds: int
+        :param _IterationCount: 场景最大执行次数
+        :type IterationCount: int
         """
         self._MaxRequestsPerSecond = None
         self._DurationSeconds = None
@@ -10675,6 +10692,7 @@ class RequestsPerSecond(AbstractModel):
         self._StartRequestsPerSecond = None
         self._TargetRequestsPerSecond = None
         self._GracefulStopSeconds = None
+        self._IterationCount = None
 
     @property
     def MaxRequestsPerSecond(self):
@@ -10753,6 +10771,17 @@ class RequestsPerSecond(AbstractModel):
     def GracefulStopSeconds(self, GracefulStopSeconds):
         self._GracefulStopSeconds = GracefulStopSeconds
 
+    @property
+    def IterationCount(self):
+        r"""场景最大执行次数
+        :rtype: int
+        """
+        return self._IterationCount
+
+    @IterationCount.setter
+    def IterationCount(self, IterationCount):
+        self._IterationCount = IterationCount
+
 
     def _deserialize(self, params):
         self._MaxRequestsPerSecond = params.get("MaxRequestsPerSecond")
@@ -10762,6 +10791,7 @@ class RequestsPerSecond(AbstractModel):
         self._StartRequestsPerSecond = params.get("StartRequestsPerSecond")
         self._TargetRequestsPerSecond = params.get("TargetRequestsPerSecond")
         self._GracefulStopSeconds = params.get("GracefulStopSeconds")
+        self._IterationCount = params.get("IterationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

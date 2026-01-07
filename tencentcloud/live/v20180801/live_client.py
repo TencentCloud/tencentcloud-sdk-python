@@ -3895,6 +3895,32 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InsertTaskTemporaryFiles(self, request):
+        r"""可通过调用该接口，对点播源的直播拉流任务进行插播操作。
+        注意：
+        1. 仅支持对有效且运行中的点播源任务进行插播操作。
+        2. 拉转推插播文件时，事件及回调中的索引均保持为插播前的值。
+
+        :param request: Request instance for InsertTaskTemporaryFiles.
+        :type request: :class:`tencentcloud.live.v20180801.models.InsertTaskTemporaryFilesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.InsertTaskTemporaryFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InsertTaskTemporaryFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.InsertTaskTemporaryFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCaster(self, request):
         r"""该接口用来设置导播台的描述、名称、录制模板id等参数。
 

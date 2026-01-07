@@ -27598,6 +27598,159 @@ class HttpStatusInfo(AbstractModel):
         
 
 
+class InsertTaskTemporaryFilesRequest(AbstractModel):
+    r"""InsertTaskTemporaryFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 直播拉流任务 ID。
+        :type TaskId: str
+        :param _TemporaryFiles: 插播文件列表，支持一次性插播多个文件，文件个数最大支持30个。可在轮播过程中追加新的插播文件。
+        :type TemporaryFiles: list of str
+        :param _Operator: 操作人名称。
+        :type Operator: str
+        :param _InsertAfterIndex: 将文件插在当前轮播序列的指定位置后面。索引序列从1开始。默认为：0，表示播完当前文件立即播放插入文件。注意：索引不要超过当前总文件个数，否则按播完全部文件后再处理插播文件。
+        :type InsertAfterIndex: int
+        :param _InsertPriorityType: 用于多个文件插播在同一个轮播序号之后时，可指定队列顺序。
+0 - 最高优先级队列。默认值。
+1 - 中等优先级队列。
+2 - 最低优先级队列。
+场景示例：
+比如当前播放第2个文件，多个新文件插播在第2个文件之后，播完第二个轮播文件之后，优先播放InsertPriorityType为0的插播队列中的文件，再播放InsertPriorityType为1的插播队列中的文件，最后播放InsertPriorityType为2的插播队列文件。
+如果插播无队列优先级要求，则无需使用此参数。
+        :type InsertPriorityType: int
+        :param _InsertContext: 插播上下文信息。由用户自定义传入。当播放到使用本此插播请求插入的文件时，在文件播放开始和文件播放结束的回调时，将此上下文信息通过创建任务携带的回调地址回调给用户。
+注意：如果有关联每个插播文件的信息需要回调时，可将需要回调的信息自行拼接到插播文件URL上，通过回调信息中的URL进行读取使用。
+        :type InsertContext: str
+        """
+        self._TaskId = None
+        self._TemporaryFiles = None
+        self._Operator = None
+        self._InsertAfterIndex = None
+        self._InsertPriorityType = None
+        self._InsertContext = None
+
+    @property
+    def TaskId(self):
+        r"""直播拉流任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TemporaryFiles(self):
+        r"""插播文件列表，支持一次性插播多个文件，文件个数最大支持30个。可在轮播过程中追加新的插播文件。
+        :rtype: list of str
+        """
+        return self._TemporaryFiles
+
+    @TemporaryFiles.setter
+    def TemporaryFiles(self, TemporaryFiles):
+        self._TemporaryFiles = TemporaryFiles
+
+    @property
+    def Operator(self):
+        r"""操作人名称。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def InsertAfterIndex(self):
+        r"""将文件插在当前轮播序列的指定位置后面。索引序列从1开始。默认为：0，表示播完当前文件立即播放插入文件。注意：索引不要超过当前总文件个数，否则按播完全部文件后再处理插播文件。
+        :rtype: int
+        """
+        return self._InsertAfterIndex
+
+    @InsertAfterIndex.setter
+    def InsertAfterIndex(self, InsertAfterIndex):
+        self._InsertAfterIndex = InsertAfterIndex
+
+    @property
+    def InsertPriorityType(self):
+        r"""用于多个文件插播在同一个轮播序号之后时，可指定队列顺序。
+0 - 最高优先级队列。默认值。
+1 - 中等优先级队列。
+2 - 最低优先级队列。
+场景示例：
+比如当前播放第2个文件，多个新文件插播在第2个文件之后，播完第二个轮播文件之后，优先播放InsertPriorityType为0的插播队列中的文件，再播放InsertPriorityType为1的插播队列中的文件，最后播放InsertPriorityType为2的插播队列文件。
+如果插播无队列优先级要求，则无需使用此参数。
+        :rtype: int
+        """
+        return self._InsertPriorityType
+
+    @InsertPriorityType.setter
+    def InsertPriorityType(self, InsertPriorityType):
+        self._InsertPriorityType = InsertPriorityType
+
+    @property
+    def InsertContext(self):
+        r"""插播上下文信息。由用户自定义传入。当播放到使用本此插播请求插入的文件时，在文件播放开始和文件播放结束的回调时，将此上下文信息通过创建任务携带的回调地址回调给用户。
+注意：如果有关联每个插播文件的信息需要回调时，可将需要回调的信息自行拼接到插播文件URL上，通过回调信息中的URL进行读取使用。
+        :rtype: str
+        """
+        return self._InsertContext
+
+    @InsertContext.setter
+    def InsertContext(self, InsertContext):
+        self._InsertContext = InsertContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TemporaryFiles = params.get("TemporaryFiles")
+        self._Operator = params.get("Operator")
+        self._InsertAfterIndex = params.get("InsertAfterIndex")
+        self._InsertPriorityType = params.get("InsertPriorityType")
+        self._InsertContext = params.get("InsertContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InsertTaskTemporaryFilesResponse(AbstractModel):
+    r"""InsertTaskTemporaryFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class LiveCertDomainInfo(AbstractModel):
     r"""用作批量绑定域名和证书。
 

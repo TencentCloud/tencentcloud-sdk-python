@@ -3196,7 +3196,7 @@ class BackupConfig(AbstractModel):
         r"""
         :param _ReplicationMode: 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
         :type ReplicationMode: str
-        :param _Zone: 第二个从库可用区的正式名称，如ap-shanghai-1
+        :param _Zone: 第二个从库可用区的正式名称，如 ap-shanghai-2
         :type Zone: str
         :param _Vip: 第二个从库内网IP地址
         :type Vip: str
@@ -3221,7 +3221,7 @@ class BackupConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""第二个从库可用区的正式名称，如ap-shanghai-1
+        r"""第二个从库可用区的正式名称，如 ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -16496,7 +16496,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: 主实例部署方式，可能的返回值：0 - 单可用部署，1 - 多可用区部署。
         :type DeployMode: int
-        :param _Zone: 实例可用区信息，格式如 "ap-shanghai-1"。
+        :param _Zone: 实例可用区信息，格式如 "ap-shanghai-2"。
         :type Zone: str
         :param _SlaveConfig: 备库的配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16541,7 +16541,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     @property
     def Zone(self):
-        r"""实例可用区信息，格式如 "ap-shanghai-1"。
+        r"""实例可用区信息，格式如 "ap-shanghai-2"。
         :rtype: str
         """
         return self._Zone
@@ -35031,7 +35031,7 @@ class RoInstanceInfo(AbstractModel):
         :type Weight: int
         :param _Region: RO实例所在区域名称，如ap-shanghai
         :type Region: str
-        :param _Zone: RO可用区的正式名称，如ap-shanghai-1
+        :param _Zone: RO可用区的正式名称，如 ap-shanghai-2
         :type Zone: str
         :param _InstanceId: RO实例ID，格式如：cdbro-c1nl9rpv
         :type InstanceId: str
@@ -35152,7 +35152,7 @@ class RoInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""RO可用区的正式名称，如ap-shanghai-1
+        r"""RO可用区的正式名称，如 ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -36466,7 +36466,7 @@ class SlaveConfig(AbstractModel):
         r"""
         :param _ReplicationMode: 从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
         :type ReplicationMode: str
-        :param _Zone: 从库可用区的正式名称，如ap-shanghai-1
+        :param _Zone: 从库可用区的正式名称，如 ap-shanghai-2
         :type Zone: str
         """
         self._ReplicationMode = None
@@ -36485,7 +36485,7 @@ class SlaveConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""从库可用区的正式名称，如ap-shanghai-1
+        r"""从库可用区的正式名称，如 ap-shanghai-2
         :rtype: str
         """
         return self._Zone

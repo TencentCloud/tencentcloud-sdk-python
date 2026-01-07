@@ -24225,6 +24225,7 @@ class FlowDetailInfo(AbstractModel):
 <li> **ALL** :合同签署完成</li>
 <li> **DEADLINE** :合同流签(合同过期)</li>
 <li> **CANCEL** :合同撤回</li>
+<li> **INVALID** : 已失效（签署期间有签署人改名等原因导致）</li>
 <li> **RELIEVED** :解除协议（已解除）</li></ul>
  
         :type FlowStatus: str
@@ -24310,6 +24311,7 @@ class FlowDetailInfo(AbstractModel):
 <li> **ALL** :合同签署完成</li>
 <li> **DEADLINE** :合同流签(合同过期)</li>
 <li> **CANCEL** :合同撤回</li>
+<li> **INVALID** : 已失效（签署期间有签署人改名等原因导致）</li>
 <li> **RELIEVED** :解除协议（已解除）</li></ul>
  
         :rtype: str
