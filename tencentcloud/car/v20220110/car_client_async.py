@@ -61,6 +61,24 @@ class CarClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConcurrentCount(
+            self,
+            request: models.DescribeConcurrentCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConcurrentCountResponse:
+        """
+        获取并发计数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConcurrentCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConcurrentCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroySession(
             self,
             request: models.DestroySessionRequest,

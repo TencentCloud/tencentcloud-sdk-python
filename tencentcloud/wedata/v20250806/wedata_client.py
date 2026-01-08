@@ -279,6 +279,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateQualityRule(self, request):
+        r"""创建质量规则接口
+
+        :param request: Request instance for CreateQualityRule.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQualityRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQualityRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQualityRuleGroup(self, request):
         r"""创建监控任务
 
@@ -2593,6 +2616,32 @@ class WedataClient(AbstractClient):
             body = self.call("ListQualityRuleGroupExecResultsByPage", params, headers=headers)
             response = json.loads(body)
             model = models.ListQualityRuleGroupExecResultsByPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQualityRuleGroups(self, request):
+        r"""【过滤条件】
+        {表idTableId,支持匹配}       {任务负责人Operator,支持匹配}
+        【必要字段】
+        {数据来源TableId}
+
+        :param request: Request instance for ListQualityRuleGroups.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListQualityRuleGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQualityRuleGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQualityRuleGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

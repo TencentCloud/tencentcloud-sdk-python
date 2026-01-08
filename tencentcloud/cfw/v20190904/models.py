@@ -15450,13 +15450,14 @@ class EdgeIpInfo(AbstractModel):
         :param _IsSerialRegion: 0: 该地域暂未支持串行
 1: 该用户未在该地域配置串行带宽
 2: 该用户已在该地域配置串行带宽，可以开启串行开关
+3. 该地域可以支持串行，但是未部署公共集群
         :type IsSerialRegion: int
         :param _IsPublicClb: 0: 不是公网CLB 可以开启串行开关
 1: 是公网CLB 不可以开启串行开关
 
         :type IsPublicClb: int
         :param _EndpointBindEipNum: 0: 开启开关时提示要创建私有连接。
-1: 关闭该开关是提示删除私有连接。
+1: 关闭该开关时提示删除私有连接。
 如果大于 1: 关闭开关 、开启开关不需提示创建删除私有连接。
         :type EndpointBindEipNum: int
         :param _ScanMode: 扫描深度
@@ -15484,6 +15485,11 @@ class EdgeIpInfo(AbstractModel):
         :type Domain: str
         :param _OverUsedStatus: IP超量状态
         :type OverUsedStatus: int
+        :param _SwitchSupportType: 0 都不支持
+1 支持旁路
+2 支持串行
+3 旁路串行都支持
+        :type SwitchSupportType: int
         """
         self._PublicIp = None
         self._PublicIpType = None
@@ -15508,6 +15514,7 @@ class EdgeIpInfo(AbstractModel):
         self._SwitchWeight = None
         self._Domain = None
         self._OverUsedStatus = None
+        self._SwitchSupportType = None
 
     @property
     def PublicIp(self):
@@ -15637,6 +15644,7 @@ class EdgeIpInfo(AbstractModel):
         r"""0: 该地域暂未支持串行
 1: 该用户未在该地域配置串行带宽
 2: 该用户已在该地域配置串行带宽，可以开启串行开关
+3. 该地域可以支持串行，但是未部署公共集群
         :rtype: int
         """
         return self._IsSerialRegion
@@ -15661,7 +15669,7 @@ class EdgeIpInfo(AbstractModel):
     @property
     def EndpointBindEipNum(self):
         r"""0: 开启开关时提示要创建私有连接。
-1: 关闭该开关是提示删除私有连接。
+1: 关闭该开关时提示删除私有连接。
 如果大于 1: 关闭开关 、开启开关不需提示创建删除私有连接。
         :rtype: int
         """
@@ -15777,6 +15785,20 @@ class EdgeIpInfo(AbstractModel):
     def OverUsedStatus(self, OverUsedStatus):
         self._OverUsedStatus = OverUsedStatus
 
+    @property
+    def SwitchSupportType(self):
+        r"""0 都不支持
+1 支持旁路
+2 支持串行
+3 旁路串行都支持
+        :rtype: int
+        """
+        return self._SwitchSupportType
+
+    @SwitchSupportType.setter
+    def SwitchSupportType(self, SwitchSupportType):
+        self._SwitchSupportType = SwitchSupportType
+
 
     def _deserialize(self, params):
         self._PublicIp = params.get("PublicIp")
@@ -15802,6 +15824,7 @@ class EdgeIpInfo(AbstractModel):
         self._SwitchWeight = params.get("SwitchWeight")
         self._Domain = params.get("Domain")
         self._OverUsedStatus = params.get("OverUsedStatus")
+        self._SwitchSupportType = params.get("SwitchSupportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

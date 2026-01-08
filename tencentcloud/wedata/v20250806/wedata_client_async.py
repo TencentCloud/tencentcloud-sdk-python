@@ -223,6 +223,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateQualityRule(
+            self,
+            request: models.CreateQualityRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateQualityRuleResponse:
+        """
+        创建质量规则接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateQualityRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateQualityRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateQualityRuleGroup(
             self,
             request: models.CreateQualityRuleGroupRequest,
@@ -2036,6 +2054,27 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListQualityRuleGroupExecResultsByPage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListQualityRuleGroupExecResultsByPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListQualityRuleGroups(
+            self,
+            request: models.ListQualityRuleGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ListQualityRuleGroupsResponse:
+        """
+        【过滤条件】
+        {表idTableId,支持匹配}       {任务负责人Operator,支持匹配}
+        【必要字段】
+        {数据来源TableId}
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListQualityRuleGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListQualityRuleGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

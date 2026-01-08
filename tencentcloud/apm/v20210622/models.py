@@ -445,6 +445,8 @@ class ApmAppConfig(AbstractModel):
         :type EnableDesensitizationRule: int
         :param _DesensitizationRule: 脱敏规则
         :type DesensitizationRule: str
+        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :type LogSpanIdKey: str
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -502,6 +504,7 @@ class ApmAppConfig(AbstractModel):
         self._SlowSQLThresholds = None
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceKey(self):
@@ -1142,6 +1145,17 @@ class ApmAppConfig(AbstractModel):
     def DesensitizationRule(self, DesensitizationRule):
         self._DesensitizationRule = DesensitizationRule
 
+    @property
+    def LogSpanIdKey(self):
+        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1212,6 +1226,7 @@ class ApmAppConfig(AbstractModel):
                 self._SlowSQLThresholds.append(obj)
         self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
         self._DesensitizationRule = params.get("DesensitizationRule")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1978,6 +1993,8 @@ class ApmInstanceDetail(AbstractModel):
         :type UrlLongSegmentThreshold: int
         :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
         :type UrlNumberSegmentThreshold: int
+        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :type LogSpanIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -2035,6 +2052,7 @@ class ApmInstanceDetail(AbstractModel):
         self._Token = None
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceId(self):
@@ -2658,6 +2676,17 @@ class ApmInstanceDetail(AbstractModel):
     def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
         self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
 
+    @property
+    def LogSpanIdKey(self):
+        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2721,6 +2750,7 @@ class ApmInstanceDetail(AbstractModel):
         self._Token = params.get("Token")
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7489,6 +7519,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type EnableDesensitizationRule: int
         :param _DesensitizationRule: 脱敏规则
         :type DesensitizationRule: str
+        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :type LogSpanIdKey: str
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -7543,6 +7575,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._SlowSQLThresholds = None
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceId(self):
@@ -8127,6 +8160,17 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def DesensitizationRule(self, DesensitizationRule):
         self._DesensitizationRule = DesensitizationRule
 
+    @property
+    def LogSpanIdKey(self):
+        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8194,6 +8238,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
                 self._SlowSQLThresholds.append(obj)
         self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
         self._DesensitizationRule = params.get("DesensitizationRule")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8447,6 +8492,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type UrlLongSegmentThreshold: int
         :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
         :type UrlNumberSegmentThreshold: int
+        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :type LogSpanIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -8490,6 +8537,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsDeserializationAnalysis = None
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceId(self):
@@ -8953,6 +9001,17 @@ class ModifyApmInstanceRequest(AbstractModel):
     def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
         self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
 
+    @property
+    def LogSpanIdKey(self):
+        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9002,6 +9061,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

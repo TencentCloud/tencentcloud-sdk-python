@@ -233,6 +233,9 @@ INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = 'InvalidParameter.AutoSnapshotNotSup
 # 不支持参数CdcId。
 INVALIDPARAMETER_CDCNOTSUPPORTED = 'InvalidParameter.CdcNotSupported'
 
+# CDZ不支持实例跨区迁移
+INVALIDPARAMETER_CDZNOTSUPPORTED = 'InvalidParameter.CdzNotSupported'
+
 # DataDiskIds不应该传入RootDisk的Id。
 INVALIDPARAMETER_DATADISKIDCONTAINSROOTDISK = 'InvalidParameter.DataDiskIdContainsRootDisk'
 

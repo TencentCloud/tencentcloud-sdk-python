@@ -5184,6 +5184,258 @@ class CreateQualityRuleGroupResultVO(AbstractModel):
         
 
 
+class CreateQualityRuleRequest(AbstractModel):
+    r"""CreateQualityRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _CreateRuleScene: 规则创建场景
+1：单表多规则
+2：多表单规则
+3：克隆创建规则
+        :type CreateRuleScene: int
+        :param _RuleBOList: 单条规则信息集合	
+        :type RuleBOList: list of QualityRuleInfo
+        """
+        self._ProjectId = None
+        self._CreateRuleScene = None
+        self._RuleBOList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreateRuleScene(self):
+        r"""规则创建场景
+1：单表多规则
+2：多表单规则
+3：克隆创建规则
+        :rtype: int
+        """
+        return self._CreateRuleScene
+
+    @CreateRuleScene.setter
+    def CreateRuleScene(self, CreateRuleScene):
+        self._CreateRuleScene = CreateRuleScene
+
+    @property
+    def RuleBOList(self):
+        r"""单条规则信息集合	
+        :rtype: list of QualityRuleInfo
+        """
+        return self._RuleBOList
+
+    @RuleBOList.setter
+    def RuleBOList(self, RuleBOList):
+        self._RuleBOList = RuleBOList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CreateRuleScene = params.get("CreateRuleScene")
+        if params.get("RuleBOList") is not None:
+            self._RuleBOList = []
+            for item in params.get("RuleBOList"):
+                obj = QualityRuleInfo()
+                obj._deserialize(item)
+                self._RuleBOList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityRuleResponse(AbstractModel):
+    r"""CreateQualityRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则创建结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""规则创建结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateQualityRuleVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateQualityRuleVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQualityRuleVO(AbstractModel):
+    r"""数据质量规则批量创建结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: 操作结果文案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Results: 单条数据新增结果对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of QualityRuleCreateResult
+        :param _SumCount: 总新增条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SumCount: int
+        :param _SuccessCount: 新增成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param _FailedCount: 新增失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param _SuccessRuleIds: 新增成功的 ruleId集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessRuleIds: list of int non-negative
+        """
+        self._Msg = None
+        self._Results = None
+        self._SumCount = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._SuccessRuleIds = None
+
+    @property
+    def Msg(self):
+        r"""操作结果文案
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Results(self):
+        r"""单条数据新增结果对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityRuleCreateResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def SumCount(self):
+        r"""总新增条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SumCount
+
+    @SumCount.setter
+    def SumCount(self, SumCount):
+        self._SumCount = SumCount
+
+    @property
+    def SuccessCount(self):
+        r"""新增成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""新增失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def SuccessRuleIds(self):
+        r"""新增成功的 ruleId集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._SuccessRuleIds
+
+    @SuccessRuleIds.setter
+    def SuccessRuleIds(self, SuccessRuleIds):
+        self._SuccessRuleIds = SuccessRuleIds
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = QualityRuleCreateResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._SumCount = params.get("SumCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        self._SuccessRuleIds = params.get("SuccessRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateResourceFileRequest(AbstractModel):
     r"""CreateResourceFile请求参数结构体
 
@@ -26311,6 +26563,255 @@ class ListQualityRuleGroupExecResultsByPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListQualityRuleGroupsRequest(AbstractModel):
+    r"""ListQualityRuleGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _PageNumber: 分页序号，默认1
+        :type PageNumber: int
+        :param _PageSize: 分页大小，默认10
+        :type PageSize: int
+        :param _Filters: 过滤条件,每次请求的Filters的上限为10，Filter.Values的上限为5，可选过滤条件如下：
+
+1. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+2. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+3. TableId
+描述：数据源表id
+取值：字符串
+
+4. TableName
+描述：数据源表名称，支持模糊匹配。
+取值：字符串
+
+5. TableOwnerName
+描述：表负责人名称，支持模糊匹配。
+取值：字符串
+
+
+6. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+7. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+8. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+9. SchemaName
+描述：Schema名称。
+取值：字符串
+
+10. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+
+        :type Filters: list of Filter
+        :param _OrderFields: 通用排序，支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :type OrderFields: list of OrderField
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        r"""分页序号，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件,每次请求的Filters的上限为10，Filter.Values的上限为5，可选过滤条件如下：
+
+1. RuleGroupId
+描述：规则组ID。
+取值：整数
+
+2. RuleGroupName
+描述：规则组名称。
+取值：字符串
+
+3. TableId
+描述：数据源表id
+取值：字符串
+
+4. TableName
+描述：数据源表名称，支持模糊匹配。
+取值：字符串
+
+5. TableOwnerName
+描述：表负责人名称，支持模糊匹配。
+取值：字符串
+
+
+6. DatasourceType
+描述：数据源类型。
+取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+
+7. DatasourceId
+描述：数据源ID。
+取值：字符串
+
+8. DatabaseName
+描述：数据库名称。
+取值：字符串
+
+9. SchemaName
+描述：Schema名称。
+取值：字符串
+
+10. CatalogName
+描述：数据目录名称。
+取值：字符串
+
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""通用排序，支持的排序字段：
+CreateTime - 按创建时间排序
+UpdateTime - 按更新时间排序（默认）
+排序方向：
+1 - 升序（ASC）
+2 - 降序（DESC）
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQualityRuleGroupsResponse(AbstractModel):
+    r"""ListQualityRuleGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = QualityRuleGroupPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListQualityRuleGroupsTableRequest(AbstractModel):
     r"""ListQualityRuleGroupsTable请求参数结构体
 
@@ -36200,10 +36701,10 @@ class QualityCompareRuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompareType: 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+        :param _CompareType: 比较类型【入参必填】，1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较   6.字段数据相关性  7.公平性
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareType: int
-        :param _Operator: 比较操作类型
+        :param _Operator: 比较操作类型【入参条件必填】，CompareType ∈ {1,2,6,7} 时必填
 <  <=  ==  =>  > !=
 IRLCRO:在区间内(左闭右开)
 IRLORC:在区间内(左开右闭)
@@ -36215,10 +36716,23 @@ NRLCRC:不在区间内(左闭右闭)
 NRLORO:不在区间内(左开右开)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
-        :param _ValueComputeType: 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+        :param _ValueComputeType: 质量统计值类型【入参条件必填】，当 CompareType ∈ {2,3,7} 时必填
+可选值：
+当 compareType = 2(波动值) 时：
+  - 1 = 绝对值(ABS)
+  - 2 = 上升(ASCEND)
+  - 3 = 下降(DESCEND)
+
+当 compareType = 3(数值范围) 时：
+  - 4 = 范围内(WITH_IN_RANGE)
+  - 5 = 范围外(OUT_OF_RANGE)
+
+当 compareType = 7(公平性) 时：
+  - 6 = 公平率(FAIRNESS_RATE)
+  - 7 = 公平差(FAIRNESS_GAP)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueComputeType: int
-        :param _ValueList: 比较阈值列表
+        :param _ValueList: 比较阈值列表【入参必填】
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueList: list of QualityThresholdValue
         """
@@ -36229,7 +36743,7 @@ NRLORO:不在区间内(左开右开)
 
     @property
     def CompareType(self):
-        r"""比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+        r"""比较类型【入参必填】，1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较   6.字段数据相关性  7.公平性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36241,7 +36755,7 @@ NRLORO:不在区间内(左开右开)
 
     @property
     def Operator(self):
-        r"""比较操作类型
+        r"""比较操作类型【入参条件必填】，CompareType ∈ {1,2,6,7} 时必填
 <  <=  ==  =>  > !=
 IRLCRO:在区间内(左闭右开)
 IRLORC:在区间内(左开右闭)
@@ -36262,7 +36776,20 @@ NRLORO:不在区间内(左开右开)
 
     @property
     def ValueComputeType(self):
-        r"""质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+        r"""质量统计值类型【入参条件必填】，当 CompareType ∈ {2,3,7} 时必填
+可选值：
+当 compareType = 2(波动值) 时：
+  - 1 = 绝对值(ABS)
+  - 2 = 上升(ASCEND)
+  - 3 = 下降(DESCEND)
+
+当 compareType = 3(数值范围) 时：
+  - 4 = 范围内(WITH_IN_RANGE)
+  - 5 = 范围外(OUT_OF_RANGE)
+
+当 compareType = 7(公平性) 时：
+  - 6 = 公平率(FAIRNESS_RATE)
+  - 7 = 公平差(FAIRNESS_GAP)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36274,7 +36801,7 @@ NRLORO:不在区间内(左开右开)
 
     @property
     def ValueList(self):
-        r"""比较阈值列表
+        r"""比较阈值列表【入参必填】
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityThresholdValue
         """
@@ -37568,6 +38095,129 @@ class QualityRule(AbstractModel):
         
 
 
+class QualityRuleCreateResult(AbstractModel):
+    r"""批量创建规则时的单条数据创建结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: 操作结果文案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Success: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Success: bool
+        :param _Name: 规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _RuleGroupId: 规则组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _RuleGroupTableId: 本地表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: int
+        :param _RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        """
+        self._Msg = None
+        self._Success = None
+        self._Name = None
+        self._RuleGroupId = None
+        self._RuleGroupTableId = None
+        self._RuleId = None
+
+    @property
+    def Msg(self):
+        r"""操作结果文案
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Success(self):
+        r"""操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Name(self):
+        r"""规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def RuleGroupTableId(self):
+        r"""本地表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def RuleId(self):
+        r"""规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        self._Success = params.get("Success")
+        self._Name = params.get("Name")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityRuleExecResult(AbstractModel):
     r"""规则执行结果
 
@@ -38270,6 +38920,592 @@ class QualityRuleFieldConfig(AbstractModel):
         
 
 
+class QualityRuleGroup(AbstractModel):
+    r"""数据质量监控任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _DatasourceId: 数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _TableName: 关联数据表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableId: 关联数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _TableOwnerName: 关联数据表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _ExecStrategy: 执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecStrategy: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
+        :param _Subscription: 订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscription: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
+        :param _DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _Permission: 是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: bool
+        :param _RuleCount: 已经配置的规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCount: int
+        :param _MonitorStatus: 监控状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorStatus: bool
+        :param _TableOwnerUserId: 表负责人UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerUserId: int
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _StrategyConfig: 是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyConfig: bool
+        :param _SubscribeConfig: 是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeConfig: bool
+        :param _DsEnvType: 数据源环境：0或者未返回.未定义，1.生产 2.开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DsEnvType: int
+        :param _ClusterDeployType: EMR集群部署方式：CVM/TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
+        :param _Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ExecDetail: 执行详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        :param _PipelineTaskCount: 事中关联任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PipelineTaskCount: int
+        :param _EnableRuleCount: 有效规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRuleCount: int
+        :param _Description: 任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateUserName: 监控创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserName: str
+        :param _GroupType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        :param _AspectTaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AspectTaskId: str
+        :param _CatalogName: 数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        """
+        self._RuleGroupId = None
+        self._DatasourceId = None
+        self._DatasourceName = None
+        self._DatasourceType = None
+        self._MonitorType = None
+        self._UpdateTime = None
+        self._TableName = None
+        self._TableId = None
+        self._TableOwnerName = None
+        self._ExecStrategy = None
+        self._Subscription = None
+        self._DatabaseId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._Permission = None
+        self._RuleCount = None
+        self._MonitorStatus = None
+        self._TableOwnerUserId = None
+        self._InstanceId = None
+        self._CreateTime = None
+        self._StrategyConfig = None
+        self._SubscribeConfig = None
+        self._DsEnvType = None
+        self._ClusterDeployType = None
+        self._Name = None
+        self._ExecDetail = None
+        self._PipelineTaskCount = None
+        self._EnableRuleCount = None
+        self._Description = None
+        self._CreateUserName = None
+        self._GroupType = None
+        self._AspectTaskId = None
+        self._CatalogName = None
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def DatasourceId(self):
+        r"""数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def MonitorType(self):
+        r"""监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TableName(self):
+        r"""关联数据表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableId(self):
+        r"""关联数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableOwnerName(self):
+        r"""关联数据表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def ExecStrategy(self):
+        r"""执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
+        """
+        return self._ExecStrategy
+
+    @ExecStrategy.setter
+    def ExecStrategy(self, ExecStrategy):
+        self._ExecStrategy = ExecStrategy
+
+    @property
+    def Subscription(self):
+        r"""订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
+        """
+        return self._Subscription
+
+    @Subscription.setter
+    def Subscription(self, Subscription):
+        self._Subscription = Subscription
+
+    @property
+    def DatabaseId(self):
+        r"""数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Permission(self):
+        r"""是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def RuleCount(self):
+        r"""已经配置的规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleCount
+
+    @RuleCount.setter
+    def RuleCount(self, RuleCount):
+        self._RuleCount = RuleCount
+
+    @property
+    def MonitorStatus(self):
+        r"""监控状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def TableOwnerUserId(self):
+        r"""表负责人UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableOwnerUserId
+
+    @TableOwnerUserId.setter
+    def TableOwnerUserId(self, TableOwnerUserId):
+        self._TableOwnerUserId = TableOwnerUserId
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StrategyConfig(self):
+        r"""是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._StrategyConfig
+
+    @StrategyConfig.setter
+    def StrategyConfig(self, StrategyConfig):
+        self._StrategyConfig = StrategyConfig
+
+    @property
+    def SubscribeConfig(self):
+        r"""是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SubscribeConfig
+
+    @SubscribeConfig.setter
+    def SubscribeConfig(self, SubscribeConfig):
+        self._SubscribeConfig = SubscribeConfig
+
+    @property
+    def DsEnvType(self):
+        r"""数据源环境：0或者未返回.未定义，1.生产 2.开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DsEnvType
+
+    @DsEnvType.setter
+    def DsEnvType(self, DsEnvType):
+        self._DsEnvType = DsEnvType
+
+    @property
+    def ClusterDeployType(self):
+        r"""EMR集群部署方式：CVM/TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
+    @property
+    def Name(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExecDetail(self):
+        r"""执行详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecDetail
+
+    @ExecDetail.setter
+    def ExecDetail(self, ExecDetail):
+        self._ExecDetail = ExecDetail
+
+    @property
+    def PipelineTaskCount(self):
+        r"""事中关联任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PipelineTaskCount
+
+    @PipelineTaskCount.setter
+    def PipelineTaskCount(self, PipelineTaskCount):
+        self._PipelineTaskCount = PipelineTaskCount
+
+    @property
+    def EnableRuleCount(self):
+        r"""有效规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableRuleCount
+
+    @EnableRuleCount.setter
+    def EnableRuleCount(self, EnableRuleCount):
+        self._EnableRuleCount = EnableRuleCount
+
+    @property
+    def Description(self):
+        r"""任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateUserName(self):
+        r"""监控创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateUserName
+
+    @CreateUserName.setter
+    def CreateUserName(self, CreateUserName):
+        self._CreateUserName = CreateUserName
+
+    @property
+    def GroupType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def AspectTaskId(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AspectTaskId
+
+    @AspectTaskId.setter
+    def AspectTaskId(self, AspectTaskId):
+        self._AspectTaskId = AspectTaskId
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatasourceType = params.get("DatasourceType")
+        self._MonitorType = params.get("MonitorType")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TableName = params.get("TableName")
+        self._TableId = params.get("TableId")
+        self._TableOwnerName = params.get("TableOwnerName")
+        if params.get("ExecStrategy") is not None:
+            self._ExecStrategy = QualityRuleGroupExecStrategy()
+            self._ExecStrategy._deserialize(params.get("ExecStrategy"))
+        if params.get("Subscription") is not None:
+            self._Subscription = QualityRuleGroupSubscribe()
+            self._Subscription._deserialize(params.get("Subscription"))
+        self._DatabaseId = params.get("DatabaseId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._Permission = params.get("Permission")
+        self._RuleCount = params.get("RuleCount")
+        self._MonitorStatus = params.get("MonitorStatus")
+        self._TableOwnerUserId = params.get("TableOwnerUserId")
+        self._InstanceId = params.get("InstanceId")
+        self._CreateTime = params.get("CreateTime")
+        self._StrategyConfig = params.get("StrategyConfig")
+        self._SubscribeConfig = params.get("SubscribeConfig")
+        self._DsEnvType = params.get("DsEnvType")
+        self._ClusterDeployType = params.get("ClusterDeployType")
+        self._Name = params.get("Name")
+        self._ExecDetail = params.get("ExecDetail")
+        self._PipelineTaskCount = params.get("PipelineTaskCount")
+        self._EnableRuleCount = params.get("EnableRuleCount")
+        self._Description = params.get("Description")
+        self._CreateUserName = params.get("CreateUserName")
+        self._GroupType = params.get("GroupType")
+        self._AspectTaskId = params.get("AspectTaskId")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityRuleGroupConfig(AbstractModel):
     r"""任务配置
 
@@ -38730,7 +39966,7 @@ RERUN：重跑
         :param _EngineParam: 引擎参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineParam: str
-        :param _CatalogName: 数据目录名称，不填默认为DataLakeCatalog
+        :param _CatalogName: 数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
         """
@@ -39107,7 +40343,7 @@ RERUN：重跑
 
     @property
     def CatalogName(self):
-        r"""数据目录名称，不填默认为DataLakeCatalog
+        r"""数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39154,6 +40390,66 @@ RERUN：重跑
             self._GroupConfig._deserialize(params.get("GroupConfig"))
         self._EngineParam = params.get("EngineParam")
         self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleGroupPage(AbstractModel):
+    r"""质量监控分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 质量监控列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of QualityRuleGroup
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""质量监控列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityRuleGroup
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = QualityRuleGroup()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39916,6 +41212,647 @@ class QualityRuleGroupsTableVO(AbstractModel):
                 obj = QualityRuleGroupTableV2()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityRuleInfo(AbstractModel):
+    r"""数据质量规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 规则类型 
+1：系统模版
+2：自定义模版
+3：自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _DatasourceId: 数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _CompareRule: 报警触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareRule: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param _SourceEngineTypes: 该规则支持的执行引擎列表，可选值如下：
+1 - MYSQL
+2 - HIVE
+4 - SPARK
+8 - LIVY
+16 - DLC
+32 - GBASE
+64 - TCHouse-P
+128 - DORIS
+256 - TCHouse-D
+512 - EMR_STARROCKS
+1024 - TCHouse-X
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceEngineTypes: list of int non-negative
+        :param _TableName: 表名称，TableId和TableName至少填一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _RuleTemplateId: 规则模板id，【条件必填】当Type≠3（自定义SQL）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: int
+        :param _QualityDim: 规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param _TableId: 数据表ID，TableId和TableName至少要有一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _SourceObjectDataTypeName: 源数据对象（表、字段等）详细类型，【条件必填】当Type=1（系统模板）时必填
+表对应固定值“table”（模板是表级的）
+字段则是对应字段类型：int、string等（模板是字段级的）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param _SourceObjectValue: 源数据对象（表、字段等）名称，【条件必填】当Type=1（系统模板）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        :param _ConditionType: 检测范围，【条件必填】当Type=1（系统模板）或2（自定义模板）时必填。 
+1.全表
+2.条件扫描
+注意：CompareType为2（波动值）或 使用用户自定义模板时包含过滤条件${FILTER}时，检测范围必须为2条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionType: int
+        :param _ConditionExpression: 条件扫描WHERE条件表达式，【条件必填】ConditionType=2(条件扫描)时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionExpression: str
+        :param _CustomSql: 自定义SQL（Base64编码），【条件必填】Type=3（自定义SQL）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomSql: str
+        :param _Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _DatabaseId: 数据库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _TargetDatabaseId: 目标库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseId: str
+        :param _TargetTableId: 目标表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableId: str
+        :param _TargetConditionExpr: 目标过滤条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConditionExpr: str
+        :param _RelConditionExpr: 源字段与目标字段关联条件on表达式，【条件必填】仅在字段数据相关性规则时必填（ruleTemplate中qualityDim=4(一致性) 且 subQualityDim=3(字段数据相关性)），例如sourceTable.model_id=targetTable.model_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelConditionExpr: str
+        :param _FieldConfig: 自定义模版sql表达式字段替换参数，【条件必填】Type=2（自定义模板）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        :param _TargetObjectValue: 目标字段名称  CITY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectValue: str
+        :param _Index: 下标，新增时区分不同数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TargetSchemaName: 目标schema名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为TCHouse-P时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSchemaName: str
+        :param _TargetDatabaseName: 目标库名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseName: str
+        :param _TargetTableName: 目标表名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableName: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _CatalogName: 数据目录名称，主要用于dlc数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _TargetCatalogName: 目标数据目录名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为DLC时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCatalogName: str
+        """
+        self._Name = None
+        self._Type = None
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._CompareRule = None
+        self._AlarmLevel = None
+        self._SourceEngineTypes = None
+        self._TableName = None
+        self._RuleTemplateId = None
+        self._QualityDim = None
+        self._ProjectId = None
+        self._RuleGroupId = None
+        self._TableId = None
+        self._SourceObjectDataTypeName = None
+        self._SourceObjectValue = None
+        self._ConditionType = None
+        self._ConditionExpression = None
+        self._CustomSql = None
+        self._Description = None
+        self._DatabaseId = None
+        self._TargetDatabaseId = None
+        self._TargetTableId = None
+        self._TargetConditionExpr = None
+        self._RelConditionExpr = None
+        self._FieldConfig = None
+        self._TargetObjectValue = None
+        self._Index = None
+        self._SchemaName = None
+        self._TargetSchemaName = None
+        self._TargetDatabaseName = None
+        self._TargetTableName = None
+        self._TaskId = None
+        self._CatalogName = None
+        self._TargetCatalogName = None
+
+    @property
+    def Name(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""规则类型 
+1：系统模版
+2：自定义模版
+3：自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DatasourceId(self):
+        r"""数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def CompareRule(self):
+        r"""报警触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityCompareRule`
+        """
+        return self._CompareRule
+
+    @CompareRule.setter
+    def CompareRule(self, CompareRule):
+        self._CompareRule = CompareRule
+
+    @property
+    def AlarmLevel(self):
+        r"""报警触发级别 1.低, 2.中, 3.高
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def SourceEngineTypes(self):
+        r"""该规则支持的执行引擎列表，可选值如下：
+1 - MYSQL
+2 - HIVE
+4 - SPARK
+8 - LIVY
+16 - DLC
+32 - GBASE
+64 - TCHouse-P
+128 - DORIS
+256 - TCHouse-D
+512 - EMR_STARROCKS
+1024 - TCHouse-X
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._SourceEngineTypes
+
+    @SourceEngineTypes.setter
+    def SourceEngineTypes(self, SourceEngineTypes):
+        self._SourceEngineTypes = SourceEngineTypes
+
+    @property
+    def TableName(self):
+        r"""表名称，TableId和TableName至少填一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RuleTemplateId(self):
+        r"""规则模板id，【条件必填】当Type≠3（自定义SQL）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def QualityDim(self):
+        r"""规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QualityDim
+
+    @QualityDim.setter
+    def QualityDim(self, QualityDim):
+        self._QualityDim = QualityDim
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RuleGroupId(self):
+        r"""规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupId
+
+    @RuleGroupId.setter
+    def RuleGroupId(self, RuleGroupId):
+        self._RuleGroupId = RuleGroupId
+
+    @property
+    def TableId(self):
+        r"""数据表ID，TableId和TableName至少要有一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def SourceObjectDataTypeName(self):
+        r"""源数据对象（表、字段等）详细类型，【条件必填】当Type=1（系统模板）时必填
+表对应固定值“table”（模板是表级的）
+字段则是对应字段类型：int、string等（模板是字段级的）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectDataTypeName
+
+    @SourceObjectDataTypeName.setter
+    def SourceObjectDataTypeName(self, SourceObjectDataTypeName):
+        self._SourceObjectDataTypeName = SourceObjectDataTypeName
+
+    @property
+    def SourceObjectValue(self):
+        r"""源数据对象（表、字段等）名称，【条件必填】当Type=1（系统模板）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceObjectValue
+
+    @SourceObjectValue.setter
+    def SourceObjectValue(self, SourceObjectValue):
+        self._SourceObjectValue = SourceObjectValue
+
+    @property
+    def ConditionType(self):
+        r"""检测范围，【条件必填】当Type=1（系统模板）或2（自定义模板）时必填。 
+1.全表
+2.条件扫描
+注意：CompareType为2（波动值）或 使用用户自定义模板时包含过滤条件${FILTER}时，检测范围必须为2条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConditionType
+
+    @ConditionType.setter
+    def ConditionType(self, ConditionType):
+        self._ConditionType = ConditionType
+
+    @property
+    def ConditionExpression(self):
+        r"""条件扫描WHERE条件表达式，【条件必填】ConditionType=2(条件扫描)时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConditionExpression
+
+    @ConditionExpression.setter
+    def ConditionExpression(self, ConditionExpression):
+        self._ConditionExpression = ConditionExpression
+
+    @property
+    def CustomSql(self):
+        r"""自定义SQL（Base64编码），【条件必填】Type=3（自定义SQL）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomSql
+
+    @CustomSql.setter
+    def CustomSql(self, CustomSql):
+        self._CustomSql = CustomSql
+
+    @property
+    def Description(self):
+        r"""规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DatabaseId(self):
+        r"""数据库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def TargetDatabaseId(self):
+        r"""目标库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDatabaseId
+
+    @TargetDatabaseId.setter
+    def TargetDatabaseId(self, TargetDatabaseId):
+        self._TargetDatabaseId = TargetDatabaseId
+
+    @property
+    def TargetTableId(self):
+        r"""目标表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableId
+
+    @TargetTableId.setter
+    def TargetTableId(self, TargetTableId):
+        self._TargetTableId = TargetTableId
+
+    @property
+    def TargetConditionExpr(self):
+        r"""目标过滤条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetConditionExpr
+
+    @TargetConditionExpr.setter
+    def TargetConditionExpr(self, TargetConditionExpr):
+        self._TargetConditionExpr = TargetConditionExpr
+
+    @property
+    def RelConditionExpr(self):
+        r"""源字段与目标字段关联条件on表达式，【条件必填】仅在字段数据相关性规则时必填（ruleTemplate中qualityDim=4(一致性) 且 subQualityDim=3(字段数据相关性)），例如sourceTable.model_id=targetTable.model_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelConditionExpr
+
+    @RelConditionExpr.setter
+    def RelConditionExpr(self, RelConditionExpr):
+        self._RelConditionExpr = RelConditionExpr
+
+    @property
+    def FieldConfig(self):
+        r"""自定义模版sql表达式字段替换参数，【条件必填】Type=2（自定义模板）时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleFieldConfig`
+        """
+        return self._FieldConfig
+
+    @FieldConfig.setter
+    def FieldConfig(self, FieldConfig):
+        self._FieldConfig = FieldConfig
+
+    @property
+    def TargetObjectValue(self):
+        r"""目标字段名称  CITY
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetObjectValue
+
+    @TargetObjectValue.setter
+    def TargetObjectValue(self, TargetObjectValue):
+        self._TargetObjectValue = TargetObjectValue
+
+    @property
+    def Index(self):
+        r"""下标，新增时区分不同数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def SchemaName(self):
+        r"""模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TargetSchemaName(self):
+        r"""目标schema名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为TCHouse-P时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
+    @property
+    def TargetDatabaseName(self):
+        r"""目标库名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def TargetTableName(self):
+        r"""目标表名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableName
+
+    @TargetTableName.setter
+    def TargetTableName(self, TargetTableName):
+        self._TargetTableName = TargetTableName
+
+    @property
+    def TaskId(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称，主要用于dlc数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def TargetCatalogName(self):
+        r"""目标数据目录名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为DLC时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetCatalogName
+
+    @TargetCatalogName.setter
+    def TargetCatalogName(self, TargetCatalogName):
+        self._TargetCatalogName = TargetCatalogName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        if params.get("CompareRule") is not None:
+            self._CompareRule = QualityCompareRule()
+            self._CompareRule._deserialize(params.get("CompareRule"))
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._TableName = params.get("TableName")
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._QualityDim = params.get("QualityDim")
+        self._ProjectId = params.get("ProjectId")
+        self._RuleGroupId = params.get("RuleGroupId")
+        self._TableId = params.get("TableId")
+        self._SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self._SourceObjectValue = params.get("SourceObjectValue")
+        self._ConditionType = params.get("ConditionType")
+        self._ConditionExpression = params.get("ConditionExpression")
+        self._CustomSql = params.get("CustomSql")
+        self._Description = params.get("Description")
+        self._DatabaseId = params.get("DatabaseId")
+        self._TargetDatabaseId = params.get("TargetDatabaseId")
+        self._TargetTableId = params.get("TargetTableId")
+        self._TargetConditionExpr = params.get("TargetConditionExpr")
+        self._RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self._FieldConfig = QualityRuleFieldConfig()
+            self._FieldConfig._deserialize(params.get("FieldConfig"))
+        self._TargetObjectValue = params.get("TargetObjectValue")
+        self._Index = params.get("Index")
+        self._SchemaName = params.get("SchemaName")
+        self._TargetSchemaName = params.get("TargetSchemaName")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._TargetTableName = params.get("TargetTableName")
+        self._TaskId = params.get("TaskId")
+        self._CatalogName = params.get("CatalogName")
+        self._TargetCatalogName = params.get("TargetCatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40804,10 +42741,10 @@ class QualityThresholdValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ValueType: 阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+        :param _ValueType: 阈值类型【入参必填】  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueType: int
-        :param _Value: 阈值
+        :param _Value: 阈值【入参必填】
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
@@ -40816,7 +42753,7 @@ class QualityThresholdValue(AbstractModel):
 
     @property
     def ValueType(self):
-        r"""阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+        r"""阈值类型【入参必填】  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40828,7 +42765,7 @@ class QualityThresholdValue(AbstractModel):
 
     @property
     def Value(self):
-        r"""阈值
+        r"""阈值【入参必填】
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

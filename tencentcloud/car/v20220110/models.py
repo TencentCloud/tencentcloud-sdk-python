@@ -335,6 +335,115 @@ class CreateSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConcurrentCountRequest(AbstractModel):
+    r"""DescribeConcurrentCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _ApplicationCategory: 应用类别（DESKTOP: 桌面端，MOBILE：移动端）
+        :type ApplicationCategory: str
+        """
+        self._ProjectId = None
+        self._ApplicationCategory = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ApplicationCategory(self):
+        r"""应用类别（DESKTOP: 桌面端，MOBILE：移动端）
+        :rtype: str
+        """
+        return self._ApplicationCategory
+
+    @ApplicationCategory.setter
+    def ApplicationCategory(self, ApplicationCategory):
+        self._ApplicationCategory = ApplicationCategory
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ApplicationCategory = params.get("ApplicationCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConcurrentCountResponse(AbstractModel):
+    r"""DescribeConcurrentCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 并发总数
+        :type Total: int
+        :param _Running: 并发运行数，包括预启动中的、已连接的、等待重连、清理恢复等所有非空闲的并发数，所以刷新项目或断开并发包的用户连接，都会影响到该值
+        :type Running: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Running = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""并发总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Running(self):
+        r"""并发运行数，包括预启动中的、已连接的、等待重连、清理恢复等所有非空闲的并发数，所以刷新项目或断开并发包的用户连接，都会影响到该值
+        :rtype: int
+        """
+        return self._Running
+
+    @Running.setter
+    def Running(self, Running):
+        self._Running = Running
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Running = params.get("Running")
+        self._RequestId = params.get("RequestId")
+
+
 class DestroySessionRequest(AbstractModel):
     r"""DestroySession请求参数结构体
 

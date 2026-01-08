@@ -58795,6 +58795,10 @@ class NetworkAclQuintupleEntry(AbstractModel):
         :type CreateTime: str
         :param _NetworkAclDirection: 方向，INGRESS或EGRESS，用于DescribeNetworkAclQuintupleEntries的出参。
         :type NetworkAclDirection: str
+        :param _SourceIPv6Cidr: IPv6源CIDR。
+        :type SourceIPv6Cidr: str
+        :param _DestinationIPv6Cidr: IPv6目的CIDR。
+        :type DestinationIPv6Cidr: str
         """
         self._Protocol = None
         self._Description = None
@@ -58807,6 +58811,8 @@ class NetworkAclQuintupleEntry(AbstractModel):
         self._Priority = None
         self._CreateTime = None
         self._NetworkAclDirection = None
+        self._SourceIPv6Cidr = None
+        self._DestinationIPv6Cidr = None
 
     @property
     def Protocol(self):
@@ -58929,6 +58935,28 @@ class NetworkAclQuintupleEntry(AbstractModel):
     def NetworkAclDirection(self, NetworkAclDirection):
         self._NetworkAclDirection = NetworkAclDirection
 
+    @property
+    def SourceIPv6Cidr(self):
+        r"""IPv6源CIDR。
+        :rtype: str
+        """
+        return self._SourceIPv6Cidr
+
+    @SourceIPv6Cidr.setter
+    def SourceIPv6Cidr(self, SourceIPv6Cidr):
+        self._SourceIPv6Cidr = SourceIPv6Cidr
+
+    @property
+    def DestinationIPv6Cidr(self):
+        r"""IPv6目的CIDR。
+        :rtype: str
+        """
+        return self._DestinationIPv6Cidr
+
+    @DestinationIPv6Cidr.setter
+    def DestinationIPv6Cidr(self, DestinationIPv6Cidr):
+        self._DestinationIPv6Cidr = DestinationIPv6Cidr
+
 
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
@@ -58942,6 +58970,8 @@ class NetworkAclQuintupleEntry(AbstractModel):
         self._Priority = params.get("Priority")
         self._CreateTime = params.get("CreateTime")
         self._NetworkAclDirection = params.get("NetworkAclDirection")
+        self._SourceIPv6Cidr = params.get("SourceIPv6Cidr")
+        self._DestinationIPv6Cidr = params.get("DestinationIPv6Cidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62554,6 +62584,141 @@ class ReplaceRoutesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NewRouteSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class ReplaceRoutesWithRoutePolicyRequest(AbstractModel):
+    r"""ReplaceRoutesWithRoutePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableId: 路由表实例ID。
+        :type RouteTableId: str
+        :param _Routes: 路由策略对象。需要指定路由策略唯一ID（RouteItemId）。
+        :type Routes: list of ReplaceRoutesWithRoutePolicyRoute
+        """
+        self._RouteTableId = None
+        self._Routes = None
+
+    @property
+    def RouteTableId(self):
+        r"""路由表实例ID。
+        :rtype: str
+        """
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Routes(self):
+        r"""路由策略对象。需要指定路由策略唯一ID（RouteItemId）。
+        :rtype: list of ReplaceRoutesWithRoutePolicyRoute
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+
+    def _deserialize(self, params):
+        self._RouteTableId = params.get("RouteTableId")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = ReplaceRoutesWithRoutePolicyRoute()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceRoutesWithRoutePolicyResponse(AbstractModel):
+    r"""ReplaceRoutesWithRoutePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReplaceRoutesWithRoutePolicyRoute(AbstractModel):
+    r"""匹配路由接收策略对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteItemId: 路由唯一策略ID。
+        :type RouteItemId: str
+        :param _ForceMatchPolicy: 匹配路由接收策略标记。
+        :type ForceMatchPolicy: bool
+        """
+        self._RouteItemId = None
+        self._ForceMatchPolicy = None
+
+    @property
+    def RouteItemId(self):
+        r"""路由唯一策略ID。
+        :rtype: str
+        """
+        return self._RouteItemId
+
+    @RouteItemId.setter
+    def RouteItemId(self, RouteItemId):
+        self._RouteItemId = RouteItemId
+
+    @property
+    def ForceMatchPolicy(self):
+        r"""匹配路由接收策略标记。
+        :rtype: bool
+        """
+        return self._ForceMatchPolicy
+
+    @ForceMatchPolicy.setter
+    def ForceMatchPolicy(self, ForceMatchPolicy):
+        self._ForceMatchPolicy = ForceMatchPolicy
+
+
+    def _deserialize(self, params):
+        self._RouteItemId = params.get("RouteItemId")
+        self._ForceMatchPolicy = params.get("ForceMatchPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ReplaceSecurityGroupPoliciesRequest(AbstractModel):

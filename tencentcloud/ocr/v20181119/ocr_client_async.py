@@ -31,8 +31,6 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AdvertiseOCRResponse:
         """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/33526">通用印刷体识别</a>。</b>
-
         支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。支持中英文、横排、竖排以及倾斜场景文字识别，支持90度、180度、270度翻转以及倾斜场景文字识别，具有较高召回率和准确率。
 
         默认接口请求频率限制：20次/秒。
@@ -617,6 +615,7 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GeneralBasicOCRResponse:
         """
+        **建议您使用识别效果更好的[通用文字识别（高精度版](https://cloud.tencent.com/document/product/866/34937 )）**
         本接口支持图像整体文字的检测和识别。可以识别中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语，阿拉伯语20种语言，且各种语言均支持与英文混合的文字识别。
 
         适用于印刷文档识别、网络图片识别、广告图文字识别、街景店招牌识别、菜单识别、视频标题识别、头像文字识别等场景。

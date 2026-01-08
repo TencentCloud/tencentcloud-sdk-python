@@ -87626,6 +87626,8 @@ class PrivilegeEscalationProcess(AbstractModel):
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         :param _Pid: 进程id
         :type Pid: int
+        :param _Count: 告警数量
+        :type Count: int
         """
         self._Id = None
         self._Uuid = None
@@ -87647,6 +87649,7 @@ class PrivilegeEscalationProcess(AbstractModel):
         self._MachineName = None
         self._MachineExtraInfo = None
         self._Pid = None
+        self._Count = None
 
     @property
     def Id(self):
@@ -87868,6 +87871,17 @@ class PrivilegeEscalationProcess(AbstractModel):
     def Pid(self, Pid):
         self._Pid = Pid
 
+    @property
+    def Count(self):
+        r"""告警数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -87892,6 +87906,7 @@ class PrivilegeEscalationProcess(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Pid = params.get("Pid")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87961,6 +87976,8 @@ class PrivilegeEventInfo(AbstractModel):
         :type MachineStatus: str
         :param _ModifyTime: 处理时间
         :type ModifyTime: str
+        :param _Count: 告警数量
+        :type Count: int
         """
         self._Id = None
         self._Uuid = None
@@ -87988,6 +88005,7 @@ class PrivilegeEventInfo(AbstractModel):
         self._NewCaps = None
         self._MachineStatus = None
         self._ModifyTime = None
+        self._Count = None
 
     @property
     def Id(self):
@@ -88275,6 +88293,17 @@ class PrivilegeEventInfo(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def Count(self):
+        r"""告警数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -88303,6 +88332,7 @@ class PrivilegeEventInfo(AbstractModel):
         self._NewCaps = params.get("NewCaps")
         self._MachineStatus = params.get("MachineStatus")
         self._ModifyTime = params.get("ModifyTime")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

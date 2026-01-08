@@ -10897,20 +10897,17 @@ class CreateL4ProxyRequest(AbstractModel):
         :param _Ipv6: 是否开启 IPv6 访问，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
-
         :type Ipv6: str
         :param _StaticIp: 是否开启固定 IP，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
         :type StaticIp: str
         :param _AccelerateMainland: 是否开启中国大陆网络优化，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
         :type AccelerateMainland: str
         :param _DDosProtectionConfig: L3/L4 DDoS 防护配置，不填写时默认使用平台默认防护选项。详情参考 [独立 DDoS 防护](https://cloud.tencent.com/document/product/1552/95994)。
+本字段已废弃，请使用 DDosProtectionId 字段指定关联的DDoS防护配置。
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         self._ZoneId = None
@@ -10963,8 +10960,6 @@ class CreateL4ProxyRequest(AbstractModel):
         r"""是否开启 IPv6 访问，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
-
         :rtype: str
         """
         return self._Ipv6
@@ -10978,7 +10973,6 @@ class CreateL4ProxyRequest(AbstractModel):
         r"""是否开启固定 IP，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
         :rtype: str
         """
         return self._StaticIp
@@ -10992,7 +10986,6 @@ class CreateL4ProxyRequest(AbstractModel):
         r"""是否开启中国大陆网络优化，不填写时默认为 off。该配置仅在部分加速区域和安全防护配置下支持开启，详情请参考 [新建四层代理实例](https://cloud.tencent.com/document/product/1552/90025) 。取值为：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-
         :rtype: str
         """
         return self._AccelerateMainland
@@ -11003,13 +10996,18 @@ class CreateL4ProxyRequest(AbstractModel):
 
     @property
     def DDosProtectionConfig(self):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         r"""L3/L4 DDoS 防护配置，不填写时默认使用平台默认防护选项。详情参考 [独立 DDoS 防护](https://cloud.tencent.com/document/product/1552/95994)。
+本字段已废弃，请使用 DDosProtectionId 字段指定关联的DDoS防护配置。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         return self._DDosProtectionConfig
 
     @DDosProtectionConfig.setter
     def DDosProtectionConfig(self, DDosProtectionConfig):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         self._DDosProtectionConfig = DDosProtectionConfig
 
 
@@ -35600,6 +35598,7 @@ class L4Proxy(AbstractModel):
  <li>on：开启</li> <li>off：关闭</li>
         :type AccelerateMainland: str
         :param _DDosProtectionConfig: 安全防护配置。
+本字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         :param _L4ProxyRuleCount: 四层代理实例下的转发规则数量。
@@ -35746,7 +35745,10 @@ class L4Proxy(AbstractModel):
 
     @property
     def DDosProtectionConfig(self):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         r"""安全防护配置。
+本字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
@@ -35754,6 +35756,8 @@ class L4Proxy(AbstractModel):
 
     @DDosProtectionConfig.setter
     def DDosProtectionConfig(self, DDosProtectionConfig):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         self._DDosProtectionConfig = DDosProtectionConfig
 
     @property

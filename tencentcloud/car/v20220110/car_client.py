@@ -72,6 +72,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConcurrentCount(self, request):
+        r"""获取并发计数
+
+        :param request: Request instance for DescribeConcurrentCount.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentCountRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrentCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrentCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroySession(self, request):
         r"""销毁会话。如果该会话开启了云端推流，那么销毁会话时会结束云端推流。
 

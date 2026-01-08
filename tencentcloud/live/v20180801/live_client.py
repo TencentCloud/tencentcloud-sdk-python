@@ -1775,6 +1775,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCasterEmergencyStatus(self, request):
+        r"""该接口用查询导播台的备播状态
+
+        :param request: Request instance for DescribeCasterEmergencyStatus.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterEmergencyStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterEmergencyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterEmergencyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterEmergencyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCasterInputInfos(self, request):
         r"""该接口用来查询导播台的输入源信息列表。
 
@@ -4752,6 +4775,30 @@ class LiveClient(AbstractClient):
             body = self.call("SwitchBackupStream", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchBackupStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchCasterToEmergency(self, request):
+        r"""该接口用来将导播台切换到备播状态。
+        该接口使用时，主监任务需处于运行状态。
+
+        :param request: Request instance for SwitchCasterToEmergency.
+        :type request: :class:`tencentcloud.live.v20180801.models.SwitchCasterToEmergencyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.SwitchCasterToEmergencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchCasterToEmergency", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchCasterToEmergencyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

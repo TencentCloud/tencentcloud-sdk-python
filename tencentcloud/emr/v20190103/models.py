@@ -36623,6 +36623,8 @@ class StarRocksQueryInfo(AbstractModel):
         :type ExecutionStatement: str
         :param _User: 用户
         :type User: str
+        :param _ErrorCode: 错误码
+        :type ErrorCode: str
         """
         self._ClientIP = None
         self._CPUCost = None
@@ -36643,6 +36645,7 @@ class StarRocksQueryInfo(AbstractModel):
         self._ExecutionState = None
         self._ExecutionStatement = None
         self._User = None
+        self._ErrorCode = None
 
     @property
     def ClientIP(self):
@@ -36853,6 +36856,17 @@ class StarRocksQueryInfo(AbstractModel):
     def User(self, User):
         self._User = User
 
+    @property
+    def ErrorCode(self):
+        r"""错误码
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
 
     def _deserialize(self, params):
         self._ClientIP = params.get("ClientIP")
@@ -36874,6 +36888,7 @@ class StarRocksQueryInfo(AbstractModel):
         self._ExecutionState = params.get("ExecutionState")
         self._ExecutionStatement = params.get("ExecutionStatement")
         self._User = params.get("User")
+        self._ErrorCode = params.get("ErrorCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38956,6 +38971,8 @@ class TrinoQueryInfo(AbstractModel):
         :type User: str
         :param _WrittenBytes: 写入字节数
         :type WrittenBytes: int
+        :param _ErrorMessage: Error日志
+        :type ErrorMessage: str
         """
         self._Catalog = None
         self._ClientIpAddr = None
@@ -38976,6 +38993,7 @@ class TrinoQueryInfo(AbstractModel):
         self._Statement = None
         self._User = None
         self._WrittenBytes = None
+        self._ErrorMessage = None
 
     @property
     def Catalog(self):
@@ -39186,6 +39204,17 @@ class TrinoQueryInfo(AbstractModel):
     def WrittenBytes(self, WrittenBytes):
         self._WrittenBytes = WrittenBytes
 
+    @property
+    def ErrorMessage(self):
+        r"""Error日志
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
 
     def _deserialize(self, params):
         self._Catalog = params.get("Catalog")
@@ -39207,6 +39236,7 @@ class TrinoQueryInfo(AbstractModel):
         self._Statement = params.get("Statement")
         self._User = params.get("User")
         self._WrittenBytes = params.get("WrittenBytes")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

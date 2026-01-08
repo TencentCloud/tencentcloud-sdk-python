@@ -21744,9 +21744,11 @@ class ListDocItem(AbstractModel):
         :type IsDisabled: bool
         :param _StaffName: 员工名称
         :type StaffName: str
-        :param _EnableScope: 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :param _EnableScope: 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableScope: int
+        :param _DocSize: 文档大小，单位：字节
+        :type DocSize: str
         """
         self._DocBizId = None
         self._FileName = None
@@ -21785,6 +21787,7 @@ class ListDocItem(AbstractModel):
         self._IsDisabled = None
         self._StaffName = None
         self._EnableScope = None
+        self._DocSize = None
 
     @property
     def DocBizId(self):
@@ -22215,7 +22218,7 @@ class ListDocItem(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        r"""文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22224,6 +22227,17 @@ class ListDocItem(AbstractModel):
     @EnableScope.setter
     def EnableScope(self, EnableScope):
         self._EnableScope = EnableScope
+
+    @property
+    def DocSize(self):
+        r"""文档大小，单位：字节
+        :rtype: str
+        """
+        return self._DocSize
+
+    @DocSize.setter
+    def DocSize(self, DocSize):
+        self._DocSize = DocSize
 
 
     def _deserialize(self, params):
@@ -22269,6 +22283,7 @@ class ListDocItem(AbstractModel):
         self._IsDisabled = params.get("IsDisabled")
         self._StaffName = params.get("StaffName")
         self._EnableScope = params.get("EnableScope")
+        self._DocSize = params.get("DocSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23265,11 +23280,14 @@ class ListQaItem(AbstractModel):
         :type IsDisabled: bool
         :param _StaffName: 员工名称
         :type StaffName: str
-        :param _EnableScope: 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :param _EnableScope: 问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableScope: int
-        :param _DocEnableScope: 问答关联的文档生效域
+        :param _DocEnableScope: 问答关联的文档生效域：1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+若问答未关联文档，则该字段值同问答生效域。
         :type DocEnableScope: int
+        :param _QaSize: 问答大小（含相似问），单位：字节
+        :type QaSize: str
         """
         self._QaBizId = None
         self._Question = None
@@ -23297,6 +23315,7 @@ class ListQaItem(AbstractModel):
         self._StaffName = None
         self._EnableScope = None
         self._DocEnableScope = None
+        self._QaSize = None
 
     @property
     def QaBizId(self):
@@ -23564,7 +23583,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        r"""问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23576,7 +23595,8 @@ class ListQaItem(AbstractModel):
 
     @property
     def DocEnableScope(self):
-        r"""问答关联的文档生效域
+        r"""问答关联的文档生效域：1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+若问答未关联文档，则该字段值同问答生效域。
         :rtype: int
         """
         return self._DocEnableScope
@@ -23584,6 +23604,17 @@ class ListQaItem(AbstractModel):
     @DocEnableScope.setter
     def DocEnableScope(self, DocEnableScope):
         self._DocEnableScope = DocEnableScope
+
+    @property
+    def QaSize(self):
+        r"""问答大小（含相似问），单位：字节
+        :rtype: str
+        """
+        return self._QaSize
+
+    @QaSize.setter
+    def QaSize(self, QaSize):
+        self._QaSize = QaSize
 
 
     def _deserialize(self, params):
@@ -23618,6 +23649,7 @@ class ListQaItem(AbstractModel):
         self._StaffName = params.get("StaffName")
         self._EnableScope = params.get("EnableScope")
         self._DocEnableScope = params.get("DocEnableScope")
+        self._QaSize = params.get("QaSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

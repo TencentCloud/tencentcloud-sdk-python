@@ -72234,7 +72234,7 @@ class SemanticsSearchResult(AbstractModel):
         :type Score: float
         :param _StartTimeOffset: 视频片段的开始时间，单位：秒
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 视频片段的开始时间，单位：秒
+        :param _EndTimeOffset: 视频片段的结束时间，单位：秒
         :type EndTimeOffset: float
         """
         self._FileId = None
@@ -72277,7 +72277,7 @@ class SemanticsSearchResult(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""视频片段的开始时间，单位：秒
+        r"""视频片段的结束时间，单位：秒
         :rtype: float
         """
         return self._EndTimeOffset

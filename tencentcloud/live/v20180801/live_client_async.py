@@ -1409,6 +1409,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCasterEmergencyStatus(
+            self,
+            request: models.DescribeCasterEmergencyStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCasterEmergencyStatusResponse:
+        """
+        该接口用查询导播台的备播状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCasterEmergencyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCasterEmergencyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCasterInputInfos(
             self,
             request: models.DescribeCasterInputInfosRequest,
@@ -3755,6 +3773,25 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "SwitchBackupStream"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchBackupStreamResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SwitchCasterToEmergency(
+            self,
+            request: models.SwitchCasterToEmergencyRequest,
+            opts: Dict = None,
+    ) -> models.SwitchCasterToEmergencyResponse:
+        """
+        该接口用来将导播台切换到备播状态。
+        该接口使用时，主监任务需处于运行状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SwitchCasterToEmergency"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SwitchCasterToEmergencyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

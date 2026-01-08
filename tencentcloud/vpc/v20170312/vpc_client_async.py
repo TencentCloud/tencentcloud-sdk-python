@@ -7616,6 +7616,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ReplaceRoutesWithRoutePolicy(
+            self,
+            request: models.ReplaceRoutesWithRoutePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ReplaceRoutesWithRoutePolicyResponse:
+        """
+        本接口（ReplaceRoutes）根据路由策略ID（RouteId）修改指定的路由策略（Route），支持批量修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReplaceRoutesWithRoutePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReplaceRoutesWithRoutePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReplaceSecurityGroupPolicies(
             self,
             request: models.ReplaceSecurityGroupPoliciesRequest,
