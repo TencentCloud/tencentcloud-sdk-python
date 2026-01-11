@@ -12293,9 +12293,13 @@ class AigcVideoExtraParam(AbstractModel):
 
 注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
         :type AspectRatio: str
+        :param _OffPeak: 错峰模型，目前仅支持Vidu模型。
+错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+        :type OffPeak: bool
         """
         self._Resolution = None
         self._AspectRatio = None
+        self._OffPeak = None
 
     @property
     def Resolution(self):
@@ -12337,10 +12341,23 @@ class AigcVideoExtraParam(AbstractModel):
     def AspectRatio(self, AspectRatio):
         self._AspectRatio = AspectRatio
 
+    @property
+    def OffPeak(self):
+        r"""错峰模型，目前仅支持Vidu模型。
+错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+        :rtype: bool
+        """
+        return self._OffPeak
+
+    @OffPeak.setter
+    def OffPeak(self, OffPeak):
+        self._OffPeak = OffPeak
+
 
     def _deserialize(self, params):
         self._Resolution = params.get("Resolution")
         self._AspectRatio = params.get("AspectRatio")
+        self._OffPeak = params.get("OffPeak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

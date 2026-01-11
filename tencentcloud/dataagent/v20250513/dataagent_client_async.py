@@ -241,6 +241,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyUserAuthority(
+            self,
+            request: models.ModifyUserAuthorityRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserAuthorityResponse:
+        """
+        修改对象权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserAuthority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserAuthorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryChunkList(
             self,
             request: models.QueryChunkListRequest,
@@ -254,6 +272,24 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "QueryChunkList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryChunkListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryUserAuthority(
+            self,
+            request: models.QueryUserAuthorityRequest,
+            opts: Dict = None,
+    ) -> models.QueryUserAuthorityResponse:
+        """
+        查询对象权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryUserAuthority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryUserAuthorityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

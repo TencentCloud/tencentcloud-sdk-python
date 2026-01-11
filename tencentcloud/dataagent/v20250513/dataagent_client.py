@@ -297,6 +297,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserAuthority(self, request):
+        r"""修改对象权限
+
+        :param request: Request instance for ModifyUserAuthority.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.ModifyUserAuthorityRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.ModifyUserAuthorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserAuthority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserAuthorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryChunkList(self, request):
         r"""文档切片查询
 
@@ -311,6 +334,29 @@ class DataagentClient(AbstractClient):
             body = self.call("QueryChunkList", params, headers=headers)
             response = json.loads(body)
             model = models.QueryChunkListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryUserAuthority(self, request):
+        r"""查询对象权限
+
+        :param request: Request instance for QueryUserAuthority.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.QueryUserAuthorityRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.QueryUserAuthorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryUserAuthority", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryUserAuthorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

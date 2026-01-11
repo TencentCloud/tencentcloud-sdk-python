@@ -704,59 +704,51 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeId: 产品版本。
-14：当前仅支持混合存储版。
+        :param _TypeId: <p>产品版本。14：极速版。</p>
         :type TypeId: int
-        :param _UniqVpcId: 私有网络唯一ID。
-请登录控制台在私有网络列表查询，如：vpc-azlk3***。
+        :param _UniqVpcId: <p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 私有网络所属子网唯一ID。
-请登录控制台在私有网络列表查询，如：subnet-8abje***。
+        :param _UniqSubnetId: <p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
         :type UniqSubnetId: str
-        :param _BillingMode: 计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        :param _BillingMode: <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :type BillingMode: int
-        :param _GoodsNum: 实例数量，单次最大购买数量以查询产品售卖规格返回的数量为准。
+        :param _GoodsNum: <p>实例数量，单次最大购买数量以查询产品售卖规格返回的数量为准。</p>
         :type GoodsNum: int
-        :param _Period: 选择包年包月计费模式（BillingMode 设置为1）时，您需要选择购买实例的时长。单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。按量计费（BillingMode 设置为0）实例该参数设置为1即可。
+        :param _Period: <p>选择包年包月计费模式（BillingMode 设置为1）时，您需要选择购买实例的时长。单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。按量计费（BillingMode 设置为0）实例该参数设置为1即可。</p>
         :type Period: int
-        :param _ShardNum: 分片数量，支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。
+        :param _ShardNum: <p>分片数量，支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</p>
         :type ShardNum: int
-        :param _ReplicasNum: 副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。
+        :param _ReplicasNum: <p>副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。</p>
         :type ReplicasNum: int
-        :param _MachineMemory: 实例内存容量，单位：GB。
-KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        :param _MachineMemory: <p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type MachineMemory: int
-        :param _ZoneId: 实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
+        :param _ZoneId: <p>实例所属的可用区ID。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :type ZoneId: int
-        :param _ZoneName: 实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
+        :param _ZoneName: <p>实例所属的可用区名称。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :type ZoneName: str
-        :param _InstanceName: 创建实例的名称。
-仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。
+        :param _InstanceName: <p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
         :type InstanceName: str
-        :param _NoAuth: 指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul>
+        :param _NoAuth: <p>指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul></p>
         :type NoAuth: bool
-        :param _Password: 实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li>
-<li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
+        :param _Password: <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
         :type Password: str
-        :param _VPort: 自定义端口。默认为6379，范围[1024,65535]。
+        :param _VPort: <p>自定义端口。默认为6379，范围[1024,65535]。</p>
         :type VPort: int
-        :param _AutoRenew: 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
+        :param _AutoRenew: <p>包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul></p>
         :type AutoRenew: int
-        :param _SecurityGroupIdList: 给实例设置安全组 ID 数组。
+        :param _SecurityGroupIdList: <p>给实例设置安全组 ID 数组。</p>
         :type SecurityGroupIdList: list of str
-        :param _ResourceTags: 给实例绑定标签。
+        :param _ResourceTags: <p>给实例绑定标签。</p>
         :type ResourceTags: list of ResourceTag
-        :param _MemSize: 混合存储版，单分片持久化内存容量，单位：GB。
-KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        :param _MemSize: <p>混合存储版，单分片持久化内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type MemSize: int
-        :param _DiskSize: 每个分片硬盘的容量。单位：GB。
-每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        :param _DiskSize: <p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type DiskSize: int
-        :param _MachineCpu: 计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        :param _MachineCpu: <p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type MachineCpu: int
-        :param _ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
+        :param _ProjectId: <p>项目id，取值以用户账户&gt;用户账户相关接口查询&gt;项目列表返回的projectId为准。</p>
         :type ProjectId: int
-        :param _Compression: 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul>
+        :param _Compression: <p>数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul></p>
         :type Compression: str
         """
         self._TypeId = None
@@ -785,8 +777,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def TypeId(self):
-        r"""产品版本。
-14：当前仅支持混合存储版。
+        r"""<p>产品版本。14：极速版。</p>
         :rtype: int
         """
         return self._TypeId
@@ -797,8 +788,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def UniqVpcId(self):
-        r"""私有网络唯一ID。
-请登录控制台在私有网络列表查询，如：vpc-azlk3***。
+        r"""<p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -809,8 +799,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def UniqSubnetId(self):
-        r"""私有网络所属子网唯一ID。
-请登录控制台在私有网络列表查询，如：subnet-8abje***。
+        r"""<p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -821,7 +810,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def BillingMode(self):
-        r"""计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        r"""<p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :rtype: int
         """
         return self._BillingMode
@@ -832,7 +821,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def GoodsNum(self):
-        r"""实例数量，单次最大购买数量以查询产品售卖规格返回的数量为准。
+        r"""<p>实例数量，单次最大购买数量以查询产品售卖规格返回的数量为准。</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -843,7 +832,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def Period(self):
-        r"""选择包年包月计费模式（BillingMode 设置为1）时，您需要选择购买实例的时长。单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。按量计费（BillingMode 设置为0）实例该参数设置为1即可。
+        r"""<p>选择包年包月计费模式（BillingMode 设置为1）时，您需要选择购买实例的时长。单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。按量计费（BillingMode 设置为0）实例该参数设置为1即可。</p>
         :rtype: int
         """
         return self._Period
@@ -854,7 +843,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ShardNum(self):
-        r"""分片数量，支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。
+        r"""<p>分片数量，支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</p>
         :rtype: int
         """
         return self._ShardNum
@@ -865,7 +854,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ReplicasNum(self):
-        r"""副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。
+        r"""<p>副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。</p>
         :rtype: int
         """
         return self._ReplicasNum
@@ -876,8 +865,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def MachineMemory(self):
-        r"""实例内存容量，单位：GB。
-KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        r"""<p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._MachineMemory
@@ -888,7 +876,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ZoneId(self):
-        r"""实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
+        r"""<p>实例所属的可用区ID。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :rtype: int
         """
         return self._ZoneId
@@ -899,7 +887,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ZoneName(self):
-        r"""实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
+        r"""<p>实例所属的可用区名称。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :rtype: str
         """
         return self._ZoneName
@@ -910,8 +898,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def InstanceName(self):
-        r"""创建实例的名称。
-仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。
+        r"""<p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -922,7 +909,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def NoAuth(self):
-        r"""指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul>
+        r"""<p>指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul></p>
         :rtype: bool
         """
         return self._NoAuth
@@ -933,8 +920,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def Password(self):
-        r"""实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li>
-<li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
+        r"""<p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
         :rtype: str
         """
         return self._Password
@@ -945,7 +931,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def VPort(self):
-        r"""自定义端口。默认为6379，范围[1024,65535]。
+        r"""<p>自定义端口。默认为6379，范围[1024,65535]。</p>
         :rtype: int
         """
         return self._VPort
@@ -956,7 +942,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def AutoRenew(self):
-        r"""包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
+        r"""<p>包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul></p>
         :rtype: int
         """
         return self._AutoRenew
@@ -967,7 +953,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def SecurityGroupIdList(self):
-        r"""给实例设置安全组 ID 数组。
+        r"""<p>给实例设置安全组 ID 数组。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIdList
@@ -978,7 +964,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ResourceTags(self):
-        r"""给实例绑定标签。
+        r"""<p>给实例绑定标签。</p>
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -989,8 +975,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def MemSize(self):
-        r"""混合存储版，单分片持久化内存容量，单位：GB。
-KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        r"""<p>混合存储版，单分片持久化内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._MemSize
@@ -1001,8 +986,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def DiskSize(self):
-        r"""每个分片硬盘的容量。单位：GB。
-每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        r"""<p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -1013,7 +997,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def MachineCpu(self):
-        r"""计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        r"""<p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._MachineCpu
@@ -1024,7 +1008,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def ProjectId(self):
-        r"""项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
+        r"""<p>项目id，取值以用户账户&gt;用户账户相关接口查询&gt;项目列表返回的projectId为准。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -1035,7 +1019,7 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
 
     @property
     def Compression(self):
-        r"""数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul>
+        r"""<p>数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul></p>
         :rtype: str
         """
         return self._Compression
@@ -1091,11 +1075,11 @@ class CreateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: 交易 ID。
+        :param _DealId: <p>交易 ID。</p>
         :type DealId: str
-        :param _InstanceIds: 实例 ID 。
+        :param _InstanceIds: <p>实例 ID 。</p>
         :type InstanceIds: list of str
-        :param _DealName: 订单号。	
+        :param _DealName: <p>订单号。    </p>
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1109,7 +1093,7 @@ class CreateInstancesResponse(AbstractModel):
     def DealId(self):
         warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
 
-        r"""交易 ID。
+        r"""<p>交易 ID。</p>
         :rtype: str
         """
         return self._DealId
@@ -1122,7 +1106,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例 ID 。
+        r"""<p>实例 ID 。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1133,7 +1117,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。	
+        r"""<p>订单号。    </p>
         :rtype: str
         """
         return self._DealName

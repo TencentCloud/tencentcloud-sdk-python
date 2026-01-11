@@ -1946,6 +1946,147 @@ class KnowledgeTaskConfig(AbstractModel):
         
 
 
+class ModelUserAuthority(AbstractModel):
+    r"""用户对象的权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Module: 模块，分为知识库knowledge、数据源datasource、自定义场景scene
+        :type Module: str
+        :param _CreatorUin: 对象创建者
+        :type CreatorUin: str
+        :param _ObjectId: 对象id,分为知识库id、数据源id、场景id
+        :type ObjectId: str
+        :param _UseScope: 作用范围：1仅自己使用，2指定用户，0全员
+        :type UseScope: int
+        :param _AuthorityUins: 可使用的用户列表
+        :type AuthorityUins: list of str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._InstanceId = None
+        self._Module = None
+        self._CreatorUin = None
+        self._ObjectId = None
+        self._UseScope = None
+        self._AuthorityUins = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Module(self):
+        r"""模块，分为知识库knowledge、数据源datasource、自定义场景scene
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def CreatorUin(self):
+        r"""对象创建者
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def ObjectId(self):
+        r"""对象id,分为知识库id、数据源id、场景id
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def UseScope(self):
+        r"""作用范围：1仅自己使用，2指定用户，0全员
+        :rtype: int
+        """
+        return self._UseScope
+
+    @UseScope.setter
+    def UseScope(self, UseScope):
+        self._UseScope = UseScope
+
+    @property
+    def AuthorityUins(self):
+        r"""可使用的用户列表
+        :rtype: list of str
+        """
+        return self._AuthorityUins
+
+    @AuthorityUins.setter
+    def AuthorityUins(self, AuthorityUins):
+        self._AuthorityUins = AuthorityUins
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Module = params.get("Module")
+        self._CreatorUin = params.get("CreatorUin")
+        self._ObjectId = params.get("ObjectId")
+        self._UseScope = params.get("UseScope")
+        self._AuthorityUins = params.get("AuthorityUins")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyChunkRequest(AbstractModel):
     r"""ModifyChunk请求参数结构体
 
@@ -2239,6 +2380,85 @@ class ModifyKnowledgeBaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserAuthorityRequest(AbstractModel):
+    r"""ModifyUserAuthority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UseScope: 作用范围：1仅自己使用，2指定用户，0全员
+        :type UseScope: int
+        :param _AuthorityUins: 可使用的用户列表，UseScope=0/1,取值为[]
+        :type AuthorityUins: list of str
+        """
+        self._UseScope = None
+        self._AuthorityUins = None
+
+    @property
+    def UseScope(self):
+        r"""作用范围：1仅自己使用，2指定用户，0全员
+        :rtype: int
+        """
+        return self._UseScope
+
+    @UseScope.setter
+    def UseScope(self, UseScope):
+        self._UseScope = UseScope
+
+    @property
+    def AuthorityUins(self):
+        r"""可使用的用户列表，UseScope=0/1,取值为[]
+        :rtype: list of str
+        """
+        return self._AuthorityUins
+
+    @AuthorityUins.setter
+    def AuthorityUins(self, AuthorityUins):
+        self._AuthorityUins = AuthorityUins
+
+
+    def _deserialize(self, params):
+        self._UseScope = params.get("UseScope")
+        self._AuthorityUins = params.get("AuthorityUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserAuthorityResponse(AbstractModel):
+    r"""ModifyUserAuthority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class QueryChunkListRequest(AbstractModel):
     r"""QueryChunkList请求参数结构体
 
@@ -2365,6 +2585,57 @@ class QueryChunkListResponse(AbstractModel):
                 obj = Chunk()
                 obj._deserialize(item)
                 self._Chunks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryUserAuthorityRequest(AbstractModel):
+    r"""QueryUserAuthority请求参数结构体
+
+    """
+
+
+class QueryUserAuthorityResponse(AbstractModel):
+    r"""QueryUserAuthority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelUserAuthority: 对象权限信息
+        :type ModelUserAuthority: :class:`tencentcloud.dataagent.v20250513.models.ModelUserAuthority`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelUserAuthority = None
+        self._RequestId = None
+
+    @property
+    def ModelUserAuthority(self):
+        r"""对象权限信息
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.ModelUserAuthority`
+        """
+        return self._ModelUserAuthority
+
+    @ModelUserAuthority.setter
+    def ModelUserAuthority(self, ModelUserAuthority):
+        self._ModelUserAuthority = ModelUserAuthority
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelUserAuthority") is not None:
+            self._ModelUserAuthority = ModelUserAuthority()
+            self._ModelUserAuthority._deserialize(params.get("ModelUserAuthority"))
         self._RequestId = params.get("RequestId")
 
 

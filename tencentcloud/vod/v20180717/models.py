@@ -1211,12 +1211,16 @@ class AdaptiveStreamTemplate(AbstractModel):
         :param _TEHDConfig: 极速高清转码参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: 音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         """
         self._Video = None
         self._Audio = None
         self._RemoveAudio = None
         self._RemoveVideo = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
 
     @property
     def Video(self):
@@ -1278,6 +1282,18 @@ class AdaptiveStreamTemplate(AbstractModel):
     def TEHDConfig(self, TEHDConfig):
         self._TEHDConfig = TEHDConfig
 
+    @property
+    def EnhanceConfig(self):
+        r"""音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
 
     def _deserialize(self, params):
         if params.get("Video") is not None:
@@ -1291,6 +1307,9 @@ class AdaptiveStreamTemplate(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14154,6 +14173,67 @@ class AttachMediaSubtitlesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AudioBeautifyInfo(AbstractModel):
+    r"""音频美化配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 音频美化控制开关，可选值：
+<li>ON：开启音频美化；</li>
+<li>OFF：关闭音频美化。</li>
+        :type Switch: str
+        :param _Types: 类型，可多选，可选值：
+<li>declick：杂音去除</li>
+<li>deesser：齿音压制</li>
+默认值：declick。
+        :type Types: list of str
+        """
+        self._Switch = None
+        self._Types = None
+
+    @property
+    def Switch(self):
+        r"""音频美化控制开关，可选值：
+<li>ON：开启音频美化；</li>
+<li>OFF：关闭音频美化。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Types(self):
+        r"""类型，可多选，可选值：
+<li>declick：杂音去除</li>
+<li>deesser：齿音压制</li>
+默认值：declick。
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioDenoiseInfo(AbstractModel):
     r"""音频降噪控制信息
 
@@ -14166,10 +14246,8 @@ class AudioDenoiseInfo(AbstractModel):
 <li>OFF：关闭音频降噪。</li>
         :type Switch: str
         :param _Type: 音频降噪类型，仅当音频降噪控制开关为 ON 时有效，可选值：
-<li>weak：轻音频降噪；</li>
 <li>normal：正常音频降噪；</li>
-<li>strong：强音频降噪。</li>
-默认值：weak。
+默认值：normal。
         :type Type: str
         """
         self._Switch = None
@@ -14191,10 +14269,8 @@ class AudioDenoiseInfo(AbstractModel):
     @property
     def Type(self):
         r"""音频降噪类型，仅当音频降噪控制开关为 ON 时有效，可选值：
-<li>weak：轻音频降噪；</li>
 <li>normal：正常音频降噪；</li>
-<li>strong：强音频降噪。</li>
-默认值：weak。
+默认值：normal。
         :rtype: str
         """
         return self._Type
@@ -14207,6 +14283,185 @@ class AudioDenoiseInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEnhanceConfig(AbstractModel):
+    r"""音频增强配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Denoise: 音频降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Denoise: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param _Separate: 音频分离配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Separate: :class:`tencentcloud.vod.v20180717.models.AudioSeparateInfo`
+        :param _VolumeBalance: 音量均衡配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeBalance: :class:`tencentcloud.vod.v20180717.models.AudioVolumeBalanceInfo`
+        :param _Beautify: 音量美化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Beautify: :class:`tencentcloud.vod.v20180717.models.AudioBeautifyInfo`
+        """
+        self._Denoise = None
+        self._Separate = None
+        self._VolumeBalance = None
+        self._Beautify = None
+
+    @property
+    def Denoise(self):
+        r"""音频降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def Separate(self):
+        r"""音频分离配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioSeparateInfo`
+        """
+        return self._Separate
+
+    @Separate.setter
+    def Separate(self, Separate):
+        self._Separate = Separate
+
+    @property
+    def VolumeBalance(self):
+        r"""音量均衡配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioVolumeBalanceInfo`
+        """
+        return self._VolumeBalance
+
+    @VolumeBalance.setter
+    def VolumeBalance(self, VolumeBalance):
+        self._VolumeBalance = VolumeBalance
+
+    @property
+    def Beautify(self):
+        r"""音量美化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioBeautifyInfo`
+        """
+        return self._Beautify
+
+    @Beautify.setter
+    def Beautify(self, Beautify):
+        self._Beautify = Beautify
+
+
+    def _deserialize(self, params):
+        if params.get("Denoise") is not None:
+            self._Denoise = AudioDenoiseInfo()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("Separate") is not None:
+            self._Separate = AudioSeparateInfo()
+            self._Separate._deserialize(params.get("Separate"))
+        if params.get("VolumeBalance") is not None:
+            self._VolumeBalance = AudioVolumeBalanceInfo()
+            self._VolumeBalance._deserialize(params.get("VolumeBalance"))
+        if params.get("Beautify") is not None:
+            self._Beautify = AudioBeautifyInfo()
+            self._Beautify._deserialize(params.get("Beautify"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioSeparateInfo(AbstractModel):
+    r"""音频分离配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 音频分离控制开关，可选值：
+<li>ON：开启音频分离；</li>
+<li>OFF：关闭音频分离。</li>
+        :type Switch: str
+        :param _Type: 场景类型，可选值：
+<li>normal：人声背景声场景</li>
+<li>music：演唱伴奏场景</li>
+默认值：normal。
+        :type Type: str
+        :param _Track: 输出音轨，可选值：
+<li>vocal：输出人声</li>
+<li>background：应用场景为normal时输出背景声，应用场景为music时输出伴奏</li>
+默认值：vocal。
+        :type Track: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._Track = None
+
+    @property
+    def Switch(self):
+        r"""音频分离控制开关，可选值：
+<li>ON：开启音频分离；</li>
+<li>OFF：关闭音频分离。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""场景类型，可选值：
+<li>normal：人声背景声场景</li>
+<li>music：演唱伴奏场景</li>
+默认值：normal。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Track(self):
+        r"""输出音轨，可选值：
+<li>vocal：输出人声</li>
+<li>background：应用场景为normal时输出背景声，应用场景为music时输出伴奏</li>
+默认值：vocal。
+        :rtype: str
+        """
+        return self._Track
+
+    @Track.setter
+    def Track(self, Track):
+        self._Track = Track
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Track = params.get("Track")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14651,6 +14906,67 @@ class AudioTransform(AbstractModel):
         if params.get("VolumeParam") is not None:
             self._VolumeParam = AudioVolumeParam()
             self._VolumeParam._deserialize(params.get("VolumeParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioVolumeBalanceInfo(AbstractModel):
+    r"""音量均衡配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 音量均衡控制开关，可选值：
+<li>ON：开启音量均衡；</li>
+<li>OFF：关闭音量均衡。</li>
+        :type Switch: str
+        :param _Type: 类型，可选值：
+<li>loudNorm：响度标准化</li>
+<li>gainControl：减小突变</li>
+默认值：loudNorm。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""音量均衡控制开关，可选值：
+<li>ON：开启音量均衡；</li>
+<li>OFF：关闭音量均衡。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""类型，可选值：
+<li>loudNorm：响度标准化</li>
+<li>gainControl：减小突变</li>
+默认值：loudNorm。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23975,6 +24291,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param _TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: 音视频增强配置。
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         :param _SegmentType: 切片类型，当 Container 为 hls 时有效，可选值：
 <li>ts：ts 切片；</li>
 <li>fmp4：fmp4 切片。</li>
@@ -23990,6 +24308,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._SegmentType = None
 
     @property
@@ -24098,6 +24417,17 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""音视频增强配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def SegmentType(self):
         r"""切片类型，当 Container 为 hls 时有效，可选值：
 <li>ts：ts 切片；</li>
@@ -24128,6 +24458,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -35534,6 +35867,15 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
+        :param _EnhanceType: 增强类型，可选值：
+<li>VideoEnhance（仅视频增强）</li>
+<li>AudioEnhance（仅音频增强）</li>
+<li>AudioVideoEnhance（音视频增强）</li>
+<li>AnyEnhance（包括仅视频增强、仅音频增强、音视频增强）</li>
+<li>None（非增强）</li>
+        :type EnhanceType: str
+        :param _EnhanceScenarioType: 增强场景配置，可选值： <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li> <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li> <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li> <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li> <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li> <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li> <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li> <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+        :type EnhanceScenarioType: str
         """
         self._SubAppId = None
         self._Definitions = None
@@ -35542,6 +35884,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._TEHDType = None
         self._Offset = None
         self._Limit = None
+        self._EnhanceType = None
+        self._EnhanceScenarioType = None
 
     @property
     def SubAppId(self):
@@ -35626,6 +35970,33 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def EnhanceType(self):
+        r"""增强类型，可选值：
+<li>VideoEnhance（仅视频增强）</li>
+<li>AudioEnhance（仅音频增强）</li>
+<li>AudioVideoEnhance（音视频增强）</li>
+<li>AnyEnhance（包括仅视频增强、仅音频增强、音视频增强）</li>
+<li>None（非增强）</li>
+        :rtype: str
+        """
+        return self._EnhanceType
+
+    @EnhanceType.setter
+    def EnhanceType(self, EnhanceType):
+        self._EnhanceType = EnhanceType
+
+    @property
+    def EnhanceScenarioType(self):
+        r"""增强场景配置，可选值： <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li> <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li> <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li> <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li> <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li> <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li> <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li> <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+        :rtype: str
+        """
+        return self._EnhanceScenarioType
+
+    @EnhanceScenarioType.setter
+    def EnhanceScenarioType(self, EnhanceScenarioType):
+        self._EnhanceScenarioType = EnhanceScenarioType
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -35635,6 +36006,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._TEHDType = params.get("TEHDType")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._EnhanceType = params.get("EnhanceType")
+        self._EnhanceScenarioType = params.get("EnhanceScenarioType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36211,6 +36584,69 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._WordSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DiffusionEnhanceInfo(AbstractModel):
+    r"""大模型增强配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 大模型增强开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        :param _Type: 强度类型，仅当大模型增强控制开关为 ON 时有效，可选值：
+<li>weak：弱；</li>
+<li>normal：正常；</li>
+<li>strong：强。</li>
+默认值：normal。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""大模型增强开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""强度类型，仅当大模型增强控制开关为 ON 时有效，可选值：
+<li>weak：弱；</li>
+<li>normal：正常；</li>
+<li>strong：强。</li>
+默认值：normal。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DomainCLSTargetInfo(AbstractModel):
@@ -37906,6 +38342,124 @@ class EmptyTrackItem(AbstractModel):
 
     def _deserialize(self, params):
         self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceConfig(AbstractModel):
+    r"""音视频增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoEnhance: 视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoEnhance: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        :param _AudioEnhance: 音频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioEnhance: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        self._VideoEnhance = None
+        self._AudioEnhance = None
+
+    @property
+    def VideoEnhance(self):
+        r"""视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        """
+        return self._VideoEnhance
+
+    @VideoEnhance.setter
+    def VideoEnhance(self, VideoEnhance):
+        self._VideoEnhance = VideoEnhance
+
+    @property
+    def AudioEnhance(self):
+        r"""音频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        return self._AudioEnhance
+
+    @AudioEnhance.setter
+    def AudioEnhance(self, AudioEnhance):
+        self._AudioEnhance = AudioEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self._VideoEnhance = VideoEnhanceConfig()
+            self._VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("AudioEnhance") is not None:
+            self._AudioEnhance = AudioEnhanceConfig()
+            self._AudioEnhance._deserialize(params.get("AudioEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceConfigForUpdate(AbstractModel):
+    r"""音视频增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoEnhance: 视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoEnhance: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        :param _AudioEnhance: 音频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioEnhance: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        self._VideoEnhance = None
+        self._AudioEnhance = None
+
+    @property
+    def VideoEnhance(self):
+        r"""视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        """
+        return self._VideoEnhance
+
+    @VideoEnhance.setter
+    def VideoEnhance(self, VideoEnhance):
+        self._VideoEnhance = VideoEnhance
+
+    @property
+    def AudioEnhance(self):
+        r"""音频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        return self._AudioEnhance
+
+    @AudioEnhance.setter
+    def AudioEnhance(self, AudioEnhance):
+        self._AudioEnhance = AudioEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self._VideoEnhance = VideoEnhanceConfig()
+            self._VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("AudioEnhance") is not None:
+            self._AudioEnhance = AudioEnhanceConfig()
+            self._AudioEnhance._deserialize(params.get("AudioEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41015,6 +41569,76 @@ class ForbidMediaDistributionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FrameRateWithDenInfo(AbstractModel):
+    r"""插帧帧率配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 插帧帧率配置控制开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        :param _FpsNum: 帧率分子，取值范围：非负数，除以分母后小于100，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+        :type FpsNum: int
+        :param _FpsDen: 帧率分母，取值范围：大于等于1。 默认值 1。
+        :type FpsDen: int
+        """
+        self._Switch = None
+        self._FpsNum = None
+        self._FpsDen = None
+
+    @property
+    def Switch(self):
+        r"""插帧帧率配置控制开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FpsNum(self):
+        r"""帧率分子，取值范围：非负数，除以分母后小于100，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+        :rtype: int
+        """
+        return self._FpsNum
+
+    @FpsNum.setter
+    def FpsNum(self, FpsNum):
+        self._FpsNum = FpsNum
+
+    @property
+    def FpsDen(self):
+        r"""帧率分母，取值范围：大于等于1。 默认值 1。
+        :rtype: int
+        """
+        return self._FpsDen
+
+    @FpsDen.setter
+    def FpsDen(self, FpsDen):
+        self._FpsDen = FpsDen
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FpsNum = params.get("FpsNum")
+        self._FpsDen = params.get("FpsDen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     r"""智能按帧标签任务控制参数
 
@@ -41142,7 +41766,7 @@ class HDRInfo(AbstractModel):
 
 注意：
 <li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
-<li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
+<li>当目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx264、libx265 时有效。</li>
         :type Type: str
         """
         self._Switch = None
@@ -41169,7 +41793,7 @@ class HDRInfo(AbstractModel):
 
 注意：
 <li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
-<li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
+<li>当目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx264、libx265 时有效。</li>
         :rtype: str
         """
         return self._Type
@@ -42237,6 +42861,69 @@ class ImageProcessingTemplate(AbstractModel):
                 obj._deserialize(item)
                 self._Operations.append(obj)
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQualityEnhanceInfo(AbstractModel):
+    r"""综合增强控制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 综合增强控制开关，可选值：
+<li>ON：开启综合增强；</li>
+<li>OFF：关闭综合增强。</li>
+        :type Switch: str
+        :param _Type: 综合增强类型，仅当综合增强控制开关为 ON 时有效，可选值：
+<li>weak：轻综合增强；</li>
+<li>normal：正常综合增强；</li>
+<li>strong：强综合增强。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""综合增强控制开关，可选值：
+<li>ON：开启综合增强；</li>
+<li>OFF：关闭综合增强。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""综合增强类型，仅当综合增强控制开关为 ON 时有效，可选值：
+<li>weak：轻综合增强；</li>
+<li>normal：正常综合增强；</li>
+<li>strong：强综合增强。</li>
+默认值：weak。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55971,6 +56658,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param _TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        :param _EnhanceConfig: 音视频增强配置。
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfigForUpdate`
         :param _SegmentType: 切片类型，当 Container 为 hls 时有效，可选值：
 <li>ts：ts 切片；</li>
 <li>fmp4：fmp4 切片。</li>
@@ -55986,6 +56675,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._SegmentType = None
 
     @property
@@ -56103,6 +56793,17 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""音视频增强配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfigForUpdate`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def SegmentType(self):
         r"""切片类型，当 Container 为 hls 时有效，可选值：
 <li>ts：ts 切片；</li>
@@ -56133,6 +56834,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfigForUpdate()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfigForUpdate()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -74988,7 +75692,6 @@ class SuperResolutionInfo(AbstractModel):
         :param _Switch: 画面超分控制开关，可选值：
 <li>ON：开启画面超分；</li>
 <li>OFF：关闭画面超分。</li>
-当开启画面超分时，默认2倍超分。
         :type Switch: str
         :param _Type: 画面超分类型，仅当画面超分控制开关为 ON 时有效，可选值：
 <li>lq：针对低清晰度有较多噪声视频的超分；</li>
@@ -75008,7 +75711,6 @@ class SuperResolutionInfo(AbstractModel):
         r"""画面超分控制开关，可选值：
 <li>ON：开启画面超分；</li>
 <li>OFF：关闭画面超分。</li>
-当开启画面超分时，默认2倍超分。
         :rtype: str
         """
         return self._Switch
@@ -77343,6 +78045,9 @@ class TranscodeTemplate(AbstractModel):
         :param _TEHDConfig: 极速高清转码参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: 音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         :param _ContainerType: 封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
@@ -77364,6 +78069,7 @@ class TranscodeTemplate(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._ContainerType = None
         self._CreateTime = None
         self._UpdateTime = None
@@ -77487,6 +78193,18 @@ class TranscodeTemplate(AbstractModel):
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def ContainerType(self):
         r"""封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
@@ -77550,6 +78268,9 @@ class TranscodeTemplate(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._ContainerType = params.get("ContainerType")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
@@ -79022,6 +79743,250 @@ class VideoDenoiseInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEnhanceConfig(AbstractModel):
+    r"""视频增强配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnhanceScenarioType: 增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+<li>填空字符串代表不使用增强场景</li>
+        :type EnhanceScenarioType: str
+        :param _SuperResolution: 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperResolution: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param _Hdr: HDR配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hdr: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param _Denoise: 视频降噪配置。注意与大模型增强不可同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Denoise: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param _ImageQualityEnhance: 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageQualityEnhance: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        :param _ColorEnhance: 色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColorEnhance: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param _LowLightEnhance: 低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowLightEnhance: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param _ScratchRepair: 去划痕配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScratchRepair: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param _ArtifactRepair: 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArtifactRepair: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param _DiffusionEnhance: 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffusionEnhance: :class:`tencentcloud.vod.v20180717.models.DiffusionEnhanceInfo`
+        :param _FrameRateWithDen: 插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameRateWithDen: :class:`tencentcloud.vod.v20180717.models.FrameRateWithDenInfo`
+        """
+        self._EnhanceScenarioType = None
+        self._SuperResolution = None
+        self._Hdr = None
+        self._Denoise = None
+        self._ImageQualityEnhance = None
+        self._ColorEnhance = None
+        self._LowLightEnhance = None
+        self._ScratchRepair = None
+        self._ArtifactRepair = None
+        self._DiffusionEnhance = None
+        self._FrameRateWithDen = None
+
+    @property
+    def EnhanceScenarioType(self):
+        r"""增强场景配置，可选值：
+<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+<li>填空字符串代表不使用增强场景</li>
+        :rtype: str
+        """
+        return self._EnhanceScenarioType
+
+    @EnhanceScenarioType.setter
+    def EnhanceScenarioType(self, EnhanceScenarioType):
+        self._EnhanceScenarioType = EnhanceScenarioType
+
+    @property
+    def SuperResolution(self):
+        r"""超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        """
+        return self._SuperResolution
+
+    @SuperResolution.setter
+    def SuperResolution(self, SuperResolution):
+        self._SuperResolution = SuperResolution
+
+    @property
+    def Hdr(self):
+        r"""HDR配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        """
+        return self._Hdr
+
+    @Hdr.setter
+    def Hdr(self, Hdr):
+        self._Hdr = Hdr
+
+    @property
+    def Denoise(self):
+        r"""视频降噪配置。注意与大模型增强不可同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def ImageQualityEnhance(self):
+        r"""综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        """
+        return self._ImageQualityEnhance
+
+    @ImageQualityEnhance.setter
+    def ImageQualityEnhance(self, ImageQualityEnhance):
+        self._ImageQualityEnhance = ImageQualityEnhance
+
+    @property
+    def ColorEnhance(self):
+        r"""色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        """
+        return self._ColorEnhance
+
+    @ColorEnhance.setter
+    def ColorEnhance(self, ColorEnhance):
+        self._ColorEnhance = ColorEnhance
+
+    @property
+    def LowLightEnhance(self):
+        r"""低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        """
+        return self._LowLightEnhance
+
+    @LowLightEnhance.setter
+    def LowLightEnhance(self, LowLightEnhance):
+        self._LowLightEnhance = LowLightEnhance
+
+    @property
+    def ScratchRepair(self):
+        r"""去划痕配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        """
+        return self._ScratchRepair
+
+    @ScratchRepair.setter
+    def ScratchRepair(self, ScratchRepair):
+        self._ScratchRepair = ScratchRepair
+
+    @property
+    def ArtifactRepair(self):
+        r"""去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        """
+        return self._ArtifactRepair
+
+    @ArtifactRepair.setter
+    def ArtifactRepair(self, ArtifactRepair):
+        self._ArtifactRepair = ArtifactRepair
+
+    @property
+    def DiffusionEnhance(self):
+        r"""大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DiffusionEnhanceInfo`
+        """
+        return self._DiffusionEnhance
+
+    @DiffusionEnhance.setter
+    def DiffusionEnhance(self, DiffusionEnhance):
+        self._DiffusionEnhance = DiffusionEnhance
+
+    @property
+    def FrameRateWithDen(self):
+        r"""插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FrameRateWithDenInfo`
+        """
+        return self._FrameRateWithDen
+
+    @FrameRateWithDen.setter
+    def FrameRateWithDen(self, FrameRateWithDen):
+        self._FrameRateWithDen = FrameRateWithDen
+
+
+    def _deserialize(self, params):
+        self._EnhanceScenarioType = params.get("EnhanceScenarioType")
+        if params.get("SuperResolution") is not None:
+            self._SuperResolution = SuperResolutionInfo()
+            self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Hdr") is not None:
+            self._Hdr = HDRInfo()
+            self._Hdr._deserialize(params.get("Hdr"))
+        if params.get("Denoise") is not None:
+            self._Denoise = VideoDenoiseInfo()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self._ImageQualityEnhance = ImageQualityEnhanceInfo()
+            self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
+        if params.get("ColorEnhance") is not None:
+            self._ColorEnhance = ColorEnhanceInfo()
+            self._ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self._LowLightEnhance = LowLightEnhanceInfo()
+            self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        if params.get("ScratchRepair") is not None:
+            self._ScratchRepair = ScratchRepairInfo()
+            self._ScratchRepair._deserialize(params.get("ScratchRepair"))
+        if params.get("ArtifactRepair") is not None:
+            self._ArtifactRepair = ArtifactRepairInfo()
+            self._ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        if params.get("DiffusionEnhance") is not None:
+            self._DiffusionEnhance = DiffusionEnhanceInfo()
+            self._DiffusionEnhance._deserialize(params.get("DiffusionEnhance"))
+        if params.get("FrameRateWithDen") is not None:
+            self._FrameRateWithDen = FrameRateWithDenInfo()
+            self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
