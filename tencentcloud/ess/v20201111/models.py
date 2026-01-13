@@ -4323,6 +4323,42 @@ class ComponentLimit(AbstractModel):
         
 
 
+class ContractReviewChecklistWebUrlOption(AbstractModel):
+    r"""合同审查清单个性化参数，用于控制页面的展示内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisableCreateChecklist: 禁用新建清单功能。默认 false，设置为 true 会隐藏界面的新建按钮。
+        :type DisableCreateChecklist: bool
+        """
+        self._DisableCreateChecklist = None
+
+    @property
+    def DisableCreateChecklist(self):
+        r"""禁用新建清单功能。默认 false，设置为 true 会隐藏界面的新建按钮。
+        :rtype: bool
+        """
+        return self._DisableCreateChecklist
+
+    @DisableCreateChecklist.setter
+    def DisableCreateChecklist(self, DisableCreateChecklist):
+        self._DisableCreateChecklist = DisableCreateChecklist
+
+
+    def _deserialize(self, params):
+        self._DisableCreateChecklist = params.get("DisableCreateChecklist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContractReviewWebUrlOption(AbstractModel):
     r"""合同审查个性化参数，用于控制页面的展示内容
 
@@ -5521,6 +5557,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
 <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
 <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+<li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li>
 </ul>
         :type OperateTypes: list of str
         :param _OrganizationIds: 批量操作的企业Id列表，最大支持50个
@@ -5533,12 +5570,15 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
 ![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
         :type AuthorizedOrganizationId: str
+        :param _ChangeAdminAuthAutoSign: 初始化操作类型里含有CHANGE_SUB_ORGANIZATION_ADMIN_AUTH（变更子企业超管授权）操作类型时，授权协议中主企业的签署方是否使用自动签（需操作人有自动签授权）
+        :type ChangeAdminAuthAutoSign: bool
         """
         self._Operator = None
         self._OperateTypes = None
         self._OrganizationIds = None
         self._Agent = None
         self._AuthorizedOrganizationId = None
+        self._ChangeAdminAuthAutoSign = None
 
     @property
     def Operator(self):
@@ -5560,6 +5600,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
 <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
 <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+<li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li>
 </ul>
         :rtype: list of str
         """
@@ -5606,6 +5647,17 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
         self._AuthorizedOrganizationId = AuthorizedOrganizationId
 
+    @property
+    def ChangeAdminAuthAutoSign(self):
+        r"""初始化操作类型里含有CHANGE_SUB_ORGANIZATION_ADMIN_AUTH（变更子企业超管授权）操作类型时，授权协议中主企业的签署方是否使用自动签（需操作人有自动签授权）
+        :rtype: bool
+        """
+        return self._ChangeAdminAuthAutoSign
+
+    @ChangeAdminAuthAutoSign.setter
+    def ChangeAdminAuthAutoSign(self, ChangeAdminAuthAutoSign):
+        self._ChangeAdminAuthAutoSign = ChangeAdminAuthAutoSign
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5617,6 +5669,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
+        self._ChangeAdminAuthAutoSign = params.get("ChangeAdminAuthAutoSign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7418,6 +7471,91 @@ class CreateContractDiffTaskWebUrlResponse(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._WebUrl = params.get("WebUrl")
         self._UserData = params.get("UserData")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateContractReviewChecklistWebUrlRequest(AbstractModel):
+    r"""CreateContractReviewChecklistWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self._Operator = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateContractReviewChecklistWebUrlResponse(AbstractModel):
+    r"""CreateContractReviewChecklistWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        r"""嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -23044,6 +23182,308 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractReviewChecklistWebUrlRequest(AbstractModel):
+    r"""DescribeContractReviewChecklistWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Id: 清单 id
+        :type Id: str
+        """
+        self._Operator = None
+        self._Id = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Id(self):
+        r"""清单 id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewChecklistWebUrlResponse(AbstractModel):
+    r"""DescribeContractReviewChecklistWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type WebUrl: str
+        :param _Id: 清单 id
+        :type Id: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        r"""嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def Id(self):
+        r"""清单 id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeContractReviewChecklistsWebUrlRequest(AbstractModel):
+    r"""DescribeContractReviewChecklistsWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Option: 合同审查清单个性化参数
+        :type Option: :class:`tencentcloud.ess.v20201111.models.ContractReviewChecklistWebUrlOption`
+        """
+        self._Operator = None
+        self._Option = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Option(self):
+        r"""合同审查清单个性化参数
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ContractReviewChecklistWebUrlOption`
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Option") is not None:
+            self._Option = ContractReviewChecklistWebUrlOption()
+            self._Option._deserialize(params.get("Option"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewChecklistsWebUrlResponse(AbstractModel):
+    r"""DescribeContractReviewChecklistsWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        r"""嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeContractReviewTaskListWebUrlRequest(AbstractModel):
+    r"""DescribeContractReviewTaskListWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self._Operator = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewTaskListWebUrlResponse(AbstractModel):
+    r"""DescribeContractReviewTaskListWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        r"""嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContractReviewTaskRequest(AbstractModel):
     r"""DescribeContractReviewTask请求参数结构体
 
@@ -28669,6 +29109,138 @@ class ExportContractComparisonTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResourceUrl = params.get("ResourceUrl")
         self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
+class ExportContractReviewResultRequest(AbstractModel):
+    r"""ExportContractReviewResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同审查任务ID
+        :type TaskId: str
+        :param _FileType: 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+        :type FileType: int
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._FileType = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同审查任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileType(self):
+        r"""导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        self._FileType = params.get("FileType")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportContractReviewResultResponse(AbstractModel):
+    r"""ExportContractReviewResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 文件下载链接
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""文件下载链接
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         self._RequestId = params.get("RequestId")
 
 

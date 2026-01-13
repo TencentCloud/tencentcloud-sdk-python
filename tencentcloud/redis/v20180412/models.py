@@ -4486,14 +4486,14 @@ class DescribeBandwidthRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4522,13 +4522,13 @@ class DescribeBandwidthRangeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BaseBandwidth: 标准带宽。指购买实例时，系统为每个节点分配的带宽。
+        :param _BaseBandwidth: <p>标准带宽。指购买实例时，系统为每个节点分配的带宽。</p>单位： MB/s。
         :type BaseBandwidth: int
-        :param _AddBandwidth: 指实例的附加带宽。标准带宽不满足需求的情况下，用户可自行增加的带宽。<ul><li>开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数 * Max ([只读副本数量, 1])，标准架构的分片数 = 1。</li><li>没有开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数，标准架构的分片数 = 1。</li></ul>
+        :param _AddBandwidth: <p>指实例的附加带宽。标准带宽不满足需求的情况下，用户可自行增加的带宽。</p><ul><li>开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数 * Max ([只读副本数量, 1])，标准架构的分片数 = 1。</li><li>没有开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数，标准架构的分片数 = 1。</li></ul>单位： MB/s。
         :type AddBandwidth: int
-        :param _MinAddBandwidth: 附加带宽设置下限。
+        :param _MinAddBandwidth: <p>附加带宽设置下限。</p>单位： MB/s。
         :type MinAddBandwidth: int
-        :param _MaxAddBandwidth: 附加带宽设置上限。
+        :param _MaxAddBandwidth: <p>附加带宽设置上限。</p>单位： MB/s。
         :type MaxAddBandwidth: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4541,7 +4541,7 @@ class DescribeBandwidthRangeResponse(AbstractModel):
 
     @property
     def BaseBandwidth(self):
-        r"""标准带宽。指购买实例时，系统为每个节点分配的带宽。
+        r"""<p>标准带宽。指购买实例时，系统为每个节点分配的带宽。</p>单位： MB/s。
         :rtype: int
         """
         return self._BaseBandwidth
@@ -4552,7 +4552,7 @@ class DescribeBandwidthRangeResponse(AbstractModel):
 
     @property
     def AddBandwidth(self):
-        r"""指实例的附加带宽。标准带宽不满足需求的情况下，用户可自行增加的带宽。<ul><li>开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数 * Max ([只读副本数量, 1])，标准架构的分片数 = 1。</li><li>没有开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数，标准架构的分片数 = 1。</li></ul>
+        r"""<p>指实例的附加带宽。标准带宽不满足需求的情况下，用户可自行增加的带宽。</p><ul><li>开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数 * Max ([只读副本数量, 1])，标准架构的分片数 = 1。</li><li>没有开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数，标准架构的分片数 = 1。</li></ul>单位： MB/s。
         :rtype: int
         """
         return self._AddBandwidth
@@ -4563,7 +4563,7 @@ class DescribeBandwidthRangeResponse(AbstractModel):
 
     @property
     def MinAddBandwidth(self):
-        r"""附加带宽设置下限。
+        r"""<p>附加带宽设置下限。</p>单位： MB/s。
         :rtype: int
         """
         return self._MinAddBandwidth
@@ -4574,7 +4574,7 @@ class DescribeBandwidthRangeResponse(AbstractModel):
 
     @property
     def MaxAddBandwidth(self):
-        r"""附加带宽设置上限。
+        r"""<p>附加带宽设置上限。</p>单位： MB/s。
         :rtype: int
         """
         return self._MaxAddBandwidth

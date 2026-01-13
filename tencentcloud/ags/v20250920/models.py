@@ -383,6 +383,130 @@ class CreateAPIKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePreCacheImageTaskRequest(AbstractModel):
+    r"""CreatePreCacheImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        """
+        self._Image = None
+        self._ImageRegistryType = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePreCacheImageTaskResponse(AbstractModel):
+    r"""CreatePreCacheImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageDigest: 镜像 Digest
+        :type ImageDigest: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Image = None
+        self._ImageDigest = None
+        self._ImageRegistryType = None
+        self._RequestId = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageDigest(self):
+        r"""镜像 Digest
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageDigest = params.get("ImageDigest")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSandboxToolRequest(AbstractModel):
     r"""CreateSandboxTool请求参数结构体
 
@@ -1130,6 +1254,175 @@ class DescribeAPIKeyListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._APIKeySet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePreCacheImageTaskRequest(AbstractModel):
+    r"""DescribePreCacheImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageDigest: 镜像 Digest
+        :type ImageDigest: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        """
+        self._Image = None
+        self._ImageDigest = None
+        self._ImageRegistryType = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageDigest(self):
+        r"""镜像 Digest
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageDigest = params.get("ImageDigest")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePreCacheImageTaskResponse(AbstractModel):
+    r"""DescribePreCacheImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像地址
+        :type Image: str
+        :param _ImageDigest: 镜像 Digest
+        :type ImageDigest: str
+        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :type ImageRegistryType: str
+        :param _Status: 镜像预热状态
+        :type Status: str
+        :param _Message: 镜像预热状态描述
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Image = None
+        self._ImageDigest = None
+        self._ImageRegistryType = None
+        self._Status = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageDigest(self):
+        r"""镜像 Digest
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def ImageRegistryType(self):
+        r"""镜像仓库类型：`enterprise`、`personal`。
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def Status(self):
+        r"""镜像预热状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""镜像预热状态描述
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageDigest = params.get("ImageDigest")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 

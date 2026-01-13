@@ -225,6 +225,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAuditKeywordLib(
+            self,
+            request: models.CreateAuditKeywordLibRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditKeywordLibResponse:
+        """
+        创建关键词库，直播审核功能使用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditKeywordLib"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditKeywordLibResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAuditKeywords(
             self,
             request: models.CreateAuditKeywordsRequest,

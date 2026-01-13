@@ -552,6 +552,33 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateContractReviewChecklistWebUrl(self, request):
+        r"""此接口（CreateContractReviewChecklistWebUrl）用来创建新建审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+
+        :param request: Request instance for CreateContractReviewChecklistWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateContractReviewChecklistWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateContractReviewChecklistWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateContractReviewChecklistWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateContractReviewChecklistWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContractReviewWebUrl(self, request):
         r"""此接口（CreateContractReviewWebUrl）用来创建合同审查web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
 
@@ -2709,6 +2736,60 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContractReviewChecklistWebUrl(self, request):
+        r"""此接口（DescribeContractReviewChecklistWebUrl）用来创建查看审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+
+        :param request: Request instance for DescribeContractReviewChecklistWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewChecklistWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewChecklistWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeContractReviewChecklistsWebUrl(self, request):
+        r"""此接口（DescribeContractReviewChecklistsWebUrl）用来创建审查要点清单列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+
+        :param request: Request instance for DescribeContractReviewChecklistsWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistsWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistsWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewChecklistsWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewChecklistsWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContractReviewTask(self, request):
         r"""本接口（DescribeContractReviewTask）用于获取合同审查任务详情，包括任务的状态和识别出的风险信息。
 
@@ -2723,6 +2804,33 @@ class EssClient(AbstractClient):
             body = self.call("DescribeContractReviewTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContractReviewTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeContractReviewTaskListWebUrl(self, request):
+        r"""此接口（DescribeContractReviewTaskListWebUrl）用来创建合同审查记录列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+
+        :param request: Request instance for DescribeContractReviewTaskListWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewTaskListWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewTaskListWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewTaskListWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewTaskListWebUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3517,6 +3625,29 @@ class EssClient(AbstractClient):
             body = self.call("ExportContractComparisonTask", params, headers=headers)
             response = json.loads(body)
             model = models.ExportContractComparisonTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportContractReviewResult(self, request):
+        r"""本接口（ExportContractReviewResult）用于导出和同审查结果。支持选择 1 “带风险批注文件”、 2 “审查结果＆摘要（.xIsx）”
+
+        :param request: Request instance for ExportContractReviewResult.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ExportContractReviewResultRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ExportContractReviewResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportContractReviewResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportContractReviewResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

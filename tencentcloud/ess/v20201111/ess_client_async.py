@@ -466,6 +466,28 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateContractReviewChecklistWebUrl(
+            self,
+            request: models.CreateContractReviewChecklistWebUrlRequest,
+            opts: Dict = None,
+    ) -> models.CreateContractReviewChecklistWebUrlResponse:
+        """
+        此接口（CreateContractReviewChecklistWebUrl）用来创建新建审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateContractReviewChecklistWebUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateContractReviewChecklistWebUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateContractReviewWebUrl(
             self,
             request: models.CreateContractReviewWebUrlRequest,
@@ -2293,6 +2315,50 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeContractReviewChecklistWebUrl(
+            self,
+            request: models.DescribeContractReviewChecklistWebUrlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeContractReviewChecklistWebUrlResponse:
+        """
+        此接口（DescribeContractReviewChecklistWebUrl）用来创建查看审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeContractReviewChecklistWebUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeContractReviewChecklistWebUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeContractReviewChecklistsWebUrl(
+            self,
+            request: models.DescribeContractReviewChecklistsWebUrlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeContractReviewChecklistsWebUrlResponse:
+        """
+        此接口（DescribeContractReviewChecklistsWebUrl）用来创建审查要点清单列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeContractReviewChecklistsWebUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeContractReviewChecklistsWebUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContractReviewTask(
             self,
             request: models.DescribeContractReviewTaskRequest,
@@ -2306,6 +2372,28 @@ class EssClient(AbstractClient):
         kwargs["action"] = "DescribeContractReviewTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeContractReviewTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeContractReviewTaskListWebUrl(
+            self,
+            request: models.DescribeContractReviewTaskListWebUrlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeContractReviewTaskListWebUrlResponse:
+        """
+        此接口（DescribeContractReviewTaskListWebUrl）用来创建合同审查记录列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeContractReviewTaskListWebUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeContractReviewTaskListWebUrlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2960,6 +3048,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "ExportContractComparisonTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportContractComparisonTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportContractReviewResult(
+            self,
+            request: models.ExportContractReviewResultRequest,
+            opts: Dict = None,
+    ) -> models.ExportContractReviewResultResponse:
+        """
+        本接口（ExportContractReviewResult）用于导出和同审查结果。支持选择 1 “带风险批注文件”、 2 “审查结果＆摘要（.xIsx）”
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportContractReviewResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportContractReviewResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

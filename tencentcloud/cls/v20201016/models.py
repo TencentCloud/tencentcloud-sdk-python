@@ -8529,6 +8529,120 @@ class CreateCosRechargeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDashboardRequest(AbstractModel):
+    r"""CreateDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DashboardName: 仪表盘名称
+        :type DashboardName: str
+        :param _Data: 仪表盘配置数据
+        :type Data: str
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :type Tags: list of Tag
+        """
+        self._DashboardName = None
+        self._Data = None
+        self._Tags = None
+
+    @property
+    def DashboardName(self):
+        r"""仪表盘名称
+        :rtype: str
+        """
+        return self._DashboardName
+
+    @DashboardName.setter
+    def DashboardName(self, DashboardName):
+        self._DashboardName = DashboardName
+
+    @property
+    def Data(self):
+        r"""仪表盘配置数据
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Tags(self):
+        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DashboardName = params.get("DashboardName")
+        self._Data = params.get("Data")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDashboardResponse(AbstractModel):
+    r"""CreateDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DashboardId: 仪表盘id
+        :type DashboardId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DashboardId = None
+        self._RequestId = None
+
+    @property
+    def DashboardId(self):
+        r"""仪表盘id
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DashboardId = params.get("DashboardId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDashboardSubscribeRequest(AbstractModel):
     r"""CreateDashboardSubscribe请求参数结构体
 
@@ -15151,6 +15265,70 @@ class DeleteCosRechargeRequest(AbstractModel):
 
 class DeleteCosRechargeResponse(AbstractModel):
     r"""DeleteCosRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDashboardRequest(AbstractModel):
+    r"""DeleteDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DashboardId: 仪表盘id
+        :type DashboardId: str
+        """
+        self._DashboardId = None
+
+    @property
+    def DashboardId(self):
+        r"""仪表盘id
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+
+    def _deserialize(self, params):
+        self._DashboardId = params.get("DashboardId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDashboardResponse(AbstractModel):
+    r"""DeleteDashboard返回参数结构体
 
     """
 
@@ -34095,6 +34273,120 @@ class ModifyCosRechargeRequest(AbstractModel):
 
 class ModifyCosRechargeResponse(AbstractModel):
     r"""ModifyCosRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDashboardRequest(AbstractModel):
+    r"""ModifyDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DashboardId: 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+        :type DashboardId: str
+        :param _DashboardName: 仪表盘名称
+        :type DashboardName: str
+        :param _Data: 仪表盘配置数据
+        :type Data: str
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :type Tags: list of Tag
+        """
+        self._DashboardId = None
+        self._DashboardName = None
+        self._Data = None
+        self._Tags = None
+
+    @property
+    def DashboardId(self):
+        r"""仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def DashboardName(self):
+        r"""仪表盘名称
+        :rtype: str
+        """
+        return self._DashboardName
+
+    @DashboardName.setter
+    def DashboardName(self, DashboardName):
+        self._DashboardName = DashboardName
+
+    @property
+    def Data(self):
+        r"""仪表盘配置数据
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Tags(self):
+        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DashboardId = params.get("DashboardId")
+        self._DashboardName = params.get("DashboardName")
+        self._Data = params.get("Data")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDashboardResponse(AbstractModel):
+    r"""ModifyDashboard返回参数结构体
 
     """
 

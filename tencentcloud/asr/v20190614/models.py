@@ -429,7 +429,6 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
         :param _EngineType: 引擎模型类型。
 • 16k_zh：中文普通话通用；
 • 16k_en：英语；
-• 16k_yue：粤语；
 • 16k_id：印度尼西亚语；
 • 16k_fil：菲律宾语；
 • 16k_th：泰语；
@@ -479,7 +478,6 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
         r"""引擎模型类型。
 • 16k_zh：中文普通话通用；
 • 16k_en：英语；
-• 16k_yue：粤语；
 • 16k_id：印度尼西亚语；
 • 16k_fil：菲律宾语；
 • 16k_th：泰语；

@@ -1299,6 +1299,102 @@ class CosSnapShotInfo(AbstractModel):
         
 
 
+class CreateAutoBackUpStrategyRequest(AbstractModel):
+    r"""CreateAutoBackUpStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        :param _CosBackup: 策略信息
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        self._InstanceId = None
+        self._CosBackup = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CosBackup(self):
+        r"""策略信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoBackUpStrategyResponse(AbstractModel):
+    r"""CreateAutoBackUpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: true 成功; false 失败
+        :type Status: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""true 成功; false 失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateClusterSnapshotRequest(AbstractModel):
     r"""CreateClusterSnapshot请求参数结构体
 
@@ -1917,7 +2013,7 @@ class CreateInstanceRequest(AbstractModel):
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         :param _EnableHybridStorage: 是否开启存算分离
         :type EnableHybridStorage: bool
-        :param _DiskEnhance: 是否开启essd 增强型云盘
+        :param _DiskEnhance: 硬盘额外性能
         :type DiskEnhance: int
         :param _EnableDiagnose: 是否开启智能巡检
         :type EnableDiagnose: bool
@@ -2343,7 +2439,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DiskEnhance(self):
-        r"""是否开启essd 增强型云盘
+        r"""硬盘额外性能
         :rtype: int
         """
         return self._DiskEnhance
@@ -3454,6 +3550,100 @@ class DataStreamInfo(AbstractModel):
         
 
 
+class DeleteAutoBackUpStrategyRequest(AbstractModel):
+    r"""DeleteAutoBackUpStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        :param _StrategyName: 策略名称
+        :type StrategyName: list of str
+        """
+        self._InstanceId = None
+        self._StrategyName = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyName(self):
+        r"""策略名称
+        :rtype: list of str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyName = params.get("StrategyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoBackUpStrategyResponse(AbstractModel):
+    r"""DeleteAutoBackUpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: true 成功; false 失败
+        :type Status: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""true 成功; false 失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteClusterSnapshotRequest(AbstractModel):
     r"""DeleteClusterSnapshot请求参数结构体
 
@@ -4049,6 +4239,90 @@ class DeleteServerlessSpaceUserResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAutoBackUpStrategyRequest(AbstractModel):
+    r"""DescribeAutoBackUpStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoBackUpStrategyResponse(AbstractModel):
+    r"""DescribeAutoBackUpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBackupList: 策略信息
+        :type CosBackupList: list of CosBackup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosBackupList = None
+        self._RequestId = None
+
+    @property
+    def CosBackupList(self):
+        r"""策略信息
+        :rtype: list of CosBackup
+        """
+        return self._CosBackupList
+
+    @CosBackupList.setter
+    def CosBackupList(self, CosBackupList):
+        self._CosBackupList = CosBackupList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosBackupList") is not None:
+            self._CosBackupList = []
+            for item in params.get("CosBackupList"):
+                obj = CosBackup()
+                obj._deserialize(item)
+                self._CosBackupList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15559,6 +15833,151 @@ class MetricMapByIndexId(AbstractModel):
         
 
 
+class ModifyAutoBackUpCommonInfoRequest(AbstractModel):
+    r"""ModifyAutoBackUpCommonInfo请求参数结构体
+
+    """
+
+
+class ModifyAutoBackUpCommonInfoResponse(AbstractModel):
+    r"""ModifyAutoBackUpCommonInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAutoBackUpStrategyRequest(AbstractModel):
+    r"""ModifyAutoBackUpStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        :param _StrategyName: 当前策略名称
+        :type StrategyName: str
+        :param _CosBackup: 策略信息
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        self._InstanceId = None
+        self._StrategyName = None
+        self._CosBackup = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyName(self):
+        r"""当前策略名称
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def CosBackup(self):
+        r"""策略信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyName = params.get("StrategyName")
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoBackUpStrategyResponse(AbstractModel):
+    r"""ModifyAutoBackUpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: true 成功; false 失败
+        :type Status: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""true 成功; false 失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyEsVipSecurityGroupRequest(AbstractModel):
     r"""ModifyEsVipSecurityGroup请求参数结构体
 
@@ -15671,7 +16090,7 @@ class NodeInfo(AbstractModel):
         :param _MemSize: 内存大小，单位GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: int
-        :param _DiskEnhance: /
+        :param _DiskEnhance: 硬盘额外性能
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskEnhance: int
         :param _GpuInfo: 节点Gpu信息
@@ -15809,7 +16228,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskEnhance(self):
-        r"""/
+        r"""硬盘额外性能
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

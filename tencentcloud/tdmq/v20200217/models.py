@@ -24640,7 +24640,7 @@ class ModifyRabbitMQUserRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
+        :param _User: 用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
         :type User: str
         :param _Password: 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
         :type Password: str
@@ -24675,7 +24675,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def User(self):
-        r"""用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
+        r"""用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
         :rtype: str
         """
         return self._User
@@ -24806,6 +24806,8 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
         :type RemoveAllTags: bool
         :param _Tags: 修改实例的标签信息，全量标签信息，非增量
         :type Tags: list of Tag
+        :param _EnableRiskWarning: 是否开启集群风险提示
+        :type EnableRiskWarning: bool
         """
         self._InstanceId = None
         self._ClusterName = None
@@ -24813,6 +24815,7 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
         self._EnableDeletionProtection = None
         self._RemoveAllTags = None
         self._Tags = None
+        self._EnableRiskWarning = None
 
     @property
     def InstanceId(self):
@@ -24880,6 +24883,17 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def EnableRiskWarning(self):
+        r"""是否开启集群风险提示
+        :rtype: bool
+        """
+        return self._EnableRiskWarning
+
+    @EnableRiskWarning.setter
+    def EnableRiskWarning(self, EnableRiskWarning):
+        self._EnableRiskWarning = EnableRiskWarning
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24893,6 +24907,7 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._EnableRiskWarning = params.get("EnableRiskWarning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28921,6 +28936,12 @@ OFF/ON/CREATING/DELETING
         :type PublicTlsAccessEndpoint: str
         :param _PublicIpReused: 公网IP是否复用
         :type PublicIpReused: bool
+        :param _PublicWebConsoleErrorMessage: 公网控制台接入点操作的错误信息
+        :type PublicWebConsoleErrorMessage: str
+        :param _VpcWebConsoleErrorMessage: 内网控制台接入点操作的错误信息
+        :type VpcWebConsoleErrorMessage: str
+        :param _PublicDataStreamErrorMessage: 公网接入点操作的错误信息
+        :type PublicDataStreamErrorMessage: str
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -28938,6 +28959,9 @@ OFF/ON/CREATING/DELETING
         self._ControlPlaneEndpointInfo = None
         self._PublicTlsAccessEndpoint = None
         self._PublicIpReused = None
+        self._PublicWebConsoleErrorMessage = None
+        self._VpcWebConsoleErrorMessage = None
+        self._PublicDataStreamErrorMessage = None
 
     @property
     def PublicAccessEndpoint(self):
@@ -29117,6 +29141,39 @@ OFF/ON/CREATING/DELETING
     def PublicIpReused(self, PublicIpReused):
         self._PublicIpReused = PublicIpReused
 
+    @property
+    def PublicWebConsoleErrorMessage(self):
+        r"""公网控制台接入点操作的错误信息
+        :rtype: str
+        """
+        return self._PublicWebConsoleErrorMessage
+
+    @PublicWebConsoleErrorMessage.setter
+    def PublicWebConsoleErrorMessage(self, PublicWebConsoleErrorMessage):
+        self._PublicWebConsoleErrorMessage = PublicWebConsoleErrorMessage
+
+    @property
+    def VpcWebConsoleErrorMessage(self):
+        r"""内网控制台接入点操作的错误信息
+        :rtype: str
+        """
+        return self._VpcWebConsoleErrorMessage
+
+    @VpcWebConsoleErrorMessage.setter
+    def VpcWebConsoleErrorMessage(self, VpcWebConsoleErrorMessage):
+        self._VpcWebConsoleErrorMessage = VpcWebConsoleErrorMessage
+
+    @property
+    def PublicDataStreamErrorMessage(self):
+        r"""公网接入点操作的错误信息
+        :rtype: str
+        """
+        return self._PublicDataStreamErrorMessage
+
+    @PublicDataStreamErrorMessage.setter
+    def PublicDataStreamErrorMessage(self, PublicDataStreamErrorMessage):
+        self._PublicDataStreamErrorMessage = PublicDataStreamErrorMessage
+
 
     def _deserialize(self, params):
         self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
@@ -29139,6 +29196,9 @@ OFF/ON/CREATING/DELETING
             self._ControlPlaneEndpointInfo._deserialize(params.get("ControlPlaneEndpointInfo"))
         self._PublicTlsAccessEndpoint = params.get("PublicTlsAccessEndpoint")
         self._PublicIpReused = params.get("PublicIpReused")
+        self._PublicWebConsoleErrorMessage = params.get("PublicWebConsoleErrorMessage")
+        self._VpcWebConsoleErrorMessage = params.get("VpcWebConsoleErrorMessage")
+        self._PublicDataStreamErrorMessage = params.get("PublicDataStreamErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29213,6 +29273,14 @@ class RabbitMQClusterInfo(AbstractModel):
         :type Tags: list of Tag
         :param _EnableDeletionProtection: 是否已开启删除保护
         :type EnableDeletionProtection: bool
+        :param _MirroredQueueRisk: 是否有vhost未开启镜像队列风险
+        :type MirroredQueueRisk: bool
+        :param _EnableRiskWarning: 是否提示风险
+        :type EnableRiskWarning: bool
+        :param _ConsumeTimeout: 消费超时时间
+        :type ConsumeTimeout: int
+        :param _ChannelMax: 最大Channel数
+        :type ChannelMax: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -29242,6 +29310,10 @@ class RabbitMQClusterInfo(AbstractModel):
         self._Container = None
         self._Tags = None
         self._EnableDeletionProtection = None
+        self._MirroredQueueRisk = None
+        self._EnableRiskWarning = None
+        self._ConsumeTimeout = None
+        self._ChannelMax = None
 
     @property
     def ClusterId(self):
@@ -29552,6 +29624,50 @@ class RabbitMQClusterInfo(AbstractModel):
     def EnableDeletionProtection(self, EnableDeletionProtection):
         self._EnableDeletionProtection = EnableDeletionProtection
 
+    @property
+    def MirroredQueueRisk(self):
+        r"""是否有vhost未开启镜像队列风险
+        :rtype: bool
+        """
+        return self._MirroredQueueRisk
+
+    @MirroredQueueRisk.setter
+    def MirroredQueueRisk(self, MirroredQueueRisk):
+        self._MirroredQueueRisk = MirroredQueueRisk
+
+    @property
+    def EnableRiskWarning(self):
+        r"""是否提示风险
+        :rtype: bool
+        """
+        return self._EnableRiskWarning
+
+    @EnableRiskWarning.setter
+    def EnableRiskWarning(self, EnableRiskWarning):
+        self._EnableRiskWarning = EnableRiskWarning
+
+    @property
+    def ConsumeTimeout(self):
+        r"""消费超时时间
+        :rtype: int
+        """
+        return self._ConsumeTimeout
+
+    @ConsumeTimeout.setter
+    def ConsumeTimeout(self, ConsumeTimeout):
+        self._ConsumeTimeout = ConsumeTimeout
+
+    @property
+    def ChannelMax(self):
+        r"""最大Channel数
+        :rtype: int
+        """
+        return self._ChannelMax
+
+    @ChannelMax.setter
+    def ChannelMax(self, ChannelMax):
+        self._ChannelMax = ChannelMax
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -29592,6 +29708,10 @@ class RabbitMQClusterInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        self._MirroredQueueRisk = params.get("MirroredQueueRisk")
+        self._EnableRiskWarning = params.get("EnableRiskWarning")
+        self._ConsumeTimeout = params.get("ConsumeTimeout")
+        self._ChannelMax = params.get("ChannelMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39013,12 +39133,15 @@ class VpcEndpointInfo(AbstractModel):
         :type VpcDataStreamEndpointStatus: str
         :param _VpcTlsEndpoint: TLS加密的数据流接入点
         :type VpcTlsEndpoint: str
+        :param _VpcErrorMessage: VPC 接入点操作失败的错误信息
+        :type VpcErrorMessage: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._VpcEndpoint = None
         self._VpcDataStreamEndpointStatus = None
         self._VpcTlsEndpoint = None
+        self._VpcErrorMessage = None
 
     @property
     def VpcId(self):
@@ -39075,6 +39198,17 @@ class VpcEndpointInfo(AbstractModel):
     def VpcTlsEndpoint(self, VpcTlsEndpoint):
         self._VpcTlsEndpoint = VpcTlsEndpoint
 
+    @property
+    def VpcErrorMessage(self):
+        r"""VPC 接入点操作失败的错误信息
+        :rtype: str
+        """
+        return self._VpcErrorMessage
+
+    @VpcErrorMessage.setter
+    def VpcErrorMessage(self, VpcErrorMessage):
+        self._VpcErrorMessage = VpcErrorMessage
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -39082,6 +39216,7 @@ class VpcEndpointInfo(AbstractModel):
         self._VpcEndpoint = params.get("VpcEndpoint")
         self._VpcDataStreamEndpointStatus = params.get("VpcDataStreamEndpointStatus")
         self._VpcTlsEndpoint = params.get("VpcTlsEndpoint")
+        self._VpcErrorMessage = params.get("VpcErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

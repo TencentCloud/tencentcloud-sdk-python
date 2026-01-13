@@ -320,6 +320,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDashboard(
+            self,
+            request: models.CreateDashboardRequest,
+            opts: Dict = None,
+    ) -> models.CreateDashboardResponse:
+        """
+        本接口用于创建仪表盘
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDashboardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDashboardSubscribe(
             self,
             request: models.CreateDashboardSubscribeRequest,
@@ -855,6 +873,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteCosRecharge"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCosRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDashboard(
+            self,
+            request: models.DeleteDashboardRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDashboardResponse:
+        """
+        本接口用于删除仪表盘
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDashboardResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2368,6 +2404,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyCosRecharge"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCosRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDashboard(
+            self,
+            request: models.ModifyDashboardRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDashboardResponse:
+        """
+        本接口用于修改仪表盘
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDashboardResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

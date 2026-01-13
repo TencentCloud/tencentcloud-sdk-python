@@ -43,6 +43,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAutoBackUpStrategy(
+            self,
+            request: models.CreateAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.CreateAutoBackUpStrategyResponse:
+        """
+        新建自动备份快照策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAutoBackUpStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateClusterSnapshot(
             self,
             request: models.CreateClusterSnapshotRequest,
@@ -169,6 +187,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAutoBackUpStrategy(
+            self,
+            request: models.DeleteAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAutoBackUpStrategyResponse:
+        """
+        删除自动备份快照策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAutoBackUpStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteClusterSnapshot(
             self,
             request: models.DeleteClusterSnapshotRequest,
@@ -290,6 +326,24 @@ class EsClient(AbstractClient):
         kwargs["action"] = "DeleteServerlessSpaceUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteServerlessSpaceUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAutoBackUpStrategy(
+            self,
+            request: models.DescribeAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoBackUpStrategyResponse:
+        """
+        获取自动备份快照策略信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoBackUpStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -759,6 +813,42 @@ class EsClient(AbstractClient):
         kwargs["action"] = "InstallInstanceModel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InstallInstanceModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoBackUpCommonInfo(
+            self,
+            request: models.ModifyAutoBackUpCommonInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoBackUpCommonInfoResponse:
+        """
+        修改自动备份快照策略公共信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoBackUpCommonInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoBackUpCommonInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoBackUpStrategy(
+            self,
+            request: models.ModifyAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoBackUpStrategyResponse:
+        """
+        修改自动备份快照策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoBackUpStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

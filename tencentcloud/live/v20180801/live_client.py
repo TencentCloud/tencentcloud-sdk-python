@@ -281,6 +281,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuditKeywordLib(self, request):
+        r"""创建关键词库，直播审核功能使用。
+
+        :param request: Request instance for CreateAuditKeywordLib.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateAuditKeywordLibRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateAuditKeywordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditKeywordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditKeywordLibResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAuditKeywords(self, request):
         r"""创建关键词，并关联到关键词库。
 

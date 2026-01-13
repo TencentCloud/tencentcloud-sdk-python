@@ -6304,6 +6304,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type AutoArchive: str
         :param _AutoArchiveDelayHours: 暂停后的归档处理时间
         :type AutoArchiveDelayHours: int
+        :param _CynosVersion: 内核小版本号
+        :type CynosVersion: str
         """
         self._Zone = None
         self._VpcId = None
@@ -6350,6 +6352,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ProxyConfig = None
         self._AutoArchive = None
         self._AutoArchiveDelayHours = None
+        self._CynosVersion = None
 
     @property
     def Zone(self):
@@ -6870,6 +6873,17 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def AutoArchiveDelayHours(self, AutoArchiveDelayHours):
         self._AutoArchiveDelayHours = AutoArchiveDelayHours
 
+    @property
+    def CynosVersion(self):
+        r"""内核小版本号
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -6934,6 +6948,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
             self._ProxyConfig._deserialize(params.get("ProxyConfig"))
         self._AutoArchive = params.get("AutoArchive")
         self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
+        self._CynosVersion = params.get("CynosVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23643,6 +23658,14 @@ class GdnTaskInfo(AbstractModel):
         :type StandbyClusterId: str
         :param _StandbyClusterName: 从集群名称
         :type StandbyClusterName: str
+        :param _ForceSwitchGdn: 是否已强切
+        :type ForceSwitchGdn: str
+        :param _Code: 返回码
+        :type Code: int
+        :param _Message: 提示信息
+        :type Message: str
+        :param _IsSupportForce: 是否支持强切
+        :type IsSupportForce: str
         """
         self._GdnId = None
         self._GdnName = None
@@ -23651,6 +23674,10 @@ class GdnTaskInfo(AbstractModel):
         self._StandbyClusterRegion = None
         self._StandbyClusterId = None
         self._StandbyClusterName = None
+        self._ForceSwitchGdn = None
+        self._Code = None
+        self._Message = None
+        self._IsSupportForce = None
 
     @property
     def GdnId(self):
@@ -23729,6 +23756,50 @@ class GdnTaskInfo(AbstractModel):
     def StandbyClusterName(self, StandbyClusterName):
         self._StandbyClusterName = StandbyClusterName
 
+    @property
+    def ForceSwitchGdn(self):
+        r"""是否已强切
+        :rtype: str
+        """
+        return self._ForceSwitchGdn
+
+    @ForceSwitchGdn.setter
+    def ForceSwitchGdn(self, ForceSwitchGdn):
+        self._ForceSwitchGdn = ForceSwitchGdn
+
+    @property
+    def Code(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""提示信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsSupportForce(self):
+        r"""是否支持强切
+        :rtype: str
+        """
+        return self._IsSupportForce
+
+    @IsSupportForce.setter
+    def IsSupportForce(self, IsSupportForce):
+        self._IsSupportForce = IsSupportForce
+
 
     def _deserialize(self, params):
         self._GdnId = params.get("GdnId")
@@ -23738,6 +23809,10 @@ class GdnTaskInfo(AbstractModel):
         self._StandbyClusterRegion = params.get("StandbyClusterRegion")
         self._StandbyClusterId = params.get("StandbyClusterId")
         self._StandbyClusterName = params.get("StandbyClusterName")
+        self._ForceSwitchGdn = params.get("ForceSwitchGdn")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._IsSupportForce = params.get("IsSupportForce")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

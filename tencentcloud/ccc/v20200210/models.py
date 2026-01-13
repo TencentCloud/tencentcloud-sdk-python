@@ -1247,6 +1247,8 @@ class AutoCalloutTaskInfo(AbstractModel):
         :type State: int
         :param _TaskId: 任务Id
         :type TaskId: int
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :type MaxRingTimeoutSecond: int
         """
         self._Name = None
         self._CalleeCount = None
@@ -1256,6 +1258,7 @@ class AutoCalloutTaskInfo(AbstractModel):
         self._IvrId = None
         self._State = None
         self._TaskId = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def Name(self):
@@ -1351,6 +1354,17 @@ class AutoCalloutTaskInfo(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1361,6 +1375,7 @@ class AutoCalloutTaskInfo(AbstractModel):
         self._IvrId = params.get("IvrId")
         self._State = params.get("State")
         self._TaskId = params.get("TaskId")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2963,6 +2978,8 @@ class CreateAIAgentCallRequest(AbstractModel):
 2.  dify-inputs-user 为dify的user值
 3.  dify-inputs-conversation_id 为dify的conversation_id值
         :type Variables: list of Variable
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._AIAgentId = None
@@ -2970,6 +2987,7 @@ class CreateAIAgentCallRequest(AbstractModel):
         self._Callers = None
         self._PromptVariables = None
         self._Variables = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -3045,6 +3063,17 @@ class CreateAIAgentCallRequest(AbstractModel):
     def Variables(self, Variables):
         self._Variables = Variables
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3063,6 +3092,7 @@ class CreateAIAgentCallRequest(AbstractModel):
                 obj = Variable()
                 obj._deserialize(item)
                 self._Variables.append(obj)
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3365,6 +3395,8 @@ HoaiMy
         :type VoicemailAction: int
         :param _LLMExtraBody: 大模型拓展参数， 格式为json字符串
         :type LLMExtraBody: str
+        :param _MaxCallDurationMs: 最大通话时长， 默认不限制。单位毫秒(ms)
+        :type MaxCallDurationMs: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3402,6 +3434,7 @@ HoaiMy
         self._EnableVoicemailDetection = None
         self._VoicemailAction = None
         self._LLMExtraBody = None
+        self._MaxCallDurationMs = None
 
     @property
     def SdkAppId(self):
@@ -3973,6 +4006,17 @@ HoaiMy
     def LLMExtraBody(self, LLMExtraBody):
         self._LLMExtraBody = LLMExtraBody
 
+    @property
+    def MaxCallDurationMs(self):
+        r"""最大通话时长， 默认不限制。单位毫秒(ms)
+        :rtype: int
+        """
+        return self._MaxCallDurationMs
+
+    @MaxCallDurationMs.setter
+    def MaxCallDurationMs(self, MaxCallDurationMs):
+        self._MaxCallDurationMs = MaxCallDurationMs
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4033,6 +4077,7 @@ HoaiMy
         self._EnableVoicemailDetection = params.get("EnableVoicemailDetection")
         self._VoicemailAction = params.get("VoicemailAction")
         self._LLMExtraBody = params.get("LLMExtraBody")
+        self._MaxCallDurationMs = params.get("MaxCallDurationMs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4433,6 +4478,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type AIAgentId: int
         :param _RetryInterval: 任务失败重试时间间隔，重试间隔 600秒～86400 秒
         :type RetryInterval: int
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -4450,6 +4497,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._AvailableTime = None
         self._AIAgentId = None
         self._RetryInterval = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -4627,6 +4675,17 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def RetryInterval(self, RetryInterval):
         self._RetryInterval = RetryInterval
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4660,6 +4719,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 self._AvailableTime.append(obj)
         self._AIAgentId = params.get("AIAgentId")
         self._RetryInterval = params.get("RetryInterval")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4848,7 +4908,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         r"""
         :param _SdkAppId: 应用 ID
         :type SdkAppId: int
-        :param _UserId: 客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
+        :param _UserId: 座席邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
         :type UserId: str
         :param _Callee: 被叫号码，须带 0086 前缀
         :type Callee: str
@@ -4885,7 +4945,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
+        r"""座席邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
         :rtype: str
         """
         return self._UserId
@@ -5375,6 +5435,8 @@ class CreateIVRSessionRequest(AbstractModel):
         :type Variables: list of Variable
         :param _UUI: 用户数据
         :type UUI: str
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -5382,6 +5444,7 @@ class CreateIVRSessionRequest(AbstractModel):
         self._Callers = None
         self._Variables = None
         self._UUI = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -5449,6 +5512,17 @@ class CreateIVRSessionRequest(AbstractModel):
     def UUI(self, UUI):
         self._UUI = UUI
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -5462,6 +5536,7 @@ class CreateIVRSessionRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Variables.append(obj)
         self._UUI = params.get("UUI")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7741,6 +7816,8 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
         :type IvrId: int
         :param _State: 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
         :type State: int
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :type MaxRingTimeoutSecond: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7752,6 +7829,7 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
         self._Callees = None
         self._IvrId = None
         self._State = None
+        self._MaxRingTimeoutSecond = None
         self._RequestId = None
 
     @property
@@ -7844,6 +7922,17 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
         self._State = State
 
     @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7869,6 +7958,7 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
                 self._Callees.append(obj)
         self._IvrId = params.get("IvrId")
         self._State = params.get("State")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         self._RequestId = params.get("RequestId")
 
 
@@ -16428,6 +16518,10 @@ class ServeParticipant(AbstractModel):
         :param _SkillGroupId: 技能组 ID
         :type SkillGroupId: int
         :param _EndStatusString: 结束状态
+
+中文详情[参考](https://www.tencentcloud.com/zh/document/product/1229/71847)
+
+英文详情[参考](https://www.tencentcloud.com/document/product/1229/71847?lang=en)
         :type EndStatusString: str
         :param _RecordURL: 录音 URL
         :type RecordURL: str
@@ -16594,6 +16688,10 @@ class ServeParticipant(AbstractModel):
     @property
     def EndStatusString(self):
         r"""结束状态
+
+中文详情[参考](https://www.tencentcloud.com/zh/document/product/1229/71847)
+
+英文详情[参考](https://www.tencentcloud.com/document/product/1229/71847?lang=en)
         :rtype: str
         """
         return self._EndStatusString

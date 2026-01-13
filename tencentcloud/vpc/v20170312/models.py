@@ -353,12 +353,15 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
         :type ResourceType: str
         :param _Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
         :type Protocol: str
+        :param _InternetMaxBandwidthOut: 用于带宽包内添加IP资源时指定IP带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :type InternetMaxBandwidthOut: int
         """
         self._ResourceIds = None
         self._BandwidthPackageId = None
         self._NetworkType = None
         self._ResourceType = None
         self._Protocol = None
+        self._InternetMaxBandwidthOut = None
 
     @property
     def ResourceIds(self):
@@ -423,6 +426,17 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
     def Protocol(self, Protocol):
         self._Protocol = Protocol
 
+    @property
+    def InternetMaxBandwidthOut(self):
+        r"""用于带宽包内添加IP资源时指定IP带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -430,6 +444,7 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
         self._NetworkType = params.get("NetworkType")
         self._ResourceType = params.get("ResourceType")
         self._Protocol = params.get("Protocol")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5402,6 +5417,8 @@ class CCN(AbstractModel):
         :type QosLevel: str
         :param _InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
         :type InstanceChargeType: str
+        :param _InstanceMeteringType: 计量类型
+        :type InstanceMeteringType: str
         :param _BandwidthLimitType: 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
         :type BandwidthLimitType: str
         :param _TagSet: 标签键值对。
@@ -5445,6 +5462,7 @@ class CCN(AbstractModel):
         self._State = None
         self._QosLevel = None
         self._InstanceChargeType = None
+        self._InstanceMeteringType = None
         self._BandwidthLimitType = None
         self._TagSet = None
         self._RoutePriorityFlag = None
@@ -5550,6 +5568,17 @@ class CCN(AbstractModel):
     @InstanceChargeType.setter
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceMeteringType(self):
+        r"""计量类型
+        :rtype: str
+        """
+        return self._InstanceMeteringType
+
+    @InstanceMeteringType.setter
+    def InstanceMeteringType(self, InstanceMeteringType):
+        self._InstanceMeteringType = InstanceMeteringType
 
     @property
     def BandwidthLimitType(self):
@@ -5748,6 +5777,7 @@ class CCN(AbstractModel):
         self._State = params.get("State")
         self._QosLevel = params.get("QosLevel")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._InstanceMeteringType = params.get("InstanceMeteringType")
         self._BandwidthLimitType = params.get("BandwidthLimitType")
         if params.get("TagSet") is not None:
             self._TagSet = []
@@ -61406,10 +61436,16 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 <li>Address：弹性公网IP</li>
 <li>LoadBalance：负载均衡</li>
         :type ResourceType: str
+        :param _InternetMaxBandwidthOut: 用于移除带宽包内IP资源时指定IP的带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :type InternetMaxBandwidthOut: int
+        :param _InternetChargeType: 用于移除带宽包内IP资源时指定资源移除后的计费模式。<li>小时流量：TRAFFIC_POSTPAID_BY_HOUR；</li><li>小时带宽：BANDWIDTH_POSTPAID_BY_HOUR</li><p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :type InternetChargeType: str
         """
         self._ResourceIds = None
         self._BandwidthPackageId = None
         self._ResourceType = None
+        self._InternetMaxBandwidthOut = None
+        self._InternetChargeType = None
 
     @property
     def ResourceIds(self):
@@ -61446,11 +61482,35 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def InternetMaxBandwidthOut(self):
+        r"""用于移除带宽包内IP资源时指定IP的带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def InternetChargeType(self):
+        r"""用于移除带宽包内IP资源时指定资源移除后的计费模式。<li>小时流量：TRAFFIC_POSTPAID_BY_HOUR；</li><li>小时带宽：BANDWIDTH_POSTPAID_BY_HOUR</li><p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._ResourceType = params.get("ResourceType")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._InternetChargeType = params.get("InternetChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

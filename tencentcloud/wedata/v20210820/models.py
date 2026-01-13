@@ -45609,9 +45609,9 @@ class DescribeTaskDetailDsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id
+        :param _TaskId: 任务ID
         :type TaskId: str
-        :param _ProjectId: 项目Id
+        :param _ProjectId: 项目ID （必填属性）
         :type ProjectId: str
         :param _TaskAlarmStatus: 已废弃，无需填写
         :type TaskAlarmStatus: int
@@ -45622,7 +45622,7 @@ class DescribeTaskDetailDsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""任务ID
         :rtype: str
         """
         return self._TaskId
@@ -45633,7 +45633,7 @@ class DescribeTaskDetailDsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目Id
+        r"""项目ID （必填属性）
         :rtype: str
         """
         return self._ProjectId
@@ -67719,7 +67719,7 @@ class LifecycleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Lifecycle: 生命周期值
+        :param _Lifecycle: 生命周期值，如果PartitionLifeCycle=custom时，表示自定义生命周期
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lifecycle: int
         :param _Columns: 列名
@@ -67735,7 +67735,7 @@ class LifecycleInfo(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""生命周期值
+        r"""生命周期值，如果PartitionLifeCycle=custom时，表示自定义生命周期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -100743,9 +100743,6 @@ class TableMeta(AbstractModel):
         :param _HasFavorite: true已收藏/false表示未收藏状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasFavorite: bool
-        :param _LifeCycleTime: 生命周期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LifeCycleTime: int
         :param _StorageSizeWithUnit: 存储量，已转为适合的单位展示
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageSizeWithUnit: str
@@ -100822,12 +100819,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _Location: 存储位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
+        :param _LifeCycleTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeCycleTime: int
         :param _IsPartitionTable: 判断是否是分区表1 是 0否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPartitionTable: int
         :param _PartitionColumns: 分区字段 key
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionColumns: list of str
+        :param _DateFormat: 分区时间格式：yyyy-MM-dd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateFormat: str
         :param _PartitionExpireDays: 生命周期-分区保留天数【分区保留策略时有效】
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionExpireDays: int
@@ -100937,7 +100940,6 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._BizCatalogIds = None
         self._BizCatalogNames = None
         self._HasFavorite = None
-        self._LifeCycleTime = None
         self._StorageSizeWithUnit = None
         self._InstanceId = None
         self._TechnologyType = None
@@ -100963,8 +100965,10 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._MetaCrawlType = None
         self._IsView = None
         self._Location = None
+        self._LifeCycleTime = None
         self._IsPartitionTable = None
         self._PartitionColumns = None
+        self._DateFormat = None
         self._PartitionExpireDays = None
         self._TableProperties = None
         self._Environment = None
@@ -101283,18 +101287,6 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._HasFavorite = HasFavorite
 
     @property
-    def LifeCycleTime(self):
-        r"""生命周期
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._LifeCycleTime
-
-    @LifeCycleTime.setter
-    def LifeCycleTime(self, LifeCycleTime):
-        self._LifeCycleTime = LifeCycleTime
-
-    @property
     def StorageSizeWithUnit(self):
         r"""存储量，已转为适合的单位展示
 注意：此字段可能返回 null，表示取不到有效值。
@@ -101596,6 +101588,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._Location = Location
 
     @property
+    def LifeCycleTime(self):
+        r"""生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeCycleTime
+
+    @LifeCycleTime.setter
+    def LifeCycleTime(self, LifeCycleTime):
+        self._LifeCycleTime = LifeCycleTime
+
+    @property
     def IsPartitionTable(self):
         r"""判断是否是分区表1 是 0否
 注意：此字段可能返回 null，表示取不到有效值。
@@ -101618,6 +101622,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     @PartitionColumns.setter
     def PartitionColumns(self, PartitionColumns):
         self._PartitionColumns = PartitionColumns
+
+    @property
+    def DateFormat(self):
+        r"""分区时间格式：yyyy-MM-dd
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DateFormat
+
+    @DateFormat.setter
+    def DateFormat(self, DateFormat):
+        self._DateFormat = DateFormat
 
     @property
     def PartitionExpireDays(self):
@@ -101981,7 +101997,6 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._BizCatalogIds = params.get("BizCatalogIds")
         self._BizCatalogNames = params.get("BizCatalogNames")
         self._HasFavorite = params.get("HasFavorite")
-        self._LifeCycleTime = params.get("LifeCycleTime")
         self._StorageSizeWithUnit = params.get("StorageSizeWithUnit")
         self._InstanceId = params.get("InstanceId")
         self._TechnologyType = params.get("TechnologyType")
@@ -102016,8 +102031,10 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._MetaCrawlType = params.get("MetaCrawlType")
         self._IsView = params.get("IsView")
         self._Location = params.get("Location")
+        self._LifeCycleTime = params.get("LifeCycleTime")
         self._IsPartitionTable = params.get("IsPartitionTable")
         self._PartitionColumns = params.get("PartitionColumns")
+        self._DateFormat = params.get("DateFormat")
         self._PartitionExpireDays = params.get("PartitionExpireDays")
         if params.get("TableProperties") is not None:
             self._TableProperties = []

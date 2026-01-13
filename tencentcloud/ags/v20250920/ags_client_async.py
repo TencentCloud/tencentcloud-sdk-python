@@ -62,6 +62,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePreCacheImageTask(
+            self,
+            request: models.CreatePreCacheImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreatePreCacheImageTaskResponse:
+        """
+        创建镜像预热任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePreCacheImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePreCacheImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSandboxTool(
             self,
             request: models.CreateSandboxToolRequest,
@@ -129,6 +147,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeAPIKeyList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAPIKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePreCacheImageTask(
+            self,
+            request: models.DescribePreCacheImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribePreCacheImageTaskResponse:
+        """
+        查询镜像预热任务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePreCacheImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePreCacheImageTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

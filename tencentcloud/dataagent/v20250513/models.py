@@ -187,6 +187,132 @@ class AddChunkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddSceneRequest(AbstractModel):
+    r"""AddScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Scene: 场景
+        :type Scene: :class:`tencentcloud.dataagent.v20250513.models.Scene`
+        :param _UseScope: 1仅自己使用，2指定用户，0全员
+        :type UseScope: int
+        :param _AuthorityUins: 可使用用户列表
+        :type AuthorityUins: list of str
+        """
+        self._InstanceId = None
+        self._Scene = None
+        self._UseScope = None
+        self._AuthorityUins = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scene(self):
+        r"""场景
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.Scene`
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def UseScope(self):
+        r"""1仅自己使用，2指定用户，0全员
+        :rtype: int
+        """
+        return self._UseScope
+
+    @UseScope.setter
+    def UseScope(self, UseScope):
+        self._UseScope = UseScope
+
+    @property
+    def AuthorityUins(self):
+        r"""可使用用户列表
+        :rtype: list of str
+        """
+        return self._AuthorityUins
+
+    @AuthorityUins.setter
+    def AuthorityUins(self, AuthorityUins):
+        self._AuthorityUins = AuthorityUins
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Scene") is not None:
+            self._Scene = Scene()
+            self._Scene._deserialize(params.get("Scene"))
+        self._UseScope = params.get("UseScope")
+        self._AuthorityUins = params.get("AuthorityUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSceneResponse(AbstractModel):
+    r"""AddScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: 场景id
+        :type SceneId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SceneId = None
+        self._RequestId = None
+
+    @property
+    def SceneId(self):
+        r"""场景id
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._RequestId = params.get("RequestId")
+
+
 class ChatAIRequest(AbstractModel):
     r"""ChatAI请求参数结构体
 
@@ -909,6 +1035,196 @@ class DeleteDataAgentSessionResponse(AbstractModel):
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
+
+
+class DeleteSceneRequest(AbstractModel):
+    r"""DeleteScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _SceneId: 场景id
+        :type SceneId: str
+        """
+        self._InstanceId = None
+        self._SceneId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SceneId(self):
+        r"""场景id
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SceneId = params.get("SceneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSceneResponse(AbstractModel):
+    r"""DeleteScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ExampleQA(AbstractModel):
+    r"""问答数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: 示例记录的唯一业务 ID
+        :type ExampleId: str
+        :param _Questions: 问题列表
+        :type Questions: list of str
+        :param _Answer: 对应的标准答案或回复
+        :type Answer: str
+        :param _Type: 内容类型，类型包含 'text', 'sql', 'code' 
+        :type Type: str
+        :param _CreateTime: 记录的创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 记录的最后更新时间
+        :type UpdateTime: str
+        """
+        self._ExampleId = None
+        self._Questions = None
+        self._Answer = None
+        self._Type = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ExampleId(self):
+        r"""示例记录的唯一业务 ID
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def Questions(self):
+        r"""问题列表
+        :rtype: list of str
+        """
+        return self._Questions
+
+    @Questions.setter
+    def Questions(self, Questions):
+        self._Questions = Questions
+
+    @property
+    def Answer(self):
+        r"""对应的标准答案或回复
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def Type(self):
+        r"""内容类型，类型包含 'text', 'sql', 'code' 
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreateTime(self):
+        r"""记录的创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""记录的最后更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._Questions = params.get("Questions")
+        self._Answer = params.get("Answer")
+        self._Type = params.get("Type")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileInfo(AbstractModel):
@@ -2387,13 +2703,55 @@ class ModifyUserAuthorityRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Module: 分为知识库knowledge、数据源datasource、自定义场景scene
+        :type Module: str
+        :param _ObjectId: 对象id,分为知识库id、数据源id、场景id
+        :type ObjectId: str
         :param _UseScope: 作用范围：1仅自己使用，2指定用户，0全员
         :type UseScope: int
         :param _AuthorityUins: 可使用的用户列表，UseScope=0/1,取值为[]
         :type AuthorityUins: list of str
         """
+        self._InstanceId = None
+        self._Module = None
+        self._ObjectId = None
         self._UseScope = None
         self._AuthorityUins = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Module(self):
+        r"""分为知识库knowledge、数据源datasource、自定义场景scene
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ObjectId(self):
+        r"""对象id,分为知识库id、数据源id、场景id
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
 
     @property
     def UseScope(self):
@@ -2419,6 +2777,9 @@ class ModifyUserAuthorityRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Module = params.get("Module")
+        self._ObjectId = params.get("ObjectId")
         self._UseScope = params.get("UseScope")
         self._AuthorityUins = params.get("AuthorityUins")
         memeber_set = set(params.keys())
@@ -2588,10 +2949,209 @@ class QueryChunkListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QuerySceneListRequest(AbstractModel):
+    r"""QuerySceneList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _SceneId: 场景id
+        :type SceneId: str
+        :param _SceneName: 场景名称
+        :type SceneName: str
+        :param _Page: 页数
+        :type Page: int
+        :param _PageSize: 页的大小
+        :type PageSize: int
+        """
+        self._InstanceId = None
+        self._SceneId = None
+        self._SceneName = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SceneId(self):
+        r"""场景id
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def SceneName(self):
+        r"""场景名称
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def Page(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页的大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SceneId = params.get("SceneId")
+        self._SceneName = params.get("SceneName")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySceneListResponse(AbstractModel):
+    r"""QuerySceneList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryUserAuthorityRequest(AbstractModel):
     r"""QueryUserAuthority请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Module: 分为知识库knowledge、数据源datasource、自定义场景scene
+        :type Module: str
+        :param _ObjectId: 对象id,分为知识库id、数据源id、场景id
+        :type ObjectId: str
+        """
+        self._InstanceId = None
+        self._Module = None
+        self._ObjectId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Module(self):
+        r"""分为知识库knowledge、数据源datasource、自定义场景scene
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ObjectId(self):
+        r"""对象id,分为知识库id、数据源id、场景id
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Module = params.get("Module")
+        self._ObjectId = params.get("ObjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryUserAuthorityResponse(AbstractModel):
@@ -2880,6 +3440,310 @@ class Record(AbstractModel):
         self._TaskListStr = params.get("TaskListStr")
         self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
         self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Scene(AbstractModel):
+    r"""场景
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _SceneName: 场景名称
+        :type SceneName: str
+        :param _Skills: 技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+        :type Skills: list of str
+        :param _Prompt: 提示词文本
+        :type Prompt: str
+        :param _Description: 描述
+        :type Description: str
+        :param _SearchConfig: 检索配置
+        :type SearchConfig: :class:`tencentcloud.dataagent.v20250513.models.SearchConfig`
+        :param _ExampleQAList: 示例问答列表
+        :type ExampleQAList: list of ExampleQA
+        :param _CreateTime: 记录的创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 记录的最后更新时间
+        :type UpdateTime: str
+        :param _CreatorUin: 创建者Uin
+        :type CreatorUin: str
+        """
+        self._SceneId = None
+        self._SceneName = None
+        self._Skills = None
+        self._Prompt = None
+        self._Description = None
+        self._SearchConfig = None
+        self._ExampleQAList = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CreatorUin = None
+
+    @property
+    def SceneId(self):
+        r"""场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def SceneName(self):
+        r"""场景名称
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def Skills(self):
+        r"""技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+        :rtype: list of str
+        """
+        return self._Skills
+
+    @Skills.setter
+    def Skills(self, Skills):
+        self._Skills = Skills
+
+    @property
+    def Prompt(self):
+        r"""提示词文本
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SearchConfig(self):
+        r"""检索配置
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.SearchConfig`
+        """
+        return self._SearchConfig
+
+    @SearchConfig.setter
+    def SearchConfig(self, SearchConfig):
+        self._SearchConfig = SearchConfig
+
+    @property
+    def ExampleQAList(self):
+        r"""示例问答列表
+        :rtype: list of ExampleQA
+        """
+        return self._ExampleQAList
+
+    @ExampleQAList.setter
+    def ExampleQAList(self, ExampleQAList):
+        self._ExampleQAList = ExampleQAList
+
+    @property
+    def CreateTime(self):
+        r"""记录的创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""记录的最后更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreatorUin(self):
+        r"""创建者Uin
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._SceneName = params.get("SceneName")
+        self._Skills = params.get("Skills")
+        self._Prompt = params.get("Prompt")
+        self._Description = params.get("Description")
+        if params.get("SearchConfig") is not None:
+            self._SearchConfig = SearchConfig()
+            self._SearchConfig._deserialize(params.get("SearchConfig"))
+        if params.get("ExampleQAList") is not None:
+            self._ExampleQAList = []
+            for item in params.get("ExampleQAList"):
+                obj = ExampleQA()
+                obj._deserialize(item)
+                self._ExampleQAList.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreatorUin = params.get("CreatorUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchConfig(AbstractModel):
+    r"""检索配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+        :type Type: int
+        :param _Num: 召回数量最大值
+        :type Num: int
+        :param _EmbeddingWeight: 权重配置
+        :type EmbeddingWeight: float
+        :param _Rerank: 0:关闭 1:开启，默认1
+        :type Rerank: int
+        :param _AutoRag: 0:关闭 1:开启，默认0
+        :type AutoRag: int
+        :param _KnowledgeBaseIds: AutoRag关联的知识库ID列表
+        :type KnowledgeBaseIds: list of str
+        :param _SearchStatus: AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+        :type SearchStatus: int
+        """
+        self._Type = None
+        self._Num = None
+        self._EmbeddingWeight = None
+        self._Rerank = None
+        self._AutoRag = None
+        self._KnowledgeBaseIds = None
+        self._SearchStatus = None
+
+    @property
+    def Type(self):
+        r"""检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Num(self):
+        r"""召回数量最大值
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def EmbeddingWeight(self):
+        r"""权重配置
+        :rtype: float
+        """
+        return self._EmbeddingWeight
+
+    @EmbeddingWeight.setter
+    def EmbeddingWeight(self, EmbeddingWeight):
+        self._EmbeddingWeight = EmbeddingWeight
+
+    @property
+    def Rerank(self):
+        r"""0:关闭 1:开启，默认1
+        :rtype: int
+        """
+        return self._Rerank
+
+    @Rerank.setter
+    def Rerank(self, Rerank):
+        self._Rerank = Rerank
+
+    @property
+    def AutoRag(self):
+        r"""0:关闭 1:开启，默认0
+        :rtype: int
+        """
+        return self._AutoRag
+
+    @AutoRag.setter
+    def AutoRag(self, AutoRag):
+        self._AutoRag = AutoRag
+
+    @property
+    def KnowledgeBaseIds(self):
+        r"""AutoRag关联的知识库ID列表
+        :rtype: list of str
+        """
+        return self._KnowledgeBaseIds
+
+    @KnowledgeBaseIds.setter
+    def KnowledgeBaseIds(self, KnowledgeBaseIds):
+        self._KnowledgeBaseIds = KnowledgeBaseIds
+
+    @property
+    def SearchStatus(self):
+        r"""AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+        :rtype: int
+        """
+        return self._SearchStatus
+
+    @SearchStatus.setter
+    def SearchStatus(self, SearchStatus):
+        self._SearchStatus = SearchStatus
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Num = params.get("Num")
+        self._EmbeddingWeight = params.get("EmbeddingWeight")
+        self._Rerank = params.get("Rerank")
+        self._AutoRag = params.get("AutoRag")
+        self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
+        self._SearchStatus = params.get("SearchStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3262,6 +4126,87 @@ class Task(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateSceneRequest(AbstractModel):
+    r"""UpdateScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Scene: 场景
+        :type Scene: :class:`tencentcloud.dataagent.v20250513.models.Scene`
+        """
+        self._InstanceId = None
+        self._Scene = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scene(self):
+        r"""场景
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.Scene`
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Scene") is not None:
+            self._Scene = Scene()
+            self._Scene._deserialize(params.get("Scene"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSceneResponse(AbstractModel):
+    r"""UpdateScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UploadAndCommitFileRequest(AbstractModel):
