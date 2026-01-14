@@ -1142,6 +1142,9 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Model: 混元生3D生成模型版本，默认为3.0，可选项：3.0，3.1
+选择3.1版本时，LowPoly参数不可用。
+        :type Model: str
         :param _Prompt: 文生3D，3D内容的描述，中文正向提示词。
 最多支持1024个 utf-8 字符。
 ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
@@ -1160,6 +1163,10 @@ lmageBase64、lmageUr和 Prompt必填其一，且Prompt和lmageBase64/mageUr不�
 left：左视图；
 right：右视图；
 back：后视图；
+top：顶视图（仅3.1版本支持）；
+bottom：底视图（仅3.1版本支持）；
+left_front：左前45°视图（仅3.1版本支持）；
+right_front：右前45°视图（仅3.1版本支持）；
 
 每个视角仅限制一张图片。
 ●图片大小限制：编码后所有图片大小总和不可超过8M。（base64编码下图片大小总和不超过6M，因base64编码后图片大小会大30%左右）
@@ -1187,6 +1194,7 @@ quadrilateral: 四边形面与三角形面混合生成。
         :param _ResultFormat: 生成模型的格式，仅限制生成一种格式； 生成模型文件组默认返回obj、glb格式（开启时Geometry参数时，默认为glb格式）； 可选值：STL，USDZ，FBX；
         :type ResultFormat: str
         """
+        self._Model = None
         self._Prompt = None
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -1196,6 +1204,18 @@ quadrilateral: 四边形面与三角形面混合生成。
         self._GenerateType = None
         self._PolygonType = None
         self._ResultFormat = None
+
+    @property
+    def Model(self):
+        r"""混元生3D生成模型版本，默认为3.0，可选项：3.0，3.1
+选择3.1版本时，LowPoly参数不可用。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
 
     @property
     def Prompt(self):
@@ -1244,6 +1264,10 @@ lmageBase64、lmageUr和 Prompt必填其一，且Prompt和lmageBase64/mageUr不�
 left：左视图；
 right：右视图；
 back：后视图；
+top：顶视图（仅3.1版本支持）；
+bottom：底视图（仅3.1版本支持）；
+left_front：左前45°视图（仅3.1版本支持）；
+right_front：右前45°视图（仅3.1版本支持）；
 
 每个视角仅限制一张图片。
 ●图片大小限制：编码后所有图片大小总和不可超过8M。（base64编码下图片大小总和不超过6M，因base64编码后图片大小会大30%左右）
@@ -1324,6 +1348,7 @@ quadrilateral: 四边形面与三角形面混合生成。
 
 
     def _deserialize(self, params):
+        self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")

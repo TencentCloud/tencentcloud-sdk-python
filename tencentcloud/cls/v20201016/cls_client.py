@@ -72,6 +72,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelRebuildIndexTask(self, request):
+        r"""取消重建索引任务
+
+        :param request: Request instance for CancelRebuildIndexTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CancelRebuildIndexTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CancelRebuildIndexTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelRebuildIndexTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelRebuildIndexTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckFunction(self, request):
         r"""本接口用于数据加工DSL函数的语法校验。
 
@@ -737,6 +760,35 @@ class ClsClient(AbstractClient):
             body = self.call("CreateNoticeContent", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRebuildIndexTask(self, request):
+        r"""创建重建索引任务
+        注意：
+        - 单个日志主题同时仅允许运行一个重建索引任务，单个日志主题最多同时拥有10个重建索引任务记录，需删除不再需要的任务记录后才能新建索引任务。
+        - 同一时间范围内的日志，仅允许重建一次索引，需删除之前的任务记录后才能再次重建。
+        - 删除重建索引任务记录将恢复重建索引前的索引数据。
+        - 所选时间范围对应日志写流量不能超出5TB。
+        - 重建索引时间范围以日志时间为准，日志上传时间与重建索引时间范围有超过1小时的偏差时（例如16:00上传了一条02:00的日志到 CLS，重建00:00～12:00的日志索引）不会被重建且后续无法进行检索。新上报一条日志到已经被重建的日志时间范围时，也不会被重建且后续无法进行检索。
+
+        :param request: Request instance for CreateRebuildIndexTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateRebuildIndexTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateRebuildIndexTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRebuildIndexTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRebuildIndexTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2564,6 +2616,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRebuildIndexTasks(self, request):
+        r"""获取重建索引任务列表
+
+        :param request: Request instance for DescribeRebuildIndexTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeRebuildIndexTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeRebuildIndexTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRebuildIndexTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRebuildIndexTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScheduledSqlInfo(self, request):
         r"""本接口用于获取定时SQL分析任务列表
 
@@ -2762,6 +2837,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeWebCallbacks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWebCallbacksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EstimateRebuildIndexTask(self, request):
+        r"""预估重建索引任务
+
+        :param request: Request instance for EstimateRebuildIndexTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.EstimateRebuildIndexTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EstimateRebuildIndexTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EstimateRebuildIndexTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.EstimateRebuildIndexTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -10439,6 +10439,8 @@ class MixLayoutParams(AbstractModel):
         :type RenderMode: int
         :param _MaxResolutionUserAlign: 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
         :type MaxResolutionUserAlign: int
+        :param _PureAudioDisableLayout: 控制房间内纯音频用户是否占据混流布局，只在混流录制，模板布局生效。true: 代表纯音频用户不占位，false: 代表纯音频用户占位（默认为false）。
+        :type PureAudioDisableLayout: bool
         """
         self._MixLayoutMode = None
         self._MixLayoutList = None
@@ -10452,6 +10454,7 @@ class MixLayoutParams(AbstractModel):
         self._WaterMarkList = None
         self._RenderMode = None
         self._MaxResolutionUserAlign = None
+        self._PureAudioDisableLayout = None
 
     @property
     def MixLayoutMode(self):
@@ -10600,6 +10603,17 @@ class MixLayoutParams(AbstractModel):
     def MaxResolutionUserAlign(self, MaxResolutionUserAlign):
         self._MaxResolutionUserAlign = MaxResolutionUserAlign
 
+    @property
+    def PureAudioDisableLayout(self):
+        r"""控制房间内纯音频用户是否占据混流布局，只在混流录制，模板布局生效。true: 代表纯音频用户不占位，false: 代表纯音频用户占位（默认为false）。
+        :rtype: bool
+        """
+        return self._PureAudioDisableLayout
+
+    @PureAudioDisableLayout.setter
+    def PureAudioDisableLayout(self, PureAudioDisableLayout):
+        self._PureAudioDisableLayout = PureAudioDisableLayout
+
 
     def _deserialize(self, params):
         self._MixLayoutMode = params.get("MixLayoutMode")
@@ -10624,6 +10638,7 @@ class MixLayoutParams(AbstractModel):
                 self._WaterMarkList.append(obj)
         self._RenderMode = params.get("RenderMode")
         self._MaxResolutionUserAlign = params.get("MaxResolutionUserAlign")
+        self._PureAudioDisableLayout = params.get("PureAudioDisableLayout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12408,6 +12423,8 @@ Hls 格式录制此参数不生效。
         :type MediaId: int
         :param _FillType: 上行视频停止时，录制的补帧类型，0：补最后一帧 1：补黑帧
         :type FillType: int
+        :param _SubscribeAbility: 控制录制任务是否订阅混流回推机器人，1是订阅，0是不订阅，默认是0。如果是混流录制任务，建议用订阅白名单控制订阅用户，防止同时订阅混流回推机器人和上行主播，以避免混音效果。
+        :type SubscribeAbility: int
         """
         self._RecordMode = None
         self._MaxIdleTime = None
@@ -12418,6 +12435,7 @@ Hls 格式录制此参数不生效。
         self._MaxMediaFileDuration = None
         self._MediaId = None
         self._FillType = None
+        self._SubscribeAbility = None
 
     @property
     def RecordMode(self):
@@ -12526,6 +12544,17 @@ Hls 格式录制此参数不生效。
     def FillType(self, FillType):
         self._FillType = FillType
 
+    @property
+    def SubscribeAbility(self):
+        r"""控制录制任务是否订阅混流回推机器人，1是订阅，0是不订阅，默认是0。如果是混流录制任务，建议用订阅白名单控制订阅用户，防止同时订阅混流回推机器人和上行主播，以避免混音效果。
+        :rtype: int
+        """
+        return self._SubscribeAbility
+
+    @SubscribeAbility.setter
+    def SubscribeAbility(self, SubscribeAbility):
+        self._SubscribeAbility = SubscribeAbility
+
 
     def _deserialize(self, params):
         self._RecordMode = params.get("RecordMode")
@@ -12539,6 +12568,7 @@ Hls 格式录制此参数不生效。
         self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
         self._MediaId = params.get("MediaId")
         self._FillType = params.get("FillType")
+        self._SubscribeAbility = params.get("SubscribeAbility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

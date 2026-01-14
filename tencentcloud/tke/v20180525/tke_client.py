@@ -1751,6 +1751,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteUserPermissions(self, request):
+        r"""使用请求中提供的权限集合，删除用户对应的权限
+
+        :param request: Request instance for DeleteUserPermissions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteUserPermissionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteUserPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAddon(self, request):
         r"""获取addon列表
 
@@ -4097,6 +4120,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserPermissions(self, request):
+        r"""查询一个指定用户在当前地域下所有 TKE 集群中的聚合权限信息。返回用户在各集群中的 ClusterRoleBinding 和 RoleBinding 信息。
+
+        :param request: Request instance for DescribeUserPermissions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeUserPermissionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeUserPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVersions(self, request):
         r"""获取集群版本信息
 
@@ -4548,6 +4594,29 @@ class TkeClient(AbstractClient):
             body = self.call("GetUpgradeInstanceProgress", params, headers=headers)
             response = json.loads(body)
             model = models.GetUpgradeInstanceProgressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GrantUserPermissions(self, request):
+        r"""使用请求中提供的权限集合，为用户授予对应的 RBAC 权限。
+
+        :param request: Request instance for GrantUserPermissions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.GrantUserPermissionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.GrantUserPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantUserPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantUserPermissionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

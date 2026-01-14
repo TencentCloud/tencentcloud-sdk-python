@@ -184,6 +184,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcCustomElement(
+            self,
+            request: models.CreateAigcCustomElementRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcCustomElementResponse:
+        """
+        调用该接口，针对指定模型进行主体创建。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcCustomElement"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcCustomElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcImageTask(
             self,
             request: models.CreateAigcImageTaskRequest,
@@ -621,6 +639,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "CreateSceneAigcImageTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSceneAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSceneAigcVideoTask(
+            self,
+            request: models.CreateSceneAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSceneAigcVideoTaskResponse:
+        """
+        该接口用于生成场景化 AIGC 图片。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用。</b>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSceneAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSceneAigcVideoTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

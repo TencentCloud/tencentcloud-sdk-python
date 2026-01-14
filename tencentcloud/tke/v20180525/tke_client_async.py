@@ -1375,6 +1375,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteUserPermissions(
+            self,
+            request: models.DeleteUserPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserPermissionsResponse:
+        """
+        使用请求中提供的权限集合，删除用户对应的权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAddon(
             self,
             request: models.DescribeAddonRequest,
@@ -3211,6 +3229,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUserPermissions(
+            self,
+            request: models.DescribeUserPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserPermissionsResponse:
+        """
+        查询一个指定用户在当前地域下所有 TKE 集群中的聚合权限信息。返回用户在各集群中的 ClusterRoleBinding 和 RoleBinding 信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVersions(
             self,
             request: models.DescribeVersionsRequest,
@@ -3566,6 +3602,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "GetUpgradeInstanceProgress"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetUpgradeInstanceProgressResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantUserPermissions(
+            self,
+            request: models.GrantUserPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.GrantUserPermissionsResponse:
+        """
+        使用请求中提供的权限集合，为用户授予对应的 RBAC 权限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantUserPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantUserPermissionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

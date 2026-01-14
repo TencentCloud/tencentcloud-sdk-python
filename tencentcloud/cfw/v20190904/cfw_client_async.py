@@ -927,6 +927,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIpsModeSwitch(
+            self,
+            request: models.DescribeIpsModeSwitchRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIpsModeSwitchResponse:
+        """
+        获取入侵防御防护模式
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIpsModeSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIpsModeSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLogStorageStatistic(
             self,
             request: models.DescribeLogStorageStatisticRequest,
@@ -1682,6 +1700,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyFwGroupSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFwGroupSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyIpsModeSwitch(
+            self,
+            request: models.ModifyIpsModeSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIpsModeSwitchResponse:
+        """
+        修改入侵防御防护模式
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIpsModeSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIpsModeSwitchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

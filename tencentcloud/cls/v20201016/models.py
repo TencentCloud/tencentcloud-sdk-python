@@ -2575,6 +2575,85 @@ class CallBackInfo(AbstractModel):
         
 
 
+class CancelRebuildIndexTaskRequest(AbstractModel):
+    r"""CancelRebuildIndexTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _TaskId: 索引重建任务ID
+        :type TaskId: str
+        """
+        self._TopicId = None
+        self._TaskId = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TaskId(self):
+        r"""索引重建任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelRebuildIndexTaskResponse(AbstractModel):
+    r"""CancelRebuildIndexTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CheckFunctionRequest(AbstractModel):
     r"""CheckFunction请求参数结构体
 
@@ -11444,6 +11523,121 @@ class CreateNoticeContentResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._NoticeContentId = params.get("NoticeContentId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRebuildIndexTaskRequest(AbstractModel):
+    r"""CreateRebuildIndexTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _StartTime: 重建起始时间戳，毫秒
+起始时间不允许超过日志生命周期
+        :type StartTime: int
+        :param _EndTime: 重建结束时间戳，毫秒
+结束时间不晚于当前时间往前推15分钟
+注意：建议提前使用“预估重建索引任务(EstimateRebuildIndexTask)”接口评估该时间范围重建索引涉及到的数据量及耗时，避免因数据量过大导致费用成本过高或耗时过长
+        :type EndTime: int
+        """
+        self._TopicId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def StartTime(self):
+        r"""重建起始时间戳，毫秒
+起始时间不允许超过日志生命周期
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""重建结束时间戳，毫秒
+结束时间不晚于当前时间往前推15分钟
+注意：建议提前使用“预估重建索引任务(EstimateRebuildIndexTask)”接口评估该时间范围重建索引涉及到的数据量及耗时，避免因数据量过大导致费用成本过高或耗时过长
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRebuildIndexTaskResponse(AbstractModel):
+    r"""CreateRebuildIndexTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 索引重建任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""索引重建任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -23406,6 +23600,150 @@ class DescribePartitionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRebuildIndexTasksRequest(AbstractModel):
+    r"""DescribeRebuildIndexTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _TaskId: 索引重建任务ID
+        :type TaskId: str
+        :param _Status: 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+        :type Status: str
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为10，最大值20。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._TaskId = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TaskId(self):
+        r"""索引重建任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为10，最大值20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRebuildIndexTasksResponse(AbstractModel):
+    r"""DescribeRebuildIndexTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RebuildTasks: 索引重建任务列表
+        :type RebuildTasks: list of RebuildIndexTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RebuildTasks = None
+        self._RequestId = None
+
+    @property
+    def RebuildTasks(self):
+        r"""索引重建任务列表
+        :rtype: list of RebuildIndexTaskInfo
+        """
+        return self._RebuildTasks
+
+    @RebuildTasks.setter
+    def RebuildTasks(self, RebuildTasks):
+        self._RebuildTasks = RebuildTasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RebuildTasks") is not None:
+            self._RebuildTasks = []
+            for item in params.get("RebuildTasks"):
+                obj = RebuildIndexTaskInfo()
+                obj._deserialize(item)
+                self._RebuildTasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScheduledSqlInfoRequest(AbstractModel):
     r"""DescribeScheduledSqlInfo请求参数结构体
 
@@ -26339,6 +26677,130 @@ class EscalateNoticeInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EstimateRebuildIndexTaskRequest(AbstractModel):
+    r"""EstimateRebuildIndexTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _StartTime: 预估任务起始时间，毫秒
+        :type StartTime: int
+        :param _EndTime: 预估任务结束时间，毫秒
+        :type EndTime: int
+        """
+        self._TopicId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def StartTime(self):
+        r"""预估任务起始时间，毫秒
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""预估任务结束时间，毫秒
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EstimateRebuildIndexTaskResponse(AbstractModel):
+    r"""EstimateRebuildIndexTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemainTime: 预估索引重建需要时间，单位秒
+        :type RemainTime: int
+        :param _WriteTraffic: 预估写流量大小，单位MB
+        :type WriteTraffic: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RemainTime = None
+        self._WriteTraffic = None
+        self._RequestId = None
+
+    @property
+    def RemainTime(self):
+        r"""预估索引重建需要时间，单位秒
+        :rtype: int
+        """
+        return self._RemainTime
+
+    @RemainTime.setter
+    def RemainTime(self, RemainTime):
+        self._RemainTime = RemainTime
+
+    @property
+    def WriteTraffic(self):
+        r"""预估写流量大小，单位MB
+        :rtype: int
+        """
+        return self._WriteTraffic
+
+    @WriteTraffic.setter
+    def WriteTraffic(self, WriteTraffic):
+        self._WriteTraffic = WriteTraffic
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RemainTime = params.get("RemainTime")
+        self._WriteTraffic = params.get("WriteTraffic")
+        self._RequestId = params.get("RequestId")
 
 
 class EventLog(AbstractModel):
@@ -40333,6 +40795,162 @@ class QueryRangeMetricResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RebuildIndexTaskInfo(AbstractModel):
+    r"""索引重建任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 索引重建任务ID
+        :type TaskId: str
+        :param _Status: 索引重建任务当前状态，0:索引重建任务已创建，1:创建索引重建资源，2:索引重建资源创建完成，3:重建中，4:暂停，5:重建索引成功，6:重建成功（可检索），7:重建失败，8:撤销，9:删除元数据和索引
+        :type Status: int
+        :param _StartTime: 重建任务开始时间戳
+        :type StartTime: int
+        :param _EndTime: 重建任务结束时间戳
+        :type EndTime: int
+        :param _RemainTime: 重投预估剩余时间，单位秒
+        :type RemainTime: int
+        :param _CreateTime: 重建任务创建时间戳
+        :type CreateTime: int
+        :param _Progress: 重投完成度，百分比
+        :type Progress: float
+        :param _UpdateTime: 重建任务更新时间
+        :type UpdateTime: int
+        :param _StatusMessage: 附加状态描述信息（目前仅描述失败时失败原因）
+        :type StatusMessage: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RemainTime = None
+        self._CreateTime = None
+        self._Progress = None
+        self._UpdateTime = None
+        self._StatusMessage = None
+
+    @property
+    def TaskId(self):
+        r"""索引重建任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""索引重建任务当前状态，0:索引重建任务已创建，1:创建索引重建资源，2:索引重建资源创建完成，3:重建中，4:暂停，5:重建索引成功，6:重建成功（可检索），7:重建失败，8:撤销，9:删除元数据和索引
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""重建任务开始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""重建任务结束时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RemainTime(self):
+        r"""重投预估剩余时间，单位秒
+        :rtype: int
+        """
+        return self._RemainTime
+
+    @RemainTime.setter
+    def RemainTime(self, RemainTime):
+        self._RemainTime = RemainTime
+
+    @property
+    def CreateTime(self):
+        r"""重建任务创建时间戳
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Progress(self):
+        r"""重投完成度，百分比
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def UpdateTime(self):
+        r"""重建任务更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def StatusMessage(self):
+        r"""附加状态描述信息（目前仅描述失败时失败原因）
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RemainTime = params.get("RemainTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Progress = params.get("Progress")
+        self._UpdateTime = params.get("UpdateTime")
+        self._StatusMessage = params.get("StatusMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Relabeling(AbstractModel):
     r"""标签重新标记配置。
     允许动态重写目标、警报、抓取样本和远程写入样本的标签集。
@@ -44390,7 +45008,8 @@ class ValueInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 字段类型，目前支持的类型有：long、text、double
+        :param _Type: 字段类型，支持的类型有：long、text、double、json
+注意：json 类型目前仅部分用户或日志主题支持，如需使用请联系我们开启功能白名单
         :type Type: str
         :param _Tokenizer: 字段的分词符，其中的每个字符代表一个分词符；
 仅支持英文符号、\n\t\r及转义符\；
@@ -44403,16 +45022,25 @@ long及double类型字段需为空；
         :type ContainZH: bool
         :param _Alias: 字段别名
         :type Alias: str
+        :param _OpenIndexForChildOnly: 仅为子节点开启索引，本字段不开启。
+注意：仅json类型字段可配置该参数
+        :type OpenIndexForChildOnly: bool
+        :param _ChildNode: json子节点列表
+注意：仅json类型字段可配置该参数
+        :type ChildNode: list of KeyValueInfo
         """
         self._Type = None
         self._Tokenizer = None
         self._SqlFlag = None
         self._ContainZH = None
         self._Alias = None
+        self._OpenIndexForChildOnly = None
+        self._ChildNode = None
 
     @property
     def Type(self):
-        r"""字段类型，目前支持的类型有：long、text、double
+        r"""字段类型，支持的类型有：long、text、double、json
+注意：json 类型目前仅部分用户或日志主题支持，如需使用请联系我们开启功能白名单
         :rtype: str
         """
         return self._Type
@@ -44468,6 +45096,30 @@ long及double类型字段需为空；
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def OpenIndexForChildOnly(self):
+        r"""仅为子节点开启索引，本字段不开启。
+注意：仅json类型字段可配置该参数
+        :rtype: bool
+        """
+        return self._OpenIndexForChildOnly
+
+    @OpenIndexForChildOnly.setter
+    def OpenIndexForChildOnly(self, OpenIndexForChildOnly):
+        self._OpenIndexForChildOnly = OpenIndexForChildOnly
+
+    @property
+    def ChildNode(self):
+        r"""json子节点列表
+注意：仅json类型字段可配置该参数
+        :rtype: list of KeyValueInfo
+        """
+        return self._ChildNode
+
+    @ChildNode.setter
+    def ChildNode(self, ChildNode):
+        self._ChildNode = ChildNode
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -44475,6 +45127,13 @@ long及double类型字段需为空；
         self._SqlFlag = params.get("SqlFlag")
         self._ContainZH = params.get("ContainZH")
         self._Alias = params.get("Alias")
+        self._OpenIndexForChildOnly = params.get("OpenIndexForChildOnly")
+        if params.get("ChildNode") is not None:
+            self._ChildNode = []
+            for item in params.get("ChildNode"):
+                obj = KeyValueInfo()
+                obj._deserialize(item)
+                self._ChildNode.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

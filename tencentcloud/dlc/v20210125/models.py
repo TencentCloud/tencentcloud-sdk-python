@@ -46840,6 +46840,10 @@ class WorkGroupDetailInfo(AbstractModel):
         :param _CatalogPolicyInfo: 数据目录权限集
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policy`
+        :param _DataCatalogPolicyInfo: 数据目录权限
+        :type DataCatalogPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _ModelPolicyInfo: 模型权限
+        :type ModelPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
         """
         self._WorkGroupId = None
         self._WorkGroupName = None
@@ -46850,6 +46854,8 @@ class WorkGroupDetailInfo(AbstractModel):
         self._WorkGroupDescription = None
         self._RowFilterInfo = None
         self._CatalogPolicyInfo = None
+        self._DataCatalogPolicyInfo = None
+        self._ModelPolicyInfo = None
 
     @property
     def WorkGroupId(self):
@@ -46951,6 +46957,28 @@ class WorkGroupDetailInfo(AbstractModel):
     def CatalogPolicyInfo(self, CatalogPolicyInfo):
         self._CatalogPolicyInfo = CatalogPolicyInfo
 
+    @property
+    def DataCatalogPolicyInfo(self):
+        r"""数据目录权限
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        """
+        return self._DataCatalogPolicyInfo
+
+    @DataCatalogPolicyInfo.setter
+    def DataCatalogPolicyInfo(self, DataCatalogPolicyInfo):
+        self._DataCatalogPolicyInfo = DataCatalogPolicyInfo
+
+    @property
+    def ModelPolicyInfo(self):
+        r"""模型权限
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        """
+        return self._ModelPolicyInfo
+
+    @ModelPolicyInfo.setter
+    def ModelPolicyInfo(self, ModelPolicyInfo):
+        self._ModelPolicyInfo = ModelPolicyInfo
+
 
     def _deserialize(self, params):
         self._WorkGroupId = params.get("WorkGroupId")
@@ -46972,6 +47000,12 @@ class WorkGroupDetailInfo(AbstractModel):
         if params.get("CatalogPolicyInfo") is not None:
             self._CatalogPolicyInfo = Policy()
             self._CatalogPolicyInfo._deserialize(params.get("CatalogPolicyInfo"))
+        if params.get("DataCatalogPolicyInfo") is not None:
+            self._DataCatalogPolicyInfo = Policys()
+            self._DataCatalogPolicyInfo._deserialize(params.get("DataCatalogPolicyInfo"))
+        if params.get("ModelPolicyInfo") is not None:
+            self._ModelPolicyInfo = Policys()
+            self._ModelPolicyInfo._deserialize(params.get("ModelPolicyInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1178,6 +1178,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIpsModeSwitch(self, request):
+        r"""获取入侵防御防护模式
+
+        :param request: Request instance for DescribeIpsModeSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIpsModeSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeIpsModeSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpsModeSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpsModeSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogStorageStatistic(self, request):
         r"""租户日志存储统计
 
@@ -2139,6 +2162,29 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyFwGroupSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFwGroupSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIpsModeSwitch(self, request):
+        r"""修改入侵防御防护模式
+
+        :param request: Request instance for ModifyIpsModeSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyIpsModeSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyIpsModeSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIpsModeSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIpsModeSwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

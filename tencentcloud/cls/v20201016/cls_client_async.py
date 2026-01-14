@@ -61,6 +61,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelRebuildIndexTask(
+            self,
+            request: models.CancelRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.CancelRebuildIndexTaskResponse:
+        """
+        取消重建索引任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelRebuildIndexTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckFunction(
             self,
             request: models.CheckFunctionRequest,
@@ -585,6 +603,30 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateNoticeContent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRebuildIndexTask(
+            self,
+            request: models.CreateRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRebuildIndexTaskResponse:
+        """
+        创建重建索引任务
+        注意：
+        - 单个日志主题同时仅允许运行一个重建索引任务，单个日志主题最多同时拥有10个重建索引任务记录，需删除不再需要的任务记录后才能新建索引任务。
+        - 同一时间范围内的日志，仅允许重建一次索引，需删除之前的任务记录后才能再次重建。
+        - 删除重建索引任务记录将恢复重建索引前的索引数据。
+        - 所选时间范围对应日志写流量不能超出5TB。
+        - 重建索引时间范围以日志时间为准，日志上传时间与重建索引时间范围有超过1小时的偏差时（例如16:00上传了一条02:00的日志到 CLS，重建00:00～12:00的日志索引）不会被重建且后续无法进行检索。新上报一条日志到已经被重建的日志时间范围时，也不会被重建且后续无法进行检索。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRebuildIndexTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2013,6 +2055,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRebuildIndexTasks(
+            self,
+            request: models.DescribeRebuildIndexTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRebuildIndexTasksResponse:
+        """
+        获取重建索引任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRebuildIndexTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRebuildIndexTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScheduledSqlInfo(
             self,
             request: models.DescribeScheduledSqlInfoRequest,
@@ -2170,6 +2230,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeWebCallbacks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWebCallbacksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EstimateRebuildIndexTask(
+            self,
+            request: models.EstimateRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.EstimateRebuildIndexTaskResponse:
+        """
+        预估重建索引任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EstimateRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EstimateRebuildIndexTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

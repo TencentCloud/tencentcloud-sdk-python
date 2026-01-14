@@ -13920,6 +13920,90 @@ class DeleteTKEEdgeClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteUserPermissionsRequest(AbstractModel):
+    r"""DeleteUserPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetUin: 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :type TargetUin: str
+        :param _Permissions: 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+        :type Permissions: list of PermissionItem
+        """
+        self._TargetUin = None
+        self._Permissions = None
+
+    @property
+    def TargetUin(self):
+        r"""要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :rtype: str
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def Permissions(self):
+        r"""用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+        :rtype: list of PermissionItem
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._TargetUin = params.get("TargetUin")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = PermissionItem()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserPermissionsResponse(AbstractModel):
+    r"""DeleteUserPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAddonRequest(AbstractModel):
     r"""DescribeAddon请求参数结构体
 
@@ -27433,6 +27517,107 @@ class DescribeUpgradeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserPermissionsRequest(AbstractModel):
+    r"""DescribeUserPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetUin: 要查询的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :type TargetUin: str
+        """
+        self._TargetUin = None
+
+    @property
+    def TargetUin(self):
+        r"""要查询的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :rtype: str
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+
+    def _deserialize(self, params):
+        self._TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserPermissionsResponse(AbstractModel):
+    r"""DescribeUserPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Permissions: 用户在当前地域下所有集群中的权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of PermissionItem
+        :param _TargetUin: 用户唯一标识符
+        :type TargetUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Permissions = None
+        self._TargetUin = None
+        self._RequestId = None
+
+    @property
+    def Permissions(self):
+        r"""用户在当前地域下所有集群中的权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PermissionItem
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def TargetUin(self):
+        r"""用户唯一标识符
+        :rtype: str
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = PermissionItem()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        self._TargetUin = params.get("TargetUin")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVersionsRequest(AbstractModel):
     r"""DescribeVersions请求参数结构体
 
@@ -32566,6 +32751,90 @@ class GlobalMaintenanceWindowAndExclusion(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GrantUserPermissionsRequest(AbstractModel):
+    r"""GrantUserPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetUin: 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :type TargetUin: str
+        :param _Permissions: 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+        :type Permissions: list of PermissionItem
+        """
+        self._TargetUin = None
+        self._Permissions = None
+
+    @property
+    def TargetUin(self):
+        r"""要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+        :rtype: str
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def Permissions(self):
+        r"""用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+        :rtype: list of PermissionItem
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._TargetUin = params.get("TargetUin")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = PermissionItem()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantUserPermissionsResponse(AbstractModel):
+    r"""GrantUserPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class HttpGet(AbstractModel):
@@ -41163,6 +41432,104 @@ class PendingRelease(AbstractModel):
         self._Namespace = params.get("Namespace")
         self._Status = params.get("Status")
         self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionItem(AbstractModel):
+    r"""用户权限项，定义用户在集群中的 RBAC 权限绑定
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _RoleName: 角色名称。预置角色包括：tke:admin（集群管理员）、tke:ops（运维人员）、tke:dev（开发人员）、tke:ro（只读用户）、tke:ns:dev（命名空间开发人员）、tke:ns:ro（命名空间只读用户），其余为用户自定义角色
+        :type RoleName: str
+        :param _RoleType: 授权类型。枚举值：cluster（集群级别权限，对应 ClusterRoleBinding）、namespace（命名空间级别权限，对应 RoleBinding）
+        :type RoleType: str
+        :param _IsCustom: 是否为自定义角色，默认 false
+        :type IsCustom: bool
+        :param _Namespace: 命名空间。当 RoleType 为 namespace 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        """
+        self._ClusterId = None
+        self._RoleName = None
+        self._RoleType = None
+        self._IsCustom = None
+        self._Namespace = None
+
+    @property
+    def ClusterId(self):
+        r"""集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RoleName(self):
+        r"""角色名称。预置角色包括：tke:admin（集群管理员）、tke:ops（运维人员）、tke:dev（开发人员）、tke:ro（只读用户）、tke:ns:dev（命名空间开发人员）、tke:ns:ro（命名空间只读用户），其余为用户自定义角色
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleType(self):
+        r"""授权类型。枚举值：cluster（集群级别权限，对应 ClusterRoleBinding）、namespace（命名空间级别权限，对应 RoleBinding）
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def IsCustom(self):
+        r"""是否为自定义角色，默认 false
+        :rtype: bool
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
+    def Namespace(self):
+        r"""命名空间。当 RoleType 为 namespace 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RoleName = params.get("RoleName")
+        self._RoleType = params.get("RoleType")
+        self._IsCustom = params.get("IsCustom")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

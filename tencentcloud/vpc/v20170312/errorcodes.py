@@ -209,6 +209,9 @@ INVALIDPARAMETERVALUE_BANDWIDTHTOOSMALL = 'InvalidParameterValue.BandwidthTooSma
 # 指定云联网关联黑石私有网络数量达到上限。
 INVALIDPARAMETERVALUE_CCNATTACHBMVPCLIMITEXCEEDED = 'InvalidParameterValue.CcnAttachBmvpcLimitExceeded'
 
+# 指定CIDR存在重叠。
+INVALIDPARAMETERVALUE_CIDRCONFLICT = 'InvalidParameterValue.CidrConflict'
+
 # 目的网段不在对端VPC的CIDR范围内。
 INVALIDPARAMETERVALUE_CIDRNOTINPEERVPC = 'InvalidParameterValue.CidrNotInPeerVpc'
 
@@ -1426,6 +1429,9 @@ UNSUPPORTEDOPERATION_USERANDCCNCHARGETYPENOTMATCH = 'UnsupportedOperation.UserAn
 
 # 指定安全组规则版本号和当前最新版本不一致。
 UNSUPPORTEDOPERATION_VERSIONMISMATCH = 'UnsupportedOperation.VersionMismatch'
+
+# 当前VPN版本小于4.0，不支持该操作。
+UNSUPPORTEDOPERATION_VERSIONNOTSUPPORTED = 'UnsupportedOperation.VersionNotSupported'
 
 # 资源不属于同一个VPC。
 UNSUPPORTEDOPERATION_VPCMISMATCH = 'UnsupportedOperation.VpcMismatch'

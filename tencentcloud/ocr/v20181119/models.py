@@ -16886,6 +16886,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type WarnCardInfos: list of int
         :param _CardCount: 输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
         :type CardCount: int
+        :param _IsComplete: 是否完整
+        :type IsComplete: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16907,6 +16909,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._PassportRecognizeInfos = None
         self._WarnCardInfos = None
         self._CardCount = None
+        self._IsComplete = None
         self._RequestId = None
 
     @property
@@ -17120,6 +17123,17 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._CardCount = CardCount
 
     @property
+    def IsComplete(self):
+        r"""是否完整
+        :rtype: bool
+        """
+        return self._IsComplete
+
+    @IsComplete.setter
+    def IsComplete(self, IsComplete):
+        self._IsComplete = IsComplete
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17152,6 +17166,7 @@ class MLIDPassportOCRResponse(AbstractModel):
             self._PassportRecognizeInfos._deserialize(params.get("PassportRecognizeInfos"))
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._CardCount = params.get("CardCount")
+        self._IsComplete = params.get("IsComplete")
         self._RequestId = params.get("RequestId")
 
 

@@ -9948,6 +9948,8 @@ class CreateCcnRequest(AbstractModel):
         :type QosLevel: str
         :param _InstanceChargeType: 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
         :type InstanceChargeType: str
+        :param _InstanceMeteringType: 计量模式
+        :type InstanceMeteringType: str
         :param _BandwidthLimitType: 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
         :type BandwidthLimitType: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
@@ -9957,6 +9959,7 @@ class CreateCcnRequest(AbstractModel):
         self._CcnDescription = None
         self._QosLevel = None
         self._InstanceChargeType = None
+        self._InstanceMeteringType = None
         self._BandwidthLimitType = None
         self._Tags = None
 
@@ -10005,6 +10008,17 @@ class CreateCcnRequest(AbstractModel):
         self._InstanceChargeType = InstanceChargeType
 
     @property
+    def InstanceMeteringType(self):
+        r"""计量模式
+        :rtype: str
+        """
+        return self._InstanceMeteringType
+
+    @InstanceMeteringType.setter
+    def InstanceMeteringType(self, InstanceMeteringType):
+        self._InstanceMeteringType = InstanceMeteringType
+
+    @property
     def BandwidthLimitType(self):
         r"""限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
         :rtype: str
@@ -10032,6 +10046,7 @@ class CreateCcnRequest(AbstractModel):
         self._CcnDescription = params.get("CcnDescription")
         self._QosLevel = params.get("QosLevel")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._InstanceMeteringType = params.get("InstanceMeteringType")
         self._BandwidthLimitType = params.get("BandwidthLimitType")
         if params.get("Tags") is not None:
             self._Tags = []

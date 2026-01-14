@@ -17888,6 +17888,10 @@ class SearchAuditLogRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
+        :param _OperationSet: 操作类型
+        :type OperationSet: list of int non-negative
+        :param _ProtocolSet: 会话类型
+        :type ProtocolSet: list of str
         :param _Offset: 偏移量
         :type Offset: int
         :param _Limit: 每页容量，默认为20，最大200
@@ -17895,6 +17899,8 @@ class SearchAuditLogRequest(AbstractModel):
         """
         self._StartTime = None
         self._EndTime = None
+        self._OperationSet = None
+        self._ProtocolSet = None
         self._Offset = None
         self._Limit = None
 
@@ -17919,6 +17925,28 @@ class SearchAuditLogRequest(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def OperationSet(self):
+        r"""操作类型
+        :rtype: list of int non-negative
+        """
+        return self._OperationSet
+
+    @OperationSet.setter
+    def OperationSet(self, OperationSet):
+        self._OperationSet = OperationSet
+
+    @property
+    def ProtocolSet(self):
+        r"""会话类型
+        :rtype: list of str
+        """
+        return self._ProtocolSet
+
+    @ProtocolSet.setter
+    def ProtocolSet(self, ProtocolSet):
+        self._ProtocolSet = ProtocolSet
 
     @property
     def Offset(self):
@@ -17946,6 +17974,8 @@ class SearchAuditLogRequest(AbstractModel):
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._OperationSet = params.get("OperationSet")
+        self._ProtocolSet = params.get("ProtocolSet")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -20192,7 +20222,7 @@ class SearchSessionRequest(AbstractModel):
         :type RealName: str
         :param _DeviceName: 主机名，长度不超过64
         :type DeviceName: str
-        :param _Status: 状态，1为活跃，2为结束，3为强制离线，4为其他错误
+        :param _Status: 状态，1为活跃，2为结束，3为强制离线，4为其他错误，5暂停会话
         :type Status: int
         :param _StatusSet: 状态，1为活跃，2为结束，3为强制离线
         :type StatusSet: list of int non-negative
@@ -20361,7 +20391,7 @@ class SearchSessionRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，1为活跃，2为结束，3为强制离线，4为其他错误
+        r"""状态，1为活跃，2为结束，3为强制离线，4为其他错误，5暂停会话
         :rtype: int
         """
         return self._Status
@@ -21023,6 +21053,14 @@ class SessionResult(AbstractModel):
         :type Workload: str
         :param _PodName: K8S集群容器名称
         :type PodName: str
+        :param _Mode: 访问方式 1-直链 2-客户端 3-web 大部分情况下是2
+        :type Mode: int
+        :param _DisableMonitor: 是否禁用会话监控。0-不禁用；1-禁用会话，仅展示中断；2-禁用会话，不展示中断
+        :type DisableMonitor: int
+        :param _RealTimeBandwidthIn: 实时入带宽，单位Mbps
+        :type RealTimeBandwidthIn: float
+        :param _RealTimeBandwidthOut: 实时出带宽，单位Mbps
+        :type RealTimeBandwidthOut: float
         """
         self._UserName = None
         self._RealName = None
@@ -21049,6 +21087,10 @@ class SessionResult(AbstractModel):
         self._Namespace = None
         self._Workload = None
         self._PodName = None
+        self._Mode = None
+        self._DisableMonitor = None
+        self._RealTimeBandwidthIn = None
+        self._RealTimeBandwidthOut = None
 
     @property
     def UserName(self):
@@ -21325,6 +21367,50 @@ class SessionResult(AbstractModel):
     def PodName(self, PodName):
         self._PodName = PodName
 
+    @property
+    def Mode(self):
+        r"""访问方式 1-直链 2-客户端 3-web 大部分情况下是2
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def DisableMonitor(self):
+        r"""是否禁用会话监控。0-不禁用；1-禁用会话，仅展示中断；2-禁用会话，不展示中断
+        :rtype: int
+        """
+        return self._DisableMonitor
+
+    @DisableMonitor.setter
+    def DisableMonitor(self, DisableMonitor):
+        self._DisableMonitor = DisableMonitor
+
+    @property
+    def RealTimeBandwidthIn(self):
+        r"""实时入带宽，单位Mbps
+        :rtype: float
+        """
+        return self._RealTimeBandwidthIn
+
+    @RealTimeBandwidthIn.setter
+    def RealTimeBandwidthIn(self, RealTimeBandwidthIn):
+        self._RealTimeBandwidthIn = RealTimeBandwidthIn
+
+    @property
+    def RealTimeBandwidthOut(self):
+        r"""实时出带宽，单位Mbps
+        :rtype: float
+        """
+        return self._RealTimeBandwidthOut
+
+    @RealTimeBandwidthOut.setter
+    def RealTimeBandwidthOut(self, RealTimeBandwidthOut):
+        self._RealTimeBandwidthOut = RealTimeBandwidthOut
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -21352,6 +21438,10 @@ class SessionResult(AbstractModel):
         self._Namespace = params.get("Namespace")
         self._Workload = params.get("Workload")
         self._PodName = params.get("PodName")
+        self._Mode = params.get("Mode")
+        self._DisableMonitor = params.get("DisableMonitor")
+        self._RealTimeBandwidthIn = params.get("RealTimeBandwidthIn")
+        self._RealTimeBandwidthOut = params.get("RealTimeBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

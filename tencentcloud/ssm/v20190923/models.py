@@ -63,6 +63,8 @@ False -- 不开启
         :type RotationFrequency: int
         :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
         :type KmsHsmClusterId: str
+        :param _AccountRemark: 账户备注
+        :type AccountRemark: str
         """
         self._SecretName = None
         self._UserNamePrefix = None
@@ -77,6 +79,7 @@ False -- 不开启
         self._EnableRotation = None
         self._RotationFrequency = None
         self._KmsHsmClusterId = None
+        self._AccountRemark = None
 
     @property
     def SecretName(self):
@@ -233,6 +236,17 @@ False -- 不开启
     def KmsHsmClusterId(self, KmsHsmClusterId):
         self._KmsHsmClusterId = KmsHsmClusterId
 
+    @property
+    def AccountRemark(self):
+        r"""账户备注
+        :rtype: str
+        """
+        return self._AccountRemark
+
+    @AccountRemark.setter
+    def AccountRemark(self, AccountRemark):
+        self._AccountRemark = AccountRemark
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -258,6 +272,7 @@ False -- 不开启
         self._EnableRotation = params.get("EnableRotation")
         self._RotationFrequency = params.get("RotationFrequency")
         self._KmsHsmClusterId = params.get("KmsHsmClusterId")
+        self._AccountRemark = params.get("AccountRemark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2893,12 +2908,40 @@ ColumnPrivileges
 Database - 显式指明所在的数据库实例。
 TableName - 显式指明所在表
         :type ColumnName: str
+        :param _SchemaName: 仅当PrivilegeName为SchemaPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type SchemaName: str
+        :param _SequenceName: 仅当PrivilegeName为SequencePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type SequenceName: str
+        :param _ProcedureName: 仅当PrivilegeName为ProcedurePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type ProcedureName: str
+        :param _TypeName: 仅当PrivilegeName为TypePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type TypeName: str
+        :param _FunctionName: 仅当PrivilegeName为FunctionPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type FunctionName: str
+        :param _ViewName: 仅当PrivilegeName为ViewPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type ViewName: str
+        :param _MatviewName: 仅当PrivilegeName为MatviewPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :type MatviewName: str
         """
         self._PrivilegeName = None
         self._Privileges = None
         self._Database = None
         self._TableName = None
         self._ColumnName = None
+        self._SchemaName = None
+        self._SequenceName = None
+        self._ProcedureName = None
+        self._TypeName = None
+        self._FunctionName = None
+        self._ViewName = None
+        self._MatviewName = None
 
     @property
     def PrivilegeName(self):
@@ -2980,6 +3023,90 @@ TableName - 显式指明所在表
     def ColumnName(self, ColumnName):
         self._ColumnName = ColumnName
 
+    @property
+    def SchemaName(self):
+        r"""仅当PrivilegeName为SchemaPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def SequenceName(self):
+        r"""仅当PrivilegeName为SequencePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._SequenceName
+
+    @SequenceName.setter
+    def SequenceName(self, SequenceName):
+        self._SequenceName = SequenceName
+
+    @property
+    def ProcedureName(self):
+        r"""仅当PrivilegeName为ProcedurePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._ProcedureName
+
+    @ProcedureName.setter
+    def ProcedureName(self, ProcedureName):
+        self._ProcedureName = ProcedureName
+
+    @property
+    def TypeName(self):
+        r"""仅当PrivilegeName为TypePrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def FunctionName(self):
+        r"""仅当PrivilegeName为FunctionPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def ViewName(self):
+        r"""仅当PrivilegeName为ViewPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def MatviewName(self):
+        r"""仅当PrivilegeName为MatviewPrivileges时这个值才生效，并且此时必须填充：
+目前仅postgresSQL需要
+        :rtype: str
+        """
+        return self._MatviewName
+
+    @MatviewName.setter
+    def MatviewName(self, MatviewName):
+        self._MatviewName = MatviewName
+
 
     def _deserialize(self, params):
         self._PrivilegeName = params.get("PrivilegeName")
@@ -2987,6 +3114,13 @@ TableName - 显式指明所在表
         self._Database = params.get("Database")
         self._TableName = params.get("TableName")
         self._ColumnName = params.get("ColumnName")
+        self._SchemaName = params.get("SchemaName")
+        self._SequenceName = params.get("SequenceName")
+        self._ProcedureName = params.get("ProcedureName")
+        self._TypeName = params.get("TypeName")
+        self._FunctionName = params.get("FunctionName")
+        self._ViewName = params.get("ViewName")
+        self._MatviewName = params.get("MatviewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
