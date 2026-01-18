@@ -223,6 +223,24 @@ class CdwchClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEventTasks(
+            self,
+            request: models.DescribeEventTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEventTasksResponse:
+        """
+        获取产生的事件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEventTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEventTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstance(
             self,
             request: models.DescribeInstanceRequest,

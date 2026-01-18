@@ -411,6 +411,25 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLiveCloudEffect(
+            self,
+            request: models.CreateLiveCloudEffectRequest,
+            opts: Dict = None,
+    ) -> models.CreateLiveCloudEffectResponse:
+        """
+        使用该接口生成云端特效。特效可用于叠加到直播流上，供播放端观看。
+        注意：云端特效生成需要一定时间，调用生成接口后，可通过查询接口，获取是否特效已生成。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLiveCloudEffect"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLiveCloudEffectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLivePadRule(
             self,
             request: models.CreateLivePadRuleRequest,

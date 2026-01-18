@@ -221,6 +221,9 @@ INVALIDPARAMETER_DESCRIBEDATAENGINESSORTBYTYPENOTMATCH = 'InvalidParameter.Descr
 # 重复的引擎名称。
 INVALIDPARAMETER_DUPLICATEDATAENGINENAME = 'InvalidParameter.DuplicateDataEngineName'
 
+# 数据源名称重复。
+INVALIDPARAMETER_DUPLICATEDATASOURCENAME = 'InvalidParameter.DuplicateDatasourceName'
+
 # 重复的工作组名称。
 INVALIDPARAMETER_DUPLICATEGROUPNAME = 'InvalidParameter.DuplicateGroupName'
 
@@ -358,6 +361,9 @@ INVALIDPARAMETER_INVALIDFILTERLENGTH = 'InvalidParameter.InvalidFilterLength'
 
 # 无效的工作组Id。
 INVALIDPARAMETER_INVALIDGROUPID = 'InvalidParameter.InvalidGroupId'
+
+# 不支持的Hive版本。
+INVALIDPARAMETER_INVALIDHIVEVERSION = 'InvalidParameter.InvalidHiveVersion'
 
 # 请求的消息类型无效。
 INVALIDPARAMETER_INVALIDINFOTYPE = 'InvalidParameter.InvalidInfoType'
@@ -539,6 +545,9 @@ INVALIDPARAMETER_TASKNOTFOUND = 'InvalidParameter.TaskNotFound'
 # 指定的任务状态不匹配，当前仅支持: 0:初始化, 1:运行中, 2:成功, 3:数据写入中, 4:排队中, -1:失败, -3:删除
 INVALIDPARAMETER_TASKSTATETYPENOTMATH = 'InvalidParameter.TaskStateTypeNotMath'
 
+# Url格式错误。
+INVALIDPARAMETER_URLFORMATERROR = 'InvalidParameter.UrlFormatError'
+
 # Vpc cidr格式错误。
 INVALIDPARAMETER_VPCCIDRFORMATERROR = 'InvalidParameter.VpcCidrFormatError'
 
@@ -709,6 +718,9 @@ UNAUTHORIZEDOPERATION_ADDUSERSTOWORKGROUP = 'UnauthorizedOperation.AddUsersToWor
 
 # 子用户不是管理员，无权绑定工作组到用户。
 UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = 'UnauthorizedOperation.BindWorkgroupsToUser'
+
+# 子用户无权创建联邦查询数据源。
+UNAUTHORIZEDOPERATION_CREATECATALOG = 'UnauthorizedOperation.CreateCatalog'
 
 # 子用户不是管理员，无权创建工作组。
 UNAUTHORIZEDOPERATION_CREATEWORKGROUP = 'UnauthorizedOperation.CreateWorkgroup'

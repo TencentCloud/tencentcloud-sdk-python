@@ -6209,13 +6209,21 @@ class CreateClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群ID
+        :param _ClusterID: 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
         :type ClusterID: str
         :param _MaintenanceTime: 维护开始时间
         :type MaintenanceTime: str
         :param _Duration: 维护时长（小时）
         :type Duration: int
-        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :param _DayOfWeek: 维护周期（一周中的哪几天），支持的参数值如下：
+
+- MO：周一
+- TU：周二
+- WE：周三
+- TH：周四
+- FR：周五
+- SA：周六
+- SU：周日
         :type DayOfWeek: list of str
         :param _Exclusions: 维护排除项
         :type Exclusions: list of MaintenanceExclusion
@@ -6228,7 +6236,7 @@ class CreateClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
         :rtype: str
         """
         return self._ClusterID
@@ -6261,7 +6269,15 @@ class CreateClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
-        r"""维护周期（一周中的哪几天）
+        r"""维护周期（一周中的哪几天），支持的参数值如下：
+
+- MO：周一
+- TU：周二
+- WE：周三
+- TH：周四
+- FR：周五
+- SA：周六
+- SU：周日
         :rtype: list of str
         """
         return self._DayOfWeek
@@ -11714,14 +11730,14 @@ class DeleteClusterMaintenanceWindowAndExclusionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群ID
+        :param _ClusterID: 集群ID，可以从容器服务控制台计划升级功能集群维护窗口页面获取（https://console.cloud.tencent.com/tke2/upgrade-plan）。
         :type ClusterID: str
         """
         self._ClusterID = None
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""集群ID，可以从容器服务控制台计划升级功能集群维护窗口页面获取（https://console.cloud.tencent.com/tke2/upgrade-plan）。
         :rtype: str
         """
         return self._ClusterID
@@ -37228,7 +37244,15 @@ class ModifyClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
         :type MaintenanceTime: str
         :param _Duration: 维护时长（小时）
         :type Duration: int
-        :param _DayOfWeek: 维护周期（一周中的哪几天）
+        :param _DayOfWeek: 维护周期（一周中的哪几天），支持的参数值如下：
+
+- MO：周一
+- TU：周二
+- WE：周三
+- TH：周四
+- FR：周五
+- SA：周六
+- SU：周日
         :type DayOfWeek: list of str
         :param _Exclusions: 维护排除项
         :type Exclusions: list of MaintenanceExclusion
@@ -37274,7 +37298,15 @@ class ModifyClusterMaintenanceWindowAndExclusionsRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
-        r"""维护周期（一周中的哪几天）
+        r"""维护周期（一周中的哪几天），支持的参数值如下：
+
+- MO：周一
+- TU：周二
+- WE：周三
+- TH：周四
+- FR：周五
+- SA：周六
+- SU：周日
         :rtype: list of str
         """
         return self._DayOfWeek
@@ -37724,9 +37756,11 @@ class ModifyClusterRollOutSequenceTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群ID
+        :param _ClusterID: 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
         :type ClusterID: str
-        :param _Tags: 集群发布序列标签（为空时表示移除集群标签）
+        :param _Tags: 集群发布序列标签（为空时表示移除集群标签）。支持以下集群标签：
+- 标签键："Env"，支持的标签值：["Test","Pre-Production","Production"]
+- 标签键："Protection-Level"，支持的标签值：["Low","Medium","High"]
         :type Tags: list of Tag
         """
         self._ClusterID = None
@@ -37734,7 +37768,7 @@ class ModifyClusterRollOutSequenceTagsRequest(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
         :rtype: str
         """
         return self._ClusterID
@@ -37745,7 +37779,9 @@ class ModifyClusterRollOutSequenceTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群发布序列标签（为空时表示移除集群标签）
+        r"""集群发布序列标签（为空时表示移除集群标签）。支持以下集群标签：
+- 标签键："Env"，支持的标签值：["Test","Pre-Production","Production"]
+- 标签键："Protection-Level"，支持的标签值：["Low","Medium","High"]
         :rtype: list of Tag
         """
         return self._Tags
@@ -52916,6 +52952,8 @@ class UpgradePlan(AbstractModel):
         :type ClusterID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _Region: 集群地域
+        :type Region: str
         :param _PlanedStartAt: 预计开始时间
         :type PlanedStartAt: str
         :param _UpgradeStartAt: 升级开始时间
@@ -52930,6 +52968,7 @@ class UpgradePlan(AbstractModel):
         self._ID = None
         self._ClusterID = None
         self._ClusterName = None
+        self._Region = None
         self._PlanedStartAt = None
         self._UpgradeStartAt = None
         self._UpgradeEndAt = None
@@ -52968,6 +53007,17 @@ class UpgradePlan(AbstractModel):
     @ClusterName.setter
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""集群地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
     @property
     def PlanedStartAt(self):
@@ -53029,6 +53079,7 @@ class UpgradePlan(AbstractModel):
         self._ID = params.get("ID")
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
         self._PlanedStartAt = params.get("PlanedStartAt")
         self._UpgradeStartAt = params.get("UpgradeStartAt")
         self._UpgradeEndAt = params.get("UpgradeEndAt")

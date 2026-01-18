@@ -94,7 +94,7 @@ class EssClient(AbstractClient):
         1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 
         2. 有对应合同撤销权限的人:
-         <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 
 
         - 发起人所在企业的**超管、法人**
@@ -256,7 +256,7 @@ class EssClient(AbstractClient):
         1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 
         2. 有对应合同撤销权限的人:
-         <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 
 
         - 发起人所在企业的**超管、法人**

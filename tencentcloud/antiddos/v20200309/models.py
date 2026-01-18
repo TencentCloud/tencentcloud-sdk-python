@@ -10957,7 +10957,7 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -10982,7 +10982,7 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
 
     @property
     def Business(self):
-        r"""DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+        r"""DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
         :rtype: str
         """
         return self._Business

@@ -2188,7 +2188,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         :type Switch: str
         :param _Type: 类型，可选值：
 <li>standard：通用超分</li>
-<li>super：高级超分。</li>
+<li>super：高级超分super版。</li>
+<li>ultra：高级超分ultra版。</li>
 默认值：standard。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -2199,14 +2200,25 @@ class AdvancedSuperResolutionConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param _Percent: 超分倍率，可以为小数。
+注意：当Mode等于percent时使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: float
         :param _Width: 目标图片宽度，不能超过4096。
+注意：当Mode等于aspect或fixed时，优先使用此配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 目标图片高度，不能超过4096。
+注意：当Mode等于aspect或fixed时，优先使用此配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
+        :param _LongSide: 目标图片长边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LongSide: int
+        :param _ShortSide: 目标图片短边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortSide: int
         """
         self._Switch = None
         self._Type = None
@@ -2214,6 +2226,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         self._Percent = None
         self._Width = None
         self._Height = None
+        self._LongSide = None
+        self._ShortSide = None
 
     @property
     def Switch(self):
@@ -2233,7 +2247,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     def Type(self):
         r"""类型，可选值：
 <li>standard：通用超分</li>
-<li>super：高级超分。</li>
+<li>super：高级超分super版。</li>
+<li>ultra：高级超分ultra版。</li>
 默认值：standard。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2262,6 +2277,7 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     @property
     def Percent(self):
         r"""超分倍率，可以为小数。
+注意：当Mode等于percent时使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2274,6 +2290,7 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     @property
     def Width(self):
         r"""目标图片宽度，不能超过4096。
+注意：当Mode等于aspect或fixed时，优先使用此配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2286,6 +2303,7 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     @property
     def Height(self):
         r"""目标图片高度，不能超过4096。
+注意：当Mode等于aspect或fixed时，优先使用此配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2295,6 +2313,32 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     def Height(self, Height):
         self._Height = Height
 
+    @property
+    def LongSide(self):
+        r"""目标图片长边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LongSide
+
+    @LongSide.setter
+    def LongSide(self, LongSide):
+        self._LongSide = LongSide
+
+    @property
+    def ShortSide(self):
+        r"""目标图片短边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ShortSide
+
+    @ShortSide.setter
+    def ShortSide(self, ShortSide):
+        self._ShortSide = ShortSide
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -2303,6 +2347,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         self._Percent = params.get("Percent")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        self._LongSide = params.get("LongSide")
+        self._ShortSide = params.get("ShortSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12293,12 +12339,25 @@ class AigcVideoExtraParam(AbstractModel):
 
 注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
         :type AspectRatio: str
+        :param _LogoAdd: 是否添加图标水印。
+1. Hailuo 支持此参数。
+2. Kling 支持此参数。
+3. Vidu 支持此参数。
+        :type LogoAdd: int
+        :param _EnableAudio: 为视频生成音频。接受的值包括 true 或 false。 
+
+支持此参数的模型：
+1. GV，默认true。
+2. OS，默认true。
+        :type EnableAudio: bool
         :param _OffPeak: 错峰模型，目前仅支持Vidu模型。
 错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
         :type OffPeak: bool
         """
         self._Resolution = None
         self._AspectRatio = None
+        self._LogoAdd = None
+        self._EnableAudio = None
         self._OffPeak = None
 
     @property
@@ -12342,6 +12401,35 @@ class AigcVideoExtraParam(AbstractModel):
         self._AspectRatio = AspectRatio
 
     @property
+    def LogoAdd(self):
+        r"""是否添加图标水印。
+1. Hailuo 支持此参数。
+2. Kling 支持此参数。
+3. Vidu 支持此参数。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def EnableAudio(self):
+        r"""为视频生成音频。接受的值包括 true 或 false。 
+
+支持此参数的模型：
+1. GV，默认true。
+2. OS，默认true。
+        :rtype: bool
+        """
+        return self._EnableAudio
+
+    @EnableAudio.setter
+    def EnableAudio(self, EnableAudio):
+        self._EnableAudio = EnableAudio
+
+    @property
     def OffPeak(self):
         r"""错峰模型，目前仅支持Vidu模型。
 错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
@@ -12357,6 +12445,8 @@ class AigcVideoExtraParam(AbstractModel):
     def _deserialize(self, params):
         self._Resolution = params.get("Resolution")
         self._AspectRatio = params.get("AspectRatio")
+        self._LogoAdd = params.get("LogoAdd")
+        self._EnableAudio = params.get("EnableAudio")
         self._OffPeak = params.get("OffPeak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19248,7 +19338,7 @@ GV。
         :param _LastImageUrl: 模型将以此参数传入的图片作为尾帧画面来生成视频。
 支持此参数的模型：
 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
 
 注意：
@@ -19390,7 +19480,7 @@ GV。
         r"""模型将以此参数传入的图片作为尾帧画面来生成视频。
 支持此参数的模型：
 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
 
 注意：
@@ -43856,6 +43946,194 @@ class ImageQualityEnhanceConfig(AbstractModel):
         
 
 
+class ImageResizeConfig(AbstractModel):
+    r"""图片缩放配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启</li>
+<li>OFF：关闭</li>
+默认值：ON。
+        :type Switch: str
+        :param _Mode: 输出图片模式，可选模式：
+<li>percent: 指定缩放倍率，可以为小数</li>
+<li>mfit: 缩放至指定宽高的较大矩形</li>
+<li>lfit: 缩放至指定宽高的较小矩形</li>
+<li>fill: 缩放至指定宽高的较大矩形，并居中裁剪指定宽高</li>
+<li>pad: 缩放至指定宽高的较小矩形，并填充到指定宽高</li>
+<li>fixed: 缩放至固定宽高，强制缩放</li>
+默认值：percent。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Percent: 缩放倍率，可以为小数，当Mode为percent时使用。
+
+默认值：1.0。
+取值范围：[0.1，10.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: float
+        :param _Width: 目标图片宽度。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent时优先使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 目标图片高度。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent时优先使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param _LongSide: 目标图片长边。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent且未配置Width和Height时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LongSide: int
+        :param _ShortSide: 目标图片短边。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent且未配置Width和Height时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortSide: int
+        """
+        self._Switch = None
+        self._Mode = None
+        self._Percent = None
+        self._Width = None
+        self._Height = None
+        self._LongSide = None
+        self._ShortSide = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启</li>
+<li>OFF：关闭</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Mode(self):
+        r"""输出图片模式，可选模式：
+<li>percent: 指定缩放倍率，可以为小数</li>
+<li>mfit: 缩放至指定宽高的较大矩形</li>
+<li>lfit: 缩放至指定宽高的较小矩形</li>
+<li>fill: 缩放至指定宽高的较大矩形，并居中裁剪指定宽高</li>
+<li>pad: 缩放至指定宽高的较小矩形，并填充到指定宽高</li>
+<li>fixed: 缩放至固定宽高，强制缩放</li>
+默认值：percent。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Percent(self):
+        r"""缩放倍率，可以为小数，当Mode为percent时使用。
+
+默认值：1.0。
+取值范围：[0.1，10.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Width(self):
+        r"""目标图片宽度。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent时优先使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""目标图片高度。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent时优先使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def LongSide(self):
+        r"""目标图片长边。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent且未配置Width和Height时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LongSide
+
+    @LongSide.setter
+    def LongSide(self, LongSide):
+        self._LongSide = LongSide
+
+    @property
+    def ShortSide(self):
+        r"""目标图片短边。
+
+取值范围：[1，16384]。
+注意：此字段在Mode非percent且未配置Width和Height时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ShortSide
+
+    @ShortSide.setter
+    def ShortSide(self, ShortSide):
+        self._ShortSide = ShortSide
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Mode = params.get("Mode")
+        self._Percent = params.get("Percent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._LongSide = params.get("LongSide")
+        self._ShortSide = params.get("ShortSide")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageSpriteTaskInput(AbstractModel):
     r"""对视频截雪碧图任务输入参数类型
 
@@ -44277,12 +44555,15 @@ class ImageTaskInput(AbstractModel):
         :type BlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
         :param _BeautyConfig: 美颜配置。
         :type BeautyConfig: :class:`tencentcloud.mps.v20190612.models.BeautyConfig`
+        :param _TransformConfig: 图片基础转换能力。
+        :type TransformConfig: :class:`tencentcloud.mps.v20190612.models.ImageTransformConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._EraseConfig = None
         self._BlindWatermarkConfig = None
         self._BeautyConfig = None
+        self._TransformConfig = None
 
     @property
     def EncodeConfig(self):
@@ -44343,6 +44624,17 @@ class ImageTaskInput(AbstractModel):
     def BeautyConfig(self, BeautyConfig):
         self._BeautyConfig = BeautyConfig
 
+    @property
+    def TransformConfig(self):
+        r"""图片基础转换能力。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTransformConfig`
+        """
+        return self._TransformConfig
+
+    @TransformConfig.setter
+    def TransformConfig(self, TransformConfig):
+        self._TransformConfig = TransformConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -44360,6 +44652,49 @@ class ImageTaskInput(AbstractModel):
         if params.get("BeautyConfig") is not None:
             self._BeautyConfig = BeautyConfig()
             self._BeautyConfig._deserialize(params.get("BeautyConfig"))
+        if params.get("TransformConfig") is not None:
+            self._TransformConfig = ImageTransformConfig()
+            self._TransformConfig._deserialize(params.get("TransformConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTransformConfig(AbstractModel):
+    r"""图片基础转换能力
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageResize: 图片缩放配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageResize: :class:`tencentcloud.mps.v20190612.models.ImageResizeConfig`
+        """
+        self._ImageResize = None
+
+    @property
+    def ImageResize(self):
+        r"""图片缩放配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageResizeConfig`
+        """
+        return self._ImageResize
+
+    @ImageResize.setter
+    def ImageResize(self, ImageResize):
+        self._ImageResize = ImageResize
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResize") is not None:
+            self._ImageResize = ImageResizeConfig()
+            self._ImageResize._deserialize(params.get("ImageResize"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

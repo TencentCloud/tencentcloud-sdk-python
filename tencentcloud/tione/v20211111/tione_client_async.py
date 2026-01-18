@@ -732,6 +732,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSubAccountLinuxUserInfos(
+            self,
+            request: models.DescribeSubAccountLinuxUserInfosRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSubAccountLinuxUserInfosResponse:
+        """
+        批量查询子账号Linux用户信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSubAccountLinuxUserInfos"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSubAccountLinuxUserInfosResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTrainingModelVersion(
             self,
             request: models.DescribeTrainingModelVersionRequest,
@@ -1015,6 +1033,24 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "StopTrainingTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopTrainingTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateSubAccountLinuxUserInfo(
+            self,
+            request: models.UpdateSubAccountLinuxUserInfoRequest,
+            opts: Dict = None,
+    ) -> models.UpdateSubAccountLinuxUserInfoResponse:
+        """
+        更新子账号Linux用户信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateSubAccountLinuxUserInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateSubAccountLinuxUserInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

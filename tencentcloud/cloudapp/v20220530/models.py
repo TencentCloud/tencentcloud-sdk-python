@@ -102,6 +102,57 @@ class DescribeLicenseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisplayMetadata(AbstractModel):
+    r"""元数据展示信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>展示的名称</p>
+        :type Name: str
+        :param _Value: <p>展示的值</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>展示的名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>展示的值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""描述键值对过滤器，用于条件过滤查询。例如过滤 ID、名称、状态等
 
@@ -201,6 +252,10 @@ class License(AbstractModel):
         :type LicenseType: str
         :param _LicenseLevel: <p>授权的层级：Master 主授权；Child 子授权/增强型授权</p>
         :type LicenseLevel: str
+        :param _LicenseData: <p>License 内容信息</p>
+        :type LicenseData: :class:`tencentcloud.cloudapp.v20220530.models.LicenseData`
+        :param _IssueURL: <p>License 颁发地址</p>
+        :type IssueURL: str
         """
         self._LicenseId = None
         self._LicenseMode = None
@@ -220,6 +275,8 @@ class License(AbstractModel):
         self._LifeSpanUnit = None
         self._LicenseType = None
         self._LicenseLevel = None
+        self._LicenseData = None
+        self._IssueURL = None
 
     @property
     def LicenseId(self):
@@ -421,6 +478,28 @@ class License(AbstractModel):
     def LicenseLevel(self, LicenseLevel):
         self._LicenseLevel = LicenseLevel
 
+    @property
+    def LicenseData(self):
+        r"""<p>License 内容信息</p>
+        :rtype: :class:`tencentcloud.cloudapp.v20220530.models.LicenseData`
+        """
+        return self._LicenseData
+
+    @LicenseData.setter
+    def LicenseData(self, LicenseData):
+        self._LicenseData = LicenseData
+
+    @property
+    def IssueURL(self):
+        r"""<p>License 颁发地址</p>
+        :rtype: str
+        """
+        return self._IssueURL
+
+    @IssueURL.setter
+    def IssueURL(self, IssueURL):
+        self._IssueURL = IssueURL
+
 
     def _deserialize(self, params):
         self._LicenseId = params.get("LicenseId")
@@ -446,6 +525,81 @@ class License(AbstractModel):
         self._LifeSpanUnit = params.get("LifeSpanUnit")
         self._LicenseType = params.get("LicenseType")
         self._LicenseLevel = params.get("LicenseLevel")
+        if params.get("LicenseData") is not None:
+            self._LicenseData = LicenseData()
+            self._LicenseData._deserialize(params.get("LicenseData"))
+        self._IssueURL = params.get("IssueURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseData(AbstractModel):
+    r"""License 内容信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>License 文本内容。支持密钥、证书等文本形式，二进制的密钥需要伙伴进行 base64 转码</p>
+        :type Text: str
+        :param _DeploymentOutput: <p>部署服务输出信息，基于部署签发 License 时需要该参数。</p>
+        :type DeploymentOutput: str
+        :param _Metadata: <p>License 前端展示信息。key、value 形式，比如可传入，颁发机构：XXXX 有限公司</p>
+        :type Metadata: list of DisplayMetadata
+        """
+        self._Text = None
+        self._DeploymentOutput = None
+        self._Metadata = None
+
+    @property
+    def Text(self):
+        r"""<p>License 文本内容。支持密钥、证书等文本形式，二进制的密钥需要伙伴进行 base64 转码</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def DeploymentOutput(self):
+        r"""<p>部署服务输出信息，基于部署签发 License 时需要该参数。</p>
+        :rtype: str
+        """
+        return self._DeploymentOutput
+
+    @DeploymentOutput.setter
+    def DeploymentOutput(self, DeploymentOutput):
+        self._DeploymentOutput = DeploymentOutput
+
+    @property
+    def Metadata(self):
+        r"""<p>License 前端展示信息。key、value 形式，比如可传入，颁发机构：XXXX 有限公司</p>
+        :rtype: list of DisplayMetadata
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._DeploymentOutput = params.get("DeploymentOutput")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = DisplayMetadata()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

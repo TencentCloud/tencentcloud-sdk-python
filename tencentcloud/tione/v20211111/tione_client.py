@@ -928,6 +928,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSubAccountLinuxUserInfos(self, request):
+        r"""批量查询子账号Linux用户信息
+
+        :param request: Request instance for DescribeSubAccountLinuxUserInfos.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeSubAccountLinuxUserInfosRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeSubAccountLinuxUserInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubAccountLinuxUserInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubAccountLinuxUserInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTrainingModelVersion(self, request):
         r"""查询模型版本
 
@@ -1287,6 +1310,29 @@ class TioneClient(AbstractClient):
             body = self.call("StopTrainingTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSubAccountLinuxUserInfo(self, request):
+        r"""更新子账号Linux用户信息
+
+        :param request: Request instance for UpdateSubAccountLinuxUserInfo.
+        :type request: :class:`tencentcloud.tione.v20211111.models.UpdateSubAccountLinuxUserInfoRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.UpdateSubAccountLinuxUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSubAccountLinuxUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSubAccountLinuxUserInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

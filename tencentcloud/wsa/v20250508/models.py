@@ -40,7 +40,7 @@ class SearchProRequest(AbstractModel):
         :type ToTime: int
         :param _Cnt: cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
         :type Cnt: int
-        :param _Industry: Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
+        :param _Industry: Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
         :type Industry: str
         """
         self._Query = None
@@ -122,7 +122,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Industry(self):
-        r"""Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
+        r"""Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
         :rtype: str
         """
         return self._Industry
@@ -170,6 +170,8 @@ score：相关性得分，取值0～1，越靠近1表示越相关
 images：图片列表
 favicon：网站图标链接，部分不知名站点结果可能为空
         :type Pages: list of str
+        :param _Version: 用户版本：standard/premium/lite
+        :type Version: str
         :param _Msg: 提示信息
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -177,6 +179,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
         """
         self._Query = None
         self._Pages = None
+        self._Version = None
         self._Msg = None
         self._RequestId = None
 
@@ -212,6 +215,17 @@ favicon：网站图标链接，部分不知名站点结果可能为空
         self._Pages = Pages
 
     @property
+    def Version(self):
+        r"""用户版本：standard/premium/lite
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
     def Msg(self):
         r"""提示信息
         :rtype: str
@@ -237,5 +251,6 @@ favicon：网站图标链接，部分不知名站点结果可能为空
     def _deserialize(self, params):
         self._Query = params.get("Query")
         self._Pages = params.get("Pages")
+        self._Version = params.get("Version")
         self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")

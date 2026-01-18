@@ -1791,6 +1791,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceStorage(
+            self,
+            request: models.ModifyInstanceStorageRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceStorageResponse:
+        """
+        TCR实例存储桶切换
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceStorage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceStorageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceToken(
             self,
             request: models.ModifyInstanceTokenRequest,
@@ -2002,6 +2020,24 @@ class TcrClient(AbstractClient):
         kwargs["action"] = "RenewInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RenewInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TerminateGCJob(
+            self,
+            request: models.TerminateGCJobRequest,
+            opts: Dict = None,
+    ) -> models.TerminateGCJobResponse:
+        """
+        终止制品清理任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateGCJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateGCJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

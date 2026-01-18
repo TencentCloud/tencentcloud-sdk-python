@@ -3144,6 +3144,240 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEventTasksRequest(AbstractModel):
+    r"""DescribeEventTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _EventTaskId: 过滤的事件任务id
+        :type EventTaskId: int
+        :param _PageNumber: 页码，默认为1
+        :type PageNumber: int
+        :param _PageSize: 每页数量（支持10、20、30、50、100、200），默认为100
+        :type PageSize: int
+        :param _EventCode: 事件名称过滤
+        :type EventCode: str
+        :param _Status: (1-待处理;2-已预约;3-处理中;4-已结束;5-处理中;-1-已忽略;-2-已删除)
+        :type Status: list of int
+        :param _StartTime: 创建时间范围开始 (格式: YYYY-MM-DD HH:MM:SS)，最大支持查询180天信息
+        :type StartTime: str
+        :param _EndTime: 创建时间范围结束 (格式: YYYY-MM-DD HH:MM:SS)
+        :type EndTime: str
+        :param _SortField: 排序字段（事件类型：event_code；触发时间：create_time；完成时间：end_time）
+        :type SortField: str
+        :param _SortOrder: 排序顺序 (asc/desc)
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._EventTaskId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._EventCode = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortField = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventTaskId(self):
+        r"""过滤的事件任务id
+        :rtype: int
+        """
+        return self._EventTaskId
+
+    @EventTaskId.setter
+    def EventTaskId(self, EventTaskId):
+        self._EventTaskId = EventTaskId
+
+    @property
+    def PageNumber(self):
+        r"""页码，默认为1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数量（支持10、20、30、50、100、200），默认为100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def EventCode(self):
+        r"""事件名称过滤
+        :rtype: str
+        """
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def Status(self):
+        r"""(1-待处理;2-已预约;3-处理中;4-已结束;5-处理中;-1-已忽略;-2-已删除)
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""创建时间范围开始 (格式: YYYY-MM-DD HH:MM:SS)，最大支持查询180天信息
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""创建时间范围结束 (格式: YYYY-MM-DD HH:MM:SS)
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortField(self):
+        r"""排序字段（事件类型：event_code；触发时间：create_time；完成时间：end_time）
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortOrder(self):
+        r"""排序顺序 (asc/desc)
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EventTaskId = params.get("EventTaskId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._EventCode = params.get("EventCode")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SortField = params.get("SortField")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventTasksResponse(AbstractModel):
+    r"""DescribeEventTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTasks: 产生的事件任务
+        :type EventTasks: list of EventTask
+        :param _TotalCount: 事件任务总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventTasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def EventTasks(self):
+        r"""产生的事件任务
+        :rtype: list of EventTask
+        """
+        return self._EventTasks
+
+    @EventTasks.setter
+    def EventTasks(self, EventTasks):
+        self._EventTasks = EventTasks
+
+    @property
+    def TotalCount(self):
+        r"""事件任务总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventTasks") is not None:
+            self._EventTasks = []
+            for item in params.get("EventTasks"):
+                obj = EventTask()
+                obj._deserialize(item)
+                self._EventTasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceClustersRequest(AbstractModel):
     r"""DescribeInstanceClusters请求参数结构体
 
@@ -4489,6 +4723,267 @@ class DiskSpec(AbstractModel):
         
 
 
+class EventTask(AbstractModel):
+    r"""事件任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _EventTaskId: 事件任务的id	
+        :type EventTaskId: int
+        :param _HandleUser: 处理人uin
+        :type HandleUser: str
+        :param _EventCode: 事件名称	
+        :type EventCode: str
+        :param _RepairId: CVM相关事件的维修id
+        :type RepairId: str
+        :param _EventNameDescribe: 事件名称描述	
+        :type EventNameDescribe: str
+        :param _EventPriority: 事件等级（0-低；1-中；2-高；3-严重）	
+        :type EventPriority: int
+        :param _EventDetail: 事件详情	
+        :type EventDetail: str
+        :param _IP: 影响集群节点	
+        :type IP: str
+        :param _CreateTime: 事件触发时间	
+        :type CreateTime: str
+        :param _Status: 事件状态(1-待处理;2-已预约;3-处理中;4-已完成;5-处理中;6-自动处理中;-1-已忽略;-2-已删除)	
+        :type Status: int
+        :param _NeedAuthorization: 是否需要授权维修：1-不需要，2-需要
+        :type NeedAuthorization: int
+        :param _OperationType: 该事件涉及到的操作类型（OnlineMigrationForInstance-实例在线迁移,OnlineMaintenanceForInstance-实例在线维修,等）	
+        :type OperationType: list of str
+        :param _FinishTime: 完成时间
+        :type FinishTime: str
+        :param _OperationGuide: 操作指引
+        :type OperationGuide: str
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        """
+        self._InstanceId = None
+        self._EventTaskId = None
+        self._HandleUser = None
+        self._EventCode = None
+        self._RepairId = None
+        self._EventNameDescribe = None
+        self._EventPriority = None
+        self._EventDetail = None
+        self._IP = None
+        self._CreateTime = None
+        self._Status = None
+        self._NeedAuthorization = None
+        self._OperationType = None
+        self._FinishTime = None
+        self._OperationGuide = None
+        self._ResourceId = None
+
+    @property
+    def InstanceId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventTaskId(self):
+        r"""事件任务的id	
+        :rtype: int
+        """
+        return self._EventTaskId
+
+    @EventTaskId.setter
+    def EventTaskId(self, EventTaskId):
+        self._EventTaskId = EventTaskId
+
+    @property
+    def HandleUser(self):
+        r"""处理人uin
+        :rtype: str
+        """
+        return self._HandleUser
+
+    @HandleUser.setter
+    def HandleUser(self, HandleUser):
+        self._HandleUser = HandleUser
+
+    @property
+    def EventCode(self):
+        r"""事件名称	
+        :rtype: str
+        """
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def RepairId(self):
+        r"""CVM相关事件的维修id
+        :rtype: str
+        """
+        return self._RepairId
+
+    @RepairId.setter
+    def RepairId(self, RepairId):
+        self._RepairId = RepairId
+
+    @property
+    def EventNameDescribe(self):
+        r"""事件名称描述	
+        :rtype: str
+        """
+        return self._EventNameDescribe
+
+    @EventNameDescribe.setter
+    def EventNameDescribe(self, EventNameDescribe):
+        self._EventNameDescribe = EventNameDescribe
+
+    @property
+    def EventPriority(self):
+        r"""事件等级（0-低；1-中；2-高；3-严重）	
+        :rtype: int
+        """
+        return self._EventPriority
+
+    @EventPriority.setter
+    def EventPriority(self, EventPriority):
+        self._EventPriority = EventPriority
+
+    @property
+    def EventDetail(self):
+        r"""事件详情	
+        :rtype: str
+        """
+        return self._EventDetail
+
+    @EventDetail.setter
+    def EventDetail(self, EventDetail):
+        self._EventDetail = EventDetail
+
+    @property
+    def IP(self):
+        r"""影响集群节点	
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def CreateTime(self):
+        r"""事件触发时间	
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""事件状态(1-待处理;2-已预约;3-处理中;4-已完成;5-处理中;6-自动处理中;-1-已忽略;-2-已删除)	
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NeedAuthorization(self):
+        r"""是否需要授权维修：1-不需要，2-需要
+        :rtype: int
+        """
+        return self._NeedAuthorization
+
+    @NeedAuthorization.setter
+    def NeedAuthorization(self, NeedAuthorization):
+        self._NeedAuthorization = NeedAuthorization
+
+    @property
+    def OperationType(self):
+        r"""该事件涉及到的操作类型（OnlineMigrationForInstance-实例在线迁移,OnlineMaintenanceForInstance-实例在线维修,等）	
+        :rtype: list of str
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def FinishTime(self):
+        r"""完成时间
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def OperationGuide(self):
+        r"""操作指引
+        :rtype: str
+        """
+        return self._OperationGuide
+
+    @OperationGuide.setter
+    def OperationGuide(self, OperationGuide):
+        self._OperationGuide = OperationGuide
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EventTaskId = params.get("EventTaskId")
+        self._HandleUser = params.get("HandleUser")
+        self._EventCode = params.get("EventCode")
+        self._RepairId = params.get("RepairId")
+        self._EventNameDescribe = params.get("EventNameDescribe")
+        self._EventPriority = params.get("EventPriority")
+        self._EventDetail = params.get("EventDetail")
+        self._IP = params.get("IP")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._NeedAuthorization = params.get("NeedAuthorization")
+        self._OperationType = params.get("OperationType")
+        self._FinishTime = params.get("FinishTime")
+        self._OperationGuide = params.get("OperationGuide")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GroupInfo(AbstractModel):
     r"""集群分组信息描述
 
@@ -4946,6 +5441,10 @@ Modify 集群变更中；
         :type HasPublicCloudClb: bool
         :param _UpgradeZkVersions: 可升级的zk版本
         :type UpgradeZkVersions: str
+        :param _ShowRip: 是否显示rip
+        :type ShowRip: str
+        :param _InstanceType: 实例类型：标准型 standard，无keeper节点类型noKeeper；
+        :type InstanceType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5001,6 +5500,8 @@ Modify 集群变更中；
         self._BindSGs = None
         self._HasPublicCloudClb = None
         self._UpgradeZkVersions = None
+        self._ShowRip = None
+        self._InstanceType = None
 
     @property
     def InstanceId(self):
@@ -5599,6 +6100,28 @@ Modify 集群变更中；
     def UpgradeZkVersions(self, UpgradeZkVersions):
         self._UpgradeZkVersions = UpgradeZkVersions
 
+    @property
+    def ShowRip(self):
+        r"""是否显示rip
+        :rtype: str
+        """
+        return self._ShowRip
+
+    @ShowRip.setter
+    def ShowRip(self, ShowRip):
+        self._ShowRip = ShowRip
+
+    @property
+    def InstanceType(self):
+        r"""实例类型：标准型 standard，无keeper节点类型noKeeper；
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5673,6 +6196,8 @@ Modify 集群变更中；
         self._BindSGs = params.get("BindSGs")
         self._HasPublicCloudClb = params.get("HasPublicCloudClb")
         self._UpgradeZkVersions = params.get("UpgradeZkVersions")
+        self._ShowRip = params.get("ShowRip")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

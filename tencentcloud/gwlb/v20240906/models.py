@@ -849,20 +849,15 @@ class DescribeGatewayLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
+        :param _LoadBalancerIds: <p>网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。</p>
         :type LoadBalancerIds: list of str
-        :param _Limit: 一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
+        :param _Limit: <p>一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 返回网关负载均衡实例列表的起始偏移量，默认0。
+        :param _Offset: <p>返回网关负载均衡实例列表的起始偏移量，默认0。</p>
         :type Offset: int
-        :param _Filters: 查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
-Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
-- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
-- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
-
+        :param _Filters: <p>查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例的VIP进行过滤，如“10.1.1.1”- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</p>
         :type Filters: list of Filter
-        :param _SearchKey: 搜索字段，模糊匹配名称、VIP。
+        :param _SearchKey: <p>搜索字段，模糊匹配名称、VIP。</p>
         :type SearchKey: str
         """
         self._LoadBalancerIds = None
@@ -873,7 +868,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def LoadBalancerIds(self):
-        r"""网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
+        r"""<p>网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。</p>
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -884,7 +879,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Limit(self):
-        r"""一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
+        r"""<p>一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -895,7 +890,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Offset(self):
-        r"""返回网关负载均衡实例列表的起始偏移量，默认0。
+        r"""<p>返回网关负载均衡实例列表的起始偏移量，默认0。</p>
         :rtype: int
         """
         return self._Offset
@@ -906,12 +901,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def Filters(self):
-        r"""查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
-Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
-- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
-- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
-
+        r"""<p>查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例的VIP进行过滤，如“10.1.1.1”- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -922,7 +912,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 
     @property
     def SearchKey(self):
-        r"""搜索字段，模糊匹配名称、VIP。
+        r"""<p>搜索字段，模糊匹配名称、VIP。</p>
         :rtype: str
         """
         return self._SearchKey
@@ -1074,9 +1064,9 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+        :param _TotalCount: <p>满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。</p>
         :type TotalCount: int
-        :param _LoadBalancerSet: 返回的网关负载均衡实例数组。
+        :param _LoadBalancerSet: <p>返回的网关负载均衡实例数组。</p>
         :type LoadBalancerSet: list of GatewayLoadBalancer
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1087,7 +1077,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+        r"""<p>满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1098,7 +1088,7 @@ class DescribeGatewayLoadBalancersResponse(AbstractModel):
 
     @property
     def LoadBalancerSet(self):
-        r"""返回的网关负载均衡实例数组。
+        r"""<p>返回的网关负载均衡实例数组。</p>
         :rtype: list of GatewayLoadBalancer
         """
         return self._LoadBalancerSet

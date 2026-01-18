@@ -26651,8 +26651,6 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type AdvancedInfo: str
         :param _CardCount: 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
         :type CardCount: int
-        :param _IsComplete: 卡证字段是否完整，true：完整；false：不完整
-        :type IsComplete: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -26674,7 +26672,6 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = None
         self._AdvancedInfo = None
         self._CardCount = None
-        self._IsComplete = None
         self._RequestId = None
 
     @property
@@ -26886,17 +26883,6 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._CardCount = CardCount
 
     @property
-    def IsComplete(self):
-        r"""卡证字段是否完整，true：完整；false：不完整
-        :rtype: bool
-        """
-        return self._IsComplete
-
-    @IsComplete.setter
-    def IsComplete(self, IsComplete):
-        self._IsComplete = IsComplete
-
-    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -26927,7 +26913,6 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._CardCount = params.get("CardCount")
-        self._IsComplete = params.get("IsComplete")
         self._RequestId = params.get("RequestId")
 
 

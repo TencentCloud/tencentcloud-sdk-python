@@ -5903,6 +5903,539 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
+    r"""DescribeDataPvUrlStatisticsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _Type: allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :type Type: str
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _ID: 项目ID
+        :type ID: int
+        :param _ExtSecond: 自定义2
+        :type ExtSecond: str
+        :param _Engine: 浏览器引擎
+        :type Engine: str
+        :param _Isp: 运营商
+        :type Isp: str
+        :param _From: 来源页面
+        :type From: str
+        :param _Level: 日志等级
+        :type Level: str
+        :param _Brand: 品牌
+        :type Brand: str
+        :param _Area: 地区
+        :type Area: str
+        :param _VersionNum: 版本
+        :type VersionNum: str
+        :param _Platform: 平台
+        :type Platform: str
+        :param _ExtThird: 自定义3
+        :type ExtThird: str
+        :param _ExtFirst: 自定义1
+        :type ExtFirst: str
+        :param _NetType: 网络类型
+        :type NetType: str
+        :param _Device: 机型
+        :type Device: str
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        :type IsAbroad: str
+        :param _Os: 操作系统
+        :type Os: str
+        :param _Browser: 浏览器
+        :type Browser: str
+        :param _Env: 环境
+        :type Env: str
+        :param _GroupByType: group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+ 5:1d
+        :type GroupByType: int
+        :param _IsNewData: 1: 查询智研
+0: 走旧逻辑，已下线，勿使用
+        :type IsNewData: int
+        :param _ExtFourth: 自定义4
+        :type ExtFourth: str
+        :param _ExtFifth: 自定义5
+        :type ExtFifth: str
+        :param _ExtSixth: 自定义6
+        :type ExtSixth: str
+        :param _ExtSeventh: 自定义7
+        :type ExtSeventh: str
+        :param _ExtEighth: 自定义8
+        :type ExtEighth: str
+        :param _ExtNinth: 自定义9
+        :type ExtNinth: str
+        :param _ExtTenth: 自定义10
+        :type ExtTenth: str
+        :param _Granularity: 时间段
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._Env = None
+        self._GroupByType = None
+        self._IsNewData = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""项目ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""自定义2
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""浏览器引擎
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""运营商
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""来源页面
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""日志等级
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""品牌
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""地区
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""版本
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""平台
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""自定义3
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""自定义1
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""网络类型
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""机型
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""操作系统
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""浏览器
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Env(self):
+        r"""环境
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def GroupByType(self):
+        r"""group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+ 5:1d
+        :rtype: int
+        """
+        return self._GroupByType
+
+    @GroupByType.setter
+    def GroupByType(self, GroupByType):
+        self._GroupByType = GroupByType
+
+    @property
+    def IsNewData(self):
+        r"""1: 查询智研
+0: 走旧逻辑，已下线，勿使用
+        :rtype: int
+        """
+        return self._IsNewData
+
+    @IsNewData.setter
+    def IsNewData(self, IsNewData):
+        self._IsNewData = IsNewData
+
+    @property
+    def ExtFourth(self):
+        r"""自定义4
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""自定义5
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""自定义6
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""自定义7
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""自定义8
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""自定义9
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""自定义10
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""时间段
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._Env = params.get("Env")
+        self._GroupByType = params.get("GroupByType")
+        self._IsNewData = params.get("IsNewData")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataPvUrlStatisticsV2Response(AbstractModel):
+    r"""DescribeDataPvUrlStatisticsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回值
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataReportCountRequest(AbstractModel):
     r"""DescribeDataReportCount请求参数结构体
 

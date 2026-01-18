@@ -511,6 +511,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDatasourceConnection(
+            self,
+            request: models.CreateDatasourceConnectionRequest,
+            opts: Dict = None,
+    ) -> models.CreateDatasourceConnectionResponse:
+        """
+        创建数据源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDatasourceConnection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDatasourceConnectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateExportTask(
             self,
             request: models.CreateExportTaskRequest,

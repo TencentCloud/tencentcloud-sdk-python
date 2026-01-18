@@ -7144,6 +7144,145 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLiveCloudEffectRequest(AbstractModel):
+    r"""CreateLiveCloudEffect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>用于生成云端特效的 Prompt。示例：飞鸟。Prompt 和 ImageUrl 二选一。</p>
+        :type Prompt: str
+        :param _TemplateId: <p>模板生礼物的模板ID。目前支持的模板ID：queen_accession, wizard_of_oz，red_envelopes，fishermen，captain_america。</p>
+        :type TemplateId: str
+        :param _ImageUrl: <p>输入我的图片地址，用于生成云端特效。ImageUrl 和 Prompt 二选一。</p>
+        :type ImageUrl: str
+        :param _Type: <p>指定生成云端特效的方式。默认自动选取。标准方式：text2video，高品质方式：text2video_hq。</p>
+        :type Type: str
+        :param _Operator: <p>操作者名称。</p>
+        :type Operator: str
+        """
+        self._Prompt = None
+        self._TemplateId = None
+        self._ImageUrl = None
+        self._Type = None
+        self._Operator = None
+
+    @property
+    def Prompt(self):
+        r"""<p>用于生成云端特效的 Prompt。示例：飞鸟。Prompt 和 ImageUrl 二选一。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板生礼物的模板ID。目前支持的模板ID：queen_accession, wizard_of_oz，red_envelopes，fishermen，captain_america。</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ImageUrl(self):
+        r"""<p>输入我的图片地址，用于生成云端特效。ImageUrl 和 Prompt 二选一。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Type(self):
+        r"""<p>指定生成云端特效的方式。默认自动选取。标准方式：text2video，高品质方式：text2video_hq。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Operator(self):
+        r"""<p>操作者名称。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._TemplateId = params.get("TemplateId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._Type = params.get("Type")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveCloudEffectResponse(AbstractModel):
+    r"""CreateLiveCloudEffect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>云端特效 ID。</p>
+        :type Id: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>云端特效 ID。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLivePadRuleRequest(AbstractModel):
     r"""CreateLivePadRule请求参数结构体
 

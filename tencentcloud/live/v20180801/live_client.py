@@ -517,6 +517,30 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLiveCloudEffect(self, request):
+        r"""使用该接口生成云端特效。特效可用于叠加到直播流上，供播放端观看。
+        注意：云端特效生成需要一定时间，调用生成接口后，可通过查询接口，获取是否特效已生成。
+
+        :param request: Request instance for CreateLiveCloudEffect.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCloudEffectRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveCloudEffectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLiveCloudEffect", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLiveCloudEffectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLivePadRule(self, request):
         r"""创建直播垫片规则。
 

@@ -2282,6 +2282,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceStorage(self, request):
+        r"""TCR实例存储桶切换
+
+        :param request: Request instance for ModifyInstanceStorage.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceStorageRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceToken(self, request):
         r"""更新实例内指定长期访问凭证的启用状态
 
@@ -2549,6 +2572,29 @@ class TcrClient(AbstractClient):
             body = self.call("RenewInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateGCJob(self, request):
+        r"""终止制品清理任务
+
+        :param request: Request instance for TerminateGCJob.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.TerminateGCJobRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TerminateGCJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateGCJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateGCJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

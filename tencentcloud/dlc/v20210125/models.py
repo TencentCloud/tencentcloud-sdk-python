@@ -5259,6 +5259,227 @@ class CreateDatabaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDatasourceConnectionRequest(AbstractModel):
+    r"""CreateDatasourceConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceConnectionName: 数据连接名称
+        :type DatasourceConnectionName: str
+        :param _DatasourceConnectionType: 数据连接类型
+        :type DatasourceConnectionType: str
+        :param _DatasourceConnectionConfig: 数据连接属性
+        :type DatasourceConnectionConfig: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
+        :param _ServiceType: 数据连接所属服务
+        :type ServiceType: str
+        :param _DatasourceConnectionDesc: 数据连接描述
+        :type DatasourceConnectionDesc: str
+        :param _DataEngineNames: 数据引擎名称数组
+        :type DataEngineNames: list of str
+        :param _NetworkConnectionName: 网络连接名称
+        :type NetworkConnectionName: str
+        :param _NetworkConnectionDesc: 网络连接描述
+        :type NetworkConnectionDesc: str
+        :param _NetworkConnectionType: 网络连接类型 （2-夸源型，4-增强型）
+        :type NetworkConnectionType: int
+        :param _CustomConfig: 自定义配置
+        :type CustomConfig: list of CustomConfig
+        """
+        self._DatasourceConnectionName = None
+        self._DatasourceConnectionType = None
+        self._DatasourceConnectionConfig = None
+        self._ServiceType = None
+        self._DatasourceConnectionDesc = None
+        self._DataEngineNames = None
+        self._NetworkConnectionName = None
+        self._NetworkConnectionDesc = None
+        self._NetworkConnectionType = None
+        self._CustomConfig = None
+
+    @property
+    def DatasourceConnectionName(self):
+        r"""数据连接名称
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+    @property
+    def DatasourceConnectionType(self):
+        r"""数据连接类型
+        :rtype: str
+        """
+        return self._DatasourceConnectionType
+
+    @DatasourceConnectionType.setter
+    def DatasourceConnectionType(self, DatasourceConnectionType):
+        self._DatasourceConnectionType = DatasourceConnectionType
+
+    @property
+    def DatasourceConnectionConfig(self):
+        r"""数据连接属性
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
+        """
+        return self._DatasourceConnectionConfig
+
+    @DatasourceConnectionConfig.setter
+    def DatasourceConnectionConfig(self, DatasourceConnectionConfig):
+        self._DatasourceConnectionConfig = DatasourceConnectionConfig
+
+    @property
+    def ServiceType(self):
+        r"""数据连接所属服务
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DatasourceConnectionDesc(self):
+        r"""数据连接描述
+        :rtype: str
+        """
+        return self._DatasourceConnectionDesc
+
+    @DatasourceConnectionDesc.setter
+    def DatasourceConnectionDesc(self, DatasourceConnectionDesc):
+        self._DatasourceConnectionDesc = DatasourceConnectionDesc
+
+    @property
+    def DataEngineNames(self):
+        r"""数据引擎名称数组
+        :rtype: list of str
+        """
+        return self._DataEngineNames
+
+    @DataEngineNames.setter
+    def DataEngineNames(self, DataEngineNames):
+        self._DataEngineNames = DataEngineNames
+
+    @property
+    def NetworkConnectionName(self):
+        r"""网络连接名称
+        :rtype: str
+        """
+        return self._NetworkConnectionName
+
+    @NetworkConnectionName.setter
+    def NetworkConnectionName(self, NetworkConnectionName):
+        self._NetworkConnectionName = NetworkConnectionName
+
+    @property
+    def NetworkConnectionDesc(self):
+        r"""网络连接描述
+        :rtype: str
+        """
+        return self._NetworkConnectionDesc
+
+    @NetworkConnectionDesc.setter
+    def NetworkConnectionDesc(self, NetworkConnectionDesc):
+        self._NetworkConnectionDesc = NetworkConnectionDesc
+
+    @property
+    def NetworkConnectionType(self):
+        r"""网络连接类型 （2-夸源型，4-增强型）
+        :rtype: int
+        """
+        return self._NetworkConnectionType
+
+    @NetworkConnectionType.setter
+    def NetworkConnectionType(self, NetworkConnectionType):
+        self._NetworkConnectionType = NetworkConnectionType
+
+    @property
+    def CustomConfig(self):
+        r"""自定义配置
+        :rtype: list of CustomConfig
+        """
+        return self._CustomConfig
+
+    @CustomConfig.setter
+    def CustomConfig(self, CustomConfig):
+        self._CustomConfig = CustomConfig
+
+
+    def _deserialize(self, params):
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self._DatasourceConnectionType = params.get("DatasourceConnectionType")
+        if params.get("DatasourceConnectionConfig") is not None:
+            self._DatasourceConnectionConfig = DatasourceConnectionConfig()
+            self._DatasourceConnectionConfig._deserialize(params.get("DatasourceConnectionConfig"))
+        self._ServiceType = params.get("ServiceType")
+        self._DatasourceConnectionDesc = params.get("DatasourceConnectionDesc")
+        self._DataEngineNames = params.get("DataEngineNames")
+        self._NetworkConnectionName = params.get("NetworkConnectionName")
+        self._NetworkConnectionDesc = params.get("NetworkConnectionDesc")
+        self._NetworkConnectionType = params.get("NetworkConnectionType")
+        if params.get("CustomConfig") is not None:
+            self._CustomConfig = []
+            for item in params.get("CustomConfig"):
+                obj = CustomConfig()
+                obj._deserialize(item)
+                self._CustomConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatasourceConnectionResponse(AbstractModel):
+    r"""CreateDatasourceConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceConnectionId: 数据连接Id
+        :type DatasourceConnectionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatasourceConnectionId = None
+        self._RequestId = None
+
+    @property
+    def DatasourceConnectionId(self):
+        r"""数据连接Id
+        :rtype: str
+        """
+        return self._DatasourceConnectionId
+
+    @DatasourceConnectionId.setter
+    def DatasourceConnectionId(self, DatasourceConnectionId):
+        self._DatasourceConnectionId = DatasourceConnectionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DatasourceConnectionId = params.get("DatasourceConnectionId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateExportTaskRequest(AbstractModel):
     r"""CreateExportTask请求参数结构体
 

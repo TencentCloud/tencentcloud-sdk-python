@@ -12597,6 +12597,100 @@ class ModifyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceStorageRequest(AbstractModel):
+    r"""ModifyInstanceStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>实例ID</p>
+        :type RegistryId: str
+        :param _TargetRegion: <p>目标存储资源地域</p>
+        :type TargetRegion: str
+        :param _TargetStorageName: <p>目标存储资源名称</p>
+        :type TargetStorageName: str
+        """
+        self._RegistryId = None
+        self._TargetRegion = None
+        self._TargetStorageName = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def TargetRegion(self):
+        r"""<p>目标存储资源地域</p>
+        :rtype: str
+        """
+        return self._TargetRegion
+
+    @TargetRegion.setter
+    def TargetRegion(self, TargetRegion):
+        self._TargetRegion = TargetRegion
+
+    @property
+    def TargetStorageName(self):
+        r"""<p>目标存储资源名称</p>
+        :rtype: str
+        """
+        return self._TargetStorageName
+
+    @TargetStorageName.setter
+    def TargetStorageName(self, TargetStorageName):
+        self._TargetStorageName = TargetStorageName
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._TargetRegion = params.get("TargetRegion")
+        self._TargetStorageName = params.get("TargetStorageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceStorageResponse(AbstractModel):
+    r"""ModifyInstanceStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceTokenRequest(AbstractModel):
     r"""ModifyInstanceToken请求参数结构体
 
@@ -17868,6 +17962,100 @@ class TcrRepositoryInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateGCJobRequest(AbstractModel):
+    r"""TerminateGCJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>实例ID</p>
+        :type RegistryId: str
+        """
+        self._RegistryId = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateGCJobResponse(AbstractModel):
+    r"""TerminateGCJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>操作结果</p>枚举值：<ul><li> success： 操作成功</li><li> error： 操作失败</li></ul>
+        :type Status: str
+        :param _Message: <p>操作结果详细信息</p>
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>操作结果</p>枚举值：<ul><li> success： 操作成功</li><li> error： 操作失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>操作结果详细信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
 
 
 class TriggerInvokeCondition(AbstractModel):

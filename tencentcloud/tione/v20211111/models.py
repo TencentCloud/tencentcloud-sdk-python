@@ -9823,6 +9823,60 @@ class DescribePlatformImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
+    r"""DescribeSubAccountLinuxUserInfos请求参数结构体
+
+    """
+
+
+class DescribeSubAccountLinuxUserInfosResponse(AbstractModel):
+    r"""DescribeSubAccountLinuxUserInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAccountList: 子账号信息列表
+        :type SubAccountList: list of SubAccountInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SubAccountList = None
+        self._RequestId = None
+
+    @property
+    def SubAccountList(self):
+        r"""子账号信息列表
+        :rtype: list of SubAccountInfo
+        """
+        return self._SubAccountList
+
+    @SubAccountList.setter
+    def SubAccountList(self, SubAccountList):
+        self._SubAccountList = SubAccountList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SubAccountList") is not None:
+            self._SubAccountList = []
+            for item in params.get("SubAccountList"):
+                obj = SubAccountInfo()
+                obj._deserialize(item)
+                self._SubAccountList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrainingModelVersionRequest(AbstractModel):
     r"""DescribeTrainingModelVersion请求参数结构体
 
@@ -23088,6 +23142,102 @@ class StopTrainingTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SubAccountInfo(AbstractModel):
+    r"""子账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 腾讯云主账号UIN
+        :type Uin: str
+        :param _SubUin: 腾讯云子账号UIN
+        :type SubUin: str
+        :param _SubUinName: 子账号名称
+        :type SubUinName: str
+        :param _LinuxUid: 子账号在Linux下的UID
+        :type LinuxUid: int
+        :param _LinuxGid: 子账号在Linux下的GID
+        :type LinuxGid: int
+        """
+        self._Uin = None
+        self._SubUin = None
+        self._SubUinName = None
+        self._LinuxUid = None
+        self._LinuxGid = None
+
+    @property
+    def Uin(self):
+        r"""腾讯云主账号UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        r"""腾讯云子账号UIN
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubUinName(self):
+        r"""子账号名称
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
+    @property
+    def LinuxUid(self):
+        r"""子账号在Linux下的UID
+        :rtype: int
+        """
+        return self._LinuxUid
+
+    @LinuxUid.setter
+    def LinuxUid(self, LinuxUid):
+        self._LinuxUid = LinuxUid
+
+    @property
+    def LinuxGid(self):
+        r"""子账号在Linux下的GID
+        :rtype: int
+        """
+        return self._LinuxGid
+
+    @LinuxGid.setter
+    def LinuxGid(self, LinuxGid):
+        self._LinuxGid = LinuxGid
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._SubUinName = params.get("SubUinName")
+        self._LinuxUid = params.get("LinuxUid")
+        self._LinuxGid = params.get("LinuxGid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TCPSocketAction(AbstractModel):
     r"""tcp socket 健康探针检查行为
 
@@ -25012,6 +25162,75 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateSubAccountLinuxUserInfoRequest(AbstractModel):
+    r"""UpdateSubAccountLinuxUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAccountList: 子账号信息列表
+        :type SubAccountList: list of SubAccountInfo
+        """
+        self._SubAccountList = None
+
+    @property
+    def SubAccountList(self):
+        r"""子账号信息列表
+        :rtype: list of SubAccountInfo
+        """
+        return self._SubAccountList
+
+    @SubAccountList.setter
+    def SubAccountList(self, SubAccountList):
+        self._SubAccountList = SubAccountList
+
+
+    def _deserialize(self, params):
+        if params.get("SubAccountList") is not None:
+            self._SubAccountList = []
+            for item in params.get("SubAccountList"):
+                obj = SubAccountInfo()
+                obj._deserialize(item)
+                self._SubAccountList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSubAccountLinuxUserInfoResponse(AbstractModel):
+    r"""UpdateSubAccountLinuxUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Usage(AbstractModel):

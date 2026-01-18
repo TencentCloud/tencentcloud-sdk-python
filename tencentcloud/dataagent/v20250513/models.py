@@ -3052,13 +3052,27 @@ class QuerySceneListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Datas: 场景列表
+        :type Datas: list of Scene
         :param _Total: 总数
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Datas = None
         self._Total = None
         self._RequestId = None
+
+    @property
+    def Datas(self):
+        r"""场景列表
+        :rtype: list of Scene
+        """
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
 
     @property
     def Total(self):
@@ -3084,6 +3098,12 @@ class QuerySceneListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Datas") is not None:
+            self._Datas = []
+            for item in params.get("Datas"):
+                obj = Scene()
+                obj._deserialize(item)
+                self._Datas.append(obj)
         self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 

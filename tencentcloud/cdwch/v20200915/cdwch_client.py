@@ -279,6 +279,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEventTasks(self, request):
+        r"""获取产生的事件
+
+        :param request: Request instance for DescribeEventTasks.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeEventTasksRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeEventTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         r"""根据实例ID查询某个实例的具体信息
 

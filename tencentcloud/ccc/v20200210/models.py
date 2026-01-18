@@ -3315,7 +3315,7 @@ HoaiMy
         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
         &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
         &quot;Speed&quot;: 1.2
 }
 </code></pre>
@@ -3397,6 +3397,8 @@ HoaiMy
         :type LLMExtraBody: str
         :param _MaxCallDurationMs: 最大通话时长， 默认不限制。单位毫秒(ms)
         :type MaxCallDurationMs: int
+        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3435,6 +3437,7 @@ HoaiMy
         self._VoicemailAction = None
         self._LLMExtraBody = None
         self._MaxCallDurationMs = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -3807,7 +3810,7 @@ HoaiMy
         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
         &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
         &quot;Speed&quot;: 1.2
 }
 </code></pre>
@@ -4017,6 +4020,17 @@ HoaiMy
     def MaxCallDurationMs(self, MaxCallDurationMs):
         self._MaxCallDurationMs = MaxCallDurationMs
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4078,6 +4092,7 @@ HoaiMy
         self._VoicemailAction = params.get("VoicemailAction")
         self._LLMExtraBody = params.get("LLMExtraBody")
         self._MaxCallDurationMs = params.get("MaxCallDurationMs")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

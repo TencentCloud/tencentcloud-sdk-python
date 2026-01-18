@@ -318,13 +318,13 @@ class AddRealServersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 源站对应的项目ID
+        :param _ProjectId: <p>源站对应的项目ID</p>
         :type ProjectId: int
-        :param _RealServerIP: 源站对应的IP或域名
+        :param _RealServerIP: <p>源站对应的IP或域名</p>
         :type RealServerIP: list of str
-        :param _RealServerName: 源站名称
+        :param _RealServerName: <p>源站名称</p>
         :type RealServerName: str
-        :param _TagSet: 标签列表
+        :param _TagSet: <p>标签列表</p>
         :type TagSet: list of TagPair
         """
         self._ProjectId = None
@@ -334,7 +334,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""源站对应的项目ID
+        r"""<p>源站对应的项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -345,7 +345,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def RealServerIP(self):
-        r"""源站对应的IP或域名
+        r"""<p>源站对应的IP或域名</p>
         :rtype: list of str
         """
         return self._RealServerIP
@@ -356,7 +356,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def RealServerName(self):
-        r"""源站名称
+        r"""<p>源站名称</p>
         :rtype: str
         """
         return self._RealServerName
@@ -367,7 +367,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -404,7 +404,7 @@ class AddRealServersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RealServerSet: 源站信息列表
+        :param _RealServerSet: <p>源站信息列表</p>
         :type RealServerSet: list of NewRealServer
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -414,7 +414,7 @@ class AddRealServersResponse(AbstractModel):
 
     @property
     def RealServerSet(self):
-        r"""源站信息列表
+        r"""<p>源站信息列表</p>
         :rtype: list of NewRealServer
         """
         return self._RealServerSet
@@ -552,9 +552,9 @@ class BindListenerRealServersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器ID
+        :param _ListenerId: <p>监听器ID</p>
         :type ListenerId: str
-        :param _RealServerBindSet: 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
+        :param _RealServerBindSet: <p>待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。</p>
         :type RealServerBindSet: list of RealServerBindSetReq
         """
         self._ListenerId = None
@@ -562,7 +562,7 @@ class BindListenerRealServersRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID
+        r"""<p>监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -573,7 +573,7 @@ class BindListenerRealServersRequest(AbstractModel):
 
     @property
     def RealServerBindSet(self):
-        r"""待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
+        r"""<p>待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。</p>
         :rtype: list of RealServerBindSetReq
         """
         return self._RealServerBindSet
@@ -1337,23 +1337,23 @@ class CheckProxyCreateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessRegion: 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到
+        :param _AccessRegion: <p>通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到</p>
         :type AccessRegion: str
-        :param _RealServerRegion: 通道的源站区域。取值可通过接口DescribeDestRegions获取到
+        :param _RealServerRegion: <p>通道的源站区域。取值可通过接口DescribeDestRegions获取到</p>
         :type RealServerRegion: str
-        :param _Bandwidth: 通道带宽上限，单位：Mbps。
+        :param _Bandwidth: <p>通道带宽上限，单位：Mbps。</p>
         :type Bandwidth: int
-        :param _Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。
+        :param _Concurrent: <p>通道并发量上限，表示同时在线的连接数，单位：万。</p>
         :type Concurrent: int
-        :param _GroupId: 如果在通道组下创建通道，需要填写通道组的ID
+        :param _GroupId: <p>如果在通道组下创建通道，需要填写通道组的ID</p>
         :type GroupId: str
-        :param _IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :param _IPAddressVersion: <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
         :type IPAddressVersion: str
-        :param _NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :param _NetworkType: <p>网络类型，可取值：normal、cn2，默认值normal</p>
         :type NetworkType: str
-        :param _PackageType: 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+        :param _PackageType: <p>通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。</p>
         :type PackageType: str
-        :param _Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+        :param _Http3Supported: <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
         :type Http3Supported: int
         """
         self._AccessRegion = None
@@ -1368,7 +1368,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到
+        r"""<p>通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -1379,7 +1379,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def RealServerRegion(self):
-        r"""通道的源站区域。取值可通过接口DescribeDestRegions获取到
+        r"""<p>通道的源站区域。取值可通过接口DescribeDestRegions获取到</p>
         :rtype: str
         """
         return self._RealServerRegion
@@ -1390,7 +1390,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""通道带宽上限，单位：Mbps。
+        r"""<p>通道带宽上限，单位：Mbps。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -1401,7 +1401,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Concurrent(self):
-        r"""通道并发量上限，表示同时在线的连接数，单位：万。
+        r"""<p>通道并发量上限，表示同时在线的连接数，单位：万。</p>
         :rtype: int
         """
         return self._Concurrent
@@ -1412,7 +1412,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""如果在通道组下创建通道，需要填写通道组的ID
+        r"""<p>如果在通道组下创建通道，需要填写通道组的ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -1423,7 +1423,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        r"""IP版本，可取值：IPv4、IPv6，默认值IPv4
+        r"""<p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
         :rtype: str
         """
         return self._IPAddressVersion
@@ -1434,7 +1434,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""网络类型，可取值：normal、cn2，默认值normal
+        r"""<p>网络类型，可取值：normal、cn2，默认值normal</p>
         :rtype: str
         """
         return self._NetworkType
@@ -1445,7 +1445,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+        r"""<p>通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。</p>
         :rtype: str
         """
         return self._PackageType
@@ -1456,7 +1456,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        r"""该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+        r"""<p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
         :rtype: int
         """
         return self._Http3Supported
@@ -1493,7 +1493,7 @@ class CheckProxyCreateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckFlag: 查询能否创建给定配置的通道，1可以创建，0不可创建。
+        :param _CheckFlag: <p>查询能否创建给定配置的通道，1可以创建，0不可创建。</p>
         :type CheckFlag: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1503,7 +1503,7 @@ class CheckProxyCreateResponse(AbstractModel):
 
     @property
     def CheckFlag(self):
-        r"""查询能否创建给定配置的通道，1可以创建，0不可创建。
+        r"""<p>查询能否创建给定配置的通道，1可以创建，0不可创建。</p>
         :rtype: int
         """
         return self._CheckFlag
@@ -1976,20 +1976,13 @@ class CreateCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateType: 证书类型。其中：
-0，表示基础认证配置；
-1，表示客户端CA证书；
-2，服务器SSL证书；
-3，表示源站CA证书；
-4，表示通道SSL证书。
+        :param _CertificateType: <p>证书类型。其中：0，表示基础认证配置；1，表示客户端CA证书；2，服务器SSL证书；3，表示源站CA证书；4，表示通道SSL证书。</p>
         :type CertificateType: int
-        :param _CertificateContent: 证书内容。采用url编码。其中：
-当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。
-当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。
+        :param _CertificateContent: <p>证书内容。采用url编码。其中：当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。</p>
         :type CertificateContent: str
-        :param _CertificateAlias: 证书名称
+        :param _CertificateAlias: <p>证书名称</p>
         :type CertificateAlias: str
-        :param _CertificateKey: 密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
+        :param _CertificateKey: <p>密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。</p>
         :type CertificateKey: str
         """
         self._CertificateType = None
@@ -1999,12 +1992,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def CertificateType(self):
-        r"""证书类型。其中：
-0，表示基础认证配置；
-1，表示客户端CA证书；
-2，服务器SSL证书；
-3，表示源站CA证书；
-4，表示通道SSL证书。
+        r"""<p>证书类型。其中：0，表示基础认证配置；1，表示客户端CA证书；2，服务器SSL证书；3，表示源站CA证书；4，表示通道SSL证书。</p>
         :rtype: int
         """
         return self._CertificateType
@@ -2015,9 +2003,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def CertificateContent(self):
-        r"""证书内容。采用url编码。其中：
-当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。
-当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。
+        r"""<p>证书内容。采用url编码。其中：当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。</p>
         :rtype: str
         """
         return self._CertificateContent
@@ -2028,7 +2014,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def CertificateAlias(self):
-        r"""证书名称
+        r"""<p>证书名称</p>
         :rtype: str
         """
         return self._CertificateAlias
@@ -2039,7 +2025,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def CertificateKey(self):
-        r"""密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
+        r"""<p>密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。</p>
         :rtype: str
         """
         return self._CertificateKey
@@ -2071,7 +2057,7 @@ class CreateCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 证书ID
+        :param _CertificateId: <p>证书ID</p>
         :type CertificateId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2081,7 +2067,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        r"""证书ID
+        r"""<p>证书ID</p>
         :rtype: str
         """
         return self._CertificateId
@@ -2198,19 +2184,19 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器ID
+        :param _ListenerId: <p>监听器ID</p>
         :type ListenerId: str
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _ErrorNos: 原始错误码
+        :param _ErrorNos: <p>原始错误码</p>
         :type ErrorNos: list of int
-        :param _Body: 新的响应包体
+        :param _Body: <p>新的响应包体</p>
         :type Body: str
-        :param _NewErrorNo: 新错误码
+        :param _NewErrorNo: <p>新错误码</p>
         :type NewErrorNo: int
-        :param _ClearHeaders: 需要删除的响应头
+        :param _ClearHeaders: <p>需要删除的响应头</p>
         :type ClearHeaders: list of str
-        :param _SetHeaders: 需要设置的响应头
+        :param _SetHeaders: <p>需要设置的响应头</p>
         :type SetHeaders: list of HttpHeaderParam
         """
         self._ListenerId = None
@@ -2223,7 +2209,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID
+        r"""<p>监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -2234,7 +2220,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -2245,7 +2231,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ErrorNos(self):
-        r"""原始错误码
+        r"""<p>原始错误码</p>
         :rtype: list of int
         """
         return self._ErrorNos
@@ -2256,7 +2242,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def Body(self):
-        r"""新的响应包体
+        r"""<p>新的响应包体</p>
         :rtype: str
         """
         return self._Body
@@ -2267,7 +2253,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def NewErrorNo(self):
-        r"""新错误码
+        r"""<p>新错误码</p>
         :rtype: int
         """
         return self._NewErrorNo
@@ -2278,7 +2264,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ClearHeaders(self):
-        r"""需要删除的响应头
+        r"""<p>需要删除的响应头</p>
         :rtype: list of str
         """
         return self._ClearHeaders
@@ -2289,7 +2275,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def SetHeaders(self):
-        r"""需要设置的响应头
+        r"""<p>需要设置的响应头</p>
         :rtype: list of HttpHeaderParam
         """
         return self._SetHeaders
@@ -2329,7 +2315,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorPageId: 错误定制响应的配置ID
+        :param _ErrorPageId: <p>错误定制响应的配置ID</p>
         :type ErrorPageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2339,7 +2325,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
     @property
     def ErrorPageId(self):
-        r"""错误定制响应的配置ID
+        r"""<p>错误定制响应的配置ID</p>
         :rtype: str
         """
         return self._ErrorPageId
@@ -2759,13 +2745,13 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerName: 监听器名称
+        :param _ListenerName: <p>监听器名称</p>
         :type ListenerName: str
-        :param _Port: 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+        :param _Port: <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
         :type Port: int
-        :param _ProxyId: 通道ID，与GroupId不能同时设置，对应为通道创建监听器
+        :param _ProxyId: <p>通道ID，与GroupId不能同时设置，对应为通道创建监听器</p>
         :type ProxyId: str
-        :param _GroupId: 通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器
+        :param _GroupId: <p>通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器</p>
         :type GroupId: str
         """
         self._ListenerName = None
@@ -2775,7 +2761,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器名称
+        r"""<p>监听器名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -2786,7 +2772,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+        r"""<p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
         :rtype: int
         """
         return self._Port
@@ -2797,7 +2783,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        r"""通道ID，与GroupId不能同时设置，对应为通道创建监听器
+        r"""<p>通道ID，与GroupId不能同时设置，对应为通道创建监听器</p>
         :rtype: str
         """
         return self._ProxyId
@@ -2808,7 +2794,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器
+        r"""<p>通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器</p>
         :rtype: str
         """
         return self._GroupId
@@ -2840,7 +2826,7 @@ class CreateHTTPListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 创建的监听器ID
+        :param _ListenerId: <p>创建的监听器ID</p>
         :type ListenerId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2850,7 +2836,7 @@ class CreateHTTPListenerResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""创建的监听器ID
+        r"""<p>创建的监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -2883,32 +2869,25 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerName: 监听器名称
+        :param _ListenerName: <p>监听器名称</p>
         :type ListenerName: str
-        :param _Port: 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+        :param _Port: <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
         :type Port: int
-        :param _CertificateId: 服务器证书ID
+        :param _CertificateId: <p>服务器证书ID</p>
         :type CertificateId: str
-        :param _ForwardProtocol: 加速通道转发到源站的协议类型：HTTP | HTTPS
+        :param _ForwardProtocol: <p>加速通道转发到源站的协议类型：HTTP | HTTPS</p>
         :type ForwardProtocol: str
-        :param _ProxyId: 通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。
+        :param _ProxyId: <p>通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。</p>
         :type ProxyId: str
-        :param _AuthType: 认证类型，其中：
-0，单向认证；
-1，双向认证。
-默认使用单向认证。
+        :param _AuthType: <p>认证类型，其中：0，单向认证；1，双向认证。默认使用单向认证。</p>
         :type AuthType: int
-        :param _ClientCertificateId: 客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
+        :param _ClientCertificateId: <p>客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数</p>
         :type ClientCertificateId: str
-        :param _PolyClientCertificateIds: 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+        :param _PolyClientCertificateIds: <p>新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数</p>
         :type PolyClientCertificateIds: list of str
-        :param _GroupId: 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
+        :param _GroupId: <p>通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。</p>
         :type GroupId: str
-        :param _Http3Supported: 支持Http3的开关，其中：
-0，表示不需要支持Http3接入；
-1，表示需要支持Http3接入。
-注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-该功能的启停无法在监听器创建完毕后再修改。
+        :param _Http3Supported: <p>支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。该功能的启停无法在监听器创建完毕后再修改。</p>
         :type Http3Supported: int
         """
         self._ListenerName = None
@@ -2924,7 +2903,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器名称
+        r"""<p>监听器名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -2935,7 +2914,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+        r"""<p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
         :rtype: int
         """
         return self._Port
@@ -2946,7 +2925,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        r"""服务器证书ID
+        r"""<p>服务器证书ID</p>
         :rtype: str
         """
         return self._CertificateId
@@ -2957,7 +2936,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        r"""加速通道转发到源站的协议类型：HTTP | HTTPS
+        r"""<p>加速通道转发到源站的协议类型：HTTP | HTTPS</p>
         :rtype: str
         """
         return self._ForwardProtocol
@@ -2968,7 +2947,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        r"""通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。
+        r"""<p>通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。</p>
         :rtype: str
         """
         return self._ProxyId
@@ -2979,10 +2958,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""认证类型，其中：
-0，单向认证；
-1，双向认证。
-默认使用单向认证。
+        r"""<p>认证类型，其中：0，单向认证；1，双向认证。默认使用单向认证。</p>
         :rtype: int
         """
         return self._AuthType
@@ -2993,7 +2969,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def ClientCertificateId(self):
-        r"""客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
+        r"""<p>客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数</p>
         :rtype: str
         """
         return self._ClientCertificateId
@@ -3004,7 +2980,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def PolyClientCertificateIds(self):
-        r"""新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+        r"""<p>新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数</p>
         :rtype: list of str
         """
         return self._PolyClientCertificateIds
@@ -3015,7 +2991,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
+        r"""<p>通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。</p>
         :rtype: str
         """
         return self._GroupId
@@ -3026,11 +3002,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        r"""支持Http3的开关，其中：
-0，表示不需要支持Http3接入；
-1，表示需要支持Http3接入。
-注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-该功能的启停无法在监听器创建完毕后再修改。
+        r"""<p>支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。该功能的启停无法在监听器创建完毕后再修改。</p>
         :rtype: int
         """
         return self._Http3Supported
@@ -3068,7 +3040,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 创建的监听器ID
+        :param _ListenerId: <p>创建的监听器ID</p>
         :type ListenerId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3078,7 +3050,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""创建的监听器ID
+        r"""<p>创建的监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3190,21 +3162,21 @@ class CreateProxyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 通道组所属项目ID
+        :param _ProjectId: <p>通道组所属项目ID</p>
         :type ProjectId: int
-        :param _GroupName: 通道组别名
+        :param _GroupName: <p>通道组别名</p>
         :type GroupName: str
-        :param _RealServerRegion: 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
+        :param _RealServerRegion: <p>源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId</p>
         :type RealServerRegion: str
-        :param _TagSet: 标签列表
+        :param _TagSet: <p>标签列表</p>
         :type TagSet: list of TagPair
-        :param _AccessRegionSet: 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
+        :param _AccessRegionSet: <p>加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。</p>
         :type AccessRegionSet: list of AccessConfiguration
-        :param _IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :param _IPAddressVersion: <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
         :type IPAddressVersion: str
-        :param _PackageType: 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+        :param _PackageType: <p>通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder</p>
         :type PackageType: str
-        :param _Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+        :param _Http3Supported: <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
         :type Http3Supported: int
         """
         self._ProjectId = None
@@ -3218,7 +3190,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""通道组所属项目ID
+        r"""<p>通道组所属项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3229,7 +3201,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""通道组别名
+        r"""<p>通道组别名</p>
         :rtype: str
         """
         return self._GroupName
@@ -3240,7 +3212,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def RealServerRegion(self):
-        r"""源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
+        r"""<p>源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId</p>
         :rtype: str
         """
         return self._RealServerRegion
@@ -3251,7 +3223,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -3262,7 +3234,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def AccessRegionSet(self):
-        r"""加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
+        r"""<p>加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。</p>
         :rtype: list of AccessConfiguration
         """
         return self._AccessRegionSet
@@ -3273,7 +3245,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        r"""IP版本，可取值：IPv4、IPv6，默认值IPv4
+        r"""<p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
         :rtype: str
         """
         return self._IPAddressVersion
@@ -3284,7 +3256,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+        r"""<p>通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder</p>
         :rtype: str
         """
         return self._PackageType
@@ -3295,7 +3267,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        r"""该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+        r"""<p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
         :rtype: int
         """
         return self._Http3Supported
@@ -3341,7 +3313,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 通道组ID
+        :param _GroupId: <p>通道组ID</p>
         :type GroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3351,7 +3323,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID
+        r"""<p>通道组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -3682,30 +3654,29 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 7层监听器ID
+        :param _ListenerId: <p>7层监听器ID</p>
         :type ListenerId: str
-        :param _Domain: 转发规则的域名
+        :param _Domain: <p>转发规则的域名</p>
         :type Domain: str
-        :param _Path: 转发规则的路径
+        :param _Path: <p>转发规则的路径</p>
         :type Path: str
-        :param _RealServerType: 转发规则对应源站的类型，支持IP和DOMAIN类型。
+        :param _RealServerType: <p>转发规则对应源站的类型，支持IP和DOMAIN类型。</p>
         :type RealServerType: str
-        :param _Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。
+        :param _Scheduler: <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。</p>
         :type Scheduler: str
-        :param _HealthCheck: 规则是否开启健康检查，1开启，0关闭。
+        :param _HealthCheck: <p>规则是否开启健康检查，1开启，0关闭。</p>
         :type HealthCheck: int
-        :param _CheckParams: 源站健康检查相关参数
+        :param _CheckParams: <p>源站健康检查相关参数</p>
         :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
-        :param _ForwardProtocol: 加速通道转发到源站的协议类型：支持HTTP或HTTPS。
-不传递该字段时表示使用对应监听器的ForwardProtocol。
+        :param _ForwardProtocol: <p>加速通道转发到源站的协议类型：支持HTTP或HTTPS。不传递该字段时表示使用对应监听器的ForwardProtocol。</p>
         :type ForwardProtocol: str
-        :param _ForwardHost: 回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+        :param _ForwardHost: <p>回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。</p>
         :type ForwardHost: str
-        :param _ServerNameIndicationSwitch: 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。
+        :param _ServerNameIndicationSwitch: <p>服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。</p>
         :type ServerNameIndicationSwitch: str
-        :param _ServerNameIndication: 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+        :param _ServerNameIndication: <p>服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。</p>
         :type ServerNameIndication: str
-        :param _ForcedRedirect: HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+        :param _ForcedRedirect: <p>HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。</p>
         :type ForcedRedirect: str
         """
         self._ListenerId = None
@@ -3723,7 +3694,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""7层监听器ID
+        r"""<p>7层监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3734,7 +3705,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""转发规则的域名
+        r"""<p>转发规则的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -3745,7 +3716,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Path(self):
-        r"""转发规则的路径
+        r"""<p>转发规则的路径</p>
         :rtype: str
         """
         return self._Path
@@ -3756,7 +3727,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RealServerType(self):
-        r"""转发规则对应源站的类型，支持IP和DOMAIN类型。
+        r"""<p>转发规则对应源站的类型，支持IP和DOMAIN类型。</p>
         :rtype: str
         """
         return self._RealServerType
@@ -3767,7 +3738,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。
+        r"""<p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。</p>
         :rtype: str
         """
         return self._Scheduler
@@ -3778,7 +3749,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""规则是否开启健康检查，1开启，0关闭。
+        r"""<p>规则是否开启健康检查，1开启，0关闭。</p>
         :rtype: int
         """
         return self._HealthCheck
@@ -3789,7 +3760,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def CheckParams(self):
-        r"""源站健康检查相关参数
+        r"""<p>源站健康检查相关参数</p>
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         """
         return self._CheckParams
@@ -3800,8 +3771,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        r"""加速通道转发到源站的协议类型：支持HTTP或HTTPS。
-不传递该字段时表示使用对应监听器的ForwardProtocol。
+        r"""<p>加速通道转发到源站的协议类型：支持HTTP或HTTPS。不传递该字段时表示使用对应监听器的ForwardProtocol。</p>
         :rtype: str
         """
         return self._ForwardProtocol
@@ -3812,7 +3782,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ForwardHost(self):
-        r"""回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+        r"""<p>回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。</p>
         :rtype: str
         """
         return self._ForwardHost
@@ -3823,7 +3793,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ServerNameIndicationSwitch(self):
-        r"""服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。
+        r"""<p>服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。</p>
         :rtype: str
         """
         return self._ServerNameIndicationSwitch
@@ -3834,7 +3804,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ServerNameIndication(self):
-        r"""服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+        r"""<p>服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。</p>
         :rtype: str
         """
         return self._ServerNameIndication
@@ -3845,7 +3815,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ForcedRedirect(self):
-        r"""HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+        r"""<p>HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。</p>
         :rtype: str
         """
         return self._ForcedRedirect
@@ -3887,7 +3857,7 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 创建转发规则成功返回规则ID
+        :param _RuleId: <p>创建转发规则成功返回规则ID</p>
         :type RuleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3897,7 +3867,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""创建转发规则成功返回规则ID
+        r"""<p>创建转发规则成功返回规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -6803,14 +6773,14 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
         """
         self._ProjectId = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -6839,9 +6809,9 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupSet: 可以统计的通道组信息
+        :param _GroupSet: <p>可以统计的通道组信息</p>
         :type GroupSet: list of GroupStatisticsInfo
-        :param _TotalCount: 通道组数量
+        :param _TotalCount: <p>通道组数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6852,7 +6822,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     @property
     def GroupSet(self):
-        r"""可以统计的通道组信息
+        r"""<p>可以统计的通道组信息</p>
         :rtype: list of GroupStatisticsInfo
         """
         return self._GroupSet
@@ -6863,7 +6833,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""通道组数量
+        r"""<p>通道组数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7031,21 +7001,21 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        :param _ProxyId: <p>通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :type ProxyId: str
-        :param _GroupId: 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        :param _GroupId: <p>通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :type GroupId: str
-        :param _ListenerId: 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        :param _ListenerId: <p>过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :type ListenerId: str
-        :param _ListenerName: 过滤条件，按照监听器名称进行精确查询
+        :param _ListenerName: <p>过滤条件，按照监听器名称进行精确查询</p>
         :type ListenerName: str
-        :param _Port: 过滤条件，按照监听器端口进行精确查询
+        :param _Port: <p>过滤条件，按照监听器端口进行精确查询</p>
         :type Port: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 限制数量，默认为20个
+        :param _Limit: <p>限制数量，默认为20个</p>
         :type Limit: int
-        :param _SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
+        :param _SearchValue: <p>过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用</p>
         :type SearchValue: str
         """
         self._ProxyId = None
@@ -7059,7 +7029,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        r"""通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        r"""<p>通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :rtype: str
         """
         return self._ProxyId
@@ -7070,7 +7040,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        r"""<p>通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :rtype: str
         """
         return self._GroupId
@@ -7081,7 +7051,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        r"""<p>过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -7092,7 +7062,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""过滤条件，按照监听器名称进行精确查询
+        r"""<p>过滤条件，按照监听器名称进行精确查询</p>
         :rtype: str
         """
         return self._ListenerName
@@ -7103,7 +7073,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""过滤条件，按照监听器端口进行精确查询
+        r"""<p>过滤条件，按照监听器端口进行精确查询</p>
         :rtype: int
         """
         return self._Port
@@ -7114,7 +7084,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -7125,7 +7095,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数量，默认为20个
+        r"""<p>限制数量，默认为20个</p>
         :rtype: int
         """
         return self._Limit
@@ -7136,7 +7106,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        r"""过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
+        r"""<p>过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用</p>
         :rtype: str
         """
         return self._SearchValue
@@ -7172,9 +7142,9 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 监听器数量
+        :param _TotalCount: <p>监听器数量</p>
         :type TotalCount: int
-        :param _ListenerSet: HTTP监听器列表
+        :param _ListenerSet: <p>HTTP监听器列表</p>
         :type ListenerSet: list of HTTPListener
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7185,7 +7155,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""监听器数量
+        r"""<p>监听器数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7196,7 +7166,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        r"""HTTP监听器列表
+        r"""<p>HTTP监听器列表</p>
         :rtype: list of HTTPListener
         """
         return self._ListenerSet
@@ -7746,41 +7716,23 @@ class DescribeProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: （旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+        :param _InstanceIds: <p>（旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
         :type InstanceIds: list of str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Filters: 过滤条件。   
-每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
-AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
-RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
-GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
-IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
-PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
+        :param _Filters: <p>过滤条件。 <br />每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。 <br />AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。  <br />RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。</p>
         :type Filters: list of Filter
-        :param _ProxyIds: （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+        :param _ProxyIds: <p>（新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
         :type ProxyIds: list of str
-        :param _TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。
+        :param _TagSet: <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。</p>
         :type TagSet: list of TagPair
-        :param _Independent: 当该字段为1时，仅拉取非通道组的通道，
-当该字段为0时，仅拉取通道组的通道，
-不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
+        :param _Independent: <p>当该字段为1时，仅拉取非通道组的通道，当该字段为0时，仅拉取通道组的通道，不存在该字段时，拉取所有通道，包括独立通道和通道组通道。</p>
         :type Independent: int
-        :param _Order: 输出通道列表的排列顺序。取值范围：
-asc：升序排列；
-desc：降序排列。
-默认为降序。
+        :param _Order: <p>输出通道列表的排列顺序。取值范围：asc：升序排列；desc：降序排列。默认为降序。</p>
         :type Order: str
-        :param _OrderField: 通道列表排序的依据字段。取值范围：
-create_time：依据通道的创建时间排序；
-proxy_id：依据通道的ID排序；
-bandwidth：依据通道带宽上限排序；
-concurrent_connections：依据通道并发排序；
-默认按通道创建时间排序。
+        :param _OrderField: <p>通道列表排序的依据字段。取值范围：create_time：依据通道的创建时间排序；proxy_id：依据通道的ID排序；bandwidth：依据通道带宽上限排序；concurrent_connections：依据通道并发排序；默认按通道创建时间排序。</p>
         :type OrderField: str
         """
         self._InstanceIds = None
@@ -7795,7 +7747,7 @@ concurrent_connections：依据通道并发排序；
 
     @property
     def InstanceIds(self):
-        r"""（旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+        r"""<p>（旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7806,7 +7758,7 @@ concurrent_connections：依据通道并发排序；
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -7817,7 +7769,7 @@ concurrent_connections：依据通道并发排序；
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -7828,14 +7780,7 @@ concurrent_connections：依据通道并发排序；
 
     @property
     def Filters(self):
-        r"""过滤条件。   
-每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
-AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
-RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
-GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
-IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
-PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
+        r"""<p>过滤条件。 <br />每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。 <br />AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。  <br />RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7846,7 +7791,7 @@ PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐
 
     @property
     def ProxyIds(self):
-        r"""（新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+        r"""<p>（新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
         :rtype: list of str
         """
         return self._ProxyIds
@@ -7857,8 +7802,7 @@ PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐
 
     @property
     def TagSet(self):
-        r"""标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。
+        r"""<p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。</p>
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -7869,9 +7813,7 @@ PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐
 
     @property
     def Independent(self):
-        r"""当该字段为1时，仅拉取非通道组的通道，
-当该字段为0时，仅拉取通道组的通道，
-不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
+        r"""<p>当该字段为1时，仅拉取非通道组的通道，当该字段为0时，仅拉取通道组的通道，不存在该字段时，拉取所有通道，包括独立通道和通道组通道。</p>
         :rtype: int
         """
         return self._Independent
@@ -7882,10 +7824,7 @@ PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐
 
     @property
     def Order(self):
-        r"""输出通道列表的排列顺序。取值范围：
-asc：升序排列；
-desc：降序排列。
-默认为降序。
+        r"""<p>输出通道列表的排列顺序。取值范围：asc：升序排列；desc：降序排列。默认为降序。</p>
         :rtype: str
         """
         return self._Order
@@ -7896,12 +7835,7 @@ desc：降序排列。
 
     @property
     def OrderField(self):
-        r"""通道列表排序的依据字段。取值范围：
-create_time：依据通道的创建时间排序；
-proxy_id：依据通道的ID排序；
-bandwidth：依据通道带宽上限排序；
-concurrent_connections：依据通道并发排序；
-默认按通道创建时间排序。
+        r"""<p>通道列表排序的依据字段。取值范围：create_time：依据通道的创建时间排序；proxy_id：依据通道的ID排序；bandwidth：依据通道带宽上限排序；concurrent_connections：依据通道并发排序；默认按通道创建时间排序。</p>
         :rtype: str
         """
         return self._OrderField
@@ -7948,11 +7882,11 @@ class DescribeProxiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 通道个数。
+        :param _TotalCount: <p>通道个数。</p>
         :type TotalCount: int
-        :param _InstanceSet: （旧参数，请切换到ProxySet）通道实例信息列表。
+        :param _InstanceSet: <p>（旧参数，请切换到ProxySet）通道实例信息列表。</p>
         :type InstanceSet: list of ProxyInfo
-        :param _ProxySet: （新参数）通道实例信息列表。
+        :param _ProxySet: <p>（新参数）通道实例信息列表。</p>
         :type ProxySet: list of ProxyInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7964,7 +7898,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""通道个数。
+        r"""<p>通道个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7975,7 +7909,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""（旧参数，请切换到ProxySet）通道实例信息列表。
+        r"""<p>（旧参数，请切换到ProxySet）通道实例信息列表。</p>
         :rtype: list of ProxyInfo
         """
         return self._InstanceSet
@@ -7986,7 +7920,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def ProxySet(self):
-        r"""（新参数）通道实例信息列表。
+        r"""<p>（新参数）通道实例信息列表。</p>
         :rtype: list of ProxyInfo
         """
         return self._ProxySet
@@ -8130,14 +8064,14 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
         """
         self._ProjectId = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -8166,9 +8100,9 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxySet: 可以统计的通道信息
+        :param _ProxySet: <p>可以统计的通道信息</p>
         :type ProxySet: list of ProxySimpleInfo
-        :param _TotalCount: 通道数量
+        :param _TotalCount: <p>通道数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8179,7 +8113,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     @property
     def ProxySet(self):
-        r"""可以统计的通道信息
+        r"""<p>可以统计的通道信息</p>
         :rtype: list of ProxySimpleInfo
         """
         return self._ProxySet
@@ -8190,7 +8124,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""通道数量
+        r"""<p>通道数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8391,22 +8325,15 @@ class DescribeProxyGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认值为0。
+        :param _Offset: <p>偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认值为20，最大值为100。
+        :param _Limit: <p>返回数量，默认值为20，最大值为100。</p>
         :type Limit: int
-        :param _ProjectId: 项目ID。取值范围：
--1，该用户下所有项目
-0，默认项目
-其他值，指定的项目
+        :param _ProjectId: <p>项目ID。取值范围：-1，该用户下所有项目0，默认项目其他值，指定的项目</p>
         :type ProjectId: int
-        :param _Filters: 过滤条件。   
-每次请求的Filter.Values的上限为5。
-RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。
+        :param _Filters: <p>过滤条件。 <br />每次请求的Filter.Values的上限为5。RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。</p>
         :type Filters: list of Filter
-        :param _TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+        :param _TagSet: <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。</p>
         :type TagSet: list of TagPair
         """
         self._Offset = None
@@ -8417,7 +8344,7 @@ PackageType - String - 是否必填：否 - （过滤条件）通道组类型，
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为0。
+        r"""<p>偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -8428,7 +8355,7 @@ PackageType - String - 是否必填：否 - （过滤条件）通道组类型，
 
     @property
     def Limit(self):
-        r"""返回数量，默认值为20，最大值为100。
+        r"""<p>返回数量，默认值为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -8439,10 +8366,7 @@ PackageType - String - 是否必填：否 - （过滤条件）通道组类型，
 
     @property
     def ProjectId(self):
-        r"""项目ID。取值范围：
--1，该用户下所有项目
-0，默认项目
-其他值，指定的项目
+        r"""<p>项目ID。取值范围：-1，该用户下所有项目0，默认项目其他值，指定的项目</p>
         :rtype: int
         """
         return self._ProjectId
@@ -8453,10 +8377,7 @@ PackageType - String - 是否必填：否 - （过滤条件）通道组类型，
 
     @property
     def Filters(self):
-        r"""过滤条件。   
-每次请求的Filter.Values的上限为5。
-RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。
+        r"""<p>过滤条件。 <br />每次请求的Filter.Values的上限为5。RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8467,8 +8388,7 @@ PackageType - String - 是否必填：否 - （过滤条件）通道组类型，
 
     @property
     def TagSet(self):
-        r"""标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+        r"""<p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。</p>
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -8511,9 +8431,9 @@ class DescribeProxyGroupListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 通道组总数。
+        :param _TotalCount: <p>通道组总数。</p>
         :type TotalCount: int
-        :param _ProxyGroupList: 通道组列表。
+        :param _ProxyGroupList: <p>通道组列表。</p>
         :type ProxyGroupList: list of ProxyGroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8524,7 +8444,7 @@ class DescribeProxyGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""通道组总数。
+        r"""<p>通道组总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8535,7 +8455,7 @@ class DescribeProxyGroupListResponse(AbstractModel):
 
     @property
     def ProxyGroupList(self):
-        r"""通道组列表。
+        r"""<p>通道组列表。</p>
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyGroupList
@@ -8574,18 +8494,15 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 通道组ID
+        :param _GroupId: <p>通道组ID</p>
         :type GroupId: str
-        :param _StartTime: 起始时间
+        :param _StartTime: <p>起始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _MetricNames: 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets
+        :param _MetricNames: <p>统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets</p>
         :type MetricNames: list of str
-        :param _Granularity: 监控粒度，目前支持60，300，3600，86400，单位：秒。
-当时间范围不超过1天，支持最小粒度60秒；
-当时间范围不超过7天，支持最小粒度3600秒；
-当时间范围不超过30天，支持最小粒度86400秒。
+        :param _Granularity: <p>监控粒度，目前支持60，300，3600，86400，单位：秒。当时间范围不超过1天，支持最小粒度60秒；当时间范围不超过7天，支持最小粒度3600秒；当时间范围不超过30天，支持最小粒度86400秒。</p>
         :type Granularity: int
         """
         self._GroupId = None
@@ -8596,7 +8513,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID
+        r"""<p>通道组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -8607,7 +8524,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间
+        r"""<p>起始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -8618,7 +8535,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -8629,7 +8546,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        r"""统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets
+        r"""<p>统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets</p>
         :rtype: list of str
         """
         return self._MetricNames
@@ -8640,10 +8557,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        r"""监控粒度，目前支持60，300，3600，86400，单位：秒。
-当时间范围不超过1天，支持最小粒度60秒；
-当时间范围不超过7天，支持最小粒度3600秒；
-当时间范围不超过30天，支持最小粒度86400秒。
+        r"""<p>监控粒度，目前支持60，300，3600，86400，单位：秒。当时间范围不超过1天，支持最小粒度60秒；当时间范围不超过7天，支持最小粒度3600秒；当时间范围不超过30天，支持最小粒度86400秒。</p>
         :rtype: int
         """
         return self._Granularity
@@ -8676,7 +8590,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StatisticsData: 通道组统计数据
+        :param _StatisticsData: <p>通道组统计数据</p>
         :type StatisticsData: list of MetricStatisticsInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8686,7 +8600,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
 
     @property
     def StatisticsData(self):
-        r"""通道组统计数据
+        r"""<p>通道组统计数据</p>
         :rtype: list of MetricStatisticsInfo
         """
         return self._StatisticsData
@@ -13767,13 +13681,13 @@ class ModifyGlobalDomainDnsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsRecordId: 解析记录ID
+        :param _DnsRecordId: <p>解析记录ID</p>
         :type DnsRecordId: int
-        :param _DomainId: 域名ID
+        :param _DomainId: <p>域名ID</p>
         :type DomainId: str
-        :param _NationCountryInnerCodes: 国家ID列表
+        :param _NationCountryInnerCodes: <p>国家ID列表</p>
         :type NationCountryInnerCodes: list of str
-        :param _ProxyIdList: 通道ID列表
+        :param _ProxyIdList: <p>通道ID列表</p>
         :type ProxyIdList: list of str
         """
         self._DnsRecordId = None
@@ -13783,7 +13697,7 @@ class ModifyGlobalDomainDnsRequest(AbstractModel):
 
     @property
     def DnsRecordId(self):
-        r"""解析记录ID
+        r"""<p>解析记录ID</p>
         :rtype: int
         """
         return self._DnsRecordId
@@ -13794,7 +13708,7 @@ class ModifyGlobalDomainDnsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名ID
+        r"""<p>域名ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -13805,7 +13719,7 @@ class ModifyGlobalDomainDnsRequest(AbstractModel):
 
     @property
     def NationCountryInnerCodes(self):
-        r"""国家ID列表
+        r"""<p>国家ID列表</p>
         :rtype: list of str
         """
         return self._NationCountryInnerCodes
@@ -13816,7 +13730,7 @@ class ModifyGlobalDomainDnsRequest(AbstractModel):
 
     @property
     def ProxyIdList(self):
-        r"""通道ID列表
+        r"""<p>通道ID列表</p>
         :rtype: list of str
         """
         return self._ProxyIdList
@@ -14445,20 +14359,17 @@ class ModifyProxyConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: （旧参数，请切换到ProxyId）通道的实例ID。
+        :param _InstanceId: <p>（旧参数，请切换到ProxyId）通道的实例ID。</p>
         :type InstanceId: str
-        :param _Bandwidth: 需要调整到的目标带宽，单位：Mbps。
-Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+        :param _Bandwidth: <p>需要调整到的目标带宽，单位：Mbps。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
         :type Bandwidth: int
-        :param _Concurrent: 需要调整到的目标并发值，单位：万。
-Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+        :param _Concurrent: <p>需要调整到的目标并发值，单位：万。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
         :type Concurrent: int
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-更多详细信息请参阅：如何保证幂等性。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。更多详细信息请参阅：如何保证幂等性。</p>
         :type ClientToken: str
-        :param _ProxyId: （新参数）通道的实例ID。
+        :param _ProxyId: <p>（新参数）通道的实例ID。</p>
         :type ProxyId: str
-        :param _BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        :param _BillingType: <p>计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）</p>
         :type BillingType: int
         """
         self._InstanceId = None
@@ -14470,7 +14381,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def InstanceId(self):
-        r"""（旧参数，请切换到ProxyId）通道的实例ID。
+        r"""<p>（旧参数，请切换到ProxyId）通道的实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14481,8 +14392,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def Bandwidth(self):
-        r"""需要调整到的目标带宽，单位：Mbps。
-Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+        r"""<p>需要调整到的目标带宽，单位：Mbps。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -14493,8 +14403,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def Concurrent(self):
-        r"""需要调整到的目标并发值，单位：万。
-Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+        r"""<p>需要调整到的目标并发值，单位：万。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
         :rtype: int
         """
         return self._Concurrent
@@ -14505,8 +14414,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-更多详细信息请参阅：如何保证幂等性。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。更多详细信息请参阅：如何保证幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -14517,7 +14425,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def ProxyId(self):
-        r"""（新参数）通道的实例ID。
+        r"""<p>（新参数）通道的实例ID。</p>
         :rtype: str
         """
         return self._ProxyId
@@ -14528,7 +14436,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
 
     @property
     def BillingType(self):
-        r"""计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        r"""<p>计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）</p>
         :rtype: int
         """
         return self._BillingType
@@ -15149,27 +15057,27 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器ID
+        :param _ListenerId: <p>监听器ID</p>
         :type ListenerId: str
-        :param _GroupId: 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param _GroupId: <p>通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
         :type GroupId: str
-        :param _ProxyId: 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param _ProxyId: <p>通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
         :type ProxyId: str
-        :param _ListenerName: 监听器名称
+        :param _ListenerName: <p>监听器名称</p>
         :type ListenerName: str
-        :param _Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
+        :param _Scheduler: <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。</p>
         :type Scheduler: str
-        :param _DelayLoop: 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+        :param _DelayLoop: <p>源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。</p>
         :type DelayLoop: int
-        :param _ConnectTimeout: 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+        :param _ConnectTimeout: <p>源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。</p>
         :type ConnectTimeout: int
-        :param _HealthCheck: 是否开启健康检查，1开启，0关闭。
+        :param _HealthCheck: <p>是否开启健康检查，1开启，0关闭。</p>
         :type HealthCheck: int
-        :param _FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+        :param _FailoverSwitch: <p>源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启</p>
         :type FailoverSwitch: int
-        :param _HealthyThreshold: 健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+        :param _HealthyThreshold: <p>健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10</p>
         :type HealthyThreshold: int
-        :param _UnhealthyThreshold: 不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+        :param _UnhealthyThreshold: <p>不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10</p>
         :type UnhealthyThreshold: int
         """
         self._ListenerId = None
@@ -15186,7 +15094,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID
+        r"""<p>监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -15197,7 +15105,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        r"""<p>通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
         :rtype: str
         """
         return self._GroupId
@@ -15208,7 +15116,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        r"""通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        r"""<p>通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
         :rtype: str
         """
         return self._ProxyId
@@ -15219,7 +15127,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器名称
+        r"""<p>监听器名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -15230,7 +15138,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
+        r"""<p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。</p>
         :rtype: str
         """
         return self._Scheduler
@@ -15241,7 +15149,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def DelayLoop(self):
-        r"""源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+        r"""<p>源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。</p>
         :rtype: int
         """
         return self._DelayLoop
@@ -15252,7 +15160,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        r"""源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+        r"""<p>源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。</p>
         :rtype: int
         """
         return self._ConnectTimeout
@@ -15263,7 +15171,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""是否开启健康检查，1开启，0关闭。
+        r"""<p>是否开启健康检查，1开启，0关闭。</p>
         :rtype: int
         """
         return self._HealthCheck
@@ -15274,7 +15182,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def FailoverSwitch(self):
-        r"""源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+        r"""<p>源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启</p>
         :rtype: int
         """
         return self._FailoverSwitch
@@ -15285,7 +15193,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        r"""健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+        r"""<p>健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10</p>
         :rtype: int
         """
         return self._HealthyThreshold
@@ -15296,7 +15204,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        r"""不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+        r"""<p>不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10</p>
         :rtype: int
         """
         return self._UnhealthyThreshold
