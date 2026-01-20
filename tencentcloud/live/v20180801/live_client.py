@@ -2285,6 +2285,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLiveCloudEffectConfig(self, request):
+        r"""使用该接口查询云端特效配置信息。
+
+        :param request: Request instance for DescribeLiveCloudEffectConfig.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCloudEffectConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCloudEffectConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveCloudEffectConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveCloudEffectConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLiveCloudEffectList(self, request):
         r"""使用该接口查询云端特效列表，特效列表中包含一部分官方精品特效，同时包含用户自定义生成的特效。
 

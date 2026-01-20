@@ -5071,6 +5071,8 @@ class CreateClusterRequest(AbstractModel):
         :type DefaultMetaVersion: str
         :param _NeedCdbAudit: 是否开通数据库审计
         :type NeedCdbAudit: int
+        :param _SgIP: 安全指定来源ip
+        :type SgIP: str
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -5097,6 +5099,7 @@ class CreateClusterRequest(AbstractModel):
         self._LoadBalancerId = None
         self._DefaultMetaVersion = None
         self._NeedCdbAudit = None
+        self._SgIP = None
 
     @property
     def ProductVersion(self):
@@ -5392,6 +5395,17 @@ class CreateClusterRequest(AbstractModel):
     def NeedCdbAudit(self, NeedCdbAudit):
         self._NeedCdbAudit = NeedCdbAudit
 
+    @property
+    def SgIP(self):
+        r"""安全指定来源ip
+        :rtype: str
+        """
+        return self._SgIP
+
+    @SgIP.setter
+    def SgIP(self, SgIP):
+        self._SgIP = SgIP
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -5452,6 +5466,7 @@ class CreateClusterRequest(AbstractModel):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._DefaultMetaVersion = params.get("DefaultMetaVersion")
         self._NeedCdbAudit = params.get("NeedCdbAudit")
+        self._SgIP = params.get("SgIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5729,6 +5744,8 @@ Hadoop-Hbase
         :type DefaultMetaVersion: str
         :param _NeedCdbAudit: 是否开通审计：0:不开通,1:开通
         :type NeedCdbAudit: int
+        :param _SgIP: 安全组指定来源ip
+        :type SgIP: str
         """
         self._ProductId = None
         self._Software = None
@@ -5767,6 +5784,7 @@ Hadoop-Hbase
         self._LoadBalancerId = None
         self._DefaultMetaVersion = None
         self._NeedCdbAudit = None
+        self._SgIP = None
 
     @property
     def ProductId(self):
@@ -6214,6 +6232,17 @@ Hadoop-Hbase
     def NeedCdbAudit(self, NeedCdbAudit):
         self._NeedCdbAudit = NeedCdbAudit
 
+    @property
+    def SgIP(self):
+        r"""安全组指定来源ip
+        :rtype: str
+        """
+        return self._SgIP
+
+    @SgIP.setter
+    def SgIP(self, SgIP):
+        self._SgIP = SgIP
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -6290,6 +6319,7 @@ Hadoop-Hbase
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._DefaultMetaVersion = params.get("DefaultMetaVersion")
         self._NeedCdbAudit = params.get("NeedCdbAudit")
+        self._SgIP = params.get("SgIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

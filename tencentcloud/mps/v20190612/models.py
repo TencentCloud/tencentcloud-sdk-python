@@ -18871,9 +18871,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 注意：
 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
         :type PureAudio: int
-        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
- 
-注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
         :type SegmentType: str
         """
         self._Format = None
@@ -18982,9 +18980,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
- 
-注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
         :rtype: str
         """
         return self._SegmentType
@@ -37079,6 +37075,7 @@ class DescribeUsageDataRequest(AbstractModel):
 <li>AddBlindWatermark: 添加基础版权数字水印</li>
 <li>AddNagraWatermark: 添加NAGRA数字水印</li>
 <li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+<li>AIGC: AIGC</li>
         :type Types: list of str
         :param _ProcessRegions: 媒体处理园区，默认返回 ap-guangzhou 园区。
 <li>ap-guangzhou：广州</li>
@@ -37142,6 +37139,7 @@ class DescribeUsageDataRequest(AbstractModel):
 <li>AddBlindWatermark: 添加基础版权数字水印</li>
 <li>AddNagraWatermark: 添加NAGRA数字水印</li>
 <li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+<li>AIGC: AIGC</li>
         :rtype: list of str
         """
         return self._Types
@@ -52994,8 +52992,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 注意：
 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
         :type PureAudio: int
-        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+        :param _SegmentType: 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
         :type SegmentType: str
         """
         self._Definition = None
@@ -53116,8 +53113,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+        r"""分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
         :rtype: str
         """
         return self._SegmentType
@@ -69868,12 +69864,15 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
         :param _Wordlist: 字词时间戳信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Wordlist: list of WordResult
+        :param _SpeakerId: 说话人ID（如启用说话人识别）
+        :type SpeakerId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
         self._Wordlist = None
+        self._SpeakerId = None
 
     @property
     def Confidence(self):
@@ -69931,6 +69930,17 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
     def Wordlist(self, Wordlist):
         self._Wordlist = Wordlist
 
+    @property
+    def SpeakerId(self):
+        r"""说话人ID（如启用说话人识别）
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -69943,6 +69953,7 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        self._SpeakerId = params.get("SpeakerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

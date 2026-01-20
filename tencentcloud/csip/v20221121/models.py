@@ -5334,7 +5334,7 @@ class AssetProcessItem(AbstractModel):
 
 
 class AssetRiskItem(AbstractModel):
-    r"""资产视角风险项
+    r"""资产视角风险信息
 
     """
 
@@ -5372,6 +5372,8 @@ class AssetRiskItem(AbstractModel):
         :type Classify: str
         :param _StandardTerms: 等保合规
         :type StandardTerms: list of StandardTerm
+        :param _AssetType: 资产类型
+        :type AssetType: str
         """
         self._AppId = None
         self._Provider = None
@@ -5389,6 +5391,7 @@ class AssetRiskItem(AbstractModel):
         self._RiskRuleId = None
         self._Classify = None
         self._StandardTerms = None
+        self._AssetType = None
 
     @property
     def AppId(self):
@@ -5566,6 +5569,17 @@ class AssetRiskItem(AbstractModel):
     def StandardTerms(self, StandardTerms):
         self._StandardTerms = StandardTerms
 
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -5589,6 +5603,7 @@ class AssetRiskItem(AbstractModel):
                 obj = StandardTerm()
                 obj._deserialize(item)
                 self._StandardTerms.append(obj)
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14112,12 +14127,15 @@ class DescribeAssetRiskListResponse(AbstractModel):
         :type AssetRiskList: list of AssetRiskItem
         :param _StandardNameList: 等保规范名称集合
         :type StandardNameList: list of StandardItem
+        :param _AssetTypeList: 资产类型集合
+        :type AssetTypeList: list of AttributeOptionSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._AssetRiskList = None
         self._StandardNameList = None
+        self._AssetTypeList = None
         self._RequestId = None
 
     @property
@@ -14154,6 +14172,17 @@ class DescribeAssetRiskListResponse(AbstractModel):
         self._StandardNameList = StandardNameList
 
     @property
+    def AssetTypeList(self):
+        r"""资产类型集合
+        :rtype: list of AttributeOptionSet
+        """
+        return self._AssetTypeList
+
+    @AssetTypeList.setter
+    def AssetTypeList(self, AssetTypeList):
+        self._AssetTypeList = AssetTypeList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14179,6 +14208,12 @@ class DescribeAssetRiskListResponse(AbstractModel):
                 obj = StandardItem()
                 obj._deserialize(item)
                 self._StandardNameList.append(obj)
+        if params.get("AssetTypeList") is not None:
+            self._AssetTypeList = []
+            for item in params.get("AssetTypeList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._AssetTypeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15462,12 +15497,15 @@ class DescribeCheckViewRisksResponse(AbstractModel):
         :type CheckViewRiskList: list of CheckViewRiskItem
         :param _StandardNameList: 检查视角下cspm规范标签列表
         :type StandardNameList: list of StandardItem
+        :param _AssetTypeList: 资产类型集合
+        :type AssetTypeList: list of AttributeOptionSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._CheckViewRiskList = None
         self._StandardNameList = None
+        self._AssetTypeList = None
         self._RequestId = None
 
     @property
@@ -15504,6 +15542,17 @@ class DescribeCheckViewRisksResponse(AbstractModel):
         self._StandardNameList = StandardNameList
 
     @property
+    def AssetTypeList(self):
+        r"""资产类型集合
+        :rtype: list of AttributeOptionSet
+        """
+        return self._AssetTypeList
+
+    @AssetTypeList.setter
+    def AssetTypeList(self, AssetTypeList):
+        self._AssetTypeList = AssetTypeList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15529,6 +15578,12 @@ class DescribeCheckViewRisksResponse(AbstractModel):
                 obj = StandardItem()
                 obj._deserialize(item)
                 self._StandardNameList.append(obj)
+        if params.get("AssetTypeList") is not None:
+            self._AssetTypeList = []
+            for item in params.get("AssetTypeList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._AssetTypeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

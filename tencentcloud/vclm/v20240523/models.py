@@ -2621,6 +2621,8 @@ Base64 和 Url 必须提供一个，如果都提供以ImageUrl为准。
         :type Prompt: str
         :param _Resolution: 输出视频分辨率。可选择：480p、720p、1080p。
         :type Resolution: str
+        :param _Fps: 生成视频的帧率，从16, 24, 30中选择。默认值：30
+        :type Fps: int
         :param _LogoAdd: 为生成视频添加标识的开关，默认为1，0 需前往 控制台 申请开启显示标识自主完成方可生效。  1：添加标识；  0：不添加标识；  其他数值：默认按1处理。
         :type LogoAdd: int
         :param _LogoParam: 默认在生成视频的右下角添加“ AI 生成”字样，如需替换为其他的标识图片，需前往 控制台 申请开启显示标识自主完成。
@@ -2629,6 +2631,7 @@ Base64 和 Url 必须提供一个，如果都提供以ImageUrl为准。
         self._Image = None
         self._Prompt = None
         self._Resolution = None
+        self._Fps = None
         self._LogoAdd = None
         self._LogoParam = None
 
@@ -2670,6 +2673,17 @@ Base64 和 Url 必须提供一个，如果都提供以ImageUrl为准。
         self._Resolution = Resolution
 
     @property
+    def Fps(self):
+        r"""生成视频的帧率，从16, 24, 30中选择。默认值：30
+        :rtype: int
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
     def LogoAdd(self):
         r"""为生成视频添加标识的开关，默认为1，0 需前往 控制台 申请开启显示标识自主完成方可生效。  1：添加标识；  0：不添加标识；  其他数值：默认按1处理。
         :rtype: int
@@ -2698,6 +2712,7 @@ Base64 和 Url 必须提供一个，如果都提供以ImageUrl为准。
             self._Image._deserialize(params.get("Image"))
         self._Prompt = params.get("Prompt")
         self._Resolution = params.get("Resolution")
+        self._Fps = params.get("Fps")
         self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()

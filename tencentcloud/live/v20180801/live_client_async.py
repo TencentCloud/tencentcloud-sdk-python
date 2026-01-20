@@ -1809,6 +1809,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLiveCloudEffectConfig(
+            self,
+            request: models.DescribeLiveCloudEffectConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveCloudEffectConfigResponse:
+        """
+        使用该接口查询云端特效配置信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveCloudEffectConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveCloudEffectConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLiveCloudEffectList(
             self,
             request: models.DescribeLiveCloudEffectListRequest,

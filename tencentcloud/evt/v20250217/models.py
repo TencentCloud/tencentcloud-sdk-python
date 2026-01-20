@@ -395,6 +395,115 @@ class DeleteRoleUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PutEventRequest(AbstractModel):
+    r"""PutEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件ID</p>
+        :type PluginId: str
+        :param _Data: <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+        :type Data: str
+        :param _Source: <p>数据推送来源，会在生成的单据中展示数据来源</p>
+        :type Source: str
+        :param _TargetUin: <p>可以接受当前消息的Uin</p>
+        :type TargetUin: int
+        """
+        self._PluginId = None
+        self._Data = None
+        self._Source = None
+        self._TargetUin = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件ID</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def Data(self):
+        r"""<p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Source(self):
+        r"""<p>数据推送来源，会在生成的单据中展示数据来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def TargetUin(self):
+        r"""<p>可以接受当前消息的Uin</p>
+        :rtype: int
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._Data = params.get("Data")
+        self._Source = params.get("Source")
+        self._TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutEventResponse(AbstractModel):
+    r"""PutEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PutMessageRequest(AbstractModel):
     r"""PutMessage请求参数结构体
 

@@ -12256,33 +12256,28 @@ class CreateSplunkDeliverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :type TopicId: str
-        :param _Name: splunk投递任务名称；
-name有如下限制：
-- 不能为空
-- 长度不大于64
-- 只能包含aA-zZ、下划线、-、0-9
+        :param _Name: <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
         :type Name: str
-        :param _NetInfo: Splunk投递任务-目标配置-网络信息
+        :param _NetInfo: <p>Splunk投递任务-目标配置-网络信息</p>
         :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
-        :param _MetadataInfo: Splunk投递任务元信息
+        :param _MetadataInfo: <p>Splunk投递任务元信息</p>
         :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
-        :param _HasServiceLog: 是否开启服务日志 1:关闭；2:开启 ;默认开启
+        :param _HasServiceLog: <p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
         :type HasServiceLog: int
-        :param _IndexAck: 高级配置-是否启用索引器；1-不启用；2-启用；
-默认：1
+        :param _IndexAck: <p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
         :type IndexAck: int
-        :param _Source: 高级配置-数据来源；不超过64个字符
+        :param _Source: <p>高级配置-数据来源；不超过64个字符</p>
         :type Source: str
-        :param _SourceType: 高级配置-数据来源类型；不超过64个字符
+        :param _SourceType: <p>高级配置-数据来源类型；不超过64个字符</p>
         :type SourceType: str
-        :param _Index: 高级配置-Splunk写入的索引；不超过64个字符
+        :param _Index: <p>高级配置-Splunk写入的索引；不超过64个字符</p>
         :type Index: str
-        :param _Channel: 高级配置-通道
-需满足限制：如果启用索引器，那么Channel必填
+        :param _Channel: <p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
         :type Channel: str
+        :param _DSLFilter: <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._Name = None
@@ -12294,11 +12289,11 @@ name有如下限制：
         self._SourceType = None
         self._Index = None
         self._Channel = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
-        r"""日志主题id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :rtype: str
         """
         return self._TopicId
@@ -12309,11 +12304,7 @@ name有如下限制：
 
     @property
     def Name(self):
-        r"""splunk投递任务名称；
-name有如下限制：
-- 不能为空
-- 长度不大于64
-- 只能包含aA-zZ、下划线、-、0-9
+        r"""<p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
         :rtype: str
         """
         return self._Name
@@ -12324,7 +12315,7 @@ name有如下限制：
 
     @property
     def NetInfo(self):
-        r"""Splunk投递任务-目标配置-网络信息
+        r"""<p>Splunk投递任务-目标配置-网络信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
         """
         return self._NetInfo
@@ -12335,7 +12326,7 @@ name有如下限制：
 
     @property
     def MetadataInfo(self):
-        r"""Splunk投递任务元信息
+        r"""<p>Splunk投递任务元信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
         """
         return self._MetadataInfo
@@ -12346,7 +12337,7 @@ name有如下限制：
 
     @property
     def HasServiceLog(self):
-        r"""是否开启服务日志 1:关闭；2:开启 ;默认开启
+        r"""<p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
         :rtype: int
         """
         return self._HasServiceLog
@@ -12357,8 +12348,7 @@ name有如下限制：
 
     @property
     def IndexAck(self):
-        r"""高级配置-是否启用索引器；1-不启用；2-启用；
-默认：1
+        r"""<p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
         :rtype: int
         """
         return self._IndexAck
@@ -12369,7 +12359,7 @@ name有如下限制：
 
     @property
     def Source(self):
-        r"""高级配置-数据来源；不超过64个字符
+        r"""<p>高级配置-数据来源；不超过64个字符</p>
         :rtype: str
         """
         return self._Source
@@ -12380,7 +12370,7 @@ name有如下限制：
 
     @property
     def SourceType(self):
-        r"""高级配置-数据来源类型；不超过64个字符
+        r"""<p>高级配置-数据来源类型；不超过64个字符</p>
         :rtype: str
         """
         return self._SourceType
@@ -12391,7 +12381,7 @@ name有如下限制：
 
     @property
     def Index(self):
-        r"""高级配置-Splunk写入的索引；不超过64个字符
+        r"""<p>高级配置-Splunk写入的索引；不超过64个字符</p>
         :rtype: str
         """
         return self._Index
@@ -12402,8 +12392,7 @@ name有如下限制：
 
     @property
     def Channel(self):
-        r"""高级配置-通道
-需满足限制：如果启用索引器，那么Channel必填
+        r"""<p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
         :rtype: str
         """
         return self._Channel
@@ -12411,6 +12400,17 @@ name有如下限制：
     @Channel.setter
     def Channel(self, Channel):
         self._Channel = Channel
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -12428,6 +12428,7 @@ name有如下限制：
         self._SourceType = params.get("SourceType")
         self._Index = params.get("Index")
         self._Channel = params.get("Channel")
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12445,7 +12446,7 @@ class CreateSplunkDeliverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: splunk投递任务id
+        :param _TaskId: <p>splunk投递任务id</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12455,7 +12456,7 @@ class CreateSplunkDeliverResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""splunk投递任务id
+        r"""<p>splunk投递任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -24228,17 +24229,13 @@ class DescribeSplunkDeliversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题Id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :type TopicId: str
-        :param _Filters: - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
-- name 按照【任务名称】进行过滤。 类型：String 必选：否  
-- statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
- 每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :param _Filters: <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
         :type Filters: list of Filter
-        :param _Offset: 分页的偏移量，默认值为0。
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
         :type Limit: int
         """
         self._TopicId = None
@@ -24248,8 +24245,7 @@ class DescribeSplunkDeliversRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题Id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :rtype: str
         """
         return self._TopicId
@@ -24260,10 +24256,7 @@ class DescribeSplunkDeliversRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""- taskId 按照【任务id】进行过滤。 类型：String 必选：否  
-- name 按照【任务名称】进行过滤。 类型：String 必选：否  
-- statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
- 每次请求的Filters的上限为10，Filter.Values的上限为10。
+        r"""<ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -24274,7 +24267,7 @@ class DescribeSplunkDeliversRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页的偏移量，默认值为0。
+        r"""<p>分页的偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -24285,7 +24278,7 @@ class DescribeSplunkDeliversRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页单页限制数目，默认值为20，最大值100。
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
         :rtype: int
         """
         return self._Limit
@@ -24322,9 +24315,9 @@ class DescribeSplunkDeliversResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: Splunk投递任务信息列表
+        :param _Infos: <p>Splunk投递任务信息列表</p>
         :type Infos: list of SplunkDeliverInfo
-        :param _Total: 符合条件的任务总数。
+        :param _Total: <p>符合条件的任务总数。</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24335,7 +24328,7 @@ class DescribeSplunkDeliversResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""Splunk投递任务信息列表
+        r"""<p>Splunk投递任务信息列表</p>
         :rtype: list of SplunkDeliverInfo
         """
         return self._Infos
@@ -24346,7 +24339,7 @@ class DescribeSplunkDeliversResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""符合条件的任务总数。
+        r"""<p>符合条件的任务总数。</p>
         :rtype: int
         """
         return self._Total
@@ -24385,19 +24378,20 @@ class DescribeSplunkPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :type TopicId: str
-        :param _MetadataInfo: splunk投递任务-元信息
+        :param _MetadataInfo: <p>splunk投递任务-元信息</p>
         :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
+        :param _DSLFilter: <p>splunk投递任务-投递 splunk过滤原始日志语句</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._MetadataInfo = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
-        r"""日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :rtype: str
         """
         return self._TopicId
@@ -24408,7 +24402,7 @@ class DescribeSplunkPreviewRequest(AbstractModel):
 
     @property
     def MetadataInfo(self):
-        r"""splunk投递任务-元信息
+        r"""<p>splunk投递任务-元信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
         """
         return self._MetadataInfo
@@ -24417,12 +24411,24 @@ class DescribeSplunkPreviewRequest(AbstractModel):
     def MetadataInfo(self, MetadataInfo):
         self._MetadataInfo = MetadataInfo
 
+    @property
+    def DSLFilter(self):
+        r"""<p>splunk投递任务-投递 splunk过滤原始日志语句</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
         if params.get("MetadataInfo") is not None:
             self._MetadataInfo = MetadataInfo()
             self._MetadataInfo._deserialize(params.get("MetadataInfo"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24440,17 +24446,20 @@ class DescribeSplunkPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PreviewInfos: 预览结果
+        :param _PreviewInfos: <p>预览结果</p>
         :type PreviewInfos: list of str
+        :param _FilterStats: <p>数据过滤结果</p>
+        :type FilterStats: :class:`tencentcloud.cls.v20201016.models.FilterStatistics`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PreviewInfos = None
+        self._FilterStats = None
         self._RequestId = None
 
     @property
     def PreviewInfos(self):
-        r"""预览结果
+        r"""<p>预览结果</p>
         :rtype: list of str
         """
         return self._PreviewInfos
@@ -24458,6 +24467,17 @@ class DescribeSplunkPreviewResponse(AbstractModel):
     @PreviewInfos.setter
     def PreviewInfos(self, PreviewInfos):
         self._PreviewInfos = PreviewInfos
+
+    @property
+    def FilterStats(self):
+        r"""<p>数据过滤结果</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.FilterStatistics`
+        """
+        return self._FilterStats
+
+    @FilterStats.setter
+    def FilterStats(self, FilterStats):
+        self._FilterStats = FilterStats
 
     @property
     def RequestId(self):
@@ -24473,6 +24493,9 @@ class DescribeSplunkPreviewResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PreviewInfos = params.get("PreviewInfos")
+        if params.get("FilterStats") is not None:
+            self._FilterStats = FilterStatistics()
+            self._FilterStats._deserialize(params.get("FilterStats"))
         self._RequestId = params.get("RequestId")
 
 
@@ -27798,6 +27821,72 @@ class FilterRuleInfo(AbstractModel):
         self._Key = params.get("Key")
         self._Regex = params.get("Regex")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterStatistics(AbstractModel):
+    r"""投递类任务数据过滤统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginalCount: <p>原始日志数</p>
+        :type OriginalCount: int
+        :param _FilteredCount: <p>过滤后日志数</p>
+        :type FilteredCount: int
+        :param _FilteredResult: <p>过滤后结果</p>
+        :type FilteredResult: list of str
+        """
+        self._OriginalCount = None
+        self._FilteredCount = None
+        self._FilteredResult = None
+
+    @property
+    def OriginalCount(self):
+        r"""<p>原始日志数</p>
+        :rtype: int
+        """
+        return self._OriginalCount
+
+    @OriginalCount.setter
+    def OriginalCount(self, OriginalCount):
+        self._OriginalCount = OriginalCount
+
+    @property
+    def FilteredCount(self):
+        r"""<p>过滤后日志数</p>
+        :rtype: int
+        """
+        return self._FilteredCount
+
+    @FilteredCount.setter
+    def FilteredCount(self, FilteredCount):
+        self._FilteredCount = FilteredCount
+
+    @property
+    def FilteredResult(self):
+        r"""<p>过滤后结果</p>
+        :rtype: list of str
+        """
+        return self._FilteredResult
+
+    @FilteredResult.setter
+    def FilteredResult(self, FilteredResult):
+        self._FilteredResult = FilteredResult
+
+
+    def _deserialize(self, params):
+        self._OriginalCount = params.get("OriginalCount")
+        self._FilteredCount = params.get("FilteredCount")
+        self._FilteredResult = params.get("FilteredResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37837,37 +37926,32 @@ class ModifySplunkDeliverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _TopicId: 日志主题id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :type TopicId: str
-        :param _Name: 投递任务名称
-name有以下限制：
-- 不能为空
-- 长度不大于64
-- 只能包含aA-zZ、下划线、-、0-9
+        :param _Name: <p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
         :type Name: str
-        :param _Enable: 投递任务启用状态；0:禁用；1:启用
+        :param _Enable: <p>投递任务启用状态；0:禁用；1:启用</p>
         :type Enable: int
-        :param _NetInfo: splunk投递任务-目标配置
+        :param _NetInfo: <p>splunk投递任务-目标配置</p>
         :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
-        :param _MetadataInfo: splunk投递任务元信息
+        :param _MetadataInfo: <p>splunk投递任务元信息</p>
         :type MetadataInfo: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
-        :param _HasServiceLog: 是否启用服务日志；1:关闭；2:开启
+        :param _HasServiceLog: <p>是否启用服务日志；1:关闭；2:开启</p>
         :type HasServiceLog: int
-        :param _IndexAck: 高级配置-是否启用索引器;
-1-不开启；2-开启；默认为：1
+        :param _IndexAck: <p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
         :type IndexAck: int
-        :param _Source: 高级配置-数据来源；不超过64个字符
+        :param _Source: <p>高级配置-数据来源；不超过64个字符</p>
         :type Source: str
-        :param _SourceType: 高级配置-数据来源类型；不超过64个字符
+        :param _SourceType: <p>高级配置-数据来源类型；不超过64个字符</p>
         :type SourceType: str
-        :param _Index: 高级配置-Splunk写入的索引；不超过64个字符
+        :param _Index: <p>高级配置-Splunk写入的索引；不超过64个字符</p>
         :type Index: str
-        :param _Channel: 高级配置-通道。
-需满足限制：如果启用索引器，该值不能为空
+        :param _Channel: <p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
         :type Channel: str
+        :param _DSLFilter: <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TaskId = None
         self._TopicId = None
@@ -37881,10 +37965,11 @@ name有以下限制：
         self._SourceType = None
         self._Index = None
         self._Channel = None
+        self._DSLFilter = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -37895,8 +37980,7 @@ name有以下限制：
 
     @property
     def TopicId(self):
-        r"""日志主题id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :rtype: str
         """
         return self._TopicId
@@ -37907,11 +37991,7 @@ name有以下限制：
 
     @property
     def Name(self):
-        r"""投递任务名称
-name有以下限制：
-- 不能为空
-- 长度不大于64
-- 只能包含aA-zZ、下划线、-、0-9
+        r"""<p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
         :rtype: str
         """
         return self._Name
@@ -37922,7 +38002,7 @@ name有以下限制：
 
     @property
     def Enable(self):
-        r"""投递任务启用状态；0:禁用；1:启用
+        r"""<p>投递任务启用状态；0:禁用；1:启用</p>
         :rtype: int
         """
         return self._Enable
@@ -37933,7 +38013,7 @@ name有以下限制：
 
     @property
     def NetInfo(self):
-        r"""splunk投递任务-目标配置
+        r"""<p>splunk投递任务-目标配置</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
         """
         return self._NetInfo
@@ -37944,7 +38024,7 @@ name有以下限制：
 
     @property
     def MetadataInfo(self):
-        r"""splunk投递任务元信息
+        r"""<p>splunk投递任务元信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
         """
         return self._MetadataInfo
@@ -37955,7 +38035,7 @@ name有以下限制：
 
     @property
     def HasServiceLog(self):
-        r"""是否启用服务日志；1:关闭；2:开启
+        r"""<p>是否启用服务日志；1:关闭；2:开启</p>
         :rtype: int
         """
         return self._HasServiceLog
@@ -37966,8 +38046,7 @@ name有以下限制：
 
     @property
     def IndexAck(self):
-        r"""高级配置-是否启用索引器;
-1-不开启；2-开启；默认为：1
+        r"""<p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
         :rtype: int
         """
         return self._IndexAck
@@ -37978,7 +38057,7 @@ name有以下限制：
 
     @property
     def Source(self):
-        r"""高级配置-数据来源；不超过64个字符
+        r"""<p>高级配置-数据来源；不超过64个字符</p>
         :rtype: str
         """
         return self._Source
@@ -37989,7 +38068,7 @@ name有以下限制：
 
     @property
     def SourceType(self):
-        r"""高级配置-数据来源类型；不超过64个字符
+        r"""<p>高级配置-数据来源类型；不超过64个字符</p>
         :rtype: str
         """
         return self._SourceType
@@ -38000,7 +38079,7 @@ name有以下限制：
 
     @property
     def Index(self):
-        r"""高级配置-Splunk写入的索引；不超过64个字符
+        r"""<p>高级配置-Splunk写入的索引；不超过64个字符</p>
         :rtype: str
         """
         return self._Index
@@ -38011,8 +38090,7 @@ name有以下限制：
 
     @property
     def Channel(self):
-        r"""高级配置-通道。
-需满足限制：如果启用索引器，该值不能为空
+        r"""<p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
         :rtype: str
         """
         return self._Channel
@@ -38020,6 +38098,17 @@ name有以下限制：
     @Channel.setter
     def Channel(self, Channel):
         self._Channel = Channel
+
+    @property
+    def DSLFilter(self):
+        r"""<p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -38039,6 +38128,7 @@ name有以下限制：
         self._SourceType = params.get("SourceType")
         self._Index = params.get("Index")
         self._Channel = params.get("Channel")
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43834,38 +43924,40 @@ class SplunkDeliverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _Name: 任务名称
+        :param _Name: <p>任务名称</p>
         :type Name: str
-        :param _Uin: 用户id
+        :param _Uin: <p>用户id</p>
         :type Uin: int
-        :param _TopicId: 日志主题id
+        :param _TopicId: <p>日志主题id</p>
         :type TopicId: str
-        :param _Status: 任务状态；1.运行中；2:暂停；3：异常
+        :param _Status: <p>任务状态；1.运行中；2:暂停；3：异常</p>
         :type Status: int
-        :param _Enable: 启用状态；0:禁用；1:启用
+        :param _Enable: <p>启用状态；0:禁用；1:启用</p>
         :type Enable: int
-        :param _CreateTime: 创建时间；单位：秒
+        :param _CreateTime: <p>创建时间；单位：秒</p>
         :type CreateTime: int
-        :param _UpdateTime: 更新时间；单位：秒
+        :param _UpdateTime: <p>更新时间；单位：秒</p>
         :type UpdateTime: int
-        :param _NetInfo: splunk投递任务-目标配置
+        :param _NetInfo: <p>splunk投递任务-目标配置</p>
         :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
-        :param _Metadata: splunk投递任务元信息
+        :param _Metadata: <p>splunk投递任务元信息</p>
         :type Metadata: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
-        :param _HasServiceLog: 是否启用服务日志；1:关闭；2:开启
+        :param _HasServiceLog: <p>是否启用服务日志；1:关闭；2:开启</p>
         :type HasServiceLog: int
-        :param _Source: 高级配置-数据来源；
+        :param _Source: <p>高级配置-数据来源；</p>
         :type Source: str
-        :param _SourceType: 高级配置-数据来源类型；
+        :param _SourceType: <p>高级配置-数据来源类型；</p>
         :type SourceType: str
-        :param _Index: 高级配置-Splunk写入的索引
+        :param _Index: <p>高级配置-Splunk写入的索引</p>
         :type Index: str
-        :param _IndexAck: 高级配置-是否启用索引器；1-不开启；2-开启；
+        :param _IndexAck: <p>高级配置-是否启用索引器；1-不开启；2-开启；</p>
         :type IndexAck: int
-        :param _Channel: 高级配置-通道
+        :param _Channel: <p>高级配置-通道</p>
         :type Channel: str
+        :param _DSLFilter: <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理语句</p>
+        :type DSLFilter: str
         """
         self._TaskId = None
         self._Name = None
@@ -43883,10 +43975,11 @@ class SplunkDeliverInfo(AbstractModel):
         self._Index = None
         self._IndexAck = None
         self._Channel = None
+        self._DSLFilter = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -43897,7 +43990,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -43908,7 +44001,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""用户id
+        r"""<p>用户id</p>
         :rtype: int
         """
         return self._Uin
@@ -43919,7 +44012,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题id
+        r"""<p>日志主题id</p>
         :rtype: str
         """
         return self._TopicId
@@ -43930,7 +44023,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态；1.运行中；2:暂停；3：异常
+        r"""<p>任务状态；1.运行中；2:暂停；3：异常</p>
         :rtype: int
         """
         return self._Status
@@ -43941,7 +44034,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Enable(self):
-        r"""启用状态；0:禁用；1:启用
+        r"""<p>启用状态；0:禁用；1:启用</p>
         :rtype: int
         """
         return self._Enable
@@ -43952,7 +44045,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间；单位：秒
+        r"""<p>创建时间；单位：秒</p>
         :rtype: int
         """
         return self._CreateTime
@@ -43963,7 +44056,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间；单位：秒
+        r"""<p>更新时间；单位：秒</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -43974,7 +44067,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def NetInfo(self):
-        r"""splunk投递任务-目标配置
+        r"""<p>splunk投递任务-目标配置</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.NetInfo`
         """
         return self._NetInfo
@@ -43985,7 +44078,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""splunk投递任务元信息
+        r"""<p>splunk投递任务元信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MetadataInfo`
         """
         return self._Metadata
@@ -43996,7 +44089,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def HasServiceLog(self):
-        r"""是否启用服务日志；1:关闭；2:开启
+        r"""<p>是否启用服务日志；1:关闭；2:开启</p>
         :rtype: int
         """
         return self._HasServiceLog
@@ -44007,7 +44100,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""高级配置-数据来源；
+        r"""<p>高级配置-数据来源；</p>
         :rtype: str
         """
         return self._Source
@@ -44018,7 +44111,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""高级配置-数据来源类型；
+        r"""<p>高级配置-数据来源类型；</p>
         :rtype: str
         """
         return self._SourceType
@@ -44029,7 +44122,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Index(self):
-        r"""高级配置-Splunk写入的索引
+        r"""<p>高级配置-Splunk写入的索引</p>
         :rtype: str
         """
         return self._Index
@@ -44040,7 +44133,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def IndexAck(self):
-        r"""高级配置-是否启用索引器；1-不开启；2-开启；
+        r"""<p>高级配置-是否启用索引器；1-不开启；2-开启；</p>
         :rtype: int
         """
         return self._IndexAck
@@ -44051,7 +44144,7 @@ class SplunkDeliverInfo(AbstractModel):
 
     @property
     def Channel(self):
-        r"""高级配置-通道
+        r"""<p>高级配置-通道</p>
         :rtype: str
         """
         return self._Channel
@@ -44059,6 +44152,17 @@ class SplunkDeliverInfo(AbstractModel):
     @Channel.setter
     def Channel(self, Channel):
         self._Channel = Channel
+
+    @property
+    def DSLFilter(self):
+        r"""<p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理语句</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -44082,6 +44186,7 @@ class SplunkDeliverInfo(AbstractModel):
         self._Index = params.get("Index")
         self._IndexAck = params.get("IndexAck")
         self._Channel = params.get("Channel")
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

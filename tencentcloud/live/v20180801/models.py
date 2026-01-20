@@ -4860,6 +4860,102 @@ UGC : 用户上传特效。
         
 
 
+class CloudEffectTemplateInfo(AbstractModel):
+    r"""云端特效模板信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>特效模板ID。</p>
+        :type TemplateId: str
+        :param _TemplateName: <p>特效模板名称。</p>
+        :type TemplateName: str
+        :param _VideoUrl: <p>模板预览URL。</p>
+        :type VideoUrl: str
+        :param _CoverImageUrl: <p>模板封面图片URL。</p>
+        :type CoverImageUrl: str
+        :param _VideoRatio: <p>模板视频宽高比。</p>
+        :type VideoRatio: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._VideoUrl = None
+        self._CoverImageUrl = None
+        self._VideoRatio = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>特效模板ID。</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>特效模板名称。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def VideoUrl(self):
+        r"""<p>模板预览URL。</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def CoverImageUrl(self):
+        r"""<p>模板封面图片URL。</p>
+        :rtype: str
+        """
+        return self._CoverImageUrl
+
+    @CoverImageUrl.setter
+    def CoverImageUrl(self, CoverImageUrl):
+        self._CoverImageUrl = CoverImageUrl
+
+    @property
+    def VideoRatio(self):
+        r"""<p>模板视频宽高比。</p>
+        :rtype: str
+        """
+        return self._VideoRatio
+
+    @VideoRatio.setter
+    def VideoRatio(self, VideoRatio):
+        self._VideoRatio = VideoRatio
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._VideoUrl = params.get("VideoUrl")
+        self._CoverImageUrl = params.get("CoverImageUrl")
+        self._VideoRatio = params.get("VideoRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonMixControlParams(AbstractModel):
     r"""通用混流控制参数
 
@@ -16604,6 +16700,60 @@ class DescribeLiveCertsResponse(AbstractModel):
                 obj = CertInfo()
                 obj._deserialize(item)
                 self._CertInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveCloudEffectConfigRequest(AbstractModel):
+    r"""DescribeLiveCloudEffectConfig请求参数结构体
+
+    """
+
+
+class DescribeLiveCloudEffectConfigResponse(AbstractModel):
+    r"""DescribeLiveCloudEffectConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectTemplateList: <p>模板生礼物的模板信息列表。</p>
+        :type EffectTemplateList: list of CloudEffectTemplateInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EffectTemplateList = None
+        self._RequestId = None
+
+    @property
+    def EffectTemplateList(self):
+        r"""<p>模板生礼物的模板信息列表。</p>
+        :rtype: list of CloudEffectTemplateInfo
+        """
+        return self._EffectTemplateList
+
+    @EffectTemplateList.setter
+    def EffectTemplateList(self, EffectTemplateList):
+        self._EffectTemplateList = EffectTemplateList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EffectTemplateList") is not None:
+            self._EffectTemplateList = []
+            for item in params.get("EffectTemplateList"):
+                obj = CloudEffectTemplateInfo()
+                obj._deserialize(item)
+                self._EffectTemplateList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
