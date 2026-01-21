@@ -53514,10 +53514,13 @@ class VirtualNodeSpec(AbstractModel):
         :type SubnetId: str
         :param _Tags: 腾讯云标签
         :type Tags: list of Tag
+        :param _Quota: 按量配额
+        :type Quota: :class:`tencentcloud.tke.v20180525.models.SuperNodeResource`
         """
         self._DisplayName = None
         self._SubnetId = None
         self._Tags = None
+        self._Quota = None
 
     @property
     def DisplayName(self):
@@ -53552,6 +53555,17 @@ class VirtualNodeSpec(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Quota(self):
+        r"""按量配额
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SuperNodeResource`
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
 
     def _deserialize(self, params):
         self._DisplayName = params.get("DisplayName")
@@ -53562,6 +53576,9 @@ class VirtualNodeSpec(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("Quota") is not None:
+            self._Quota = SuperNodeResource()
+            self._Quota._deserialize(params.get("Quota"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

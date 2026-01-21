@@ -482,6 +482,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyNodeAttribute(
+            self,
+            request: models.ModifyNodeAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNodeAttributeResponse:
+        """
+        本接口用于修改节点属性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNodeAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNodeAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyWorkspacesAttribute(
             self,
             request: models.ModifyWorkspacesAttributeRequest,

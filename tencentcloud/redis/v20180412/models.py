@@ -8902,42 +8902,26 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductTypes: 产品类型数组。
-- 2：Redis 2.8 内存版（标准架构）。
-- 3：CKV 3.2 内存版（标准架构）。
-- 4：CKV 3.2 内存版（集群架构）。
-- 6：Redis 4.0 内存版（标准架构）。
-- 7：Redis 4.0 内存版（集群架构）。
-- 8：Redis 5.0 内存版（标准架构）。
-- 9：Redis 5.0 内存版（集群架构）。
-- 15：Redis 6.2 内存版（标准架构）。
-- 16：Redis 6.2 内存版（集群架构）。
-- 17：Redis 7.0 内存版（标准架构）。
-- 18：Redis 7.0 内存版（集群架构）。
+        :param _ProductTypes: <p>指定查询的产品版本与架构。</p><ul><li>6：Redis 4.0 标准架构。</li><li>7：Redis 4.0 集群架构。</li><li>8：Redis 5.0 标准架构。</li><li>9：Redis 5.0 集群架构。</li><li>15：Redis 6.2 标准架构。</li><li>16：Redis 6.2 集群架构。</li><li>17：Redis 7.0 标准架构。</li><li>18：Redis 7.0 集群架构。</li><li>19：ValKey 8.0 标准架构。</li><li>20：ValKey 8.0 集群架构。</li></ul>
         :type ProductTypes: list of int
-        :param _TemplateNames: 模板名称数组。数组最大长度限制为50
+        :param _TemplateNames: <p>指定查询的参数模板名称。</p><ul><li>数据类型：字符串数组，最大长度限制为50。</li><li>获取方式：请通过 <a href="https://console.cloud.tencent.com/redis/templates">Redis 控制台的参数模版</a> 页面复制自定义模板或系统默认模板的模板名称。</li></ul>
         :type TemplateNames: list of str
-        :param _TemplateIds: 模板ID数组。数组最大长度限制为50
+        :param _TemplateIds: <p>指定查询的参数模板 ID。</p><ul><li>数据类型：字符串数组，最大长度限制为50。</li><li>获取方式：请通过 <a href="https://console.cloud.tencent.com/redis/templates">Redis 控制台的参数模版</a> 页面复制自定义模板或系统默认模板的模板 ID。</li></ul>
         :type TemplateIds: list of str
+        :param _Limit: <p>指定查询结果的分页大小，即每页返回的记录数量。</p><ul><li>取值范围：0～200。</li><li>默认值：200。</li></ul>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量，用于指定查询结果的起始位置。</p><ul><li>取值：必须为 Limit 的整数倍，默认值为 0。</li><li>计算公式：offset=limit*(页码-1)。</li></ul>
+        :type Offset: int
         """
         self._ProductTypes = None
         self._TemplateNames = None
         self._TemplateIds = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def ProductTypes(self):
-        r"""产品类型数组。
-- 2：Redis 2.8 内存版（标准架构）。
-- 3：CKV 3.2 内存版（标准架构）。
-- 4：CKV 3.2 内存版（集群架构）。
-- 6：Redis 4.0 内存版（标准架构）。
-- 7：Redis 4.0 内存版（集群架构）。
-- 8：Redis 5.0 内存版（标准架构）。
-- 9：Redis 5.0 内存版（集群架构）。
-- 15：Redis 6.2 内存版（标准架构）。
-- 16：Redis 6.2 内存版（集群架构）。
-- 17：Redis 7.0 内存版（标准架构）。
-- 18：Redis 7.0 内存版（集群架构）。
+        r"""<p>指定查询的产品版本与架构。</p><ul><li>6：Redis 4.0 标准架构。</li><li>7：Redis 4.0 集群架构。</li><li>8：Redis 5.0 标准架构。</li><li>9：Redis 5.0 集群架构。</li><li>15：Redis 6.2 标准架构。</li><li>16：Redis 6.2 集群架构。</li><li>17：Redis 7.0 标准架构。</li><li>18：Redis 7.0 集群架构。</li><li>19：ValKey 8.0 标准架构。</li><li>20：ValKey 8.0 集群架构。</li></ul>
         :rtype: list of int
         """
         return self._ProductTypes
@@ -8948,7 +8932,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateNames(self):
-        r"""模板名称数组。数组最大长度限制为50
+        r"""<p>指定查询的参数模板名称。</p><ul><li>数据类型：字符串数组，最大长度限制为50。</li><li>获取方式：请通过 <a href="https://console.cloud.tencent.com/redis/templates">Redis 控制台的参数模版</a> 页面复制自定义模板或系统默认模板的模板名称。</li></ul>
         :rtype: list of str
         """
         return self._TemplateNames
@@ -8959,7 +8943,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        r"""模板ID数组。数组最大长度限制为50
+        r"""<p>指定查询的参数模板 ID。</p><ul><li>数据类型：字符串数组，最大长度限制为50。</li><li>获取方式：请通过 <a href="https://console.cloud.tencent.com/redis/templates">Redis 控制台的参数模版</a> 页面复制自定义模板或系统默认模板的模板 ID。</li></ul>
         :rtype: list of str
         """
         return self._TemplateIds
@@ -8968,11 +8952,35 @@ class DescribeParamTemplatesRequest(AbstractModel):
     def TemplateIds(self, TemplateIds):
         self._TemplateIds = TemplateIds
 
+    @property
+    def Limit(self):
+        r"""<p>指定查询结果的分页大小，即每页返回的记录数量。</p><ul><li>取值范围：0～200。</li><li>默认值：200。</li></ul>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，用于指定查询结果的起始位置。</p><ul><li>取值：必须为 Limit 的整数倍，默认值为 0。</li><li>计算公式：offset=limit*(页码-1)。</li></ul>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ProductTypes = params.get("ProductTypes")
         self._TemplateNames = params.get("TemplateNames")
         self._TemplateIds = params.get("TemplateIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8990,9 +8998,9 @@ class DescribeParamTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 该用户的参数模板数量。
+        :param _TotalCount: <p>该用户的参数模板数量。</p>
         :type TotalCount: int
-        :param _Items: 参数模板详情。
+        :param _Items: <p>参数模板详情。</p>
         :type Items: list of ParamTemplateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9003,7 +9011,7 @@ class DescribeParamTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""该用户的参数模板数量。
+        r"""<p>该用户的参数模板数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9014,7 +9022,7 @@ class DescribeParamTemplatesResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""参数模板详情。
+        r"""<p>参数模板详情。</p>
         :rtype: list of ParamTemplateInfo
         """
         return self._Items
@@ -23694,11 +23702,9 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例ID，请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _UpgradeProxyAndRedisServer: 升级多可用区之后是否支持就近访问功能。
-- true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。
-- false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。
+        :param _UpgradeProxyAndRedisServer: <p>升级多可用区之后是否支持就近访问功能。- true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。- false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。</p>
         :type UpgradeProxyAndRedisServer: bool
         """
         self._InstanceId = None
@@ -23706,7 +23712,7 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        r"""<p>实例ID，请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -23717,9 +23723,7 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     @property
     def UpgradeProxyAndRedisServer(self):
-        r"""升级多可用区之后是否支持就近访问功能。
-- true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。
-- false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。
+        r"""<p>升级多可用区之后是否支持就近访问功能。- true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。- false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。</p>
         :rtype: bool
         """
         return self._UpgradeProxyAndRedisServer
@@ -23749,7 +23753,7 @@ class UpgradeVersionToMultiAvailabilityZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务ID
+        :param _FlowId: <p>任务ID</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23759,7 +23763,7 @@ class UpgradeVersionToMultiAvailabilityZonesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: int
         """
         return self._FlowId

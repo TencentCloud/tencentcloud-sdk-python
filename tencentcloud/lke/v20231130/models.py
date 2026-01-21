@@ -2860,6 +2860,10 @@ class AgentToolInfo(AbstractModel):
         :type FinanceType: int
         :param _ToolAdvanceConfig: 工具高级设置
         :type ToolAdvanceConfig: :class:`tencentcloud.lke.v20231130.models.ToolAdvanceConfig`
+        :param _AuthMode: 授权模式； 0-开发者授权；1-使用者授权
+        :type AuthMode: int
+        :param _AuthType: 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+        :type AuthType: int
         """
         self._PluginId = None
         self._PluginName = None
@@ -2881,6 +2885,8 @@ class AgentToolInfo(AbstractModel):
         self._ToolSource = None
         self._FinanceType = None
         self._ToolAdvanceConfig = None
+        self._AuthMode = None
+        self._AuthType = None
 
     @property
     def PluginId(self):
@@ -3105,6 +3111,28 @@ class AgentToolInfo(AbstractModel):
     def ToolAdvanceConfig(self, ToolAdvanceConfig):
         self._ToolAdvanceConfig = ToolAdvanceConfig
 
+    @property
+    def AuthMode(self):
+        r"""授权模式； 0-开发者授权；1-使用者授权
+        :rtype: int
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def AuthType(self):
+        r"""授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -3151,6 +3179,8 @@ class AgentToolInfo(AbstractModel):
         if params.get("ToolAdvanceConfig") is not None:
             self._ToolAdvanceConfig = ToolAdvanceConfig()
             self._ToolAdvanceConfig._deserialize(params.get("ToolAdvanceConfig"))
+        self._AuthMode = params.get("AuthMode")
+        self._AuthType = params.get("AuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4772,6 +4802,168 @@ class AttributeLabelRefByWorkflow(AbstractModel):
                 obj = WorkflowRef()
                 obj._deserialize(item)
                 self._WorkflowList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Audio(AbstractModel):
+    r"""音频信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 音频文件格式
+        :type Format: str
+        :param _AudioUrl: 音频文件地址
+        :type AudioUrl: str
+        :param _Title: 音频标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Position: 音频文件在正文中的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param _AudioTranscripts: 音频转录后的文字列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioTranscripts: list of AudioTranscript
+        """
+        self._Format = None
+        self._AudioUrl = None
+        self._Title = None
+        self._Position = None
+        self._AudioTranscripts = None
+
+    @property
+    def Format(self):
+        r"""音频文件格式
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def AudioUrl(self):
+        r"""音频文件地址
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Title(self):
+        r"""音频标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Position(self):
+        r"""音频文件在正文中的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def AudioTranscripts(self):
+        r"""音频转录后的文字列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AudioTranscript
+        """
+        return self._AudioTranscripts
+
+    @AudioTranscripts.setter
+    def AudioTranscripts(self, AudioTranscripts):
+        self._AudioTranscripts = AudioTranscripts
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Title = params.get("Title")
+        self._Position = params.get("Position")
+        if params.get("AudioTranscripts") is not None:
+            self._AudioTranscripts = []
+            for item in params.get("AudioTranscripts"):
+                obj = AudioTranscript()
+                obj._deserialize(item)
+                self._AudioTranscripts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioTranscript(AbstractModel):
+    r"""音频转录的文本内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Speaker: 音频的发言者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Speaker: str
+        :param _Transcript: 音频转录为文字后的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transcript: str
+        """
+        self._Speaker = None
+        self._Transcript = None
+
+    @property
+    def Speaker(self):
+        r"""音频的发言者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Speaker
+
+    @Speaker.setter
+    def Speaker(self, Speaker):
+        self._Speaker = Speaker
+
+    @property
+    def Transcript(self):
+        r"""音频转录为文字后的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Transcript
+
+    @Transcript.setter
+    def Transcript(self, Transcript):
+        self._Transcript = Transcript
+
+
+    def _deserialize(self, params):
+        self._Speaker = params.get("Speaker")
+        self._Transcript = params.get("Transcript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23735,10 +23927,14 @@ class ListReferShareKnowledgeResponse(AbstractModel):
         r"""
         :param _List: 共享知识库信息列表
         :type List: list of KnowledgeBaseInfo
+        :param _Total: 共享知识库数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
+        self._Total = None
         self._RequestId = None
 
     @property
@@ -23751,6 +23947,18 @@ class ListReferShareKnowledgeResponse(AbstractModel):
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def Total(self):
+        r"""共享知识库数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -23771,6 +23979,7 @@ class ListReferShareKnowledgeResponse(AbstractModel):
                 obj = KnowledgeBaseInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -28481,6 +28690,9 @@ class MsgRecord(AbstractModel):
         :param _WidgetAction: Widget动作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type WidgetAction: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
+        :param _Audios: 音频信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Audios: list of Audio
         """
         self._Content = None
         self._SessionId = None
@@ -28510,6 +28722,7 @@ class MsgRecord(AbstractModel):
         self._WorkFlow = None
         self._Widgets = None
         self._WidgetAction = None
+        self._Audios = None
 
     @property
     def Content(self):
@@ -28847,6 +29060,18 @@ class MsgRecord(AbstractModel):
     def WidgetAction(self, WidgetAction):
         self._WidgetAction = WidgetAction
 
+    @property
+    def Audios(self):
+        r"""音频信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Audio
+        """
+        return self._Audios
+
+    @Audios.setter
+    def Audios(self, Audios):
+        self._Audios = Audios
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -28909,6 +29134,12 @@ class MsgRecord(AbstractModel):
         if params.get("WidgetAction") is not None:
             self._WidgetAction = WidgetAction()
             self._WidgetAction._deserialize(params.get("WidgetAction"))
+        if params.get("Audios") is not None:
+            self._Audios = []
+            for item in params.get("Audios"):
+                obj = Audio()
+                obj._deserialize(item)
+                self._Audios.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

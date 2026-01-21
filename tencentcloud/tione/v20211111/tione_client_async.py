@@ -930,6 +930,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyServiceGroupWeights(
+            self,
+            request: models.ModifyServiceGroupWeightsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyServiceGroupWeightsResponse:
+        """
+        更新推理服务组流量分配
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyServiceGroupWeights"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyServiceGroupWeightsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def PushTrainingMetrics(
             self,
             request: models.PushTrainingMetricsRequest,

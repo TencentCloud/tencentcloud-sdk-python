@@ -2949,6 +2949,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetOrganizationRole(self, request):
+        r"""获取集团账号角色
+
+        :param request: Request instance for GetOrganizationRole.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GetOrganizationRoleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GetOrganizationRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOrganizationRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOrganizationRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportIpAccessControl(self, request):
         r"""导入IP黑白名单
 

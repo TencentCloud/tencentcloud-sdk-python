@@ -40457,12 +40457,15 @@ class UpdateExporterIntegrationRequest(AbstractModel):
         :type KubeType: int
         :param _ClusterId: 集群 ID，可不填
         :type ClusterId: str
+        :param _Disable: 值为true时禁用集成
+        :type Disable: bool
         """
         self._InstanceId = None
         self._Kind = None
         self._Content = None
         self._KubeType = None
         self._ClusterId = None
+        self._Disable = None
 
     @property
     def InstanceId(self):
@@ -40522,6 +40525,17 @@ class UpdateExporterIntegrationRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def Disable(self):
+        r"""值为true时禁用集成
+        :rtype: bool
+        """
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -40529,6 +40543,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
         self._Content = params.get("Content")
         self._KubeType = params.get("KubeType")
         self._ClusterId = params.get("ClusterId")
+        self._Disable = params.get("Disable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

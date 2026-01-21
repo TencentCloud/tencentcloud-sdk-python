@@ -15934,6 +15934,109 @@ class ModifyNotebookTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyServiceGroupWeightsRequest(AbstractModel):
+    r"""ModifyServiceGroupWeights请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组id
+        :type ServiceGroupId: str
+        :param _Weights: 权重设置
+        :type Weights: list of WeightEntry
+        """
+        self._ServiceGroupId = None
+        self._Weights = None
+
+    @property
+    def ServiceGroupId(self):
+        r"""服务组id
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def Weights(self):
+        r"""权重设置
+        :rtype: list of WeightEntry
+        """
+        return self._Weights
+
+    @Weights.setter
+    def Weights(self, Weights):
+        self._Weights = Weights
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        if params.get("Weights") is not None:
+            self._Weights = []
+            for item in params.get("Weights"):
+                obj = WeightEntry()
+                obj._deserialize(item)
+                self._Weights.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceGroupWeightsResponse(AbstractModel):
+    r"""ModifyServiceGroupWeights返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroup: 更新权重后的服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroup: :class:`tencentcloud.tione.v20211111.models.ServiceGroup`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceGroup = None
+        self._RequestId = None
+
+    @property
+    def ServiceGroup(self):
+        r"""更新权重后的服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceGroup`
+        """
+        return self._ServiceGroup
+
+    @ServiceGroup.setter
+    def ServiceGroup(self, ServiceGroup):
+        self._ServiceGroup = ServiceGroup
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceGroup") is not None:
+            self._ServiceGroup = ServiceGroup()
+            self._ServiceGroup._deserialize(params.get("ServiceGroup"))
+        self._RequestId = params.get("RequestId")
+
+
 class MultiModalContent(AbstractModel):
     r"""多模态对话内容,支持图片与文字信息
 
@@ -25359,6 +25462,57 @@ class VolumeMount(AbstractModel):
             self._CFSConfig._deserialize(params.get("CFSConfig"))
         self._VolumeSourceType = params.get("VolumeSourceType")
         self._MountPath = params.get("MountPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeightEntry(AbstractModel):
+    r"""服务的权重
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务id
+        :type ServiceId: str
+        :param _Weight: 流量权重值，同 ServiceGroup 下 总和应为 100
+        :type Weight: int
+        """
+        self._ServiceId = None
+        self._Weight = None
+
+    @property
+    def ServiceId(self):
+        r"""服务id
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Weight(self):
+        r"""流量权重值，同 ServiceGroup 下 总和应为 100
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

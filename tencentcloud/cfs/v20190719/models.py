@@ -2552,12 +2552,15 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         :type TaskName: str
         :param _DataFlowId: 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
         :type DataFlowId: str
+        :param _IsOverwrite: 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+        :type IsOverwrite: bool
         """
         self._FileSystemId = None
         self._Type = None
         self._TaskPath = None
         self._TaskName = None
         self._DataFlowId = None
+        self._IsOverwrite = None
 
     @property
     def FileSystemId(self):
@@ -2614,6 +2617,17 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
     def DataFlowId(self, DataFlowId):
         self._DataFlowId = DataFlowId
 
+    @property
+    def IsOverwrite(self):
+        r"""	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+        :rtype: bool
+        """
+        return self._IsOverwrite
+
+    @IsOverwrite.setter
+    def IsOverwrite(self, IsOverwrite):
+        self._IsOverwrite = IsOverwrite
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
@@ -2621,6 +2635,7 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         self._TaskPath = params.get("TaskPath")
         self._TaskName = params.get("TaskName")
         self._DataFlowId = params.get("DataFlowId")
+        self._IsOverwrite = params.get("IsOverwrite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7388,6 +7403,13 @@ running：执行中，finished：已完成
         :type Type: str
         :param _DataFlowId: 数据流动Id
         :type DataFlowId: str
+        :param _IsOverwrite: 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+
+ture：覆盖
+
+false：不覆盖（同时也不会释放热存数据）
+为空时，默认为false
+        :type IsOverwrite: bool
         """
         self._TaskId = None
         self._TaskStatus = None
@@ -7407,6 +7429,7 @@ running：执行中，finished：已完成
         self._TaskPath = None
         self._Type = None
         self._DataFlowId = None
+        self._IsOverwrite = None
 
     @property
     def TaskId(self):
@@ -7615,6 +7638,22 @@ running：执行中，finished：已完成
     def DataFlowId(self, DataFlowId):
         self._DataFlowId = DataFlowId
 
+    @property
+    def IsOverwrite(self):
+        r"""当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+
+ture：覆盖
+
+false：不覆盖（同时也不会释放热存数据）
+为空时，默认为false
+        :rtype: bool
+        """
+        return self._IsOverwrite
+
+    @IsOverwrite.setter
+    def IsOverwrite(self, IsOverwrite):
+        self._IsOverwrite = IsOverwrite
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -7635,6 +7674,7 @@ running：执行中，finished：已完成
         self._TaskPath = params.get("TaskPath")
         self._Type = params.get("Type")
         self._DataFlowId = params.get("DataFlowId")
+        self._IsOverwrite = params.get("IsOverwrite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7779,6 +7819,20 @@ class LifecycleRule(AbstractModel):
         :param _FileMinSize: 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMinSize: str
+        :param _PolicyType: 策略类型
+        :type PolicyType: str
+        :param _ExpireThreshold: 阈值范围[10-90]
+        :type ExpireThreshold: int
+        :param _TargetThreshold: 阈值范围[10-90]
+        :type TargetThreshold: int
+        :param _IsOverwrite: 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+
+ture：覆盖
+
+false：不覆盖（同时也不会释放热存数据）
+
+为空时，默认为false
+        :type IsOverwrite: bool
         """
         self._StorageType = None
         self._FileType = None
@@ -7786,6 +7840,10 @@ class LifecycleRule(AbstractModel):
         self._Interval = None
         self._FileMaxSize = None
         self._FileMinSize = None
+        self._PolicyType = None
+        self._ExpireThreshold = None
+        self._TargetThreshold = None
+        self._IsOverwrite = None
 
     @property
     def StorageType(self):
@@ -7856,6 +7914,56 @@ class LifecycleRule(AbstractModel):
     def FileMinSize(self, FileMinSize):
         self._FileMinSize = FileMinSize
 
+    @property
+    def PolicyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def ExpireThreshold(self):
+        r"""阈值范围[10-90]
+        :rtype: int
+        """
+        return self._ExpireThreshold
+
+    @ExpireThreshold.setter
+    def ExpireThreshold(self, ExpireThreshold):
+        self._ExpireThreshold = ExpireThreshold
+
+    @property
+    def TargetThreshold(self):
+        r"""阈值范围[10-90]
+        :rtype: int
+        """
+        return self._TargetThreshold
+
+    @TargetThreshold.setter
+    def TargetThreshold(self, TargetThreshold):
+        self._TargetThreshold = TargetThreshold
+
+    @property
+    def IsOverwrite(self):
+        r"""当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+
+ture：覆盖
+
+false：不覆盖（同时也不会释放热存数据）
+
+为空时，默认为false
+        :rtype: bool
+        """
+        return self._IsOverwrite
+
+    @IsOverwrite.setter
+    def IsOverwrite(self, IsOverwrite):
+        self._IsOverwrite = IsOverwrite
+
 
     def _deserialize(self, params):
         self._StorageType = params.get("StorageType")
@@ -7864,6 +7972,10 @@ class LifecycleRule(AbstractModel):
         self._Interval = params.get("Interval")
         self._FileMaxSize = params.get("FileMaxSize")
         self._FileMinSize = params.get("FileMinSize")
+        self._PolicyType = params.get("PolicyType")
+        self._ExpireThreshold = params.get("ExpireThreshold")
+        self._TargetThreshold = params.get("TargetThreshold")
+        self._IsOverwrite = params.get("IsOverwrite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9249,9 +9361,12 @@ class PathInfo(AbstractModel):
         :type FileSystemId: str
         :param _Path: 目录绝对路径
         :type Path: str
+        :param _DataFlowId: 数据流动Id
+        :type DataFlowId: str
         """
         self._FileSystemId = None
         self._Path = None
+        self._DataFlowId = None
 
     @property
     def FileSystemId(self):
@@ -9275,10 +9390,22 @@ class PathInfo(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def DataFlowId(self):
+        r"""数据流动Id
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._Path = params.get("Path")
+        self._DataFlowId = params.get("DataFlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

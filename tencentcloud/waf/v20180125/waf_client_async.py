@@ -2313,6 +2313,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetOrganizationRole(
+            self,
+            request: models.GetOrganizationRoleRequest,
+            opts: Dict = None,
+    ) -> models.GetOrganizationRoleResponse:
+        """
+        获取集团账号角色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetOrganizationRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetOrganizationRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ImportIpAccessControl(
             self,
             request: models.ImportIpAccessControlRequest,

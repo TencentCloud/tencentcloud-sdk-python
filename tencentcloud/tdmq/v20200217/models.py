@@ -6586,8 +6586,6 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         :type Name: str
         :param _Spec: 集群规格，支持规格有 1.通用型:rocket-vip-basic-0; 2.基础型:rocket-vip-basic-1; 3.标准型:rocket-vip-basic-2; 4.高阶Ⅰ型:rocket-vip-basic-3; 5.高阶Ⅱ型:rocket-vip-basic-4
         :type Spec: str
-        :param _NodeCount: 节点数量，最小2，最大20
-        :type NodeCount: int
         :param _StorageSize: 单节点存储空间，GB为单位，最低200GB
         :type StorageSize: int
         :param _ZoneIds: 节点部署的区域ID列表，如广州一区，则是100001，具体可查询腾讯云官网
@@ -6596,6 +6594,10 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         :type VpcInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _TimeSpan: 购买时长，月为单位
         :type TimeSpan: int
+        :param _NodeCount: 节点数量，创建专享集群时必填
+        :type NodeCount: int
+        :param _GeneralSkuCode: 通用集群规格标识，新购通用集群时必填，从 [DescribeRocketMQGeneralSKUs](https://cloud.tencent.com/document/api/1179/127066) 接口返回的 [GeneralSKU](https://cloud.tencent.com/document/api/1179/46089#GeneralSKU) 字段获取。
+        :type GeneralSkuCode: str
         :param _SupportsMigrateToCloud: 是否用于迁移上云，默认为false
         :type SupportsMigrateToCloud: bool
         :param _EnablePublic: 是否开启公网
@@ -6609,11 +6611,12 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         """
         self._Name = None
         self._Spec = None
-        self._NodeCount = None
         self._StorageSize = None
         self._ZoneIds = None
         self._VpcInfo = None
         self._TimeSpan = None
+        self._NodeCount = None
+        self._GeneralSkuCode = None
         self._SupportsMigrateToCloud = None
         self._EnablePublic = None
         self._Bandwidth = None
@@ -6641,17 +6644,6 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     @Spec.setter
     def Spec(self, Spec):
         self._Spec = Spec
-
-    @property
-    def NodeCount(self):
-        r"""节点数量，最小2，最大20
-        :rtype: int
-        """
-        return self._NodeCount
-
-    @NodeCount.setter
-    def NodeCount(self, NodeCount):
-        self._NodeCount = NodeCount
 
     @property
     def StorageSize(self):
@@ -6696,6 +6688,28 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     @TimeSpan.setter
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
+
+    @property
+    def NodeCount(self):
+        r"""节点数量，创建专享集群时必填
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def GeneralSkuCode(self):
+        r"""通用集群规格标识，新购通用集群时必填，从 [DescribeRocketMQGeneralSKUs](https://cloud.tencent.com/document/api/1179/127066) 接口返回的 [GeneralSKU](https://cloud.tencent.com/document/api/1179/46089#GeneralSKU) 字段获取。
+        :rtype: str
+        """
+        return self._GeneralSkuCode
+
+    @GeneralSkuCode.setter
+    def GeneralSkuCode(self, GeneralSkuCode):
+        self._GeneralSkuCode = GeneralSkuCode
 
     @property
     def SupportsMigrateToCloud(self):
@@ -6756,13 +6770,14 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Spec = params.get("Spec")
-        self._NodeCount = params.get("NodeCount")
         self._StorageSize = params.get("StorageSize")
         self._ZoneIds = params.get("ZoneIds")
         if params.get("VpcInfo") is not None:
             self._VpcInfo = VpcInfo()
             self._VpcInfo._deserialize(params.get("VpcInfo"))
         self._TimeSpan = params.get("TimeSpan")
+        self._NodeCount = params.get("NodeCount")
+        self._GeneralSkuCode = params.get("GeneralSkuCode")
         self._SupportsMigrateToCloud = params.get("SupportsMigrateToCloud")
         self._EnablePublic = params.get("EnablePublic")
         self._Bandwidth = params.get("Bandwidth")
@@ -34353,6 +34368,11 @@ class RocketMQInstanceConfig(AbstractModel):
         :type TopicNumUpperLimit: int
         :param _SendReceiveRatio: 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
         :type SendReceiveRatio: float
+        :param _TpsLimit: 收发 TPS 峰值上限
+        :type TpsLimit: int
+        :param _GeneralSkuCode: 通用集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeneralSkuCode: str
         """
         self._MaxTpsPerNamespace = None
         self._MaxNamespaceNum = None
@@ -34372,6 +34392,8 @@ class RocketMQInstanceConfig(AbstractModel):
         self._TopicNumLowerLimit = None
         self._TopicNumUpperLimit = None
         self._SendReceiveRatio = None
+        self._TpsLimit = None
+        self._GeneralSkuCode = None
 
     @property
     def MaxTpsPerNamespace(self):
@@ -34577,6 +34599,29 @@ class RocketMQInstanceConfig(AbstractModel):
     def SendReceiveRatio(self, SendReceiveRatio):
         self._SendReceiveRatio = SendReceiveRatio
 
+    @property
+    def TpsLimit(self):
+        r"""收发 TPS 峰值上限
+        :rtype: int
+        """
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def GeneralSkuCode(self):
+        r"""通用集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GeneralSkuCode
+
+    @GeneralSkuCode.setter
+    def GeneralSkuCode(self, GeneralSkuCode):
+        self._GeneralSkuCode = GeneralSkuCode
+
 
     def _deserialize(self, params):
         self._MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
@@ -34607,6 +34652,8 @@ class RocketMQInstanceConfig(AbstractModel):
         self._TopicNumLowerLimit = params.get("TopicNumLowerLimit")
         self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
         self._SendReceiveRatio = params.get("SendReceiveRatio")
+        self._TpsLimit = params.get("TpsLimit")
+        self._GeneralSkuCode = params.get("GeneralSkuCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

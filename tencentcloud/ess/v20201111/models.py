@@ -3218,6 +3218,147 @@ class CcInfo(AbstractModel):
         
 
 
+class Checklist(AbstractModel):
+    r"""合同审查清单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 审查清单id
+        :type Id: str
+        :param _Name: 审查清单名称
+        :type Name: str
+        :param _Count: 审查点数量
+        :type Count: int
+        :param _Enabled: 启用状态
+        :type Enabled: bool
+        :param _Updater: 修改人
+        :type Updater: str
+        :param _ModifiedOn: 修改时间
+        :type ModifiedOn: int
+        :param _Official: 是否官方清单
+        :type Official: bool
+        :param _ConfigStatus: 配置状态，[0(未配置), 1(已配置)]
+        :type ConfigStatus: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Count = None
+        self._Enabled = None
+        self._Updater = None
+        self._ModifiedOn = None
+        self._Official = None
+        self._ConfigStatus = None
+
+    @property
+    def Id(self):
+        r"""审查清单id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""审查清单名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Count(self):
+        r"""审查点数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Enabled(self):
+        r"""启用状态
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Updater(self):
+        r"""修改人
+        :rtype: str
+        """
+        return self._Updater
+
+    @Updater.setter
+    def Updater(self, Updater):
+        self._Updater = Updater
+
+    @property
+    def ModifiedOn(self):
+        r"""修改时间
+        :rtype: int
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+    @property
+    def Official(self):
+        r"""是否官方清单
+        :rtype: bool
+        """
+        return self._Official
+
+    @Official.setter
+    def Official(self, Official):
+        self._Official = Official
+
+    @property
+    def ConfigStatus(self):
+        r"""配置状态，[0(未配置), 1(已配置)]
+        :rtype: int
+        """
+        return self._ConfigStatus
+
+    @ConfigStatus.setter
+    def ConfigStatus(self, ConfigStatus):
+        self._ConfigStatus = ConfigStatus
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Count = params.get("Count")
+        self._Enabled = params.get("Enabled")
+        self._Updater = params.get("Updater")
+        self._ModifiedOn = params.get("ModifiedOn")
+        self._Official = params.get("Official")
+        self._ConfigStatus = params.get("ConfigStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComparisonDetail(AbstractModel):
     r"""合同对比差异结果详情。
 
@@ -16959,19 +17100,25 @@ class CreatePrepareFlowRequest(AbstractModel):
 用于满足创建及页面操作过程中的个性化要求
 具体定制化内容详见数据接口说明
         :type FlowOption: :class:`tencentcloud.ess.v20201111.models.CreateFlowOption`
-        :param _NeedSignReview: 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-<ul><li> **false**：（默认）不需要审批，直接签署。</li>
-<li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-<li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+        :param _NeedSignReview: 发起方企业签署员工，在进行签署操作前，是否需要先通过企业内部审批流程 （签署审核）
+1. **false（默认）**：  无需审批，发起方企业签署员工可直接进行签署操作。
+2. **true**：  需要先走企业内部审批流程。 当流程进展到发起方企业签署员工时，其签署操作会被阻塞，等待企业内部审批结果。
+
+企业应通过 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a>审批接口，将内部审批结果通知腾讯电子签平台：
+1. 若通知为“审核通过”，发起方企业签署员工可继续完成签署操作。
+2. 若通知为“审核未通过”，平台将继续阻塞该签署方的签署操作，直到企业再次通知平台审核通过为止。
+
+说明： 此能力可用于与企业内部审批流程打通，适用于手动签署和自动签署两种模式。
         :type NeedSignReview: bool
-        :param _NeedCreateReview: 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+        :param _NeedCreateReview: 发起方在创建合同流程前，是否必须先通过企业内部审批流程 （发起审核）
 
-若设置为true，发起审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
+当设置为 `true` 时：  
+  1. 您需要在企业内部完成审批，并通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a> 将审批结果回传给腾讯电子签。 
+  2. 只有当审核状态为“通过”时，合同流程正常发起。  
+  3. 若未通过或未回传审核结果，发起操作将被阻塞，阻止合同流程。
 
-
+当设置为 `false` （默认值）时：  
+  发起方无需经过企业内部审批，可直接发起合同流程。
         :type NeedCreateReview: bool
         :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
 
@@ -17181,13 +17328,15 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        r"""发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-<ul><li> **false**：（默认）不需要审批，直接签署。</li>
-<li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-<li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+        r"""发起方企业签署员工，在进行签署操作前，是否需要先通过企业内部审批流程 （签署审核）
+1. **false（默认）**：  无需审批，发起方企业签署员工可直接进行签署操作。
+2. **true**：  需要先走企业内部审批流程。 当流程进展到发起方企业签署员工时，其签署操作会被阻塞，等待企业内部审批结果。
+
+企业应通过 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a>审批接口，将内部审批结果通知腾讯电子签平台：
+1. 若通知为“审核通过”，发起方企业签署员工可继续完成签署操作。
+2. 若通知为“审核未通过”，平台将继续阻塞该签署方的签署操作，直到企业再次通知平台审核通过为止。
+
+说明： 此能力可用于与企业内部审批流程打通，适用于手动签署和自动签署两种模式。
         :rtype: bool
         """
         return self._NeedSignReview
@@ -17198,11 +17347,15 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @property
     def NeedCreateReview(self):
-        r"""发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+        r"""发起方在创建合同流程前，是否必须先通过企业内部审批流程 （发起审核）
 
-若设置为true，发起审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
+当设置为 `true` 时：  
+  1. 您需要在企业内部完成审批，并通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a> 将审批结果回传给腾讯电子签。 
+  2. 只有当审核状态为“通过”时，合同流程正常发起。  
+  3. 若未通过或未回传审核结果，发起操作将被阻塞，阻止合同流程。
 
-
+当设置为 `false` （默认值）时：  
+  发起方无需经过企业内部审批，可直接发起合同流程。
         :rtype: bool
         """
         return self._NeedCreateReview
@@ -24000,6 +24153,175 @@ class DescribeContractReviewWebUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._WebUrl = params.get("WebUrl")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEnterpriseContractReviewChecklistsRequest(AbstractModel):
+    r"""DescribeEnterpriseContractReviewChecklists请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Filters: 过滤条件
+        :type Filters: :class:`tencentcloud.ess.v20201111.models.Filter`
+        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。
+        :type Limit: int
+        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+        :type Offset: int
+        """
+        self._Operator = None
+        self._Agent = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Filter`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""指定每页返回的数据条数，和Offset参数配合使用。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnterpriseContractReviewChecklistsResponse(AbstractModel):
+    r"""DescribeEnterpriseContractReviewChecklists返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 查询的总条数
+        :type Total: int
+        :param _Checklists: 清单列表
+        :type Checklists: list of Checklist
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Checklists = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""查询的总条数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Checklists(self):
+        r"""清单列表
+        :rtype: list of Checklist
+        """
+        return self._Checklists
+
+    @Checklists.setter
+    def Checklists(self, Checklists):
+        self._Checklists = Checklists
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Checklists") is not None:
+            self._Checklists = []
+            for item in params.get("Checklists"):
+                obj = Checklist()
+                obj._deserialize(item)
+                self._Checklists.append(obj)
         self._RequestId = params.get("RequestId")
 
 

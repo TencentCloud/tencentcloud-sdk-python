@@ -470,6 +470,10 @@ class AndroidInstance(AbstractModel):
         :type CreateTime: str
         :param _HostServerSerialNumber: 机箱 ID
         :type HostServerSerialNumber: str
+        :param _ServiceStatus: 服务状态。
+IDLE：未连接
+ESTABLISHED：连接中
+        :type ServiceStatus: str
         """
         self._AndroidInstanceId = None
         self._AndroidInstanceRegion = None
@@ -487,6 +491,7 @@ class AndroidInstance(AbstractModel):
         self._PrivateIP = None
         self._CreateTime = None
         self._HostServerSerialNumber = None
+        self._ServiceStatus = None
 
     @property
     def AndroidInstanceId(self):
@@ -664,6 +669,19 @@ class AndroidInstance(AbstractModel):
     def HostServerSerialNumber(self, HostServerSerialNumber):
         self._HostServerSerialNumber = HostServerSerialNumber
 
+    @property
+    def ServiceStatus(self):
+        r"""服务状态。
+IDLE：未连接
+ESTABLISHED：连接中
+        :rtype: str
+        """
+        return self._ServiceStatus
+
+    @ServiceStatus.setter
+    def ServiceStatus(self, ServiceStatus):
+        self._ServiceStatus = ServiceStatus
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
@@ -687,6 +705,7 @@ class AndroidInstance(AbstractModel):
         self._PrivateIP = params.get("PrivateIP")
         self._CreateTime = params.get("CreateTime")
         self._HostServerSerialNumber = params.get("HostServerSerialNumber")
+        self._ServiceStatus = params.get("ServiceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

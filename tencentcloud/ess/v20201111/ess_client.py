@@ -2883,6 +2883,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEnterpriseContractReviewChecklists(self, request):
+        r"""本接口（DescribeEnterpriseContractReviewChecklists）用于获取企业全部审查要点清单。
+
+        :param request: Request instance for DescribeEnterpriseContractReviewChecklists.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeEnterpriseContractReviewChecklistsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeEnterpriseContractReviewChecklistsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnterpriseContractReviewChecklists", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnterpriseContractReviewChecklistsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExtendedServiceAuthDetail(self, request):
         r"""查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
         1. 企业自动签（本企业授权、集团企业授权、合作企业授权）

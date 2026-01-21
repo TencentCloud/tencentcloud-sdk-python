@@ -26,6 +26,9 @@ FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = 'FailedOperation.ApplicationCreat
 # 应用查询失败。
 FAILEDOPERATION_APPLICATIONQUERYFAILED = 'FailedOperation.ApplicationQueryFailed'
 
+# 删除应用程序包请求仓库失败
+FAILEDOPERATION_APPLICATIONREPODELETEPKG = 'FailedOperation.ApplicationRepoDeletePkg'
+
 # TSF应用性能管理调用tsf-dcfg模块失败
 FAILEDOPERATION_CALLTSFDCFGFAILED = 'FailedOperation.CallTsfDcfgFailed'
 

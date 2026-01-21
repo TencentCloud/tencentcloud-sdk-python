@@ -1891,6 +1891,115 @@ class CreateDocumentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGroupLiveCodesRequest(AbstractModel):
+    r"""CreateGroupLiveCodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID。</p>
+        :type RoomId: int
+        :param _Number: <p>分组数量。注：最大数量限制为30</p>
+        :type Number: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._Number = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Number(self):
+        r"""<p>分组数量。注：最大数量限制为30</p>
+        :rtype: int
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGroupLiveCodesResponse(AbstractModel):
+    r"""CreateGroupLiveCodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupLiveCodes: <p>分组直播参加码</p>
+        :type GroupLiveCodes: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupLiveCodes = None
+        self._RequestId = None
+
+    @property
+    def GroupLiveCodes(self):
+        r"""<p>分组直播参加码</p>
+        :rtype: list of str
+        """
+        return self._GroupLiveCodes
+
+    @GroupLiveCodes.setter
+    def GroupLiveCodes(self, GroupLiveCodes):
+        self._GroupLiveCodes = GroupLiveCodes
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupLiveCodes = params.get("GroupLiveCodes")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGroupWithMembersRequest(AbstractModel):
     r"""CreateGroupWithMembers请求参数结构体
 
@@ -2146,97 +2255,73 @@ class CreateRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 课堂名称。
-字符数不超过256
+        :param _Name: <p>课堂名称。<br>字符数不超过256</p>
         :type Name: str
-        :param _StartTime: 预定的课堂开始时间，unix时间戳（秒）。
+        :param _StartTime: <p>预定的课堂开始时间，unix时间戳（秒）。</p>
         :type StartTime: int
-        :param _EndTime: 预定的课堂结束时间，unix时间戳（秒）。
+        :param _EndTime: <p>预定的课堂结束时间，unix时间戳（秒）。</p>
         :type EndTime: int
-        :param _SdkAppId: 低代码互动课堂的SdkAppId。
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId。</p>
         :type SdkAppId: int
-        :param _Resolution: 头像区域，摄像头视频画面的分辨率。可以有如下取值：
-1 标清
-2 高清
-3 全高清
-注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
+        :param _Resolution: <p>头像区域，摄像头视频画面的分辨率。可以有如下取值：<br>1 标清<br>2 高清<br>3 全高清<br>注意：连麦人数（MaxMicNumber）&gt;6时，仅可使用标清</p>
         :type Resolution: int
-        :param _MaxMicNumber: 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+        :param _MaxMicNumber: <p>设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。</p>
         :type MaxMicNumber: int
-        :param _SubType: 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
+        :param _SubType: <p>课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频</p>
         :type SubType: str
-        :param _TeacherId: 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
+        :param _TeacherId: <p>老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。</p>
         :type TeacherId: str
-        :param _AutoMic: 进入课堂时是否自动连麦。可以有以下取值：
-0 不自动连麦（需要手动申请上麦，默认值）
-1 自动连麦
+        :param _AutoMic: <p>进入课堂时是否自动连麦。可以有以下取值：<br>0 不自动连麦（需要手动申请上麦，默认值）<br>1 自动连麦</p>
         :type AutoMic: int
-        :param _TurnOffMic: 释放音视频权限后是否自动取消连麦。可以有以下取值：
-0 自动取消连麦（默认值）
-1 保持连麦状态
+        :param _TurnOffMic: <p>释放音视频权限后是否自动取消连麦。可以有以下取值：<br>0 自动取消连麦（默认值）<br>1 保持连麦状态</p>
         :type TurnOffMic: int
-        :param _AudioQuality: 声音音质。可以有以下取值：
-0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
-1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
+        :param _AudioQuality: <p>声音音质。可以有以下取值：<br>0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。<br>1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。</p>
         :type AudioQuality: int
-        :param _DisableRecord: 录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
+        :param _DisableRecord: <p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
         :type DisableRecord: int
-        :param _Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
+        :param _Assistants: <p>助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。</p>
         :type Assistants: list of str
-        :param _RTCAudienceNumber: rtc人数。
+        :param _RTCAudienceNumber: <p>rtc人数。</p>
         :type RTCAudienceNumber: int
-        :param _AudienceType: 观看类型。互动观看 （默认）
+        :param _AudienceType: <p>观看类型。互动观看 （默认）</p>
         :type AudienceType: int
-        :param _RecordLayout: 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        :param _RecordLayout: <p>录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744</p>
         :type RecordLayout: int
-        :param _GroupId: 课堂绑定的群组ID,非空时限制组成员进入
+        :param _GroupId: <p>课堂绑定的群组ID,非空时限制组成员进入</p>
         :type GroupId: str
-        :param _EnableDirectControl: 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
-0 不允许直接控制（需同意，默认值）
-1 允许直接控制（无需同意）
+        :param _EnableDirectControl: <p>是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：<br>0 不允许直接控制（需同意，默认值）<br>1 允许直接控制（无需同意）</p>
         :type EnableDirectControl: int
-        :param _InteractionMode: 开启专注模式。
-0 收看全部角色音视频(默认)
-1 只看老师和助教
+        :param _InteractionMode: <p>开启专注模式。<br>0 收看全部角色音视频(默认)<br>1 只看老师和助教</p>
         :type InteractionMode: int
-        :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        :param _VideoOrientation: <p>横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型</p>
         :type VideoOrientation: int
-        :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
+        :param _IsGradingRequiredPostClass: <p>开启课后评分。 0：不开启(默认)  1：开启</p>
         :type IsGradingRequiredPostClass: int
-        :param _RoomType: 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+        :param _RoomType: <p>课堂类型。  注：大班课的布局(layout)只有三分屏</p><p>枚举值：</p><ul><li>0： 小班课（默认值）</li><li>1： 大班课</li><li>2： 1V1 (预留参数，暂未开放);</li><li>3： 圆桌会议</li><li>4： 分组直播 </li></ul><p>默认值：0</p>
         :type RoomType: int
-        :param _Guests: 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        :param _Guests: <p>嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效</p>
         :type Guests: list of str
-        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        :param _EndDelayTime: <p>拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟</p>
         :type EndDelayTime: int
-        :param _LiveType: 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+        :param _LiveType: <p>直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播</p>
         :type LiveType: int
-        :param _RecordLiveUrl: 伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
+        :param _RecordLiveUrl: <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p>
         :type RecordLiveUrl: str
-        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
+        :param _EnableAutoStart: <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效</p>
         :type EnableAutoStart: int
-        :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        :param _RecordBackground: <p>录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道</p>
         :type RecordBackground: str
-        :param _RecordScene: 录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
-
-自定义场景参数的含义。如下：
-     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。 
-    lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）
-     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
+        :param _RecordScene: <p>录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。</p><p>自定义场景参数的含义。如下：<br>     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。<br>    lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）<br>     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。</p>
         :type RecordScene: str
-        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+        :param _RecordLang: <p>录制自定义语言，仅recordlayout=9的时候此参数有效</p>
         :type RecordLang: str
-        :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        :param _RecordStream: <p>录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0</p>
         :type RecordStream: int
-        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
+        :param _WhiteBoardSnapshotMode: <p>板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式</p>
         :type WhiteBoardSnapshotMode: int
-        :param _SubtitlesTranscription: 字幕转写功能开关。可以有以下取值：
-0 不开启字幕转写功能（默认值）
-1 自动转写模式：上课自动开启，下课自动停止
-2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
-设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
+        :param _SubtitlesTranscription: <p>字幕转写功能开关。可以有以下取值：<br>0 不开启字幕转写功能（默认值）<br>1 自动转写模式：上课自动开启，下课自动停止<br>2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写<br>设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关</p>
         :type SubtitlesTranscription: int
-        :param _RecordMerge: 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        :param _RecordMerge: <p>录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效</p>
         :type RecordMerge: int
         """
         self._Name = None
@@ -2276,8 +2361,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""课堂名称。
-字符数不超过256
+        r"""<p>课堂名称。<br>字符数不超过256</p>
         :rtype: str
         """
         return self._Name
@@ -2288,7 +2372,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""预定的课堂开始时间，unix时间戳（秒）。
+        r"""<p>预定的课堂开始时间，unix时间戳（秒）。</p>
         :rtype: int
         """
         return self._StartTime
@@ -2299,7 +2383,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""预定的课堂结束时间，unix时间戳（秒）。
+        r"""<p>预定的课堂结束时间，unix时间戳（秒）。</p>
         :rtype: int
         """
         return self._EndTime
@@ -2310,7 +2394,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""低代码互动课堂的SdkAppId。
+        r"""<p>低代码互动课堂的SdkAppId。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -2321,11 +2405,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""头像区域，摄像头视频画面的分辨率。可以有如下取值：
-1 标清
-2 高清
-3 全高清
-注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
+        r"""<p>头像区域，摄像头视频画面的分辨率。可以有如下取值：<br>1 标清<br>2 高清<br>3 全高清<br>注意：连麦人数（MaxMicNumber）&gt;6时，仅可使用标清</p>
         :rtype: int
         """
         return self._Resolution
@@ -2336,7 +2416,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def MaxMicNumber(self):
-        r"""设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+        r"""<p>设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。</p>
         :rtype: int
         """
         return self._MaxMicNumber
@@ -2347,7 +2427,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SubType(self):
-        r"""课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
+        r"""<p>课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频</p>
         :rtype: str
         """
         return self._SubType
@@ -2358,7 +2438,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def TeacherId(self):
-        r"""老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
+        r"""<p>老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。</p>
         :rtype: str
         """
         return self._TeacherId
@@ -2369,9 +2449,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AutoMic(self):
-        r"""进入课堂时是否自动连麦。可以有以下取值：
-0 不自动连麦（需要手动申请上麦，默认值）
-1 自动连麦
+        r"""<p>进入课堂时是否自动连麦。可以有以下取值：<br>0 不自动连麦（需要手动申请上麦，默认值）<br>1 自动连麦</p>
         :rtype: int
         """
         return self._AutoMic
@@ -2382,9 +2460,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def TurnOffMic(self):
-        r"""释放音视频权限后是否自动取消连麦。可以有以下取值：
-0 自动取消连麦（默认值）
-1 保持连麦状态
+        r"""<p>释放音视频权限后是否自动取消连麦。可以有以下取值：<br>0 自动取消连麦（默认值）<br>1 保持连麦状态</p>
         :rtype: int
         """
         return self._TurnOffMic
@@ -2395,9 +2471,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AudioQuality(self):
-        r"""声音音质。可以有以下取值：
-0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
-1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
+        r"""<p>声音音质。可以有以下取值：<br>0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。<br>1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。</p>
         :rtype: int
         """
         return self._AudioQuality
@@ -2408,7 +2482,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def DisableRecord(self):
-        r"""录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
+        r"""<p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
         :rtype: int
         """
         return self._DisableRecord
@@ -2419,7 +2493,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Assistants(self):
-        r"""助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
+        r"""<p>助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。</p>
         :rtype: list of str
         """
         return self._Assistants
@@ -2432,7 +2506,7 @@ class CreateRoomRequest(AbstractModel):
     def RTCAudienceNumber(self):
         warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
 
-        r"""rtc人数。
+        r"""<p>rtc人数。</p>
         :rtype: int
         """
         return self._RTCAudienceNumber
@@ -2445,7 +2519,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def AudienceType(self):
-        r"""观看类型。互动观看 （默认）
+        r"""<p>观看类型。互动观看 （默认）</p>
         :rtype: int
         """
         return self._AudienceType
@@ -2456,7 +2530,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordLayout(self):
-        r"""录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        r"""<p>录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744</p>
         :rtype: int
         """
         return self._RecordLayout
@@ -2467,7 +2541,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""课堂绑定的群组ID,非空时限制组成员进入
+        r"""<p>课堂绑定的群组ID,非空时限制组成员进入</p>
         :rtype: str
         """
         return self._GroupId
@@ -2478,9 +2552,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EnableDirectControl(self):
-        r"""是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
-0 不允许直接控制（需同意，默认值）
-1 允许直接控制（无需同意）
+        r"""<p>是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：<br>0 不允许直接控制（需同意，默认值）<br>1 允许直接控制（无需同意）</p>
         :rtype: int
         """
         return self._EnableDirectControl
@@ -2491,9 +2563,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def InteractionMode(self):
-        r"""开启专注模式。
-0 收看全部角色音视频(默认)
-1 只看老师和助教
+        r"""<p>开启专注模式。<br>0 收看全部角色音视频(默认)<br>1 只看老师和助教</p>
         :rtype: int
         """
         return self._InteractionMode
@@ -2504,7 +2574,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def VideoOrientation(self):
-        r"""横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        r"""<p>横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型</p>
         :rtype: int
         """
         return self._VideoOrientation
@@ -2515,7 +2585,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def IsGradingRequiredPostClass(self):
-        r"""开启课后评分。 0：不开启(默认)  1：开启
+        r"""<p>开启课后评分。 0：不开启(默认)  1：开启</p>
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -2526,7 +2596,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RoomType(self):
-        r"""课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+        r"""<p>课堂类型。  注：大班课的布局(layout)只有三分屏</p><p>枚举值：</p><ul><li>0： 小班课（默认值）</li><li>1： 大班课</li><li>2： 1V1 (预留参数，暂未开放);</li><li>3： 圆桌会议</li><li>4： 分组直播 </li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._RoomType
@@ -2537,7 +2607,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def Guests(self):
-        r"""嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+        r"""<p>嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效</p>
         :rtype: list of str
         """
         return self._Guests
@@ -2548,7 +2618,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EndDelayTime(self):
-        r"""拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        r"""<p>拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟</p>
         :rtype: int
         """
         return self._EndDelayTime
@@ -2559,7 +2629,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def LiveType(self):
-        r"""直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+        r"""<p>直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播</p>
         :rtype: int
         """
         return self._LiveType
@@ -2570,7 +2640,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordLiveUrl(self):
-        r"""伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
+        r"""<p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p>
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -2581,7 +2651,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def EnableAutoStart(self):
-        r"""是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
+        r"""<p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效</p>
         :rtype: int
         """
         return self._EnableAutoStart
@@ -2592,7 +2662,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordBackground(self):
-        r"""录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        r"""<p>录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道</p>
         :rtype: str
         """
         return self._RecordBackground
@@ -2603,12 +2673,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordScene(self):
-        r"""录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
-
-自定义场景参数的含义。如下：
-     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。 
-    lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）
-     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
+        r"""<p>录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。</p><p>自定义场景参数的含义。如下：<br>     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。<br>    lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）<br>     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。</p>
         :rtype: str
         """
         return self._RecordScene
@@ -2621,7 +2686,7 @@ class CreateRoomRequest(AbstractModel):
     def RecordLang(self):
         warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
 
-        r"""录制自定义语言，仅recordlayout=9的时候此参数有效
+        r"""<p>录制自定义语言，仅recordlayout=9的时候此参数有效</p>
         :rtype: str
         """
         return self._RecordLang
@@ -2634,7 +2699,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordStream(self):
-        r"""录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        r"""<p>录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0</p>
         :rtype: int
         """
         return self._RecordStream
@@ -2645,7 +2710,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def WhiteBoardSnapshotMode(self):
-        r"""板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
+        r"""<p>板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式</p>
         :rtype: int
         """
         return self._WhiteBoardSnapshotMode
@@ -2656,11 +2721,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def SubtitlesTranscription(self):
-        r"""字幕转写功能开关。可以有以下取值：
-0 不开启字幕转写功能（默认值）
-1 自动转写模式：上课自动开启，下课自动停止
-2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
-设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
+        r"""<p>字幕转写功能开关。可以有以下取值：<br>0 不开启字幕转写功能（默认值）<br>1 自动转写模式：上课自动开启，下课自动停止<br>2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写<br>设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关</p>
         :rtype: int
         """
         return self._SubtitlesTranscription
@@ -2671,7 +2732,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def RecordMerge(self):
-        r"""录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+        r"""<p>录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效</p>
         :rtype: int
         """
         return self._RecordMerge
@@ -2733,7 +2794,7 @@ class CreateRoomResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间ID。
+        :param _RoomId: <p>房间ID。</p>
         :type RoomId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2743,7 +2804,7 @@ class CreateRoomResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""房间ID。
+        r"""<p>房间ID。</p>
         :rtype: int
         """
         return self._RoomId
@@ -5051,6 +5112,100 @@ class DescribeGroupListResponse(AbstractModel):
                 obj = GroupInfo()
                 obj._deserialize(item)
                 self._GroupInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGroupLiveCodesRequest(AbstractModel):
+    r"""DescribeGroupLiveCodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>学校ID</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID</p>
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>学校ID</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupLiveCodesResponse(AbstractModel):
+    r"""DescribeGroupLiveCodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupLiveCodes: <p>分组直播参加码</p>
+        :type GroupLiveCodes: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupLiveCodes = None
+        self._RequestId = None
+
+    @property
+    def GroupLiveCodes(self):
+        r"""<p>分组直播参加码</p>
+        :rtype: list of str
+        """
+        return self._GroupLiveCodes
+
+    @GroupLiveCodes.setter
+    def GroupLiveCodes(self, GroupLiveCodes):
+        self._GroupLiveCodes = GroupLiveCodes
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupLiveCodes = params.get("GroupLiveCodes")
         self._RequestId = params.get("RequestId")
 
 

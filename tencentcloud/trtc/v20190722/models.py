@@ -16863,7 +16863,7 @@ class TencentVod(AbstractModel):
         :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
 默认值：0，表示其他分类。
         :type ClassId: int
-        :param _SubAppId: 点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: 点播子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。注意：不建议填写“托管类型”的点播子应用ID，只能填写“标准类型”的点播子应用ID，否则会导致无法通过点播域名正常播放视频。
         :type SubAppId: int
         :param _SessionContext: 任务流上下文，任务完成回调时透传。
         :type SessionContext: str
@@ -16932,7 +16932,7 @@ class TencentVod(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        r"""点播子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。注意：不建议填写“托管类型”的点播子应用ID，只能填写“标准类型”的点播子应用ID，否则会导致无法通过点播域名正常播放视频。
         :rtype: int
         """
         return self._SubAppId

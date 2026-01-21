@@ -1647,6 +1647,7 @@ class InputManageMarketingRisk(AbstractModel):
 4：小程序
         :type Platform: str
         :param _DataAuthorization: 数据授权信息。
+注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
         :type DataAuthorization: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
         """
         self._Account = None
@@ -1931,6 +1932,7 @@ class InputManageMarketingRisk(AbstractModel):
     @property
     def DataAuthorization(self):
         r"""数据授权信息。
+注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
         :rtype: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
         """
         return self._DataAuthorization

@@ -2536,7 +2536,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeVersionToMultiAvailabilityZones(self, request):
-        r"""本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
+        r"""本接口已废弃。
 
         :param request: Request instance for UpgradeVersionToMultiAvailabilityZones.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeVersionToMultiAvailabilityZonesRequest`

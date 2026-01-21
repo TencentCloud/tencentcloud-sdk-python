@@ -4671,6 +4671,8 @@ MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser M
         :type DefaultMetaVersion: str
         :param _NeedCdbAudit: 是否开通审计
         :type NeedCdbAudit: int
+        :param _SgIP: 安全组来源IP
+        :type SgIP: str
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -4690,6 +4692,7 @@ MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser M
         self._ZoneId = None
         self._DefaultMetaVersion = None
         self._NeedCdbAudit = None
+        self._SgIP = None
 
     @property
     def InstanceName(self):
@@ -4901,6 +4904,17 @@ MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser M
     def NeedCdbAudit(self, NeedCdbAudit):
         self._NeedCdbAudit = NeedCdbAudit
 
+    @property
+    def SgIP(self):
+        r"""安全组来源IP
+        :rtype: str
+        """
+        return self._SgIP
+
+    @SgIP.setter
+    def SgIP(self, SgIP):
+        self._SgIP = SgIP
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -4942,6 +4956,7 @@ MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser M
         self._ZoneId = params.get("ZoneId")
         self._DefaultMetaVersion = params.get("DefaultMetaVersion")
         self._NeedCdbAudit = params.get("NeedCdbAudit")
+        self._SgIP = params.get("SgIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

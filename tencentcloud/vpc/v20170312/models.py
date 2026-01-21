@@ -52708,9 +52708,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         r"""
         :param _NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
         :type NatGatewayId: str
-        :param _NatGatewayName: NAT网关的名称，形如：`test_nat`。
+        :param _NatGatewayName: NAT网关的名称，形如：`test_nat`，边界值：[1,60] 字符。
         :type NatGatewayName: str
-        :param _InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)。
+        :param _InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)，边界值：[0,50000]。
         :type InternetMaxBandwidthOut: int
         :param _ModifySecurityGroup: 是否修改NAT网关绑定的安全组。
         :type ModifySecurityGroup: bool
@@ -52718,6 +52718,8 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
         :type DeletionProtectionEnabled: bool
+        :param _PublicAddressAffinity: 同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。当前适用于标准型NAT网关。
+        :type PublicAddressAffinity: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -52725,6 +52727,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         self._ModifySecurityGroup = None
         self._SecurityGroupIds = None
         self._DeletionProtectionEnabled = None
+        self._PublicAddressAffinity = None
 
     @property
     def NatGatewayId(self):
@@ -52739,7 +52742,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def NatGatewayName(self):
-        r"""NAT网关的名称，形如：`test_nat`。
+        r"""NAT网关的名称，形如：`test_nat`，边界值：[1,60] 字符。
         :rtype: str
         """
         return self._NatGatewayName
@@ -52750,7 +52753,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""NAT网关最大外网出带宽(单位:Mbps)。
+        r"""NAT网关最大外网出带宽(单位:Mbps)，边界值：[0,50000]。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -52792,6 +52795,17 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
     def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
         self._DeletionProtectionEnabled = DeletionProtectionEnabled
 
+    @property
+    def PublicAddressAffinity(self):
+        r"""同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。当前适用于标准型NAT网关。
+        :rtype: bool
+        """
+        return self._PublicAddressAffinity
+
+    @PublicAddressAffinity.setter
+    def PublicAddressAffinity(self, PublicAddressAffinity):
+        self._PublicAddressAffinity = PublicAddressAffinity
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -52800,6 +52814,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         self._ModifySecurityGroup = params.get("ModifySecurityGroup")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
+        self._PublicAddressAffinity = params.get("PublicAddressAffinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71681,6 +71696,117 @@ class UpdateTrafficMirrorDirectionRequest(AbstractModel):
 
 class UpdateTrafficMirrorDirectionResponse(AbstractModel):
     r"""UpdateTrafficMirrorDirection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeNatGatewayProductVersionRequest(AbstractModel):
+    r"""UpgradeNatGatewayProductVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param _NatGatewayId: NAT网关的ID，形如：`nat-ig8xpno8`。
+        :type NatGatewayId: str
+        :param _Force: 是否热迁移。1表示冷迁移，0表示热迁移，默认值是0。
+        :type Force: int
+        :param _CheckOnlyMode: 是否仅校验迁移可能性。true表示仅校验能否迁移，不做实际迁移。false表示正常迁移。默认值为false。
+仅校验模式，不报错表示校验迁移成功。
+        :type CheckOnlyMode: bool
+        """
+        self._VpcId = None
+        self._NatGatewayId = None
+        self._Force = None
+        self._CheckOnlyMode = None
+
+    @property
+    def VpcId(self):
+        r"""VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def NatGatewayId(self):
+        r"""NAT网关的ID，形如：`nat-ig8xpno8`。
+        :rtype: str
+        """
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def Force(self):
+        r"""是否热迁移。1表示冷迁移，0表示热迁移，默认值是0。
+        :rtype: int
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+    @property
+    def CheckOnlyMode(self):
+        r"""是否仅校验迁移可能性。true表示仅校验能否迁移，不做实际迁移。false表示正常迁移。默认值为false。
+仅校验模式，不报错表示校验迁移成功。
+        :rtype: bool
+        """
+        return self._CheckOnlyMode
+
+    @CheckOnlyMode.setter
+    def CheckOnlyMode(self, CheckOnlyMode):
+        self._CheckOnlyMode = CheckOnlyMode
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._Force = params.get("Force")
+        self._CheckOnlyMode = params.get("CheckOnlyMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeNatGatewayProductVersionResponse(AbstractModel):
+    r"""UpgradeNatGatewayProductVersion返回参数结构体
 
     """
 

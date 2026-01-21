@@ -36900,7 +36900,7 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
         :type LifecycleEnable: str
         :param _Expiration: 过期时间
         :type Expiration: int
-        :param _DropTable: 是否删表
+        :param _DropTable: 是否删表，该字段废弃已使用，用TableExpiration策略替代
         :type DropTable: bool
         :param _ExpiredField: 过期字段
         :type ExpiredField: str
@@ -36937,13 +36937,17 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
 
     @property
     def DropTable(self):
-        r"""是否删表
+        warnings.warn("parameter `DropTable` is deprecated", DeprecationWarning) 
+
+        r"""是否删表，该字段废弃已使用，用TableExpiration策略替代
         :rtype: bool
         """
         return self._DropTable
 
     @DropTable.setter
     def DropTable(self, DropTable):
+        warnings.warn("parameter `DropTable` is deprecated", DeprecationWarning) 
+
         self._DropTable = DropTable
 
     @property
@@ -36994,13 +36998,13 @@ class SmartOptimizerPolicy(AbstractModel):
         r"""
         :param _Inherit: 是否继承
         :type Inherit: str
-        :param _Resources: ResourceInfo
+        :param _Resources: 数据治理资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of ResourceInfo
-        :param _Written: SmartOptimizerWrittenPolicy
+        :param _Written: 数据重写策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type Written: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerWrittenPolicy`
-        :param _Lifecycle: SmartOptimizerLifecyclePolicy
+        :param _Lifecycle: 数据过期策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lifecycle: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerLifecyclePolicy`
         :param _Index: SmartOptimizerIndexPolicy
@@ -37030,7 +37034,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Resources(self):
-        r"""ResourceInfo
+        r"""数据治理资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceInfo
         """
@@ -37042,7 +37046,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Written(self):
-        r"""SmartOptimizerWrittenPolicy
+        r"""数据重写策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerWrittenPolicy`
         """
@@ -37054,7 +37058,7 @@ class SmartOptimizerPolicy(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""SmartOptimizerLifecyclePolicy
+        r"""数据过期策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerLifecyclePolicy`
         """

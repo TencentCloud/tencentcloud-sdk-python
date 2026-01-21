@@ -608,6 +608,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyNodeAttribute(self, request):
+        r"""本接口用于修改节点属性
+
+        :param request: Request instance for ModifyNodeAttribute.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyNodeAttributeRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyNodeAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNodeAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNodeAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyWorkspacesAttribute(self, request):
         r"""本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
 

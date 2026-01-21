@@ -241,6 +241,135 @@ class DescribeHunyuanTo3DUVJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProfileTo3DJobRequest(AbstractModel):
+    r"""DescribeProfileTo3DJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProfileTo3DJobResponse(AbstractModel):
+    r"""DescribeProfileTo3DJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type Status: str
+        :param _ErrorCode: 错误码
+        :type ErrorCode: str
+        :param _ErrorMessage: 错误信息
+        :type ErrorMessage: str
+        :param _ResultFile3Ds: 生成的3D文件数组。
+        :type ResultFile3Ds: list of File3D
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultFile3Ds = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""错误码
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultFile3Ds(self):
+        r"""生成的3D文件数组。
+        :rtype: list of File3D
+        """
+        return self._ResultFile3Ds
+
+    @ResultFile3Ds.setter
+    def ResultFile3Ds(self, ResultFile3Ds):
+        self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        if params.get("ResultFile3Ds") is not None:
+            self._ResultFile3Ds = []
+            for item in params.get("ResultFile3Ds"):
+                obj = File3D()
+                obj._deserialize(item)
+                self._ResultFile3Ds.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReduceFaceJobRequest(AbstractModel):
     r"""DescribeReduceFaceJob请求参数结构体
 
@@ -1646,6 +1775,186 @@ class SubmitHunyuanTo3DUVJobResponse(AbstractModel):
     @property
     def JobId(self):
         r"""任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitProfileTo3DJobRequest(AbstractModel):
+    r"""SubmitProfileTo3DJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Profile: 真人头像参考图 Base64 数据和参考图 Url。
+- Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+- 图片限制：单边分辨率小于4096且大于500，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+        :type Profile: :class:`tencentcloud.ai3d.v20250513.models.Image`
+        :param _Template: 生成人物模板，参考值：
+
+basketball: 动感球手；
+
+badminton: 羽扬中华；
+
+pingpong: 国球荣耀；
+
+gymnastics:勇攀巅峰；
+
+pilidance: 舞动青春；
+
+tennis: 网球甜心；
+
+athletics: 东方疾风；
+
+footballboykicking1:激情逐风；
+
+footballboykicking2: 绿茵之星；
+
+guitar:甜酷弦音；
+
+footballboy: 足球小将；
+
+skateboard: 滑跃青春；
+
+futuresoilder: 未来战士；
+
+explorer: 逐梦旷野；
+
+beardollgirl:可爱女孩；
+
+bibpantsboy:都市白领；
+
+womansitpose: 职业丽影；
+
+womanstandpose2: 悠闲时光；
+
+mysteriousprincess: 海洋公主；
+
+manstandpose2: 演讲之星；
+        :type Template: str
+        """
+        self._Profile = None
+        self._Template = None
+
+    @property
+    def Profile(self):
+        r"""真人头像参考图 Base64 数据和参考图 Url。
+- Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+- 图片限制：单边分辨率小于4096且大于500，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.Image`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Template(self):
+        r"""生成人物模板，参考值：
+
+basketball: 动感球手；
+
+badminton: 羽扬中华；
+
+pingpong: 国球荣耀；
+
+gymnastics:勇攀巅峰；
+
+pilidance: 舞动青春；
+
+tennis: 网球甜心；
+
+athletics: 东方疾风；
+
+footballboykicking1:激情逐风；
+
+footballboykicking2: 绿茵之星；
+
+guitar:甜酷弦音；
+
+footballboy: 足球小将；
+
+skateboard: 滑跃青春；
+
+futuresoilder: 未来战士；
+
+explorer: 逐梦旷野；
+
+beardollgirl:可爱女孩；
+
+bibpantsboy:都市白领；
+
+womansitpose: 职业丽影；
+
+womanstandpose2: 悠闲时光；
+
+mysteriousprincess: 海洋公主；
+
+manstandpose2: 演讲之星；
+        :rtype: str
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+
+    def _deserialize(self, params):
+        if params.get("Profile") is not None:
+            self._Profile = Image()
+            self._Profile._deserialize(params.get("Profile"))
+        self._Template = params.get("Template")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitProfileTo3DJobResponse(AbstractModel):
+    r"""SubmitProfileTo3DJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID（有效期24小时）
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID（有效期24小时）
         :rtype: str
         """
         return self._JobId

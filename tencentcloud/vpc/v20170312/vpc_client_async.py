@@ -8156,6 +8156,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpgradeNatGatewayProductVersion(
+            self,
+            request: models.UpgradeNatGatewayProductVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeNatGatewayProductVersionResponse:
+        """
+        本接口（UpgradeNatGatewayProductVersion）用于升级NAT实例产品版本，将传统型NAT实例升级到标准型NAT。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeNatGatewayProductVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeNatGatewayProductVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def WithdrawNotifyRoutes(
             self,
             request: models.WithdrawNotifyRoutesRequest,

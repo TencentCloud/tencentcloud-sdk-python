@@ -2437,6 +2437,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEnterpriseContractReviewChecklists(
+            self,
+            request: models.DescribeEnterpriseContractReviewChecklistsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEnterpriseContractReviewChecklistsResponse:
+        """
+        本接口（DescribeEnterpriseContractReviewChecklists）用于获取企业全部审查要点清单。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEnterpriseContractReviewChecklists"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEnterpriseContractReviewChecklistsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExtendedServiceAuthDetail(
             self,
             request: models.DescribeExtendedServiceAuthDetailRequest,

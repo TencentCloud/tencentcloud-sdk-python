@@ -67,6 +67,8 @@ class DBInstanceDetail(AbstractModel):
         :type DbEngine: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _Zones: 可用区列表
+        :type Zones: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -89,6 +91,7 @@ class DBInstanceDetail(AbstractModel):
         self._HostRole = None
         self._DbEngine = None
         self._CreateTime = None
+        self._Zones = None
 
     @property
     def InstanceId(self):
@@ -321,6 +324,17 @@ class DBInstanceDetail(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def Zones(self):
+        r"""可用区列表
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -344,6 +358,7 @@ class DBInstanceDetail(AbstractModel):
         self._HostRole = params.get("HostRole")
         self._DbEngine = params.get("DbEngine")
         self._CreateTime = params.get("CreateTime")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -720,6 +735,8 @@ class DescribeInstanceDetail(AbstractModel):
         :type ResourceTags: list of ResourceTag
         :param _CpuType: CPU类型：Intel/AMD,Hygon
         :type CpuType: str
+        :param _Zones: 可用区列表
+        :type Zones: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -749,6 +766,7 @@ class DescribeInstanceDetail(AbstractModel):
         self._ClusterId = None
         self._ResourceTags = None
         self._CpuType = None
+        self._Zones = None
 
     @property
     def InstanceId(self):
@@ -1058,6 +1076,17 @@ class DescribeInstanceDetail(AbstractModel):
     def CpuType(self, CpuType):
         self._CpuType = CpuType
 
+    @property
+    def Zones(self):
+        r"""可用区列表
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1093,6 +1122,7 @@ class DescribeInstanceDetail(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._CpuType = params.get("CpuType")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1202,6 +1232,8 @@ class DescribeInstanceDetailResponse(AbstractModel):
         :type ResourceTags: list of ResourceTag
         :param _CpuType: CPU类型，Intel/AMD,Hygon
         :type CpuType: str
+        :param _Zones: 可用区列表
+        :type Zones: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1233,6 +1265,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self._ClusterId = None
         self._ResourceTags = None
         self._CpuType = None
+        self._Zones = None
         self._RequestId = None
 
     @property
@@ -1544,6 +1577,17 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self._CpuType = CpuType
 
     @property
+    def Zones(self):
+        r"""可用区列表
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1589,6 +1633,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._CpuType = params.get("CpuType")
+        self._Zones = params.get("Zones")
         self._RequestId = params.get("RequestId")
 
 
@@ -2271,6 +2316,8 @@ class HostDetail(AbstractModel):
         :type Pid: int
         :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
+        :param _Zones: 可用区列表
+        :type Zones: list of str
         """
         self._HostId = None
         self._HostName = None
@@ -2296,6 +2343,7 @@ class HostDetail(AbstractModel):
         self._PidTag = None
         self._Pid = None
         self._InstanceId = None
+        self._Zones = None
 
     @property
     def HostId(self):
@@ -2561,6 +2609,17 @@ class HostDetail(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Zones(self):
+        r"""可用区列表
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._HostId = params.get("HostId")
@@ -2587,6 +2646,7 @@ class HostDetail(AbstractModel):
         self._PidTag = params.get("PidTag")
         self._Pid = params.get("Pid")
         self._InstanceId = params.get("InstanceId")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

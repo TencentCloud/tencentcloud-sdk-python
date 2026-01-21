@@ -1995,7 +1995,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeVersionToMultiAvailabilityZonesResponse:
         """
-        本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
+        本接口已废弃。
         """
         
         kwargs = {}

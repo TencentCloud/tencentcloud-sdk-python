@@ -61,6 +61,25 @@ class Ai3dClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeProfileTo3DJob(
+            self,
+            request: models.DescribeProfileTo3DJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProfileTo3DJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProfileTo3DJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProfileTo3DJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeReduceFaceJob(
             self,
             request: models.DescribeReduceFaceJobRequest,
@@ -224,6 +243,25 @@ class Ai3dClient(AbstractClient):
         kwargs["action"] = "SubmitHunyuanTo3DUVJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHunyuanTo3DUVJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitProfileTo3DJob(
+            self,
+            request: models.SubmitProfileTo3DJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitProfileTo3DJobResponse:
+        """
+        混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitProfileTo3DJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitProfileTo3DJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

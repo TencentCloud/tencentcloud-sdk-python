@@ -2011,9 +2011,12 @@ class AddOnParameter(AbstractModel):
         :type ImageSet: list of AddOnImageInput
         :param _OutputConfig: 图片处理输出配置。
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.ImageProcessOutputConfig`
+        :param _ExtPrompt: 图片处理附加 prompt，只针对某些场景可用。
+        :type ExtPrompt: list of ImageProcessPrompt
         """
         self._ImageSet = None
         self._OutputConfig = None
+        self._ExtPrompt = None
 
     @property
     def ImageSet(self):
@@ -2037,6 +2040,17 @@ class AddOnParameter(AbstractModel):
     def OutputConfig(self, OutputConfig):
         self._OutputConfig = OutputConfig
 
+    @property
+    def ExtPrompt(self):
+        r"""图片处理附加 prompt，只针对某些场景可用。
+        :rtype: list of ImageProcessPrompt
+        """
+        return self._ExtPrompt
+
+    @ExtPrompt.setter
+    def ExtPrompt(self, ExtPrompt):
+        self._ExtPrompt = ExtPrompt
+
 
     def _deserialize(self, params):
         if params.get("ImageSet") is not None:
@@ -2048,6 +2062,12 @@ class AddOnParameter(AbstractModel):
         if params.get("OutputConfig") is not None:
             self._OutputConfig = ImageProcessOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
+        if params.get("ExtPrompt") is not None:
+            self._ExtPrompt = []
+            for item in params.get("ExtPrompt"):
+                obj = ImageProcessPrompt()
+                obj._deserialize(item)
+                self._ExtPrompt.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3846,11 +3866,14 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         :param _SpeakerPath: 标记文件路径
 
         :type SpeakerPath: str
+        :param _VoiceId: 音色id
+        :type VoiceId: str
         :param _OutputStorage: 译制视频存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
         self._SpeakerPath = None
+        self._VoiceId = None
         self._OutputStorage = None
 
     @property
@@ -3877,6 +3900,17 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         self._SpeakerPath = SpeakerPath
 
     @property
+    def VoiceId(self):
+        r"""音色id
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
     def OutputStorage(self):
         r"""译制视频存储位置。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -3891,6 +3925,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
         self._SpeakerPath = params.get("SpeakerPath")
+        self._VoiceId = params.get("VoiceId")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -19314,6 +19349,12 @@ GV。
 4. GV, 可选[3.1]。
 5. OS，可选[2.0]。
         :type ModelVersion: str
+        :param _SceneType: 指定场景生视频。
+注意：仅部分模型支持指定场景。
+1. Kling支持动作控制，motion_control。
+2. Mingmou支持横转竖，land2port。
+3. Vidu支持特效模板，template_effect。
+        :type SceneType: str
         :param _Prompt: 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
         :type Prompt: str
         :param _NegativePrompt: 用于描述您想要阻止模型生成的内容。
@@ -19372,6 +19413,7 @@ GV。
         """
         self._ModelName = None
         self._ModelVersion = None
+        self._SceneType = None
         self._Prompt = None
         self._NegativePrompt = None
         self._EnhancePrompt = None
@@ -19417,6 +19459,21 @@ GV。
     @ModelVersion.setter
     def ModelVersion(self, ModelVersion):
         self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""指定场景生视频。
+注意：仅部分模型支持指定场景。
+1. Kling支持动作控制，motion_control。
+2. Mingmou支持横转竖，land2port。
+3. Vidu支持特效模板，template_effect。
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
 
     @property
     def Prompt(self):
@@ -19576,6 +19633,7 @@ GV。
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
         self._EnhancePrompt = params.get("EnhancePrompt")
@@ -43610,11 +43668,17 @@ class ImageProcessOutputConfig(AbstractModel):
         :type ImageWidth: int
         :param _ImageSize: 图片输出分辨率，取值：1K/2K/4K。
         :type ImageSize: str
+        :param _Format: 图片输出编码格式，可取值：PNG、JPG、WEBP、HEIF、AVIF。
+        :type Format: str
+        :param _Quality: 图片质量，对于某些输出格式可用，只有Format 有效的情况下生效，取值范围 0-100。
+        :type Quality: int
         """
         self._AspectRatio = None
         self._ImageHeight = None
         self._ImageWidth = None
         self._ImageSize = None
+        self._Format = None
+        self._Quality = None
 
     @property
     def AspectRatio(self):
@@ -43668,12 +43732,72 @@ class ImageProcessOutputConfig(AbstractModel):
     def ImageSize(self, ImageSize):
         self._ImageSize = ImageSize
 
+    @property
+    def Format(self):
+        r"""图片输出编码格式，可取值：PNG、JPG、WEBP、HEIF、AVIF。
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Quality(self):
+        r"""图片质量，对于某些输出格式可用，只有Format 有效的情况下生效，取值范围 0-100。
+        :rtype: int
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
 
     def _deserialize(self, params):
         self._AspectRatio = params.get("AspectRatio")
         self._ImageHeight = params.get("ImageHeight")
         self._ImageWidth = params.get("ImageWidth")
         self._ImageSize = params.get("ImageSize")
+        self._Format = params.get("Format")
+        self._Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessPrompt(AbstractModel):
+    r"""图片处理相关提示词。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 图片处理相关的prompt。
+        :type Prompt: str
+        """
+        self._Prompt = None
+
+    @property
+    def Prompt(self):
+        r"""图片处理相关的prompt。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64865,14 +64989,23 @@ zu: 祖鲁语
         :type Source: str
         :param _AudioFormat: 音频数据格式，默认为 pcm
 
-支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+支持的格式：
+pcm (16000 采样率的单声道 16 位采样 pcm 数据)
+ogg-opus (16000 / 24000 / 48000 采样率的单声道 opus 编码的 ogg 数据)
         :type AudioFormat: str
+        :param _SampleRate: 音频的采样率
+
+支持的采样率：
+pcm 16000
+ogg-opus 16000 / 24000 / 48000
+        :type SampleRate: int
         :param _UserExtPara: 扩展参数，默认不填，特殊需求使用
         :type UserExtPara: str
         """
         self._AudioData = None
         self._Source = None
         self._AudioFormat = None
+        self._SampleRate = None
         self._UserExtPara = None
 
     @property
@@ -64983,7 +65116,9 @@ zu: 祖鲁语
     def AudioFormat(self):
         r"""音频数据格式，默认为 pcm
 
-支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+支持的格式：
+pcm (16000 采样率的单声道 16 位采样 pcm 数据)
+ogg-opus (16000 / 24000 / 48000 采样率的单声道 opus 编码的 ogg 数据)
         :rtype: str
         """
         return self._AudioFormat
@@ -64991,6 +65126,21 @@ zu: 祖鲁语
     @AudioFormat.setter
     def AudioFormat(self, AudioFormat):
         self._AudioFormat = AudioFormat
+
+    @property
+    def SampleRate(self):
+        r"""音频的采样率
+
+支持的采样率：
+pcm 16000
+ogg-opus 16000 / 24000 / 48000
+        :rtype: int
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
 
     @property
     def UserExtPara(self):
@@ -65008,6 +65158,7 @@ zu: 祖鲁语
         self._AudioData = params.get("AudioData")
         self._Source = params.get("Source")
         self._AudioFormat = params.get("AudioFormat")
+        self._SampleRate = params.get("SampleRate")
         self._UserExtPara = params.get("UserExtPara")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

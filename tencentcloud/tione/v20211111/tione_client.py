@@ -1181,6 +1181,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyServiceGroupWeights(self, request):
+        r"""更新推理服务组流量分配
+
+        :param request: Request instance for ModifyServiceGroupWeights.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyServiceGroupWeightsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyServiceGroupWeightsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceGroupWeights", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceGroupWeightsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PushTrainingMetrics(self, request):
         r"""上报训练自定义指标
 

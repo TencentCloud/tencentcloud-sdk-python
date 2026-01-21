@@ -9411,24 +9411,23 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Name: 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :param _Name: <p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
         :type Name: str
-        :param _DeliverType: 投递类型。0:批投递,1:实时投递
+        :param _DeliverType: <p>投递类型。0:批投递,1:实时投递</p>
         :type DeliverType: int
-        :param _StartTime: 投递时间范围的开始时间
+        :param _StartTime: <p>投递时间范围的开始时间</p>
         :type StartTime: int
-        :param _DlcInfo: dlc配置信息
+        :param _DlcInfo: <p>dlc配置信息</p>
         :type DlcInfo: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
-        :param _MaxSize: 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+        :param _MaxSize: <p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
         :type MaxSize: int
-        :param _Interval: 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+        :param _Interval: <p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
         :type Interval: int
-        :param _EndTime: 投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+        :param _EndTime: <p>投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。</p>
         :type EndTime: int
-        :param _HasServicesLog: 是否开启投递服务日志。1关闭，2开启。默认开启
+        :param _HasServicesLog: <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
         :type HasServicesLog: int
         """
         self._TopicId = None
@@ -9443,8 +9442,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -9455,7 +9453,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        r"""<p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
         :rtype: str
         """
         return self._Name
@@ -9466,7 +9464,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def DeliverType(self):
-        r"""投递类型。0:批投递,1:实时投递
+        r"""<p>投递类型。0:批投递,1:实时投递</p>
         :rtype: int
         """
         return self._DeliverType
@@ -9477,7 +9475,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""投递时间范围的开始时间
+        r"""<p>投递时间范围的开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -9488,7 +9486,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def DlcInfo(self):
-        r"""dlc配置信息
+        r"""<p>dlc配置信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
         """
         return self._DlcInfo
@@ -9499,7 +9497,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+        r"""<p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
         :rtype: int
         """
         return self._MaxSize
@@ -9510,7 +9508,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+        r"""<p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
         :rtype: int
         """
         return self._Interval
@@ -9521,7 +9519,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+        r"""<p>投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。</p>
         :rtype: int
         """
         return self._EndTime
@@ -9532,7 +9530,7 @@ class CreateDlcDeliverRequest(AbstractModel):
 
     @property
     def HasServicesLog(self):
-        r"""是否开启投递服务日志。1关闭，2开启。默认开启
+        r"""<p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
         :rtype: int
         """
         return self._HasServicesLog
@@ -9571,7 +9569,7 @@ class CreateDlcDeliverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 配置id
+        :param _TaskId: <p>配置id</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9581,7 +9579,7 @@ class CreateDlcDeliverResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""配置id
+        r"""<p>配置id</p>
         :rtype: str
         """
         return self._TaskId

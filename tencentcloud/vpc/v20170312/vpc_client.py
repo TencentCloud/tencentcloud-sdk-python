@@ -10317,6 +10317,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpgradeNatGatewayProductVersion(self, request):
+        r"""本接口（UpgradeNatGatewayProductVersion）用于升级NAT实例产品版本，将传统型NAT实例升级到标准型NAT。
+
+        :param request: Request instance for UpgradeNatGatewayProductVersion.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UpgradeNatGatewayProductVersionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UpgradeNatGatewayProductVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeNatGatewayProductVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeNatGatewayProductVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def WithdrawNotifyRoutes(self, request):
         r"""本接口（WithdrawNotifyRoutes）用于撤销已发布到云联网的路由。路由表列表页操作增加“从云联网撤销”。
 

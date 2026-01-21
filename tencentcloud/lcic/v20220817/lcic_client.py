@@ -276,6 +276,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGroupLiveCodes(self, request):
+        r"""创建分组直播参加码
+
+        :param request: Request instance for CreateGroupLiveCodes.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupLiveCodesRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateGroupLiveCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupLiveCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupLiveCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGroupWithMembers(self, request):
         r"""此接口根据成员列表创建群组
 
@@ -776,6 +799,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeGroupList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGroupLiveCodes(self, request):
+        r"""获取分组直播参加码
+
+        :param request: Request instance for DescribeGroupLiveCodes.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupLiveCodesRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupLiveCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupLiveCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupLiveCodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -225,6 +225,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateGroupLiveCodes(
+            self,
+            request: models.CreateGroupLiveCodesRequest,
+            opts: Dict = None,
+    ) -> models.CreateGroupLiveCodesResponse:
+        """
+        创建分组直播参加码
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGroupLiveCodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGroupLiveCodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGroupWithMembers(
             self,
             request: models.CreateGroupWithMembersRequest,
@@ -619,6 +637,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "DescribeGroupList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeGroupLiveCodes(
+            self,
+            request: models.DescribeGroupLiveCodesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGroupLiveCodesResponse:
+        """
+        获取分组直播参加码
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGroupLiveCodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGroupLiveCodesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

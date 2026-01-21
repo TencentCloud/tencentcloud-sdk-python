@@ -12760,6 +12760,8 @@ class ApplyUploadRequest(AbstractModel):
         :type SessionContext: str
         :param _ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
+        :param _MediaStoragePath: 媒体存储路径，以/开头。
+        :type MediaStoragePath: str
         """
         self._MediaType = None
         self._SubAppId = None
@@ -12772,6 +12774,7 @@ class ApplyUploadRequest(AbstractModel):
         self._SourceContext = None
         self._SessionContext = None
         self._ExtInfo = None
+        self._MediaStoragePath = None
 
     @property
     def MediaType(self):
@@ -12895,6 +12898,17 @@ class ApplyUploadRequest(AbstractModel):
     def ExtInfo(self, ExtInfo):
         self._ExtInfo = ExtInfo
 
+    @property
+    def MediaStoragePath(self):
+        r"""媒体存储路径，以/开头。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
+
 
     def _deserialize(self, params):
         self._MediaType = params.get("MediaType")
@@ -12908,6 +12922,7 @@ class ApplyUploadRequest(AbstractModel):
         self._SourceContext = params.get("SourceContext")
         self._SessionContext = params.get("SessionContext")
         self._ExtInfo = params.get("ExtInfo")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24347,10 +24362,22 @@ class CreateSubAppIdRequest(AbstractModel):
         :type Description: str
         :param _Type: 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
         :type Type: str
+        :param _Mode: 此应用的模式，可选值为：
+- fileid：仅FileID模式
+- fileid+path：FileID & Path模式
+留空时默认选择仅FileID模式
+        :type Mode: str
+        :param _StorageRegion: 存储地域
+        :type StorageRegion: str
+        :param _Tags: 此应用需要绑定的tag
+        :type Tags: list of ResourceTag
         """
         self._Name = None
         self._Description = None
         self._Type = None
+        self._Mode = None
+        self._StorageRegion = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -24385,11 +24412,55 @@ class CreateSubAppIdRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Mode(self):
+        r"""此应用的模式，可选值为：
+- fileid：仅FileID模式
+- fileid+path：FileID & Path模式
+留空时默认选择仅FileID模式
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def StorageRegion(self):
+        r"""存储地域
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def Tags(self):
+        r"""此应用需要绑定的tag
+        :rtype: list of ResourceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._StorageRegion = params.get("StorageRegion")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39283,11 +39354,14 @@ class EnhanceMediaQualityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-        :type FileId: str
         :param _Definition: 音画质重生模板 ID。
 针对典型的使用场景，云点播提供了多个[预置模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
         :type Definition: int
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param _MediaStoragePath: 媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _OutputConfig: 音画质重生后的媒体文件配置。
@@ -39299,13 +39373,26 @@ class EnhanceMediaQualityRequest(AbstractModel):
         :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
         """
-        self._FileId = None
         self._Definition = None
+        self._FileId = None
+        self._MediaStoragePath = None
         self._SubAppId = None
         self._OutputConfig = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
+
+    @property
+    def Definition(self):
+        r"""音画质重生模板 ID。
+针对典型的使用场景，云点播提供了多个[预置模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
 
     @property
     def FileId(self):
@@ -39319,16 +39406,16 @@ class EnhanceMediaQualityRequest(AbstractModel):
         self._FileId = FileId
 
     @property
-    def Definition(self):
-        r"""音画质重生模板 ID。
-针对典型的使用场景，云点播提供了多个[预置模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
-        :rtype: int
+    def MediaStoragePath(self):
+        r"""媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
         """
-        return self._Definition
+        return self._MediaStoragePath
 
-    @Definition.setter
-    def Definition(self, Definition):
-        self._Definition = Definition
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
 
     @property
     def SubAppId(self):
@@ -39387,8 +39474,9 @@ class EnhanceMediaQualityRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._FileId = params.get("FileId")
         self._Definition = params.get("Definition")
+        self._FileId = params.get("FileId")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         self._SubAppId = params.get("SubAppId")
         if params.get("OutputConfig") is not None:
             self._OutputConfig = EnhanceMediaQualityOutputConfig()
@@ -41633,6 +41721,195 @@ class FastEditMediaResponse(AbstractModel):
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
         self._RequestId = params.get("RequestId")
+
+
+class FileContent(AbstractModel):
+    r"""云点播中存储的文件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 对象键。
+        :type Key: str
+        :param _LastModified: 对象最后修改时间，为 ISO8601格式，例如2019-05-24T10:56:40Z。
+        :type LastModified: str
+        :param _ETag: 对象的实体标签（Entity Tag），是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化。
+        :type ETag: str
+        :param _Size: 对象大小，单位为Byte。
+        :type Size: int
+        :param _StorageClass: 枚举值请参见[存储类型](https://cloud.tencent.com/document/product/436/33417)文档，例如 STANDARD_IA，ARCHIVE。
+        :type StorageClass: str
+        :param _FileId: 此文件对应的媒体文件的唯一标识。
+        :type FileId: str
+        :param _Category: 文件分类： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li> <li>Other: 其他文件</li>
+        :type Category: str
+        :param _FileType: 可选值有：
+ - OriginalFiles：原文件
+- TranscodeFiles：转码文件
+- AdaptiveDynamicStreamingFiles：转自适应码流文件
+- SubtitleFiles：字幕文件
+- SampleSnapshotFiles：采样截图文件
+- ImageSpriteFiles：雪碧图截图文件
+- SnapshotByTimeOffsetFiles：时间点截图文件
+
+        :type FileType: str
+        :param _Definition: 视频模板号，模板定义参见转码模板。
+        :type Definition: int
+        :param _SubtitleID: 字幕ID。
+仅当FileType=SubtitleFiles时有值。
+        :type SubtitleID: str
+        """
+        self._Key = None
+        self._LastModified = None
+        self._ETag = None
+        self._Size = None
+        self._StorageClass = None
+        self._FileId = None
+        self._Category = None
+        self._FileType = None
+        self._Definition = None
+        self._SubtitleID = None
+
+    @property
+    def Key(self):
+        r"""对象键。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def LastModified(self):
+        r"""对象最后修改时间，为 ISO8601格式，例如2019-05-24T10:56:40Z。
+        :rtype: str
+        """
+        return self._LastModified
+
+    @LastModified.setter
+    def LastModified(self, LastModified):
+        self._LastModified = LastModified
+
+    @property
+    def ETag(self):
+        r"""对象的实体标签（Entity Tag），是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化。
+        :rtype: str
+        """
+        return self._ETag
+
+    @ETag.setter
+    def ETag(self, ETag):
+        self._ETag = ETag
+
+    @property
+    def Size(self):
+        r"""对象大小，单位为Byte。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def StorageClass(self):
+        r"""枚举值请参见[存储类型](https://cloud.tencent.com/document/product/436/33417)文档，例如 STANDARD_IA，ARCHIVE。
+        :rtype: str
+        """
+        return self._StorageClass
+
+    @StorageClass.setter
+    def StorageClass(self, StorageClass):
+        self._StorageClass = StorageClass
+
+    @property
+    def FileId(self):
+        r"""此文件对应的媒体文件的唯一标识。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Category(self):
+        r"""文件分类： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li> <li>Other: 其他文件</li>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def FileType(self):
+        r"""可选值有：
+ - OriginalFiles：原文件
+- TranscodeFiles：转码文件
+- AdaptiveDynamicStreamingFiles：转自适应码流文件
+- SubtitleFiles：字幕文件
+- SampleSnapshotFiles：采样截图文件
+- ImageSpriteFiles：雪碧图截图文件
+- SnapshotByTimeOffsetFiles：时间点截图文件
+
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Definition(self):
+        r"""视频模板号，模板定义参见转码模板。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubtitleID(self):
+        r"""字幕ID。
+仅当FileType=SubtitleFiles时有值。
+        :rtype: str
+        """
+        return self._SubtitleID
+
+    @SubtitleID.setter
+    def SubtitleID(self, SubtitleID):
+        self._SubtitleID = SubtitleID
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._LastModified = params.get("LastModified")
+        self._ETag = params.get("ETag")
+        self._Size = params.get("Size")
+        self._StorageClass = params.get("StorageClass")
+        self._FileId = params.get("FileId")
+        self._Category = params.get("Category")
+        self._FileType = params.get("FileType")
+        self._Definition = params.get("Definition")
+        self._SubtitleID = params.get("SubtitleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileDeleteResultItem(AbstractModel):
@@ -44951,6 +45228,210 @@ class LicenseUsageDataItem(AbstractModel):
         
 
 
+class ListFilesRequest(AbstractModel):
+    r"""ListFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: 点播[应用](/document/product/266/14574) ID。
+        :type SubAppId: int
+        :param _Prefix: 对象键匹配前缀，限定响应中只包含指定前缀的对象键。
+        :type Prefix: str
+        :param _Delimiter: 一个字符的分隔符，用于对对象键进行分组。所有对象键中从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分将作为 CommonPrefixes 下的一个 Prefix 节点。被分组的对象键不再出现在后续对象列表中。
+        :type Delimiter: str
+        :param _MaxKeys: ys 	 单次返回最大的条目数量，默认值为100，最小为1，最大为100。
+        :type MaxKeys: int
+        :param _Marker: 起始对象键标记
+        :type Marker: str
+        :param _Categories: 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        :type Categories: list of str
+        """
+        self._SubAppId = None
+        self._Prefix = None
+        self._Delimiter = None
+        self._MaxKeys = None
+        self._Marker = None
+        self._Categories = None
+
+    @property
+    def SubAppId(self):
+        r"""点播[应用](/document/product/266/14574) ID。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Prefix(self):
+        r"""对象键匹配前缀，限定响应中只包含指定前缀的对象键。
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Delimiter(self):
+        r"""一个字符的分隔符，用于对对象键进行分组。所有对象键中从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分将作为 CommonPrefixes 下的一个 Prefix 节点。被分组的对象键不再出现在后续对象列表中。
+        :rtype: str
+        """
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
+    @property
+    def MaxKeys(self):
+        r"""ys 	 单次返回最大的条目数量，默认值为100，最小为1，最大为100。
+        :rtype: int
+        """
+        return self._MaxKeys
+
+    @MaxKeys.setter
+    def MaxKeys(self, MaxKeys):
+        self._MaxKeys = MaxKeys
+
+    @property
+    def Marker(self):
+        r"""起始对象键标记
+        :rtype: str
+        """
+        return self._Marker
+
+    @Marker.setter
+    def Marker(self, Marker):
+        self._Marker = Marker
+
+    @property
+    def Categories(self):
+        r"""文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        :rtype: list of str
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Prefix = params.get("Prefix")
+        self._Delimiter = params.get("Delimiter")
+        self._MaxKeys = params.get("MaxKeys")
+        self._Marker = params.get("Marker")
+        self._Categories = params.get("Categories")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFilesResponse(AbstractModel):
+    r"""ListFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsTruncated: 响应条目是否被截断。
+        :type IsTruncated: bool
+        :param _NextMarker: 仅当响应条目有截断（IsTruncated 为 true）才会返回该节点，该节点的值为当前响应条目中的最后一个对象键，当需要继续请求后续条目时，将该节点的值作为下一次请求的 marker 参数传入。
+        :type NextMarker: str
+        :param _CommonPrefixes: 从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分，定义为 Common Prefix。仅当请求中指定了 delimiter 参数才有可能返回该节点。
+        :type CommonPrefixes: list of str
+        :param _Contents: 对象条目。
+        :type Contents: list of FileContent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsTruncated = None
+        self._NextMarker = None
+        self._CommonPrefixes = None
+        self._Contents = None
+        self._RequestId = None
+
+    @property
+    def IsTruncated(self):
+        r"""响应条目是否被截断。
+        :rtype: bool
+        """
+        return self._IsTruncated
+
+    @IsTruncated.setter
+    def IsTruncated(self, IsTruncated):
+        self._IsTruncated = IsTruncated
+
+    @property
+    def NextMarker(self):
+        r"""仅当响应条目有截断（IsTruncated 为 true）才会返回该节点，该节点的值为当前响应条目中的最后一个对象键，当需要继续请求后续条目时，将该节点的值作为下一次请求的 marker 参数传入。
+        :rtype: str
+        """
+        return self._NextMarker
+
+    @NextMarker.setter
+    def NextMarker(self, NextMarker):
+        self._NextMarker = NextMarker
+
+    @property
+    def CommonPrefixes(self):
+        r"""从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分，定义为 Common Prefix。仅当请求中指定了 delimiter 参数才有可能返回该节点。
+        :rtype: list of str
+        """
+        return self._CommonPrefixes
+
+    @CommonPrefixes.setter
+    def CommonPrefixes(self, CommonPrefixes):
+        self._CommonPrefixes = CommonPrefixes
+
+    @property
+    def Contents(self):
+        r"""对象条目。
+        :rtype: list of FileContent
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsTruncated = params.get("IsTruncated")
+        self._NextMarker = params.get("NextMarker")
+        self._CommonPrefixes = params.get("CommonPrefixes")
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = FileContent()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class LiveRealTimeClipMediaSegmentInfo(AbstractModel):
     r"""即时剪辑后媒体的片段信息。
 
@@ -47129,6 +47610,8 @@ class MediaBasicInfo(AbstractModel):
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
         :param _StorageRegion: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
         :type StorageRegion: str
+        :param _StoragePath: 媒体的存储路径。
+        :type StoragePath: str
         :param _TagSet: 媒体文件的标签信息。
         :type TagSet: list of str
         :param _Vid: 直播录制文件的唯一标识。
@@ -47160,6 +47643,7 @@ class MediaBasicInfo(AbstractModel):
         self._MediaUrl = None
         self._SourceInfo = None
         self._StorageRegion = None
+        self._StoragePath = None
         self._TagSet = None
         self._Vid = None
         self._Category = None
@@ -47311,6 +47795,17 @@ class MediaBasicInfo(AbstractModel):
         self._StorageRegion = StorageRegion
 
     @property
+    def StoragePath(self):
+        r"""媒体的存储路径。
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
     def TagSet(self):
         r"""媒体文件的标签信息。
         :rtype: list of str
@@ -47389,6 +47884,7 @@ class MediaBasicInfo(AbstractModel):
             self._SourceInfo = MediaSourceData()
             self._SourceInfo._deserialize(params.get("SourceInfo"))
         self._StorageRegion = params.get("StorageRegion")
+        self._StoragePath = params.get("StoragePath")
         self._TagSet = params.get("TagSet")
         self._Vid = params.get("Vid")
         self._Category = params.get("Category")
@@ -61896,10 +62392,14 @@ class ProcessMediaByProcedureRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 媒体文件 ID。
-        :type FileId: str
         :param _ProcedureName: [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
         :type ProcedureName: str
+        :param _FileId: 媒体文件 ID。
+FileId和MediaStoragePath必须提供其中一个。
+        :type FileId: str
+        :param _MediaStoragePath: 媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
@@ -61913,25 +62413,15 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :param _ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
         """
-        self._FileId = None
         self._ProcedureName = None
+        self._FileId = None
+        self._MediaStoragePath = None
         self._SubAppId = None
         self._TasksPriority = None
         self._TasksNotifyMode = None
         self._SessionContext = None
         self._SessionId = None
         self._ExtInfo = None
-
-    @property
-    def FileId(self):
-        r"""媒体文件 ID。
-        :rtype: str
-        """
-        return self._FileId
-
-    @FileId.setter
-    def FileId(self, FileId):
-        self._FileId = FileId
 
     @property
     def ProcedureName(self):
@@ -61943,6 +62433,30 @@ class ProcessMediaByProcedureRequest(AbstractModel):
     @ProcedureName.setter
     def ProcedureName(self, ProcedureName):
         self._ProcedureName = ProcedureName
+
+    @property
+    def FileId(self):
+        r"""媒体文件 ID。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MediaStoragePath(self):
+        r"""媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
 
     @property
     def SubAppId(self):
@@ -62012,8 +62526,9 @@ class ProcessMediaByProcedureRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._FileId = params.get("FileId")
         self._ProcedureName = params.get("ProcedureName")
+        self._FileId = params.get("FileId")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         self._SubAppId = params.get("SubAppId")
         self._TasksPriority = params.get("TasksPriority")
         self._TasksNotifyMode = params.get("TasksNotifyMode")
@@ -62320,7 +62835,11 @@ class ProcessMediaRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+FileId和MediaStoragePath必须提供其中一个。
         :type FileId: str
+        :param _MediaStoragePath: 媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _MediaProcessTask: 视频处理类型任务参数。
@@ -62344,6 +62863,7 @@ class ProcessMediaRequest(AbstractModel):
         :type ExtInfo: str
         """
         self._FileId = None
+        self._MediaStoragePath = None
         self._SubAppId = None
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
@@ -62358,6 +62878,7 @@ class ProcessMediaRequest(AbstractModel):
     @property
     def FileId(self):
         r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+FileId和MediaStoragePath必须提供其中一个。
         :rtype: str
         """
         return self._FileId
@@ -62365,6 +62886,18 @@ class ProcessMediaRequest(AbstractModel):
     @FileId.setter
     def FileId(self, FileId):
         self._FileId = FileId
+
+    @property
+    def MediaStoragePath(self):
+        r"""媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
 
     @property
     def SubAppId(self):
@@ -62480,6 +63013,7 @@ class ProcessMediaRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         self._SubAppId = params.get("SubAppId")
         if params.get("MediaProcessTask") is not None:
             self._MediaProcessTask = MediaProcessTaskInput()
@@ -63645,6 +64179,8 @@ class PullUploadRequest(AbstractModel):
         :type ExtInfo: str
         :param _SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
         :type SourceContext: str
+        :param _MediaStoragePath: 媒体存储路径，以/开头。
+        :type MediaStoragePath: str
         """
         self._MediaUrl = None
         self._MediaType = None
@@ -63660,6 +64196,7 @@ class PullUploadRequest(AbstractModel):
         self._SessionId = None
         self._ExtInfo = None
         self._SourceContext = None
+        self._MediaStoragePath = None
 
     @property
     def MediaUrl(self):
@@ -63819,6 +64356,17 @@ class PullUploadRequest(AbstractModel):
     def SourceContext(self, SourceContext):
         self._SourceContext = SourceContext
 
+    @property
+    def MediaStoragePath(self):
+        r"""媒体存储路径，以/开头。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
+
 
     def _deserialize(self, params):
         self._MediaUrl = params.get("MediaUrl")
@@ -63835,6 +64383,7 @@ class PullUploadRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._ExtInfo = params.get("ExtInfo")
         self._SourceContext = params.get("SourceContext")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70508,28 +71057,22 @@ class ReviewImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
-        :type FileId: str
         :param _Definition: 图片审核模板 ID，取值范围：
 <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
         :type Definition: int
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+FileId和MediaStoragePath必须提供其中一个。
+        :type FileId: str
+        :param _MediaStoragePath: 媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
-        self._FileId = None
         self._Definition = None
+        self._FileId = None
+        self._MediaStoragePath = None
         self._SubAppId = None
-
-    @property
-    def FileId(self):
-        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
-        :rtype: str
-        """
-        return self._FileId
-
-    @FileId.setter
-    def FileId(self, FileId):
-        self._FileId = FileId
 
     @property
     def Definition(self):
@@ -70544,6 +71087,30 @@ class ReviewImageRequest(AbstractModel):
         self._Definition = Definition
 
     @property
+    def FileId(self):
+        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MediaStoragePath(self):
+        r"""媒体的存储路径。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
+
+    @property
     def SubAppId(self):
         r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :rtype: int
@@ -70556,8 +71123,9 @@ class ReviewImageRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._FileId = params.get("FileId")
         self._Definition = params.get("Definition")
+        self._FileId = params.get("FileId")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -76620,6 +77188,15 @@ class SubAppIdInfo(AbstractModel):
         :type Status: str
         :param _Name: 子应用名称（该字段已不推荐使用，建议使用新的子应用名称字段 SubAppIdName）。
         :type Name: str
+        :param _Mode: 此应用的模式，可选值为：
+- fileid：仅FileID模式
+- - fileid+path：FileID & Path模式
+留空时默认选择仅FileID模式
+        :type Mode: str
+        :param _StorageRegions: 子应用已启用的存储地域。
+        :type StorageRegions: list of str
+        :param _Tags: 子应用绑定的tag。
+        :type Tags: list of ResourceTag
         """
         self._SubAppId = None
         self._SubAppIdName = None
@@ -76627,6 +77204,9 @@ class SubAppIdInfo(AbstractModel):
         self._CreateTime = None
         self._Status = None
         self._Name = None
+        self._Mode = None
+        self._StorageRegions = None
+        self._Tags = None
 
     @property
     def SubAppId(self):
@@ -76698,6 +77278,42 @@ class SubAppIdInfo(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Mode(self):
+        r"""此应用的模式，可选值为：
+- fileid：仅FileID模式
+- - fileid+path：FileID & Path模式
+留空时默认选择仅FileID模式
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def StorageRegions(self):
+        r"""子应用已启用的存储地域。
+        :rtype: list of str
+        """
+        return self._StorageRegions
+
+    @StorageRegions.setter
+    def StorageRegions(self, StorageRegions):
+        self._StorageRegions = StorageRegions
+
+    @property
+    def Tags(self):
+        r"""子应用绑定的tag。
+        :rtype: list of ResourceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -76706,6 +77322,14 @@ class SubAppIdInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Status = params.get("Status")
         self._Name = params.get("Name")
+        self._Mode = params.get("Mode")
+        self._StorageRegions = params.get("StorageRegions")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

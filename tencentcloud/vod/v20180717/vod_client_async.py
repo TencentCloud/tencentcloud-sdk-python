@@ -2624,6 +2624,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListFiles(
+            self,
+            request: models.ListFilesRequest,
+            opts: Dict = None,
+    ) -> models.ListFilesResponse:
+        """
+        用于列出子应用下存储的文件条目。
+
+        **此API只在“FileID+Path模式”下可用**
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def LiveRealTimeClip(
             self,
             request: models.LiveRealTimeClipRequest,
