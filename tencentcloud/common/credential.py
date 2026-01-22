@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import json
+import logging
 import os
 import time
 import threading
@@ -33,6 +34,9 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.common.common_client import CommonClient
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
+
+
+logger = logging.getLogger("tencentcloud_sdk_common")
 
 
 class Credential(object):
@@ -71,7 +75,7 @@ class Credential(object):
     @property
     def secretKey(self):
         return self.secret_key
-    
+
     def get_credential_info(self):
         return self.secret_id, self.secret_key, self.token
 
@@ -158,7 +162,7 @@ class CVMRoleCredential(object):
             self._token = j["Token"]
             self._expired_ts = j["ExpiredTime"]
         except Exception as e:
-            # we shoud log it
+            logger.debug("fail to update credential because %s", e)
             # maybe we should validate token to None as well
             pass
 
@@ -244,7 +248,7 @@ class STSAssumeRoleCredential(object):
         with self._lock:
             self._need_refresh()
             return self._token
-    
+
     def get_credential_info(self):
         with self._lock:
             self._need_refresh()
@@ -460,7 +464,7 @@ class OIDCRoleArnCredential(object):
         with self._lock:
             self._keep_fresh()
             return self._token
-        
+
     def get_credential_info(self):
         with self._lock:
             self._keep_fresh()
@@ -469,7 +473,7 @@ class OIDCRoleArnCredential(object):
     @property
     def endpoint(self):
         return self._endpoint
-    
+
     @endpoint.setter
     def endpoint(self, endpoint):
         self._endpoint = endpoint
@@ -481,12 +485,12 @@ class OIDCRoleArnCredential(object):
     def refresh(self):
         if self._is_tke:
             self._init_from_tke()
-            
+
         http_profile = HttpProfile()
         http_profile.endpoint = self._endpoint
         client_profile = ClientProfile()
         client_profile.httpProfile = http_profile
-        
+
         common_client = CommonClient(credential=None, region=self._region, version=self._version, 
                                      service=self._service, profile=client_profile)
         params = {
