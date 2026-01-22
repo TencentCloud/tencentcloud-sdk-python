@@ -1026,13 +1026,13 @@ class AttachPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetId: 绑定策略目标ID。成员Uin或部门ID
+        :param _TargetId: <p>绑定策略目标ID。成员Uin或部门ID</p>
         :type TargetId: int
-        :param _TargetType: 目标类型。取值范围：NODE-部门、MEMBER-成员
+        :param _TargetType: <p>目标类型。取值范围：NODE-部门、MEMBER-成员</p>
         :type TargetType: str
-        :param _PolicyId: 策略ID。
+        :param _PolicyId: <p>策略Id。可以调用<a href="https://cloud.tencent.com/document/product/850/105311">ListPolicies</a>获取</p>
         :type PolicyId: int
-        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :param _Type: <p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :type Type: str
         """
         self._TargetId = None
@@ -1042,7 +1042,7 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def TargetId(self):
-        r"""绑定策略目标ID。成员Uin或部门ID
+        r"""<p>绑定策略目标ID。成员Uin或部门ID</p>
         :rtype: int
         """
         return self._TargetId
@@ -1053,7 +1053,7 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""目标类型。取值范围：NODE-部门、MEMBER-成员
+        r"""<p>目标类型。取值范围：NODE-部门、MEMBER-成员</p>
         :rtype: str
         """
         return self._TargetType
@@ -1064,7 +1064,7 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""策略ID。
+        r"""<p>策略Id。可以调用<a href="https://cloud.tencent.com/document/product/850/105311">ListPolicies</a>获取</p>
         :rtype: int
         """
         return self._PolicyId
@@ -1075,7 +1075,7 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        r"""<p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :rtype: str
         """
         return self._Type
@@ -8456,13 +8456,13 @@ class DetachPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetId: 解绑策略目标ID。成员Uin或部门ID
+        :param _TargetId: <p>解绑策略目标ID。成员Uin或部门ID</p>
         :type TargetId: int
-        :param _TargetType: 目标类型。取值范围：NODE-部门、MEMBER-成员
+        :param _TargetType: <p>目标类型。取值范围：NODE-部门、MEMBER-成员</p>
         :type TargetType: str
-        :param _PolicyId: 策略ID。
+        :param _PolicyId: <p>策略Id。可以调用<a href="https://cloud.tencent.com/document/product/850/105311">ListPolicies</a>获取</p>
         :type PolicyId: int
-        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :param _Type: <p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :type Type: str
         """
         self._TargetId = None
@@ -8472,7 +8472,7 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def TargetId(self):
-        r"""解绑策略目标ID。成员Uin或部门ID
+        r"""<p>解绑策略目标ID。成员Uin或部门ID</p>
         :rtype: int
         """
         return self._TargetId
@@ -8483,7 +8483,7 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""目标类型。取值范围：NODE-部门、MEMBER-成员
+        r"""<p>目标类型。取值范围：NODE-部门、MEMBER-成员</p>
         :rtype: str
         """
         return self._TargetType
@@ -8494,7 +8494,7 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""策略ID。
+        r"""<p>策略Id。可以调用<a href="https://cloud.tencent.com/document/product/850/105311">ListPolicies</a>获取</p>
         :rtype: int
         """
         return self._PolicyId
@@ -8505,7 +8505,7 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        r"""<p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :rtype: str
         """
         return self._Type

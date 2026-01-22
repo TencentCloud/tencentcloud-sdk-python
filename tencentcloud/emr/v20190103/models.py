@@ -22053,6 +22053,8 @@ class LoadAutoScaleStrategy(AbstractModel):
         :type GroupId: int
         :param _Soft: soft例如yarn
         :type Soft: str
+        :param _GraceDownProtectTime: 任务保护时间
+        :type GraceDownProtectTime: int
         """
         self._StrategyId = None
         self._StrategyName = None
@@ -22077,6 +22079,7 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._LoadMetricsConditions = None
         self._GroupId = None
         self._Soft = None
+        self._GraceDownProtectTime = None
 
     @property
     def StrategyId(self):
@@ -22340,6 +22343,17 @@ class LoadAutoScaleStrategy(AbstractModel):
     def Soft(self, Soft):
         self._Soft = Soft
 
+    @property
+    def GraceDownProtectTime(self):
+        r"""任务保护时间
+        :rtype: int
+        """
+        return self._GraceDownProtectTime
+
+    @GraceDownProtectTime.setter
+    def GraceDownProtectTime(self, GraceDownProtectTime):
+        self._GraceDownProtectTime = GraceDownProtectTime
+
 
     def _deserialize(self, params):
         self._StrategyId = params.get("StrategyId")
@@ -22372,6 +22386,7 @@ class LoadAutoScaleStrategy(AbstractModel):
             self._LoadMetricsConditions._deserialize(params.get("LoadMetricsConditions"))
         self._GroupId = params.get("GroupId")
         self._Soft = params.get("Soft")
+        self._GraceDownProtectTime = params.get("GraceDownProtectTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38358,6 +38373,8 @@ class TimeAutoScaleStrategy(AbstractModel):
         :type GroupId: int
         :param _GraceDownLabel: 优雅缩容业务pod标签，当node不存在上述pod或超过优雅缩容时间时，缩容节点
         :type GraceDownLabel: list of TkeLabel
+        :param _GraceDownProtectTime: 任务保护时间
+        :type GraceDownProtectTime: int
         """
         self._StrategyName = None
         self._IntervalTime = None
@@ -38381,6 +38398,7 @@ class TimeAutoScaleStrategy(AbstractModel):
         self._CompensateFlag = None
         self._GroupId = None
         self._GraceDownLabel = None
+        self._GraceDownProtectTime = None
 
     @property
     def StrategyName(self):
@@ -38632,6 +38650,17 @@ class TimeAutoScaleStrategy(AbstractModel):
     def GraceDownLabel(self, GraceDownLabel):
         self._GraceDownLabel = GraceDownLabel
 
+    @property
+    def GraceDownProtectTime(self):
+        r"""任务保护时间
+        :rtype: int
+        """
+        return self._GraceDownProtectTime
+
+    @GraceDownProtectTime.setter
+    def GraceDownProtectTime(self, GraceDownProtectTime):
+        self._GraceDownProtectTime = GraceDownProtectTime
+
 
     def _deserialize(self, params):
         self._StrategyName = params.get("StrategyName")
@@ -38668,6 +38697,7 @@ class TimeAutoScaleStrategy(AbstractModel):
                 obj = TkeLabel()
                 obj._deserialize(item)
                 self._GraceDownLabel.append(obj)
+        self._GraceDownProtectTime = params.get("GraceDownProtectTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

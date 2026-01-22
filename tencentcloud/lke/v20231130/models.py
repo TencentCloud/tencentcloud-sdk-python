@@ -11193,7 +11193,7 @@ class DescribeDocResponse(AbstractModel):
         :type CosUrl: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功 7-审核中 8-审核失败 9-审核成功 10-待发布 11-发布中 12-已发布 13-学习中 14-学习失败 15-更新中 16-更新失败 17-解析中 18-解析失败 19-导入失败 20-已过期 21-超量失效 22-超量失效恢复
+        :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功 7-审核中 8-审核失败 9-审核成功 10,12-导入完成  13-学习中 14-学习失败 15-更新中 16-更新失败 17-解析中 18-解析失败 19-导入失败 20-已过期 21-超量失效 22-超量失效恢复
         :type Status: int
         :param _StatusDesc: 文档状态描述
         :type StatusDesc: str
@@ -11343,7 +11343,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功 7-审核中 8-审核失败 9-审核成功 10-待发布 11-发布中 12-已发布 13-学习中 14-学习失败 15-更新中 16-更新失败 17-解析中 18-解析失败 19-导入失败 20-已过期 21-超量失效 22-超量失效恢复
+        r"""文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功 7-审核中 8-审核失败 9-审核成功 10,12-导入完成  13-学习中 14-学习失败 15-更新中 16-更新失败 17-解析中 18-解析失败 19-导入失败 20-已过期 21-超量失效 22-超量失效恢复
         :rtype: int
         """
         return self._Status
@@ -12054,7 +12054,7 @@ class DescribeQAResponse(AbstractModel):
         :param _UpdateTime: 更新时间
 
         :type UpdateTime: str
-        :param _Status: 状态 <br>1-未校验  2-未发布 3-发布中 4-已发布  5-发布失败 6-不采纳 7-审核中  8-审核失败  9-审核失败申诉后人工审核中  11-审核失败申诉后人工审核不通过  12-已过期  13-超量失效  14-超量失效恢复 19-学习中  20-学习失败
+        :param _Status: 状态 <br>1-未校验  2,4-导入完成  5-发布失败 6-不采纳 7-审核中  8-审核失败  9-审核失败申诉后人工审核中  11-审核失败申诉后人工审核不通过  12-已过期  13-超量失效  14-超量失效恢复 19-学习中  20-学习失败
         :type Status: int
         :param _StatusDesc: 状态描述
 
@@ -12245,7 +12245,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 <br>1-未校验  2-未发布 3-发布中 4-已发布  5-发布失败 6-不采纳 7-审核中  8-审核失败  9-审核失败申诉后人工审核中  11-审核失败申诉后人工审核不通过  12-已过期  13-超量失效  14-超量失效恢复 19-学习中  20-学习失败
+        r"""状态 <br>1-未校验  2,4-导入完成  5-发布失败 6-不采纳 7-审核中  8-审核失败  9-审核失败申诉后人工审核中  11-审核失败申诉后人工审核不通过  12-已过期  13-超量失效  14-超量失效恢复 19-学习中  20-学习失败
         :rtype: int
         """
         return self._Status
@@ -22503,11 +22503,11 @@ class ListDocRequest(AbstractModel):
 
 输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
         :type Query: str
-        :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+        :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
         :type Status: list of int
         :param _QueryType: 查询类型 filename 文档、 attribute 标签
         :type QueryType: str
-        :param _CateBizId: 分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
+        :param _CateBizId: 分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
         :type CateBizId: str
         :param _FileTypes: 文件类型分类筛选
         :type FileTypes: list of str
@@ -22515,7 +22515,8 @@ class ListDocRequest(AbstractModel):
         :type FilterFlag: list of DocFilterFlag
         :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
         :type ShowCurrCate: int
-        :param _EnableScope: 文档生效域；不检索默认为0
+        :param _EnableScope: 文档生效域；不检索默认为0。检索枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
         :type EnableScope: int
         """
         self._BotBizId = None
@@ -22578,7 +22579,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+        r"""文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
         :rtype: list of int
         """
         return self._Status
@@ -22600,7 +22601,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        r"""分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
+        r"""分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
         :rtype: str
         """
         return self._CateBizId
@@ -22644,7 +22645,8 @@ class ListDocRequest(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""文档生效域；不检索默认为0
+        r"""文档生效域；不检索默认为0。检索枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
         :rtype: int
         """
         return self._EnableScope
@@ -23070,7 +23072,7 @@ class ListQARequest(AbstractModel):
         :param _AcceptStatus: 校验状态(1未校验2采纳3不采纳)
 如果不填默认值为空数组，表示不筛选，返回所有状态
         :type AcceptStatus: list of int
-        :param _ReleaseStatus: 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+        :param _ReleaseStatus: 发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
 如果不填默认值为空数组，表示不筛选返回所有状态
         :type ReleaseStatus: list of int
         :param _DocBizId: 文档ID
@@ -23089,7 +23091,8 @@ class ListQARequest(AbstractModel):
         :type QueryType: str
         :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
         :type ShowCurrCate: int
-        :param _EnableScope: // 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        :param _EnableScope: 问答生效域检索，不检索不传。枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
         :type EnableScope: int
         """
         self._BotBizId = None
@@ -23168,7 +23171,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+        r"""发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
 如果不填默认值为空数组，表示不筛选返回所有状态
         :rtype: list of int
         """
@@ -23259,7 +23262,8 @@ class ListQARequest(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""// 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+        r"""问答生效域检索，不检索不传。枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
         :rtype: int
         """
         return self._EnableScope

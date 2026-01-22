@@ -1244,6 +1244,7 @@ class AutoCalloutTaskInfo(AbstractModel):
 2 已完成：任务中所有呼叫完成
 3结束中：任务到期，但仍有部分呼叫未结束
 4已结束：任务到期终止
+5已暂停：可恢复继续执行
         :type State: int
         :param _TaskId: 任务Id
         :type TaskId: int
@@ -1335,6 +1336,7 @@ class AutoCalloutTaskInfo(AbstractModel):
 2 已完成：任务中所有呼叫完成
 3结束中：任务到期，但仍有部分呼叫未结束
 4已结束：任务到期终止
+5已暂停：可恢复继续执行
         :rtype: int
         """
         return self._State
@@ -7829,7 +7831,7 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
         :type Callees: list of AutoCalloutTaskCalleeInfo
         :param _IvrId: 任务使用的IvrId
         :type IvrId: int
-        :param _State: 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+        :param _State: 任务状态 0初始 1运行中 2已完成 3结束中 4已终止 5已暂停
         :type State: int
         :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
         :type MaxRingTimeoutSecond: int
@@ -7927,7 +7929,7 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def State(self):
-        r"""任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+        r"""任务状态 0初始 1运行中 2已完成 3结束中 4已终止 5已暂停
         :rtype: int
         """
         return self._State

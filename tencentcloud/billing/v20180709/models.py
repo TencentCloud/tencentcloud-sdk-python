@@ -15232,6 +15232,267 @@ class CreateGatherRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInstanceRequest(AbstractModel):
+    r"""CreateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientToken: ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :type ClientToken: str
+        :param _ProductCode: 产品一层code
+        :type ProductCode: str
+        :param _SubProductCode: 产品二层code
+        :type SubProductCode: str
+        :param _RegionCode: 地域code
+        :type RegionCode: str
+        :param _ZoneCode: 可用区code
+        :type ZoneCode: str
+        :param _PayMode: 付费类型，取值：  PrePay：预付费
+        :type PayMode: str
+        :param _Parameter: 商品详情信息
+        :type Parameter: str
+        :param _Quantity: 商品数量，默认取值1
+        :type Quantity: int
+        :param _ProjectId: 项目id，默认取0
+        :type ProjectId: int
+        :param _Period: 新购时长，取值上限：36，默认取值1
+        :type Period: int
+        :param _PeriodUnit: 新购时长单位，取值：m：按月购买，y：按年购买，默认取值m
+        :type PeriodUnit: str
+        :param _RenewFlag: 自动续费标识，取值：NOTIFY_AND_MANUAL_RENEW：手动续费，NOTIFY_AND_AUTO_RENEW：自动续费，DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续，默认取值NOTIFY_AND_MANUAL_RENEW
+        :type RenewFlag: str
+        """
+        self._ClientToken = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._RegionCode = None
+        self._ZoneCode = None
+        self._PayMode = None
+        self._Parameter = None
+        self._Quantity = None
+        self._ProjectId = None
+        self._Period = None
+        self._PeriodUnit = None
+        self._RenewFlag = None
+
+    @property
+    def ClientToken(self):
+        r"""ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def ProductCode(self):
+        r"""产品一层code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""产品二层code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def RegionCode(self):
+        r"""地域code
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def ZoneCode(self):
+        r"""可用区code
+        :rtype: str
+        """
+        return self._ZoneCode
+
+    @ZoneCode.setter
+    def ZoneCode(self, ZoneCode):
+        self._ZoneCode = ZoneCode
+
+    @property
+    def PayMode(self):
+        r"""付费类型，取值：  PrePay：预付费
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Parameter(self):
+        r"""商品详情信息
+        :rtype: str
+        """
+        return self._Parameter
+
+    @Parameter.setter
+    def Parameter(self, Parameter):
+        self._Parameter = Parameter
+
+    @property
+    def Quantity(self):
+        r"""商品数量，默认取值1
+        :rtype: int
+        """
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def ProjectId(self):
+        r"""项目id，默认取0
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Period(self):
+        r"""新购时长，取值上限：36，默认取值1
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def PeriodUnit(self):
+        r"""新购时长单位，取值：m：按月购买，y：按年购买，默认取值m
+        :rtype: str
+        """
+        return self._PeriodUnit
+
+    @PeriodUnit.setter
+    def PeriodUnit(self, PeriodUnit):
+        self._PeriodUnit = PeriodUnit
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识，取值：NOTIFY_AND_MANUAL_RENEW：手动续费，NOTIFY_AND_AUTO_RENEW：自动续费，DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续，默认取值NOTIFY_AND_MANUAL_RENEW
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ClientToken = params.get("ClientToken")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._ZoneCode = params.get("ZoneCode")
+        self._PayMode = params.get("PayMode")
+        self._Parameter = params.get("Parameter")
+        self._Quantity = params.get("Quantity")
+        self._ProjectId = params.get("ProjectId")
+        self._Period = params.get("Period")
+        self._PeriodUnit = params.get("PeriodUnit")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceResponse(AbstractModel):
+    r"""CreateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单号
+        :type OrderId: str
+        :param _InstanceIdList: 实例列表，商品发货延迟可能返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._InstanceIdList = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        r"""订单号
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def InstanceIdList(self):
+        r"""实例列表，商品发货延迟可能返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._RequestId = params.get("RequestId")
+
+
 class DataForBudgetInfoPage(AbstractModel):
     r"""获取预算管理的基础信息分页数据
 
@@ -24228,7 +24489,7 @@ project =项目
 payerUin=支付者账号
 ownerUin=使用者账号
         :type Dimensions: str
-        :param _FeeType: 费用类型：cost-总费用，totalCost-原价费用
+        :param _FeeType: 费用类型：cost-折后总费用，totalCost-原价费用
         :type FeeType: str
         :param _PageSize: 数量，每页最大值为100
         :type PageSize: int
@@ -24323,7 +24584,7 @@ ownerUin=使用者账号
 
     @property
     def FeeType(self):
-        r"""费用类型：cost-总费用，totalCost-原价费用
+        r"""费用类型：cost-折后总费用，totalCost-原价费用
         :rtype: str
         """
         return self._FeeType
@@ -30781,6 +31042,145 @@ class ProjectSummaryOverviewItem(AbstractModel):
         
 
 
+class RefundInstanceRequest(AbstractModel):
+    r"""RefundInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientToken: ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :type ClientToken: str
+        :param _ProductCode: 产品一层code
+        :type ProductCode: str
+        :param _SubProductCode: 产品二层code
+        :type SubProductCode: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _RegionCode: 地域code
+        :type RegionCode: str
+        """
+        self._ClientToken = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._InstanceId = None
+        self._RegionCode = None
+
+    @property
+    def ClientToken(self):
+        r"""ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def ProductCode(self):
+        r"""产品一层code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""产品二层code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RegionCode(self):
+        r"""地域code
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+
+    def _deserialize(self, params):
+        self._ClientToken = params.get("ClientToken")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._InstanceId = params.get("InstanceId")
+        self._RegionCode = params.get("RegionCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundInstanceResponse(AbstractModel):
+    r"""RefundInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderIdList: 订单号列表
+        :type OrderIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderIdList = None
+        self._RequestId = None
+
+    @property
+    def OrderIdList(self):
+        r"""订单号列表
+        :rtype: list of str
+        """
+        return self._OrderIdList
+
+    @OrderIdList.setter
+    def OrderIdList(self, OrderIdList):
+        self._OrderIdList = OrderIdList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderIdList = params.get("OrderIdList")
+        self._RequestId = params.get("RequestId")
+
+
 class RegionSummaryOverviewItem(AbstractModel):
     r"""按地域汇总消费详情
 
@@ -30950,6 +31350,175 @@ class RegionSummaryOverviewItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewInstanceRequest(AbstractModel):
+    r"""RenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientToken: ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :type ClientToken: str
+        :param _ProductCode: 产品一层code
+        :type ProductCode: str
+        :param _SubProductCode: 产品二层code
+        :type SubProductCode: str
+        :param _RegionCode: 地域code
+        :type RegionCode: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Period: 手动续费时长，取值上限：36，默认取值1
+        :type Period: int
+        :param _PeriodUnit: 手动续费时长单位，取值：m：按月续费，y：按年续费，默认取值m
+        :type PeriodUnit: str
+        """
+        self._ClientToken = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._RegionCode = None
+        self._InstanceId = None
+        self._Period = None
+        self._PeriodUnit = None
+
+    @property
+    def ClientToken(self):
+        r"""ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def ProductCode(self):
+        r"""产品一层code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""产品二层code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def RegionCode(self):
+        r"""地域code
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Period(self):
+        r"""手动续费时长，取值上限：36，默认取值1
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def PeriodUnit(self):
+        r"""手动续费时长单位，取值：m：按月续费，y：按年续费，默认取值m
+        :rtype: str
+        """
+        return self._PeriodUnit
+
+    @PeriodUnit.setter
+    def PeriodUnit(self, PeriodUnit):
+        self._PeriodUnit = PeriodUnit
+
+
+    def _deserialize(self, params):
+        self._ClientToken = params.get("ClientToken")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._InstanceId = params.get("InstanceId")
+        self._Period = params.get("Period")
+        self._PeriodUnit = params.get("PeriodUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewInstanceResponse(AbstractModel):
+    r"""RenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderIdList: 订单号列表
+        :type OrderIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderIdList = None
+        self._RequestId = None
+
+    @property
+    def OrderIdList(self):
+        r"""订单号列表
+        :rtype: list of str
+        """
+        return self._OrderIdList
+
+    @OrderIdList.setter
+    def OrderIdList(self, OrderIdList):
+        self._OrderIdList = OrderIdList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderIdList = params.get("OrderIdList")
+        self._RequestId = params.get("RequestId")
 
 
 class SummaryDetail(AbstractModel):

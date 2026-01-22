@@ -21178,27 +21178,19 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PushDomain: 推流域名。
+        :param _PushDomain: <p>推流域名。</p>
         :type PushDomain: str
-        :param _StreamName: 流名称。
+        :param _StreamName: <p>流名称。</p>
         :type StreamName: str
-        :param _DayTime: 查询时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内某天的详细数据，截止到昨天。
+        :param _DayTime: <p>查询时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内某天的详细数据，截止到昨天。</p>
         :type DayTime: str
-        :param _PageNum: 页数，默认1，
-不超过100页。
+        :param _PageNum: <p>页数，默认1，<br>不超过100页。</p>
         :type PageNum: int
-        :param _PageSize: 每页个数，默认20，
-范围：[10,1000]。
+        :param _PageSize: <p>每页个数，默认20，<br>范围：[10,1000]。</p>
         :type PageSize: int
-        :param _StartDayTime: 起始天时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内的详细数据。
+        :param _StartDayTime: <p>起始天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据。</p>
         :type StartDayTime: str
-        :param _EndDayTime: 结束天时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+        :param _EndDayTime: <p>结束天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。</p>
         :type EndDayTime: str
         """
         self._PushDomain = None
@@ -21211,7 +21203,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PushDomain(self):
-        r"""推流域名。
+        r"""<p>推流域名。</p>
         :rtype: str
         """
         return self._PushDomain
@@ -21222,7 +21214,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        r"""流名称。
+        r"""<p>流名称。</p>
         :rtype: str
         """
         return self._StreamName
@@ -21233,9 +21225,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def DayTime(self):
-        r"""查询时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内某天的详细数据，截止到昨天。
+        r"""<p>查询时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内某天的详细数据，截止到昨天。</p>
         :rtype: str
         """
         return self._DayTime
@@ -21246,8 +21236,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""页数，默认1，
-不超过100页。
+        r"""<p>页数，默认1，<br>不超过100页。</p>
         :rtype: int
         """
         return self._PageNum
@@ -21258,8 +21247,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页个数，默认20，
-范围：[10,1000]。
+        r"""<p>每页个数，默认20，<br>范围：[10,1000]。</p>
         :rtype: int
         """
         return self._PageSize
@@ -21270,9 +21258,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def StartDayTime(self):
-        r"""起始天时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内的详细数据。
+        r"""<p>起始天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据。</p>
         :rtype: str
         """
         return self._StartDayTime
@@ -21283,9 +21269,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     @property
     def EndDayTime(self):
-        r"""结束天时间，北京时间，
-格式：yyyymmdd。
-注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+        r"""<p>结束天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。</p>
         :rtype: str
         """
         return self._EndDayTime
@@ -21320,15 +21304,15 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataInfoList: 统计数据列表。
+        :param _DataInfoList: <p>统计数据列表。</p>
         :type DataInfoList: list of TranscodeDetailInfo
-        :param _PageNum: 页码。
+        :param _PageNum: <p>页码。</p>
         :type PageNum: int
-        :param _PageSize: 每页个数。
+        :param _PageSize: <p>每页个数。</p>
         :type PageSize: int
-        :param _TotalNum: 总个数。
+        :param _TotalNum: <p>总个数。</p>
         :type TotalNum: int
-        :param _TotalPage: 总页数。
+        :param _TotalPage: <p>总页数。</p>
         :type TotalPage: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21342,7 +21326,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        r"""统计数据列表。
+        r"""<p>统计数据列表。</p>
         :rtype: list of TranscodeDetailInfo
         """
         return self._DataInfoList
@@ -21353,7 +21337,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""页码。
+        r"""<p>页码。</p>
         :rtype: int
         """
         return self._PageNum
@@ -21364,7 +21348,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页个数。
+        r"""<p>每页个数。</p>
         :rtype: int
         """
         return self._PageSize
@@ -21375,7 +21359,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""总个数。
+        r"""<p>总个数。</p>
         :rtype: int
         """
         return self._TotalNum
@@ -21386,7 +21370,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        r"""总页数。
+        r"""<p>总页数。</p>
         :rtype: int
         """
         return self._TotalPage

@@ -1783,11 +1783,11 @@ class CreateCloudModerationRequest(AbstractModel):
         :type RoomId: str
         :param _UserId: 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
         :type UserId: str
-        :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
-        :type UserSig: str
         :param _ModerationParams: 云端审核控制参数。
         :type ModerationParams: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
-        :param _ModerationStorageParams: 云端审核文件上传到云存储的参数
+        :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :type UserSig: str
+        :param _ModerationStorageParams: 云端审核文件上传到云存储的参数。
         :type ModerationStorageParams: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
         :param _RoomIdType: TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
         :type RoomIdType: int
@@ -1797,8 +1797,8 @@ class CreateCloudModerationRequest(AbstractModel):
         self._SdkAppId = None
         self._RoomId = None
         self._UserId = None
-        self._UserSig = None
         self._ModerationParams = None
+        self._UserSig = None
         self._ModerationStorageParams = None
         self._RoomIdType = None
         self._ResourceExpiredHour = None
@@ -1837,17 +1837,6 @@ class CreateCloudModerationRequest(AbstractModel):
         self._UserId = UserId
 
     @property
-    def UserSig(self):
-        r"""机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
-        :rtype: str
-        """
-        return self._UserSig
-
-    @UserSig.setter
-    def UserSig(self, UserSig):
-        self._UserSig = UserSig
-
-    @property
     def ModerationParams(self):
         r"""云端审核控制参数。
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
@@ -1859,8 +1848,19 @@ class CreateCloudModerationRequest(AbstractModel):
         self._ModerationParams = ModerationParams
 
     @property
+    def UserSig(self):
+        r"""机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
     def ModerationStorageParams(self):
-        r"""云端审核文件上传到云存储的参数
+        r"""云端审核文件上传到云存储的参数。
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
         """
         return self._ModerationStorageParams
@@ -1896,10 +1896,10 @@ class CreateCloudModerationRequest(AbstractModel):
         self._SdkAppId = params.get("SdkAppId")
         self._RoomId = params.get("RoomId")
         self._UserId = params.get("UserId")
-        self._UserSig = params.get("UserSig")
         if params.get("ModerationParams") is not None:
             self._ModerationParams = ModerationParams()
             self._ModerationParams._deserialize(params.get("ModerationParams"))
+        self._UserSig = params.get("UserSig")
         if params.get("ModerationStorageParams") is not None:
             self._ModerationStorageParams = ModerationStorageParams()
             self._ModerationStorageParams._deserialize(params.get("ModerationStorageParams"))

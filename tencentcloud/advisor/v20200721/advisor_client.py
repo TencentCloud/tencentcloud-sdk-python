@@ -26,6 +26,29 @@ class AdvisorClient(AbstractClient):
     _service = 'advisor'
 
 
+    def CreateAdvisorAuthorization(self, request):
+        r"""开启智能顾问授权。会同步开启报告解读和云架构协作权限
+
+        :param request: Request instance for CreateAdvisorAuthorization.
+        :type request: :class:`tencentcloud.advisor.v20200721.models.CreateAdvisorAuthorizationRequest`
+        :rtype: :class:`tencentcloud.advisor.v20200721.models.CreateAdvisorAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAdvisorAuthorization", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAdvisorAuthorizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStrategies(self, request):
         r"""用于查询评估项的信息
 

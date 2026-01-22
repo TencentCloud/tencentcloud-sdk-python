@@ -141,6 +141,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInstance(self, request):
+        r"""创建一个实例资源，会创建一个新购实例资源的订单，并通过腾讯云账户余额自动支付。调用该接口的账号需要授予finace:trade的权限，否则无法支付成功。目前已接入并支持购买的产品包括：T-Sec-Web应用防火墙、云防火墙、主机安全、主机容器、云安全中心、T-Sec-密钥管理系统。
+
+        :param request: Request instance for CreateInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAllocationRule(self, request):
         r"""公摊规则删除接口
 
@@ -1473,6 +1496,52 @@ class BillingClient(AbstractClient):
             body = self.call("PayDeals", params, headers=headers)
             response = json.loads(body)
             model = models.PayDealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefundInstance(self, request):
+        r"""退订不再需要的实例，只退还实付金额的部分，已使用的代金券不退还，退还的实付金额默认退到腾讯云账户余额中。调用该接口的账号需要授予finace:RefundInstance的权限，否则无法支付成功。目前已接入并支持退订的产品包括：T-Sec-Web应用防火墙、云防火墙、主机安全、主机容器、云安全中心、T-Sec-密钥管理系统。
+
+        :param request: Request instance for RefundInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.RefundInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.RefundInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefundInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefundInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewInstance(self, request):
+        r"""续费一台实例，调用该接口续费服务器时，您需要确保您的腾讯云账户余额充足，否则会续费失败。调用该接口的账号需要授予finace:trade的权限，否则无法续费成功。目前已接入并支持续费的产品包括：T-Sec-Web应用防火墙、云防火墙、主机安全、主机容器、云安全中心、T-Sec-密钥管理系统。
+
+        :param request: Request instance for RenewInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.RenewInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.RenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

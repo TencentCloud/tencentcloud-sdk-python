@@ -36666,11 +36666,17 @@ class DescribeSubnetsRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _MaxResults: 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :type MaxResults: int
+        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         """
         self._SubnetIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._MaxResults = None
+        self._NextToken = None
 
     @property
     def SubnetIds(self):
@@ -36730,6 +36736,28 @@ class DescribeSubnetsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def MaxResults(self):
+        r"""每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
 
     def _deserialize(self, params):
         self._SubnetIds = params.get("SubnetIds")
@@ -36741,6 +36769,8 @@ class DescribeSubnetsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36762,11 +36792,14 @@ class DescribeSubnetsResponse(AbstractModel):
         :type TotalCount: int
         :param _SubnetSet: 子网对象。
         :type SubnetSet: list of Subnet
+        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :type NextToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._SubnetSet = None
+        self._NextToken = None
         self._RequestId = None
 
     @property
@@ -36792,6 +36825,17 @@ class DescribeSubnetsResponse(AbstractModel):
         self._SubnetSet = SubnetSet
 
     @property
+    def NextToken(self):
+        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -36811,6 +36855,7 @@ class DescribeSubnetsResponse(AbstractModel):
                 obj = Subnet()
                 obj._deserialize(item)
                 self._SubnetSet.append(obj)
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 

@@ -99,6 +99,55 @@ class Conditions(AbstractModel):
         
 
 
+class CreateAdvisorAuthorizationRequest(AbstractModel):
+    r"""CreateAdvisorAuthorization请求参数结构体
+
+    """
+
+
+class CreateAdvisorAuthorizationResponse(AbstractModel):
+    r"""CreateAdvisorAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 返回信息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        r"""返回信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeStrategiesRequest(AbstractModel):
     r"""DescribeStrategies请求参数结构体
 

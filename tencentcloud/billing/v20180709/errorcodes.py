@@ -29,11 +29,23 @@ FAILEDOPERATION_AGENTPAYDEALCANNOTDOWN = 'FailedOperation.AgentPayDealCannotDown
 # 账户余额不足。
 FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 
+# 业务侧校验不通过错误码。
+FAILEDOPERATION_BUSINESSCHECKERRCODE = 'FailedOperation.BusinessCheckErrCode'
+
+# 经销场景限制错误
+FAILEDOPERATION_DISTRIBUTEERROR = 'FailedOperation.DistributeError'
+
+# 由于传参数问题，导致询价失败
+FAILEDOPERATION_GETPRICEPARAMERROR = 'FailedOperation.GetPriceParamError'
+
 # appId不符。
 FAILEDOPERATION_INVALIDAPPID = 'FailedOperation.InvalidAppId'
 
 # 订单状态错误，只有未支付订单才能支付。
 FAILEDOPERATION_INVALIDDEAL = 'FailedOperation.InvalidDeal'
+
+# 订单类型ID无效，请重新购买。
+FAILEDOPERATION_INVALIDGOODSCATEGORYID = 'FailedOperation.InvalidGoodsCategoryId'
 
 # 代金券不可用。
 FAILEDOPERATION_INVALIDVOUCHER = 'FailedOperation.InvalidVoucher'
@@ -65,6 +77,9 @@ FAILEDOPERATION_SUMMARYDATANOTREADY = 'FailedOperation.SummaryDataNotReady'
 # 不存在该分账标签键。
 FAILEDOPERATION_TAGKEYNOTEXIST = 'FailedOperation.TagKeyNotExist'
 
+# 用户下单白名单拦截
+FAILEDOPERATION_DEALCREATEWHITELISTERROR = 'FailedOperation.dealCreateWhitelistError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -84,10 +99,16 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 INVALIDPARAMETER = 'InvalidParameter'
 
 # 参数错误
+INVALIDPARAMETER_APIPARAMERROR = 'InvalidParameter.ApiParamError'
+
+# 参数错误
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # 参数校验出错
 INVALIDPARAMETER_PARAMCHECKFAILED = 'InvalidParameter.ParamCheckFailed'
+
+# 资源被锁定。
+INVALIDPARAMETER_RESOURCELOCKED = 'InvalidParameter.ResourceLocked'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -109,3 +130,6 @@ UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 暂不支持该行为
+UNSUPPORTEDOPERATION_NOT_SUPPORT_THIS_ACTION = 'UnsupportedOperation.NOT_SUPPORT_THIS_ACTION'

@@ -25,6 +25,24 @@ class AdvisorClient(AbstractClient):
     _endpoint = 'advisor.tencentcloudapi.com'
     _service = 'advisor'
 
+    async def CreateAdvisorAuthorization(
+            self,
+            request: models.CreateAdvisorAuthorizationRequest,
+            opts: Dict = None,
+    ) -> models.CreateAdvisorAuthorizationResponse:
+        """
+        开启智能顾问授权。会同步开启报告解读和云架构协作权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAdvisorAuthorization"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAdvisorAuthorizationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeStrategies(
             self,
             request: models.DescribeStrategiesRequest,

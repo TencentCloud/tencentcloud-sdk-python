@@ -12761,6 +12761,7 @@ class ApplyUploadRequest(AbstractModel):
         :param _ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
         :param _MediaStoragePath: 媒体存储路径，以/开头。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
         :type MediaStoragePath: str
         """
         self._MediaType = None
@@ -12901,6 +12902,7 @@ class ApplyUploadRequest(AbstractModel):
     @property
     def MediaStoragePath(self):
         r"""媒体存储路径，以/开头。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
         :rtype: str
         """
         return self._MediaStoragePath
@@ -39360,6 +39362,7 @@ class EnhanceMediaQualityRequest(AbstractModel):
         :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
         :type FileId: str
         :param _MediaStoragePath: 媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -39408,6 +39411,7 @@ FileId和MediaStoragePath必须提供其中一个。
     @property
     def MediaStoragePath(self):
         r"""媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :rtype: str
         """
@@ -62398,6 +62402,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
 FileId和MediaStoragePath必须提供其中一个。
         :type FileId: str
         :param _MediaStoragePath: 媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -62449,6 +62454,7 @@ FileId和MediaStoragePath必须提供其中一个。
     @property
     def MediaStoragePath(self):
         r"""媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :rtype: str
         """
@@ -62838,6 +62844,7 @@ class ProcessMediaRequest(AbstractModel):
 FileId和MediaStoragePath必须提供其中一个。
         :type FileId: str
         :param _MediaStoragePath: 媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -62890,6 +62897,7 @@ FileId和MediaStoragePath必须提供其中一个。
     @property
     def MediaStoragePath(self):
         r"""媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :rtype: str
         """
@@ -64180,6 +64188,7 @@ class PullUploadRequest(AbstractModel):
         :param _SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
         :type SourceContext: str
         :param _MediaStoragePath: 媒体存储路径，以/开头。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
         :type MediaStoragePath: str
         """
         self._MediaUrl = None
@@ -64359,6 +64368,7 @@ class PullUploadRequest(AbstractModel):
     @property
     def MediaStoragePath(self):
         r"""媒体存储路径，以/开头。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
         :rtype: str
         """
         return self._MediaStoragePath
@@ -70254,6 +70264,10 @@ class ReviewAudioVideoRequest(AbstractModel):
         r"""
         :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
         :type FileId: str
+        :param _MediaStoragePath: 媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
+FileId和MediaStoragePath必须提供其中一个。
+        :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _ReviewContents: 审核的内容，可选值有：
@@ -70274,6 +70288,7 @@ class ReviewAudioVideoRequest(AbstractModel):
         :type ExtInfo: str
         """
         self._FileId = None
+        self._MediaStoragePath = None
         self._SubAppId = None
         self._ReviewContents = None
         self._Definition = None
@@ -70292,6 +70307,19 @@ class ReviewAudioVideoRequest(AbstractModel):
     @FileId.setter
     def FileId(self, FileId):
         self._FileId = FileId
+
+    @property
+    def MediaStoragePath(self):
+        r"""媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
+FileId和MediaStoragePath必须提供其中一个。
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
 
     @property
     def SubAppId(self):
@@ -70377,6 +70405,7 @@ class ReviewAudioVideoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         self._SubAppId = params.get("SubAppId")
         self._ReviewContents = params.get("ReviewContents")
         self._Definition = params.get("Definition")
@@ -71064,6 +71093,7 @@ class ReviewImageRequest(AbstractModel):
 FileId和MediaStoragePath必须提供其中一个。
         :type FileId: str
         :param _MediaStoragePath: 媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :type MediaStoragePath: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -71101,6 +71131,7 @@ FileId和MediaStoragePath必须提供其中一个。
     @property
     def MediaStoragePath(self):
         r"""媒体的存储路径。
+只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 FileId和MediaStoragePath必须提供其中一个。
         :rtype: str
         """
