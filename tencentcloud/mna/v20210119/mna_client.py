@@ -279,6 +279,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDestIPByName(self, request):
+        r"""统计单个设备访问目标IP地址信息
+
+        :param request: Request instance for GetDestIPByName.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetDestIPByNameRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetDestIPByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDestIPByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDestIPByNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDevice(self, request):
         r"""通过指定设备的ID查找设备详细信息
 
@@ -440,6 +463,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFlowStatisticByName(self, request):
+        r"""获取指定设备Id，指定时间点数据流量使用情况
+
+        :param request: Request instance for GetFlowStatisticByName.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByNameRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowStatisticByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFlowStatisticByNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetFlowStatisticByRegion(self, request):
         r"""获取指定区域，指定时间点数据流量使用情况
 
@@ -555,6 +601,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetMonitorDataByName(self, request):
+        r"""获取单个设备所有监控指标的下载文件链接
+
+        :param request: Request instance for GetMonitorDataByName.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetMonitorDataByNameRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetMonitorDataByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetMonitorDataByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetMonitorDataByNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMultiFlowStatistic(self, request):
         r"""批量获取设备流量统计曲线
 
@@ -601,6 +670,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetNetMonitorByName(self, request):
+        r"""获取单设备的实时流量统计指标
+
+        :param request: Request instance for GetNetMonitorByName.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetNetMonitorByNameRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetNetMonitorByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetNetMonitorByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetNetMonitorByNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetPublicKey(self, request):
         r"""获取公钥用于验签
 
@@ -638,6 +730,29 @@ class MnaClient(AbstractClient):
             body = self.call("GetStatisticData", params, headers=headers)
             response = json.loads(body)
             model = models.GetStatisticDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetStatisticDataByName(self, request):
+        r"""在用量统计页面下载流量数据
+
+        :param request: Request instance for GetStatisticDataByName.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetStatisticDataByNameRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetStatisticDataByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetStatisticDataByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetStatisticDataByNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

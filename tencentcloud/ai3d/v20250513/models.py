@@ -1192,8 +1192,11 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
         r"""
         :param _File: 需进行组件生成的3D模型文件，仅支持FBX格式。
         :type File: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
+        :param _Model: 组件生成模型版本，默认为1.0，可选项：1.0，1.5；
+        :type Model: str
         """
         self._File = None
+        self._Model = None
 
     @property
     def File(self):
@@ -1206,11 +1209,23 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
     def File(self, File):
         self._File = File
 
+    @property
+    def Model(self):
+        r"""组件生成模型版本，默认为1.0，可选项：1.0，1.5；
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
 
     def _deserialize(self, params):
         if params.get("File") is not None:
             self._File = InputFile3D()
             self._File._deserialize(params.get("File"))
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

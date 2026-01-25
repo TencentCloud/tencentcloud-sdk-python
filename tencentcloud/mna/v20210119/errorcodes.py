@@ -23,6 +23,9 @@ INTERNALERROR = 'InternalError'
 # 请求控制器发生错误。
 INTERNALERROR_CONTROLREQUESTERROR = 'InternalError.ControlRequestError'
 
+# cos对象存储请求错误。
+INTERNALERROR_COSREQUESTERROR = 'InternalError.CosRequestError'
+
 # 设备密钥已存在。
 INTERNALERROR_DUPLICATEDATAKEY = 'InternalError.DuplicateDataKey'
 

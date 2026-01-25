@@ -223,6 +223,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetDestIPByName(
+            self,
+            request: models.GetDestIPByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetDestIPByNameResponse:
+        """
+        统计单个设备访问目标IP地址信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDestIPByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDestIPByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetDevice(
             self,
             request: models.GetDeviceRequest,
@@ -349,6 +367,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetFlowStatisticByName(
+            self,
+            request: models.GetFlowStatisticByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowStatisticByNameResponse:
+        """
+        获取指定设备Id，指定时间点数据流量使用情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowStatisticByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowStatisticByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetFlowStatisticByRegion(
             self,
             request: models.GetFlowStatisticByRegionRequest,
@@ -439,6 +475,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetMonitorDataByName(
+            self,
+            request: models.GetMonitorDataByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetMonitorDataByNameResponse:
+        """
+        获取单个设备所有监控指标的下载文件链接
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMonitorDataByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMonitorDataByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetMultiFlowStatistic(
             self,
             request: models.GetMultiFlowStatisticRequest,
@@ -475,6 +529,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetNetMonitorByName(
+            self,
+            request: models.GetNetMonitorByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetNetMonitorByNameResponse:
+        """
+        获取单设备的实时流量统计指标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetNetMonitorByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetNetMonitorByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetPublicKey(
             self,
             request: models.GetPublicKeyRequest,
@@ -506,6 +578,24 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "GetStatisticData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetStatisticDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetStatisticDataByName(
+            self,
+            request: models.GetStatisticDataByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetStatisticDataByNameResponse:
+        """
+        在用量统计页面下载流量数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetStatisticDataByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetStatisticDataByNameResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

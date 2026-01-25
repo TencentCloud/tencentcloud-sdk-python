@@ -10705,21 +10705,11 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :param _FlowId: <p>合同流程ID，为32位字符串。<br>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。<br>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p>
         :type FlowId: str
-        :param _SignId: 签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        :param _SignId: <p>签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。</p>
         :type SignId: str
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         self._FlowId = None
@@ -10728,9 +10718,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        r"""<p>合同流程ID，为32位字符串。<br>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。<br>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p>
         :rtype: str
         """
         return self._FlowId
@@ -10741,7 +10729,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def SignId(self):
-        r"""签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        r"""<p>签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。</p>
         :rtype: str
         """
         return self._SignId
@@ -10752,15 +10740,7 @@ class ChannelDescribeSignFaceVideoRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -10793,11 +10773,11 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoData: 核身视频结果。
+        :param _VideoData: <p>核身视频结果。</p>
         :type VideoData: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
-        :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionQuestionResult: <p>意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。</p>
         :type IntentionQuestionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
-        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionActionResult: <p>意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionActionResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10810,7 +10790,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def VideoData(self):
-        r"""核身视频结果。
+        r"""<p>核身视频结果。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
         """
         return self._VideoData
@@ -10821,7 +10801,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def IntentionQuestionResult(self):
-        r"""意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+        r"""<p>意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
         """
         return self._IntentionQuestionResult
@@ -10832,7 +10812,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
 
     @property
     def IntentionActionResult(self):
-        r"""意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        r"""<p>意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.IntentionActionResult`
         """

@@ -10242,6 +10242,12 @@ class DatabaseInfo(AbstractModel):
         :param _StorageSize: 数据库存储大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageSize: int
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: str
         """
         self._Guid = None
         self._Name = None
@@ -10249,6 +10255,8 @@ class DatabaseInfo(AbstractModel):
         self._Description = None
         self._Location = None
         self._StorageSize = None
+        self._DatasourceId = None
+        self._DatasourceType = None
 
     @property
     def Guid(self):
@@ -10322,6 +10330,30 @@ class DatabaseInfo(AbstractModel):
     def StorageSize(self, StorageSize):
         self._StorageSize = StorageSize
 
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
 
     def _deserialize(self, params):
         self._Guid = params.get("Guid")
@@ -10330,6 +10362,8 @@ class DatabaseInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Location = params.get("Location")
         self._StorageSize = params.get("StorageSize")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21722,7 +21756,7 @@ class ListCatalogRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: 分页大小，最大500
         :type PageSize: int
-        :param _ParentCatalogId: 父目录ID
+        :param _ParentCatalogId: 父目录ID(此参数还未支持)
         :type ParentCatalogId: str
         """
         self._PageNumber = None
@@ -21753,7 +21787,7 @@ class ListCatalogRequest(AbstractModel):
 
     @property
     def ParentCatalogId(self):
-        r"""父目录ID
+        r"""父目录ID(此参数还未支持)
         :rtype: str
         """
         return self._ParentCatalogId
@@ -46773,6 +46807,15 @@ class TableInfo(AbstractModel):
         :param _BusinessMetadata: 表的业务元数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessMetadata: :class:`tencentcloud.wedata.v20250806.models.BusinessMetadata`
+        :param _CatalogName: 数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: str
         """
         self._Guid = None
         self._Name = None
@@ -46784,6 +46827,9 @@ class TableInfo(AbstractModel):
         self._UpdateTime = None
         self._TechnicalMetadata = None
         self._BusinessMetadata = None
+        self._CatalogName = None
+        self._DatasourceId = None
+        self._DatasourceType = None
 
     @property
     def Guid(self):
@@ -46905,6 +46951,42 @@ class TableInfo(AbstractModel):
     def BusinessMetadata(self, BusinessMetadata):
         self._BusinessMetadata = BusinessMetadata
 
+    @property
+    def CatalogName(self):
+        r"""数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
 
     def _deserialize(self, params):
         self._Guid = params.get("Guid")
@@ -46921,6 +47003,9 @@ class TableInfo(AbstractModel):
         if params.get("BusinessMetadata") is not None:
             self._BusinessMetadata = BusinessMetadata()
             self._BusinessMetadata._deserialize(params.get("BusinessMetadata"))
+        self._CatalogName = params.get("CatalogName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

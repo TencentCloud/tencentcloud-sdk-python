@@ -60916,6 +60916,8 @@ class ProcessImageRequest(AbstractModel):
         :type ScheduleId: int
         :param _AddOnParameter: 图片处理附加参数。
         :type AddOnParameter: :class:`tencentcloud.mps.v20190612.models.AddOnParameter`
+        :param _StdExtInfo: 图片处理拓展参数。
+        :type StdExtInfo: str
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -60926,6 +60928,7 @@ class ProcessImageRequest(AbstractModel):
         self._ImageTask = None
         self._ScheduleId = None
         self._AddOnParameter = None
+        self._StdExtInfo = None
 
     @property
     def InputInfo(self):
@@ -61038,6 +61041,17 @@ class ProcessImageRequest(AbstractModel):
     def AddOnParameter(self, AddOnParameter):
         self._AddOnParameter = AddOnParameter
 
+    @property
+    def StdExtInfo(self):
+        r"""图片处理拓展参数。
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -61057,6 +61071,7 @@ class ProcessImageRequest(AbstractModel):
         if params.get("AddOnParameter") is not None:
             self._AddOnParameter = AddOnParameter()
             self._AddOnParameter._deserialize(params.get("AddOnParameter"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

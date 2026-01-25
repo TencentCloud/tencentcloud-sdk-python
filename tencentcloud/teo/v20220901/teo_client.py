@@ -4592,6 +4592,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyZoneWorkMode(self, request):
+        r"""本接口用于修改站点下各配置模块的工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+
+        :param request: Request instance for ModifyZoneWorkMode.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneWorkModeRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyZoneWorkModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyZoneWorkMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyZoneWorkModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RefreshMultiPathGatewaySecretKey(self, request):
         r"""通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
 

@@ -145,17 +145,17 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
+        :param _VpcId: <p>网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。</p>
         :type VpcId: str
-        :param _SubnetId: 网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        :param _SubnetId: <p>网关负载均衡后端目标设备所属的私有网络的子网ID。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :type SubnetId: str
-        :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
+        :param _LoadBalancerName: <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。不填写时默认自动生成。</p>
         :type LoadBalancerName: str
-        :param _Number: 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
+        :param _Number: <p>创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。</p>
         :type Number: int
-        :param _Tags: 购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+        :param _Tags: <p>购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
         :type Tags: list of TagInfo
-        :param _LBChargeType: 网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
+        :param _LBChargeType: <p>网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。</p>
         :type LBChargeType: str
         """
         self._VpcId = None
@@ -167,7 +167,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
+        r"""<p>网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。</p>
         :rtype: str
         """
         return self._VpcId
@@ -178,7 +178,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        r"""<p>网关负载均衡后端目标设备所属的私有网络的子网ID。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -189,7 +189,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        r"""网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
+        r"""<p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。不填写时默认自动生成。</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -200,7 +200,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def Number(self):
-        r"""创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
+        r"""<p>创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。</p>
         :rtype: int
         """
         return self._Number
@@ -211,7 +211,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+        r"""<p>购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -222,7 +222,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LBChargeType(self):
-        r"""网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
+        r"""<p>网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。</p>
         :rtype: str
         """
         return self._LBChargeType
@@ -261,10 +261,9 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 由网关负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
+        :param _LoadBalancerIds: <p>由网关负载均衡实例唯一 ID 组成的数组。<br>存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过<a href="https://cloud.tencent.com/document/api/1782/111700">DescribeTaskStatus</a>接口查询创建的资源ID。</p>
         :type LoadBalancerIds: list of str
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -275,8 +274,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        r"""由网关负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
+        r"""<p>由网关负载均衡实例唯一 ID 组成的数组。<br>存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过<a href="https://cloud.tencent.com/document/api/1782/111700">DescribeTaskStatus</a>接口查询创建的资源ID。</p>
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -287,7 +285,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName
@@ -321,7 +319,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupName: <p>目标组名称，限定60个字符。</p>
+        :param _TargetGroupName: <p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type TargetGroupName: str
         :param _VpcId: <p>网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。 不填此参数则默认为DefaultVPC。</p>
         :type VpcId: str
@@ -329,7 +327,7 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Port: int
         :param _TargetGroupInstances: <p>目标组绑定的后端服务器</p>
         :type TargetGroupInstances: list of TargetGroupInstance
-        :param _Protocol: <p>网关负载均衡目标组协议。- TENCENT_GENEVE ：GENEVE 标准协议- AWS_GENEVE：GENEVE 兼容协议</p>
+        :param _Protocol: <p>网关负载均衡目标组协议。</p><ul><li>TENCENT_GENEVE ：GENEVE 标准协议</li><li>AWS_GENEVE：GENEVE 兼容协议</li></ul>
         :type Protocol: str
         :param _HealthCheck: <p>健康检查设置。</p>
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
@@ -373,7 +371,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""<p>目标组名称，限定60个字符。</p>
+        r"""<p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -417,7 +415,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>网关负载均衡目标组协议。- TENCENT_GENEVE ：GENEVE 标准协议- AWS_GENEVE：GENEVE 兼容协议</p>
+        r"""<p>网关负载均衡目标组协议。</p><ul><li>TENCENT_GENEVE ：GENEVE 标准协议</li><li>AWS_GENEVE：GENEVE 兼容协议</li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -2358,11 +2356,11 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
+        :param _LoadBalancerId: <p>网关负载均衡的唯一ID。可通过<a href="https://cloud.tencent.com/document/api/1782/111683">DescribeGatewayLoadBalancers</a> 接口获取。</p>
         :type LoadBalancerId: str
-        :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。
+        :param _LoadBalancerName: <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type LoadBalancerName: str
-        :param _DeleteProtect: 是否开启删除保护。
+        :param _DeleteProtect: <p>是否开启删除保护。</p>
         :type DeleteProtect: bool
         """
         self._LoadBalancerId = None
@@ -2371,7 +2369,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
+        r"""<p>网关负载均衡的唯一ID。可通过<a href="https://cloud.tencent.com/document/api/1782/111683">DescribeGatewayLoadBalancers</a> 接口获取。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2382,7 +2380,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        r"""网关负载均衡实例名称。可支持输入1-60个字符。
+        r"""<p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -2393,7 +2391,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def DeleteProtect(self):
-        r"""是否开启删除保护。
+        r"""<p>是否开启删除保护。</p>
         :rtype: bool
         """
         return self._DeleteProtect
@@ -2452,25 +2450,25 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+        :param _TargetGroupId: <p>目标组的ID，可以通过<a href="https://cloud.tencent.com/document/product/214/40554">DescribeTargetGroups</a>获取。</p>
         :type TargetGroupId: str
-        :param _TargetGroupName: 目标组的新名称。
+        :param _TargetGroupName: <p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type TargetGroupName: str
-        :param _HealthCheck: 健康检查详情。
+        :param _HealthCheck: <p>健康检查详情。</p>
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
-        :param _AllDeadToAlive: 是否支持全死全活。
+        :param _AllDeadToAlive: <p>是否支持全死全活。</p>
         :type AllDeadToAlive: bool
-        :param _TcpIdleConnectTimeout: TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+        :param _TcpIdleConnectTimeout: <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
         :type TcpIdleConnectTimeout: int
-        :param _OthersIdleConnectTimeout: 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+        :param _OthersIdleConnectTimeout: <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
         :type OthersIdleConnectTimeout: int
-        :param _RescheduleUnbindRs: 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+        :param _RescheduleUnbindRs: <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
         :type RescheduleUnbindRs: bool
-        :param _RescheduleUnbindRsStartTime: 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+        :param _RescheduleUnbindRsStartTime: <p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
         :type RescheduleUnbindRsStartTime: int
-        :param _RescheduleUnhealthy: 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+        :param _RescheduleUnhealthy: <p>重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。</p>
         :type RescheduleUnhealthy: bool
-        :param _RescheduleUnhealthyStartTime: 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+        :param _RescheduleUnhealthyStartTime: <p>后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s</p>
         :type RescheduleUnhealthyStartTime: int
         """
         self._TargetGroupId = None
@@ -2486,7 +2484,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+        r"""<p>目标组的ID，可以通过<a href="https://cloud.tencent.com/document/product/214/40554">DescribeTargetGroups</a>获取。</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -2497,7 +2495,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""目标组的新名称。
+        r"""<p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -2508,7 +2506,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查详情。
+        r"""<p>健康检查详情。</p>
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -2519,7 +2517,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def AllDeadToAlive(self):
-        r"""是否支持全死全活。
+        r"""<p>是否支持全死全活。</p>
         :rtype: bool
         """
         return self._AllDeadToAlive
@@ -2530,7 +2528,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TcpIdleConnectTimeout(self):
-        r"""TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+        r"""<p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
         :rtype: int
         """
         return self._TcpIdleConnectTimeout
@@ -2541,7 +2539,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def OthersIdleConnectTimeout(self):
-        r"""其他协议连接空闲超时时间，可配置5s-180s，默认120s
+        r"""<p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
         :rtype: int
         """
         return self._OthersIdleConnectTimeout
@@ -2552,7 +2550,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def RescheduleUnbindRs(self):
-        r"""重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+        r"""<p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
         :rtype: bool
         """
         return self._RescheduleUnbindRs
@@ -2563,7 +2561,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def RescheduleUnbindRsStartTime(self):
-        r"""解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+        r"""<p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
         :rtype: int
         """
         return self._RescheduleUnbindRsStartTime
@@ -2574,7 +2572,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def RescheduleUnhealthy(self):
-        r"""重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+        r"""<p>重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。</p>
         :rtype: bool
         """
         return self._RescheduleUnhealthy
@@ -2585,7 +2583,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def RescheduleUnhealthyStartTime(self):
-        r"""后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+        r"""<p>后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s</p>
         :rtype: int
         """
         return self._RescheduleUnhealthyStartTime

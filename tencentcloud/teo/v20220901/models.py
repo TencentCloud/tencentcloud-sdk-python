@@ -8538,6 +8538,57 @@ class ConfigGroupVersionInfo(AbstractModel):
         
 
 
+class ConfigGroupWorkModeInfo(AbstractModel):
+    r"""版本管理配置组工作模式信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupType: 配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li>
+        :type ConfigGroupType: str
+        :param _WorkMode: 工作模式，可选项如下：<li>immediate_effect: 即时生效模式；</li><li>version_control: 版本管理模式。</li>
+        :type WorkMode: str
+        """
+        self._ConfigGroupType = None
+        self._WorkMode = None
+
+    @property
+    def ConfigGroupType(self):
+        r"""配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li>
+        :rtype: str
+        """
+        return self._ConfigGroupType
+
+    @ConfigGroupType.setter
+    def ConfigGroupType(self, ConfigGroupType):
+        self._ConfigGroupType = ConfigGroupType
+
+    @property
+    def WorkMode(self):
+        r"""工作模式，可选项如下：<li>immediate_effect: 即时生效模式；</li><li>version_control: 版本管理模式。</li>
+        :rtype: str
+        """
+        return self._WorkMode
+
+    @WorkMode.setter
+    def WorkMode(self, WorkMode):
+        self._WorkMode = WorkMode
+
+
+    def _deserialize(self, params):
+        self._ConfigGroupType = params.get("ConfigGroupType")
+        self._WorkMode = params.get("WorkMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfirmMultiPathGatewayOriginACLRequest(AbstractModel):
     r"""ConfirmMultiPathGatewayOriginACL请求参数结构体
 
@@ -28042,8 +28093,7 @@ class DescribeZonesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
-<li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 类型。</li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：<li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 接入类型。 </li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
         :type Filters: list of AdvancedFilter
         :param _Order: 可根据该字段对返回结果进行排序，取值有：
 <li> type：接入类型；</li>
@@ -28088,8 +28138,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
-<li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 类型。</li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
+        r"""过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：<li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 接入类型。 </li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -43436,6 +43485,90 @@ class ModifyZoneStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyZoneWorkModeRequest(AbstractModel):
+    r"""ModifyZoneWorkMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _WorkModeInfos: 版本管理配置组工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+        :type WorkModeInfos: list of ConfigGroupWorkModeInfo
+        """
+        self._ZoneId = None
+        self._WorkModeInfos = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def WorkModeInfos(self):
+        r"""版本管理配置组工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+        :rtype: list of ConfigGroupWorkModeInfo
+        """
+        return self._WorkModeInfos
+
+    @WorkModeInfos.setter
+    def WorkModeInfos(self, WorkModeInfos):
+        self._WorkModeInfos = WorkModeInfos
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("WorkModeInfos") is not None:
+            self._WorkModeInfos = []
+            for item in params.get("WorkModeInfos"):
+                obj = ConfigGroupWorkModeInfo()
+                obj._deserialize(item)
+                self._WorkModeInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyZoneWorkModeResponse(AbstractModel):
+    r"""ModifyZoneWorkMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiPathGateway(AbstractModel):
     r"""多通道安全网关详情
 
@@ -56999,6 +57132,8 @@ class Zone(AbstractModel):
         :param _VanityNameServersIps: 用户自定义 NS IP 信息。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type VanityNameServersIps: list of VanityNameServersIps
+        :param _WorkModeInfos: 版本管理配置组工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+        :type WorkModeInfos: list of ConfigGroupWorkModeInfo
         """
         self._ZoneId = None
         self._ZoneName = None
@@ -57024,6 +57159,7 @@ class Zone(AbstractModel):
         self._NameServers = None
         self._VanityNameServers = None
         self._VanityNameServersIps = None
+        self._WorkModeInfos = None
 
     @property
     def ZoneId(self):
@@ -57315,6 +57451,17 @@ class Zone(AbstractModel):
     def VanityNameServersIps(self, VanityNameServersIps):
         self._VanityNameServersIps = VanityNameServersIps
 
+    @property
+    def WorkModeInfos(self):
+        r"""版本管理配置组工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+        :rtype: list of ConfigGroupWorkModeInfo
+        """
+        return self._WorkModeInfos
+
+    @WorkModeInfos.setter
+    def WorkModeInfos(self, WorkModeInfos):
+        self._WorkModeInfos = WorkModeInfos
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -57366,6 +57513,12 @@ class Zone(AbstractModel):
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self._VanityNameServersIps.append(obj)
+        if params.get("WorkModeInfos") is not None:
+            self._WorkModeInfos = []
+            for item in params.get("WorkModeInfos"):
+                obj = ConfigGroupWorkModeInfo()
+                obj._deserialize(item)
+                self._WorkModeInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

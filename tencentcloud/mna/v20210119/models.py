@@ -1164,6 +1164,110 @@ class DeleteL3ConnResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DestIpInfo(AbstractModel):
+    r"""目标IP信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 时间：s
+        :type Time: str
+        :param _GatewayIp: 网关IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayIp: str
+        :param _GatewaySite: 网关地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewaySite: str
+        :param _IpCount: 目标IP数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCount: int
+        :param _IpList: 目标IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpList: list of str
+        """
+        self._Time = None
+        self._GatewayIp = None
+        self._GatewaySite = None
+        self._IpCount = None
+        self._IpList = None
+
+    @property
+    def Time(self):
+        r"""时间：s
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def GatewayIp(self):
+        r"""网关IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayIp
+
+    @GatewayIp.setter
+    def GatewayIp(self, GatewayIp):
+        self._GatewayIp = GatewayIp
+
+    @property
+    def GatewaySite(self):
+        r"""网关地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewaySite
+
+    @GatewaySite.setter
+    def GatewaySite(self, GatewaySite):
+        self._GatewaySite = GatewaySite
+
+    @property
+    def IpCount(self):
+        r"""目标IP数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IpCount
+
+    @IpCount.setter
+    def IpCount(self, IpCount):
+        self._IpCount = IpCount
+
+    @property
+    def IpList(self):
+        r"""目标IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._GatewayIp = params.get("GatewayIp")
+        self._GatewaySite = params.get("GatewaySite")
+        self._IpCount = params.get("IpCount")
+        self._IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceBaseInfo(AbstractModel):
     r"""设备的基本信息
 
@@ -2548,6 +2652,152 @@ class GetActiveDeviceCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetDestIPByNameRequest(AbstractModel):
+    r"""GetDestIPByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名
+        :type DeviceName: str
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def GatewayType(self):
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDestIPByNameResponse(AbstractModel):
+    r"""GetDestIPByName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestIpInfo: 目标IP信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestIpInfo: list of DestIpInfo
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲
+        :type AccessRegion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DestIpInfo = None
+        self._AccessRegion = None
+        self._RequestId = None
+
+    @property
+    def DestIpInfo(self):
+        r"""目标IP信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DestIpInfo
+        """
+        return self._DestIpInfo
+
+    @DestIpInfo.setter
+    def DestIpInfo(self, DestIpInfo):
+        self._DestIpInfo = DestIpInfo
+
+    @property
+    def AccessRegion(self):
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DestIpInfo") is not None:
+            self._DestIpInfo = []
+            for item in params.get("DestIpInfo"):
+                obj = DestIpInfo()
+                obj._deserialize(item)
+                self._DestIpInfo.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
+        self._RequestId = params.get("RequestId")
+
+
 class GetDevicePayModeRequest(AbstractModel):
     r"""GetDevicePayMode请求参数结构体
 
@@ -3261,6 +3511,240 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
 class GetFlowStatisticByGroupResponse(AbstractModel):
     r"""GetFlowStatisticByGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: 流量详细信息
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :type MaxValue: float
+        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :type AvgValue: float
+        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :type TotalValue: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        r"""流量详细信息
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        r"""查找时间段流量使用最大值（单位：byte）
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""查找时间段流量使用平均值（单位：byte）
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""查找时间段流量使用总量（单位：byte）
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticByNameRequest(AbstractModel):
+    r"""GetFlowStatisticByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _BeginTime: 开始查找时间
+        :type BeginTime: int
+        :param _EndTime: 截止时间
+        :type EndTime: int
+        :param _Type: 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        :type Type: int
+        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        :param _DeviceList: 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        :type DeviceList: list of str
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""开始查找时间
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""截止时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""时间粒度（1：按小时统计，2：按天统计）
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByNameResponse(AbstractModel):
+    r"""GetFlowStatisticByName返回参数结构体
 
     """
 
@@ -4410,6 +4894,130 @@ class GetL3ConnListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetMonitorDataByNameRequest(AbstractModel):
+    r"""GetMonitorDataByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def GatewayType(self):
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMonitorDataByNameResponse(AbstractModel):
+    r"""GetMonitorDataByName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: 文件下载链接
+        :type FilePath: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""文件下载链接
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
 class GetMultiFlowStatisticRequest(AbstractModel):
     r"""GetMultiFlowStatistic请求参数结构体
 
@@ -4581,6 +5189,173 @@ class GetMultiFlowStatisticResponse(AbstractModel):
                 obj = FlowDetails()
                 obj._deserialize(item)
                 self._FlowDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetNetMonitorByNameRequest(AbstractModel):
+    r"""GetNetMonitorByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名
+        :type DeviceName: str
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Metrics: 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        :type Metrics: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Metrics = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        r"""统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        :rtype: str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def GatewayType(self):
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetNetMonitorByNameResponse(AbstractModel):
+    r"""GetNetMonitorByName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorData: 监控数据
+        :type MonitorData: list of MonitorData
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM']
+MC=中国大陆
+AP=亚太
+EU=欧洲
+AM=美洲
+        :type AccessRegion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MonitorData = None
+        self._AccessRegion = None
+        self._RequestId = None
+
+    @property
+    def MonitorData(self):
+        r"""监控数据
+        :rtype: list of MonitorData
+        """
+        return self._MonitorData
+
+    @MonitorData.setter
+    def MonitorData(self, MonitorData):
+        self._MonitorData = MonitorData
+
+    @property
+    def AccessRegion(self):
+        r"""接入区域。取值范围：['MC','AP','EU','AM']
+MC=中国大陆
+AP=亚太
+EU=欧洲
+AM=美洲
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MonitorData") is not None:
+            self._MonitorData = []
+            for item in params.get("MonitorData"):
+                obj = MonitorData()
+                obj._deserialize(item)
+                self._MonitorData.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -4797,6 +5572,209 @@ class GetPublicKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PublicKey = params.get("PublicKey")
+        self._RequestId = params.get("RequestId")
+
+
+class GetStatisticDataByNameRequest(AbstractModel):
+    r"""GetStatisticDataByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名。若不指定设备，可传"-1"
+        :type DeviceName: str
+        :param _BeginTime: 统计开始时间，单位：s
+        :type BeginTime: int
+        :param _EndTime: 统计结束时间，单位：s
+        :type EndTime: int
+        :param _TimeGranularity: 聚合粒度：
+1:按小时统计
+2:按天统计
+        :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        :param _DeviceList: 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+        :type DeviceList: list of str
+        :param _GroupId: 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        :type GroupId: str
+        :param _MpApplicationId: 应用ID，若不指定应用不填，按应用下载数据时使用
+        :type MpApplicationId: str
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+        self._GroupId = None
+        self._MpApplicationId = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名。若不指定设备，可传"-1"
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""统计开始时间，单位：s
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""统计结束时间，单位：s
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TimeGranularity(self):
+        r"""聚合粒度：
+1:按小时统计
+2:按天统计
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def GroupId(self):
+        r"""设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def MpApplicationId(self):
+        r"""应用ID，若不指定应用不填，按应用下载数据时使用
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        self._GroupId = params.get("GroupId")
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetStatisticDataByNameResponse(AbstractModel):
+    r"""GetStatisticDataByName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: 文件地址url
+        :type FilePath: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""文件地址url
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
         self._RequestId = params.get("RequestId")
 
 

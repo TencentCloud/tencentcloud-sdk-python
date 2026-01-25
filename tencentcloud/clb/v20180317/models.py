@@ -3785,19 +3785,19 @@ class CreateListenerRequest(AbstractModel):
         r"""
         :param _LoadBalancerId: <p>负载均衡实例 ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口获取。</p>
         :type LoadBalancerId: str
-        :param _Ports: <p>要将监听器创建到哪些端口，每个端口对应一个新的监听器。端口范围：1~65535</p>
+        :param _Ports: <p>要将监听器创建到哪些端口，每个端口对应一个新的监听器。<br>端口范围：1~65535</p>
         :type Ports: list of int
         :param _Protocol: <p>监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。</p>
         :type Protocol: str
-        :param _ListenerNames: <p>要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。</p>
+        :param _ListenerNames: <p>要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type ListenerNames: list of str
         :param _HealthCheck: <p>健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: <p>证书相关信息。参数限制如下：<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li></p>
+        :param _Certificate: <p>证书相关信息。参数限制如下：</p><li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param _SessionExpireTime: <p>会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。</p>
         :type SessionExpireTime: int
-        :param _Scheduler: <p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
+        :param _Scheduler: <p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）<br>默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
         :type Scheduler: str
         :param _SniSwitch: <p>是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。</p>
         :type SniSwitch: int
@@ -3805,13 +3805,13 @@ class CreateListenerRequest(AbstractModel):
         :type TargetType: str
         :param _SessionType: <p>会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。（若选择QUIC_CID，则Protocol必须为UDP，Scheduler必须为WRR，同时只支持ipv4）</p>
         :type SessionType: str
-        :param _KeepaliveEnable: <p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
+        :param _KeepaliveEnable: <p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。<br>若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
         :type KeepaliveEnable: int
         :param _EndPort: <p>创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>】。</p>
         :type EndPort: int
         :param _DeregisterTargetRst: <p>重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type DeregisterTargetRst: bool
-        :param _MultiCertInfo: <p>证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li></p>
+        :param _MultiCertInfo: <p>证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：</p><li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         :param _MaxConn: <p>监听器最大连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。</p>
         :type MaxConn: int
@@ -3825,9 +3825,9 @@ class CreateListenerRequest(AbstractModel):
         :type SnatEnable: bool
         :param _FullEndPorts: <p>全端口段监听器的结束端口，端口范围：2 - 65535</p>
         :type FullEndPorts: list of int
-        :param _H2cSwitch: <p>内网http监听器开启h2c开关，True（开启）、False（关闭）。默认为关闭。</p>
+        :param _H2cSwitch: <p>内网http监听器开启h2c开关，True（开启）、False（关闭）。<br>默认为关闭。</p>
         :type H2cSwitch: bool
-        :param _SslCloseSwitch: <p>控制 TCP_SSL 类型的监听器是否移除 SSL 加密层。开启后，监听器将作为普通 TCP 协议运行。 可选值：- True： 关闭 SSL 功能（协议降级为纯文本 TCP）。- False（默认）： 保持 SSL 功能开启。</p>
+        :param _SslCloseSwitch: <p>控制 TCP_SSL 类型的监听器是否移除 SSL 加密层。开启后，监听器将作为普通 TCP 协议运行。 可选值：</p><ul><li>True： 关闭 SSL 功能（协议降级为纯文本 TCP）。</li><li>False（默认）： 保持 SSL 功能开启。</li></ul>
         :type SslCloseSwitch: bool
         :param _DataCompressMode: <p>数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）</p>
         :type DataCompressMode: str
@@ -3885,7 +3885,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Ports(self):
-        r"""<p>要将监听器创建到哪些端口，每个端口对应一个新的监听器。端口范围：1~65535</p>
+        r"""<p>要将监听器创建到哪些端口，每个端口对应一个新的监听器。<br>端口范围：1~65535</p>
         :rtype: list of int
         """
         return self._Ports
@@ -3907,7 +3907,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ListenerNames(self):
-        r"""<p>要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。</p>
+        r"""<p>要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: list of str
         """
         return self._ListenerNames
@@ -3929,7 +3929,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Certificate(self):
-        r"""<p>证书相关信息。参数限制如下：<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li></p>
+        r"""<p>证书相关信息。参数限制如下：</p><li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -3951,7 +3951,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""<p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
+        r"""<p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）<br>默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
         :rtype: str
         """
         return self._Scheduler
@@ -3995,7 +3995,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""<p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
+        r"""<p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。<br>若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
         :rtype: int
         """
         return self._KeepaliveEnable
@@ -4028,7 +4028,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def MultiCertInfo(self):
-        r"""<p>证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li></p>
+        r"""<p>证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：</p><li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li><li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -4105,7 +4105,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def H2cSwitch(self):
-        r"""<p>内网http监听器开启h2c开关，True（开启）、False（关闭）。默认为关闭。</p>
+        r"""<p>内网http监听器开启h2c开关，True（开启）、False（关闭）。<br>默认为关闭。</p>
         :rtype: bool
         """
         return self._H2cSwitch
@@ -4116,7 +4116,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def SslCloseSwitch(self):
-        r"""<p>控制 TCP_SSL 类型的监听器是否移除 SSL 加密层。开启后，监听器将作为普通 TCP 协议运行。 可选值：- True： 关闭 SSL 功能（协议降级为纯文本 TCP）。- False（默认）： 保持 SSL 功能开启。</p>
+        r"""<p>控制 TCP_SSL 类型的监听器是否移除 SSL 加密层。开启后，监听器将作为普通 TCP 协议运行。 可选值：</p><ul><li>True： 关闭 SSL 功能（协议降级为纯文本 TCP）。</li><li>False（默认）： 保持 SSL 功能开启。</li></ul>
         :rtype: bool
         """
         return self._SslCloseSwitch
@@ -4288,73 +4288,67 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerType: 负载均衡实例的网络类型：
-OPEN：公网属性， INTERNAL：内网属性。
+        :param _LoadBalancerType: <p>负载均衡实例的网络类型：<br>OPEN：公网属性， INTERNAL：内网属性。</p>
         :type LoadBalancerType: str
-        :param _Forward: 负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1。
+        :param _Forward: <p>负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1。</p>
         :type Forward: int
-        :param _LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
-注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
+        :param _LoadBalancerName: <p>负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。</p>
         :type LoadBalancerName: str
-        :param _VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778) 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
+        :param _VpcId: <p>负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。</p>
         :type VpcId: str
-        :param _SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。
+        :param _SubnetId: <p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
         :type SubnetId: str
-        :param _ProjectId: 负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
+        :param _ProjectId: <p>负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 接口获取。不填此参数则视为默认项目。</p>
         :type ProjectId: int
-        :param _AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
+        :param _AddressIPVersion: <p>仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。</p>
         :type AddressIPVersion: str
-        :param _Number: 创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
+        :param _Number: <p>创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。</p>
         :type Number: int
-        :param _MasterZoneId: 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
-注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。
+        :param _MasterZoneId: <p>仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1<br>注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。</p>
         :type MasterZoneId: str
-        :param _ZoneId: 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。
+        :param _ZoneId: <p>仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。</p>
         :type ZoneId: str
-        :param _InternetAccessible: 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        :param _InternetAccessible: <p>网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
+        :param _VipIsp: <p>仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 <a href="https://cloud.tencent.com/document/api/214/70213">DescribeResources</a>  接口查询一个地域所支持的Isp。</p>
         :type VipIsp: str
-        :param _Tags: 购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+        :param _Tags: <p>购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
         :type Tags: list of TagInfo
-        :param _Vip: 指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。
-注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
+        :param _Vip: <p>指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。<br>注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。</p>
         :type Vip: str
-        :param _BandwidthPackageId: 带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
+        :param _BandwidthPackageId: <p>带宽包ID，可以通过 <a href="https://cloud.tencent.com/document/api/215/19209">DescribeBandwidthPackages</a> 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。</p>
         :type BandwidthPackageId: str
-        :param _ExclusiveCluster: 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
+        :param _ExclusiveCluster: <p>独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。</p>
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param _SlaType: 性能容量型规格。
-<ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
+        :param _SlaType: <p>性能容量型规格。</p><ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
         :type SlaType: str
-        :param _ClusterIds: 集群ID，集群标识，在需要配置公有云独占集群或本地专有集群时使用。公有云独占集群申请请[提交工单](https://console.cloud.tencent.com/workorder/category)，本地专有集群请参考[本地专有集群](https://cloud.tencent.com/document/product/1346)描述。
+        :param _ClusterIds: <p>集群ID，集群标识，在需要配置公有云独占集群或本地专有集群时使用。公有云独占集群申请请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>，本地专有集群请参考<a href="https://cloud.tencent.com/document/product/1346">本地专有集群</a>描述。</p>
         :type ClusterIds: list of str
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :type ClientToken: str
-        :param _SnatPro: 是否支持绑定跨地域/跨Vpc绑定IP的功能。
+        :param _SnatPro: <p>是否支持绑定跨地域/跨Vpc绑定IP的功能。</p>
         :type SnatPro: bool
-        :param _SnatIps: 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
+        :param _SnatIps: <p>开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。</p>
         :type SnatIps: list of SnatIp
-        :param _ClusterTag: Stgw独占集群的标签。
+        :param _ClusterTag: <p>Stgw独占集群的标签。</p>
         :type ClusterTag: str
-        :param _SlaveZoneId: 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
-注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
+        :param _SlaveZoneId: <p>仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1<br>注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 <a href="https://cloud.tencent.com/document/api/214/70213">DescribeResources</a> 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>】</p>
         :type SlaveZoneId: str
-        :param _EipAddressId: EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
+        :param _EipAddressId: <p>EIP 的唯一 ID，可以通过 <a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a> 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。</p>
         :type EipAddressId: str
-        :param _LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
+        :param _LoadBalancerPassToTarget: <p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。</p>
         :type LoadBalancerPassToTarget: bool
-        :param _DynamicVip: 创建域名化负载均衡。
+        :param _DynamicVip: <p>创建域名化负载均衡。</p>
         :type DynamicVip: bool
-        :param _Egress: 网络出口
+        :param _Egress: <p>网络出口</p>
         :type Egress: str
-        :param _LBChargePrepaid: 负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        :param _LBChargePrepaid: <p>负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
-        :param _LBChargeType: 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        :param _LBChargeType: <p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :type LBChargeType: str
-        :param _AccessLogTopicId: 七层访问日志主题ID
+        :param _AccessLogTopicId: <p>七层访问日志主题ID</p>
         :type AccessLogTopicId: str
-        :param _AdvancedRoute: 是否开启七层高级路由
+        :param _AdvancedRoute: <p>是否开启七层高级路由</p>
         :type AdvancedRoute: bool
         """
         self._LoadBalancerType = None
@@ -4391,8 +4385,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LoadBalancerType(self):
-        r"""负载均衡实例的网络类型：
-OPEN：公网属性， INTERNAL：内网属性。
+        r"""<p>负载均衡实例的网络类型：<br>OPEN：公网属性， INTERNAL：内网属性。</p>
         :rtype: str
         """
         return self._LoadBalancerType
@@ -4403,7 +4396,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Forward(self):
-        r"""负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1。
+        r"""<p>负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1。</p>
         :rtype: int
         """
         return self._Forward
@@ -4414,8 +4407,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LoadBalancerName(self):
-        r"""负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
-注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
+        r"""<p>负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -4426,7 +4418,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def VpcId(self):
-        r"""负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778) 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
+        r"""<p>负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。</p>
         :rtype: str
         """
         return self._VpcId
@@ -4437,7 +4429,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SubnetId(self):
-        r"""在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。
+        r"""<p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4448,7 +4440,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ProjectId(self):
-        r"""负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
+        r"""<p>负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 接口获取。不填此参数则视为默认项目。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -4459,7 +4451,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def AddressIPVersion(self):
-        r"""仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
+        r"""<p>仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。</p>
         :rtype: str
         """
         return self._AddressIPVersion
@@ -4470,7 +4462,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Number(self):
-        r"""创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
+        r"""<p>创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。</p>
         :rtype: int
         """
         return self._Number
@@ -4481,8 +4473,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def MasterZoneId(self):
-        r"""仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
-注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。
+        r"""<p>仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1<br>注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。</p>
         :rtype: str
         """
         return self._MasterZoneId
@@ -4493,7 +4484,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ZoneId(self):
-        r"""仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。
+        r"""<p>仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -4504,7 +4495,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def InternetAccessible(self):
-        r"""网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        r"""<p>网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4515,7 +4506,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def VipIsp(self):
-        r"""仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
+        r"""<p>仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 <a href="https://cloud.tencent.com/document/api/214/70213">DescribeResources</a>  接口查询一个地域所支持的Isp。</p>
         :rtype: str
         """
         return self._VipIsp
@@ -4526,7 +4517,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Tags(self):
-        r"""购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+        r"""<p>购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -4537,8 +4528,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Vip(self):
-        r"""指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。
-注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
+        r"""<p>指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。<br>注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。</p>
         :rtype: str
         """
         return self._Vip
@@ -4549,7 +4539,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def BandwidthPackageId(self):
-        r"""带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
+        r"""<p>带宽包ID，可以通过 <a href="https://cloud.tencent.com/document/api/215/19209">DescribeBandwidthPackages</a> 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。</p>
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -4560,7 +4550,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ExclusiveCluster(self):
-        r"""独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
+        r"""<p>独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         """
         return self._ExclusiveCluster
@@ -4571,8 +4561,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SlaType(self):
-        r"""性能容量型规格。
-<ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
+        r"""<p>性能容量型规格。</p><ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
         :rtype: str
         """
         return self._SlaType
@@ -4583,7 +4572,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ClusterIds(self):
-        r"""集群ID，集群标识，在需要配置公有云独占集群或本地专有集群时使用。公有云独占集群申请请[提交工单](https://console.cloud.tencent.com/workorder/category)，本地专有集群请参考[本地专有集群](https://cloud.tencent.com/document/product/1346)描述。
+        r"""<p>集群ID，集群标识，在需要配置公有云独占集群或本地专有集群时使用。公有云独占集群申请请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>，本地专有集群请参考<a href="https://cloud.tencent.com/document/product/1346">本地专有集群</a>描述。</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -4594,7 +4583,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -4605,7 +4594,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SnatPro(self):
-        r"""是否支持绑定跨地域/跨Vpc绑定IP的功能。
+        r"""<p>是否支持绑定跨地域/跨Vpc绑定IP的功能。</p>
         :rtype: bool
         """
         return self._SnatPro
@@ -4616,7 +4605,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SnatIps(self):
-        r"""开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
+        r"""<p>开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。</p>
         :rtype: list of SnatIp
         """
         return self._SnatIps
@@ -4627,7 +4616,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ClusterTag(self):
-        r"""Stgw独占集群的标签。
+        r"""<p>Stgw独占集群的标签。</p>
         :rtype: str
         """
         return self._ClusterTag
@@ -4638,8 +4627,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SlaveZoneId(self):
-        r"""仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
-注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
+        r"""<p>仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1<br>注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 <a href="https://cloud.tencent.com/document/api/214/70213">DescribeResources</a> 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>】</p>
         :rtype: str
         """
         return self._SlaveZoneId
@@ -4650,7 +4638,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def EipAddressId(self):
-        r"""EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
+        r"""<p>EIP 的唯一 ID，可以通过 <a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a> 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。</p>
         :rtype: str
         """
         return self._EipAddressId
@@ -4661,7 +4649,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LoadBalancerPassToTarget(self):
-        r"""Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
+        r"""<p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。</p>
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget
@@ -4672,7 +4660,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def DynamicVip(self):
-        r"""创建域名化负载均衡。
+        r"""<p>创建域名化负载均衡。</p>
         :rtype: bool
         """
         return self._DynamicVip
@@ -4683,7 +4671,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Egress(self):
-        r"""网络出口
+        r"""<p>网络出口</p>
         :rtype: str
         """
         return self._Egress
@@ -4694,7 +4682,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LBChargePrepaid(self):
-        r"""负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        r"""<p>负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         return self._LBChargePrepaid
@@ -4705,7 +4693,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LBChargeType(self):
-        r"""负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+        r"""<p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
         :rtype: str
         """
         return self._LBChargeType
@@ -4716,7 +4704,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def AccessLogTopicId(self):
-        r"""七层访问日志主题ID
+        r"""<p>七层访问日志主题ID</p>
         :rtype: str
         """
         return self._AccessLogTopicId
@@ -4727,7 +4715,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def AdvancedRoute(self):
-        r"""是否开启七层高级路由
+        r"""<p>是否开启七层高级路由</p>
         :rtype: bool
         """
         return self._AdvancedRoute
@@ -4802,11 +4790,10 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
+        :param _LoadBalancerIds: <p>由负载均衡实例唯一 ID 组成的数组。<br>存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerIds: list of str
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4818,8 +4805,7 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        r"""由负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
+        r"""<p>由负载均衡实例唯一 ID 组成的数组。<br>存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4831,7 +4817,7 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5079,37 +5065,36 @@ class CreateTargetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupName: 目标组名称，限定50个字符
+        :param _TargetGroupName: <p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type TargetGroupName: str
-        :param _VpcId: 目标组的vpcId属性，不填则使用默认vpc。
+        :param _VpcId: <p>目标组的vpcId属性，不填则使用默认vpc。</p>
         :type VpcId: str
-        :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
-
+        :param _Port: <p>目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。</p>
         :type Port: int
-        :param _TargetGroupInstances: 目标组绑定的后端服务器，单次最多支持50个。
+        :param _TargetGroupInstances: <p>目标组绑定的后端服务器，单次最多支持50个。</p>
         :type TargetGroupInstances: list of TargetGroupInstance
-        :param _Type: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+        :param _Type: <p>目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。</p>
         :type Type: str
-        :param _Protocol: 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
+        :param _Protocol: <p>目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。</p>
         :type Protocol: str
-        :param _HealthCheck: 健康检查。
+        :param _HealthCheck: <p>健康检查。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _ScheduleAlgorithm: 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
-<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
         :type ScheduleAlgorithm: str
-        :param _Tags: 标签。
+        :param _Tags: <p>标签。</p>
         :type Tags: list of TagInfo
-        :param _Weight: 后端服务默认权重, 其中：
-<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
+        :param _Weight: <p>后端服务默认权重, 其中：</p><ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
         :type Weight: int
-        :param _FullListenSwitch: 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
+        :param _FullListenSwitch: <p>全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。</p>
         :type FullListenSwitch: bool
-        :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+        :param _KeepaliveEnable: <p>是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
+        :param _SessionExpireTime: <p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。</p>
         :type SessionExpireTime: int
-        :param _IpVersion: IP版本类型。
+        :param _IpVersion: <p>IP版本类型。</p>
         :type IpVersion: str
+        :param _SnatEnable: <p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
+        :type SnatEnable: bool
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -5125,10 +5110,11 @@ class CreateTargetGroupRequest(AbstractModel):
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
         self._IpVersion = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupName(self):
-        r"""目标组名称，限定50个字符
+        r"""<p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -5139,7 +5125,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""目标组的vpcId属性，不填则使用默认vpc。
+        r"""<p>目标组的vpcId属性，不填则使用默认vpc。</p>
         :rtype: str
         """
         return self._VpcId
@@ -5150,8 +5136,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
-
+        r"""<p>目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。</p>
         :rtype: int
         """
         return self._Port
@@ -5162,7 +5147,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        r"""目标组绑定的后端服务器，单次最多支持50个。
+        r"""<p>目标组绑定的后端服务器，单次最多支持50个。</p>
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -5173,7 +5158,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+        r"""<p>目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。</p>
         :rtype: str
         """
         return self._Type
@@ -5184,7 +5169,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
+        r"""<p>目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。</p>
         :rtype: str
         """
         return self._Protocol
@@ -5195,7 +5180,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查。
+        r"""<p>健康检查。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -5206,8 +5191,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
-<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
         :rtype: str
         """
         return self._ScheduleAlgorithm
@@ -5218,7 +5202,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -5229,8 +5213,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""后端服务默认权重, 其中：
-<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
+        r"""<p>后端服务默认权重, 其中：</p><ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
         :rtype: int
         """
         return self._Weight
@@ -5241,7 +5224,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def FullListenSwitch(self):
-        r"""全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
+        r"""<p>全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。</p>
         :rtype: bool
         """
         return self._FullListenSwitch
@@ -5252,7 +5235,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+        r"""<p>是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -5263,7 +5246,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
+        r"""<p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -5274,7 +5257,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""IP版本类型。
+        r"""<p>IP版本类型。</p>
         :rtype: str
         """
         return self._IpVersion
@@ -5282,6 +5265,17 @@ class CreateTargetGroupRequest(AbstractModel):
     @IpVersion.setter
     def IpVersion(self, IpVersion):
         self._IpVersion = IpVersion
+
+    @property
+    def SnatEnable(self):
+        r"""<p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
 
 
     def _deserialize(self, params):
@@ -5311,6 +5305,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
         self._IpVersion = params.get("IpVersion")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5328,7 +5323,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 创建目标组后生成的id
+        :param _TargetGroupId: <p>创建目标组后生成的id</p>
         :type TargetGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5338,7 +5333,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""创建目标组后生成的id
+        r"""<p>创建目标组后生成的id</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -16524,61 +16519,53 @@ class ModifyListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
+        :param _LoadBalancerId: <p>负载均衡实例ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口查询。</p>
         :type LoadBalancerId: str
-        :param _ListenerId: 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        :param _ListenerId: <p>负载均衡监听器ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30686">DescribeListeners</a> 接口查询。</p>
         :type ListenerId: str
-        :param _ListenerName: 新的监听器名称，最大长度255。
+        :param _ListenerName: <p>新的监听器名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type ListenerName: str
-        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        :param _SessionExpireTime: <p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。</p>
         :type SessionExpireTime: int
-        :param _HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
+        :param _HealthCheck: <p>健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: 证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。
+        :param _Certificate: <p>证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。</p>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
-        :param _Scheduler: 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
-分别表示按权重轮询、最小连接数， 默认为 WRR。
-使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
+        :param _Scheduler: <p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）<br>分别表示按权重轮询、最小连接数， 默认为 WRR。<br>使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。</p>
         :type Scheduler: str
-        :param _SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
+        :param _SniSwitch: <p>是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。</p>
         :type SniSwitch: int
-        :param _TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+        :param _TargetType: <p>后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。</p>
         :type TargetType: str
-        :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
-默认值0表示不开启，1表示开启。
-若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
+        :param _KeepaliveEnable: <p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。<br>默认值0表示不开启，1表示开启。<br>若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
         :type KeepaliveEnable: int
-        :param _DeregisterTargetRst: 重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
+        :param _DeregisterTargetRst: <p>重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type DeregisterTargetRst: bool
-        :param _SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
-使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
-默认为 NORMAL。
+        :param _SessionType: <p>会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。<br>使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。<br>默认为 NORMAL。</p>
         :type SessionType: str
-        :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        :param _MultiCertInfo: <p>证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。</p>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param _MaxConn: 监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。
-默认为 -1，表示不限速。
+        :param _MaxConn: <p>监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。<br>默认为 -1，表示不限速。</p>
         :type MaxConn: int
-        :param _MaxCps: 监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。
-默认为 -1 表示不限速。
+        :param _MaxCps: <p>监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。<br>默认为 -1 表示不限速。</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+        :param _IdleConnectTimeout: <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
         :type IdleConnectTimeout: int
-        :param _ProxyProtocol: TCP_SSL和QUIC是否支持PP
+        :param _ProxyProtocol: <p>TCP_SSL和QUIC是否支持PP</p>
         :type ProxyProtocol: bool
-        :param _SnatEnable: 是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
+        :param _SnatEnable: <p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
         :type SnatEnable: bool
-        :param _DataCompressMode: 数据压缩模式
+        :param _DataCompressMode: <p>数据压缩模式</p>
         :type DataCompressMode: str
-        :param _RescheduleTargetZeroWeight: 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        :param _RescheduleTargetZeroWeight: <p>重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type RescheduleTargetZeroWeight: bool
-        :param _RescheduleUnhealthy: 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+        :param _RescheduleUnhealthy: <p>重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type RescheduleUnhealthy: bool
-        :param _RescheduleExpandTarget: 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        :param _RescheduleExpandTarget: <p>重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type RescheduleExpandTarget: bool
-        :param _RescheduleStartTime: 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :param _RescheduleStartTime: <p>重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。</p>
         :type RescheduleStartTime: int
-        :param _RescheduleInterval: 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        :param _RescheduleInterval: <p>重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。</p>
         :type RescheduleInterval: int
         """
         self._LoadBalancerId = None
@@ -16608,7 +16595,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
+        r"""<p>负载均衡实例ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口查询。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16619,7 +16606,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        r"""<p>负载均衡监听器ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30686">DescribeListeners</a> 接口查询。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -16630,7 +16617,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""新的监听器名称，最大长度255。
+        r"""<p>新的监听器名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._ListenerName
@@ -16641,7 +16628,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        r"""<p>会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -16652,7 +16639,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
+        r"""<p>健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
         return self._HealthCheck
@@ -16663,7 +16650,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def Certificate(self):
-        r"""证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。
+        r"""<p>证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -16674,9 +16661,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
-分别表示按权重轮询、最小连接数， 默认为 WRR。
-使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
+        r"""<p>监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）<br>分别表示按权重轮询、最小连接数， 默认为 WRR。<br>使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。</p>
         :rtype: str
         """
         return self._Scheduler
@@ -16687,7 +16672,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def SniSwitch(self):
-        r"""是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
+        r"""<p>是否开启SNI特性，此参数仅适用于HTTPS监听器。默认0，表示不开启，1表示开启。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。</p>
         :rtype: int
         """
         return self._SniSwitch
@@ -16698,7 +16683,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+        r"""<p>后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。</p>
         :rtype: str
         """
         return self._TargetType
@@ -16709,9 +16694,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
-默认值0表示不开启，1表示开启。
-若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
+        r"""<p>是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。<br>默认值0表示不开启，1表示开启。<br>若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 <a href="https://cloud.tencent.com/apply/p/tsodp6qm21">内测申请</a>。</p>
         :rtype: int
         """
         return self._KeepaliveEnable
@@ -16722,7 +16705,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def DeregisterTargetRst(self):
-        r"""重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
+        r"""<p>重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。</p>
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -16733,9 +16716,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def SessionType(self):
-        r"""会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
-使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
-默认为 NORMAL。
+        r"""<p>会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。<br>使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。<br>默认为 NORMAL。</p>
         :rtype: str
         """
         return self._SessionType
@@ -16746,7 +16727,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def MultiCertInfo(self):
-        r"""证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        r"""<p>证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -16757,8 +16738,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def MaxConn(self):
-        r"""监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。
-默认为 -1，表示不限速。
+        r"""<p>监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。<br>默认为 -1，表示不限速。</p>
         :rtype: int
         """
         return self._MaxConn
@@ -16769,8 +16749,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def MaxCps(self):
-        r"""监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。
-默认为 -1 表示不限速。
+        r"""<p>监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。<br>默认为 -1 表示不限速。</p>
         :rtype: int
         """
         return self._MaxCps
@@ -16781,7 +16760,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def IdleConnectTimeout(self):
-        r"""空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+        r"""<p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -16792,7 +16771,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ProxyProtocol(self):
-        r"""TCP_SSL和QUIC是否支持PP
+        r"""<p>TCP_SSL和QUIC是否支持PP</p>
         :rtype: bool
         """
         return self._ProxyProtocol
@@ -16803,7 +16782,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def SnatEnable(self):
-        r"""是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时`透传客户端源IP`选项关闭，反之亦然。
+        r"""<p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
         :rtype: bool
         """
         return self._SnatEnable
@@ -16814,7 +16793,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def DataCompressMode(self):
-        r"""数据压缩模式
+        r"""<p>数据压缩模式</p>
         :rtype: str
         """
         return self._DataCompressMode
@@ -16825,7 +16804,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RescheduleTargetZeroWeight(self):
-        r"""重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+        r"""<p>重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。</p>
         :rtype: bool
         """
         return self._RescheduleTargetZeroWeight
@@ -16836,7 +16815,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RescheduleUnhealthy(self):
-        r"""重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+        r"""<p>重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。</p>
         :rtype: bool
         """
         return self._RescheduleUnhealthy
@@ -16847,7 +16826,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RescheduleExpandTarget(self):
-        r"""重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+        r"""<p>重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。</p>
         :rtype: bool
         """
         return self._RescheduleExpandTarget
@@ -16858,7 +16837,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RescheduleStartTime(self):
-        r"""重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+        r"""<p>重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。</p>
         :rtype: int
         """
         return self._RescheduleStartTime
@@ -16869,7 +16848,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RescheduleInterval(self):
-        r"""重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+        r"""<p>重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。</p>
         :rtype: int
         """
         return self._RescheduleInterval
@@ -16957,13 +16936,13 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         r"""
         :param _LoadBalancerId: <p>负载均衡的唯一ID，可以通过 <a href="https://cloud.tencent.com/document/product/214/30685">DescribeLoadBalancers</a> 接口获取。</p>
         :type LoadBalancerId: str
-        :param _LoadBalancerName: <p>负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。</p>
+        :param _LoadBalancerName: <p>负载均衡实例名称，规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type LoadBalancerName: str
         :param _TargetRegionInfo: <p>设置负载均衡跨地域绑定1.0的后端服务信息</p>
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         :param _InternetChargeInfo: <p>网络计费相关参数</p>
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _LoadBalancerPassToTarget: <p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。不填则不修改。</p>
+        :param _LoadBalancerPassToTarget: <p>Target是否放通来自CLB的流量。<br>开启放通（true）：只验证CLB上的安全组；<br>不开启放通（false）：需同时验证CLB和后端实例上的安全组。<br>不填则不修改。</p>
         :type LoadBalancerPassToTarget: bool
         :param _SwitchFlag: <p>不同计费模式之间的切换：0表示不切换，1表示预付费和后付费切换，2表示后付费之间切换。默认值：0</p>
         :type SwitchFlag: int
@@ -17000,7 +16979,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        r"""<p>负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。</p>
+        r"""<p>负载均衡实例名称，规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -17033,7 +17012,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     @property
     def LoadBalancerPassToTarget(self):
-        r"""<p>Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。不填则不修改。</p>
+        r"""<p>Target是否放通来自CLB的流量。<br>开启放通（true）：只验证CLB上的安全组；<br>不开启放通（false）：需同时验证CLB和后端实例上的安全组。<br>不填则不修改。</p>
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget
@@ -17660,11 +17639,11 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         r"""
         :param _TargetGroupId: <p>目标组的ID。</p>
         :type TargetGroupId: str
-        :param _TargetGroupName: <p>目标组的新名称。</p>
+        :param _TargetGroupName: <p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :type TargetGroupName: str
         :param _Port: <p>目标组的新默认端口。全监听目标组不支持此参数。</p>
         :type Port: int
-        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur></p>
+        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
         :type ScheduleAlgorithm: str
         :param _HealthCheck: <p>健康检查详情。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
@@ -17700,7 +17679,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""<p>目标组的新名称。</p>
+        r"""<p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -17722,7 +17701,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur></p>
+        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
         :rtype: str
         """
         return self._ScheduleAlgorithm

@@ -797,6 +797,9 @@ INVALIDPARAMETER_UPSTREAMVERIFYCERTCHECKERROR = 'InvalidParameter.UpstreamVerify
 # 无效的源站证书校验配置，证书内容为空。
 INVALIDPARAMETER_UPSTREAMVERIFYCUSTOMCACERTNOINFO = 'InvalidParameter.UpstreamVerifyCustomCACertNoInfo'
 
+# 站点工作模式未发生变更
+INVALIDPARAMETER_WORKMODEISSAME = 'InvalidParameter.WorkModeIsSame'
+
 # 站点加速区域，无法支持该预热回源限速区域配置，请调整后重新提交。
 INVALIDPARAMETER_ZONEAREANOTSUPPORTPREFETCHORIGINLIMITAREA = 'InvalidParameter.ZoneAreaNotSupportPrefetchOriginLimitArea'
 
@@ -935,6 +938,9 @@ INVALIDPARAMETERVALUE_OCDIRECTORIGINDOMAINNOTSUPPORTUPSTREAMVERIFY = 'InvalidPar
 # 指定的源站组不存在。
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
 
+# 归属权校验未通过，请先完成站点归属权校验。
+INVALIDPARAMETERVALUE_OWNERSHIPVERIFICATIONNOTPASSED = 'InvalidParameterValue.OwnershipVerificationNotPassed'
+
 # 页面名称已存在。
 INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlreadyExist'
 
@@ -1051,6 +1057,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 
 # 引用源站组的7层域名服务正在部署中，请稍后再编辑。
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
+
+# 该操作不支持别称域名。
+OPERATIONDENIED_ALIASDOMAINNOTSUPPORT = 'OperationDenied.AliasDomainNotSupport'
 
 # 当前仅无私钥证书模式允许证书私钥为空。
 OPERATIONDENIED_CERTIFICATEPRIVATEKEYISEMPTY = 'OperationDenied.CertificatePrivateKeyIsEmpty'
@@ -1226,6 +1235,9 @@ OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = 'OperationDenied.PlanIncrease
 # 套餐不支持变更站点的服务区域。
 OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = 'OperationDenied.PlanNotSupportModifyZoneArea'
 
+# 站点的配置的企业套餐不支持版本控制功能
+OPERATIONDENIED_PLANTYPEISWRONG = 'OperationDenied.PlanTypeIsWrong'
+
 # Anycast IP调度模式不支持开启中国大陆加速。
 OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = 'OperationDenied.PlatTypeIPAccelerateMainlandNotSupport'
 
@@ -1270,6 +1282,9 @@ OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGrayi
 
 # 当前处于版本管理模式下，该操作不允许。
 OPERATIONDENIED_VERSIONCONTROLLOCKED = 'OperationDenied.VersionControlLocked'
+
+# NS模式的站点，开关版本管理之前请先切换 NS。
+OPERATIONDENIED_VERSIONCONTROLNEEDNSSWITCHED = 'OperationDenied.VersionControlNeedNSSwitched'
 
 # 站点工作模式不属于版本管理模式。
 OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = 'OperationDenied.WorkModeNotInVersionControl'
@@ -1357,6 +1372,9 @@ RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = 'ResourceNotFound.PostMaxSizeQuotaNo
 
 # 配置组版本不存在，请检查后重试。
 RESOURCENOTFOUND_VERSIONNOTFOUND = 'ResourceNotFound.VersionNotFound'
+
+# 站点不存在。
+RESOURCENOTFOUND_ZONENOTFOUND = 'ResourceNotFound.ZoneNotFound'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

@@ -3626,6 +3626,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyZoneWorkMode(
+            self,
+            request: models.ModifyZoneWorkModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyZoneWorkModeResponse:
+        """
+        本接口用于修改站点下各配置模块的工作模式。站点各配置模块可按照配置组维度开启「版本管理模式」或「即时生效模式」，详情请参考 [版本管理](https://cloud.tencent.com/document/product/1552/113690)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyZoneWorkMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyZoneWorkModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RefreshMultiPathGatewaySecretKey(
             self,
             request: models.RefreshMultiPathGatewaySecretKeyRequest,

@@ -20802,7 +20802,7 @@ class DescribeProxyNodesRequest(AbstractModel):
 <li> ASC：升序排序 </li>
 <li> DESC：降序排序 </li>
         :type OrderByType: str
-        :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。目前支持的搜索字段：Status、ProxyNodeId、ClusterId、OssProxyNodeName。
         :type Filters: list of QueryFilter
         """
         self._Limit = None
@@ -20861,7 +20861,7 @@ class DescribeProxyNodesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        r"""搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。目前支持的搜索字段：Status、ProxyNodeId、ClusterId、OssProxyNodeName。
         :rtype: list of QueryFilter
         """
         return self._Filters

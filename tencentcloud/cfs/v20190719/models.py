@@ -6397,7 +6397,7 @@ class DoDirectoryOperationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统Id
+        :param _FileSystemId: 文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。
         :type FileSystemId: str
         :param _OpetationType: create：创建目录，等同于mkdir。
 check：确认目录是否存在，等同于stat。
@@ -6405,9 +6405,9 @@ move：对文件/目录进行重命名，等同于mv。
         :type OpetationType: str
         :param _DirectoryPath: 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
         :type DirectoryPath: str
-        :param _Mode: 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+        :param _Mode: 创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。
         :type Mode: str
-        :param _DestPath: mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+        :param _DestPath: mv 操作的目标目录名称。路径必须以/cfs/开头
         :type DestPath: str
         """
         self._FileSystemId = None
@@ -6418,7 +6418,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def FileSystemId(self):
-        r"""文件系统Id
+        r"""文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。
         :rtype: str
         """
         return self._FileSystemId
@@ -6453,7 +6453,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def Mode(self):
-        r"""创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+        r"""创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。
         :rtype: str
         """
         return self._Mode
@@ -6464,7 +6464,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def DestPath(self):
-        r"""mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+        r"""mv 操作的目标目录名称。路径必须以/cfs/开头
         :rtype: str
         """
         return self._DestPath
@@ -6497,7 +6497,7 @@ class DoDirectoryOperationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 1:成功  0:失败  创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。  说明：创建目录操作若目录已存在，也会返回创建成功。
+        :param _Result: 1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。
         :type Result: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6507,7 +6507,7 @@ class DoDirectoryOperationResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""1:成功  0:失败  创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。  说明：创建目录操作若目录已存在，也会返回创建成功。
+        r"""1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。
         :rtype: int
         """
         return self._Result

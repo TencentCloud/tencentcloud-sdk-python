@@ -4122,6 +4122,8 @@ class CreateEnvironmentRequest(AbstractModel):
         :type SubscriptionExpirationTime: int
         :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
         :type SubscriptionExpirationTimeEnable: bool
+        :param _Tags: 命名空间标签
+        :type Tags: list of Tag
         """
         self._EnvironmentId = None
         self._MsgTTL = None
@@ -4131,6 +4133,7 @@ class CreateEnvironmentRequest(AbstractModel):
         self._AutoSubscriptionCreation = None
         self._SubscriptionExpirationTime = None
         self._SubscriptionExpirationTimeEnable = None
+        self._Tags = None
 
     @property
     def EnvironmentId(self):
@@ -4220,6 +4223,17 @@ class CreateEnvironmentRequest(AbstractModel):
     def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
         self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
 
+    @property
+    def Tags(self):
+        r"""命名空间标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -4232,6 +4246,12 @@ class CreateEnvironmentRequest(AbstractModel):
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
         self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
         self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7233,6 +7253,10 @@ class CreateTopicRequest(AbstractModel):
         :type AckTimeOut: int
         :param _PulsarTopicMessageType: Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
         :type PulsarTopicMessageType: int
+        :param _Tags: 主题标签
+        :type Tags: list of Tag
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :type DelayMessagePolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -7246,6 +7270,8 @@ class CreateTopicRequest(AbstractModel):
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
         self._PulsarTopicMessageType = None
+        self._Tags = None
+        self._DelayMessagePolicy = None
 
     @property
     def EnvironmentId(self):
@@ -7388,6 +7414,28 @@ class CreateTopicRequest(AbstractModel):
     def PulsarTopicMessageType(self, PulsarTopicMessageType):
         self._PulsarTopicMessageType = PulsarTopicMessageType
 
+    @property
+    def Tags(self):
+        r"""主题标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -7402,6 +7450,13 @@ class CreateTopicRequest(AbstractModel):
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
         self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21398,6 +21453,8 @@ class Environment(AbstractModel):
         :type SubscriptionExpirationTime: int
         :param _SubscriptionExpirationTimeEnable: 离线订阅过期自动清理时间开关
         :type SubscriptionExpirationTimeEnable: bool
+        :param _Tags: 命名空间标签
+        :type Tags: list of Tag
         """
         self._EnvironmentId = None
         self._Remark = None
@@ -21411,6 +21468,7 @@ class Environment(AbstractModel):
         self._AutoSubscriptionCreation = None
         self._SubscriptionExpirationTime = None
         self._SubscriptionExpirationTimeEnable = None
+        self._Tags = None
 
     @property
     def EnvironmentId(self):
@@ -21547,6 +21605,17 @@ class Environment(AbstractModel):
     def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
         self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
 
+    @property
+    def Tags(self):
+        r"""命名空间标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -21563,6 +21632,12 @@ class Environment(AbstractModel):
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
         self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
         self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26335,6 +26410,8 @@ class ModifyTopicRequest(AbstractModel):
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
         :type AckTimeOut: int
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :type DelayMessagePolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -26345,6 +26422,7 @@ class ModifyTopicRequest(AbstractModel):
         self._UnackPolicy = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._DelayMessagePolicy = None
 
     @property
     def EnvironmentId(self):
@@ -26446,6 +26524,17 @@ class ModifyTopicRequest(AbstractModel):
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -26457,6 +26546,7 @@ class ModifyTopicRequest(AbstractModel):
         self._UnackPolicy = params.get("UnackPolicy")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28181,7 +28271,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
         :type MaxBandWidth: int
         :param _MaxNamespaces: 最大命名空间个数
         :type MaxNamespaces: int
-        :param _MaxTopics: 最大主题分区数
+        :param _MaxTopics: 可以创建的最大主题数
         :type MaxTopics: int
         :param _ScalableTps: 规格外弹性TPS
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28190,8 +28280,16 @@ class PulsarProClusterSpecInfo(AbstractModel):
 当前集群topic的最大分区数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPartitions: int
-        :param _MaxDelayedMessages: 商品最大延迟消息数量。0代表没有限制	
+        :param _MaxDelayedMessages: 最大延迟消息数量。0代表没有限制	
         :type MaxDelayedMessages: int
+        :param _MaxTopicsPartitioned: 可以创建的最大主题分区数
+        :type MaxTopicsPartitioned: int
+        :param _BrokerMaxConnections: 单broker最大链接数
+        :type BrokerMaxConnections: int
+        :param _BrokerMaxConnectionsPerIp: 单IP最大链接数
+        :type BrokerMaxConnectionsPerIp: int
+        :param _MaximumElasticStorage: 弹性存储集群最大存储规格；固定存储该值为0
+        :type MaximumElasticStorage: int
         """
         self._SpecName = None
         self._MaxTps = None
@@ -28201,6 +28299,10 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._ScalableTps = None
         self._MaxPartitions = None
         self._MaxDelayedMessages = None
+        self._MaxTopicsPartitioned = None
+        self._BrokerMaxConnections = None
+        self._BrokerMaxConnectionsPerIp = None
+        self._MaximumElasticStorage = None
 
     @property
     def SpecName(self):
@@ -28248,7 +28350,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTopics(self):
-        r"""最大主题分区数
+        r"""可以创建的最大主题数
         :rtype: int
         """
         return self._MaxTopics
@@ -28284,7 +28386,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxDelayedMessages(self):
-        r"""商品最大延迟消息数量。0代表没有限制	
+        r"""最大延迟消息数量。0代表没有限制	
         :rtype: int
         """
         return self._MaxDelayedMessages
@@ -28292,6 +28394,50 @@ class PulsarProClusterSpecInfo(AbstractModel):
     @MaxDelayedMessages.setter
     def MaxDelayedMessages(self, MaxDelayedMessages):
         self._MaxDelayedMessages = MaxDelayedMessages
+
+    @property
+    def MaxTopicsPartitioned(self):
+        r"""可以创建的最大主题分区数
+        :rtype: int
+        """
+        return self._MaxTopicsPartitioned
+
+    @MaxTopicsPartitioned.setter
+    def MaxTopicsPartitioned(self, MaxTopicsPartitioned):
+        self._MaxTopicsPartitioned = MaxTopicsPartitioned
+
+    @property
+    def BrokerMaxConnections(self):
+        r"""单broker最大链接数
+        :rtype: int
+        """
+        return self._BrokerMaxConnections
+
+    @BrokerMaxConnections.setter
+    def BrokerMaxConnections(self, BrokerMaxConnections):
+        self._BrokerMaxConnections = BrokerMaxConnections
+
+    @property
+    def BrokerMaxConnectionsPerIp(self):
+        r"""单IP最大链接数
+        :rtype: int
+        """
+        return self._BrokerMaxConnectionsPerIp
+
+    @BrokerMaxConnectionsPerIp.setter
+    def BrokerMaxConnectionsPerIp(self, BrokerMaxConnectionsPerIp):
+        self._BrokerMaxConnectionsPerIp = BrokerMaxConnectionsPerIp
+
+    @property
+    def MaximumElasticStorage(self):
+        r"""弹性存储集群最大存储规格；固定存储该值为0
+        :rtype: int
+        """
+        return self._MaximumElasticStorage
+
+    @MaximumElasticStorage.setter
+    def MaximumElasticStorage(self, MaximumElasticStorage):
+        self._MaximumElasticStorage = MaximumElasticStorage
 
 
     def _deserialize(self, params):
@@ -28303,6 +28449,10 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._ScalableTps = params.get("ScalableTps")
         self._MaxPartitions = params.get("MaxPartitions")
         self._MaxDelayedMessages = params.get("MaxDelayedMessages")
+        self._MaxTopicsPartitioned = params.get("MaxTopicsPartitioned")
+        self._BrokerMaxConnections = params.get("BrokerMaxConnections")
+        self._BrokerMaxConnectionsPerIp = params.get("BrokerMaxConnectionsPerIp")
+        self._MaximumElasticStorage = params.get("MaximumElasticStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37997,6 +38147,10 @@ class Topic(AbstractModel):
         :type AckTimeOut: int
         :param _PulsarTopicMessageType: Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
         :type PulsarTopicMessageType: int
+        :param _Tags: 主题标签
+        :type Tags: list of Tag
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :type DelayMessagePolicy: str
         """
         self._AverageMsgSize = None
         self._ConsumerCount = None
@@ -38026,6 +38180,8 @@ class Topic(AbstractModel):
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
         self._PulsarTopicMessageType = None
+        self._Tags = None
+        self._DelayMessagePolicy = None
 
     @property
     def AverageMsgSize(self):
@@ -38369,6 +38525,28 @@ class Topic(AbstractModel):
     def PulsarTopicMessageType(self, PulsarTopicMessageType):
         self._PulsarTopicMessageType = PulsarTopicMessageType
 
+    @property
+    def Tags(self):
+        r"""主题标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._AverageMsgSize = params.get("AverageMsgSize")
@@ -38404,6 +38582,13 @@ class Topic(AbstractModel):
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
         self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
