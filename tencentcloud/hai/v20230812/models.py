@@ -1973,12 +1973,18 @@ class ItemPrice(AbstractModel):
         :type ChargeUnit: str
         :param _Amount: 商品数量
         :type Amount: int
+        :param _OriginPrice: 原价
+        :type OriginPrice: float
+        :param _DiscountPrice: 折扣价
+        :type DiscountPrice: float
         """
         self._UnitPrice = None
         self._DiscountUnitPrice = None
         self._Discount = None
         self._ChargeUnit = None
         self._Amount = None
+        self._OriginPrice = None
+        self._DiscountPrice = None
 
     @property
     def UnitPrice(self):
@@ -2036,6 +2042,28 @@ class ItemPrice(AbstractModel):
     def Amount(self, Amount):
         self._Amount = Amount
 
+    @property
+    def OriginPrice(self):
+        r"""原价
+        :rtype: float
+        """
+        return self._OriginPrice
+
+    @OriginPrice.setter
+    def OriginPrice(self, OriginPrice):
+        self._OriginPrice = OriginPrice
+
+    @property
+    def DiscountPrice(self):
+        r"""折扣价
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
 
     def _deserialize(self, params):
         self._UnitPrice = params.get("UnitPrice")
@@ -2043,6 +2071,8 @@ class ItemPrice(AbstractModel):
         self._Discount = params.get("Discount")
         self._ChargeUnit = params.get("ChargeUnit")
         self._Amount = params.get("Amount")
+        self._OriginPrice = params.get("OriginPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

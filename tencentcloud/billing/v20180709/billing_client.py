@@ -1298,6 +1298,31 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRenewInstances(self, request):
+        r"""注意事项：
+        1、本接口支持查询已接入续费管理页的包年包月实例，包括运行中、已隔离（部分产品不支持）
+        2、子用户使用该接口时，应具备QcloudFinanceRenewManageFullAccess权限策略。
+
+        :param request: Request instance for DescribeRenewInstances.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeRenewInstancesRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeRenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRenewInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRenewInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSavingPlanResourceInfo(self, request):
         r"""查询节省计划详情
 

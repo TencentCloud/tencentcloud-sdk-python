@@ -3463,6 +3463,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableEksEventPersistence(
+            self,
+            request: models.EnableEksEventPersistenceRequest,
+            opts: Dict = None,
+    ) -> models.EnableEksEventPersistenceResponse:
+        """
+        Eks集群开启事件持久化功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableEksEventPersistence"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableEksEventPersistenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableEncryptionProtection(
             self,
             request: models.EnableEncryptionProtectionRequest,

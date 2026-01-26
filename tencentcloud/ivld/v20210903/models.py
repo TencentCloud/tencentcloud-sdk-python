@@ -3852,21 +3852,19 @@ class ImportMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _URL: 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
+        :param _URL: <p>待分析视频的URL，目前只支持<em>不带签名的</em>COS地址，字段输入内容最大为1KB</p>
         :type URL: str
-        :param _MD5: 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
+        :param _MD5: <p>待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32</p>
         :type MD5: str
-        :param _Name: 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
+        :param _Name: <p>待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64</p>
         :type Name: str
-        :param _WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
-推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
+        :param _WriteBackCosPath: <p>当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。推荐采用本主账号COS桶，如果使用其他账号COS桶，请确保COS桶可写，否则可导致分析失败</p>
         :type WriteBackCosPath: str
-        :param _Label: 自定义标签，可用于查询
+        :param _Label: <p>自定义标签，可用于查询</p>
         :type Label: str
-        :param _CallbackURL: 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+        :param _CallbackURL: <p>媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；</p>
         :type CallbackURL: str
-        :param _MediaType: 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
-默认为2(视频)
+        :param _MediaType: <p>媒资文件类型，详细定义参见<a href="https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo">MediaPreknownInfo.MediaType</a><br>默认为2(视频)</p>
         :type MediaType: int
         """
         self._URL = None
@@ -3879,7 +3877,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def URL(self):
-        r"""待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
+        r"""<p>待分析视频的URL，目前只支持<em>不带签名的</em>COS地址，字段输入内容最大为1KB</p>
         :rtype: str
         """
         return self._URL
@@ -3890,7 +3888,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def MD5(self):
-        r"""待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
+        r"""<p>待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32</p>
         :rtype: str
         """
         return self._MD5
@@ -3901,7 +3899,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
+        r"""<p>待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64</p>
         :rtype: str
         """
         return self._Name
@@ -3912,8 +3910,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def WriteBackCosPath(self):
-        r"""当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
-推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
+        r"""<p>当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。推荐采用本主账号COS桶，如果使用其他账号COS桶，请确保COS桶可写，否则可导致分析失败</p>
         :rtype: str
         """
         return self._WriteBackCosPath
@@ -3924,7 +3921,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def Label(self):
-        r"""自定义标签，可用于查询
+        r"""<p>自定义标签，可用于查询</p>
         :rtype: str
         """
         return self._Label
@@ -3935,7 +3932,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
-        r"""媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+        r"""<p>媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；</p>
         :rtype: str
         """
         return self._CallbackURL
@@ -3946,8 +3943,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def MediaType(self):
-        r"""媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
-默认为2(视频)
+        r"""<p>媒资文件类型，详细定义参见<a href="https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo">MediaPreknownInfo.MediaType</a><br>默认为2(视频)</p>
         :rtype: int
         """
         return self._MediaType
@@ -3982,7 +3978,7 @@ class ImportMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaId: 媒资文件在系统中的ID
+        :param _MediaId: <p>媒资文件在系统中的ID</p>
         :type MediaId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3992,7 +3988,7 @@ class ImportMediaResponse(AbstractModel):
 
     @property
     def MediaId(self):
-        r"""媒资文件在系统中的ID
+        r"""<p>媒资文件在系统中的ID</p>
         :rtype: str
         """
         return self._MediaId

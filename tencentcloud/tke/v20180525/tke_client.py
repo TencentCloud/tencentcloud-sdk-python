@@ -4419,6 +4419,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnableEksEventPersistence(self, request):
+        r"""Eks集群开启事件持久化功能
+
+        :param request: Request instance for EnableEksEventPersistence.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableEksEventPersistenceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableEksEventPersistenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableEksEventPersistence", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableEksEventPersistenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableEncryptionProtection(self, request):
         r"""开启加密数据保护，需要先开启KMS能力，完成KMS授权
 

@@ -95,6 +95,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AuthorizePrivileges(self, request):
+        r"""Catalog模式下授权
+
+        :param request: Request instance for AuthorizePrivileges.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.AuthorizePrivilegesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.AuthorizePrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuthorizePrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.AuthorizePrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCodeFile(self, request):
         r"""新建代码文件
 
@@ -2510,6 +2533,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListPermissions(self, request):
+        r"""获取可授权权限详情
+
+        :param request: Request instance for ListPermissions.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListPermissionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListProcessLineage(self, request):
         r"""获取资产血缘信息
 
@@ -3447,6 +3493,29 @@ class WedataClient(AbstractClient):
             body = self.call("RevokeDataSourceAuthorization", params, headers=headers)
             response = json.loads(body)
             model = models.RevokeDataSourceAuthorizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokePrivileges(self, request):
+        r"""Catalog模式下授权回收
+
+        :param request: Request instance for RevokePrivileges.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.RevokePrivilegesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.RevokePrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokePrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokePrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

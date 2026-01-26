@@ -79,6 +79,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AuthorizePrivileges(
+            self,
+            request: models.AuthorizePrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.AuthorizePrivilegesResponse:
+        """
+        Catalog模式下授权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AuthorizePrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AuthorizePrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCodeFile(
             self,
             request: models.CreateCodeFileRequest,
@@ -1969,6 +1987,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListPermissions(
+            self,
+            request: models.ListPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.ListPermissionsResponse:
+        """
+        获取可授权权限详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListProcessLineage(
             self,
             request: models.ListProcessLineageRequest,
@@ -2705,6 +2741,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "RevokeDataSourceAuthorization"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RevokeDataSourceAuthorizationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RevokePrivileges(
+            self,
+            request: models.RevokePrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.RevokePrivilegesResponse:
+        """
+        Catalog模式下授权回收
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RevokePrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RevokePrivilegesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

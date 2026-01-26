@@ -1298,6 +1298,294 @@ class AuthorizeDataSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuthorizePrivilegesRequest(AbstractModel):
+    r"""AuthorizePrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resources: 资源数组
+ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+- Metalake，固定为default
+- Catalog，取catalogName
+- Schema，取catalogName.SchemaName
+- Table,，取catalogName.SchemaName.TableName
+
+        :type Resources: list of PrivilegeResource
+        :param _Subjects: 授权主体数组，SubjectType及对应SubjectValue取值规则
+- User 用户
+    - 取自DescribeTenantUserList中的UserId
+- Project 项目
+    - 取自DescribeUserProjects中的ProjectId
+- Role 角色（项目级角色）
+    - 先调用DescribeUserProjects获取项目ID（ProjectId），再调用DescribeRoleList中的角色ID（RoleId），拼装为$ProjectId.$ProjectId. RoleId，例如"3085649716411588608.308335260274237440"
+- GlobalRole （平台级角色）
+    - AllAccountUsers 全部用户
+    - 其他ID，取自DescribeTenantRole中的RoleId
+        :type Subjects: list of Subject
+        :param _Privileges: 权限点，来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的各类Privileges中的NAME
+        :type Privileges: list of PrivilegeInfo
+        """
+        self._Resources = None
+        self._Subjects = None
+        self._Privileges = None
+
+    @property
+    def Resources(self):
+        r"""资源数组
+ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+- Metalake，固定为default
+- Catalog，取catalogName
+- Schema，取catalogName.SchemaName
+- Table,，取catalogName.SchemaName.TableName
+
+        :rtype: list of PrivilegeResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Subjects(self):
+        r"""授权主体数组，SubjectType及对应SubjectValue取值规则
+- User 用户
+    - 取自DescribeTenantUserList中的UserId
+- Project 项目
+    - 取自DescribeUserProjects中的ProjectId
+- Role 角色（项目级角色）
+    - 先调用DescribeUserProjects获取项目ID（ProjectId），再调用DescribeRoleList中的角色ID（RoleId），拼装为$ProjectId.$ProjectId. RoleId，例如"3085649716411588608.308335260274237440"
+- GlobalRole （平台级角色）
+    - AllAccountUsers 全部用户
+    - 其他ID，取自DescribeTenantRole中的RoleId
+        :rtype: list of Subject
+        """
+        return self._Subjects
+
+    @Subjects.setter
+    def Subjects(self, Subjects):
+        self._Subjects = Subjects
+
+    @property
+    def Privileges(self):
+        r"""权限点，来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的各类Privileges中的NAME
+        :rtype: list of PrivilegeInfo
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = PrivilegeResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Subjects") is not None:
+            self._Subjects = []
+            for item in params.get("Subjects"):
+                obj = Subject()
+                obj._deserialize(item)
+                self._Subjects.append(obj)
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = PrivilegeInfo()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizePrivilegesResponse(AbstractModel):
+    r"""AuthorizePrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.AuthorizePrivilegesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.AuthorizePrivilegesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AuthorizePrivilegesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class AuthorizePrivilegesRsp(AbstractModel):
+    r"""openapi授权返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OverallSuccess: 批量授权结果
+        :type OverallSuccess: bool
+        :param _Results: 授权详情列表
+        :type Results: list of AuthorizeResult
+        """
+        self._OverallSuccess = None
+        self._Results = None
+
+    @property
+    def OverallSuccess(self):
+        r"""批量授权结果
+        :rtype: bool
+        """
+        return self._OverallSuccess
+
+    @OverallSuccess.setter
+    def OverallSuccess(self, OverallSuccess):
+        self._OverallSuccess = OverallSuccess
+
+    @property
+    def Results(self):
+        r"""授权详情列表
+        :rtype: list of AuthorizeResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+
+    def _deserialize(self, params):
+        self._OverallSuccess = params.get("OverallSuccess")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = AuthorizeResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizeResult(AbstractModel):
+    r"""AuthorizeResult授权结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 授权资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        :param _Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _Reason: 原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self._Resource = None
+        self._Result = None
+        self._Reason = None
+
+    @property
+    def Resource(self):
+        r"""授权资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Result(self):
+        r"""结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Reason(self):
+        r"""原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = PrivilegeResource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._Result = params.get("Result")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackfillInstance(AbstractModel):
     r"""单次补录实例详情
 
@@ -16970,6 +17258,62 @@ class GetResourceGroupMetricsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetResourcePrivilegeDetailRsp(AbstractModel):
+    r"""GetResourcePrivilegeDetailRsp
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Details: 权限详情列表
+        :type Details: list of ResourcePrivilegeDetail
+        :param _TotalCount: 总计
+        :type TotalCount: int
+        """
+        self._Details = None
+        self._TotalCount = None
+
+    @property
+    def Details(self):
+        r"""权限详情列表
+        :rtype: list of ResourcePrivilegeDetail
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def TotalCount(self):
+        r"""总计
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = ResourcePrivilegeDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetSQLFolderRequest(AbstractModel):
     r"""GetSQLFolder请求参数结构体
 
@@ -20456,9 +20800,15 @@ class LineageNodeInfo(AbstractModel):
         :param _Relation: 关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: :class:`tencentcloud.wedata.v20250806.models.LineageRelation`
+        :param _DownStreamCount: 上游数量
+        :type DownStreamCount: int
+        :param _UpStreamCount: 下游数量
+        :type UpStreamCount: int
         """
         self._Resource = None
         self._Relation = None
+        self._DownStreamCount = None
+        self._UpStreamCount = None
 
     @property
     def Resource(self):
@@ -20484,6 +20834,28 @@ class LineageNodeInfo(AbstractModel):
     def Relation(self, Relation):
         self._Relation = Relation
 
+    @property
+    def DownStreamCount(self):
+        r"""上游数量
+        :rtype: int
+        """
+        return self._DownStreamCount
+
+    @DownStreamCount.setter
+    def DownStreamCount(self, DownStreamCount):
+        self._DownStreamCount = DownStreamCount
+
+    @property
+    def UpStreamCount(self):
+        r"""下游数量
+        :rtype: int
+        """
+        return self._UpStreamCount
+
+    @UpStreamCount.setter
+    def UpStreamCount(self, UpStreamCount):
+        self._UpStreamCount = UpStreamCount
+
 
     def _deserialize(self, params):
         if params.get("Resource") is not None:
@@ -20492,6 +20864,8 @@ class LineageNodeInfo(AbstractModel):
         if params.get("Relation") is not None:
             self._Relation = LineageRelation()
             self._Relation._deserialize(params.get("Relation"))
+        self._DownStreamCount = params.get("DownStreamCount")
+        self._UpStreamCount = params.get("UpStreamCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24916,6 +25290,160 @@ class ListOpsWorkflowsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = OpsWorkflows()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListPermissionsRequest(AbstractModel):
+    r"""ListPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 资源
+ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+- Metalake，固定为default
+- Catalog，取catalogName
+- Schema，取catalogName.SchemaName
+- Table,，取catalogName.SchemaName.TableName
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        :param _Filters: 过滤条件(此参数还未支持)
+        :type Filters: list of SecurityFilter
+        :param _OrderFields: 排序字段(此参数还未支持)
+        :type OrderFields: list of OrderField
+        :param _Page: 页参数(此参数还未支持)
+        :type Page: :class:`tencentcloud.wedata.v20250806.models.Page`
+        """
+        self._Resource = None
+        self._Filters = None
+        self._OrderFields = None
+        self._Page = None
+
+    @property
+    def Resource(self):
+        r"""资源
+ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+- Metalake，固定为default
+- Catalog，取catalogName
+- Schema，取catalogName.SchemaName
+- Table,，取catalogName.SchemaName.TableName
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Filters(self):
+        r"""过滤条件(此参数还未支持)
+        :rtype: list of SecurityFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段(此参数还未支持)
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def Page(self):
+        r"""页参数(此参数还未支持)
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.Page`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = PrivilegeResource()
+            self._Resource._deserialize(params.get("Resource"))
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = SecurityFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        if params.get("Page") is not None:
+            self._Page = Page()
+            self._Page._deserialize(params.get("Page"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPermissionsResponse(AbstractModel):
+    r"""ListPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 获取资源权限详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.GetResourcePrivilegeDetailRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""获取资源权限详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.GetResourcePrivilegeDetailRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetResourcePrivilegeDetailRsp()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -35342,6 +35870,61 @@ class OutTaskParameter(AbstractModel):
         
 
 
+class Page(AbstractModel):
+    r"""页码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: 页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        """
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def PageSize(self):
+        r"""页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PageRoles(AbstractModel):
     r"""角色列表分页信息
 
@@ -35724,6 +36307,320 @@ class PauseOpsTasksAsyncResponse(AbstractModel):
             self._Data = OpsAsyncResponse()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class PrivilegeInfo(AbstractModel):
+    r"""权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _DisplayName: 权限展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _Description: 权限描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _IsRead: 是否为读取权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRead: bool
+        :param _IsManage: 是否为管理权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsManage: bool
+        :param _Granted: 是否拥有此权限，检查权限时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Granted: bool
+        :param _InheritedObject: 继承自哪个资源，查询权限详情时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InheritedObject: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        :param _Inherited: 否继承获得，查询权限详情时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Inherited: bool
+        :param _IsEdit: 是否为编辑权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEdit: bool
+        :param _IsMetaDataPermission: 是否元数据权限（前端展示）
+        :type IsMetaDataPermission: bool
+        :param _CatalogID: CatalogID(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogID: str
+        :param _CatalogName: catalog名称(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _WorkSpaceID: 空间ID(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceID: str
+        :param _WorkSpaceName: 空间名称(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceName: str
+        """
+        self._Name = None
+        self._DisplayName = None
+        self._Description = None
+        self._IsRead = None
+        self._IsManage = None
+        self._Granted = None
+        self._InheritedObject = None
+        self._Inherited = None
+        self._IsEdit = None
+        self._IsMetaDataPermission = None
+        self._CatalogID = None
+        self._CatalogName = None
+        self._WorkSpaceID = None
+        self._WorkSpaceName = None
+
+    @property
+    def Name(self):
+        r"""权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DisplayName(self):
+        r"""权限展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        r"""权限描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsRead(self):
+        r"""是否为读取权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsRead
+
+    @IsRead.setter
+    def IsRead(self, IsRead):
+        self._IsRead = IsRead
+
+    @property
+    def IsManage(self):
+        r"""是否为管理权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsManage
+
+    @IsManage.setter
+    def IsManage(self, IsManage):
+        self._IsManage = IsManage
+
+    @property
+    def Granted(self):
+        r"""是否拥有此权限，检查权限时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Granted
+
+    @Granted.setter
+    def Granted(self, Granted):
+        self._Granted = Granted
+
+    @property
+    def InheritedObject(self):
+        r"""继承自哪个资源，查询权限详情时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        """
+        return self._InheritedObject
+
+    @InheritedObject.setter
+    def InheritedObject(self, InheritedObject):
+        self._InheritedObject = InheritedObject
+
+    @property
+    def Inherited(self):
+        r"""否继承获得，查询权限详情时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Inherited
+
+    @Inherited.setter
+    def Inherited(self, Inherited):
+        self._Inherited = Inherited
+
+    @property
+    def IsEdit(self):
+        r"""是否为编辑权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsEdit
+
+    @IsEdit.setter
+    def IsEdit(self, IsEdit):
+        self._IsEdit = IsEdit
+
+    @property
+    def IsMetaDataPermission(self):
+        r"""是否元数据权限（前端展示）
+        :rtype: bool
+        """
+        return self._IsMetaDataPermission
+
+    @IsMetaDataPermission.setter
+    def IsMetaDataPermission(self, IsMetaDataPermission):
+        self._IsMetaDataPermission = IsMetaDataPermission
+
+    @property
+    def CatalogID(self):
+        r"""CatalogID(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogID
+
+    @CatalogID.setter
+    def CatalogID(self, CatalogID):
+        self._CatalogID = CatalogID
+
+    @property
+    def CatalogName(self):
+        r"""catalog名称(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def WorkSpaceID(self):
+        r"""空间ID(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkSpaceID
+
+    @WorkSpaceID.setter
+    def WorkSpaceID(self, WorkSpaceID):
+        self._WorkSpaceID = WorkSpaceID
+
+    @property
+    def WorkSpaceName(self):
+        r"""空间名称(废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._IsRead = params.get("IsRead")
+        self._IsManage = params.get("IsManage")
+        self._Granted = params.get("Granted")
+        if params.get("InheritedObject") is not None:
+            self._InheritedObject = PrivilegeResource()
+            self._InheritedObject._deserialize(params.get("InheritedObject"))
+        self._Inherited = params.get("Inherited")
+        self._IsEdit = params.get("IsEdit")
+        self._IsMetaDataPermission = params.get("IsMetaDataPermission")
+        self._CatalogID = params.get("CatalogID")
+        self._CatalogName = params.get("CatalogName")
+        self._WorkSpaceID = params.get("WorkSpaceID")
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivilegeResource(AbstractModel):
+    r"""权限资源模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型 Catalog、Schema等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _ResourceUri: 资源URI
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceUri: str
+        """
+        self._ResourceType = None
+        self._ResourceUri = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型 Catalog、Schema等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceUri(self):
+        r"""资源URI
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceUri
+
+    @ResourceUri.setter
+    def ResourceUri(self, ResourceUri):
+        self._ResourceUri = ResourceUri
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceUri = params.get("ResourceUri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Project(AbstractModel):
@@ -44642,6 +45539,84 @@ class ResourceNumber(AbstractModel):
         
 
 
+class ResourcePrivilegeDetail(AbstractModel):
+    r"""ResourcePrivilegeDetail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 资源
+        :type Resource: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        :param _SubjectDetails: 主体
+        :type SubjectDetails: list of SubjectInfo
+        :param _PermissionDetails: 权限详情
+        :type PermissionDetails: list of PrivilegeInfo
+        """
+        self._Resource = None
+        self._SubjectDetails = None
+        self._PermissionDetails = None
+
+    @property
+    def Resource(self):
+        r"""资源
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def SubjectDetails(self):
+        r"""主体
+        :rtype: list of SubjectInfo
+        """
+        return self._SubjectDetails
+
+    @SubjectDetails.setter
+    def SubjectDetails(self, SubjectDetails):
+        self._SubjectDetails = SubjectDetails
+
+    @property
+    def PermissionDetails(self):
+        r"""权限详情
+        :rtype: list of PrivilegeInfo
+        """
+        return self._PermissionDetails
+
+    @PermissionDetails.setter
+    def PermissionDetails(self, PermissionDetails):
+        self._PermissionDetails = PermissionDetails
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = PrivilegeResource()
+            self._Resource._deserialize(params.get("Resource"))
+        if params.get("SubjectDetails") is not None:
+            self._SubjectDetails = []
+            for item in params.get("SubjectDetails"):
+                obj = SubjectInfo()
+                obj._deserialize(item)
+                self._SubjectDetails.append(obj)
+        if params.get("PermissionDetails") is not None:
+            self._PermissionDetails = []
+            for item in params.get("PermissionDetails"):
+                obj = PrivilegeInfo()
+                obj._deserialize(item)
+                self._PermissionDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceResult(AbstractModel):
     r"""资源组操作结果
 
@@ -44971,6 +45946,192 @@ class RevokeDataSourceAuthorizationResponse(AbstractModel):
             self._Data = DataSourceStatus()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class RevokePrivilegesRequest(AbstractModel):
+    r"""RevokePrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resources: 资源数组，数据来源于ListPermissions接口返回的Resource中的ResourceType和ResourceUri
+        :type Resources: list of PrivilegeResource
+        :param _Subjects: 授权回收主体数组，参数组装需要注意：
+1.SubjectType 和SubjectValues的取值参考ListPermissions接口中返回SubjectDetails中的SubjectType和SubjectValue
+2.批量回收时，Subjects数组长度需要与权限点Privileges长度一致，并且数据一一对应
+        :type Subjects: list of Subject
+        :param _Privileges: 权限点，Name来源于ListPermissions接口返回的PermissionDetails中的Name，例如：BROWSE 、GRANT_PRIVILEGES
+        :type Privileges: list of PrivilegeInfo
+        """
+        self._Resources = None
+        self._Subjects = None
+        self._Privileges = None
+
+    @property
+    def Resources(self):
+        r"""资源数组，数据来源于ListPermissions接口返回的Resource中的ResourceType和ResourceUri
+        :rtype: list of PrivilegeResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Subjects(self):
+        r"""授权回收主体数组，参数组装需要注意：
+1.SubjectType 和SubjectValues的取值参考ListPermissions接口中返回SubjectDetails中的SubjectType和SubjectValue
+2.批量回收时，Subjects数组长度需要与权限点Privileges长度一致，并且数据一一对应
+        :rtype: list of Subject
+        """
+        return self._Subjects
+
+    @Subjects.setter
+    def Subjects(self, Subjects):
+        self._Subjects = Subjects
+
+    @property
+    def Privileges(self):
+        r"""权限点，Name来源于ListPermissions接口返回的PermissionDetails中的Name，例如：BROWSE 、GRANT_PRIVILEGES
+        :rtype: list of PrivilegeInfo
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = PrivilegeResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Subjects") is not None:
+            self._Subjects = []
+            for item in params.get("Subjects"):
+                obj = Subject()
+                obj._deserialize(item)
+                self._Subjects.append(obj)
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = PrivilegeInfo()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokePrivilegesResponse(AbstractModel):
+    r"""RevokePrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.RevokePrivilegesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.RevokePrivilegesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = RevokePrivilegesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class RevokePrivilegesRsp(AbstractModel):
+    r"""openapi回收授权返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OverallSuccess: 结果
+        :type OverallSuccess: bool
+        :param _Results: 详情列表
+        :type Results: list of AuthorizeResult
+        """
+        self._OverallSuccess = None
+        self._Results = None
+
+    @property
+    def OverallSuccess(self):
+        r"""结果
+        :rtype: bool
+        """
+        return self._OverallSuccess
+
+    @OverallSuccess.setter
+    def OverallSuccess(self, OverallSuccess):
+        self._OverallSuccess = OverallSuccess
+
+    @property
+    def Results(self):
+        r"""详情列表
+        :rtype: list of AuthorizeResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+
+    def _deserialize(self, params):
+        self._OverallSuccess = params.get("OverallSuccess")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = AuthorizeResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunSQLScriptRequest(AbstractModel):
@@ -45916,6 +47077,59 @@ class SchemaInfo(AbstractModel):
         
 
 
+class SecurityFilter(AbstractModel):
+    r"""数据安全使用的filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: key
+        :type Name: str
+        :param _Values: values
+
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""key
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""values
+
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetSuccessTaskInstancesAsyncRequest(AbstractModel):
     r"""SetSuccessTaskInstancesAsync请求参数结构体
 
@@ -46402,6 +47616,138 @@ class StopSQLScriptRunResponse(AbstractModel):
             self._Data = SQLStopResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class Subject(AbstractModel):
+    r"""Subject主体信息，授权/回收主体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubjectType: 主体类型
+        :type SubjectType: str
+        :param _SubjectValues: 主体列表
+        :type SubjectValues: list of str
+        """
+        self._SubjectType = None
+        self._SubjectValues = None
+
+    @property
+    def SubjectType(self):
+        r"""主体类型
+        :rtype: str
+        """
+        return self._SubjectType
+
+    @SubjectType.setter
+    def SubjectType(self, SubjectType):
+        self._SubjectType = SubjectType
+
+    @property
+    def SubjectValues(self):
+        r"""主体列表
+        :rtype: list of str
+        """
+        return self._SubjectValues
+
+    @SubjectValues.setter
+    def SubjectValues(self, SubjectValues):
+        self._SubjectValues = SubjectValues
+
+
+    def _deserialize(self, params):
+        self._SubjectType = params.get("SubjectType")
+        self._SubjectValues = params.get("SubjectValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubjectInfo(AbstractModel):
+    r"""SubjectInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubjectType: 主体类型
+        :type SubjectType: str
+        :param _SubjectTypeDisplayName: 主题类型展示名
+        :type SubjectTypeDisplayName: str
+        :param _SubjectValue: 主体id
+        :type SubjectValue: str
+        :param _SubjectValueDisplayName: 主体名
+        :type SubjectValueDisplayName: str
+        """
+        self._SubjectType = None
+        self._SubjectTypeDisplayName = None
+        self._SubjectValue = None
+        self._SubjectValueDisplayName = None
+
+    @property
+    def SubjectType(self):
+        r"""主体类型
+        :rtype: str
+        """
+        return self._SubjectType
+
+    @SubjectType.setter
+    def SubjectType(self, SubjectType):
+        self._SubjectType = SubjectType
+
+    @property
+    def SubjectTypeDisplayName(self):
+        r"""主题类型展示名
+        :rtype: str
+        """
+        return self._SubjectTypeDisplayName
+
+    @SubjectTypeDisplayName.setter
+    def SubjectTypeDisplayName(self, SubjectTypeDisplayName):
+        self._SubjectTypeDisplayName = SubjectTypeDisplayName
+
+    @property
+    def SubjectValue(self):
+        r"""主体id
+        :rtype: str
+        """
+        return self._SubjectValue
+
+    @SubjectValue.setter
+    def SubjectValue(self, SubjectValue):
+        self._SubjectValue = SubjectValue
+
+    @property
+    def SubjectValueDisplayName(self):
+        r"""主体名
+        :rtype: str
+        """
+        return self._SubjectValueDisplayName
+
+    @SubjectValueDisplayName.setter
+    def SubjectValueDisplayName(self, SubjectValueDisplayName):
+        self._SubjectValueDisplayName = SubjectValueDisplayName
+
+
+    def _deserialize(self, params):
+        self._SubjectType = params.get("SubjectType")
+        self._SubjectTypeDisplayName = params.get("SubjectTypeDisplayName")
+        self._SubjectValue = params.get("SubjectValue")
+        self._SubjectValueDisplayName = params.get("SubjectValueDisplayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubmitTaskRequest(AbstractModel):

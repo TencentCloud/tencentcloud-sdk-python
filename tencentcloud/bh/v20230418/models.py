@@ -8486,6 +8486,8 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param _Name: 资产名或资产IP，模糊查询
         :type Name: str
+        :param _ResourceIdSet: 主机绑定的堡垒机服务ID集合  未绑定的通过Filters进行传递
+        :type ResourceIdSet: list of str
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param _Limit: 每页条目数，默认20, 最大500
@@ -8496,6 +8498,8 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type KindSet: list of int non-negative
         :param _DepartmentId: 所属部门ID
         :type DepartmentId: str
+        :param _Filters: 过滤条件,支持 BindingStatus｜VpcId ｜InstanceId ｜DeviceAccount ｜ManageDimension｜DomainId｜Ip｜Name
+        :type Filters: list of Filter
         :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :type TagFilters: list of TagFilter
         """
@@ -8503,11 +8507,13 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Id = None
         self._IdSet = None
         self._Name = None
+        self._ResourceIdSet = None
         self._Offset = None
         self._Limit = None
         self._Kind = None
         self._KindSet = None
         self._DepartmentId = None
+        self._Filters = None
         self._TagFilters = None
 
     @property
@@ -8553,6 +8559,17 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def ResourceIdSet(self):
+        r"""主机绑定的堡垒机服务ID集合  未绑定的通过Filters进行传递
+        :rtype: list of str
+        """
+        return self._ResourceIdSet
+
+    @ResourceIdSet.setter
+    def ResourceIdSet(self, ResourceIdSet):
+        self._ResourceIdSet = ResourceIdSet
 
     @property
     def Offset(self):
@@ -8610,6 +8627,17 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._DepartmentId = DepartmentId
 
     @property
+    def Filters(self):
+        r"""过滤条件,支持 BindingStatus｜VpcId ｜InstanceId ｜DeviceAccount ｜ManageDimension｜DomainId｜Ip｜Name
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def TagFilters(self):
         r"""过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :rtype: list of TagFilter
@@ -8626,11 +8654,18 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Id = params.get("Id")
         self._IdSet = params.get("IdSet")
         self._Name = params.get("Name")
+        self._ResourceIdSet = params.get("ResourceIdSet")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Kind = params.get("Kind")
         self._KindSet = params.get("KindSet")
         self._DepartmentId = params.get("DepartmentId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         if params.get("TagFilters") is not None:
             self._TagFilters = []
             for item in params.get("TagFilters"):
@@ -13088,6 +13123,331 @@ class ImportExternalDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LDAPSetting(AbstractModel):
+    r"""LDAP配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启LDAP认证，false-不开启，true-开启
+        :type Enable: bool
+        :param _Ip: 服务器地址
+        :type Ip: str
+        :param _IpBackup: 备用服务器地址
+        :type IpBackup: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :type EnableSSL: bool
+        :param _BaseDN: Base DN
+        :type BaseDN: str
+        :param _AdminAccount: 管理员账号
+        :type AdminAccount: str
+        :param _AttributeUser: 用户属性
+        :type AttributeUser: str
+        :param _AttributeUserName: 用户名属性
+        :type AttributeUserName: str
+        :param _AutoSync: 自动同步，false-不开启，true-开启
+        :type AutoSync: bool
+        :param _Overwrite: 覆盖用户信息，false-不开启，true-开启
+        :type Overwrite: bool
+        :param _SyncPeriod: 同步周期，30～60000之间的整数
+        :type SyncPeriod: int
+        :param _SyncAll: 是否同步全部，false-不开启，true-开启
+        :type SyncAll: bool
+        :param _SyncUnitSet: 同步OU列表
+        :type SyncUnitSet: list of str
+        :param _AttributeUnit: 组织单元属性
+        :type AttributeUnit: str
+        :param _AttributeRealName: 用户姓名属性
+        :type AttributeRealName: str
+        :param _AttributePhone: 手机号属性
+        :type AttributePhone: str
+        :param _AttributeEmail: 邮箱属性
+        :type AttributeEmail: str
+        :param _ResourceId: 请求LDAP服务的堡垒机实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _DomainId: 网络域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainId: str
+        """
+        self._Enable = None
+        self._Ip = None
+        self._IpBackup = None
+        self._Port = None
+        self._EnableSSL = None
+        self._BaseDN = None
+        self._AdminAccount = None
+        self._AttributeUser = None
+        self._AttributeUserName = None
+        self._AutoSync = None
+        self._Overwrite = None
+        self._SyncPeriod = None
+        self._SyncAll = None
+        self._SyncUnitSet = None
+        self._AttributeUnit = None
+        self._AttributeRealName = None
+        self._AttributePhone = None
+        self._AttributeEmail = None
+        self._ResourceId = None
+        self._DomainId = None
+
+    @property
+    def Enable(self):
+        r"""是否开启LDAP认证，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Ip(self):
+        r"""服务器地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def IpBackup(self):
+        r"""备用服务器地址
+        :rtype: str
+        """
+        return self._IpBackup
+
+    @IpBackup.setter
+    def IpBackup(self, IpBackup):
+        self._IpBackup = IpBackup
+
+    @property
+    def Port(self):
+        r"""服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EnableSSL(self):
+        r"""是否开启SSL，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def BaseDN(self):
+        r"""Base DN
+        :rtype: str
+        """
+        return self._BaseDN
+
+    @BaseDN.setter
+    def BaseDN(self, BaseDN):
+        self._BaseDN = BaseDN
+
+    @property
+    def AdminAccount(self):
+        r"""管理员账号
+        :rtype: str
+        """
+        return self._AdminAccount
+
+    @AdminAccount.setter
+    def AdminAccount(self, AdminAccount):
+        self._AdminAccount = AdminAccount
+
+    @property
+    def AttributeUser(self):
+        r"""用户属性
+        :rtype: str
+        """
+        return self._AttributeUser
+
+    @AttributeUser.setter
+    def AttributeUser(self, AttributeUser):
+        self._AttributeUser = AttributeUser
+
+    @property
+    def AttributeUserName(self):
+        r"""用户名属性
+        :rtype: str
+        """
+        return self._AttributeUserName
+
+    @AttributeUserName.setter
+    def AttributeUserName(self, AttributeUserName):
+        self._AttributeUserName = AttributeUserName
+
+    @property
+    def AutoSync(self):
+        r"""自动同步，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+    @property
+    def Overwrite(self):
+        r"""覆盖用户信息，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._Overwrite
+
+    @Overwrite.setter
+    def Overwrite(self, Overwrite):
+        self._Overwrite = Overwrite
+
+    @property
+    def SyncPeriod(self):
+        r"""同步周期，30～60000之间的整数
+        :rtype: int
+        """
+        return self._SyncPeriod
+
+    @SyncPeriod.setter
+    def SyncPeriod(self, SyncPeriod):
+        self._SyncPeriod = SyncPeriod
+
+    @property
+    def SyncAll(self):
+        r"""是否同步全部，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._SyncAll
+
+    @SyncAll.setter
+    def SyncAll(self, SyncAll):
+        self._SyncAll = SyncAll
+
+    @property
+    def SyncUnitSet(self):
+        r"""同步OU列表
+        :rtype: list of str
+        """
+        return self._SyncUnitSet
+
+    @SyncUnitSet.setter
+    def SyncUnitSet(self, SyncUnitSet):
+        self._SyncUnitSet = SyncUnitSet
+
+    @property
+    def AttributeUnit(self):
+        r"""组织单元属性
+        :rtype: str
+        """
+        return self._AttributeUnit
+
+    @AttributeUnit.setter
+    def AttributeUnit(self, AttributeUnit):
+        self._AttributeUnit = AttributeUnit
+
+    @property
+    def AttributeRealName(self):
+        r"""用户姓名属性
+        :rtype: str
+        """
+        return self._AttributeRealName
+
+    @AttributeRealName.setter
+    def AttributeRealName(self, AttributeRealName):
+        self._AttributeRealName = AttributeRealName
+
+    @property
+    def AttributePhone(self):
+        r"""手机号属性
+        :rtype: str
+        """
+        return self._AttributePhone
+
+    @AttributePhone.setter
+    def AttributePhone(self, AttributePhone):
+        self._AttributePhone = AttributePhone
+
+    @property
+    def AttributeEmail(self):
+        r"""邮箱属性
+        :rtype: str
+        """
+        return self._AttributeEmail
+
+    @AttributeEmail.setter
+    def AttributeEmail(self, AttributeEmail):
+        self._AttributeEmail = AttributeEmail
+
+    @property
+    def ResourceId(self):
+        r"""请求LDAP服务的堡垒机实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def DomainId(self):
+        r"""网络域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Ip = params.get("Ip")
+        self._IpBackup = params.get("IpBackup")
+        self._Port = params.get("Port")
+        self._EnableSSL = params.get("EnableSSL")
+        self._BaseDN = params.get("BaseDN")
+        self._AdminAccount = params.get("AdminAccount")
+        self._AttributeUser = params.get("AttributeUser")
+        self._AttributeUserName = params.get("AttributeUserName")
+        self._AutoSync = params.get("AutoSync")
+        self._Overwrite = params.get("Overwrite")
+        self._SyncPeriod = params.get("SyncPeriod")
+        self._SyncAll = params.get("SyncAll")
+        self._SyncUnitSet = params.get("SyncUnitSet")
+        self._AttributeUnit = params.get("AttributeUnit")
+        self._AttributeRealName = params.get("AttributeRealName")
+        self._AttributePhone = params.get("AttributePhone")
+        self._AttributeEmail = params.get("AttributeEmail")
+        self._ResourceId = params.get("ResourceId")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginEvent(AbstractModel):
     r"""登录日志
 
@@ -13189,6 +13549,87 @@ class LoginEvent(AbstractModel):
         self._SourceIp = params.get("SourceIp")
         self._Entry = params.get("Entry")
         self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginSetting(AbstractModel):
+    r"""登录安全设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeOut: 登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+        :type TimeOut: int
+        :param _LockThreshold: 连续密码错误次数，超过锁定账号，3-5
+        :type LockThreshold: int
+        :param _LockTime: 账号锁定时长，10分钟，20分钟，30分钟
+        :type LockTime: int
+        :param _InactiveUserLock: 用户多少天不活跃，账号自动锁定
+        :type InactiveUserLock: int
+        """
+        self._TimeOut = None
+        self._LockThreshold = None
+        self._LockTime = None
+        self._InactiveUserLock = None
+
+    @property
+    def TimeOut(self):
+        r"""登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+        :rtype: int
+        """
+        return self._TimeOut
+
+    @TimeOut.setter
+    def TimeOut(self, TimeOut):
+        self._TimeOut = TimeOut
+
+    @property
+    def LockThreshold(self):
+        r"""连续密码错误次数，超过锁定账号，3-5
+        :rtype: int
+        """
+        return self._LockThreshold
+
+    @LockThreshold.setter
+    def LockThreshold(self, LockThreshold):
+        self._LockThreshold = LockThreshold
+
+    @property
+    def LockTime(self):
+        r"""账号锁定时长，10分钟，20分钟，30分钟
+        :rtype: int
+        """
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def InactiveUserLock(self):
+        r"""用户多少天不活跃，账号自动锁定
+        :rtype: int
+        """
+        return self._InactiveUserLock
+
+    @InactiveUserLock.setter
+    def InactiveUserLock(self, InactiveUserLock):
+        self._InactiveUserLock = InactiveUserLock
+
+
+    def _deserialize(self, params):
+        self._TimeOut = params.get("TimeOut")
+        self._LockThreshold = params.get("LockThreshold")
+        self._LockTime = params.get("LockTime")
+        self._InactiveUserLock = params.get("InactiveUserLock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13995,17 +14436,24 @@ class ModifyAuthModeSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AuthMode: 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+        :param _AuthMode: 双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key（只有ResourceType=1且AuthModeGM不传时有效，其他情况不能为3）    
+备注：AuthMode和AuthModeGM至少有一个有效传参
         :type AuthMode: int
-        :param _ResourceType: 资源类型，0：普通 1：国密
+        :param _AuthModeGM: 国密双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key
+备注：AuthMode和AuthModeGM至少有一个有效传参，AuthModeGM优先级高于ResourceType
+        :type AuthModeGM: int
+        :param _ResourceType: 资源类型，0：普通（暂停使用，由AuthMode和AuthModeGM传参决定） 1：国密
+
         :type ResourceType: int
         """
         self._AuthMode = None
+        self._AuthModeGM = None
         self._ResourceType = None
 
     @property
     def AuthMode(self):
-        r"""双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+        r"""双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key（只有ResourceType=1且AuthModeGM不传时有效，其他情况不能为3）    
+备注：AuthMode和AuthModeGM至少有一个有效传参
         :rtype: int
         """
         return self._AuthMode
@@ -14015,8 +14463,21 @@ class ModifyAuthModeSettingRequest(AbstractModel):
         self._AuthMode = AuthMode
 
     @property
+    def AuthModeGM(self):
+        r"""国密双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key
+备注：AuthMode和AuthModeGM至少有一个有效传参，AuthModeGM优先级高于ResourceType
+        :rtype: int
+        """
+        return self._AuthModeGM
+
+    @AuthModeGM.setter
+    def AuthModeGM(self, AuthModeGM):
+        self._AuthModeGM = AuthModeGM
+
+    @property
     def ResourceType(self):
-        r"""资源类型，0：普通 1：国密
+        r"""资源类型，0：普通（暂停使用，由AuthMode和AuthModeGM传参决定） 1：国密
+
         :rtype: int
         """
         return self._ResourceType
@@ -14028,6 +14489,7 @@ class ModifyAuthModeSettingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._AuthMode = params.get("AuthMode")
+        self._AuthModeGM = params.get("AuthModeGM")
         self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16125,6 +16587,132 @@ class ModifyUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OAuthSetting(AbstractModel):
+    r"""OAuth认证配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启OAuth认证
+        :type Enable: bool
+        :param _AuthMethod: OAuth认证方式。
+        :type AuthMethod: str
+        :param _ClientId: OAuth认证客户端Id。
+        :type ClientId: str
+        :param _CodeUrl: 获取OAuth认证授权码URL。
+        :type CodeUrl: str
+        :param _TokenUrl: 获取OAuth令牌URL。
+        :type TokenUrl: str
+        :param _UserInfoUrl: 获取OAuth用户信息URL。
+        :type UserInfoUrl: str
+        :param _Scopes: 使用Okta认证时指定范围。
+        :type Scopes: list of str
+        """
+        self._Enable = None
+        self._AuthMethod = None
+        self._ClientId = None
+        self._CodeUrl = None
+        self._TokenUrl = None
+        self._UserInfoUrl = None
+        self._Scopes = None
+
+    @property
+    def Enable(self):
+        r"""是否开启OAuth认证
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def AuthMethod(self):
+        r"""OAuth认证方式。
+        :rtype: str
+        """
+        return self._AuthMethod
+
+    @AuthMethod.setter
+    def AuthMethod(self, AuthMethod):
+        self._AuthMethod = AuthMethod
+
+    @property
+    def ClientId(self):
+        r"""OAuth认证客户端Id。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def CodeUrl(self):
+        r"""获取OAuth认证授权码URL。
+        :rtype: str
+        """
+        return self._CodeUrl
+
+    @CodeUrl.setter
+    def CodeUrl(self, CodeUrl):
+        self._CodeUrl = CodeUrl
+
+    @property
+    def TokenUrl(self):
+        r"""获取OAuth令牌URL。
+        :rtype: str
+        """
+        return self._TokenUrl
+
+    @TokenUrl.setter
+    def TokenUrl(self, TokenUrl):
+        self._TokenUrl = TokenUrl
+
+    @property
+    def UserInfoUrl(self):
+        r"""获取OAuth用户信息URL。
+        :rtype: str
+        """
+        return self._UserInfoUrl
+
+    @UserInfoUrl.setter
+    def UserInfoUrl(self, UserInfoUrl):
+        self._UserInfoUrl = UserInfoUrl
+
+    @property
+    def Scopes(self):
+        r"""使用Okta认证时指定范围。
+        :rtype: list of str
+        """
+        return self._Scopes
+
+    @Scopes.setter
+    def Scopes(self, Scopes):
+        self._Scopes = Scopes
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._AuthMethod = params.get("AuthMethod")
+        self._ClientId = params.get("ClientId")
+        self._CodeUrl = params.get("CodeUrl")
+        self._TokenUrl = params.get("TokenUrl")
+        self._UserInfoUrl = params.get("UserInfoUrl")
+        self._Scopes = params.get("Scopes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OperationEvent(AbstractModel):
     r"""操作日志
 
@@ -16412,6 +17000,87 @@ class OperationTask(AbstractModel):
         self._Period = params.get("Period")
         self._NextTime = params.get("NextTime")
         self._FirstTime = params.get("FirstTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PasswordSetting(AbstractModel):
+    r"""密码要求设置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinLength: 密码最小长度，8-20，默认8。
+        :type MinLength: int
+        :param _Complexity: 密码复杂度，0不限制，1包含字母和数字，2至少包括大写字母、小写字母、数字、特殊符号，默认2。
+        :type Complexity: int
+        :param _ValidTerm: 密码有效期，0不限制，30天，90天，180天。
+        :type ValidTerm: int
+        :param _CheckHistory: 检查最近n次密码设置是否存在相同密码，2-10，默认5。
+        :type CheckHistory: int
+        """
+        self._MinLength = None
+        self._Complexity = None
+        self._ValidTerm = None
+        self._CheckHistory = None
+
+    @property
+    def MinLength(self):
+        r"""密码最小长度，8-20，默认8。
+        :rtype: int
+        """
+        return self._MinLength
+
+    @MinLength.setter
+    def MinLength(self, MinLength):
+        self._MinLength = MinLength
+
+    @property
+    def Complexity(self):
+        r"""密码复杂度，0不限制，1包含字母和数字，2至少包括大写字母、小写字母、数字、特殊符号，默认2。
+        :rtype: int
+        """
+        return self._Complexity
+
+    @Complexity.setter
+    def Complexity(self, Complexity):
+        self._Complexity = Complexity
+
+    @property
+    def ValidTerm(self):
+        r"""密码有效期，0不限制，30天，90天，180天。
+        :rtype: int
+        """
+        return self._ValidTerm
+
+    @ValidTerm.setter
+    def ValidTerm(self, ValidTerm):
+        self._ValidTerm = ValidTerm
+
+    @property
+    def CheckHistory(self):
+        r"""检查最近n次密码设置是否存在相同密码，2-10，默认5。
+        :rtype: int
+        """
+        return self._CheckHistory
+
+    @CheckHistory.setter
+    def CheckHistory(self, CheckHistory):
+        self._CheckHistory = CheckHistory
+
+
+    def _deserialize(self, params):
+        self._MinLength = params.get("MinLength")
+        self._Complexity = params.get("Complexity")
+        self._ValidTerm = params.get("ValidTerm")
+        self._CheckHistory = params.get("CheckHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20931,6 +21600,16 @@ class SecuritySetting(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AuthMode: 认证方式设置
+        :type AuthMode: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
+        :param _Password: 密码安全设置
+        :type Password: :class:`tencentcloud.bh.v20230418.models.PasswordSetting`
+        :param _Login: 登录安全设置
+        :type Login: :class:`tencentcloud.bh.v20230418.models.LoginSetting`
+        :param _LDAP: LDAP配置信息
+        :type LDAP: :class:`tencentcloud.bh.v20230418.models.LDAPSetting`
+        :param _OAuth: OAuth配置信息
+        :type OAuth: :class:`tencentcloud.bh.v20230418.models.OAuthSetting`
         :param _AuthModeGM: 国密认证方式设置
         :type AuthModeGM: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
         :param _Reconnection: 资产重连次数
@@ -20938,9 +21617,69 @@ class SecuritySetting(AbstractModel):
         :param _EnvInternetAccess: 大区环境网络设置
         :type EnvInternetAccess: :class:`tencentcloud.bh.v20230418.models.EnvInternetAccessSetting`
         """
+        self._AuthMode = None
+        self._Password = None
+        self._Login = None
+        self._LDAP = None
+        self._OAuth = None
         self._AuthModeGM = None
         self._Reconnection = None
         self._EnvInternetAccess = None
+
+    @property
+    def AuthMode(self):
+        r"""认证方式设置
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AuthModeSetting`
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def Password(self):
+        r"""密码安全设置
+        :rtype: :class:`tencentcloud.bh.v20230418.models.PasswordSetting`
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Login(self):
+        r"""登录安全设置
+        :rtype: :class:`tencentcloud.bh.v20230418.models.LoginSetting`
+        """
+        return self._Login
+
+    @Login.setter
+    def Login(self, Login):
+        self._Login = Login
+
+    @property
+    def LDAP(self):
+        r"""LDAP配置信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.LDAPSetting`
+        """
+        return self._LDAP
+
+    @LDAP.setter
+    def LDAP(self, LDAP):
+        self._LDAP = LDAP
+
+    @property
+    def OAuth(self):
+        r"""OAuth配置信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.OAuthSetting`
+        """
+        return self._OAuth
+
+    @OAuth.setter
+    def OAuth(self, OAuth):
+        self._OAuth = OAuth
 
     @property
     def AuthModeGM(self):
@@ -20977,6 +21716,21 @@ class SecuritySetting(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AuthMode") is not None:
+            self._AuthMode = AuthModeSetting()
+            self._AuthMode._deserialize(params.get("AuthMode"))
+        if params.get("Password") is not None:
+            self._Password = PasswordSetting()
+            self._Password._deserialize(params.get("Password"))
+        if params.get("Login") is not None:
+            self._Login = LoginSetting()
+            self._Login._deserialize(params.get("Login"))
+        if params.get("LDAP") is not None:
+            self._LDAP = LDAPSetting()
+            self._LDAP._deserialize(params.get("LDAP"))
+        if params.get("OAuth") is not None:
+            self._OAuth = OAuthSetting()
+            self._OAuth._deserialize(params.get("OAuth"))
         if params.get("AuthModeGM") is not None:
             self._AuthModeGM = AuthModeSetting()
             self._AuthModeGM._deserialize(params.get("AuthModeGM"))

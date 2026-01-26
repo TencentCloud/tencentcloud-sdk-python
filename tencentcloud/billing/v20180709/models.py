@@ -27471,6 +27471,207 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRenewInstancesRequest(AbstractModel):
+    r"""DescribeRenewInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: 每页的最大实例条数。 取值范围：1~100。
+        :type MaxResults: int
+        :param _NextToken: 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。
+        :type NextToken: str
+        :param _Reverse: 获取实例的排序方向。枚举值如下：
+false=正序（默认）
+true=倒序
+        :type Reverse: bool
+        :param _RenewFlagList: 续费标识。多个值用英文逗号分隔。枚举值如下：
+NOTIFY_AND_MANUAL_RENEW：手动续费
+NOTIFY_AND_AUTO_RENEW：自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+        :type RenewFlagList: list of str
+        :param _InstanceIdList: 实例ID。多个ID用英文逗号分隔，最多不超过100个。
+        :type InstanceIdList: list of str
+        :param _ExpireTimeStart: 到期时间段起，格式为yyyy-MM-dd HH:mm:ss。
+        :type ExpireTimeStart: str
+        :param _ExpireTimeEnd: 到期时间段止，格式为yyyy-MM-dd HH:mm:ss。
+        :type ExpireTimeEnd: str
+        """
+        self._MaxResults = None
+        self._NextToken = None
+        self._Reverse = None
+        self._RenewFlagList = None
+        self._InstanceIdList = None
+        self._ExpireTimeStart = None
+        self._ExpireTimeEnd = None
+
+    @property
+    def MaxResults(self):
+        r"""每页的最大实例条数。 取值范围：1~100。
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""查询返回结果下一页的令牌。首次调用 API 不需要NextToken。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def Reverse(self):
+        r"""获取实例的排序方向。枚举值如下：
+false=正序（默认）
+true=倒序
+        :rtype: bool
+        """
+        return self._Reverse
+
+    @Reverse.setter
+    def Reverse(self, Reverse):
+        self._Reverse = Reverse
+
+    @property
+    def RenewFlagList(self):
+        r"""续费标识。多个值用英文逗号分隔。枚举值如下：
+NOTIFY_AND_MANUAL_RENEW：手动续费
+NOTIFY_AND_AUTO_RENEW：自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+        :rtype: list of str
+        """
+        return self._RenewFlagList
+
+    @RenewFlagList.setter
+    def RenewFlagList(self, RenewFlagList):
+        self._RenewFlagList = RenewFlagList
+
+    @property
+    def InstanceIdList(self):
+        r"""实例ID。多个ID用英文逗号分隔，最多不超过100个。
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def ExpireTimeStart(self):
+        r"""到期时间段起，格式为yyyy-MM-dd HH:mm:ss。
+        :rtype: str
+        """
+        return self._ExpireTimeStart
+
+    @ExpireTimeStart.setter
+    def ExpireTimeStart(self, ExpireTimeStart):
+        self._ExpireTimeStart = ExpireTimeStart
+
+    @property
+    def ExpireTimeEnd(self):
+        r"""到期时间段止，格式为yyyy-MM-dd HH:mm:ss。
+        :rtype: str
+        """
+        return self._ExpireTimeEnd
+
+    @ExpireTimeEnd.setter
+    def ExpireTimeEnd(self, ExpireTimeEnd):
+        self._ExpireTimeEnd = ExpireTimeEnd
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        self._Reverse = params.get("Reverse")
+        self._RenewFlagList = params.get("RenewFlagList")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._ExpireTimeStart = params.get("ExpireTimeStart")
+        self._ExpireTimeEnd = params.get("ExpireTimeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRenewInstancesResponse(AbstractModel):
+    r"""DescribeRenewInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: 实例汇总列表。
+        :type InstanceList: list of RenewInstance
+        :param _NextToken: 查询返回结果下一页的令牌。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceList = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        r"""实例汇总列表。
+        :rtype: list of RenewInstance
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def NextToken(self):
+        r"""查询返回结果下一页的令牌。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = RenewInstance()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSavingPlanResourceInfoRequest(AbstractModel):
     r"""DescribeSavingPlanResourceInfo请求参数结构体
 
@@ -31342,6 +31543,235 @@ class RegionSummaryOverviewItem(AbstractModel):
         self._TransferPayAmount = params.get("TransferPayAmount")
         self._BillMonth = params.get("BillMonth")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewInstance(AbstractModel):
+    r"""资源实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ProductCode: 产品编码
+        :type ProductCode: str
+        :param _SubProductCode: 子产品编码
+        :type SubProductCode: str
+        :param _RegionCode: 地域编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param _Status: 实例状态：
+NORMAL 正常，
+ISOLATED 已隔离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _RenewFlag: 续费标识：
+NOTIFY_AND_MANUAL_RENEW 手动续费，
+NOTIFY_AND_AUTO_RENEW 自动续费，
+DISABLE_NOTIFY_AND_MANUAL_RENEW 到期不续
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: str
+        :param _ExpireTime: 实例到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _InstanceName: 实例别名：用户在控制台为实例设置的名称，如果未设置，则默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _ProductName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _ProjectName: 项目名称：实例归属的项目，用户在控制台给实例自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _RenewPeriod: 自动续费周期长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewPeriod: int
+        :param _RenewPeriodUnit: 自动续费周期单位：y 年，m 月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewPeriodUnit: str
+        """
+        self._InstanceId = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._RegionCode = None
+        self._Status = None
+        self._RenewFlag = None
+        self._ExpireTime = None
+        self._InstanceName = None
+        self._ProductName = None
+        self._ProjectName = None
+        self._RenewPeriod = None
+        self._RenewPeriodUnit = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProductCode(self):
+        r"""产品编码
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""子产品编码
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def RegionCode(self):
+        r"""地域编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def Status(self):
+        r"""实例状态：
+NORMAL 正常，
+ISOLATED 已隔离
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RenewFlag(self):
+        r"""续费标识：
+NOTIFY_AND_MANUAL_RENEW 手动续费，
+NOTIFY_AND_AUTO_RENEW 自动续费，
+DISABLE_NOTIFY_AND_MANUAL_RENEW 到期不续
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ExpireTime(self):
+        r"""实例到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def InstanceName(self):
+        r"""实例别名：用户在控制台为实例设置的名称，如果未设置，则默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProductName(self):
+        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProjectName(self):
+        r"""项目名称：实例归属的项目，用户在控制台给实例自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RenewPeriod(self):
+        r"""自动续费周期长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RenewPeriod
+
+    @RenewPeriod.setter
+    def RenewPeriod(self, RenewPeriod):
+        self._RenewPeriod = RenewPeriod
+
+    @property
+    def RenewPeriodUnit(self):
+        r"""自动续费周期单位：y 年，m 月
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RenewPeriodUnit
+
+    @RenewPeriodUnit.setter
+    def RenewPeriodUnit(self, RenewPeriodUnit):
+        self._RenewPeriodUnit = RenewPeriodUnit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._Status = params.get("Status")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ExpireTime = params.get("ExpireTime")
+        self._InstanceName = params.get("InstanceName")
+        self._ProductName = params.get("ProductName")
+        self._ProjectName = params.get("ProjectName")
+        self._RenewPeriod = params.get("RenewPeriod")
+        self._RenewPeriodUnit = params.get("RenewPeriodUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3958,14 +3958,14 @@ class DescribeDedicatedSupportedZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Regions: 传入region列表
+        :param _Regions: <p>传入region列表</p>
         :type Regions: list of int
         """
         self._Regions = None
 
     @property
     def Regions(self):
-        r"""传入region列表
+        r"""<p>传入region列表</p>
         :rtype: list of int
         """
         return self._Regions
@@ -3994,7 +3994,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneSet: 支持的可用区列表
+        :param _ZoneSet: <p>支持的可用区列表</p>
         :type ZoneSet: list of RegionZoneInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4004,7 +4004,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        r"""支持的可用区列表
+        r"""<p>支持的可用区列表</p>
         :rtype: list of RegionZoneInfo
         """
         return self._ZoneSet

@@ -72559,6 +72559,9 @@ class SubtitleTemplate(AbstractModel):
         :param _SubtitleFileInput: 要压制到视频中的字幕文件的输入信息，目前仅支持存储在COS的字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _FontFileInput: 压制字幕字体文件的输入信息，目前仅支持url和cos。都填时url优先于cos。填了FontFileInput时FontFileInput优先于FontType
+
+        :type FontFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontType: 字体类型，支持：
 <li>hei.ttf：黑体</li>
 <li>song.ttf：宋体</li>
@@ -72577,11 +72580,20 @@ class SubtitleTemplate(AbstractModel):
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
-默认：hei.ttf 黑体。注意：楷体推荐使用kai.ttf
+默认：hei.ttf 黑体。
+<br>注意：
+<li>楷体推荐使用kai.ttf</li>
+<li>填了FontFileInput时FontFileInput优先</li>
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontType: str
-        :param _FontSize: 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
-默认源视频高度的5%。
+        :param _FontSize: 字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：
+
+- 像素：Npx，N范围：(0,4096]。
+- 百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。
+
+不填且字幕文件无设置时，默认源视频高度的5%。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontSize: str
         :param _FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
@@ -72615,13 +72627,18 @@ class SubtitleTemplate(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoardY: str
-        :param _BoardWidth: 底板的宽度，单位为像素，取值范围：[0,4096]。
-默认源视频宽像素的90%。
+        :param _BoardWidth: 底板的宽度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认源视频宽像素的90%。
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoardWidth: int
-        :param _BoardHeight: 底板的高度。单位为像素，取值范围：[0,4096]。
-默认为源视频高像素的15%。
+        :param _BoardHeight: 底板的高度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认为源视频高像素的15%。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoardHeight: int
         :param _BoardColor: 底板颜色。格式：0xRRGGBB，
@@ -72634,34 +72651,58 @@ class SubtitleTemplate(AbstractModel):
 默认值：0.8。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoardAlpha: float
-        :param _OutlineWidth: 描边宽度
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _OutlineWidth: 描边宽度。浮点数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。
+不填默认源视频高度的0.3%。
+
         :type OutlineWidth: float
-        :param _OutlineColor: 描边颜色。6位16进制RGB
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _OutlineColor: 描边颜色。6位16进制RGB。不填默认黑色。
+
         :type OutlineColor: str
-        :param _OutlineAlpha: 描边透明度。(0，1] 正浮点数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _OutlineAlpha: 描边透明度。(0，1] 正浮点数。不填默认1，完全不透明
+
         :type OutlineAlpha: float
-        :param _ShadowWidth: 阴影宽度。浮点数  [0, 1000]
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ShadowWidth: 阴影宽度。浮点数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。
+不填默认无阴影。
+
         :type ShadowWidth: float
-        :param _ShadowColor: 阴影颜色。6位16进制RGB
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ShadowColor: 阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
+
         :type ShadowColor: str
-        :param _ShadowAlpha: 阴影透明度。(0，1] 正浮点数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ShadowAlpha: 阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
+
         :type ShadowAlpha: float
-        :param _LineSpacing: 行间距。正整数  [0, 1000]
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LineSpacing: 行间距。正整数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。不填默认0。
+
         :type LineSpacing: int
-        :param _Alignment: 对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Alignment: 对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
+
         :type Alignment: str
+        :param _BoardWidthUnit: 默认0。为1时BoardWidth代表百分之几，以视频宽为基准
+
+        :type BoardWidthUnit: int
+        :param _BoardHeightUnit: 默认0。为1时BoardHeight代表百分之几，以视频高为基准
+
+        :type BoardHeightUnit: int
+        :param _OutlineWidthUnit: 默认0。为1时OutlineWidth代表百分之几，以视频高为基准
+
+        :type OutlineWidthUnit: int
+        :param _ShadowWidthUnit: 默认0。为1时ShadowWidth代表百分之几，以视频高为基准
+
+        :type ShadowWidthUnit: int
+        :param _LineSpacingUnit: 默认0。为1时LineSpacing代表百分之几，以视频高为基准
+
+        :type LineSpacingUnit: int
         """
         self._Path = None
         self._StreamIndex = None
         self._SubtitleFileInput = None
+        self._FontFileInput = None
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
@@ -72680,6 +72721,11 @@ class SubtitleTemplate(AbstractModel):
         self._ShadowAlpha = None
         self._LineSpacing = None
         self._Alignment = None
+        self._BoardWidthUnit = None
+        self._BoardHeightUnit = None
+        self._OutlineWidthUnit = None
+        self._ShadowWidthUnit = None
+        self._LineSpacingUnit = None
 
     @property
     def Path(self):
@@ -72722,6 +72768,18 @@ class SubtitleTemplate(AbstractModel):
         self._SubtitleFileInput = SubtitleFileInput
 
     @property
+    def FontFileInput(self):
+        r"""压制字幕字体文件的输入信息，目前仅支持url和cos。都填时url优先于cos。填了FontFileInput时FontFileInput优先于FontType
+
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._FontFileInput
+
+    @FontFileInput.setter
+    def FontFileInput(self, FontFileInput):
+        self._FontFileInput = FontFileInput
+
+    @property
     def FontType(self):
         r"""字体类型，支持：
 <li>hei.ttf：黑体</li>
@@ -72741,7 +72799,11 @@ class SubtitleTemplate(AbstractModel):
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
-默认：hei.ttf 黑体。注意：楷体推荐使用kai.ttf
+默认：hei.ttf 黑体。
+<br>注意：
+<li>楷体推荐使用kai.ttf</li>
+<li>填了FontFileInput时FontFileInput优先</li>
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -72753,8 +72815,13 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontSize(self):
-        r"""字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
-默认源视频高度的5%。
+        r"""字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：
+
+- 像素：Npx，N范围：(0,4096]。
+- 百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。
+
+不填且字幕文件无设置时，默认源视频高度的5%。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -72833,8 +72900,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def BoardWidth(self):
-        r"""底板的宽度，单位为像素，取值范围：[0,4096]。
-默认源视频宽像素的90%。
+        r"""底板的宽度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认源视频宽像素的90%。
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -72847,8 +72916,11 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def BoardHeight(self):
-        r"""底板的高度。单位为像素，取值范围：[0,4096]。
-默认为源视频高像素的15%。
+        r"""底板的高度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认为源视频高像素的15%。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -72888,8 +72960,11 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def OutlineWidth(self):
-        r"""描边宽度
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""描边宽度。浮点数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。
+不填默认源视频高度的0.3%。
+
         :rtype: float
         """
         return self._OutlineWidth
@@ -72900,8 +72975,8 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def OutlineColor(self):
-        r"""描边颜色。6位16进制RGB
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""描边颜色。6位16进制RGB。不填默认黑色。
+
         :rtype: str
         """
         return self._OutlineColor
@@ -72912,8 +72987,8 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def OutlineAlpha(self):
-        r"""描边透明度。(0，1] 正浮点数
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""描边透明度。(0，1] 正浮点数。不填默认1，完全不透明
+
         :rtype: float
         """
         return self._OutlineAlpha
@@ -72924,8 +72999,11 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def ShadowWidth(self):
-        r"""阴影宽度。浮点数  [0, 1000]
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""阴影宽度。浮点数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。
+不填默认无阴影。
+
         :rtype: float
         """
         return self._ShadowWidth
@@ -72936,8 +73014,8 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def ShadowColor(self):
-        r"""阴影颜色。6位16进制RGB
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
+
         :rtype: str
         """
         return self._ShadowColor
@@ -72948,8 +73026,8 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def ShadowAlpha(self):
-        r"""阴影透明度。(0，1] 正浮点数
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
+
         :rtype: float
         """
         return self._ShadowAlpha
@@ -72960,8 +73038,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def LineSpacing(self):
-        r"""行间距。正整数  [0, 1000]
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""行间距。正整数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。不填默认0。
+
         :rtype: int
         """
         return self._LineSpacing
@@ -72972,8 +73052,8 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def Alignment(self):
-        r"""对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
+
         :rtype: str
         """
         return self._Alignment
@@ -72982,6 +73062,66 @@ class SubtitleTemplate(AbstractModel):
     def Alignment(self, Alignment):
         self._Alignment = Alignment
 
+    @property
+    def BoardWidthUnit(self):
+        r"""默认0。为1时BoardWidth代表百分之几，以视频宽为基准
+
+        :rtype: int
+        """
+        return self._BoardWidthUnit
+
+    @BoardWidthUnit.setter
+    def BoardWidthUnit(self, BoardWidthUnit):
+        self._BoardWidthUnit = BoardWidthUnit
+
+    @property
+    def BoardHeightUnit(self):
+        r"""默认0。为1时BoardHeight代表百分之几，以视频高为基准
+
+        :rtype: int
+        """
+        return self._BoardHeightUnit
+
+    @BoardHeightUnit.setter
+    def BoardHeightUnit(self, BoardHeightUnit):
+        self._BoardHeightUnit = BoardHeightUnit
+
+    @property
+    def OutlineWidthUnit(self):
+        r"""默认0。为1时OutlineWidth代表百分之几，以视频高为基准
+
+        :rtype: int
+        """
+        return self._OutlineWidthUnit
+
+    @OutlineWidthUnit.setter
+    def OutlineWidthUnit(self, OutlineWidthUnit):
+        self._OutlineWidthUnit = OutlineWidthUnit
+
+    @property
+    def ShadowWidthUnit(self):
+        r"""默认0。为1时ShadowWidth代表百分之几，以视频高为基准
+
+        :rtype: int
+        """
+        return self._ShadowWidthUnit
+
+    @ShadowWidthUnit.setter
+    def ShadowWidthUnit(self, ShadowWidthUnit):
+        self._ShadowWidthUnit = ShadowWidthUnit
+
+    @property
+    def LineSpacingUnit(self):
+        r"""默认0。为1时LineSpacing代表百分之几，以视频高为基准
+
+        :rtype: int
+        """
+        return self._LineSpacingUnit
+
+    @LineSpacingUnit.setter
+    def LineSpacingUnit(self, LineSpacingUnit):
+        self._LineSpacingUnit = LineSpacingUnit
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -72989,6 +73129,9 @@ class SubtitleTemplate(AbstractModel):
         if params.get("SubtitleFileInput") is not None:
             self._SubtitleFileInput = MediaInputInfo()
             self._SubtitleFileInput._deserialize(params.get("SubtitleFileInput"))
+        if params.get("FontFileInput") is not None:
+            self._FontFileInput = MediaInputInfo()
+            self._FontFileInput._deserialize(params.get("FontFileInput"))
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
@@ -73007,6 +73150,11 @@ class SubtitleTemplate(AbstractModel):
         self._ShadowAlpha = params.get("ShadowAlpha")
         self._LineSpacing = params.get("LineSpacing")
         self._Alignment = params.get("Alignment")
+        self._BoardWidthUnit = params.get("BoardWidthUnit")
+        self._BoardHeightUnit = params.get("BoardHeightUnit")
+        self._OutlineWidthUnit = params.get("OutlineWidthUnit")
+        self._ShadowWidthUnit = params.get("ShadowWidthUnit")
+        self._LineSpacingUnit = params.get("LineSpacingUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

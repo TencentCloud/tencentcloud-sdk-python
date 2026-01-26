@@ -1139,18 +1139,20 @@ class DescribeDeviceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 设备所属项目ID
+        :param _ProjectId: <p>设备所属项目ID</p>
         :type ProjectId: str
-        :param _DeviceType: 设备类型筛选，不填默认为全部设备类型
+        :param _DeviceType: <p>设备类型筛选，不填默认为全部设备类型</p>
         :type DeviceType: str
-        :param _SearchWords: 对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配
+        :param _SearchWords: <p>对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配</p>
         :type SearchWords: str
-        :param _PageSize: 每页返回的最大设备数，不填默认为10
+        :param _PageSize: <p>每页返回的最大设备数，不填默认为10</p>
         :type PageSize: int
-        :param _PageNumber: 当前页码，不填默认为1（首页）
+        :param _PageNumber: <p>当前页码，不填默认为1（首页）</p>
         :type PageNumber: int
-        :param _DeviceStatus: 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+        :param _DeviceStatus: <p>设备状态筛选，不填默认为不过滤。取值：[&quot;ready&quot;,&quot;connected&quot;,&quot;online&quot;]，online代表ready或connected</p>
         :type DeviceStatus: str
+        :param _RegisterType: <p>标识查询项目下的设备注册类型，默认不包含免注册登录设备。 若存在免注册登录设备，该参数传&quot;1&quot;</p><p>枚举值：</p><ul><li>0： 项目不包含免注册登录设备</li><li>1： 项目包含免注册登录设备</li></ul><p>默认值：0</p>
+        :type RegisterType: int
         """
         self._ProjectId = None
         self._DeviceType = None
@@ -1158,10 +1160,11 @@ class DescribeDeviceListRequest(AbstractModel):
         self._PageSize = None
         self._PageNumber = None
         self._DeviceStatus = None
+        self._RegisterType = None
 
     @property
     def ProjectId(self):
-        r"""设备所属项目ID
+        r"""<p>设备所属项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -1172,7 +1175,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""设备类型筛选，不填默认为全部设备类型
+        r"""<p>设备类型筛选，不填默认为全部设备类型</p>
         :rtype: str
         """
         return self._DeviceType
@@ -1183,7 +1186,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def SearchWords(self):
-        r"""对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配
+        r"""<p>对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配</p>
         :rtype: str
         """
         return self._SearchWords
@@ -1194,7 +1197,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页返回的最大设备数，不填默认为10
+        r"""<p>每页返回的最大设备数，不填默认为10</p>
         :rtype: int
         """
         return self._PageSize
@@ -1205,7 +1208,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""当前页码，不填默认为1（首页）
+        r"""<p>当前页码，不填默认为1（首页）</p>
         :rtype: int
         """
         return self._PageNumber
@@ -1216,7 +1219,7 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceStatus(self):
-        r"""设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+        r"""<p>设备状态筛选，不填默认为不过滤。取值：[&quot;ready&quot;,&quot;connected&quot;,&quot;online&quot;]，online代表ready或connected</p>
         :rtype: str
         """
         return self._DeviceStatus
@@ -1224,6 +1227,17 @@ class DescribeDeviceListRequest(AbstractModel):
     @DeviceStatus.setter
     def DeviceStatus(self, DeviceStatus):
         self._DeviceStatus = DeviceStatus
+
+    @property
+    def RegisterType(self):
+        r"""<p>标识查询项目下的设备注册类型，默认不包含免注册登录设备。 若存在免注册登录设备，该参数传&quot;1&quot;</p><p>枚举值：</p><ul><li>0： 项目不包含免注册登录设备</li><li>1： 项目包含免注册登录设备</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
 
 
     def _deserialize(self, params):
@@ -1233,6 +1247,7 @@ class DescribeDeviceListRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
         self._DeviceStatus = params.get("DeviceStatus")
+        self._RegisterType = params.get("RegisterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1250,11 +1265,11 @@ class DescribeDeviceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Devices: 设备信息列表
+        :param _Devices: <p>设备信息列表</p>
         :type Devices: list of DeviceInfo
-        :param _Total: 设备总数
+        :param _Total: <p>设备总数</p>
         :type Total: int
-        :param _Num: 本次返回的设备数
+        :param _Num: <p>本次返回的设备数</p>
         :type Num: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1266,7 +1281,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
-        r"""设备信息列表
+        r"""<p>设备信息列表</p>
         :rtype: list of DeviceInfo
         """
         return self._Devices
@@ -1277,7 +1292,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""设备总数
+        r"""<p>设备总数</p>
         :rtype: int
         """
         return self._Total
@@ -1288,7 +1303,7 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Num(self):
-        r"""本次返回的设备数
+        r"""<p>本次返回的设备数</p>
         :rtype: int
         """
         return self._Num
