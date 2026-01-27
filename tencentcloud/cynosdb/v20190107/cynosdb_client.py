@@ -716,6 +716,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteClusterSaveBackup(self, request):
+        r"""本接口（DeleteClusterSaveBackup）用于为集群删除遗留备份
+
+        :param request: Request instance for DeleteClusterSaveBackup.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterSaveBackupRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterSaveBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterSaveBackup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterSaveBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteParamTemplate(self, request):
         r"""本接口（DeleteParamTemplate）用于删除用户创建的参数模板。
 
@@ -1866,6 +1889,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedoLogs(self, request):
+        r"""本接口（DescribeRedoLogs）用于查询redo日志列表。
+
+        :param request: Request instance for DescribeRedoLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRedoLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRedoLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedoLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedoLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourcePackageDetail(self, request):
         r"""本接口（DescribeResourcePackageDetail）用于查询资源包使用详情。
 
@@ -1995,6 +2041,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeSSLStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSaveBackupClusters(self, request):
+        r"""本接口（DescribeSaveBackupClusters）用于查询遗留备份集群信息。
+
+        :param request: Request instance for DescribeSaveBackupClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSaveBackupClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSaveBackupClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSaveBackupClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSaveBackupClustersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3122,6 +3191,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyServerlessStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySnapBackupCrossRegionConfig(self, request):
+        r"""本接口（ModifySnapBackupCrossRegionConfig）用于修改指定集群的快照备份跨地域配置。
+
+        :param request: Request instance for ModifySnapBackupCrossRegionConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifySnapBackupCrossRegionConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifySnapBackupCrossRegionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySnapBackupCrossRegionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySnapBackupCrossRegionConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

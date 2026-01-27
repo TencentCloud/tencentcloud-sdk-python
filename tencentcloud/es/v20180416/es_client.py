@@ -95,6 +95,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCollector(self, request):
+        r"""用于创建Beats采集器
+
+        :param request: Request instance for CreateCollector.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateCollectorRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateCollectorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCollector", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCollectorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCosMigrateToServerlessInstance(self, request):
         r"""cos迁移流程
 

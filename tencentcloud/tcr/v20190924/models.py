@@ -3055,26 +3055,29 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 主实例iD
+        :param _RegistryId: <p>主实例iD</p>
         :type RegistryId: str
-        :param _NamespaceId: 命名空间的Id
+        :param _NamespaceId: <p>命名空间的Id</p>
         :type NamespaceId: int
-        :param _RetentionRule: 保留策略
-        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
-        :param _CronSetting: 执行周期，当前只能选择： manual;daily;weekly;monthly
+        :param _CronSetting: <p>执行周期，当前只能选择： manual;daily;weekly;monthly</p>
         :type CronSetting: str
-        :param _Disabled: 是否禁用规则，默认值为false
+        :param _RetentionRule: <p>保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param _AdvancedRuleItems: <p>高级版本保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :type AdvancedRuleItems: list of RetentionRuleItem
+        :param _Disabled: <p>是否禁用规则，默认值为false</p>
         :type Disabled: bool
         """
         self._RegistryId = None
         self._NamespaceId = None
-        self._RetentionRule = None
         self._CronSetting = None
+        self._RetentionRule = None
+        self._AdvancedRuleItems = None
         self._Disabled = None
 
     @property
     def RegistryId(self):
-        r"""主实例iD
+        r"""<p>主实例iD</p>
         :rtype: str
         """
         return self._RegistryId
@@ -3085,7 +3088,7 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间的Id
+        r"""<p>命名空间的Id</p>
         :rtype: int
         """
         return self._NamespaceId
@@ -3095,19 +3098,8 @@ class CreateTagRetentionRuleRequest(AbstractModel):
         self._NamespaceId = NamespaceId
 
     @property
-    def RetentionRule(self):
-        r"""保留策略
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
-        """
-        return self._RetentionRule
-
-    @RetentionRule.setter
-    def RetentionRule(self, RetentionRule):
-        self._RetentionRule = RetentionRule
-
-    @property
     def CronSetting(self):
-        r"""执行周期，当前只能选择： manual;daily;weekly;monthly
+        r"""<p>执行周期，当前只能选择： manual;daily;weekly;monthly</p>
         :rtype: str
         """
         return self._CronSetting
@@ -3117,8 +3109,30 @@ class CreateTagRetentionRuleRequest(AbstractModel):
         self._CronSetting = CronSetting
 
     @property
+    def RetentionRule(self):
+        r"""<p>保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        """
+        return self._RetentionRule
+
+    @RetentionRule.setter
+    def RetentionRule(self, RetentionRule):
+        self._RetentionRule = RetentionRule
+
+    @property
+    def AdvancedRuleItems(self):
+        r"""<p>高级版本保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :rtype: list of RetentionRuleItem
+        """
+        return self._AdvancedRuleItems
+
+    @AdvancedRuleItems.setter
+    def AdvancedRuleItems(self, AdvancedRuleItems):
+        self._AdvancedRuleItems = AdvancedRuleItems
+
+    @property
     def Disabled(self):
-        r"""是否禁用规则，默认值为false
+        r"""<p>是否禁用规则，默认值为false</p>
         :rtype: bool
         """
         return self._Disabled
@@ -3131,10 +3145,16 @@ class CreateTagRetentionRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._NamespaceId = params.get("NamespaceId")
+        self._CronSetting = params.get("CronSetting")
         if params.get("RetentionRule") is not None:
             self._RetentionRule = RetentionRule()
             self._RetentionRule._deserialize(params.get("RetentionRule"))
-        self._CronSetting = params.get("CronSetting")
+        if params.get("AdvancedRuleItems") is not None:
+            self._AdvancedRuleItems = []
+            for item in params.get("AdvancedRuleItems"):
+                obj = RetentionRuleItem()
+                obj._deserialize(item)
+                self._AdvancedRuleItems.append(obj)
         self._Disabled = params.get("Disabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4770,20 +4790,23 @@ class DeleteRepositoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例Id
+        :param _RegistryId: <p>实例Id</p>
         :type RegistryId: str
-        :param _NamespaceName: 命名空间的名称
+        :param _NamespaceName: <p>命名空间的名称</p>
         :type NamespaceName: str
-        :param _RepositoryName: 镜像仓库的名称
+        :param _RepositoryName: <p>镜像仓库的名称</p>
         :type RepositoryName: str
+        :param _ForceDelete: <p>默认值为true，表示无论仓库是否存在镜像都直接删除；false代表删除仓库前需检查是否存在镜像。</p>
+        :type ForceDelete: bool
         """
         self._RegistryId = None
         self._NamespaceName = None
         self._RepositoryName = None
+        self._ForceDelete = None
 
     @property
     def RegistryId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._RegistryId
@@ -4794,7 +4817,7 @@ class DeleteRepositoryRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间的名称
+        r"""<p>命名空间的名称</p>
         :rtype: str
         """
         return self._NamespaceName
@@ -4805,7 +4828,7 @@ class DeleteRepositoryRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
-        r"""镜像仓库的名称
+        r"""<p>镜像仓库的名称</p>
         :rtype: str
         """
         return self._RepositoryName
@@ -4814,11 +4837,23 @@ class DeleteRepositoryRequest(AbstractModel):
     def RepositoryName(self, RepositoryName):
         self._RepositoryName = RepositoryName
 
+    @property
+    def ForceDelete(self):
+        r"""<p>默认值为true，表示无论仓库是否存在镜像都直接删除；false代表删除仓库前需检查是否存在镜像。</p>
+        :rtype: bool
+        """
+        return self._ForceDelete
+
+    @ForceDelete.setter
+    def ForceDelete(self, ForceDelete):
+        self._ForceDelete = ForceDelete
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._NamespaceName = params.get("NamespaceName")
         self._RepositoryName = params.get("RepositoryName")
+        self._ForceDelete = params.get("ForceDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10011,13 +10046,13 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 主实例iD
+        :param _RegistryId: <p>主实例iD</p>
         :type RegistryId: str
-        :param _NamespaceName: 命名空间的名称
+        :param _NamespaceName: <p>命名空间的名称</p>
         :type NamespaceName: str
-        :param _Limit: 分页PageSize
+        :param _Limit: <p>分页PageSize</p>
         :type Limit: int
-        :param _Offset: 分页Page
+        :param _Offset: <p>分页Page</p>
         :type Offset: int
         """
         self._RegistryId = None
@@ -10027,7 +10062,7 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""主实例iD
+        r"""<p>主实例iD</p>
         :rtype: str
         """
         return self._RegistryId
@@ -10038,7 +10073,7 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间的名称
+        r"""<p>命名空间的名称</p>
         :rtype: str
         """
         return self._NamespaceName
@@ -10049,7 +10084,7 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页PageSize
+        r"""<p>分页PageSize</p>
         :rtype: int
         """
         return self._Limit
@@ -10060,7 +10095,7 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页Page
+        r"""<p>分页Page</p>
         :rtype: int
         """
         return self._Offset
@@ -10092,9 +10127,9 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RetentionPolicyList: 版本保留策略列表
+        :param _RetentionPolicyList: <p>版本保留策略列表</p>
         :type RetentionPolicyList: list of RetentionPolicy
-        :param _TotalCount: 版本保留策略总数
+        :param _TotalCount: <p>版本保留策略总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10105,7 +10140,7 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     @property
     def RetentionPolicyList(self):
-        r"""版本保留策略列表
+        r"""<p>版本保留策略列表</p>
         :rtype: list of RetentionPolicy
         """
         return self._RetentionPolicyList
@@ -10116,7 +10151,7 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""版本保留策略总数
+        r"""<p>版本保留策略总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -11300,6 +11335,57 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterSelector(AbstractModel):
+    r"""过滤选择器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Decoration: <p>过滤规则类型，在tag过滤中，可选值为matches（匹配），excludes(排除)，在仓库过滤中，可选值为repoMatches（仓库匹配），repoExcludes（仓库排除）</p>
+        :type Decoration: str
+        :param _Pattern: <p>过滤表达式</p>
+        :type Pattern: str
+        """
+        self._Decoration = None
+        self._Pattern = None
+
+    @property
+    def Decoration(self):
+        r"""<p>过滤规则类型，在tag过滤中，可选值为matches（匹配），excludes(排除)，在仓库过滤中，可选值为repoMatches（仓库匹配），repoExcludes（仓库排除）</p>
+        :rtype: str
+        """
+        return self._Decoration
+
+    @Decoration.setter
+    def Decoration(self, Decoration):
+        self._Decoration = Decoration
+
+    @property
+    def Pattern(self):
+        r"""<p>过滤表达式</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+
+    def _deserialize(self, params):
+        self._Decoration = params.get("Decoration")
+        self._Pattern = params.get("Pattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13670,29 +13756,32 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 主实例iD
+        :param _RegistryId: <p>主实例iD</p>
         :type RegistryId: str
-        :param _NamespaceId: 命名空间的Id，必须填写原有的命名空间id
+        :param _NamespaceId: <p>命名空间的Id，必须填写原有的命名空间id</p>
         :type NamespaceId: int
-        :param _RetentionRule: 保留策略
-        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
-        :param _CronSetting: 执行周期，必须填写为原来的设置
+        :param _CronSetting: <p>执行周期，必须填写为原来的设置</p>
         :type CronSetting: str
-        :param _RetentionId: 规则Id
+        :param _RetentionId: <p>规则Id</p>
         :type RetentionId: int
-        :param _Disabled: 是否禁用规则
+        :param _RetentionRule: <p>保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param _AdvancedRuleItems: <p>高级保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :type AdvancedRuleItems: list of RetentionRuleItem
+        :param _Disabled: <p>是否禁用规则</p>
         :type Disabled: bool
         """
         self._RegistryId = None
         self._NamespaceId = None
-        self._RetentionRule = None
         self._CronSetting = None
         self._RetentionId = None
+        self._RetentionRule = None
+        self._AdvancedRuleItems = None
         self._Disabled = None
 
     @property
     def RegistryId(self):
-        r"""主实例iD
+        r"""<p>主实例iD</p>
         :rtype: str
         """
         return self._RegistryId
@@ -13703,7 +13792,7 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间的Id，必须填写原有的命名空间id
+        r"""<p>命名空间的Id，必须填写原有的命名空间id</p>
         :rtype: int
         """
         return self._NamespaceId
@@ -13713,19 +13802,8 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
         self._NamespaceId = NamespaceId
 
     @property
-    def RetentionRule(self):
-        r"""保留策略
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
-        """
-        return self._RetentionRule
-
-    @RetentionRule.setter
-    def RetentionRule(self, RetentionRule):
-        self._RetentionRule = RetentionRule
-
-    @property
     def CronSetting(self):
-        r"""执行周期，必须填写为原来的设置
+        r"""<p>执行周期，必须填写为原来的设置</p>
         :rtype: str
         """
         return self._CronSetting
@@ -13736,7 +13814,7 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RetentionId(self):
-        r"""规则Id
+        r"""<p>规则Id</p>
         :rtype: int
         """
         return self._RetentionId
@@ -13746,8 +13824,30 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
         self._RetentionId = RetentionId
 
     @property
+    def RetentionRule(self):
+        r"""<p>保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        """
+        return self._RetentionRule
+
+    @RetentionRule.setter
+    def RetentionRule(self, RetentionRule):
+        self._RetentionRule = RetentionRule
+
+    @property
+    def AdvancedRuleItems(self):
+        r"""<p>高级保留策略，当基本保留策略和高级保留策略同时配置时，优先使用高级保留策略</p>
+        :rtype: list of RetentionRuleItem
+        """
+        return self._AdvancedRuleItems
+
+    @AdvancedRuleItems.setter
+    def AdvancedRuleItems(self, AdvancedRuleItems):
+        self._AdvancedRuleItems = AdvancedRuleItems
+
+    @property
     def Disabled(self):
-        r"""是否禁用规则
+        r"""<p>是否禁用规则</p>
         :rtype: bool
         """
         return self._Disabled
@@ -13760,11 +13860,17 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._NamespaceId = params.get("NamespaceId")
+        self._CronSetting = params.get("CronSetting")
+        self._RetentionId = params.get("RetentionId")
         if params.get("RetentionRule") is not None:
             self._RetentionRule = RetentionRule()
             self._RetentionRule._deserialize(params.get("RetentionRule"))
-        self._CronSetting = params.get("CronSetting")
-        self._RetentionId = params.get("RetentionId")
+        if params.get("AdvancedRuleItems") is not None:
+            self._AdvancedRuleItems = []
+            for item in params.get("AdvancedRuleItems"):
+                obj = RetentionRuleItem()
+                obj._deserialize(item)
+                self._AdvancedRuleItems.append(obj)
         self._Disabled = params.get("Disabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16212,29 +16318,32 @@ class RetentionPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RetentionId: 版本保留策略Id
+        :param _RetentionId: <p>版本保留策略Id</p>
         :type RetentionId: int
-        :param _NamespaceName: 命名空间的名称
+        :param _NamespaceName: <p>命名空间的名称</p>
         :type NamespaceName: str
-        :param _RetentionRuleList: 规则列表
+        :param _RetentionRuleList: <p>规则列表</p>
         :type RetentionRuleList: list of RetentionRule
-        :param _CronSetting: 定期执行方式
+        :param _AdvancedRuleItems: <p>高级保留规则列表</p>
+        :type AdvancedRuleItems: list of RetentionRuleItem
+        :param _CronSetting: <p>定期执行方式</p>
         :type CronSetting: str
-        :param _Disabled: 是否启用规则
+        :param _Disabled: <p>是否启用规则</p>
         :type Disabled: bool
-        :param _NextExecutionTime: 基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+        :param _NextExecutionTime: <p>基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用</p>
         :type NextExecutionTime: str
         """
         self._RetentionId = None
         self._NamespaceName = None
         self._RetentionRuleList = None
+        self._AdvancedRuleItems = None
         self._CronSetting = None
         self._Disabled = None
         self._NextExecutionTime = None
 
     @property
     def RetentionId(self):
-        r"""版本保留策略Id
+        r"""<p>版本保留策略Id</p>
         :rtype: int
         """
         return self._RetentionId
@@ -16245,7 +16354,7 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间的名称
+        r"""<p>命名空间的名称</p>
         :rtype: str
         """
         return self._NamespaceName
@@ -16256,7 +16365,7 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def RetentionRuleList(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of RetentionRule
         """
         return self._RetentionRuleList
@@ -16266,8 +16375,19 @@ class RetentionPolicy(AbstractModel):
         self._RetentionRuleList = RetentionRuleList
 
     @property
+    def AdvancedRuleItems(self):
+        r"""<p>高级保留规则列表</p>
+        :rtype: list of RetentionRuleItem
+        """
+        return self._AdvancedRuleItems
+
+    @AdvancedRuleItems.setter
+    def AdvancedRuleItems(self, AdvancedRuleItems):
+        self._AdvancedRuleItems = AdvancedRuleItems
+
+    @property
     def CronSetting(self):
-        r"""定期执行方式
+        r"""<p>定期执行方式</p>
         :rtype: str
         """
         return self._CronSetting
@@ -16278,7 +16398,7 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def Disabled(self):
-        r"""是否启用规则
+        r"""<p>是否启用规则</p>
         :rtype: bool
         """
         return self._Disabled
@@ -16289,7 +16409,7 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def NextExecutionTime(self):
-        r"""基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+        r"""<p>基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用</p>
         :rtype: str
         """
         return self._NextExecutionTime
@@ -16308,6 +16428,12 @@ class RetentionPolicy(AbstractModel):
                 obj = RetentionRule()
                 obj._deserialize(item)
                 self._RetentionRuleList.append(obj)
+        if params.get("AdvancedRuleItems") is not None:
+            self._AdvancedRuleItems = []
+            for item in params.get("AdvancedRuleItems"):
+                obj = RetentionRuleItem()
+                obj._deserialize(item)
+                self._AdvancedRuleItems.append(obj)
         self._CronSetting = params.get("CronSetting")
         self._Disabled = params.get("Disabled")
         self._NextExecutionTime = params.get("NextExecutionTime")
@@ -16362,6 +16488,78 @@ class RetentionRule(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetentionRuleItem(AbstractModel):
+    r"""版本保留规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetentionPolicy: <p>版本保留规则</p>
+        :type RetentionPolicy: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param _TagFilter: <p>标签过滤器</p>
+        :type TagFilter: :class:`tencentcloud.tcr.v20190924.models.FilterSelector`
+        :param _RepositoryFilter: <p>仓库过滤器</p>
+        :type RepositoryFilter: :class:`tencentcloud.tcr.v20190924.models.FilterSelector`
+        """
+        self._RetentionPolicy = None
+        self._TagFilter = None
+        self._RepositoryFilter = None
+
+    @property
+    def RetentionPolicy(self):
+        r"""<p>版本保留规则</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        """
+        return self._RetentionPolicy
+
+    @RetentionPolicy.setter
+    def RetentionPolicy(self, RetentionPolicy):
+        self._RetentionPolicy = RetentionPolicy
+
+    @property
+    def TagFilter(self):
+        r"""<p>标签过滤器</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.FilterSelector`
+        """
+        return self._TagFilter
+
+    @TagFilter.setter
+    def TagFilter(self, TagFilter):
+        self._TagFilter = TagFilter
+
+    @property
+    def RepositoryFilter(self):
+        r"""<p>仓库过滤器</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.FilterSelector`
+        """
+        return self._RepositoryFilter
+
+    @RepositoryFilter.setter
+    def RepositoryFilter(self, RepositoryFilter):
+        self._RepositoryFilter = RepositoryFilter
+
+
+    def _deserialize(self, params):
+        if params.get("RetentionPolicy") is not None:
+            self._RetentionPolicy = RetentionRule()
+            self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
+        if params.get("TagFilter") is not None:
+            self._TagFilter = FilterSelector()
+            self._TagFilter._deserialize(params.get("TagFilter"))
+        if params.get("RepositoryFilter") is not None:
+            self._RepositoryFilter = FilterSelector()
+            self._RepositoryFilter._deserialize(params.get("RepositoryFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -532,6 +532,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProcessImageAsyncTemplate(
+            self,
+            request: models.CreateProcessImageAsyncTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateProcessImageAsyncTemplateResponse:
+        """
+        创建用户自定义图像异步处理模板，数量上限：50。暂时不支持 HLS 格式。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProcessImageAsyncTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProcessImageAsyncTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateQualityInspectTemplate(
             self,
             request: models.CreateQualityInspectTemplateRequest,
@@ -1100,6 +1118,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DeleteProcedureTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteProcedureTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProcessImageAsyncTemplate(
+            self,
+            request: models.DeleteProcessImageAsyncTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProcessImageAsyncTemplateResponse:
+        """
+        删除用户自定义图像异步处理模板。
+
+        注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProcessImageAsyncTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProcessImageAsyncTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2060,6 +2098,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeProcedureTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProcedureTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProcessImageAsyncTemplates(
+            self,
+            request: models.DescribeProcessImageAsyncTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProcessImageAsyncTemplatesResponse:
+        """
+        根据图像异步处理模板唯一标识，获取图像异步处理模板详情列表。返回结果包含符合条件的所有用户自定义图像异步处理模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProcessImageAsyncTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProcessImageAsyncTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3036,6 +3092,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyProcessImageAsyncTemplate(
+            self,
+            request: models.ModifyProcessImageAsyncTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProcessImageAsyncTemplateResponse:
+        """
+        修改用户自定义图像异步处理模板。
+
+        注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProcessImageAsyncTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProcessImageAsyncTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyQualityInspectTemplate(
             self,
             request: models.ModifyQualityInspectTemplateRequest,
@@ -3333,6 +3409,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ProcessImage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ProcessImageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ProcessImageAsync(
+            self,
+            request: models.ProcessImageAsyncRequest,
+            opts: Dict = None,
+    ) -> models.ProcessImageAsyncResponse:
+        """
+        该接口用于图片处理任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ProcessImageAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ProcessImageAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

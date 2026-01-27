@@ -107,6 +107,9 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 接口不存在，请确认请求的接口名称是否正确。
+INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
+
 # 当前实例不支持设置参数。
 INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.CurrentInstanceNotSupportModifyParams'
 

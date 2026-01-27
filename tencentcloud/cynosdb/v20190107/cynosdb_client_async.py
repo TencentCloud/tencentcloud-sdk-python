@@ -565,6 +565,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteClusterSaveBackup(
+            self,
+            request: models.DeleteClusterSaveBackupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteClusterSaveBackupResponse:
+        """
+        本接口（DeleteClusterSaveBackup）用于为集群删除遗留备份
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteClusterSaveBackup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteClusterSaveBackupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteParamTemplate(
             self,
             request: models.DeleteParamTemplateRequest,
@@ -1465,6 +1483,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRedoLogs(
+            self,
+            request: models.DescribeRedoLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRedoLogsResponse:
+        """
+        本接口（DescribeRedoLogs）用于查询redo日志列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRedoLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRedoLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResourcePackageDetail(
             self,
             request: models.DescribeResourcePackageDetailRequest,
@@ -1568,6 +1604,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeSSLStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSSLStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSaveBackupClusters(
+            self,
+            request: models.DescribeSaveBackupClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaveBackupClustersResponse:
+        """
+        本接口（DescribeSaveBackupClusters）用于查询遗留备份集群信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaveBackupClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaveBackupClustersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2450,6 +2504,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ModifyServerlessStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyServerlessStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySnapBackupCrossRegionConfig(
+            self,
+            request: models.ModifySnapBackupCrossRegionConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifySnapBackupCrossRegionConfigResponse:
+        """
+        本接口（ModifySnapBackupCrossRegionConfig）用于修改指定集群的快照备份跨地域配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySnapBackupCrossRegionConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySnapBackupCrossRegionConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

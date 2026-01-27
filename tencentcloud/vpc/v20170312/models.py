@@ -9007,12 +9007,12 @@ class ConnectionStateTimeouts(AbstractModel):
         :type UDPMappingTimeout: int
         :param _TCPEstablishedConnectionTimeout: TCP已建立的连接空闲超时，指多少秒以后连接变为空闲状态。取值范围为：40-10800秒，默认为10800秒。
         :type TCPEstablishedConnectionTimeout: int
-        :param _TcpTimeWaitTimeout: TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
-        :type TcpTimeWaitTimeout: int
+        :param _TCPTimeWaitTimeout: TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
+        :type TCPTimeWaitTimeout: int
         """
         self._UDPMappingTimeout = None
         self._TCPEstablishedConnectionTimeout = None
-        self._TcpTimeWaitTimeout = None
+        self._TCPTimeWaitTimeout = None
 
     @property
     def UDPMappingTimeout(self):
@@ -9037,21 +9037,21 @@ class ConnectionStateTimeouts(AbstractModel):
         self._TCPEstablishedConnectionTimeout = TCPEstablishedConnectionTimeout
 
     @property
-    def TcpTimeWaitTimeout(self):
+    def TCPTimeWaitTimeout(self):
         r"""TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
         :rtype: int
         """
-        return self._TcpTimeWaitTimeout
+        return self._TCPTimeWaitTimeout
 
-    @TcpTimeWaitTimeout.setter
-    def TcpTimeWaitTimeout(self, TcpTimeWaitTimeout):
-        self._TcpTimeWaitTimeout = TcpTimeWaitTimeout
+    @TCPTimeWaitTimeout.setter
+    def TCPTimeWaitTimeout(self, TCPTimeWaitTimeout):
+        self._TCPTimeWaitTimeout = TCPTimeWaitTimeout
 
 
     def _deserialize(self, params):
         self._UDPMappingTimeout = params.get("UDPMappingTimeout")
         self._TCPEstablishedConnectionTimeout = params.get("TCPEstablishedConnectionTimeout")
-        self._TcpTimeWaitTimeout = params.get("TcpTimeWaitTimeout")
+        self._TCPTimeWaitTimeout = params.get("TCPTimeWaitTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

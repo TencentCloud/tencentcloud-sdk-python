@@ -604,6 +604,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSRVConnectionDomain(
+            self,
+            request: models.DescribeSRVConnectionDomainRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSRVConnectionDomainResponse:
+        """
+        本接口（DescribeSRVConnectionDomain）用于查询MongoDB数据库当前的域名信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSRVConnectionDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSRVConnectionDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSecurityGroup(
             self,
             request: models.DescribeSecurityGroupRequest,
@@ -694,6 +712,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableSRVConnectionUrl(
+            self,
+            request: models.DisableSRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.DisableSRVConnectionUrlResponse:
+        """
+        本接口（DisableSRVConnectionUrl）用于关闭MongoDB数据库的SRV访问地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableSRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableSRVConnectionUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DropDBInstanceParamTpl(
             self,
             request: models.DropDBInstanceParamTplRequest,
@@ -708,6 +744,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DropDBInstanceParamTpl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DropDBInstanceParamTplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableSRVConnectionUrl(
+            self,
+            request: models.EnableSRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.EnableSRVConnectionUrlResponse:
+        """
+        本接口（EnableSRVConnectionUrl）用于开启MongoDB数据库的SRV访问地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableSRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableSRVConnectionUrlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -980,6 +1034,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ModifyInstanceParams"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstanceParamsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySRVConnectionUrl(
+            self,
+            request: models.ModifySRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.ModifySRVConnectionUrlResponse:
+        """
+        本接口（DisableSRVConnectionUrl）用于修改MongoDB数据库的SRV访问地址的TTL时长。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySRVConnectionUrlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -79,6 +79,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCollector(
+            self,
+            request: models.CreateCollectorRequest,
+            opts: Dict = None,
+    ) -> models.CreateCollectorResponse:
+        """
+        用于创建Beats采集器
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCollector"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCollectorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCosMigrateToServerlessInstance(
             self,
             request: models.CreateCosMigrateToServerlessInstanceRequest,

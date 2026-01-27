@@ -27,7 +27,9 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络创建网络策略添加并发布任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略添加并发布任务
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailRequest`
@@ -50,7 +52,9 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        r"""容器网络创建Yaml网络策略并发布任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建Yaml网络策略并发布任务
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -351,7 +355,9 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络创建网络策略添加任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略添加任务
 
         :param request: Request instance for AddNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailRequest`
@@ -374,7 +380,9 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyYamlDetail(self, request):
-        r"""容器网络创建Yaml网络策略添加任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建Yaml网络策略添加任务
 
         :param request: Request instance for AddNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailRequest`
@@ -397,7 +405,9 @@ class TcssClient(AbstractClient):
 
 
     def CheckNetworkFirewallPolicyYaml(self, request):
-        r"""容器网络创建检查Yaml网络策略任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建检查Yaml网络策略任务
 
         :param request: Request instance for CheckNetworkFirewallPolicyYaml.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlRequest`
@@ -443,7 +453,9 @@ class TcssClient(AbstractClient):
 
 
     def ConfirmNetworkFirewallPolicy(self, request):
-        r"""容器网络创建网络策略确认任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略确认任务
 
         :param request: Request instance for ConfirmNetworkFirewallPolicy.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyRequest`
@@ -972,7 +984,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallClusterRefresh(self, request):
-        r"""容器网络集群下发刷新任务
+        r"""功能已下线待三合一重构
+
+        容器网络集群下发刷新任务
 
         :param request: Request instance for CreateNetworkFirewallClusterRefresh.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshRequest`
@@ -995,7 +1009,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPolicyDiscover(self, request):
-        r"""容器网络集群网络策略创建自动发现任务
+        r"""功能已下线待三合一重构
+
+        容器网络集群网络策略创建自动发现任务
 
         :param request: Request instance for CreateNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverRequest`
@@ -1018,7 +1034,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPublish(self, request):
-        r"""容器网络创建网络策略发布任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略发布任务
 
         :param request: Request instance for CreateNetworkFirewallPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishRequest`
@@ -1041,7 +1059,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallUndoPublish(self, request):
-        r"""容器网络创建网络策略撤销任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略撤销任务
 
         :param request: Request instance for CreateNetworkFirewallUndoPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishRequest`
@@ -1619,7 +1639,9 @@ class TcssClient(AbstractClient):
 
 
     def DeleteNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络创建网络策略删除任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略删除任务
 
         :param request: Request instance for DeleteNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailRequest`
@@ -4310,7 +4332,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallAuditRecord(self, request):
-        r"""查询集群策略审计列表
+        r"""功能已下线待三合一重构
+
+        查询集群策略审计列表
 
         :param request: Request instance for DescribeNetworkFirewallAuditRecord.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordRequest`
@@ -4333,7 +4357,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterList(self, request):
-        r"""查询集群策略列表
+        r"""功能已下线待三合一重构
+
+        查询集群策略列表
 
         :param request: Request instance for DescribeNetworkFirewallClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListRequest`
@@ -4356,7 +4382,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterRefreshStatus(self, request):
-        r"""容器网络查询资产任务进度
+        r"""功能已下线待三合一重构
+
+        容器网络查询资产任务进度
 
         :param request: Request instance for DescribeNetworkFirewallClusterRefreshStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusRequest`
@@ -4379,7 +4407,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceLabelList(self, request):
-        r"""查询集群网络空间标签列表
+        r"""功能已下线待三合一重构
+
+        查询集群网络空间标签列表
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceLabelList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListRequest`
@@ -4402,7 +4432,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceList(self, request):
-        r"""查询集群网络空间列表
+        r"""功能已下线待三合一重构
+
+        查询集群网络空间列表
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceListRequest`
@@ -4425,7 +4457,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPodLabelsList(self, request):
-        r"""查询集群网络pod标签
+        r"""功能已下线待三合一重构
+
+        查询集群网络pod标签
 
         :param request: Request instance for DescribeNetworkFirewallPodLabelsList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListRequest`
@@ -4448,7 +4482,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络集群查看策略详情
+        r"""功能已下线待三合一重构
+
+        容器网络集群查看策略详情
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailRequest`
@@ -4471,7 +4507,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDiscover(self, request):
-        r"""容器网络查询网络策略自动发现任务进度
+        r"""功能已下线待三合一重构
+
+        容器网络查询网络策略自动发现任务进度
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverRequest`
@@ -4494,7 +4532,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyList(self, request):
-        r"""查询集群网络策略列表
+        r"""功能已下线待三合一重构
+
+        查询集群网络策略列表
 
         :param request: Request instance for DescribeNetworkFirewallPolicyList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListRequest`
@@ -4517,7 +4557,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyStatus(self, request):
-        r"""容器网络查询网络策略策略执行状态
+        r"""功能已下线待三合一重构
+
+        容器网络查询网络策略策略执行状态
 
         :param request: Request instance for DescribeNetworkFirewallPolicyStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusRequest`
@@ -4540,7 +4582,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyYamlDetail(self, request):
-        r"""容器网络集群查看Yaml网络策略详情
+        r"""功能已下线待三合一重构
+
+        容器网络集群查看Yaml网络策略详情
 
         :param request: Request instance for DescribeNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailRequest`
@@ -7737,7 +7781,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络创建网络策略更新并发布任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略更新并发布任务
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailRequest`
@@ -7760,7 +7806,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        r"""容器网络更新Yaml网络策略并发布任务
+        r"""功能已下线待三合一重构
+
+        容器网络更新Yaml网络策略并发布任务
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -7829,7 +7877,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyDetail(self, request):
-        r"""容器网络创建网络策略更新任务
+        r"""功能已下线待三合一重构
+
+        容器网络创建网络策略更新任务
 
         :param request: Request instance for UpdateNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailRequest`
@@ -7852,7 +7902,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyYamlDetail(self, request):
-        r"""容器网络更新Yaml网络策略任务
+        r"""功能已下线待三合一重构
+
+        容器网络更新Yaml网络策略任务
 
         :param request: Request instance for UpdateNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailRequest`

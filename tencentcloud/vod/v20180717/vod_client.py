@@ -663,6 +663,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProcessImageAsyncTemplate(self, request):
+        r"""创建用户自定义图像异步处理模板，数量上限：50。暂时不支持 HLS 格式。
+
+        :param request: Request instance for CreateProcessImageAsyncTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateProcessImageAsyncTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateProcessImageAsyncTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProcessImageAsyncTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProcessImageAsyncTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQualityInspectTemplate(self, request):
         r"""创建音画质检测模板。
 
@@ -1382,6 +1405,31 @@ class VodClient(AbstractClient):
             body = self.call("DeleteProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProcedureTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProcessImageAsyncTemplate(self, request):
+        r"""删除用户自定义图像异步处理模板。
+
+        注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+
+        :param request: Request instance for DeleteProcessImageAsyncTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteProcessImageAsyncTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteProcessImageAsyncTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProcessImageAsyncTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProcessImageAsyncTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2587,6 +2635,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeProcedureTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProcedureTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProcessImageAsyncTemplates(self, request):
+        r"""根据图像异步处理模板唯一标识，获取图像异步处理模板详情列表。返回结果包含符合条件的所有用户自定义图像异步处理模板。
+
+        :param request: Request instance for DescribeProcessImageAsyncTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeProcessImageAsyncTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeProcessImageAsyncTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProcessImageAsyncTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProcessImageAsyncTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3812,6 +3883,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyProcessImageAsyncTemplate(self, request):
+        r"""修改用户自定义图像异步处理模板。
+
+        注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+
+        :param request: Request instance for ModifyProcessImageAsyncTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyProcessImageAsyncTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyProcessImageAsyncTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProcessImageAsyncTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProcessImageAsyncTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyQualityInspectTemplate(self, request):
         r"""修改音画质检测模板。
 
@@ -4185,6 +4281,29 @@ class VodClient(AbstractClient):
             body = self.call("ProcessImage", params, headers=headers)
             response = json.loads(body)
             model = models.ProcessImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ProcessImageAsync(self, request):
+        r"""该接口用于图片处理任务
+
+        :param request: Request instance for ProcessImageAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ProcessImageAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.ProcessImageAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

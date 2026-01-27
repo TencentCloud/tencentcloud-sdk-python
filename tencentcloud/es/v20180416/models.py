@@ -818,6 +818,533 @@ class ClusterView(AbstractModel):
         
 
 
+class CollectorConfigInfo(AbstractModel):
+    r"""采集器配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 采集器的主配置文件名，如filebeat.yml，metricbeat.yml等
+        :type FileName: str
+        :param _FileContent: 采集器的主配置文件内容
+        :type FileContent: str
+        """
+        self._FileName = None
+        self._FileContent = None
+
+    @property
+    def FileName(self):
+        r"""采集器的主配置文件名，如filebeat.yml，metricbeat.yml等
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileContent(self):
+        r"""采集器的主配置文件内容
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileContent = params.get("FileContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CollectorOutputInstance(AbstractModel):
+    r"""采集器输出的实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 采集器输出的实例类型（支持elasticsearch、logstash）
+        :type Type: str
+        :param _InstanceId: 采集器输出的实例ID
+        :type InstanceId: str
+        :param _ESUserName: 采集器输出到的ES实例的用户名
+        :type ESUserName: str
+        :param _ESUserPasswd: 采集器输出到的ES实例的密码
+        :type ESUserPasswd: str
+        :param _EnableMonitoring: 采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）
+        :type EnableMonitoring: int
+        :param _EnableDashboard: 采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）
+        :type EnableDashboard: int
+        :param _KafkaEndpoint: Ckafka实例的vip
+        :type KafkaEndpoint: str
+        :param _KafkaTopic: Ckafka实例中的Topic
+        :type KafkaTopic: str
+        :param _KafkaVersion: Ckafka实例的版本号
+        :type KafkaVersion: str
+        :param _SesTopicId: topic id
+        :type SesTopicId: str
+        :param _SesTopicName: topic name
+        :type SesTopicName: str
+        :param _SesTopicAddress: topic address
+        :type SesTopicAddress: str
+        :param _SesTopicUserName: /
+        :type SesTopicUserName: str
+        :param _SesTopicPasswd: /
+        :type SesTopicPasswd: str
+        :param _LogstashListenPort: /
+        :type LogstashListenPort: int
+        """
+        self._Type = None
+        self._InstanceId = None
+        self._ESUserName = None
+        self._ESUserPasswd = None
+        self._EnableMonitoring = None
+        self._EnableDashboard = None
+        self._KafkaEndpoint = None
+        self._KafkaTopic = None
+        self._KafkaVersion = None
+        self._SesTopicId = None
+        self._SesTopicName = None
+        self._SesTopicAddress = None
+        self._SesTopicUserName = None
+        self._SesTopicPasswd = None
+        self._LogstashListenPort = None
+
+    @property
+    def Type(self):
+        r"""采集器输出的实例类型（支持elasticsearch、logstash）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceId(self):
+        r"""采集器输出的实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ESUserName(self):
+        r"""采集器输出到的ES实例的用户名
+        :rtype: str
+        """
+        return self._ESUserName
+
+    @ESUserName.setter
+    def ESUserName(self, ESUserName):
+        self._ESUserName = ESUserName
+
+    @property
+    def ESUserPasswd(self):
+        r"""采集器输出到的ES实例的密码
+        :rtype: str
+        """
+        return self._ESUserPasswd
+
+    @ESUserPasswd.setter
+    def ESUserPasswd(self, ESUserPasswd):
+        self._ESUserPasswd = ESUserPasswd
+
+    @property
+    def EnableMonitoring(self):
+        r"""采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）
+        :rtype: int
+        """
+        return self._EnableMonitoring
+
+    @EnableMonitoring.setter
+    def EnableMonitoring(self, EnableMonitoring):
+        self._EnableMonitoring = EnableMonitoring
+
+    @property
+    def EnableDashboard(self):
+        r"""采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）
+        :rtype: int
+        """
+        return self._EnableDashboard
+
+    @EnableDashboard.setter
+    def EnableDashboard(self, EnableDashboard):
+        self._EnableDashboard = EnableDashboard
+
+    @property
+    def KafkaEndpoint(self):
+        r"""Ckafka实例的vip
+        :rtype: str
+        """
+        return self._KafkaEndpoint
+
+    @KafkaEndpoint.setter
+    def KafkaEndpoint(self, KafkaEndpoint):
+        self._KafkaEndpoint = KafkaEndpoint
+
+    @property
+    def KafkaTopic(self):
+        r"""Ckafka实例中的Topic
+        :rtype: str
+        """
+        return self._KafkaTopic
+
+    @KafkaTopic.setter
+    def KafkaTopic(self, KafkaTopic):
+        self._KafkaTopic = KafkaTopic
+
+    @property
+    def KafkaVersion(self):
+        r"""Ckafka实例的版本号
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SesTopicId(self):
+        r"""topic id
+        :rtype: str
+        """
+        return self._SesTopicId
+
+    @SesTopicId.setter
+    def SesTopicId(self, SesTopicId):
+        self._SesTopicId = SesTopicId
+
+    @property
+    def SesTopicName(self):
+        r"""topic name
+        :rtype: str
+        """
+        return self._SesTopicName
+
+    @SesTopicName.setter
+    def SesTopicName(self, SesTopicName):
+        self._SesTopicName = SesTopicName
+
+    @property
+    def SesTopicAddress(self):
+        r"""topic address
+        :rtype: str
+        """
+        return self._SesTopicAddress
+
+    @SesTopicAddress.setter
+    def SesTopicAddress(self, SesTopicAddress):
+        self._SesTopicAddress = SesTopicAddress
+
+    @property
+    def SesTopicUserName(self):
+        r"""/
+        :rtype: str
+        """
+        return self._SesTopicUserName
+
+    @SesTopicUserName.setter
+    def SesTopicUserName(self, SesTopicUserName):
+        self._SesTopicUserName = SesTopicUserName
+
+    @property
+    def SesTopicPasswd(self):
+        r"""/
+        :rtype: str
+        """
+        return self._SesTopicPasswd
+
+    @SesTopicPasswd.setter
+    def SesTopicPasswd(self, SesTopicPasswd):
+        self._SesTopicPasswd = SesTopicPasswd
+
+    @property
+    def LogstashListenPort(self):
+        r"""/
+        :rtype: int
+        """
+        return self._LogstashListenPort
+
+    @LogstashListenPort.setter
+    def LogstashListenPort(self, LogstashListenPort):
+        self._LogstashListenPort = LogstashListenPort
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._InstanceId = params.get("InstanceId")
+        self._ESUserName = params.get("ESUserName")
+        self._ESUserPasswd = params.get("ESUserPasswd")
+        self._EnableMonitoring = params.get("EnableMonitoring")
+        self._EnableDashboard = params.get("EnableDashboard")
+        self._KafkaEndpoint = params.get("KafkaEndpoint")
+        self._KafkaTopic = params.get("KafkaTopic")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SesTopicId = params.get("SesTopicId")
+        self._SesTopicName = params.get("SesTopicName")
+        self._SesTopicAddress = params.get("SesTopicAddress")
+        self._SesTopicUserName = params.get("SesTopicUserName")
+        self._SesTopicPasswd = params.get("SesTopicPasswd")
+        self._LogstashListenPort = params.get("LogstashListenPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CollectorTarget(AbstractModel):
+    r"""容器日志采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetName: 采集配置名称
+        :type TargetName: str
+        :param _Namespaces: 命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespaces: :class:`tencentcloud.es.v20180416.models.Namespaces`
+        :param _PodLabels: Pod标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLabels: list of PodLabel
+        :param _ContainerName: 容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _IndexPrefix: ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexPrefix: str
+        :param _LogFilters: 日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFilters: str
+        :param _ConfigContent: 高级配置，可自定义采集规则，最多支持2048个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigContent: str
+        :param _KafkaTopic: Ckafka实例的Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaTopic: str
+        :param _IndexAlias: ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexAlias: str
+        :param _InputType: /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param _InputPath: 日志采集host路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputPath: str
+        :param _InputsTailFiles: inputs.tail_files
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsTailFiles: bool
+        """
+        self._TargetName = None
+        self._Namespaces = None
+        self._PodLabels = None
+        self._ContainerName = None
+        self._IndexPrefix = None
+        self._LogFilters = None
+        self._ConfigContent = None
+        self._KafkaTopic = None
+        self._IndexAlias = None
+        self._InputType = None
+        self._InputPath = None
+        self._InputsTailFiles = None
+
+    @property
+    def TargetName(self):
+        r"""采集配置名称
+        :rtype: str
+        """
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+    @property
+    def Namespaces(self):
+        r"""命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.Namespaces`
+        """
+        return self._Namespaces
+
+    @Namespaces.setter
+    def Namespaces(self, Namespaces):
+        self._Namespaces = Namespaces
+
+    @property
+    def PodLabels(self):
+        r"""Pod标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PodLabel
+        """
+        return self._PodLabels
+
+    @PodLabels.setter
+    def PodLabels(self, PodLabels):
+        self._PodLabels = PodLabels
+
+    @property
+    def ContainerName(self):
+        r"""容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def IndexPrefix(self):
+        r"""ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndexPrefix
+
+    @IndexPrefix.setter
+    def IndexPrefix(self, IndexPrefix):
+        self._IndexPrefix = IndexPrefix
+
+    @property
+    def LogFilters(self):
+        r"""日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogFilters
+
+    @LogFilters.setter
+    def LogFilters(self, LogFilters):
+        self._LogFilters = LogFilters
+
+    @property
+    def ConfigContent(self):
+        r"""高级配置，可自定义采集规则，最多支持2048个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigContent
+
+    @ConfigContent.setter
+    def ConfigContent(self, ConfigContent):
+        self._ConfigContent = ConfigContent
+
+    @property
+    def KafkaTopic(self):
+        r"""Ckafka实例的Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KafkaTopic
+
+    @KafkaTopic.setter
+    def KafkaTopic(self, KafkaTopic):
+        self._KafkaTopic = KafkaTopic
+
+    @property
+    def IndexAlias(self):
+        r"""ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndexAlias
+
+    @IndexAlias.setter
+    def IndexAlias(self, IndexAlias):
+        self._IndexAlias = IndexAlias
+
+    @property
+    def InputType(self):
+        r"""/
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputPath(self):
+        r"""日志采集host路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+    @property
+    def InputsTailFiles(self):
+        r"""inputs.tail_files
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InputsTailFiles
+
+    @InputsTailFiles.setter
+    def InputsTailFiles(self, InputsTailFiles):
+        self._InputsTailFiles = InputsTailFiles
+
+
+    def _deserialize(self, params):
+        self._TargetName = params.get("TargetName")
+        if params.get("Namespaces") is not None:
+            self._Namespaces = Namespaces()
+            self._Namespaces._deserialize(params.get("Namespaces"))
+        if params.get("PodLabels") is not None:
+            self._PodLabels = []
+            for item in params.get("PodLabels"):
+                obj = PodLabel()
+                obj._deserialize(item)
+                self._PodLabels.append(obj)
+        self._ContainerName = params.get("ContainerName")
+        self._IndexPrefix = params.get("IndexPrefix")
+        self._LogFilters = params.get("LogFilters")
+        self._ConfigContent = params.get("ConfigContent")
+        self._KafkaTopic = params.get("KafkaTopic")
+        self._IndexAlias = params.get("IndexAlias")
+        self._InputType = params.get("InputType")
+        self._InputPath = params.get("InputPath")
+        self._InputsTailFiles = params.get("InputsTailFiles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonIndexInfo(AbstractModel):
     r"""普通索引信息列表
 
@@ -1623,6 +2150,237 @@ class CreateClusterSnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCollectorRequest(AbstractModel):
+    r"""CreateCollector请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CollectorName: 采集器名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :type CollectorName: str
+        :param _CollectorVersion: 采集器版本（支持"6.8.15"、"7.10.2"）
+        :type CollectorVersion: str
+        :param _CollectorType: 采集器类型（支持filebeat、metricbeat、heartbeat、auditbeat、packetbeat）
+        :type CollectorType: str
+        :param _OutputInstance: 采集器输出的ES实例信息
+        :type OutputInstance: :class:`tencentcloud.es.v20180416.models.CollectorOutputInstance`
+        :param _CollectorConfigs: 采集器配置
+        :type CollectorConfigs: list of CollectorConfigInfo
+        :param _CVMInstanceIds: 采集器下发的CVM实例ID列表
+        :type CVMInstanceIds: list of str
+        :param _TargetType: 采集目标类型，CVM或者TKE
+        :type TargetType: str
+        :param _ContainerClusterId: 容器集群ID，采集目标为TKE时必填
+        :type ContainerClusterId: str
+        :param _CollectorTargets: 采集器配置，采集目标为TKE时必填
+        :type CollectorTargets: list of CollectorTarget
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
+        """
+        self._CollectorName = None
+        self._CollectorVersion = None
+        self._CollectorType = None
+        self._OutputInstance = None
+        self._CollectorConfigs = None
+        self._CVMInstanceIds = None
+        self._TargetType = None
+        self._ContainerClusterId = None
+        self._CollectorTargets = None
+        self._TagList = None
+
+    @property
+    def CollectorName(self):
+        r"""采集器名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :rtype: str
+        """
+        return self._CollectorName
+
+    @CollectorName.setter
+    def CollectorName(self, CollectorName):
+        self._CollectorName = CollectorName
+
+    @property
+    def CollectorVersion(self):
+        r"""采集器版本（支持"6.8.15"、"7.10.2"）
+        :rtype: str
+        """
+        return self._CollectorVersion
+
+    @CollectorVersion.setter
+    def CollectorVersion(self, CollectorVersion):
+        self._CollectorVersion = CollectorVersion
+
+    @property
+    def CollectorType(self):
+        r"""采集器类型（支持filebeat、metricbeat、heartbeat、auditbeat、packetbeat）
+        :rtype: str
+        """
+        return self._CollectorType
+
+    @CollectorType.setter
+    def CollectorType(self, CollectorType):
+        self._CollectorType = CollectorType
+
+    @property
+    def OutputInstance(self):
+        r"""采集器输出的ES实例信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.CollectorOutputInstance`
+        """
+        return self._OutputInstance
+
+    @OutputInstance.setter
+    def OutputInstance(self, OutputInstance):
+        self._OutputInstance = OutputInstance
+
+    @property
+    def CollectorConfigs(self):
+        r"""采集器配置
+        :rtype: list of CollectorConfigInfo
+        """
+        return self._CollectorConfigs
+
+    @CollectorConfigs.setter
+    def CollectorConfigs(self, CollectorConfigs):
+        self._CollectorConfigs = CollectorConfigs
+
+    @property
+    def CVMInstanceIds(self):
+        r"""采集器下发的CVM实例ID列表
+        :rtype: list of str
+        """
+        return self._CVMInstanceIds
+
+    @CVMInstanceIds.setter
+    def CVMInstanceIds(self, CVMInstanceIds):
+        self._CVMInstanceIds = CVMInstanceIds
+
+    @property
+    def TargetType(self):
+        r"""采集目标类型，CVM或者TKE
+        :rtype: str
+        """
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def ContainerClusterId(self):
+        r"""容器集群ID，采集目标为TKE时必填
+        :rtype: str
+        """
+        return self._ContainerClusterId
+
+    @ContainerClusterId.setter
+    def ContainerClusterId(self, ContainerClusterId):
+        self._ContainerClusterId = ContainerClusterId
+
+    @property
+    def CollectorTargets(self):
+        r"""采集器配置，采集目标为TKE时必填
+        :rtype: list of CollectorTarget
+        """
+        return self._CollectorTargets
+
+    @CollectorTargets.setter
+    def CollectorTargets(self, CollectorTargets):
+        self._CollectorTargets = CollectorTargets
+
+    @property
+    def TagList(self):
+        r"""标签信息
+        :rtype: list of TagInfo
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._CollectorName = params.get("CollectorName")
+        self._CollectorVersion = params.get("CollectorVersion")
+        self._CollectorType = params.get("CollectorType")
+        if params.get("OutputInstance") is not None:
+            self._OutputInstance = CollectorOutputInstance()
+            self._OutputInstance._deserialize(params.get("OutputInstance"))
+        if params.get("CollectorConfigs") is not None:
+            self._CollectorConfigs = []
+            for item in params.get("CollectorConfigs"):
+                obj = CollectorConfigInfo()
+                obj._deserialize(item)
+                self._CollectorConfigs.append(obj)
+        self._CVMInstanceIds = params.get("CVMInstanceIds")
+        self._TargetType = params.get("TargetType")
+        self._ContainerClusterId = params.get("ContainerClusterId")
+        if params.get("CollectorTargets") is not None:
+            self._CollectorTargets = []
+            for item in params.get("CollectorTargets"):
+                obj = CollectorTarget()
+                obj._deserialize(item)
+                self._CollectorTargets.append(obj)
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCollectorResponse(AbstractModel):
+    r"""CreateCollector返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CollectorId: 采集器ID
+        :type CollectorId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CollectorId = None
+        self._RequestId = None
+
+    @property
+    def CollectorId(self):
+        r"""采集器ID
+        :rtype: str
+        """
+        return self._CollectorId
+
+    @CollectorId.setter
+    def CollectorId(self, CollectorId):
+        self._CollectorId = CollectorId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CollectorId = params.get("CollectorId")
         self._RequestId = params.get("RequestId")
 
 
@@ -16057,6 +16815,57 @@ class ModifyEsVipSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Namespaces(AbstractModel):
+    r"""TKE命名空间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Include: 包含的命名空间的列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        :type Include: list of str
+        :param _Exclude: 不包含的命名空间列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        :type Exclude: list of str
+        """
+        self._Include = None
+        self._Exclude = None
+
+    @property
+    def Include(self):
+        r"""包含的命名空间的列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        :rtype: list of str
+        """
+        return self._Include
+
+    @Include.setter
+    def Include(self, Include):
+        self._Include = Include
+
+    @property
+    def Exclude(self):
+        r"""不包含的命名空间列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        :rtype: list of str
+        """
+        return self._Exclude
+
+    @Exclude.setter
+    def Exclude(self, Exclude):
+        self._Exclude = Exclude
+
+
+    def _deserialize(self, params):
+        self._Include = params.get("Include")
+        self._Exclude = params.get("Exclude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeInfo(AbstractModel):
     r"""集群中一种节点类型（如热数据节点，冷数据节点，专用主节点等）的规格描述信息，包括节点类型，节点个数，节点规格，磁盘类型，磁盘大小等, Type不指定时默认为热数据节点；如果节点为master节点，则DiskType和DiskSize参数会被忽略（主节点无数据盘）
 
@@ -17257,6 +18066,57 @@ class OutboundPublicAcl(AbstractModel):
     def _deserialize(self, params):
         self._NodeType = params.get("NodeType")
         self._WhiteHostList = params.get("WhiteHostList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodLabel(AbstractModel):
+    r"""Pod标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelKey: 标签键，支持大小写字母、数字、以及-_./，最多支持63个字符
+        :type LabelKey: str
+        :param _LabelValue: 标签值，支持大小写字母、数字、以及-_./，最多支持63个字符
+        :type LabelValue: str
+        """
+        self._LabelKey = None
+        self._LabelValue = None
+
+    @property
+    def LabelKey(self):
+        r"""标签键，支持大小写字母、数字、以及-_./，最多支持63个字符
+        :rtype: str
+        """
+        return self._LabelKey
+
+    @LabelKey.setter
+    def LabelKey(self, LabelKey):
+        self._LabelKey = LabelKey
+
+    @property
+    def LabelValue(self):
+        r"""标签值，支持大小写字母、数字、以及-_./，最多支持63个字符
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+
+    def _deserialize(self, params):
+        self._LabelKey = params.get("LabelKey")
+        self._LabelValue = params.get("LabelValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

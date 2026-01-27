@@ -304,21 +304,21 @@ class CreateAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :param _Name: <p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :type Name: str
-        :param _Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: <p>跟踪集状态（未开启：0；开启：1）</p>
         :type Status: int
-        :param _Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: <p>数据投递存储（目前支持 cos、cls 、ckafka）</p>
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: <p>跟踪事件类型（读：Read；写：Write；全部：*）</p>
         :type ActionType: str
-        :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :param _ResourceType: <p>跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）</p>
         :type ResourceType: str
-        :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :param _EventNames: <p>跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[&quot;*&quot;]；指定ResourceType时，支持全部接口：[&quot;*&quot;]；支持部分接口：[&quot;cos&quot;, &quot;cls&quot;]，接口列表上限10个）</p>
         :type EventNames: list of str
-        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        :param _TrackForAllMembers: <p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :type TrackForAllMembers: int
-        :param _ExportId: 任务ID
+        :param _ExportId: <p>任务ID</p>
         :type ExportId: str
         """
         self._Name = None
@@ -332,7 +332,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""<p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :rtype: str
         """
         return self._Name
@@ -343,7 +343,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""跟踪集状态（未开启：0；开启：1）
+        r"""<p>跟踪集状态（未开启：0；开启：1）</p>
         :rtype: int
         """
         return self._Status
@@ -354,7 +354,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""数据投递存储（目前支持 cos、cls）
+        r"""<p>数据投递存储（目前支持 cos、cls 、ckafka）</p>
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -365,7 +365,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""<p>跟踪事件类型（读：Read；写：Write；全部：*）</p>
         :rtype: str
         """
         return self._ActionType
@@ -376,7 +376,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        r"""<p>跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）</p>
         :rtype: str
         """
         return self._ResourceType
@@ -387,7 +387,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
-        r"""跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        r"""<p>跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[&quot;*&quot;]；指定ResourceType时，支持全部接口：[&quot;*&quot;]；支持部分接口：[&quot;cos&quot;, &quot;cls&quot;]，接口列表上限10个）</p>
         :rtype: list of str
         """
         return self._EventNames
@@ -398,7 +398,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        r"""<p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -409,7 +409,7 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ExportId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._ExportId
@@ -447,7 +447,7 @@ class CreateAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackId: 跟踪集 ID
+        :param _TrackId: <p>跟踪集 ID</p>
         :type TrackId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -457,7 +457,7 @@ class CreateAuditTrackResponse(AbstractModel):
 
     @property
     def TrackId(self):
-        r"""跟踪集 ID
+        r"""<p>跟踪集 ID</p>
         :rtype: int
         """
         return self._TrackId
@@ -490,15 +490,15 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :param _Name: <p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :type Name: str
-        :param _Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: <p>跟踪集状态（未开启：0；开启：1）</p>
         :type Status: int
-        :param _Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: <p>数据投递存储（目前支持 cos、cls、ckafka）</p>
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _Filters: 数据过滤条件
+        :param _Filters: <p>数据过滤条件</p>
         :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
-        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        :param _TrackForAllMembers: <p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :type TrackForAllMembers: int
         """
         self._Name = None
@@ -509,7 +509,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""<p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :rtype: str
         """
         return self._Name
@@ -520,7 +520,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""跟踪集状态（未开启：0；开启：1）
+        r"""<p>跟踪集状态（未开启：0；开启：1）</p>
         :rtype: int
         """
         return self._Status
@@ -531,7 +531,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""数据投递存储（目前支持 cos、cls）
+        r"""<p>数据投递存储（目前支持 cos、cls、ckafka）</p>
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -542,7 +542,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""数据过滤条件
+        r"""<p>数据过滤条件</p>
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         """
         return self._Filters
@@ -553,7 +553,7 @@ class CreateEventsAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        r"""<p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -590,7 +590,7 @@ class CreateEventsAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackId: 跟踪集 ID
+        :param _TrackId: <p>跟踪集 ID</p>
         :type TrackId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -600,7 +600,7 @@ class CreateEventsAuditTrackResponse(AbstractModel):
 
     @property
     def TrackId(self):
-        r"""跟踪集 ID
+        r"""<p>跟踪集 ID</p>
         :rtype: int
         """
         return self._TrackId
@@ -2624,21 +2624,21 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackId: 跟踪集 ID
+        :param _TrackId: <p>跟踪集 ID</p>
         :type TrackId: int
-        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :param _Name: <p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :type Name: str
-        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: <p>跟踪事件类型（读：Read；写：Write；全部：*）</p>
         :type ActionType: str
-        :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :param _ResourceType: <p>跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）</p>
         :type ResourceType: str
-        :param _Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: <p>跟踪集状态（未开启：0；开启：1）</p>
         :type Status: int
-        :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :param _EventNames: <p>跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[&quot;*&quot;]；指定ResourceType时，支持全部接口：[&quot;*&quot;]；支持部分接口：[&quot;cos&quot;, &quot;cls&quot;]，接口列表上限10个）</p>
         :type EventNames: list of str
-        :param _Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: <p>数据投递存储（目前支持 cos、cls、ckafka）</p>
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :param _TrackForAllMembers: <p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :type TrackForAllMembers: int
         """
         self._TrackId = None
@@ -2652,7 +2652,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
-        r"""跟踪集 ID
+        r"""<p>跟踪集 ID</p>
         :rtype: int
         """
         return self._TrackId
@@ -2663,7 +2663,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        r"""<p>跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符</p>
         :rtype: str
         """
         return self._Name
@@ -2674,7 +2674,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""跟踪事件类型（读：Read；写：Write；全部：*）
+        r"""<p>跟踪事件类型（读：Read；写：Write；全部：*）</p>
         :rtype: str
         """
         return self._ActionType
@@ -2685,7 +2685,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        r"""<p>跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）</p>
         :rtype: str
         """
         return self._ResourceType
@@ -2696,7 +2696,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""跟踪集状态（未开启：0；开启：1）
+        r"""<p>跟踪集状态（未开启：0；开启：1）</p>
         :rtype: int
         """
         return self._Status
@@ -2707,7 +2707,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
-        r"""跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        r"""<p>跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[&quot;*&quot;]；指定ResourceType时，支持全部接口：[&quot;*&quot;]；支持部分接口：[&quot;cos&quot;, &quot;cls&quot;]，接口列表上限10个）</p>
         :rtype: list of str
         """
         return self._EventNames
@@ -2718,7 +2718,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""数据投递存储（目前支持 cos、cls）
+        r"""<p>数据投递存储（目前支持 cos、cls、ckafka）</p>
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         """
         return self._Storage
@@ -2729,7 +2729,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        r"""是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        r"""<p>是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)</p>
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -3213,20 +3213,19 @@ class Storage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageType: 存储类型（目前支持 cos、cls）
+        :param _StorageType: <p>存储类型（目前支持 cos、cls、ckafka）</p>
         :type StorageType: str
-        :param _StorageRegion: 存储所在地域
+        :param _StorageRegion: <p>存储所在地域</p>
         :type StorageRegion: str
-        :param _StorageName: 存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+        :param _StorageName: <p>存储名称(cos：存储名称为用户自定义的存储桶名称，不包含&quot;-APPID&quot;，仅支持小写字母、数字以及中划线&quot;-&quot;的组合，不能超过50字符，且不支持中划线&quot;-&quot;开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符； ckafka： ckafka实例ID/topic. 举例：ckafka-xxxxxx/tencent_test_audit_log)</p>
         :type StorageName: str
-        :param _StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+        :param _StoragePrefix: <p>存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符</p>
         :type StoragePrefix: str
-        :param _StorageAccountId: 被指定存储用户ID
+        :param _StorageAccountId: <p>被指定存储用户ID</p>
         :type StorageAccountId: str
-        :param _StorageAppId: 被指定存储用户appid
+        :param _StorageAppId: <p>被指定存储用户appid</p>
         :type StorageAppId: str
-        :param _Compress: 是否压缩。
-1:压缩  2:不压缩
+        :param _Compress: <p>是否压缩。<br>1:压缩  2:不压缩</p>
         :type Compress: int
         """
         self._StorageType = None
@@ -3239,7 +3238,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""存储类型（目前支持 cos、cls）
+        r"""<p>存储类型（目前支持 cos、cls、ckafka）</p>
         :rtype: str
         """
         return self._StorageType
@@ -3250,7 +3249,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""存储所在地域
+        r"""<p>存储所在地域</p>
         :rtype: str
         """
         return self._StorageRegion
@@ -3261,7 +3260,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageName(self):
-        r"""存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+        r"""<p>存储名称(cos：存储名称为用户自定义的存储桶名称，不包含&quot;-APPID&quot;，仅支持小写字母、数字以及中划线&quot;-&quot;的组合，不能超过50字符，且不支持中划线&quot;-&quot;开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符； ckafka： ckafka实例ID/topic. 举例：ckafka-xxxxxx/tencent_test_audit_log)</p>
         :rtype: str
         """
         return self._StorageName
@@ -3272,7 +3271,7 @@ class Storage(AbstractModel):
 
     @property
     def StoragePrefix(self):
-        r"""存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+        r"""<p>存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符</p>
         :rtype: str
         """
         return self._StoragePrefix
@@ -3283,7 +3282,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageAccountId(self):
-        r"""被指定存储用户ID
+        r"""<p>被指定存储用户ID</p>
         :rtype: str
         """
         return self._StorageAccountId
@@ -3294,7 +3293,7 @@ class Storage(AbstractModel):
 
     @property
     def StorageAppId(self):
-        r"""被指定存储用户appid
+        r"""<p>被指定存储用户appid</p>
         :rtype: str
         """
         return self._StorageAppId
@@ -3305,8 +3304,7 @@ class Storage(AbstractModel):
 
     @property
     def Compress(self):
-        r"""是否压缩。
-1:压缩  2:不压缩
+        r"""<p>是否压缩。<br>1:压缩  2:不压缩</p>
         :rtype: int
         """
         return self._Compress

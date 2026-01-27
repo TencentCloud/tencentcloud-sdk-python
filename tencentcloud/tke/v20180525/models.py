@@ -34840,9 +34840,9 @@ class KMSConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: kms id，可以在密钥管理控制台获取
+        :param _KeyId: 自定义密钥,当不指定KeyId时，采用默认生成密钥（TKE-KMS）
         :type KeyId: str
-        :param _KmsRegion: kms 地域
+        :param _KmsRegion: 默认生成密钥或自定义密钥地域信息
         :type KmsRegion: str
         """
         self._KeyId = None
@@ -34850,7 +34850,7 @@ class KMSConfiguration(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""kms id，可以在密钥管理控制台获取
+        r"""自定义密钥,当不指定KeyId时，采用默认生成密钥（TKE-KMS）
         :rtype: str
         """
         return self._KeyId
@@ -34861,7 +34861,7 @@ class KMSConfiguration(AbstractModel):
 
     @property
     def KmsRegion(self):
-        r"""kms 地域
+        r"""默认生成密钥或自定义密钥地域信息
         :rtype: str
         """
         return self._KmsRegion

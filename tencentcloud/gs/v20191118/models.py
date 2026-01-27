@@ -7770,9 +7770,12 @@ class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _AndroidAppURL: 安卓应用下载 URL
         :type AndroidAppURL: str
+        :param _AndroidAppMD5: 安卓应用MD5码值（32位小写十六进制字符串）
+        :type AndroidAppMD5: str
         """
         self._AndroidInstanceIds = None
         self._AndroidAppURL = None
+        self._AndroidAppMD5 = None
 
     @property
     def AndroidInstanceIds(self):
@@ -7796,10 +7799,22 @@ class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
     def AndroidAppURL(self, AndroidAppURL):
         self._AndroidAppURL = AndroidAppURL
 
+    @property
+    def AndroidAppMD5(self):
+        r"""安卓应用MD5码值（32位小写十六进制字符串）
+        :rtype: str
+        """
+        return self._AndroidAppMD5
+
+    @AndroidAppMD5.setter
+    def AndroidAppMD5(self, AndroidAppMD5):
+        self._AndroidAppMD5 = AndroidAppMD5
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._AndroidAppURL = params.get("AndroidAppURL")
+        self._AndroidAppMD5 = params.get("AndroidAppMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -537,71 +537,30 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区名称，例如，ap-guangzhou-3
-全网可用区名称如下：
-<li> ap-chongqing-1 </li>
-<li> ap-seoul-1 </li>
-<li> ap-seoul-2 </li>
-<li> ap-chengdu-1 </li>
-<li> ap-chengdu-2 </li>
-<li> ap-hongkong-1 </li>
-<li> ap-hongkong-2 </li>
-<li> ap-shenzhen-fsi-1 </li>
-<li> ap-shenzhen-fsi-2 </li>
-<li> ap-shenzhen-fsi-3 </li>
-<li> ap-guangzhou-1（售罄）</li>
-<li> ap-guangzhou-3 </li>
-<li> ap-guangzhou-4 </li>
-<li> ap-guangzhou-6 </li>
-<li> ap-tokyo-1 </li>
-<li> ap-singapore-1 </li>
-<li> ap-singapore-2 </li>
-<li> ap-shanghai-fsi-1 </li>
-<li> ap-shanghai-fsi-2 </li>
-<li> ap-shanghai-fsi-3 </li>
-<li> ap-bangkok-1 </li>
-<li> ap-shanghai-1（售罄） </li>
-<li> ap-shanghai-2 </li>
-<li> ap-shanghai-3 </li>
-<li> ap-shanghai-4 </li>
-<li> ap-shanghai-5 </li>
-<li> ap-mumbai-1 </li>
-<li> ap-mumbai-2 </li>
-<li> ap-beijing-1 </li>
-<li> ap-beijing-2 </li>
-<li> ap-beijing-3 </li>
-<li> ap-beijing-4 </li>
-<li> ap-beijing-5 </li>
-<li> na-siliconvalley-1 </li>
-<li> na-siliconvalley-2 </li>
-<li> eu-frankfurt-1 </li>
-<li> na-ashburn-1 </li>
-<li> na-ashburn-2 </li>
-<li> ap-nanjing-1 </li>
-<li> ap-nanjing-2 </li>
+        :param _Zone: <p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-1 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
         :type Zone: str
-        :param _ZoneName: 可用区描述，例如，广州三区
+        :param _ZoneName: <p>可用区描述，例如，广州三区</p>
         :type ZoneName: str
-        :param _ZoneId: 可用区ID
+        :param _ZoneId: <p>可用区ID</p>
         :type ZoneId: str
-        :param _ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        :param _ZoneState: <p>可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。</p>
         :type ZoneState: str
-        :param _ParentZone: 父级zone
+        :param _ParentZone: <p>父级zone</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentZone: str
-        :param _ParentZoneId: 父级可用区ID
+        :param _ParentZoneId: <p>父级可用区ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentZoneId: str
-        :param _ParentZoneName: 父级可用区描述
+        :param _ParentZoneName: <p>父级可用区描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentZoneName: str
-        :param _ZoneType: zone类型
+        :param _ZoneType: <p>zone类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneType: str
-        :param _MachineRoomTypeMC: 控制台类型
+        :param _MachineRoomTypeMC: <p>控制台类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineRoomTypeMC: str
-        :param _ZoneIdMC: 和ZoneId一样，适用于控制台调用。
+        :param _ZoneIdMC: <p>和ZoneId一样，适用于控制台调用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIdMC: str
         """
@@ -618,48 +577,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区名称，例如，ap-guangzhou-3
-全网可用区名称如下：
-<li> ap-chongqing-1 </li>
-<li> ap-seoul-1 </li>
-<li> ap-seoul-2 </li>
-<li> ap-chengdu-1 </li>
-<li> ap-chengdu-2 </li>
-<li> ap-hongkong-1 </li>
-<li> ap-hongkong-2 </li>
-<li> ap-shenzhen-fsi-1 </li>
-<li> ap-shenzhen-fsi-2 </li>
-<li> ap-shenzhen-fsi-3 </li>
-<li> ap-guangzhou-1（售罄）</li>
-<li> ap-guangzhou-3 </li>
-<li> ap-guangzhou-4 </li>
-<li> ap-guangzhou-6 </li>
-<li> ap-tokyo-1 </li>
-<li> ap-singapore-1 </li>
-<li> ap-singapore-2 </li>
-<li> ap-shanghai-fsi-1 </li>
-<li> ap-shanghai-fsi-2 </li>
-<li> ap-shanghai-fsi-3 </li>
-<li> ap-bangkok-1 </li>
-<li> ap-shanghai-1（售罄） </li>
-<li> ap-shanghai-2 </li>
-<li> ap-shanghai-3 </li>
-<li> ap-shanghai-4 </li>
-<li> ap-shanghai-5 </li>
-<li> ap-mumbai-1 </li>
-<li> ap-mumbai-2 </li>
-<li> ap-beijing-1 </li>
-<li> ap-beijing-2 </li>
-<li> ap-beijing-3 </li>
-<li> ap-beijing-4 </li>
-<li> ap-beijing-5 </li>
-<li> na-siliconvalley-1 </li>
-<li> na-siliconvalley-2 </li>
-<li> eu-frankfurt-1 </li>
-<li> na-ashburn-1 </li>
-<li> na-ashburn-2 </li>
-<li> ap-nanjing-1 </li>
-<li> ap-nanjing-2 </li>
+        r"""<p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-1 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
         :rtype: str
         """
         return self._Zone
@@ -670,7 +588,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""可用区描述，例如，广州三区
+        r"""<p>可用区描述，例如，广州三区</p>
         :rtype: str
         """
         return self._ZoneName
@@ -681,7 +599,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区ID
+        r"""<p>可用区ID</p>
         :rtype: str
         """
         return self._ZoneId
@@ -692,7 +610,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneState(self):
-        r"""可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        r"""<p>可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。</p>
         :rtype: str
         """
         return self._ZoneState
@@ -703,7 +621,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZone(self):
-        r"""父级zone
+        r"""<p>父级zone</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -715,7 +633,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZoneId(self):
-        r"""父级可用区ID
+        r"""<p>父级可用区ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -727,7 +645,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ParentZoneName(self):
-        r"""父级可用区描述
+        r"""<p>父级可用区描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -739,7 +657,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneType(self):
-        r"""zone类型
+        r"""<p>zone类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -751,7 +669,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def MachineRoomTypeMC(self):
-        r"""控制台类型
+        r"""<p>控制台类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -763,7 +681,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneIdMC(self):
-        r"""和ZoneId一样，适用于控制台调用。
+        r"""<p>和ZoneId一样，适用于控制台调用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -158,6 +158,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CopyAutoSnapshotPolicyCrossAccount(self, request):
+        r"""针对白名单内用户实现自动快照策略的跨账号复制功能
+
+        :param request: Request instance for CopyAutoSnapshotPolicyCrossAccount.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CopyAutoSnapshotPolicyCrossAccountRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CopyAutoSnapshotPolicyCrossAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyAutoSnapshotPolicyCrossAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyAutoSnapshotPolicyCrossAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CopySnapshotCrossRegions(self, request):
         r"""本接口（CopySnapshotCrossRegions）用于快照跨地域复制。
 

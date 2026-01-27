@@ -1320,6 +1320,135 @@ class AdaptiveStreamTemplate(AbstractModel):
         
 
 
+class AdvancedSuperResolutionConfig(AbstractModel):
+    r"""超分配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Type: 类型，可选值：
+<li>standard：通用超分</li>
+<li>super：高级超分。</li>
+默认值：standard。
+        :type Type: str
+        :param _Mode: 输出图片模式，默认percent。
+<li> aspect: 超分至指定宽高的较大矩形。</li>
+<li> fixed: 超分至固定宽高，强制缩放。</li>
+<li> percent: 超分倍率，可以为小数。</li>
+        :type Mode: str
+        :param _Percent: 超分倍率，可以为小数。
+        :type Percent: float
+        :param _Width: 目标图片宽度，不能超过4096。
+        :type Width: int
+        :param _Height: 目标图片高度，不能超过4096。
+        :type Height: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Mode = None
+        self._Percent = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""类型，可选值：
+<li>standard：通用超分</li>
+<li>super：高级超分。</li>
+默认值：standard。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mode(self):
+        r"""输出图片模式，默认percent。
+<li> aspect: 超分至指定宽高的较大矩形。</li>
+<li> fixed: 超分至固定宽高，强制缩放。</li>
+<li> percent: 超分倍率，可以为小数。</li>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Percent(self):
+        r"""超分倍率，可以为小数。
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Width(self):
+        r"""目标图片宽度，不能超过4096。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""目标图片高度，不能超过4096。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._Percent = params.get("Percent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisResult(AbstractModel):
     r"""智能分析结果
 
@@ -15644,8 +15773,11 @@ class ChangeClothesConfig(AbstractModel):
         r"""
         :param _ClothesFileInfos: 输入需要更换的**衣物**图片列表。目前最大支持4张图片。
         :type ClothesFileInfos: list of SceneAigcImageTaskInputFileInfo
+        :param _Prompt: AI换衣的提示词。
+        :type Prompt: str
         """
         self._ClothesFileInfos = None
+        self._Prompt = None
 
     @property
     def ClothesFileInfos(self):
@@ -15658,6 +15790,17 @@ class ChangeClothesConfig(AbstractModel):
     def ClothesFileInfos(self, ClothesFileInfos):
         self._ClothesFileInfos = ClothesFileInfos
 
+    @property
+    def Prompt(self):
+        r"""AI换衣的提示词。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
 
     def _deserialize(self, params):
         if params.get("ClothesFileInfos") is not None:
@@ -15666,6 +15809,7 @@ class ChangeClothesConfig(AbstractModel):
                 obj = SceneAigcImageTaskInputFileInfo()
                 obj._deserialize(item)
                 self._ClothesFileInfos.append(obj)
+        self._Prompt = params.get("Prompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22505,6 +22649,132 @@ class CreateProcedureTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProcessImageAsyncTemplateRequest(AbstractModel):
+    r"""CreateProcessImageAsyncTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessImageConfigure: 图片异步处理任务配置。
+        :type ProcessImageConfigure: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Name: 图片异步处理模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 图片异步处理模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._ProcessImageConfigure = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def ProcessImageConfigure(self):
+        r"""图片异步处理任务配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        return self._ProcessImageConfigure
+
+    @ProcessImageConfigure.setter
+    def ProcessImageConfigure(self, ProcessImageConfigure):
+        self._ProcessImageConfigure = ProcessImageConfigure
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""图片异步处理模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片异步处理模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessImageConfigure") is not None:
+            self._ProcessImageConfigure = ProcessImageAsyncTask()
+            self._ProcessImageConfigure._deserialize(params.get("ProcessImageConfigure"))
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProcessImageAsyncTemplateResponse(AbstractModel):
+    r"""CreateProcessImageAsyncTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateQualityInspectTemplateRequest(AbstractModel):
     r"""CreateQualityInspectTemplate请求参数结构体
 
@@ -26970,6 +27240,85 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
 class DeleteProcedureTemplateResponse(AbstractModel):
     r"""DeleteProcedureTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProcessImageAsyncTemplateRequest(AbstractModel):
+    r"""DeleteProcessImageAsyncTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板唯一标识。
+        :type Definition: int
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProcessImageAsyncTemplateResponse(AbstractModel):
+    r"""DeleteProcessImageAsyncTemplate返回参数结构体
 
     """
 
@@ -33538,6 +33887,150 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProcessImageAsyncTemplatesRequest(AbstractModel):
+    r"""DescribeProcessImageAsyncTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Definitions: 图片异步处理模板唯一标识过滤条件，数组长度最大值：100。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        r"""图片异步处理模板唯一标识过滤条件，数组长度最大值：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProcessImageAsyncTemplatesResponse(AbstractModel):
+    r"""DescribeProcessImageAsyncTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _ProcessImageAsyncTemplateSet: 图片异步处理模板详情列表。
+        :type ProcessImageAsyncTemplateSet: list of ProcessImageAsyncTemplateItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProcessImageAsyncTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProcessImageAsyncTemplateSet(self):
+        r"""图片异步处理模板详情列表。
+        :rtype: list of ProcessImageAsyncTemplateItem
+        """
+        return self._ProcessImageAsyncTemplateSet
+
+    @ProcessImageAsyncTemplateSet.setter
+    def ProcessImageAsyncTemplateSet(self, ProcessImageAsyncTemplateSet):
+        self._ProcessImageAsyncTemplateSet = ProcessImageAsyncTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProcessImageAsyncTemplateSet") is not None:
+            self._ProcessImageAsyncTemplateSet = []
+            for item in params.get("ProcessImageAsyncTemplateSet"):
+                obj = ProcessImageAsyncTemplateItem()
+                obj._deserialize(item)
+                self._ProcessImageAsyncTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQualityInspectTemplatesRequest(AbstractModel):
     r"""DescribeQualityInspectTemplates请求参数结构体
 
@@ -35649,6 +36142,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type SceneAigcImageTask: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageTask`
         :param _SceneAigcVideoTask: 场景化 AIGC 生视频任务信息，仅当 TaskType 为 SceneAigcVideoTask，该字段有值。
         :type SceneAigcVideoTask: :class:`tencentcloud.vod.v20180717.models.SceneAigcVideoTask`
+        :param _ProcessImageAsyncTask: 图像异步处理任务信息，仅当 TaskType 为 ProcessImageAsync，该字段有值。
+        :type ProcessImageAsyncTask: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsync`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -35685,6 +36180,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ImportMediaKnowledge = None
         self._SceneAigcImageTask = None
         self._SceneAigcVideoTask = None
+        self._ProcessImageAsyncTask = None
         self._RequestId = None
 
     @property
@@ -36077,6 +36573,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._SceneAigcVideoTask = SceneAigcVideoTask
 
     @property
+    def ProcessImageAsyncTask(self):
+        r"""图像异步处理任务信息，仅当 TaskType 为 ProcessImageAsync，该字段有值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsync`
+        """
+        return self._ProcessImageAsyncTask
+
+    @ProcessImageAsyncTask.setter
+    def ProcessImageAsyncTask(self, ProcessImageAsyncTask):
+        self._ProcessImageAsyncTask = ProcessImageAsyncTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -36178,6 +36685,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("SceneAigcVideoTask") is not None:
             self._SceneAigcVideoTask = SceneAigcVideoTask()
             self._SceneAigcVideoTask._deserialize(params.get("SceneAigcVideoTask"))
+        if params.get("ProcessImageAsyncTask") is not None:
+            self._ProcessImageAsyncTask = ProcessImageAsync()
+            self._ProcessImageAsyncTask._deserialize(params.get("ProcessImageAsyncTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -43459,6 +43969,293 @@ class ImageContentReviewInput(AbstractModel):
         
 
 
+class ImageDenoiseConfig(AbstractModel):
+    r"""图片降噪配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Type: 类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEncodeConfig(AbstractModel):
+    r"""图片编码格式参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
+        :type Format: str
+        :param _Quality: 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+        :type Quality: int
+        """
+        self._Format = None
+        self._Quality = None
+
+    @property
+    def Format(self):
+        r"""图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Quality(self):
+        r"""图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+        :rtype: int
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEnhanceConfig(AbstractModel):
+    r"""图片增强参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuperResolution: 超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperResolution: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param _AdvancedSuperResolution: 高级超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedSuperResolution: :class:`tencentcloud.vod.v20180717.models.AdvancedSuperResolutionConfig`
+        :param _Denoise: 降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Denoise: :class:`tencentcloud.vod.v20180717.models.ImageDenoiseConfig`
+        :param _ImageQualityEnhance: 综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageQualityEnhance: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        :param _ColorEnhance: 色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColorEnhance: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param _SharpEnhance: 细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharpEnhance: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param _FaceEnhance: 人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceEnhance: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param _LowLightEnhance: 低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowLightEnhance: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        """
+        self._SuperResolution = None
+        self._AdvancedSuperResolution = None
+        self._Denoise = None
+        self._ImageQualityEnhance = None
+        self._ColorEnhance = None
+        self._SharpEnhance = None
+        self._FaceEnhance = None
+        self._LowLightEnhance = None
+
+    @property
+    def SuperResolution(self):
+        r"""超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        """
+        return self._SuperResolution
+
+    @SuperResolution.setter
+    def SuperResolution(self, SuperResolution):
+        self._SuperResolution = SuperResolution
+
+    @property
+    def AdvancedSuperResolution(self):
+        r"""高级超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AdvancedSuperResolutionConfig`
+        """
+        return self._AdvancedSuperResolution
+
+    @AdvancedSuperResolution.setter
+    def AdvancedSuperResolution(self, AdvancedSuperResolution):
+        self._AdvancedSuperResolution = AdvancedSuperResolution
+
+    @property
+    def Denoise(self):
+        r"""降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageDenoiseConfig`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def ImageQualityEnhance(self):
+        r"""综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        """
+        return self._ImageQualityEnhance
+
+    @ImageQualityEnhance.setter
+    def ImageQualityEnhance(self, ImageQualityEnhance):
+        self._ImageQualityEnhance = ImageQualityEnhance
+
+    @property
+    def ColorEnhance(self):
+        r"""色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        """
+        return self._ColorEnhance
+
+    @ColorEnhance.setter
+    def ColorEnhance(self, ColorEnhance):
+        self._ColorEnhance = ColorEnhance
+
+    @property
+    def SharpEnhance(self):
+        r"""细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        """
+        return self._SharpEnhance
+
+    @SharpEnhance.setter
+    def SharpEnhance(self, SharpEnhance):
+        self._SharpEnhance = SharpEnhance
+
+    @property
+    def FaceEnhance(self):
+        r"""人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        """
+        return self._FaceEnhance
+
+    @FaceEnhance.setter
+    def FaceEnhance(self, FaceEnhance):
+        self._FaceEnhance = FaceEnhance
+
+    @property
+    def LowLightEnhance(self):
+        r"""低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        """
+        return self._LowLightEnhance
+
+    @LowLightEnhance.setter
+    def LowLightEnhance(self, LowLightEnhance):
+        self._LowLightEnhance = LowLightEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("SuperResolution") is not None:
+            self._SuperResolution = SuperResolutionInfo()
+            self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("AdvancedSuperResolution") is not None:
+            self._AdvancedSuperResolution = AdvancedSuperResolutionConfig()
+            self._AdvancedSuperResolution._deserialize(params.get("AdvancedSuperResolution"))
+        if params.get("Denoise") is not None:
+            self._Denoise = ImageDenoiseConfig()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self._ImageQualityEnhance = ImageQualityEnhanceInfo()
+            self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
+        if params.get("ColorEnhance") is not None:
+            self._ColorEnhance = ColorEnhanceInfo()
+            self._ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("SharpEnhance") is not None:
+            self._SharpEnhance = SharpEnhanceInfo()
+            self._SharpEnhance._deserialize(params.get("SharpEnhance"))
+        if params.get("FaceEnhance") is not None:
+            self._FaceEnhance = FaceEnhanceInfo()
+            self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self._LowLightEnhance = LowLightEnhanceInfo()
+            self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageOperation(AbstractModel):
     r"""单个图片处理操作。
 
@@ -43884,6 +44681,57 @@ class ImageScale(AbstractModel):
         self._Width = params.get("Width")
         self._LongEdge = params.get("LongEdge")
         self._ShortEdge = params.get("ShortEdge")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageSceneAigcEncodeConfig(AbstractModel):
+    r"""图片编码格式参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 图片格式，取值范围：JPEG、PNG，缺省为原图格式。不支持动画。
+        :type Format: str
+        :param _Quality: 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+        :type Quality: int
+        """
+        self._Format = None
+        self._Quality = None
+
+    @property
+    def Format(self):
+        r"""图片格式，取值范围：JPEG、PNG，缺省为原图格式。不支持动画。
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Quality(self):
+        r"""图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+        :rtype: int
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._Quality = params.get("Quality")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55985,6 +56833,132 @@ class ModifyPersonSampleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyProcessImageAsyncTemplateRequest(AbstractModel):
+    r"""ModifyProcessImageAsyncTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板唯一标识。
+        :type Definition: int
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Name: 图片异步处理模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 图片异步处理模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _ProcessImageConfigure: 图片异步处理配置。
+        :type ProcessImageConfigure: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._ProcessImageConfigure = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""图片异步处理模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片异步处理模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ProcessImageConfigure(self):
+        r"""图片异步处理配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        return self._ProcessImageConfigure
+
+    @ProcessImageConfigure.setter
+    def ProcessImageConfigure(self, ProcessImageConfigure):
+        self._ProcessImageConfigure = ProcessImageConfigure
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("ProcessImageConfigure") is not None:
+            self._ProcessImageConfigure = ProcessImageAsyncTask()
+            self._ProcessImageConfigure._deserialize(params.get("ProcessImageConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProcessImageAsyncTemplateResponse(AbstractModel):
+    r"""ModifyProcessImageAsyncTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyQualityInspectTemplateRequest(AbstractModel):
     r"""ModifyQualityInspectTemplate请求参数结构体
 
@@ -62013,6 +62987,883 @@ class ProcedureTemplate(AbstractModel):
             self._ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsync(AbstractModel):
+    r"""图片异步处理任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Progress: 任务进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param _Input: 图片异步处理任务的输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInput`
+        :param _Output: 图片异步处理任务的输出信息。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutput`
+        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        r"""任务进度，取值范围 [0-100] 。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        r"""图片异步处理任务的输入信息。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""图片异步处理任务的输出信息。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = ProcessImageAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = ProcessImageAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncInput(AbstractModel):
+    r"""图片异步处理任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 图片处理的FileId。
+        :type FileId: str
+        :param _ImageTaskInput: 图片处理参数。
+        :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
+        :param _OutputConfig: 图片处理任务的输出媒体文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
+        """
+        self._FileId = None
+        self._ImageTaskInput = None
+        self._OutputConfig = None
+
+    @property
+    def FileId(self):
+        r"""图片处理的FileId。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def ImageTaskInput(self):
+        r"""图片处理参数。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
+        """
+        return self._ImageTaskInput
+
+    @ImageTaskInput.setter
+    def ImageTaskInput(self, ImageTaskInput):
+        self._ImageTaskInput = ImageTaskInput
+
+    @property
+    def OutputConfig(self):
+        r"""图片处理任务的输出媒体文件配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        if params.get("ImageTaskInput") is not None:
+            self._ImageTaskInput = ProcessImageAsyncTaskInput()
+            self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = ProcessImageAsyncOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncOutput(AbstractModel):
+    r"""图片异步处理任务的输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfo: 图片异步处理任务的输出文件信息。
+        :type FileInfo: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputFileInfo`
+        """
+        self._FileInfo = None
+
+    @property
+    def FileInfo(self):
+        r"""图片异步处理任务的输出文件信息。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputFileInfo`
+        """
+        return self._FileInfo
+
+    @FileInfo.setter
+    def FileInfo(self, FileInfo):
+        self._FileInfo = FileInfo
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfo") is not None:
+            self._FileInfo = ProcessImageAsyncOutputFileInfo()
+            self._FileInfo._deserialize(params.get("FileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncOutputConfig(AbstractModel):
+    r"""图片异步处理任务的输出媒体文件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def MediaName(self):
+        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncOutputFileInfo(AbstractModel):
+    r"""图片异步处理任务的输出文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
+
+        :type ClassId: int
+        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        :param _FileType: 文件类型，例如 mp4、flv 等。
+        :type FileType: str
+        :param _FileUrl: 媒体文件播放地址。
+        :type FileUrl: str
+        :param _FileId: 媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+        :type FileId: str
+        :param _MetaData: 输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+        self._FileType = None
+        self._FileUrl = None
+        self._FileId = None
+        self._MetaData = None
+
+    @property
+    def MediaName(self):
+        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
+
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FileType(self):
+        r"""文件类型，例如 mp4、flv 等。
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""媒体文件播放地址。
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileId(self):
+        r"""媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MetaData(self):
+        r"""输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._FileId = params.get("FileId")
+        if params.get("MetaData") is not None:
+            self._MetaData = MediaMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncRequest(AbstractModel):
+    r"""ProcessImageAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _FileId: 需要进行图片处理的FileId。
+        :type FileId: str
+        :param _ImageTaskInput: 图片处理参数。
+        :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
+        :param _OutputConfig: 图片处理任务的输出媒体文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
+        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._FileId = None
+        self._ImageTaskInput = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileId(self):
+        r"""需要进行图片处理的FileId。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def ImageTaskInput(self):
+        r"""图片处理参数。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
+        """
+        return self._ImageTaskInput
+
+    @ImageTaskInput.setter
+    def ImageTaskInput(self, ImageTaskInput):
+        self._ImageTaskInput = ImageTaskInput
+
+    @property
+    def OutputConfig(self):
+        r"""图片处理任务的输出媒体文件配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        r"""保留字段，特殊用途时使用。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._FileId = params.get("FileId")
+        if params.get("ImageTaskInput") is not None:
+            self._ImageTaskInput = ProcessImageAsyncTaskInput()
+            self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = ProcessImageAsyncOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncResponse(AbstractModel):
+    r"""ProcessImageAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ProcessImageAsyncTask(AbstractModel):
+    r"""图片异步处理配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncodeConfig: 图片转码输出配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
+        :param _EnhanceConfig: 图片增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
+        """
+        self._EncodeConfig = None
+        self._EnhanceConfig = None
+
+    @property
+    def EncodeConfig(self):
+        r"""图片转码输出配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
+        """
+        return self._EncodeConfig
+
+    @EncodeConfig.setter
+    def EncodeConfig(self, EncodeConfig):
+        self._EncodeConfig = EncodeConfig
+
+    @property
+    def EnhanceConfig(self):
+        r"""图片增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+
+    def _deserialize(self, params):
+        if params.get("EncodeConfig") is not None:
+            self._EncodeConfig = ImageEncodeConfig()
+            self._EncodeConfig._deserialize(params.get("EncodeConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = ImageEnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncTaskInput(AbstractModel):
+    r"""图片处理配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板ID。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageAsyncTemplateItem(AbstractModel):
+    r"""图片异步处理模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板唯一标识。
+        :type Definition: int
+        :param _Type: 模板类型。
+        :type Type: str
+        :param _Name: 图片异步处理模板名称。
+        :type Name: str
+        :param _Comment: 图片异步处理模板描述信息。
+        :type Comment: str
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        :param _ProcessImageConfigure: 图片异步处理模板配置。
+        :type ProcessImageConfigure: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._Comment = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ProcessImageConfigure = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        r"""模板类型。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""图片异步处理模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片异步处理模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ProcessImageConfigure(self):
+        r"""图片异步处理模板配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        return self._ProcessImageConfigure
+
+    @ProcessImageConfigure.setter
+    def ProcessImageConfigure(self, ProcessImageConfigure):
+        self._ProcessImageConfigure = ProcessImageConfigure
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ProcessImageConfigure") is not None:
+            self._ProcessImageConfigure = ProcessImageAsyncTask()
+            self._ProcessImageConfigure._deserialize(params.get("ProcessImageConfigure"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72585,12 +74436,15 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
 仅生商品图场景有效，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
         :type AspectRatio: str
+        :param _EncodeConfig: 输出图片编码格式参数。**仅AI换衣场景有效。**
+        :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         """
         self._StorageMode = None
         self._MediaName = None
         self._ClassId = None
         self._ExpireTime = None
         self._AspectRatio = None
+        self._EncodeConfig = None
 
     @property
     def StorageMode(self):
@@ -72651,6 +74505,17 @@ class SceneAigcImageOutputConfig(AbstractModel):
     def AspectRatio(self, AspectRatio):
         self._AspectRatio = AspectRatio
 
+    @property
+    def EncodeConfig(self):
+        r"""输出图片编码格式参数。**仅AI换衣场景有效。**
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
+        """
+        return self._EncodeConfig
+
+    @EncodeConfig.setter
+    def EncodeConfig(self, EncodeConfig):
+        self._EncodeConfig = EncodeConfig
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
@@ -72658,6 +74523,9 @@ class SceneAigcImageOutputConfig(AbstractModel):
         self._ClassId = params.get("ClassId")
         self._ExpireTime = params.get("ExpireTime")
         self._AspectRatio = params.get("AspectRatio")
+        if params.get("EncodeConfig") is not None:
+            self._EncodeConfig = ImageSceneAigcEncodeConfig()
+            self._EncodeConfig._deserialize(params.get("EncodeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

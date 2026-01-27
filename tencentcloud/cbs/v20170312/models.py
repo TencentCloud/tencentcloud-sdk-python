@@ -1349,6 +1349,117 @@ class CdcSize(AbstractModel):
         
 
 
+class CopyAutoSnapshotPolicyCrossAccountRequest(AbstractModel):
+    r"""CopyAutoSnapshotPolicyCrossAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoSnapshotPolicyIds: 要备份的定期快照策略ID列表
+        :type AutoSnapshotPolicyIds: list of str
+        :param _TargetAccountUin: 目标账户uin
+        :type TargetAccountUin: str
+        """
+        self._AutoSnapshotPolicyIds = None
+        self._TargetAccountUin = None
+
+    @property
+    def AutoSnapshotPolicyIds(self):
+        r"""要备份的定期快照策略ID列表
+        :rtype: list of str
+        """
+        return self._AutoSnapshotPolicyIds
+
+    @AutoSnapshotPolicyIds.setter
+    def AutoSnapshotPolicyIds(self, AutoSnapshotPolicyIds):
+        self._AutoSnapshotPolicyIds = AutoSnapshotPolicyIds
+
+    @property
+    def TargetAccountUin(self):
+        r"""目标账户uin
+        :rtype: str
+        """
+        return self._TargetAccountUin
+
+    @TargetAccountUin.setter
+    def TargetAccountUin(self, TargetAccountUin):
+        self._TargetAccountUin = TargetAccountUin
+
+
+    def _deserialize(self, params):
+        self._AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        self._TargetAccountUin = params.get("TargetAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyAutoSnapshotPolicyCrossAccountResponse(AbstractModel):
+    r"""CopyAutoSnapshotPolicyCrossAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoSnapshotPolicyIds: 已备份的定期快照策略ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSnapshotPolicyIds: list of str
+        :param _TargetAccountUin: 目标账户uin
+        :type TargetAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AutoSnapshotPolicyIds = None
+        self._TargetAccountUin = None
+        self._RequestId = None
+
+    @property
+    def AutoSnapshotPolicyIds(self):
+        r"""已备份的定期快照策略ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AutoSnapshotPolicyIds
+
+    @AutoSnapshotPolicyIds.setter
+    def AutoSnapshotPolicyIds(self, AutoSnapshotPolicyIds):
+        self._AutoSnapshotPolicyIds = AutoSnapshotPolicyIds
+
+    @property
+    def TargetAccountUin(self):
+        r"""目标账户uin
+        :rtype: str
+        """
+        return self._TargetAccountUin
+
+    @TargetAccountUin.setter
+    def TargetAccountUin(self, TargetAccountUin):
+        self._TargetAccountUin = TargetAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        self._TargetAccountUin = params.get("TargetAccountUin")
+        self._RequestId = params.get("RequestId")
+
+
 class CopySnapshotCrossRegionsRequest(AbstractModel):
     r"""CopySnapshotCrossRegions请求参数结构体
 

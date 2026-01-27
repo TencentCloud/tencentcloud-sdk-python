@@ -19950,7 +19950,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
         :type DstZoneId: int
         :param _NodeDistribution: 独享集群 CDB 实例的节点分布情况。
         :type NodeDistribution: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
-        :param _ClusterTopology: 集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
+        :param _ClusterTopology: 云盘版的节点拓扑配置。Nodeld 信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         self._InstanceId = None
@@ -20101,7 +20101,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def ClusterTopology(self):
-        r"""集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
+        r"""云盘版的节点拓扑配置。Nodeld 信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         return self._ClusterTopology
@@ -27400,7 +27400,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
         :type NewPassword: str
         :param _Accounts: 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :type Accounts: list of Account
-        :param _SkipValidatePassword: 是否跳过校验密码复杂度
+        :param _SkipValidatePassword: 该字段已废弃。
         :type SkipValidatePassword: bool
         """
         self._InstanceId = None
@@ -27445,7 +27445,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
     def SkipValidatePassword(self):
         warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
 
-        r"""是否跳过校验密码复杂度
+        r"""该字段已废弃。
         :rtype: bool
         """
         return self._SkipValidatePassword

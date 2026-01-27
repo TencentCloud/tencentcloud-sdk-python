@@ -31,6 +31,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddAndPublishNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略添加并发布任务
         """
         
@@ -49,6 +51,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddAndPublishNetworkFirewallPolicyYamlDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建Yaml网络策略并发布任务
         """
         
@@ -285,6 +289,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略添加任务
         """
         
@@ -303,6 +309,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddNetworkFirewallPolicyYamlDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建Yaml网络策略添加任务
         """
         
@@ -321,6 +329,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CheckNetworkFirewallPolicyYamlResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建检查Yaml网络策略任务
         """
         
@@ -357,6 +367,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ConfirmNetworkFirewallPolicyResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略确认任务
         """
         
@@ -771,6 +783,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallClusterRefreshResponse:
         """
+        功能已下线待三合一重构
+
         容器网络集群下发刷新任务
         """
         
@@ -789,6 +803,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallPolicyDiscoverResponse:
         """
+        功能已下线待三合一重构
+
         容器网络集群网络策略创建自动发现任务
         """
         
@@ -807,6 +823,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallPublishResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略发布任务
         """
         
@@ -825,6 +843,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallUndoPublishResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略撤销任务
         """
         
@@ -1278,6 +1298,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略删除任务
         """
         
@@ -3384,6 +3406,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallAuditRecordResponse:
         """
+        功能已下线待三合一重构
+
         查询集群策略审计列表
         """
         
@@ -3402,6 +3426,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallClusterListResponse:
         """
+        功能已下线待三合一重构
+
         查询集群策略列表
         """
         
@@ -3420,6 +3446,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallClusterRefreshStatusResponse:
         """
+        功能已下线待三合一重构
+
         容器网络查询资产任务进度
         """
         
@@ -3438,6 +3466,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallNamespaceLabelListResponse:
         """
+        功能已下线待三合一重构
+
         查询集群网络空间标签列表
         """
         
@@ -3456,6 +3486,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallNamespaceListResponse:
         """
+        功能已下线待三合一重构
+
         查询集群网络空间列表
         """
         
@@ -3474,6 +3506,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPodLabelsListResponse:
         """
+        功能已下线待三合一重构
+
         查询集群网络pod标签
         """
         
@@ -3492,6 +3526,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络集群查看策略详情
         """
         
@@ -3510,6 +3546,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyDiscoverResponse:
         """
+        功能已下线待三合一重构
+
         容器网络查询网络策略自动发现任务进度
         """
         
@@ -3528,6 +3566,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyListResponse:
         """
+        功能已下线待三合一重构
+
         查询集群网络策略列表
         """
         
@@ -3546,6 +3586,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyStatusResponse:
         """
+        功能已下线待三合一重构
+
         容器网络查询网络策略策略执行状态
         """
         
@@ -3564,6 +3606,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyYamlDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络集群查看Yaml网络策略详情
         """
         
@@ -6066,6 +6110,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAndPublishNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略更新并发布任务
         """
         
@@ -6084,6 +6130,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络更新Yaml网络策略并发布任务
         """
         
@@ -6138,6 +6186,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateNetworkFirewallPolicyDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络创建网络策略更新任务
         """
         
@@ -6156,6 +6206,8 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateNetworkFirewallPolicyYamlDetailResponse:
         """
+        功能已下线待三合一重构
+
         容器网络更新Yaml网络策略任务
         """
         

@@ -23606,15 +23606,15 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
         :type TopicId: str
-        :param _TaskId: 索引重建任务ID
+        :param _TaskId: <p>索引重建任务ID</p>
         :type TaskId: str
-        :param _Status: 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+        :param _Status: <p>索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔。</p><p>枚举值：</p><ul><li>0： 索引重建任务已创建</li><li>1： 正在创建索引重建资源</li><li>2： 已创建索引重建资源</li><li>3： 重建中</li><li>4： 暂停</li><li>5： 重建完成</li><li>6： 重建成功（可检索）</li><li>7： 重建失败</li><li>8： 任务取消</li><li>9： 元数据和索引已删除</li></ul>
         :type Status: str
-        :param _Offset: 分页的偏移量，默认值为0。
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 分页单页限制数目，默认值为10，最大值20。
+        :param _Limit: <p>分页单页限制数目，默认值为10，最大值20。</p>
         :type Limit: int
         """
         self._TopicId = None
@@ -23625,7 +23625,7 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -23636,7 +23636,7 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""索引重建任务ID
+        r"""<p>索引重建任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -23647,7 +23647,7 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+        r"""<p>索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔。</p><p>枚举值：</p><ul><li>0： 索引重建任务已创建</li><li>1： 正在创建索引重建资源</li><li>2： 已创建索引重建资源</li><li>3： 重建中</li><li>4： 暂停</li><li>5： 重建完成</li><li>6： 重建成功（可检索）</li><li>7： 重建失败</li><li>8： 任务取消</li><li>9： 元数据和索引已删除</li></ul>
         :rtype: str
         """
         return self._Status
@@ -23658,7 +23658,7 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页的偏移量，默认值为0。
+        r"""<p>分页的偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -23669,7 +23669,7 @@ class DescribeRebuildIndexTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页单页限制数目，默认值为10，最大值20。
+        r"""<p>分页单页限制数目，默认值为10，最大值20。</p>
         :rtype: int
         """
         return self._Limit
@@ -23702,7 +23702,7 @@ class DescribeRebuildIndexTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RebuildTasks: 索引重建任务列表
+        :param _RebuildTasks: <p>索引重建任务列表</p>
         :type RebuildTasks: list of RebuildIndexTaskInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23712,7 +23712,7 @@ class DescribeRebuildIndexTasksResponse(AbstractModel):
 
     @property
     def RebuildTasks(self):
-        r"""索引重建任务列表
+        r"""<p>索引重建任务列表</p>
         :rtype: list of RebuildIndexTaskInfo
         """
         return self._RebuildTasks

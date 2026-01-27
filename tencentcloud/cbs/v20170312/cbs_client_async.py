@@ -132,6 +132,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CopyAutoSnapshotPolicyCrossAccount(
+            self,
+            request: models.CopyAutoSnapshotPolicyCrossAccountRequest,
+            opts: Dict = None,
+    ) -> models.CopyAutoSnapshotPolicyCrossAccountResponse:
+        """
+        针对白名单内用户实现自动快照策略的跨账号复制功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyAutoSnapshotPolicyCrossAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyAutoSnapshotPolicyCrossAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CopySnapshotCrossRegions(
             self,
             request: models.CopySnapshotCrossRegionsRequest,

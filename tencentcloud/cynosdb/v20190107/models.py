@@ -2185,6 +2185,170 @@ class AuditRuleTemplateInfo(AbstractModel):
         
 
 
+class BackupConfigInfo(AbstractModel):
+    r"""备份设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupCustomAutoTime: 系统自动时间
+        :type BackupCustomAutoTime: bool
+        :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :type BackupTimeBeg: int
+        :param _BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :type BackupTimeEnd: int
+        :param _BackupWeekDays: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupWeekDays: list of str
+        :param _BackupIntervalTime: 间隔时间
+        :type BackupIntervalTime: int
+        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        :type ReserveDuration: int
+        :param _CrossRegionsEnable: 跨地域备份开启
+yes-开启
+no-关闭
+        :type CrossRegionsEnable: str
+        :param _CrossRegions: 跨地域备份地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossRegions: list of str
+        :param _BackupTriggerStrategy: 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :type BackupTriggerStrategy: str
+        """
+        self._BackupCustomAutoTime = None
+        self._BackupTimeBeg = None
+        self._BackupTimeEnd = None
+        self._BackupWeekDays = None
+        self._BackupIntervalTime = None
+        self._ReserveDuration = None
+        self._CrossRegionsEnable = None
+        self._CrossRegions = None
+        self._BackupTriggerStrategy = None
+
+    @property
+    def BackupCustomAutoTime(self):
+        r"""系统自动时间
+        :rtype: bool
+        """
+        return self._BackupCustomAutoTime
+
+    @BackupCustomAutoTime.setter
+    def BackupCustomAutoTime(self, BackupCustomAutoTime):
+        self._BackupCustomAutoTime = BackupCustomAutoTime
+
+    @property
+    def BackupTimeBeg(self):
+        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :rtype: int
+        """
+        return self._BackupTimeBeg
+
+    @BackupTimeBeg.setter
+    def BackupTimeBeg(self, BackupTimeBeg):
+        self._BackupTimeBeg = BackupTimeBeg
+
+    @property
+    def BackupTimeEnd(self):
+        r"""表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :rtype: int
+        """
+        return self._BackupTimeEnd
+
+    @BackupTimeEnd.setter
+    def BackupTimeEnd(self, BackupTimeEnd):
+        self._BackupTimeEnd = BackupTimeEnd
+
+    @property
+    def BackupWeekDays(self):
+        r"""该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BackupWeekDays
+
+    @BackupWeekDays.setter
+    def BackupWeekDays(self, BackupWeekDays):
+        self._BackupWeekDays = BackupWeekDays
+
+    @property
+    def BackupIntervalTime(self):
+        r"""间隔时间
+        :rtype: int
+        """
+        return self._BackupIntervalTime
+
+    @BackupIntervalTime.setter
+    def BackupIntervalTime(self, BackupIntervalTime):
+        self._BackupIntervalTime = BackupIntervalTime
+
+    @property
+    def ReserveDuration(self):
+        r"""表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        :rtype: int
+        """
+        return self._ReserveDuration
+
+    @ReserveDuration.setter
+    def ReserveDuration(self, ReserveDuration):
+        self._ReserveDuration = ReserveDuration
+
+    @property
+    def CrossRegionsEnable(self):
+        r"""跨地域备份开启
+yes-开启
+no-关闭
+        :rtype: str
+        """
+        return self._CrossRegionsEnable
+
+    @CrossRegionsEnable.setter
+    def CrossRegionsEnable(self, CrossRegionsEnable):
+        self._CrossRegionsEnable = CrossRegionsEnable
+
+    @property
+    def CrossRegions(self):
+        r"""跨地域备份地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def BackupTriggerStrategy(self):
+        r"""动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :rtype: str
+        """
+        return self._BackupTriggerStrategy
+
+    @BackupTriggerStrategy.setter
+    def BackupTriggerStrategy(self, BackupTriggerStrategy):
+        self._BackupTriggerStrategy = BackupTriggerStrategy
+
+
+    def _deserialize(self, params):
+        self._BackupCustomAutoTime = params.get("BackupCustomAutoTime")
+        self._BackupTimeBeg = params.get("BackupTimeBeg")
+        self._BackupTimeEnd = params.get("BackupTimeEnd")
+        self._BackupWeekDays = params.get("BackupWeekDays")
+        self._BackupIntervalTime = params.get("BackupIntervalTime")
+        self._ReserveDuration = params.get("ReserveDuration")
+        self._CrossRegionsEnable = params.get("CrossRegionsEnable")
+        self._CrossRegions = params.get("CrossRegions")
+        self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupFileInfo(AbstractModel):
     r"""备份文件信息
 
@@ -2585,6 +2749,57 @@ class BackupLimitVpcItem(AbstractModel):
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupRegionAndIds(AbstractModel):
+    r"""备份文件所在地域及ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupRegion: 备份地域
+        :type BackupRegion: str
+        :param _BackupId: 备份ID
+        :type BackupId: int
+        """
+        self._BackupRegion = None
+        self._BackupId = None
+
+    @property
+    def BackupRegion(self):
+        r"""备份地域
+        :rtype: str
+        """
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def BackupId(self):
+        r"""备份ID
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._BackupRegion = params.get("BackupRegion")
+        self._BackupId = params.get("BackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9686,6 +9901,8 @@ pausing
         :type ArchiveStatus: str
         :param _ArchiveProgress: 归档进度，百分比。
         :type ArchiveProgress: int
+        :param _IsOpenTDE: 是否开启透明加密
+        :type IsOpenTDE: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -9743,6 +9960,7 @@ pausing
         self._UsedArchiveStorage = None
         self._ArchiveStatus = None
         self._ArchiveProgress = None
+        self._IsOpenTDE = None
 
     @property
     def ClusterId(self):
@@ -10376,6 +10594,17 @@ pausing
     def ArchiveProgress(self, ArchiveProgress):
         self._ArchiveProgress = ArchiveProgress
 
+    @property
+    def IsOpenTDE(self):
+        r"""是否开启透明加密
+        :rtype: bool
+        """
+        return self._IsOpenTDE
+
+    @IsOpenTDE.setter
+    def IsOpenTDE(self, IsOpenTDE):
+        self._IsOpenTDE = IsOpenTDE
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -10466,6 +10695,7 @@ pausing
         self._UsedArchiveStorage = params.get("UsedArchiveStorage")
         self._ArchiveStatus = params.get("ArchiveStatus")
         self._ArchiveProgress = params.get("ArchiveProgress")
+        self._IsOpenTDE = params.get("IsOpenTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13633,6 +13863,100 @@ class DeleteClusterDatabaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteClusterSaveBackupRequest(AbstractModel):
+    r"""DeleteClusterSaveBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _SaveBackupId: 保留备份文件ID，推荐使用
+        :type SaveBackupId: int
+        """
+        self._ClusterId = None
+        self._SaveBackupId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SaveBackupId(self):
+        r"""保留备份文件ID，推荐使用
+        :rtype: int
+        """
+        return self._SaveBackupId
+
+    @SaveBackupId.setter
+    def SaveBackupId(self, SaveBackupId):
+        self._SaveBackupId = SaveBackupId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._SaveBackupId = params.get("SaveBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterSaveBackupResponse(AbstractModel):
+    r"""DeleteClusterSaveBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteParamTemplateRequest(AbstractModel):
     r"""DeleteParamTemplate请求参数结构体
 
@@ -15158,6 +15482,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type LogicCrossRegionsConfigUpdateTime: str
         :param _LogicBackupConfig: 自动逻辑备份配置
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
+        :param _SnapshotSecondaryBackupConfig: 二级快照备份配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15168,6 +15495,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._BackupType = None
         self._LogicCrossRegionsConfigUpdateTime = None
         self._LogicBackupConfig = None
+        self._SnapshotSecondaryBackupConfig = None
         self._RequestId = None
 
     @property
@@ -15248,6 +15576,18 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._LogicBackupConfig = LogicBackupConfig
 
     @property
+    def SnapshotSecondaryBackupConfig(self):
+        r"""二级快照备份配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
+        """
+        return self._SnapshotSecondaryBackupConfig
+
+    @SnapshotSecondaryBackupConfig.setter
+    def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
+        self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15269,6 +15609,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("LogicBackupConfig") is not None:
             self._LogicBackupConfig = LogicBackupConfigInfo()
             self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
+        if params.get("SnapshotSecondaryBackupConfig") is not None:
+            self._SnapshotSecondaryBackupConfig = BackupConfigInfo()
+            self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -21039,6 +21382,180 @@ class DescribeProxySpecsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRedoLogsRequest(AbstractModel):
+    r"""DescribeRedoLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _FileNames: redolog文件名
+        :type FileNames: list of str
+        """
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FileNames = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        r"""每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FileNames(self):
+        r"""redolog文件名
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FileNames = params.get("FileNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogsResponse(AbstractModel):
+    r"""DescribeRedoLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RedoLogs: redo日志信息
+        :type RedoLogs: list of RedoLogItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedoLogs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedoLogs(self):
+        r"""redo日志信息
+        :rtype: list of RedoLogItem
+        """
+        return self._RedoLogs
+
+    @RedoLogs.setter
+    def RedoLogs(self, RedoLogs):
+        self._RedoLogs = RedoLogs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedoLogs") is not None:
+            self._RedoLogs = []
+            for item in params.get("RedoLogs"):
+                obj = RedoLogItem()
+                obj._deserialize(item)
+                self._RedoLogs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourcePackageDetailRequest(AbstractModel):
     r"""DescribeResourcePackageDetail请求参数结构体
 
@@ -21955,6 +22472,140 @@ class DescribeSSLStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._IsOpenSSL = params.get("IsOpenSSL")
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSaveBackupClustersRequest(AbstractModel):
+    r"""DescribeSaveBackupClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Filters: 检索条件
+        :type Filters: list of QuerySimpleFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""检索条件
+        :rtype: list of QuerySimpleFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QuerySimpleFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSaveBackupClustersResponse(AbstractModel):
+    r"""DescribeSaveBackupClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _SaveBackupClusterInfos: 遗留备份信息
+        :type SaveBackupClusterInfos: list of SaveBackupClusterInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SaveBackupClusterInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SaveBackupClusterInfos(self):
+        r"""遗留备份信息
+        :rtype: list of SaveBackupClusterInfo
+        """
+        return self._SaveBackupClusterInfos
+
+    @SaveBackupClusterInfos.setter
+    def SaveBackupClusterInfos(self, SaveBackupClusterInfos):
+        self._SaveBackupClusterInfos = SaveBackupClusterInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SaveBackupClusterInfos") is not None:
+            self._SaveBackupClusterInfos = []
+            for item in params.get("SaveBackupClusterInfos"):
+                obj = SaveBackupClusterInfo()
+                obj._deserialize(item)
+                self._SaveBackupClusterInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -26497,11 +27148,14 @@ class IsolateClusterRequest(AbstractModel):
         :type IsolateReasonTypes: list of int
         :param _IsolateReason: 实例退还原因补充
         :type IsolateReason: str
+        :param _SaveBackup: 保留备份,true-保留（会产生费用）
+        :type SaveBackup: bool
         """
         self._ClusterId = None
         self._DbType = None
         self._IsolateReasonTypes = None
         self._IsolateReason = None
+        self._SaveBackup = None
 
     @property
     def ClusterId(self):
@@ -26547,12 +27201,24 @@ class IsolateClusterRequest(AbstractModel):
     def IsolateReason(self, IsolateReason):
         self._IsolateReason = IsolateReason
 
+    @property
+    def SaveBackup(self):
+        r"""保留备份,true-保留（会产生费用）
+        :rtype: bool
+        """
+        return self._SaveBackup
+
+    @SaveBackup.setter
+    def SaveBackup(self, SaveBackup):
+        self._SaveBackup = SaveBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._DbType = params.get("DbType")
         self._IsolateReasonTypes = params.get("IsolateReasonTypes")
         self._IsolateReason = params.get("IsolateReason")
+        self._SaveBackup = params.get("SaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26640,12 +27306,15 @@ class IsolateInstanceRequest(AbstractModel):
         :type IsolateReasonTypes: list of int
         :param _IsolateReason: 实例退还原因补充
         :type IsolateReason: str
+        :param _SaveBackup: 保留备份
+        :type SaveBackup: bool
         """
         self._ClusterId = None
         self._InstanceIdList = None
         self._DbType = None
         self._IsolateReasonTypes = None
         self._IsolateReason = None
+        self._SaveBackup = None
 
     @property
     def ClusterId(self):
@@ -26702,6 +27371,17 @@ class IsolateInstanceRequest(AbstractModel):
     def IsolateReason(self, IsolateReason):
         self._IsolateReason = IsolateReason
 
+    @property
+    def SaveBackup(self):
+        r"""保留备份
+        :rtype: bool
+        """
+        return self._SaveBackup
+
+    @SaveBackup.setter
+    def SaveBackup(self, SaveBackup):
+        self._SaveBackup = SaveBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -26709,6 +27389,7 @@ class IsolateInstanceRequest(AbstractModel):
         self._DbType = params.get("DbType")
         self._IsolateReasonTypes = params.get("IsolateReasonTypes")
         self._IsolateReason = params.get("IsolateReason")
+        self._SaveBackup = params.get("SaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27854,6 +28535,8 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         :param _DeleteAutoLogicBackup: 是否删除自动逻辑备份
         :type DeleteAutoLogicBackup: bool
+        :param _SnapshotSecondaryBackupConfig: 二级快照备份参数
+        :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
         """
         self._ClusterId = None
         self._BackupTimeBeg = None
@@ -27863,6 +28546,7 @@ class ModifyBackupConfigRequest(AbstractModel):
         self._BackupType = None
         self._LogicBackupConfig = None
         self._DeleteAutoLogicBackup = None
+        self._SnapshotSecondaryBackupConfig = None
 
     @property
     def ClusterId(self):
@@ -27952,6 +28636,17 @@ class ModifyBackupConfigRequest(AbstractModel):
     def DeleteAutoLogicBackup(self, DeleteAutoLogicBackup):
         self._DeleteAutoLogicBackup = DeleteAutoLogicBackup
 
+    @property
+    def SnapshotSecondaryBackupConfig(self):
+        r"""二级快照备份参数
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
+        """
+        return self._SnapshotSecondaryBackupConfig
+
+    @SnapshotSecondaryBackupConfig.setter
+    def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
+        self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -27964,6 +28659,9 @@ class ModifyBackupConfigRequest(AbstractModel):
             self._LogicBackupConfig = LogicBackupConfigInfo()
             self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
         self._DeleteAutoLogicBackup = params.get("DeleteAutoLogicBackup")
+        if params.get("SnapshotSecondaryBackupConfig") is not None:
+            self._SnapshotSecondaryBackupConfig = SnapshotBackupConfig()
+            self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31567,6 +32265,115 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
+    r"""ModifySnapBackupCrossRegionConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _CrossRegionsEnable: 是否开启跨地域快照备份ON/OFF
+        :type CrossRegionsEnable: str
+        :param _CrossRegions: 快照备份所跨地域
+        :type CrossRegions: list of str
+        """
+        self._ClusterId = None
+        self._CrossRegionsEnable = None
+        self._CrossRegions = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CrossRegionsEnable(self):
+        r"""是否开启跨地域快照备份ON/OFF
+        :rtype: str
+        """
+        return self._CrossRegionsEnable
+
+    @CrossRegionsEnable.setter
+    def CrossRegionsEnable(self, CrossRegionsEnable):
+        self._CrossRegionsEnable = CrossRegionsEnable
+
+    @property
+    def CrossRegions(self):
+        r"""快照备份所跨地域
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._CrossRegionsEnable = params.get("CrossRegionsEnable")
+        self._CrossRegions = params.get("CrossRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
+    r"""ModifySnapBackupCrossRegionConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
@@ -36552,6 +37359,218 @@ class QueryParamFilter(AbstractModel):
         
 
 
+class QuerySimpleFilter(AbstractModel):
+    r"""模糊查询过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: 字段名称
+        :type Names: list of str
+        :param _Values: 字段值
+        :type Values: list of str
+        :param _ExactMatch: 模糊匹配，true-是，false否
+        :type ExactMatch: bool
+        """
+        self._Names = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Names(self):
+        r"""字段名称
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Values(self):
+        r"""字段值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        r"""模糊匹配，true-是，false否
+        :rtype: bool
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedoLogItem(AbstractModel):
+    r"""redo日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _FileSize: 文件大小
+        :type FileSize: int
+        :param _BackupTime: 备份时间
+        :type BackupTime: str
+        :param _RedoLogId: redoLogId
+        :type RedoLogId: int
+        :param _RedoCrossRegions: 跨地域信息
+        :type RedoCrossRegions: list of BackupRegionAndIds
+        :param _Status: 状态
+        :type Status: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _FinishTime: 完成时间
+        :type FinishTime: str
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._BackupTime = None
+        self._RedoLogId = None
+        self._RedoCrossRegions = None
+        self._Status = None
+        self._StartTime = None
+        self._FinishTime = None
+
+    @property
+    def FileName(self):
+        r"""文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""文件大小
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def BackupTime(self):
+        r"""备份时间
+        :rtype: str
+        """
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def RedoLogId(self):
+        r"""redoLogId
+        :rtype: int
+        """
+        return self._RedoLogId
+
+    @RedoLogId.setter
+    def RedoLogId(self, RedoLogId):
+        self._RedoLogId = RedoLogId
+
+    @property
+    def RedoCrossRegions(self):
+        r"""跨地域信息
+        :rtype: list of BackupRegionAndIds
+        """
+        return self._RedoCrossRegions
+
+    @RedoCrossRegions.setter
+    def RedoCrossRegions(self, RedoCrossRegions):
+        self._RedoCrossRegions = RedoCrossRegions
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FinishTime(self):
+        r"""完成时间
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._BackupTime = params.get("BackupTime")
+        self._RedoLogId = params.get("RedoLogId")
+        if params.get("RedoCrossRegions") is not None:
+            self._RedoCrossRegions = []
+            for item in params.get("RedoCrossRegions"):
+                obj = BackupRegionAndIds()
+                obj._deserialize(item)
+                self._RedoCrossRegions.append(obj)
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefundResourcePackageRequest(AbstractModel):
     r"""RefundResourcePackage请求参数结构体
 
@@ -38818,6 +39837,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type ProjectId: int
         :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
         :type AutoArchive: str
+        :param _FromSaveBackup: 是否从保存备份中恢复
+        :type FromSaveBackup: bool
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -38847,6 +39868,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._OriginalROInstanceList = None
         self._ProjectId = None
         self._AutoArchive = None
+        self._FromSaveBackup = None
 
     @property
     def Zone(self):
@@ -39165,6 +40187,17 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def AutoArchive(self, AutoArchive):
         self._AutoArchive = AutoArchive
 
+    @property
+    def FromSaveBackup(self):
+        r"""是否从保存备份中恢复
+        :rtype: bool
+        """
+        return self._FromSaveBackup
+
+    @FromSaveBackup.setter
+    def FromSaveBackup(self, FromSaveBackup):
+        self._FromSaveBackup = FromSaveBackup
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -39220,6 +40253,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._OriginalROInstanceList = params.get("OriginalROInstanceList")
         self._ProjectId = params.get("ProjectId")
         self._AutoArchive = params.get("AutoArchive")
+        self._FromSaveBackup = params.get("FromSaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39909,6 +40943,182 @@ class SaleZone(AbstractModel):
         self._HasPermission = params.get("HasPermission")
         self._IsWholeRdmaZone = params.get("IsWholeRdmaZone")
         self._IsSupportCreateCluster = params.get("IsSupportCreateCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveBackupClusterInfo(AbstractModel):
+    r"""遗留备份列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 遗照备份id
+        :type BackupId: int
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _Region: 地域
+        :type Region: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _BackupTime: 备份时间
+        :type BackupTime: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
+        :param _DbMode: Db类型(NORMAL, SERVERLESS)
+        :type DbMode: str
+        :param _ClusterStatus: 集群状态
+        :type ClusterStatus: str
+        :param _Tasks: 任务列表
+        :type Tasks: list of ObjectTask
+        """
+        self._BackupId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Region = None
+        self._Zone = None
+        self._BackupTime = None
+        self._DbVersion = None
+        self._DbMode = None
+        self._ClusterStatus = None
+        self._Tasks = None
+
+    @property
+    def BackupId(self):
+        r"""遗照备份id
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def BackupTime(self):
+        r"""备份时间
+        :rtype: str
+        """
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def DbVersion(self):
+        r"""数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def DbMode(self):
+        r"""Db类型(NORMAL, SERVERLESS)
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def ClusterStatus(self):
+        r"""集群状态
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def Tasks(self):
+        r"""任务列表
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._BackupTime = params.get("BackupTime")
+        self._DbVersion = params.get("DbVersion")
+        self._DbMode = params.get("DbMode")
+        self._ClusterStatus = params.get("ClusterStatus")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41045,6 +42255,132 @@ class SlowQueriesItem(AbstractModel):
         self._SyncWriteBytesRemote = params.get("SyncWriteBytesRemote")
         self._SyncWriteTimeRemote = params.get("SyncWriteTimeRemote")
         self._TrxCommitDelay = params.get("TrxCommitDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotBackupConfig(AbstractModel):
+    r"""快照备份设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupCustomAutoTime: 系统自动时间
+        :type BackupCustomAutoTime: bool
+        :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :type BackupTimeBeg: int
+        :param _BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :type BackupTimeEnd: int
+        :param _BackupWeekDays: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+        :type BackupWeekDays: list of str
+        :param _BackupIntervalTime: 间隔时间
+        :type BackupIntervalTime: int
+        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        :type ReserveDuration: int
+        :param _BackupTriggerStrategy: 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :type BackupTriggerStrategy: str
+        """
+        self._BackupCustomAutoTime = None
+        self._BackupTimeBeg = None
+        self._BackupTimeEnd = None
+        self._BackupWeekDays = None
+        self._BackupIntervalTime = None
+        self._ReserveDuration = None
+        self._BackupTriggerStrategy = None
+
+    @property
+    def BackupCustomAutoTime(self):
+        r"""系统自动时间
+        :rtype: bool
+        """
+        return self._BackupCustomAutoTime
+
+    @BackupCustomAutoTime.setter
+    def BackupCustomAutoTime(self, BackupCustomAutoTime):
+        self._BackupCustomAutoTime = BackupCustomAutoTime
+
+    @property
+    def BackupTimeBeg(self):
+        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :rtype: int
+        """
+        return self._BackupTimeBeg
+
+    @BackupTimeBeg.setter
+    def BackupTimeBeg(self, BackupTimeBeg):
+        self._BackupTimeBeg = BackupTimeBeg
+
+    @property
+    def BackupTimeEnd(self):
+        r"""表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :rtype: int
+        """
+        return self._BackupTimeEnd
+
+    @BackupTimeEnd.setter
+    def BackupTimeEnd(self, BackupTimeEnd):
+        self._BackupTimeEnd = BackupTimeEnd
+
+    @property
+    def BackupWeekDays(self):
+        r"""该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+        :rtype: list of str
+        """
+        return self._BackupWeekDays
+
+    @BackupWeekDays.setter
+    def BackupWeekDays(self, BackupWeekDays):
+        self._BackupWeekDays = BackupWeekDays
+
+    @property
+    def BackupIntervalTime(self):
+        r"""间隔时间
+        :rtype: int
+        """
+        return self._BackupIntervalTime
+
+    @BackupIntervalTime.setter
+    def BackupIntervalTime(self, BackupIntervalTime):
+        self._BackupIntervalTime = BackupIntervalTime
+
+    @property
+    def ReserveDuration(self):
+        r"""表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        :rtype: int
+        """
+        return self._ReserveDuration
+
+    @ReserveDuration.setter
+    def ReserveDuration(self, ReserveDuration):
+        self._ReserveDuration = ReserveDuration
+
+    @property
+    def BackupTriggerStrategy(self):
+        r"""动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :rtype: str
+        """
+        return self._BackupTriggerStrategy
+
+    @BackupTriggerStrategy.setter
+    def BackupTriggerStrategy(self, BackupTriggerStrategy):
+        self._BackupTriggerStrategy = BackupTriggerStrategy
+
+
+    def _deserialize(self, params):
+        self._BackupCustomAutoTime = params.get("BackupCustomAutoTime")
+        self._BackupTimeBeg = params.get("BackupTimeBeg")
+        self._BackupTimeEnd = params.get("BackupTimeEnd")
+        self._BackupWeekDays = params.get("BackupWeekDays")
+        self._BackupIntervalTime = params.get("BackupIntervalTime")
+        self._ReserveDuration = params.get("ReserveDuration")
+        self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
