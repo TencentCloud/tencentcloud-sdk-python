@@ -2925,111 +2925,111 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，唯一标识一个 TDSQL 实例
+        :param _InstanceId: <p>实例 ID，唯一标识一个 TDSQL 实例</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称，用户可修改
+        :param _InstanceName: <p>实例名称，用户可修改</p>
         :type InstanceName: str
-        :param _AppId: 实例所属应用 ID
+        :param _AppId: <p>实例所属应用 ID</p>
         :type AppId: int
-        :param _ProjectId: 实例所属项目 ID
+        :param _ProjectId: <p>实例所属项目 ID</p>
         :type ProjectId: int
-        :param _Region: 实例所在地域名称，如 ap-shanghai
+        :param _Region: <p>实例所在地域名称，如 ap-shanghai</p>
         :type Region: str
-        :param _Zone: 实例所在可用区名称，如 ap-shanghai-1
+        :param _Zone: <p>实例所在可用区名称，如 ap-shanghai-2</p>
         :type Zone: str
-        :param _VpcId: 私有网络 ID，基础网络时为 0
+        :param _VpcId: <p>私有网络 ID，基础网络时为 0</p>
         :type VpcId: int
-        :param _SubnetId: 子网 ID，基础网络时为 0
+        :param _SubnetId: <p>子网 ID，基础网络时为 0</p>
         :type SubnetId: int
-        :param _Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+        :param _Status: <p>实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中</p>
         :type Status: int
-        :param _Vip: 内网 IP 地址
+        :param _Vip: <p>内网 IP 地址</p>
         :type Vip: str
-        :param _Vport: 内网端口
+        :param _Vport: <p>内网端口</p>
         :type Vport: int
-        :param _WanDomain: 外网访问的域名，公网可解析
+        :param _WanDomain: <p>外网访问的域名，公网可解析</p>
         :type WanDomain: str
-        :param _WanVip: 外网 IP 地址，公网可访问
+        :param _WanVip: <p>外网 IP 地址，公网可访问</p>
         :type WanVip: str
-        :param _WanPort: 外网端口
+        :param _WanPort: <p>外网端口</p>
         :type WanPort: int
-        :param _CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
+        :param _CreateTime: <p>实例创建时间，格式为 2006-01-02 15:04:05</p>
         :type CreateTime: str
-        :param _UpdateTime: 实例最后更新时间，格式为 2006-01-02 15:04:05
+        :param _UpdateTime: <p>实例最后更新时间，格式为 2006-01-02 15:04:05</p>
         :type UpdateTime: str
-        :param _AutoRenewFlag: 自动续费标志：0 否，1 是
+        :param _AutoRenewFlag: <p>自动续费标志：0 否，1 是</p>
         :type AutoRenewFlag: int
-        :param _PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
+        :param _PeriodEndTime: <p>实例到期时间，格式为 2006-01-02 15:04:05</p>
         :type PeriodEndTime: str
-        :param _Uin: 实例所属账号
+        :param _Uin: <p>实例所属账号</p>
         :type Uin: str
-        :param _TdsqlVersion: TDSQL 版本信息
+        :param _TdsqlVersion: <p>TDSQL 版本信息</p>
         :type TdsqlVersion: str
-        :param _Memory: 实例内存大小，单位 GB
+        :param _Memory: <p>实例内存大小，单位 GB</p>
         :type Memory: int
-        :param _Storage: 实例存储大小，单位 GB
+        :param _Storage: <p>实例存储大小，单位 GB</p>
         :type Storage: int
-        :param _UniqueVpcId: 字符串型的私有网络ID
+        :param _UniqueVpcId: <p>字符串型的私有网络ID</p>
         :type UniqueVpcId: str
-        :param _UniqueSubnetId: 字符串型的私有网络子网ID
+        :param _UniqueSubnetId: <p>字符串型的私有网络子网ID</p>
         :type UniqueSubnetId: str
-        :param _OriginSerialId: 原始实例ID（过时字段，请勿依赖该值）
+        :param _OriginSerialId: <p>原始实例ID（过时字段，请勿依赖该值）</p>
         :type OriginSerialId: str
-        :param _NodeCount: 节点数，2为一主一从，3为一主二从
+        :param _NodeCount: <p>节点数，2为一主一从，3为一主二从</p>
         :type NodeCount: int
-        :param _IsTmp: 是否临时实例，0为否，非0为是
+        :param _IsTmp: <p>是否临时实例，0为否，非0为是</p>
         :type IsTmp: int
-        :param _ExclusterId: 独享集群ID，为空表示为普通实例
+        :param _ExclusterId: <p>独享集群ID，为空表示为普通实例</p>
         :type ExclusterId: str
-        :param _Id: 数字实例ID（过时字段，请勿依赖该值）
+        :param _Id: <p>数字实例ID（过时字段，请勿依赖该值）</p>
         :type Id: int
-        :param _Pid: 产品类型 ID
+        :param _Pid: <p>产品类型 ID</p>
         :type Pid: int
-        :param _Qps: 最大 Qps 值
+        :param _Qps: <p>最大 Qps 值</p>
         :type Qps: int
-        :param _Paymode: 付费模式
+        :param _Paymode: <p>付费模式</p>
         :type Paymode: str
-        :param _Locker: 实例处于异步任务时的异步任务流程ID
+        :param _Locker: <p>实例处于异步任务时的异步任务流程ID</p>
         :type Locker: int
-        :param _StatusDesc: 实例目前运行状态描述
+        :param _StatusDesc: <p>实例目前运行状态描述</p>
         :type StatusDesc: str
-        :param _WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
+        :param _WanStatus: <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中</p>
         :type WanStatus: int
-        :param _IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持
+        :param _IsAuditSupported: <p>该实例是否支持审计。1-支持；0-不支持</p>
         :type IsAuditSupported: int
-        :param _Machine: 机器型号
+        :param _Machine: <p>机器型号</p>
         :type Machine: str
-        :param _IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
+        :param _IsEncryptSupported: <p>是否支持数据加密。1-支持；0-不支持</p>
         :type IsEncryptSupported: int
-        :param _Cpu: 实例CPU核数
+        :param _Cpu: <p>实例CPU核数</p>
         :type Cpu: int
-        :param _Ipv6Flag: 实例IPv6标志
+        :param _Ipv6Flag: <p>实例IPv6标志</p>
         :type Ipv6Flag: int
-        :param _Vipv6: 内网IPv6
+        :param _Vipv6: <p>内网IPv6</p>
         :type Vipv6: str
-        :param _WanVipv6: 外网IPv6
+        :param _WanVipv6: <p>外网IPv6</p>
         :type WanVipv6: str
-        :param _WanPortIpv6: 外网IPv6端口
+        :param _WanPortIpv6: <p>外网IPv6端口</p>
         :type WanPortIpv6: int
-        :param _WanStatusIpv6: 外网IPv6状态
+        :param _WanStatusIpv6: <p>外网IPv6状态</p>
         :type WanStatusIpv6: int
-        :param _DbEngine: 数据库引擎
+        :param _DbEngine: <p>数据库引擎</p>
         :type DbEngine: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+        :param _DcnFlag: <p>DCN标志，0-无，1-主实例，2-灾备实例</p>
         :type DcnFlag: int
-        :param _DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+        :param _DcnStatus: <p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
         :type DcnStatus: int
-        :param _DcnDstNum: DCN灾备实例数
+        :param _DcnDstNum: <p>DCN灾备实例数</p>
         :type DcnDstNum: int
-        :param _InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+        :param _InstanceType: <p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
         :type InstanceType: int
-        :param _ResourceTags: 实例标签信息
+        :param _ResourceTags: <p>实例标签信息</p>
         :type ResourceTags: list of ResourceTag
-        :param _DbVersionId: 数据库版本
+        :param _DbVersionId: <p>数据库版本</p>
         :type DbVersionId: str
-        :param _ProtectedProperty: 实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
+        :param _ProtectedProperty: <p>实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护</p>
         :type ProtectedProperty: int
         """
         self._InstanceId = None
@@ -3088,7 +3088,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，唯一标识一个 TDSQL 实例
+        r"""<p>实例 ID，唯一标识一个 TDSQL 实例</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3099,7 +3099,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称，用户可修改
+        r"""<p>实例名称，用户可修改</p>
         :rtype: str
         """
         return self._InstanceName
@@ -3110,7 +3110,7 @@ class DBInstance(AbstractModel):
 
     @property
     def AppId(self):
-        r"""实例所属应用 ID
+        r"""<p>实例所属应用 ID</p>
         :rtype: int
         """
         return self._AppId
@@ -3121,7 +3121,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""实例所属项目 ID
+        r"""<p>实例所属项目 ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3132,7 +3132,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所在地域名称，如 ap-shanghai
+        r"""<p>实例所在地域名称，如 ap-shanghai</p>
         :rtype: str
         """
         return self._Region
@@ -3143,7 +3143,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Zone(self):
-        r"""实例所在可用区名称，如 ap-shanghai-1
+        r"""<p>实例所在可用区名称，如 ap-shanghai-2</p>
         :rtype: str
         """
         return self._Zone
@@ -3154,7 +3154,7 @@ class DBInstance(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络 ID，基础网络时为 0
+        r"""<p>私有网络 ID，基础网络时为 0</p>
         :rtype: int
         """
         return self._VpcId
@@ -3165,7 +3165,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID，基础网络时为 0
+        r"""<p>子网 ID，基础网络时为 0</p>
         :rtype: int
         """
         return self._SubnetId
@@ -3176,7 +3176,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+        r"""<p>实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中</p>
         :rtype: int
         """
         return self._Status
@@ -3187,7 +3187,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Vip(self):
-        r"""内网 IP 地址
+        r"""<p>内网 IP 地址</p>
         :rtype: str
         """
         return self._Vip
@@ -3198,7 +3198,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Vport(self):
-        r"""内网端口
+        r"""<p>内网端口</p>
         :rtype: int
         """
         return self._Vport
@@ -3209,7 +3209,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanDomain(self):
-        r"""外网访问的域名，公网可解析
+        r"""<p>外网访问的域名，公网可解析</p>
         :rtype: str
         """
         return self._WanDomain
@@ -3220,7 +3220,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanVip(self):
-        r"""外网 IP 地址，公网可访问
+        r"""<p>外网 IP 地址，公网可访问</p>
         :rtype: str
         """
         return self._WanVip
@@ -3231,7 +3231,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanPort(self):
-        r"""外网端口
+        r"""<p>外网端口</p>
         :rtype: int
         """
         return self._WanPort
@@ -3242,7 +3242,7 @@ class DBInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""实例创建时间，格式为 2006-01-02 15:04:05
+        r"""<p>实例创建时间，格式为 2006-01-02 15:04:05</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3253,7 +3253,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""实例最后更新时间，格式为 2006-01-02 15:04:05
+        r"""<p>实例最后更新时间，格式为 2006-01-02 15:04:05</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -3264,7 +3264,7 @@ class DBInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标志：0 否，1 是
+        r"""<p>自动续费标志：0 否，1 是</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3275,7 +3275,7 @@ class DBInstance(AbstractModel):
 
     @property
     def PeriodEndTime(self):
-        r"""实例到期时间，格式为 2006-01-02 15:04:05
+        r"""<p>实例到期时间，格式为 2006-01-02 15:04:05</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -3286,7 +3286,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Uin(self):
-        r"""实例所属账号
+        r"""<p>实例所属账号</p>
         :rtype: str
         """
         return self._Uin
@@ -3297,7 +3297,7 @@ class DBInstance(AbstractModel):
 
     @property
     def TdsqlVersion(self):
-        r"""TDSQL 版本信息
+        r"""<p>TDSQL 版本信息</p>
         :rtype: str
         """
         return self._TdsqlVersion
@@ -3308,7 +3308,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存大小，单位 GB
+        r"""<p>实例内存大小，单位 GB</p>
         :rtype: int
         """
         return self._Memory
@@ -3319,7 +3319,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Storage(self):
-        r"""实例存储大小，单位 GB
+        r"""<p>实例存储大小，单位 GB</p>
         :rtype: int
         """
         return self._Storage
@@ -3330,7 +3330,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UniqueVpcId(self):
-        r"""字符串型的私有网络ID
+        r"""<p>字符串型的私有网络ID</p>
         :rtype: str
         """
         return self._UniqueVpcId
@@ -3341,7 +3341,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UniqueSubnetId(self):
-        r"""字符串型的私有网络子网ID
+        r"""<p>字符串型的私有网络子网ID</p>
         :rtype: str
         """
         return self._UniqueSubnetId
@@ -3352,7 +3352,7 @@ class DBInstance(AbstractModel):
 
     @property
     def OriginSerialId(self):
-        r"""原始实例ID（过时字段，请勿依赖该值）
+        r"""<p>原始实例ID（过时字段，请勿依赖该值）</p>
         :rtype: str
         """
         return self._OriginSerialId
@@ -3363,7 +3363,7 @@ class DBInstance(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点数，2为一主一从，3为一主二从
+        r"""<p>节点数，2为一主一从，3为一主二从</p>
         :rtype: int
         """
         return self._NodeCount
@@ -3374,7 +3374,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsTmp(self):
-        r"""是否临时实例，0为否，非0为是
+        r"""<p>是否临时实例，0为否，非0为是</p>
         :rtype: int
         """
         return self._IsTmp
@@ -3385,7 +3385,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ExclusterId(self):
-        r"""独享集群ID，为空表示为普通实例
+        r"""<p>独享集群ID，为空表示为普通实例</p>
         :rtype: str
         """
         return self._ExclusterId
@@ -3396,7 +3396,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Id(self):
-        r"""数字实例ID（过时字段，请勿依赖该值）
+        r"""<p>数字实例ID（过时字段，请勿依赖该值）</p>
         :rtype: int
         """
         return self._Id
@@ -3407,7 +3407,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Pid(self):
-        r"""产品类型 ID
+        r"""<p>产品类型 ID</p>
         :rtype: int
         """
         return self._Pid
@@ -3418,7 +3418,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Qps(self):
-        r"""最大 Qps 值
+        r"""<p>最大 Qps 值</p>
         :rtype: int
         """
         return self._Qps
@@ -3429,7 +3429,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Paymode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: str
         """
         return self._Paymode
@@ -3440,7 +3440,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Locker(self):
-        r"""实例处于异步任务时的异步任务流程ID
+        r"""<p>实例处于异步任务时的异步任务流程ID</p>
         :rtype: int
         """
         return self._Locker
@@ -3451,7 +3451,7 @@ class DBInstance(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""实例目前运行状态描述
+        r"""<p>实例目前运行状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -3462,7 +3462,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanStatus(self):
-        r"""外网状态，0-未开通；1-已开通；2-关闭；3-开通中
+        r"""<p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中</p>
         :rtype: int
         """
         return self._WanStatus
@@ -3473,7 +3473,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsAuditSupported(self):
-        r"""该实例是否支持审计。1-支持；0-不支持
+        r"""<p>该实例是否支持审计。1-支持；0-不支持</p>
         :rtype: int
         """
         return self._IsAuditSupported
@@ -3484,7 +3484,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Machine(self):
-        r"""机器型号
+        r"""<p>机器型号</p>
         :rtype: str
         """
         return self._Machine
@@ -3495,7 +3495,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsEncryptSupported(self):
-        r"""是否支持数据加密。1-支持；0-不支持
+        r"""<p>是否支持数据加密。1-支持；0-不支持</p>
         :rtype: int
         """
         return self._IsEncryptSupported
@@ -3506,7 +3506,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""实例CPU核数
+        r"""<p>实例CPU核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -3517,7 +3517,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Ipv6Flag(self):
-        r"""实例IPv6标志
+        r"""<p>实例IPv6标志</p>
         :rtype: int
         """
         return self._Ipv6Flag
@@ -3528,7 +3528,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Vipv6(self):
-        r"""内网IPv6
+        r"""<p>内网IPv6</p>
         :rtype: str
         """
         return self._Vipv6
@@ -3539,7 +3539,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanVipv6(self):
-        r"""外网IPv6
+        r"""<p>外网IPv6</p>
         :rtype: str
         """
         return self._WanVipv6
@@ -3550,7 +3550,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanPortIpv6(self):
-        r"""外网IPv6端口
+        r"""<p>外网IPv6端口</p>
         :rtype: int
         """
         return self._WanPortIpv6
@@ -3561,7 +3561,7 @@ class DBInstance(AbstractModel):
 
     @property
     def WanStatusIpv6(self):
-        r"""外网IPv6状态
+        r"""<p>外网IPv6状态</p>
         :rtype: int
         """
         return self._WanStatusIpv6
@@ -3572,7 +3572,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DbEngine(self):
-        r"""数据库引擎
+        r"""<p>数据库引擎</p>
         :rtype: str
         """
         return self._DbEngine
@@ -3583,7 +3583,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -3594,7 +3594,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DcnFlag(self):
-        r"""DCN标志，0-无，1-主实例，2-灾备实例
+        r"""<p>DCN标志，0-无，1-主实例，2-灾备实例</p>
         :rtype: int
         """
         return self._DcnFlag
@@ -3605,7 +3605,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DcnStatus(self):
-        r"""DCN状态，0-无，1-创建中，2-同步中，3-已断开
+        r"""<p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
         :rtype: int
         """
         return self._DcnStatus
@@ -3616,7 +3616,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DcnDstNum(self):
-        r"""DCN灾备实例数
+        r"""<p>DCN灾备实例数</p>
         :rtype: int
         """
         return self._DcnDstNum
@@ -3627,7 +3627,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+        r"""<p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
         :rtype: int
         """
         return self._InstanceType
@@ -3638,7 +3638,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""实例标签信息
+        r"""<p>实例标签信息</p>
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3649,7 +3649,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DbVersionId(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersionId
@@ -3660,7 +3660,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ProtectedProperty(self):
-        r"""实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
+        r"""<p>实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护</p>
         :rtype: int
         """
         return self._ProtectedProperty
@@ -5854,14 +5854,14 @@ class DescribeDBInstanceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id形如：tdsql-ow728lmc。
+        :param _InstanceId: <p>实例Id形如：tdsql-ow728lmc。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例Id形如：tdsql-ow728lmc。
+        r"""<p>实例Id形如：tdsql-ow728lmc。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5890,133 +5890,133 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
         :type Status: int
-        :param _StatusDesc: 实例目前运行状态描述
+        :param _StatusDesc: <p>实例目前运行状态描述</p>
         :type StatusDesc: str
-        :param _Vip: 内网 IP 地址
+        :param _Vip: <p>内网 IP 地址</p>
         :type Vip: str
-        :param _Vport: 内网端口
+        :param _Vport: <p>内网端口</p>
         :type Vport: int
-        :param _IsTmp: 是否临时实例，0为否，非0为是
+        :param _IsTmp: <p>是否临时实例，0为否，非0为是</p>
         :type IsTmp: int
-        :param _NodeCount: 节点数，2为一主一从，3为一主二从
+        :param _NodeCount: <p>节点数，2为一主一从，3为一主二从</p>
         :type NodeCount: int
-        :param _Region: 实例所在地域名称，如 ap-shanghai
+        :param _Region: <p>实例所在地域名称，如 ap-shanghai</p>
         :type Region: str
-        :param _Zone: 实例所在可用区名称，如 ap-shanghai-1
+        :param _Zone: <p>实例所在可用区名称，如 ap-shanghai-2</p>
         :type Zone: str
-        :param _VpcId: 字符串型的私有网络Id
+        :param _VpcId: <p>字符串型的私有网络Id</p>
         :type VpcId: str
-        :param _SubnetId: 字符串型的私有网络子网Id
+        :param _SubnetId: <p>字符串型的私有网络子网Id</p>
         :type SubnetId: str
-        :param _WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        :param _WanStatus: <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
         :type WanStatus: int
-        :param _WanDomain: 外网访问的域名，公网可解析
+        :param _WanDomain: <p>外网访问的域名，公网可解析</p>
         :type WanDomain: str
-        :param _WanVip: 外网 IP 地址，公网可访问
+        :param _WanVip: <p>外网 IP 地址，公网可访问</p>
         :type WanVip: str
-        :param _WanPort: 外网端口
+        :param _WanPort: <p>外网端口</p>
         :type WanPort: int
-        :param _ProjectId: 实例所属项目 Id
+        :param _ProjectId: <p>实例所属项目 Id</p>
         :type ProjectId: int
-        :param _TdsqlVersion: TDSQL 版本信息
+        :param _TdsqlVersion: <p>TDSQL 版本信息</p>
         :type TdsqlVersion: str
-        :param _Memory: 实例内存大小，单位 GB
+        :param _Memory: <p>实例内存大小，单位 GB</p>
         :type Memory: int
-        :param _Storage: 实例存储大小，单位 GB
+        :param _Storage: <p>实例存储大小，单位 GB</p>
         :type Storage: int
-        :param _MasterZone: 主可用区，如 ap-shanghai-1
+        :param _MasterZone: <p>主可用区，如 ap-shanghai-2</p>
         :type MasterZone: str
-        :param _SlaveZones: 从可用区列表，如 [ap-shanghai-2]
+        :param _SlaveZones: <p>从可用区列表，如 [ap-shanghai-2]</p>
         :type SlaveZones: list of str
-        :param _AutoRenewFlag: 自动续费标志：0 否，1 是
+        :param _AutoRenewFlag: <p>自动续费标志：0 否，1 是</p>
         :type AutoRenewFlag: int
-        :param _ExclusterId: 独享集群Id，普通实例为空
+        :param _ExclusterId: <p>独享集群Id，普通实例为空</p>
         :type ExclusterId: str
-        :param _PayMode: 付费模式：prepaid 表示预付费
+        :param _PayMode: <p>付费模式：prepaid 表示预付费</p>
         :type PayMode: str
-        :param _CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
+        :param _CreateTime: <p>实例创建时间，格式为 2006-01-02 15:04:05</p>
         :type CreateTime: str
-        :param _IsAuditSupported: 实例是否支持审计
+        :param _IsAuditSupported: <p>实例是否支持审计</p>
         :type IsAuditSupported: bool
-        :param _PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
+        :param _PeriodEndTime: <p>实例到期时间，格式为 2006-01-02 15:04:05</p>
         :type PeriodEndTime: str
-        :param _Machine: 机型信息
+        :param _Machine: <p>机型信息</p>
         :type Machine: str
-        :param _StorageUsage: 存储空间使用率
+        :param _StorageUsage: <p>存储空间使用率</p>
         :type StorageUsage: str
-        :param _LogStorage: 日志存储空间大小，单位 GB
+        :param _LogStorage: <p>日志存储空间大小，单位 GB</p>
         :type LogStorage: int
-        :param _IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
+        :param _IsEncryptSupported: <p>是否支持数据加密。1-支持；0-不支持</p>
         :type IsEncryptSupported: int
-        :param _Vip6: 内网IPv6
+        :param _Vip6: <p>内网IPv6</p>
         :type Vip6: str
-        :param _Cpu: 实例Cpu核数
+        :param _Cpu: <p>实例Cpu核数</p>
         :type Cpu: int
-        :param _Pid: 产品类型ID
+        :param _Pid: <p>产品类型ID</p>
         :type Pid: int
-        :param _Qps: 最大QPS
+        :param _Qps: <p>最大QPS</p>
         :type Qps: int
-        :param _Ipv6Flag: 是否支持IPv6
+        :param _Ipv6Flag: <p>是否支持IPv6</p>
         :type Ipv6Flag: int
-        :param _WanVipv6: 外网IPv6地址，公网可访问
+        :param _WanVipv6: <p>外网IPv6地址，公网可访问</p>
         :type WanVipv6: str
-        :param _WanStatusIpv6: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        :param _WanStatusIpv6: <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
         :type WanStatusIpv6: int
-        :param _WanPortIpv6: 外网IPv6端口
+        :param _WanPortIpv6: <p>外网IPv6端口</p>
         :type WanPortIpv6: int
-        :param _DbEngine: 数据库引擎
+        :param _DbEngine: <p>数据库引擎</p>
         :type DbEngine: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _ResourceTags: 标签信息
+        :param _ResourceTags: <p>标签信息</p>
         :type ResourceTags: list of ResourceTag
-        :param _DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+        :param _DcnFlag: <p>DCN标志，0-无，1-主实例，2-灾备实例</p>
         :type DcnFlag: int
-        :param _DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+        :param _DcnStatus: <p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
         :type DcnStatus: int
-        :param _DcnDstNum: DCN灾备实例数
+        :param _DcnDstNum: <p>DCN灾备实例数</p>
         :type DcnDstNum: int
-        :param _InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+        :param _InstanceType: <p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
         :type InstanceType: int
-        :param _NodesInfo: 实例的各个DB节点信息
+        :param _NodesInfo: <p>实例的各个DB节点信息</p>
         :type NodesInfo: list of NodeInfo
-        :param _IsMaxUserConnectionsSupported: 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+        :param _IsMaxUserConnectionsSupported: <p>实例是否支持设置用户连接数限制，内核为10.1暂不支持。</p>
         :type IsMaxUserConnectionsSupported: bool
-        :param _DbVersionId: 对外显示的数据库版本
+        :param _DbVersionId: <p>对外显示的数据库版本</p>
         :type DbVersionId: str
-        :param _EncryptStatus: 加密状态, 0-未开启，1-已开启
+        :param _EncryptStatus: <p>加密状态, 0-未开启，1-已开启</p>
         :type EncryptStatus: int
-        :param _ReplicaConfig: DCN的配置信息
+        :param _ReplicaConfig: <p>DCN的配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicaConfig: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
-        :param _ReplicaStatus: DCN的运行状态
+        :param _ReplicaStatus: <p>DCN的运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicaStatus: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
-        :param _ExclusterType: 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+        :param _ExclusterType: <p>独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群</p>
         :type ExclusterType: int
-        :param _RsAccessStrategy: VPC就近访问
+        :param _RsAccessStrategy: <p>VPC就近访问</p>
         :type RsAccessStrategy: int
-        :param _ReservedNetResources: 尚未回收的网络资源
+        :param _ReservedNetResources: <p>尚未回收的网络资源</p>
         :type ReservedNetResources: list of ReservedNetResource
-        :param _IsPhysicalReplicationSupported: 是否支持物理复制
+        :param _IsPhysicalReplicationSupported: <p>是否支持物理复制</p>
         :type IsPhysicalReplicationSupported: bool
-        :param _IsDcnStrongSyncSupported: 是否支持强同步DCN
+        :param _IsDcnStrongSyncSupported: <p>是否支持强同步DCN</p>
         :type IsDcnStrongSyncSupported: int
-        :param _IsDcnSwitchSupported: 是否支持DCN切换
+        :param _IsDcnSwitchSupported: <p>是否支持DCN切换</p>
         :type IsDcnSwitchSupported: int
-        :param _ProxyVersion: proxy版本号
+        :param _ProxyVersion: <p>proxy版本号</p>
         :type ProxyVersion: str
-        :param _CpuType: Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        :param _CpuType: <p>Cpu类型，如：英特尔：Intel/AMD，海光：Hygon</p>
         :type CpuType: str
-        :param _ProtectedProperty: 删除保护标记，1: 已开启删除保护，0: 未开启删除保护
+        :param _ProtectedProperty: <p>删除保护标记，1: 已开启删除保护，0: 未开启删除保护</p>
         :type ProtectedProperty: int
-        :param _FlowId: 流程Id，标志实例当前所处的异步任务
+        :param _FlowId: <p>流程Id，标志实例当前所处的异步任务</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6088,7 +6088,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6099,7 +6099,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -6110,7 +6110,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: int
         """
         return self._Status
@@ -6121,7 +6121,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""实例目前运行状态描述
+        r"""<p>实例目前运行状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -6132,7 +6132,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Vip(self):
-        r"""内网 IP 地址
+        r"""<p>内网 IP 地址</p>
         :rtype: str
         """
         return self._Vip
@@ -6143,7 +6143,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Vport(self):
-        r"""内网端口
+        r"""<p>内网端口</p>
         :rtype: int
         """
         return self._Vport
@@ -6154,7 +6154,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsTmp(self):
-        r"""是否临时实例，0为否，非0为是
+        r"""<p>是否临时实例，0为否，非0为是</p>
         :rtype: int
         """
         return self._IsTmp
@@ -6165,7 +6165,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点数，2为一主一从，3为一主二从
+        r"""<p>节点数，2为一主一从，3为一主二从</p>
         :rtype: int
         """
         return self._NodeCount
@@ -6176,7 +6176,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所在地域名称，如 ap-shanghai
+        r"""<p>实例所在地域名称，如 ap-shanghai</p>
         :rtype: str
         """
         return self._Region
@@ -6187,7 +6187,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Zone(self):
-        r"""实例所在可用区名称，如 ap-shanghai-1
+        r"""<p>实例所在可用区名称，如 ap-shanghai-2</p>
         :rtype: str
         """
         return self._Zone
@@ -6198,7 +6198,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""字符串型的私有网络Id
+        r"""<p>字符串型的私有网络Id</p>
         :rtype: str
         """
         return self._VpcId
@@ -6209,7 +6209,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""字符串型的私有网络子网Id
+        r"""<p>字符串型的私有网络子网Id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -6220,7 +6220,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanStatus(self):
-        r"""外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        r"""<p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
         :rtype: int
         """
         return self._WanStatus
@@ -6231,7 +6231,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanDomain(self):
-        r"""外网访问的域名，公网可解析
+        r"""<p>外网访问的域名，公网可解析</p>
         :rtype: str
         """
         return self._WanDomain
@@ -6242,7 +6242,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanVip(self):
-        r"""外网 IP 地址，公网可访问
+        r"""<p>外网 IP 地址，公网可访问</p>
         :rtype: str
         """
         return self._WanVip
@@ -6253,7 +6253,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanPort(self):
-        r"""外网端口
+        r"""<p>外网端口</p>
         :rtype: int
         """
         return self._WanPort
@@ -6264,7 +6264,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""实例所属项目 Id
+        r"""<p>实例所属项目 Id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -6275,7 +6275,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def TdsqlVersion(self):
-        r"""TDSQL 版本信息
+        r"""<p>TDSQL 版本信息</p>
         :rtype: str
         """
         return self._TdsqlVersion
@@ -6286,7 +6286,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存大小，单位 GB
+        r"""<p>实例内存大小，单位 GB</p>
         :rtype: int
         """
         return self._Memory
@@ -6297,7 +6297,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Storage(self):
-        r"""实例存储大小，单位 GB
+        r"""<p>实例存储大小，单位 GB</p>
         :rtype: int
         """
         return self._Storage
@@ -6308,7 +6308,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def MasterZone(self):
-        r"""主可用区，如 ap-shanghai-1
+        r"""<p>主可用区，如 ap-shanghai-2</p>
         :rtype: str
         """
         return self._MasterZone
@@ -6319,7 +6319,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def SlaveZones(self):
-        r"""从可用区列表，如 [ap-shanghai-2]
+        r"""<p>从可用区列表，如 [ap-shanghai-2]</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -6330,7 +6330,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标志：0 否，1 是
+        r"""<p>自动续费标志：0 否，1 是</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -6341,7 +6341,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ExclusterId(self):
-        r"""独享集群Id，普通实例为空
+        r"""<p>独享集群Id，普通实例为空</p>
         :rtype: str
         """
         return self._ExclusterId
@@ -6352,7 +6352,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式：prepaid 表示预付费
+        r"""<p>付费模式：prepaid 表示预付费</p>
         :rtype: str
         """
         return self._PayMode
@@ -6363,7 +6363,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""实例创建时间，格式为 2006-01-02 15:04:05
+        r"""<p>实例创建时间，格式为 2006-01-02 15:04:05</p>
         :rtype: str
         """
         return self._CreateTime
@@ -6374,7 +6374,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsAuditSupported(self):
-        r"""实例是否支持审计
+        r"""<p>实例是否支持审计</p>
         :rtype: bool
         """
         return self._IsAuditSupported
@@ -6385,7 +6385,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def PeriodEndTime(self):
-        r"""实例到期时间，格式为 2006-01-02 15:04:05
+        r"""<p>实例到期时间，格式为 2006-01-02 15:04:05</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -6396,7 +6396,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Machine(self):
-        r"""机型信息
+        r"""<p>机型信息</p>
         :rtype: str
         """
         return self._Machine
@@ -6407,7 +6407,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def StorageUsage(self):
-        r"""存储空间使用率
+        r"""<p>存储空间使用率</p>
         :rtype: str
         """
         return self._StorageUsage
@@ -6418,7 +6418,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def LogStorage(self):
-        r"""日志存储空间大小，单位 GB
+        r"""<p>日志存储空间大小，单位 GB</p>
         :rtype: int
         """
         return self._LogStorage
@@ -6429,7 +6429,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsEncryptSupported(self):
-        r"""是否支持数据加密。1-支持；0-不支持
+        r"""<p>是否支持数据加密。1-支持；0-不支持</p>
         :rtype: int
         """
         return self._IsEncryptSupported
@@ -6440,7 +6440,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Vip6(self):
-        r"""内网IPv6
+        r"""<p>内网IPv6</p>
         :rtype: str
         """
         return self._Vip6
@@ -6451,7 +6451,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""实例Cpu核数
+        r"""<p>实例Cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -6462,7 +6462,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Pid(self):
-        r"""产品类型ID
+        r"""<p>产品类型ID</p>
         :rtype: int
         """
         return self._Pid
@@ -6473,7 +6473,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Qps(self):
-        r"""最大QPS
+        r"""<p>最大QPS</p>
         :rtype: int
         """
         return self._Qps
@@ -6484,7 +6484,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Ipv6Flag(self):
-        r"""是否支持IPv6
+        r"""<p>是否支持IPv6</p>
         :rtype: int
         """
         return self._Ipv6Flag
@@ -6495,7 +6495,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanVipv6(self):
-        r"""外网IPv6地址，公网可访问
+        r"""<p>外网IPv6地址，公网可访问</p>
         :rtype: str
         """
         return self._WanVipv6
@@ -6506,7 +6506,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanStatusIpv6(self):
-        r"""外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        r"""<p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
         :rtype: int
         """
         return self._WanStatusIpv6
@@ -6517,7 +6517,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def WanPortIpv6(self):
-        r"""外网IPv6端口
+        r"""<p>外网IPv6端口</p>
         :rtype: int
         """
         return self._WanPortIpv6
@@ -6528,7 +6528,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DbEngine(self):
-        r"""数据库引擎
+        r"""<p>数据库引擎</p>
         :rtype: str
         """
         return self._DbEngine
@@ -6539,7 +6539,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -6550,7 +6550,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -6561,7 +6561,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DcnFlag(self):
-        r"""DCN标志，0-无，1-主实例，2-灾备实例
+        r"""<p>DCN标志，0-无，1-主实例，2-灾备实例</p>
         :rtype: int
         """
         return self._DcnFlag
@@ -6572,7 +6572,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DcnStatus(self):
-        r"""DCN状态，0-无，1-创建中，2-同步中，3-已断开
+        r"""<p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
         :rtype: int
         """
         return self._DcnStatus
@@ -6583,7 +6583,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DcnDstNum(self):
-        r"""DCN灾备实例数
+        r"""<p>DCN灾备实例数</p>
         :rtype: int
         """
         return self._DcnDstNum
@@ -6594,7 +6594,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+        r"""<p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
         :rtype: int
         """
         return self._InstanceType
@@ -6605,7 +6605,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def NodesInfo(self):
-        r"""实例的各个DB节点信息
+        r"""<p>实例的各个DB节点信息</p>
         :rtype: list of NodeInfo
         """
         return self._NodesInfo
@@ -6616,7 +6616,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsMaxUserConnectionsSupported(self):
-        r"""实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+        r"""<p>实例是否支持设置用户连接数限制，内核为10.1暂不支持。</p>
         :rtype: bool
         """
         return self._IsMaxUserConnectionsSupported
@@ -6627,7 +6627,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DbVersionId(self):
-        r"""对外显示的数据库版本
+        r"""<p>对外显示的数据库版本</p>
         :rtype: str
         """
         return self._DbVersionId
@@ -6638,7 +6638,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def EncryptStatus(self):
-        r"""加密状态, 0-未开启，1-已开启
+        r"""<p>加密状态, 0-未开启，1-已开启</p>
         :rtype: int
         """
         return self._EncryptStatus
@@ -6649,7 +6649,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ReplicaConfig(self):
-        r"""DCN的配置信息
+        r"""<p>DCN的配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
         """
@@ -6661,7 +6661,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ReplicaStatus(self):
-        r"""DCN的运行状态
+        r"""<p>DCN的运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
         """
@@ -6673,7 +6673,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ExclusterType(self):
-        r"""独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+        r"""<p>独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群</p>
         :rtype: int
         """
         return self._ExclusterType
@@ -6684,7 +6684,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def RsAccessStrategy(self):
-        r"""VPC就近访问
+        r"""<p>VPC就近访问</p>
         :rtype: int
         """
         return self._RsAccessStrategy
@@ -6695,7 +6695,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ReservedNetResources(self):
-        r"""尚未回收的网络资源
+        r"""<p>尚未回收的网络资源</p>
         :rtype: list of ReservedNetResource
         """
         return self._ReservedNetResources
@@ -6706,7 +6706,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsPhysicalReplicationSupported(self):
-        r"""是否支持物理复制
+        r"""<p>是否支持物理复制</p>
         :rtype: bool
         """
         return self._IsPhysicalReplicationSupported
@@ -6717,7 +6717,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsDcnStrongSyncSupported(self):
-        r"""是否支持强同步DCN
+        r"""<p>是否支持强同步DCN</p>
         :rtype: int
         """
         return self._IsDcnStrongSyncSupported
@@ -6728,7 +6728,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsDcnSwitchSupported(self):
-        r"""是否支持DCN切换
+        r"""<p>是否支持DCN切换</p>
         :rtype: int
         """
         return self._IsDcnSwitchSupported
@@ -6739,7 +6739,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ProxyVersion(self):
-        r"""proxy版本号
+        r"""<p>proxy版本号</p>
         :rtype: str
         """
         return self._ProxyVersion
@@ -6750,7 +6750,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def CpuType(self):
-        r"""Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        r"""<p>Cpu类型，如：英特尔：Intel/AMD，海光：Hygon</p>
         :rtype: str
         """
         return self._CpuType
@@ -6761,7 +6761,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ProtectedProperty(self):
-        r"""删除保护标记，1: 已开启删除保护，0: 未开启删除保护
+        r"""<p>删除保护标记，1: 已开启删除保护，0: 未开启删除保护</p>
         :rtype: int
         """
         return self._ProtectedProperty
@@ -6772,7 +6772,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程Id，标志实例当前所处的异步任务
+        r"""<p>流程Id，标志实例当前所处的异步任务</p>
         :rtype: int
         """
         return self._FlowId

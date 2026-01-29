@@ -256,6 +256,10 @@ class License(AbstractModel):
         :type LicenseData: :class:`tencentcloud.cloudapp.v20220530.models.LicenseData`
         :param _IssueURL: <p>License 颁发地址</p>
         :type IssueURL: str
+        :param _ProviderUin: <p>商品供应商 UIN</p>
+        :type ProviderUin: str
+        :param _CreateSource: <p>License 创建来源 ID</p>
+        :type CreateSource: str
         """
         self._LicenseId = None
         self._LicenseMode = None
@@ -277,6 +281,8 @@ class License(AbstractModel):
         self._LicenseLevel = None
         self._LicenseData = None
         self._IssueURL = None
+        self._ProviderUin = None
+        self._CreateSource = None
 
     @property
     def LicenseId(self):
@@ -500,6 +506,28 @@ class License(AbstractModel):
     def IssueURL(self, IssueURL):
         self._IssueURL = IssueURL
 
+    @property
+    def ProviderUin(self):
+        r"""<p>商品供应商 UIN</p>
+        :rtype: str
+        """
+        return self._ProviderUin
+
+    @ProviderUin.setter
+    def ProviderUin(self, ProviderUin):
+        self._ProviderUin = ProviderUin
+
+    @property
+    def CreateSource(self):
+        r"""<p>License 创建来源 ID</p>
+        :rtype: str
+        """
+        return self._CreateSource
+
+    @CreateSource.setter
+    def CreateSource(self, CreateSource):
+        self._CreateSource = CreateSource
+
 
     def _deserialize(self, params):
         self._LicenseId = params.get("LicenseId")
@@ -529,6 +557,8 @@ class License(AbstractModel):
             self._LicenseData = LicenseData()
             self._LicenseData._deserialize(params.get("LicenseData"))
         self._IssueURL = params.get("IssueURL")
+        self._ProviderUin = params.get("ProviderUin")
+        self._CreateSource = params.get("CreateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

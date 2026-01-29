@@ -1502,20 +1502,20 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SearchClsLog(self, request):
-        r"""搜索CLS日志，TCB角色密钥访问
+    def RunSql(self, request):
+        r"""执行SQL语句
 
-        :param request: Request instance for SearchClsLog.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogResponse`
+        :param request: Request instance for RunSql.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.RunSqlRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.RunSqlResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("SearchClsLog", params, headers=headers)
+            body = self.call("RunSql", params, headers=headers)
             response = json.loads(body)
-            model = models.SearchClsLogResponse()
+            model = models.RunSqlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4781,6 +4781,19 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
         :type MemLimit: int
         :param _CpuLimit: cpu
         :type CpuLimit: int
+        :param _ClusterAuditStatus: 集群审计开关状态：
+已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        :type ClusterAuditStatus: str
+        :param _AccessedStatus: 接入状态:
+未接入: AccessedNone
+已防护: AccessedDefended
+未防护: AccessedInstalled
+部分防护: AccessedPartialDefence
+接入异常: AccessedException
+卸载异常: AccessedUninstallException
+接入中: AccessedInstalling
+卸载中: AccessedUninstalling
+        :type AccessedStatus: str
         """
         self._ClusterID = None
         self._ClusterName = None
@@ -4790,6 +4803,8 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
         self._ClusterVersion = None
         self._MemLimit = None
         self._CpuLimit = None
+        self._ClusterAuditStatus = None
+        self._AccessedStatus = None
 
     @property
     def ClusterID(self):
@@ -4885,6 +4900,37 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
     def CpuLimit(self, CpuLimit):
         self._CpuLimit = CpuLimit
 
+    @property
+    def ClusterAuditStatus(self):
+        r"""集群审计开关状态：
+已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        :rtype: str
+        """
+        return self._ClusterAuditStatus
+
+    @ClusterAuditStatus.setter
+    def ClusterAuditStatus(self, ClusterAuditStatus):
+        self._ClusterAuditStatus = ClusterAuditStatus
+
+    @property
+    def AccessedStatus(self):
+        r"""接入状态:
+未接入: AccessedNone
+已防护: AccessedDefended
+未防护: AccessedInstalled
+部分防护: AccessedPartialDefence
+接入异常: AccessedException
+卸载异常: AccessedUninstallException
+接入中: AccessedInstalling
+卸载中: AccessedUninstalling
+        :rtype: str
+        """
+        return self._AccessedStatus
+
+    @AccessedStatus.setter
+    def AccessedStatus(self, AccessedStatus):
+        self._AccessedStatus = AccessedStatus
+
 
     def _deserialize(self, params):
         self._ClusterID = params.get("ClusterID")
@@ -4895,6 +4941,8 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
         self._ClusterVersion = params.get("ClusterVersion")
         self._MemLimit = params.get("MemLimit")
         self._CpuLimit = params.get("CpuLimit")
+        self._ClusterAuditStatus = params.get("ClusterAuditStatus")
+        self._AccessedStatus = params.get("AccessedStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

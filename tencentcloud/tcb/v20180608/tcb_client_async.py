@@ -1181,19 +1181,19 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def SearchClsLog(
+    async def RunSql(
             self,
-            request: models.SearchClsLogRequest,
+            request: models.RunSqlRequest,
             opts: Dict = None,
-    ) -> models.SearchClsLogResponse:
+    ) -> models.RunSqlResponse:
         """
-        搜索CLS日志，TCB角色密钥访问
+        执行SQL语句
         """
         
         kwargs = {}
-        kwargs["action"] = "SearchClsLog"
+        kwargs["action"] = "RunSql"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.SearchClsLogResponse
+        kwargs["resp_cls"] = models.RunSqlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

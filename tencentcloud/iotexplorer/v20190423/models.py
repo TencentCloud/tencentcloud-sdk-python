@@ -2145,70 +2145,6 @@ class CamTag(AbstractModel):
         
 
 
-class CancelAssignTWeCallLicenseRequest(AbstractModel):
-    r"""CancelAssignTWeCallLicense请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PkgId: 订单号
-        :type PkgId: str
-        """
-        self._PkgId = None
-
-    @property
-    def PkgId(self):
-        r"""订单号
-        :rtype: str
-        """
-        return self._PkgId
-
-    @PkgId.setter
-    def PkgId(self, PkgId):
-        self._PkgId = PkgId
-
-
-    def _deserialize(self, params):
-        self._PkgId = params.get("PkgId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CancelAssignTWeCallLicenseResponse(AbstractModel):
-    r"""CancelAssignTWeCallLicense返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ChangeP2PRouteRequest(AbstractModel):
     r"""ChangeP2PRoute请求参数结构体
 
@@ -4658,6 +4594,115 @@ class CreateDeviceResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = DeviceData()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDeviceSDPAnswerRequest(AbstractModel):
+    r"""CreateDeviceSDPAnswer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _SDPOffer: SDP提议
+        :type SDPOffer: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._SDPOffer = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def SDPOffer(self):
+        r"""SDP提议
+        :rtype: str
+        """
+        return self._SDPOffer
+
+    @SDPOffer.setter
+    def SDPOffer(self, SDPOffer):
+        self._SDPOffer = SDPOffer
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._SDPOffer = params.get("SDPOffer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceSDPAnswerResponse(AbstractModel):
+    r"""CreateDeviceSDPAnswer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SDPAnswer: SDP应答
+        :type SDPAnswer: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SDPAnswer = None
+        self._RequestId = None
+
+    @property
+    def SDPAnswer(self):
+        r"""SDP应答
+        :rtype: str
+        """
+        return self._SDPAnswer
+
+    @SDPAnswer.setter
+    def SDPAnswer(self, SDPAnswer):
+        self._SDPAnswer = SDPAnswer
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SDPAnswer = params.get("SDPAnswer")
         self._RequestId = params.get("RequestId")
 
 
@@ -23183,6 +23228,8 @@ class GetTWeTalkAIBotListRequest(AbstractModel):
         r"""
         :param _BotId: 智能体ID
         :type BotId: str
+        :param _Name: 智能体名称
+        :type Name: str
         :param _ProductId: 产品ID
         :type ProductId: str
         :param _InstanceId: 实例ID
@@ -23195,6 +23242,7 @@ class GetTWeTalkAIBotListRequest(AbstractModel):
         :type Limit: int
         """
         self._BotId = None
+        self._Name = None
         self._ProductId = None
         self._InstanceId = None
         self._IncludeCredentials = None
@@ -23211,6 +23259,17 @@ class GetTWeTalkAIBotListRequest(AbstractModel):
     @BotId.setter
     def BotId(self, BotId):
         self._BotId = BotId
+
+    @property
+    def Name(self):
+        r"""智能体名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def ProductId(self):
@@ -23270,6 +23329,7 @@ class GetTWeTalkAIBotListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._BotId = params.get("BotId")
+        self._Name = params.get("Name")
         self._ProductId = params.get("ProductId")
         self._InstanceId = params.get("InstanceId")
         self._IncludeCredentials = params.get("IncludeCredentials")
@@ -34354,6 +34414,8 @@ class TalkAIBotInfo(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: 更新时间
         :type UpdateTime: int
+        :param _BoundProducts: 已关联产品信息列表
+        :type BoundProducts: list of TalkProductInfo
         """
         self._Uin = None
         self._AppId = None
@@ -34369,6 +34431,7 @@ class TalkAIBotInfo(AbstractModel):
         self._ProductList = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._BoundProducts = None
 
     @property
     def Uin(self):
@@ -34493,6 +34556,8 @@ class TalkAIBotInfo(AbstractModel):
 
     @property
     def ProductList(self):
+        warnings.warn("parameter `ProductList` is deprecated", DeprecationWarning) 
+
         r"""产品信息列表
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkProductInfo`
         """
@@ -34500,6 +34565,8 @@ class TalkAIBotInfo(AbstractModel):
 
     @ProductList.setter
     def ProductList(self, ProductList):
+        warnings.warn("parameter `ProductList` is deprecated", DeprecationWarning) 
+
         self._ProductList = ProductList
 
     @property
@@ -34523,6 +34590,17 @@ class TalkAIBotInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def BoundProducts(self):
+        r"""已关联产品信息列表
+        :rtype: list of TalkProductInfo
+        """
+        return self._BoundProducts
+
+    @BoundProducts.setter
+    def BoundProducts(self, BoundProducts):
+        self._BoundProducts = BoundProducts
 
 
     def _deserialize(self, params):
@@ -34550,6 +34628,12 @@ class TalkAIBotInfo(AbstractModel):
             self._ProductList._deserialize(params.get("ProductList"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("BoundProducts") is not None:
+            self._BoundProducts = []
+            for item in params.get("BoundProducts"):
+                obj = TalkProductInfo()
+                obj._deserialize(item)
+                self._BoundProducts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34585,7 +34669,7 @@ class TalkAgentConfigInfo(AbstractModel):
         :type SilenceTime: int
         :param _NoiseFilterEnabled: 是否启用噪声过滤
         :type NoiseFilterEnabled: bool
-        :param _LongTermMemoryEnabled: 是否开启长记忆，默认开启
+        :param _LongTermMemoryEnabled: 是否开启长记忆，默认关闭
         :type LongTermMemoryEnabled: bool
         :param _SystemPrompt: 系统提示词，仅当未配置LLMConfig时使用
         :type SystemPrompt: str
@@ -34712,7 +34796,7 @@ class TalkAgentConfigInfo(AbstractModel):
 
     @property
     def LongTermMemoryEnabled(self):
-        r"""是否开启长记忆，默认开启
+        r"""是否开启长记忆，默认关闭
         :rtype: bool
         """
         return self._LongTermMemoryEnabled

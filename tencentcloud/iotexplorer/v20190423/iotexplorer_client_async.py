@@ -205,26 +205,6 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CancelAssignTWeCallLicense(
-            self,
-            request: models.CancelAssignTWeCallLicenseRequest,
-            opts: Dict = None,
-    ) -> models.CancelAssignTWeCallLicenseResponse:
-        """
-        业务已下线
-
-        取消分配
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CancelAssignTWeCallLicense"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CancelAssignTWeCallLicenseResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ChangeP2PRoute(
             self,
             request: models.ChangeP2PRouteRequest,
@@ -382,6 +362,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "CreateDeviceChannel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDeviceChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDeviceSDPAnswer(
+            self,
+            request: models.CreateDeviceSDPAnswerRequest,
+            opts: Dict = None,
+    ) -> models.CreateDeviceSDPAnswerResponse:
+        """
+        创建设备SDP应答
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDeviceSDPAnswer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDeviceSDPAnswerResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -4760,6 +4760,8 @@ class ClusterInstanceDetail(AbstractModel):
         :param _InstanceTasks: 实例任务信息
         :type InstanceTasks: list of ObjectTask
         :param _InstanceDeviceType: 实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type InstanceDeviceType: str
         :param _InstanceStorageType: 实例存储类型
 说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
@@ -4946,6 +4948,8 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def InstanceDeviceType(self):
         r"""实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._InstanceDeviceType
@@ -10893,6 +10897,8 @@ pause
         :param _InstanceAbility: 当前实例支持的能力
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         :param _DeviceType: 实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type DeviceType: str
         :param _InstanceStorageType: 实例存储类型
         :type InstanceStorageType: str
@@ -11565,6 +11571,8 @@ pause
     @property
     def DeviceType(self):
         r"""实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._DeviceType
@@ -24580,7 +24588,9 @@ class GoodsSpec(AbstractModel):
         :param _TimeUnit: 时长单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
-        :param _DeviceType: 机器类型
+        :param _DeviceType: 实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type DeviceType: str
         """
         self._GoodsNum = None
@@ -24678,7 +24688,9 @@ class GoodsSpec(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""机器类型
+        r"""实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._DeviceType
@@ -26320,6 +26332,8 @@ class InstanceInitInfo(AbstractModel):
         :param _MaxRoCpu: Serverless实例最大规格
         :type MaxRoCpu: float
         :param _DeviceType: 实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type DeviceType: str
         """
         self._Cpu = None
@@ -26423,6 +26437,8 @@ class InstanceInitInfo(AbstractModel):
     @property
     def DeviceType(self):
         r"""实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._DeviceType
@@ -30406,8 +30422,12 @@ class ModifyInstanceData(AbstractModel):
         :param _OldStorageLimit: 变配前存储上限
         :type OldStorageLimit: int
         :param _OldDeviceType: 变配前实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type OldDeviceType: str
         :param _DeviceType: 变配后实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type DeviceType: str
         :param _UpgradeType: 升级方式。升级完成后切换或维护时间内切换
         :type UpgradeType: str
@@ -30497,6 +30517,8 @@ class ModifyInstanceData(AbstractModel):
     @property
     def OldDeviceType(self):
         r"""变配前实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._OldDeviceType
@@ -30508,6 +30530,8 @@ class ModifyInstanceData(AbstractModel):
     @property
     def DeviceType(self):
         r"""变配后实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._DeviceType

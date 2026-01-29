@@ -27669,12 +27669,15 @@ class DescribeLaneRulesRequest(AbstractModel):
         :type RuleId: str
         :param _RuleIdList: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleIdList: list of str
+        :param _QueryAll: 查询全部标记
+        :type QueryAll: bool
         """
         self._Limit = None
         self._Offset = None
         self._SearchWord = None
         self._RuleId = None
         self._RuleIdList = None
+        self._QueryAll = None
 
     @property
     def Limit(self):
@@ -27731,6 +27734,17 @@ class DescribeLaneRulesRequest(AbstractModel):
     def RuleIdList(self, RuleIdList):
         self._RuleIdList = RuleIdList
 
+    @property
+    def QueryAll(self):
+        r"""查询全部标记
+        :rtype: bool
+        """
+        return self._QueryAll
+
+    @QueryAll.setter
+    def QueryAll(self, QueryAll):
+        self._QueryAll = QueryAll
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -27738,6 +27752,7 @@ class DescribeLaneRulesRequest(AbstractModel):
         self._SearchWord = params.get("SearchWord")
         self._RuleId = params.get("RuleId")
         self._RuleIdList = params.get("RuleIdList")
+        self._QueryAll = params.get("QueryAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

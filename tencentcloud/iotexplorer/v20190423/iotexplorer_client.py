@@ -256,31 +256,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CancelAssignTWeCallLicense(self, request):
-        r"""业务已下线
-
-        取消分配
-
-        :param request: Request instance for CancelAssignTWeCallLicense.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CancelAssignTWeCallLicense", params, headers=headers)
-            response = json.loads(body)
-            model = models.CancelAssignTWeCallLicenseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ChangeP2PRoute(self, request):
         r"""p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 
@@ -479,6 +454,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("CreateDeviceChannel", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDeviceChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDeviceSDPAnswer(self, request):
+        r"""创建设备SDP应答
+
+        :param request: Request instance for CreateDeviceSDPAnswer.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceSDPAnswerRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceSDPAnswerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceSDPAnswer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceSDPAnswerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

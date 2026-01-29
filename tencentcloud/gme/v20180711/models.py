@@ -2450,15 +2450,15 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 要操作的房间id
+        :param _RoomId: <p>要操作的房间id</p>
         :type RoomId: str
-        :param _DeleteType: 剔除类型 1-删除房间 2-剔除用户
+        :param _DeleteType: <p>剔除类型 1-删除房间 2-剔除用户</p>
         :type DeleteType: int
-        :param _BizId: 应用id
+        :param _BizId: <p>应用id</p>
         :type BizId: int
-        :param _Uids: 要剔除的用户列表（整型）
+        :param _Uids: <p>要剔除的用户列表（整型）</p>
         :type Uids: list of str
-        :param _StrUids: 要剔除的用户列表（字符串类型）
+        :param _StrUids: <p>要剔除的用户列表（字符串类型）</p>
         :type StrUids: list of str
         """
         self._RoomId = None
@@ -2469,7 +2469,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""要操作的房间id
+        r"""<p>要操作的房间id</p>
         :rtype: str
         """
         return self._RoomId
@@ -2480,7 +2480,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def DeleteType(self):
-        r"""剔除类型 1-删除房间 2-剔除用户
+        r"""<p>剔除类型 1-删除房间 2-剔除用户</p>
         :rtype: int
         """
         return self._DeleteType
@@ -2491,7 +2491,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def BizId(self):
-        r"""应用id
+        r"""<p>应用id</p>
         :rtype: int
         """
         return self._BizId
@@ -2502,7 +2502,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def Uids(self):
-        r"""要剔除的用户列表（整型）
+        r"""<p>要剔除的用户列表（整型）</p>
         :rtype: list of str
         """
         return self._Uids
@@ -2513,7 +2513,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def StrUids(self):
-        r"""要剔除的用户列表（字符串类型）
+        r"""<p>要剔除的用户列表（字符串类型）</p>
         :rtype: list of str
         """
         return self._StrUids
@@ -2546,7 +2546,7 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeleteResult: 剔除房间或成员的操作结果
+        :param _DeleteResult: <p>剔除房间或成员的操作结果</p>
         :type DeleteResult: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2556,7 +2556,7 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
-        r"""剔除房间或成员的操作结果
+        r"""<p>剔除房间或成员的操作结果</p>
         :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
         """
         return self._DeleteResult
@@ -3027,13 +3027,13 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizId: GME应用ID
+        :param _BizId: <p>GME应用ID</p>
         :type BizId: int
-        :param _StartDate: 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        :param _StartDate: <p>数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
         :type StartDate: str
-        :param _EndDate: 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        :param _EndDate: <p>数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
         :type EndDate: str
-        :param _Services: 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
+        :param _Services: <p>要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText</p>
         :type Services: list of str
         """
         self._BizId = None
@@ -3043,7 +3043,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def BizId(self):
-        r"""GME应用ID
+        r"""<p>GME应用ID</p>
         :rtype: int
         """
         return self._BizId
@@ -3054,7 +3054,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        r"""<p>数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
         :rtype: str
         """
         return self._StartDate
@@ -3065,7 +3065,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        r"""<p>数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
         :rtype: str
         """
         return self._EndDate
@@ -3076,7 +3076,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def Services(self):
-        r"""要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
+        r"""<p>要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText</p>
         :rtype: list of str
         """
         return self._Services
@@ -3149,7 +3149,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 应用用量统计数据
+        :param _Data: <p>应用用量统计数据</p>
         :type Data: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3159,7 +3159,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""应用用量统计数据
+        r"""<p>应用用量统计数据</p>
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
         """
         return self._Data
@@ -4025,11 +4025,11 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :param _SdkAppId: <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
         :type SdkAppId: int
-        :param _RoomIds: 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        :param _RoomIds: <p>房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
         :type RoomIds: list of int non-negative
-        :param _StrRoomIds: 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        :param _StrRoomIds: <p>字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
         :type StrRoomIds: list of str
         """
         self._SdkAppId = None
@@ -4038,7 +4038,7 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        r"""<p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -4049,7 +4049,7 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def RoomIds(self):
-        r"""房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        r"""<p>房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
         :rtype: list of int non-negative
         """
         return self._RoomIds
@@ -4060,7 +4060,7 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def StrRoomIds(self):
-        r"""字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        r"""<p>字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
         :rtype: list of str
         """
         return self._StrRoomIds
@@ -4091,9 +4091,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作结果, 0成功, 非0失败
+        :param _Result: <p>操作结果, 0成功, 非0失败</p>
         :type Result: int
-        :param _RoomUsers: 房间用户信息
+        :param _RoomUsers: <p>房间用户信息</p>
         :type RoomUsers: list of RoomUser
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4104,7 +4104,7 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""操作结果, 0成功, 非0失败
+        r"""<p>操作结果, 0成功, 非0失败</p>
         :rtype: int
         """
         return self._Result
@@ -4115,7 +4115,7 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def RoomUsers(self):
-        r"""房间用户信息
+        r"""<p>房间用户信息</p>
         :rtype: list of RoomUser
         """
         return self._RoomUsers
@@ -5556,13 +5556,13 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :param _TaskId: <p>进行中的任务taskid（StartRecord接口返回）。</p>
         :type TaskId: int
-        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
         :type RecordMode: int
-        :param _BizId: 应用ID。
+        :param _BizId: <p>应用ID。</p>
         :type BizId: int
-        :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
+        :param _SubscribeRecordUserIds: <p>指定订阅流白名单或者黑名单。</p>
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         self._TaskId = None
@@ -5572,7 +5572,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""进行中的任务taskid（StartRecord接口返回）。
+        r"""<p>进行中的任务taskid（StartRecord接口返回）。</p>
         :rtype: int
         """
         return self._TaskId
@@ -5583,7 +5583,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def RecordMode(self):
-        r"""录制类型：1代表单流 2代表混流 3代表单流和混流。
+        r"""<p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
         :rtype: int
         """
         return self._RecordMode
@@ -5594,7 +5594,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
-        r"""应用ID。
+        r"""<p>应用ID。</p>
         :rtype: int
         """
         return self._BizId
@@ -5605,7 +5605,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
-        r"""指定订阅流白名单或者黑名单。
+        r"""<p>指定订阅流白名单或者黑名单。</p>
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         return self._SubscribeRecordUserIds
@@ -7545,13 +7545,13 @@ class StartRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizId: 应用ID。
+        :param _BizId: <p>应用ID。</p>
         :type BizId: int
-        :param _RoomId: 房间ID。
+        :param _RoomId: <p>房间ID。</p>
         :type RoomId: str
-        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
         :type RecordMode: int
-        :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+        :param _SubscribeRecordUserIds: <p>指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。</p>
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         self._BizId = None
@@ -7561,7 +7561,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def BizId(self):
-        r"""应用ID。
+        r"""<p>应用ID。</p>
         :rtype: int
         """
         return self._BizId
@@ -7572,7 +7572,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""房间ID。
+        r"""<p>房间ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -7583,7 +7583,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RecordMode(self):
-        r"""录制类型：1代表单流 2代表混流 3代表单流和混流。
+        r"""<p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
         :rtype: int
         """
         return self._RecordMode
@@ -7594,7 +7594,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
-        r"""指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+        r"""<p>指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。</p>
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         return self._SubscribeRecordUserIds
@@ -7628,7 +7628,7 @@ class StartRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务taskid。
+        :param _TaskId: <p>任务taskid。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7638,7 +7638,7 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务taskid。
+        r"""<p>任务taskid。</p>
         :rtype: int
         """
         return self._TaskId

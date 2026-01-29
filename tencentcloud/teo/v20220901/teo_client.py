@@ -2988,7 +2988,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        r"""本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
+        r"""<p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4DataRequest`

@@ -206,6 +206,42 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PauseSandboxInstance(
+            self,
+            request: models.PauseSandboxInstanceRequest,
+            opts: Dict = None,
+    ) -> models.PauseSandboxInstanceResponse:
+        """
+        暂停沙箱实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PauseSandboxInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PauseSandboxInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResumeSandboxInstance(
+            self,
+            request: models.ResumeSandboxInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ResumeSandboxInstanceResponse:
+        """
+        恢复沙箱实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResumeSandboxInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResumeSandboxInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StartSandboxInstance(
             self,
             request: models.StartSandboxInstanceRequest,

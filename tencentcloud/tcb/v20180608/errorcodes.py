@@ -23,29 +23,32 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
-# 无效上下文
-FAILEDOPERATION_INVALIDCONTEXT = 'FailedOperation.InvalidContext'
+# 数据库建立链接失败。
+FAILEDOPERATION_DATABASECONNECTERROR = 'FailedOperation.DatabaseConnectError'
 
-# 网络异常
-FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetworkError'
+# 执行SQL出错。
+FAILEDOPERATION_DATABASEEXECSQLERROR = 'FailedOperation.DatabaseExecSqlError'
+
+# 数据库元信息异常。
+FAILEDOPERATION_DATABASESCHEMAERROR = 'FailedOperation.DatabaseSchemaError'
+
+# 数据库链接点为空。
+FAILEDOPERATION_EMPTYDATABASEENDPOINT = 'FailedOperation.EmptyDatabaseEndpoint'
 
 # 操作失败，后台依赖平台错误。
 FAILEDOPERATION_PLATFORMERROR = 'FailedOperation.PlatformError'
 
-# 查询异常
-FAILEDOPERATION_QUERYERROR = 'FailedOperation.QueryError'
-
-# 查询语句解析错误
-FAILEDOPERATION_SYNTAXERROR = 'FailedOperation.SyntaxError'
-
-# Topic隔离
-FAILEDOPERATION_TOPICISOLATED = 'FailedOperation.TopicIsolated'
+# Instance is resuming, please try connecting again.
+FAILEDOPERATION_TDSQLPAUSED = 'FailedOperation.TdsqlPaused'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
 # 数据库错误。
 INTERNALERROR_DATABASE = 'InternalError.Database'
+
+# 系统内部异常。
+INTERNALERROR_SYS_ERR = 'InternalError.SYS_ERR'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
@@ -58,6 +61,9 @@ INVALIDPARAMETER_ACTION = 'InvalidParameter.Action'
 
 # 环境ID非法。
 INVALIDPARAMETER_ENVID = 'InvalidParameter.EnvId'
+
+# 请求参数错误。
+INVALIDPARAMETER_INVALID_PARAM = 'InvalidParameter.INVALID_PARAM'
 
 # 路径已存在。
 INVALIDPARAMETER_PATHEXIST = 'InvalidParameter.PathExist'
@@ -116,11 +122,14 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 数据库实例不存在。
+RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
+
 # 请求的云托管服务未找到
 RESOURCENOTFOUND_SERVERNOTFOUND = 'ResourceNotFound.ServerNotFound'
 
-# 主题不存在
-RESOURCENOTFOUND_TOPICNOTEXIST = 'ResourceNotFound.TopicNotExist'
+# 表不存在。
+RESOURCENOTFOUND_TABLENOTFOUND = 'ResourceNotFound.TableNotFound'
 
 # 用户不存在。
 RESOURCENOTFOUND_USERNOTEXISTS = 'ResourceNotFound.UserNotExists'
@@ -166,3 +175,6 @@ UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = 'UnauthorizedOperation.CodeOAuthUn
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 表数量超过限制。
+UNSUPPORTEDOPERATION_TOOMANYTABLES = 'UnsupportedOperation.TooManyTables'

@@ -7259,17 +7259,15 @@ class ImageRecognitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号
+        :param _IdCard: <p>身份证号</p>
         :type IdCard: str
-        :param _Name: 姓名。中文请使用UTF-8编码。
+        :param _Name: <p>姓名。中文请使用UTF-8编码。</p>
         :type Name: str
-        :param _ImageBase64: 用于人脸比对的照片，图片的Base64值；
-Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :param _ImageBase64: <p>用于人脸比对的照片，图片的Base64值；<br>Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p>
         :type ImageBase64: str
-        :param _Optional: 本接口不需要传递此参数。
+        :param _Optional: <p>本接口不需要传递此参数。</p>
         :type Optional: str
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -7280,7 +7278,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def IdCard(self):
-        r"""身份证号
+        r"""<p>身份证号</p>
         :rtype: str
         """
         return self._IdCard
@@ -7291,7 +7289,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def Name(self):
-        r"""姓名。中文请使用UTF-8编码。
+        r"""<p>姓名。中文请使用UTF-8编码。</p>
         :rtype: str
         """
         return self._Name
@@ -7302,9 +7300,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def ImageBase64(self):
-        r"""用于人脸比对的照片，图片的Base64值；
-Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        r"""<p>用于人脸比对的照片，图片的Base64值；<br>Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -7315,7 +7311,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def Optional(self):
-        r"""本接口不需要传递此参数。
+        r"""<p>本接口不需要传递此参数。</p>
         :rtype: str
         """
         return self._Optional
@@ -7326,7 +7322,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -7361,11 +7357,11 @@ class ImageRecognitionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :param _Sim: <p>相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）</p>
         :type Sim: float
-        :param _Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :param _Result: <p>业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分</p>
         :type Result: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7377,7 +7373,7 @@ class ImageRecognitionResponse(AbstractModel):
 
     @property
     def Sim(self):
-        r"""相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        r"""<p>相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）</p>
         :rtype: float
         """
         return self._Sim
@@ -7388,7 +7384,7 @@ class ImageRecognitionResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        r"""<p>业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分</p>
         :rtype: str
         """
         return self._Result
@@ -7399,7 +7395,7 @@ class ImageRecognitionResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description

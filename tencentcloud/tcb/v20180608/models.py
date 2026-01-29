@@ -5918,6 +5918,72 @@ class DatabasesInfo(AbstractModel):
         
 
 
+class DbInstance(AbstractModel):
+    r"""数据库连接器实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _InstanceId: MySQL 连接器实例 ID；`"default"` 或为空表示使用 TCB 环境的默认连接器
+        :type InstanceId: str
+        :param _Schema: 数据库名；为空时使用连接器配置的默认数据库名
+        :type Schema: str
+        """
+        self._EnvId = None
+        self._InstanceId = None
+        self._Schema = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def InstanceId(self):
+        r"""MySQL 连接器实例 ID；`"default"` 或为空表示使用 TCB 环境的默认连接器
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Schema(self):
+        r"""数据库名；为空时使用连接器配置的默认数据库名
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._InstanceId = params.get("InstanceId")
+        self._Schema = params.get("Schema")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteCloudBaseProjectLatestVersionRequest(AbstractModel):
     r"""DeleteCloudBaseProjectLatestVersion请求参数结构体
 
@@ -16101,203 +16167,6 @@ class KVPair(AbstractModel):
         
 
 
-class LogObject(AbstractModel):
-    r"""CLS日志单条信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TopicId: 日志属于的 topic ID
-        :type TopicId: str
-        :param _TopicName: 日志主题的名字
-        :type TopicName: str
-        :param _Timestamp: 日志时间
-        :type Timestamp: str
-        :param _Content: 日志内容
-        :type Content: str
-        :param _FileName: 采集路径
-        :type FileName: str
-        :param _Source: 日志来源设备
-        :type Source: str
-        """
-        self._TopicId = None
-        self._TopicName = None
-        self._Timestamp = None
-        self._Content = None
-        self._FileName = None
-        self._Source = None
-
-    @property
-    def TopicId(self):
-        r"""日志属于的 topic ID
-        :rtype: str
-        """
-        return self._TopicId
-
-    @TopicId.setter
-    def TopicId(self, TopicId):
-        self._TopicId = TopicId
-
-    @property
-    def TopicName(self):
-        r"""日志主题的名字
-        :rtype: str
-        """
-        return self._TopicName
-
-    @TopicName.setter
-    def TopicName(self, TopicName):
-        self._TopicName = TopicName
-
-    @property
-    def Timestamp(self):
-        r"""日志时间
-        :rtype: str
-        """
-        return self._Timestamp
-
-    @Timestamp.setter
-    def Timestamp(self, Timestamp):
-        self._Timestamp = Timestamp
-
-    @property
-    def Content(self):
-        r"""日志内容
-        :rtype: str
-        """
-        return self._Content
-
-    @Content.setter
-    def Content(self, Content):
-        self._Content = Content
-
-    @property
-    def FileName(self):
-        r"""采集路径
-        :rtype: str
-        """
-        return self._FileName
-
-    @FileName.setter
-    def FileName(self, FileName):
-        self._FileName = FileName
-
-    @property
-    def Source(self):
-        r"""日志来源设备
-        :rtype: str
-        """
-        return self._Source
-
-    @Source.setter
-    def Source(self, Source):
-        self._Source = Source
-
-
-    def _deserialize(self, params):
-        self._TopicId = params.get("TopicId")
-        self._TopicName = params.get("TopicName")
-        self._Timestamp = params.get("Timestamp")
-        self._Content = params.get("Content")
-        self._FileName = params.get("FileName")
-        self._Source = params.get("Source")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LogResObject(AbstractModel):
-    r"""CLS日志结果
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Context: 获取更多检索结果的游标
-        :type Context: str
-        :param _ListOver: 搜索结果是否已经全部返回
-        :type ListOver: bool
-        :param _Results: 日志内容信息
-        :type Results: list of LogObject
-        :param _AnalysisRecords: 日志聚合结果
-        :type AnalysisRecords: list of str
-        """
-        self._Context = None
-        self._ListOver = None
-        self._Results = None
-        self._AnalysisRecords = None
-
-    @property
-    def Context(self):
-        r"""获取更多检索结果的游标
-        :rtype: str
-        """
-        return self._Context
-
-    @Context.setter
-    def Context(self, Context):
-        self._Context = Context
-
-    @property
-    def ListOver(self):
-        r"""搜索结果是否已经全部返回
-        :rtype: bool
-        """
-        return self._ListOver
-
-    @ListOver.setter
-    def ListOver(self, ListOver):
-        self._ListOver = ListOver
-
-    @property
-    def Results(self):
-        r"""日志内容信息
-        :rtype: list of LogObject
-        """
-        return self._Results
-
-    @Results.setter
-    def Results(self, Results):
-        self._Results = Results
-
-    @property
-    def AnalysisRecords(self):
-        r"""日志聚合结果
-        :rtype: list of str
-        """
-        return self._AnalysisRecords
-
-    @AnalysisRecords.setter
-    def AnalysisRecords(self, AnalysisRecords):
-        self._AnalysisRecords = AnalysisRecords
-
-
-    def _deserialize(self, params):
-        self._Context = params.get("Context")
-        self._ListOver = params.get("ListOver")
-        if params.get("Results") is not None:
-            self._Results = []
-            for item in params.get("Results"):
-                obj = LogObject()
-                obj._deserialize(item)
-                self._Results.append(obj)
-        self._AnalysisRecords = params.get("AnalysisRecords")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class LogServiceInfo(AbstractModel):
     r"""云日志服务相关信息
 
@@ -17949,42 +17818,41 @@ class ReplaceActivityRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class SearchClsLogRequest(AbstractModel):
-    r"""SearchClsLog请求参数结构体
+class RunSqlRequest(AbstractModel):
+    r"""RunSql请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境唯一ID
+        :param _Sql: 要执行的SQL语句
+        :type Sql: str
+        :param _EnvId: 云开发环境ID
         :type EnvId: str
-        :param _StartTime: 查询起始时间条件
-        :type StartTime: str
-        :param _EndTime: 查询结束时间条件
-        :type EndTime: str
-        :param _QueryString: 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
-        :type QueryString: str
-        :param _Limit: 单次要返回的日志条数，单次返回的最大条数为100
-        :type Limit: int
-        :param _Context: 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
-        :type Context: str
-        :param _Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc
-        :type Sort: str
-        :param _UseLucene: 是否使用Lucene语法，默认为false
-        :type UseLucene: bool
+        :param _DbInstance: 数据库连接器实例信息
+        :type DbInstance: :class:`tencentcloud.tcb.v20180608.models.DbInstance`
+        :param _ReadOnly: 是否只读；当 `true` 时仅允许以 `SELECT/WITH/SHOW/DESCRIBE/DESC/EXPLAIN` 开头的 SQL
+        :type ReadOnly: bool
         """
+        self._Sql = None
         self._EnvId = None
-        self._StartTime = None
-        self._EndTime = None
-        self._QueryString = None
-        self._Limit = None
-        self._Context = None
-        self._Sort = None
-        self._UseLucene = None
+        self._DbInstance = None
+        self._ReadOnly = None
+
+    @property
+    def Sql(self):
+        r"""要执行的SQL语句
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
 
     @property
     def EnvId(self):
-        r"""环境唯一ID
+        r"""云开发环境ID
         :rtype: str
         """
         return self._EnvId
@@ -17994,92 +17862,35 @@ class SearchClsLogRequest(AbstractModel):
         self._EnvId = EnvId
 
     @property
-    def StartTime(self):
-        r"""查询起始时间条件
-        :rtype: str
+    def DbInstance(self):
+        r"""数据库连接器实例信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DbInstance`
         """
-        return self._StartTime
+        return self._DbInstance
 
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
+    @DbInstance.setter
+    def DbInstance(self, DbInstance):
+        self._DbInstance = DbInstance
 
     @property
-    def EndTime(self):
-        r"""查询结束时间条件
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def QueryString(self):
-        r"""查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
-        :rtype: str
-        """
-        return self._QueryString
-
-    @QueryString.setter
-    def QueryString(self, QueryString):
-        self._QueryString = QueryString
-
-    @property
-    def Limit(self):
-        r"""单次要返回的日志条数，单次返回的最大条数为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Context(self):
-        r"""加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
-        :rtype: str
-        """
-        return self._Context
-
-    @Context.setter
-    def Context(self, Context):
-        self._Context = Context
-
-    @property
-    def Sort(self):
-        r"""按时间排序 asc（升序）或者 desc（降序），默认为 desc
-        :rtype: str
-        """
-        return self._Sort
-
-    @Sort.setter
-    def Sort(self, Sort):
-        self._Sort = Sort
-
-    @property
-    def UseLucene(self):
-        r"""是否使用Lucene语法，默认为false
+    def ReadOnly(self):
+        r"""是否只读；当 `true` 时仅允许以 `SELECT/WITH/SHOW/DESCRIBE/DESC/EXPLAIN` 开头的 SQL
         :rtype: bool
         """
-        return self._UseLucene
+        return self._ReadOnly
 
-    @UseLucene.setter
-    def UseLucene(self, UseLucene):
-        self._UseLucene = UseLucene
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
 
 
     def _deserialize(self, params):
+        self._Sql = params.get("Sql")
         self._EnvId = params.get("EnvId")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._QueryString = params.get("QueryString")
-        self._Limit = params.get("Limit")
-        self._Context = params.get("Context")
-        self._Sort = params.get("Sort")
-        self._UseLucene = params.get("UseLucene")
+        if params.get("DbInstance") is not None:
+            self._DbInstance = DbInstance()
+            self._DbInstance._deserialize(params.get("DbInstance"))
+        self._ReadOnly = params.get("ReadOnly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18090,31 +17901,59 @@ class SearchClsLogRequest(AbstractModel):
         
 
 
-class SearchClsLogResponse(AbstractModel):
-    r"""SearchClsLog返回参数结构体
+class RunSqlResponse(AbstractModel):
+    r"""RunSql返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _LogResults: 日志内容结果
-        :type LogResults: :class:`tencentcloud.tcb.v20180608.models.LogResObject`
+        :param _Items: 查询结果行，每个元素为 JSON 字符串
+        :type Items: list of str
+        :param _Infos: 列元数据信息，每个元素为 JSON 字符串，字段包含 `name/databaseType/nullable/length/precision/scale`
+        :type Infos: list of str
+        :param _RowsAffected: 受影响的行数（INSERT/UPDATE/DELETE 等语句）
+        :type RowsAffected: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._LogResults = None
+        self._Items = None
+        self._Infos = None
+        self._RowsAffected = None
         self._RequestId = None
 
     @property
-    def LogResults(self):
-        r"""日志内容结果
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.LogResObject`
+    def Items(self):
+        r"""查询结果行，每个元素为 JSON 字符串
+        :rtype: list of str
         """
-        return self._LogResults
+        return self._Items
 
-    @LogResults.setter
-    def LogResults(self, LogResults):
-        self._LogResults = LogResults
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Infos(self):
+        r"""列元数据信息，每个元素为 JSON 字符串，字段包含 `name/databaseType/nullable/length/precision/scale`
+        :rtype: list of str
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RowsAffected(self):
+        r"""受影响的行数（INSERT/UPDATE/DELETE 等语句）
+        :rtype: int
+        """
+        return self._RowsAffected
+
+    @RowsAffected.setter
+    def RowsAffected(self, RowsAffected):
+        self._RowsAffected = RowsAffected
 
     @property
     def RequestId(self):
@@ -18129,9 +17968,9 @@ class SearchClsLogResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("LogResults") is not None:
-            self._LogResults = LogResObject()
-            self._LogResults._deserialize(params.get("LogResults"))
+        self._Items = params.get("Items")
+        self._Infos = params.get("Infos")
+        self._RowsAffected = params.get("RowsAffected")
         self._RequestId = params.get("RequestId")
 
 

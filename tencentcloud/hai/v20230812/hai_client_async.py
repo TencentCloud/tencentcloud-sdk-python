@@ -314,3 +314,21 @@ class HaiClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateServiceConfigs(
+            self,
+            request: models.UpdateServiceConfigsRequest,
+            opts: Dict = None,
+    ) -> models.UpdateServiceConfigsResponse:
+        """
+        本接口(UpdateServiceConfigs)用于更新服务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateServiceConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateServiceConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

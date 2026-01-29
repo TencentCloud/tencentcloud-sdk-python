@@ -22659,10 +22659,13 @@ class CreateProcessImageTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: 图片处理模板描述信息，长度限制：256个字符。
         :type Comment: str
+        :param _StdExtInfo: 图片处理模板拓展参数。
+        :type StdExtInfo: str
         """
         self._ProcessImageTemplate = None
         self._Name = None
         self._Comment = None
+        self._StdExtInfo = None
 
     @property
     def ProcessImageTemplate(self):
@@ -22697,6 +22700,17 @@ class CreateProcessImageTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def StdExtInfo(self):
+        r"""图片处理模板拓展参数。
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         if params.get("ProcessImageTemplate") is not None:
@@ -22704,6 +22718,7 @@ class CreateProcessImageTemplateRequest(AbstractModel):
             self._ProcessImageTemplate._deserialize(params.get("ProcessImageTemplate"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67119,6 +67134,8 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         :param _Output: 媒体质检任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
+        :param _Progress: 任务执行进度。
+        :type Progress: int
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -67126,6 +67143,7 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         self._Message = None
         self._Input = None
         self._Output = None
+        self._Progress = None
 
     @property
     def Status(self):
@@ -67194,6 +67212,17 @@ class ScheduleQualityControlTaskResult(AbstractModel):
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Progress(self):
+        r"""任务执行进度。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -67206,6 +67235,7 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = QualityControlData()
             self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

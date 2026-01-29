@@ -257,6 +257,52 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PauseSandboxInstance(self, request):
+        r"""暂停沙箱实例
+
+        :param request: Request instance for PauseSandboxInstance.
+        :type request: :class:`tencentcloud.ags.v20250920.models.PauseSandboxInstanceRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.PauseSandboxInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseSandboxInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseSandboxInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeSandboxInstance(self, request):
+        r"""恢复沙箱实例
+
+        :param request: Request instance for ResumeSandboxInstance.
+        :type request: :class:`tencentcloud.ags.v20250920.models.ResumeSandboxInstanceRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ResumeSandboxInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeSandboxInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeSandboxInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartSandboxInstance(self, request):
         r"""启动沙箱实例
 

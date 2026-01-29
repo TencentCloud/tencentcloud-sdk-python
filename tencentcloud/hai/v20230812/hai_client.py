@@ -394,3 +394,26 @@ class HaiClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateServiceConfigs(self, request):
+        r"""本接口(UpdateServiceConfigs)用于更新服务配置
+
+        :param request: Request instance for UpdateServiceConfigs.
+        :type request: :class:`tencentcloud.hai.v20230812.models.UpdateServiceConfigsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.UpdateServiceConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateServiceConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateServiceConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

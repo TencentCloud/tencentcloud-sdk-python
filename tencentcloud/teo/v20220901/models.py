@@ -26251,12 +26251,14 @@ class DescribeTimingL4DataRequest(AbstractModel):
         :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricNames: 查询指标，取值有：
-<li>l4Flow_connections: 访问并发连接数；</li>
-<li>l4Flow_flux: 访问总流量；</li>
-<li>l4Flow_inFlux: 访问入流量；</li>
-<li>l4Flow_outFlux: 访问出流量；</li>
-<li>l4Flow_inBandwidth: 访问入向带宽峰值；</li>
-<li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
+<ul><li>**l4Flow_flux**: 访问总流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_inFlux**: 访问入流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_outFlux**: 访问出流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_inBandwidth**: 访问入向带宽峰值，单位：bps，指标值类型：Integer；</li>
+<li>**l4Flow_outBandwidth**: 访问出向带宽峰值，单位：bps，指标值类型：Integer；</li>
+<li>**l4Flow_connections**: 访问并发连接数，单位：个，指标值类型：Integer ；</li>
+<li>**l4Flow_newConnectionsRate**: 新建连接数速率，单位：个/秒，指标值类型： Float，保留两位小数。</li></ul>**注意**：<ul><li><code> Integer</code> 值类型的指标将从  <code>Data.N.TypeValue</code> 返回对应时序数据；</li>
+<li><code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。</li></ul>
         :type MetricNames: list of str
         :param _ZoneIds: 站点ID，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
@@ -26264,14 +26266,14 @@ class DescribeTimingL4DataRequest(AbstractModel):
         :param _ProxyIds: 四层实例列表, 不填表示选择全部实例。
         :type ProxyIds: list of str
         :param _Interval: 查询时间粒度，取值有：
-<li>min: 1分钟 ；</li>
-<li>5min: 5分钟 ；</li>
-<li>hour: 1小时 ；</li>
-<li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+<ul><li>**min**: 1分钟 ；</li>
+<li>**5min**: 5分钟 ；</li>
+<li>**hour**: 1小时 ；</li>
+<li>**day**: 1天 。</li></ul>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以 <code>min</code> 粒度查询，2天范围内以 <code>5min</code> 粒度查询，7天范围内以 <code>hour</code> 粒度查询，超过7天以 <code>day</code> 粒度查询。
         :type Interval: str
         :param _Filters: 过滤条件，详细的过滤条件Key值如下：
-<li>ruleId：按照转发规则 ID 进行过滤。</li>
-<li>proxyId：按照四层代理实例 ID 进行过滤。</li>
+<ul><li>**ruleId**：按照转发规则 ID 进行过滤。</li>
+<li>**proxyId**：按照四层代理实例 ID 进行过滤。</li></ul>
         :type Filters: list of QueryCondition
         :param _Area: 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
         :type Area: str
@@ -26310,12 +26312,14 @@ class DescribeTimingL4DataRequest(AbstractModel):
     @property
     def MetricNames(self):
         r"""查询指标，取值有：
-<li>l4Flow_connections: 访问并发连接数；</li>
-<li>l4Flow_flux: 访问总流量；</li>
-<li>l4Flow_inFlux: 访问入流量；</li>
-<li>l4Flow_outFlux: 访问出流量；</li>
-<li>l4Flow_inBandwidth: 访问入向带宽峰值；</li>
-<li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
+<ul><li>**l4Flow_flux**: 访问总流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_inFlux**: 访问入流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_outFlux**: 访问出流量，单位：Byte，指标值类型：Integer；</li>
+<li>**l4Flow_inBandwidth**: 访问入向带宽峰值，单位：bps，指标值类型：Integer；</li>
+<li>**l4Flow_outBandwidth**: 访问出向带宽峰值，单位：bps，指标值类型：Integer；</li>
+<li>**l4Flow_connections**: 访问并发连接数，单位：个，指标值类型：Integer ；</li>
+<li>**l4Flow_newConnectionsRate**: 新建连接数速率，单位：个/秒，指标值类型： Float，保留两位小数。</li></ul>**注意**：<ul><li><code> Integer</code> 值类型的指标将从  <code>Data.N.TypeValue</code> 返回对应时序数据；</li>
+<li><code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。</li></ul>
         :rtype: list of str
         """
         return self._MetricNames
@@ -26350,10 +26354,10 @@ class DescribeTimingL4DataRequest(AbstractModel):
     @property
     def Interval(self):
         r"""查询时间粒度，取值有：
-<li>min: 1分钟 ；</li>
-<li>5min: 5分钟 ；</li>
-<li>hour: 1小时 ；</li>
-<li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+<ul><li>**min**: 1分钟 ；</li>
+<li>**5min**: 5分钟 ；</li>
+<li>**hour**: 1小时 ；</li>
+<li>**day**: 1天 。</li></ul>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以 <code>min</code> 粒度查询，2天范围内以 <code>5min</code> 粒度查询，7天范围内以 <code>hour</code> 粒度查询，超过7天以 <code>day</code> 粒度查询。
         :rtype: str
         """
         return self._Interval
@@ -26365,8 +26369,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
     @property
     def Filters(self):
         r"""过滤条件，详细的过滤条件Key值如下：
-<li>ruleId：按照转发规则 ID 进行过滤。</li>
-<li>proxyId：按照四层代理实例 ID 进行过滤。</li>
+<ul><li>**ruleId**：按照转发规则 ID 进行过滤。</li>
+<li>**proxyId**：按照四层代理实例 ID 进行过滤。</li></ul>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -26377,6 +26381,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Area(self):
+        warnings.warn("parameter `Area` is deprecated", DeprecationWarning) 
+
         r"""数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
         :rtype: str
         """
@@ -26384,6 +26390,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @Area.setter
     def Area(self, Area):
+        warnings.warn("parameter `Area` is deprecated", DeprecationWarning) 
+
         self._Area = Area
 
 
@@ -26420,7 +26428,8 @@ class DescribeTimingL4DataResponse(AbstractModel):
         r"""
         :param _TotalCount: 查询结果的总条数。
         :type TotalCount: int
-        :param _Data: 四层时序流量数据列表。
+        :param _Data: <p>四层时序流量数据列表。<br>对于不同的查询指标，根据指标值类型的不同，会从不同的参数返回时序数据。<br>目前存在的值类型有以下两种：</p><ul><li><strong>Integer</strong>：<code>Integer</code> 值类型的指标将从 <code>Data.N.TypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_flux</code>：访问总流量；</li><li><code>l4Flow_inFlux</code>：访问入流量；</li><li><code>l4Flow_outFlux</code>：访问出流量；</li><li><code>l4Flow_inBandwidth</code>：访问入向带宽峰值；</li><li><code>l4Flow_outBandwidth</code>：访问出向带宽峰值；</li><li><code>l4Flow_connections</code>：访问并发连接数。</li></ul></li><li><strong>Float</strong>：<code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_newConnectionsRate</code>：新建连接数速率。</li></ul></li>
+</ul><p>本接口暂不支持指定维度查询，默认按主账号汇总返回数据，即 <code>Data.N.TypeKey = AppId</code>，AppId 是腾讯云主账号唯一标识，N 恒等于 1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TimingDataRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -26443,7 +26452,8 @@ class DescribeTimingL4DataResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""四层时序流量数据列表。
+        r"""<p>四层时序流量数据列表。<br>对于不同的查询指标，根据指标值类型的不同，会从不同的参数返回时序数据。<br>目前存在的值类型有以下两种：</p><ul><li><strong>Integer</strong>：<code>Integer</code> 值类型的指标将从 <code>Data.N.TypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_flux</code>：访问总流量；</li><li><code>l4Flow_inFlux</code>：访问入流量；</li><li><code>l4Flow_outFlux</code>：访问出流量；</li><li><code>l4Flow_inBandwidth</code>：访问入向带宽峰值；</li><li><code>l4Flow_outBandwidth</code>：访问出向带宽峰值；</li><li><code>l4Flow_connections</code>：访问并发连接数。</li></ul></li><li><strong>Float</strong>：<code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_newConnectionsRate</code>：新建连接数速率。</li></ul></li>
+</ul><p>本接口暂不支持指定维度查询，默认按主账号汇总返回数据，即 <code>Data.N.TypeKey = AppId</code>，AppId 是腾讯云主账号唯一标识，N 恒等于 1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimingDataRecord
         """
@@ -31571,6 +31581,158 @@ class FirstPartConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._StatTime = params.get("StatTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FloatTimingDataItem(AbstractModel):
+    r"""统计曲线数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 返回数据对应时间点，采用 unix 秒级时间戳。
+        :type Timestamp: int
+        :param _Value: 具体数值。
+        :type Value: float
+        """
+        self._Timestamp = None
+        self._Value = None
+
+    @property
+    def Timestamp(self):
+        r"""返回数据对应时间点，采用 unix 秒级时间戳。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Value(self):
+        r"""具体数值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FloatTimingTypeValue(AbstractModel):
+    r"""时序类型详细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sum: 数据和。
+        :type Sum: float
+        :param _Max: 最大值。
+        :type Max: float
+        :param _Avg: 平均值。
+        :type Avg: float
+        :param _MetricName: 指标名。
+        :type MetricName: str
+        :param _Detail: 详细数据。
+        :type Detail: list of FloatTimingDataItem
+        """
+        self._Sum = None
+        self._Max = None
+        self._Avg = None
+        self._MetricName = None
+        self._Detail = None
+
+    @property
+    def Sum(self):
+        r"""数据和。
+        :rtype: float
+        """
+        return self._Sum
+
+    @Sum.setter
+    def Sum(self, Sum):
+        self._Sum = Sum
+
+    @property
+    def Max(self):
+        r"""最大值。
+        :rtype: float
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def Avg(self):
+        r"""平均值。
+        :rtype: float
+        """
+        return self._Avg
+
+    @Avg.setter
+    def Avg(self, Avg):
+        self._Avg = Avg
+
+    @property
+    def MetricName(self):
+        r"""指标名。
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Detail(self):
+        r"""详细数据。
+        :rtype: list of FloatTimingDataItem
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+
+    def _deserialize(self, params):
+        self._Sum = params.get("Sum")
+        self._Max = params.get("Max")
+        self._Avg = params.get("Avg")
+        self._MetricName = params.get("MetricName")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = FloatTimingDataItem()
+                obj._deserialize(item)
+                self._Detail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55271,11 +55433,14 @@ class TimingDataRecord(AbstractModel):
         r"""
         :param _TypeKey: 查询维度值。
         :type TypeKey: str
-        :param _TypeValue: 详细时序数据。
+        :param _TypeValue: <code>Integer</code> 类型的详细时序数据，查询指标值类型为 <code>Integer</code> 指标会由本字段返回对应时序数据。<br> **注意**：若查询指标未明确说明指标值类型，默认由本字段返回数据。
         :type TypeValue: list of TimingTypeValue
+        :param _FloatTypeValue: <code>Float</code> 类型的详细时序数据，查询指标值类型为 <code>Float</code> 指标会由本字段返回对应时序数据。
+        :type FloatTypeValue: list of FloatTimingTypeValue
         """
         self._TypeKey = None
         self._TypeValue = None
+        self._FloatTypeValue = None
 
     @property
     def TypeKey(self):
@@ -55290,7 +55455,7 @@ class TimingDataRecord(AbstractModel):
 
     @property
     def TypeValue(self):
-        r"""详细时序数据。
+        r"""<code>Integer</code> 类型的详细时序数据，查询指标值类型为 <code>Integer</code> 指标会由本字段返回对应时序数据。<br> **注意**：若查询指标未明确说明指标值类型，默认由本字段返回数据。
         :rtype: list of TimingTypeValue
         """
         return self._TypeValue
@@ -55298,6 +55463,17 @@ class TimingDataRecord(AbstractModel):
     @TypeValue.setter
     def TypeValue(self, TypeValue):
         self._TypeValue = TypeValue
+
+    @property
+    def FloatTypeValue(self):
+        r"""<code>Float</code> 类型的详细时序数据，查询指标值类型为 <code>Float</code> 指标会由本字段返回对应时序数据。
+        :rtype: list of FloatTimingTypeValue
+        """
+        return self._FloatTypeValue
+
+    @FloatTypeValue.setter
+    def FloatTypeValue(self, FloatTypeValue):
+        self._FloatTypeValue = FloatTypeValue
 
 
     def _deserialize(self, params):
@@ -55308,6 +55484,12 @@ class TimingDataRecord(AbstractModel):
                 obj = TimingTypeValue()
                 obj._deserialize(item)
                 self._TypeValue.append(obj)
+        if params.get("FloatTypeValue") is not None:
+            self._FloatTypeValue = []
+            for item in params.get("FloatTypeValue"):
+                obj = FloatTimingTypeValue()
+                obj._deserialize(item)
+                self._FloatTypeValue.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

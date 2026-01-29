@@ -2357,7 +2357,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTimingL4DataResponse:
         """
-        本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
+        <p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
         """
         
         kwargs = {}

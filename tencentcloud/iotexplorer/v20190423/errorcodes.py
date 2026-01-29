@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 动作消息不可达。
 FAILEDOPERATION_ACTIONUNREACHABLE = 'FailedOperation.ActionUnreachable'
 
+# 已有操作正在进行中
+FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = 'FailedOperation.AnotherOperationIsRunning'
+
 # 广播任务正在执行。
 FAILEDOPERATION_BROADCASTTASKISRUNNING = 'FailedOperation.BroadcastTaskIsRunning'
 
@@ -367,6 +370,9 @@ LIMITEXCEEDED_THINGMODELEXCEEDLIMIT = 'LimitExceeded.ThingModelExceedLimit'
 
 # Topic数量超出限制。
 LIMITEXCEEDED_TOPICPOLICYEXCEEDLIMIT = 'LimitExceeded.TopicPolicyExceedLimit'
+
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
 
 # 物模型事件 Type 错误。
 MISSINGPARAMETER_MODELDEFINEEVENTTYPEERROR = 'MissingParameter.ModelDefineEventTypeError'
