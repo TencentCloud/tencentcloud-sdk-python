@@ -27393,13 +27393,13 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :type BotBizId: str
         :param _DocBizIds: 文档ID
         :type DocBizIds: list of str
         :param _AttrRange: 属性标签适用范围 1：全部，2：按条件
         :type AttrRange: int
-        :param _AttrLabels: 属性标签引用
+        :param _AttrLabels: 属性标签引用，LabelBizIds可通过 DescribeAttributeLabel 接口获取
         :type AttrLabels: list of AttrLabelRefer
         """
         self._BotBizId = None
@@ -27409,7 +27409,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
         :rtype: str
         """
         return self._BotBizId
@@ -27442,7 +27442,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def AttrLabels(self):
-        r"""属性标签引用
+        r"""属性标签引用，LabelBizIds可通过 DescribeAttributeLabel 接口获取
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels

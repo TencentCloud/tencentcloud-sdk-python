@@ -1620,7 +1620,8 @@ class MongodbClient(AbstractClient):
 
 
     def UpgradeDbInstanceVersion(self, request):
-        r"""本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+        r"""本接口（UpgradeDbInstanceVersion）用于升级数据库版本。
+        **说明**：支持3.6及以上版本升级，仅支持从低版本向高版本逐级升级，不支持跨版本升级或版本降级。
 
         :param request: Request instance for UpgradeDbInstanceVersion.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.UpgradeDbInstanceVersionRequest`

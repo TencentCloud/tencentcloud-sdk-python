@@ -1628,6 +1628,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLMInformationExtractionTaskFieldFeedback(self, request):
+        r"""此接口（CreateLMInformationExtractionTaskFieldFeedback）用于创建合同智能提取任务字段结果的反馈。
+
+        :param request: Request instance for CreateLMInformationExtractionTaskFieldFeedback.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateLMInformationExtractionTaskFieldFeedbackRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateLMInformationExtractionTaskFieldFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLMInformationExtractionTaskFieldFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLMInformationExtractionTaskFieldFeedbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLegalSealQrCode(self, request):
         r"""该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
 
@@ -2110,6 +2133,29 @@ class EssClient(AbstractClient):
             body = self.call("CreateReleaseFlow", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReleaseFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRiskIdentificationTaskFeedback(self, request):
+        r"""此接口（CreateRiskIdentificationTaskFeedback）用于创建合同审查任务结果反馈。
+
+        :param request: Request instance for CreateRiskIdentificationTaskFeedback.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateRiskIdentificationTaskFeedbackRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateRiskIdentificationTaskFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRiskIdentificationTaskFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRiskIdentificationTaskFeedbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3337,6 +3383,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLMInformationExtractionTaskFieldFeedback(self, request):
+        r"""此接口（DescribeLMInformationExtractionTaskFieldFeedback）用于查询合同智能提取任务字段反馈信息。
+
+        :param request: Request instance for DescribeLMInformationExtractionTaskFieldFeedback.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeLMInformationExtractionTaskFieldFeedbackRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeLMInformationExtractionTaskFieldFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLMInformationExtractionTaskFieldFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLMInformationExtractionTaskFieldFeedbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationAuthStatus(self, request):
         r"""查询企业认证状态- 仅通过[CreateOrganizationAuthUrl](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 和[CreateBatchOrganizationRegistrationTasks](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)这两个接口进行引导认证的企业，调用方企业可以依据这个接口，查询认证状态。
 
@@ -3447,6 +3516,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribePersonCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePersonCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRiskIdentificationTaskFeedback(self, request):
+        r"""此接口（DescribeRiskIdentificationTaskFeedback）用于查询合同审查任务结果反馈信息
+
+        :param request: Request instance for DescribeRiskIdentificationTaskFeedback.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeRiskIdentificationTaskFeedbackRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeRiskIdentificationTaskFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskIdentificationTaskFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskIdentificationTaskFeedbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

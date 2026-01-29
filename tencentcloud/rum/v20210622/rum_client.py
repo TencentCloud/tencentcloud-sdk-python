@@ -647,6 +647,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataReportCountV2(self, request):
+        r"""获取项目上报量
+
+        :param request: Request instance for DescribeDataReportCountV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataReportCountV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataReportCountV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataSetUrlStatistics(self, request):
         r"""获取DescribeDataSetUrlStatistics信息
 

@@ -30606,6 +30606,78 @@ class ModifyGatherRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OperateRsp(AbstractModel):
+    r"""资源操作返回详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 实例维度操作失败code码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _Message: 资源操作失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self._Code = None
+        self._Message = None
+        self._InstanceId = None
+
+    @property
+    def Code(self):
+        r"""实例维度操作失败code码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""资源操作失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrderDto(AbstractModel):
     r"""字段排序
 
@@ -31948,6 +32020,181 @@ class RenewInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OrderIdList = params.get("OrderIdList")
+        self._RequestId = params.get("RequestId")
+
+
+class SetRenewalRequest(AbstractModel):
+    r"""SetRenewal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: 产品编码。
+        :type ProductCode: str
+        :param _RegionCode: 地域编码。
+        :type RegionCode: str
+        :param _InstanceId: 实例ID，仅支持指定一个。
+        :type InstanceId: str
+        :param _RenewFlag: 续费标识。枚举值如下：
+NOTIFY_AND_MANUAL_RENEW：手动续费
+NOTIFY_AND_AUTO_RENEW：自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+        :type RenewFlag: str
+        :param _RenewPeriod: 自动续费周期长度，不填写时默认按产品侧设置的默认值
+如果是月，支持：1-11
+如果是年，支持：1-5
+实际按产品侧支持的范围为主
+        :type RenewPeriod: str
+        :param _RenewPeriodUnit: 自动续费周期单位，不填写时默认按产品侧设置的默认值
+y 年，m 月
+实际按产品侧支持的范围为主
+        :type RenewPeriodUnit: str
+        """
+        self._ProductCode = None
+        self._RegionCode = None
+        self._InstanceId = None
+        self._RenewFlag = None
+        self._RenewPeriod = None
+        self._RenewPeriodUnit = None
+
+    @property
+    def ProductCode(self):
+        r"""产品编码。
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def RegionCode(self):
+        r"""地域编码。
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，仅支持指定一个。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RenewFlag(self):
+        r"""续费标识。枚举值如下：
+NOTIFY_AND_MANUAL_RENEW：手动续费
+NOTIFY_AND_AUTO_RENEW：自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def RenewPeriod(self):
+        r"""自动续费周期长度，不填写时默认按产品侧设置的默认值
+如果是月，支持：1-11
+如果是年，支持：1-5
+实际按产品侧支持的范围为主
+        :rtype: str
+        """
+        return self._RenewPeriod
+
+    @RenewPeriod.setter
+    def RenewPeriod(self, RenewPeriod):
+        self._RenewPeriod = RenewPeriod
+
+    @property
+    def RenewPeriodUnit(self):
+        r"""自动续费周期单位，不填写时默认按产品侧设置的默认值
+y 年，m 月
+实际按产品侧支持的范围为主
+        :rtype: str
+        """
+        return self._RenewPeriodUnit
+
+    @RenewPeriodUnit.setter
+    def RenewPeriodUnit(self, RenewPeriodUnit):
+        self._RenewPeriodUnit = RenewPeriodUnit
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._InstanceId = params.get("InstanceId")
+        self._RenewFlag = params.get("RenewFlag")
+        self._RenewPeriod = params.get("RenewPeriod")
+        self._RenewPeriodUnit = params.get("RenewPeriodUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetRenewalResponse(AbstractModel):
+    r"""SetRenewal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: 操作失败时的实例列表。
+        :type InstanceList: list of OperateRsp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceList = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        r"""操作失败时的实例列表。
+        :rtype: list of OperateRsp
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = OperateRsp()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

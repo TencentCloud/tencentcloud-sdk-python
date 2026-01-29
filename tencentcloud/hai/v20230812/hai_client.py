@@ -256,6 +256,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquirePriceUpdateServiceConfigs(self, request):
+        r"""本接口(InquirePriceUpdateServiceConfigs)用于更新服务配置询价
+
+        :param request: Request instance for InquirePriceUpdateServiceConfigs.
+        :type request: :class:`tencentcloud.hai.v20230812.models.InquirePriceUpdateServiceConfigsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.InquirePriceUpdateServiceConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceUpdateServiceConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceUpdateServiceConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetInstancesPassword(self, request):
         r"""本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
 

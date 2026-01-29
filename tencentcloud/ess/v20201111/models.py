@@ -13941,6 +13941,104 @@ class CreateIntegrationUserRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLMInformationExtractionTaskFieldFeedbackRequest(AbstractModel):
+    r"""CreateLMInformationExtractionTaskFieldFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同智能提取任务的员工信息。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Id: 合同智能提取任务结果字段ID值。该参数通过调用接口[获取合同智能提取任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeInformationExtractionTask)返回中的Results. ExtractionFieldResults.Id获取。
+        :type Id: str
+        :param _Feedback: 合同智能提取任务反馈信息
+        :type Feedback: :class:`tencentcloud.ess.v20201111.models.FeedbackInfo`
+        """
+        self._Operator = None
+        self._Id = None
+        self._Feedback = None
+
+    @property
+    def Operator(self):
+        r"""执行合同智能提取任务的员工信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Id(self):
+        r"""合同智能提取任务结果字段ID值。该参数通过调用接口[获取合同智能提取任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeInformationExtractionTask)返回中的Results. ExtractionFieldResults.Id获取。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Feedback(self):
+        r"""合同智能提取任务反馈信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FeedbackInfo`
+        """
+        return self._Feedback
+
+    @Feedback.setter
+    def Feedback(self, Feedback):
+        self._Feedback = Feedback
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Id = params.get("Id")
+        if params.get("Feedback") is not None:
+            self._Feedback = FeedbackInfo()
+            self._Feedback._deserialize(params.get("Feedback"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLMInformationExtractionTaskFieldFeedbackResponse(AbstractModel):
+    r"""CreateLMInformationExtractionTaskFieldFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLegalSealQrCodeRequest(AbstractModel):
     r"""CreateLegalSealQrCode请求参数结构体
 
@@ -18209,6 +18307,133 @@ class CreateResultPageConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateRiskIdentificationTaskFeedbackRequest(AbstractModel):
+    r"""CreateRiskIdentificationTaskFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _RiskId: 合同审查风险结果ID，取值如下：
+
+- 反馈风险项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取Risks.RiskId值）。
+
+- 反馈通过项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取ApprovedLists.RiskId值）
+        :type RiskId: str
+        :param _FeedbackResult: 反馈结果
+
+- 1: 其他错误
+- 2: 审查错误
+- 3: 审查正确
+        :type FeedbackResult: int
+        :param _Reason: 审查反馈原因
+        :type Reason: str
+        """
+        self._Operator = None
+        self._RiskId = None
+        self._FeedbackResult = None
+        self._Reason = None
+
+    @property
+    def Operator(self):
+        r"""执行合同审查任务的员工信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RiskId(self):
+        r"""合同审查风险结果ID，取值如下：
+
+- 反馈风险项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取Risks.RiskId值）。
+
+- 反馈通过项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取ApprovedLists.RiskId值）
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def FeedbackResult(self):
+        r"""反馈结果
+
+- 1: 其他错误
+- 2: 审查错误
+- 3: 审查正确
+        :rtype: int
+        """
+        return self._FeedbackResult
+
+    @FeedbackResult.setter
+    def FeedbackResult(self, FeedbackResult):
+        self._FeedbackResult = FeedbackResult
+
+    @property
+    def Reason(self):
+        r"""审查反馈原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._RiskId = params.get("RiskId")
+        self._FeedbackResult = params.get("FeedbackResult")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRiskIdentificationTaskFeedbackResponse(AbstractModel):
+    r"""CreateRiskIdentificationTaskFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSchemeUrlRequest(AbstractModel):
@@ -26896,6 +27121,122 @@ class DescribeIntegrationRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLMInformationExtractionTaskFieldFeedbackRequest(AbstractModel):
+    r"""DescribeLMInformationExtractionTaskFieldFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同智能提取任务的员工信息。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask/)获取。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""执行合同智能提取任务的员工信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask/)获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLMInformationExtractionTaskFieldFeedbackResponse(AbstractModel):
+    r"""DescribeLMInformationExtractionTaskFieldFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubTaskFeedbackList: 合同智能提取子任务反馈信息
+        :type SubTaskFeedbackList: list of SubTaskFeedback
+        :param _TaskId: 合同智能提取任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SubTaskFeedbackList = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def SubTaskFeedbackList(self):
+        r"""合同智能提取子任务反馈信息
+        :rtype: list of SubTaskFeedback
+        """
+        return self._SubTaskFeedbackList
+
+    @SubTaskFeedbackList.setter
+    def SubTaskFeedbackList(self, SubTaskFeedbackList):
+        self._SubTaskFeedbackList = SubTaskFeedbackList
+
+    @property
+    def TaskId(self):
+        r"""合同智能提取任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SubTaskFeedbackList") is not None:
+            self._SubTaskFeedbackList = []
+            for item in params.get("SubTaskFeedbackList"):
+                obj = SubTaskFeedback()
+                obj._deserialize(item)
+                self._SubTaskFeedbackList.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationAuthStatusRequest(AbstractModel):
     r"""DescribeOrganizationAuthStatus请求参数结构体
 
@@ -27840,6 +28181,107 @@ class DescribePersonCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Cert = params.get("Cert")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskIdentificationTaskFeedbackRequest(AbstractModel):
+    r"""DescribeRiskIdentificationTaskFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同审查任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""执行合同审查任务的员工信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""合同审查任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskIdentificationTaskFeedbackResponse(AbstractModel):
+    r"""DescribeRiskIdentificationTaskFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FeedbackList: 合同审查任务反馈信息列表
+        :type FeedbackList: list of RiskIdentificationFeedbackInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FeedbackList = None
+        self._RequestId = None
+
+    @property
+    def FeedbackList(self):
+        r"""合同审查任务反馈信息列表
+        :rtype: list of RiskIdentificationFeedbackInfo
+        """
+        return self._FeedbackList
+
+    @FeedbackList.setter
+    def FeedbackList(self, FeedbackList):
+        self._FeedbackList = FeedbackList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FeedbackList") is not None:
+            self._FeedbackList = []
+            for item in params.get("FeedbackList"):
+                obj = RiskIdentificationFeedbackInfo()
+                obj._deserialize(item)
+                self._FeedbackList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -30373,6 +30815,177 @@ class FailedUpdateStaffData(AbstractModel):
         self._Reason = params.get("Reason")
         self._UserId = params.get("UserId")
         self._OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FeedbackInfo(AbstractModel):
+    r"""信息提取结果字段反馈
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 合同信息提取结果反馈。
+`值如下`：
+- 0:  未反馈
+- 1: 信息提取正确
+- 2: 信息提取有错误
+        :type Result: int
+        :param _Reason: 信息提取错误原因，当Result为2时需要填写此信息
+        :type Reason: :class:`tencentcloud.ess.v20201111.models.FeedbackInfoReason`
+        """
+        self._Result = None
+        self._Reason = None
+
+    @property
+    def Result(self):
+        r"""合同信息提取结果反馈。
+`值如下`：
+- 0:  未反馈
+- 1: 信息提取正确
+- 2: 信息提取有错误
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Reason(self):
+        r"""信息提取错误原因，当Result为2时需要填写此信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FeedbackInfoReason`
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        if params.get("Reason") is not None:
+            self._Reason = FeedbackInfoReason()
+            self._Reason._deserialize(params.get("Reason"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FeedbackInfoReason(AbstractModel):
+    r"""信息提取结果字段反馈错误原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReasonType: 反馈信息提取错误原因。
+`值如下`：
+- 1: 提取错误(提取不精准、提取为空等)
+- 2: 其他错误
+        :type ReasonType: int
+        :param _ReasonContent: 反馈提取错误详细错误原因，不能超过500个字符
+        :type ReasonContent: str
+        """
+        self._ReasonType = None
+        self._ReasonContent = None
+
+    @property
+    def ReasonType(self):
+        r"""反馈信息提取错误原因。
+`值如下`：
+- 1: 提取错误(提取不精准、提取为空等)
+- 2: 其他错误
+        :rtype: int
+        """
+        return self._ReasonType
+
+    @ReasonType.setter
+    def ReasonType(self, ReasonType):
+        self._ReasonType = ReasonType
+
+    @property
+    def ReasonContent(self):
+        r"""反馈提取错误详细错误原因，不能超过500个字符
+        :rtype: str
+        """
+        return self._ReasonContent
+
+    @ReasonContent.setter
+    def ReasonContent(self, ReasonContent):
+        self._ReasonContent = ReasonContent
+
+
+    def _deserialize(self, params):
+        self._ReasonType = params.get("ReasonType")
+        self._ReasonContent = params.get("ReasonContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FeedbackList(AbstractModel):
+    r"""信息提取任务反馈信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 信息提取结果字段ID
+        :type Id: str
+        :param _Info: 反馈信息
+        :type Info: :class:`tencentcloud.ess.v20201111.models.FeedbackInfo`
+        """
+        self._Id = None
+        self._Info = None
+
+    @property
+    def Id(self):
+        r"""信息提取结果字段ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Info(self):
+        r"""反馈信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FeedbackInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Info") is not None:
+            self._Info = FeedbackInfo()
+            self._Info._deserialize(params.get("Info"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41149,6 +41762,80 @@ class ReviewerInfo(AbstractModel):
         
 
 
+class RiskIdentificationFeedbackInfo(AbstractModel):
+    r"""合同审查反馈信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 审查结果ID
+        :type RiskId: str
+        :param _FeedbackResult: 反馈结果
+
+- 1: 其他错误
+- 2: 审查错误
+- 3: 审查正确
+        :type FeedbackResult: int
+        :param _Reason: 反馈原因
+        :type Reason: str
+        """
+        self._RiskId = None
+        self._FeedbackResult = None
+        self._Reason = None
+
+    @property
+    def RiskId(self):
+        r"""审查结果ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def FeedbackResult(self):
+        r"""反馈结果
+
+- 1: 其他错误
+- 2: 审查错误
+- 3: 审查正确
+        :rtype: int
+        """
+        return self._FeedbackResult
+
+    @FeedbackResult.setter
+    def FeedbackResult(self, FeedbackResult):
+        self._FeedbackResult = FeedbackResult
+
+    @property
+    def Reason(self):
+        r"""反馈原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._FeedbackResult = params.get("FeedbackResult")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RiskIdentificationRoleInfo(AbstractModel):
     r"""用于定义合同风险识别角色信息。
 
@@ -42274,6 +42961,62 @@ class SubOrgBillUsage(AbstractModel):
     def _deserialize(self, params):
         self._Used = params.get("Used")
         self._QuotaType = params.get("QuotaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubTaskFeedback(AbstractModel):
+    r"""信息提取子任务反馈信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubTaskId: 信息提取子任务ID
+        :type SubTaskId: str
+        :param _FeedbackList: 提取结果反馈信息
+        :type FeedbackList: list of FeedbackList
+        """
+        self._SubTaskId = None
+        self._FeedbackList = None
+
+    @property
+    def SubTaskId(self):
+        r"""信息提取子任务ID
+        :rtype: str
+        """
+        return self._SubTaskId
+
+    @SubTaskId.setter
+    def SubTaskId(self, SubTaskId):
+        self._SubTaskId = SubTaskId
+
+    @property
+    def FeedbackList(self):
+        r"""提取结果反馈信息
+        :rtype: list of FeedbackList
+        """
+        return self._FeedbackList
+
+    @FeedbackList.setter
+    def FeedbackList(self, FeedbackList):
+        self._FeedbackList = FeedbackList
+
+
+    def _deserialize(self, params):
+        self._SubTaskId = params.get("SubTaskId")
+        if params.get("FeedbackList") is not None:
+            self._FeedbackList = []
+            for item in params.get("FeedbackList"):
+                obj = FeedbackList()
+                obj._deserialize(item)
+                self._FeedbackList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

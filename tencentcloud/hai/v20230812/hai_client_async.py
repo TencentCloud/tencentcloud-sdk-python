@@ -205,6 +205,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InquirePriceUpdateServiceConfigs(
+            self,
+            request: models.InquirePriceUpdateServiceConfigsRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceUpdateServiceConfigsResponse:
+        """
+        本接口(InquirePriceUpdateServiceConfigs)用于更新服务配置询价
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceUpdateServiceConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceUpdateServiceConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetInstancesPassword(
             self,
             request: models.ResetInstancesPasswordRequest,

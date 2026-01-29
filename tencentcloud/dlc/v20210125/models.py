@@ -30272,7 +30272,7 @@ class LakeFsInfo(AbstractModel):
         :type Name: str
         :param _Type: 托管存储类型
         :type Type: str
-        :param _SpaceUsedSize: 容量
+        :param _SpaceUsedSize: 存储用量
         :type SpaceUsedSize: float
         :param _CreateTimeStamp: 创建时候的时间戳
         :type CreateTimeStamp: int
@@ -30284,6 +30284,8 @@ class LakeFsInfo(AbstractModel):
         :type Description: str
         :param _Status: 托管桶状态，当前取值为：creating、bind、readOnly、isolate
         :type Status: str
+        :param _TagList: 托管存储桶标签列表
+        :type TagList: list of TagInfo
         """
         self._Name = None
         self._Type = None
@@ -30293,6 +30295,7 @@ class LakeFsInfo(AbstractModel):
         self._ShortName = None
         self._Description = None
         self._Status = None
+        self._TagList = None
 
     @property
     def Name(self):
@@ -30318,7 +30321,7 @@ class LakeFsInfo(AbstractModel):
 
     @property
     def SpaceUsedSize(self):
-        r"""容量
+        r"""存储用量
         :rtype: float
         """
         return self._SpaceUsedSize
@@ -30382,6 +30385,17 @@ class LakeFsInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def TagList(self):
+        r"""托管存储桶标签列表
+        :rtype: list of TagInfo
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -30392,6 +30406,12 @@ class LakeFsInfo(AbstractModel):
         self._ShortName = params.get("ShortName")
         self._Description = params.get("Description")
         self._Status = params.get("Status")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34719,6 +34739,8 @@ class Policy(AbstractModel):
         :type EngineGeneration: str
         :param _Model: 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
         :type Model: str
+        :param _IsAdminPolicy: 权限来源是否为管理员
+        :type IsAdminPolicy: bool
         """
         self._Database = None
         self._Catalog = None
@@ -34739,6 +34761,7 @@ class Policy(AbstractModel):
         self._Id = None
         self._EngineGeneration = None
         self._Model = None
+        self._IsAdminPolicy = None
 
     @property
     def Database(self):
@@ -34962,6 +34985,17 @@ class Policy(AbstractModel):
     def Model(self, Model):
         self._Model = Model
 
+    @property
+    def IsAdminPolicy(self):
+        r"""权限来源是否为管理员
+        :rtype: bool
+        """
+        return self._IsAdminPolicy
+
+    @IsAdminPolicy.setter
+    def IsAdminPolicy(self, IsAdminPolicy):
+        self._IsAdminPolicy = IsAdminPolicy
+
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
@@ -34983,6 +35017,7 @@ class Policy(AbstractModel):
         self._Id = params.get("Id")
         self._EngineGeneration = params.get("EngineGeneration")
         self._Model = params.get("Model")
+        self._IsAdminPolicy = params.get("IsAdminPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37013,6 +37048,8 @@ class SmartOptimizerPolicy(AbstractModel):
         :param _ChangeTable: SmartOptimizerChangeTablePolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChangeTable: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerChangeTablePolicy`
+        :param _TableExpiration: 表过期策略
+        :type TableExpiration: :class:`tencentcloud.dlc.v20210125.models.TableExpirationPolicy`
         """
         self._Inherit = None
         self._Resources = None
@@ -37020,6 +37057,7 @@ class SmartOptimizerPolicy(AbstractModel):
         self._Lifecycle = None
         self._Index = None
         self._ChangeTable = None
+        self._TableExpiration = None
 
     @property
     def Inherit(self):
@@ -37092,6 +37130,17 @@ class SmartOptimizerPolicy(AbstractModel):
     def ChangeTable(self, ChangeTable):
         self._ChangeTable = ChangeTable
 
+    @property
+    def TableExpiration(self):
+        r"""表过期策略
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TableExpirationPolicy`
+        """
+        return self._TableExpiration
+
+    @TableExpiration.setter
+    def TableExpiration(self, TableExpiration):
+        self._TableExpiration = TableExpiration
+
 
     def _deserialize(self, params):
         self._Inherit = params.get("Inherit")
@@ -37113,6 +37162,9 @@ class SmartOptimizerPolicy(AbstractModel):
         if params.get("ChangeTable") is not None:
             self._ChangeTable = SmartOptimizerChangeTablePolicy()
             self._ChangeTable._deserialize(params.get("ChangeTable"))
+        if params.get("TableExpiration") is not None:
+            self._TableExpiration = TableExpirationPolicy()
+            self._TableExpiration._deserialize(params.get("TableExpiration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40727,6 +40779,57 @@ class TableBaseInfo(AbstractModel):
             self._SmartPolicy = SmartPolicy()
             self._SmartPolicy._deserialize(params.get("SmartPolicy"))
         self._PrimaryKeys = params.get("PrimaryKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableExpirationPolicy(AbstractModel):
+    r"""表过期策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否启用策略
+        :type Enabled: bool
+        :param _Expiration: 表过期时间，单位：天
+        :type Expiration: int
+        """
+        self._Enabled = None
+        self._Expiration = None
+
+    @property
+    def Enabled(self):
+        r"""是否启用策略
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Expiration(self):
+        r"""表过期时间，单位：天
+        :rtype: int
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Expiration = params.get("Expiration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

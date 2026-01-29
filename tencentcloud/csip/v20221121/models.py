@@ -27414,7 +27414,7 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 修改集团账号状态，1 开启， 2关闭
+        :param _Status: 修改集团账号状态，1 开启， 0关闭
         :type Status: int
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
@@ -27424,7 +27424,7 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""修改集团账号状态，1 开启， 2关闭
+        r"""修改集团账号状态，1 开启， 0关闭
         :rtype: int
         """
         return self._Status

@@ -2984,6 +2984,8 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         :type Scope: list of str
         :param _Description: 描述信息。由用户自行定义。
         :type Description: str
+        :param _AutoRotateKey: OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话会默认置0
+        :type AutoRotateKey: int
         """
         self._IdentityUrl = None
         self._ClientId = None
@@ -2994,6 +2996,7 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         self._IdentityKey = None
         self._Scope = None
         self._Description = None
+        self._AutoRotateKey = None
 
     @property
     def IdentityUrl(self):
@@ -3095,6 +3098,17 @@ class CreateUserOIDCConfigRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AutoRotateKey(self):
+        r"""OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话会默认置0
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
+
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
@@ -3106,6 +3120,7 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         self._IdentityKey = params.get("IdentityKey")
         self._Scope = params.get("Scope")
         self._Description = params.get("Description")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4818,6 +4833,8 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
         :type MappingFiled: str
         :param _Description: 描述
         :type Description: str
+        :param _AutoRotateKey: OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）
+        :type AutoRotateKey: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4832,6 +4849,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
         self._ResponseMode = None
         self._MappingFiled = None
         self._Description = None
+        self._AutoRotateKey = None
         self._RequestId = None
 
     @property
@@ -4956,6 +4974,17 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
         self._Description = Description
 
     @property
+    def AutoRotateKey(self):
+        r"""OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4979,6 +5008,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
         self._ResponseMode = params.get("ResponseMode")
         self._MappingFiled = params.get("MappingFiled")
         self._Description = params.get("Description")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         self._RequestId = params.get("RequestId")
 
 
@@ -13240,6 +13270,8 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         :type Scope: list of str
         :param _Description: 描述，长度为1~255个英文或中文字符，默认值为空。
         :type Description: str
+        :param _AutoRotateKey: OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话，会默认置0
+        :type AutoRotateKey: int
         """
         self._IdentityUrl = None
         self._ClientId = None
@@ -13250,6 +13282,7 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         self._IdentityKey = None
         self._Scope = None
         self._Description = None
+        self._AutoRotateKey = None
 
     @property
     def IdentityUrl(self):
@@ -13351,6 +13384,17 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AutoRotateKey(self):
+        r"""OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话，会默认置0
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
+
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
@@ -13362,6 +13406,7 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         self._IdentityKey = params.get("IdentityKey")
         self._Scope = params.get("Scope")
         self._Description = params.get("Description")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

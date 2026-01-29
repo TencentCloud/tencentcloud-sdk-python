@@ -5251,6 +5251,59 @@ class CreateHostingDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIndex(AbstractModel):
+    r"""本类型用于UpdateTable接口中描述待创建索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: 索引名称
+        :type IndexName: str
+        :param _MgoKeySchema: 索引结构
+        :type MgoKeySchema: :class:`tencentcloud.tcb.v20180608.models.MgoKeySchema`
+        """
+        self._IndexName = None
+        self._MgoKeySchema = None
+
+    @property
+    def IndexName(self):
+        r"""索引名称
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def MgoKeySchema(self):
+        r"""索引结构
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MgoKeySchema`
+        """
+        return self._MgoKeySchema
+
+    @MgoKeySchema.setter
+    def MgoKeySchema(self, MgoKeySchema):
+        self._MgoKeySchema = MgoKeySchema
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        if params.get("MgoKeySchema") is not None:
+            self._MgoKeySchema = MgoKeySchema()
+            self._MgoKeySchema._deserialize(params.get("MgoKeySchema"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreatePostpayPackageRequest(AbstractModel):
     r"""CreatePostpayPackage请求参数结构体
 
@@ -5606,6 +5659,401 @@ class CreateStaticStoreResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTableRequest(AbstractModel):
+    r"""CreateTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 数据表名；长度不超过96个字符，可以为英文字母、数字、下划线(_)和短横线(-)的组合，且不能以下划线开头
+        :type TableName: str
+        :param _Tag: FlexDB实例ID，如：tnt-nl7hjzasw
+        :type Tag: str
+        :param _PermissionInfo: FlexDB数据库权限信息
+        :type PermissionInfo: :class:`tencentcloud.tcb.v20180608.models.PermissionInfo`
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _MongoConnector: MongoDB连接器配置
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._TableName = None
+        self._Tag = None
+        self._PermissionInfo = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def TableName(self):
+        r"""数据表名；长度不超过96个字符，可以为英文字母、数字、下划线(_)和短横线(-)的组合，且不能以下划线开头
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Tag(self):
+        r"""FlexDB实例ID，如：tnt-nl7hjzasw
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def PermissionInfo(self):
+        r"""FlexDB数据库权限信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PermissionInfo`
+        """
+        return self._PermissionInfo
+
+    @PermissionInfo.setter
+    def PermissionInfo(self, PermissionInfo):
+        self._PermissionInfo = PermissionInfo
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""MongoDB连接器配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Tag = params.get("Tag")
+        if params.get("PermissionInfo") is not None:
+            self._PermissionInfo = PermissionInfo()
+            self._PermissionInfo._deserialize(params.get("PermissionInfo"))
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTableResponse(AbstractModel):
+    r"""CreateTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserRequest(AbstractModel):
+    r"""CreateUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _Name: 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复
+        :type Name: str
+        :param _Uid: 用户ID，最多64字符，如不传则系统自动生成
+        :type Uid: str
+        :param _Type: 用户类型：internalUser-内部用户、externalUser-外部用户，默认internalUser（内部用户）
+        :type Type: str
+        :param _Password: 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-
+        :type Password: str
+        :param _UserStatus: 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认激活
+        :type UserStatus: str
+        :param _NickName: 用户昵称，长度2-64字符
+        :type NickName: str
+        :param _Phone: 手机号，不能重复
+        :type Phone: str
+        :param _Email: 邮箱地址，不能重复
+        :type Email: str
+        :param _AvatarUrl: 头像链接，可访问的公网URL
+        :type AvatarUrl: str
+        :param _Description: 用户描述，最多200字符
+        :type Description: str
+        """
+        self._EnvId = None
+        self._Name = None
+        self._Uid = None
+        self._Type = None
+        self._Password = None
+        self._UserStatus = None
+        self._NickName = None
+        self._Phone = None
+        self._Email = None
+        self._AvatarUrl = None
+        self._Description = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Name(self):
+        r"""用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        r"""用户ID，最多64字符，如不传则系统自动生成
+        :rtype: str
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Type(self):
+        r"""用户类型：internalUser-内部用户、externalUser-外部用户，默认internalUser（内部用户）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Password(self):
+        r"""密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def UserStatus(self):
+        r"""用户状态：ACTIVE（激活）、BLOCKED（冻结），默认激活
+        :rtype: str
+        """
+        return self._UserStatus
+
+    @UserStatus.setter
+    def UserStatus(self, UserStatus):
+        self._UserStatus = UserStatus
+
+    @property
+    def NickName(self):
+        r"""用户昵称，长度2-64字符
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Phone(self):
+        r"""手机号，不能重复
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        r"""邮箱地址，不能重复
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AvatarUrl(self):
+        r"""头像链接，可访问的公网URL
+        :rtype: str
+        """
+        return self._AvatarUrl
+
+    @AvatarUrl.setter
+    def AvatarUrl(self, AvatarUrl):
+        self._AvatarUrl = AvatarUrl
+
+    @property
+    def Description(self):
+        r"""用户描述，最多200字符
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Type = params.get("Type")
+        self._Password = params.get("Password")
+        self._UserStatus = params.get("UserStatus")
+        self._NickName = params.get("NickName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._AvatarUrl = params.get("AvatarUrl")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserResp(AbstractModel):
+    r"""创建用户返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uid: 用户ID
+        :type Uid: str
+        """
+        self._Uid = None
+
+    @property
+    def Uid(self):
+        r"""用户ID
+        :rtype: str
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+
+    def _deserialize(self, params):
+        self._Uid = params.get("Uid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserResponse(AbstractModel):
+    r"""CreateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果返回
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.CreateUserResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""结果返回
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateUserResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateUserResp()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -6413,6 +6861,264 @@ class DeleteGatewayVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTableRequest(AbstractModel):
+    r"""DeleteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 待删除的表名
+        :type TableName: str
+        :param _Tag: FlexDB实例ID
+        :type Tag: str
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _MongoConnector: MongoDB连接器配置
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._TableName = None
+        self._Tag = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def TableName(self):
+        r"""待删除的表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Tag(self):
+        r"""FlexDB实例ID
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""MongoDB连接器配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Tag = params.get("Tag")
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTableResponse(AbstractModel):
+    r"""DeleteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUsersRequest(AbstractModel):
+    r"""DeleteUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _Uids: tcb用户id列表, 一次最多支持删除100个
+        :type Uids: list of str
+        """
+        self._EnvId = None
+        self._Uids = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Uids(self):
+        r"""tcb用户id列表, 一次最多支持删除100个
+        :rtype: list of str
+        """
+        return self._Uids
+
+    @Uids.setter
+    def Uids(self, Uids):
+        self._Uids = Uids
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Uids = params.get("Uids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersResp(AbstractModel):
+    r"""删除tcb用户返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: 成功个数
+        :type SuccessCount: int
+        :param _FailedCount: 失败个数
+        :type FailedCount: int
+        """
+        self._SuccessCount = None
+        self._FailedCount = None
+
+    @property
+    def SuccessCount(self):
+        r"""成功个数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""失败个数
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersResponse(AbstractModel):
+    r"""DeleteUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 删除用户结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.DeleteUsersResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""删除用户结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteUsersResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteUsersResp()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13048,6 +13754,319 @@ class DescribeSpecialCostItemsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableRequest(AbstractModel):
+    r"""DescribeTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 表名
+        :type TableName: str
+        :param _Tag: FlecDB实例ID
+        :type Tag: str
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _MongoConnector: MongoDB连接器配置
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._TableName = None
+        self._Tag = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Tag(self):
+        r"""FlecDB实例ID
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""MongoDB连接器配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Tag = params.get("Tag")
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableResponse(AbstractModel):
+    r"""DescribeTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Indexes: 索引相关信息
+        :type Indexes: list of IndexInfo
+        :param _IndexNum: 索引个数
+        :type IndexNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Indexes = None
+        self._IndexNum = None
+        self._RequestId = None
+
+    @property
+    def Indexes(self):
+        r"""索引相关信息
+        :rtype: list of IndexInfo
+        """
+        return self._Indexes
+
+    @Indexes.setter
+    def Indexes(self, Indexes):
+        self._Indexes = Indexes
+
+    @property
+    def IndexNum(self):
+        r"""索引个数
+        :rtype: int
+        """
+        return self._IndexNum
+
+    @IndexNum.setter
+    def IndexNum(self, IndexNum):
+        self._IndexNum = IndexNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Indexes") is not None:
+            self._Indexes = []
+            for item in params.get("Indexes"):
+                obj = IndexInfo()
+                obj._deserialize(item)
+                self._Indexes.append(obj)
+        self._IndexNum = params.get("IndexNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTablesRequest(AbstractModel):
+    r"""DescribeTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MgoLimit: 分页条件
+        :type MgoLimit: int
+        :param _Tag: 实例ID
+        :type Tag: str
+        :param _MgoOffset: 分页条件
+        :type MgoOffset: int
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _MongoConnector: MongoConnector
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._MgoLimit = None
+        self._Tag = None
+        self._MgoOffset = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def MgoLimit(self):
+        r"""分页条件
+        :rtype: int
+        """
+        return self._MgoLimit
+
+    @MgoLimit.setter
+    def MgoLimit(self, MgoLimit):
+        self._MgoLimit = MgoLimit
+
+    @property
+    def Tag(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def MgoOffset(self):
+        r"""分页条件
+        :rtype: int
+        """
+        return self._MgoOffset
+
+    @MgoOffset.setter
+    def MgoOffset(self, MgoOffset):
+        self._MgoOffset = MgoOffset
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""MongoConnector
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._MgoLimit = params.get("MgoLimit")
+        self._Tag = params.get("Tag")
+        self._MgoOffset = params.get("MgoOffset")
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTablesResponse(AbstractModel):
+    r"""DescribeTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tables: 表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: list of TableInfo
+        :param _Pager: 分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pager: :class:`tencentcloud.tcb.v20180608.models.Pager`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tables = None
+        self._Pager = None
+        self._RequestId = None
+
+    @property
+    def Tables(self):
+        r"""表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableInfo
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Pager(self):
+        r"""分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.Pager`
+        """
+        return self._Pager
+
+    @Pager.setter
+    def Pager(self, Pager):
+        self._Pager = Pager
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = TableInfo()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Pager") is not None:
+            self._Pager = Pager()
+            self._Pager._deserialize(params.get("Pager"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserActivityInfoRequest(AbstractModel):
     r"""DescribeUserActivityInfo请求参数结构体
 
@@ -13229,6 +14248,233 @@ class DescribeUserActivityInfoResponse(AbstractModel):
         self._ActivityTimeLeft = params.get("ActivityTimeLeft")
         self._GroupTimeLeft = params.get("GroupTimeLeft")
         self._NickNameList = params.get("NickNameList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserListRequest(AbstractModel):
+    r"""DescribeUserList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _PageNo: 页码，从1开始，默认1
+        :type PageNo: int
+        :param _PageSize: 每页数量，默认20，最大100
+        :type PageSize: int
+        :param _Name: 用户名，模糊查询
+        :type Name: str
+        :param _NickName: 用户昵称，模糊查询
+        :type NickName: str
+        :param _Phone: 手机号，模糊查询
+        :type Phone: str
+        :param _Email: 邮箱，模糊查询
+        :type Email: str
+        """
+        self._EnvId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._Name = None
+        self._NickName = None
+        self._Phone = None
+        self._Email = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PageNo(self):
+        r"""页码，从1开始，默认1
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""每页数量，默认20，最大100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Name(self):
+        r"""用户名，模糊查询
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NickName(self):
+        r"""用户昵称，模糊查询
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Phone(self):
+        r"""手机号，模糊查询
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        r"""邮箱，模糊查询
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._Name = params.get("Name")
+        self._NickName = params.get("NickName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserListResp(AbstractModel):
+    r"""查询用户返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 用户总数
+        :type Total: int
+        :param _UserList: 用户列表
+        :type UserList: list of User
+        """
+        self._Total = None
+        self._UserList = None
+
+    @property
+    def Total(self):
+        r"""用户总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def UserList(self):
+        r"""用户列表
+        :rtype: list of User
+        """
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        self._UserList = UserList
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("UserList") is not None:
+            self._UserList = []
+            for item in params.get("UserList"):
+                obj = User()
+                obj._deserialize(item)
+                self._UserList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserListResponse(AbstractModel):
+    r"""DescribeUserList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果返回
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""结果返回
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeUserListResp()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13721,6 +14967,42 @@ class DestroyStaticStoreResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class DropIndex(AbstractModel):
+    r"""本类型用于UpdateTable接口中描述待删除索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: 索引名称
+        :type IndexName: str
+        """
+        self._IndexName = None
+
+    @property
+    def IndexName(self):
+        r"""索引名称
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EditAuthConfigRequest(AbstractModel):
@@ -16116,6 +17398,225 @@ class HpaPolicy(AbstractModel):
         
 
 
+class IndexAccesses(AbstractModel):
+    r"""索引命中信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ops: 索引命中次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ops: int
+        :param _Since: 命中次数从何时开始计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Since: str
+        """
+        self._Ops = None
+        self._Since = None
+
+    @property
+    def Ops(self):
+        r"""索引命中次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Ops
+
+    @Ops.setter
+    def Ops(self, Ops):
+        self._Ops = Ops
+
+    @property
+    def Since(self):
+        r"""命中次数从何时开始计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Since
+
+    @Since.setter
+    def Since(self, Since):
+        self._Since = Since
+
+
+    def _deserialize(self, params):
+        self._Ops = params.get("Ops")
+        self._Since = params.get("Since")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexInfo(AbstractModel):
+    r"""索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 索引名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Size: 索引大小，单位: 字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _Keys: 索引键值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of Indexkey
+        :param _Accesses: 索引使用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Accesses: :class:`tencentcloud.tcb.v20180608.models.IndexAccesses`
+        :param _Unique: 是否为唯一索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unique: bool
+        """
+        self._Name = None
+        self._Size = None
+        self._Keys = None
+        self._Accesses = None
+        self._Unique = None
+
+    @property
+    def Name(self):
+        r"""索引名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Size(self):
+        r"""索引大小，单位: 字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Keys(self):
+        r"""索引键值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Indexkey
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def Accesses(self):
+        r"""索引使用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.IndexAccesses`
+        """
+        return self._Accesses
+
+    @Accesses.setter
+    def Accesses(self, Accesses):
+        self._Accesses = Accesses
+
+    @property
+    def Unique(self):
+        r"""是否为唯一索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Unique
+
+    @Unique.setter
+    def Unique(self, Unique):
+        self._Unique = Unique
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Size = params.get("Size")
+        if params.get("Keys") is not None:
+            self._Keys = []
+            for item in params.get("Keys"):
+                obj = Indexkey()
+                obj._deserialize(item)
+                self._Keys.append(obj)
+        if params.get("Accesses") is not None:
+            self._Accesses = IndexAccesses()
+            self._Accesses._deserialize(params.get("Accesses"))
+        self._Unique = params.get("Unique")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Indexkey(AbstractModel):
+    r"""索引的key值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 键名
+        :type Name: str
+        :param _Direction: 方向：specify 1 for ascending or -1 for descending
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        r"""键名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        r"""方向：specify 1 for ascending or -1 for descending
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KVPair(AbstractModel):
     r"""键值对
 
@@ -16165,6 +17666,218 @@ class KVPair(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListTablesRequest(AbstractModel):
+    r"""ListTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MgoLimit: 每页返回数量（0-1000)
+        :type MgoLimit: int
+        :param _Tag: FlexDB实例ID
+        :type Tag: str
+        :param _MgoOffset: 分页偏移量
+        :type MgoOffset: int
+        :param _Filters: 过滤标签数组，用于过滤表名，可选值如：HIDDEN、WEDA、WEDA_SYSTEM
+        :type Filters: list of str
+        :param _SearchValue: 模糊搜索查询值
+        :type SearchValue: str
+        :param _ShowHidden: 是否展示隐藏表
+        :type ShowHidden: bool
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _MongoConnector: mongo连接器信息
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._MgoLimit = None
+        self._Tag = None
+        self._MgoOffset = None
+        self._Filters = None
+        self._SearchValue = None
+        self._ShowHidden = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def MgoLimit(self):
+        r"""每页返回数量（0-1000)
+        :rtype: int
+        """
+        return self._MgoLimit
+
+    @MgoLimit.setter
+    def MgoLimit(self, MgoLimit):
+        self._MgoLimit = MgoLimit
+
+    @property
+    def Tag(self):
+        r"""FlexDB实例ID
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def MgoOffset(self):
+        r"""分页偏移量
+        :rtype: int
+        """
+        return self._MgoOffset
+
+    @MgoOffset.setter
+    def MgoOffset(self, MgoOffset):
+        self._MgoOffset = MgoOffset
+
+    @property
+    def Filters(self):
+        r"""过滤标签数组，用于过滤表名，可选值如：HIDDEN、WEDA、WEDA_SYSTEM
+        :rtype: list of str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SearchValue(self):
+        r"""模糊搜索查询值
+        :rtype: str
+        """
+        return self._SearchValue
+
+    @SearchValue.setter
+    def SearchValue(self, SearchValue):
+        self._SearchValue = SearchValue
+
+    @property
+    def ShowHidden(self):
+        r"""是否展示隐藏表
+        :rtype: bool
+        """
+        return self._ShowHidden
+
+    @ShowHidden.setter
+    def ShowHidden(self, ShowHidden):
+        self._ShowHidden = ShowHidden
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""mongo连接器信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._MgoLimit = params.get("MgoLimit")
+        self._Tag = params.get("Tag")
+        self._MgoOffset = params.get("MgoOffset")
+        self._Filters = params.get("Filters")
+        self._SearchValue = params.get("SearchValue")
+        self._ShowHidden = params.get("ShowHidden")
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTablesResponse(AbstractModel):
+    r"""ListTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tables: 表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: list of TableInfo
+        :param _Pager: 分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pager: :class:`tencentcloud.tcb.v20180608.models.Pager`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tables = None
+        self._Pager = None
+        self._RequestId = None
+
+    @property
+    def Tables(self):
+        r"""表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableInfo
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Pager(self):
+        r"""分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.Pager`
+        """
+        return self._Pager
+
+    @Pager.setter
+    def Pager(self, Pager):
+        self._Pager = Pager
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = TableInfo()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Pager") is not None:
+            self._Pager = Pager()
+            self._Pager._deserialize(params.get("Pager"))
+        self._RequestId = params.get("RequestId")
 
 
 class LogServiceInfo(AbstractModel):
@@ -16268,6 +17981,128 @@ class LogServiceInfo(AbstractModel):
         self._TopicId = params.get("TopicId")
         self._Region = params.get("Region")
         self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MgoIndexKeys(AbstractModel):
+    r"""本类型用于UpdateTable接口中描述待创建索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 无
+        :type Name: str
+        :param _Direction: 无
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        r"""无
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        r"""无
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MgoKeySchema(AbstractModel):
+    r"""本类型用于接口中描述待创建索引结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MgoIndexKeys: 索引字段
+        :type MgoIndexKeys: list of MgoIndexKeys
+        :param _MgoIsUnique: 是否唯一索引
+        :type MgoIsUnique: bool
+        :param _MgoIsSparse: 是否稀疏索引
+        :type MgoIsSparse: bool
+        """
+        self._MgoIndexKeys = None
+        self._MgoIsUnique = None
+        self._MgoIsSparse = None
+
+    @property
+    def MgoIndexKeys(self):
+        r"""索引字段
+        :rtype: list of MgoIndexKeys
+        """
+        return self._MgoIndexKeys
+
+    @MgoIndexKeys.setter
+    def MgoIndexKeys(self, MgoIndexKeys):
+        self._MgoIndexKeys = MgoIndexKeys
+
+    @property
+    def MgoIsUnique(self):
+        r"""是否唯一索引
+        :rtype: bool
+        """
+        return self._MgoIsUnique
+
+    @MgoIsUnique.setter
+    def MgoIsUnique(self, MgoIsUnique):
+        self._MgoIsUnique = MgoIsUnique
+
+    @property
+    def MgoIsSparse(self):
+        r"""是否稀疏索引
+        :rtype: bool
+        """
+        return self._MgoIsSparse
+
+    @MgoIsSparse.setter
+    def MgoIsSparse(self, MgoIsSparse):
+        self._MgoIsSparse = MgoIsSparse
+
+
+    def _deserialize(self, params):
+        if params.get("MgoIndexKeys") is not None:
+            self._MgoIndexKeys = []
+            for item in params.get("MgoIndexKeys"):
+                obj = MgoIndexKeys()
+                obj._deserialize(item)
+                self._MgoIndexKeys.append(obj)
+        self._MgoIsUnique = params.get("MgoIsUnique")
+        self._MgoIsSparse = params.get("MgoIsSparse")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17025,6 +18860,326 @@ class ModifyGatewayVersionTrafficResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserRequest(AbstractModel):
+    r"""ModifyUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _Uid: 用户Id, 不做修改
+        :type Uid: str
+        :param _Name: 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
+        :type Name: str
+        :param _Type: 用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+        :type Type: str
+        :param _Password: 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改
+        :type Password: str
+        :param _UserStatus: 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认冻结，不传该字段或传空字符串不修改
+        :type UserStatus: str
+        :param _NickName: 用户昵称，长度2-64字符，不传该字段不修改，传空字符修改为空
+        :type NickName: str
+        :param _Phone: 手机号，11位数字，不传该字段不修改，传空字符串修改为空
+        :type Phone: str
+        :param _Email: 邮箱地址，不传该字段不修改，传空字符修改为空
+        :type Email: str
+        :param _AvatarUrl: 头像链接，可访问的公网URL，不传该字段不修改，传空字符串修改为空
+        :type AvatarUrl: str
+        :param _Description: 用户描述，最多200字符，不传该字段不修改，传空字符修改为空
+        :type Description: str
+        """
+        self._EnvId = None
+        self._Uid = None
+        self._Name = None
+        self._Type = None
+        self._Password = None
+        self._UserStatus = None
+        self._NickName = None
+        self._Phone = None
+        self._Email = None
+        self._AvatarUrl = None
+        self._Description = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Uid(self):
+        r"""用户Id, 不做修改
+        :rtype: str
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Name(self):
+        r"""用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Password(self):
+        r"""密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def UserStatus(self):
+        r"""用户状态：ACTIVE（激活）、BLOCKED（冻结），默认冻结，不传该字段或传空字符串不修改
+        :rtype: str
+        """
+        return self._UserStatus
+
+    @UserStatus.setter
+    def UserStatus(self, UserStatus):
+        self._UserStatus = UserStatus
+
+    @property
+    def NickName(self):
+        r"""用户昵称，长度2-64字符，不传该字段不修改，传空字符修改为空
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Phone(self):
+        r"""手机号，11位数字，不传该字段不修改，传空字符串修改为空
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        r"""邮箱地址，不传该字段不修改，传空字符修改为空
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AvatarUrl(self):
+        r"""头像链接，可访问的公网URL，不传该字段不修改，传空字符串修改为空
+        :rtype: str
+        """
+        return self._AvatarUrl
+
+    @AvatarUrl.setter
+    def AvatarUrl(self, AvatarUrl):
+        self._AvatarUrl = AvatarUrl
+
+    @property
+    def Description(self):
+        r"""用户描述，最多200字符，不传该字段不修改，传空字符修改为空
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Uid = params.get("Uid")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Password = params.get("Password")
+        self._UserStatus = params.get("UserStatus")
+        self._NickName = params.get("NickName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._AvatarUrl = params.get("AvatarUrl")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserResp(AbstractModel):
+    r"""修改用户返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 是否成功
+        :type Success: bool
+        """
+        self._Success = None
+
+    @property
+    def Success(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserResponse(AbstractModel):
+    r"""ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 修改用户返回值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.ModifyUserResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""修改用户返回值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyUserResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ModifyUserResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class MongoConnector(AbstractModel):
+    r"""MongoDB连接器配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 连接器实例ID
+        :type InstanceId: str
+        :param _DatabaseName: MongoDB数据库名
+        :type DatabaseName: str
+        """
+        self._InstanceId = None
+        self._DatabaseName = None
+
+    @property
+    def InstanceId(self):
+        r"""连接器实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""MongoDB数据库名
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ObjectKV(AbstractModel):
     r"""Key-Value类型，模拟的 object 类型
 
@@ -17409,6 +19564,152 @@ class PackageFreeQuotaInfo(AbstractModel):
         self._MetricUnit = params.get("MetricUnit")
         self._DeductType = params.get("DeductType")
         self._FreeQuotaType = params.get("FreeQuotaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Pager(AbstractModel):
+    r"""分页信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _Limit: 每页返回记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param _Total: 文档集合总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Total = None
+
+    @property
+    def Offset(self):
+        r"""分页偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页返回记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Total(self):
+        r"""文档集合总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionInfo(AbstractModel):
+    r"""FlexDB数据库权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AclTag: "READONLY",   //公有读，私有写。所有用户可读，仅创建者及管理员可写  
+"PRIVATE",    //私有读写，仅创建者及管理员可读写  
+"ADMINWRITE", //所有用户可读，仅管理员可写  
+"ADMINONLY",  //仅管理员可操作  
+"CUSTOM",     // 安全规则
+        :type AclTag: str
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _Rule: 自定义规则
+        :type Rule: str
+        """
+        self._AclTag = None
+        self._EnvId = None
+        self._Rule = None
+
+    @property
+    def AclTag(self):
+        r""""READONLY",   //公有读，私有写。所有用户可读，仅创建者及管理员可写  
+"PRIVATE",    //私有读写，仅创建者及管理员可读写  
+"ADMINWRITE", //所有用户可读，仅管理员可写  
+"ADMINONLY",  //仅管理员可操作  
+"CUSTOM",     // 安全规则
+        :rtype: str
+        """
+        return self._AclTag
+
+    @AclTag.setter
+    def AclTag(self, AclTag):
+        self._AclTag = AclTag
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Rule(self):
+        r"""自定义规则
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._AclTag = params.get("AclTag")
+        self._EnvId = params.get("EnvId")
+        self._Rule = params.get("Rule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18330,6 +20631,112 @@ class StorageInfo(AbstractModel):
         
 
 
+class TableInfo(AbstractModel):
+    r"""表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _Count: 表中文档数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _Size: 表的大小（即表中文档总大小），单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _IndexCount: 索引数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexCount: int
+        :param _IndexSize: 索引占用空间，单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexSize: int
+        """
+        self._TableName = None
+        self._Count = None
+        self._Size = None
+        self._IndexCount = None
+        self._IndexSize = None
+
+    @property
+    def TableName(self):
+        r"""表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Count(self):
+        r"""表中文档数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Size(self):
+        r"""表的大小（即表中文档总大小），单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def IndexCount(self):
+        r"""索引数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndexCount
+
+    @IndexCount.setter
+    def IndexCount(self, IndexCount):
+        self._IndexCount = IndexCount
+
+    @property
+    def IndexSize(self):
+        r"""索引占用空间，单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndexSize
+
+    @IndexSize.setter
+    def IndexSize(self, IndexSize):
+        self._IndexSize = IndexSize
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Count = params.get("Count")
+        self._Size = params.get("Size")
+        self._IndexCount = params.get("IndexCount")
+        self._IndexSize = params.get("IndexSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     r"""标签键值对
 
@@ -18564,6 +20971,313 @@ class UnfreezeCloudBaseRunServersResponse(AbstractModel):
         self._Result = params.get("Result")
         self._FailServerList = params.get("FailServerList")
         self._RequestId = params.get("RequestId")
+
+
+class UpdateTableRequest(AbstractModel):
+    r"""UpdateTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 表名
+        :type TableName: str
+        :param _Tag: FlexDB实例ID
+        :type Tag: str
+        :param _DropIndexes: 待删除索引信息
+        :type DropIndexes: list of DropIndex
+        :param _CreateIndexes: 待创建索引信息
+        :type CreateIndexes: list of CreateIndex
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _MongoConnector: MongoDB连接器配置
+        :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        self._TableName = None
+        self._Tag = None
+        self._DropIndexes = None
+        self._CreateIndexes = None
+        self._EnvId = None
+        self._MongoConnector = None
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Tag(self):
+        r"""FlexDB实例ID
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def DropIndexes(self):
+        r"""待删除索引信息
+        :rtype: list of DropIndex
+        """
+        return self._DropIndexes
+
+    @DropIndexes.setter
+    def DropIndexes(self, DropIndexes):
+        self._DropIndexes = DropIndexes
+
+    @property
+    def CreateIndexes(self):
+        r"""待创建索引信息
+        :rtype: list of CreateIndex
+        """
+        return self._CreateIndexes
+
+    @CreateIndexes.setter
+    def CreateIndexes(self, CreateIndexes):
+        self._CreateIndexes = CreateIndexes
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MongoConnector(self):
+        r"""MongoDB连接器配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        """
+        return self._MongoConnector
+
+    @MongoConnector.setter
+    def MongoConnector(self, MongoConnector):
+        self._MongoConnector = MongoConnector
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Tag = params.get("Tag")
+        if params.get("DropIndexes") is not None:
+            self._DropIndexes = []
+            for item in params.get("DropIndexes"):
+                obj = DropIndex()
+                obj._deserialize(item)
+                self._DropIndexes.append(obj)
+        if params.get("CreateIndexes") is not None:
+            self._CreateIndexes = []
+            for item in params.get("CreateIndexes"):
+                obj = CreateIndex()
+                obj._deserialize(item)
+                self._CreateIndexes.append(obj)
+        self._EnvId = params.get("EnvId")
+        if params.get("MongoConnector") is not None:
+            self._MongoConnector = MongoConnector()
+            self._MongoConnector._deserialize(params.get("MongoConnector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableResponse(AbstractModel):
+    r"""UpdateTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class User(AbstractModel):
+    r"""用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uid: 用户ID
+        :type Uid: str
+        :param _Name: 用户名
+        :type Name: str
+        :param _Type: 用户类型：internalUser-内部用户、externalUser-外部用户
+        :type Type: str
+        :param _UserStatus: 用户状态：ACTIVE（激活）、BLOCKED（冻结）
+        :type UserStatus: str
+        :param _NickName: 用户昵称
+        :type NickName: str
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _Email: 邮箱
+        :type Email: str
+        :param _AvatarUrl: 头像链接
+        :type AvatarUrl: str
+        :param _Description: 用户描述
+        :type Description: str
+        """
+        self._Uid = None
+        self._Name = None
+        self._Type = None
+        self._UserStatus = None
+        self._NickName = None
+        self._Phone = None
+        self._Email = None
+        self._AvatarUrl = None
+        self._Description = None
+
+    @property
+    def Uid(self):
+        r"""用户ID
+        :rtype: str
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Name(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""用户类型：internalUser-内部用户、externalUser-外部用户
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UserStatus(self):
+        r"""用户状态：ACTIVE（激活）、BLOCKED（冻结）
+        :rtype: str
+        """
+        return self._UserStatus
+
+    @UserStatus.setter
+    def UserStatus(self, UserStatus):
+        self._UserStatus = UserStatus
+
+    @property
+    def NickName(self):
+        r"""用户昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        r"""邮箱
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AvatarUrl(self):
+        r"""头像链接
+        :rtype: str
+        """
+        return self._AvatarUrl
+
+    @AvatarUrl.setter
+    def AvatarUrl(self, AvatarUrl):
+        self._AvatarUrl = AvatarUrl
+
+    @property
+    def Description(self):
+        r"""用户描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Uid = params.get("Uid")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._UserStatus = params.get("UserStatus")
+        self._NickName = params.get("NickName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._AvatarUrl = params.get("AvatarUrl")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WxGatewayCustomConfig(AbstractModel):

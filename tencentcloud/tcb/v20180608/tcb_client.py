@@ -256,6 +256,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTable(self, request):
+        r"""本接口(CreateTable)用于创建表，支持创建capped类型集合，暂时不支持分片表
+
+        :param request: Request instance for CreateTable.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateTableRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUser(self, request):
+        r"""创建tcb用户
+
+        :param request: Request instance for CreateUser.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateUserRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudBaseProjectLatestVersion(self, request):
         r"""删除云项目
 
@@ -316,6 +362,52 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteGatewayVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGatewayVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTable(self, request):
+        r"""本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+
+        :param request: Request instance for DeleteTable.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteTableRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUsers(self, request):
+        r"""删除tcb用户
+
+        :param request: Request instance for DeleteUsers.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteUsersRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUsersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1111,6 +1203,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTable(self, request):
+        r"""查询表的相关信息，包括索引等信息
+
+        :param request: Request instance for DescribeTable.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeTableRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTables(self, request):
+        r"""本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+
+        :param request: Request instance for DescribeTables.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeTablesRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserActivityInfo(self, request):
         r"""查询用户活动信息
 
@@ -1125,6 +1263,29 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeUserActivityInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserActivityInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserList(self, request):
+        r"""查询tcb用户列表
+
+        :param request: Request instance for DescribeUserList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1318,6 +1479,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTables(self, request):
+        r"""本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+
+        :param request: Request instance for ListTables.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ListTablesRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ListTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCloudBaseRunServerFlowConf(self, request):
         r"""修改容器内的版本流量配置
 
@@ -1456,6 +1640,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUser(self, request):
+        r"""修改tcb用户
+
+        :param request: Request instance for ModifyUser.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyUserRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReinstateEnv(self, request):
         r"""针对已隔离的免费环境，可以通过本接口将其恢复访问。
 
@@ -1539,6 +1746,29 @@ class TcbClient(AbstractClient):
             body = self.call("UnfreezeCloudBaseRunServers", params, headers=headers)
             response = json.loads(body)
             model = models.UnfreezeCloudBaseRunServersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTable(self, request):
+        r"""本接口(UpdateTable)用于修改表信息，当前可以支持创建和删除索引
+
+        :param request: Request instance for UpdateTable.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UpdateTableRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpdateTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

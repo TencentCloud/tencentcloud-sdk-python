@@ -511,6 +511,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataReportCountV2(
+            self,
+            request: models.DescribeDataReportCountV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataReportCountV2Response:
+        """
+        获取项目上报量
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataReportCountV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataReportCountV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataSetUrlStatistics(
             self,
             request: models.DescribeDataSetUrlStatisticsRequest,

@@ -7960,6 +7960,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type SpecifiedSubBackupId: int
         :param _MasterZone: 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
         :type MasterZone: str
+        :param _Zone: 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+        :type Zone: str
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -7988,6 +7990,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._SrcRegion = None
         self._SpecifiedSubBackupId = None
         self._MasterZone = None
+        self._Zone = None
 
     @property
     def InstanceId(self):
@@ -8279,6 +8282,8 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def MasterZone(self):
+        warnings.warn("parameter `MasterZone` is deprecated", DeprecationWarning) 
+
         r"""新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
         :rtype: str
         """
@@ -8286,7 +8291,20 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @MasterZone.setter
     def MasterZone(self, MasterZone):
+        warnings.warn("parameter `MasterZone` is deprecated", DeprecationWarning) 
+
         self._MasterZone = MasterZone
+
+    @property
+    def Zone(self):
+        r"""新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
 
     def _deserialize(self, params):
@@ -8324,6 +8342,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._SrcRegion = params.get("SrcRegion")
         self._SpecifiedSubBackupId = params.get("SpecifiedSubBackupId")
         self._MasterZone = params.get("MasterZone")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

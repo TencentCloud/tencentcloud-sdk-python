@@ -25307,7 +25307,7 @@ ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类�
 - Metalake，固定为default
 - Catalog，取catalogName
 - Schema，取catalogName.SchemaName
-- Table,，取catalogName.SchemaName.TableName
+- Table，取catalogName.SchemaName.TableName
         :type Resource: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
         :param _Filters: 过滤条件(此参数还未支持)
         :type Filters: list of SecurityFilter
@@ -25329,7 +25329,7 @@ ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类�
 - Metalake，固定为default
 - Catalog，取catalogName
 - Schema，取catalogName.SchemaName
-- Table,，取catalogName.SchemaName.TableName
+- Table，取catalogName.SchemaName.TableName
         :rtype: :class:`tencentcloud.wedata.v20250806.models.PrivilegeResource`
         """
         return self._Resource

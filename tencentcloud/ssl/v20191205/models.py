@@ -21451,29 +21451,29 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OldCertificateId: 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        :param _OldCertificateId: <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
         :type OldCertificateId: str
-        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+        :param _ResourceTypes: <p>需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos、mqtt、scf、tdmq、gaap</p>
         :type ResourceTypes: list of str
-        :param _CertificateId: 一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
+        :param _CertificateId: <p>一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传</p>
         :type CertificateId: str
-        :param _Regions: 需要部署的地域列表（废弃）
+        :param _Regions: <p>需要部署的地域列表（废弃）</p>
         :type Regions: list of str
-        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
+        :param _ResourceTypesRegions: <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt、scf、tdmq</p>
         :type ResourceTypesRegions: list of ResourceTypeRegions
-        :param _CertificatePublicKey: 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
+        :param _CertificatePublicKey: <p>公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传</p>
         :type CertificatePublicKey: str
-        :param _CertificatePrivateKey: 私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
+        :param _CertificatePrivateKey: <p>私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传</p>
         :type CertificatePrivateKey: str
-        :param _ExpiringNotificationSwitch: 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+        :param _ExpiringNotificationSwitch: <p>旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒</p>
         :type ExpiringNotificationSwitch: int
-        :param _Repeatable: 相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
+        :param _Repeatable: <p>相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败</p>
         :type Repeatable: bool
-        :param _AllowDownload: 是否允许下载，若选择上传公私钥证书， 则可以配置该参数
+        :param _AllowDownload: <p>是否允许下载，若选择上传公私钥证书， 则可以配置该参数</p>
         :type AllowDownload: bool
-        :param _Tags: 标签列表，若选择上传公私钥证书， 则可以配置该参数
+        :param _Tags: <p>标签列表，若选择上传公私钥证书， 则可以配置该参数</p>
         :type Tags: list of Tags
-        :param _ProjectId: 项目 ID，若选择上传公私钥证书， 则可以配置该参数
+        :param _ProjectId: <p>项目 ID，若选择上传公私钥证书， 则可以配置该参数</p>
         :type ProjectId: int
         """
         self._OldCertificateId = None
@@ -21491,7 +21491,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        r"""一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        r"""<p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
         :rtype: str
         """
         return self._OldCertificateId
@@ -21502,7 +21502,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        r"""需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+        r"""<p>需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos、mqtt、scf、tdmq、gaap</p>
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -21513,7 +21513,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        r"""一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
+        r"""<p>一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传</p>
         :rtype: str
         """
         return self._CertificateId
@@ -21526,7 +21526,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     def Regions(self):
         warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
 
-        r"""需要部署的地域列表（废弃）
+        r"""<p>需要部署的地域列表（废弃）</p>
         :rtype: list of str
         """
         return self._Regions
@@ -21539,7 +21539,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
+        r"""<p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt、scf、tdmq</p>
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -21550,7 +21550,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        r"""公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
+        r"""<p>公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传</p>
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -21561,7 +21561,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        r"""私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
+        r"""<p>私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传</p>
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -21572,7 +21572,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ExpiringNotificationSwitch(self):
-        r"""旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+        r"""<p>旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒</p>
         :rtype: int
         """
         return self._ExpiringNotificationSwitch
@@ -21583,7 +21583,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Repeatable(self):
-        r"""相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
+        r"""<p>相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败</p>
         :rtype: bool
         """
         return self._Repeatable
@@ -21594,7 +21594,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def AllowDownload(self):
-        r"""是否允许下载，若选择上传公私钥证书， 则可以配置该参数
+        r"""<p>是否允许下载，若选择上传公私钥证书， 则可以配置该参数</p>
         :rtype: bool
         """
         return self._AllowDownload
@@ -21605,7 +21605,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表，若选择上传公私钥证书， 则可以配置该参数
+        r"""<p>标签列表，若选择上传公私钥证书， 则可以配置该参数</p>
         :rtype: list of Tags
         """
         return self._Tags
@@ -21616,7 +21616,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID，若选择上传公私钥证书， 则可以配置该参数
+        r"""<p>项目 ID，若选择上传公私钥证书， 则可以配置该参数</p>
         :rtype: int
         """
         return self._ProjectId
@@ -21666,11 +21666,11 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        :param _DeployRecordId: <p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
         :type DeployRecordId: int
-        :param _DeployStatus: 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        :param _DeployStatus: <p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
         :type DeployStatus: int
-        :param _UpdateSyncProgress: 更新异步创建任务进度详情
+        :param _UpdateSyncProgress: <p>更新异步创建任务进度详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateSyncProgress: list of UpdateSyncProgress
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21683,7 +21683,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        r"""云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""<p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
         :rtype: int
         """
         return self._DeployRecordId
@@ -21694,7 +21694,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
-        r"""更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        r"""<p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
         :rtype: int
         """
         return self._DeployStatus
@@ -21705,7 +21705,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def UpdateSyncProgress(self):
-        r"""更新异步创建任务进度详情
+        r"""<p>更新异步创建任务进度详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateSyncProgress
         """

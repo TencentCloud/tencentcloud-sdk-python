@@ -1402,6 +1402,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLMInformationExtractionTaskFieldFeedback(
+            self,
+            request: models.CreateLMInformationExtractionTaskFieldFeedbackRequest,
+            opts: Dict = None,
+    ) -> models.CreateLMInformationExtractionTaskFieldFeedbackResponse:
+        """
+        此接口（CreateLMInformationExtractionTaskFieldFeedback）用于创建合同智能提取任务字段结果的反馈。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLMInformationExtractionTaskFieldFeedback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLMInformationExtractionTaskFieldFeedbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLegalSealQrCode(
             self,
             request: models.CreateLegalSealQrCodeRequest,
@@ -1813,6 +1831,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "CreateReleaseFlow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateReleaseFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRiskIdentificationTaskFeedback(
+            self,
+            request: models.CreateRiskIdentificationTaskFeedbackRequest,
+            opts: Dict = None,
+    ) -> models.CreateRiskIdentificationTaskFeedbackResponse:
+        """
+        此接口（CreateRiskIdentificationTaskFeedback）用于创建合同审查任务结果反馈。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRiskIdentificationTaskFeedback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRiskIdentificationTaskFeedbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2816,6 +2852,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLMInformationExtractionTaskFieldFeedback(
+            self,
+            request: models.DescribeLMInformationExtractionTaskFieldFeedbackRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLMInformationExtractionTaskFieldFeedbackResponse:
+        """
+        此接口（DescribeLMInformationExtractionTaskFieldFeedback）用于查询合同智能提取任务字段反馈信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLMInformationExtractionTaskFieldFeedback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLMInformationExtractionTaskFieldFeedbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeOrganizationAuthStatus(
             self,
             request: models.DescribeOrganizationAuthStatusRequest,
@@ -2905,6 +2959,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "DescribePersonCertificate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePersonCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskIdentificationTaskFeedback(
+            self,
+            request: models.DescribeRiskIdentificationTaskFeedbackRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskIdentificationTaskFeedbackResponse:
+        """
+        此接口（DescribeRiskIdentificationTaskFeedback）用于查询合同审查任务结果反馈信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskIdentificationTaskFeedback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskIdentificationTaskFeedbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

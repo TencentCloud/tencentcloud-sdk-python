@@ -3203,6 +3203,8 @@ class SubmitVideoEditJobRequest(AbstractModel):
 - 支持jpg，png，jpeg，webp，bmp，tiff 格式
 - 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
         :type Image: :class:`tencentcloud.vclm.v20240523.models.Image`
+        :param _VideoEditParam: 扩展字段。
+        :type VideoEditParam: :class:`tencentcloud.vclm.v20240523.models.VideoEditParam`
         :param _LogoAdd: 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
 1：添加标识；
 0：不添加标识；
@@ -3219,6 +3221,7 @@ class SubmitVideoEditJobRequest(AbstractModel):
         self._Prompt = None
         self._Images = None
         self._Image = None
+        self._VideoEditParam = None
         self._LogoAdd = None
         self._LogoParam = None
 
@@ -3286,6 +3289,17 @@ class SubmitVideoEditJobRequest(AbstractModel):
         self._Image = Image
 
     @property
+    def VideoEditParam(self):
+        r"""扩展字段。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.VideoEditParam`
+        """
+        return self._VideoEditParam
+
+    @VideoEditParam.setter
+    def VideoEditParam(self, VideoEditParam):
+        self._VideoEditParam = VideoEditParam
+
+    @property
     def LogoAdd(self):
         r"""为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
 1：添加标识；
@@ -3327,6 +3341,9 @@ class SubmitVideoEditJobRequest(AbstractModel):
         if params.get("Image") is not None:
             self._Image = Image()
             self._Image._deserialize(params.get("Image"))
+        if params.get("VideoEditParam") is not None:
+            self._VideoEditParam = VideoEditParam()
+            self._VideoEditParam._deserialize(params.get("VideoEditParam"))
         self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()
@@ -3853,3 +3870,41 @@ class SubmitVideoVoiceJobResponse(AbstractModel):
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
+
+
+class VideoEditParam(AbstractModel):
+    r"""视频编辑参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Magic: 魔法词，针对特定场景生效。不同场景传不同的值。默认不传。
+- 换人场景：1
+        :type Magic: str
+        """
+        self._Magic = None
+
+    @property
+    def Magic(self):
+        r"""魔法词，针对特定场景生效。不同场景传不同的值。默认不传。
+- 换人场景：1
+        :rtype: str
+        """
+        return self._Magic
+
+    @Magic.setter
+    def Magic(self, Magic):
+        self._Magic = Magic
+
+
+    def _deserialize(self, params):
+        self._Magic = params.get("Magic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

@@ -205,6 +205,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTable(
+            self,
+            request: models.CreateTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateTableResponse:
+        """
+        本接口(CreateTable)用于创建表，支持创建capped类型集合，暂时不支持分片表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateUser(
+            self,
+            request: models.CreateUserRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserResponse:
+        """
+        创建tcb用户
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudBaseProjectLatestVersion(
             self,
             request: models.DeleteCloudBaseProjectLatestVersionRequest,
@@ -254,6 +290,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteGatewayVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteGatewayVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTable(
+            self,
+            request: models.DeleteTableRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTableResponse:
+        """
+        本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUsers(
+            self,
+            request: models.DeleteUsersRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUsersResponse:
+        """
+        删除tcb用户
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUsersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -875,6 +947,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTable(
+            self,
+            request: models.DescribeTableRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTableResponse:
+        """
+        查询表的相关信息，包括索引等信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTables(
+            self,
+            request: models.DescribeTablesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTablesResponse:
+        """
+        本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserActivityInfo(
             self,
             request: models.DescribeUserActivityInfoRequest,
@@ -888,6 +996,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeUserActivityInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUserActivityInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserList(
+            self,
+            request: models.DescribeUserListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserListResponse:
+        """
+        查询tcb用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1037,6 +1163,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListTables(
+            self,
+            request: models.ListTablesRequest,
+            opts: Dict = None,
+    ) -> models.ListTablesResponse:
+        """
+        本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCloudBaseRunServerFlowConf(
             self,
             request: models.ModifyCloudBaseRunServerFlowConfRequest,
@@ -1145,6 +1289,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyUser(
+            self,
+            request: models.ModifyUserRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserResponse:
+        """
+        修改tcb用户
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReinstateEnv(
             self,
             request: models.ReinstateEnvRequest,
@@ -1212,6 +1374,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "UnfreezeCloudBaseRunServers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnfreezeCloudBaseRunServersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTable(
+            self,
+            request: models.UpdateTableRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTableResponse:
+        """
+        本接口(UpdateTable)用于修改表信息，当前可以支持创建和删除索引
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
