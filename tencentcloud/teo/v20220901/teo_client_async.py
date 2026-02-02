@@ -113,7 +113,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CheckCnameStatusResponse:
         """
-        校验域名 CNAME 状态
+        当站点接入类型为 CNAME 接入类型时，要求该站点下的所有接入域名必须按照 EdgeOne 分配的指定 CNAME 域名完成 CNAME 记录配置。
+        您可以通过本接口获取 EdgeOne 为接入域名分配的指定 CNAME 域名，并且可以通过本接口完成对接入域名的 CNAME 配置状态的校验。
         """
         
         kwargs = {}

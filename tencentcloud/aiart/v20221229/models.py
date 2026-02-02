@@ -4048,36 +4048,23 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Prompt: 文本描述。 
-算法将根据输入的文本智能生成与之相关的图像。 
-不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
+        :param _Prompt: <p>文本描述。<br>算法将根据输入的文本智能生成与之相关的图像。<br>不能为空，推荐使用中文。最多可传1024个 utf-8 字符。</p>
         :type Prompt: str
-        :param _Resolution: 生成图分辨率，默认1024:1024：
- - 宽高维度均在 [512, 2048] 像素范围内;
- - 宽高乘积（即图像面积）不超过 1024×1024 像素;
+        :param _Images: <p>垫图url列表，大小不超过10MB，支持 jpg jpeg png webp格式，最多3张图</p>
+        :type Images: list of str
+        :param _Resolution: <p>生成图分辨率，默认1024:1024：</p><ul><li>宽高维度均在 [512, 2048] 像素范围内;</li><li>宽高乘积（即图像面积）不超过 1024×1024 像素;</li></ul>
         :type Resolution: str
-        :param _Seed: 随机种子，默认随机。
-不传：随机种子生成。
-正数：固定种子生成。
-扩写开启时固定种子不生效，将保持随机。
+        :param _Seed: <p>随机种子，默认随机。<br>不传：随机种子生成。<br>正数：固定种子生成。<br>扩写开启时固定种子不生效，将保持随机。</p>
         :type Seed: int
-        :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
-1：添加。  
-0：不添加。  
-其他数值：默认按1处理。  
-建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :param _LogoAdd: <p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。</p>
         :type LogoAdd: int
-        :param _LogoParam: 标识内容设置。
-默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :param _LogoParam: <p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
         :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
-        :param _Revise: 是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
-0：关闭改写
-1：开启改写
-建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
-示例值：1
+        :param _Revise: <p>是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。<br>0：关闭改写<br>1：开启改写<br>建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：<a href="https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE">改写</a><br>示例值：1</p>
         :type Revise: int
         """
         self._Prompt = None
+        self._Images = None
         self._Resolution = None
         self._Seed = None
         self._LogoAdd = None
@@ -4086,9 +4073,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""文本描述。 
-算法将根据输入的文本智能生成与之相关的图像。 
-不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
+        r"""<p>文本描述。<br>算法将根据输入的文本智能生成与之相关的图像。<br>不能为空，推荐使用中文。最多可传1024个 utf-8 字符。</p>
         :rtype: str
         """
         return self._Prompt
@@ -4098,10 +4083,19 @@ class SubmitTextToImageJobRequest(AbstractModel):
         self._Prompt = Prompt
 
     @property
+    def Images(self):
+        r"""<p>垫图url列表，大小不超过10MB，支持 jpg jpeg png webp格式，最多3张图</p>
+        :rtype: list of str
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
     def Resolution(self):
-        r"""生成图分辨率，默认1024:1024：
- - 宽高维度均在 [512, 2048] 像素范围内;
- - 宽高乘积（即图像面积）不超过 1024×1024 像素;
+        r"""<p>生成图分辨率，默认1024:1024：</p><ul><li>宽高维度均在 [512, 2048] 像素范围内;</li><li>宽高乘积（即图像面积）不超过 1024×1024 像素;</li></ul>
         :rtype: str
         """
         return self._Resolution
@@ -4112,10 +4106,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def Seed(self):
-        r"""随机种子，默认随机。
-不传：随机种子生成。
-正数：固定种子生成。
-扩写开启时固定种子不生效，将保持随机。
+        r"""<p>随机种子，默认随机。<br>不传：随机种子生成。<br>正数：固定种子生成。<br>扩写开启时固定种子不生效，将保持随机。</p>
         :rtype: int
         """
         return self._Seed
@@ -4126,11 +4117,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
-        r"""为生成结果图添加显式水印标识的开关，默认为1。  
-1：添加。  
-0：不添加。  
-其他数值：默认按1处理。  
-建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        r"""<p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。</p>
         :rtype: int
         """
         return self._LogoAdd
@@ -4141,8 +4128,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
-        r"""标识内容设置。
-默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        r"""<p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         """
         return self._LogoParam
@@ -4153,11 +4139,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     @property
     def Revise(self):
-        r"""是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
-0：关闭改写
-1：开启改写
-建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
-示例值：1
+        r"""<p>是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。<br>0：关闭改写<br>1：开启改写<br>建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：<a href="https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE">改写</a><br>示例值：1</p>
         :rtype: int
         """
         return self._Revise
@@ -4169,6 +4151,7 @@ class SubmitTextToImageJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
+        self._Images = params.get("Images")
         self._Resolution = params.get("Resolution")
         self._Seed = params.get("Seed")
         self._LogoAdd = params.get("LogoAdd")
@@ -4193,7 +4176,7 @@ class SubmitTextToImageJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务 ID。
+        :param _JobId: <p>任务 ID。</p>
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4203,7 +4186,7 @@ class SubmitTextToImageJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._JobId

@@ -6803,19 +6803,17 @@ class ScanVoiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :param _BizId: <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
         :type BizId: int
-        :param _Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+        :param _Scenes: <p>语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a></p>
         :type Scenes: list of str
-        :param _Live: 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+        :param _Live: <p>是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。</p>
         :type Live: bool
-        :param _Tasks: 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
-<li>DataId：数据的唯一ID</li>
-<li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+        :param _Tasks: <p>语音检测任务列表，列表最多支持100个检测任务。结构体中包含：</p><li>DataId：数据的唯一ID</li><li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
         :type Tasks: list of Task
-        :param _Callback: 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+        :param _Callback: <p>异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。</p>
         :type Callback: str
-        :param _Lang: 语种，不传默认中文
+        :param _Lang: <p>语种，不传默认中文</p>
         :type Lang: str
         """
         self._BizId = None
@@ -6827,7 +6825,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def BizId(self):
-        r"""应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        r"""<p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
         :rtype: int
         """
         return self._BizId
@@ -6838,7 +6836,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def Scenes(self):
-        r"""语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+        r"""<p>语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a></p>
         :rtype: list of str
         """
         return self._Scenes
@@ -6849,7 +6847,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def Live(self):
-        r"""是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+        r"""<p>是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。</p>
         :rtype: bool
         """
         return self._Live
@@ -6860,9 +6858,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
-<li>DataId：数据的唯一ID</li>
-<li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+        r"""<p>语音检测任务列表，列表最多支持100个检测任务。结构体中包含：</p><li>DataId：数据的唯一ID</li><li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
         :rtype: list of Task
         """
         return self._Tasks
@@ -6873,7 +6869,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def Callback(self):
-        r"""异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+        r"""<p>异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。</p>
         :rtype: str
         """
         return self._Callback
@@ -6884,7 +6880,7 @@ class ScanVoiceRequest(AbstractModel):
 
     @property
     def Lang(self):
-        r"""语种，不传默认中文
+        r"""<p>语种，不传默认中文</p>
         :rtype: str
         """
         return self._Lang
@@ -6923,8 +6919,7 @@ class ScanVoiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
-<li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+        :param _Data: <p>语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li></p><li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
         :type Data: list of ScanVoiceResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6934,8 +6929,7 @@ class ScanVoiceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
-<li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+        r"""<p>语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li></p><li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
         :rtype: list of ScanVoiceResult
         """
         return self._Data

@@ -18,6 +18,73 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AICrawlerDetection(AbstractModel):
+    r"""AI 爬虫检测的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: AI 爬虫检测是否开启。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+
+        :type Enabled: str
+        :param _Action: AI 爬虫检测的执行动作，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值仅支持：
+<li>Deny：拦截；</li>
+<li>Monitor：观察；</li>
+<li>Allow：放行；</li>
+<li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 仅支持 JSChallenge 和 ManagedChallenge。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._Enabled = None
+        self._Action = None
+
+    @property
+    def Enabled(self):
+        r"""AI 爬虫检测是否开启。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        r"""AI 爬虫检测的执行动作，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值仅支持：
+<li>Deny：拦截；</li>
+<li>Monitor：观察；</li>
+<li>Allow：放行；</li>
+<li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 仅支持 JSChallenge 和 ManagedChallenge。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class APIResource(AbstractModel):
     r"""API 资源。
 
@@ -4876,6 +4943,61 @@ class BotManagementCustomRules(AbstractModel):
         
 
 
+class BotManagementLite(AbstractModel):
+    r"""Web 安全的基础 BOT 规则结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CAPTCHAPageChallenge: 人机校验页的具体配置。
+        :type CAPTCHAPageChallenge: :class:`tencentcloud.teo.v20220901.models.CAPTCHAPageChallenge`
+        :param _AICrawlerDetection: AI爬虫检测的具体配置。
+        :type AICrawlerDetection: :class:`tencentcloud.teo.v20220901.models.AICrawlerDetection`
+        """
+        self._CAPTCHAPageChallenge = None
+        self._AICrawlerDetection = None
+
+    @property
+    def CAPTCHAPageChallenge(self):
+        r"""人机校验页的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CAPTCHAPageChallenge`
+        """
+        return self._CAPTCHAPageChallenge
+
+    @CAPTCHAPageChallenge.setter
+    def CAPTCHAPageChallenge(self, CAPTCHAPageChallenge):
+        self._CAPTCHAPageChallenge = CAPTCHAPageChallenge
+
+    @property
+    def AICrawlerDetection(self):
+        r"""AI爬虫检测的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AICrawlerDetection`
+        """
+        return self._AICrawlerDetection
+
+    @AICrawlerDetection.setter
+    def AICrawlerDetection(self, AICrawlerDetection):
+        self._AICrawlerDetection = AICrawlerDetection
+
+
+    def _deserialize(self, params):
+        if params.get("CAPTCHAPageChallenge") is not None:
+            self._CAPTCHAPageChallenge = CAPTCHAPageChallenge()
+            self._CAPTCHAPageChallenge._deserialize(params.get("CAPTCHAPageChallenge"))
+        if params.get("AICrawlerDetection") is not None:
+            self._AICrawlerDetection = AICrawlerDetection()
+            self._AICrawlerDetection._deserialize(params.get("AICrawlerDetection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotPortraitRule(AbstractModel):
     r"""bot 用户画像规则
 
@@ -5645,6 +5767,42 @@ class BrowserImpersonationDetectionRule(AbstractModel):
         if params.get("Action") is not None:
             self._Action = BrowserImpersonationDetectionAction()
             self._Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CAPTCHAPageChallenge(AbstractModel):
+    r"""人机校验页的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 人机校验页是否开启，取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""人机校验页是否开启，取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7119,7 +7277,7 @@ class CheckCnameStatusRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _RecordNames: 加速域名列表。
+        :param _RecordNames: 需要检测 CNAME 配置状态的域名列表，可以为：<li>加速域名;</li><li>别称域名。</li>
         :type RecordNames: list of str
         """
         self._ZoneId = None
@@ -7138,7 +7296,7 @@ class CheckCnameStatusRequest(AbstractModel):
 
     @property
     def RecordNames(self):
-        r"""加速域名列表。
+        r"""需要检测 CNAME 配置状态的域名列表，可以为：<li>加速域名;</li><li>别称域名。</li>
         :rtype: list of str
         """
         return self._RecordNames
@@ -7168,7 +7326,7 @@ class CheckCnameStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CnameStatus: 加速域名 CNAME 状态信息列表。
+        :param _CnameStatus: 接入域名的 CNAME 配置状态信息列表。
         :type CnameStatus: list of CnameStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7178,7 +7336,7 @@ class CheckCnameStatusResponse(AbstractModel):
 
     @property
     def CnameStatus(self):
-        r"""加速域名 CNAME 状态信息列表。
+        r"""接入域名的 CNAME 配置状态信息列表。
         :rtype: list of CnameStatus
         """
         return self._CnameStatus
@@ -8157,20 +8315,20 @@ class ClientIpHeader(AbstractModel):
 
 
 class CnameStatus(AbstractModel):
-    r"""CNAME 状态
+    r"""接入域名 CNAME 配置状态
 
     """
 
     def __init__(self):
         r"""
-        :param _RecordName: 记录名称。
+        :param _RecordName: 接入域名。
         :type RecordName: str
-        :param _Cname: CNAME 地址。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Cname: EdgeOne 分配给接入域名的 CNAME。
         :type Cname: str
-        :param _Status: CNAME 状态信息，取值有：
-<li>active：生效；</li>
-<li>moved：不生效；</li>
+        :param _Status: CNAME 配置状态校验结果，取值有：
+<li>active：表示接入域名已正确配置到 EdgeOne 为其分配的指定 CNAME；</li>
+<li>moved：表示接入域名未配置到 EdgeOne 为其分配的指定 CNAME；</li>
+<li>invalid：表示接入域名配置的 CNAME 为 EdgeOne 为其他域名分配的 CNAME，会导致服务异常，请修改为 EdgeOne 为该接入域名提供的指定 CNAME，您可通过本结构体的 Cname 字段获取 EdgeOne 为该接入域名提供的 CNAME。</li>
         :type Status: str
         """
         self._RecordName = None
@@ -8179,7 +8337,7 @@ class CnameStatus(AbstractModel):
 
     @property
     def RecordName(self):
-        r"""记录名称。
+        r"""接入域名。
         :rtype: str
         """
         return self._RecordName
@@ -8190,8 +8348,7 @@ class CnameStatus(AbstractModel):
 
     @property
     def Cname(self):
-        r"""CNAME 地址。
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""EdgeOne 分配给接入域名的 CNAME。
         :rtype: str
         """
         return self._Cname
@@ -8202,9 +8359,10 @@ class CnameStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""CNAME 状态信息，取值有：
-<li>active：生效；</li>
-<li>moved：不生效；</li>
+        r"""CNAME 配置状态校验结果，取值有：
+<li>active：表示接入域名已正确配置到 EdgeOne 为其分配的指定 CNAME；</li>
+<li>moved：表示接入域名未配置到 EdgeOne 为其分配的指定 CNAME；</li>
+<li>invalid：表示接入域名配置的 CNAME 为 EdgeOne 为其他域名分配的 CNAME，会导致服务异常，请修改为 EdgeOne 为该接入域名提供的指定 CNAME，您可通过本结构体的 Cname 字段获取 EdgeOne 为该接入域名提供的 CNAME。</li>
         :rtype: str
         """
         return self._Status
@@ -53240,6 +53398,8 @@ class SecurityPolicy(AbstractModel):
         :type ExceptionRules: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
         :param _BotManagement: Bot 管理配置。
         :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
+        :param _BotManagementLite: 基础 Bot 管理配置。
+        :type BotManagementLite: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
         """
         self._CustomRules = None
         self._ManagedRules = None
@@ -53247,6 +53407,7 @@ class SecurityPolicy(AbstractModel):
         self._RateLimitingRules = None
         self._ExceptionRules = None
         self._BotManagement = None
+        self._BotManagementLite = None
 
     @property
     def CustomRules(self):
@@ -53314,6 +53475,17 @@ class SecurityPolicy(AbstractModel):
     def BotManagement(self, BotManagement):
         self._BotManagement = BotManagement
 
+    @property
+    def BotManagementLite(self):
+        r"""基础 Bot 管理配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
+        """
+        return self._BotManagementLite
+
+    @BotManagementLite.setter
+    def BotManagementLite(self, BotManagementLite):
+        self._BotManagementLite = BotManagementLite
+
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
@@ -53334,6 +53506,9 @@ class SecurityPolicy(AbstractModel):
         if params.get("BotManagement") is not None:
             self._BotManagement = BotManagement()
             self._BotManagement._deserialize(params.get("BotManagement"))
+        if params.get("BotManagementLite") is not None:
+            self._BotManagementLite = BotManagementLite()
+            self._BotManagementLite._deserialize(params.get("BotManagementLite"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

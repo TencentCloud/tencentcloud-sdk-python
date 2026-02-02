@@ -31079,11 +31079,10 @@ class QAQuery(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 页码
-
+        :param _PageNumber: 页码 从1开始
 
         :type PageNumber: int
-        :param _PageSize: 每页数量
+        :param _PageSize: 页大小 默认15 最大100
 
         :type PageSize: int
         :param _BotBizId: 应用ID
@@ -31094,10 +31093,10 @@ class QAQuery(AbstractModel):
         :param _CateBizId: 分类ID
 
         :type CateBizId: str
-        :param _AcceptStatus: 校验状态
+        :param _AcceptStatus: 校验状态的枚举值
 
         :type AcceptStatus: list of int non-negative
-        :param _ReleaseStatus: 发布状态
+        :param _ReleaseStatus: 发布状态的枚举值
 
         :type ReleaseStatus: list of int non-negative
         :param _DocBizId: 文档ID
@@ -31114,6 +31113,9 @@ class QAQuery(AbstractModel):
         :type QueryAnswer: str
         :param _QueryType: 查询类型 filename 名称、 attribute 标签
         :type QueryType: str
+        :param _EnableScope: 问答生效域检索，不检索不传。枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        :type EnableScope: int
         """
         self._PageNumber = None
         self._PageSize = None
@@ -31127,11 +31129,11 @@ class QAQuery(AbstractModel):
         self._Source = None
         self._QueryAnswer = None
         self._QueryType = None
+        self._EnableScope = None
 
     @property
     def PageNumber(self):
-        r"""页码
-
+        r"""页码 从1开始
 
         :rtype: int
         """
@@ -31143,7 +31145,7 @@ class QAQuery(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""页大小 默认15 最大100
 
         :rtype: int
         """
@@ -31190,7 +31192,7 @@ class QAQuery(AbstractModel):
 
     @property
     def AcceptStatus(self):
-        r"""校验状态
+        r"""校验状态的枚举值
 
         :rtype: list of int non-negative
         """
@@ -31202,7 +31204,7 @@ class QAQuery(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态
+        r"""发布状态的枚举值
 
         :rtype: list of int non-negative
         """
@@ -31271,6 +31273,18 @@ class QAQuery(AbstractModel):
     def QueryType(self, QueryType):
         self._QueryType = QueryType
 
+    @property
+    def EnableScope(self):
+        r"""问答生效域检索，不检索不传。枚举值如下：
+1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -31285,6 +31299,7 @@ class QAQuery(AbstractModel):
         self._Source = params.get("Source")
         self._QueryAnswer = params.get("QueryAnswer")
         self._QueryType = params.get("QueryType")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

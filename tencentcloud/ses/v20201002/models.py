@@ -4476,10 +4476,11 @@ class SendEmailRequest(AbstractModel):
         r"""
         :param _FromEmailAddress: 发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
         :type FromEmailAddress: str
-        :param _Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-        :type Destination: list of str
         :param _Subject: 邮件主题
         :type Subject: str
+        :param _Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+Destination/Cc/Bcc三个参数必须至少存在一个。
+        :type Destination: list of str
         :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :type ReplyToAddresses: str
         :param _Cc: 抄送人邮箱地址，最多支持抄送20人。
@@ -4506,8 +4507,8 @@ class SendEmailRequest(AbstractModel):
         :type HeaderFrom: str
         """
         self._FromEmailAddress = None
-        self._Destination = None
         self._Subject = None
+        self._Destination = None
         self._ReplyToAddresses = None
         self._Cc = None
         self._Bcc = None
@@ -4532,17 +4533,6 @@ class SendEmailRequest(AbstractModel):
         self._FromEmailAddress = FromEmailAddress
 
     @property
-    def Destination(self):
-        r"""收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-        :rtype: list of str
-        """
-        return self._Destination
-
-    @Destination.setter
-    def Destination(self, Destination):
-        self._Destination = Destination
-
-    @property
     def Subject(self):
         r"""邮件主题
         :rtype: str
@@ -4552,6 +4542,18 @@ class SendEmailRequest(AbstractModel):
     @Subject.setter
     def Subject(self, Subject):
         self._Subject = Subject
+
+    @property
+    def Destination(self):
+        r"""收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+Destination/Cc/Bcc三个参数必须至少存在一个。
+        :rtype: list of str
+        """
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
 
     @property
     def ReplyToAddresses(self):
@@ -4679,8 +4681,8 @@ class SendEmailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FromEmailAddress = params.get("FromEmailAddress")
-        self._Destination = params.get("Destination")
         self._Subject = params.get("Subject")
+        self._Destination = params.get("Destination")
         self._ReplyToAddresses = params.get("ReplyToAddresses")
         self._Cc = params.get("Cc")
         self._Bcc = params.get("Bcc")

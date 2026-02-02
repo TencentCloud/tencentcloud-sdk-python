@@ -73532,6 +73532,295 @@ class SvgWatermarkInputForUpdate(AbstractModel):
         
 
 
+class SyncDubbingRequest(AbstractModel):
+    r"""SyncDubbing请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 合成文本，语音合成时必填，文本长度不超过2000字符
+        :type Text: str
+        :param _TextLang: 文本语言，不填默认中文。
+当前支持语言：
+zh	中文 (Chinese)
+en	英语 (English)
+ja	日语 (Japanese)
+de	德语 (German)
+fr	法语 (French)
+ko	韩语 (Korean)
+ru	俄语 (Russian)
+uk	乌克兰语 (Ukrainian)
+pt	葡萄牙语 (Portuguese)
+it	意大利语 (Italian)
+es	西班牙语 (Spanish)
+id	印度尼西亚语 (Indonesian)
+nl	荷兰语 (Dutch)
+tr	土耳其语 (Turkish)
+fil	菲律宾语 (Filipino)
+ms	马来语 (Malay)
+el	希腊语 (Greek)
+fi	芬兰语 (Finnish)
+hr	克罗地亚语 (Croatian)
+sk	斯洛伐克语 (Slovak)
+pl	波兰语 (Polish)
+sv	瑞典语 (Swedish)
+hi	印地语 (Hindi)
+bg	保加利亚语 (Bulgarian)
+ro	罗马尼亚语 (Romanian)
+ar	阿拉伯语 (Arabic)
+cs	捷克语 (Czech)
+da	丹麦语 (Danish)
+ta	泰米尔语 (Tamil)
+hun	匈牙利语（Hungarian）
+vi	越南语（Vietnamese）
+no	挪威语（Norwegian）
+yue	粤语（Cantonese）
+th	泰语（Thai）
+he	希伯来语（Hebrew）
+ca	加泰罗尼亚语（Catalan）
+nn	尼诺斯克语（Nynorsk）
+af	阿非利卡语（Afrikaans）
+fa	波斯语（Persian）
+sl	斯洛文尼亚语（Slovenian）
+
+        :type TextLang: str
+        :param _VoiceId: 音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+        :type VoiceId: str
+        :param _AudioData: 克隆音频base64编码。
+        :type AudioData: str
+        :param _AudioLang: 克隆音频语言，默认中文。
+当前支持语言同TextLang
+        :type AudioLang: str
+        :param _ExtParam: 扩展参数，json字符串
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._TextLang = None
+        self._VoiceId = None
+        self._AudioData = None
+        self._AudioLang = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""合成文本，语音合成时必填，文本长度不超过2000字符
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TextLang(self):
+        r"""文本语言，不填默认中文。
+当前支持语言：
+zh	中文 (Chinese)
+en	英语 (English)
+ja	日语 (Japanese)
+de	德语 (German)
+fr	法语 (French)
+ko	韩语 (Korean)
+ru	俄语 (Russian)
+uk	乌克兰语 (Ukrainian)
+pt	葡萄牙语 (Portuguese)
+it	意大利语 (Italian)
+es	西班牙语 (Spanish)
+id	印度尼西亚语 (Indonesian)
+nl	荷兰语 (Dutch)
+tr	土耳其语 (Turkish)
+fil	菲律宾语 (Filipino)
+ms	马来语 (Malay)
+el	希腊语 (Greek)
+fi	芬兰语 (Finnish)
+hr	克罗地亚语 (Croatian)
+sk	斯洛伐克语 (Slovak)
+pl	波兰语 (Polish)
+sv	瑞典语 (Swedish)
+hi	印地语 (Hindi)
+bg	保加利亚语 (Bulgarian)
+ro	罗马尼亚语 (Romanian)
+ar	阿拉伯语 (Arabic)
+cs	捷克语 (Czech)
+da	丹麦语 (Danish)
+ta	泰米尔语 (Tamil)
+hun	匈牙利语（Hungarian）
+vi	越南语（Vietnamese）
+no	挪威语（Norwegian）
+yue	粤语（Cantonese）
+th	泰语（Thai）
+he	希伯来语（Hebrew）
+ca	加泰罗尼亚语（Catalan）
+nn	尼诺斯克语（Nynorsk）
+af	阿非利卡语（Afrikaans）
+fa	波斯语（Persian）
+sl	斯洛文尼亚语（Slovenian）
+
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def VoiceId(self):
+        r"""音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def AudioData(self):
+        r"""克隆音频base64编码。
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioLang(self):
+        r"""克隆音频语言，默认中文。
+当前支持语言同TextLang
+        :rtype: str
+        """
+        return self._AudioLang
+
+    @AudioLang.setter
+    def AudioLang(self, AudioLang):
+        self._AudioLang = AudioLang
+
+    @property
+    def ExtParam(self):
+        r"""扩展参数，json字符串
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._TextLang = params.get("TextLang")
+        self._VoiceId = params.get("VoiceId")
+        self._AudioData = params.get("AudioData")
+        self._AudioLang = params.get("AudioLang")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncDubbingResponse(AbstractModel):
+    r"""SyncDubbing返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: 错误码，成功时返回0
+        :type ErrorCode: int
+        :param _Msg: 错误信息，成功时返回success
+        :type Msg: str
+        :param _AudioData: 合成音频的base64编码，wav格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioData: str
+        :param _VoiceId: 克隆的音色Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._AudioData = None
+        self._VoiceId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""错误码，成功时返回0
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""错误信息，成功时返回success
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def AudioData(self):
+        r"""合成音频的base64编码，wav格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def VoiceId(self):
+        r"""克隆的音色Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._AudioData = params.get("AudioData")
+        self._VoiceId = params.get("VoiceId")
+        self._RequestId = params.get("RequestId")
+
+
 class TEHDConfig(AbstractModel):
     r"""极速高清参数配置。
 

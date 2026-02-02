@@ -114,25 +114,6 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def Describe3DSmartTopologyJob(
-            self,
-            request: models.Describe3DSmartTopologyJobRequest,
-            opts: Dict = None,
-    ) -> models.Describe3DSmartTopologyJobResponse:
-        """
-        混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "Describe3DSmartTopologyJob"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.Describe3DSmartTopologyJobResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def FilesDeletions(
             self,
             request: models.FilesDeletionsRequest,
@@ -421,25 +402,6 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "SetPayMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetPayModeResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def Submit3DSmartTopologyJob(
-            self,
-            request: models.Submit3DSmartTopologyJobRequest,
-            opts: Dict = None,
-    ) -> models.Submit3DSmartTopologyJobResponse:
-        """
-        混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "Submit3DSmartTopologyJob"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.Submit3DSmartTopologyJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

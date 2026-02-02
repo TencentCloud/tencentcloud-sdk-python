@@ -714,10 +714,6 @@ class GmeClient(AbstractClient):
         r"""本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音内容安全服务。
         </br></br>
 
-        <h4><b>功能试用说明：</b></h4>
-        <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音内容安全服务。</li>
-        </br>
-
         <h4><b>接口功能说明：</b></h4>
         <li>支持对语音流或语音文件进行检测，判断其中是否包含违规内容。</li>
         <li>支持设置回调地址 Callback 获取检测结果，同时支持通过接口(查询语音检测结果)主动轮询获取检测结果。</li>

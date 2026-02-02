@@ -2800,6 +2800,26 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SyncDubbing(
+            self,
+            request: models.SyncDubbingRequest,
+            opts: Dict = None,
+    ) -> models.SyncDubbingResponse:
+        """
+        # 同步配音接口
+        ## 音色克隆
+        ## 语音合成
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SyncDubbing"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SyncDubbingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TextTranslation(
             self,
             request: models.TextTranslationRequest,

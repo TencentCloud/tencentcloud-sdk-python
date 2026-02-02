@@ -19792,7 +19792,6 @@ class GovernanceAlias(AbstractModel):
         :param _Editable: 该服务别名是否可以编辑
         :type Editable: bool
         :param _Metadatas: 元数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadatas: list of Metadata
         """
         self._Alias = None
@@ -19908,7 +19907,6 @@ class GovernanceAlias(AbstractModel):
     @property
     def Metadatas(self):
         r"""元数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -20841,7 +20839,6 @@ class GovernanceNamespace(AbstractModel):
         :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
         :type SyncToGlobalRegistry: bool
         :param _Metadatas: 元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadatas: list of Metadata
         """
         self._Name = None
@@ -21029,7 +21026,6 @@ class GovernanceNamespace(AbstractModel):
     @property
     def Metadatas(self):
         r"""元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -21589,7 +21585,6 @@ class GovernanceServiceContract(AbstractModel):
         :param _Interfaces: 契约接口列表
         :type Interfaces: list of GovernanceInterfaceDescription
         :param _Metadatas: 元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadatas: list of Metadata
         """
         self._Name = None
@@ -21729,7 +21724,6 @@ class GovernanceServiceContract(AbstractModel):
     @property
     def Metadatas(self):
         r"""元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Metadata
         """
         return self._Metadatas

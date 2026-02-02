@@ -850,6 +850,8 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param _CopyRightWatermark: 版权水印。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
+        :param _BlindWatermark: 数字水印。
+        :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
         :param _SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :type SubtitleSet: list of str
         """
@@ -857,6 +859,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._WatermarkSet = None
         self._TraceWatermark = None
         self._CopyRightWatermark = None
+        self._BlindWatermark = None
         self._SubtitleSet = None
 
     @property
@@ -904,6 +907,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._CopyRightWatermark = CopyRightWatermark
 
     @property
+    def BlindWatermark(self):
+        r"""数字水印。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
+
+    @property
     def SubtitleSet(self):
         r"""字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :rtype: list of str
@@ -929,6 +943,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         if params.get("CopyRightWatermark") is not None:
             self._CopyRightWatermark = CopyRightWatermarkInput()
             self._CopyRightWatermark._deserialize(params.get("CopyRightWatermark"))
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         self._SubtitleSet = params.get("SubtitleSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10570,6 +10587,209 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AigcFaceIdentityInfo(AbstractModel):
+    r"""人脸身份信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceId: 视频中的人脸 ID。同一个人脸在视频中间隔超过1s时会视作不同 ID。
+        :type FaceId: str
+        :param _FaceImage: 从视频中截取的人脸示意图。
+        :type FaceImage: str
+        :param _StartTime: 该人脸可对口型区间的起点时间，可作为对口型最佳开始时间。单位：毫秒。
+        :type StartTime: int
+        :param _EndTime: 该人脸可对口型区间的终点时间；注：此结果存在毫秒级误差，会长于实际区间终点。单位：毫秒。
+        :type EndTime: int
+        """
+        self._FaceId = None
+        self._FaceImage = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FaceId(self):
+        r"""视频中的人脸 ID。同一个人脸在视频中间隔超过1s时会视作不同 ID。
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def FaceImage(self):
+        r"""从视频中截取的人脸示意图。
+        :rtype: str
+        """
+        return self._FaceImage
+
+    @FaceImage.setter
+    def FaceImage(self, FaceImage):
+        self._FaceImage = FaceImage
+
+    @property
+    def StartTime(self):
+        r"""该人脸可对口型区间的起点时间，可作为对口型最佳开始时间。单位：毫秒。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""该人脸可对口型区间的终点时间；注：此结果存在毫秒级误差，会长于实际区间终点。单位：毫秒。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._FaceId = params.get("FaceId")
+        self._FaceImage = params.get("FaceImage")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcFaceInfo(AbstractModel):
+    r"""AIGC 人脸信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 主体 ID。需自行记录下返回的主体 ID。
+        :type SessionId: str
+        :param _FaceInfoList: 人脸信息列表。
+        :type FaceInfoList: list of AigcFaceIdentityInfo
+        """
+        self._SessionId = None
+        self._FaceInfoList = None
+
+    @property
+    def SessionId(self):
+        r"""主体 ID。需自行记录下返回的主体 ID。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def FaceInfoList(self):
+        r"""人脸信息列表。
+        :rtype: list of AigcFaceIdentityInfo
+        """
+        return self._FaceInfoList
+
+    @FaceInfoList.setter
+    def FaceInfoList(self, FaceInfoList):
+        self._FaceInfoList = FaceInfoList
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        if params.get("FaceInfoList") is not None:
+            self._FaceInfoList = []
+            for item in params.get("FaceInfoList"):
+                obj = AigcFaceIdentityInfo()
+                obj._deserialize(item)
+                self._FaceInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcFaceInputFileInfo(AbstractModel):
+    r"""AIGC 人脸输入文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        :type Type: str
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+        :type FileId: str
+        :param _Url: 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcImageOutputConfig(AbstractModel):
     r"""AIGC 生图任务的输出媒体文件配置。
 
@@ -11119,7 +11339,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
         :type Type: str
         :param _FileId: 图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
 说明：
@@ -11141,7 +11361,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
         :rtype: str
         """
         return self._Type
@@ -11582,6 +11802,9 @@ class AigcVideoOutputConfig(AbstractModel):
         :type EnhanceSwitch: str
         :param _FrameInterpolate: 是否开启vidu智能插帧。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
         :type FrameInterpolate: str
+        :param _LogoAdd: 是否开启图标水印。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+目前支持的模型有 Vidu，其他模型暂不支持。
+        :type LogoAdd: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -11596,6 +11819,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._OutputComplianceCheck = None
         self._EnhanceSwitch = None
         self._FrameInterpolate = None
+        self._LogoAdd = None
 
     @property
     def StorageMode(self):
@@ -11756,6 +11980,18 @@ class AigcVideoOutputConfig(AbstractModel):
     def FrameInterpolate(self, FrameInterpolate):
         self._FrameInterpolate = FrameInterpolate
 
+    @property
+    def LogoAdd(self):
+        r"""是否开启图标水印。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+目前支持的模型有 Vidu，其他模型暂不支持。
+        :rtype: str
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
@@ -11771,6 +12007,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._OutputComplianceCheck = params.get("OutputComplianceCheck")
         self._EnhanceSwitch = params.get("EnhanceSwitch")
         self._FrameInterpolate = params.get("FrameInterpolate")
+        self._LogoAdd = params.get("LogoAdd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12217,7 +12454,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
         :type Type: str
         :param _Category: 文件分类。取值为：
 <li>Image: 图片；</li>
@@ -12255,7 +12492,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
         :rtype: str
         """
         return self._Type
@@ -15383,6 +15620,42 @@ class BlackWhiteEdgeConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlindWatermarkInput(AbstractModel):
+    r"""媒体处理任务中的数字水印参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板ID
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板ID
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19271,6 +19544,85 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcApiTokenRequest(AbstractModel):
+    r"""CreateAigcApiToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._SubAppId = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcApiTokenResponse(AbstractModel):
+    r"""CreateAigcApiToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiToken: API的Token
+        :type ApiToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApiToken = None
+        self._RequestId = None
+
+    @property
+    def ApiToken(self):
+        r"""API的Token
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApiToken = params.get("ApiToken")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcCustomElementRequest(AbstractModel):
     r"""CreateAigcCustomElement请求参数结构体
 
@@ -19684,7 +20036,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+        :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :type ModelVersion: str
         :param _FileInfos: 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
 
@@ -19720,7 +20072,10 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :param _InputRegion: 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
         :type InputRegion: str
         :param _SceneType: 场景类型。取值如下：
-<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+<li>当 ModelName 为 Kling 时：
+    motion_control 表示动作控制；
+    avatar_i2v 表示数字人；
+    lip_sync 表示对口型；</li>
 <li>其他 ModelName 暂不支持。</li>
         :type SceneType: str
         :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -19773,7 +20128,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+        r"""模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
         :rtype: str
         """
         return self._ModelVersion
@@ -19890,7 +20245,10 @@ class CreateAigcVideoTaskRequest(AbstractModel):
     @property
     def SceneType(self):
         r"""场景类型。取值如下：
-<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+<li>当 ModelName 为 Kling 时：
+    motion_control 表示动作控制；
+    avatar_i2v 表示数字人；
+    lip_sync 表示对口型；</li>
 <li>其他 ModelName 暂不支持。</li>
         :rtype: str
         """
@@ -26202,6 +26560,85 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAigcApiTokenRequest(AbstractModel):
+    r"""DeleteAigcApiToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _ApiToken: API 的 Token
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ApiToken(self):
+        r"""API 的 Token
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAigcApiTokenResponse(AbstractModel):
+    r"""DeleteAigcApiToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     r"""DeleteAnimatedGraphicsTemplate请求参数结构体
 
@@ -28677,6 +29114,189 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcApiTokensRequest(AbstractModel):
+    r"""DescribeAigcApiTokens请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._SubAppId = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcApiTokensResponse(AbstractModel):
+    r"""DescribeAigcApiTokens返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiTokens: API Token 列表
+        :type ApiTokens: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApiTokens = None
+        self._RequestId = None
+
+    @property
+    def ApiTokens(self):
+        r"""API Token 列表
+        :rtype: list of str
+        """
+        return self._ApiTokens
+
+    @ApiTokens.setter
+    def ApiTokens(self, ApiTokens):
+        self._ApiTokens = ApiTokens
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApiTokens = params.get("ApiTokens")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcFaceInfoRequest(AbstractModel):
+    r"""DescribeAigcFaceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _FileInfos: 需要获取人脸信息的输入视频信息，最多包含一个文件。
+        :type FileInfos: list of AigcFaceInputFileInfo
+        """
+        self._SubAppId = None
+        self._FileInfos = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileInfos(self):
+        r"""需要获取人脸信息的输入视频信息，最多包含一个文件。
+        :rtype: list of AigcFaceInputFileInfo
+        """
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = AigcFaceInputFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcFaceInfoResponse(AbstractModel):
+    r"""DescribeAigcFaceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceInfoSet: 人脸信息。
+        :type FaceInfoSet: list of AigcFaceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FaceInfoSet = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        r"""人脸信息。
+        :rtype: list of AigcFaceInfo
+        """
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FaceInfoSet") is not None:
+            self._FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = AigcFaceInfo()
+                obj._deserialize(item)
+                self._FaceInfoSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -36050,7 +36670,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li>
+        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -36144,6 +36764,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type SceneAigcVideoTask: :class:`tencentcloud.vod.v20180717.models.SceneAigcVideoTask`
         :param _ProcessImageAsyncTask: 图像异步处理任务信息，仅当 TaskType 为 ProcessImageAsync，该字段有值。
         :type ProcessImageAsyncTask: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsync`
+        :param _ExtractBlindWatermarkTask: 提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+        :type ExtractBlindWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -36181,11 +36803,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._SceneAigcImageTask = None
         self._SceneAigcVideoTask = None
         self._ProcessImageAsyncTask = None
+        self._ExtractBlindWatermarkTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li>
+        r"""任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li>
         :rtype: str
         """
         return self._TaskType
@@ -36584,6 +37207,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ProcessImageAsyncTask = ProcessImageAsyncTask
 
     @property
+    def ExtractBlindWatermarkTask(self):
+        r"""提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkTask
+
+    @ExtractBlindWatermarkTask.setter
+    def ExtractBlindWatermarkTask(self, ExtractBlindWatermarkTask):
+        self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -36688,6 +37322,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ProcessImageAsyncTask") is not None:
             self._ProcessImageAsyncTask = ProcessImageAsync()
             self._ProcessImageAsyncTask._deserialize(params.get("ProcessImageAsyncTask"))
+        if params.get("ExtractBlindWatermarkTask") is not None:
+            self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -40177,6 +40814,12 @@ class EventContent(AbstractModel):
         :type AigcImageCompleteEvent: :class:`tencentcloud.vod.v20180717.models.AigcImageTask`
         :param _AigcVideoCompleteEvent: AIGC 生视频任务信息，仅当 EventType 为 AigcVideoTaskComplete 时有效。
         :type AigcVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.AigcVideoTask`
+        :param _ExtractBlindWatermarkComplete: 提取数字水印信息，仅当 EventType 为 ExtractBlindWatermarkComplete 时有效。
+        :type ExtractBlindWatermarkComplete: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
+        :param _SceneAigcImageCompleteEvent: AIGC 场景化生图任务信息，仅当 EventType 为 SceneAigcImageCompleteEvent 时有效。
+        :type SceneAigcImageCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageTask`
+        :param _ProcessImageAsyncCompleteEvent: 图片异步处理任务信息，仅当 EventType 为 ProcessImageAsyncCompleteEvent 时有效。
+        :type ProcessImageAsyncCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -40210,6 +40853,9 @@ class EventContent(AbstractModel):
         self._ProcessMediaByMPSCompleteEvent = None
         self._AigcImageCompleteEvent = None
         self._AigcVideoCompleteEvent = None
+        self._ExtractBlindWatermarkComplete = None
+        self._SceneAigcImageCompleteEvent = None
+        self._ProcessImageAsyncCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -40618,6 +41264,39 @@ class EventContent(AbstractModel):
     def AigcVideoCompleteEvent(self, AigcVideoCompleteEvent):
         self._AigcVideoCompleteEvent = AigcVideoCompleteEvent
 
+    @property
+    def ExtractBlindWatermarkComplete(self):
+        r"""提取数字水印信息，仅当 EventType 为 ExtractBlindWatermarkComplete 时有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkComplete
+
+    @ExtractBlindWatermarkComplete.setter
+    def ExtractBlindWatermarkComplete(self, ExtractBlindWatermarkComplete):
+        self._ExtractBlindWatermarkComplete = ExtractBlindWatermarkComplete
+
+    @property
+    def SceneAigcImageCompleteEvent(self):
+        r"""AIGC 场景化生图任务信息，仅当 EventType 为 SceneAigcImageCompleteEvent 时有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageTask`
+        """
+        return self._SceneAigcImageCompleteEvent
+
+    @SceneAigcImageCompleteEvent.setter
+    def SceneAigcImageCompleteEvent(self, SceneAigcImageCompleteEvent):
+        self._SceneAigcImageCompleteEvent = SceneAigcImageCompleteEvent
+
+    @property
+    def ProcessImageAsyncCompleteEvent(self):
+        r"""图片异步处理任务信息，仅当 EventType 为 ProcessImageAsyncCompleteEvent 时有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        """
+        return self._ProcessImageAsyncCompleteEvent
+
+    @ProcessImageAsyncCompleteEvent.setter
+    def ProcessImageAsyncCompleteEvent(self, ProcessImageAsyncCompleteEvent):
+        self._ProcessImageAsyncCompleteEvent = ProcessImageAsyncCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -40712,6 +41391,15 @@ class EventContent(AbstractModel):
         if params.get("AigcVideoCompleteEvent") is not None:
             self._AigcVideoCompleteEvent = AigcVideoTask()
             self._AigcVideoCompleteEvent._deserialize(params.get("AigcVideoCompleteEvent"))
+        if params.get("ExtractBlindWatermarkComplete") is not None:
+            self._ExtractBlindWatermarkComplete = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkComplete._deserialize(params.get("ExtractBlindWatermarkComplete"))
+        if params.get("SceneAigcImageCompleteEvent") is not None:
+            self._SceneAigcImageCompleteEvent = SceneAigcImageTask()
+            self._SceneAigcImageCompleteEvent._deserialize(params.get("SceneAigcImageCompleteEvent"))
+        if params.get("ProcessImageAsyncCompleteEvent") is not None:
+            self._ProcessImageAsyncCompleteEvent = ProcessImageAsyncTask()
+            self._ProcessImageAsyncCompleteEvent._deserialize(params.get("ProcessImageAsyncCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40874,6 +41562,321 @@ class ExecuteFunctionResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class ExtractBlindWatermarkInputInfo(AbstractModel):
+    r"""提取盲水印输入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 提取数字水印输入类型，可选值：<li>FILEID：文件媒资ID；</li><li>URL：文件url；</li>
+        :type Type: str
+        :param _FileId: 需要提取的文件媒资ID
+        :type FileId: str
+        :param _Url: 需要提取的视频文件url
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""提取数字水印输入类型，可选值：<li>FILEID：文件媒资ID；</li><li>URL：文件url；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""需要提取的文件媒资ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""需要提取的视频文件url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkTask(AbstractModel):
+    r"""提取视频数字水印任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 媒体处理任务 ID。
+        :type TaskId: str
+        :param _Status: 任务流状态，取值：
+<li>WAITING：等待中；</li>
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _InputInfo: 提取数字水印的文件输入信息。
+        :type InputInfo: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+        :type Type: str
+        :param _IsDetected: 标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+        :type IsDetected: bool
+        :param _Result: 提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+        :type Result: str
+        :param _ResultUV: 溯源水印提取出的播放者的 ID，以十六进制表示，共6位。
+        :type ResultUV: str
+        :param _ExtractBlindWatermarkConfig: 提取数字水印配置。
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._InputInfo = None
+        self._Type = None
+        self._IsDetected = None
+        self._Result = None
+        self._ResultUV = None
+        self._ExtractBlindWatermarkConfig = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def TaskId(self):
+        r"""媒体处理任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""任务流状态，取值：
+<li>WAITING：等待中；</li>
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""错误码，0 表示成功，其他值表示失败。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InputInfo(self):
+        r"""提取数字水印的文件输入信息。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsDetected(self):
+        r"""标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+        :rtype: bool
+        """
+        return self._IsDetected
+
+    @IsDetected.setter
+    def IsDetected(self, IsDetected):
+        self._IsDetected = IsDetected
+
+    @property
+    def Result(self):
+        r"""提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ResultUV(self):
+        r"""溯源水印提取出的播放者的 ID，以十六进制表示，共6位。
+        :rtype: str
+        """
+        return self._ResultUV
+
+    @ResultUV.setter
+    def ResultUV(self, ResultUV):
+        self._ResultUV = ResultUV
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""提取数字水印配置。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+    @property
+    def SessionContext(self):
+        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ExtractBlindWatermarkInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Type = params.get("Type")
+        self._IsDetected = params.get("IsDetected")
+        self._Result = params.get("Result")
+        self._ResultUV = params.get("ResultUV")
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkTaskConfig(AbstractModel):
+    r"""提取视频转码数字水印任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentDuration: 当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+如果不填默认切片时长为5秒。
+        :type SegmentDuration: int
+        """
+        self._SegmentDuration = None
+
+    @property
+    def SegmentDuration(self):
+        r"""当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+如果不填默认切片时长为5秒。
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
+
+
+    def _deserialize(self, params):
+        self._SegmentDuration = params.get("SegmentDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExtractCopyRightWatermarkRequest(AbstractModel):
@@ -81472,6 +82475,8 @@ class TranscodeTaskInput(AbstractModel):
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param _CopyRightWatermark: 版权水印。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
+        :param _BlindWatermark: 数字水印。
+        :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
         :param _MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
         :param _HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
@@ -81491,6 +82496,7 @@ class TranscodeTaskInput(AbstractModel):
         self._WatermarkSet = None
         self._TraceWatermark = None
         self._CopyRightWatermark = None
+        self._BlindWatermark = None
         self._MosaicSet = None
         self._HeadTailSet = None
         self._StartTimeOffset = None
@@ -81539,6 +82545,17 @@ class TranscodeTaskInput(AbstractModel):
     @CopyRightWatermark.setter
     def CopyRightWatermark(self, CopyRightWatermark):
         self._CopyRightWatermark = CopyRightWatermark
+
+    @property
+    def BlindWatermark(self):
+        r"""数字水印。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
 
     @property
     def MosaicSet(self):
@@ -81605,6 +82622,9 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("CopyRightWatermark") is not None:
             self._CopyRightWatermark = CopyRightWatermarkInput()
             self._CopyRightWatermark._deserialize(params.get("CopyRightWatermark"))
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         if params.get("MosaicSet") is not None:
             self._MosaicSet = []
             for item in params.get("MosaicSet"):

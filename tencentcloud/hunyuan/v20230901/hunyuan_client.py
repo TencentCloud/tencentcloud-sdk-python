@@ -120,30 +120,6 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def Describe3DSmartTopologyJob(self, request):
-        r"""混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for Describe3DSmartTopologyJob.
-        :type request: :class:`tencentcloud.hunyuan.v20230901.models.Describe3DSmartTopologyJobRequest`
-        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Describe3DSmartTopologyJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("Describe3DSmartTopologyJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.Describe3DSmartTopologyJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def FilesDeletions(self, request):
         r"""删除文件。
 
@@ -453,30 +429,6 @@ class HunyuanClient(AbstractClient):
             body = self.call("SetPayMode", params, headers=headers)
             response = json.loads(body)
             model = models.SetPayModeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def Submit3DSmartTopologyJob(self, request):
-        r"""混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for Submit3DSmartTopologyJob.
-        :type request: :class:`tencentcloud.hunyuan.v20230901.models.Submit3DSmartTopologyJobRequest`
-        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Submit3DSmartTopologyJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("Submit3DSmartTopologyJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.Submit3DSmartTopologyJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

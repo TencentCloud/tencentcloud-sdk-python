@@ -3551,6 +3551,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SyncDubbing(self, request):
+        r"""# 同步配音接口
+        ## 音色克隆
+        ## 语音合成
+
+        :param request: Request instance for SyncDubbing.
+        :type request: :class:`tencentcloud.mps.v20190612.models.SyncDubbingRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncDubbing", params, headers=headers)
+            response = json.loads(body)
+            model = models.SyncDubbingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TextTranslation(self, request):
         r"""文本翻译
 

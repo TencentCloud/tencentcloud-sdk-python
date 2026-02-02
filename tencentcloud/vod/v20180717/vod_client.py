@@ -225,6 +225,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcApiToken(self, request):
+        r"""创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+
+        :param request: Request instance for CreateAigcApiToken.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcApiTokenRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcApiTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcApiToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcApiTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcCustomElement(self, request):
         r"""调用该接口，针对指定模型进行主体创建。
 
@@ -1110,6 +1133,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAigcApiToken(self, request):
+        r"""删除 AIGC API Token
+
+        :param request: Request instance for DeleteAigcApiToken.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAigcApiTokenRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAigcApiTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAigcApiToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAigcApiTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAnimatedGraphicsTemplate(self, request):
         r"""删除用户自定义转动图模板。
 
@@ -1757,6 +1803,52 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcApiTokens(self, request):
+        r"""查询 AIGC API Token 列表。创建或删除后数据同步有延时，约30秒后可查询最新数据。
+
+        :param request: Request instance for DescribeAigcApiTokens.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcApiTokensRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcApiTokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcApiTokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcApiTokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcFaceInfo(self, request):
+        r"""该接口用于获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+
+        :param request: Request instance for DescribeAigcFaceInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcFaceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcFaceInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

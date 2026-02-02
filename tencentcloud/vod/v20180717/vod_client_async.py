@@ -184,6 +184,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcApiToken(
+            self,
+            request: models.CreateAigcApiTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcApiTokenResponse:
+        """
+        创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcApiToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcCustomElement(
             self,
             request: models.CreateAigcCustomElementRequest,
@@ -884,6 +902,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAigcApiToken(
+            self,
+            request: models.DeleteAigcApiTokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAigcApiTokenResponse:
+        """
+        删除 AIGC API Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAigcApiToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAnimatedGraphicsTemplate(
             self,
             request: models.DeleteAnimatedGraphicsTemplateRequest,
@@ -1395,6 +1431,42 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcApiTokens(
+            self,
+            request: models.DescribeAigcApiTokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcApiTokensResponse:
+        """
+        查询 AIGC API Token 列表。创建或删除后数据同步有延时，约30秒后可查询最新数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcApiTokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcApiTokensResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcFaceInfo(
+            self,
+            request: models.DescribeAigcFaceInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcFaceInfoResponse:
+        """
+        该接口用于获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcFaceInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcFaceInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

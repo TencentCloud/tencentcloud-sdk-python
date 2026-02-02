@@ -35,6 +35,9 @@ FAILEDOPERATION_EXCEEDSENDLIMIT = 'FailedOperation.ExceedSendLimit'
 # 超出最大模板数量限制。
 FAILEDOPERATION_EXCEEDTEMPLATELIMIT = 'FailedOperation.ExceedTemplateLimit'
 
+# 链接地址无效或者不存在
+FAILEDOPERATION_FILEURLNOTEXIST = 'FailedOperation.FileURLNotExist'
+
 # 触发频率控制，短时间内对同一地址发送过多邮件。
 FAILEDOPERATION_FREQUENCYLIMIT = 'FailedOperation.FrequencyLimit'
 

@@ -25,33 +25,33 @@ class CreateTtsTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
+        :param _Text: <p>合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符</p>
         :type Text: str
-        :param _Volume: 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :param _Volume: <p>音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
         :type Volume: float
-        :param _Speed: 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+        :param _Speed: <p>语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考<a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">代码示例</a></p>
         :type Speed: float
-        :param _ProjectId: 项目id，用户自定义，默认为0。
+        :param _ProjectId: <p>项目id，用户自定义，默认为0。</p>
         :type ProjectId: int
-        :param _ModelType: 模型类型，1-默认模型。
+        :param _ModelType: <p>模型类型，1-默认模型。</p>
         :type ModelType: int
-        :param _VoiceType: 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+        :param _VoiceType: <p>音色 ID，价格请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</p>
         :type VoiceType: int
-        :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+        :param _PrimaryLanguage: <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
         :type PrimaryLanguage: int
-        :param _SampleRate: 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+        :param _SampleRate: <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
         :type SampleRate: int
-        :param _Codec: 返回音频格式，可取值：mp3（默认），wav，pcm
+        :param _Codec: <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
         :type Codec: str
-        :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
+        :param _CallbackUrl: <p>回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。<a href="https://cloud.tencent.com/document/product/1073/55746">回调说明</a></p>
         :type CallbackUrl: str
-        :param _EnableSubtitle: 是否开启时间戳功能，默认为false。
+        :param _EnableSubtitle: <p>是否开启时间戳功能，默认为false。</p>
         :type EnableSubtitle: bool
-        :param _VoiceoverDialogueSplit: 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
+        :param _VoiceoverDialogueSplit: <p>旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false</p>
         :type VoiceoverDialogueSplit: bool
-        :param _EmotionCategory: 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)
+        :param _EmotionCategory: <p>控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)</p>
         :type EmotionCategory: str
-        :param _EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。
+        :param _EmotionIntensity: <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。</p>
         :type EmotionIntensity: int
         """
         self._Text = None
@@ -71,7 +71,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
+        r"""<p>合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符</p>
         :rtype: str
         """
         return self._Text
@@ -82,7 +82,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        r"""<p>音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
         :rtype: float
         """
         return self._Volume
@@ -93,7 +93,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def Speed(self):
-        r"""语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+        r"""<p>语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考<a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">代码示例</a></p>
         :rtype: float
         """
         return self._Speed
@@ -104,7 +104,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id，用户自定义，默认为0。
+        r"""<p>项目id，用户自定义，默认为0。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -115,7 +115,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        r"""模型类型，1-默认模型。
+        r"""<p>模型类型，1-默认模型。</p>
         :rtype: int
         """
         return self._ModelType
@@ -126,7 +126,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+        r"""<p>音色 ID，价格请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</p>
         :rtype: int
         """
         return self._VoiceType
@@ -137,7 +137,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def PrimaryLanguage(self):
-        r"""主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+        r"""<p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
         :rtype: int
         """
         return self._PrimaryLanguage
@@ -148,7 +148,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+        r"""<p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
         :rtype: int
         """
         return self._SampleRate
@@ -159,7 +159,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def Codec(self):
-        r"""返回音频格式，可取值：mp3（默认），wav，pcm
+        r"""<p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
         :rtype: str
         """
         return self._Codec
@@ -170,7 +170,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        r"""回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
+        r"""<p>回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。<a href="https://cloud.tencent.com/document/product/1073/55746">回调说明</a></p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -181,7 +181,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def EnableSubtitle(self):
-        r"""是否开启时间戳功能，默认为false。
+        r"""<p>是否开启时间戳功能，默认为false。</p>
         :rtype: bool
         """
         return self._EnableSubtitle
@@ -192,7 +192,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def VoiceoverDialogueSplit(self):
-        r"""旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
+        r"""<p>旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false</p>
         :rtype: bool
         """
         return self._VoiceoverDialogueSplit
@@ -203,7 +203,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def EmotionCategory(self):
-        r"""控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)
+        r"""<p>控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)</p>
         :rtype: str
         """
         return self._EmotionCategory
@@ -214,7 +214,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def EmotionIntensity(self):
-        r"""控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。
+        r"""<p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。</p>
         :rtype: int
         """
         return self._EmotionIntensity
@@ -292,7 +292,7 @@ class CreateTtsTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 任务 id
+        :param _Data: <p>任务 id</p>
         :type Data: :class:`tencentcloud.tts.v20190823.models.CreateTtsTaskRespData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -302,7 +302,7 @@ class CreateTtsTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""任务 id
+        r"""<p>任务 id</p>
         :rtype: :class:`tencentcloud.tts.v20190823.models.CreateTtsTaskRespData`
         """
         return self._Data
