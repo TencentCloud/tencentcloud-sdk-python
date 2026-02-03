@@ -5661,6 +5661,30 @@ class CreateInstanceRequest(AbstractModel):
 37:表示EMR-V3.4.0
 44:表示EMR-V3.5.0
 53:表示EMR-V3.6.0
+58:表示EMR-3.6.1
+59:表示EMR-serverless-1.0.0
+60:表示EMR-TKE-1.1.0
+61:表示SR-V2.1.0
+62:表示SR-V2.1.0-SharedData
+63:表示SR-V2.1.0.tlinux
+64:表示统一元数据管理项目
+65:表示EMR-TKE-AI-1.0.0
+66:表示RSS-1.0.0
+67:表示SR-V2.2.0
+68:表示SR-V2.2.0.tlinux
+69:表示EMR-AI-1.1.0
+70:表示SR-V2.2.1
+71:表示EMR-3.7.0
+72:表示EMR-serverless-1.0.1
+73:表示KAFKA-2.0.1
+74:表示SR-V2.2.2
+75:表示EMR-TKE-AI-1.1.0
+76:表示EMR-V3.7.1
+77:表示SERVERLESS-TCBASE-1.0.0
+78:表示EMR-V3.6.2
+79:表示STARROCKS-V2.2.2
+80:表示EMR-AI-V1.1.1
+
         :type ProductId: int
         :param _Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
 填写实例值：hive、flink。
@@ -5818,6 +5842,30 @@ Hadoop-Hbase
 37:表示EMR-V3.4.0
 44:表示EMR-V3.5.0
 53:表示EMR-V3.6.0
+58:表示EMR-3.6.1
+59:表示EMR-serverless-1.0.0
+60:表示EMR-TKE-1.1.0
+61:表示SR-V2.1.0
+62:表示SR-V2.1.0-SharedData
+63:表示SR-V2.1.0.tlinux
+64:表示统一元数据管理项目
+65:表示EMR-TKE-AI-1.0.0
+66:表示RSS-1.0.0
+67:表示SR-V2.2.0
+68:表示SR-V2.2.0.tlinux
+69:表示EMR-AI-1.1.0
+70:表示SR-V2.2.1
+71:表示EMR-3.7.0
+72:表示EMR-serverless-1.0.1
+73:表示KAFKA-2.0.1
+74:表示SR-V2.2.2
+75:表示EMR-TKE-AI-1.1.0
+76:表示EMR-V3.7.1
+77:表示SERVERLESS-TCBASE-1.0.0
+78:表示EMR-V3.6.2
+79:表示STARROCKS-V2.2.2
+80:表示EMR-AI-V1.1.1
+
         :rtype: int
         """
         return self._ProductId

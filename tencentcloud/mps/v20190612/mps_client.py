@@ -3552,9 +3552,7 @@ class MpsClient(AbstractClient):
 
 
     def SyncDubbing(self, request):
-        r"""# 同步配音接口
-        ## 音色克隆
-        ## 语音合成
+        r"""同步接口，返回克隆音色Id或合成音频结果
 
         :param request: Request instance for SyncDubbing.
         :type request: :class:`tencentcloud.mps.v20190612.models.SyncDubbingRequest`

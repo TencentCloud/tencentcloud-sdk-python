@@ -832,6 +832,87 @@ class CreateApplicationTriggerPersonalResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGCJobRequest(AbstractModel):
+    r"""CreateGCJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例 Id
+        :type RegistryId: str
+        :param _GCParameters: GC 参数
+        :type GCParameters: :class:`tencentcloud.tcr.v20190924.models.GCParameters`
+        """
+        self._RegistryId = None
+        self._GCParameters = None
+
+    @property
+    def RegistryId(self):
+        r"""实例 Id
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def GCParameters(self):
+        r"""GC 参数
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.GCParameters`
+        """
+        return self._GCParameters
+
+    @GCParameters.setter
+    def GCParameters(self, GCParameters):
+        self._GCParameters = GCParameters
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        if params.get("GCParameters") is not None:
+            self._GCParameters = GCParameters()
+            self._GCParameters._deserialize(params.get("GCParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGCJobResponse(AbstractModel):
+    r"""CreateGCJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateImageAccelerationServiceRequest(AbstractModel):
     r"""CreateImageAccelerationService请求参数结构体
 
@@ -11484,6 +11565,42 @@ class GCJobInfo(AbstractModel):
         if params.get("Schedule") is not None:
             self._Schedule = Schedule()
             self._Schedule._deserialize(params.get("Schedule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GCParameters(AbstractModel):
+    r"""GC 参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dryrun: 模拟运行
+        :type Dryrun: bool
+        """
+        self._Dryrun = None
+
+    @property
+    def Dryrun(self):
+        r"""模拟运行
+        :rtype: bool
+        """
+        return self._Dryrun
+
+    @Dryrun.setter
+    def Dryrun(self, Dryrun):
+        self._Dryrun = Dryrun
+
+
+    def _deserialize(self, params):
+        self._Dryrun = params.get("Dryrun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

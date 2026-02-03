@@ -25,6 +25,24 @@ class CtsdbClient(AbstractClient):
     _endpoint = 'ctsdb.tencentcloudapi.com'
     _service = 'ctsdb'
 
+    async def DescribeClusterDetail(
+            self,
+            request: models.DescribeClusterDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterDetailResponse:
+        """
+        查询实例详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusters(
             self,
             request: models.DescribeClustersRequest,

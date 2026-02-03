@@ -475,6 +475,181 @@ class ActivateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ActivateLibraDBClusterRequest(AbstractModel):
+    r"""ActivateLibraDBCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateLibraDBClusterResponse(AbstractModel):
+    r"""ActivateLibraDBCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ActivateLibraDBInstanceRequest(AbstractModel):
+    r"""ActivateLibraDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceIdList: 只读分析引擎实例 ID 列表
+        :type InstanceIdList: list of str
+        """
+        self._ClusterId = None
+        self._InstanceIdList = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIdList(self):
+        r"""只读分析引擎实例 ID 列表
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateLibraDBInstanceResponse(AbstractModel):
+    r"""ActivateLibraDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class AddClusterSlaveZoneRequest(AbstractModel):
     r"""AddClusterSlaveZone请求参数结构体
 
@@ -2175,6 +2350,102 @@ class AuditRuleTemplateInfo(AbstractModel):
         self._AlarmPolicy = params.get("AlarmPolicy")
         self._Status = params.get("Status")
         self._AffectedInstances = params.get("AffectedInstances")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoMapRule(AbstractModel):
+    r"""高级映射，自动映射规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceId: 源端实例Id
+        :type SrcInstanceId: str
+        :param _SrcDatabaseRegex: 源端数据库正则
+        :type SrcDatabaseRegex: str
+        :param _SrcTableRegex: 源端表正则
+        :type SrcTableRegex: str
+        :param _DstDatabaseRegex: 目标端数据库正则
+        :type DstDatabaseRegex: str
+        :param _DstTableRegex: 目标端表正则
+        :type DstTableRegex: str
+        """
+        self._SrcInstanceId = None
+        self._SrcDatabaseRegex = None
+        self._SrcTableRegex = None
+        self._DstDatabaseRegex = None
+        self._DstTableRegex = None
+
+    @property
+    def SrcInstanceId(self):
+        r"""源端实例Id
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def SrcDatabaseRegex(self):
+        r"""源端数据库正则
+        :rtype: str
+        """
+        return self._SrcDatabaseRegex
+
+    @SrcDatabaseRegex.setter
+    def SrcDatabaseRegex(self, SrcDatabaseRegex):
+        self._SrcDatabaseRegex = SrcDatabaseRegex
+
+    @property
+    def SrcTableRegex(self):
+        r"""源端表正则
+        :rtype: str
+        """
+        return self._SrcTableRegex
+
+    @SrcTableRegex.setter
+    def SrcTableRegex(self, SrcTableRegex):
+        self._SrcTableRegex = SrcTableRegex
+
+    @property
+    def DstDatabaseRegex(self):
+        r"""目标端数据库正则
+        :rtype: str
+        """
+        return self._DstDatabaseRegex
+
+    @DstDatabaseRegex.setter
+    def DstDatabaseRegex(self, DstDatabaseRegex):
+        self._DstDatabaseRegex = DstDatabaseRegex
+
+    @property
+    def DstTableRegex(self):
+        r"""目标端表正则
+        :rtype: str
+        """
+        return self._DstTableRegex
+
+    @DstTableRegex.setter
+    def DstTableRegex(self, DstTableRegex):
+        self._DstTableRegex = DstTableRegex
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._SrcDatabaseRegex = params.get("SrcDatabaseRegex")
+        self._SrcTableRegex = params.get("SrcTableRegex")
+        self._DstDatabaseRegex = params.get("DstDatabaseRegex")
+        self._DstTableRegex = params.get("DstTableRegex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4116,6 +4387,213 @@ reuse:使用已有日志集，使用GroupId指定日志集。
         self._TopicName = params.get("TopicName")
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCreateLibraDBInstanceRequest(AbstractModel):
+    r"""CheckCreateLibraDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCreateLibraDBInstanceResponse(AbstractModel):
+    r"""CheckCreateLibraDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 整体校验状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _CheckItem: 校验项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckItem: list of CheckItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._CheckItem = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""整体校验状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CheckItem(self):
+        r"""校验项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CheckItem
+        """
+        return self._CheckItem
+
+    @CheckItem.setter
+    def CheckItem(self, CheckItem):
+        self._CheckItem = CheckItem
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        if params.get("CheckItem") is not None:
+            self._CheckItem = []
+            for item in params.get("CheckItem"):
+                obj = CheckItem()
+                obj._deserialize(item)
+                self._CheckItem.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CheckItem(AbstractModel):
+    r"""校验项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Item: 校验项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: str
+        :param _Result: 该项的校验结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param _CurrentValue: 校验不通过的详细说明和修改建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentValue: str
+        :param _ExpectedValue: 校验不通过的详细说明和修改建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpectedValue: str
+        """
+        self._Item = None
+        self._Result = None
+        self._CurrentValue = None
+        self._ExpectedValue = None
+
+    @property
+    def Item(self):
+        r"""校验项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        r"""该项的校验结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def CurrentValue(self):
+        r"""校验不通过的详细说明和修改建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CurrentValue
+
+    @CurrentValue.setter
+    def CurrentValue(self, CurrentValue):
+        self._CurrentValue = CurrentValue
+
+    @property
+    def ExpectedValue(self):
+        r"""校验不通过的详细说明和修改建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpectedValue
+
+    @ExpectedValue.setter
+    def ExpectedValue(self, ExpectedValue):
+        self._ExpectedValue = ExpectedValue
+
+
+    def _deserialize(self, params):
+        self._Item = params.get("Item")
+        self._Result = params.get("Result")
+        self._CurrentValue = params.get("CurrentValue")
+        self._ExpectedValue = params.get("ExpectedValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7900,6 +8378,539 @@ class CreateIntegrateClusterResponse(AbstractModel):
         self._ResourceIds = params.get("ResourceIds")
         self._ClusterIds = params.get("ClusterIds")
         self._BigDealIds = params.get("BigDealIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLibraDBClusterAccountsRequest(AbstractModel):
+    r"""CreateLibraDBClusterAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _Accounts: 账户信息
+        :type Accounts: list of NewAccount
+        :param _EncryptMethod: 加密方式
+        :type EncryptMethod: str
+        """
+        self._ClusterId = None
+        self._Accounts = None
+        self._EncryptMethod = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Accounts(self):
+        r"""账户信息
+        :rtype: list of NewAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def EncryptMethod(self):
+        r"""加密方式
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = NewAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        self._EncryptMethod = params.get("EncryptMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLibraDBClusterAccountsResponse(AbstractModel):
+    r"""CreateLibraDBClusterAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLibraDBClustersRequest(AbstractModel):
+    r"""CreateLibraDBClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+        :type Count: int
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _InstanceInitInfos: 实例初始化信息
+        :type InstanceInitInfos: list of LibraDBInstanceInitInfo
+        :param _AdminPassword: 用户密码
+        :type AdminPassword: str
+        :param _AutoRenewFlag: 是否自动续费
+        :type AutoRenewFlag: int
+        :param _AutoVoucher: 是否自动选择代金券
+        :type AutoVoucher: int
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _DealMode: 下单模式
+        :type DealMode: str
+        :param _EncryptMethod: 加密方法
+        :type EncryptMethod: str
+        :param _LibraDBVersion: LibraDBVersion 版本，缺省为最新版本
+        :type LibraDBVersion: str
+        :param _OrderSource: 订单来源
+        :type OrderSource: str
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _SecurityGroupIds: 安全组
+        :type SecurityGroupIds: list of str
+        :param _TimeSpan: 时长
+        :type TimeSpan: int
+        :param _TimeUnit: 时间单位
+        :type TimeUnit: str
+        :param _ResourceTags: 实例创建绑定Tag数组信息
+        :type ResourceTags: list of Tag
+        :param _VpcId: 集群所在vpcId
+        :type VpcId: str
+        :param _SubnetId: 集群所在SubnetId
+        :type SubnetId: str
+        :param _Port: 端口
+        :type Port: str
+        """
+        self._Count = None
+        self._Zone = None
+        self._InstanceInitInfos = None
+        self._AdminPassword = None
+        self._AutoRenewFlag = None
+        self._AutoVoucher = None
+        self._ClusterName = None
+        self._DealMode = None
+        self._EncryptMethod = None
+        self._LibraDBVersion = None
+        self._OrderSource = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._SecurityGroupIds = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ResourceTags = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Port = None
+
+    @property
+    def Count(self):
+        r"""数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceInitInfos(self):
+        r"""实例初始化信息
+        :rtype: list of LibraDBInstanceInitInfo
+        """
+        return self._InstanceInitInfos
+
+    @InstanceInitInfos.setter
+    def InstanceInitInfos(self, InstanceInitInfos):
+        self._InstanceInitInfos = InstanceInitInfos
+
+    @property
+    def AdminPassword(self):
+        r"""用户密码
+        :rtype: str
+        """
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def AutoRenewFlag(self):
+        r"""是否自动续费
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def DealMode(self):
+        r"""下单模式
+        :rtype: str
+        """
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+    @property
+    def EncryptMethod(self):
+        r"""加密方法
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def LibraDBVersion(self):
+        r"""LibraDBVersion 版本，缺省为最新版本
+        :rtype: str
+        """
+        return self._LibraDBVersion
+
+    @LibraDBVersion.setter
+    def LibraDBVersion(self, LibraDBVersion):
+        self._LibraDBVersion = LibraDBVersion
+
+    @property
+    def OrderSource(self):
+        r"""订单来源
+        :rtype: str
+        """
+        return self._OrderSource
+
+    @OrderSource.setter
+    def OrderSource(self, OrderSource):
+        self._OrderSource = OrderSource
+
+    @property
+    def PayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""安全组
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def TimeSpan(self):
+        r"""时长
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""时间单位
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ResourceTags(self):
+        r"""实例创建绑定Tag数组信息
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def VpcId(self):
+        r"""集群所在vpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""集群所在SubnetId
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Zone = params.get("Zone")
+        if params.get("InstanceInitInfos") is not None:
+            self._InstanceInitInfos = []
+            for item in params.get("InstanceInitInfos"):
+                obj = LibraDBInstanceInitInfo()
+                obj._deserialize(item)
+                self._InstanceInitInfos.append(obj)
+        self._AdminPassword = params.get("AdminPassword")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._ClusterName = params.get("ClusterName")
+        self._DealMode = params.get("DealMode")
+        self._EncryptMethod = params.get("EncryptMethod")
+        self._LibraDBVersion = params.get("LibraDBVersion")
+        self._OrderSource = params.get("OrderSource")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLibraDBClustersResponse(AbstractModel):
+    r"""CreateLibraDBClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIds: 预付费总订单号
+        :type BigDealIds: list of str
+        :param _ClusterIds: 集群ID
+        :type ClusterIds: list of str
+        :param _DealNames: 每个资源对应一个dealName，业务需要根据dealName保证发货接口幂等
+        :type DealNames: list of str
+        :param _TranId: 冻结流水
+        :type TranId: str
+        :param _ResourceIds: 实例id
+        :type ResourceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIds = None
+        self._ClusterIds = None
+        self._DealNames = None
+        self._TranId = None
+        self._ResourceIds = None
+        self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""预付费总订单号
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def ClusterIds(self):
+        r"""集群ID
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def DealNames(self):
+        r"""每个资源对应一个dealName，业务需要根据dealName保证发货接口幂等
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def TranId(self):
+        r"""冻结流水
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def ResourceIds(self):
+        r"""实例id
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._DealNames = params.get("DealNames")
+        self._TranId = params.get("TranId")
+        self._ResourceIds = params.get("ResourceIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -12986,6 +13997,177 @@ class CynosdbInstanceGrp(AbstractModel):
         
 
 
+class DataSourceItem(AbstractModel):
+    r"""数据源项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 源端实例ID
+        :type InstanceId: str
+        :param _ClusterId: 源端集群ID
+        :type ClusterId: str
+        :param _DBType: 源端数据库类型
+        :type DBType: str
+        :param _IP: 源端数据库IP
+        :type IP: str
+        :param _Port: 源端数据库端口
+        :type Port: int
+        :param _Region: 源实例地域
+        :type Region: str
+        :param _Zone: 源端实例可用区
+        :type Zone: str
+        :param _SrcUin: 源端主账号uin
+        :type SrcUin: str
+        :param _AccountMode: 账号类型
+        :type AccountMode: str
+        :param _ReplicationJobStatus: 同步任务状态
+        :type ReplicationJobStatus: str
+        """
+        self._InstanceId = None
+        self._ClusterId = None
+        self._DBType = None
+        self._IP = None
+        self._Port = None
+        self._Region = None
+        self._Zone = None
+        self._SrcUin = None
+        self._AccountMode = None
+        self._ReplicationJobStatus = None
+
+    @property
+    def InstanceId(self):
+        r"""源端实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        r"""源端集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DBType(self):
+        r"""源端数据库类型
+        :rtype: str
+        """
+        return self._DBType
+
+    @DBType.setter
+    def DBType(self, DBType):
+        self._DBType = DBType
+
+    @property
+    def IP(self):
+        r"""源端数据库IP
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""源端数据库端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Region(self):
+        r"""源实例地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""源端实例可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SrcUin(self):
+        r"""源端主账号uin
+        :rtype: str
+        """
+        return self._SrcUin
+
+    @SrcUin.setter
+    def SrcUin(self, SrcUin):
+        self._SrcUin = SrcUin
+
+    @property
+    def AccountMode(self):
+        r"""账号类型
+        :rtype: str
+        """
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def ReplicationJobStatus(self):
+        r"""同步任务状态
+        :rtype: str
+        """
+        return self._ReplicationJobStatus
+
+    @ReplicationJobStatus.setter
+    def ReplicationJobStatus(self, ReplicationJobStatus):
+        self._ReplicationJobStatus = ReplicationJobStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        self._DBType = params.get("DBType")
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._SrcUin = params.get("SrcUin")
+        self._AccountMode = params.get("AccountMode")
+        self._ReplicationJobStatus = params.get("ReplicationJobStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasePrivileges(AbstractModel):
     r"""数据库权限列表
 
@@ -13962,6 +15144,169 @@ class DeleteClusterSaveBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLibraDBClusterAccountsRequest(AbstractModel):
+    r"""DeleteLibraDBClusterAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _Accounts: 账号
+        :type Accounts: list of InputAccount
+        """
+        self._ClusterId = None
+        self._Accounts = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Accounts(self):
+        r"""账号
+        :rtype: list of InputAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = InputAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLibraDBClusterAccountsResponse(AbstractModel):
+    r"""DeleteLibraDBClusterAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLibraDBClusterRequest(AbstractModel):
+    r"""DeleteLibraDBCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLibraDBClusterResponse(AbstractModel):
+    r"""DeleteLibraDBCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20249,6 +21594,2252 @@ class DescribeIsolatedInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLibraDBClusterAccountAllPrivilegesRequest(AbstractModel):
+    r"""DescribeLibraDBClusterAccountAllPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _Account: 账号
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        self._ClusterId = None
+        self._Account = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterAccountAllPrivilegesResponse(AbstractModel):
+    r"""DescribeLibraDBClusterAccountAllPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivilegeStatements: 权限语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeStatements: list of str
+        :param _GlobalPrivileges: 全局权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivileges: 数据库权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabasePrivileges: list of DatabasePrivileges
+        :param _TablePrivileges: 表权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePrivileges: list of TablePrivileges
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PrivilegeStatements = None
+        self._GlobalPrivileges = None
+        self._DatabasePrivileges = None
+        self._TablePrivileges = None
+        self._RequestId = None
+
+    @property
+    def PrivilegeStatements(self):
+        r"""权限语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PrivilegeStatements
+
+    @PrivilegeStatements.setter
+    def PrivilegeStatements(self, PrivilegeStatements):
+        self._PrivilegeStatements = PrivilegeStatements
+
+    @property
+    def GlobalPrivileges(self):
+        r"""全局权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivileges(self):
+        r"""数据库权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatabasePrivileges
+        """
+        return self._DatabasePrivileges
+
+    @DatabasePrivileges.setter
+    def DatabasePrivileges(self, DatabasePrivileges):
+        self._DatabasePrivileges = DatabasePrivileges
+
+    @property
+    def TablePrivileges(self):
+        r"""表权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TablePrivileges
+        """
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PrivilegeStatements = params.get("PrivilegeStatements")
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self._DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivileges()
+                obj._deserialize(item)
+                self._DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self._TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivileges()
+                obj._deserialize(item)
+                self._TablePrivileges.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterAccountPrivilegesRequest(AbstractModel):
+    r"""DescribeLibraDBClusterAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _AccountName: 账号名
+        :type AccountName: str
+        :param _Host: 主机名
+        :type Host: str
+        :param _Db: 数据库名
+        :type Db: str
+        :param _Type: 类型
+        :type Type: str
+        :param _TableName: 表名
+        :type TableName: str
+        """
+        self._ClusterId = None
+        self._AccountName = None
+        self._Host = None
+        self._Db = None
+        self._Type = None
+        self._TableName = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountName(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Host(self):
+        r"""主机名
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Db(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountName = params.get("AccountName")
+        self._Host = params.get("Host")
+        self._Db = params.get("Db")
+        self._Type = params.get("Type")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterAccountPrivilegesResponse(AbstractModel):
+    r"""DescribeLibraDBClusterAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privileges: 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Privileges = None
+        self._RequestId = None
+
+    @property
+    def Privileges(self):
+        r"""权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Privileges = params.get("Privileges")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterAccountsRequest(AbstractModel):
+    r"""DescribeLibraDBClusterAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _AccountNames: 账号名
+        :type AccountNames: list of str
+        :param _AccountRegular: 模糊匹配关键字
+        :type AccountRegular: str
+        :param _Hosts: 主机名
+        :type Hosts: list of str
+        :param _Limit: 限制
+        :type Limit: int
+        :param _Offset: 偏移
+        :type Offset: int
+        """
+        self._ClusterId = None
+        self._AccountNames = None
+        self._AccountRegular = None
+        self._Hosts = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountNames(self):
+        r"""账号名
+        :rtype: list of str
+        """
+        return self._AccountNames
+
+    @AccountNames.setter
+    def AccountNames(self, AccountNames):
+        self._AccountNames = AccountNames
+
+    @property
+    def AccountRegular(self):
+        r"""模糊匹配关键字
+        :rtype: str
+        """
+        return self._AccountRegular
+
+    @AccountRegular.setter
+    def AccountRegular(self, AccountRegular):
+        self._AccountRegular = AccountRegular
+
+    @property
+    def Hosts(self):
+        r"""主机名
+        :rtype: list of str
+        """
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def Limit(self):
+        r"""限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountNames = params.get("AccountNames")
+        self._AccountRegular = params.get("AccountRegular")
+        self._Hosts = params.get("Hosts")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterAccountsResponse(AbstractModel):
+    r"""DescribeLibraDBClusterAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountSet: 账号信息
+        :type AccountSet: list of Account
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccountSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AccountSet(self):
+        r"""账号信息
+        :rtype: list of Account
+        """
+        return self._AccountSet
+
+    @AccountSet.setter
+    def AccountSet(self, AccountSet):
+        self._AccountSet = AccountSet
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccountSet") is not None:
+            self._AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = Account()
+                obj._deserialize(item)
+                self._AccountSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterAutoMapRuleRequest(AbstractModel):
+    r"""DescribeLibraDBClusterAutoMapRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群ID
+        :type ClusterId: str
+        :param _InstanceId: 分析实例ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""分析实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterAutoMapRuleResponse(AbstractModel):
+    r"""DescribeLibraDBClusterAutoMapRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoMapRules: 高级映射规则
+        :type AutoMapRules: list of AutoMapRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AutoMapRules = None
+        self._RequestId = None
+
+    @property
+    def AutoMapRules(self):
+        r"""高级映射规则
+        :rtype: list of AutoMapRule
+        """
+        return self._AutoMapRules
+
+    @AutoMapRules.setter
+    def AutoMapRules(self, AutoMapRules):
+        self._AutoMapRules = AutoMapRules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AutoMapRules") is not None:
+            self._AutoMapRules = []
+            for item in params.get("AutoMapRules"):
+                obj = AutoMapRule()
+                obj._deserialize(item)
+                self._AutoMapRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterDetailRequest(AbstractModel):
+    r"""DescribeLibraDBClusterDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        :param _GetServerInfo: 是否获取更多服务器信息，可选值yes no
+        :type GetServerInfo: str
+        """
+        self._ClusterId = None
+        self._GetServerInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GetServerInfo(self):
+        r"""是否获取更多服务器信息，可选值yes no
+        :rtype: str
+        """
+        return self._GetServerInfo
+
+    @GetServerInfo.setter
+    def GetServerInfo(self, GetServerInfo):
+        self._GetServerInfo = GetServerInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._GetServerInfo = params.get("GetServerInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterDetailResponse(AbstractModel):
+    r"""DescribeLibraDBClusterDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: 集群信息
+        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.LibraDBClusterDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        r"""集群信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LibraDBClusterDetail`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = LibraDBClusterDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterTableMappingRequest(AbstractModel):
+    r"""DescribeLibraDBClusterTableMapping请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群ID
+        :type ClusterId: str
+        :param _InstanceId: 分析引擎实例ID
+        :type InstanceId: str
+        :param _NodeId: 节点ID
+        :type NodeId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 页面记录限制
+        :type Limit: int
+        :param _SrcSchemas: 源端schema列表
+        :type SrcSchemas: list of str
+        :param _SrcTableName: 源端表列表
+        :type SrcTableName: list of str
+        :param _StatusList: 状态列表
+        :type StatusList: list of str
+        :param _MapSchemas: 映射数据库名称
+        :type MapSchemas: list of str
+        :param _MapTableName: 映射表名
+        :type MapTableName: list of str
+        :param _MapSchemaNotEmpty: 是否查询映射数据库名称不为空的记录
+        :type MapSchemaNotEmpty: bool
+        :param _MapTableNameNotEmpty: 是否查询映射表名不为空的记录
+        :type MapTableNameNotEmpty: bool
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._NodeId = None
+        self._Offset = None
+        self._Limit = None
+        self._SrcSchemas = None
+        self._SrcTableName = None
+        self._StatusList = None
+        self._MapSchemas = None
+        self._MapTableName = None
+        self._MapSchemaNotEmpty = None
+        self._MapTableNameNotEmpty = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""分析引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeId(self):
+        r"""节点ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""页面记录限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SrcSchemas(self):
+        r"""源端schema列表
+        :rtype: list of str
+        """
+        return self._SrcSchemas
+
+    @SrcSchemas.setter
+    def SrcSchemas(self, SrcSchemas):
+        self._SrcSchemas = SrcSchemas
+
+    @property
+    def SrcTableName(self):
+        r"""源端表列表
+        :rtype: list of str
+        """
+        return self._SrcTableName
+
+    @SrcTableName.setter
+    def SrcTableName(self, SrcTableName):
+        self._SrcTableName = SrcTableName
+
+    @property
+    def StatusList(self):
+        r"""状态列表
+        :rtype: list of str
+        """
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def MapSchemas(self):
+        r"""映射数据库名称
+        :rtype: list of str
+        """
+        return self._MapSchemas
+
+    @MapSchemas.setter
+    def MapSchemas(self, MapSchemas):
+        self._MapSchemas = MapSchemas
+
+    @property
+    def MapTableName(self):
+        r"""映射表名
+        :rtype: list of str
+        """
+        return self._MapTableName
+
+    @MapTableName.setter
+    def MapTableName(self, MapTableName):
+        self._MapTableName = MapTableName
+
+    @property
+    def MapSchemaNotEmpty(self):
+        r"""是否查询映射数据库名称不为空的记录
+        :rtype: bool
+        """
+        return self._MapSchemaNotEmpty
+
+    @MapSchemaNotEmpty.setter
+    def MapSchemaNotEmpty(self, MapSchemaNotEmpty):
+        self._MapSchemaNotEmpty = MapSchemaNotEmpty
+
+    @property
+    def MapTableNameNotEmpty(self):
+        r"""是否查询映射表名不为空的记录
+        :rtype: bool
+        """
+        return self._MapTableNameNotEmpty
+
+    @MapTableNameNotEmpty.setter
+    def MapTableNameNotEmpty(self, MapTableNameNotEmpty):
+        self._MapTableNameNotEmpty = MapTableNameNotEmpty
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._NodeId = params.get("NodeId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SrcSchemas = params.get("SrcSchemas")
+        self._SrcTableName = params.get("SrcTableName")
+        self._StatusList = params.get("StatusList")
+        self._MapSchemas = params.get("MapSchemas")
+        self._MapTableName = params.get("MapTableName")
+        self._MapSchemaNotEmpty = params.get("MapSchemaNotEmpty")
+        self._MapTableNameNotEmpty = params.get("MapTableNameNotEmpty")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterTableMappingResponse(AbstractModel):
+    r"""DescribeLibraDBClusterTableMapping返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: 总记录数
+        :type TotalCnt: int
+        :param _TableMappings: 数据库映射信息
+        :type TableMappings: list of TableMappingObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._TableMappings = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def TableMappings(self):
+        r"""数据库映射信息
+        :rtype: list of TableMappingObject
+        """
+        return self._TableMappings
+
+    @TableMappings.setter
+    def TableMappings(self, TableMappings):
+        self._TableMappings = TableMappings
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("TableMappings") is not None:
+            self._TableMappings = []
+            for item in params.get("TableMappings"):
+                obj = TableMappingObject()
+                obj._deserialize(item)
+                self._TableMappings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClustersRequest(AbstractModel):
+    r"""DescribeLibraDBClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 限制
+        :type Limit: int
+        :param _Offset: 偏置
+        :type Offset: int
+        :param _OrderBy: 排序字段
+        :type OrderBy: str
+        :param _OrderByType: 排序方法
+        :type OrderByType: str
+        :param _Filters: 过滤条件
+        :type Filters: list of QueryFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方法
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of QueryFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClustersResponse(AbstractModel):
+    r"""DescribeLibraDBClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterSet: 集群信息
+        :type ClusterSet: list of LibraDBClusterSet
+        :param _TotalCount: 集群数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterSet(self):
+        r"""集群信息
+        :rtype: list of LibraDBClusterSet
+        """
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def TotalCount(self):
+        r"""集群数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self._ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = LibraDBClusterSet()
+                obj._deserialize(item)
+                self._ClusterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBDataSourceRequest(AbstractModel):
+    r"""DescribeLibraDBDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群ID
+        :type ClusterId: str
+        :param _InstanceId: 只读分析引擎实例ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBDataSourceResponse(AbstractModel):
+    r"""DescribeLibraDBDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceList: 源端信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceList: list of DataSourceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSourceList = None
+        self._RequestId = None
+
+    @property
+    def DataSourceList(self):
+        r"""源端信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataSourceItem
+        """
+        return self._DataSourceList
+
+    @DataSourceList.setter
+    def DataSourceList(self, DataSourceList):
+        self._DataSourceList = DataSourceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSourceList") is not None:
+            self._DataSourceList = []
+            for item in params.get("DataSourceList"):
+                obj = DataSourceItem()
+                obj._deserialize(item)
+                self._DataSourceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBForwardConfigRequest(AbstractModel):
+    r"""DescribeLibraDBForwardConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 只读分析引擎实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBForwardConfigResponse(AbstractModel):
+    r"""DescribeLibraDBForwardConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ForwardMode: 是否开启转发
+        :type ForwardMode: str
+        :param _ForwardList: 转发列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardList: list of ForwardInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ForwardMode = None
+        self._ForwardList = None
+        self._RequestId = None
+
+    @property
+    def ForwardMode(self):
+        r"""是否开启转发
+        :rtype: str
+        """
+        return self._ForwardMode
+
+    @ForwardMode.setter
+    def ForwardMode(self, ForwardMode):
+        self._ForwardMode = ForwardMode
+
+    @property
+    def ForwardList(self):
+        r"""转发列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ForwardInstanceInfo
+        """
+        return self._ForwardList
+
+    @ForwardList.setter
+    def ForwardList(self, ForwardList):
+        self._ForwardList = ForwardList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ForwardMode = params.get("ForwardMode")
+        if params.get("ForwardList") is not None:
+            self._ForwardList = []
+            for item in params.get("ForwardList"):
+                obj = ForwardInstanceInfo()
+                obj._deserialize(item)
+                self._ForwardList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBInstanceDetailRequest(AbstractModel):
+    r"""DescribeLibraDBInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceId: 只读分析引擎实例 ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBInstanceDetailResponse(AbstractModel):
+    r"""DescribeLibraDBInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _AppId: 账号唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _Status: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param _LibraDBVersion: Libra分析引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibraDBVersion: str
+        :param _Cpu: cpu核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Memory: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param _Storage: 存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Storage: int
+        :param _StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param _InstanceType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceRole: 实例角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceRole: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _PayMode: 售卖方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
+        :param _PeriodStartTime: 售卖开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodStartTime: str
+        :param _PeriodEndTime: 售卖结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodEndTime: str
+        :param _RenewFlag: 续费标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _NetType: 网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: int
+        :param _VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Vip: 虚拟IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _Vport: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param _InstanceNetInfo: 实例网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNetInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
+        :param _ResourceTags: 实例标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
+        :param _NodeInfo: 实例节点信息
+        :type NodeInfo: list of LibraDBNodeInfo
+        :param _NodeCount: 实例节点个数
+        :type NodeCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Uin = None
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ProjectId = None
+        self._Region = None
+        self._Zone = None
+        self._Status = None
+        self._StatusDesc = None
+        self._LibraDBVersion = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._StorageType = None
+        self._InstanceType = None
+        self._InstanceRole = None
+        self._UpdateTime = None
+        self._CreateTime = None
+        self._PayMode = None
+        self._PeriodStartTime = None
+        self._PeriodEndTime = None
+        self._RenewFlag = None
+        self._NetType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Vip = None
+        self._Vport = None
+        self._InstanceNetInfo = None
+        self._ResourceTags = None
+        self._NodeInfo = None
+        self._NodeCount = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        r"""主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""账号唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Status(self):
+        r"""实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def LibraDBVersion(self):
+        r"""Libra分析引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LibraDBVersion
+
+    @LibraDBVersion.setter
+    def LibraDBVersion(self, LibraDBVersion):
+        self._LibraDBVersion = LibraDBVersion
+
+    @property
+    def Cpu(self):
+        r"""cpu核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def StorageType(self):
+        r"""存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceRole(self):
+        r"""实例角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PayMode(self):
+        r"""售卖方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodStartTime(self):
+        r"""售卖开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PeriodStartTime
+
+    @PeriodStartTime.setter
+    def PeriodStartTime(self, PeriodStartTime):
+        self._PeriodStartTime = PeriodStartTime
+
+    @property
+    def PeriodEndTime(self):
+        r"""售卖结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def RenewFlag(self):
+        r"""续费标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def NetType(self):
+        r"""网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Vip(self):
+        r"""虚拟IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def InstanceNetInfo(self):
+        r"""实例网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
+        """
+        return self._InstanceNetInfo
+
+    @InstanceNetInfo.setter
+    def InstanceNetInfo(self, InstanceNetInfo):
+        self._InstanceNetInfo = InstanceNetInfo
+
+    @property
+    def ResourceTags(self):
+        r"""实例标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def NodeInfo(self):
+        r"""实例节点信息
+        :rtype: list of LibraDBNodeInfo
+        """
+        return self._NodeInfo
+
+    @NodeInfo.setter
+    def NodeInfo(self, NodeInfo):
+        self._NodeInfo = NodeInfo
+
+    @property
+    def NodeCount(self):
+        r"""实例节点个数
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._LibraDBVersion = params.get("LibraDBVersion")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._StorageType = params.get("StorageType")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceRole = params.get("InstanceRole")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._PayMode = params.get("PayMode")
+        self._PeriodStartTime = params.get("PeriodStartTime")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._RenewFlag = params.get("RenewFlag")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        if params.get("InstanceNetInfo") is not None:
+            self._InstanceNetInfo = InstanceNetInfo()
+            self._InstanceNetInfo._deserialize(params.get("InstanceNetInfo"))
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("NodeInfo") is not None:
+            self._NodeInfo = []
+            for item in params.get("NodeInfo"):
+                obj = LibraDBNodeInfo()
+                obj._deserialize(item)
+                self._NodeInfo.append(obj)
+        self._NodeCount = params.get("NodeCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBInstanceSpecsRequest(AbstractModel):
+    r"""DescribeLibraDBInstanceSpecs请求参数结构体
+
+    """
+
+
+class DescribeLibraDBInstanceSpecsResponse(AbstractModel):
+    r"""DescribeLibraDBInstanceSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSpecSet: 该地域实例规格信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSpecSet: list of RegionInstanceSpecInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceSpecSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSpecSet(self):
+        r"""该地域实例规格信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegionInstanceSpecInfo
+        """
+        return self._InstanceSpecSet
+
+    @InstanceSpecSet.setter
+    def InstanceSpecSet(self, InstanceSpecSet):
+        self._InstanceSpecSet = InstanceSpecSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSpecSet") is not None:
+            self._InstanceSpecSet = []
+            for item in params.get("InstanceSpecSet"):
+                obj = RegionInstanceSpecInfo()
+                obj._deserialize(item)
+                self._InstanceSpecSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBSlowLogsRequest(AbstractModel):
+    r"""DescribeLibraDBSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 只读分析引擎实例 ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间,1753171200。
+        :type StartTime: int
+        :param _EndTime: 结束时间,1753171200。
+        :type EndTime: int
+        :param _Limit: 日志单页条数限制:0-200。
+        :type Limit: str
+        :param _Offset: 日志分页，大于0。
+        :type Offset: str
+        :param _Order: 日志排序方式，DESC-降序，ASC-升序。
+        :type Order: str
+        :param _OrderBy: 日志排序条件。
+        :type OrderBy: str
+        :param _LogFilter: 过滤条件。
+        :type LogFilter: list of LogFilter
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+        self._LogFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间,1753171200。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间,1753171200。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""日志单页条数限制:0-200。
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""日志分页，大于0。
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""日志排序方式，DESC-降序，ASC-升序。
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""日志排序条件。
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def LogFilter(self):
+        r"""过滤条件。
+        :rtype: list of LogFilter
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBSlowLogsResponse(AbstractModel):
+    r"""DescribeLibraDBSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBVersionRequest(AbstractModel):
+    r"""DescribeLibraDBVersion请求参数结构体
+
+    """
+
+
+class DescribeLibraDBVersionResponse(AbstractModel):
+    r"""DescribeLibraDBVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionList: 版本列表
+        :type VersionList: list of LibraDBVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VersionList = None
+        self._RequestId = None
+
+    @property
+    def VersionList(self):
+        r"""版本列表
+        :rtype: list of LibraDBVersion
+        """
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = LibraDBVersion()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMaintainPeriodRequest(AbstractModel):
     r"""DescribeMaintainPeriod请求参数结构体
 
@@ -23458,6 +27049,170 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DownloadLibraDBClusterListRequest(AbstractModel):
+    r"""DownloadLibraDBClusterList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 限制数
+        :type Limit: int
+        :param _Offset: 偏移值
+        :type Offset: int
+        :param _OrderBy: 排序字段
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，desc,asc,DESC,ASC
+        :type OrderByType: str
+        :param _Filters: 过滤条件
+        :type Filters: list of QueryFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""限制数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移值
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，desc,asc,DESC,ASC
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of QueryFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadLibraDBClusterListResponse(AbstractModel):
+    r"""DownloadLibraDBClusterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterSet: 分析集群信息
+        :type ClusterSet: list of LibraClusterSet
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterSet(self):
+        r"""分析集群信息
+        :rtype: list of LibraClusterSet
+        """
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self._ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = LibraClusterSet()
+                obj._deserialize(item)
+                self._ClusterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class ErrorLogItemExport(AbstractModel):
     r"""错误日志导出格式
 
@@ -24294,6 +28049,61 @@ class ExportResourcePackageDeductDetailsResponse(AbstractModel):
     def _deserialize(self, params):
         self._FileContent = params.get("FileContent")
         self._RequestId = params.get("RequestId")
+
+
+class ForwardInstanceInfo(AbstractModel):
+    r"""转发实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 转发实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Region: 转发实例地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self._InstanceId = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        r"""转发实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Region(self):
+        r"""转发实例地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GdnTaskInfo(AbstractModel):
@@ -26761,6 +30571,287 @@ class InstanceParamItem(AbstractModel):
         
 
 
+class InstanceSet(AbstractModel):
+    r"""实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbMode: 数据库模式
+        :type DbMode: str
+        :param _InstanceCpu: cpu核数
+        :type InstanceCpu: int
+        :param _InstanceDeviceType: 实例类型
+        :type InstanceDeviceType: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceMemory: 内存
+        :type InstanceMemory: int
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceRole: 实例角色
+        :type InstanceRole: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: 状态描述
+        :type InstanceStatusDesc: str
+        :param _InstanceStorage: 硬盘
+        :type InstanceStorage: int
+        :param _InstanceStorageType: 硬盘类型
+        :type InstanceStorageType: str
+        :param _InstanceType: 引擎类型
+        :type InstanceType: str
+        :param _MaintainDuration: 持续的时间
+        :type MaintainDuration: int
+        :param _MaintainStartTime: 执行开始时间(距离0点的秒数)
+        :type MaintainStartTime: int
+        :param _MaintainWeekDays: 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+        :type MaintainWeekDays: list of str
+        :param _NodeList: 节点列表
+        :type NodeList: list of str
+        :param _InstanceTasks: 实例任务
+        :type InstanceTasks: list of ObjectTask
+        """
+        self._DbMode = None
+        self._InstanceCpu = None
+        self._InstanceDeviceType = None
+        self._InstanceId = None
+        self._InstanceMemory = None
+        self._InstanceName = None
+        self._InstanceRole = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._InstanceStorage = None
+        self._InstanceStorageType = None
+        self._InstanceType = None
+        self._MaintainDuration = None
+        self._MaintainStartTime = None
+        self._MaintainWeekDays = None
+        self._NodeList = None
+        self._InstanceTasks = None
+
+    @property
+    def DbMode(self):
+        r"""数据库模式
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def InstanceCpu(self):
+        r"""cpu核数
+        :rtype: int
+        """
+        return self._InstanceCpu
+
+    @InstanceCpu.setter
+    def InstanceCpu(self, InstanceCpu):
+        self._InstanceCpu = InstanceCpu
+
+    @property
+    def InstanceDeviceType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InstanceDeviceType
+
+    @InstanceDeviceType.setter
+    def InstanceDeviceType(self, InstanceDeviceType):
+        self._InstanceDeviceType = InstanceDeviceType
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceMemory(self):
+        r"""内存
+        :rtype: int
+        """
+        return self._InstanceMemory
+
+    @InstanceMemory.setter
+    def InstanceMemory(self, InstanceMemory):
+        self._InstanceMemory = InstanceMemory
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceRole(self):
+        r"""实例角色
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""状态描述
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def InstanceStorage(self):
+        r"""硬盘
+        :rtype: int
+        """
+        return self._InstanceStorage
+
+    @InstanceStorage.setter
+    def InstanceStorage(self, InstanceStorage):
+        self._InstanceStorage = InstanceStorage
+
+    @property
+    def InstanceStorageType(self):
+        r"""硬盘类型
+        :rtype: str
+        """
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
+    @property
+    def InstanceType(self):
+        r"""引擎类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MaintainDuration(self):
+        r"""持续的时间
+        :rtype: int
+        """
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainStartTime(self):
+        r"""执行开始时间(距离0点的秒数)
+        :rtype: int
+        """
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainWeekDays(self):
+        r"""可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+        :rtype: list of str
+        """
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+    @property
+    def NodeList(self):
+        r"""节点列表
+        :rtype: list of str
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def InstanceTasks(self):
+        r"""实例任务
+        :rtype: list of ObjectTask
+        """
+        return self._InstanceTasks
+
+    @InstanceTasks.setter
+    def InstanceTasks(self, InstanceTasks):
+        self._InstanceTasks = InstanceTasks
+
+
+    def _deserialize(self, params):
+        self._DbMode = params.get("DbMode")
+        self._InstanceCpu = params.get("InstanceCpu")
+        self._InstanceDeviceType = params.get("InstanceDeviceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceMemory = params.get("InstanceMemory")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._InstanceStorage = params.get("InstanceStorage")
+        self._InstanceStorageType = params.get("InstanceStorageType")
+        self._InstanceType = params.get("InstanceType")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
+        self._NodeList = params.get("NodeList")
+        if params.get("InstanceTasks") is not None:
+            self._InstanceTasks = []
+            for item in params.get("InstanceTasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._InstanceTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSpec(AbstractModel):
     r"""实例可售卖规格详细信息，创建实例时Cpu/Memory确定实例规格，存储可选大小为[MinStorageSize,MaxStorageSize]
 
@@ -27476,6 +31567,2549 @@ class IsolateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IsolateLibraDBClusterRequest(AbstractModel):
+    r"""IsolateLibraDBCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        :param _IsolateReasonTypes: 隔离原因类型
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: 隔离原因
+        :type IsolateReason: str
+        """
+        self._ClusterId = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IsolateReasonTypes(self):
+        r"""隔离原因类型
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""隔离原因
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateLibraDBClusterResponse(AbstractModel):
+    r"""IsolateLibraDBCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _DealNames: 返回订单号
+        :type DealNames: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealNames = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealNames(self):
+        r"""返回订单号
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class IsolateLibraDBInstanceRequest(AbstractModel):
+    r"""IsolateLibraDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceIdList: 只读分析引擎实例 ID 列表
+        :type InstanceIdList: list of str
+        :param _ForceIsolate: 是否是强制隔离
+        :type ForceIsolate: bool
+        :param _IsolateReasonTypes: 隔离原因类型
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: 隔离原因
+        :type IsolateReason: str
+        """
+        self._ClusterId = None
+        self._InstanceIdList = None
+        self._ForceIsolate = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIdList(self):
+        r"""只读分析引擎实例 ID 列表
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def ForceIsolate(self):
+        r"""是否是强制隔离
+        :rtype: bool
+        """
+        return self._ForceIsolate
+
+    @ForceIsolate.setter
+    def ForceIsolate(self, ForceIsolate):
+        self._ForceIsolate = ForceIsolate
+
+    @property
+    def IsolateReasonTypes(self):
+        r"""隔离原因类型
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""隔离原因
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._ForceIsolate = params.get("ForceIsolate")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateLibraDBInstanceResponse(AbstractModel):
+    r"""IsolateLibraDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _DealNames: 订单号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealNames = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealNames(self):
+        r"""订单号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class LibraClusterSet(AbstractModel):
+    r"""libra集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 用户id
+        :type AppId: int
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
+        :param _InstanceSet: 实例信息
+        :type InstanceSet: list of LibraInstanceSet
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _PeriodEndTime: 到期时间
+        :type PeriodEndTime: str
+        :param _ProjectID: 项目id
+        :type ProjectID: int
+        :param _Region: 地域
+        :type Region: str
+        :param _RenewFlag: 自动续费标识，1为自动续费，0为到期不续
+        :type RenewFlag: int
+        :param _Status: 状态
+        :type Status: str
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param _Storage: 存储大小
+        :type Storage: int
+        :param _UsedStorage: 使用容量
+        :type UsedStorage: int
+        :param _Vip: vip地址
+        :type Vip: str
+        :param _Vport: vport端口
+        :type Vport: int
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._CreateTime = None
+        self._DbVersion = None
+        self._InstanceSet = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._Region = None
+        self._RenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._UsedStorage = None
+        self._Vip = None
+        self._Vport = None
+
+    @property
+    def AppId(self):
+        r"""用户id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DbVersion(self):
+        r"""数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def InstanceSet(self):
+        r"""实例信息
+        :rtype: list of LibraInstanceSet
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def PayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""到期时间
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""项目id
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识，1为自动续费，0为到期不续
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""状态描述
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""存储大小
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def UsedStorage(self):
+        r"""使用容量
+        :rtype: int
+        """
+        return self._UsedStorage
+
+    @UsedStorage.setter
+    def UsedStorage(self, UsedStorage):
+        self._UsedStorage = UsedStorage
+
+    @property
+    def Vip(self):
+        r"""vip地址
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""vport端口
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._CreateTime = params.get("CreateTime")
+        self._DbVersion = params.get("DbVersion")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = LibraInstanceSet()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._Region = params.get("Region")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._UsedStorage = params.get("UsedStorage")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterDetail(AbstractModel):
+    r"""libra集群详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _Region: 地域
+        :type Region: str
+        :param _Status: 状态
+        :type Status: str
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param _Storage: 存储大小
+        :type Storage: int
+        :param _VpcName: VPC名称
+        :type VpcName: str
+        :param _VpcId: vpc唯一id
+        :type VpcId: str
+        :param _SubnetName: 子网名称
+        :type SubnetName: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
+        :param _UsedStorage: 使用容量
+        :type UsedStorage: int
+        :param _Vip: vip地址
+        :type Vip: str
+        :param _Vport: vport端口
+        :type Vport: int
+        :param _RoAddr: 集群只读实例的vip地址和vport端口
+        :type RoAddr: list of RoAddr
+        :param _CynosVersion: cynos版本
+        :type CynosVersion: str
+        :param _IsFreeze: 是否冻结
+        :type IsFreeze: str
+        :param _Tasks: 任务列表
+        :type Tasks: list of ObjectTask
+        :param _MasterZone: 主可用区
+        :type MasterZone: str
+        :param _InstanceSet: 实例集合
+        :type InstanceSet: list of InstanceSet
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _PeriodEndTime: 到期时间
+        :type PeriodEndTime: str
+        :param _ProjectID: 项目id
+        :type ProjectID: int
+        :param _RenewFlag: 自动续费标识
+        :type RenewFlag: int
+        :param _CynosVersionTag: 版本标签
+        :type CynosVersionTag: str
+        :param _NoSupportAddRo: 不支持添加ro yes-不支持添加ro， no/null/"" 支持添加ro
+        :type NoSupportAddRo: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _PhysicalZone: 物理可用区
+        :type PhysicalZone: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Region = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._VpcName = None
+        self._VpcId = None
+        self._SubnetName = None
+        self._SubnetId = None
+        self._CreateTime = None
+        self._DbVersion = None
+        self._UsedStorage = None
+        self._Vip = None
+        self._Vport = None
+        self._RoAddr = None
+        self._CynosVersion = None
+        self._IsFreeze = None
+        self._Tasks = None
+        self._MasterZone = None
+        self._InstanceSet = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._RenewFlag = None
+        self._CynosVersionTag = None
+        self._NoSupportAddRo = None
+        self._Zone = None
+        self._PhysicalZone = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""状态描述
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""存储大小
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def VpcName(self):
+        r"""VPC名称
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcId(self):
+        r"""vpc唯一id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetName(self):
+        r"""子网名称
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DbVersion(self):
+        r"""数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def UsedStorage(self):
+        r"""使用容量
+        :rtype: int
+        """
+        return self._UsedStorage
+
+    @UsedStorage.setter
+    def UsedStorage(self, UsedStorage):
+        self._UsedStorage = UsedStorage
+
+    @property
+    def Vip(self):
+        r"""vip地址
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""vport端口
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def RoAddr(self):
+        r"""集群只读实例的vip地址和vport端口
+        :rtype: list of RoAddr
+        """
+        return self._RoAddr
+
+    @RoAddr.setter
+    def RoAddr(self, RoAddr):
+        self._RoAddr = RoAddr
+
+    @property
+    def CynosVersion(self):
+        r"""cynos版本
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
+    @property
+    def IsFreeze(self):
+        r"""是否冻结
+        :rtype: str
+        """
+        return self._IsFreeze
+
+    @IsFreeze.setter
+    def IsFreeze(self, IsFreeze):
+        self._IsFreeze = IsFreeze
+
+    @property
+    def Tasks(self):
+        r"""任务列表
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def MasterZone(self):
+        r"""主可用区
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
+
+    @property
+    def InstanceSet(self):
+        r"""实例集合
+        :rtype: list of InstanceSet
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def PayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""到期时间
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""项目id
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def CynosVersionTag(self):
+        r"""版本标签
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
+    @property
+    def NoSupportAddRo(self):
+        r"""不支持添加ro yes-不支持添加ro， no/null/"" 支持添加ro
+        :rtype: str
+        """
+        return self._NoSupportAddRo
+
+    @NoSupportAddRo.setter
+    def NoSupportAddRo(self, NoSupportAddRo):
+        self._NoSupportAddRo = NoSupportAddRo
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PhysicalZone(self):
+        r"""物理可用区
+        :rtype: str
+        """
+        return self._PhysicalZone
+
+    @PhysicalZone.setter
+    def PhysicalZone(self, PhysicalZone):
+        self._PhysicalZone = PhysicalZone
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._VpcName = params.get("VpcName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetId = params.get("SubnetId")
+        self._CreateTime = params.get("CreateTime")
+        self._DbVersion = params.get("DbVersion")
+        self._UsedStorage = params.get("UsedStorage")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        if params.get("RoAddr") is not None:
+            self._RoAddr = []
+            for item in params.get("RoAddr"):
+                obj = RoAddr()
+                obj._deserialize(item)
+                self._RoAddr.append(obj)
+        self._CynosVersion = params.get("CynosVersion")
+        self._IsFreeze = params.get("IsFreeze")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._MasterZone = params.get("MasterZone")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = InstanceSet()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._RenewFlag = params.get("RenewFlag")
+        self._CynosVersionTag = params.get("CynosVersionTag")
+        self._NoSupportAddRo = params.get("NoSupportAddRo")
+        self._Zone = params.get("Zone")
+        self._PhysicalZone = params.get("PhysicalZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterSet(AbstractModel):
+    r"""集群列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 用户id
+        :type AppId: int
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _CynosVersion: cynos版本
+        :type CynosVersion: str
+        :param _CynosVersionTag: 版本标签
+        :type CynosVersionTag: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
+        :param _InstanceNum: 实例数量
+        :type InstanceNum: int
+        :param _IsFreeze: 是否冻结
+        :type IsFreeze: str
+        :param _NetAddrs: 网络地址
+        :type NetAddrs: list of NetAddr
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _PeriodEndTime: 到期时间
+
+        :type PeriodEndTime: str
+        :param _ProjectID: 项目id
+        :type ProjectID: int
+        :param _Region: 地域
+        :type Region: str
+        :param _RenewFlag: 自动续费标识，1为自动续费，0为到期不续
+        :type RenewFlag: int
+        :param _Status: 状态
+        :type Status: str
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param _Storage: 存储大小，单位为G
+        :type Storage: int
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _Tasks: 任务列表
+        :type Tasks: list of ObjectTask
+        :param _Uin: 账户id
+        :type Uin: str
+        :param _Vip: vip地址
+        :type Vip: str
+        :param _VpcId: vpc唯一id
+        :type VpcId: str
+        :param _Vport: vport端口
+        :type Vport: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _MasterZone: 主可用区
+        :type MasterZone: str
+        :param _PhysicalZone: 物理可用区
+        :type PhysicalZone: str
+        :param _Zone: 可用区
+        :type Zone: str
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._CreateTime = None
+        self._CynosVersion = None
+        self._CynosVersionTag = None
+        self._DbVersion = None
+        self._InstanceNum = None
+        self._IsFreeze = None
+        self._NetAddrs = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._Region = None
+        self._RenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._SubnetId = None
+        self._Tasks = None
+        self._Uin = None
+        self._Vip = None
+        self._VpcId = None
+        self._Vport = None
+        self._UpdateTime = None
+        self._MasterZone = None
+        self._PhysicalZone = None
+        self._Zone = None
+
+    @property
+    def AppId(self):
+        r"""用户id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CynosVersion(self):
+        r"""cynos版本
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
+    @property
+    def CynosVersionTag(self):
+        r"""版本标签
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
+    @property
+    def DbVersion(self):
+        r"""数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def InstanceNum(self):
+        r"""实例数量
+        :rtype: int
+        """
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def IsFreeze(self):
+        r"""是否冻结
+        :rtype: str
+        """
+        return self._IsFreeze
+
+    @IsFreeze.setter
+    def IsFreeze(self, IsFreeze):
+        self._IsFreeze = IsFreeze
+
+    @property
+    def NetAddrs(self):
+        r"""网络地址
+        :rtype: list of NetAddr
+        """
+        return self._NetAddrs
+
+    @NetAddrs.setter
+    def NetAddrs(self, NetAddrs):
+        self._NetAddrs = NetAddrs
+
+    @property
+    def PayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""到期时间
+
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""项目id
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识，1为自动续费，0为到期不续
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""状态描述
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""存储大小，单位为G
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Tasks(self):
+        r"""任务列表
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Uin(self):
+        r"""账户id
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Vip(self):
+        r"""vip地址
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        r"""vpc唯一id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Vport(self):
+        r"""vport端口
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MasterZone(self):
+        r"""主可用区
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
+
+    @property
+    def PhysicalZone(self):
+        r"""物理可用区
+        :rtype: str
+        """
+        return self._PhysicalZone
+
+    @PhysicalZone.setter
+    def PhysicalZone(self, PhysicalZone):
+        self._PhysicalZone = PhysicalZone
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._CreateTime = params.get("CreateTime")
+        self._CynosVersion = params.get("CynosVersion")
+        self._CynosVersionTag = params.get("CynosVersionTag")
+        self._DbVersion = params.get("DbVersion")
+        self._InstanceNum = params.get("InstanceNum")
+        self._IsFreeze = params.get("IsFreeze")
+        if params.get("NetAddrs") is not None:
+            self._NetAddrs = []
+            for item in params.get("NetAddrs"):
+                obj = NetAddr()
+                obj._deserialize(item)
+                self._NetAddrs.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._Region = params.get("Region")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Uin = params.get("Uin")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._Vport = params.get("Vport")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MasterZone = params.get("MasterZone")
+        self._PhysicalZone = params.get("PhysicalZone")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterSrcInfo(AbstractModel):
+    r"""libra分析集群源数据库信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceType: 源端类型
+        :type SrcInstanceType: str
+        :param _AccessType: 网络类型
+        :type AccessType: str
+        :param _SrcInstanceId: 源端实例ID
+        :type SrcInstanceId: str
+        :param _SrcClusterId: 源端集群ID
+        :type SrcClusterId: str
+        :param _IP: 地址
+        :type IP: str
+        :param _Port: 端口
+        :type Port: str
+        :param _User: 用户名
+        :type User: str
+        :param _Password: 密码
+        :type Password: str
+        :param _SqlMode: 源端sql_mode
+        :type SqlMode: str
+        :param _SrcAppId: 源端应用id
+        :type SrcAppId: int
+        :param _SrcUin: 源端账号
+        :type SrcUin: str
+        :param _SrcSubAccountUin: 源端子账号
+        :type SrcSubAccountUin: str
+        :param _AccountMode: 账号
+        :type AccountMode: str
+        :param _Region: 源端实例地域
+        :type Region: str
+        :param _Operation: 对源端实例的操作
+        :type Operation: str
+        """
+        self._SrcInstanceType = None
+        self._AccessType = None
+        self._SrcInstanceId = None
+        self._SrcClusterId = None
+        self._IP = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._SqlMode = None
+        self._SrcAppId = None
+        self._SrcUin = None
+        self._SrcSubAccountUin = None
+        self._AccountMode = None
+        self._Region = None
+        self._Operation = None
+
+    @property
+    def SrcInstanceType(self):
+        r"""源端类型
+        :rtype: str
+        """
+        return self._SrcInstanceType
+
+    @SrcInstanceType.setter
+    def SrcInstanceType(self, SrcInstanceType):
+        self._SrcInstanceType = SrcInstanceType
+
+    @property
+    def AccessType(self):
+        r"""网络类型
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def SrcInstanceId(self):
+        r"""源端实例ID
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def SrcClusterId(self):
+        r"""源端集群ID
+        :rtype: str
+        """
+        return self._SrcClusterId
+
+    @SrcClusterId.setter
+    def SrcClusterId(self, SrcClusterId):
+        self._SrcClusterId = SrcClusterId
+
+    @property
+    def IP(self):
+        r"""地址
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SqlMode(self):
+        r"""源端sql_mode
+        :rtype: str
+        """
+        return self._SqlMode
+
+    @SqlMode.setter
+    def SqlMode(self, SqlMode):
+        self._SqlMode = SqlMode
+
+    @property
+    def SrcAppId(self):
+        r"""源端应用id
+        :rtype: int
+        """
+        return self._SrcAppId
+
+    @SrcAppId.setter
+    def SrcAppId(self, SrcAppId):
+        self._SrcAppId = SrcAppId
+
+    @property
+    def SrcUin(self):
+        r"""源端账号
+        :rtype: str
+        """
+        return self._SrcUin
+
+    @SrcUin.setter
+    def SrcUin(self, SrcUin):
+        self._SrcUin = SrcUin
+
+    @property
+    def SrcSubAccountUin(self):
+        r"""源端子账号
+        :rtype: str
+        """
+        return self._SrcSubAccountUin
+
+    @SrcSubAccountUin.setter
+    def SrcSubAccountUin(self, SrcSubAccountUin):
+        self._SrcSubAccountUin = SrcSubAccountUin
+
+    @property
+    def AccountMode(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def Region(self):
+        r"""源端实例地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Operation(self):
+        r"""对源端实例的操作
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceType = params.get("SrcInstanceType")
+        self._AccessType = params.get("AccessType")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._SrcClusterId = params.get("SrcClusterId")
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._SqlMode = params.get("SqlMode")
+        self._SrcAppId = params.get("SrcAppId")
+        self._SrcUin = params.get("SrcUin")
+        self._SrcSubAccountUin = params.get("SrcSubAccountUin")
+        self._AccountMode = params.get("AccountMode")
+        self._Region = params.get("Region")
+        self._Operation = params.get("Operation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBInstanceInitInfo(AbstractModel):
+    r"""libra实例初始化信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: cpu
+        :type Cpu: int
+        :param _Memory: 内存
+        :type Memory: int
+        :param _StorageSize: 硬盘
+        :type StorageSize: int
+        :param _StorageType: 存储类型
+        :type StorageType: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _LibraDBVersion: 实例版本
+        :type LibraDBVersion: str
+        :param _InstanceCount: 实例数量
+        :type InstanceCount: int
+        :param _VpcId: vpc id
+        :type VpcId: str
+        :param _SubnetId: subnet id
+        :type SubnetId: str
+        :param _Port: 端口
+        :type Port: int
+        :param _ReplicasNum: 购买实例副本数
+        :type ReplicasNum: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._StorageSize = None
+        self._StorageType = None
+        self._InstanceType = None
+        self._LibraDBVersion = None
+        self._InstanceCount = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Port = None
+        self._ReplicasNum = None
+
+    @property
+    def Cpu(self):
+        r"""cpu
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def StorageSize(self):
+        r"""硬盘
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def StorageType(self):
+        r"""存储类型
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def LibraDBVersion(self):
+        r"""实例版本
+        :rtype: str
+        """
+        return self._LibraDBVersion
+
+    @LibraDBVersion.setter
+    def LibraDBVersion(self, LibraDBVersion):
+        self._LibraDBVersion = LibraDBVersion
+
+    @property
+    def InstanceCount(self):
+        r"""实例数量
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def VpcId(self):
+        r"""vpc id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""subnet id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ReplicasNum(self):
+        r"""购买实例副本数
+        :rtype: int
+        """
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._StorageSize = params.get("StorageSize")
+        self._StorageType = params.get("StorageType")
+        self._InstanceType = params.get("InstanceType")
+        self._LibraDBVersion = params.get("LibraDBVersion")
+        self._InstanceCount = params.get("InstanceCount")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Port = params.get("Port")
+        self._ReplicasNum = params.get("ReplicasNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBNodeInfo(AbstractModel):
+    r"""LibraDB 节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: LibraDB节点ID
+        :type NodeId: str
+        :param _Status: 节点状态
+        :type Status: str
+        :param _DataStatus: 数据同步中
+        :type DataStatus: str
+        :param _Cpu: CPU核数
+        :type Cpu: int
+        :param _Memory: 内存大小，单位 G
+        :type Memory: int
+        :param _Storage: 磁盘大小，单位G
+        :type Storage: int
+        :param _Message: 错误信息
+        :type Message: str
+        """
+        self._NodeId = None
+        self._Status = None
+        self._DataStatus = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._Message = None
+
+    @property
+    def NodeId(self):
+        r"""LibraDB节点ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Status(self):
+        r"""节点状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DataStatus(self):
+        r"""数据同步中
+        :rtype: str
+        """
+        return self._DataStatus
+
+    @DataStatus.setter
+    def DataStatus(self, DataStatus):
+        self._DataStatus = DataStatus
+
+    @property
+    def Cpu(self):
+        r"""CPU核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存大小，单位 G
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""磁盘大小，单位G
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Message(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Status = params.get("Status")
+        self._DataStatus = params.get("DataStatus")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBVersion(AbstractModel):
+    r"""LibraDB 版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 版本号
+        :type Version: str
+        :param _Tag: 版本tag
+        :type Tag: str
+        :param _HasPermission: 是否可以使用该版本
+        :type HasPermission: bool
+        """
+        self._Version = None
+        self._Tag = None
+        self._HasPermission = None
+
+    @property
+    def Version(self):
+        r"""版本号
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Tag(self):
+        r"""版本tag
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def HasPermission(self):
+        r"""是否可以使用该版本
+        :rtype: bool
+        """
+        return self._HasPermission
+
+    @HasPermission.setter
+    def HasPermission(self, HasPermission):
+        self._HasPermission = HasPermission
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Tag = params.get("Tag")
+        self._HasPermission = params.get("HasPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraInstanceSet(AbstractModel):
+    r"""libra实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbMode: 数据库模式
+        :type DbMode: str
+        :param _InstanceCpu: cpu核数
+        :type InstanceCpu: int
+        :param _InstanceDeviceType: 实例类型
+        :type InstanceDeviceType: str
+        :param _InstanceGroupId: 组id
+        :type InstanceGroupId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceMemory: 内存
+        :type InstanceMemory: int
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstancePayMode: 付费模式
+        :type InstancePayMode: int
+        :param _InstancePeriodEndTime: 付费结束时间
+        :type InstancePeriodEndTime: str
+        :param _InstanceRole: 实例角色
+        :type InstanceRole: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: 实例状态描述
+        :type InstanceStatusDesc: str
+        :param _NetType: 网络类型
+        :type NetType: str
+        :param _UniqSubnetId: 子网id
+        :type UniqSubnetId: str
+        :param _UniqVpcId: vpcid
+        :type UniqVpcId: str
+        :param _Vip: 虚拟ip
+        :type Vip: str
+        :param _Vport: 虚拟端口
+        :type Vport: int
+        :param _WanDomain: 外网区域
+        :type WanDomain: str
+        :param _WanIP: 外网ip
+        :type WanIP: str
+        :param _WanPort: 外网port
+        :type WanPort: int
+        :param _WanStatus: 外网状态
+        :type WanStatus: str
+        :param _InstanceStorage: 硬盘
+        :type InstanceStorage: int
+        :param _InstanceStorageType: 硬盘类型
+        :type InstanceStorageType: str
+        """
+        self._DbMode = None
+        self._InstanceCpu = None
+        self._InstanceDeviceType = None
+        self._InstanceGroupId = None
+        self._InstanceId = None
+        self._InstanceMemory = None
+        self._InstanceName = None
+        self._InstancePayMode = None
+        self._InstancePeriodEndTime = None
+        self._InstanceRole = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._NetType = None
+        self._UniqSubnetId = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._Vport = None
+        self._WanDomain = None
+        self._WanIP = None
+        self._WanPort = None
+        self._WanStatus = None
+        self._InstanceStorage = None
+        self._InstanceStorageType = None
+
+    @property
+    def DbMode(self):
+        r"""数据库模式
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def InstanceCpu(self):
+        r"""cpu核数
+        :rtype: int
+        """
+        return self._InstanceCpu
+
+    @InstanceCpu.setter
+    def InstanceCpu(self, InstanceCpu):
+        self._InstanceCpu = InstanceCpu
+
+    @property
+    def InstanceDeviceType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InstanceDeviceType
+
+    @InstanceDeviceType.setter
+    def InstanceDeviceType(self, InstanceDeviceType):
+        self._InstanceDeviceType = InstanceDeviceType
+
+    @property
+    def InstanceGroupId(self):
+        r"""组id
+        :rtype: str
+        """
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceMemory(self):
+        r"""内存
+        :rtype: int
+        """
+        return self._InstanceMemory
+
+    @InstanceMemory.setter
+    def InstanceMemory(self, InstanceMemory):
+        self._InstanceMemory = InstanceMemory
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstancePayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._InstancePayMode
+
+    @InstancePayMode.setter
+    def InstancePayMode(self, InstancePayMode):
+        self._InstancePayMode = InstancePayMode
+
+    @property
+    def InstancePeriodEndTime(self):
+        r"""付费结束时间
+        :rtype: str
+        """
+        return self._InstancePeriodEndTime
+
+    @InstancePeriodEndTime.setter
+    def InstancePeriodEndTime(self, InstancePeriodEndTime):
+        self._InstancePeriodEndTime = InstancePeriodEndTime
+
+    @property
+    def InstanceRole(self):
+        r"""实例角色
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""实例状态描述
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def NetType(self):
+        r"""网络类型
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def UniqSubnetId(self):
+        r"""子网id
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def UniqVpcId(self):
+        r"""vpcid
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        r"""虚拟ip
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""虚拟端口
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def WanDomain(self):
+        r"""外网区域
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanIP(self):
+        r"""外网ip
+        :rtype: str
+        """
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def WanPort(self):
+        r"""外网port
+        :rtype: int
+        """
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+    @property
+    def WanStatus(self):
+        r"""外网状态
+        :rtype: str
+        """
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def InstanceStorage(self):
+        r"""硬盘
+        :rtype: int
+        """
+        return self._InstanceStorage
+
+    @InstanceStorage.setter
+    def InstanceStorage(self, InstanceStorage):
+        self._InstanceStorage = InstanceStorage
+
+    @property
+    def InstanceStorageType(self):
+        r"""硬盘类型
+        :rtype: str
+        """
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
+
+    def _deserialize(self, params):
+        self._DbMode = params.get("DbMode")
+        self._InstanceCpu = params.get("InstanceCpu")
+        self._InstanceDeviceType = params.get("InstanceDeviceType")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceMemory = params.get("InstanceMemory")
+        self._InstanceName = params.get("InstanceName")
+        self._InstancePayMode = params.get("InstancePayMode")
+        self._InstancePeriodEndTime = params.get("InstancePeriodEndTime")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._NetType = params.get("NetType")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._WanDomain = params.get("WanDomain")
+        self._WanIP = params.get("WanIP")
+        self._WanPort = params.get("WanPort")
+        self._WanStatus = params.get("WanStatus")
+        self._InstanceStorage = params.get("InstanceStorage")
+        self._InstanceStorageType = params.get("InstanceStorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilter(AbstractModel):
+    r"""日志过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 过滤项。
+        :type Type: str
+        :param _Compare: 过滤条件。支持以下条件： WINC-包含（分词维度）， WEXC-不包含（分词维度）, INC - 包含, EXC - 不包含, EQS - 等于, NEQ - 不等于, RA - 范围。
+        :type Compare: str
+        :param _Value: 过滤的值。反向查询时，多个值之前是且的关系，正向查询多个值是或的关系
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""过滤项。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""过滤条件。支持以下条件： WINC-包含（分词维度）， WEXC-不包含（分词维度）, INC - 包含, EXC - 不包含, EQS - 等于, NEQ - 不等于, RA - 范围。
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""过滤的值。反向查询时，多个值之前是且的关系，正向查询多个值是或的关系
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogRuleTemplateInfo(AbstractModel):
     r"""审计日志命中规则模板的基本信息
 
@@ -27752,6 +34386,219 @@ class ManualBackupData(AbstractModel):
                 obj = CrossRegionBackupItem()
                 obj._deserialize(item)
                 self._CrossRegionBackupInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateDBItem(AbstractModel):
+    r"""同步库表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param _MigrateTableMode: 数据表迁移模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateTableMode: str
+        :param _Tables: 数据表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: list of MigrateTableItem
+        """
+        self._DbName = None
+        self._MigrateTableMode = None
+        self._Tables = None
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def MigrateTableMode(self):
+        r"""数据表迁移模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MigrateTableMode
+
+    @MigrateTableMode.setter
+    def MigrateTableMode(self, MigrateTableMode):
+        self._MigrateTableMode = MigrateTableMode
+
+    @property
+    def Tables(self):
+        r"""数据表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MigrateTableItem
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._MigrateTableMode = params.get("MigrateTableMode")
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = MigrateTableItem()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateObject(AbstractModel):
+    r"""同步数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MigrateDBMode: 数据库迁移模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateDBMode: str
+        :param _Databases: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Databases: list of MigrateDBItem
+        """
+        self._MigrateDBMode = None
+        self._Databases = None
+
+    @property
+    def MigrateDBMode(self):
+        r"""数据库迁移模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MigrateDBMode
+
+    @MigrateDBMode.setter
+    def MigrateDBMode(self, MigrateDBMode):
+        self._MigrateDBMode = MigrateDBMode
+
+    @property
+    def Databases(self):
+        r"""数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MigrateDBItem
+        """
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+
+    def _deserialize(self, params):
+        self._MigrateDBMode = params.get("MigrateDBMode")
+        if params.get("Databases") is not None:
+            self._Databases = []
+            for item in params.get("Databases"):
+                obj = MigrateDBItem()
+                obj._deserialize(item)
+                self._Databases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateOpt(AbstractModel):
+    r"""同步对象详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseTables: 包含数据库表信息
+        :type DatabaseTables: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        self._DatabaseTables = None
+
+    @property
+    def DatabaseTables(self):
+        r"""包含数据库表信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        return self._DatabaseTables
+
+    @DatabaseTables.setter
+    def DatabaseTables(self, DatabaseTables):
+        self._DatabaseTables = DatabaseTables
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseTables") is not None:
+            self._DatabaseTables = MigrateObject()
+            self._DatabaseTables._deserialize(params.get("DatabaseTables"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateTableItem(AbstractModel):
+    r"""同步数据表名称
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 数据表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        """
+        self._TableName = None
+
+    @property
+    def TableName(self):
+        r"""数据表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30918,6 +37765,897 @@ class ModifyInstanceUpgradeLimitDaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLibraDBClusterAccountDescriptionRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _AccountName: 账号名
+        :type AccountName: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Host: 主机名
+        :type Host: str
+        """
+        self._ClusterId = None
+        self._AccountName = None
+        self._Description = None
+        self._Host = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountName(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Host(self):
+        r"""主机名
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountName = params.get("AccountName")
+        self._Description = params.get("Description")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountDescriptionResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterAccountHostRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群id
+        :type ClusterId: str
+        :param _Account: 账号信息
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param _NewHost: 主机名
+        :type NewHost: str
+        """
+        self._ClusterId = None
+        self._Account = None
+        self._NewHost = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""账号信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def NewHost(self):
+        r"""主机名
+        :rtype: str
+        """
+        return self._NewHost
+
+    @NewHost.setter
+    def NewHost(self, NewHost):
+        self._NewHost = NewHost
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        self._NewHost = params.get("NewHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountHostResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterAccountPrivilegeRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountPrivilege请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _Account: 账号
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param _GlobalPrivileges: 全局权限
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivileges: 数据库权限
+        :type DatabasePrivileges: list of DatabasePrivileges
+        :param _TablePrivileges: 表权限
+        :type TablePrivileges: list of TablePrivileges
+        """
+        self._ClusterId = None
+        self._Account = None
+        self._GlobalPrivileges = None
+        self._DatabasePrivileges = None
+        self._TablePrivileges = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def GlobalPrivileges(self):
+        r"""全局权限
+        :rtype: list of str
+        """
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivileges(self):
+        r"""数据库权限
+        :rtype: list of DatabasePrivileges
+        """
+        return self._DatabasePrivileges
+
+    @DatabasePrivileges.setter
+    def DatabasePrivileges(self, DatabasePrivileges):
+        self._DatabasePrivileges = DatabasePrivileges
+
+    @property
+    def TablePrivileges(self):
+        r"""表权限
+        :rtype: list of TablePrivileges
+        """
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self._DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivileges()
+                obj._deserialize(item)
+                self._DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self._TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivileges()
+                obj._deserialize(item)
+                self._TablePrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountPrivilegeResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountPrivilege返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterDataSourceRequest(AbstractModel):
+    r"""ModifyLibraDBClusterDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群ID
+        :type ClusterId: str
+        :param _InstanceId: 只读分析引擎实例ID
+        :type InstanceId: str
+        :param _SrcInfo: 源端信息
+        :type SrcInfo: list of LibraDBClusterSrcInfo
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._SrcInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SrcInfo(self):
+        r"""源端信息
+        :rtype: list of LibraDBClusterSrcInfo
+        """
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("SrcInfo") is not None:
+            self._SrcInfo = []
+            for item in params.get("SrcInfo"):
+                obj = LibraDBClusterSrcInfo()
+                obj._deserialize(item)
+                self._SrcInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterDataSourceResponse(AbstractModel):
+    r"""ModifyLibraDBClusterDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""异步任务ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterNameRequest(AbstractModel):
+    r"""ModifyLibraDBClusterName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterNameResponse(AbstractModel):
+    r"""ModifyLibraDBClusterName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterProjectRequest(AbstractModel):
+    r"""ModifyLibraDBClusterProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIdSet: 分析集群 ID 列表
+        :type ClusterIdSet: list of str
+        :param _ProjectId: 项目 ID
+        :type ProjectId: int
+        """
+        self._ClusterIdSet = None
+        self._ProjectId = None
+
+    @property
+    def ClusterIdSet(self):
+        r"""分析集群 ID 列表
+        :rtype: list of str
+        """
+        return self._ClusterIdSet
+
+    @ClusterIdSet.setter
+    def ClusterIdSet(self, ClusterIdSet):
+        self._ClusterIdSet = ClusterIdSet
+
+    @property
+    def ProjectId(self):
+        r"""项目 ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ClusterIdSet = params.get("ClusterIdSet")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterProjectResponse(AbstractModel):
+    r"""ModifyLibraDBClusterProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectedClusterIdSet: 集群列表
+        :type AffectedClusterIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AffectedClusterIdSet = None
+        self._RequestId = None
+
+    @property
+    def AffectedClusterIdSet(self):
+        r"""集群列表
+        :rtype: list of str
+        """
+        return self._AffectedClusterIdSet
+
+    @AffectedClusterIdSet.setter
+    def AffectedClusterIdSet(self, AffectedClusterIdSet):
+        self._AffectedClusterIdSet = AffectedClusterIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AffectedClusterIdSet = params.get("AffectedClusterIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterReplicationObjectRequest(AbstractModel):
+    r"""ModifyLibraDBClusterReplicationObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群ID
+        :type ClusterId: str
+        :param _InstanceId: 只读分析引擎实例 ID
+        :type InstanceId: str
+        :param _ForceDefaultMapRule: 映射模式
+        :type ForceDefaultMapRule: str
+        :param _Objects: 同步对象
+        :type Objects: list of ReplicationObject
+        :param _AutoMapRules: 自动映射规则
+        :type AutoMapRules: list of AutoMapRule
+        :param _RefreshMapping: 是否按照最新映射规则刷新存量映射关系
+        :type RefreshMapping: bool
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._ForceDefaultMapRule = None
+        self._Objects = None
+        self._AutoMapRules = None
+        self._RefreshMapping = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ForceDefaultMapRule(self):
+        r"""映射模式
+        :rtype: str
+        """
+        return self._ForceDefaultMapRule
+
+    @ForceDefaultMapRule.setter
+    def ForceDefaultMapRule(self, ForceDefaultMapRule):
+        self._ForceDefaultMapRule = ForceDefaultMapRule
+
+    @property
+    def Objects(self):
+        r"""同步对象
+        :rtype: list of ReplicationObject
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def AutoMapRules(self):
+        r"""自动映射规则
+        :rtype: list of AutoMapRule
+        """
+        return self._AutoMapRules
+
+    @AutoMapRules.setter
+    def AutoMapRules(self, AutoMapRules):
+        self._AutoMapRules = AutoMapRules
+
+    @property
+    def RefreshMapping(self):
+        r"""是否按照最新映射规则刷新存量映射关系
+        :rtype: bool
+        """
+        return self._RefreshMapping
+
+    @RefreshMapping.setter
+    def RefreshMapping(self, RefreshMapping):
+        self._RefreshMapping = RefreshMapping
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._ForceDefaultMapRule = params.get("ForceDefaultMapRule")
+        if params.get("Objects") is not None:
+            self._Objects = []
+            for item in params.get("Objects"):
+                obj = ReplicationObject()
+                obj._deserialize(item)
+                self._Objects.append(obj)
+        if params.get("AutoMapRules") is not None:
+            self._AutoMapRules = []
+            for item in params.get("AutoMapRules"):
+                obj = AutoMapRule()
+                obj._deserialize(item)
+                self._AutoMapRules.append(obj)
+        self._RefreshMapping = params.get("RefreshMapping")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterReplicationObjectResponse(AbstractModel):
+    r"""ModifyLibraDBClusterReplicationObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""异步任务ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBForwardConfigRequest(AbstractModel):
+    r"""ModifyLibraDBForwardConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 只读分析引擎实例Id
+        :type InstanceId: str
+        :param _ForwardMode: 转发模式
+        :type ForwardMode: str
+        :param _ForwardList: 转发实例列表
+        :type ForwardList: list of ForwardInstanceInfo
+        """
+        self._InstanceId = None
+        self._ForwardMode = None
+        self._ForwardList = None
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ForwardMode(self):
+        r"""转发模式
+        :rtype: str
+        """
+        return self._ForwardMode
+
+    @ForwardMode.setter
+    def ForwardMode(self, ForwardMode):
+        self._ForwardMode = ForwardMode
+
+    @property
+    def ForwardList(self):
+        r"""转发实例列表
+        :rtype: list of ForwardInstanceInfo
+        """
+        return self._ForwardList
+
+    @ForwardList.setter
+    def ForwardList(self, ForwardList):
+        self._ForwardList = ForwardList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ForwardMode = params.get("ForwardMode")
+        if params.get("ForwardList") is not None:
+            self._ForwardList = []
+            for item in params.get("ForwardList"):
+                obj = ForwardInstanceInfo()
+                obj._deserialize(item)
+                self._ForwardList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBForwardConfigResponse(AbstractModel):
+    r"""ModifyLibraDBForwardConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     r"""ModifyMaintainPeriodConfig请求参数结构体
 
@@ -33154,6 +40892,181 @@ class OfflineInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         r"""任务流ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OfflineLibraDBClusterRequest(AbstractModel):
+    r"""OfflineLibraDBCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineLibraDBClusterResponse(AbstractModel):
+    r"""OfflineLibraDBCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OfflineLibraDBInstanceRequest(AbstractModel):
+    r"""OfflineLibraDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceIdList: 只读分析引擎实例 ID 列表
+        :type InstanceIdList: list of str
+        """
+        self._ClusterId = None
+        self._InstanceIdList = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIdList(self):
+        r"""只读分析引擎实例 ID 列表
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineLibraDBInstanceResponse(AbstractModel):
+    r"""OfflineLibraDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务流id
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -37674,6 +45587,202 @@ class RefundResourcePackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RegionInstanceSpecInfo(AbstractModel):
+    r"""该地域实例规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: cpu核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Memory: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param _MinStorageSize: 最小存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinStorageSize: int
+        :param _MaxStorageSize: 最大存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxStorageSize: int
+        :param _HasStock: 是否有库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStock: bool
+        :param _InstanceType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param _MinReplicaNum: 最小副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicaNum: int
+        :param _MaxReplicaNum: 最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicaNum: int
+        :param _ZoneStockInfos: 可用区库存信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneStockInfos: list of ZoneStockInfo4Libra
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._MinStorageSize = None
+        self._MaxStorageSize = None
+        self._HasStock = None
+        self._InstanceType = None
+        self._StorageType = None
+        self._MinReplicaNum = None
+        self._MaxReplicaNum = None
+        self._ZoneStockInfos = None
+
+    @property
+    def Cpu(self):
+        r"""cpu核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def MinStorageSize(self):
+        r"""最小存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinStorageSize
+
+    @MinStorageSize.setter
+    def MinStorageSize(self, MinStorageSize):
+        self._MinStorageSize = MinStorageSize
+
+    @property
+    def MaxStorageSize(self):
+        r"""最大存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxStorageSize
+
+    @MaxStorageSize.setter
+    def MaxStorageSize(self, MaxStorageSize):
+        self._MaxStorageSize = MaxStorageSize
+
+    @property
+    def HasStock(self):
+        r"""是否有库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def StorageType(self):
+        r"""存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def MinReplicaNum(self):
+        r"""最小副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinReplicaNum
+
+    @MinReplicaNum.setter
+    def MinReplicaNum(self, MinReplicaNum):
+        self._MinReplicaNum = MinReplicaNum
+
+    @property
+    def MaxReplicaNum(self):
+        r"""最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxReplicaNum
+
+    @MaxReplicaNum.setter
+    def MaxReplicaNum(self, MaxReplicaNum):
+        self._MaxReplicaNum = MaxReplicaNum
+
+    @property
+    def ZoneStockInfos(self):
+        r"""可用区库存信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ZoneStockInfo4Libra
+        """
+        return self._ZoneStockInfos
+
+    @ZoneStockInfos.setter
+    def ZoneStockInfos(self, ZoneStockInfos):
+        self._ZoneStockInfos = ZoneStockInfos
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._MinStorageSize = params.get("MinStorageSize")
+        self._MaxStorageSize = params.get("MaxStorageSize")
+        self._HasStock = params.get("HasStock")
+        self._InstanceType = params.get("InstanceType")
+        self._StorageType = params.get("StorageType")
+        self._MinReplicaNum = params.get("MinReplicaNum")
+        self._MaxReplicaNum = params.get("MaxReplicaNum")
+        if params.get("ZoneStockInfos") is not None:
+            self._ZoneStockInfos = []
+            for item in params.get("ZoneStockInfos"):
+                obj = ZoneStockInfo4Libra()
+                obj._deserialize(item)
+                self._ZoneStockInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReloadBalanceProxyNodeRequest(AbstractModel):
     r"""ReloadBalanceProxyNode请求参数结构体
 
@@ -38061,6 +46170,190 @@ class RenewClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewLibraDBClustersRequest(AbstractModel):
+    r"""RenewLibraDBClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: 时间间隔
+        :type TimeSpan: int
+        :param _TimeUnit: 时间单位
+        :type TimeUnit: str
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        :param _DealMode: 订单模式
+        :type DealMode: int
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ClusterId = None
+        self._DealMode = None
+
+    @property
+    def TimeSpan(self):
+        r"""时间间隔
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""时间单位
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DealMode(self):
+        r"""订单模式
+        :rtype: int
+        """
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ClusterId = params.get("ClusterId")
+        self._DealMode = params.get("DealMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewLibraDBClustersResponse(AbstractModel):
+    r"""RenewLibraDBClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIds: 预付费总订单号
+        :type BigDealIds: list of str
+        :param _TranId: 冻结流水
+        :type TranId: str
+        :param _DealNames: 订单名称
+        :type DealNames: list of str
+        :param _ResourceIds: 资源id
+        :type ResourceIds: list of str
+        :param _ClusterIds: 集群id
+        :type ClusterIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIds = None
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
+        self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""预付费总订单号
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def TranId(self):
+        r"""冻结流水
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""订单名称
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""集群id
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class ReplayInstanceAuditLogRequest(AbstractModel):
     r"""ReplayInstanceAuditLog请求参数结构体
 
@@ -38247,6 +46540,114 @@ class ReplayInstanceAuditLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplicationObject(AbstractModel):
+    r"""分析引擎同步对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceType: 源端实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInstanceType: str
+        :param _SrcClusterId: 源端集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcClusterId: str
+        :param _SrcInstanceId: 源端实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInstanceId: str
+        :param _ReplicationJobId: 复制任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationJobId: str
+        :param _MigrateObjects: 同步对象详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateObjects: :class:`tencentcloud.cynosdb.v20190107.models.MigrateOpt`
+        """
+        self._SrcInstanceType = None
+        self._SrcClusterId = None
+        self._SrcInstanceId = None
+        self._ReplicationJobId = None
+        self._MigrateObjects = None
+
+    @property
+    def SrcInstanceType(self):
+        r"""源端实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SrcInstanceType
+
+    @SrcInstanceType.setter
+    def SrcInstanceType(self, SrcInstanceType):
+        self._SrcInstanceType = SrcInstanceType
+
+    @property
+    def SrcClusterId(self):
+        r"""源端集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SrcClusterId
+
+    @SrcClusterId.setter
+    def SrcClusterId(self, SrcClusterId):
+        self._SrcClusterId = SrcClusterId
+
+    @property
+    def SrcInstanceId(self):
+        r"""源端实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def ReplicationJobId(self):
+        r"""复制任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReplicationJobId
+
+    @ReplicationJobId.setter
+    def ReplicationJobId(self, ReplicationJobId):
+        self._ReplicationJobId = ReplicationJobId
+
+    @property
+    def MigrateObjects(self):
+        r"""同步对象详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.MigrateOpt`
+        """
+        return self._MigrateObjects
+
+    @MigrateObjects.setter
+    def MigrateObjects(self, MigrateObjects):
+        self._MigrateObjects = MigrateObjects
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceType = params.get("SrcInstanceType")
+        self._SrcClusterId = params.get("SrcClusterId")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._ReplicationJobId = params.get("ReplicationJobId")
+        if params.get("MigrateObjects") is not None:
+            self._MigrateObjects = MigrateOpt()
+            self._MigrateObjects._deserialize(params.get("MigrateObjects"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     r"""ResetAccountPassword请求参数结构体
 
@@ -38330,6 +46731,130 @@ class ResetAccountPasswordRequest(AbstractModel):
 
 class ResetAccountPasswordResponse(AbstractModel):
     r"""ResetAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetLibraDBClusterAccountPasswordRequest(AbstractModel):
+    r"""ResetLibraDBClusterAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 分析集群 ID
+        :type ClusterId: str
+        :param _AccountPassword: 密码
+        :type AccountPassword: str
+        :param _AccountName: 账号
+        :type AccountName: str
+        :param _EncryptMethod: 加密方式
+        :type EncryptMethod: str
+        :param _Host: 主机
+        :type Host: str
+        """
+        self._ClusterId = None
+        self._AccountPassword = None
+        self._AccountName = None
+        self._EncryptMethod = None
+        self._Host = None
+
+    @property
+    def ClusterId(self):
+        r"""分析集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountPassword(self):
+        r"""密码
+        :rtype: str
+        """
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def AccountName(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def EncryptMethod(self):
+        r"""加密方式
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def Host(self):
+        r"""主机
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountPassword = params.get("AccountPassword")
+        self._AccountName = params.get("AccountName")
+        self._EncryptMethod = params.get("EncryptMethod")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetLibraDBClusterAccountPasswordResponse(AbstractModel):
+    r"""ResetLibraDBClusterAccountPassword返回参数结构体
 
     """
 
@@ -38478,6 +47003,87 @@ class RestartInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         r"""异步任务id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class RestartLibraDBInstanceRequest(AbstractModel):
+    r"""RestartLibraDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 只读分析引擎实例 ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""只读分析引擎实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartLibraDBInstanceResponse(AbstractModel):
+    r"""RestartLibraDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""异步任务id
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -38696,6 +47302,57 @@ class RevokeAccountPrivilegesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RoAddr(AbstractModel):
+    r"""只读实例地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: IP地址
+        :type IP: str
+        :param _Port: 端口
+        :type Port: int
+        """
+        self._IP = None
+        self._Port = None
+
+    @property
+    def IP(self):
+        r"""IP地址
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RollBackClusterRequest(AbstractModel):
@@ -41758,6 +50415,100 @@ class ServerlessZoneStockInfo(AbstractModel):
         
 
 
+class SetLibraDBClusterRenewFlagRequest(AbstractModel):
+    r"""SetLibraDBClusterRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 分析集群 ID 列表
+        :type ResourceIds: list of str
+        :param _AutoRenewFlag: 续费标记 0:正常续费  1:自动续费 2:到期不续
+        :type AutoRenewFlag: int
+        """
+        self._ResourceIds = None
+        self._AutoRenewFlag = None
+
+    @property
+    def ResourceIds(self):
+        r"""分析集群 ID 列表
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def AutoRenewFlag(self):
+        r"""续费标记 0:正常续费  1:自动续费 2:到期不续
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetLibraDBClusterRenewFlagResponse(AbstractModel):
+    r"""SetLibraDBClusterRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
 class SetRenewFlagRequest(AbstractModel):
     r"""SetRenewFlag请求参数结构体
 
@@ -43086,6 +51837,192 @@ class SwitchProxyVpcResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class TableMappingObject(AbstractModel):
+    r"""表映射关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceId: 源端实例Id
+        :type SrcInstanceId: str
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _MapDatabaseName: 映射数据库名称
+        :type MapDatabaseName: str
+        :param _MapTableName: 映射表名
+        :type MapTableName: str
+        :param _Status: 同步状态
+        :type Status: str
+        :param _Process: 同步进度
+        :type Process: float
+        :param _Lag: 延迟
+        :type Lag: int
+        :param _Message: 消息
+        :type Message: str
+        :param _IsPrimary: 是否为主表
+        :type IsPrimary: bool
+        :param _VirtualColValue: 虚拟列填充值
+        :type VirtualColValue: str
+        """
+        self._SrcInstanceId = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._MapDatabaseName = None
+        self._MapTableName = None
+        self._Status = None
+        self._Process = None
+        self._Lag = None
+        self._Message = None
+        self._IsPrimary = None
+        self._VirtualColValue = None
+
+    @property
+    def SrcInstanceId(self):
+        r"""源端实例Id
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def MapDatabaseName(self):
+        r"""映射数据库名称
+        :rtype: str
+        """
+        return self._MapDatabaseName
+
+    @MapDatabaseName.setter
+    def MapDatabaseName(self, MapDatabaseName):
+        self._MapDatabaseName = MapDatabaseName
+
+    @property
+    def MapTableName(self):
+        r"""映射表名
+        :rtype: str
+        """
+        return self._MapTableName
+
+    @MapTableName.setter
+    def MapTableName(self, MapTableName):
+        self._MapTableName = MapTableName
+
+    @property
+    def Status(self):
+        r"""同步状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Process(self):
+        r"""同步进度
+        :rtype: float
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def Lag(self):
+        r"""延迟
+        :rtype: int
+        """
+        return self._Lag
+
+    @Lag.setter
+    def Lag(self, Lag):
+        self._Lag = Lag
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsPrimary(self):
+        r"""是否为主表
+        :rtype: bool
+        """
+        return self._IsPrimary
+
+    @IsPrimary.setter
+    def IsPrimary(self, IsPrimary):
+        self._IsPrimary = IsPrimary
+
+    @property
+    def VirtualColValue(self):
+        r"""虚拟列填充值
+        :rtype: str
+        """
+        return self._VirtualColValue
+
+    @VirtualColValue.setter
+    def VirtualColValue(self, VirtualColValue):
+        self._VirtualColValue = VirtualColValue
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._MapDatabaseName = params.get("MapDatabaseName")
+        self._MapTableName = params.get("MapTableName")
+        self._Status = params.get("Status")
+        self._Process = params.get("Process")
+        self._Lag = params.get("Lag")
+        self._Message = params.get("Message")
+        self._IsPrimary = params.get("IsPrimary")
+        self._VirtualColValue = params.get("VirtualColValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TablePrivileges(AbstractModel):
@@ -44714,6 +53651,61 @@ class ZoneStockInfo(AbstractModel):
                 obj = SlaveZoneStockInfo()
                 obj._deserialize(item)
                 self._SlaveZoneStockInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneStockInfo4Libra(AbstractModel):
+    r"""Libra所售卖的地域库存信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _HasStock: 是否有库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStock: bool
+        """
+        self._Zone = None
+        self._HasStock = None
+
+    @property
+    def Zone(self):
+        r"""可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def HasStock(self):
+        r"""是否有库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._HasStock = params.get("HasStock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

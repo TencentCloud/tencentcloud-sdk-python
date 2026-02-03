@@ -340,6 +340,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlindWatermarkTemplate(self, request):
+        r"""创建用户自定义数字水印模板。
+
+        :param request: Request instance for CreateBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCLSLogset(self, request):
         r"""由 VOD 创建新的日志集。
 
@@ -1179,6 +1202,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBlindWatermarkTemplate(self, request):
+        r"""删除用户自定义数字水印模板。
+
+        :param request: Request instance for DeleteBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCLSTopic(self, request):
         r"""删除点播开通的日志主题。
 
@@ -1921,6 +1967,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAnimatedGraphicsTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAnimatedGraphicsTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBlindWatermarkTemplates(self, request):
+        r"""查询用户自定义数字水印模板。
+
+        :param request: Request instance for DescribeBlindWatermarkTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeBlindWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeBlindWatermarkTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlindWatermarkTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlindWatermarkTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3296,6 +3365,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractBlindWatermark(self, request):
+        r"""用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+
+        :param request: Request instance for ExtractBlindWatermark.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractBlindWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractBlindWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExtractCopyRightWatermark(self, request):
         r"""如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 
@@ -3644,6 +3736,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAnimatedGraphicsTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBlindWatermarkTemplate(self, request):
+        r"""修改用户自定义数字水印模板，数字水印类型不允许修改。
+
+        :param request: Request instance for ModifyBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlindWatermarkTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

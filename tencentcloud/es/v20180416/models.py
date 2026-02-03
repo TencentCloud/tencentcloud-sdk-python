@@ -1439,6 +1439,8 @@ class CosBackup(AbstractModel):
         :type StrategyName: str
         :param _Indices: 备份索引列表，如果不填表示备份所有索引
         :type Indices: str
+        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+        :type MultiAz: int
         :param _CreateTime: 策略创建时间
         :type CreateTime: str
         """
@@ -1458,6 +1460,7 @@ class CosBackup(AbstractModel):
         self._RemoteCosRegion = None
         self._StrategyName = None
         self._Indices = None
+        self._MultiAz = None
         self._CreateTime = None
 
     @property
@@ -1637,6 +1640,17 @@ class CosBackup(AbstractModel):
         self._Indices = Indices
 
     @property
+    def MultiAz(self):
+        r"""cos多AZ备份 0 单AZ; 1 多AZ
+        :rtype: int
+        """
+        return self._MultiAz
+
+    @MultiAz.setter
+    def MultiAz(self, MultiAz):
+        self._MultiAz = MultiAz
+
+    @property
     def CreateTime(self):
         r"""策略创建时间
         :rtype: str
@@ -1665,6 +1679,7 @@ class CosBackup(AbstractModel):
         self._RemoteCosRegion = params.get("RemoteCosRegion")
         self._StrategyName = params.get("StrategyName")
         self._Indices = params.get("Indices")
+        self._MultiAz = params.get("MultiAz")
         self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1951,6 +1966,8 @@ class CreateClusterSnapshotRequest(AbstractModel):
         :type RemoteCos: int
         :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
         :type RemoteCosRegion: str
+        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+        :type MultiAz: int
         """
         self._InstanceId = None
         self._SnapshotName = None
@@ -1963,6 +1980,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
         self._RetentionGraceTime = None
         self._RemoteCos = None
         self._RemoteCosRegion = None
+        self._MultiAz = None
 
     @property
     def InstanceId(self):
@@ -2085,6 +2103,17 @@ class CreateClusterSnapshotRequest(AbstractModel):
     def RemoteCosRegion(self, RemoteCosRegion):
         self._RemoteCosRegion = RemoteCosRegion
 
+    @property
+    def MultiAz(self):
+        r"""cos多AZ备份 0 单AZ; 1 多AZ
+        :rtype: int
+        """
+        return self._MultiAz
+
+    @MultiAz.setter
+    def MultiAz(self, MultiAz):
+        self._MultiAz = MultiAz
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2098,6 +2127,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
         self._RetentionGraceTime = params.get("RetentionGraceTime")
         self._RemoteCos = params.get("RemoteCos")
         self._RemoteCosRegion = params.get("RemoteCosRegion")
+        self._MultiAz = params.get("MultiAz")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18021,6 +18051,57 @@ class OptionalWebServiceInfo(AbstractModel):
         
 
 
+class OtherConfig(AbstractModel):
+    r"""updateInstance使用的额外的EsConfig和JvmHeapConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EsConfig: es的yml额外配置
+        :type EsConfig: str
+        :param _JvmHeapConfig: es的jvm heap config
+        :type JvmHeapConfig: str
+        """
+        self._EsConfig = None
+        self._JvmHeapConfig = None
+
+    @property
+    def EsConfig(self):
+        r"""es的yml额外配置
+        :rtype: str
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def JvmHeapConfig(self):
+        r"""es的jvm heap config
+        :rtype: str
+        """
+        return self._JvmHeapConfig
+
+    @JvmHeapConfig.setter
+    def JvmHeapConfig(self, JvmHeapConfig):
+        self._JvmHeapConfig = JvmHeapConfig
+
+
+    def _deserialize(self, params):
+        self._EsConfig = params.get("EsConfig")
+        self._JvmHeapConfig = params.get("JvmHeapConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutboundPublicAcl(AbstractModel):
     r"""节点出站访问信息
 
@@ -20648,6 +20729,9 @@ SUCCESS     备份成功
         :param _StrategyName: 策略名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyName: str
+        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiAz: int
         """
         self._SnapshotName = None
         self._Uuid = None
@@ -20678,6 +20762,7 @@ SUCCESS     备份成功
         self._CosEncryption = None
         self._KmsKey = None
         self._StrategyName = None
+        self._MultiAz = None
 
     @property
     def SnapshotName(self):
@@ -21035,6 +21120,18 @@ SUCCESS     备份成功
     def StrategyName(self, StrategyName):
         self._StrategyName = StrategyName
 
+    @property
+    def MultiAz(self):
+        r"""cos多AZ备份 0 单AZ; 1 多AZ
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MultiAz
+
+    @MultiAz.setter
+    def MultiAz(self, MultiAz):
+        self._MultiAz = MultiAz
+
 
     def _deserialize(self, params):
         self._SnapshotName = params.get("SnapshotName")
@@ -21071,6 +21168,7 @@ SUCCESS     备份成功
         self._CosEncryption = params.get("CosEncryption")
         self._KmsKey = params.get("KmsKey")
         self._StrategyName = params.get("StrategyName")
+        self._MultiAz = params.get("MultiAz")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22075,6 +22173,8 @@ CLOSE 关闭
         :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
         :param _AutoScaleDiskDeleteNodeTypeList: 自动扩盘删除参数
         :type AutoScaleDiskDeleteNodeTypeList: list of str
+        :param _OtherConfig: 其他附加配置，jvm或者yml
+        :type OtherConfig: :class:`tencentcloud.es.v20180416.models.OtherConfig`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -22122,6 +22222,7 @@ CLOSE 关闭
         self._EnableDestroyProtection = None
         self._AutoScaleDiskInfoList = None
         self._AutoScaleDiskDeleteNodeTypeList = None
+        self._OtherConfig = None
 
     @property
     def InstanceId(self):
@@ -22650,6 +22751,17 @@ CLOSE 关闭
     def AutoScaleDiskDeleteNodeTypeList(self, AutoScaleDiskDeleteNodeTypeList):
         self._AutoScaleDiskDeleteNodeTypeList = AutoScaleDiskDeleteNodeTypeList
 
+    @property
+    def OtherConfig(self):
+        r"""其他附加配置，jvm或者yml
+        :rtype: :class:`tencentcloud.es.v20180416.models.OtherConfig`
+        """
+        return self._OtherConfig
+
+    @OtherConfig.setter
+    def OtherConfig(self, OtherConfig):
+        self._OtherConfig = OtherConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -22732,6 +22844,9 @@ CLOSE 关闭
                 obj._deserialize(item)
                 self._AutoScaleDiskInfoList.append(obj)
         self._AutoScaleDiskDeleteNodeTypeList = params.get("AutoScaleDiskDeleteNodeTypeList")
+        if params.get("OtherConfig") is not None:
+            self._OtherConfig = OtherConfig()
+            self._OtherConfig._deserialize(params.get("OtherConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

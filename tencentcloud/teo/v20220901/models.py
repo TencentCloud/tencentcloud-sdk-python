@@ -55124,8 +55124,11 @@ class TCRCEOption(AbstractModel):
         r"""
         :param _Channel: Channel 信息。
         :type Channel: str
+        :param _Region: RCE Channel 的开通地域，目前可选的取值范围：<li>ap-beijing：华北地区（北京）；</li><li>ap-jakarta：亚太东南（雅加达）；</li><li>ap-singapore：亚太东南（新加坡）；</li><li>eu-frankfurt：欧洲地区（法兰克福）；</li><li>na-siliconvalley：美国西部（硅谷）。</li>
+        :type Region: str
         """
         self._Channel = None
+        self._Region = None
 
     @property
     def Channel(self):
@@ -55138,9 +55141,21 @@ class TCRCEOption(AbstractModel):
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def Region(self):
+        r"""RCE Channel 的开通地域，目前可选的取值范围：<li>ap-beijing：华北地区（北京）；</li><li>ap-jakarta：亚太东南（雅加达）；</li><li>ap-singapore：亚太东南（新加坡）；</li><li>eu-frankfurt：欧洲地区（法兰克福）；</li><li>na-siliconvalley：美国西部（硅谷）。</li>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._Channel = params.get("Channel")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

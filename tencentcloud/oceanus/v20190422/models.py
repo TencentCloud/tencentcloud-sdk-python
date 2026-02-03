@@ -14527,49 +14527,50 @@ class Setats(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SetatsSerialId: setats serialId
+        :param _SetatsSerialId: <p>setats serialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetatsSerialId: str
-        :param _Status: 1  // 停止
-2  // 运行中
-3  // 初始化中
-4  // 扩容中
-5  // Warehoouse未配置
-6  // Warehoouse配置中
-7  // 重启中
--2 // 已删除(集群被销毁时更新为此状态)
+        :param _Status: <p>1  // 停止<br>2  // 运行中<br>3  // 初始化中<br>4  // 扩容中<br>5  // Warehoouse未配置<br>6  // Warehoouse配置中<br>7  // 重启中<br>-2 // 已删除(集群被销毁时更新为此状态)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Warehouse: setats warehouse
+        :param _Warehouse: <p>setats warehouse</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warehouse: :class:`tencentcloud.oceanus.v20190422.models.Warehouse`
-        :param _MasterInfo: setats master 机器规格
+        :param _MasterInfo: <p>setats master 机器规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterInfo: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
-        :param _WorkerInfo: setats worker规格
+        :param _WorkerInfo: <p>setats worker规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkerInfo: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _AutoRenewFlag: 自动续费
+        :param _AutoRenewFlag: <p>自动续费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param _SecondsUntilExpiry: 过期时间 秒
+        :param _SecondsUntilExpiry: <p>过期时间 秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsUntilExpiry: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ManagerUrl: manager url
+        :param _ManagerUrl: <p>manager url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManagerUrl: str
-        :param _IsolatedTime: 隔离时间
+        :param _IsolatedTime: <p>隔离时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
+        :param _OwnerClusterGroupSerialId: <p>Setats集群自己的id</p>
+        :type OwnerClusterGroupSerialId: str
+        :param _Type: <p>setats 集群类型</p>
+        :type Type: int
+        :param _SetatsUiUrl: <p>Setats UI url</p>
+        :type SetatsUiUrl: str
+        :param _ImageVersion: <p>setats镜像版本</p>
+        :type ImageVersion: str
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -14583,10 +14584,14 @@ class Setats(AbstractModel):
         self._CreateTime = None
         self._ManagerUrl = None
         self._IsolatedTime = None
+        self._OwnerClusterGroupSerialId = None
+        self._Type = None
+        self._SetatsUiUrl = None
+        self._ImageVersion = None
 
     @property
     def SetatsSerialId(self):
-        r"""setats serialId
+        r"""<p>setats serialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14598,14 +14603,7 @@ class Setats(AbstractModel):
 
     @property
     def Status(self):
-        r"""1  // 停止
-2  // 运行中
-3  // 初始化中
-4  // 扩容中
-5  // Warehoouse未配置
-6  // Warehoouse配置中
-7  // 重启中
--2 // 已删除(集群被销毁时更新为此状态)
+        r"""<p>1  // 停止<br>2  // 运行中<br>3  // 初始化中<br>4  // 扩容中<br>5  // Warehoouse未配置<br>6  // Warehoouse配置中<br>7  // 重启中<br>-2 // 已删除(集群被销毁时更新为此状态)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14617,7 +14615,7 @@ class Setats(AbstractModel):
 
     @property
     def Warehouse(self):
-        r"""setats warehouse
+        r"""<p>setats warehouse</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.Warehouse`
         """
@@ -14629,7 +14627,7 @@ class Setats(AbstractModel):
 
     @property
     def MasterInfo(self):
-        r"""setats master 机器规格
+        r"""<p>setats master 机器规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
         """
@@ -14641,7 +14639,7 @@ class Setats(AbstractModel):
 
     @property
     def WorkerInfo(self):
-        r"""setats worker规格
+        r"""<p>setats worker规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
         """
@@ -14653,7 +14651,7 @@ class Setats(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -14665,7 +14663,7 @@ class Setats(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费
+        r"""<p>自动续费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14677,7 +14675,7 @@ class Setats(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14689,7 +14687,7 @@ class Setats(AbstractModel):
 
     @property
     def SecondsUntilExpiry(self):
-        r"""过期时间 秒
+        r"""<p>过期时间 秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14701,7 +14699,7 @@ class Setats(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14713,7 +14711,7 @@ class Setats(AbstractModel):
 
     @property
     def ManagerUrl(self):
-        r"""manager url
+        r"""<p>manager url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14725,7 +14723,7 @@ class Setats(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""隔离时间
+        r"""<p>隔离时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14734,6 +14732,50 @@ class Setats(AbstractModel):
     @IsolatedTime.setter
     def IsolatedTime(self, IsolatedTime):
         self._IsolatedTime = IsolatedTime
+
+    @property
+    def OwnerClusterGroupSerialId(self):
+        r"""<p>Setats集群自己的id</p>
+        :rtype: str
+        """
+        return self._OwnerClusterGroupSerialId
+
+    @OwnerClusterGroupSerialId.setter
+    def OwnerClusterGroupSerialId(self, OwnerClusterGroupSerialId):
+        self._OwnerClusterGroupSerialId = OwnerClusterGroupSerialId
+
+    @property
+    def Type(self):
+        r"""<p>setats 集群类型</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SetatsUiUrl(self):
+        r"""<p>Setats UI url</p>
+        :rtype: str
+        """
+        return self._SetatsUiUrl
+
+    @SetatsUiUrl.setter
+    def SetatsUiUrl(self, SetatsUiUrl):
+        self._SetatsUiUrl = SetatsUiUrl
+
+    @property
+    def ImageVersion(self):
+        r"""<p>setats镜像版本</p>
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
 
 
     def _deserialize(self, params):
@@ -14760,6 +14802,10 @@ class Setats(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ManagerUrl = params.get("ManagerUrl")
         self._IsolatedTime = params.get("IsolatedTime")
+        self._OwnerClusterGroupSerialId = params.get("OwnerClusterGroupSerialId")
+        self._Type = params.get("Type")
+        self._SetatsUiUrl = params.get("SetatsUiUrl")
+        self._ImageVersion = params.get("ImageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16584,33 +16630,35 @@ class Warehouse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Location: location
+        :param _Location: <p>location</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
-        :param _CatalogType: catalogtype
+        :param _CatalogType: <p>catalogtype</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogType: str
-        :param _Uri: uri
+        :param _Uri: <p>uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uri: str
-        :param _WarehouseUrl: warehouse url
+        :param _WarehouseUrl: <p>warehouse url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarehouseUrl: str
-        :param _Authentication: 认证方式
+        :param _Authentication: <p>认证方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authentication: str
-        :param _ResourceRefs: 资源
+        :param _ResourceRefs: <p>资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRefs: list of ResourceRefLatest
-        :param _HiveUri: hive warehouse uri
+        :param _HiveUri: <p>hive warehouse uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HiveUri: str
-        :param _Properties: 高级参数
+        :param _Properties: <p>高级参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
+        :param _HiveCatalogType: <p>hive cata 类型</p>
+        :type HiveCatalogType: int
         """
         self._Status = None
         self._Location = None
@@ -16621,10 +16669,11 @@ class Warehouse(AbstractModel):
         self._ResourceRefs = None
         self._HiveUri = None
         self._Properties = None
+        self._HiveCatalogType = None
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16636,7 +16685,7 @@ class Warehouse(AbstractModel):
 
     @property
     def Location(self):
-        r"""location
+        r"""<p>location</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16648,7 +16697,7 @@ class Warehouse(AbstractModel):
 
     @property
     def CatalogType(self):
-        r"""catalogtype
+        r"""<p>catalogtype</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16660,7 +16709,7 @@ class Warehouse(AbstractModel):
 
     @property
     def Uri(self):
-        r"""uri
+        r"""<p>uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16672,7 +16721,7 @@ class Warehouse(AbstractModel):
 
     @property
     def WarehouseUrl(self):
-        r"""warehouse url
+        r"""<p>warehouse url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16684,7 +16733,7 @@ class Warehouse(AbstractModel):
 
     @property
     def Authentication(self):
-        r"""认证方式
+        r"""<p>认证方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16696,7 +16745,7 @@ class Warehouse(AbstractModel):
 
     @property
     def ResourceRefs(self):
-        r"""资源
+        r"""<p>资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceRefLatest
         """
@@ -16708,7 +16757,7 @@ class Warehouse(AbstractModel):
 
     @property
     def HiveUri(self):
-        r"""hive warehouse uri
+        r"""<p>hive warehouse uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16720,7 +16769,7 @@ class Warehouse(AbstractModel):
 
     @property
     def Properties(self):
-        r"""高级参数
+        r"""<p>高级参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -16729,6 +16778,17 @@ class Warehouse(AbstractModel):
     @Properties.setter
     def Properties(self, Properties):
         self._Properties = Properties
+
+    @property
+    def HiveCatalogType(self):
+        r"""<p>hive cata 类型</p>
+        :rtype: int
+        """
+        return self._HiveCatalogType
+
+    @HiveCatalogType.setter
+    def HiveCatalogType(self, HiveCatalogType):
+        self._HiveCatalogType = HiveCatalogType
 
 
     def _deserialize(self, params):
@@ -16751,6 +16811,7 @@ class Warehouse(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        self._HiveCatalogType = params.get("HiveCatalogType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

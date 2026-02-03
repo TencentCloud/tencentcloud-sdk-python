@@ -156,6 +156,24 @@ class CloudappClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IssueLicense(
+            self,
+            request: models.IssueLicenseRequest,
+            opts: Dict = None,
+    ) -> models.IssueLicenseResponse:
+        """
+        颁发 License
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IssueLicense"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IssueLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def VerifyLicense(
             self,
             request: models.VerifyLicenseRequest,

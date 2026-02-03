@@ -274,6 +274,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBlindWatermarkTemplate(
+            self,
+            request: models.CreateBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateBlindWatermarkTemplateResponse:
+        """
+        创建用户自定义数字水印模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCLSLogset(
             self,
             request: models.CreateCLSLogsetRequest,
@@ -938,6 +956,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBlindWatermarkTemplate(
+            self,
+            request: models.DeleteBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBlindWatermarkTemplateResponse:
+        """
+        删除用户自定义数字水印模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCLSTopic(
             self,
             request: models.DeleteCLSTopicRequest,
@@ -1524,6 +1560,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAnimatedGraphicsTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAnimatedGraphicsTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBlindWatermarkTemplates(
+            self,
+            request: models.DescribeBlindWatermarkTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlindWatermarkTemplatesResponse:
+        """
+        查询用户自定义数字水印模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlindWatermarkTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlindWatermarkTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2620,6 +2674,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExtractBlindWatermark(
+            self,
+            request: models.ExtractBlindWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.ExtractBlindWatermarkResponse:
+        """
+        用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExtractBlindWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExtractBlindWatermarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExtractCopyRightWatermark(
             self,
             request: models.ExtractCopyRightWatermarkRequest,
@@ -2902,6 +2974,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyAnimatedGraphicsTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAnimatedGraphicsTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBlindWatermarkTemplate(
+            self,
+            request: models.ModifyBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBlindWatermarkTemplateResponse:
+        """
+        修改用户自定义数字水印模板，数字水印类型不允许修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBlindWatermarkTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

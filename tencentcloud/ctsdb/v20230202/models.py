@@ -318,6 +318,542 @@ class Cluster(AbstractModel):
         
 
 
+class ClusterDetail(AbstractModel):
+    r"""实例详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: <p>用户APPID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: int
+        :param _ClusterID: <p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterID: str
+        :param _AccountID: <p>账号id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountID: str
+        :param _Name: <p>自定义实例名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Region: <p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Networks: <p>网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Networks: list of Network
+        :param _Status: <p>实例状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 16： 变配中</li><li> 17： 隔离中</li><li> 18： 已隔离</li><li> 19： 恢复中</li><li> 20： 已关机</li><li> 21： 销毁中</li><li> 22： 已销毁</li><li> 30： 扩展节点添加中</li><li> 31： 扩展节点变配中</li><li> 32： 扩展节点删除中</li><li> 33： 扩展节点禁用中</li><li> 34： 扩展节点启用中</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreatedAt: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param _Tags: <p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _Security: <p>安全组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Security: list of str
+        :param _Components: <p>组件信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Components: list of Component
+        :param _ExpiredAt: <p>过期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredAt: str
+        :param _RenewFlag: <p>续费标识</p>枚举值：<ul><li> 0： 默认</li><li> 1： 自动续费</li><li> 2： 不自动续费</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _ShutdownAt: <p>关机时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShutdownAt: str
+        :param _IsolatedAt: <p>隔离时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolatedAt: str
+        :param _Type: <p>实例类型</p>枚举值：<ul><li> 0： 共享型</li><li> 1： 独享型</li><li> 2： 标准型</li></ul>
+        :type Type: int
+        """
+        self._AppID = None
+        self._ClusterID = None
+        self._AccountID = None
+        self._Name = None
+        self._Region = None
+        self._Networks = None
+        self._Status = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Tags = None
+        self._Security = None
+        self._Components = None
+        self._ExpiredAt = None
+        self._RenewFlag = None
+        self._ShutdownAt = None
+        self._IsolatedAt = None
+        self._Type = None
+
+    @property
+    def AppID(self):
+        r"""<p>用户APPID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def ClusterID(self):
+        r"""<p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def AccountID(self):
+        r"""<p>账号id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccountID
+
+    @AccountID.setter
+    def AccountID(self, AccountID):
+        self._AccountID = AccountID
+
+    @property
+    def Name(self):
+        r"""<p>自定义实例名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Networks(self):
+        r"""<p>网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Network
+        """
+        return self._Networks
+
+    @Networks.setter
+    def Networks(self, Networks):
+        self._Networks = Networks
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 16： 变配中</li><li> 17： 隔离中</li><li> 18： 已隔离</li><li> 19： 恢复中</li><li> 20： 已关机</li><li> 21： 销毁中</li><li> 22： 已销毁</li><li> 30： 扩展节点添加中</li><li> 31： 扩展节点变配中</li><li> 32： 扩展节点删除中</li><li> 33： 扩展节点禁用中</li><li> 34： 扩展节点启用中</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Security(self):
+        r"""<p>安全组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Security
+
+    @Security.setter
+    def Security(self, Security):
+        self._Security = Security
+
+    @property
+    def Components(self):
+        r"""<p>组件信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Component
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def ExpiredAt(self):
+        r"""<p>过期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpiredAt
+
+    @ExpiredAt.setter
+    def ExpiredAt(self, ExpiredAt):
+        self._ExpiredAt = ExpiredAt
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标识</p>枚举值：<ul><li> 0： 默认</li><li> 1： 自动续费</li><li> 2： 不自动续费</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ShutdownAt(self):
+        r"""<p>关机时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShutdownAt
+
+    @ShutdownAt.setter
+    def ShutdownAt(self, ShutdownAt):
+        self._ShutdownAt = ShutdownAt
+
+    @property
+    def IsolatedAt(self):
+        r"""<p>隔离时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsolatedAt
+
+    @IsolatedAt.setter
+    def IsolatedAt(self, IsolatedAt):
+        self._IsolatedAt = IsolatedAt
+
+    @property
+    def Type(self):
+        r"""<p>实例类型</p>枚举值：<ul><li> 0： 共享型</li><li> 1： 独享型</li><li> 2： 标准型</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._ClusterID = params.get("ClusterID")
+        self._AccountID = params.get("AccountID")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        if params.get("Networks") is not None:
+            self._Networks = []
+            for item in params.get("Networks"):
+                obj = Network()
+                obj._deserialize(item)
+                self._Networks.append(obj)
+        self._Status = params.get("Status")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Security = params.get("Security")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self._Components.append(obj)
+        self._ExpiredAt = params.get("ExpiredAt")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ShutdownAt = params.get("ShutdownAt")
+        self._IsolatedAt = params.get("IsolatedAt")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Component(AbstractModel):
+    r"""实例组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>所属实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param _Name: <p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: <p>组件类型</p>枚举值：<ul><li> gateway： 时序节点</li><li> database： 数据节点</li><li> gateway-worker： 扩展节点</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Cpu: <p>cpu</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Memory: <p>内存</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param _Disk: <p>磁盘</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disk: int
+        :param _Shards: <p>节点数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Shards: int
+        :param _Replicas: <p>副本数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: int
+        :param _Networks: <p>网络</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Networks: list of Network
+        :param _State: <p>组件状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 2： 变配中</li><li> 3： 隔离中</li><li> 4： 已隔离</li><li> 5： 删除中</li><li> 6： 已删除</li><li> 7： 禁用中</li><li> 8： 已禁用</li><li> 9： 启用中</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _ID: <p>组件内部ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        """
+        self._InstanceID = None
+        self._Name = None
+        self._Type = None
+        self._Cpu = None
+        self._Memory = None
+        self._Disk = None
+        self._Shards = None
+        self._Replicas = None
+        self._Networks = None
+        self._State = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>所属实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>组件类型</p>枚举值：<ul><li> gateway： 时序节点</li><li> database： 数据节点</li><li> gateway-worker： 扩展节点</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Cpu(self):
+        r"""<p>cpu</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Disk(self):
+        r"""<p>磁盘</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+    @property
+    def Shards(self):
+        r"""<p>节点数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Shards
+
+    @Shards.setter
+    def Shards(self, Shards):
+        self._Shards = Shards
+
+    @property
+    def Replicas(self):
+        r"""<p>副本数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def Networks(self):
+        r"""<p>网络</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Network
+        """
+        return self._Networks
+
+    @Networks.setter
+    def Networks(self, Networks):
+        self._Networks = Networks
+
+    @property
+    def State(self):
+        r"""<p>组件状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 2： 变配中</li><li> 3： 隔离中</li><li> 4： 已隔离</li><li> 5： 删除中</li><li> 6： 已删除</li><li> 7： 禁用中</li><li> 8： 已禁用</li><li> 9： 启用中</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ID(self):
+        r"""<p>组件内部ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Disk = params.get("Disk")
+        self._Shards = params.get("Shards")
+        self._Replicas = params.get("Replicas")
+        if params.get("Networks") is not None:
+            self._Networks = []
+            for item in params.get("Networks"):
+                obj = Network()
+                obj._deserialize(item)
+                self._Networks.append(obj)
+        self._State = params.get("State")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Database(AbstractModel):
     r"""数据库相关信息
 
@@ -473,6 +1009,59 @@ class Database(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeClusterDetailRequest(AbstractModel):
+    r"""DescribeClusterDetail请求参数结构体
+
+    """
+
+
+class DescribeClusterDetailResponse(AbstractModel):
+    r"""DescribeClusterDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cluster: <p>实例详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cluster: :class:`tencentcloud.ctsdb.v20230202.models.ClusterDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Cluster = None
+        self._RequestId = None
+
+    @property
+    def Cluster(self):
+        r"""<p>实例详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ctsdb.v20230202.models.ClusterDetail`
+        """
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Cluster") is not None:
+            self._Cluster = ClusterDetail()
+            self._Cluster._deserialize(params.get("Cluster"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClustersRequest(AbstractModel):

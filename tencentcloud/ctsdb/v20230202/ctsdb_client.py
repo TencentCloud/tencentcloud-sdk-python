@@ -26,6 +26,29 @@ class CtsdbClient(AbstractClient):
     _service = 'ctsdb'
 
 
+    def DescribeClusterDetail(self, request):
+        r"""查询实例详情
+
+        :param request: Request instance for DescribeClusterDetail.
+        :type request: :class:`tencentcloud.ctsdb.v20230202.models.DescribeClusterDetailRequest`
+        :rtype: :class:`tencentcloud.ctsdb.v20230202.models.DescribeClusterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusters(self, request):
         r"""查询实例列表及详情
 

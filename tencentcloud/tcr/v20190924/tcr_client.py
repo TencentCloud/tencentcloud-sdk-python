@@ -141,6 +141,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGCJob(self, request):
+        r"""创建 GC 作业
+
+        :param request: Request instance for CreateGCJob.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateGCJobRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateGCJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGCJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGCJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateImageAccelerationService(self, request):
         r"""创建镜像加速服务
 

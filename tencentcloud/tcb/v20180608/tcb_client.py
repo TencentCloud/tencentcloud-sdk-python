@@ -26,6 +26,52 @@ class TcbClient(AbstractClient):
     _service = 'tcb'
 
 
+    def BindCloudBaseAccessDomain(self, request):
+        r"""绑定云开发自定义域名，用于云接入和静态托管
+
+        :param request: Request instance for BindCloudBaseAccessDomain.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.BindCloudBaseAccessDomainRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindCloudBaseAccessDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindCloudBaseAccessDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindCloudBaseAccessDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BindCloudBaseGWDomain(self, request):
+        r"""绑定自定义域名
+
+        :param request: Request instance for BindCloudBaseGWDomain.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.BindCloudBaseGWDomainRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindCloudBaseGWDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindCloudBaseGWDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindCloudBaseGWDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindEnvGateway(self, request):
         r"""绑定另外一个环境下的网关，callContainer请求可以访问到该网关
 
@@ -132,6 +178,52 @@ class TcbClient(AbstractClient):
             body = self.call("CreateAuthDomain", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAuthDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateBillDeal(self, request):
+        r"""创建云开发产品计费订单
+
+        :param request: Request instance for CreateBillDeal.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateBillDealRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateBillDealResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBillDeal", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBillDealResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCloudBaseGWAPI(self, request):
+        r"""创建云开发网关API
+
+        :param request: Request instance for CreateCloudBaseGWAPI.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseGWAPIRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseGWAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudBaseGWAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudBaseGWAPIResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -293,6 +385,52 @@ class TcbClient(AbstractClient):
             body = self.call("CreateUser", params, headers=headers)
             response = json.loads(body)
             model = models.CreateUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudBaseGWAPI(self, request):
+        r"""删除网关API
+
+        :param request: Request instance for DeleteCloudBaseGWAPI.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseGWAPIRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseGWAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudBaseGWAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudBaseGWAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudBaseGWDomain(self, request):
+        r"""删除网关域名
+
+        :param request: Request instance for DeleteCloudBaseGWDomain.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseGWDomainRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseGWDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudBaseGWDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudBaseGWDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -578,6 +716,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudBaseGWAPI(self, request):
+        r"""获取网关API列表
+
+        :param request: Request instance for DescribeCloudBaseGWAPI.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseGWAPIRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseGWAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudBaseGWAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudBaseGWAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudBaseGWService(self, request):
+        r"""获取网关服务
+
+        :param request: Request instance for DescribeCloudBaseGWService.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseGWServiceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseGWServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudBaseGWService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudBaseGWServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudBaseProjectLatestVersionList(self, request):
         r"""获取云开发项目列表
 
@@ -822,6 +1006,29 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeDownloadFile", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDownloadFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEnvAccountCircle(self, request):
+        r"""查询环境计费周期
+
+        :param request: Request instance for DescribeEnvAccountCircle.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvAccountCircleRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvAccountCircleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvAccountCircle", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvAccountCircleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1154,6 +1361,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSafeRule(self, request):
+        r"""查询数据库安全规则
+
+        :param request: Request instance for DescribeSafeRule.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeSafeRuleRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeSafeRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSafeRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSafeRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSmsQuotas(self, request):
         r"""查询后付费短信资源量
         1 有免费包的返回SmsFreeQuota结构所有字段
@@ -1194,6 +1424,29 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeSpecialCostItems", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpecialCostItemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStaticStore(self, request):
+        r"""查看当前环境下静态托管资源信息，根据返回结果判断静态资源的状态
+
+        :param request: Request instance for DescribeStaticStore.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeStaticStoreRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeStaticStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStaticStore", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStaticStoreResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1502,6 +1755,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloudBaseGWAPI(self, request):
+        r"""修改云开发网关API
+
+        :param request: Request instance for ModifyCloudBaseGWAPI.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseGWAPIRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseGWAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudBaseGWAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudBaseGWAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCloudBaseRunServerFlowConf(self, request):
         r"""修改容器内的版本流量配置
 
@@ -1723,6 +1999,29 @@ class TcbClient(AbstractClient):
             body = self.call("RunSql", params, headers=headers)
             response = json.loads(body)
             model = models.RunSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchClsLog(self, request):
+        r"""搜索CLS日志，TCB角色密钥访问
+
+        :param request: Request instance for SearchClsLog.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchClsLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchClsLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

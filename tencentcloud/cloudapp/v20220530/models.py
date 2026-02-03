@@ -207,6 +207,132 @@ class Filter(AbstractModel):
         
 
 
+class IssueLicenseRequest(AbstractModel):
+    r"""IssueLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudappId: <p>云应用实例 ID</p>
+        :type CloudappId: str
+        :param _LicenseId: <p>云应用颁发的 License 授权 ID。系统中唯一，伙伴可通过 License 颁发的订阅接口中获取</p>
+        :type LicenseId: str
+        :param _LicenseData: <p>License 的详细数据</p>
+        :type LicenseData: :class:`tencentcloud.cloudapp.v20220530.models.PartnerLicenseData`
+        :param _ActivateMode: <p>License 的激活模式</p>枚举值：<ul><li> immediate ： 立即激活</li><li> scheduled： 指定时间激活</li></ul>
+        :type ActivateMode: str
+        :param _ActivateAt: <p>激活时间，指定时间激活时需要传该字段</p>
+        :type ActivateAt: str
+        """
+        self._CloudappId = None
+        self._LicenseId = None
+        self._LicenseData = None
+        self._ActivateMode = None
+        self._ActivateAt = None
+
+    @property
+    def CloudappId(self):
+        r"""<p>云应用实例 ID</p>
+        :rtype: str
+        """
+        return self._CloudappId
+
+    @CloudappId.setter
+    def CloudappId(self, CloudappId):
+        self._CloudappId = CloudappId
+
+    @property
+    def LicenseId(self):
+        r"""<p>云应用颁发的 License 授权 ID。系统中唯一，伙伴可通过 License 颁发的订阅接口中获取</p>
+        :rtype: str
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
+    @property
+    def LicenseData(self):
+        r"""<p>License 的详细数据</p>
+        :rtype: :class:`tencentcloud.cloudapp.v20220530.models.PartnerLicenseData`
+        """
+        return self._LicenseData
+
+    @LicenseData.setter
+    def LicenseData(self, LicenseData):
+        self._LicenseData = LicenseData
+
+    @property
+    def ActivateMode(self):
+        r"""<p>License 的激活模式</p>枚举值：<ul><li> immediate ： 立即激活</li><li> scheduled： 指定时间激活</li></ul>
+        :rtype: str
+        """
+        return self._ActivateMode
+
+    @ActivateMode.setter
+    def ActivateMode(self, ActivateMode):
+        self._ActivateMode = ActivateMode
+
+    @property
+    def ActivateAt(self):
+        r"""<p>激活时间，指定时间激活时需要传该字段</p>
+        :rtype: str
+        """
+        return self._ActivateAt
+
+    @ActivateAt.setter
+    def ActivateAt(self, ActivateAt):
+        self._ActivateAt = ActivateAt
+
+
+    def _deserialize(self, params):
+        self._CloudappId = params.get("CloudappId")
+        self._LicenseId = params.get("LicenseId")
+        if params.get("LicenseData") is not None:
+            self._LicenseData = PartnerLicenseData()
+            self._LicenseData._deserialize(params.get("LicenseData"))
+        self._ActivateMode = params.get("ActivateMode")
+        self._ActivateAt = params.get("ActivateAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IssueLicenseResponse(AbstractModel):
+    r"""IssueLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class License(AbstractModel):
     r"""表示应用实例的软件授权，包含颁发信息、激活信息等内容。
 
@@ -630,6 +756,57 @@ class LicenseData(AbstractModel):
                 obj = DisplayMetadata()
                 obj._deserialize(item)
                 self._Metadata.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PartnerLicenseData(AbstractModel):
+    r"""License 内容信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>License 文本内容。可传入密钥、证书等文本型 License 内容，二进制内容请进行 base64 编码</p>
+        :type Text: str
+        :param _ExtraData: <p>License 的额外信息，JSON 字符串格式</p>
+        :type ExtraData: str
+        """
+        self._Text = None
+        self._ExtraData = None
+
+    @property
+    def Text(self):
+        r"""<p>License 文本内容。可传入密钥、证书等文本型 License 内容，二进制内容请进行 base64 编码</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ExtraData(self):
+        r"""<p>License 的额外信息，JSON 字符串格式</p>
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._ExtraData = params.get("ExtraData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

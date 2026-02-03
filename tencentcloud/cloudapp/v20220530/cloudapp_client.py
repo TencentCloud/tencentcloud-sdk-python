@@ -162,6 +162,29 @@ class CloudappClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IssueLicense(self, request):
+        r"""颁发 License
+
+        :param request: Request instance for IssueLicense.
+        :type request: :class:`tencentcloud.cloudapp.v20220530.models.IssueLicenseRequest`
+        :rtype: :class:`tencentcloud.cloudapp.v20220530.models.IssueLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IssueLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.IssueLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VerifyLicense(self, request):
         r"""从软件进程读取 LICENSE。
 

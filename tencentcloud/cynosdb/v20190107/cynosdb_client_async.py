@@ -43,6 +43,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ActivateLibraDBCluster(
+            self,
+            request: models.ActivateLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.ActivateLibraDBClusterResponse:
+        """
+        解除分析集群隔离状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ActivateLibraDBInstance(
+            self,
+            request: models.ActivateLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ActivateLibraDBInstanceResponse:
+        """
+        本接口（ActivateLibraDBInstance）用于解除已隔离的只读分析引擎实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateLibraDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddClusterSlaveZone(
             self,
             request: models.AddClusterSlaveZoneRequest,
@@ -110,6 +146,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "BindClusterResourcePackages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.BindClusterResourcePackagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckCreateLibraDBInstance(
+            self,
+            request: models.CheckCreateLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CheckCreateLibraDBInstanceResponse:
+        """
+        本接口（CheckCreateLibraDBInstance）用于校验集群是否可以添加只读分析引擎实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckCreateLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckCreateLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -385,6 +439,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLibraDBClusterAccounts(
+            self,
+            request: models.CreateLibraDBClusterAccountsRequest,
+            opts: Dict = None,
+    ) -> models.CreateLibraDBClusterAccountsResponse:
+        """
+        本接口（CreateLibraDBClusterAccounts）用于创建分析集群账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLibraDBClusterAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLibraDBClusterAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLibraDBClusters(
+            self,
+            request: models.CreateLibraDBClustersRequest,
+            opts: Dict = None,
+    ) -> models.CreateLibraDBClustersResponse:
+        """
+        创建 TDSQL-C 分析集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLibraDBClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLibraDBClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateParamTemplate(
             self,
             request: models.CreateParamTemplateRequest,
@@ -578,6 +668,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteClusterSaveBackup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteClusterSaveBackupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLibraDBCluster(
+            self,
+            request: models.DeleteLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLibraDBClusterResponse:
+        """
+        删除 TDSQL-C 分析集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLibraDBClusterAccounts(
+            self,
+            request: models.DeleteLibraDBClusterAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLibraDBClusterAccountsResponse:
+        """
+        本接口（DeleteLibraDBClusterAccounts）用于删除分析集群账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLibraDBClusterAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLibraDBClusterAccountsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1357,6 +1483,240 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLibraDBClusterAccountAllPrivileges(
+            self,
+            request: models.DescribeLibraDBClusterAccountAllPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterAccountAllPrivilegesResponse:
+        """
+        本接口（DescribeLibraDBClusterAccountAllPrivileges）用于查询分析集群账号全部权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterAccountAllPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterAccountAllPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterAccountPrivileges(
+            self,
+            request: models.DescribeLibraDBClusterAccountPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterAccountPrivilegesResponse:
+        """
+        本接口（DescribeLibraDBClusterAccountPrivileges）用于查询分析集群账号权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterAccountPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterAccountPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterAccounts(
+            self,
+            request: models.DescribeLibraDBClusterAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterAccountsResponse:
+        """
+        本接口（DescribeLibraDBClusterAccounts）用于查询分析集群账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterAutoMapRule(
+            self,
+            request: models.DescribeLibraDBClusterAutoMapRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterAutoMapRuleResponse:
+        """
+        本接口（DescribeLibraDBClusterAutoMapRule）用于查看分析集群高级映射规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterAutoMapRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterAutoMapRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterDetail(
+            self,
+            request: models.DescribeLibraDBClusterDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterDetailResponse:
+        """
+        查询 TDSQL-C 分析集群信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterTableMapping(
+            self,
+            request: models.DescribeLibraDBClusterTableMappingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterTableMappingResponse:
+        """
+        本接口（ModifyLibraDBForwardConfig）用于查看分析集群库表映射关系
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterTableMapping"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterTableMappingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusters(
+            self,
+            request: models.DescribeLibraDBClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClustersResponse:
+        """
+        查询分析集群列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBDataSource(
+            self,
+            request: models.DescribeLibraDBDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBDataSourceResponse:
+        """
+        本接口（DescribeLibraDBDataSource）用于查询分析集群的源实例信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBForwardConfig(
+            self,
+            request: models.DescribeLibraDBForwardConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBForwardConfigResponse:
+        """
+        本接口（DescribeLibraDBForwardConfig）用于查询分析引擎转发参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBForwardConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBForwardConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBInstanceDetail(
+            self,
+            request: models.DescribeLibraDBInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBInstanceDetailResponse:
+        """
+        本接口(DescribeLibraDBInstanceDetail)用于查询只读分析引擎详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBInstanceSpecs(
+            self,
+            request: models.DescribeLibraDBInstanceSpecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBInstanceSpecsResponse:
+        """
+        本接口(DescribeLibraDBInstanceSpecs)用于查询只读分析引擎在该地域支持的规格列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBInstanceSpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBInstanceSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBSlowLogs(
+            self,
+            request: models.DescribeLibraDBSlowLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBSlowLogsResponse:
+        """
+        本接口（DescribeLibraDBSlowLogs）为只读分析引擎的慢 SQL 明细查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBSlowLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBSlowLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBVersion(
+            self,
+            request: models.DescribeLibraDBVersionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBVersionResponse:
+        """
+        查询只读分析引擎支持的版本列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMaintainPeriod(
             self,
             request: models.DescribeMaintainPeriodRequest,
@@ -1753,6 +2113,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DownloadLibraDBClusterList(
+            self,
+            request: models.DownloadLibraDBClusterListRequest,
+            opts: Dict = None,
+    ) -> models.DownloadLibraDBClusterListResponse:
+        """
+        下载分析集群列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadLibraDBClusterList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadLibraDBClusterListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportInstanceErrorLogs(
             self,
             request: models.ExportInstanceErrorLogsRequest,
@@ -1928,6 +2306,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "IsolateInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.IsolateInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolateLibraDBCluster(
+            self,
+            request: models.IsolateLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.IsolateLibraDBClusterResponse:
+        """
+        隔离 TDSQL-C 分析集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolateLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolateLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolateLibraDBInstance(
+            self,
+            request: models.IsolateLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.IsolateLibraDBInstanceResponse:
+        """
+        本接口(IsolateLibraDBInstance)用于隔离的只读分析引擎实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolateLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolateLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2365,6 +2779,150 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLibraDBClusterAccountDescription(
+            self,
+            request: models.ModifyLibraDBClusterAccountDescriptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountDescriptionResponse:
+        """
+        本接口（ModifyLibraDBClusterAccountDescription）用于修改分析集群账号描述
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountDescription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountDescriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterAccountHost(
+            self,
+            request: models.ModifyLibraDBClusterAccountHostRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountHostResponse:
+        """
+        本接口（ModifyLibraDBClusterAccountHost）用于修改分析集群账号的可登录主机信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterAccountPrivilege(
+            self,
+            request: models.ModifyLibraDBClusterAccountPrivilegeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountPrivilegeResponse:
+        """
+        本接口（ModifyLibraDBClusterAccountPrivilege）用于修改分析集群账号权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountPrivilege"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountPrivilegeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterDataSource(
+            self,
+            request: models.ModifyLibraDBClusterDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterDataSourceResponse:
+        """
+        本接口（ModifyLibraDBClusterDataSource）用于修改 TDSQL-C 分析集群数据源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterName(
+            self,
+            request: models.ModifyLibraDBClusterNameRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterNameResponse:
+        """
+        修改分析集群名称
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterProject(
+            self,
+            request: models.ModifyLibraDBClusterProjectRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterProjectResponse:
+        """
+        修改分析集群项目 ID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterReplicationObject(
+            self,
+            request: models.ModifyLibraDBClusterReplicationObjectRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterReplicationObjectResponse:
+        """
+        本接口（ModifyLibraDBClusterReplicationObject）用于修改分析集群同步对象
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterReplicationObject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterReplicationObjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBForwardConfig(
+            self,
+            request: models.ModifyLibraDBForwardConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBForwardConfigResponse:
+        """
+        本接口（ModifyLibraDBForwardConfig）用于修改只读分析实例自动转发参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBForwardConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBForwardConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMaintainPeriodConfig(
             self,
             request: models.ModifyMaintainPeriodConfigRequest,
@@ -2576,6 +3134,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "OfflineInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OfflineInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OfflineLibraDBCluster(
+            self,
+            request: models.OfflineLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.OfflineLibraDBClusterResponse:
+        """
+        下线分析集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OfflineLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OfflineLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OfflineLibraDBInstance(
+            self,
+            request: models.OfflineLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.OfflineLibraDBInstanceResponse:
+        """
+        本接口(OfflineLibraDBInstance)用于下线的只读分析引擎实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OfflineLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OfflineLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2797,6 +3391,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewLibraDBClusters(
+            self,
+            request: models.RenewLibraDBClustersRequest,
+            opts: Dict = None,
+    ) -> models.RenewLibraDBClustersResponse:
+        """
+        续费分析集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewLibraDBClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewLibraDBClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReplayInstanceAuditLog(
             self,
             request: models.ReplayInstanceAuditLogRequest,
@@ -2833,6 +3445,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetLibraDBClusterAccountPassword(
+            self,
+            request: models.ResetLibraDBClusterAccountPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetLibraDBClusterAccountPasswordResponse:
+        """
+        修改分析集群账号密码
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetLibraDBClusterAccountPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetLibraDBClusterAccountPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RestartInstance(
             self,
             request: models.RestartInstanceRequest,
@@ -2846,6 +3476,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "RestartInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RestartInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RestartLibraDBInstance(
+            self,
+            request: models.RestartLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RestartLibraDBInstanceResponse:
+        """
+        重启只读分析引擎
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2954,6 +3602,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "SearchClusterTables"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClusterTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetLibraDBClusterRenewFlag(
+            self,
+            request: models.SetLibraDBClusterRenewFlagRequest,
+            opts: Dict = None,
+    ) -> models.SetLibraDBClusterRenewFlagResponse:
+        """
+        设置 TDSQL-C 分析集群是否续费
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetLibraDBClusterRenewFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetLibraDBClusterRenewFlagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

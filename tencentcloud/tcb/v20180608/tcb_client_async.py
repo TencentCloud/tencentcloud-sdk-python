@@ -25,6 +25,42 @@ class TcbClient(AbstractClient):
     _endpoint = 'tcb.tencentcloudapi.com'
     _service = 'tcb'
 
+    async def BindCloudBaseAccessDomain(
+            self,
+            request: models.BindCloudBaseAccessDomainRequest,
+            opts: Dict = None,
+    ) -> models.BindCloudBaseAccessDomainResponse:
+        """
+        绑定云开发自定义域名，用于云接入和静态托管
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindCloudBaseAccessDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindCloudBaseAccessDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BindCloudBaseGWDomain(
+            self,
+            request: models.BindCloudBaseGWDomainRequest,
+            opts: Dict = None,
+    ) -> models.BindCloudBaseGWDomainResponse:
+        """
+        绑定自定义域名
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindCloudBaseGWDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindCloudBaseGWDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindEnvGateway(
             self,
             request: models.BindEnvGatewayRequest,
@@ -110,6 +146,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "CreateAuthDomain"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAuthDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateBillDeal(
+            self,
+            request: models.CreateBillDealRequest,
+            opts: Dict = None,
+    ) -> models.CreateBillDealResponse:
+        """
+        创建云开发产品计费订单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBillDeal"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBillDealResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudBaseGWAPI(
+            self,
+            request: models.CreateCloudBaseGWAPIRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudBaseGWAPIResponse:
+        """
+        创建云开发网关API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudBaseGWAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudBaseGWAPIResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -236,6 +308,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "CreateUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudBaseGWAPI(
+            self,
+            request: models.DeleteCloudBaseGWAPIRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudBaseGWAPIResponse:
+        """
+        删除网关API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudBaseGWAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudBaseGWAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudBaseGWDomain(
+            self,
+            request: models.DeleteCloudBaseGWDomainRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudBaseGWDomainResponse:
+        """
+        删除网关域名
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudBaseGWDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudBaseGWDomainResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -457,6 +565,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudBaseGWAPI(
+            self,
+            request: models.DescribeCloudBaseGWAPIRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudBaseGWAPIResponse:
+        """
+        获取网关API列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudBaseGWAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudBaseGWAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudBaseGWService(
+            self,
+            request: models.DescribeCloudBaseGWServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudBaseGWServiceResponse:
+        """
+        获取网关服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudBaseGWService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudBaseGWServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudBaseProjectLatestVersionList(
             self,
             request: models.DescribeCloudBaseProjectLatestVersionListRequest,
@@ -650,6 +794,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeDownloadFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDownloadFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEnvAccountCircle(
+            self,
+            request: models.DescribeEnvAccountCircleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEnvAccountCircleResponse:
+        """
+        查询环境计费周期
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEnvAccountCircle"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEnvAccountCircleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -908,6 +1070,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSafeRule(
+            self,
+            request: models.DescribeSafeRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSafeRuleResponse:
+        """
+        查询数据库安全规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSafeRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSafeRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSmsQuotas(
             self,
             request: models.DescribeSmsQuotasRequest,
@@ -942,6 +1122,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeSpecialCostItems"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSpecialCostItemsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStaticStore(
+            self,
+            request: models.DescribeStaticStoreRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStaticStoreResponse:
+        """
+        查看当前环境下静态托管资源信息，根据返回结果判断静态资源的状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStaticStore"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStaticStoreResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1181,6 +1379,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCloudBaseGWAPI(
+            self,
+            request: models.ModifyCloudBaseGWAPIRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudBaseGWAPIResponse:
+        """
+        修改云开发网关API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudBaseGWAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudBaseGWAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCloudBaseRunServerFlowConf(
             self,
             request: models.ModifyCloudBaseRunServerFlowConfRequest,
@@ -1356,6 +1572,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "RunSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RunSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchClsLog(
+            self,
+            request: models.SearchClsLogRequest,
+            opts: Dict = None,
+    ) -> models.SearchClsLogResponse:
+        """
+        搜索CLS日志，TCB角色密钥访问
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchClsLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchClsLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

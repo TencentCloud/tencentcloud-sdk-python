@@ -49,6 +49,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ActivateLibraDBCluster(self, request):
+        r"""解除分析集群隔离状态
+
+        :param request: Request instance for ActivateLibraDBCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateLibraDBClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ActivateLibraDBClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateLibraDBCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateLibraDBClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ActivateLibraDBInstance(self, request):
+        r"""本接口（ActivateLibraDBInstance）用于解除已隔离的只读分析引擎实例。
+
+        :param request: Request instance for ActivateLibraDBInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateLibraDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ActivateLibraDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateLibraDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateLibraDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddClusterSlaveZone(self, request):
         r"""本接口（AddClusterSlaveZone）用于对集群开启多可用区部署。
 
@@ -132,6 +178,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("BindClusterResourcePackages", params, headers=headers)
             response = json.loads(body)
             model = models.BindClusterResourcePackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckCreateLibraDBInstance(self, request):
+        r"""本接口（CheckCreateLibraDBInstance）用于校验集群是否可以添加只读分析引擎实例
+
+        :param request: Request instance for CheckCreateLibraDBInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CheckCreateLibraDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CheckCreateLibraDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCreateLibraDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCreateLibraDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -486,6 +555,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLibraDBClusterAccounts(self, request):
+        r"""本接口（CreateLibraDBClusterAccounts）用于创建分析集群账号
+
+        :param request: Request instance for CreateLibraDBClusterAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateLibraDBClusterAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateLibraDBClusterAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLibraDBClusterAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLibraDBClusterAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLibraDBClusters(self, request):
+        r"""创建 TDSQL-C 分析集群
+
+        :param request: Request instance for CreateLibraDBClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateLibraDBClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateLibraDBClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLibraDBClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLibraDBClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateParamTemplate(self, request):
         r"""本接口（CreateParamTemplate）用于创建参数模板。
 
@@ -730,6 +845,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteClusterSaveBackup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteClusterSaveBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLibraDBCluster(self, request):
+        r"""删除 TDSQL-C 分析集群
+
+        :param request: Request instance for DeleteLibraDBCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteLibraDBClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteLibraDBClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLibraDBCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLibraDBClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLibraDBClusterAccounts(self, request):
+        r"""本接口（DeleteLibraDBClusterAccounts）用于删除分析集群账号
+
+        :param request: Request instance for DeleteLibraDBClusterAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteLibraDBClusterAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteLibraDBClusterAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLibraDBClusterAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLibraDBClusterAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1728,6 +1889,305 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLibraDBClusterAccountAllPrivileges(self, request):
+        r"""本接口（DescribeLibraDBClusterAccountAllPrivileges）用于查询分析集群账号全部权限
+
+        :param request: Request instance for DescribeLibraDBClusterAccountAllPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountAllPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountAllPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterAccountAllPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterAccountAllPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusterAccountPrivileges(self, request):
+        r"""本接口（DescribeLibraDBClusterAccountPrivileges）用于查询分析集群账号权限
+
+        :param request: Request instance for DescribeLibraDBClusterAccountPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterAccountPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusterAccounts(self, request):
+        r"""本接口（DescribeLibraDBClusterAccounts）用于查询分析集群账号
+
+        :param request: Request instance for DescribeLibraDBClusterAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusterAutoMapRule(self, request):
+        r"""本接口（DescribeLibraDBClusterAutoMapRule）用于查看分析集群高级映射规则
+
+        :param request: Request instance for DescribeLibraDBClusterAutoMapRule.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAutoMapRuleRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterAutoMapRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterAutoMapRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterAutoMapRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusterDetail(self, request):
+        r"""查询 TDSQL-C 分析集群信息
+
+        :param request: Request instance for DescribeLibraDBClusterDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusterTableMapping(self, request):
+        r"""本接口（ModifyLibraDBForwardConfig）用于查看分析集群库表映射关系
+
+        :param request: Request instance for DescribeLibraDBClusterTableMapping.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterTableMappingRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClusterTableMappingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusterTableMapping", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClusterTableMappingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBClusters(self, request):
+        r"""查询分析集群列表
+
+        :param request: Request instance for DescribeLibraDBClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBDataSource(self, request):
+        r"""本接口（DescribeLibraDBDataSource）用于查询分析集群的源实例信息
+
+        :param request: Request instance for DescribeLibraDBDataSource.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBDataSourceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBForwardConfig(self, request):
+        r"""本接口（DescribeLibraDBForwardConfig）用于查询分析引擎转发参数
+
+        :param request: Request instance for DescribeLibraDBForwardConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBForwardConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBForwardConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBForwardConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBForwardConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBInstanceDetail(self, request):
+        r"""本接口(DescribeLibraDBInstanceDetail)用于查询只读分析引擎详情
+
+        :param request: Request instance for DescribeLibraDBInstanceDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBInstanceSpecs(self, request):
+        r"""本接口(DescribeLibraDBInstanceSpecs)用于查询只读分析引擎在该地域支持的规格列表信息
+
+        :param request: Request instance for DescribeLibraDBInstanceSpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBInstanceSpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBInstanceSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBInstanceSpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBInstanceSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBSlowLogs(self, request):
+        r"""本接口（DescribeLibraDBSlowLogs）为只读分析引擎的慢 SQL 明细查询接口
+
+        :param request: Request instance for DescribeLibraDBSlowLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBSlowLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBSlowLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLibraDBVersion(self, request):
+        r"""查询只读分析引擎支持的版本列表
+
+        :param request: Request instance for DescribeLibraDBVersion.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBVersionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeLibraDBVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLibraDBVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLibraDBVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMaintainPeriod(self, request):
         r"""本接口（DescribeMaintainPeriod）用于查询实例维护时间窗。
 
@@ -2234,6 +2694,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DownloadLibraDBClusterList(self, request):
+        r"""下载分析集群列表
+
+        :param request: Request instance for DownloadLibraDBClusterList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DownloadLibraDBClusterListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DownloadLibraDBClusterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadLibraDBClusterList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DownloadLibraDBClusterListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportInstanceErrorLogs(self, request):
         r"""此接口（ExportInstanceErrorLogs）用于导出实例错误日志。
 
@@ -2455,6 +2938,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("IsolateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.IsolateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IsolateLibraDBCluster(self, request):
+        r"""隔离 TDSQL-C 分析集群
+
+        :param request: Request instance for IsolateLibraDBCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateLibraDBClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.IsolateLibraDBClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateLibraDBCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateLibraDBClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IsolateLibraDBInstance(self, request):
+        r"""本接口(IsolateLibraDBInstance)用于隔离的只读分析引擎实例。
+
+        :param request: Request instance for IsolateLibraDBInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateLibraDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.IsolateLibraDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateLibraDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateLibraDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3016,6 +3545,190 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLibraDBClusterAccountDescription(self, request):
+        r"""本接口（ModifyLibraDBClusterAccountDescription）用于修改分析集群账号描述
+
+        :param request: Request instance for ModifyLibraDBClusterAccountDescription.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountDescriptionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterAccountDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterAccountDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterAccountHost(self, request):
+        r"""本接口（ModifyLibraDBClusterAccountHost）用于修改分析集群账号的可登录主机信息
+
+        :param request: Request instance for ModifyLibraDBClusterAccountHost.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountHostRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterAccountHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterAccountHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterAccountPrivilege(self, request):
+        r"""本接口（ModifyLibraDBClusterAccountPrivilege）用于修改分析集群账号权限
+
+        :param request: Request instance for ModifyLibraDBClusterAccountPrivilege.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountPrivilegeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterAccountPrivilegeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterAccountPrivilege", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterAccountPrivilegeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterDataSource(self, request):
+        r"""本接口（ModifyLibraDBClusterDataSource）用于修改 TDSQL-C 分析集群数据源
+
+        :param request: Request instance for ModifyLibraDBClusterDataSource.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterDataSourceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterName(self, request):
+        r"""修改分析集群名称
+
+        :param request: Request instance for ModifyLibraDBClusterName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterProject(self, request):
+        r"""修改分析集群项目 ID
+
+        :param request: Request instance for ModifyLibraDBClusterProject.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterProjectRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBClusterReplicationObject(self, request):
+        r"""本接口（ModifyLibraDBClusterReplicationObject）用于修改分析集群同步对象
+
+        :param request: Request instance for ModifyLibraDBClusterReplicationObject.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterReplicationObjectRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBClusterReplicationObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBClusterReplicationObject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBClusterReplicationObjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLibraDBForwardConfig(self, request):
+        r"""本接口（ModifyLibraDBForwardConfig）用于修改只读分析实例自动转发参数
+
+        :param request: Request instance for ModifyLibraDBForwardConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBForwardConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyLibraDBForwardConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLibraDBForwardConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLibraDBForwardConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMaintainPeriodConfig(self, request):
         r"""本接口（ModifyMaintainPeriodConfig）用于修改维护时间配置。
 
@@ -3283,6 +3996,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("OfflineInstance", params, headers=headers)
             response = json.loads(body)
             model = models.OfflineInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OfflineLibraDBCluster(self, request):
+        r"""下线分析集群
+
+        :param request: Request instance for OfflineLibraDBCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineLibraDBClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OfflineLibraDBClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OfflineLibraDBCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.OfflineLibraDBClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OfflineLibraDBInstance(self, request):
+        r"""本接口(OfflineLibraDBInstance)用于下线的只读分析引擎实例。
+
+        :param request: Request instance for OfflineLibraDBInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineLibraDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OfflineLibraDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OfflineLibraDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.OfflineLibraDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3568,6 +4327,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewLibraDBClusters(self, request):
+        r"""续费分析集群
+
+        :param request: Request instance for RenewLibraDBClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RenewLibraDBClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RenewLibraDBClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewLibraDBClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewLibraDBClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplayInstanceAuditLog(self, request):
         r"""回放实例审计日志
 
@@ -3614,6 +4396,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetLibraDBClusterAccountPassword(self, request):
+        r"""修改分析集群账号密码
+
+        :param request: Request instance for ResetLibraDBClusterAccountPassword.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResetLibraDBClusterAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ResetLibraDBClusterAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetLibraDBClusterAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetLibraDBClusterAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RestartInstance(self, request):
         r"""本接口（RestartInstance）用于重启实例。
 
@@ -3628,6 +4433,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("RestartInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RestartInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartLibraDBInstance(self, request):
+        r"""重启只读分析引擎
+
+        :param request: Request instance for RestartLibraDBInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RestartLibraDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RestartLibraDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartLibraDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartLibraDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3766,6 +4594,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("SearchClusterTables", params, headers=headers)
             response = json.loads(body)
             model = models.SearchClusterTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetLibraDBClusterRenewFlag(self, request):
+        r"""设置 TDSQL-C 分析集群是否续费
+
+        :param request: Request instance for SetLibraDBClusterRenewFlag.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SetLibraDBClusterRenewFlagRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SetLibraDBClusterRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetLibraDBClusterRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetLibraDBClusterRenewFlagResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

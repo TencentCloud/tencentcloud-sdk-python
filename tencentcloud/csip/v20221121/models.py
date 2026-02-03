@@ -15222,6 +15222,8 @@ class DescribeCallRecordRequest(AbstractModel):
         :type SourceIPID: int
         :param _AccUin: 访问账号uin
         :type AccUin: str
+        :param _AccessKey: 访问密钥，注意：不支持临时密钥的情况
+        :type AccessKey: str
         :param _Filter: 过滤器
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
@@ -15229,6 +15231,7 @@ class DescribeCallRecordRequest(AbstractModel):
         self._AccessKeyID = None
         self._SourceIPID = None
         self._AccUin = None
+        self._AccessKey = None
         self._Filter = None
 
     @property
@@ -15276,6 +15279,17 @@ class DescribeCallRecordRequest(AbstractModel):
         self._AccUin = AccUin
 
     @property
+    def AccessKey(self):
+        r"""访问密钥，注意：不支持临时密钥的情况
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
     def Filter(self):
         r"""过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -15292,6 +15306,7 @@ class DescribeCallRecordRequest(AbstractModel):
         self._AccessKeyID = params.get("AccessKeyID")
         self._SourceIPID = params.get("SourceIPID")
         self._AccUin = params.get("AccUin")
+        self._AccessKey = params.get("AccessKey")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))

@@ -669,6 +669,8 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         :type SubStreamSet: list of MediaSubStreamInfoItem
         :param _CopyRightWatermarkText: 版权信息。
         :type CopyRightWatermarkText: str
+        :param _BlindWatermarkDefinition: 数字水印模板id。
+        :type BlindWatermarkDefinition: int
         :param _SubtitleSet: 字幕信息列表。
         :type SubtitleSet: list of MediaSubtitleItem
         :param _DefaultSubtitleId: 默认字幕的唯一标识。
@@ -682,6 +684,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self._DigitalWatermarkType = None
         self._SubStreamSet = None
         self._CopyRightWatermarkText = None
+        self._BlindWatermarkDefinition = None
         self._SubtitleSet = None
         self._DefaultSubtitleId = None
 
@@ -782,6 +785,17 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self._CopyRightWatermarkText = CopyRightWatermarkText
 
     @property
+    def BlindWatermarkDefinition(self):
+        r"""数字水印模板id。
+        :rtype: int
+        """
+        return self._BlindWatermarkDefinition
+
+    @BlindWatermarkDefinition.setter
+    def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
+        self._BlindWatermarkDefinition = BlindWatermarkDefinition
+
+    @property
     def SubtitleSet(self):
         r"""字幕信息列表。
         :rtype: list of MediaSubtitleItem
@@ -818,6 +832,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
                 obj._deserialize(item)
                 self._SubStreamSet.append(obj)
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
+        self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
         if params.get("SubtitleSet") is not None:
             self._SubtitleSet = []
             for item in params.get("SubtitleSet"):
@@ -15666,6 +15681,132 @@ class BlindWatermarkInput(AbstractModel):
         
 
 
+class BlindWatermarkTemplate(AbstractModel):
+    r"""数字水印模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA取证水印；</li>
+        :type Type: str
+        :param _Name: 数字水印模板名称。
+        :type Name: str
+        :param _TextContent: 数字水印模板文本内容，长度不超过64个字符。
+        :type TextContent: str
+        :param _Comment: 数字水印模板描述信息。
+        :type Comment: str
+        :param _CreateTime: 数字水印模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type CreateTime: str
+        :param _UpdateTime: 数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._TextContent = None
+        self._Comment = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA取证水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TextContent(self):
+        r"""数字水印模板文本内容，长度不超过64个字符。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""数字水印模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._TextContent = params.get("TextContent")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlurConfigureInfo(AbstractModel):
     r"""视频画面模糊检测的控制参数。
 
@@ -20580,6 +20721,145 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
     @property
     def Definition(self):
         r"""转动图模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBlindWatermarkTemplateRequest(AbstractModel):
+    r"""CreateBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+        :type Type: str
+        :param _TextContent: 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+        :type TextContent: str
+        :param _SubAppId: 点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :type SubAppId: int
+        :param _Name: 数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 数字水印模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._Type = None
+        self._TextContent = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TextContent(self):
+        r"""数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def SubAppId(self):
+        r"""点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TextContent = params.get("TextContent")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlindWatermarkTemplateResponse(AbstractModel):
+    r"""CreateBlindWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
         :rtype: int
         """
         return self._Definition
@@ -26718,6 +26998,85 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBlindWatermarkTemplateRequest(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _SubAppId: 点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlindWatermarkTemplateResponse(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCLSTopicRequest(AbstractModel):
     r"""DeleteCLSTopic请求参数结构体
 
@@ -29673,6 +30032,169 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self._AnimatedGraphicsTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlindWatermarkTemplatesRequest(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: 点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :type SubAppId: int
+        :param _Definitions: 数字水印模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+        :type Type: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        r"""点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        r"""数字水印模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _BlindWatermarkTemplateSet: 数字水印模板详情列表。
+        :type BlindWatermarkTemplateSet: list of BlindWatermarkTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BlindWatermarkTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BlindWatermarkTemplateSet(self):
+        r"""数字水印模板详情列表。
+        :rtype: list of BlindWatermarkTemplate
+        """
+        return self._BlindWatermarkTemplateSet
+
+    @BlindWatermarkTemplateSet.setter
+    def BlindWatermarkTemplateSet(self, BlindWatermarkTemplateSet):
+        self._BlindWatermarkTemplateSet = BlindWatermarkTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BlindWatermarkTemplateSet") is not None:
+            self._BlindWatermarkTemplateSet = []
+            for item in params.get("BlindWatermarkTemplateSet"):
+                obj = BlindWatermarkTemplate()
+                obj._deserialize(item)
+                self._BlindWatermarkTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41628,6 +42150,179 @@ class ExtractBlindWatermarkInputInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExtractBlindWatermarkRequest(AbstractModel):
+    r"""ExtractBlindWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-trace：溯源ab序列水印；</li>
+        :type Type: str
+        :param _InputInfo: 媒体处理的文件输入信息。
+        :type InputInfo: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        :param _SubAppId: 添加水印时的点播应用 ID。注意不管是传入FILEID还是URL，都必须与添加水印时的SubAppId吻合才能提取到水印。
+        :type SubAppId: int
+        :param _ExtractBlindWatermarkConfig: 提取数字水印任务配置
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        :param _SessionContext: 标识来源上下文，用于透传用户请求信息，在 ExtractBlindWatermarkComplete 回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param _SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        """
+        self._Type = None
+        self._InputInfo = None
+        self._SubAppId = None
+        self._ExtractBlindWatermarkConfig = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._TasksPriority = None
+
+    @property
+    def Type(self):
+        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-trace：溯源ab序列水印；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputInfo(self):
+        r"""媒体处理的文件输入信息。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def SubAppId(self):
+        r"""添加水印时的点播应用 ID。注意不管是传入FILEID还是URL，都必须与添加水印时的SubAppId吻合才能提取到水印。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""提取数字水印任务配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+    @property
+    def SessionContext(self):
+        r"""标识来源上下文，用于透传用户请求信息，在 ExtractBlindWatermarkComplete 回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TasksPriority(self):
+        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ExtractBlindWatermarkInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._SubAppId = params.get("SubAppId")
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkResponse(AbstractModel):
+    r"""ExtractBlindWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExtractBlindWatermarkTask(AbstractModel):
@@ -54318,6 +55013,8 @@ class MediaTranscodeItem(AbstractModel):
         :type DigitalWatermarkType: str
         :param _CopyRightWatermarkText: 版权信息。
         :type CopyRightWatermarkText: str
+        :param _BlindWatermarkDefinition: 数字水印模板id。
+        :type BlindWatermarkDefinition: int
         """
         self._Url = None
         self._Definition = None
@@ -54332,6 +55029,7 @@ class MediaTranscodeItem(AbstractModel):
         self._AudioStreamSet = None
         self._DigitalWatermarkType = None
         self._CopyRightWatermarkText = None
+        self._BlindWatermarkDefinition = None
 
     @property
     def Url(self):
@@ -54481,6 +55179,17 @@ class MediaTranscodeItem(AbstractModel):
     def CopyRightWatermarkText(self, CopyRightWatermarkText):
         self._CopyRightWatermarkText = CopyRightWatermarkText
 
+    @property
+    def BlindWatermarkDefinition(self):
+        r"""数字水印模板id。
+        :rtype: int
+        """
+        return self._BlindWatermarkDefinition
+
+    @BlindWatermarkDefinition.setter
+    def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
+        self._BlindWatermarkDefinition = BlindWatermarkDefinition
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -54506,6 +55215,7 @@ class MediaTranscodeItem(AbstractModel):
                 self._AudioStreamSet.append(obj)
         self._DigitalWatermarkType = params.get("DigitalWatermarkType")
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
+        self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55585,6 +56295,130 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
 class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
     r"""ModifyAnimatedGraphicsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBlindWatermarkTemplateRequest(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 数字水印模板唯一标识。
+        :type Definition: int
+        :param _SubAppId: 点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :type SubAppId: int
+        :param _Name: 数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 数字水印模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _TextContent: 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+        :type TextContent: str
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._TextContent = None
+
+    @property
+    def Definition(self):
+        r"""数字水印模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""数字水印模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TextContent(self):
+        r"""数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlindWatermarkTemplateResponse(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate返回参数结构体
 
     """
 

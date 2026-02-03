@@ -115,6 +115,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateGCJob(
+            self,
+            request: models.CreateGCJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateGCJobResponse:
+        """
+        创建 GC 作业
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGCJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGCJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateImageAccelerationService(
             self,
             request: models.CreateImageAccelerationServiceRequest,

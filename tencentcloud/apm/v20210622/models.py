@@ -447,6 +447,8 @@ class ApmAppConfig(AbstractModel):
         :type DesensitizationRule: str
         :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
         :type LogSpanIdKey: str
+        :param _AutoProfilingConfig: 自动性能剖析配置
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -505,6 +507,7 @@ class ApmAppConfig(AbstractModel):
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
         self._LogSpanIdKey = None
+        self._AutoProfilingConfig = None
 
     @property
     def InstanceKey(self):
@@ -1156,6 +1159,17 @@ class ApmAppConfig(AbstractModel):
     def LogSpanIdKey(self, LogSpanIdKey):
         self._LogSpanIdKey = LogSpanIdKey
 
+    @property
+    def AutoProfilingConfig(self):
+        r"""自动性能剖析配置
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1227,6 +1241,9 @@ class ApmAppConfig(AbstractModel):
         self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
         self._DesensitizationRule = params.get("DesensitizationRule")
         self._LogSpanIdKey = params.get("LogSpanIdKey")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1294,6 +1311,8 @@ class ApmApplicationConfigView(AbstractModel):
         :type EnableDesensitizationRule: int
         :param _DesensitizationRule: 脱敏规则
         :type DesensitizationRule: str
+        :param _AutoProfilingConfig: 自动性能剖析任务配置
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1320,6 +1339,7 @@ class ApmApplicationConfigView(AbstractModel):
         self._SlowSQLThresholds = None
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
+        self._AutoProfilingConfig = None
 
     @property
     def InstanceKey(self):
@@ -1596,6 +1616,17 @@ class ApmApplicationConfigView(AbstractModel):
     def DesensitizationRule(self, DesensitizationRule):
         self._DesensitizationRule = DesensitizationRule
 
+    @property
+    def AutoProfilingConfig(self):
+        r"""自动性能剖析任务配置
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1633,6 +1664,9 @@ class ApmApplicationConfigView(AbstractModel):
                 self._SlowSQLThresholds.append(obj)
         self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
         self._DesensitizationRule = params.get("DesensitizationRule")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3250,6 +3284,117 @@ class ApmTag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoProfilingConfig(AbstractModel):
+    r"""自动性能剖析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CpuProfilingEnable: 自动CPU剖析任务开关
+        :type CpuProfilingEnable: bool
+        :param _MemoryProfilingEnable: 自动内存剖析任务开关
+        :type MemoryProfilingEnable: bool
+        :param _CpuProfilingThreshold: 自动CPU剖析任务阈值
+        :type CpuProfilingThreshold: int
+        :param _MemoryProfilingThreshold: 自动内存剖析任务阈值
+        :type MemoryProfilingThreshold: int
+        :param _CpuProfilingDuration: CPU自动剖析任务时长
+        :type CpuProfilingDuration: int
+        :param _MemoryProfilingDuration: 内存自动剖析任务时长
+        :type MemoryProfilingDuration: int
+        """
+        self._CpuProfilingEnable = None
+        self._MemoryProfilingEnable = None
+        self._CpuProfilingThreshold = None
+        self._MemoryProfilingThreshold = None
+        self._CpuProfilingDuration = None
+        self._MemoryProfilingDuration = None
+
+    @property
+    def CpuProfilingEnable(self):
+        r"""自动CPU剖析任务开关
+        :rtype: bool
+        """
+        return self._CpuProfilingEnable
+
+    @CpuProfilingEnable.setter
+    def CpuProfilingEnable(self, CpuProfilingEnable):
+        self._CpuProfilingEnable = CpuProfilingEnable
+
+    @property
+    def MemoryProfilingEnable(self):
+        r"""自动内存剖析任务开关
+        :rtype: bool
+        """
+        return self._MemoryProfilingEnable
+
+    @MemoryProfilingEnable.setter
+    def MemoryProfilingEnable(self, MemoryProfilingEnable):
+        self._MemoryProfilingEnable = MemoryProfilingEnable
+
+    @property
+    def CpuProfilingThreshold(self):
+        r"""自动CPU剖析任务阈值
+        :rtype: int
+        """
+        return self._CpuProfilingThreshold
+
+    @CpuProfilingThreshold.setter
+    def CpuProfilingThreshold(self, CpuProfilingThreshold):
+        self._CpuProfilingThreshold = CpuProfilingThreshold
+
+    @property
+    def MemoryProfilingThreshold(self):
+        r"""自动内存剖析任务阈值
+        :rtype: int
+        """
+        return self._MemoryProfilingThreshold
+
+    @MemoryProfilingThreshold.setter
+    def MemoryProfilingThreshold(self, MemoryProfilingThreshold):
+        self._MemoryProfilingThreshold = MemoryProfilingThreshold
+
+    @property
+    def CpuProfilingDuration(self):
+        r"""CPU自动剖析任务时长
+        :rtype: int
+        """
+        return self._CpuProfilingDuration
+
+    @CpuProfilingDuration.setter
+    def CpuProfilingDuration(self, CpuProfilingDuration):
+        self._CpuProfilingDuration = CpuProfilingDuration
+
+    @property
+    def MemoryProfilingDuration(self):
+        r"""内存自动剖析任务时长
+        :rtype: int
+        """
+        return self._MemoryProfilingDuration
+
+    @MemoryProfilingDuration.setter
+    def MemoryProfilingDuration(self, MemoryProfilingDuration):
+        self._MemoryProfilingDuration = MemoryProfilingDuration
+
+
+    def _deserialize(self, params):
+        self._CpuProfilingEnable = params.get("CpuProfilingEnable")
+        self._MemoryProfilingEnable = params.get("MemoryProfilingEnable")
+        self._CpuProfilingThreshold = params.get("CpuProfilingThreshold")
+        self._MemoryProfilingThreshold = params.get("MemoryProfilingThreshold")
+        self._CpuProfilingDuration = params.get("CpuProfilingDuration")
+        self._MemoryProfilingDuration = params.get("MemoryProfilingDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7521,6 +7666,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type DesensitizationRule: str
         :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
         :type LogSpanIdKey: str
+        :param _AutoProfilingConfig: 自动性能剖析任务配置
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -7576,6 +7723,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
         self._LogSpanIdKey = None
+        self._AutoProfilingConfig = None
 
     @property
     def InstanceId(self):
@@ -8171,6 +8319,17 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def LogSpanIdKey(self, LogSpanIdKey):
         self._LogSpanIdKey = LogSpanIdKey
 
+    @property
+    def AutoProfilingConfig(self):
+        r"""自动性能剖析任务配置
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8239,6 +8398,9 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
         self._DesensitizationRule = params.get("DesensitizationRule")
         self._LogSpanIdKey = params.get("LogSpanIdKey")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
