@@ -51059,7 +51059,7 @@ class SnapshotBackupConfig(AbstractModel):
         :type BackupIntervalTime: int
         :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
         :type ReserveDuration: int
-        :param _BackupTriggerStrategy: 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :param _BackupTriggerStrategy: 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
         :type BackupTriggerStrategy: str
         """
         self._BackupCustomAutoTime = None
@@ -51138,7 +51138,7 @@ class SnapshotBackupConfig(AbstractModel):
 
     @property
     def BackupTriggerStrategy(self):
-        r"""动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        r"""自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
         :rtype: str
         """
         return self._BackupTriggerStrategy

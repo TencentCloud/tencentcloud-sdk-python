@@ -18032,8 +18032,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         :type TaskId: str
         :param _SequenceNumber: 客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
         :type SequenceNumber: int
-        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
-注：混流是必须转码，这个参数需设置为1。
+        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
         :type WithTranscoding: int
         :param _AudioParams: 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
@@ -18094,8 +18093,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
-        r"""是否转码，0表示无需转码，1表示需要转码。
-注：混流是必须转码，这个参数需设置为1。
+        r"""是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
         :rtype: int
         """
         return self._WithTranscoding

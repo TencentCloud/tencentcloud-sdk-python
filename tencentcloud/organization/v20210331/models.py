@@ -14488,26 +14488,28 @@ class ManagerShareUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitId: 共享单元ID。
+        :param _UnitId: <p>共享单元ID。</p>
         :type UnitId: str
-        :param _Name: 共享单元名称。
+        :param _Name: <p>共享单元名称。</p>
         :type Name: str
-        :param _Uin: 共享单元管理员Uin。
+        :param _Uin: <p>共享单元管理员Uin。</p>
         :type Uin: int
-        :param _OwnerUin: 共享单元管理员OwnerUin。
+        :param _OwnerUin: <p>共享单元管理员OwnerUin。</p>
         :type OwnerUin: int
-        :param _Area: 共享单元地域。
+        :param _Area: <p>共享单元地域。</p>
         :type Area: str
-        :param _Description: 描述。
+        :param _Description: <p>描述。</p>
         :type Description: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _ShareResourceNum: 共享单元资源数。
+        :param _ShareResourceNum: <p>共享单元资源数。</p>
         :type ShareResourceNum: int
-        :param _ShareMemberNum: 共享单元成员数。
+        :param _ShareMemberNum: <p>共享单元成员数。</p>
         :type ShareMemberNum: int
-        :param _ShareScope: 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+        :param _ShareScope: <p>共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号</p>
         :type ShareScope: int
+        :param _ShareNodeNum: <p>共享单元部门数。</p>
+        :type ShareNodeNum: int
         """
         self._UnitId = None
         self._Name = None
@@ -14519,10 +14521,11 @@ class ManagerShareUnit(AbstractModel):
         self._ShareResourceNum = None
         self._ShareMemberNum = None
         self._ShareScope = None
+        self._ShareNodeNum = None
 
     @property
     def UnitId(self):
-        r"""共享单元ID。
+        r"""<p>共享单元ID。</p>
         :rtype: str
         """
         return self._UnitId
@@ -14533,7 +14536,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Name(self):
-        r"""共享单元名称。
+        r"""<p>共享单元名称。</p>
         :rtype: str
         """
         return self._Name
@@ -14544,7 +14547,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Uin(self):
-        r"""共享单元管理员Uin。
+        r"""<p>共享单元管理员Uin。</p>
         :rtype: int
         """
         return self._Uin
@@ -14555,7 +14558,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""共享单元管理员OwnerUin。
+        r"""<p>共享单元管理员OwnerUin。</p>
         :rtype: int
         """
         return self._OwnerUin
@@ -14566,7 +14569,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Area(self):
-        r"""共享单元地域。
+        r"""<p>共享单元地域。</p>
         :rtype: str
         """
         return self._Area
@@ -14577,7 +14580,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述。
+        r"""<p>描述。</p>
         :rtype: str
         """
         return self._Description
@@ -14588,7 +14591,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -14599,7 +14602,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareResourceNum(self):
-        r"""共享单元资源数。
+        r"""<p>共享单元资源数。</p>
         :rtype: int
         """
         return self._ShareResourceNum
@@ -14610,7 +14613,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareMemberNum(self):
-        r"""共享单元成员数。
+        r"""<p>共享单元成员数。</p>
         :rtype: int
         """
         return self._ShareMemberNum
@@ -14621,7 +14624,7 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareScope(self):
-        r"""共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+        r"""<p>共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号</p>
         :rtype: int
         """
         return self._ShareScope
@@ -14629,6 +14632,17 @@ class ManagerShareUnit(AbstractModel):
     @ShareScope.setter
     def ShareScope(self, ShareScope):
         self._ShareScope = ShareScope
+
+    @property
+    def ShareNodeNum(self):
+        r"""<p>共享单元部门数。</p>
+        :rtype: int
+        """
+        return self._ShareNodeNum
+
+    @ShareNodeNum.setter
+    def ShareNodeNum(self, ShareNodeNum):
+        self._ShareNodeNum = ShareNodeNum
 
 
     def _deserialize(self, params):
@@ -14642,6 +14656,7 @@ class ManagerShareUnit(AbstractModel):
         self._ShareResourceNum = params.get("ShareResourceNum")
         self._ShareMemberNum = params.get("ShareMemberNum")
         self._ShareScope = params.get("ShareScope")
+        self._ShareNodeNum = params.get("ShareNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

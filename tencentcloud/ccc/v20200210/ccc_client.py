@@ -986,6 +986,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFlashSMSList(self, request):
+        r"""获取闪信记录列表
+
+        :param request: Request instance for DescribeFlashSMSList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeFlashSMSListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeFlashSMSListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlashSMSList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlashSMSListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIMCdrList(self, request):
         r"""获取包括全媒体和文本会话两种类型的服务记录。
 

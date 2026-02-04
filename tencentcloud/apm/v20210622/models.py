@@ -3294,6 +3294,78 @@ class ApmTag(AbstractModel):
         
 
 
+class ApmVulnerabilityServiceDetail(AbstractModel):
+    r"""APM应用实例漏洞相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceInstance: 应用实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInstance: str
+        :param _Path: 漏洞所在jar包路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _LastOccurTime: 最近发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOccurTime: int
+        """
+        self._ServiceInstance = None
+        self._Path = None
+        self._LastOccurTime = None
+
+    @property
+    def ServiceInstance(self):
+        r"""应用实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceInstance
+
+    @ServiceInstance.setter
+    def ServiceInstance(self, ServiceInstance):
+        self._ServiceInstance = ServiceInstance
+
+    @property
+    def Path(self):
+        r"""漏洞所在jar包路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def LastOccurTime(self):
+        r"""最近发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastOccurTime
+
+    @LastOccurTime.setter
+    def LastOccurTime(self, LastOccurTime):
+        self._LastOccurTime = LastOccurTime
+
+
+    def _deserialize(self, params):
+        self._ServiceInstance = params.get("ServiceInstance")
+        self._Path = params.get("Path")
+        self._LastOccurTime = params.get("LastOccurTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoProfilingConfig(AbstractModel):
     r"""自动性能剖析配置
 
@@ -4425,6 +4497,150 @@ class DescribeApmAgentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeApmAllVulCountRequest(AbstractModel):
+    r"""DescribeApmAllVulCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 秒级时间戳
+        :type StartTime: int
+        :param _EndTime: 秒级时间戳
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmAllVulCountResponse(AbstractModel):
+    r"""DescribeApmAllVulCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: 包含漏洞指标以及业务系统个数	
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: 总漏洞个数
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: 严重漏洞个数
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: 高危漏洞个数
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""包含漏洞指标以及业务系统个数	
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""总漏洞个数
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""严重漏洞个数
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""高危漏洞个数
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeApmApplicationConfigRequest(AbstractModel):
     r"""DescribeApmApplicationConfig请求参数结构体
 
@@ -5331,6 +5547,349 @@ class DescribeApmServiceMetricResponse(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._ErrorCount = params.get("ErrorCount")
         self._WarningCount = params.get("WarningCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApmVulnerabilityCountRequest(AbstractModel):
+    r"""DescribeApmVulnerabilityCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: APM业务系统ID
+        :type InstanceId: str
+        :param _ServiceName: APM应用名称
+        :type ServiceName: str
+        :param _StartTime: 秒级时间戳
+        :type StartTime: int
+        :param _EndTime: 秒级时间戳
+        :type EndTime: int
+        :param _Type: 查询的数据类型，攻击检测为“attack_detect”
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        r"""APM业务系统ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        r"""APM应用名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def StartTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""查询的数据类型，攻击检测为“attack_detect”
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmVulnerabilityCountResponse(AbstractModel):
+    r"""DescribeApmVulnerabilityCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: 包含漏洞指标以及业务系统个数
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: 总漏洞个数
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: 严重漏洞个数
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: 高危漏洞个数
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""包含漏洞指标以及业务系统个数
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""总漏洞个数
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""严重漏洞个数
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""高危漏洞个数
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApmVulnerabilityDetailRequest(AbstractModel):
+    r"""DescribeApmVulnerabilityDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 秒级时间戳
+        :type StartTime: int
+        :param _EndTime: 秒级时间戳
+        :type EndTime: int
+        :param _InstanceId: APM业务系统ID
+        :type InstanceId: str
+        :param _Filters: 条件过滤，必填service.name, instrumentation.name, version, vul.id
+        :type Filters: list of Filter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""APM业务系统ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        r"""条件过滤，必填service.name, instrumentation.name, version, vul.id
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmVulnerabilityDetailResponse(AbstractModel):
+    r"""DescribeApmVulnerabilityDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: 漏洞详情
+        :type Tags: list of ApmTag
+        :param _ServiceInstanceList: 漏洞相关业务系统列表
+        :type ServiceInstanceList: list of ApmVulnerabilityServiceDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tags = None
+        self._ServiceInstanceList = None
+        self._RequestId = None
+
+    @property
+    def Tags(self):
+        r"""漏洞详情
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ServiceInstanceList(self):
+        r"""漏洞相关业务系统列表
+        :rtype: list of ApmVulnerabilityServiceDetail
+        """
+        return self._ServiceInstanceList
+
+    @ServiceInstanceList.setter
+    def ServiceInstanceList(self, ServiceInstanceList):
+        self._ServiceInstanceList = ServiceInstanceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ServiceInstanceList") is not None:
+            self._ServiceInstanceList = []
+            for item in params.get("ServiceInstanceList"):
+                obj = ApmVulnerabilityServiceDetail()
+                obj._deserialize(item)
+                self._ServiceInstanceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6467,6 +7026,150 @@ class DescribeMetricRecordsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Records.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOPRAllVulCountRequest(AbstractModel):
+    r"""DescribeOPRAllVulCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 秒级时间戳
+        :type StartTime: int
+        :param _EndTime: 秒级时间戳
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""秒级时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOPRAllVulCountResponse(AbstractModel):
+    r"""DescribeOPRAllVulCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: 包含漏洞指标以及业务系统个数	
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: 总漏洞个数
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: 严重漏洞个数
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: 高危漏洞个数
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""包含漏洞指标以及业务系统个数	
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""总漏洞个数
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""严重漏洞个数
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""高危漏洞个数
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
         self._RequestId = params.get("RequestId")
 
 

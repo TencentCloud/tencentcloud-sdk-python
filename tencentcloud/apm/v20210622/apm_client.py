@@ -164,6 +164,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmAllVulCount(self, request):
+        r"""查询用户所有漏洞信息
+
+        :param request: Request instance for DescribeApmAllVulCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAllVulCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmAllVulCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmAllVulCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmAllVulCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmApplicationConfig(self, request):
         r"""查询应用配置接口
 
@@ -302,6 +325,52 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmVulnerabilityCount(self, request):
+        r"""查询漏洞指标
+
+        :param request: Request instance for DescribeApmVulnerabilityCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmVulnerabilityCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmVulnerabilityCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmVulnerabilityDetail(self, request):
+        r"""查询漏洞详情
+
+        :param request: Request instance for DescribeApmVulnerabilityDetail.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityDetailRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmVulnerabilityDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmVulnerabilityDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGeneralApmApplicationConfig(self, request):
         r"""查询应用配置信息
 
@@ -429,6 +498,29 @@ class ApmClient(AbstractClient):
             body = self.call("DescribeMetricRecords", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMetricRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOPRAllVulCount(self, request):
+        r"""查询用户所有漏洞信息
+
+        :param request: Request instance for DescribeOPRAllVulCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeOPRAllVulCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeOPRAllVulCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOPRAllVulCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOPRAllVulCountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

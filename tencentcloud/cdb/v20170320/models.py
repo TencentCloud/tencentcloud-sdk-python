@@ -25411,6 +25411,8 @@ class InstanceInfo(AbstractModel):
         :type DeviceBandwidth: int
         :param _DestroyProtect: 实例销毁保护状态，on表示开启保护，否则为关闭保护
         :type DestroyProtect: str
+        :param _CpuModel: TDSQL引擎参数
+        :type CpuModel: str
         """
         self._WanStatus = None
         self._Zone = None
@@ -25463,6 +25465,7 @@ class InstanceInfo(AbstractModel):
         self._AnalysisNodeInfos = None
         self._DeviceBandwidth = None
         self._DestroyProtect = None
+        self._CpuModel = None
 
     @property
     def WanStatus(self):
@@ -26029,6 +26032,17 @@ class InstanceInfo(AbstractModel):
     def DestroyProtect(self, DestroyProtect):
         self._DestroyProtect = DestroyProtect
 
+    @property
+    def CpuModel(self):
+        r"""TDSQL引擎参数
+        :rtype: str
+        """
+        return self._CpuModel
+
+    @CpuModel.setter
+    def CpuModel(self, CpuModel):
+        self._CpuModel = CpuModel
+
 
     def _deserialize(self, params):
         self._WanStatus = params.get("WanStatus")
@@ -26113,6 +26127,7 @@ class InstanceInfo(AbstractModel):
                 self._AnalysisNodeInfos.append(obj)
         self._DeviceBandwidth = params.get("DeviceBandwidth")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._CpuModel = params.get("CpuModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

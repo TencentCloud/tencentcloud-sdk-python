@@ -14,8 +14,14 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
 # InternalError.SystemError
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'

@@ -1100,7 +1100,10 @@ class OcrClient(AbstractClient):
                   <td rowspan="9">告警功能</td>
                 </tr>
                 <tr>
-                  <td>身份证边框不完整告警</td>
+                 <td>身份证有效日期不合法告警</td>
+                </tr>
+                <tr>
+                 <td>身份证边框不完整告警</td>
                 </tr>
                 <tr>
                   <td>身份证复印件告警</td>
@@ -1473,7 +1476,7 @@ class OcrClient(AbstractClient):
 
 
     def QuestionSplitLayoutOCR(self, request):
-        r"""试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+        r"""试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框的坐标位置。新客户请注意UseNewMode的选择。
 
         默认接口请求频率限制：2次/秒。
 
@@ -1498,7 +1501,7 @@ class OcrClient(AbstractClient):
 
 
     def QuestionSplitOCR(self, request):
-        r"""试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+        r"""试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。新接入客户请注意UseNewModel选择
 
         默认接口请求频率限制：2次/秒。
 
@@ -1596,7 +1599,7 @@ class OcrClient(AbstractClient):
                 </tr>
                 <tr>
                   <td rowspan="9">告警功能</td>
-                  <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+                  <td>身份证有效日期不合法
 
         </td>
                 </tr>

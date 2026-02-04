@@ -2146,6 +2146,8 @@ class Cluster(AbstractModel):
         :type ClusterEtcdNodeNum: int
         :param _CdcId: 本地专用集群Id
         :type CdcId: str
+        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :type IsHighAvailability: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -2172,6 +2174,7 @@ class Cluster(AbstractModel):
         self._RuntimeVersion = None
         self._ClusterEtcdNodeNum = None
         self._CdcId = None
+        self._IsHighAvailability = None
 
     @property
     def ClusterId(self):
@@ -2449,6 +2452,17 @@ class Cluster(AbstractModel):
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def IsHighAvailability(self):
+        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :rtype: bool
+        """
+        return self._IsHighAvailability
+
+    @IsHighAvailability.setter
+    def IsHighAvailability(self, IsHighAvailability):
+        self._IsHighAvailability = IsHighAvailability
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -2483,6 +2497,7 @@ class Cluster(AbstractModel):
         self._RuntimeVersion = params.get("RuntimeVersion")
         self._ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
         self._CdcId = params.get("CdcId")
+        self._IsHighAvailability = params.get("IsHighAvailability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2551,6 +2566,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         :type RuntimeVersion: str
         :param _VpcCniType: 区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
         :type VpcCniType: str
+        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true
+        :type IsHighAvailability: bool
         """
         self._AsEnabled = None
         self._AuditEnabled = None
@@ -2573,6 +2590,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._QGPUShareEnable = None
         self._RuntimeVersion = None
         self._VpcCniType = None
+        self._IsHighAvailability = None
 
     @property
     def AsEnabled(self):
@@ -2814,6 +2832,17 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     def VpcCniType(self, VpcCniType):
         self._VpcCniType = VpcCniType
 
+    @property
+    def IsHighAvailability(self):
+        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true
+        :rtype: bool
+        """
+        return self._IsHighAvailability
+
+    @IsHighAvailability.setter
+    def IsHighAvailability(self, IsHighAvailability):
+        self._IsHighAvailability = IsHighAvailability
+
 
     def _deserialize(self, params):
         self._AsEnabled = params.get("AsEnabled")
@@ -2844,6 +2873,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._QGPUShareEnable = params.get("QGPUShareEnable")
         self._RuntimeVersion = params.get("RuntimeVersion")
         self._VpcCniType = params.get("VpcCniType")
+        self._IsHighAvailability = params.get("IsHighAvailability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36648,6 +36678,8 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type QGPUShareEnable: bool
         :param _ClusterProperty: 集群属性
         :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
+        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :type IsHighAvailability: bool
         """
         self._ClusterId = None
         self._ProjectId = None
@@ -36657,6 +36689,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self._AutoUpgradeClusterLevel = None
         self._QGPUShareEnable = None
         self._ClusterProperty = None
+        self._IsHighAvailability = None
 
     @property
     def ClusterId(self):
@@ -36746,6 +36779,17 @@ class ModifyClusterAttributeRequest(AbstractModel):
     def ClusterProperty(self, ClusterProperty):
         self._ClusterProperty = ClusterProperty
 
+    @property
+    def IsHighAvailability(self):
+        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :rtype: bool
+        """
+        return self._IsHighAvailability
+
+    @IsHighAvailability.setter
+    def IsHighAvailability(self, IsHighAvailability):
+        self._IsHighAvailability = IsHighAvailability
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -36760,6 +36804,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
         if params.get("ClusterProperty") is not None:
             self._ClusterProperty = ClusterProperty()
             self._ClusterProperty._deserialize(params.get("ClusterProperty"))
+        self._IsHighAvailability = params.get("IsHighAvailability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36791,6 +36836,8 @@ class ModifyClusterAttributeResponse(AbstractModel):
         :type QGPUShareEnable: bool
         :param _ClusterProperty: 集群属性
         :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
+        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :type IsHighAvailability: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -36801,6 +36848,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self._AutoUpgradeClusterLevel = None
         self._QGPUShareEnable = None
         self._ClusterProperty = None
+        self._IsHighAvailability = None
         self._RequestId = None
 
     @property
@@ -36881,6 +36929,17 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self._ClusterProperty = ClusterProperty
 
     @property
+    def IsHighAvailability(self):
+        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :rtype: bool
+        """
+        return self._IsHighAvailability
+
+    @IsHighAvailability.setter
+    def IsHighAvailability(self, IsHighAvailability):
+        self._IsHighAvailability = IsHighAvailability
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -36904,6 +36963,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
         if params.get("ClusterProperty") is not None:
             self._ClusterProperty = ClusterProperty()
             self._ClusterProperty._deserialize(params.get("ClusterProperty"))
+        self._IsHighAvailability = params.get("IsHighAvailability")
         self._RequestId = params.get("RequestId")
 
 

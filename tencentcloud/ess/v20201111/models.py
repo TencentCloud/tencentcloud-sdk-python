@@ -39215,6 +39215,10 @@ class OutputRisk(AbstractModel):
         :type Content: str
         :param _Positions: 审查出的PDF段落位置信息
         :type Positions: list of PositionInfo
+        :param _IsMark: 是否已修订
+        :type IsMark: bool
+        :param _IsIgnore: 是否已忽略
+        :type IsIgnore: bool
         :param _RiskBasis: 审查依据
         :type RiskBasis: str
         :param _RiskLevelId: 风险等级id。1 为最高风险等级，0 为最低风险等级，从[2,n]数字越大风险等级逐渐降低。
@@ -39229,6 +39233,8 @@ class OutputRisk(AbstractModel):
         :type CreatorId: str
         :param _CreatedOn: 创建时间
         :type CreatedOn: int
+        :param _RiskLevelAliasName: 风险等级别名
+        :type RiskLevelAliasName: str
         """
         self._RiskId = None
         self._RiskName = None
@@ -39238,6 +39244,8 @@ class OutputRisk(AbstractModel):
         self._RiskPresentation = None
         self._Content = None
         self._Positions = None
+        self._IsMark = None
+        self._IsIgnore = None
         self._RiskBasis = None
         self._RiskLevelId = None
         self._RiskLabels = None
@@ -39245,6 +39253,7 @@ class OutputRisk(AbstractModel):
         self._Creator = None
         self._CreatorId = None
         self._CreatedOn = None
+        self._RiskLevelAliasName = None
 
     @property
     def RiskId(self):
@@ -39341,6 +39350,28 @@ class OutputRisk(AbstractModel):
         self._Positions = Positions
 
     @property
+    def IsMark(self):
+        r"""是否已修订
+        :rtype: bool
+        """
+        return self._IsMark
+
+    @IsMark.setter
+    def IsMark(self, IsMark):
+        self._IsMark = IsMark
+
+    @property
+    def IsIgnore(self):
+        r"""是否已忽略
+        :rtype: bool
+        """
+        return self._IsIgnore
+
+    @IsIgnore.setter
+    def IsIgnore(self, IsIgnore):
+        self._IsIgnore = IsIgnore
+
+    @property
     def RiskBasis(self):
         r"""审查依据
         :rtype: str
@@ -39417,6 +39448,17 @@ class OutputRisk(AbstractModel):
     def CreatedOn(self, CreatedOn):
         self._CreatedOn = CreatedOn
 
+    @property
+    def RiskLevelAliasName(self):
+        r"""风险等级别名
+        :rtype: str
+        """
+        return self._RiskLevelAliasName
+
+    @RiskLevelAliasName.setter
+    def RiskLevelAliasName(self, RiskLevelAliasName):
+        self._RiskLevelAliasName = RiskLevelAliasName
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -39432,6 +39474,8 @@ class OutputRisk(AbstractModel):
                 obj = PositionInfo()
                 obj._deserialize(item)
                 self._Positions.append(obj)
+        self._IsMark = params.get("IsMark")
+        self._IsIgnore = params.get("IsIgnore")
         self._RiskBasis = params.get("RiskBasis")
         self._RiskLevelId = params.get("RiskLevelId")
         self._RiskLabels = params.get("RiskLabels")
@@ -39439,6 +39483,7 @@ class OutputRisk(AbstractModel):
         self._Creator = params.get("Creator")
         self._CreatorId = params.get("CreatorId")
         self._CreatedOn = params.get("CreatedOn")
+        self._RiskLevelAliasName = params.get("RiskLevelAliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

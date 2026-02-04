@@ -5915,26 +5915,29 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceFormat: 音频格式 0: pcm, 1: wav
+        :param _VoiceFormat: <p>音频格式 0: pcm, 1: wav</p>
         :type VoiceFormat: int
-        :param _SampleRate: 音频采样率，目前支持16000，单位：Hz，必填
+        :param _SampleRate: <p>音频采样率，目前支持16000，单位：Hz，必填</p>
         :type SampleRate: int
-        :param _Data: 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+        :param _Data: <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
         :type Data: str
-        :param _SpeakerNick: 说话人昵称  不超过32字节
+        :param _SpeakerNick: <p>说话人昵称  不超过32字节</p>
         :type SpeakerNick: str
-        :param _GroupId: 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+        :param _GroupId: <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
         :type GroupId: str
+        :param _AudioUrl: <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+        :type AudioUrl: str
         """
         self._VoiceFormat = None
         self._SampleRate = None
         self._Data = None
         self._SpeakerNick = None
         self._GroupId = None
+        self._AudioUrl = None
 
     @property
     def VoiceFormat(self):
-        r"""音频格式 0: pcm, 1: wav
+        r"""<p>音频格式 0: pcm, 1: wav</p>
         :rtype: int
         """
         return self._VoiceFormat
@@ -5945,7 +5948,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率，目前支持16000，单位：Hz，必填
+        r"""<p>音频采样率，目前支持16000，单位：Hz，必填</p>
         :rtype: int
         """
         return self._SampleRate
@@ -5956,7 +5959,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def Data(self):
-        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+        r"""<p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
         :rtype: str
         """
         return self._Data
@@ -5967,7 +5970,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        r"""说话人昵称  不超过32字节
+        r"""<p>说话人昵称  不超过32字节</p>
         :rtype: str
         """
         return self._SpeakerNick
@@ -5978,7 +5981,7 @@ class VoicePrintEnrollRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+        r"""<p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
         :rtype: str
         """
         return self._GroupId
@@ -5987,6 +5990,17 @@ class VoicePrintEnrollRequest(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def AudioUrl(self):
+        r"""<p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
@@ -5994,6 +6008,7 @@ class VoicePrintEnrollRequest(AbstractModel):
         self._Data = params.get("Data")
         self._SpeakerNick = params.get("SpeakerNick")
         self._GroupId = params.get("GroupId")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6011,7 +6026,7 @@ class VoicePrintEnrollResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 说话人基本数据
+        :param _Data: <p>说话人基本数据</p>
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6021,7 +6036,7 @@ class VoicePrintEnrollResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""说话人基本数据
+        r"""<p>说话人基本数据</p>
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         """
         return self._Data
@@ -6197,26 +6212,29 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceFormat: 音频格式 0: pcm, 1: wav
+        :param _VoiceFormat: <p>音频格式 0: pcm, 1: wav</p>
         :type VoiceFormat: int
-        :param _SampleRate: 音频采样率 目前仅支持16000 单位Hz
+        :param _SampleRate: <p>音频采样率 目前仅支持16000 单位Hz</p>
         :type SampleRate: int
-        :param _VoicePrintId: 说话人id， 说话人唯一标识
+        :param _VoicePrintId: <p>说话人id， 说话人唯一标识</p>
         :type VoicePrintId: str
-        :param _Data: 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+        :param _Data: <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
         :type Data: str
-        :param _SpeakerNick: 说话人昵称  不超过32字节
+        :param _SpeakerNick: <p>说话人昵称  不超过32字节</p>
         :type SpeakerNick: str
+        :param _AudioUrl: <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+        :type AudioUrl: str
         """
         self._VoiceFormat = None
         self._SampleRate = None
         self._VoicePrintId = None
         self._Data = None
         self._SpeakerNick = None
+        self._AudioUrl = None
 
     @property
     def VoiceFormat(self):
-        r"""音频格式 0: pcm, 1: wav
+        r"""<p>音频格式 0: pcm, 1: wav</p>
         :rtype: int
         """
         return self._VoiceFormat
@@ -6227,7 +6245,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率 目前仅支持16000 单位Hz
+        r"""<p>音频采样率 目前仅支持16000 单位Hz</p>
         :rtype: int
         """
         return self._SampleRate
@@ -6238,7 +6256,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def VoicePrintId(self):
-        r"""说话人id， 说话人唯一标识
+        r"""<p>说话人id， 说话人唯一标识</p>
         :rtype: str
         """
         return self._VoicePrintId
@@ -6249,7 +6267,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def Data(self):
-        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+        r"""<p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
         :rtype: str
         """
         return self._Data
@@ -6260,7 +6278,7 @@ class VoicePrintUpdateRequest(AbstractModel):
 
     @property
     def SpeakerNick(self):
-        r"""说话人昵称  不超过32字节
+        r"""<p>说话人昵称  不超过32字节</p>
         :rtype: str
         """
         return self._SpeakerNick
@@ -6269,6 +6287,17 @@ class VoicePrintUpdateRequest(AbstractModel):
     def SpeakerNick(self, SpeakerNick):
         self._SpeakerNick = SpeakerNick
 
+    @property
+    def AudioUrl(self):
+        r"""<p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
@@ -6276,6 +6305,7 @@ class VoicePrintUpdateRequest(AbstractModel):
         self._VoicePrintId = params.get("VoicePrintId")
         self._Data = params.get("Data")
         self._SpeakerNick = params.get("SpeakerNick")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6293,7 +6323,7 @@ class VoicePrintUpdateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 说话人基础数据
+        :param _Data: <p>说话人基础数据</p>
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6303,7 +6333,7 @@ class VoicePrintUpdateResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""说话人基础数据
+        r"""<p>说话人基础数据</p>
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
         """
         return self._Data
@@ -6410,23 +6440,26 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceFormat: 音频格式 0: pcm, 1: wav
+        :param _VoiceFormat: <p>音频格式 0: pcm, 1: wav</p>
         :type VoiceFormat: int
-        :param _SampleRate: 音频采样率，目前支持16000，单位：Hz，必填
+        :param _SampleRate: <p>音频采样率，目前支持16000，单位：Hz，必填</p>
         :type SampleRate: int
-        :param _Data: 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
-        :type Data: str
-        :param _VoicePrintId: 说话人id, 说话人唯一标识
+        :param _VoicePrintId: <p>说话人id, 说话人唯一标识</p>
         :type VoicePrintId: str
+        :param _Data: <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
+        :type Data: str
+        :param _AudioUrl: <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+        :type AudioUrl: str
         """
         self._VoiceFormat = None
         self._SampleRate = None
-        self._Data = None
         self._VoicePrintId = None
+        self._Data = None
+        self._AudioUrl = None
 
     @property
     def VoiceFormat(self):
-        r"""音频格式 0: pcm, 1: wav
+        r"""<p>音频格式 0: pcm, 1: wav</p>
         :rtype: int
         """
         return self._VoiceFormat
@@ -6437,7 +6470,7 @@ class VoicePrintVerifyRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率，目前支持16000，单位：Hz，必填
+        r"""<p>音频采样率，目前支持16000，单位：Hz，必填</p>
         :rtype: int
         """
         return self._SampleRate
@@ -6447,8 +6480,19 @@ class VoicePrintVerifyRequest(AbstractModel):
         self._SampleRate = SampleRate
 
     @property
+    def VoicePrintId(self):
+        r"""<p>说话人id, 说话人唯一标识</p>
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
     def Data(self):
-        r"""音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+        r"""<p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
         :rtype: str
         """
         return self._Data
@@ -6458,22 +6502,23 @@ class VoicePrintVerifyRequest(AbstractModel):
         self._Data = Data
 
     @property
-    def VoicePrintId(self):
-        r"""说话人id, 说话人唯一标识
+    def AudioUrl(self):
+        r"""<p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
         :rtype: str
         """
-        return self._VoicePrintId
+        return self._AudioUrl
 
-    @VoicePrintId.setter
-    def VoicePrintId(self, VoicePrintId):
-        self._VoicePrintId = VoicePrintId
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
 
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
         self._SampleRate = params.get("SampleRate")
-        self._Data = params.get("Data")
         self._VoicePrintId = params.get("VoicePrintId")
+        self._Data = params.get("Data")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6491,7 +6536,7 @@ class VoicePrintVerifyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 说话人验证数据
+        :param _Data: <p>说话人验证数据</p>
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintVerifyData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6501,7 +6546,7 @@ class VoicePrintVerifyResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""说话人验证数据
+        r"""<p>说话人验证数据</p>
         :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintVerifyData`
         """
         return self._Data

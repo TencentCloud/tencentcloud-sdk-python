@@ -29,9 +29,12 @@ class AIAgentInfo(AbstractModel):
         :type AIAgentId: int
         :param _AIAgentName: 智能体名称
         :type AIAgentName: str
+        :param _VariableNames: 智能体变量名列表
+        :type VariableNames: list of str
         """
         self._AIAgentId = None
         self._AIAgentName = None
+        self._VariableNames = None
 
     @property
     def AIAgentId(self):
@@ -55,10 +58,22 @@ class AIAgentInfo(AbstractModel):
     def AIAgentName(self, AIAgentName):
         self._AIAgentName = AIAgentName
 
+    @property
+    def VariableNames(self):
+        r"""智能体变量名列表
+        :rtype: list of str
+        """
+        return self._VariableNames
+
+    @VariableNames.setter
+    def VariableNames(self, VariableNames):
+        self._VariableNames = VariableNames
+
 
     def _deserialize(self, params):
         self._AIAgentId = params.get("AIAgentId")
         self._AIAgentName = params.get("AIAgentName")
+        self._VariableNames = params.get("VariableNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9241,6 +9256,225 @@ class DescribeExtensionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFlashSMSListRequest(AbstractModel):
+    r"""DescribeFlashSMSList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _StartTimestamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :type StartTimestamp: int
+        :param _EndTimestamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :type EndTimestamp: int
+        :param _DeliveryNumber: 闪信投递号码（被叫号码）
+        :type DeliveryNumber: str
+        :param _ServingNumber: 呼叫关联的系统号码
+        :type ServingNumber: str
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _DeliveryStatus: 投递结果 1 为成功，其他为失败
+        :type DeliveryStatus: int
+        :param _PageSize: 分页大小，默认 20，最大 100
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        """
+        self._SdkAppId = None
+        self._StartTimestamp = None
+        self._EndTimestamp = None
+        self._DeliveryNumber = None
+        self._ServingNumber = None
+        self._SessionId = None
+        self._DeliveryStatus = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def SdkAppId(self):
+        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTimestamp(self):
+        r"""起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :rtype: int
+        """
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def EndTimestamp(self):
+        r"""结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :rtype: int
+        """
+        return self._EndTimestamp
+
+    @EndTimestamp.setter
+    def EndTimestamp(self, EndTimestamp):
+        self._EndTimestamp = EndTimestamp
+
+    @property
+    def DeliveryNumber(self):
+        r"""闪信投递号码（被叫号码）
+        :rtype: str
+        """
+        return self._DeliveryNumber
+
+    @DeliveryNumber.setter
+    def DeliveryNumber(self, DeliveryNumber):
+        self._DeliveryNumber = DeliveryNumber
+
+    @property
+    def ServingNumber(self):
+        r"""呼叫关联的系统号码
+        :rtype: str
+        """
+        return self._ServingNumber
+
+    @ServingNumber.setter
+    def ServingNumber(self, ServingNumber):
+        self._ServingNumber = ServingNumber
+
+    @property
+    def SessionId(self):
+        r"""会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def DeliveryStatus(self):
+        r"""投递结果 1 为成功，其他为失败
+        :rtype: int
+        """
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认 20，最大 100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""分页页码，从 0 开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._EndTimestamp = params.get("EndTimestamp")
+        self._DeliveryNumber = params.get("DeliveryNumber")
+        self._ServingNumber = params.get("ServingNumber")
+        self._SessionId = params.get("SessionId")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlashSMSListResponse(AbstractModel):
+    r"""DescribeFlashSMSList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 记录总数
+        :type Total: int
+        :param _FlashSMSList: 闪信记录列表
+        :type FlashSMSList: list of FlashSMSRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._FlashSMSList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""记录总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def FlashSMSList(self):
+        r"""闪信记录列表
+        :rtype: list of FlashSMSRecord
+        """
+        return self._FlashSMSList
+
+    @FlashSMSList.setter
+    def FlashSMSList(self, FlashSMSList):
+        self._FlashSMSList = FlashSMSList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("FlashSMSList") is not None:
+            self._FlashSMSList = []
+            for item in params.get("FlashSMSList"):
+                obj = FlashSMSRecord()
+                obj._deserialize(item)
+                self._FlashSMSList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIMCdrListRequest(AbstractModel):
     r"""DescribeIMCdrList请求参数结构体
 
@@ -13181,6 +13415,132 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlashSMSRecord(AbstractModel):
+    r"""闪信记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _DeliveryNumber: 闪信投递号码（被叫）
+        :type DeliveryNumber: str
+        :param _ServingNumber: 呼叫关联的系统号码
+        :type ServingNumber: str
+        :param _DeliveryStatus: 投递状态，1 表示成功，其他表示失败
+        :type DeliveryStatus: int
+        :param _DeliveryMessage: 投递失败原因
+        :type DeliveryMessage: str
+        :param _DeliveryTimestamp: 投递时间戳，Unix 秒级时间戳
+        :type DeliveryTimestamp: int
+        :param _ArriveTimestamp: 送达时间（送达成功），Unix 秒级时间戳
+        :type ArriveTimestamp: int
+        """
+        self._SessionId = None
+        self._DeliveryNumber = None
+        self._ServingNumber = None
+        self._DeliveryStatus = None
+        self._DeliveryMessage = None
+        self._DeliveryTimestamp = None
+        self._ArriveTimestamp = None
+
+    @property
+    def SessionId(self):
+        r"""会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def DeliveryNumber(self):
+        r"""闪信投递号码（被叫）
+        :rtype: str
+        """
+        return self._DeliveryNumber
+
+    @DeliveryNumber.setter
+    def DeliveryNumber(self, DeliveryNumber):
+        self._DeliveryNumber = DeliveryNumber
+
+    @property
+    def ServingNumber(self):
+        r"""呼叫关联的系统号码
+        :rtype: str
+        """
+        return self._ServingNumber
+
+    @ServingNumber.setter
+    def ServingNumber(self, ServingNumber):
+        self._ServingNumber = ServingNumber
+
+    @property
+    def DeliveryStatus(self):
+        r"""投递状态，1 表示成功，其他表示失败
+        :rtype: int
+        """
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def DeliveryMessage(self):
+        r"""投递失败原因
+        :rtype: str
+        """
+        return self._DeliveryMessage
+
+    @DeliveryMessage.setter
+    def DeliveryMessage(self, DeliveryMessage):
+        self._DeliveryMessage = DeliveryMessage
+
+    @property
+    def DeliveryTimestamp(self):
+        r"""投递时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._DeliveryTimestamp
+
+    @DeliveryTimestamp.setter
+    def DeliveryTimestamp(self, DeliveryTimestamp):
+        self._DeliveryTimestamp = DeliveryTimestamp
+
+    @property
+    def ArriveTimestamp(self):
+        r"""送达时间（送达成功），Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._ArriveTimestamp
+
+    @ArriveTimestamp.setter
+    def ArriveTimestamp(self, ArriveTimestamp):
+        self._ArriveTimestamp = ArriveTimestamp
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._DeliveryNumber = params.get("DeliveryNumber")
+        self._ServingNumber = params.get("ServingNumber")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._DeliveryMessage = params.get("DeliveryMessage")
+        self._DeliveryTimestamp = params.get("DeliveryTimestamp")
+        self._ArriveTimestamp = params.get("ArriveTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

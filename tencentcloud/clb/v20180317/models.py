@@ -3817,7 +3817,7 @@ class CreateListenerRequest(AbstractModel):
         :type MaxConn: int
         :param _MaxCps: <p>监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p>
+        :param _IdleConnectTimeout: <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。</p>
         :type IdleConnectTimeout: int
         :param _ProxyProtocol: <p>TCP_SSL和QUIC是否支持PP</p>
         :type ProxyProtocol: bool
@@ -4061,7 +4061,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def IdleConnectTimeout(self):
-        r"""<p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p>
+        r"""<p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。</p>
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -10272,13 +10272,13 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: 目标组ID数组。
+        :param _TargetGroupIds: <p>目标组ID数组。</p>
         :type TargetGroupIds: list of str
-        :param _Filters: 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
+        :param _Filters: <p>过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。</p>
         :type Filters: list of Filter
-        :param _Offset: 显示的偏移起始量。
+        :param _Offset: <p>显示的偏移起始量。</p>
         :type Offset: int
-        :param _Limit: 显示条数限制，默认为20。
+        :param _Limit: <p>每页显示条目数。</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
         :type Limit: int
         """
         self._TargetGroupIds = None
@@ -10288,7 +10288,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        r"""目标组ID数组。
+        r"""<p>目标组ID数组。</p>
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -10299,7 +10299,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
+        r"""<p>过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -10310,7 +10310,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""显示的偏移起始量。
+        r"""<p>显示的偏移起始量。</p>
         :rtype: int
         """
         return self._Offset
@@ -10321,7 +10321,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""显示条数限制，默认为20。
+        r"""<p>每页显示条目数。</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -10358,9 +10358,9 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 显示的结果数量。
+        :param _TotalCount: <p>显示的结果数量。</p>
         :type TotalCount: int
-        :param _TargetGroupSet: 显示的目标组信息集合。
+        :param _TargetGroupSet: <p>显示的目标组信息集合。</p>
         :type TargetGroupSet: list of TargetGroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10371,7 +10371,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""显示的结果数量。
+        r"""<p>显示的结果数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10382,7 +10382,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TargetGroupSet(self):
-        r"""显示的目标组信息集合。
+        r"""<p>显示的目标组信息集合。</p>
         :rtype: list of TargetGroupInfo
         """
         return self._TargetGroupSet
@@ -16549,7 +16549,7 @@ class ModifyListenerRequest(AbstractModel):
         :type MaxConn: int
         :param _MaxCps: <p>监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。<br>默认为 -1 表示不限速。</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
+        :param _IdleConnectTimeout: <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。</p>
         :type IdleConnectTimeout: int
         :param _ProxyProtocol: <p>TCP_SSL和QUIC是否支持PP</p>
         :type ProxyProtocol: bool
@@ -16760,7 +16760,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def IdleConnectTimeout(self):
-        r"""<p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
+        r"""<p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。</p>
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -22243,55 +22243,49 @@ class TargetGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组ID
+        :param _TargetGroupId: <p>目标组ID</p>
         :type TargetGroupId: str
-        :param _VpcId: 目标组的vpcid
+        :param _VpcId: <p>目标组的vpcid</p>
         :type VpcId: str
-        :param _TargetGroupName: 目标组的名字
+        :param _TargetGroupName: <p>目标组的名字</p>
         :type TargetGroupName: str
-        :param _Port: 目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
+        :param _Port: <p>目标组的默认端口，全监听目标组此字段返回0，表示无效端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param _CreatedTime: 目标组的创建时间
+        :param _CreatedTime: <p>目标组的创建时间</p>
         :type CreatedTime: str
-        :param _UpdatedTime: 目标组的修改时间
+        :param _UpdatedTime: <p>目标组的修改时间</p>
         :type UpdatedTime: str
-        :param _AssociatedRule: 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
+        :param _AssociatedRule: <p>关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedRule: list of AssociationItem
-        :param _Protocol: 目标组后端转发协议, 仅v2新版目标组返回有效值。
+        :param _Protocol: <p>目标组后端转发协议, 仅v2新版目标组返回有效值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param _ScheduleAlgorithm: 调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
-<ur>
-<li>WRR:按权重轮询。</li>
-<li>LEAST_CONN:最小连接数。</li>
-<li>IP_HASH:按IP哈希。</li>
-</ur>
-
+        :param _ScheduleAlgorithm: <p>调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：<br><ur></p><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li></ur>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleAlgorithm: str
-        :param _HealthCheck: 健康检查详情。
+        :param _HealthCheck: <p>健康检查详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _TargetGroupType: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
+        :param _TargetGroupType: <p>目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。</p>
         :type TargetGroupType: str
-        :param _AssociatedRuleCount: 目标组已关联的规则数。
+        :param _AssociatedRuleCount: <p>目标组已关联的规则数。</p>
         :type AssociatedRuleCount: int
-        :param _RegisteredInstancesCount: 目标组内的实例数量。
+        :param _RegisteredInstancesCount: <p>目标组内的实例数量。</p>
         :type RegisteredInstancesCount: int
-        :param _Tag: 标签。
+        :param _Tag: <p>标签。</p>
         :type Tag: list of TagInfo
-        :param _Weight: 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+        :param _Weight: <p>默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param _FullListenSwitch: 是否全监听目标组。
+        :param _FullListenSwitch: <p>是否全监听目标组。</p>
         :type FullListenSwitch: bool
-        :param _KeepaliveEnable: 是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+        :param _KeepaliveEnable: <p>是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: 会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+        :param _SessionExpireTime: <p>会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
         :type SessionExpireTime: int
-        :param _IpVersion: IP版本。
+        :param _IpVersion: <p>IP版本。</p>
         :type IpVersion: str
         """
         self._TargetGroupId = None
@@ -22316,7 +22310,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""目标组ID
+        r"""<p>目标组ID</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -22327,7 +22321,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""目标组的vpcid
+        r"""<p>目标组的vpcid</p>
         :rtype: str
         """
         return self._VpcId
@@ -22338,7 +22332,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""目标组的名字
+        r"""<p>目标组的名字</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -22349,7 +22343,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
+        r"""<p>目标组的默认端口，全监听目标组此字段返回0，表示无效端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22361,7 +22355,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""目标组的创建时间
+        r"""<p>目标组的创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -22372,7 +22366,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""目标组的修改时间
+        r"""<p>目标组的修改时间</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -22383,7 +22377,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def AssociatedRule(self):
-        r"""关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
+        r"""<p>关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssociationItem
         """
@@ -22395,7 +22389,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""目标组后端转发协议, 仅v2新版目标组返回有效值。
+        r"""<p>目标组后端转发协议, 仅v2新版目标组返回有效值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22407,13 +22401,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
-<ur>
-<li>WRR:按权重轮询。</li>
-<li>LEAST_CONN:最小连接数。</li>
-<li>IP_HASH:按IP哈希。</li>
-</ur>
-
+        r"""<p>调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：<br><ur></p><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li></ur>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22425,7 +22413,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查详情。
+        r"""<p>健康检查详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
@@ -22437,7 +22425,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def TargetGroupType(self):
-        r"""目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
+        r"""<p>目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。</p>
         :rtype: str
         """
         return self._TargetGroupType
@@ -22448,7 +22436,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def AssociatedRuleCount(self):
-        r"""目标组已关联的规则数。
+        r"""<p>目标组已关联的规则数。</p>
         :rtype: int
         """
         return self._AssociatedRuleCount
@@ -22459,7 +22447,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def RegisteredInstancesCount(self):
-        r"""目标组内的实例数量。
+        r"""<p>目标组内的实例数量。</p>
         :rtype: int
         """
         return self._RegisteredInstancesCount
@@ -22470,7 +22458,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: list of TagInfo
         """
         return self._Tag
@@ -22481,7 +22469,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Weight(self):
-        r"""默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+        r"""<p>默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22493,7 +22481,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def FullListenSwitch(self):
-        r"""是否全监听目标组。
+        r"""<p>是否全监听目标组。</p>
         :rtype: bool
         """
         return self._FullListenSwitch
@@ -22504,7 +22492,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+        r"""<p>是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -22515,7 +22503,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+        r"""<p>会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -22526,7 +22514,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""IP版本。
+        r"""<p>IP版本。</p>
         :rtype: str
         """
         return self._IpVersion

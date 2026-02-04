@@ -3439,10 +3439,13 @@ class ApiDetailSampleHistory(AbstractModel):
         :type RepLog: str
         :param _RspLog: 响应样例
         :type RspLog: str
+        :param _FullReqLog: 完整请求样例
+        :type FullReqLog: str
         """
         self._SampleNme = None
         self._RepLog = None
         self._RspLog = None
+        self._FullReqLog = None
 
     @property
     def SampleNme(self):
@@ -3477,11 +3480,23 @@ class ApiDetailSampleHistory(AbstractModel):
     def RspLog(self, RspLog):
         self._RspLog = RspLog
 
+    @property
+    def FullReqLog(self):
+        r"""完整请求样例
+        :rtype: str
+        """
+        return self._FullReqLog
+
+    @FullReqLog.setter
+    def FullReqLog(self, FullReqLog):
+        self._FullReqLog = FullReqLog
+
 
     def _deserialize(self, params):
         self._SampleNme = params.get("SampleNme")
         self._RepLog = params.get("RepLog")
         self._RspLog = params.get("RspLog")
+        self._FullReqLog = params.get("FullReqLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4258,6 +4273,102 @@ class ApiSecCustomSensitiveRule(AbstractModel):
         self._Level = params.get("Level")
         self._MatchCond = params.get("MatchCond")
         self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecExcludeRule(AbstractModel):
+    r"""排除无效api资产的规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _MatchType: 匹配类型，regex、prefix、suffix、contain匹配模式
+        :type MatchType: str
+        :param _Content: 匹配内容
+        :type Content: str
+        :param _Status: 状态开关
+        :type Status: int
+        :param _UpdateTime: 规则更新时间
+        :type UpdateTime: int
+        """
+        self._RuleName = None
+        self._MatchType = None
+        self._Content = None
+        self._Status = None
+        self._UpdateTime = None
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def MatchType(self):
+        r"""匹配类型，regex、prefix、suffix、contain匹配模式
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def Content(self):
+        r"""匹配内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        r"""状态开关
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpdateTime(self):
+        r"""规则更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._MatchType = params.get("MatchType")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5929,7 +6040,15 @@ class BotIdDetail(AbstractModel):
         :type Action: str
         :param _Level: 风险等级
         :type Level: int
-        :param _BotIdType: 规则类型
+        :param _BotIdType: "cbe-01": "爬虫型BOT",
+	"cbe-02": "刷量型BOT",
+	"cbe-03": "账号穷举型BOT",
+	"cbe-04": "恶意扫描型BOT",
+	"cbe-05": "DDoS型BOT",
+	"cbe-06": "垃圾邮件发送型BOT",
+	"cbe-07": "社交媒体自动化型BOT",
+	"cbe-08": "竞争对手数据收集型BOT",
+	"cbe-09": "恶意软件传播型BOT"
         :type BotIdType: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: int
@@ -6014,7 +6133,15 @@ class BotIdDetail(AbstractModel):
 
     @property
     def BotIdType(self):
-        r"""规则类型
+        r""""cbe-01": "爬虫型BOT",
+	"cbe-02": "刷量型BOT",
+	"cbe-03": "账号穷举型BOT",
+	"cbe-04": "恶意扫描型BOT",
+	"cbe-05": "DDoS型BOT",
+	"cbe-06": "垃圾邮件发送型BOT",
+	"cbe-07": "社交媒体自动化型BOT",
+	"cbe-08": "竞争对手数据收集型BOT",
+	"cbe-09": "恶意软件传播型BOT"
         :rtype: str
         """
         return self._BotIdType
@@ -7907,6 +8034,8 @@ class BotToken(AbstractModel):
         :type Priority: int
         :param _TokenValidation: token有效性配置信息
         :type TokenValidation: :class:`tencentcloud.waf.v20180125.models.TokenValidation`
+        :param _DisableMultiJson: 1表示开启了禁用嵌套功能
+        :type DisableMultiJson: int
         """
         self._Name = None
         self._Description = None
@@ -7919,6 +8048,7 @@ class BotToken(AbstractModel):
         self._Scene = None
         self._Priority = None
         self._TokenValidation = None
+        self._DisableMultiJson = None
 
     @property
     def Name(self):
@@ -8041,6 +8171,17 @@ class BotToken(AbstractModel):
     def TokenValidation(self, TokenValidation):
         self._TokenValidation = TokenValidation
 
+    @property
+    def DisableMultiJson(self):
+        r"""1表示开启了禁用嵌套功能
+        :rtype: int
+        """
+        return self._DisableMultiJson
+
+    @DisableMultiJson.setter
+    def DisableMultiJson(self, DisableMultiJson):
+        self._DisableMultiJson = DisableMultiJson
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8056,6 +8197,7 @@ class BotToken(AbstractModel):
         if params.get("TokenValidation") is not None:
             self._TokenValidation = TokenValidation()
             self._TokenValidation._deserialize(params.get("TokenValidation"))
+        self._DisableMultiJson = params.get("DisableMultiJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12619,10 +12761,16 @@ class CreateRateLimitV2Response(AbstractModel):
         r"""
         :param _BaseInfo: 操作结果
         :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _LimitRuleID: 创建规则的ruleID
+        :type LimitRuleID: int
+        :param _Domain: 所属域名
+        :type Domain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BaseInfo = None
+        self._LimitRuleID = None
+        self._Domain = None
         self._RequestId = None
 
     @property
@@ -12635,6 +12783,28 @@ class CreateRateLimitV2Response(AbstractModel):
     @BaseInfo.setter
     def BaseInfo(self, BaseInfo):
         self._BaseInfo = BaseInfo
+
+    @property
+    def LimitRuleID(self):
+        r"""创建规则的ruleID
+        :rtype: int
+        """
+        return self._LimitRuleID
+
+    @LimitRuleID.setter
+    def LimitRuleID(self, LimitRuleID):
+        self._LimitRuleID = LimitRuleID
+
+    @property
+    def Domain(self):
+        r"""所属域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def RequestId(self):
@@ -12652,6 +12822,8 @@ class CreateRateLimitV2Response(AbstractModel):
         if params.get("BaseInfo") is not None:
             self._BaseInfo = RateLimitCommonRsp()
             self._BaseInfo._deserialize(params.get("BaseInfo"))
+        self._LimitRuleID = params.get("LimitRuleID")
+        self._Domain = params.get("Domain")
         self._RequestId = params.get("RequestId")
 
 
@@ -12666,9 +12838,9 @@ class CronJob(AbstractModel):
         :type Days: list of int non-negative
         :param _WDays: 每个星期的星期几执行
         :type WDays: list of int non-negative
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间戳
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间戳
         :type EndTime: str
         """
         self._Days = None
@@ -12700,7 +12872,7 @@ class CronJob(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""开始时间戳
         :rtype: str
         """
         return self._StartTime
@@ -12711,7 +12883,7 @@ class CronJob(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""结束时间戳
         :rtype: str
         """
         return self._EndTime
@@ -12777,6 +12949,162 @@ class DealData(AbstractModel):
     def _deserialize(self, params):
         self._DealNames = params.get("DealNames")
         self._BigDealId = params.get("BigDealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DedicatedIPPkg(AbstractModel):
+    r"""独享IP套餐资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        r"""申请数量
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        r"""使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        r"""续费标志
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15971,6 +16299,8 @@ class DescribeApiDetailResponse(AbstractModel):
         r"""
         :param _Log: 请求样例，json字符串格式
         :type Log: str
+        :param _FullReqLog: 完整请求样例
+        :type FullReqLog: str
         :param _ParameterList: 请求参数样例列表
         :type ParameterList: list of ApiParameterType
         :param _Scene: 当前场景标签
@@ -15999,6 +16329,7 @@ class DescribeApiDetailResponse(AbstractModel):
         :type RequestId: str
         """
         self._Log = None
+        self._FullReqLog = None
         self._ParameterList = None
         self._Scene = None
         self._SensitiveFields = None
@@ -16023,6 +16354,17 @@ class DescribeApiDetailResponse(AbstractModel):
     @Log.setter
     def Log(self, Log):
         self._Log = Log
+
+    @property
+    def FullReqLog(self):
+        r"""完整请求样例
+        :rtype: str
+        """
+        return self._FullReqLog
+
+    @FullReqLog.setter
+    def FullReqLog(self, FullReqLog):
+        self._FullReqLog = FullReqLog
 
     @property
     def ParameterList(self):
@@ -16170,6 +16512,7 @@ class DescribeApiDetailResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Log = params.get("Log")
+        self._FullReqLog = params.get("FullReqLog")
         if params.get("ParameterList") is not None:
             self._ParameterList = []
             for item in params.get("ParameterList"):
@@ -17764,7 +18107,7 @@ class DescribeBotIdRuleRequest(AbstractModel):
         :type BotId: str
         :param _Level: 风险等级筛选
         :type Level: list of int
-        :param _BotIdType: 规则类型筛选
+        :param _BotIdType: 规则类型筛选"cbe-01": "爬虫型BOT", 	"cbe-02": "刷量型BOT", 	"cbe-03": "账号穷举型BOT", 	"cbe-04": "恶意扫描型BOT", 	"cbe-05": "DDoS型BOT", 	"cbe-06": "垃圾邮件发送型BOT", 	"cbe-07": "社交媒体自动化型BOT", 	"cbe-08": "竞争对手数据收集型BOT", 	"cbe-09": "恶意软件传播型BOT"
         :type BotIdType: list of str
         :param _Status: 规则开关-用于筛选: 0-全部 1-关闭 2-开启
         :type Status: int
@@ -17837,7 +18180,7 @@ class DescribeBotIdRuleRequest(AbstractModel):
 
     @property
     def BotIdType(self):
-        r"""规则类型筛选
+        r"""规则类型筛选"cbe-01": "爬虫型BOT", 	"cbe-02": "刷量型BOT", 	"cbe-03": "账号穷举型BOT", 	"cbe-04": "恶意扫描型BOT", 	"cbe-05": "DDoS型BOT", 	"cbe-06": "垃圾邮件发送型BOT", 	"cbe-07": "社交媒体自动化型BOT", 	"cbe-08": "竞争对手数据收集型BOT", 	"cbe-09": "恶意软件传播型BOT"
         :rtype: list of str
         """
         return self._BotIdType
@@ -18374,6 +18717,8 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         :type ValidStatus: int
         :param _RuleId: 规则id
         :type RuleId: str
+        :param _Source: batch表示批量规则、scene表示场景规则，不传表示全部
+        :type Source: str
         """
         self._Domain = None
         self._Skip = None
@@ -18386,6 +18731,7 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         self._TimerType = None
         self._ValidStatus = None
         self._RuleId = None
+        self._Source = None
 
     @property
     def Domain(self):
@@ -18508,6 +18854,17 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def Source(self):
+        r"""batch表示批量规则、scene表示场景规则，不传表示全部
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -18521,6 +18878,7 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         self._TimerType = params.get("TimerType")
         self._ValidStatus = params.get("ValidStatus")
         self._RuleId = params.get("RuleId")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23380,7 +23738,7 @@ class DescribeOwaspRulesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页容量，默认为10
         :type Limit: int
-        :param _By: 排序字段，支持 RuleId, UpdateTime
+        :param _By: 排序字段，支持 RuleId, ModifyTime
         :type By: str
         :param _Order: 排序方式，支持asc、desc
         :type Order: str
@@ -23429,7 +23787,7 @@ class DescribeOwaspRulesRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段，支持 RuleId, UpdateTime
+        r"""排序字段，支持 RuleId, ModifyTime
         :rtype: str
         """
         return self._By
@@ -27721,6 +28079,8 @@ public：公有云域名
         :type AccessStatus: int
         :param _Labels: 域名标签
         :type Labels: list of str
+        :param _PrivateVipStatus: saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+        :type PrivateVipStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -27758,6 +28118,7 @@ public：公有云域名
         self._SgID = None
         self._AccessStatus = None
         self._Labels = None
+        self._PrivateVipStatus = None
 
     @property
     def Domain(self):
@@ -28246,6 +28607,17 @@ public：公有云域名
     def Labels(self, Labels):
         self._Labels = Labels
 
+    @property
+    def PrivateVipStatus(self):
+        r"""saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+        :rtype: int
+        """
+        return self._PrivateVipStatus
+
+    @PrivateVipStatus.setter
+    def PrivateVipStatus(self, PrivateVipStatus):
+        self._PrivateVipStatus = PrivateVipStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -28294,6 +28666,7 @@ public：公有云域名
         self._SgID = params.get("SgID")
         self._AccessStatus = params.get("AccessStatus")
         self._Labels = params.get("Labels")
+        self._PrivateVipStatus = params.get("PrivateVipStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28705,6 +29078,8 @@ https：使用https协议回源
 8：绑定LB失败 
 10：内部错误
         :type State: int
+        :param _PrivateVipStatus: saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+        :type PrivateVipStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -28763,6 +29138,7 @@ https：使用https协议回源
         self._UseCase = None
         self._Gzip = None
         self._State = None
+        self._PrivateVipStatus = None
 
     @property
     def Domain(self):
@@ -29462,6 +29838,17 @@ https：使用https协议回源
     def State(self, State):
         self._State = State
 
+    @property
+    def PrivateVipStatus(self):
+        r"""saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+        :rtype: int
+        """
+        return self._PrivateVipStatus
+
+    @PrivateVipStatus.setter
+    def PrivateVipStatus(self, PrivateVipStatus):
+        self._PrivateVipStatus = PrivateVipStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -29531,6 +29918,7 @@ https：使用https协议回源
         self._UseCase = params.get("UseCase")
         self._Gzip = params.get("Gzip")
         self._State = params.get("State")
+        self._PrivateVipStatus = params.get("PrivateVipStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30343,10 +30731,14 @@ class FieldWriteConfig(AbstractModel):
         :type EnableBody: int
         :param _EnableBot: 1:开启 0:不开启
         :type EnableBot: int
+        :param _EnableResponse: 响应方向body
+1:开启 0:不开启
+        :type EnableResponse: int
         """
         self._EnableHeaders = None
         self._EnableBody = None
         self._EnableBot = None
+        self._EnableResponse = None
 
     @property
     def EnableHeaders(self):
@@ -30381,11 +30773,24 @@ class FieldWriteConfig(AbstractModel):
     def EnableBot(self, EnableBot):
         self._EnableBot = EnableBot
 
+    @property
+    def EnableResponse(self):
+        r"""响应方向body
+1:开启 0:不开启
+        :rtype: int
+        """
+        return self._EnableResponse
+
+    @EnableResponse.setter
+    def EnableResponse(self, EnableResponse):
+        self._EnableResponse = EnableResponse
+
 
     def _deserialize(self, params):
         self._EnableHeaders = params.get("EnableHeaders")
         self._EnableBody = params.get("EnableBody")
         self._EnableBot = params.get("EnableBot")
+        self._EnableResponse = params.get("EnableResponse")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33210,10 +33615,52 @@ class ImportIpAccessControlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SuccessCount: 成功导入数量
+        :type SuccessCount: int
+        :param _TotalCount: 导入数量
+        :type TotalCount: int
+        :param _Timestamp: 执行时间
+        :type Timestamp: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SuccessCount = None
+        self._TotalCount = None
+        self._Timestamp = None
         self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""成功导入数量
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def TotalCount(self):
+        r"""导入数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Timestamp(self):
+        r"""执行时间
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
 
     @property
     def RequestId(self):
@@ -33228,6 +33675,9 @@ class ImportIpAccessControlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._TotalCount = params.get("TotalCount")
+        self._Timestamp = params.get("Timestamp")
         self._RequestId = params.get("RequestId")
 
 
@@ -33286,6 +33736,10 @@ class InOutputBotUCBRule(AbstractModel):
         :type ActionList: list of UCBActionProportion
         :param _DelayTime: 惩罚时间
         :type DelayTime: int
+        :param _Batch: 是否为批量规则：0表示场景规则，1表示批量规则
+        :type Batch: int
+        :param _HitCount: 24小时内命中数
+        :type HitCount: int
         """
         self._Domain = None
         self._Name = None
@@ -33311,6 +33765,8 @@ class InOutputBotUCBRule(AbstractModel):
         self._BlockPageId = None
         self._ActionList = None
         self._DelayTime = None
+        self._Batch = None
+        self._HitCount = None
 
     @property
     def Domain(self):
@@ -33576,6 +34032,28 @@ class InOutputBotUCBRule(AbstractModel):
     def DelayTime(self, DelayTime):
         self._DelayTime = DelayTime
 
+    @property
+    def Batch(self):
+        r"""是否为批量规则：0表示场景规则，1表示批量规则
+        :rtype: int
+        """
+        return self._Batch
+
+    @Batch.setter
+    def Batch(self, Batch):
+        self._Batch = Batch
+
+    @property
+    def HitCount(self):
+        r"""24小时内命中数
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -33614,6 +34092,8 @@ class InOutputBotUCBRule(AbstractModel):
                 obj._deserialize(item)
                 self._ActionList.append(obj)
         self._DelayTime = params.get("DelayTime")
+        self._Batch = params.get("Batch")
+        self._HitCount = params.get("HitCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33933,6 +34413,10 @@ class InstanceInfo(AbstractModel):
         :type BotSecurityPkg: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
         :param _BotMonitorPkg: BOT安全监测资源信息
         :type BotMonitorPkg: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
+        :param _DedicatedIPPkg: 独享ip资源信息
+        :type DedicatedIPPkg: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
+        :param _DedicatedIPCount: 已经配置独享ip的数量
+        :type DedicatedIPCount: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -33988,6 +34472,8 @@ class InstanceInfo(AbstractModel):
         self._RegionId = None
         self._BotSecurityPkg = None
         self._BotMonitorPkg = None
+        self._DedicatedIPPkg = None
+        self._DedicatedIPCount = None
 
     @property
     def InstanceId(self):
@@ -34594,6 +35080,28 @@ class InstanceInfo(AbstractModel):
     def BotMonitorPkg(self, BotMonitorPkg):
         self._BotMonitorPkg = BotMonitorPkg
 
+    @property
+    def DedicatedIPPkg(self):
+        r"""独享ip资源信息
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
+        """
+        return self._DedicatedIPPkg
+
+    @DedicatedIPPkg.setter
+    def DedicatedIPPkg(self, DedicatedIPPkg):
+        self._DedicatedIPPkg = DedicatedIPPkg
+
+    @property
+    def DedicatedIPCount(self):
+        r"""已经配置独享ip的数量
+        :rtype: int
+        """
+        return self._DedicatedIPCount
+
+    @DedicatedIPCount.setter
+    def DedicatedIPCount(self, DedicatedIPCount):
+        self._DedicatedIPCount = DedicatedIPCount
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -34684,6 +35192,10 @@ class InstanceInfo(AbstractModel):
         if params.get("BotMonitorPkg") is not None:
             self._BotMonitorPkg = BotMonitorPkg()
             self._BotMonitorPkg._deserialize(params.get("BotMonitorPkg"))
+        if params.get("DedicatedIPPkg") is not None:
+            self._DedicatedIPPkg = DedicatedIPPkg()
+            self._DedicatedIPPkg._deserialize(params.get("DedicatedIPPkg"))
+        self._DedicatedIPCount = params.get("DedicatedIPCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34998,11 +35510,20 @@ class IpAccessControlParam(AbstractModel):
         :type ActionType: int
         :param _Note: 备注
         :type Note: str
+        :param _JobType: 任务类型（TimedJob/CronJob）
+        :type JobType: str
+        :param _JobDateTime: 任务时间配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ValidStatus: 生效状态
+        :type ValidStatus: int
         """
         self._IpList = None
         self._ValidTs = None
         self._ActionType = None
         self._Note = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ValidStatus = None
 
     @property
     def IpList(self):
@@ -35048,12 +35569,50 @@ class IpAccessControlParam(AbstractModel):
     def Note(self, Note):
         self._Note = Note
 
+    @property
+    def JobType(self):
+        r"""任务类型（TimedJob/CronJob）
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""任务时间配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ValidStatus(self):
+        r"""生效状态
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
 
     def _deserialize(self, params):
         self._IpList = params.get("IpList")
         self._ValidTs = params.get("ValidTs")
         self._ActionType = params.get("ActionType")
         self._Note = params.get("Note")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37879,6 +38438,8 @@ class MiniPkg(AbstractModel):
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
+        :param _GatewayType: 小程序网关类型 1新网关；0老网关
+        :type GatewayType: int
         """
         self._ResourceIds = None
         self._Status = None
@@ -37888,6 +38449,7 @@ class MiniPkg(AbstractModel):
         self._Count = None
         self._RenewFlag = None
         self._BillingItem = None
+        self._GatewayType = None
 
     @property
     def ResourceIds(self):
@@ -37977,6 +38539,17 @@ class MiniPkg(AbstractModel):
     def BillingItem(self, BillingItem):
         self._BillingItem = BillingItem
 
+    @property
+    def GatewayType(self):
+        r"""小程序网关类型 1新网关；0老网关
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -37987,6 +38560,7 @@ class MiniPkg(AbstractModel):
         self._Count = params.get("Count")
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
+        self._GatewayType = params.get("GatewayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38789,6 +39363,10 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         :type ApiSecCustomEventRuleNameList: list of str
         :param _ApiSecCustomEventRuleRule: 自定义事件规则
         :type ApiSecCustomEventRuleRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomEventRule`
+        :param _CustomApiExcludeRule: 无效api排除规则
+        :type CustomApiExcludeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExcludeRule`
+        :param _ApiExcludeRuleName: 批量操作的时候的无效api排除规则
+        :type ApiExcludeRuleName: list of str
         """
         self._Domain = None
         self._Status = None
@@ -38803,6 +39381,8 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._ApiSecSceneRule = None
         self._ApiSecCustomEventRuleNameList = None
         self._ApiSecCustomEventRuleRule = None
+        self._CustomApiExcludeRule = None
+        self._ApiExcludeRuleName = None
 
     @property
     def Domain(self):
@@ -38947,6 +39527,28 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
     def ApiSecCustomEventRuleRule(self, ApiSecCustomEventRuleRule):
         self._ApiSecCustomEventRuleRule = ApiSecCustomEventRuleRule
 
+    @property
+    def CustomApiExcludeRule(self):
+        r"""无效api排除规则
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecExcludeRule`
+        """
+        return self._CustomApiExcludeRule
+
+    @CustomApiExcludeRule.setter
+    def CustomApiExcludeRule(self, CustomApiExcludeRule):
+        self._CustomApiExcludeRule = CustomApiExcludeRule
+
+    @property
+    def ApiExcludeRuleName(self):
+        r"""批量操作的时候的无效api排除规则
+        :rtype: list of str
+        """
+        return self._ApiExcludeRuleName
+
+    @ApiExcludeRuleName.setter
+    def ApiExcludeRuleName(self, ApiExcludeRuleName):
+        self._ApiExcludeRuleName = ApiExcludeRuleName
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -38972,6 +39574,10 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         if params.get("ApiSecCustomEventRuleRule") is not None:
             self._ApiSecCustomEventRuleRule = ApiSecCustomEventRule()
             self._ApiSecCustomEventRuleRule._deserialize(params.get("ApiSecCustomEventRuleRule"))
+        if params.get("CustomApiExcludeRule") is not None:
+            self._CustomApiExcludeRule = ApiSecExcludeRule()
+            self._CustomApiExcludeRule._deserialize(params.get("CustomApiExcludeRule"))
+        self._ApiExcludeRuleName = params.get("ApiExcludeRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43043,7 +43649,7 @@ class ModifyObjectRequest(AbstractModel):
         :type ObjectId: str
         :param _OpType: 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
         :type OpType: str
-        :param _Status: 新的Waf开关状态，如果和已有状态相同认为修改成功
+        :param _Status: 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
         :type Status: int
         :param _InstanceId: 新的实例ID，如果和已绑定的实例相同认为修改成功
         :type InstanceId: str
@@ -43089,7 +43695,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""新的Waf开关状态，如果和已有状态相同认为修改成功
+        r"""新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
         :rtype: int
         """
         return self._Status
@@ -47678,6 +48284,8 @@ class PostCLSFlowInfo(AbstractModel):
         :type LogTopicName: str
         :param _LogTopicID: CLS日志集合ID
         :type LogTopicID: str
+        :param _WriteConfig: 写配置
+        :type WriteConfig: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
         """
         self._FlowId = None
         self._LogType = None
@@ -47687,6 +48295,7 @@ class PostCLSFlowInfo(AbstractModel):
         self._LogsetID = None
         self._LogTopicName = None
         self._LogTopicID = None
+        self._WriteConfig = None
 
     @property
     def FlowId(self):
@@ -47776,6 +48385,17 @@ class PostCLSFlowInfo(AbstractModel):
     def LogTopicID(self, LogTopicID):
         self._LogTopicID = LogTopicID
 
+    @property
+    def WriteConfig(self):
+        r"""写配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
+        """
+        return self._WriteConfig
+
+    @WriteConfig.setter
+    def WriteConfig(self, WriteConfig):
+        self._WriteConfig = WriteConfig
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -47786,6 +48406,9 @@ class PostCLSFlowInfo(AbstractModel):
         self._LogsetID = params.get("LogsetID")
         self._LogTopicName = params.get("LogTopicName")
         self._LogTopicID = params.get("LogTopicID")
+        if params.get("WriteConfig") is not None:
+            self._WriteConfig = FieldWriteConfig()
+            self._WriteConfig._deserialize(params.get("WriteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52751,10 +53374,16 @@ class UpdateRateLimitV2Response(AbstractModel):
         r"""
         :param _BaseInfo: 操作结果
         :type BaseInfo: :class:`tencentcloud.waf.v20180125.models.RateLimitCommonRsp`
+        :param _LimitRuleID: 操作的规则ID
+        :type LimitRuleID: int
+        :param _Domain: 所属域名
+        :type Domain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BaseInfo = None
+        self._LimitRuleID = None
+        self._Domain = None
         self._RequestId = None
 
     @property
@@ -52767,6 +53396,28 @@ class UpdateRateLimitV2Response(AbstractModel):
     @BaseInfo.setter
     def BaseInfo(self, BaseInfo):
         self._BaseInfo = BaseInfo
+
+    @property
+    def LimitRuleID(self):
+        r"""操作的规则ID
+        :rtype: int
+        """
+        return self._LimitRuleID
+
+    @LimitRuleID.setter
+    def LimitRuleID(self, LimitRuleID):
+        self._LimitRuleID = LimitRuleID
+
+    @property
+    def Domain(self):
+        r"""所属域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def RequestId(self):
@@ -52784,6 +53435,8 @@ class UpdateRateLimitV2Response(AbstractModel):
         if params.get("BaseInfo") is not None:
             self._BaseInfo = RateLimitCommonRsp()
             self._BaseInfo._deserialize(params.get("BaseInfo"))
+        self._LimitRuleID = params.get("LimitRuleID")
+        self._Domain = params.get("Domain")
         self._RequestId = params.get("RequestId")
 
 
@@ -52953,6 +53606,14 @@ class UpsertCCRuleRequest(AbstractModel):
         :type ActionRatio: int
         :param _Source: 规则来源
         :type Source: str
+        :param _JobType: forever
+        :type JobType: str
+        :param _JobDateTime: 无
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: 0
+        :type ExpireTime: int
+        :param _ValidStatus: 有效性
+        :type ValidStatus: int
         """
         self._Domain = None
         self._Name = None
@@ -52979,6 +53640,10 @@ class UpsertCCRuleRequest(AbstractModel):
         self._PageId = None
         self._ActionRatio = None
         self._Source = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._ValidStatus = None
 
     @property
     def Domain(self):
@@ -53255,6 +53920,50 @@ class UpsertCCRuleRequest(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def JobType(self):
+        r"""forever
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""无
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        r"""0
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ValidStatus(self):
+        r"""有效性
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -53282,6 +53991,12 @@ class UpsertCCRuleRequest(AbstractModel):
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
         self._Source = params.get("Source")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

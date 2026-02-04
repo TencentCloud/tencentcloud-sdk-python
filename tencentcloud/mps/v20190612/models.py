@@ -2439,10 +2439,10 @@ class AiAnalysisResult(AbstractModel):
         :param _VideoComprehensionTask: 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
-        :param _CutoutTask: 视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+        :param _CutoutTask: 视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CutoutTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
-        :param _ReelTask: 视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+        :param _ReelTask: 视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReelTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
@@ -2644,7 +2644,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CutoutTask(self):
-        r"""视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+        r"""视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
         """
@@ -2656,7 +2656,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ReelTask(self):
-        r"""视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+        r"""视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
@@ -3219,7 +3219,7 @@ class AiAnalysisTaskCutoutOutput(AbstractModel):
 
 
 class AiAnalysisTaskCutoutResult(AbstractModel):
-    r"""视频抠图结果数据结构
+    r"""视频智能抠图结果数据结构
 
     """
 
@@ -4948,27 +4948,34 @@ class AiAnalysisTaskReelInput(AbstractModel):
 
 
 class AiAnalysisTaskReelOutput(AbstractModel):
-    r"""智能成片结果信息
+    r"""AI解说二创结果信息
 
     """
 
     def __init__(self):
         r"""
-        :param _VideoPath: 成片视频路径。
+        :param _VideoPath: 解说视频路径。
         :type VideoPath: str
+        :param _VideoPaths: 解说视频路径列表。
+
+**注意**：
+1. 当返回一个文件时，`VideoPath `返回一个文件路径，`VideoPaths `也会填充同样路径的一个元素。
+2. 当返回多个文件时，`VideoPath `返回为空字符串，`VideoPaths `返回多文件路径列表。
+        :type VideoPaths: list of str
         :param _ScriptPath: 脚本文件路径
 
         :type ScriptPath: str
-        :param _OutputStorage: 成片视频存储位置。
+        :param _OutputStorage: 解说视频存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
+        self._VideoPaths = None
         self._ScriptPath = None
         self._OutputStorage = None
 
     @property
     def VideoPath(self):
-        r"""成片视频路径。
+        r"""解说视频路径。
         :rtype: str
         """
         return self._VideoPath
@@ -4976,6 +4983,21 @@ class AiAnalysisTaskReelOutput(AbstractModel):
     @VideoPath.setter
     def VideoPath(self, VideoPath):
         self._VideoPath = VideoPath
+
+    @property
+    def VideoPaths(self):
+        r"""解说视频路径列表。
+
+**注意**：
+1. 当返回一个文件时，`VideoPath `返回一个文件路径，`VideoPaths `也会填充同样路径的一个元素。
+2. 当返回多个文件时，`VideoPath `返回为空字符串，`VideoPaths `返回多文件路径列表。
+        :rtype: list of str
+        """
+        return self._VideoPaths
+
+    @VideoPaths.setter
+    def VideoPaths(self, VideoPaths):
+        self._VideoPaths = VideoPaths
 
     @property
     def ScriptPath(self):
@@ -4991,7 +5013,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""成片视频存储位置。
+        r"""解说视频存储位置。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -5003,6 +5025,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
+        self._VideoPaths = params.get("VideoPaths")
         self._ScriptPath = params.get("ScriptPath")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
@@ -5018,7 +5041,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
 
 class AiAnalysisTaskReelResult(AbstractModel):
-    r"""智能成片结果类型
+    r"""AI解说二创结果类型
 
     """
 
@@ -5030,9 +5053,9 @@ class AiAnalysisTaskReelResult(AbstractModel):
         :type ErrCode: int
         :param _Message: 错误信息。
         :type Message: str
-        :param _Input: 智能成片任务输入。
+        :param _Input: AI解说二创任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
-        :param _Output: 智能成片任务输出。
+        :param _Output: AI解说二创任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
         :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
@@ -5093,7 +5116,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""智能成片任务输入。
+        r"""AI解说二创任务输入。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
         """
         return self._Input
@@ -5104,7 +5127,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""智能成片任务输出。
+        r"""AI解说二创任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
         """
@@ -5622,8 +5645,14 @@ class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
         r"""
         :param _VideoComprehensionAnalysisResult: 视频（音频）理解内容详情
         :type VideoComprehensionAnalysisResult: str
+        :param _VideoComprehensionExtInfo: 视频（音频）理解扩展信息
+        :type VideoComprehensionExtInfo: str
+        :param _VideoComprehensionResultList: 视频分镜理解结果
+        :type VideoComprehensionResultList: list of VideoComprehensionResultItem
         """
         self._VideoComprehensionAnalysisResult = None
+        self._VideoComprehensionExtInfo = None
+        self._VideoComprehensionResultList = None
 
     @property
     def VideoComprehensionAnalysisResult(self):
@@ -5636,9 +5665,38 @@ class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
     def VideoComprehensionAnalysisResult(self, VideoComprehensionAnalysisResult):
         self._VideoComprehensionAnalysisResult = VideoComprehensionAnalysisResult
 
+    @property
+    def VideoComprehensionExtInfo(self):
+        r"""视频（音频）理解扩展信息
+        :rtype: str
+        """
+        return self._VideoComprehensionExtInfo
+
+    @VideoComprehensionExtInfo.setter
+    def VideoComprehensionExtInfo(self, VideoComprehensionExtInfo):
+        self._VideoComprehensionExtInfo = VideoComprehensionExtInfo
+
+    @property
+    def VideoComprehensionResultList(self):
+        r"""视频分镜理解结果
+        :rtype: list of VideoComprehensionResultItem
+        """
+        return self._VideoComprehensionResultList
+
+    @VideoComprehensionResultList.setter
+    def VideoComprehensionResultList(self, VideoComprehensionResultList):
+        self._VideoComprehensionResultList = VideoComprehensionResultList
+
 
     def _deserialize(self, params):
         self._VideoComprehensionAnalysisResult = params.get("VideoComprehensionAnalysisResult")
+        self._VideoComprehensionExtInfo = params.get("VideoComprehensionExtInfo")
+        if params.get("VideoComprehensionResultList") is not None:
+            self._VideoComprehensionResultList = []
+            for item in params.get("VideoComprehensionResultList"):
+                obj = VideoComprehensionResultItem()
+                obj._deserialize(item)
+                self._VideoComprehensionResultList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14527,7 +14585,7 @@ class BatchProcessMediaRequest(AbstractModel):
         :param _InputInfo: 媒体处理的文件输入信息。
         :type InputInfo: list of MediaInputInfo
         :param _OutputStorage: 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-注意：当InputInfo.Type为URL时，该参数是必填项
+注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
 如果不填，表示与 InputInfo 中文件所在的目录一致。
@@ -14540,7 +14598,7 @@ class BatchProcessMediaRequest(AbstractModel):
         :type TasksPriority: int
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :type ResourceId: str
         :param _SkipMateData: 是否跳过元信息获取，可选值： 
 0：表示不跳过 
@@ -14572,7 +14630,7 @@ class BatchProcessMediaRequest(AbstractModel):
     @property
     def OutputStorage(self):
         r"""媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-注意：当InputInfo.Type为URL时，该参数是必填项
+注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -14639,7 +14697,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -15497,6 +15555,8 @@ class BlindWatermarkTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param _Strength: 数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+        :type Strength: str
         """
         self._Definition = None
         self._Type = None
@@ -15505,6 +15565,7 @@ class BlindWatermarkTemplate(AbstractModel):
         self._Comment = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Strength = None
 
     @property
     def Definition(self):
@@ -15583,6 +15644,17 @@ class BlindWatermarkTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Strength(self):
+        r"""数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+        :rtype: str
+        """
+        return self._Strength
+
+    @Strength.setter
+    def Strength(self, Strength):
+        self._Strength = Strength
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -15592,6 +15664,7 @@ class BlindWatermarkTemplate(AbstractModel):
         self._Comment = params.get("Comment")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Strength = params.get("Strength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20077,11 +20150,17 @@ class CreateBlindWatermarkTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: 数字水印模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param _Strength: 数字水印强度。
+default: 默认，高清画质和抗性平衡
+stronger:画质清晰，抗性较强
+strongest:画质一般，抗性最强
+        :type Strength: str
         """
         self._Type = None
         self._TextContent = None
         self._Name = None
         self._Comment = None
+        self._Strength = None
 
     @property
     def Type(self):
@@ -20127,12 +20206,27 @@ class CreateBlindWatermarkTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def Strength(self):
+        r"""数字水印强度。
+default: 默认，高清画质和抗性平衡
+stronger:画质清晰，抗性较强
+strongest:画质一般，抗性最强
+        :rtype: str
+        """
+        return self._Strength
+
+    @Strength.setter
+    def Strength(self, Strength):
+        self._Strength = Strength
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._TextContent = params.get("TextContent")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._Strength = params.get("Strength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37130,7 +37224,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param _StartTime: 起始日期。使用 ISO 日期格式。
         :type StartTime: str
         :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
@@ -37176,7 +37270,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        r"""起始日期。使用 ISO 日期格式。
         :rtype: str
         """
         return self._StartTime
@@ -46158,6 +46252,206 @@ class LiveScheduleTask(AbstractModel):
         
 
 
+class LiveSmartSubtitleResult(AbstractModel):
+    r"""直播智能字幕结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 识别文本。
+        :type Text: str
+        :param _StartPTSTime: 翻译片段起始的 PTS 时间，单位：秒。
+        :type StartPTSTime: float
+        :param _EndPTSTime: 翻译片段终止的 PTS 时间，单位：秒。
+        :type EndPTSTime: float
+        :param _Trans: 翻译文本。
+        :type Trans: str
+        :param _StartTime: 翻译开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 翻译结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _SteadyState: 稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SteadyState: bool
+        :param _UserId: websocket与trtc实时翻译的UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        """
+        self._Text = None
+        self._StartPTSTime = None
+        self._EndPTSTime = None
+        self._Trans = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SteadyState = None
+        self._UserId = None
+
+    @property
+    def Text(self):
+        r"""识别文本。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def StartPTSTime(self):
+        r"""翻译片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
+        return self._StartPTSTime
+
+    @StartPTSTime.setter
+    def StartPTSTime(self, StartPTSTime):
+        self._StartPTSTime = StartPTSTime
+
+    @property
+    def EndPTSTime(self):
+        r"""翻译片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
+        return self._EndPTSTime
+
+    @EndPTSTime.setter
+    def EndPTSTime(self, EndPTSTime):
+        self._EndPTSTime = EndPTSTime
+
+    @property
+    def Trans(self):
+        r"""翻译文本。
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
+    @property
+    def StartTime(self):
+        r"""翻译开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""翻译结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SteadyState(self):
+        r"""稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SteadyState
+
+    @SteadyState.setter
+    def SteadyState(self, SteadyState):
+        self._SteadyState = SteadyState
+
+    @property
+    def UserId(self):
+        r"""websocket与trtc实时翻译的UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._StartPTSTime = params.get("StartPTSTime")
+        self._EndPTSTime = params.get("EndPTSTime")
+        self._Trans = params.get("Trans")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SteadyState = params.get("SteadyState")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveSmartSubtitlesTaskInput(AbstractModel):
+    r"""直播智能字幕输入结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板 ID 。	
+        :type Definition: int
+        :param _UserExtPara: 用户扩展字段，一般场景不用填。
+        :type UserExtPara: str
+        """
+        self._Definition = None
+        self._UserExtPara = None
+
+    @property
+    def Definition(self):
+        r"""智能字幕模板 ID 。	
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def UserExtPara(self):
+        r"""用户扩展字段，一般场景不用填。
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamAiAnalysisResultInfo(AbstractModel):
     r"""直播流分析结果
 
@@ -47413,6 +47707,47 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
         self._Confidence = params.get("Confidence")
         self._Suggestion = params.get("Suggestion")
         self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamAiSmartSubtitleResultInfo(AbstractModel):
+    r"""直播智能字幕结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmartSubtitleResult: 直播智能字幕任务结果列表。
+        :type SmartSubtitleResult: list of LiveSmartSubtitleResult
+        """
+        self._SmartSubtitleResult = None
+
+    @property
+    def SmartSubtitleResult(self):
+        r"""直播智能字幕任务结果列表。
+        :rtype: list of LiveSmartSubtitleResult
+        """
+        return self._SmartSubtitleResult
+
+    @SmartSubtitleResult.setter
+    def SmartSubtitleResult(self, SmartSubtitleResult):
+        self._SmartSubtitleResult = SmartSubtitleResult
+
+
+    def _deserialize(self, params):
+        if params.get("SmartSubtitleResult") is not None:
+            self._SmartSubtitleResult = []
+            for item in params.get("SmartSubtitleResult"):
+                obj = LiveSmartSubtitleResult()
+                obj._deserialize(item)
+                self._SmartSubtitleResult.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53676,11 +54011,14 @@ class ModifyBlindWatermarkTemplateRequest(AbstractModel):
         :type Comment: str
         :param _TextContent: 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
         :type TextContent: str
+        :param _Strength: 数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+        :type Strength: str
         """
         self._Definition = None
         self._Name = None
         self._Comment = None
         self._TextContent = None
+        self._Strength = None
 
     @property
     def Definition(self):
@@ -53726,12 +54064,24 @@ class ModifyBlindWatermarkTemplateRequest(AbstractModel):
     def TextContent(self, TextContent):
         self._TextContent = TextContent
 
+    @property
+    def Strength(self):
+        r"""数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+        :rtype: str
+        """
+        return self._Strength
+
+    @Strength.setter
+    def Strength(self, Strength):
+        self._Strength = Strength
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         self._TextContent = params.get("TextContent")
+        self._Strength = params.get("Strength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59126,6 +59476,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>LiveRecordResult：直播录制结果；</li>
 <li>AiQualityControlResult：媒体质检结果；</li>
 <li>AiAnalysisResult：内容分析结果；</li>
+<li>AiSmartSubtitleResult：智能字幕结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :type NotificationType: str
         :param _TaskId: 视频处理任务 ID。
@@ -59148,6 +59499,8 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param _LiveRecordResultInfo: 直播录制结果，当 NotificationType 为 LiveRecordResult 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveRecordResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
+        :param _AiSmartSubtitleResultInfo: 智能字幕结果，当 NotificationType 为 AiSmartSubtitleResult 时有效。
+        :type AiSmartSubtitleResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiSmartSubtitleResultInfo`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
@@ -59167,6 +59520,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._AiAnalysisResultInfo = None
         self._AiQualityControlResultInfo = None
         self._LiveRecordResultInfo = None
+        self._AiSmartSubtitleResultInfo = None
         self._SessionId = None
         self._SessionContext = None
         self._Timestamp = None
@@ -59181,6 +59535,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>LiveRecordResult：直播录制结果；</li>
 <li>AiQualityControlResult：媒体质检结果；</li>
 <li>AiAnalysisResult：内容分析结果；</li>
+<li>AiSmartSubtitleResult：智能字幕结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :rtype: str
         """
@@ -59274,6 +59629,17 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._LiveRecordResultInfo = LiveRecordResultInfo
 
     @property
+    def AiSmartSubtitleResultInfo(self):
+        r"""智能字幕结果，当 NotificationType 为 AiSmartSubtitleResult 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiSmartSubtitleResultInfo`
+        """
+        return self._AiSmartSubtitleResultInfo
+
+    @AiSmartSubtitleResultInfo.setter
+    def AiSmartSubtitleResultInfo(self, AiSmartSubtitleResultInfo):
+        self._AiSmartSubtitleResultInfo = AiSmartSubtitleResultInfo
+
+    @property
     def SessionId(self):
         r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :rtype: str
@@ -59350,6 +59716,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         if params.get("LiveRecordResultInfo") is not None:
             self._LiveRecordResultInfo = LiveStreamRecordResultInfo()
             self._LiveRecordResultInfo._deserialize(params.get("LiveRecordResultInfo"))
+        if params.get("AiSmartSubtitleResultInfo") is not None:
+            self._AiSmartSubtitleResultInfo = LiveStreamAiSmartSubtitleResultInfo()
+            self._AiSmartSubtitleResultInfo._deserialize(params.get("AiSmartSubtitleResultInfo"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._Timestamp = params.get("Timestamp")
@@ -61275,13 +61644,19 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+        :param _Url: 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
 trtc地址如下：
  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
 `<roomid>` 为trtc的房间号id, 为数字
 `<sdkappid>` 为trtc的sdk app id
 `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
 <`usersig>` 为trtc 用户的签名
+
+webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
+
+srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
+
+
         :type Url: str
         :param _TaskNotifyConfig: 任务的事件通知信息，用于指定直播流处理的结果。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -61297,6 +61672,8 @@ trtc地址如下：
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _AiQualityControlTask: 媒体质检类型任务参数。
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _SmartSubtitlesTask: 智能字幕任务参数。
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -61316,19 +61693,26 @@ trtc地址如下：
         self._AiRecognitionTask = None
         self._AiAnalysisTask = None
         self._AiQualityControlTask = None
+        self._SmartSubtitlesTask = None
         self._SessionId = None
         self._SessionContext = None
         self._ScheduleId = None
 
     @property
     def Url(self):
-        r"""直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+        r"""直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
 trtc地址如下：
  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
 `<roomid>` 为trtc的房间号id, 为数字
 `<sdkappid>` 为trtc的sdk app id
 `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
 <`usersig>` 为trtc 用户的签名
+
+webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
+
+srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
+
+
         :rtype: str
         """
         return self._Url
@@ -61415,6 +61799,17 @@ trtc地址如下：
         self._AiQualityControlTask = AiQualityControlTask
 
     @property
+    def SmartSubtitlesTask(self):
+        r"""智能字幕任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
     def SessionId(self):
         r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :rtype: str
@@ -61473,6 +61868,9 @@ trtc地址如下：
         if params.get("AiQualityControlTask") is not None:
             self._AiQualityControlTask = AiQualityControlTaskInput()
             self._AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = LiveSmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._ScheduleId = params.get("ScheduleId")
@@ -74668,7 +75066,7 @@ class TaskStatDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :param _Time: 数据所在时间区间的开始时间，使用 ISO 日期格式。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
         :type Time: str
         :param _Count: 任务数。
         :type Count: int
@@ -74681,7 +75079,7 @@ class TaskStatDataItem(AbstractModel):
 
     @property
     def Time(self):
-        r"""数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        r"""数据所在时间区间的开始时间，使用 ISO 日期格式。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
         :rtype: str
         """
         return self._Time
@@ -78642,6 +79040,104 @@ class VODOutputStorage(AbstractModel):
         self._Bucket = params.get("Bucket")
         self._Region = params.get("Region")
         self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoComprehensionResultItem(AbstractModel):
+    r"""视频分镜理解结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 分镜片段起始时间（单位：秒）
+
+        :type StartTime: float
+        :param _EndTime: 分镜片段结束时间（单位：秒）
+        :type EndTime: float
+        :param _Title: 分镜片段标题
+        :type Title: str
+        :param _Description: 分镜片段信息描述
+        :type Description: str
+        :param _Keywords: 分镜片段关键词
+        :type Keywords: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Title = None
+        self._Description = None
+        self._Keywords = None
+
+    @property
+    def StartTime(self):
+        r"""分镜片段起始时间（单位：秒）
+
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""分镜片段结束时间（单位：秒）
+        :rtype: float
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Title(self):
+        r"""分镜片段标题
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        r"""分镜片段信息描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Keywords(self):
+        r"""分镜片段关键词
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        self._Keywords = params.get("Keywords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

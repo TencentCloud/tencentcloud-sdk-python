@@ -1811,11 +1811,14 @@ class DescribeInstanceOperationsResponse(AbstractModel):
         :param _Operations: 操作记录具体数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operations: list of InstanceOperation
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Operations = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -1842,6 +1845,17 @@ class DescribeInstanceOperationsResponse(AbstractModel):
         self._Operations = Operations
 
     @property
+    def ErrorMsg(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1861,6 +1875,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
                 obj = InstanceOperation()
                 obj._deserialize(item)
                 self._Operations.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -1909,10 +1924,13 @@ class DescribeInstanceResponse(AbstractModel):
         r"""
         :param _InstanceInfo: 实例描述信息
         :type InstanceInfo: :class:`tencentcloud.cdwpg.v20201230.models.InstanceInfo`
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceInfo = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -1925,6 +1943,17 @@ class DescribeInstanceResponse(AbstractModel):
     @InstanceInfo.setter
     def InstanceInfo(self, InstanceInfo):
         self._InstanceInfo = InstanceInfo
+
+    @property
+    def ErrorMsg(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -1942,6 +1971,7 @@ class DescribeInstanceResponse(AbstractModel):
         if params.get("InstanceInfo") is not None:
             self._InstanceInfo = InstanceInfo()
             self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -2004,6 +2034,8 @@ class DescribeInstanceStateResponse(AbstractModel):
         :type ProcessName: str
         :param _BackupStatus: 集群备份任务开启状态
         :type BackupStatus: int
+        :param _BackupOpenStatus: 集群备份任务开启状态2
+        :type BackupOpenStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2015,6 +2047,7 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowMsg = None
         self._ProcessName = None
         self._BackupStatus = None
+        self._BackupOpenStatus = None
         self._RequestId = None
 
     @property
@@ -2106,6 +2139,17 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._BackupStatus = BackupStatus
 
     @property
+    def BackupOpenStatus(self):
+        r"""集群备份任务开启状态2
+        :rtype: int
+        """
+        return self._BackupOpenStatus
+
+    @BackupOpenStatus.setter
+    def BackupOpenStatus(self, BackupOpenStatus):
+        self._BackupOpenStatus = BackupOpenStatus
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2126,6 +2170,7 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowMsg = params.get("FlowMsg")
         self._ProcessName = params.get("ProcessName")
         self._BackupStatus = params.get("BackupStatus")
+        self._BackupOpenStatus = params.get("BackupOpenStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -2808,11 +2853,14 @@ class DescribeUpgradeListResponse(AbstractModel):
         :type UpgradeItems: list of UpgradeItem
         :param _TotalCount: 升级记录总数
         :type TotalCount: str
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UpgradeItems = None
         self._TotalCount = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -2839,6 +2887,17 @@ class DescribeUpgradeListResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def ErrorMsg(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2858,6 +2917,7 @@ class DescribeUpgradeListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._UpgradeItems.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -3417,6 +3477,16 @@ class InstanceInfo(AbstractModel):
         :type InstanceId: str
         :param _AccessDetails: 访问信息
         :type AccessDetails: list of AccessInfo
+        :param _IsAz: 集群是否跨az，为0不跨az；为1跨az
+        :type IsAz: int
+        :param _SecondaryZone: 备可用区
+        :type SecondaryZone: str
+        :param _SecondarySubnet: 备子网
+        :type SecondarySubnet: str
+        :param _AccessInfo: 访问信息
+        :type AccessInfo: str
+        :param _GTMNodes: GTM节点信息
+        :type GTMNodes: list of InstanceNodeGroup
         """
         self._ID = None
         self._InstanceType = None
@@ -3444,6 +3514,11 @@ class InstanceInfo(AbstractModel):
         self._RenewFlag = None
         self._InstanceId = None
         self._AccessDetails = None
+        self._IsAz = None
+        self._SecondaryZone = None
+        self._SecondarySubnet = None
+        self._AccessInfo = None
+        self._GTMNodes = None
 
     @property
     def ID(self):
@@ -3732,6 +3807,61 @@ class InstanceInfo(AbstractModel):
     def AccessDetails(self, AccessDetails):
         self._AccessDetails = AccessDetails
 
+    @property
+    def IsAz(self):
+        r"""集群是否跨az，为0不跨az；为1跨az
+        :rtype: int
+        """
+        return self._IsAz
+
+    @IsAz.setter
+    def IsAz(self, IsAz):
+        self._IsAz = IsAz
+
+    @property
+    def SecondaryZone(self):
+        r"""备可用区
+        :rtype: str
+        """
+        return self._SecondaryZone
+
+    @SecondaryZone.setter
+    def SecondaryZone(self, SecondaryZone):
+        self._SecondaryZone = SecondaryZone
+
+    @property
+    def SecondarySubnet(self):
+        r"""备子网
+        :rtype: str
+        """
+        return self._SecondarySubnet
+
+    @SecondarySubnet.setter
+    def SecondarySubnet(self, SecondarySubnet):
+        self._SecondarySubnet = SecondarySubnet
+
+    @property
+    def AccessInfo(self):
+        r"""访问信息
+        :rtype: str
+        """
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+    @property
+    def GTMNodes(self):
+        r"""GTM节点信息
+        :rtype: list of InstanceNodeGroup
+        """
+        return self._GTMNodes
+
+    @GTMNodes.setter
+    def GTMNodes(self, GTMNodes):
+        self._GTMNodes = GTMNodes
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -3782,6 +3912,16 @@ class InstanceInfo(AbstractModel):
                 obj = AccessInfo()
                 obj._deserialize(item)
                 self._AccessDetails.append(obj)
+        self._IsAz = params.get("IsAz")
+        self._SecondaryZone = params.get("SecondaryZone")
+        self._SecondarySubnet = params.get("SecondarySubnet")
+        self._AccessInfo = params.get("AccessInfo")
+        if params.get("GTMNodes") is not None:
+            self._GTMNodes = []
+            for item in params.get("GTMNodes"):
+                obj = InstanceNodeGroup()
+                obj._deserialize(item)
+                self._GTMNodes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3805,10 +3945,43 @@ class InstanceNode(AbstractModel):
         :type NodeType: str
         :param _NodeIp: ip
         :type NodeIp: str
+        :param _PrivateNetworkIp: 私有ip
+        :type PrivateNetworkIp: str
+        :param _NodeRole: 节点角色
+        :type NodeRole: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _SpecName: 规格名称
+        :type SpecName: str
+        :param _Cpu: cpu
+        :type Cpu: int
+        :param _Memory: 内存
+        :type Memory: int
+        :param _DataDiskCount: 数据盘数量
+        :type DataDiskCount: int
+        :param _DataDiskSize: 数据盘大小
+        :type DataDiskSize: int
+        :param _DataDiskType: 数据盘类型
+        :type DataDiskType: str
+        :param _UUID: 唯一uuid
+        :type UUID: str
+        :param _Zone: 区域
+        :type Zone: str
         """
         self._NodeId = None
         self._NodeType = None
         self._NodeIp = None
+        self._PrivateNetworkIp = None
+        self._NodeRole = None
+        self._NodeName = None
+        self._SpecName = None
+        self._Cpu = None
+        self._Memory = None
+        self._DataDiskCount = None
+        self._DataDiskSize = None
+        self._DataDiskType = None
+        self._UUID = None
+        self._Zone = None
 
     @property
     def NodeId(self):
@@ -3843,11 +4016,143 @@ class InstanceNode(AbstractModel):
     def NodeIp(self, NodeIp):
         self._NodeIp = NodeIp
 
+    @property
+    def PrivateNetworkIp(self):
+        r"""私有ip
+        :rtype: str
+        """
+        return self._PrivateNetworkIp
+
+    @PrivateNetworkIp.setter
+    def PrivateNetworkIp(self, PrivateNetworkIp):
+        self._PrivateNetworkIp = PrivateNetworkIp
+
+    @property
+    def NodeRole(self):
+        r"""节点角色
+        :rtype: str
+        """
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def NodeName(self):
+        r"""节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def SpecName(self):
+        r"""规格名称
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def Cpu(self):
+        r"""cpu
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DataDiskCount(self):
+        r"""数据盘数量
+        :rtype: int
+        """
+        return self._DataDiskCount
+
+    @DataDiskCount.setter
+    def DataDiskCount(self, DataDiskCount):
+        self._DataDiskCount = DataDiskCount
+
+    @property
+    def DataDiskSize(self):
+        r"""数据盘大小
+        :rtype: int
+        """
+        return self._DataDiskSize
+
+    @DataDiskSize.setter
+    def DataDiskSize(self, DataDiskSize):
+        self._DataDiskSize = DataDiskSize
+
+    @property
+    def DataDiskType(self):
+        r"""数据盘类型
+        :rtype: str
+        """
+        return self._DataDiskType
+
+    @DataDiskType.setter
+    def DataDiskType(self, DataDiskType):
+        self._DataDiskType = DataDiskType
+
+    @property
+    def UUID(self):
+        r"""唯一uuid
+        :rtype: str
+        """
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def Zone(self):
+        r"""区域
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._NodeType = params.get("NodeType")
         self._NodeIp = params.get("NodeIp")
+        self._PrivateNetworkIp = params.get("PrivateNetworkIp")
+        self._NodeRole = params.get("NodeRole")
+        self._NodeName = params.get("NodeName")
+        self._SpecName = params.get("SpecName")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._DataDiskCount = params.get("DataDiskCount")
+        self._DataDiskSize = params.get("DataDiskSize")
+        self._DataDiskType = params.get("DataDiskType")
+        self._UUID = params.get("UUID")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5176,6 +5481,8 @@ class ParamDetail(AbstractModel):
         :type ShortDesc: str
         :param _ParameterName: 参数名
         :type ParameterName: str
+        :param _LatestValue: 最新修改值
+        :type LatestValue: str
         """
         self._ParamName = None
         self._DefaultValue = None
@@ -5185,6 +5492,7 @@ class ParamDetail(AbstractModel):
         self._Unit = None
         self._ShortDesc = None
         self._ParameterName = None
+        self._LatestValue = None
 
     @property
     def ParamName(self):
@@ -5274,6 +5582,17 @@ class ParamDetail(AbstractModel):
     def ParameterName(self, ParameterName):
         self._ParameterName = ParameterName
 
+    @property
+    def LatestValue(self):
+        r"""最新修改值
+        :rtype: str
+        """
+        return self._LatestValue
+
+    @LatestValue.setter
+    def LatestValue(self, LatestValue):
+        self._LatestValue = LatestValue
+
 
     def _deserialize(self, params):
         self._ParamName = params.get("ParamName")
@@ -5286,6 +5605,7 @@ class ParamDetail(AbstractModel):
         self._Unit = params.get("Unit")
         self._ShortDesc = params.get("ShortDesc")
         self._ParameterName = params.get("ParameterName")
+        self._LatestValue = params.get("LatestValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

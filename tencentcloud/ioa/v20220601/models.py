@@ -303,6 +303,8 @@ class AggrSoftDeviceRow(AbstractModel):
         :type SoftwareId: int
         :param _OsType: 0:win 2:mac
         :type OsType: int
+        :param _AssetType: 所有权
+        :type AssetType: str
         """
         self._DeviceName = None
         self._LastLoginAccount = None
@@ -324,6 +326,7 @@ class AggrSoftDeviceRow(AbstractModel):
         self._RemarkName = None
         self._SoftwareId = None
         self._OsType = None
+        self._AssetType = None
 
     @property
     def DeviceName(self):
@@ -560,6 +563,17 @@ class AggrSoftDeviceRow(AbstractModel):
     def OsType(self, OsType):
         self._OsType = OsType
 
+    @property
+    def AssetType(self):
+        r"""所有权
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -582,6 +596,7 @@ class AggrSoftDeviceRow(AbstractModel):
         self._RemarkName = params.get("RemarkName")
         self._SoftwareId = params.get("SoftwareId")
         self._OsType = params.get("OsType")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -665,12 +680,20 @@ class Condition(AbstractModel):
         :type PageSize: int
         :param _PageNum: PageNum 获取第几页(只支持32位)
         :type PageNum: int
+        :param _RulePayload: 复杂查询规则条件查询项（支持任意层级AND/OR组合）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePayload: :class:`tencentcloud.ioa.v20220601.models.RulePayload`
+        :param _RulePayloadMode: 规则模式：0-使用旧的FilterGroups，1-使用新的RulePayload
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePayloadMode: int
         """
         self._Filters = None
         self._FilterGroups = None
         self._Sort = None
         self._PageSize = None
         self._PageNum = None
+        self._RulePayload = None
+        self._RulePayloadMode = None
 
     @property
     def Filters(self):
@@ -727,6 +750,30 @@ class Condition(AbstractModel):
     def PageNum(self, PageNum):
         self._PageNum = PageNum
 
+    @property
+    def RulePayload(self):
+        r"""复杂查询规则条件查询项（支持任意层级AND/OR组合）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.RulePayload`
+        """
+        return self._RulePayload
+
+    @RulePayload.setter
+    def RulePayload(self, RulePayload):
+        self._RulePayload = RulePayload
+
+    @property
+    def RulePayloadMode(self):
+        r"""规则模式：0-使用旧的FilterGroups，1-使用新的RulePayload
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RulePayloadMode
+
+    @RulePayloadMode.setter
+    def RulePayloadMode(self, RulePayloadMode):
+        self._RulePayloadMode = RulePayloadMode
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -746,6 +793,10 @@ class Condition(AbstractModel):
             self._Sort._deserialize(params.get("Sort"))
         self._PageSize = params.get("PageSize")
         self._PageNum = params.get("PageNum")
+        if params.get("RulePayload") is not None:
+            self._RulePayload = RulePayload()
+            self._RulePayload._deserialize(params.get("RulePayload"))
+        self._RulePayloadMode = params.get("RulePayloadMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2740,10 +2791,16 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
         :type Name: str
         :param _OsType: 0:win 2:mac
         :type OsType: int
+        :param _GroupId: 分组ID
+        :type GroupId: int
+        :param _GroupType: 分组类型 1-终端分组 2-组织架构(账号分组) 3/4-虚拟分组
+        :type GroupType: int
         """
         self._Condition = None
         self._Name = None
         self._OsType = None
+        self._GroupId = None
+        self._GroupType = None
 
     @property
     def Condition(self):
@@ -2778,6 +2835,28 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
     def OsType(self, OsType):
         self._OsType = OsType
 
+    @property
+    def GroupId(self):
+        r"""分组ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupType(self):
+        r"""分组类型 1-终端分组 2-组织架构(账号分组) 3/4-虚拟分组
+        :rtype: int
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
 
     def _deserialize(self, params):
         if params.get("Condition") is not None:
@@ -2785,6 +2864,8 @@ class DescribeAggrSoftDeviceListRequest(AbstractModel):
             self._Condition._deserialize(params.get("Condition"))
         self._Name = params.get("Name")
         self._OsType = params.get("OsType")
+        self._GroupId = params.get("GroupId")
+        self._GroupType = params.get("GroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9984,6 +10065,177 @@ class RuleItem(AbstractModel):
         self._Operate = params.get("Operate")
         self._Value = params.get("Value")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulePayload(AbstractModel):
+    r"""条件筛选
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Groups: 条件组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of RulePayloadItem
+        :param _RelateOption: 条件关系 or/and
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelateOption: str
+        """
+        self._Groups = None
+        self._RelateOption = None
+
+    @property
+    def Groups(self):
+        r"""条件组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RulePayloadItem
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RelateOption(self):
+        r"""条件关系 or/and
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelateOption
+
+    @RelateOption.setter
+    def RelateOption(self, RelateOption):
+        self._RelateOption = RelateOption
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = RulePayloadItem()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._RelateOption = params.get("RelateOption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulePayloadItem(AbstractModel):
+    r"""条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldKey: 字段Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldKey: str
+        :param _Option: 选项（eq:等于,neq:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Option: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        :param _Groups: 嵌套条件组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of RulePayloadItem
+        :param _RelateOption: RelateOption 关系操作符（and/or），用于根级别条件关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelateOption: str
+        """
+        self._FieldKey = None
+        self._Option = None
+        self._Value = None
+        self._Groups = None
+        self._RelateOption = None
+
+    @property
+    def FieldKey(self):
+        r"""字段Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldKey
+
+    @FieldKey.setter
+    def FieldKey(self, FieldKey):
+        self._FieldKey = FieldKey
+
+    @property
+    def Option(self):
+        r"""选项（eq:等于,neq:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+    @property
+    def Value(self):
+        r"""值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Groups(self):
+        r"""嵌套条件组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RulePayloadItem
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RelateOption(self):
+        r"""RelateOption 关系操作符（and/or），用于根级别条件关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RelateOption
+
+    @RelateOption.setter
+    def RelateOption(self, RelateOption):
+        self._RelateOption = RelateOption
+
+
+    def _deserialize(self, params):
+        self._FieldKey = params.get("FieldKey")
+        self._Option = params.get("Option")
+        self._Value = params.get("Value")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = RulePayloadItem()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._RelateOption = params.get("RelateOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

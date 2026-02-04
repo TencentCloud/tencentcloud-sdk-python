@@ -3608,6 +3608,8 @@ POSTPAID_BY_HOUR 按量计费
         :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
         :param _CodeRepos: 代码仓库配置
         :type CodeRepos: list of CodeRepoConfig
+        :param _ExposeNetworkConfig: 网络暴露配置
+        :type ExposeNetworkConfig: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
         """
         self._Name = None
         self._ChargeType = None
@@ -3633,6 +3635,7 @@ POSTPAID_BY_HOUR 按量计费
         self._CallbackUrl = None
         self._EncodedStartCmdInfo = None
         self._CodeRepos = None
+        self._ExposeNetworkConfig = None
 
     @property
     def Name(self):
@@ -3899,6 +3902,17 @@ POSTPAID_BY_HOUR 按量计费
     def CodeRepos(self, CodeRepos):
         self._CodeRepos = CodeRepos
 
+    @property
+    def ExposeNetworkConfig(self):
+        r"""网络暴露配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
+        """
+        return self._ExposeNetworkConfig
+
+    @ExposeNetworkConfig.setter
+    def ExposeNetworkConfig(self, ExposeNetworkConfig):
+        self._ExposeNetworkConfig = ExposeNetworkConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3957,6 +3971,9 @@ POSTPAID_BY_HOUR 按量计费
                 obj = CodeRepoConfig()
                 obj._deserialize(item)
                 self._CodeRepos.append(obj)
+        if params.get("ExposeNetworkConfig") is not None:
+            self._ExposeNetworkConfig = ExposeNetworkConfig()
+            self._ExposeNetworkConfig._deserialize(params.get("ExposeNetworkConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10749,6 +10766,61 @@ class ExecAction(AbstractModel):
 
     def _deserialize(self, params):
         self._Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExposeNetworkConfig(AbstractModel):
+    r"""暴露网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSHConfig: ssh配置
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _ExposePortConfig: 容器端口暴露到公网配置
+        :type ExposePortConfig: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        """
+        self._SSHConfig = None
+        self._ExposePortConfig = None
+
+    @property
+    def SSHConfig(self):
+        r"""ssh配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
+    @property
+    def ExposePortConfig(self):
+        r"""容器端口暴露到公网配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        """
+        return self._ExposePortConfig
+
+    @ExposePortConfig.setter
+    def ExposePortConfig(self, ExposePortConfig):
+        self._ExposePortConfig = ExposePortConfig
+
+
+    def _deserialize(self, params):
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("ExposePortConfig") is not None:
+            self._ExposePortConfig = ExposePortConfig()
+            self._ExposePortConfig._deserialize(params.get("ExposePortConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24193,6 +24265,8 @@ class TrainingTaskDetail(AbstractModel):
         :type CallbackUrl: str
         :param _CodeRepos: 任务关联的代码仓库配置
         :type CodeRepos: list of CodeRepoConfig
+        :param _ExposeNetworkConfig: 暴露网络配置
+        :type ExposeNetworkConfig: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
         """
         self._Id = None
         self._Name = None
@@ -24235,6 +24309,7 @@ class TrainingTaskDetail(AbstractModel):
         self._Status = None
         self._CallbackUrl = None
         self._CodeRepos = None
+        self._ExposeNetworkConfig = None
 
     @property
     def Id(self):
@@ -24712,6 +24787,17 @@ class TrainingTaskDetail(AbstractModel):
     def CodeRepos(self, CodeRepos):
         self._CodeRepos = CodeRepos
 
+    @property
+    def ExposeNetworkConfig(self):
+        r"""暴露网络配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
+        """
+        return self._ExposeNetworkConfig
+
+    @ExposeNetworkConfig.setter
+    def ExposeNetworkConfig(self, ExposeNetworkConfig):
+        self._ExposeNetworkConfig = ExposeNetworkConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -24785,6 +24871,9 @@ class TrainingTaskDetail(AbstractModel):
                 obj = CodeRepoConfig()
                 obj._deserialize(item)
                 self._CodeRepos.append(obj)
+        if params.get("ExposeNetworkConfig") is not None:
+            self._ExposeNetworkConfig = ExposeNetworkConfig()
+            self._ExposeNetworkConfig._deserialize(params.get("ExposeNetworkConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25411,15 +25500,18 @@ class VolumeMount(AbstractModel):
         r"""
         :param _CFSConfig: cfs的配置信息
         :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
-        :param _VolumeSourceType: 挂载源类型，CFS、COS，默认为CFS
+        :param _VolumeSourceType: 挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
         :type VolumeSourceType: str
         :param _MountPath: 自定义容器内挂载路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountPath: str
+        :param _PublicDataSource: 挂载数据源时的配置信息
+        :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         self._CFSConfig = None
         self._VolumeSourceType = None
         self._MountPath = None
+        self._PublicDataSource = None
 
     @property
     def CFSConfig(self):
@@ -25434,7 +25526,7 @@ class VolumeMount(AbstractModel):
 
     @property
     def VolumeSourceType(self):
-        r"""挂载源类型，CFS、COS，默认为CFS
+        r"""挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
         :rtype: str
         """
         return self._VolumeSourceType
@@ -25455,6 +25547,17 @@ class VolumeMount(AbstractModel):
     def MountPath(self, MountPath):
         self._MountPath = MountPath
 
+    @property
+    def PublicDataSource(self):
+        r"""挂载数据源时的配置信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        """
+        return self._PublicDataSource
+
+    @PublicDataSource.setter
+    def PublicDataSource(self, PublicDataSource):
+        self._PublicDataSource = PublicDataSource
+
 
     def _deserialize(self, params):
         if params.get("CFSConfig") is not None:
@@ -25462,6 +25565,9 @@ class VolumeMount(AbstractModel):
             self._CFSConfig._deserialize(params.get("CFSConfig"))
         self._VolumeSourceType = params.get("VolumeSourceType")
         self._MountPath = params.get("MountPath")
+        if params.get("PublicDataSource") is not None:
+            self._PublicDataSource = PublicDataSourceFS()
+            self._PublicDataSource._deserialize(params.get("PublicDataSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

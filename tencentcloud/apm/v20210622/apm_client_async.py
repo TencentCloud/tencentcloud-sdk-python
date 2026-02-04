@@ -133,6 +133,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApmAllVulCount(
+            self,
+            request: models.DescribeApmAllVulCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApmAllVulCountResponse:
+        """
+        查询用户所有漏洞信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApmAllVulCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApmAllVulCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApmApplicationConfig(
             self,
             request: models.DescribeApmApplicationConfigRequest,
@@ -236,6 +254,42 @@ class ApmClient(AbstractClient):
         kwargs["action"] = "DescribeApmServiceMetric"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeApmServiceMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApmVulnerabilityCount(
+            self,
+            request: models.DescribeApmVulnerabilityCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApmVulnerabilityCountResponse:
+        """
+        查询漏洞指标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApmVulnerabilityCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApmVulnerabilityCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApmVulnerabilityDetail(
+            self,
+            request: models.DescribeApmVulnerabilityDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApmVulnerabilityDetailResponse:
+        """
+        查询漏洞详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApmVulnerabilityDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApmVulnerabilityDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -347,6 +401,24 @@ class ApmClient(AbstractClient):
         kwargs["action"] = "DescribeMetricRecords"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMetricRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOPRAllVulCount(
+            self,
+            request: models.DescribeOPRAllVulCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOPRAllVulCountResponse:
+        """
+        查询用户所有漏洞信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOPRAllVulCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOPRAllVulCountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -2424,7 +2424,7 @@ class EssbasicClient(AbstractClient):
         """
         此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 
-        <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
+        <font color="red">此接口于 2026 年 2 月 3 日下线</font>， 请使用新接口:<a   href="https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail">查询渠道计费消耗情况 </a>
 
         注: 此接口**每日限频50次**，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
         """

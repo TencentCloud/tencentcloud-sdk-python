@@ -780,6 +780,24 @@ class CccClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFlashSMSList(
+            self,
+            request: models.DescribeFlashSMSListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlashSMSListResponse:
+        """
+        获取闪信记录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlashSMSList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlashSMSListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIMCdrList(
             self,
             request: models.DescribeIMCdrListRequest,
