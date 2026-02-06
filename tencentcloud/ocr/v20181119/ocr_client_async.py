@@ -243,6 +243,26 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeQuestionMarkAgentJob(
+            self,
+            request: models.DescribeQuestionMarkAgentJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQuestionMarkAgentJobResponse:
+        """
+        用于试题批改Agent查询任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
+
+        默认接口请求并发限制：10题/分钟。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQuestionMarkAgentJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQuestionMarkAgentJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DriverLicenseOCR(
             self,
             request: models.DriverLicenseOCRRequest,
@@ -1980,6 +2000,26 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "SubmitExtractDocAgentJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitExtractDocAgentJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitQuestionMarkAgentJob(
+            self,
+            request: models.SubmitQuestionMarkAgentJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitQuestionMarkAgentJobResponse:
+        """
+        用于试题批改Agent提交任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
+
+        默认接口请求并发限制：10题/分钟。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitQuestionMarkAgentJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitQuestionMarkAgentJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

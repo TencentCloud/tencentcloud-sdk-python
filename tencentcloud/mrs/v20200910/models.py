@@ -8115,6 +8115,95 @@ class EyeChildItem(AbstractModel):
         
 
 
+class EyeFinalItem(AbstractModel):
+    r"""眼科子结构 平均后结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sph: <p>球镜</p>
+        :type Sph: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        :param _Cyl: <p>柱镜</p>
+        :type Cyl: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        :param _Ax: <p>轴位</p>
+        :type Ax: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        :param _Se: <p>等效球镜</p>
+        :type Se: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
+        """
+        self._Sph = None
+        self._Cyl = None
+        self._Ax = None
+        self._Se = None
+
+    @property
+    def Sph(self):
+        r"""<p>球镜</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        """
+        return self._Sph
+
+    @Sph.setter
+    def Sph(self, Sph):
+        self._Sph = Sph
+
+    @property
+    def Cyl(self):
+        r"""<p>柱镜</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        """
+        return self._Cyl
+
+    @Cyl.setter
+    def Cyl(self, Cyl):
+        self._Cyl = Cyl
+
+    @property
+    def Ax(self):
+        r"""<p>轴位</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem3`
+        """
+        return self._Ax
+
+    @Ax.setter
+    def Ax(self, Ax):
+        self._Ax = Ax
+
+    @property
+    def Se(self):
+        r"""<p>等效球镜</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
+        """
+        return self._Se
+
+    @Se.setter
+    def Se(self, Se):
+        self._Se = Se
+
+
+    def _deserialize(self, params):
+        if params.get("Sph") is not None:
+            self._Sph = BaseItem3()
+            self._Sph._deserialize(params.get("Sph"))
+        if params.get("Cyl") is not None:
+            self._Cyl = BaseItem3()
+            self._Cyl._deserialize(params.get("Cyl"))
+        if params.get("Ax") is not None:
+            self._Ax = BaseItem3()
+            self._Ax._deserialize(params.get("Ax"))
+        if params.get("Se") is not None:
+            self._Se = BaseItem2()
+            self._Se._deserialize(params.get("Se"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EyeItem(AbstractModel):
     r"""眼科结构体
 
@@ -8122,20 +8211,26 @@ class EyeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Left: 左眼
+        :param _Left: <p>左眼</p>
         :type Left: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
-        :param _Right: 右眼
+        :param _Right: <p>右眼</p>
         :type Right: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
-        :param _Pd: 瞳距
+        :param _Pd: <p>瞳距</p>
         :type Pd: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
+        :param _RightFinal: <p>右眼平均后结果</p>
+        :type RightFinal: :class:`tencentcloud.mrs.v20200910.models.EyeFinalItem`
+        :param _LeftFinal: <p>左眼平均后结果</p>
+        :type LeftFinal: :class:`tencentcloud.mrs.v20200910.models.EyeFinalItem`
         """
         self._Left = None
         self._Right = None
         self._Pd = None
+        self._RightFinal = None
+        self._LeftFinal = None
 
     @property
     def Left(self):
-        r"""左眼
+        r"""<p>左眼</p>
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Left
@@ -8146,7 +8241,7 @@ class EyeItem(AbstractModel):
 
     @property
     def Right(self):
-        r"""右眼
+        r"""<p>右眼</p>
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Right
@@ -8157,7 +8252,7 @@ class EyeItem(AbstractModel):
 
     @property
     def Pd(self):
-        r"""瞳距
+        r"""<p>瞳距</p>
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         return self._Pd
@@ -8165,6 +8260,28 @@ class EyeItem(AbstractModel):
     @Pd.setter
     def Pd(self, Pd):
         self._Pd = Pd
+
+    @property
+    def RightFinal(self):
+        r"""<p>右眼平均后结果</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeFinalItem`
+        """
+        return self._RightFinal
+
+    @RightFinal.setter
+    def RightFinal(self, RightFinal):
+        self._RightFinal = RightFinal
+
+    @property
+    def LeftFinal(self):
+        r"""<p>左眼平均后结果</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeFinalItem`
+        """
+        return self._LeftFinal
+
+    @LeftFinal.setter
+    def LeftFinal(self, LeftFinal):
+        self._LeftFinal = LeftFinal
 
 
     def _deserialize(self, params):
@@ -8177,6 +8294,12 @@ class EyeItem(AbstractModel):
         if params.get("Pd") is not None:
             self._Pd = BaseItem2()
             self._Pd._deserialize(params.get("Pd"))
+        if params.get("RightFinal") is not None:
+            self._RightFinal = EyeFinalItem()
+            self._RightFinal._deserialize(params.get("RightFinal"))
+        if params.get("LeftFinal") is not None:
+            self._LeftFinal = EyeFinalItem()
+            self._LeftFinal._deserialize(params.get("LeftFinal"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

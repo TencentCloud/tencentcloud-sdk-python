@@ -334,6 +334,25 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQGroupV2(
+            self,
+            request: models.CreateRocketMQGroupV2Request,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQGroupV2Response:
+        """
+        创建 RocketMQ 消费组。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQGroupV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQGroupV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQNamespace(
             self,
             request: models.CreateRocketMQNamespaceRequest,

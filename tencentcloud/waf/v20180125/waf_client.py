@@ -1107,6 +1107,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApiAggregateTopN(self, request):
+        r"""获取Api安全模块的访问日志聚合topN
+
+        :param request: Request instance for DescribeApiAggregateTopN.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiAggregateTopNRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiAggregateTopNResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiAggregateTopN", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiAggregateTopNResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApiDetail(self, request):
         r"""获取Api请求详情信息
 

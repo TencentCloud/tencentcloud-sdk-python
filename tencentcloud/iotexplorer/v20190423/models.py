@@ -7273,6 +7273,8 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
         :type AgentConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkAgentConfigInfo`
         :param _InstanceId: 实例ID
         :type InstanceId: str
+        :param _CustomTools: 自定义工具配置，最多可创建10个
+        :type CustomTools: str
         """
         self._Name = None
         self._Description = None
@@ -7282,6 +7284,7 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
         self._TTSConfig = None
         self._AgentConfig = None
         self._InstanceId = None
+        self._CustomTools = None
 
     @property
     def Name(self):
@@ -7371,6 +7374,17 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def CustomTools(self):
+        r"""自定义工具配置，最多可创建10个
+        :rtype: str
+        """
+        return self._CustomTools
+
+    @CustomTools.setter
+    def CustomTools(self, CustomTools):
+        self._CustomTools = CustomTools
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7389,6 +7403,7 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
             self._AgentConfig = TalkAgentConfigInfo()
             self._AgentConfig._deserialize(params.get("AgentConfig"))
         self._InstanceId = params.get("InstanceId")
+        self._CustomTools = params.get("CustomTools")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29784,6 +29799,8 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
         :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfigInfo`
         :param _AgentConfig: 智能体配置
         :type AgentConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkAgentConfigInfo`
+        :param _CustomTools: 自定义工具配置，最多可创建10个
+        :type CustomTools: str
         """
         self._BotId = None
         self._Name = None
@@ -29793,6 +29810,7 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
         self._LLMConfig = None
         self._TTSConfig = None
         self._AgentConfig = None
+        self._CustomTools = None
 
     @property
     def BotId(self):
@@ -29882,6 +29900,17 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
     def AgentConfig(self, AgentConfig):
         self._AgentConfig = AgentConfig
 
+    @property
+    def CustomTools(self):
+        r"""自定义工具配置，最多可创建10个
+        :rtype: str
+        """
+        return self._CustomTools
+
+    @CustomTools.setter
+    def CustomTools(self, CustomTools):
+        self._CustomTools = CustomTools
+
 
     def _deserialize(self, params):
         self._BotId = params.get("BotId")
@@ -29900,6 +29929,7 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
         if params.get("AgentConfig") is not None:
             self._AgentConfig = TalkAgentConfigInfo()
             self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._CustomTools = params.get("CustomTools")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34416,6 +34446,8 @@ class TalkAIBotInfo(AbstractModel):
         :type UpdateTime: int
         :param _BoundProducts: 已关联产品信息列表
         :type BoundProducts: list of TalkProductInfo
+        :param _CustomTools: 自定义工具列表，最多可创建10个
+        :type CustomTools: str
         """
         self._Uin = None
         self._AppId = None
@@ -34432,6 +34464,7 @@ class TalkAIBotInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._BoundProducts = None
+        self._CustomTools = None
 
     @property
     def Uin(self):
@@ -34602,6 +34635,17 @@ class TalkAIBotInfo(AbstractModel):
     def BoundProducts(self, BoundProducts):
         self._BoundProducts = BoundProducts
 
+    @property
+    def CustomTools(self):
+        r"""自定义工具列表，最多可创建10个
+        :rtype: str
+        """
+        return self._CustomTools
+
+    @CustomTools.setter
+    def CustomTools(self, CustomTools):
+        self._CustomTools = CustomTools
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -34634,6 +34678,7 @@ class TalkAIBotInfo(AbstractModel):
                 obj = TalkProductInfo()
                 obj._deserialize(item)
                 self._BoundProducts.append(obj)
+        self._CustomTools = params.get("CustomTools")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

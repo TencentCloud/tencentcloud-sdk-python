@@ -6017,6 +6017,195 @@ class CreateRocketMQGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQGroupV2Request(AbstractModel):
+    r"""CreateRocketMQGroupV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 消费组名称
+        :type GroupId: str
+        :param _Namespace: 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
+        :type Namespace: str
+        :param _ReadEnable: 是否开启消费
+        :type ReadEnable: bool
+        :param _BroadcastEnable: 是否开启广播消费
+        :type BroadcastEnable: bool
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _GroupType: Group类型（TCP/HTTP）
+        :type GroupType: str
+        :param _RetryMaxTimes: Group最大重试次数
+        :type RetryMaxTimes: int
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
+        """
+        self._GroupId = None
+        self._Namespace = None
+        self._ReadEnable = None
+        self._BroadcastEnable = None
+        self._ClusterId = None
+        self._Remark = None
+        self._GroupType = None
+        self._RetryMaxTimes = None
+        self._TagList = None
+
+    @property
+    def GroupId(self):
+        r"""消费组名称
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Namespace(self):
+        r"""消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ReadEnable(self):
+        r"""是否开启消费
+        :rtype: bool
+        """
+        return self._ReadEnable
+
+    @ReadEnable.setter
+    def ReadEnable(self, ReadEnable):
+        self._ReadEnable = ReadEnable
+
+    @property
+    def BroadcastEnable(self):
+        r"""是否开启广播消费
+        :rtype: bool
+        """
+        return self._BroadcastEnable
+
+    @BroadcastEnable.setter
+    def BroadcastEnable(self, BroadcastEnable):
+        self._BroadcastEnable = BroadcastEnable
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def GroupType(self):
+        r"""Group类型（TCP/HTTP）
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def RetryMaxTimes(self):
+        r"""Group最大重试次数
+        :rtype: int
+        """
+        return self._RetryMaxTimes
+
+    @RetryMaxTimes.setter
+    def RetryMaxTimes(self, RetryMaxTimes):
+        self._RetryMaxTimes = RetryMaxTimes
+
+    @property
+    def TagList(self):
+        r"""标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Namespace = params.get("Namespace")
+        self._ReadEnable = params.get("ReadEnable")
+        self._BroadcastEnable = params.get("BroadcastEnable")
+        self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
+        self._GroupType = params.get("GroupType")
+        self._RetryMaxTimes = params.get("RetryMaxTimes")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQGroupV2Response(AbstractModel):
+    r"""CreateRocketMQGroupV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQNamespaceRequest(AbstractModel):
     r"""CreateRocketMQNamespace请求参数结构体
 

@@ -871,6 +871,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApiAggregateTopN(
+            self,
+            request: models.DescribeApiAggregateTopNRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiAggregateTopNResponse:
+        """
+        获取Api安全模块的访问日志聚合topN
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiAggregateTopN"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiAggregateTopNResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApiDetail(
             self,
             request: models.DescribeApiDetailRequest,

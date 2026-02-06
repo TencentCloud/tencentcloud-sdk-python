@@ -573,34 +573,6 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeTRTCMarketQualityMetricData(
-            self,
-            request: models.DescribeTRTCMarketQualityMetricDataRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTRTCMarketQualityMetricDataResponse:
-        """
-        云监控monitor接口已下线，trtc同步下线接口
-
-        查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
-        joinSuccessRate：加入频道成功率。
-        joinSuccessIn5sRate：5s内加入频道成功率。
-        audioFreezeRate：音频卡顿率。
-        videoFreezeRate：视频卡顿率。
-        networkDelay ：网络延迟率。
-        注意：
-        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTRTCMarketQualityMetricData"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTRTCMarketQualityMetricDataResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeTRTCMarketScaleData(
             self,
             request: models.DescribeTRTCMarketScaleDataRequest,
@@ -676,31 +648,6 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeTRTCRealTimeQualityMetricData(
-            self,
-            request: models.DescribeTRTCRealTimeQualityMetricDataRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTRTCRealTimeQualityMetricDataResponse:
-        """
-        云监控monitor接口已下线，trtc同步下线接口
-
-        查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
-        -视频卡顿率
-        -音频卡顿率
-        注意：
-        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTRTCRealTimeQualityMetricData"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTRTCRealTimeQualityMetricDataResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeTRTCRealTimeScaleData(
             self,
             request: models.DescribeTRTCRealTimeScaleDataRequest,
@@ -730,6 +677,8 @@ class TrtcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTRTCRealTimeScaleMetricDataResponse:
         """
+        腾讯云可观测平台monitor接口已下线，TRTC同步下线接口
+
         查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
         -userCount（在线用户数）
         -roomCount（在线房间数）

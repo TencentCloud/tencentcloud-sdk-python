@@ -5927,6 +5927,72 @@ class BotActionScopeRuleEntry(AbstractModel):
         
 
 
+class BotDataFilter(AbstractModel):
+    r"""搜索框内容，冒号前面是key, 冒号是操作，值是最后一位，操作（冒号）默认是相等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entity: 查询维度
+        :type Entity: str
+        :param _Operator: 操作符
+        :type Operator: str
+        :param _Value: 操作值，多个值用
+        :type Value: str
+        """
+        self._Entity = None
+        self._Operator = None
+        self._Value = None
+
+    @property
+    def Entity(self):
+        r"""查询维度
+        :rtype: str
+        """
+        return self._Entity
+
+    @Entity.setter
+    def Entity(self, Entity):
+        self._Entity = Entity
+
+    @property
+    def Operator(self):
+        r"""操作符
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        r"""操作值，多个值用
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Entity = params.get("Entity")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotIdConfig(AbstractModel):
     r"""BOT-ID规则信息
 
@@ -8198,6 +8264,72 @@ class BotToken(AbstractModel):
             self._TokenValidation = TokenValidation()
             self._TokenValidation._deserialize(params.get("TokenValidation"))
         self._DisableMultiJson = params.get("DisableMultiJson")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotTopItem(AbstractModel):
+    r"""bot的topN复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 对应的key
+        :type Key: str
+        :param _Value: 对应的值
+        :type Value: int
+        :param _Label: key对应的展示描述语
+        :type Label: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Label = None
+
+    @property
+    def Key(self):
+        r"""对应的key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""对应的值
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Label(self):
+        r"""key对应的展示描述语
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16192,6 +16324,187 @@ class DescribeAntiLeakageItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeApiAggregateTopNRequest(AbstractModel):
+    r"""DescribeApiAggregateTopN请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _TopN: 需要的Top数，默认5， 最大值100
+        :type TopN: int
+        :param _StartTs: 开始时间
+        :type StartTs: int
+        :param _EndTs: 结束时间
+        :type EndTs: int
+        :param _Dimension: 需要查询TOP的维度名
+        :type Dimension: str
+        :param _Filters: 过滤条件
+        :type Filters: list of BotDataFilter
+        :param _GlobalFlag: 是否查询全域名的三个特殊图标
+        :type GlobalFlag: bool
+        """
+        self._Domain = None
+        self._TopN = None
+        self._StartTs = None
+        self._EndTs = None
+        self._Dimension = None
+        self._Filters = None
+        self._GlobalFlag = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TopN(self):
+        r"""需要的Top数，默认5， 最大值100
+        :rtype: int
+        """
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+    @property
+    def StartTs(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTs
+
+    @StartTs.setter
+    def StartTs(self, StartTs):
+        self._StartTs = StartTs
+
+    @property
+    def EndTs(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTs
+
+    @EndTs.setter
+    def EndTs(self, EndTs):
+        self._EndTs = EndTs
+
+    @property
+    def Dimension(self):
+        r"""需要查询TOP的维度名
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of BotDataFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def GlobalFlag(self):
+        r"""是否查询全域名的三个特殊图标
+        :rtype: bool
+        """
+        return self._GlobalFlag
+
+    @GlobalFlag.setter
+    def GlobalFlag(self, GlobalFlag):
+        self._GlobalFlag = GlobalFlag
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TopN = params.get("TopN")
+        self._StartTs = params.get("StartTs")
+        self._EndTs = params.get("EndTs")
+        self._Dimension = params.get("Dimension")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = BotDataFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._GlobalFlag = params.get("GlobalFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiAggregateTopNResponse(AbstractModel):
+    r"""DescribeApiAggregateTopN返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: topN结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BotTopItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""topN结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BotTopItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BotTopItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiDetailRequest(AbstractModel):

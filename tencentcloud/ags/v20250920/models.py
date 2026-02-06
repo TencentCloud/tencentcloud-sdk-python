@@ -208,6 +208,57 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CfsStorageSource(AbstractModel):
+    r"""文件存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: CFS资源ID
+        :type FileSystemId: str
+        :param _Path: CFS挂载路径
+        :type Path: str
+        """
+        self._FileSystemId = None
+        self._Path = None
+
+    @property
+    def FileSystemId(self):
+        r"""CFS资源ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Path(self):
+        r"""CFS挂载路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosStorageSource(AbstractModel):
     r"""沙箱实例对象存储挂载配置
 
@@ -3224,9 +3275,12 @@ class StorageSource(AbstractModel):
         :type Cos: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
         :param _Image: 镜像卷配置
         :type Image: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
+        :param _Cfs: 文件存储配置
+        :type Cfs: :class:`tencentcloud.ags.v20250920.models.CfsStorageSource`
         """
         self._Cos = None
         self._Image = None
+        self._Cfs = None
 
     @property
     def Cos(self):
@@ -3250,6 +3304,17 @@ class StorageSource(AbstractModel):
     def Image(self, Image):
         self._Image = Image
 
+    @property
+    def Cfs(self):
+        r"""文件存储配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CfsStorageSource`
+        """
+        return self._Cfs
+
+    @Cfs.setter
+    def Cfs(self, Cfs):
+        self._Cfs = Cfs
+
 
     def _deserialize(self, params):
         if params.get("Cos") is not None:
@@ -3258,6 +3323,9 @@ class StorageSource(AbstractModel):
         if params.get("Image") is not None:
             self._Image = ImageStorageSource()
             self._Image._deserialize(params.get("Image"))
+        if params.get("Cfs") is not None:
+            self._Cfs = CfsStorageSource()
+            self._Cfs._deserialize(params.get("Cfs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

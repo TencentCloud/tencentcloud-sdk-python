@@ -26,6 +26,29 @@ class MonitorClient(AbstractClient):
     _service = 'monitor'
 
 
+    def CreateNoticeContentTmpl(self, request):
+        r"""创建自定义通知内容模板
+
+        :param request: Request instance for CreateNoticeContentTmpl.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.CreateNoticeContentTmplRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.CreateNoticeContentTmplResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNoticeContentTmpl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNoticeContentTmplResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlarmNotifyHistories(self, request):
         r"""按需查询告警的通知历史
 

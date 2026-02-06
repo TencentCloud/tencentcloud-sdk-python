@@ -25,6 +25,24 @@ class MonitorClient(AbstractClient):
     _endpoint = 'monitor.tencentcloudapi.com'
     _service = 'monitor'
 
+    async def CreateNoticeContentTmpl(
+            self,
+            request: models.CreateNoticeContentTmplRequest,
+            opts: Dict = None,
+    ) -> models.CreateNoticeContentTmplResponse:
+        """
+        创建自定义通知内容模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateNoticeContentTmpl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateNoticeContentTmplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarmNotifyHistories(
             self,
             request: models.DescribeAlarmNotifyHistoriesRequest,

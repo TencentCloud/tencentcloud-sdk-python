@@ -299,6 +299,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeQuestionMarkAgentJob(self, request):
+        r"""用于试题批改Agent查询任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
+
+        默认接口请求并发限制：10题/分钟。
+
+        :param request: Request instance for DescribeQuestionMarkAgentJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.DescribeQuestionMarkAgentJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.DescribeQuestionMarkAgentJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuestionMarkAgentJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQuestionMarkAgentJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DriverLicenseOCR(self, request):
         r"""本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
@@ -2347,6 +2372,31 @@ class OcrClient(AbstractClient):
             body = self.call("SubmitExtractDocAgentJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitExtractDocAgentJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitQuestionMarkAgentJob(self, request):
+        r"""用于试题批改Agent提交任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
+
+        默认接口请求并发限制：10题/分钟。
+
+        :param request: Request instance for SubmitQuestionMarkAgentJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SubmitQuestionMarkAgentJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SubmitQuestionMarkAgentJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitQuestionMarkAgentJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitQuestionMarkAgentJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

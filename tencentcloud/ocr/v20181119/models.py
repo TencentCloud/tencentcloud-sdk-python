@@ -1114,6 +1114,145 @@ class AirTransport(AbstractModel):
         
 
 
+class AnswerInfo(AbstractModel):
+    r"""单题所有答案区域批改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HandwriteInfo: 手写答案内容，比如选择题的手写的选项、填空题的手写内容
+        :type HandwriteInfo: str
+        :param _IsCorrect: 答案是否正确
+        :type IsCorrect: bool
+        :param _AnswerAnalysis: 答案分析结果
+
+        :type AnswerAnalysis: str
+        :param _HandwriteInfoPositions: 答案区域的4个角点坐标, 是个长度为8的数组
+
+[0,1,2,3,4,5,6,7]
+
+(0,1) 左上角坐标
+(2,3) 右上角坐标
+(4,5) 右下角坐标
+(6,7) 左下角坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HandwriteInfoPositions: list of int
+        :param _RightAnswer: 返回正确答案内容
+
+QuestionConfigMap配置了（“TrueAnswer”：1）才生效返回
+        :type RightAnswer: str
+        :param _KnowledgePoints: 返回题目的知识点内容
+
+QuestionConfigMap配置了（“KnowledgePoints”：1）才生效返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgePoints: list of str
+        """
+        self._HandwriteInfo = None
+        self._IsCorrect = None
+        self._AnswerAnalysis = None
+        self._HandwriteInfoPositions = None
+        self._RightAnswer = None
+        self._KnowledgePoints = None
+
+    @property
+    def HandwriteInfo(self):
+        r"""手写答案内容，比如选择题的手写的选项、填空题的手写内容
+        :rtype: str
+        """
+        return self._HandwriteInfo
+
+    @HandwriteInfo.setter
+    def HandwriteInfo(self, HandwriteInfo):
+        self._HandwriteInfo = HandwriteInfo
+
+    @property
+    def IsCorrect(self):
+        r"""答案是否正确
+        :rtype: bool
+        """
+        return self._IsCorrect
+
+    @IsCorrect.setter
+    def IsCorrect(self, IsCorrect):
+        self._IsCorrect = IsCorrect
+
+    @property
+    def AnswerAnalysis(self):
+        r"""答案分析结果
+
+        :rtype: str
+        """
+        return self._AnswerAnalysis
+
+    @AnswerAnalysis.setter
+    def AnswerAnalysis(self, AnswerAnalysis):
+        self._AnswerAnalysis = AnswerAnalysis
+
+    @property
+    def HandwriteInfoPositions(self):
+        r"""答案区域的4个角点坐标, 是个长度为8的数组
+
+[0,1,2,3,4,5,6,7]
+
+(0,1) 左上角坐标
+(2,3) 右上角坐标
+(4,5) 右下角坐标
+(6,7) 左下角坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._HandwriteInfoPositions
+
+    @HandwriteInfoPositions.setter
+    def HandwriteInfoPositions(self, HandwriteInfoPositions):
+        self._HandwriteInfoPositions = HandwriteInfoPositions
+
+    @property
+    def RightAnswer(self):
+        r"""返回正确答案内容
+
+QuestionConfigMap配置了（“TrueAnswer”：1）才生效返回
+        :rtype: str
+        """
+        return self._RightAnswer
+
+    @RightAnswer.setter
+    def RightAnswer(self, RightAnswer):
+        self._RightAnswer = RightAnswer
+
+    @property
+    def KnowledgePoints(self):
+        r"""返回题目的知识点内容
+
+QuestionConfigMap配置了（“KnowledgePoints”：1）才生效返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._KnowledgePoints
+
+    @KnowledgePoints.setter
+    def KnowledgePoints(self, KnowledgePoints):
+        self._KnowledgePoints = KnowledgePoints
+
+
+    def _deserialize(self, params):
+        self._HandwriteInfo = params.get("HandwriteInfo")
+        self._IsCorrect = params.get("IsCorrect")
+        self._AnswerAnalysis = params.get("AnswerAnalysis")
+        self._HandwriteInfoPositions = params.get("HandwriteInfoPositions")
+        self._RightAnswer = params.get("RightAnswer")
+        self._KnowledgePoints = params.get("KnowledgePoints")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ArithmeticOCRRequest(AbstractModel):
     r"""ArithmeticOCR请求参数结构体
 
@@ -4634,6 +4773,150 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
         self._ErrorMessage = params.get("ErrorMessage")
         self._JobStatus = params.get("JobStatus")
         self._ThoughtContent = params.get("ThoughtContent")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQuestionMarkAgentJobRequest(AbstractModel):
+    r"""DescribeQuestionMarkAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务唯一ID。由服务端生成。	
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务唯一ID。由服务端生成。	
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuestionMarkAgentJobResponse(AbstractModel):
+    r"""DescribeQuestionMarkAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type JobStatus: str
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :type Angle: float
+        :param _MarkInfos: 试题批改信息
+        :type MarkInfos: list of MarkInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._JobStatus = None
+        self._Angle = None
+        self._MarkInfos = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def JobStatus(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def Angle(self):
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def MarkInfos(self):
+        r"""试题批改信息
+        :rtype: list of MarkInfo
+        """
+        return self._MarkInfos
+
+    @MarkInfos.setter
+    def MarkInfos(self, MarkInfos):
+        self._MarkInfos = MarkInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._JobStatus = params.get("JobStatus")
+        self._Angle = params.get("Angle")
+        if params.get("MarkInfos") is not None:
+            self._MarkInfos = []
+            for item in params.get("MarkInfos"):
+                obj = MarkInfo()
+                obj._deserialize(item)
+                self._MarkInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18112,6 +18395,86 @@ class MainlandTravelPermitBackInfos(AbstractModel):
         
 
 
+class MarkInfo(AbstractModel):
+    r"""整张试卷所有题目批改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkItemTitle: 题目的题干信息 
+
+
+        :type MarkItemTitle: str
+        :param _AnswerInfos: 批改答案列表（每个小题存在多个答案，比如多个填空区域答案，循序按照从左到右，从上到下排列）
+        :type AnswerInfos: list of AnswerInfo
+        :param _MarkInfos: 嵌套题目结构（如果有多层嵌套则会返回子题信息，如果没有嵌套题目则返回空）
+        :type MarkInfos: list of MarkInfo
+        """
+        self._MarkItemTitle = None
+        self._AnswerInfos = None
+        self._MarkInfos = None
+
+    @property
+    def MarkItemTitle(self):
+        r"""题目的题干信息 
+
+
+        :rtype: str
+        """
+        return self._MarkItemTitle
+
+    @MarkItemTitle.setter
+    def MarkItemTitle(self, MarkItemTitle):
+        self._MarkItemTitle = MarkItemTitle
+
+    @property
+    def AnswerInfos(self):
+        r"""批改答案列表（每个小题存在多个答案，比如多个填空区域答案，循序按照从左到右，从上到下排列）
+        :rtype: list of AnswerInfo
+        """
+        return self._AnswerInfos
+
+    @AnswerInfos.setter
+    def AnswerInfos(self, AnswerInfos):
+        self._AnswerInfos = AnswerInfos
+
+    @property
+    def MarkInfos(self):
+        r"""嵌套题目结构（如果有多层嵌套则会返回子题信息，如果没有嵌套题目则返回空）
+        :rtype: list of MarkInfo
+        """
+        return self._MarkInfos
+
+    @MarkInfos.setter
+    def MarkInfos(self, MarkInfos):
+        self._MarkInfos = MarkInfos
+
+
+    def _deserialize(self, params):
+        self._MarkItemTitle = params.get("MarkItemTitle")
+        if params.get("AnswerInfos") is not None:
+            self._AnswerInfos = []
+            for item in params.get("AnswerInfos"):
+                obj = AnswerInfo()
+                obj._deserialize(item)
+                self._AnswerInfos.append(obj)
+        if params.get("MarkInfos") is not None:
+            self._MarkInfos = []
+            for item in params.get("MarkInfos"):
+                obj = MarkInfo()
+                obj._deserialize(item)
+                self._MarkInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MedicalInvoice(AbstractModel):
     r"""医疗票据信息
 
@@ -31066,6 +31429,218 @@ class SubmitExtractDocAgentJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitQuestionMarkAgentJobRequest(AbstractModel):
+    r"""SubmitQuestionMarkAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        :type ImageBase64: str
+        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        :type ImageUrl: str
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
+        :type PdfPageNumber: int
+        :param _BoolSingleQuestion: 表示整张试卷批改需要先切题，默认为false
+        :type BoolSingleQuestion: bool
+        :param _EnableDeepThink: 默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢
+        :type EnableDeepThink: bool
+        :param _QuestionConfigMap: 题目信息输出配置，当key对应为true表示开启配置开关。     当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；当key为ReturnAnswerPosition  value为false表示不输出手写答案坐标（降低处理耗时，按需输出）； 设置方式参考  {"KnowledgePoints":true,"TrueAnswer":true}
+        :type QuestionConfigMap: str
+        :param _ReferenceAnswer: 仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中
+        :type ReferenceAnswer: str
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._PdfPageNumber = None
+        self._BoolSingleQuestion = None
+        self._EnableDeepThink = None
+        self._QuestionConfigMap = None
+        self._ReferenceAnswer = None
+
+    @property
+    def ImageBase64(self):
+        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def PdfPageNumber(self):
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def BoolSingleQuestion(self):
+        warnings.warn("parameter `BoolSingleQuestion` is deprecated", DeprecationWarning) 
+
+        r"""表示整张试卷批改需要先切题，默认为false
+        :rtype: bool
+        """
+        return self._BoolSingleQuestion
+
+    @BoolSingleQuestion.setter
+    def BoolSingleQuestion(self, BoolSingleQuestion):
+        warnings.warn("parameter `BoolSingleQuestion` is deprecated", DeprecationWarning) 
+
+        self._BoolSingleQuestion = BoolSingleQuestion
+
+    @property
+    def EnableDeepThink(self):
+        warnings.warn("parameter `EnableDeepThink` is deprecated", DeprecationWarning) 
+
+        r"""默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢
+        :rtype: bool
+        """
+        return self._EnableDeepThink
+
+    @EnableDeepThink.setter
+    def EnableDeepThink(self, EnableDeepThink):
+        warnings.warn("parameter `EnableDeepThink` is deprecated", DeprecationWarning) 
+
+        self._EnableDeepThink = EnableDeepThink
+
+    @property
+    def QuestionConfigMap(self):
+        r"""题目信息输出配置，当key对应为true表示开启配置开关。     当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；当key为ReturnAnswerPosition  value为false表示不输出手写答案坐标（降低处理耗时，按需输出）； 设置方式参考  {"KnowledgePoints":true,"TrueAnswer":true}
+        :rtype: str
+        """
+        return self._QuestionConfigMap
+
+    @QuestionConfigMap.setter
+    def QuestionConfigMap(self, QuestionConfigMap):
+        self._QuestionConfigMap = QuestionConfigMap
+
+    @property
+    def ReferenceAnswer(self):
+        r"""仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中
+        :rtype: str
+        """
+        return self._ReferenceAnswer
+
+    @ReferenceAnswer.setter
+    def ReferenceAnswer(self, ReferenceAnswer):
+        self._ReferenceAnswer = ReferenceAnswer
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._BoolSingleQuestion = params.get("BoolSingleQuestion")
+        self._EnableDeepThink = params.get("EnableDeepThink")
+        self._QuestionConfigMap = params.get("QuestionConfigMap")
+        self._ReferenceAnswer = params.get("ReferenceAnswer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitQuestionMarkAgentJobResponse(AbstractModel):
+    r"""SubmitQuestionMarkAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务唯一ID。由服务端生成.
+        :type JobId: str
+        :param _QuestionInfo: 切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）
+        :type QuestionInfo: list of QuestionInfo
+        :param _QuestionCount: 题目切题数量，作为计费题目数总量
+        :type QuestionCount: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._QuestionInfo = None
+        self._QuestionCount = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""任务唯一ID。由服务端生成.
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def QuestionInfo(self):
+        r"""切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
+
+    @property
+    def QuestionCount(self):
+        r"""题目切题数量，作为计费题目数总量
+        :rtype: str
+        """
+        return self._QuestionCount
+
+    @QuestionCount.setter
+    def QuestionCount(self, QuestionCount):
+        self._QuestionCount = QuestionCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
+        self._QuestionCount = params.get("QuestionCount")
         self._RequestId = params.get("RequestId")
 
 

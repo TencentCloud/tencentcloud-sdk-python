@@ -1206,6 +1206,72 @@ class BackupInfo(AbstractModel):
         
 
 
+class BackupTotalSize(AbstractModel):
+    r"""实例备份总大小
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotSize: 全量备份总大小，单位字节
+        :type SnapshotSize: int
+        :param _OplogSize: 增量备份总大小
+        :type OplogSize: int
+        :param _FreeQuota: 免费额度
+        :type FreeQuota: int
+        """
+        self._SnapshotSize = None
+        self._OplogSize = None
+        self._FreeQuota = None
+
+    @property
+    def SnapshotSize(self):
+        r"""全量备份总大小，单位字节
+        :rtype: int
+        """
+        return self._SnapshotSize
+
+    @SnapshotSize.setter
+    def SnapshotSize(self, SnapshotSize):
+        self._SnapshotSize = SnapshotSize
+
+    @property
+    def OplogSize(self):
+        r"""增量备份总大小
+        :rtype: int
+        """
+        return self._OplogSize
+
+    @OplogSize.setter
+    def OplogSize(self, OplogSize):
+        self._OplogSize = OplogSize
+
+    @property
+    def FreeQuota(self):
+        r"""免费额度
+        :rtype: int
+        """
+        return self._FreeQuota
+
+    @FreeQuota.setter
+    def FreeQuota(self, FreeQuota):
+        self._FreeQuota = FreeQuota
+
+
+    def _deserialize(self, params):
+        self._SnapshotSize = params.get("SnapshotSize")
+        self._OplogSize = params.get("OplogSize")
+        self._FreeQuota = params.get("FreeQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientConnection(AbstractModel):
     r"""客户端连接信息，包括客户端IP和连接数
 
@@ -4787,18 +4853,49 @@ class DescribeBackupRulesResponse(AbstractModel):
         r"""
         :param _BackupSaveTime: 备份数据保留期限。单位为：天。
         :type BackupSaveTime: int
+        :param _BackupFrequency: 备份频率。备份时间间隔，单位小时。取值12，24
+        :type BackupFrequency: int
         :param _BackupTime: 自动备份开始时间。
         :type BackupTime: int
         :param _BackupMethod: 备份方式。
 - 0：逻辑备份。
 - 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :type BackupMethod: int
+        :param _ActiveWeekdays: 周几备份，0-6，逗号分割
+        :type ActiveWeekdays: str
+        :param _LongTermInterval: 长期备份周期。weekly-按周，monthly-按月，空不开启。
+        :type LongTermInterval: str
+        :param _LongTermActiveDays: 长期备份的日期，周0-6，月1-31
+        :type LongTermActiveDays: str
+        :param _LongTermExpiredDays: 长期备份保留时间
+        :type LongTermExpiredDays: int
+        :param _OplogExpiredDays: 增量备份保留时间
+        :type OplogExpiredDays: int
+        :param _BackupVersion: 备份版本号。0-旧备份方式，1-高级备份
+        :type BackupVersion: int
+        :param _BackupTotalSize: 备份大小
+        :type BackupTotalSize: :class:`tencentcloud.mongodb.v20190725.models.BackupTotalSize`
+        :param _AlertThreshold: 告警额度
+        :type AlertThreshold: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackupSaveTime = None
+        self._BackupFrequency = None
         self._BackupTime = None
         self._BackupMethod = None
+        self._ActiveWeekdays = None
+        self._LongTermInterval = None
+        self._LongTermActiveDays = None
+        self._LongTermExpiredDays = None
+        self._OplogExpiredDays = None
+        self._BackupVersion = None
+        self._BackupTotalSize = None
+        self._AlertThreshold = None
         self._RequestId = None
 
     @property
@@ -4811,6 +4908,17 @@ class DescribeBackupRulesResponse(AbstractModel):
     @BackupSaveTime.setter
     def BackupSaveTime(self, BackupSaveTime):
         self._BackupSaveTime = BackupSaveTime
+
+    @property
+    def BackupFrequency(self):
+        r"""备份频率。备份时间间隔，单位小时。取值12，24
+        :rtype: int
+        """
+        return self._BackupFrequency
+
+    @BackupFrequency.setter
+    def BackupFrequency(self, BackupFrequency):
+        self._BackupFrequency = BackupFrequency
 
     @property
     def BackupTime(self):
@@ -4828,6 +4936,10 @@ class DescribeBackupRulesResponse(AbstractModel):
         r"""备份方式。
 - 0：逻辑备份。
 - 1：物理备份。
+- 3：快照备份。
+**说明**:
+1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+2. 实例开通存储加密，则备份方式不能为物理备份。
         :rtype: int
         """
         return self._BackupMethod
@@ -4835,6 +4947,94 @@ class DescribeBackupRulesResponse(AbstractModel):
     @BackupMethod.setter
     def BackupMethod(self, BackupMethod):
         self._BackupMethod = BackupMethod
+
+    @property
+    def ActiveWeekdays(self):
+        r"""周几备份，0-6，逗号分割
+        :rtype: str
+        """
+        return self._ActiveWeekdays
+
+    @ActiveWeekdays.setter
+    def ActiveWeekdays(self, ActiveWeekdays):
+        self._ActiveWeekdays = ActiveWeekdays
+
+    @property
+    def LongTermInterval(self):
+        r"""长期备份周期。weekly-按周，monthly-按月，空不开启。
+        :rtype: str
+        """
+        return self._LongTermInterval
+
+    @LongTermInterval.setter
+    def LongTermInterval(self, LongTermInterval):
+        self._LongTermInterval = LongTermInterval
+
+    @property
+    def LongTermActiveDays(self):
+        r"""长期备份的日期，周0-6，月1-31
+        :rtype: str
+        """
+        return self._LongTermActiveDays
+
+    @LongTermActiveDays.setter
+    def LongTermActiveDays(self, LongTermActiveDays):
+        self._LongTermActiveDays = LongTermActiveDays
+
+    @property
+    def LongTermExpiredDays(self):
+        r"""长期备份保留时间
+        :rtype: int
+        """
+        return self._LongTermExpiredDays
+
+    @LongTermExpiredDays.setter
+    def LongTermExpiredDays(self, LongTermExpiredDays):
+        self._LongTermExpiredDays = LongTermExpiredDays
+
+    @property
+    def OplogExpiredDays(self):
+        r"""增量备份保留时间
+        :rtype: int
+        """
+        return self._OplogExpiredDays
+
+    @OplogExpiredDays.setter
+    def OplogExpiredDays(self, OplogExpiredDays):
+        self._OplogExpiredDays = OplogExpiredDays
+
+    @property
+    def BackupVersion(self):
+        r"""备份版本号。0-旧备份方式，1-高级备份
+        :rtype: int
+        """
+        return self._BackupVersion
+
+    @BackupVersion.setter
+    def BackupVersion(self, BackupVersion):
+        self._BackupVersion = BackupVersion
+
+    @property
+    def BackupTotalSize(self):
+        r"""备份大小
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.BackupTotalSize`
+        """
+        return self._BackupTotalSize
+
+    @BackupTotalSize.setter
+    def BackupTotalSize(self, BackupTotalSize):
+        self._BackupTotalSize = BackupTotalSize
+
+    @property
+    def AlertThreshold(self):
+        r"""告警额度
+        :rtype: int
+        """
+        return self._AlertThreshold
+
+    @AlertThreshold.setter
+    def AlertThreshold(self, AlertThreshold):
+        self._AlertThreshold = AlertThreshold
 
     @property
     def RequestId(self):
@@ -4850,8 +5050,19 @@ class DescribeBackupRulesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._BackupSaveTime = params.get("BackupSaveTime")
+        self._BackupFrequency = params.get("BackupFrequency")
         self._BackupTime = params.get("BackupTime")
         self._BackupMethod = params.get("BackupMethod")
+        self._ActiveWeekdays = params.get("ActiveWeekdays")
+        self._LongTermInterval = params.get("LongTermInterval")
+        self._LongTermActiveDays = params.get("LongTermActiveDays")
+        self._LongTermExpiredDays = params.get("LongTermExpiredDays")
+        self._OplogExpiredDays = params.get("OplogExpiredDays")
+        self._BackupVersion = params.get("BackupVersion")
+        if params.get("BackupTotalSize") is not None:
+            self._BackupTotalSize = BackupTotalSize()
+            self._BackupTotalSize._deserialize(params.get("BackupTotalSize"))
+        self._AlertThreshold = params.get("AlertThreshold")
         self._RequestId = params.get("RequestId")
 
 
@@ -14959,10 +15170,7 @@ class SetBackupRulesRequest(AbstractModel):
 - 示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。
 - 默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。
         :type ActiveWeekdays: str
-        :param _LongTermUnit: 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。
-- 不开启（默认）：不启用长期保留功能。
-- 按周保留： 指定为 weekly。
-- 按月保留： 指定为 monthly。
+        :param _LongTermUnit: 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
         :type LongTermUnit: str
         :param _LongTermActiveDays: 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
 - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
@@ -14979,11 +15187,12 @@ class SetBackupRulesRequest(AbstractModel):
 - 旧版本备份：0。
 - 开启高级备份：1。
         :type BackupVersion: int
-        :param _AlarmWaterLevel: 设置备份数据集存储空间使用率的告警阈值。
-- 单位：%。
--  默认值：100。
-- 取值范围：[50,300]。
+        :param _AlarmWaterLevel: 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
         :type AlarmWaterLevel: int
+        :param _LongTermInterval: 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+        :type LongTermInterval: str
+        :param _AlertThreshold: 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+        :type AlertThreshold: int
         """
         self._InstanceId = None
         self._BackupMethod = None
@@ -14998,6 +15207,8 @@ class SetBackupRulesRequest(AbstractModel):
         self._OplogExpiredDays = None
         self._BackupVersion = None
         self._AlarmWaterLevel = None
+        self._LongTermInterval = None
+        self._AlertThreshold = None
 
     @property
     def InstanceId(self):
@@ -15093,10 +15304,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def LongTermUnit(self):
-        r"""长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。
-- 不开启（默认）：不启用长期保留功能。
-- 按周保留： 指定为 weekly。
-- 按月保留： 指定为 monthly。
+        r"""长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
         :rtype: str
         """
         return self._LongTermUnit
@@ -15158,10 +15366,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def AlarmWaterLevel(self):
-        r"""设置备份数据集存储空间使用率的告警阈值。
-- 单位：%。
--  默认值：100。
-- 取值范围：[50,300]。
+        r"""设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
         :rtype: int
         """
         return self._AlarmWaterLevel
@@ -15169,6 +15374,28 @@ class SetBackupRulesRequest(AbstractModel):
     @AlarmWaterLevel.setter
     def AlarmWaterLevel(self, AlarmWaterLevel):
         self._AlarmWaterLevel = AlarmWaterLevel
+
+    @property
+    def LongTermInterval(self):
+        r"""长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+        :rtype: str
+        """
+        return self._LongTermInterval
+
+    @LongTermInterval.setter
+    def LongTermInterval(self, LongTermInterval):
+        self._LongTermInterval = LongTermInterval
+
+    @property
+    def AlertThreshold(self):
+        r"""设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+        :rtype: int
+        """
+        return self._AlertThreshold
+
+    @AlertThreshold.setter
+    def AlertThreshold(self, AlertThreshold):
+        self._AlertThreshold = AlertThreshold
 
 
     def _deserialize(self, params):
@@ -15185,6 +15412,8 @@ class SetBackupRulesRequest(AbstractModel):
         self._OplogExpiredDays = params.get("OplogExpiredDays")
         self._BackupVersion = params.get("BackupVersion")
         self._AlarmWaterLevel = params.get("AlarmWaterLevel")
+        self._LongTermInterval = params.get("LongTermInterval")
+        self._AlertThreshold = params.get("AlertThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

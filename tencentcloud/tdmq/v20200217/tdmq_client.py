@@ -420,6 +420,30 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQGroupV2(self, request):
+        r"""创建 RocketMQ 消费组。
+        当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
+
+        :param request: Request instance for CreateRocketMQGroupV2.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupV2Request`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQGroupV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQGroupV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQNamespace(self, request):
         r"""创建 RocketMQ 命名空间。
         当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
