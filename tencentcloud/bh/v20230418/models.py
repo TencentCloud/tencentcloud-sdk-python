@@ -21259,7 +21259,7 @@ class SearchSubtaskResultByIdRequest(AbstractModel):
         :type Limit: int
         :param _Id: 运维父任务执行日志ID
         :type Id: str
-        :param _Status: 运维父任务执行状态
+        :param _Status: 运维父任务执行状态。1 - 执行中，2 - 成功，3 - 失败，4 - 超时
         :type Status: list of int non-negative
         """
         self._Name = None
@@ -21314,7 +21314,7 @@ class SearchSubtaskResultByIdRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""运维父任务执行状态
+        r"""运维父任务执行状态。1 - 执行中，2 - 成功，3 - 失败，4 - 超时
         :rtype: list of int non-negative
         """
         return self._Status
@@ -21349,10 +21349,13 @@ class SearchSubtaskResultByIdResponse(AbstractModel):
         r"""
         :param _TotalCount: 记录数
         :type TotalCount: int
+        :param _SubtaskResult: 运维子任务执行结果
+        :type SubtaskResult: list of SubtaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._SubtaskResult = None
         self._RequestId = None
 
     @property
@@ -21365,6 +21368,17 @@ class SearchSubtaskResultByIdResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def SubtaskResult(self):
+        r"""运维子任务执行结果
+        :rtype: list of SubtaskResult
+        """
+        return self._SubtaskResult
+
+    @SubtaskResult.setter
+    def SubtaskResult(self, SubtaskResult):
+        self._SubtaskResult = SubtaskResult
 
     @property
     def RequestId(self):
@@ -21380,6 +21394,12 @@ class SearchSubtaskResultByIdResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("SubtaskResult") is not None:
+            self._SubtaskResult = []
+            for item in params.get("SubtaskResult"):
+                obj = SubtaskResult()
+                obj._deserialize(item)
+                self._SubtaskResult.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22326,6 +22346,256 @@ class SourceType(AbstractModel):
         self._Type = params.get("Type")
         self._Name = params.get("Name")
         self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtaskResult(AbstractModel):
+    r"""运维子任务执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 执行日志ID
+        :type Id: str
+        :param _InstanceId: 执行主机实例ID
+        :type InstanceId: str
+        :param _Name: 执行主机名称
+        :type Name: str
+        :param _ApCode: 执行主机地域
+        :type ApCode: str
+        :param _PublicIp: 执行主机外网IP
+        :type PublicIp: str
+        :param _PrivateIp: 执行主机内网IP
+        :type PrivateIp: str
+        :param _Status: 运维任务状态 1 - 执行中，2 - 成功， 3 - 失败，4 - 超时
+        :type Status: int
+        :param _Reason: 运维任务失败原因
+        :type Reason: str
+        :param _ExitCode: 运维任务命令退出码
+        :type ExitCode: int
+        :param _StartTime: 运维任务开始时间
+        :type StartTime: str
+        :param _EndTime: 运维任务结束时间
+        :type EndTime: str
+        :param _StdOut: 运维任务执行结果输出。默认超出16384字节的内容会被自动截断
+        :type StdOut: str
+        :param _StdErr: 运维任务执行结果错误
+        :type StdErr: str
+        :param _DeviceName: 资产名
+        :type DeviceName: str
+        :param _Account: 资产账号
+        :type Account: str
+        """
+        self._Id = None
+        self._InstanceId = None
+        self._Name = None
+        self._ApCode = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._Status = None
+        self._Reason = None
+        self._ExitCode = None
+        self._StartTime = None
+        self._EndTime = None
+        self._StdOut = None
+        self._StdErr = None
+        self._DeviceName = None
+        self._Account = None
+
+    @property
+    def Id(self):
+        r"""执行日志ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InstanceId(self):
+        r"""执行主机实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
+        r"""执行主机名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
+        self._Name = Name
+
+    @property
+    def ApCode(self):
+        r"""执行主机地域
+        :rtype: str
+        """
+        return self._ApCode
+
+    @ApCode.setter
+    def ApCode(self, ApCode):
+        self._ApCode = ApCode
+
+    @property
+    def PublicIp(self):
+        r"""执行主机外网IP
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""执行主机内网IP
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def Status(self):
+        r"""运维任务状态 1 - 执行中，2 - 成功， 3 - 失败，4 - 超时
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""运维任务失败原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ExitCode(self):
+        r"""运维任务命令退出码
+        :rtype: int
+        """
+        return self._ExitCode
+
+    @ExitCode.setter
+    def ExitCode(self, ExitCode):
+        self._ExitCode = ExitCode
+
+    @property
+    def StartTime(self):
+        r"""运维任务开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""运维任务结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StdOut(self):
+        r"""运维任务执行结果输出。默认超出16384字节的内容会被自动截断
+        :rtype: str
+        """
+        return self._StdOut
+
+    @StdOut.setter
+    def StdOut(self, StdOut):
+        self._StdOut = StdOut
+
+    @property
+    def StdErr(self):
+        r"""运维任务执行结果错误
+        :rtype: str
+        """
+        return self._StdErr
+
+    @StdErr.setter
+    def StdErr(self, StdErr):
+        self._StdErr = StdErr
+
+    @property
+    def DeviceName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Account(self):
+        r"""资产账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._ApCode = params.get("ApCode")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._ExitCode = params.get("ExitCode")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StdOut = params.get("StdOut")
+        self._StdErr = params.get("StdErr")
+        self._DeviceName = params.get("DeviceName")
+        self._Account = params.get("Account")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

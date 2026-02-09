@@ -954,9 +954,12 @@ class DeleteDataAgentSessionRequest(AbstractModel):
         :type InstanceId: str
         :param _SessionId: 会话ID
         :type SessionId: str
+        :param _SessionIds: 批量删除 会话id 列表
+        :type SessionIds: list of str
         """
         self._InstanceId = None
         self._SessionId = None
+        self._SessionIds = None
 
     @property
     def InstanceId(self):
@@ -980,10 +983,22 @@ class DeleteDataAgentSessionRequest(AbstractModel):
     def SessionId(self, SessionId):
         self._SessionId = SessionId
 
+    @property
+    def SessionIds(self):
+        r"""批量删除 会话id 列表
+        :rtype: list of str
+        """
+        return self._SessionIds
+
+    @SessionIds.setter
+    def SessionIds(self, SessionIds):
+        self._SessionIds = SessionIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SessionId = params.get("SessionId")
+        self._SessionIds = params.get("SessionIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1003,10 +1018,13 @@ class DeleteDataAgentSessionResponse(AbstractModel):
         r"""
         :param _SessionId: 删除的会话ID
         :type SessionId: str
+        :param _SessionIds: 删除的会话ID列表
+        :type SessionIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SessionId = None
+        self._SessionIds = None
         self._RequestId = None
 
     @property
@@ -1019,6 +1037,17 @@ class DeleteDataAgentSessionResponse(AbstractModel):
     @SessionId.setter
     def SessionId(self, SessionId):
         self._SessionId = SessionId
+
+    @property
+    def SessionIds(self):
+        r"""删除的会话ID列表
+        :rtype: list of str
+        """
+        return self._SessionIds
+
+    @SessionIds.setter
+    def SessionIds(self, SessionIds):
+        self._SessionIds = SessionIds
 
     @property
     def RequestId(self):
@@ -1034,6 +1063,7 @@ class DeleteDataAgentSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
+        self._SessionIds = params.get("SessionIds")
         self._RequestId = params.get("RequestId")
 
 

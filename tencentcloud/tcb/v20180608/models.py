@@ -4654,6 +4654,204 @@ class ClsInfo(AbstractModel):
         
 
 
+class ClusterDetail(AbstractModel):
+    r"""TDSQL-C数据库详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsOpenPubNetAccess: 是否开启公网访问
+        :type IsOpenPubNetAccess: bool
+        :param _MaxCpu: 最大算力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxCpu: float
+        :param _MinCpu: 最小算力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinCpu: float
+        :param _Status: TDSQL-C集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _UsedStorage: 存储用量（单位：MB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedStorage: int
+        :param _StorageLimit: 最大存储量（单位：GB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageLimit: int
+        :param _DbType: 数据库类型
+        :type DbType: str
+        :param _DbVersion: 数据库类型
+        :type DbVersion: str
+        :param _WanStatus: 公网访问状态；open开启，opening开启中，closed关闭，closing关闭中
+        :type WanStatus: str
+        :param _ClusterStatus: 数据库集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: str
+        :param _ServerlessStatus: serverless状态
+        :type ServerlessStatus: str
+        """
+        self._IsOpenPubNetAccess = None
+        self._MaxCpu = None
+        self._MinCpu = None
+        self._Status = None
+        self._UsedStorage = None
+        self._StorageLimit = None
+        self._DbType = None
+        self._DbVersion = None
+        self._WanStatus = None
+        self._ClusterStatus = None
+        self._ServerlessStatus = None
+
+    @property
+    def IsOpenPubNetAccess(self):
+        r"""是否开启公网访问
+        :rtype: bool
+        """
+        return self._IsOpenPubNetAccess
+
+    @IsOpenPubNetAccess.setter
+    def IsOpenPubNetAccess(self, IsOpenPubNetAccess):
+        self._IsOpenPubNetAccess = IsOpenPubNetAccess
+
+    @property
+    def MaxCpu(self):
+        r"""最大算力
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MinCpu(self):
+        r"""最小算力
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def Status(self):
+        r"""TDSQL-C集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UsedStorage(self):
+        r"""存储用量（单位：MB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UsedStorage
+
+    @UsedStorage.setter
+    def UsedStorage(self, UsedStorage):
+        self._UsedStorage = UsedStorage
+
+    @property
+    def StorageLimit(self):
+        r"""最大存储量（单位：GB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def DbType(self):
+        r"""数据库类型
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def DbVersion(self):
+        r"""数据库类型
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def WanStatus(self):
+        r"""公网访问状态；open开启，opening开启中，closed关闭，closing关闭中
+        :rtype: str
+        """
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def ClusterStatus(self):
+        r"""数据库集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ServerlessStatus(self):
+        r"""serverless状态
+        :rtype: str
+        """
+        return self._ServerlessStatus
+
+    @ServerlessStatus.setter
+    def ServerlessStatus(self, ServerlessStatus):
+        self._ServerlessStatus = ServerlessStatus
+
+
+    def _deserialize(self, params):
+        self._IsOpenPubNetAccess = params.get("IsOpenPubNetAccess")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MinCpu = params.get("MinCpu")
+        self._Status = params.get("Status")
+        self._UsedStorage = params.get("UsedStorage")
+        self._StorageLimit = params.get("StorageLimit")
+        self._DbType = params.get("DbType")
+        self._DbVersion = params.get("DbVersion")
+        self._WanStatus = params.get("WanStatus")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ServerlessStatus = params.get("ServerlessStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeSource(AbstractModel):
     r"""云开发项目来源
 
@@ -5283,6 +5481,276 @@ class CreateBillDealRequest(AbstractModel):
     r"""CreateBillDeal请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DealType: 当前下单的操作类型，可取[purchase,renew,modify]三种值，分别代表新购，续费，变配。
+        :type DealType: str
+        :param _ProductType: 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
+        :type ProductType: str
+        :param _PackageId: 目标下单产品/套餐Id
+        :type PackageId: str
+        :param _CreateAndPay: 默认只下单不支付，为ture则下单并支付
+        :type CreateAndPay: bool
+        :param _TimeSpan: 购买时长
+        :type TimeSpan: int
+        :param _TimeUnit: 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+        :type TimeUnit: str
+        :param _ResourceId: 资源唯一标识
+        :type ResourceId: str
+        :param _Source: 来源可选[qcloud,miniapp]，默认qcloud
+        :type Source: str
+        :param _Alias: 资源别名
+        :type Alias: str
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _EnableExcess: 开启超限按量
+        :type EnableExcess: bool
+        :param _ModifyPackageId: 变配目标产品/套餐id
+        :type ModifyPackageId: str
+        :param _Extension: jsonstr附加信息
+        :type Extension: str
+        :param _AutoVoucher: 是否自动选择代金券支付
+        :type AutoVoucher: bool
+        :param _ResourceTypes: 资源类型。
+代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要发货哪些资源。
+可取值：flexdb, cos, cdn, scf
+
+        :type ResourceTypes: list of str
+        :param _EnvTags: 环境标签。
+ 代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要打的标签。
+
+        :type EnvTags: list of Tag
+        """
+        self._DealType = None
+        self._ProductType = None
+        self._PackageId = None
+        self._CreateAndPay = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ResourceId = None
+        self._Source = None
+        self._Alias = None
+        self._EnvId = None
+        self._EnableExcess = None
+        self._ModifyPackageId = None
+        self._Extension = None
+        self._AutoVoucher = None
+        self._ResourceTypes = None
+        self._EnvTags = None
+
+    @property
+    def DealType(self):
+        r"""当前下单的操作类型，可取[purchase,renew,modify]三种值，分别代表新购，续费，变配。
+        :rtype: str
+        """
+        return self._DealType
+
+    @DealType.setter
+    def DealType(self, DealType):
+        self._DealType = DealType
+
+    @property
+    def ProductType(self):
+        r"""购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def PackageId(self):
+        r"""目标下单产品/套餐Id
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def CreateAndPay(self):
+        r"""默认只下单不支付，为ture则下单并支付
+        :rtype: bool
+        """
+        return self._CreateAndPay
+
+    @CreateAndPay.setter
+    def CreateAndPay(self, CreateAndPay):
+        self._CreateAndPay = CreateAndPay
+
+    @property
+    def TimeSpan(self):
+        r"""购买时长
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ResourceId(self):
+        r"""资源唯一标识
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Source(self):
+        r"""来源可选[qcloud,miniapp]，默认qcloud
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Alias(self):
+        r"""资源别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnableExcess(self):
+        r"""开启超限按量
+        :rtype: bool
+        """
+        return self._EnableExcess
+
+    @EnableExcess.setter
+    def EnableExcess(self, EnableExcess):
+        self._EnableExcess = EnableExcess
+
+    @property
+    def ModifyPackageId(self):
+        r"""变配目标产品/套餐id
+        :rtype: str
+        """
+        return self._ModifyPackageId
+
+    @ModifyPackageId.setter
+    def ModifyPackageId(self, ModifyPackageId):
+        self._ModifyPackageId = ModifyPackageId
+
+    @property
+    def Extension(self):
+        r"""jsonstr附加信息
+        :rtype: str
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券支付
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def ResourceTypes(self):
+        r"""资源类型。
+代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要发货哪些资源。
+可取值：flexdb, cos, cdn, scf
+
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def EnvTags(self):
+        r"""环境标签。
+ 代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要打的标签。
+
+        :rtype: list of Tag
+        """
+        return self._EnvTags
+
+    @EnvTags.setter
+    def EnvTags(self, EnvTags):
+        self._EnvTags = EnvTags
+
+
+    def _deserialize(self, params):
+        self._DealType = params.get("DealType")
+        self._ProductType = params.get("ProductType")
+        self._PackageId = params.get("PackageId")
+        self._CreateAndPay = params.get("CreateAndPay")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ResourceId = params.get("ResourceId")
+        self._Source = params.get("Source")
+        self._Alias = params.get("Alias")
+        self._EnvId = params.get("EnvId")
+        self._EnableExcess = params.get("EnableExcess")
+        self._ModifyPackageId = params.get("ModifyPackageId")
+        self._Extension = params.get("Extension")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._ResourceTypes = params.get("ResourceTypes")
+        if params.get("EnvTags") is not None:
+            self._EnvTags = []
+            for item in params.get("EnvTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._EnvTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateBillDealResponse(AbstractModel):
@@ -6639,6 +7107,198 @@ class CreateIndex(AbstractModel):
         if params.get("MgoKeySchema") is not None:
             self._MgoKeySchema = MgoKeySchema()
             self._MgoKeySchema._deserialize(params.get("MgoKeySchema"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMySQLRequest(AbstractModel):
+    r"""CreateMySQL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _DbInstanceType: Db类型 1. FLEXDB 2.MYSQL
+        :type DbInstanceType: str
+        :param _MysqlVersion: mysql版本
+        :type MysqlVersion: str
+        :param _VpcId: vpc Id
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _LowerCaseTableNames: 0 区分表名大小写；1 不区分表名大小写(默认)
+        :type LowerCaseTableNames: str
+        """
+        self._EnvId = None
+        self._DbInstanceType = None
+        self._MysqlVersion = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._LowerCaseTableNames = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def DbInstanceType(self):
+        r"""Db类型 1. FLEXDB 2.MYSQL
+        :rtype: str
+        """
+        return self._DbInstanceType
+
+    @DbInstanceType.setter
+    def DbInstanceType(self, DbInstanceType):
+        self._DbInstanceType = DbInstanceType
+
+    @property
+    def MysqlVersion(self):
+        r"""mysql版本
+        :rtype: str
+        """
+        return self._MysqlVersion
+
+    @MysqlVersion.setter
+    def MysqlVersion(self, MysqlVersion):
+        self._MysqlVersion = MysqlVersion
+
+    @property
+    def VpcId(self):
+        r"""vpc Id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def LowerCaseTableNames(self):
+        r"""0 区分表名大小写；1 不区分表名大小写(默认)
+        :rtype: str
+        """
+        return self._LowerCaseTableNames
+
+    @LowerCaseTableNames.setter
+    def LowerCaseTableNames(self, LowerCaseTableNames):
+        self._LowerCaseTableNames = LowerCaseTableNames
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._DbInstanceType = params.get("DbInstanceType")
+        self._MysqlVersion = params.get("MysqlVersion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._LowerCaseTableNames = params.get("LowerCaseTableNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMySQLResponse(AbstractModel):
+    r"""CreateMySQL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 开通结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.CreateMySQLResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""开通结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateMySQLResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateMySQLResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMySQLResult(AbstractModel):
+    r"""开通Mysql 结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13024,6 +13684,170 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCreateMySQLResult(AbstractModel):
+    r"""查询开通Mysql结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态 notexist | init | doing | success | fail
+        :type Status: str
+        :param _FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _FreezeStatus: 是否冻结
+        :type FreezeStatus: bool
+        """
+        self._Status = None
+        self._FailReason = None
+        self._FreezeStatus = None
+
+    @property
+    def Status(self):
+        r"""状态 notexist | init | doing | success | fail
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailReason(self):
+        r"""失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FreezeStatus(self):
+        r"""是否冻结
+        :rtype: bool
+        """
+        return self._FreezeStatus
+
+    @FreezeStatus.setter
+    def FreezeStatus(self, FreezeStatus):
+        self._FreezeStatus = FreezeStatus
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._FailReason = params.get("FailReason")
+        self._FreezeStatus = params.get("FreezeStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCreateMySQLResultRequest(AbstractModel):
+    r"""DescribeCreateMySQLResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _TaskId: OpenMysql 返回任务 Id
+        :type TaskId: str
+        """
+        self._EnvId = None
+        self._TaskId = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TaskId(self):
+        r"""OpenMysql 返回任务 Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCreateMySQLResultResponse(AbstractModel):
+    r"""DescribeCreateMySQLResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询开通结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.DescribeCreateMySQLResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询开通结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCreateMySQLResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeCreateMySQLResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCurveDataRequest(AbstractModel):
     r"""DescribeCurveData请求参数结构体
 
@@ -15405,6 +16229,198 @@ class DescribeHostingDomainTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMySQLClusterDetailRequest(AbstractModel):
+    r"""DescribeMySQLClusterDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMySQLClusterDetailResponse(AbstractModel):
+    r"""DescribeMySQLClusterDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 集群详情
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.MySQLClusterDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""集群详情
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MySQLClusterDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = MySQLClusterDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMySQLTaskStatusRequest(AbstractModel):
+    r"""DescribeMySQLTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        :param _TaskName: 任务名
+        :type TaskName: str
+        """
+        self._EnvId = None
+        self._TaskId = None
+        self._TaskName = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TaskId(self):
+        r"""任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMySQLTaskStatusResponse(AbstractModel):
+    r"""DescribeMySQLTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务状态
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.MySQLTaskStatus`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务状态
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MySQLTaskStatus`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = MySQLTaskStatus()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePostpayFreeQuotasRequest(AbstractModel):
     r"""DescribePostpayFreeQuotas请求参数结构体
 
@@ -17328,6 +18344,153 @@ class DestroyEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DestroyMySQLRequest(AbstractModel):
+    r"""DestroyMySQL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境ID
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyMySQLResponse(AbstractModel):
+    r"""DestroyMySQL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 销毁结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.DestroyMySQLResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""销毁结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DestroyMySQLResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DestroyMySQLResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyMySQLResult(AbstractModel):
+    r"""销毁 Mysql 结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsSuccess: 是否成功
+        :type IsSuccess: bool
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TaskName: 任务名
+        :type TaskName: str
+        """
+        self._IsSuccess = None
+        self._TaskId = None
+        self._TaskName = None
+
+    @property
+    def IsSuccess(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._IsSuccess = params.get("IsSuccess")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DestroyStaticStoreRequest(AbstractModel):
@@ -21921,6 +23084,274 @@ class MongoConnector(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLClusterDetail(AbstractModel):
+    r"""MySql 集群详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbClusterId: 集群ID
+        :type DbClusterId: str
+        :param _NetInfo: 网络详情
+        :type NetInfo: :class:`tencentcloud.tcb.v20180608.models.MySQLNetDetail`
+        :param _DbInfo: 数据库详情
+        :type DbInfo: :class:`tencentcloud.tcb.v20180608.models.ClusterDetail`
+        """
+        self._DbClusterId = None
+        self._NetInfo = None
+        self._DbInfo = None
+
+    @property
+    def DbClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._DbClusterId
+
+    @DbClusterId.setter
+    def DbClusterId(self, DbClusterId):
+        self._DbClusterId = DbClusterId
+
+    @property
+    def NetInfo(self):
+        r"""网络详情
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MySQLNetDetail`
+        """
+        return self._NetInfo
+
+    @NetInfo.setter
+    def NetInfo(self, NetInfo):
+        self._NetInfo = NetInfo
+
+    @property
+    def DbInfo(self):
+        r"""数据库详情
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ClusterDetail`
+        """
+        return self._DbInfo
+
+    @DbInfo.setter
+    def DbInfo(self, DbInfo):
+        self._DbInfo = DbInfo
+
+
+    def _deserialize(self, params):
+        self._DbClusterId = params.get("DbClusterId")
+        if params.get("NetInfo") is not None:
+            self._NetInfo = MySQLNetDetail()
+            self._NetInfo._deserialize(params.get("NetInfo"))
+        if params.get("DbInfo") is not None:
+            self._DbInfo = ClusterDetail()
+            self._DbInfo._deserialize(params.get("DbInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLNetDetail(AbstractModel):
+    r"""TDSQL-C网络信息类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivateNetAddress: 内网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateNetAddress: str
+        :param _PubNetAddress: 外网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PubNetAddress: str
+        :param _Net: 网络信息（VPCID/SubnetID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Net: str
+        :param _PubNetAccessEnabled: 是否开通公网
+        :type PubNetAccessEnabled: bool
+        :param _VpcId: vpc id 
+        :type VpcId: str
+        :param _VpcName: vpc name
+        :type VpcName: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _SubnetName: 子网名
+        :type SubnetName: str
+        """
+        self._PrivateNetAddress = None
+        self._PubNetAddress = None
+        self._Net = None
+        self._PubNetAccessEnabled = None
+        self._VpcId = None
+        self._VpcName = None
+        self._SubnetId = None
+        self._SubnetName = None
+
+    @property
+    def PrivateNetAddress(self):
+        r"""内网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrivateNetAddress
+
+    @PrivateNetAddress.setter
+    def PrivateNetAddress(self, PrivateNetAddress):
+        self._PrivateNetAddress = PrivateNetAddress
+
+    @property
+    def PubNetAddress(self):
+        r"""外网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PubNetAddress
+
+    @PubNetAddress.setter
+    def PubNetAddress(self, PubNetAddress):
+        self._PubNetAddress = PubNetAddress
+
+    @property
+    def Net(self):
+        r"""网络信息（VPCID/SubnetID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Net
+
+    @Net.setter
+    def Net(self, Net):
+        self._Net = Net
+
+    @property
+    def PubNetAccessEnabled(self):
+        r"""是否开通公网
+        :rtype: bool
+        """
+        return self._PubNetAccessEnabled
+
+    @PubNetAccessEnabled.setter
+    def PubNetAccessEnabled(self, PubNetAccessEnabled):
+        self._PubNetAccessEnabled = PubNetAccessEnabled
+
+    @property
+    def VpcId(self):
+        r"""vpc id 
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""vpc name
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""子网名
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+
+    def _deserialize(self, params):
+        self._PrivateNetAddress = params.get("PrivateNetAddress")
+        self._PubNetAddress = params.get("PubNetAddress")
+        self._Net = params.get("Net")
+        self._PubNetAccessEnabled = params.get("PubNetAccessEnabled")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLTaskStatus(AbstractModel):
+    r"""MySql 任务状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: SUCCESS | FAILED | PENDING
+        :type Status: str
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        """
+        self._Status = None
+        self._StatusDesc = None
+
+    @property
+    def Status(self):
+        r"""SUCCESS | FAILED | PENDING
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""状态描述
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

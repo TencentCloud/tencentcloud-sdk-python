@@ -302,6 +302,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMySQL(self, request):
+        r"""开通Mysql
+
+        :param request: Request instance for CreateMySQL.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateMySQLRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateMySQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMySQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMySQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePostpayPackage(self, request):
         r"""开通后付费资源
 
@@ -946,6 +969,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCreateMySQLResult(self, request):
+        r"""查询开通Mysql结果
+
+        :param request: Request instance for DescribeCreateMySQLResult.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCreateMySQLResultRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCreateMySQLResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreateMySQLResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreateMySQLResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCurveData(self, request):
         r"""根据用户传入的指标, 拉取一段时间内的监控数据。
 
@@ -1292,6 +1338,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMySQLClusterDetail(self, request):
+        r"""销毁Mysql
+
+        :param request: Request instance for DescribeMySQLClusterDetail.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeMySQLClusterDetailRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeMySQLClusterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMySQLClusterDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMySQLClusterDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMySQLTaskStatus(self, request):
+        r"""查询Mysql任务状态
+
+        :param request: Request instance for DescribeMySQLTaskStatus.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeMySQLTaskStatusRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeMySQLTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMySQLTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMySQLTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePostpayFreeQuotas(self, request):
         r"""查询后付费资源免费量
 
@@ -1608,6 +1700,29 @@ class TcbClient(AbstractClient):
             body = self.call("DestroyEnv", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyEnvResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyMySQL(self, request):
+        r"""销毁Mysql
+
+        :param request: Request instance for DestroyMySQL.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyMySQLRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DestroyMySQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyMySQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyMySQLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

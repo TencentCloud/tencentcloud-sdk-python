@@ -474,6 +474,10 @@ class AndroidInstance(AbstractModel):
 IDLE：未连接
 ESTABLISHED：连接中
         :type ServiceStatus: str
+        :param _AndroidInstanceModel: 安卓实例型号。
+YS1：默认值，基础型云手机
+GC0、GC1、GC2：三种性能型云手机
+        :type AndroidInstanceModel: str
         """
         self._AndroidInstanceId = None
         self._AndroidInstanceRegion = None
@@ -492,6 +496,7 @@ ESTABLISHED：连接中
         self._CreateTime = None
         self._HostServerSerialNumber = None
         self._ServiceStatus = None
+        self._AndroidInstanceModel = None
 
     @property
     def AndroidInstanceId(self):
@@ -682,6 +687,19 @@ ESTABLISHED：连接中
     def ServiceStatus(self, ServiceStatus):
         self._ServiceStatus = ServiceStatus
 
+    @property
+    def AndroidInstanceModel(self):
+        r"""安卓实例型号。
+YS1：默认值，基础型云手机
+GC0、GC1、GC2：三种性能型云手机
+        :rtype: str
+        """
+        return self._AndroidInstanceModel
+
+    @AndroidInstanceModel.setter
+    def AndroidInstanceModel(self, AndroidInstanceModel):
+        self._AndroidInstanceModel = AndroidInstanceModel
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
@@ -706,6 +724,7 @@ ESTABLISHED：连接中
         self._CreateTime = params.get("CreateTime")
         self._HostServerSerialNumber = params.get("HostServerSerialNumber")
         self._ServiceStatus = params.get("ServiceStatus")
+        self._AndroidInstanceModel = params.get("AndroidInstanceModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1186,6 +1205,10 @@ class AndroidInstanceImage(AbstractModel):
         :type AndroidVersion: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _AndroidInstanceImageModel: 镜像型号。
+YS1：基础型云手机
+GC0、GC1、GC2：三种性能型云手机
+        :type AndroidInstanceImageModel: str
         """
         self._AndroidInstanceImageId = None
         self._AndroidInstanceImageName = None
@@ -1194,6 +1217,7 @@ class AndroidInstanceImage(AbstractModel):
         self._AndroidInstanceImageDescription = None
         self._AndroidVersion = None
         self._CreateTime = None
+        self._AndroidInstanceImageModel = None
 
     @property
     def AndroidInstanceImageId(self):
@@ -1272,6 +1296,19 @@ class AndroidInstanceImage(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def AndroidInstanceImageModel(self):
+        r"""镜像型号。
+YS1：基础型云手机
+GC0、GC1、GC2：三种性能型云手机
+        :rtype: str
+        """
+        return self._AndroidInstanceImageModel
+
+    @AndroidInstanceImageModel.setter
+    def AndroidInstanceImageModel(self, AndroidInstanceImageModel):
+        self._AndroidInstanceImageModel = AndroidInstanceImageModel
+
 
     def _deserialize(self, params):
         self._AndroidInstanceImageId = params.get("AndroidInstanceImageId")
@@ -1281,6 +1318,7 @@ class AndroidInstanceImage(AbstractModel):
         self._AndroidInstanceImageDescription = params.get("AndroidInstanceImageDescription")
         self._AndroidVersion = params.get("AndroidVersion")
         self._CreateTime = params.get("CreateTime")
+        self._AndroidInstanceImageModel = params.get("AndroidInstanceImageModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3625,6 +3663,8 @@ A6：六开
         :type ImageId: str
         :param _Labels: 安卓实例标签列表
         :type Labels: list of AndroidInstanceLabel
+        :param _Model: 安卓实例型号。YS1：默认值，基础型云手机GC0、GC1、GC2：三种性能型云手机
+        :type Model: str
         """
         self._Zone = None
         self._Type = None
@@ -3632,6 +3672,7 @@ A6：六开
         self._HostSerialNumbers = None
         self._ImageId = None
         self._Labels = None
+        self._Model = None
 
     @property
     def Zone(self):
@@ -3710,6 +3751,17 @@ A6：六开
     def Labels(self, Labels):
         self._Labels = Labels
 
+    @property
+    def Model(self):
+        r"""安卓实例型号。YS1：默认值，基础型云手机GC0、GC1、GC2：三种性能型云手机
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3723,6 +3775,7 @@ A6：六开
                 obj = AndroidInstanceLabel()
                 obj._deserialize(item)
                 self._Labels.append(obj)
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5302,6 +5355,7 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
         :param _Limit: 限制量，默认为20，最大值为100
         :type Limit: int
         :param _Filters: 字段过滤器。Filter 的 Name 有以下值：
+ImageModel：镜像型号
 ImageName：镜像名称
 ImageState：镜像状态
 AndroidVersion：安卓版本
@@ -5360,6 +5414,7 @@ AndroidVersion：安卓版本
     @property
     def Filters(self):
         r"""字段过滤器。Filter 的 Name 有以下值：
+ImageModel：镜像型号
 ImageName：镜像名称
 ImageState：镜像状态
 AndroidVersion：安卓版本
@@ -6049,6 +6104,7 @@ Name：实例名称
 UserId：实例用户ID
 HostSerialNumber：宿主机序列号
 HostServerSerialNumber：机箱序列号
+AndroidInstanceModel：实例型号
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -6144,6 +6200,7 @@ Name：实例名称
 UserId：实例用户ID
 HostSerialNumber：宿主机序列号
 HostServerSerialNumber：机箱序列号
+AndroidInstanceModel：实例型号
         :rtype: list of Filter
         """
         return self._Filters

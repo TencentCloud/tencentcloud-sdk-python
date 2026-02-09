@@ -241,6 +241,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMySQL(
+            self,
+            request: models.CreateMySQLRequest,
+            opts: Dict = None,
+    ) -> models.CreateMySQLResponse:
+        """
+        开通Mysql
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMySQL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMySQLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePostpayPackage(
             self,
             request: models.CreatePostpayPackageRequest,
@@ -745,6 +763,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCreateMySQLResult(
+            self,
+            request: models.DescribeCreateMySQLResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCreateMySQLResultResponse:
+        """
+        查询开通Mysql结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCreateMySQLResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCreateMySQLResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCurveData(
             self,
             request: models.DescribeCurveDataRequest,
@@ -1016,6 +1052,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMySQLClusterDetail(
+            self,
+            request: models.DescribeMySQLClusterDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMySQLClusterDetailResponse:
+        """
+        销毁Mysql
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMySQLClusterDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMySQLClusterDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMySQLTaskStatus(
+            self,
+            request: models.DescribeMySQLTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMySQLTaskStatusResponse:
+        """
+        查询Mysql任务状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMySQLTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMySQLTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePostpayFreeQuotas(
             self,
             request: models.DescribePostpayFreeQuotasRequest,
@@ -1266,6 +1338,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DestroyEnv"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyMySQL(
+            self,
+            request: models.DestroyMySQLRequest,
+            opts: Dict = None,
+    ) -> models.DestroyMySQLResponse:
+        """
+        销毁Mysql
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyMySQL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyMySQLResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
