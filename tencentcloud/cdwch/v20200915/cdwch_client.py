@@ -647,6 +647,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestartInstance(self, request):
+        r"""重启实例，可以按节点类型和节点进行重启，可选滚动重启
+
+        :param request: Request instance for RestartInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.RestartInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.RestartInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleCNOutUpInstance(self, request):
         r"""open-api接口提供弹性伸缩云原生集群能力
 

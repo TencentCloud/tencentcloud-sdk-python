@@ -1005,6 +1005,8 @@ class ChatTranslationsRequest(AbstractModel):
         :type Field: str
         :param _References: 参考示例，最多10个
         :type References: list of Reference
+        :param _GlossaryIDs: 关联的术语库 ID 列表，用于术语翻译，最大支持5个术语库
+        :type GlossaryIDs: list of str
         """
         self._Model = None
         self._Stream = None
@@ -1013,6 +1015,7 @@ class ChatTranslationsRequest(AbstractModel):
         self._Target = None
         self._Field = None
         self._References = None
+        self._GlossaryIDs = None
 
     @property
     def Model(self):
@@ -1113,6 +1116,17 @@ class ChatTranslationsRequest(AbstractModel):
     def References(self, References):
         self._References = References
 
+    @property
+    def GlossaryIDs(self):
+        r"""关联的术语库 ID 列表，用于术语翻译，最大支持5个术语库
+        :rtype: list of str
+        """
+        return self._GlossaryIDs
+
+    @GlossaryIDs.setter
+    def GlossaryIDs(self, GlossaryIDs):
+        self._GlossaryIDs = GlossaryIDs
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -1127,6 +1141,7 @@ class ChatTranslationsRequest(AbstractModel):
                 obj = Reference()
                 obj._deserialize(item)
                 self._References.append(obj)
+        self._GlossaryIDs = params.get("GlossaryIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

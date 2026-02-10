@@ -7946,6 +7946,130 @@ class ResourceSpec(AbstractModel):
         
 
 
+class RestartInstanceRequest(AbstractModel):
+    r"""RestartInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _NodeType: 节点类型，可选值：CK / ZK / CHPROXY
+        :type NodeType: str
+        :param _NodeIpList: 符合节点类型的要重启的节点ip列表
+        :type NodeIpList: list of str
+        :param _RollingRestart: 是否滚动重启，默认为true
+        :type RollingRestart: bool
+        """
+        self._InstanceId = None
+        self._NodeType = None
+        self._NodeIpList = None
+        self._RollingRestart = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeType(self):
+        r"""节点类型，可选值：CK / ZK / CHPROXY
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeIpList(self):
+        r"""符合节点类型的要重启的节点ip列表
+        :rtype: list of str
+        """
+        return self._NodeIpList
+
+    @NodeIpList.setter
+    def NodeIpList(self, NodeIpList):
+        self._NodeIpList = NodeIpList
+
+    @property
+    def RollingRestart(self):
+        r"""是否滚动重启，默认为true
+        :rtype: bool
+        """
+        return self._RollingRestart
+
+    @RollingRestart.setter
+    def RollingRestart(self, RollingRestart):
+        self._RollingRestart = RollingRestart
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeType = params.get("NodeType")
+        self._NodeIpList = params.get("NodeIpList")
+        self._RollingRestart = params.get("RollingRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartInstanceResponse(AbstractModel):
+    r"""RestartInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ScaleCNOutUpInstanceRequest(AbstractModel):
     r"""ScaleCNOutUpInstance请求参数结构体
 

@@ -151,6 +151,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchGetPlaybackToken(
+            self,
+            request: models.BatchGetPlaybackTokenRequest,
+            opts: Dict = None,
+    ) -> models.BatchGetPlaybackTokenResponse:
+        """
+        批量获取信令录制回放token，用于回放指定课堂时鉴权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchGetPlaybackToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchGetPlaybackTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchRegister(
             self,
             request: models.BatchRegisterRequest,
@@ -382,6 +400,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "DeleteGroupMember"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteGroupMemberResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePlaybackItem(
+            self,
+            request: models.DeletePlaybackItemRequest,
+            opts: Dict = None,
+    ) -> models.DeletePlaybackItemResponse:
+        """
+        删除该堂课的录制记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePlaybackItem"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePlaybackItemResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -696,6 +732,42 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePlayRecords(
+            self,
+            request: models.DescribePlayRecordsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlayRecordsResponse:
+        """
+        信令录制视频观看记录查询接口，用于查询指定课堂在指定时间段内的用户播放记录。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlayRecords"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlayRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlaybackList(
+            self,
+            request: models.DescribePlaybackListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlaybackListResponse:
+        """
+        查询录制信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlaybackList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlaybackListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQuestionList(
             self,
             request: models.DescribeQuestionListRequest,
@@ -965,6 +1037,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "ForbidSendMsg"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ForbidSendMsgResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetPlaybackToken(
+            self,
+            request: models.GetPlaybackTokenRequest,
+            opts: Dict = None,
+    ) -> models.GetPlaybackTokenResponse:
+        """
+        获取信令录制回放token，用于回放指定课堂时鉴权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetPlaybackToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetPlaybackTokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

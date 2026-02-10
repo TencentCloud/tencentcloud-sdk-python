@@ -1205,6 +1205,135 @@ class BatchDescribeDocumentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchGetPlaybackTokenRequest(AbstractModel):
+    r"""BatchGetPlaybackToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码平台的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomIds: <p>房间ID。</p>
+        :type RoomIds: list of int non-negative
+        :param _ExpireSeconds: <p>token过期时间，单位秒。如果传0则表示不过期</p>
+        :type ExpireSeconds: int
+        """
+        self._SdkAppId = None
+        self._RoomIds = None
+        self._ExpireSeconds = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码平台的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomIds(self):
+        r"""<p>房间ID。</p>
+        :rtype: list of int non-negative
+        """
+        return self._RoomIds
+
+    @RoomIds.setter
+    def RoomIds(self, RoomIds):
+        self._RoomIds = RoomIds
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>token过期时间，单位秒。如果传0则表示不过期</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomIds = params.get("RoomIds")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchGetPlaybackTokenResponse(AbstractModel):
+    r"""BatchGetPlaybackToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: <p>token值，用于回放鉴权。</p>
+        :type Results: list of TokenResult
+        :param _Total: <p>房间ID。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""<p>token值，用于回放鉴权。</p>
+        :rtype: list of TokenResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def Total(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = TokenResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class BatchRegisterRequest(AbstractModel):
     r"""BatchRegister请求参数结构体
 
@@ -2277,7 +2406,7 @@ class CreateRoomRequest(AbstractModel):
         :type TurnOffMic: int
         :param _AudioQuality: <p>声音音质。可以有以下取值：<br>0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。<br>1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。</p>
         :type AudioQuality: int
-        :param _DisableRecord: <p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
+        :param _DisableRecord: <p>录制方式。</p><p>枚举值：</p><ul><li>0： 开启自动录制（默认）</li><li>1： 禁止录制</li><li>2： 开启手动录制。（仅支持页面录制，需通过startRecord、stopRecord接口控制录制的开始和结束。）</li><li>3： 信令录制。</li></ul>
         :type DisableRecord: int
         :param _Assistants: <p>助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。</p>
         :type Assistants: list of str
@@ -2482,7 +2611,7 @@ class CreateRoomRequest(AbstractModel):
 
     @property
     def DisableRecord(self):
-        r"""<p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
+        r"""<p>录制方式。</p><p>枚举值：</p><ul><li>0： 开启自动录制（默认）</li><li>1： 禁止录制</li><li>2： 开启手动录制。（仅支持页面录制，需通过startRecord、stopRecord接口控制录制的开始和结束。）</li><li>3： 信令录制。</li></ul>
         :rtype: int
         """
         return self._DisableRecord
@@ -3406,6 +3535,85 @@ class DeleteGroupRequest(AbstractModel):
 
 class DeleteGroupResponse(AbstractModel):
     r"""DeleteGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePlaybackItemRequest(AbstractModel):
+    r"""DeletePlaybackItem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>课堂ID。</p>
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePlaybackItemResponse(AbstractModel):
+    r"""DeletePlaybackItem返回参数结构体
 
     """
 
@@ -5753,6 +5961,324 @@ class DescribeMarqueeResponse(AbstractModel):
         self._DisplayMode = params.get("DisplayMode")
         self._Duration = params.get("Duration")
         self._MarqueeCount = params.get("MarqueeCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlayRecordsRequest(AbstractModel):
+    r"""DescribePlayRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID。</p>
+        :type RoomId: int
+        :param _StartTime: <p>开始时间，unix时间戳（秒）。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，unix时间戳（秒）。</p>
+        :type EndTime: int
+        :param _Page: <p>页码，从1开始递增。</p><p>默认值：1</p>
+        :type Page: int
+        :param _PageSize: <p>每页获取的记录条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :type PageSize: int
+        :param _UserId: <p>用户ID。</p>
+        :type UserId: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Page = None
+        self._PageSize = None
+        self._UserId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，unix时间戳（秒）。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，unix时间戳（秒）。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Page(self):
+        r"""<p>页码，从1开始递增。</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页获取的记录条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlayRecordsResponse(AbstractModel):
+    r"""DescribePlayRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总条数。</p>
+        :type Total: int
+        :param _Records: <p>信令录制视频回放观看记录列表。</p>
+        :type Records: list of PlayRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Records = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总条数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Records(self):
+        r"""<p>信令录制视频回放观看记录列表。</p>
+        :rtype: list of PlayRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = PlayRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlaybackListRequest(AbstractModel):
+    r"""DescribePlaybackList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码平台的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _Page: <p>分页查询当前页数，从1开始递增</p>
+        :type Page: int
+        :param _Limit: <p>默认10条，最大上限为100条</p>
+        :type Limit: int
+        """
+        self._SdkAppId = None
+        self._Page = None
+        self._Limit = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码平台的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Page(self):
+        r"""<p>分页查询当前页数，从1开始递增</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Limit(self):
+        r"""<p>默认10条，最大上限为100条</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Page = params.get("Page")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlaybackListResponse(AbstractModel):
+    r"""DescribePlaybackList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _Items: <p>课堂回放信息列表</p>
+        :type Items: list of PlaybackItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>课堂回放信息列表</p>
+        :rtype: list of PlaybackItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = PlaybackItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8786,6 +9312,160 @@ class ForbidSendMsgResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetPlaybackTokenRequest(AbstractModel):
+    r"""GetPlaybackToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码平台的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID。</p>
+        :type RoomId: int
+        :param _UserId: <p>用户ID。</p>
+        :type UserId: str
+        :param _ExpireSeconds: <p>token过期时间，单位秒。如果传0则表示不过期</p>
+        :type ExpireSeconds: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._ExpireSeconds = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码平台的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>token过期时间，单位秒。如果传0则表示不过期</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPlaybackTokenResponse(AbstractModel):
+    r"""GetPlaybackToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>token值，用于回放鉴权。</p>
+        :type Token: str
+        :param _RoomId: <p>房间ID。</p>
+        :type RoomId: int
+        :param _UserId: <p>用户ID。</p>
+        :type UserId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RoomId = None
+        self._UserId = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""<p>token值，用于回放鉴权。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._RequestId = params.get("RequestId")
+
+
 class GetRoomEventRequest(AbstractModel):
     r"""GetRoomEvent请求参数结构体
 
@@ -11598,6 +12278,198 @@ class MutedAccountList(AbstractModel):
         
 
 
+class PlayRecord(AbstractModel):
+    r"""信令录制视频观看记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: <p>房间ID。</p>
+        :type RoomId: int
+        :param _UserId: <p>用户ID。</p>
+        :type UserId: str
+        :param _SessionId: <p>单次播放会话ID。</p>
+        :type SessionId: str
+        :param _PlayBeginTime: <p>播放开始时间，unix时间戳（秒）。</p>
+        :type PlayBeginTime: int
+        :param _PlayEndTime: <p>播放结束时间，unix时间戳（秒）。</p>
+        :type PlayEndTime: int
+        :param _Duration: <p>播放时长（毫秒）。</p>
+        :type Duration: int
+        """
+        self._RoomId = None
+        self._UserId = None
+        self._SessionId = None
+        self._PlayBeginTime = None
+        self._PlayEndTime = None
+        self._Duration = None
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID。</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>单次播放会话ID。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def PlayBeginTime(self):
+        r"""<p>播放开始时间，unix时间戳（秒）。</p>
+        :rtype: int
+        """
+        return self._PlayBeginTime
+
+    @PlayBeginTime.setter
+    def PlayBeginTime(self, PlayBeginTime):
+        self._PlayBeginTime = PlayBeginTime
+
+    @property
+    def PlayEndTime(self):
+        r"""<p>播放结束时间，unix时间戳（秒）。</p>
+        :rtype: int
+        """
+        return self._PlayEndTime
+
+    @PlayEndTime.setter
+    def PlayEndTime(self, PlayEndTime):
+        self._PlayEndTime = PlayEndTime
+
+    @property
+    def Duration(self):
+        r"""<p>播放时长（毫秒）。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._PlayBeginTime = params.get("PlayBeginTime")
+        self._PlayEndTime = params.get("PlayEndTime")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaybackItem(AbstractModel):
+    r"""课堂回放信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: <p>房间id</p>
+        :type RoomId: int
+        :param _PlaybackUrl: <p>回放地址</p>
+        :type PlaybackUrl: str
+        :param _Duration: <p>录制时长</p>
+        :type Duration: int
+        :param _CreateTime: <p>录制开始时间</p>
+        :type CreateTime: int
+        """
+        self._RoomId = None
+        self._PlaybackUrl = None
+        self._Duration = None
+        self._CreateTime = None
+
+    @property
+    def RoomId(self):
+        r"""<p>房间id</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def PlaybackUrl(self):
+        r"""<p>回放地址</p>
+        :rtype: str
+        """
+        return self._PlaybackUrl
+
+    @PlaybackUrl.setter
+    def PlaybackUrl(self, PlaybackUrl):
+        self._PlaybackUrl = PlaybackUrl
+
+    @property
+    def Duration(self):
+        r"""<p>录制时长</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def CreateTime(self):
+        r"""<p>录制开始时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._PlaybackUrl = params.get("PlaybackUrl")
+        self._Duration = params.get("Duration")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuestionInfo(AbstractModel):
     r"""房间问答问题详情
 
@@ -14208,6 +15080,57 @@ class TextMsgContent(AbstractModel):
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenResult(AbstractModel):
+    r"""token结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: <p>房间id</p>
+        :type RoomId: int
+        :param _Token: <p>该房间信令回放的token</p>
+        :type Token: str
+        """
+        self._RoomId = None
+        self._Token = None
+
+    @property
+    def RoomId(self):
+        r"""<p>房间id</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Token(self):
+        r"""<p>该房间信令回放的token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Token = params.get("Token")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

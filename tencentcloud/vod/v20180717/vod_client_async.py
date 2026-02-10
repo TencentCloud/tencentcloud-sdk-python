@@ -507,6 +507,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLLMComprehendTemplate(
+            self,
+            request: models.CreateLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateLLMComprehendTemplateResponse:
+        """
+        创建大模型解析模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLLMComprehendTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMPSTemplate(
             self,
             request: models.CreateMPSTemplateRequest,
@@ -1116,6 +1134,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DeleteJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLLMComprehendTemplate(
+            self,
+            request: models.DeleteLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMComprehendTemplateResponse:
+        """
+        删除用户自定义图像异步处理模板。
+
+        注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMComprehendTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2057,6 +2095,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeJustInTimeTranscodeTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeJustInTimeTranscodeTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMComprehendTemplates(
+            self,
+            request: models.DescribeLLMComprehendTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMComprehendTemplatesResponse:
+        """
+        根据大模型解析模板唯一标识，获取大模型解析模板详情列表。返回结果包含符合条件的所有用户自定义大模型解析模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMComprehendTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMComprehendTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3164,6 +3220,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMComprehendTemplate(
+            self,
+            request: models.ModifyLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMComprehendTemplateResponse:
+        """
+        修改大模型解析模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMComprehendTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

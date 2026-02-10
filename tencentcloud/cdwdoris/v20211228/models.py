@@ -16140,9 +16140,9 @@ class UserInfo(AbstractModel):
         :type InstanceId: str
         :param _UserName: 用户名
         :type UserName: str
-        :param _PassWord: 密码
+        :param _PassWord: base64加密后的密码
         :type PassWord: str
-        :param _WhiteHost: 用户链接来自的 IP
+        :param _WhiteHost: 用户链接来自的 IP地址
         :type WhiteHost: str
         :param _OldWhiteHost: 修改前用户链接来自的 IP
         :type OldWhiteHost: str
@@ -16192,7 +16192,7 @@ class UserInfo(AbstractModel):
 
     @property
     def PassWord(self):
-        r"""密码
+        r"""base64加密后的密码
         :rtype: str
         """
         return self._PassWord
@@ -16203,7 +16203,7 @@ class UserInfo(AbstractModel):
 
     @property
     def WhiteHost(self):
-        r"""用户链接来自的 IP
+        r"""用户链接来自的 IP地址
         :rtype: str
         """
         return self._WhiteHost

@@ -208,6 +208,42 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CLSConfig(AbstractModel):
+    r"""沙箱工具日志推送CLS相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 沙箱工具日志推送所使用的CLS日志主题ID
+        :type TopicId: str
+        """
+        self._TopicId = None
+
+    @property
+    def TopicId(self):
+        r"""沙箱工具日志推送所使用的CLS日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfsStorageSource(AbstractModel):
     r"""文件存储配置
 
@@ -585,6 +621,8 @@ class CreateSandboxToolRequest(AbstractModel):
         :type StorageMounts: list of StorageMount
         :param _CustomConfiguration: 沙箱工具自定义配置
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        :param _LogConfiguration: 沙箱工具日志推送相关配置
+        :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         """
         self._ToolName = None
         self._ToolType = None
@@ -596,6 +634,7 @@ class CreateSandboxToolRequest(AbstractModel):
         self._RoleArn = None
         self._StorageMounts = None
         self._CustomConfiguration = None
+        self._LogConfiguration = None
 
     @property
     def ToolName(self):
@@ -707,6 +746,17 @@ class CreateSandboxToolRequest(AbstractModel):
     def CustomConfiguration(self, CustomConfiguration):
         self._CustomConfiguration = CustomConfiguration
 
+    @property
+    def LogConfiguration(self):
+        r"""沙箱工具日志推送相关配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
+        """
+        return self._LogConfiguration
+
+    @LogConfiguration.setter
+    def LogConfiguration(self, LogConfiguration):
+        self._LogConfiguration = LogConfiguration
+
 
     def _deserialize(self, params):
         self._ToolName = params.get("ToolName")
@@ -733,6 +783,9 @@ class CreateSandboxToolRequest(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfiguration()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        if params.get("LogConfiguration") is not None:
+            self._LogConfiguration = LogConfiguration()
+            self._LogConfiguration._deserialize(params.get("LogConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2039,6 +2092,44 @@ class ImageStorageSource(AbstractModel):
         
 
 
+class LogConfiguration(AbstractModel):
+    r"""沙箱工具日志采集相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSConfig: 日志推送CLS的配置。
+        :type CLSConfig: :class:`tencentcloud.ags.v20250920.models.CLSConfig`
+        """
+        self._CLSConfig = None
+
+    @property
+    def CLSConfig(self):
+        r"""日志推送CLS的配置。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CLSConfig`
+        """
+        return self._CLSConfig
+
+    @CLSConfig.setter
+    def CLSConfig(self, CLSConfig):
+        self._CLSConfig = CLSConfig
+
+
+    def _deserialize(self, params):
+        if params.get("CLSConfig") is not None:
+            self._CLSConfig = CLSConfig()
+            self._CLSConfig._deserialize(params.get("CLSConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MountOption(AbstractModel):
     r"""沙箱实例存储挂载配置可选项，用于覆盖沙箱工具的存储配置的部分选项，并提供子路径挂载配置。
 
@@ -2757,6 +2848,8 @@ class SandboxTool(AbstractModel):
         :type StorageMounts: list of StorageMount
         :param _CustomConfiguration: 沙箱工具自定义配置
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
+        :param _LogConfiguration: 沙箱工具日志推送相关配置
+        :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         """
         self._ToolId = None
         self._ToolName = None
@@ -2771,6 +2864,7 @@ class SandboxTool(AbstractModel):
         self._RoleArn = None
         self._StorageMounts = None
         self._CustomConfiguration = None
+        self._LogConfiguration = None
 
     @property
     def ToolId(self):
@@ -2915,6 +3009,17 @@ class SandboxTool(AbstractModel):
     def CustomConfiguration(self, CustomConfiguration):
         self._CustomConfiguration = CustomConfiguration
 
+    @property
+    def LogConfiguration(self):
+        r"""沙箱工具日志推送相关配置
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
+        """
+        return self._LogConfiguration
+
+    @LogConfiguration.setter
+    def LogConfiguration(self, LogConfiguration):
+        self._LogConfiguration = LogConfiguration
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -2944,6 +3049,9 @@ class SandboxTool(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfigurationDetail()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        if params.get("LogConfiguration") is not None:
+            self._LogConfiguration = LogConfiguration()
+            self._LogConfiguration._deserialize(params.get("LogConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

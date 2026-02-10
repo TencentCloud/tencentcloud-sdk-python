@@ -43,6 +43,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseAuditService(
+            self,
+            request: models.CloseAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseAuditServiceResponse:
+        """
+        本接口（CloseAuditService）用于关闭审计服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccountUser(
             self,
             request: models.CreateAccountUserRequest,
@@ -278,6 +296,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAuditConfig(
+            self,
+            request: models.DescribeAuditConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditConfigResponse:
+        """
+        本接口(DescribeAuditConfig)用于查询云数据库审计策略的服务配置，包括审计日志保存时长等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAuditInstanceList(
             self,
             request: models.DescribeAuditInstanceListRequest,
@@ -291,6 +327,42 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DescribeAuditInstanceList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogFiles(
+            self,
+            request: models.DescribeAuditLogFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogFilesResponse:
+        """
+        本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogs(
+            self,
+            request: models.DescribeAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogsResponse:
+        """
+        本接口(DescribeAuditLogs)用于查询数据库审计日志。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -95,6 +95,9 @@ OPERATIONDENIED_TEXTILLEGALDETECTED = 'OperationDenied.TextIllegalDetected'
 # 计费资源已耗尽。
 RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = 'ResourceInsufficient.ChargeResourceExhaust'
 
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
+
 # 账号已欠费。
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 

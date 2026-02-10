@@ -12134,6 +12134,8 @@ class DescribeAccountsRequest(AbstractModel):
         :type SortBy: str
         :param _OrderBy: 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
         :type OrderBy: str
+        :param _HostRegexp: 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+        :type HostRegexp: str
         """
         self._InstanceId = None
         self._Offset = None
@@ -12141,6 +12143,7 @@ class DescribeAccountsRequest(AbstractModel):
         self._AccountRegexp = None
         self._SortBy = None
         self._OrderBy = None
+        self._HostRegexp = None
 
     @property
     def InstanceId(self):
@@ -12208,6 +12211,17 @@ class DescribeAccountsRequest(AbstractModel):
     def OrderBy(self, OrderBy):
         self._OrderBy = OrderBy
 
+    @property
+    def HostRegexp(self):
+        r"""匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+        :rtype: str
+        """
+        return self._HostRegexp
+
+    @HostRegexp.setter
+    def HostRegexp(self, HostRegexp):
+        self._HostRegexp = HostRegexp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12216,6 +12230,7 @@ class DescribeAccountsRequest(AbstractModel):
         self._AccountRegexp = params.get("AccountRegexp")
         self._SortBy = params.get("SortBy")
         self._OrderBy = params.get("OrderBy")
+        self._HostRegexp = params.get("HostRegexp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

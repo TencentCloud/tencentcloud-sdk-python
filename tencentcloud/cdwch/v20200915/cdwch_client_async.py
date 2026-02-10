@@ -511,6 +511,24 @@ class CdwchClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RestartInstance(
+            self,
+            request: models.RestartInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RestartInstanceResponse:
+        """
+        重启实例，可以按节点类型和节点进行重启，可选滚动重启
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ScaleCNOutUpInstance(
             self,
             request: models.ScaleCNOutUpInstanceRequest,

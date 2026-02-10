@@ -1181,7 +1181,7 @@ class AddressChargePrepaid(AbstractModel):
         r"""
         :param _Period: 购买实例的时长，单位是月。可支持时长：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
         :type Period: int
-        :param _AutoRenewFlag: 自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为0即手动续费
+        :param _AutoRenewFlag: 自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为1即自动续费。
         :type AutoRenewFlag: int
         """
         self._Period = None
@@ -1200,7 +1200,7 @@ class AddressChargePrepaid(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为0即手动续费
+        r"""自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为1即自动续费。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -57152,9 +57152,9 @@ class NatGateway(AbstractModel):
         :type ExclusiveType: str
         :param _AutoScaling: 标准型NAT网关自动扩容
         :type AutoScaling: bool
-        :param _ICMPProxy: 是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，当前适用于标准型NAT网关
+        :param _ICMPProxy: 是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，默认为true，应答请求报文；false代表不应答。
         :type ICMPProxy: bool
-        :param _PublicAddressAffinity: true代表同一个私网IP访问同一个公网目的IP时，固定使用同一个NAT网关上的弹性公网IP；false代表这种情况下使用的弹性公网IP不固定。默认为true。
+        :param _PublicAddressAffinity: 同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。
         :type PublicAddressAffinity: bool
         """
         self._NatGatewayId = None
@@ -57488,7 +57488,7 @@ class NatGateway(AbstractModel):
 
     @property
     def ICMPProxy(self):
-        r"""是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，当前适用于标准型NAT网关
+        r"""是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，默认为true，应答请求报文；false代表不应答。
         :rtype: bool
         """
         return self._ICMPProxy
@@ -57499,7 +57499,7 @@ class NatGateway(AbstractModel):
 
     @property
     def PublicAddressAffinity(self):
-        r"""true代表同一个私网IP访问同一个公网目的IP时，固定使用同一个NAT网关上的弹性公网IP；false代表这种情况下使用的弹性公网IP不固定。默认为true。
+        r"""同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。
         :rtype: bool
         """
         return self._PublicAddressAffinity

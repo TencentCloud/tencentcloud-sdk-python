@@ -163,6 +163,8 @@ class Agent(AbstractModel):
         :type AgentMode: int
         :param _AdvancedConfig: 高级设置
         :type AdvancedConfig: :class:`tencentcloud.lke.v20231130.models.AgentAdvancedConfig`
+        :param _MaxToolCount: 工具数量上限
+        :type MaxToolCount: int
         """
         self._AgentId = None
         self._WorkflowId = None
@@ -178,6 +180,7 @@ class Agent(AbstractModel):
         self._AgentType = None
         self._AgentMode = None
         self._AdvancedConfig = None
+        self._MaxToolCount = None
 
     @property
     def AgentId(self):
@@ -333,6 +336,17 @@ class Agent(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def MaxToolCount(self):
+        r"""工具数量上限
+        :rtype: int
+        """
+        return self._MaxToolCount
+
+    @MaxToolCount.setter
+    def MaxToolCount(self, MaxToolCount):
+        self._MaxToolCount = MaxToolCount
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -363,6 +377,7 @@ class Agent(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AgentAdvancedConfig()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._MaxToolCount = params.get("MaxToolCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1730,10 +1745,12 @@ class AgentPluginInfo(AbstractModel):
         :param _Headers: 应用配置的插件header信息
         :type Headers: list of AgentPluginHeader
         :param _Model: 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Model: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
         :param _PluginInfoType: 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
         :type PluginInfoType: int
         :param _KnowledgeQa: 知识库问答插件配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type KnowledgeQa: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
         :param _EnableRoleAuth: 是否使用一键授权
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1777,6 +1794,7 @@ class AgentPluginInfo(AbstractModel):
     @property
     def Model(self):
         r"""插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
         """
         return self._Model
@@ -1799,6 +1817,7 @@ class AgentPluginInfo(AbstractModel):
     @property
     def KnowledgeQa(self):
         r"""知识库问答插件配置
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
         """
         return self._KnowledgeQa
@@ -2864,6 +2883,8 @@ class AgentToolInfo(AbstractModel):
         :type AuthMode: int
         :param _AuthType: 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
         :type AuthType: int
+        :param _AuthConfigStatus: 工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+        :type AuthConfigStatus: int
         """
         self._PluginId = None
         self._PluginName = None
@@ -2887,6 +2908,7 @@ class AgentToolInfo(AbstractModel):
         self._ToolAdvanceConfig = None
         self._AuthMode = None
         self._AuthType = None
+        self._AuthConfigStatus = None
 
     @property
     def PluginId(self):
@@ -3133,6 +3155,17 @@ class AgentToolInfo(AbstractModel):
     def AuthType(self, AuthType):
         self._AuthType = AuthType
 
+    @property
+    def AuthConfigStatus(self):
+        r"""工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+        :rtype: int
+        """
+        return self._AuthConfigStatus
+
+    @AuthConfigStatus.setter
+    def AuthConfigStatus(self, AuthConfigStatus):
+        self._AuthConfigStatus = AuthConfigStatus
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -3181,6 +3214,7 @@ class AgentToolInfo(AbstractModel):
             self._ToolAdvanceConfig._deserialize(params.get("ToolAdvanceConfig"))
         self._AuthMode = params.get("AuthMode")
         self._AuthType = params.get("AuthType")
+        self._AuthConfigStatus = params.get("AuthConfigStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4302,6 +4336,47 @@ class AppModelDetailInfo(AbstractModel):
             self._ModelParams._deserialize(params.get("ModelParams"))
         self._HistoryLimit = params.get("HistoryLimit")
         self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsyncWorkflowMessage(AbstractModel):
+    r"""异步工作流的消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Contents: 内容数组，包含多个内容对象
+        :type Contents: list of Content
+        """
+        self._Contents = None
+
+    @property
+    def Contents(self):
+        r"""内容数组，包含多个内容对象
+        :rtype: list of Content
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+
+    def _deserialize(self, params):
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = Content()
+                obj._deserialize(item)
+                self._Contents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8948,9 +9023,9 @@ class DeleteAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: 应用ID，获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :type AppBizId: str
-        :param _AppType: 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+        :param _AppType: 应用类型；`"knowledge_qa"` 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
         :type AppType: str
         """
         self._AppBizId = None
@@ -8958,7 +9033,7 @@ class DeleteAppRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""应用ID，获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
         :rtype: str
         """
         return self._AppBizId
@@ -8969,7 +9044,7 @@ class DeleteAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+        r"""应用类型；`"knowledge_qa"` 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
         :rtype: str
         """
         return self._AppType
@@ -9752,12 +9827,15 @@ class DescribeAppAgentListResponse(AbstractModel):
         :type Agents: list of Agent
         :param _HandoffAdvancedSetting: Agent转交高级设置
         :type HandoffAdvancedSetting: :class:`tencentcloud.lke.v20231130.models.AgentHandoffAdvancedSetting`
+        :param _MaxAgentCount: Agent数量上限
+        :type MaxAgentCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StaringAgentId = None
         self._Agents = None
         self._HandoffAdvancedSetting = None
+        self._MaxAgentCount = None
         self._RequestId = None
 
     @property
@@ -9794,6 +9872,17 @@ class DescribeAppAgentListResponse(AbstractModel):
         self._HandoffAdvancedSetting = HandoffAdvancedSetting
 
     @property
+    def MaxAgentCount(self):
+        r"""Agent数量上限
+        :rtype: int
+        """
+        return self._MaxAgentCount
+
+    @MaxAgentCount.setter
+    def MaxAgentCount(self, MaxAgentCount):
+        self._MaxAgentCount = MaxAgentCount
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9816,6 +9905,7 @@ class DescribeAppAgentListResponse(AbstractModel):
         if params.get("HandoffAdvancedSetting") is not None:
             self._HandoffAdvancedSetting = AgentHandoffAdvancedSetting()
             self._HandoffAdvancedSetting._deserialize(params.get("HandoffAdvancedSetting"))
+        self._MaxAgentCount = params.get("MaxAgentCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13521,7 +13611,8 @@ class DescribeStorageCredentialRequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
         :type BotBizId: str
-        :param _FileType: 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
+        :param _FileType: 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
+
         :type FileType: str
         :param _IsPublic: IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
 
@@ -13547,7 +13638,8 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def FileType(self):
-        r"""文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
+        r"""文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
+
         :rtype: str
         """
         return self._FileType
@@ -13616,12 +13708,16 @@ class DescribeStorageCredentialResponse(AbstractModel):
         :type FilePath: str
         :param _Type: 存储类型
         :type Type: str
-        :param _CorpUin: 主号
+        :param _CorpUin: 企业主账号
         :type CorpUin: str
         :param _ImagePath: 图片存储目录
         :type ImagePath: str
         :param _UploadPath: 上传存储路径，到具体文件
         :type UploadPath: str
+        :param _UploadUrl: 文件上传地址，使用put请求上传文件到该地址
+        :type UploadUrl: str
+        :param _FileUrl: 文件的预签名地址，支持下载
+        :type FileUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13635,6 +13731,8 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._CorpUin = None
         self._ImagePath = None
         self._UploadPath = None
+        self._UploadUrl = None
+        self._FileUrl = None
         self._RequestId = None
 
     @property
@@ -13716,7 +13814,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def CorpUin(self):
-        r"""主号
+        r"""企业主账号
         :rtype: str
         """
         return self._CorpUin
@@ -13748,6 +13846,28 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._UploadPath = UploadPath
 
     @property
+    def UploadUrl(self):
+        r"""文件上传地址，使用put请求上传文件到该地址
+        :rtype: str
+        """
+        return self._UploadUrl
+
+    @UploadUrl.setter
+    def UploadUrl(self, UploadUrl):
+        self._UploadUrl = UploadUrl
+
+    @property
+    def FileUrl(self):
+        r"""文件的预签名地址，支持下载
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13772,6 +13892,8 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._CorpUin = params.get("CorpUin")
         self._ImagePath = params.get("ImagePath")
         self._UploadPath = params.get("UploadPath")
+        self._UploadUrl = params.get("UploadUrl")
+        self._FileUrl = params.get("FileUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -15897,6 +16019,7 @@ class FileInfoContent(AbstractModel):
     def __init__(self):
         r"""
         :param _DocBizId: 实时文档解析接口返回的 DocBizId
+注意：此字段可能返回 null，表示取不到有效值。
         :type DocBizId: int
         :param _FileName: 文件名称
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15910,22 +16033,35 @@ class FileInfoContent(AbstractModel):
         :param _FileUrl: 文件 URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
+        :param _DocId: 实时文档解析接口返回的 doc_id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocId: int
+        :param _CreateTime: 文件创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._DocBizId = None
         self._FileName = None
         self._FileType = None
         self._FileSize = None
         self._FileUrl = None
+        self._DocId = None
+        self._CreateTime = None
 
     @property
     def DocBizId(self):
+        warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
+
         r"""实时文档解析接口返回的 DocBizId
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DocBizId
 
     @DocBizId.setter
     def DocBizId(self, DocBizId):
+        warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
+
         self._DocBizId = DocBizId
 
     @property
@@ -15976,6 +16112,30 @@ class FileInfoContent(AbstractModel):
     def FileUrl(self, FileUrl):
         self._FileUrl = FileUrl
 
+    @property
+    def DocId(self):
+        r"""实时文档解析接口返回的 doc_id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def CreateTime(self):
+        r"""文件创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -15983,6 +16143,8 @@ class FileInfoContent(AbstractModel):
         self._FileType = params.get("FileType")
         self._FileSize = params.get("FileSize")
         self._FileUrl = params.get("FileUrl")
+        self._DocId = params.get("DocId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33999,6 +34161,8 @@ class SearchStrategy(AbstractModel):
         :param _NatureLanguageToSqlModelConfig: NL2SQL模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type NatureLanguageToSqlModelConfig: :class:`tencentcloud.lke.v20231130.models.NL2SQLModelConfig`
+        :param _GraphRetrieval: 是否开启图谱检索
+        :type GraphRetrieval: bool
         """
         self._StrategyType = None
         self._TableEnhancement = None
@@ -34006,6 +34170,7 @@ class SearchStrategy(AbstractModel):
         self._RerankModelSwitch = None
         self._RerankModel = None
         self._NatureLanguageToSqlModelConfig = None
+        self._GraphRetrieval = None
 
     @property
     def StrategyType(self):
@@ -34079,6 +34244,17 @@ class SearchStrategy(AbstractModel):
     def NatureLanguageToSqlModelConfig(self, NatureLanguageToSqlModelConfig):
         self._NatureLanguageToSqlModelConfig = NatureLanguageToSqlModelConfig
 
+    @property
+    def GraphRetrieval(self):
+        r"""是否开启图谱检索
+        :rtype: bool
+        """
+        return self._GraphRetrieval
+
+    @GraphRetrieval.setter
+    def GraphRetrieval(self, GraphRetrieval):
+        self._GraphRetrieval = GraphRetrieval
+
 
     def _deserialize(self, params):
         self._StrategyType = params.get("StrategyType")
@@ -34089,6 +34265,7 @@ class SearchStrategy(AbstractModel):
         if params.get("NatureLanguageToSqlModelConfig") is not None:
             self._NatureLanguageToSqlModelConfig = NL2SQLModelConfig()
             self._NatureLanguageToSqlModelConfig._deserialize(params.get("NatureLanguageToSqlModelConfig"))
+        self._GraphRetrieval = params.get("GraphRetrieval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36884,6 +37061,9 @@ class Widget(AbstractModel):
         :type WidgetId: str
         :param _WidgetRunId: Widget实例ID
         :type WidgetRunId: str
+        :param _View: Widget显示数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type View: str
         :param _State: Widget状态数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
@@ -36899,6 +37079,7 @@ class Widget(AbstractModel):
         """
         self._WidgetId = None
         self._WidgetRunId = None
+        self._View = None
         self._State = None
         self._Position = None
         self._EncodedWidget = None
@@ -36926,6 +37107,18 @@ class Widget(AbstractModel):
     @WidgetRunId.setter
     def WidgetRunId(self, WidgetRunId):
         self._WidgetRunId = WidgetRunId
+
+    @property
+    def View(self):
+        r"""Widget显示数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
 
     @property
     def State(self):
@@ -36979,6 +37172,7 @@ class Widget(AbstractModel):
     def _deserialize(self, params):
         self._WidgetId = params.get("WidgetId")
         self._WidgetRunId = params.get("WidgetRunId")
+        self._View = params.get("View")
         self._State = params.get("State")
         self._Position = params.get("Position")
         self._EncodedWidget = params.get("EncodedWidget")
@@ -37848,6 +38042,9 @@ class WorkflowRunDetail(AbstractModel):
         :type CustomVariables: list of CustomVariable
         :param _WorkflowGraph: 工作流的流程图
         :type WorkflowGraph: str
+        :param _LatestMessage: 当前的回复消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestMessage: :class:`tencentcloud.lke.v20231130.models.AsyncWorkflowMessage`
         """
         self._RunEnv = None
         self._AppBizId = None
@@ -37866,6 +38063,7 @@ class WorkflowRunDetail(AbstractModel):
         self._MainModelName = None
         self._CustomVariables = None
         self._WorkflowGraph = None
+        self._LatestMessage = None
 
     @property
     def RunEnv(self):
@@ -38058,6 +38256,18 @@ class WorkflowRunDetail(AbstractModel):
     def WorkflowGraph(self, WorkflowGraph):
         self._WorkflowGraph = WorkflowGraph
 
+    @property
+    def LatestMessage(self):
+        r"""当前的回复消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AsyncWorkflowMessage`
+        """
+        return self._LatestMessage
+
+    @LatestMessage.setter
+    def LatestMessage(self, LatestMessage):
+        self._LatestMessage = LatestMessage
+
 
     def _deserialize(self, params):
         self._RunEnv = params.get("RunEnv")
@@ -38082,6 +38292,9 @@ class WorkflowRunDetail(AbstractModel):
                 obj._deserialize(item)
                 self._CustomVariables.append(obj)
         self._WorkflowGraph = params.get("WorkflowGraph")
+        if params.get("LatestMessage") is not None:
+            self._LatestMessage = AsyncWorkflowMessage()
+            self._LatestMessage._deserialize(params.get("LatestMessage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

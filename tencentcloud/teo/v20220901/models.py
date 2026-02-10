@@ -9143,6 +9143,14 @@ class CreateAccelerationDomainRequest(AbstractModel):
 <li>on：开启状态；</li>
 <li>off：关闭状态。</li>不填默认为：follow。
         :type IPv6Status: str
+        :param _SharedCNAME: 指定域名绑定的共享 CNAME 地址，不传时使用默认 CNAME。
+绑定共享 CNAME 要求所有域名的调度策略保持一致，以下配置将影响调度策略，在不一致时绑定共享 CNAME 将按照以下方式处理：
+- IPv6 访问：不允许创建域名，请修改 IPv6Status 已保持与共享 CNAME 绑定的其余域名配置一致；
+- DDoS 防护：如果选择的共享 CNAME 已启用 DDoS 防护，则创建域名时，将默认为该域名启用 DDoS 防护。
+- 中国大陆网络优化（国际加速）：不允许创建域名，请保持当前域名的中国大陆网络优化（国际加速）配置与共享 CNAME 绑定的其余域名一致后重试。
+
+注：共享 CNAME 当前仍在内测中，如需使用，请联系我们开通。
+        :type SharedCNAME: str
         """
         self._ZoneId = None
         self._DomainName = None
@@ -9151,6 +9159,7 @@ class CreateAccelerationDomainRequest(AbstractModel):
         self._HttpOriginPort = None
         self._HttpsOriginPort = None
         self._IPv6Status = None
+        self._SharedCNAME = None
 
     @property
     def ZoneId(self):
@@ -9237,6 +9246,23 @@ class CreateAccelerationDomainRequest(AbstractModel):
     def IPv6Status(self, IPv6Status):
         self._IPv6Status = IPv6Status
 
+    @property
+    def SharedCNAME(self):
+        r"""指定域名绑定的共享 CNAME 地址，不传时使用默认 CNAME。
+绑定共享 CNAME 要求所有域名的调度策略保持一致，以下配置将影响调度策略，在不一致时绑定共享 CNAME 将按照以下方式处理：
+- IPv6 访问：不允许创建域名，请修改 IPv6Status 已保持与共享 CNAME 绑定的其余域名配置一致；
+- DDoS 防护：如果选择的共享 CNAME 已启用 DDoS 防护，则创建域名时，将默认为该域名启用 DDoS 防护。
+- 中国大陆网络优化（国际加速）：不允许创建域名，请保持当前域名的中国大陆网络优化（国际加速）配置与共享 CNAME 绑定的其余域名一致后重试。
+
+注：共享 CNAME 当前仍在内测中，如需使用，请联系我们开通。
+        :rtype: str
+        """
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -9248,6 +9274,7 @@ class CreateAccelerationDomainRequest(AbstractModel):
         self._HttpOriginPort = params.get("HttpOriginPort")
         self._HttpsOriginPort = params.get("HttpsOriginPort")
         self._IPv6Status = params.get("IPv6Status")
+        self._SharedCNAME = params.get("SharedCNAME")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

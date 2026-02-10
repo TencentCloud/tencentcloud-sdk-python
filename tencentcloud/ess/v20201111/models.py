@@ -27427,9 +27427,9 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息,userId必填。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Limit: 指定分页每页返回的数据条数，单页最大1000
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
         :type Limit: int
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        :param _Offset: 偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :type Offset: int
         :param _Name: 查询成员企业的企业名，模糊匹配
         :type Name: str
@@ -27444,6 +27444,9 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         :param _Export: 是否导出当前成员企业数据
 <ul><li> **false**：不导出（默认值）</li>
 <li> **true**：导出</li></ul>
+
+p.s.
+若传入此参数， LImit参数将无效，导出的为全量数据。
         :type Export: bool
         :param _Id: 成员企业机构 ID，32 位字符串，在PC控制台 集团管理可获取
         :type Id: str
@@ -27470,7 +27473,7 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大1000
+        r"""指定分页每页返回的数据条数，单页最大支持 200。
         :rtype: int
         """
         return self._Limit
@@ -27481,7 +27484,7 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        r"""偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -27527,6 +27530,9 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         r"""是否导出当前成员企业数据
 <ul><li> **false**：不导出（默认值）</li>
 <li> **true**：导出</li></ul>
+
+p.s.
+若传入此参数， LImit参数将无效，导出的为全量数据。
         :rtype: bool
         """
         return self._Export

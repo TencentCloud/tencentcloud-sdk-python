@@ -18009,7 +18009,7 @@ class MainlandPermitOCRRequest(AbstractModel):
         :type RetProfile: bool
         :param _CardSide: 图片正反面
 FRONT：正面
-BACK：反面
+BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
 默认为FRONT
         :type CardSide: str
         """
@@ -18055,7 +18055,7 @@ BACK：反面
     def CardSide(self):
         r"""图片正反面
 FRONT：正面
-BACK：反面
+BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
 默认为FRONT
         :rtype: str
         """

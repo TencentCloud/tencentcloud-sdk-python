@@ -3416,6 +3416,12 @@ HoaiMy
         :type MaxCallDurationMs: int
         :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
         :type MaxRingTimeoutSecond: int
+        :param _AmbientSoundType: 环境音场景，没有的话不填。
+coffee_shops：咖啡店氛围，背景中有人聊天
+busy_office：客服中心
+        :type AmbientSoundType: str
+        :param _AmbientSoundVolume: 环境音音量。如果AmbientSoundType 为空，该字段不填。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+        :type AmbientSoundVolume: float
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3455,6 +3461,8 @@ HoaiMy
         self._LLMExtraBody = None
         self._MaxCallDurationMs = None
         self._MaxRingTimeoutSecond = None
+        self._AmbientSoundType = None
+        self._AmbientSoundVolume = None
 
     @property
     def SdkAppId(self):
@@ -4048,6 +4056,30 @@ HoaiMy
     def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
         self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
 
+    @property
+    def AmbientSoundType(self):
+        r"""环境音场景，没有的话不填。
+coffee_shops：咖啡店氛围，背景中有人聊天
+busy_office：客服中心
+        :rtype: str
+        """
+        return self._AmbientSoundType
+
+    @AmbientSoundType.setter
+    def AmbientSoundType(self, AmbientSoundType):
+        self._AmbientSoundType = AmbientSoundType
+
+    @property
+    def AmbientSoundVolume(self):
+        r"""环境音音量。如果AmbientSoundType 为空，该字段不填。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+        :rtype: float
+        """
+        return self._AmbientSoundVolume
+
+    @AmbientSoundVolume.setter
+    def AmbientSoundVolume(self, AmbientSoundVolume):
+        self._AmbientSoundVolume = AmbientSoundVolume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4110,6 +4142,8 @@ HoaiMy
         self._LLMExtraBody = params.get("LLMExtraBody")
         self._MaxCallDurationMs = params.get("MaxCallDurationMs")
         self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
+        self._AmbientSoundType = params.get("AmbientSoundType")
+        self._AmbientSoundVolume = params.get("AmbientSoundVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18986,6 +19020,10 @@ NotExists
         :type AIAgentId: int
         :param _AIAgentName: 如果是智能体相关通话，这里是智能体名称
         :type AIAgentName: str
+        :param _SysHangupReason: 接通后系统挂断原因，枚举类似
+        :type SysHangupReason: int
+        :param _SysHangupReasonString: 接通后系统挂断原因，文字描述信息
+        :type SysHangupReasonString: str
         """
         self._Caller = None
         self._Callee = None
@@ -19027,6 +19065,8 @@ NotExists
         self._VoicemailAsrURL = None
         self._AIAgentId = None
         self._AIAgentName = None
+        self._SysHangupReason = None
+        self._SysHangupReasonString = None
 
     @property
     def Caller(self):
@@ -19554,6 +19594,28 @@ NotExists
     def AIAgentName(self, AIAgentName):
         self._AIAgentName = AIAgentName
 
+    @property
+    def SysHangupReason(self):
+        r"""接通后系统挂断原因，枚举类似
+        :rtype: int
+        """
+        return self._SysHangupReason
+
+    @SysHangupReason.setter
+    def SysHangupReason(self, SysHangupReason):
+        self._SysHangupReason = SysHangupReason
+
+    @property
+    def SysHangupReasonString(self):
+        r"""接通后系统挂断原因，文字描述信息
+        :rtype: str
+        """
+        return self._SysHangupReasonString
+
+    @SysHangupReasonString.setter
+    def SysHangupReasonString(self, SysHangupReasonString):
+        self._SysHangupReasonString = SysHangupReasonString
+
 
     def _deserialize(self, params):
         self._Caller = params.get("Caller")
@@ -19613,6 +19675,8 @@ NotExists
         self._VoicemailAsrURL = params.get("VoicemailAsrURL")
         self._AIAgentId = params.get("AIAgentId")
         self._AIAgentName = params.get("AIAgentName")
+        self._SysHangupReason = params.get("SysHangupReason")
+        self._SysHangupReasonString = params.get("SysHangupReasonString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

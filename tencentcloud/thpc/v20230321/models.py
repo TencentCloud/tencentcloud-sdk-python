@@ -3092,14 +3092,17 @@ class DescribeAutoScalingConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID。	
+        :param _ClusterId: <p>集群ID。</p>
         :type ClusterId: str
+        :param _QueueName: <p>队列名称</p>
+        :type QueueName: str
         """
         self._ClusterId = None
+        self._QueueName = None
 
     @property
     def ClusterId(self):
-        r"""集群ID。	
+        r"""<p>集群ID。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -3108,9 +3111,21 @@ class DescribeAutoScalingConfigurationRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def QueueName(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._QueueName = params.get("QueueName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3128,13 +3143,13 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID。
+        :param _ClusterId: <p>集群ID。</p>
         :type ClusterId: str
-        :param _ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+        :param _ExpansionBusyTime: <p>任务连续等待时间，队列的任务处于连续等待的时间。单位秒。</p>
         :type ExpansionBusyTime: int
-        :param _ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+        :param _ShrinkIdleTime: <p>节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。</p>
         :type ShrinkIdleTime: int
-        :param _QueueConfigs: 扩容队列配置概览列表。
+        :param _QueueConfigs: <p>扩容队列配置概览列表。</p>
         :type QueueConfigs: list of QueueConfigOverview
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3147,7 +3162,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID。
+        r"""<p>集群ID。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -3158,7 +3173,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ExpansionBusyTime(self):
-        r"""任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+        r"""<p>任务连续等待时间，队列的任务处于连续等待的时间。单位秒。</p>
         :rtype: int
         """
         return self._ExpansionBusyTime
@@ -3169,7 +3184,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def ShrinkIdleTime(self):
-        r"""节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+        r"""<p>节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。</p>
         :rtype: int
         """
         return self._ShrinkIdleTime
@@ -3180,7 +3195,7 @@ class DescribeAutoScalingConfigurationResponse(AbstractModel):
 
     @property
     def QueueConfigs(self):
-        r"""扩容队列配置概览列表。
+        r"""<p>扩容队列配置概览列表。</p>
         :rtype: list of QueueConfigOverview
         """
         return self._QueueConfigs

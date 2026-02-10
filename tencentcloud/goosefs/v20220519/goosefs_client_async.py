@@ -115,6 +115,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelLoadTask(
+            self,
+            request: models.CancelLoadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CancelLoadTaskResponse:
+        """
+        取消单个预热任务，仅任务在 waiting、running 状态时可以调用此接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelLoadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelLoadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataRepositoryTask(
             self,
             request: models.CreateDataRepositoryTaskRequest,
@@ -164,6 +182,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "CreateFileset"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateFilesetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLoadTask(
+            self,
+            request: models.CreateLoadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLoadTaskResponse:
+        """
+        GooseFS 预热相关接口，用于下发，列出，查询，修改预热任务。用于元数据预热、数据预热场景。 注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLoadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLoadTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,26 +313,6 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeClusterRoles(
-            self,
-            request: models.DescribeClusterRolesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeClusterRolesResponse:
-        """
-        接口废弃
-
-        查询GooseFS集群角色
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeClusterRoles"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeClusterRolesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDataRepositoryTaskStatus(
             self,
             request: models.DescribeDataRepositoryTaskStatusRequest,
@@ -387,6 +403,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLoadTask(
+            self,
+            request: models.DescribeLoadTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoadTaskResponse:
+        """
+        查询单个预热任务执行情况。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DetachFileSystemBucket(
             self,
             request: models.DetachFileSystemBucketRequest,
@@ -418,6 +452,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "ExpandCapacity"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExpandCapacityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListLoadTasks(
+            self,
+            request: models.ListLoadTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListLoadTasksResponse:
+        """
+        列出该集群下所有预热任务。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListLoadTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListLoadTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -508,6 +560,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "UpdateFilesetGeneralConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateFilesetGeneralConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateLoadTaskPriority(
+            self,
+            request: models.UpdateLoadTaskPriorityRequest,
+            opts: Dict = None,
+    ) -> models.UpdateLoadTaskPriorityResponse:
+        """
+        变更已有 GooseFS 预热任务配置，仅任务状态为 waiting 时可调用该接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateLoadTaskPriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateLoadTaskPriorityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

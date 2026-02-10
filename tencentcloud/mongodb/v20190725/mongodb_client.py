@@ -49,6 +49,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAuditService(self, request):
+        r"""本接口（CloseAuditService）用于关闭审计服务
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccountUser(self, request):
         r"""本接口（CreateAccountUser）用于自定义实例访问账号。
 
@@ -349,6 +372,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuditConfig(self, request):
+        r"""本接口(DescribeAuditConfig)用于查询云数据库审计策略的服务配置，包括审计日志保存时长等。
+
+        :param request: Request instance for DescribeAuditConfig.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditConfigRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAuditInstanceList(self, request):
         r"""本接口（DescribeAuditInstanceList）用于查询开通或未开通数据库审计的实例列表。
 
@@ -363,6 +409,52 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeAuditInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogFiles(self, request):
+        r"""本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogs(self, request):
+        r"""本接口(DescribeAuditLogs)用于查询数据库审计日志。
+
+        :param request: Request instance for DescribeAuditLogs.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

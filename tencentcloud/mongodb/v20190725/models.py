@@ -495,6 +495,300 @@ class AuditInstance(AbstractModel):
         
 
 
+class AuditLog(AbstractModel):
+    r"""审计日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectRows: 影响行数
+        :type AffectRows: int
+        :param _Atype: 操作类型。如：grantRolesToRole、dropRole等。
+        :type Atype: str
+        :param _ExecTime: 执行时间。单位为：ms。
+        :type ExecTime: int
+        :param _Host: 客户端地址。
+        :type Host: str
+        :param _Param: 操作参数。包含操作的详细参数信息。
+        :type Param: str
+        :param _Result: 执行结果。0表示成功，非0表示失败。
+        :type Result: int
+        :param _Roles: 用户角色列表。格式为：role@db,role@db。
+        :type Roles: str
+        :param _Timestamp: 操作时间戳。格式为：YYYY-MM-DD HH:mm:ss。
+        :type Timestamp: str
+        :param _User: 用户名。格式为：user@db。
+        :type User: str
+        """
+        self._AffectRows = None
+        self._Atype = None
+        self._ExecTime = None
+        self._Host = None
+        self._Param = None
+        self._Result = None
+        self._Roles = None
+        self._Timestamp = None
+        self._User = None
+
+    @property
+    def AffectRows(self):
+        r"""影响行数
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def Atype(self):
+        r"""操作类型。如：grantRolesToRole、dropRole等。
+        :rtype: str
+        """
+        return self._Atype
+
+    @Atype.setter
+    def Atype(self, Atype):
+        self._Atype = Atype
+
+    @property
+    def ExecTime(self):
+        r"""执行时间。单位为：ms。
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""客户端地址。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Param(self):
+        r"""操作参数。包含操作的详细参数信息。
+        :rtype: str
+        """
+        return self._Param
+
+    @Param.setter
+    def Param(self, Param):
+        self._Param = Param
+
+    @property
+    def Result(self):
+        r"""执行结果。0表示成功，非0表示失败。
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Roles(self):
+        r"""用户角色列表。格式为：role@db,role@db。
+        :rtype: str
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def Timestamp(self):
+        r"""操作时间戳。格式为：YYYY-MM-DD HH:mm:ss。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def User(self):
+        r"""用户名。格式为：user@db。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._AffectRows = params.get("AffectRows")
+        self._Atype = params.get("Atype")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._Param = params.get("Param")
+        self._Result = params.get("Result")
+        self._Roles = params.get("Roles")
+        self._Timestamp = params.get("Timestamp")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFile(AbstractModel):
+    r"""审计日志文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 审计日志文件名称。
+        :type FileName: str
+        :param _CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+        :type CreateTime: str
+        :param _Status: 文件状态值。可能返回的值为：
+"creating" - 生成中；
+"failed" - 创建失败；
+"success" - 已生成。
+        :type Status: str
+        :param _FileSize: 文件大小，单位为 KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param _DownloadUrl: 审计日志下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param _ErrMsg: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param _ProgressRate: 下载进度
+        :type ProgressRate: int
+        """
+        self._FileName = None
+        self._CreateTime = None
+        self._Status = None
+        self._FileSize = None
+        self._DownloadUrl = None
+        self._ErrMsg = None
+        self._ProgressRate = None
+
+    @property
+    def FileName(self):
+        r"""审计日志文件名称。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        r"""审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""文件状态值。可能返回的值为：
+"creating" - 生成中；
+"failed" - 创建失败；
+"success" - 已生成。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileSize(self):
+        r"""文件大小，单位为 KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def DownloadUrl(self):
+        r"""审计日志下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ErrMsg(self):
+        r"""错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def ProgressRate(self):
+        r"""下载进度
+        :rtype: int
+        """
+        return self._ProgressRate
+
+    @ProgressRate.setter
+    def ProgressRate(self, ProgressRate):
+        self._ProgressRate = ProgressRate
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._FileSize = params.get("FileSize")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ErrMsg = params.get("ErrMsg")
+        self._ProgressRate = params.get("ProgressRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLogFilter(AbstractModel):
     r"""审计日志过滤条件
 
@@ -1336,6 +1630,70 @@ class ClientConnection(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloseAuditServiceRequest(AbstractModel):
+    r"""CloseAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cmgo-test1234，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，格式如：cmgo-test1234，与云数据库控制台页面中显示的实例 ID 相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    r"""CloseAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAccountUserRequest(AbstractModel):
@@ -4405,6 +4763,202 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuditConfigRequest(AbstractModel):
+    r"""DescribeAuditConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，格式如：cmgo-xftsghuy，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID，格式如：cmgo-xftsghuy，与云数据库控制台页面中显示的实例 ID 相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditConfigResponse(AbstractModel):
+    r"""DescribeAuditConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _AuditAll: true表示全审计，false表示规则审计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditAll: bool
+        :param _CreateTime: 该实例开通数据库审计的时间。
+        :type CreateTime: str
+        :param _LogExpireDay: 审计日志保存时长。
+单位：天。目前支持的保存时长包括：0、30、180、365，1095、1825。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogExpireDay: int
+        :param _LogType: 审计日志存储类型。目前仅支持storage：存储型。
+        :type LogType: str
+        :param _IsClosing: 是否正在关闭审计功能。
+<ul><li>true：是。</li><li>false：否。</li></ul>
+        :type IsClosing: str
+        :param _IsOpening: 是否正在开启审计功能。<ul><li>true：是。</li><li>false：否。</li></ul>
+        :type IsOpening: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AuditAll = None
+        self._CreateTime = None
+        self._LogExpireDay = None
+        self._LogType = None
+        self._IsClosing = None
+        self._IsOpening = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AuditAll(self):
+        r"""true表示全审计，false表示规则审计
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
+    @property
+    def CreateTime(self):
+        r"""该实例开通数据库审计的时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LogExpireDay(self):
+        r"""审计日志保存时长。
+单位：天。目前支持的保存时长包括：0、30、180、365，1095、1825。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def LogType(self):
+        r"""审计日志存储类型。目前仅支持storage：存储型。
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsClosing(self):
+        r"""是否正在关闭审计功能。
+<ul><li>true：是。</li><li>false：否。</li></ul>
+        :rtype: str
+        """
+        return self._IsClosing
+
+    @IsClosing.setter
+    def IsClosing(self, IsClosing):
+        self._IsClosing = IsClosing
+
+    @property
+    def IsOpening(self):
+        r"""是否正在开启审计功能。<ul><li>true：是。</li><li>false：否。</li></ul>
+        :rtype: str
+        """
+        return self._IsOpening
+
+    @IsOpening.setter
+    def IsOpening(self, IsOpening):
+        self._IsOpening = IsOpening
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AuditAll = params.get("AuditAll")
+        self._CreateTime = params.get("CreateTime")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._LogType = params.get("LogType")
+        self._IsClosing = params.get("IsClosing")
+        self._IsOpening = params.get("IsOpening")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAuditInstanceListRequest(AbstractModel):
     r"""DescribeAuditInstanceList请求参数结构体
 
@@ -4566,6 +5120,368 @@ class DescribeAuditInstanceListResponse(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = AuditInstance()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    r"""DescribeAuditLogFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param _Limit: 分页大小参数。默认值为 20，取值范围[1,100]。
+        :type Limit: int
+        :param _Offset: 分页偏移量。
+        :type Offset: int
+        :param _FileName: 审计日志文件名。该接口将根据此参数过滤相关的审计日志文件。
+        :type FileName: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._FileName = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""分页大小参数。默认值为 20，取值范围[1,100]。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FileName(self):
+        r"""审计日志文件名。该接口将根据此参数过滤相关的审计日志文件。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    r"""DescribeAuditLogFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的审计日志文件个数。
+        :type TotalCount: int
+        :param _Items: 审计日志文件详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLogFile
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的审计日志文件个数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""审计日志文件详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditLogFile
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    r"""DescribeAuditLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cmgo-xftsghuy，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param _StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
+        :type StartTime: str
+        :param _EndTime: 结束时间，格式为："2017-07-12 10:29:20"。
+        :type EndTime: str
+        :param _Filter: 过滤条件，可按设置的过滤条件过滤日志。
+        :type Filter: :class:`tencentcloud.mongodb.v20190725.models.AuditLogFilter`
+        :param _Limit: 分页参数，指单次返回的数据条数。默认值为100，最大值为100。
+        :type Limit: int
+        :param _Offset: 分页偏移量。
+        :type Offset: int
+        :param _Order: 审计日志的排序方式。
+<ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+        :type Order: str
+        :param _OrderBy: 审计日志的排序字段，包括：
+<ul><li>timestamp：时间戳。</li>
+<li>affectRows：影响行数。</li>
+<li>execTime：执行时间。</li></ul>
+        :type OrderBy: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filter = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，格式如：cmgo-xftsghuy，与云数据库控制台页面中显示的实例 ID 相同。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间，格式为："2017-07-12 10:29:20"。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，格式为："2017-07-12 10:29:20"。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filter(self):
+        r"""过滤条件，可按设置的过滤条件过滤日志。
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Limit(self):
+        r"""分页参数，指单次返回的数据条数。默认值为100，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""审计日志的排序方式。
+<ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""审计日志的排序字段，包括：
+<ul><li>timestamp：时间戳。</li>
+<li>affectRows：影响行数。</li>
+<li>execTime：执行时间。</li></ul>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    r"""DescribeAuditLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的审计日志条数。
+        :type TotalCount: int
+        :param _Items: 审计日志详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLog
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的审计日志条数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""审计日志详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditLog
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")

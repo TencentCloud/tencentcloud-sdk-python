@@ -376,7 +376,7 @@ class TioneClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBillingResourceGroupsResponse:
         """
-        查询资源组详情
+        查询资源组列表
         """
         
         kwargs = {}

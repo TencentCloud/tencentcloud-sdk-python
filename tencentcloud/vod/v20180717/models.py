@@ -1380,6 +1380,12 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         :type Width: int
         :param _Height: 目标图片高度，不能超过4096。
         :type Height: int
+        :param _LongSide: 目标图片长边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+        :type LongSide: int
+        :param _ShortSide: 目标图片短边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+        :type ShortSide: int
         """
         self._Switch = None
         self._Type = None
@@ -1387,6 +1393,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         self._Percent = None
         self._Width = None
         self._Height = None
+        self._LongSide = None
+        self._ShortSide = None
 
     @property
     def Switch(self):
@@ -1463,6 +1471,30 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     def Height(self, Height):
         self._Height = Height
 
+    @property
+    def LongSide(self):
+        r"""目标图片长边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+        :rtype: int
+        """
+        return self._LongSide
+
+    @LongSide.setter
+    def LongSide(self, LongSide):
+        self._LongSide = LongSide
+
+    @property
+    def ShortSide(self):
+        r"""目标图片短边长度，不能超过4096。
+注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+        :rtype: int
+        """
+        return self._ShortSide
+
+    @ShortSide.setter
+    def ShortSide(self, ShortSide):
+        self._ShortSide = ShortSide
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -1471,6 +1503,8 @@ class AdvancedSuperResolutionConfig(AbstractModel):
         self._Percent = params.get("Percent")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        self._LongSide = params.get("LongSide")
+        self._ShortSide = params.get("ShortSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12564,16 +12598,20 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         :type Url: str
         :param _ReferenceType: 参考类型，GV模型适用。
 注意：
-
-当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；
+当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。
         :type ReferenceType: str
-        :param _ObjectId: 主体id.
+        :param _ObjectId: 主体 Id。
 适用模型：Vidu-q2.
-当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+当需要对图片标识主体时，需要每个图片都带主体 Id，后续生成时可以通过@主体 Id 的方式使用。当 Category 为 Image 时有效。
         :type ObjectId: str
-        :param _VoiceId: 适用于Vidu-q2模型。
-当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        :param _VoiceId: 适用于 Vidu-q2 模型。
+当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
         :type VoiceId: str
+        :param _KeepOriginalSound: 是否保留视频原声。当 Category 为 Video 时有效。取值如下：
+<li>Enabled：保留</li>
+<li>Disabled：不保留</li>
+        :type KeepOriginalSound: str
         """
         self._Type = None
         self._Category = None
@@ -12582,6 +12620,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._ReferenceType = None
         self._ObjectId = None
         self._VoiceId = None
+        self._KeepOriginalSound = None
 
     @property
     def Type(self):
@@ -12638,8 +12677,8 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     def ReferenceType(self):
         r"""参考类型，GV模型适用。
 注意：
-
-当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；
+当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。
         :rtype: str
         """
         return self._ReferenceType
@@ -12650,9 +12689,9 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""主体id.
+        r"""主体 Id。
 适用模型：Vidu-q2.
-当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+当需要对图片标识主体时，需要每个图片都带主体 Id，后续生成时可以通过@主体 Id 的方式使用。当 Category 为 Image 时有效。
         :rtype: str
         """
         return self._ObjectId
@@ -12663,8 +12702,8 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""适用于Vidu-q2模型。
-当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        r"""适用于 Vidu-q2 模型。
+当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
         :rtype: str
         """
         return self._VoiceId
@@ -12672,6 +12711,19 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     @VoiceId.setter
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
+
+    @property
+    def KeepOriginalSound(self):
+        r"""是否保留视频原声。当 Category 为 Video 时有效。取值如下：
+<li>Enabled：保留</li>
+<li>Disabled：不保留</li>
+        :rtype: str
+        """
+        return self._KeepOriginalSound
+
+    @KeepOriginalSound.setter
+    def KeepOriginalSound(self, KeepOriginalSound):
+        self._KeepOriginalSound = KeepOriginalSound
 
 
     def _deserialize(self, params):
@@ -12682,6 +12734,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._ReferenceType = params.get("ReferenceType")
         self._ObjectId = params.get("ObjectId")
         self._VoiceId = params.get("VoiceId")
+        self._KeepOriginalSound = params.get("KeepOriginalSound")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20017,6 +20070,8 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type EnhancePrompt: str
         :param _OutputConfig: 生图任务的输出媒体文件配置。
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
+        :param _InputRegion: 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        :type InputRegion: str
         :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
@@ -20034,6 +20089,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._NegativePrompt = None
         self._EnhancePrompt = None
         self._OutputConfig = None
+        self._InputRegion = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
@@ -20141,6 +20197,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._OutputConfig = OutputConfig
 
     @property
+    def InputRegion(self):
+        r"""输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
+    @property
     def SessionId(self):
         r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :rtype: str
@@ -20201,6 +20268,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcImageOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._InputRegion = params.get("InputRegion")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")
@@ -20309,6 +20377,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
     motion_control 表示动作控制；
     avatar_i2v 表示数字人；
     lip_sync 表示对口型；</li>
+<li>当 ModelName 为 Vidu 时：
+    template_effect 表示特效模板；
+</li>
 <li>其他 ModelName 暂不支持。</li>
         :type SceneType: str
         :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -20482,6 +20553,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
     motion_control 表示动作控制；
     avatar_i2v 表示数字人；
     lip_sync 表示对口型；</li>
+<li>当 ModelName 为 Vidu 时：
+    template_effect 表示特效模板；
+</li>
 <li>其他 ModelName 暂不支持。</li>
         :rtype: str
         """
@@ -22862,6 +22936,168 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLLMComprehendTemplateRequest(AbstractModel):
+    r"""CreateLLMComprehendTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: 解析级别，可选值为：
+- Audio: 音频级解析
+- Video: 视频级解析
+        :type Level: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Name: 大模型解析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 大模型解析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _Summary: 分段摘要解析配置
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        :param _Asr: 文本转录解析配置
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        """
+        self._Level = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._Summary = None
+        self._Asr = None
+
+    @property
+    def Level(self):
+        r"""解析级别，可选值为：
+- Audio: 音频级解析
+- Video: 视频级解析
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""大模型解析模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""大模型解析模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Summary(self):
+        r"""分段摘要解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""文本转录解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsr()
+            self._Asr._deserialize(params.get("Asr"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLLMComprehendTemplateResponse(AbstractModel):
+    r"""CreateLLMComprehendTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 大模型理解模板的唯一标识
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""大模型理解模板的唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -27775,6 +28011,85 @@ class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
     r"""DeleteJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLLMComprehendTemplateRequest(AbstractModel):
+    r"""DeleteLLMComprehendTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 大模型理解模板的唯一标识
+        :type Definition: int
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        r"""大模型理解模板的唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLLMComprehendTemplateResponse(AbstractModel):
+    r"""DeleteLLMComprehendTemplate返回参数结构体
 
     """
 
@@ -33959,6 +34274,150 @@ class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLLMComprehendTemplatesRequest(AbstractModel):
+    r"""DescribeLLMComprehendTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Definitions: 大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        r"""大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMComprehendTemplatesResponse(AbstractModel):
+    r"""DescribeLLMComprehendTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _LLMComprehendTemplateSet: 图片异步处理模板详情列表。
+        :type LLMComprehendTemplateSet: list of LLMComprehendTemplateItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LLMComprehendTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LLMComprehendTemplateSet(self):
+        r"""图片异步处理模板详情列表。
+        :rtype: list of LLMComprehendTemplateItem
+        """
+        return self._LLMComprehendTemplateSet
+
+    @LLMComprehendTemplateSet.setter
+    def LLMComprehendTemplateSet(self, LLMComprehendTemplateSet):
+        self._LLMComprehendTemplateSet = LLMComprehendTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LLMComprehendTemplateSet") is not None:
+            self._LLMComprehendTemplateSet = []
+            for item in params.get("LLMComprehendTemplateSet"):
+                obj = LLMComprehendTemplateItem()
+                obj._deserialize(item)
+                self._LLMComprehendTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLicenseUsageDataRequest(AbstractModel):
     r"""DescribeLicenseUsageData请求参数结构体
 
@@ -34564,6 +35023,18 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
 <li>JITEncryption: 即时加密</li>
+<li>MediaEnhancement: 音视频增强</li>
+<li>ImageCompression: 图片压缩</li>
+<li>ImageEnhancement: 图片增强</li>
+<li>ImageSuperResolution: 图片超分</li>
+<li>ImageAdvanceCompression: 图片高级压缩</li>
+<li>ImageUnderstanding: 图片理解</li>
+<li>AddTraceWatermark: 添加溯源水印</li>
+<li>AddBlindWatermark: 添加盲水印</li>
+<li>AddNagraWatermark: 添加NAGRA数字水印</li>
+<li>ExtractTraceWatermark: 提取溯源水印</li>
+<li>ExtractBlindWatermark: 提取盲水印</li>
+<li>ExtractNagraWatermark: 提取NAGRA数字水印</li>
 
         :type Type: str
         """
@@ -34632,6 +35103,18 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
 <li>JITEncryption: 即时加密</li>
+<li>MediaEnhancement: 音视频增强</li>
+<li>ImageCompression: 图片压缩</li>
+<li>ImageEnhancement: 图片增强</li>
+<li>ImageSuperResolution: 图片超分</li>
+<li>ImageAdvanceCompression: 图片高级压缩</li>
+<li>ImageUnderstanding: 图片理解</li>
+<li>AddTraceWatermark: 添加溯源水印</li>
+<li>AddBlindWatermark: 添加盲水印</li>
+<li>AddNagraWatermark: 添加NAGRA数字水印</li>
+<li>ExtractTraceWatermark: 提取溯源水印</li>
+<li>ExtractBlindWatermark: 提取盲水印</li>
+<li>ExtractNagraWatermark: 提取NAGRA数字水印</li>
 
         :rtype: str
         """
@@ -46926,6 +47409,103 @@ class ImageTransform(AbstractModel):
         
 
 
+class ImageUnderstandingInfo(AbstractModel):
+    r"""图片理解信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUnderstandingSet: 图片理解项集合。
+        :type ImageUnderstandingSet: list of ImageUnderstandingItem
+        """
+        self._ImageUnderstandingSet = None
+
+    @property
+    def ImageUnderstandingSet(self):
+        r"""图片理解项集合。
+        :rtype: list of ImageUnderstandingItem
+        """
+        return self._ImageUnderstandingSet
+
+    @ImageUnderstandingSet.setter
+    def ImageUnderstandingSet(self, ImageUnderstandingSet):
+        self._ImageUnderstandingSet = ImageUnderstandingSet
+
+
+    def _deserialize(self, params):
+        if params.get("ImageUnderstandingSet") is not None:
+            self._ImageUnderstandingSet = []
+            for item in params.get("ImageUnderstandingSet"):
+                obj = ImageUnderstandingItem()
+                obj._deserialize(item)
+                self._ImageUnderstandingSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageUnderstandingItem(AbstractModel):
+    r"""图片理解信息项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 模板id。
+        :type Definition: int
+        :param _OutputFile: 任务输出文件。
+        :type OutputFile: list of MPSOutputFileInfo
+        """
+        self._Definition = None
+        self._OutputFile = None
+
+    @property
+    def Definition(self):
+        r"""模板id。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputFile(self):
+        r"""任务输出文件。
+        :rtype: list of MPSOutputFileInfo
+        """
+        return self._OutputFile
+
+    @OutputFile.setter
+    def OutputFile(self, OutputFile):
+        self._OutputFile = OutputFile
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputFile") is not None:
+            self._OutputFile = []
+            for item in params.get("OutputFile"):
+                obj = MPSOutputFileInfo()
+                obj._deserialize(item)
+                self._OutputFile.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageWatermarkInput(AbstractModel):
     r"""图片水印模板输入参数
 
@@ -47287,6 +47867,8 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         :type SubAppId: int
         :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
         :type FileId: str
+        :param _Definition: 大模型理解模板的唯一标识
+        :type Definition: int
         :param _ImportTasks: 需要导入知识库任务类型，可选值有：
 - AiAnalysis.DescriptionTask
 - SmartSubtitle.AsrFullTextTask
@@ -47294,6 +47876,7 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         """
         self._SubAppId = None
         self._FileId = None
+        self._Definition = None
         self._ImportTasks = None
 
     @property
@@ -47319,7 +47902,20 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Definition(self):
+        r"""大模型理解模板的唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
     def ImportTasks(self):
+        warnings.warn("parameter `ImportTasks` is deprecated", DeprecationWarning) 
+
         r"""需要导入知识库任务类型，可选值有：
 - AiAnalysis.DescriptionTask
 - SmartSubtitle.AsrFullTextTask
@@ -47329,12 +47925,15 @@ class ImportMediaKnowledgeRequest(AbstractModel):
 
     @ImportTasks.setter
     def ImportTasks(self, ImportTasks):
+        warnings.warn("parameter `ImportTasks` is deprecated", DeprecationWarning) 
+
         self._ImportTasks = ImportTasks
 
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
         self._ImportTasks = params.get("ImportTasks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -47809,6 +48408,345 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         if params.get("WatermarkConfigure") is not None:
             self._WatermarkConfigure = WatermarkConfigureData()
             self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendAsr(AbstractModel):
+    r"""大模型解析文本转录解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 文本转录任务开关，可选值：
+- ON：开启文本转录任务；
+- OFF：关闭文本转录任务。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""文本转录任务开关，可选值：
+- ON：开启文本转录任务；
+- OFF：关闭文本转录任务。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendAsrForUpdate(AbstractModel):
+    r"""大模型解析文本转录解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 文本转录任务开关，可选值：
+- ON：开启文本转录任务；
+- OFF：关闭文本转录任务。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""文本转录任务开关，可选值：
+- ON：开启文本转录任务；
+- OFF：关闭文本转录任务。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendSummary(AbstractModel):
+    r"""大模型解析分段摘要解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 分段摘要任务开关，可选值：
+- ON：开启分段摘要任务；
+- OFF：关闭分段摘要任
+        :type Switch: str
+        :param _ExtendedParameter: 扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+        :type ExtendedParameter: str
+        """
+        self._Switch = None
+        self._ExtendedParameter = None
+
+    @property
+    def Switch(self):
+        r"""分段摘要任务开关，可选值：
+- ON：开启分段摘要任务；
+- OFF：关闭分段摘要任
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ExtendedParameter(self):
+        r"""扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendSummaryForUpdate(AbstractModel):
+    r"""大模型解析分段摘要解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 分段摘要任务开关，可选值：
+- ON：开启分段摘要任务；
+- OFF：关闭分段摘要任
+        :type Switch: str
+        :param _ExtendedParameter: 扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+        :type ExtendedParameter: str
+        """
+        self._Switch = None
+        self._ExtendedParameter = None
+
+    @property
+    def Switch(self):
+        r"""分段摘要任务开关，可选值：
+- ON：开启分段摘要任务；
+- OFF：关闭分段摘要任
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ExtendedParameter(self):
+        r"""扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendTemplateItem(AbstractModel):
+    r"""大模型解析模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 图片异步处理模板唯一标识。
+        :type Definition: int
+        :param _Name: 图片异步处理模板名称。
+        :type Name: str
+        :param _Comment: 图片异步处理模板描述信息。
+        :type Comment: str
+        :param _Level: 解析级别，可选值为：
+- Audio: 音频级解析
+- Video: 视频级解析
+        :type Level: str
+        :param _Summary: 分段摘要解析配置
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        :param _Asr: 文本转录解析配置
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Level = None
+        self._Summary = None
+        self._Asr = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""图片异步处理模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""图片异步处理模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""图片异步处理模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Level(self):
+        r"""解析级别，可选值为：
+- Audio: 音频级解析
+- Video: 视频级解析
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Summary(self):
+        r"""分段摘要解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""文本转录解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+    @property
+    def CreateTime(self):
+        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Level = params.get("Level")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsr()
+            self._Asr._deserialize(params.get("Asr"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51611,6 +52549,9 @@ class MediaInfo(AbstractModel):
         :type ReviewInfo: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
         :param _MPSAiMediaInfo: MPS智能媒资信息
         :type MPSAiMediaInfo: :class:`tencentcloud.vod.v20180717.models.MPSAiMediaInfo`
+        :param _ImageUnderstandingInfo: 图片理解信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUnderstandingInfo: :class:`tencentcloud.vod.v20180717.models.ImageUnderstandingInfo`
         """
         self._BasicInfo = None
         self._MetaData = None
@@ -51626,6 +52567,7 @@ class MediaInfo(AbstractModel):
         self._FileId = None
         self._ReviewInfo = None
         self._MPSAiMediaInfo = None
+        self._ImageUnderstandingInfo = None
 
     @property
     def BasicInfo(self):
@@ -51793,6 +52735,18 @@ class MediaInfo(AbstractModel):
     def MPSAiMediaInfo(self, MPSAiMediaInfo):
         self._MPSAiMediaInfo = MPSAiMediaInfo
 
+    @property
+    def ImageUnderstandingInfo(self):
+        r"""图片理解信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageUnderstandingInfo`
+        """
+        return self._ImageUnderstandingInfo
+
+    @ImageUnderstandingInfo.setter
+    def ImageUnderstandingInfo(self, ImageUnderstandingInfo):
+        self._ImageUnderstandingInfo = ImageUnderstandingInfo
+
 
     def _deserialize(self, params):
         if params.get("BasicInfo") is not None:
@@ -51835,6 +52789,9 @@ class MediaInfo(AbstractModel):
         if params.get("MPSAiMediaInfo") is not None:
             self._MPSAiMediaInfo = MPSAiMediaInfo()
             self._MPSAiMediaInfo._deserialize(params.get("MPSAiMediaInfo"))
+        if params.get("ImageUnderstandingInfo") is not None:
+            self._ImageUnderstandingInfo = ImageUnderstandingInfo()
+            self._ImageUnderstandingInfo._deserialize(params.get("ImageUnderstandingInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57960,6 +58917,168 @@ class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
     r"""ModifyJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMComprehendTemplateRequest(AbstractModel):
+    r"""ModifyLLMComprehendTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 大模型理解模板的唯一标识
+        :type Definition: int
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Name: 大模型解析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 大模型解析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _Model: 解析模型，可选值为：
+- Basic: 基础模型
+- Pro: 优化模型
+        :type Model: str
+        :param _Summary: 分段摘要解析配置
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
+        :param _Asr: 文本转录解析配置
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._Model = None
+        self._Summary = None
+        self._Asr = None
+
+    @property
+    def Definition(self):
+        r"""大模型理解模板的唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""大模型解析模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""大模型解析模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Model(self):
+        r"""解析模型，可选值为：
+- Basic: 基础模型
+- Pro: 优化模型
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Summary(self):
+        r"""分段摘要解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""文本转录解析配置
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Model = params.get("Model")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummaryForUpdate()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsrForUpdate()
+            self._Asr._deserialize(params.get("Asr"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMComprehendTemplateResponse(AbstractModel):
+    r"""ModifyLLMComprehendTemplate返回参数结构体
 
     """
 
@@ -65156,6 +66275,42 @@ class ProcessImageAsyncInput(AbstractModel):
         
 
 
+class ProcessImageAsyncInputExtendedParameter(AbstractModel):
+    r"""图片异步处理扩展参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompts: 输入模型的提示词。
+        :type Prompts: list of str
+        """
+        self._Prompts = None
+
+    @property
+    def Prompts(self):
+        r"""输入模型的提示词。
+        :rtype: list of str
+        """
+        return self._Prompts
+
+    @Prompts.setter
+    def Prompts(self, Prompts):
+        self._Prompts = Prompts
+
+
+    def _deserialize(self, params):
+        self._Prompts = params.get("Prompts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProcessImageAsyncOutput(AbstractModel):
     r"""图片异步处理任务的输出。
 
@@ -65165,8 +66320,11 @@ class ProcessImageAsyncOutput(AbstractModel):
         r"""
         :param _FileInfo: 图片异步处理任务的输出文件信息。
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputFileInfo`
+        :param _OutputText: 图片理解结果。
+        :type OutputText: str
         """
         self._FileInfo = None
+        self._OutputText = None
 
     @property
     def FileInfo(self):
@@ -65179,11 +66337,23 @@ class ProcessImageAsyncOutput(AbstractModel):
     def FileInfo(self, FileInfo):
         self._FileInfo = FileInfo
 
+    @property
+    def OutputText(self):
+        r"""图片理解结果。
+        :rtype: str
+        """
+        return self._OutputText
+
+    @OutputText.setter
+    def OutputText(self, OutputText):
+        self._OutputText = OutputText
+
 
     def _deserialize(self, params):
         if params.get("FileInfo") is not None:
             self._FileInfo = ProcessImageAsyncOutputFileInfo()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        self._OutputText = params.get("OutputText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65648,8 +66818,11 @@ class ProcessImageAsyncTaskInput(AbstractModel):
         r"""
         :param _Definition: 图片异步处理模板ID。
         :type Definition: int
+        :param _ExtendedParameter: 图片异步处理扩展参数。
+        :type ExtendedParameter: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInputExtendedParameter`
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
@@ -65662,9 +66835,23 @@ class ProcessImageAsyncTaskInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""图片异步处理扩展参数。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncInputExtendedParameter`
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        if params.get("ExtendedParameter") is not None:
+            self._ExtendedParameter = ProcessImageAsyncInputExtendedParameter()
+            self._ExtendedParameter._deserialize(params.get("ExtendedParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

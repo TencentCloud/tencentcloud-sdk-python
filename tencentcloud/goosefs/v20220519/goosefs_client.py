@@ -141,6 +141,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelLoadTask(self, request):
+        r"""取消单个预热任务，仅任务在 waiting、running 状态时可以调用此接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+
+        :param request: Request instance for CancelLoadTask.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CancelLoadTaskRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CancelLoadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelLoadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelLoadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataRepositoryTask(self, request):
         r"""创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
 
@@ -201,6 +224,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("CreateFileset", params, headers=headers)
             response = json.loads(body)
             model = models.CreateFilesetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLoadTask(self, request):
+        r"""GooseFS 预热相关接口，用于下发，列出，查询，修改预热任务。用于元数据预热、数据预热场景。 注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+
+        :param request: Request instance for CreateLoadTask.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateLoadTaskRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CreateLoadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLoadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLoadTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,31 +394,6 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeClusterRoles(self, request):
-        r"""接口废弃
-
-        查询GooseFS集群角色
-
-        :param request: Request instance for DescribeClusterRoles.
-        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeClusterRolesRequest`
-        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeClusterRolesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClusterRoles", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClusterRolesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDataRepositoryTaskStatus(self, request):
         r"""获取数据流通任务实时状态，用作客户端控制
 
@@ -488,6 +509,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLoadTask(self, request):
+        r"""查询单个预热任务执行情况。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+
+        :param request: Request instance for DescribeLoadTask.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeLoadTaskRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeLoadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetachFileSystemBucket(self, request):
         r"""解绑文件系统与Bucket的映射
 
@@ -525,6 +569,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("ExpandCapacity", params, headers=headers)
             response = json.loads(body)
             model = models.ExpandCapacityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListLoadTasks(self, request):
+        r"""列出该集群下所有预热任务。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+
+        :param request: Request instance for ListLoadTasks.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.ListLoadTasksRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ListLoadTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListLoadTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListLoadTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -640,6 +707,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("UpdateFilesetGeneralConfig", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateFilesetGeneralConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateLoadTaskPriority(self, request):
+        r"""变更已有 GooseFS 预热任务配置，仅任务状态为 waiting 时可调用该接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+
+        :param request: Request instance for UpdateLoadTaskPriority.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateLoadTaskPriorityRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.UpdateLoadTaskPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLoadTaskPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateLoadTaskPriorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

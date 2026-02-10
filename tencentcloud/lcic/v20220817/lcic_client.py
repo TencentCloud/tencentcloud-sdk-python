@@ -187,6 +187,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchGetPlaybackToken(self, request):
+        r"""批量获取信令录制回放token，用于回放指定课堂时鉴权
+
+        :param request: Request instance for BatchGetPlaybackToken.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchGetPlaybackTokenRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchGetPlaybackTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchGetPlaybackToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchGetPlaybackTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchRegister(self, request):
         r"""如果批量注册的用户已存在，则会被覆盖。一次最多注册1000个用户。默认请求频率限制：10次/秒
 
@@ -474,6 +497,29 @@ class LcicClient(AbstractClient):
             body = self.call("DeleteGroupMember", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePlaybackItem(self, request):
+        r"""删除该堂课的录制记录
+
+        :param request: Request instance for DeletePlaybackItem.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeletePlaybackItemRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeletePlaybackItemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePlaybackItem", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePlaybackItemResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -877,6 +923,52 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlayRecords(self, request):
+        r"""信令录制视频观看记录查询接口，用于查询指定课堂在指定时间段内的用户播放记录。
+
+        :param request: Request instance for DescribePlayRecords.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribePlayRecordsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribePlayRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlayRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlayRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlaybackList(self, request):
+        r"""查询录制信息
+
+        :param request: Request instance for DescribePlaybackList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribePlaybackListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribePlaybackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlaybackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlaybackListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuestionList(self, request):
         r"""获取房间提问列表
 
@@ -1217,6 +1309,29 @@ class LcicClient(AbstractClient):
             body = self.call("ForbidSendMsg", params, headers=headers)
             response = json.loads(body)
             model = models.ForbidSendMsgResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetPlaybackToken(self, request):
+        r"""获取信令录制回放token，用于回放指定课堂时鉴权
+
+        :param request: Request instance for GetPlaybackToken.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetPlaybackTokenRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetPlaybackTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPlaybackToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetPlaybackTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

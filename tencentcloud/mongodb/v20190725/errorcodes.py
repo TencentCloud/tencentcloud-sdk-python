@@ -149,6 +149,9 @@ INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = 'InvalidParameterValue.CheckAppIdFailed
 # 无效的实例类型。
 INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = 'InvalidParameterValue.ClusterTypeError'
 
+# 数据转换失败
+INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
+
 # 非法的实例名。
 INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = 'InvalidParameterValue.IllegalInstanceName'
 
