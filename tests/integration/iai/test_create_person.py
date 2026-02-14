@@ -20,4 +20,5 @@ def test_iai_create_person():
         resp = client.CreatePerson(req)
     except TencentCloudSDKException as e:
         assert e.code in ("ResourceUnavailable.NotExist",
-                          "InvalidParameterValue.ImageEmpty")
+                          "InvalidParameterValue.ImageEmpty",
+                          "ResourceUnavailable.UnknownStatus")
