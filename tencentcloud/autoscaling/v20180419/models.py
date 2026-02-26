@@ -7384,20 +7384,23 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡器ID
+        :param _LoadBalancerId: <p>负载均衡器ID</p>
         :type LoadBalancerId: str
-        :param _ListenerId: 应用型负载均衡监听器 ID
+        :param _ListenerId: <p>应用型负载均衡监听器 ID</p>
         :type ListenerId: str
-        :param _LocationId: 转发规则ID，注意：针对七层监听器此参数必填
+        :param _LocationId: <p>转发规则ID，注意：针对七层监听器此参数必填</p>
         :type LocationId: str
+        :param _PortList: <p>监听器或转发路径需解绑的端口号列表。</p><p>取值范围：[1, 65535]</p><p>不传递该参数时，默认解绑指定监听器或转发路径关联的所有端口。</p>
+        :type PortList: list of int non-negative
         """
         self._LoadBalancerId = None
         self._ListenerId = None
         self._LocationId = None
+        self._PortList = None
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡器ID
+        r"""<p>负载均衡器ID</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -7408,7 +7411,7 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""应用型负载均衡监听器 ID
+        r"""<p>应用型负载均衡监听器 ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -7419,7 +7422,7 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def LocationId(self):
-        r"""转发规则ID，注意：针对七层监听器此参数必填
+        r"""<p>转发规则ID，注意：针对七层监听器此参数必填</p>
         :rtype: str
         """
         return self._LocationId
@@ -7428,11 +7431,23 @@ class ForwardLoadBalancerIdentification(AbstractModel):
     def LocationId(self, LocationId):
         self._LocationId = LocationId
 
+    @property
+    def PortList(self):
+        r"""<p>监听器或转发路径需解绑的端口号列表。</p><p>取值范围：[1, 65535]</p><p>不传递该参数时，默认解绑指定监听器或转发路径关联的所有端口。</p>
+        :rtype: list of int non-negative
+        """
+        return self._PortList
+
+    @PortList.setter
+    def PortList(self, PortList):
+        self._PortList = PortList
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._ListenerId = params.get("ListenerId")
         self._LocationId = params.get("LocationId")
+        self._PortList = params.get("PortList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

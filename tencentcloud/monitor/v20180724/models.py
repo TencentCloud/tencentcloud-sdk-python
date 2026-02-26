@@ -16299,6 +16299,89 @@ class DescribeMonitorTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNotificationContentTemplateSupportsRequest(AbstractModel):
+    r"""DescribeNotificationContentTemplateSupports请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        """
+        self._MonitorType = None
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+
+    def _deserialize(self, params):
+        self._MonitorType = params.get("MonitorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotificationContentTemplateSupportsResponse(AbstractModel):
+    r"""DescribeNotificationContentTemplateSupports返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Support: 配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Support: :class:`tencentcloud.monitor.v20180724.models.NotificationContentTemplateSupport`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Support = None
+        self._RequestId = None
+
+    @property
+    def Support(self):
+        r"""配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.NotificationContentTemplateSupport`
+        """
+        return self._Support
+
+    @Support.setter
+    def Support(self, Support):
+        self._Support = Support
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Support") is not None:
+            self._Support = NotificationContentTemplateSupport()
+            self._Support._deserialize(params.get("Support"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePhoneAlarmFlowTotalCountRequest(AbstractModel):
     r"""DescribePhoneAlarmFlowTotalCount请求参数结构体
 
@@ -31700,6 +31783,152 @@ class NoticeContentTmplBindInfo(AbstractModel):
     def _deserialize(self, params):
         self._ContentTmplID = params.get("ContentTmplID")
         self._NoticeID = params.get("NoticeID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotificationContentTemplateSupport(AbstractModel):
+    r"""告警通知内容模板支持的变量或者函数列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        :param _Variables: 支持的变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Variables: list of NotificationContentTemplateSupportDetail
+        :param _Functions: 支持的函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Functions: list of NotificationContentTemplateSupportDetail
+        """
+        self._MonitorType = None
+        self._Variables = None
+        self._Functions = None
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def Variables(self):
+        r"""支持的变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NotificationContentTemplateSupportDetail
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def Functions(self):
+        r"""支持的函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NotificationContentTemplateSupportDetail
+        """
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+
+    def _deserialize(self, params):
+        self._MonitorType = params.get("MonitorType")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = NotificationContentTemplateSupportDetail()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        if params.get("Functions") is not None:
+            self._Functions = []
+            for item in params.get("Functions"):
+                obj = NotificationContentTemplateSupportDetail()
+                obj._deserialize(item)
+                self._Functions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotificationContentTemplateSupportDetail(AbstractModel):
+    r"""告警通知内容模板支持的变量或者函数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 变量/函数名称
+        :type Name: str
+        :param _Desc: 描述
+        :type Desc: str
+        :param _Example: 示例
+        :type Example: str
+        """
+        self._Name = None
+        self._Desc = None
+        self._Example = None
+
+    @property
+    def Name(self):
+        r"""变量/函数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Example(self):
+        r"""示例
+        :rtype: str
+        """
+        return self._Example
+
+    @Example.setter
+    def Example(self, Example):
+        self._Example = Example
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Example = params.get("Example")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -200,6 +200,9 @@ LIMITEXCEEDED_CONFIG = 'LimitExceeded.Config'
 # 创建日志导出任务数量超出限制。
 LIMITEXCEEDED_EXPORT = 'LimitExceeded.Export'
 
+# 键值索引个数超过限制
+LIMITEXCEEDED_INDEXKEYOVERLIMIT = 'LimitExceeded.IndexKeyOverLimit'
+
 # 索引操作超过频率限制。
 LIMITEXCEEDED_INDEXOPERATING = 'LimitExceeded.IndexOperating'
 

@@ -1479,6 +1479,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def LoginOriginIdWithRoom(self, request):
+        r"""使用源账号登录课堂，源账号为注册时填入的originId
+
+        :param request: Request instance for LoginOriginIdWithRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.LoginOriginIdWithRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.LoginOriginIdWithRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("LoginOriginIdWithRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.LoginOriginIdWithRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def LoginUser(self, request):
         r"""登录
 
@@ -1493,6 +1516,29 @@ class LcicClient(AbstractClient):
             body = self.call("LoginUser", params, headers=headers)
             response = json.loads(body)
             model = models.LoginUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def LoginUserWithRoom(self, request):
+        r"""登录课堂
+
+        :param request: Request instance for LoginUserWithRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.LoginUserWithRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.LoginUserWithRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("LoginUserWithRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.LoginUserWithRoomResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

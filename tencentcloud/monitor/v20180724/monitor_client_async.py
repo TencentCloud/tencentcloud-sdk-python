@@ -396,6 +396,8 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreatePrometheusGlobalNotificationResponse:
         """
+        之前TPS的接口，迁移后已经不需要该功能
+
         创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
         """
         
@@ -1458,6 +1460,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNotificationContentTemplateSupports(
+            self,
+            request: models.DescribeNotificationContentTemplateSupportsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotificationContentTemplateSupportsResponse:
+        """
+        查询告警通知内容模板支持的变量或者函数列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotificationContentTemplateSupports"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotificationContentTemplateSupportsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePhoneAlarmFlowTotalCount(
             self,
             request: models.DescribePhoneAlarmFlowTotalCountRequest,
@@ -1734,6 +1754,8 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePrometheusGlobalNotificationResponse:
         """
+        之前TPS的接口，迁移后已经不需要
+
         查询全局告警通知渠道
         """
         
@@ -2503,6 +2525,8 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyPrometheusGlobalNotificationResponse:
         """
+        之前TPS接口，迁移后不需要
+
         修改全局告警通知渠道
         """
         

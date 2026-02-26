@@ -6798,6 +6798,348 @@ class CcnInstanceWithoutRegion(AbstractModel):
         
 
 
+class CcnPolicyBasedRoutingNextHop(AbstractModel):
+    r"""云联网策略路由下一跳
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyBasedRoutingNextHopId: 策略路由下一跳ID
+        :type PolicyBasedRoutingNextHopId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _NextHopRegion: 下一跳地域
+        :type NextHopRegion: str
+        :param _InstanceId: 关联实例ID
+        :type InstanceId: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _State: 状态(ENABLE/DISABLE)
+        :type State: str
+        :param _Description: 描述
+        :type Description: str
+        :param _InstanceType: 关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :type InstanceType: str
+        :param _NextHopResourceType: 下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+        :type NextHopResourceType: str
+        :param _NextHopResourceId: 下一跳资源ID
+        :type NextHopResourceId: str
+        :param _NextHopIp: 下一跳资源ip
+        :type NextHopIp: str
+        :param _PolicyBasedRoutingRulesCount: 0
+        :type PolicyBasedRoutingRulesCount: int
+        """
+        self._PolicyBasedRoutingNextHopId = None
+        self._Name = None
+        self._NextHopRegion = None
+        self._InstanceId = None
+        self._Zone = None
+        self._State = None
+        self._Description = None
+        self._InstanceType = None
+        self._NextHopResourceType = None
+        self._NextHopResourceId = None
+        self._NextHopIp = None
+        self._PolicyBasedRoutingRulesCount = None
+
+    @property
+    def PolicyBasedRoutingNextHopId(self):
+        r"""策略路由下一跳ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingNextHopId
+
+    @PolicyBasedRoutingNextHopId.setter
+    def PolicyBasedRoutingNextHopId(self, PolicyBasedRoutingNextHopId):
+        self._PolicyBasedRoutingNextHopId = PolicyBasedRoutingNextHopId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NextHopRegion(self):
+        r"""下一跳地域
+        :rtype: str
+        """
+        return self._NextHopRegion
+
+    @NextHopRegion.setter
+    def NextHopRegion(self, NextHopRegion):
+        self._NextHopRegion = NextHopRegion
+
+    @property
+    def InstanceId(self):
+        r"""关联实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def State(self):
+        r"""状态(ENABLE/DISABLE)
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InstanceType(self):
+        r"""关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def NextHopResourceType(self):
+        r"""下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+        :rtype: str
+        """
+        return self._NextHopResourceType
+
+    @NextHopResourceType.setter
+    def NextHopResourceType(self, NextHopResourceType):
+        self._NextHopResourceType = NextHopResourceType
+
+    @property
+    def NextHopResourceId(self):
+        r"""下一跳资源ID
+        :rtype: str
+        """
+        return self._NextHopResourceId
+
+    @NextHopResourceId.setter
+    def NextHopResourceId(self, NextHopResourceId):
+        self._NextHopResourceId = NextHopResourceId
+
+    @property
+    def NextHopIp(self):
+        r"""下一跳资源ip
+        :rtype: str
+        """
+        return self._NextHopIp
+
+    @NextHopIp.setter
+    def NextHopIp(self, NextHopIp):
+        self._NextHopIp = NextHopIp
+
+    @property
+    def PolicyBasedRoutingRulesCount(self):
+        r"""0
+        :rtype: int
+        """
+        return self._PolicyBasedRoutingRulesCount
+
+    @PolicyBasedRoutingRulesCount.setter
+    def PolicyBasedRoutingRulesCount(self, PolicyBasedRoutingRulesCount):
+        self._PolicyBasedRoutingRulesCount = PolicyBasedRoutingRulesCount
+
+
+    def _deserialize(self, params):
+        self._PolicyBasedRoutingNextHopId = params.get("PolicyBasedRoutingNextHopId")
+        self._Name = params.get("Name")
+        self._NextHopRegion = params.get("NextHopRegion")
+        self._InstanceId = params.get("InstanceId")
+        self._Zone = params.get("Zone")
+        self._State = params.get("State")
+        self._Description = params.get("Description")
+        self._InstanceType = params.get("InstanceType")
+        self._NextHopResourceType = params.get("NextHopResourceType")
+        self._NextHopResourceId = params.get("NextHopResourceId")
+        self._NextHopIp = params.get("NextHopIp")
+        self._PolicyBasedRoutingRulesCount = params.get("PolicyBasedRoutingRulesCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnPolicyBasedRoutingRule(AbstractModel):
+    r"""查询云联网策略路由匹配规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyBasedRoutingNextHopId: 策略路由下一跳ID
+        :type PolicyBasedRoutingNextHopId: str
+        :param _InstanceType: 实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :type InstanceType: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _SourceCidrBlock: 源地址CIDR
+        :type SourceCidrBlock: str
+        :param _DestinationCidrBlock: 目的地址CIDR
+        :type DestinationCidrBlock: str
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _Description: 描述
+        :type Description: str
+        :param _PolicyBasedRoutingRuleId: 策略路由匹配策略ID
+        :type PolicyBasedRoutingRuleId: str
+        """
+        self._PolicyBasedRoutingNextHopId = None
+        self._InstanceType = None
+        self._InstanceId = None
+        self._SourceCidrBlock = None
+        self._DestinationCidrBlock = None
+        self._Priority = None
+        self._Description = None
+        self._PolicyBasedRoutingRuleId = None
+
+    @property
+    def PolicyBasedRoutingNextHopId(self):
+        r"""策略路由下一跳ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingNextHopId
+
+    @PolicyBasedRoutingNextHopId.setter
+    def PolicyBasedRoutingNextHopId(self, PolicyBasedRoutingNextHopId):
+        self._PolicyBasedRoutingNextHopId = PolicyBasedRoutingNextHopId
+
+    @property
+    def InstanceType(self):
+        r"""实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SourceCidrBlock(self):
+        r"""源地址CIDR
+        :rtype: str
+        """
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def DestinationCidrBlock(self):
+        r"""目的地址CIDR
+        :rtype: str
+        """
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def Priority(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PolicyBasedRoutingRuleId(self):
+        r"""策略路由匹配策略ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingRuleId
+
+    @PolicyBasedRoutingRuleId.setter
+    def PolicyBasedRoutingRuleId(self, PolicyBasedRoutingRuleId):
+        self._PolicyBasedRoutingRuleId = PolicyBasedRoutingRuleId
+
+
+    def _deserialize(self, params):
+        self._PolicyBasedRoutingNextHopId = params.get("PolicyBasedRoutingNextHopId")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._Priority = params.get("Priority")
+        self._Description = params.get("Description")
+        self._PolicyBasedRoutingRuleId = params.get("PolicyBasedRoutingRuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcnRegionBandwidthLimit(AbstractModel):
     r"""云联网（CCN）地域出带宽上限
 
@@ -9930,6 +10272,304 @@ class CreateBandwidthPackageResponse(AbstractModel):
     def _deserialize(self, params):
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._BandwidthPackageIds = params.get("BandwidthPackageIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCcnPolicyBasedRoutingNextHopRequest(AbstractModel):
+    r"""CreateCcnPolicyBasedRoutingNextHop请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _NextHopRegion: 下一跳地域
+        :type NextHopRegion: str
+        :param _InstanceId: 关联实例ID
+        :type InstanceId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _InstanceType: 关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :type InstanceType: str
+        :param _State: 状态
+        :type State: str
+        :param _Description: 描述
+        :type Description: str
+        :param _NextHopResourceType: 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+        :type NextHopResourceType: str
+        :param _NextHopResourceId: 下一跳资源ID
+        :type NextHopResourceId: str
+        """
+        self._CcnId = None
+        self._NextHopRegion = None
+        self._InstanceId = None
+        self._Name = None
+        self._InstanceType = None
+        self._State = None
+        self._Description = None
+        self._NextHopResourceType = None
+        self._NextHopResourceId = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def NextHopRegion(self):
+        r"""下一跳地域
+        :rtype: str
+        """
+        return self._NextHopRegion
+
+    @NextHopRegion.setter
+    def NextHopRegion(self, NextHopRegion):
+        self._NextHopRegion = NextHopRegion
+
+    @property
+    def InstanceId(self):
+        r"""关联实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstanceType(self):
+        r"""关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def State(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def NextHopResourceType(self):
+        r"""下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+        :rtype: str
+        """
+        return self._NextHopResourceType
+
+    @NextHopResourceType.setter
+    def NextHopResourceType(self, NextHopResourceType):
+        self._NextHopResourceType = NextHopResourceType
+
+    @property
+    def NextHopResourceId(self):
+        r"""下一跳资源ID
+        :rtype: str
+        """
+        return self._NextHopResourceId
+
+    @NextHopResourceId.setter
+    def NextHopResourceId(self, NextHopResourceId):
+        self._NextHopResourceId = NextHopResourceId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._NextHopRegion = params.get("NextHopRegion")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._InstanceType = params.get("InstanceType")
+        self._State = params.get("State")
+        self._Description = params.get("Description")
+        self._NextHopResourceType = params.get("NextHopResourceType")
+        self._NextHopResourceId = params.get("NextHopResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCcnPolicyBasedRoutingNextHopResponse(AbstractModel):
+    r"""CreateCcnPolicyBasedRoutingNextHop返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyBasedRoutingNextHopId: 策略路由下一跳ID
+        :type PolicyBasedRoutingNextHopId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyBasedRoutingNextHopId = None
+        self._RequestId = None
+
+    @property
+    def PolicyBasedRoutingNextHopId(self):
+        r"""策略路由下一跳ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingNextHopId
+
+    @PolicyBasedRoutingNextHopId.setter
+    def PolicyBasedRoutingNextHopId(self, PolicyBasedRoutingNextHopId):
+        self._PolicyBasedRoutingNextHopId = PolicyBasedRoutingNextHopId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyBasedRoutingNextHopId = params.get("PolicyBasedRoutingNextHopId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCcnPolicyBasedRoutingRulesRequest(AbstractModel):
+    r"""CreateCcnPolicyBasedRoutingRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _CcnPolicyBasedRoutingRuleSet: 云联网策略路由匹配规则
+        :type CcnPolicyBasedRoutingRuleSet: list of CcnPolicyBasedRoutingRule
+        """
+        self._CcnId = None
+        self._CcnPolicyBasedRoutingRuleSet = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def CcnPolicyBasedRoutingRuleSet(self):
+        r"""云联网策略路由匹配规则
+        :rtype: list of CcnPolicyBasedRoutingRule
+        """
+        return self._CcnPolicyBasedRoutingRuleSet
+
+    @CcnPolicyBasedRoutingRuleSet.setter
+    def CcnPolicyBasedRoutingRuleSet(self, CcnPolicyBasedRoutingRuleSet):
+        self._CcnPolicyBasedRoutingRuleSet = CcnPolicyBasedRoutingRuleSet
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        if params.get("CcnPolicyBasedRoutingRuleSet") is not None:
+            self._CcnPolicyBasedRoutingRuleSet = []
+            for item in params.get("CcnPolicyBasedRoutingRuleSet"):
+                obj = CcnPolicyBasedRoutingRule()
+                obj._deserialize(item)
+                self._CcnPolicyBasedRoutingRuleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCcnPolicyBasedRoutingRulesResponse(AbstractModel):
+    r"""CreateCcnPolicyBasedRoutingRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyBasedRoutingRuleIdSet: 策略路由匹配规则ID
+        :type PolicyBasedRoutingRuleIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyBasedRoutingRuleIdSet = None
+        self._RequestId = None
+
+    @property
+    def PolicyBasedRoutingRuleIdSet(self):
+        r"""策略路由匹配规则ID
+        :rtype: list of str
+        """
+        return self._PolicyBasedRoutingRuleIdSet
+
+    @PolicyBasedRoutingRuleIdSet.setter
+    def PolicyBasedRoutingRuleIdSet(self, PolicyBasedRoutingRuleIdSet):
+        self._PolicyBasedRoutingRuleIdSet = PolicyBasedRoutingRuleIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyBasedRoutingRuleIdSet = params.get("PolicyBasedRoutingRuleIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -19276,6 +19916,164 @@ class DeleteBandwidthPackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCcnPolicyBasedRoutingNextHopRequest(AbstractModel):
+    r"""DeleteCcnPolicyBasedRoutingNextHop请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _PolicyBasedRoutingNextHopIds: 策略路由下一跳ID
+        :type PolicyBasedRoutingNextHopIds: list of str
+        """
+        self._CcnId = None
+        self._PolicyBasedRoutingNextHopIds = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def PolicyBasedRoutingNextHopIds(self):
+        r"""策略路由下一跳ID
+        :rtype: list of str
+        """
+        return self._PolicyBasedRoutingNextHopIds
+
+    @PolicyBasedRoutingNextHopIds.setter
+    def PolicyBasedRoutingNextHopIds(self, PolicyBasedRoutingNextHopIds):
+        self._PolicyBasedRoutingNextHopIds = PolicyBasedRoutingNextHopIds
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._PolicyBasedRoutingNextHopIds = params.get("PolicyBasedRoutingNextHopIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCcnPolicyBasedRoutingNextHopResponse(AbstractModel):
+    r"""DeleteCcnPolicyBasedRoutingNextHop返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCcnPolicyBasedRoutingRuleRequest(AbstractModel):
+    r"""DeleteCcnPolicyBasedRoutingRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _PolicyBasedRoutingRuleIds: 策略路由匹配规则ID
+        :type PolicyBasedRoutingRuleIds: list of str
+        """
+        self._CcnId = None
+        self._PolicyBasedRoutingRuleIds = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def PolicyBasedRoutingRuleIds(self):
+        r"""策略路由匹配规则ID
+        :rtype: list of str
+        """
+        return self._PolicyBasedRoutingRuleIds
+
+    @PolicyBasedRoutingRuleIds.setter
+    def PolicyBasedRoutingRuleIds(self, PolicyBasedRoutingRuleIds):
+        self._PolicyBasedRoutingRuleIds = PolicyBasedRoutingRuleIds
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._PolicyBasedRoutingRuleIds = params.get("PolicyBasedRoutingRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCcnPolicyBasedRoutingRuleResponse(AbstractModel):
+    r"""DeleteCcnPolicyBasedRoutingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCcnRequest(AbstractModel):
     r"""DeleteCcn请求参数结构体
 
@@ -25028,6 +25826,264 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
                 obj = CcnAttachedInstance()
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnPolicyBasedRoutingNextHopRequest(AbstractModel):
+    r"""DescribeCcnPolicyBasedRoutingNextHop请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网 ID
+        :type CcnId: str
+        :param _Offset: 偏移量
+        :type Offset: str
+        :param _Limit: 返回数量
+        :type Limit: str
+        """
+        self._CcnId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CcnId(self):
+        r"""云联网 ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnPolicyBasedRoutingNextHopResponse(AbstractModel):
+    r"""DescribeCcnPolicyBasedRoutingNextHop返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnPolicyBasedRoutingNextHopSet: 云联网策略路由下一跳信息
+        :type CcnPolicyBasedRoutingNextHopSet: list of CcnPolicyBasedRoutingNextHop
+        :param _TotalCount: 符合条件的对象数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CcnPolicyBasedRoutingNextHopSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CcnPolicyBasedRoutingNextHopSet(self):
+        r"""云联网策略路由下一跳信息
+        :rtype: list of CcnPolicyBasedRoutingNextHop
+        """
+        return self._CcnPolicyBasedRoutingNextHopSet
+
+    @CcnPolicyBasedRoutingNextHopSet.setter
+    def CcnPolicyBasedRoutingNextHopSet(self, CcnPolicyBasedRoutingNextHopSet):
+        self._CcnPolicyBasedRoutingNextHopSet = CcnPolicyBasedRoutingNextHopSet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的对象数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CcnPolicyBasedRoutingNextHopSet") is not None:
+            self._CcnPolicyBasedRoutingNextHopSet = []
+            for item in params.get("CcnPolicyBasedRoutingNextHopSet"):
+                obj = CcnPolicyBasedRoutingNextHop()
+                obj._deserialize(item)
+                self._CcnPolicyBasedRoutingNextHopSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnPolicyBasedRoutingRuleRequest(AbstractModel):
+    r"""DescribeCcnPolicyBasedRoutingRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网 ID
+        :type CcnId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 返回数量
+        :type Limit: int
+        """
+        self._CcnId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CcnId(self):
+        r"""云联网 ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnPolicyBasedRoutingRuleResponse(AbstractModel):
+    r"""DescribeCcnPolicyBasedRoutingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnPolicyBasedRoutingRuleSet: 云联网策略路由下一跳信息
+        :type CcnPolicyBasedRoutingRuleSet: list of CcnPolicyBasedRoutingRule
+        :param _TotalCount: 符合条件的对象数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CcnPolicyBasedRoutingRuleSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CcnPolicyBasedRoutingRuleSet(self):
+        r"""云联网策略路由下一跳信息
+        :rtype: list of CcnPolicyBasedRoutingRule
+        """
+        return self._CcnPolicyBasedRoutingRuleSet
+
+    @CcnPolicyBasedRoutingRuleSet.setter
+    def CcnPolicyBasedRoutingRuleSet(self, CcnPolicyBasedRoutingRuleSet):
+        self._CcnPolicyBasedRoutingRuleSet = CcnPolicyBasedRoutingRuleSet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的对象数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CcnPolicyBasedRoutingRuleSet") is not None:
+            self._CcnPolicyBasedRoutingRuleSet = []
+            for item in params.get("CcnPolicyBasedRoutingRuleSet"):
+                obj = CcnPolicyBasedRoutingRule()
+                obj._deserialize(item)
+                self._CcnPolicyBasedRoutingRuleSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -50812,6 +51868,299 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
 class ModifyCcnAttributeResponse(AbstractModel):
     r"""ModifyCcnAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCcnPolicyBasedRoutingNextHopAttributeRequest(AbstractModel):
+    r"""ModifyCcnPolicyBasedRoutingNextHopAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _PolicyBasedRoutingNextHopId: 策略路由下一跳ID
+        :type PolicyBasedRoutingNextHopId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _NextHopRegion: 下一跳地域
+        :type NextHopRegion: str
+        :param _InstanceType: 实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :type InstanceType: str
+        :param _InstanceId: 关联实例ID	
+        :type InstanceId: str
+        :param _NextHopResourceType: 下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+        :type NextHopResourceType: str
+        :param _NextHopResourceId: 下一跳资源ID
+        :type NextHopResourceId: str
+        :param _State: 状态
+        :type State: str
+        """
+        self._CcnId = None
+        self._PolicyBasedRoutingNextHopId = None
+        self._Name = None
+        self._Description = None
+        self._NextHopRegion = None
+        self._InstanceType = None
+        self._InstanceId = None
+        self._NextHopResourceType = None
+        self._NextHopResourceId = None
+        self._State = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def PolicyBasedRoutingNextHopId(self):
+        r"""策略路由下一跳ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingNextHopId
+
+    @PolicyBasedRoutingNextHopId.setter
+    def PolicyBasedRoutingNextHopId(self, PolicyBasedRoutingNextHopId):
+        self._PolicyBasedRoutingNextHopId = PolicyBasedRoutingNextHopId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def NextHopRegion(self):
+        r"""下一跳地域
+        :rtype: str
+        """
+        return self._NextHopRegion
+
+    @NextHopRegion.setter
+    def NextHopRegion(self, NextHopRegion):
+        self._NextHopRegion = NextHopRegion
+
+    @property
+    def InstanceType(self):
+        r"""实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        r"""关联实例ID	
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NextHopResourceType(self):
+        r"""下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+        :rtype: str
+        """
+        return self._NextHopResourceType
+
+    @NextHopResourceType.setter
+    def NextHopResourceType(self, NextHopResourceType):
+        self._NextHopResourceType = NextHopResourceType
+
+    @property
+    def NextHopResourceId(self):
+        r"""下一跳资源ID
+        :rtype: str
+        """
+        return self._NextHopResourceId
+
+    @NextHopResourceId.setter
+    def NextHopResourceId(self, NextHopResourceId):
+        self._NextHopResourceId = NextHopResourceId
+
+    @property
+    def State(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._PolicyBasedRoutingNextHopId = params.get("PolicyBasedRoutingNextHopId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._NextHopRegion = params.get("NextHopRegion")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._NextHopResourceType = params.get("NextHopResourceType")
+        self._NextHopResourceId = params.get("NextHopResourceId")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCcnPolicyBasedRoutingNextHopAttributeResponse(AbstractModel):
+    r"""ModifyCcnPolicyBasedRoutingNextHopAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCcnPolicyBasedRoutingRuleAttributeRequest(AbstractModel):
+    r"""ModifyCcnPolicyBasedRoutingRuleAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _PolicyBasedRoutingRuleId: 策略路由匹配规则ID
+        :type PolicyBasedRoutingRuleId: str
+        :param _Description: 描述
+        :type Description: str
+        """
+        self._CcnId = None
+        self._PolicyBasedRoutingRuleId = None
+        self._Description = None
+
+    @property
+    def CcnId(self):
+        r"""云联网ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def PolicyBasedRoutingRuleId(self):
+        r"""策略路由匹配规则ID
+        :rtype: str
+        """
+        return self._PolicyBasedRoutingRuleId
+
+    @PolicyBasedRoutingRuleId.setter
+    def PolicyBasedRoutingRuleId(self, PolicyBasedRoutingRuleId):
+        self._PolicyBasedRoutingRuleId = PolicyBasedRoutingRuleId
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._PolicyBasedRoutingRuleId = params.get("PolicyBasedRoutingRuleId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCcnPolicyBasedRoutingRuleAttributeResponse(AbstractModel):
+    r"""ModifyCcnPolicyBasedRoutingRuleAttribute返回参数结构体
 
     """
 

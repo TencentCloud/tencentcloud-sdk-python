@@ -1168,6 +1168,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def LoginOriginIdWithRoom(
+            self,
+            request: models.LoginOriginIdWithRoomRequest,
+            opts: Dict = None,
+    ) -> models.LoginOriginIdWithRoomResponse:
+        """
+        使用源账号登录课堂，源账号为注册时填入的originId
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "LoginOriginIdWithRoom"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.LoginOriginIdWithRoomResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def LoginUser(
             self,
             request: models.LoginUserRequest,
@@ -1181,6 +1199,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "LoginUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.LoginUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def LoginUserWithRoom(
+            self,
+            request: models.LoginUserWithRoomRequest,
+            opts: Dict = None,
+    ) -> models.LoginUserWithRoomResponse:
+        """
+        登录课堂
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "LoginUserWithRoom"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.LoginUserWithRoomResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -49,6 +49,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcVideoJob(self, request):
+        r"""查询生视频任务
+
+        :param request: Request instance for DescribeAigcVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeAigcVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeAigcVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHumanActorJob(self, request):
         r"""通过JobId提交请求，获取人像驱动任务的结果信息。
 
@@ -271,6 +294,29 @@ class VclmClient(AbstractClient):
             body = self.call("DescribeVideoVoiceJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoVoiceJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitAigcVideoJob(self, request):
+        r"""提交生视频任务
+
+        :param request: Request instance for SubmitAigcVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitAigcVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitAigcVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitAigcVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitAigcVideoJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

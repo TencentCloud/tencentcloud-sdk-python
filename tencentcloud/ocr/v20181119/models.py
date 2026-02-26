@@ -4776,6 +4776,150 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMarkEssayAgentJobRequest(AbstractModel):
+    r"""DescribeMarkEssayAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务唯一ID。由服务端生成。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务唯一ID。由服务端生成。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMarkEssayAgentJobResponse(AbstractModel):
+    r"""DescribeMarkEssayAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :type Angle: float
+        :param _SentenceSuggests: 配置结构化文本信息。
+        :type SentenceSuggests: list of MarkEssaySuggestions
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type JobStatus: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._SentenceSuggests = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._JobStatus = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def SentenceSuggests(self):
+        r"""配置结构化文本信息。
+        :rtype: list of MarkEssaySuggestions
+        """
+        return self._SentenceSuggests
+
+    @SentenceSuggests.setter
+    def SentenceSuggests(self, SentenceSuggests):
+        self._SentenceSuggests = SentenceSuggests
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def JobStatus(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("SentenceSuggests") is not None:
+            self._SentenceSuggests = []
+            for item in params.get("SentenceSuggests"):
+                obj = MarkEssaySuggestions()
+                obj._deserialize(item)
+                self._SentenceSuggests.append(obj)
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._JobStatus = params.get("JobStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQuestionMarkAgentJobRequest(AbstractModel):
     r"""DescribeQuestionMarkAgentJob请求参数结构体
 
@@ -18395,6 +18539,163 @@ class MainlandTravelPermitBackInfos(AbstractModel):
         
 
 
+class MarkEssaySuggestions(AbstractModel):
+    r"""作文批改建议
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 作文批改序号
+        :type ID: int
+        :param _Type: 批改类型：主要包括：词汇、语句
+        :type Type: str
+        :param _SubType: 子类型，基于Type返回二级类型
+
+词汇： 错别字、使用拼音、词语误用、词语冗余、词汇贫乏、多字/漏字
+
+语句：语法硬伤、逻辑问题、表达不佳、标点误用、优美句子
+        :type SubType: str
+        :param _Origin: 原文内容
+        :type Origin: str
+        :param _Replace: 批改后的内容
+        :type Replace: str
+        :param _Message: 点评内容
+        :type Message: str
+        :param _Positions: array[][]二维数组，原文内容可能存在跨行的句子，会有多组坐标返回
+
+切图区域的4个角点坐标, 是个长度为8的数组
+
+[0,1,2,3,4,5,6,7]
+
+(0,1) 左上角坐标
+(2,3) 右上角坐标
+(4,5) 右下角坐标
+(6,7) 左下角坐标
+        :type Positions: list of Positions
+        """
+        self._ID = None
+        self._Type = None
+        self._SubType = None
+        self._Origin = None
+        self._Replace = None
+        self._Message = None
+        self._Positions = None
+
+    @property
+    def ID(self):
+        r"""作文批改序号
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Type(self):
+        r"""批改类型：主要包括：词汇、语句
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubType(self):
+        r"""子类型，基于Type返回二级类型
+
+词汇： 错别字、使用拼音、词语误用、词语冗余、词汇贫乏、多字/漏字
+
+语句：语法硬伤、逻辑问题、表达不佳、标点误用、优美句子
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def Origin(self):
+        r"""原文内容
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def Replace(self):
+        r"""批改后的内容
+        :rtype: str
+        """
+        return self._Replace
+
+    @Replace.setter
+    def Replace(self, Replace):
+        self._Replace = Replace
+
+    @property
+    def Message(self):
+        r"""点评内容
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Positions(self):
+        r"""array[][]二维数组，原文内容可能存在跨行的句子，会有多组坐标返回
+
+切图区域的4个角点坐标, 是个长度为8的数组
+
+[0,1,2,3,4,5,6,7]
+
+(0,1) 左上角坐标
+(2,3) 右上角坐标
+(4,5) 右下角坐标
+(6,7) 左下角坐标
+        :rtype: list of Positions
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Type = params.get("Type")
+        self._SubType = params.get("SubType")
+        self._Origin = params.get("Origin")
+        self._Replace = params.get("Replace")
+        self._Message = params.get("Message")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Positions()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MarkInfo(AbstractModel):
     r"""整张试卷所有题目批改信息
 
@@ -22226,6 +22527,54 @@ class PortraitImageInfo(AbstractModel):
         if params.get("ImageCoordinates") is not None:
             self._ImageCoordinates = ImageCoordinates()
             self._ImageCoordinates._deserialize(params.get("ImageCoordinates"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Positions(AbstractModel):
+    r"""这是OCR在高精度识别下返回的坐标值，采用的是由一个数组表示4个顶点的坐标构成，如[0,1,2,3,4,5,6,7]
+    - (0,1) 左上角坐标
+    - (2,3) 右上角坐标
+    - (4,5) 右下角坐标
+    - (6,7) 左下角坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Position: 这是OCR在高精度识别下返回的坐标值，采用的是由一个数组表示4个顶点的坐标构成，如[0,1,2,3,4,5,6,7]
+- (0,1) 左上角坐标
+- (2,3) 右上角坐标
+- (4,5) 右下角坐标
+- (6,7) 左下角坐标
+        :type Position: list of int
+        """
+        self._Position = None
+
+    @property
+    def Position(self):
+        r"""这是OCR在高精度识别下返回的坐标值，采用的是由一个数组表示4个顶点的坐标构成，如[0,1,2,3,4,5,6,7]
+- (0,1) 左上角坐标
+- (2,3) 右上角坐标
+- (4,5) 右下角坐标
+- (6,7) 左下角坐标
+        :rtype: list of int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+
+    def _deserialize(self, params):
+        self._Position = params.get("Position")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31429,6 +31778,130 @@ class SubmitExtractDocAgentJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitMarkEssayAgentJobRequest(AbstractModel):
+    r"""SubmitMarkEssayAgentJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64List: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        :type ImageBase64List: list of str
+        :param _ImageUrlList: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        :type ImageUrlList: list of str
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+        :type PdfPageNumber: int
+        :param _QuestionConfigMap: 批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+        :type QuestionConfigMap: str
+        """
+        self._ImageBase64List = None
+        self._ImageUrlList = None
+        self._PdfPageNumber = None
+        self._QuestionConfigMap = None
+
+    @property
+    def ImageBase64List(self):
+        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        :rtype: list of str
+        """
+        return self._ImageBase64List
+
+    @ImageBase64List.setter
+    def ImageBase64List(self, ImageBase64List):
+        self._ImageBase64List = ImageBase64List
+
+    @property
+    def ImageUrlList(self):
+        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def PdfPageNumber(self):
+        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def QuestionConfigMap(self):
+        r"""批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+        :rtype: str
+        """
+        return self._QuestionConfigMap
+
+    @QuestionConfigMap.setter
+    def QuestionConfigMap(self, QuestionConfigMap):
+        self._QuestionConfigMap = QuestionConfigMap
+
+
+    def _deserialize(self, params):
+        self._ImageBase64List = params.get("ImageBase64List")
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._QuestionConfigMap = params.get("QuestionConfigMap")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitMarkEssayAgentJobResponse(AbstractModel):
+    r"""SubmitMarkEssayAgentJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobIds: 任务唯一ID。由服务端生成。 示例值：1334797167793684480
+        :type JobIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobIds = None
+        self._RequestId = None
+
+    @property
+    def JobIds(self):
+        r"""任务唯一ID。由服务端生成。 示例值：1334797167793684480
+        :rtype: list of str
+        """
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobIds = params.get("JobIds")
         self._RequestId = params.get("RequestId")
 
 

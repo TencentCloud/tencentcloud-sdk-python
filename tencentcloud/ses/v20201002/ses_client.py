@@ -395,6 +395,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAbuseReport(self, request):
+        r"""获取垃圾投诉数据
+
+        :param request: Request instance for GetAbuseReport.
+        :type request: :class:`tencentcloud.ses.v20201002.models.GetAbuseReportRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.GetAbuseReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAbuseReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAbuseReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetEmailIdentity(self, request):
         r"""获取某个发信域名的配置详情
 

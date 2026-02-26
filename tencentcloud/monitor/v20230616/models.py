@@ -144,6 +144,70 @@ class CreateNoticeContentTmplResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteNoticeContentTmplsRequest(AbstractModel):
+    r"""DeleteNoticeContentTmpls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TmplIDs: 要删除的模板id
+        :type TmplIDs: list of str
+        """
+        self._TmplIDs = None
+
+    @property
+    def TmplIDs(self):
+        r"""要删除的模板id
+        :rtype: list of str
+        """
+        return self._TmplIDs
+
+    @TmplIDs.setter
+    def TmplIDs(self, TmplIDs):
+        self._TmplIDs = TmplIDs
+
+
+    def _deserialize(self, params):
+        self._TmplIDs = params.get("TmplIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNoticeContentTmplsResponse(AbstractModel):
+    r"""DeleteNoticeContentTmpls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
     r"""DescribeAlarmNotifyHistories请求参数结构体
 
@@ -297,6 +361,247 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNoticeContentTmplRequest(AbstractModel):
+    r"""DescribeNoticeContentTmpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页数
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _TmplIDs: 指定模板ID查询，查询参数都为空则默认查询账号下所有模板
+        :type TmplIDs: list of str
+        :param _TmplName: 指定模板名称查询，查询参数都为空则默认查询账号下所有模板
+        :type TmplName: str
+        :param _NoticeID: 指定通知模板ID查询，查询参数都为空则默认查询账号下所有模板
+        :type NoticeID: str
+        :param _TmplLanguage: 模板语言 en/zh 缺省不过滤
+        :type TmplLanguage: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TmplIDs = None
+        self._TmplName = None
+        self._NoticeID = None
+        self._TmplLanguage = None
+        self._MonitorType = None
+
+    @property
+    def PageNumber(self):
+        r"""分页数
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TmplIDs(self):
+        r"""指定模板ID查询，查询参数都为空则默认查询账号下所有模板
+        :rtype: list of str
+        """
+        return self._TmplIDs
+
+    @TmplIDs.setter
+    def TmplIDs(self, TmplIDs):
+        self._TmplIDs = TmplIDs
+
+    @property
+    def TmplName(self):
+        r"""指定模板名称查询，查询参数都为空则默认查询账号下所有模板
+        :rtype: str
+        """
+        return self._TmplName
+
+    @TmplName.setter
+    def TmplName(self, TmplName):
+        self._TmplName = TmplName
+
+    @property
+    def NoticeID(self):
+        r"""指定通知模板ID查询，查询参数都为空则默认查询账号下所有模板
+        :rtype: str
+        """
+        return self._NoticeID
+
+    @NoticeID.setter
+    def NoticeID(self, NoticeID):
+        self._NoticeID = NoticeID
+
+    @property
+    def TmplLanguage(self):
+        r"""模板语言 en/zh 缺省不过滤
+        :rtype: str
+        """
+        return self._TmplLanguage
+
+    @TmplLanguage.setter
+    def TmplLanguage(self, TmplLanguage):
+        self._TmplLanguage = TmplLanguage
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TmplIDs = params.get("TmplIDs")
+        self._TmplName = params.get("TmplName")
+        self._NoticeID = params.get("NoticeID")
+        self._TmplLanguage = params.get("TmplLanguage")
+        self._MonitorType = params.get("MonitorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNoticeContentTmplResponse(AbstractModel):
+    r"""DescribeNoticeContentTmpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentTmpls: 自定义通知内容模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentTmpls: list of NoticeContentTmpl
+        :param _NoticeContentTmplBindPolicyCounts: 通知内容模板绑定的告警策略数量
+        :type NoticeContentTmplBindPolicyCounts: list of NoticeContentTmplBindPolicyCount
+        :param _PageNumber: 分页数
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _TotalCount: 结果总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NoticeContentTmpls = None
+        self._NoticeContentTmplBindPolicyCounts = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def NoticeContentTmpls(self):
+        r"""自定义通知内容模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeContentTmpl
+        """
+        return self._NoticeContentTmpls
+
+    @NoticeContentTmpls.setter
+    def NoticeContentTmpls(self, NoticeContentTmpls):
+        self._NoticeContentTmpls = NoticeContentTmpls
+
+    @property
+    def NoticeContentTmplBindPolicyCounts(self):
+        r"""通知内容模板绑定的告警策略数量
+        :rtype: list of NoticeContentTmplBindPolicyCount
+        """
+        return self._NoticeContentTmplBindPolicyCounts
+
+    @NoticeContentTmplBindPolicyCounts.setter
+    def NoticeContentTmplBindPolicyCounts(self, NoticeContentTmplBindPolicyCounts):
+        self._NoticeContentTmplBindPolicyCounts = NoticeContentTmplBindPolicyCounts
+
+    @property
+    def PageNumber(self):
+        r"""分页数
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""结果总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NoticeContentTmpls") is not None:
+            self._NoticeContentTmpls = []
+            for item in params.get("NoticeContentTmpls"):
+                obj = NoticeContentTmpl()
+                obj._deserialize(item)
+                self._NoticeContentTmpls.append(obj)
+        if params.get("NoticeContentTmplBindPolicyCounts") is not None:
+            self._NoticeContentTmplBindPolicyCounts = []
+            for item in params.get("NoticeContentTmplBindPolicyCounts"):
+                obj = NoticeContentTmplBindPolicyCount()
+                obj._deserialize(item)
+                self._NoticeContentTmplBindPolicyCounts.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -502,6 +807,325 @@ Trigger 告警触发; Recovery 告警恢复
         if params.get("Template") is not None:
             self._Template = FeiShuRobotNoticeTmpl()
             self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNoticeContentTmplRequest(AbstractModel):
+    r"""ModifyNoticeContentTmpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TmplName: 模板名称
+        :type TmplName: str
+        :param _TmplContents: 模板内容
+        :type TmplContents: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
+        :param _TmplID: 需要修改的模板ID
+        :type TmplID: str
+        """
+        self._TmplName = None
+        self._TmplContents = None
+        self._TmplID = None
+
+    @property
+    def TmplName(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._TmplName
+
+    @TmplName.setter
+    def TmplName(self, TmplName):
+        self._TmplName = TmplName
+
+    @property
+    def TmplContents(self):
+        r"""模板内容
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
+        """
+        return self._TmplContents
+
+    @TmplContents.setter
+    def TmplContents(self, TmplContents):
+        self._TmplContents = TmplContents
+
+    @property
+    def TmplID(self):
+        r"""需要修改的模板ID
+        :rtype: str
+        """
+        return self._TmplID
+
+    @TmplID.setter
+    def TmplID(self, TmplID):
+        self._TmplID = TmplID
+
+
+    def _deserialize(self, params):
+        self._TmplName = params.get("TmplName")
+        if params.get("TmplContents") is not None:
+            self._TmplContents = NoticeContentTmplItem()
+            self._TmplContents._deserialize(params.get("TmplContents"))
+        self._TmplID = params.get("TmplID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNoticeContentTmplResponse(AbstractModel):
+    r"""ModifyNoticeContentTmpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class NoticeContentTmpl(AbstractModel):
+    r"""自定义通知内容模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TmplID: 自定义通知内容模板id，唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmplID: str
+        :param _TmplName: 自定义通知内容模板名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmplName: str
+        :param _TmplContents: 通知内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmplContents: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
+        :param _CreateTime: Unix时间戳，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: Unix时间戳，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _LastModifier: 最后修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifier: str
+        :param _Creator: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        :param _TmplLanguage: 模板语言 en/zh
+        :type TmplLanguage: str
+        """
+        self._TmplID = None
+        self._TmplName = None
+        self._TmplContents = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastModifier = None
+        self._Creator = None
+        self._MonitorType = None
+        self._TmplLanguage = None
+
+    @property
+    def TmplID(self):
+        r"""自定义通知内容模板id，唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TmplID
+
+    @TmplID.setter
+    def TmplID(self, TmplID):
+        self._TmplID = TmplID
+
+    @property
+    def TmplName(self):
+        r"""自定义通知内容模板名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TmplName
+
+    @TmplName.setter
+    def TmplName(self, TmplName):
+        self._TmplName = TmplName
+
+    @property
+    def TmplContents(self):
+        r"""通知内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
+        """
+        return self._TmplContents
+
+    @TmplContents.setter
+    def TmplContents(self, TmplContents):
+        self._TmplContents = TmplContents
+
+    @property
+    def CreateTime(self):
+        r"""Unix时间戳，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Unix时间戳，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastModifier(self):
+        r"""最后修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastModifier
+
+    @LastModifier.setter
+    def LastModifier(self, LastModifier):
+        self._LastModifier = LastModifier
+
+    @property
+    def Creator(self):
+        r"""创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def TmplLanguage(self):
+        r"""模板语言 en/zh
+        :rtype: str
+        """
+        return self._TmplLanguage
+
+    @TmplLanguage.setter
+    def TmplLanguage(self, TmplLanguage):
+        self._TmplLanguage = TmplLanguage
+
+
+    def _deserialize(self, params):
+        self._TmplID = params.get("TmplID")
+        self._TmplName = params.get("TmplName")
+        if params.get("TmplContents") is not None:
+            self._TmplContents = NoticeContentTmplItem()
+            self._TmplContents._deserialize(params.get("TmplContents"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastModifier = params.get("LastModifier")
+        self._Creator = params.get("Creator")
+        self._MonitorType = params.get("MonitorType")
+        self._TmplLanguage = params.get("TmplLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeContentTmplBindPolicyCount(AbstractModel):
+    r"""通知内容模板绑定告警策略数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentTmplID: 通知内容模板ID
+        :type NoticeContentTmplID: str
+        :param _BindCount: 绑定告警策略数量
+        :type BindCount: int
+        """
+        self._NoticeContentTmplID = None
+        self._BindCount = None
+
+    @property
+    def NoticeContentTmplID(self):
+        r"""通知内容模板ID
+        :rtype: str
+        """
+        return self._NoticeContentTmplID
+
+    @NoticeContentTmplID.setter
+    def NoticeContentTmplID(self, NoticeContentTmplID):
+        self._NoticeContentTmplID = NoticeContentTmplID
+
+    @property
+    def BindCount(self):
+        r"""绑定告警策略数量
+        :rtype: int
+        """
+        return self._BindCount
+
+    @BindCount.setter
+    def BindCount(self, BindCount):
+        self._BindCount = BindCount
+
+
+    def _deserialize(self, params):
+        self._NoticeContentTmplID = params.get("NoticeContentTmplID")
+        self._BindCount = params.get("BindCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

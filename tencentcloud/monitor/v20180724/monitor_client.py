@@ -492,7 +492,9 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusGlobalNotification(self, request):
-        r"""创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
+        r"""之前TPS的接口，迁移后已经不需要该功能
+
+        创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 
         :param request: Request instance for CreatePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusGlobalNotificationRequest`
@@ -1854,6 +1856,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNotificationContentTemplateSupports(self, request):
+        r"""查询告警通知内容模板支持的变量或者函数列表
+
+        :param request: Request instance for DescribeNotificationContentTemplateSupports.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeNotificationContentTemplateSupportsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeNotificationContentTemplateSupportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotificationContentTemplateSupports", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotificationContentTemplateSupportsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePhoneAlarmFlowTotalCount(self, request):
         r"""查询周期内电话流水总数
 
@@ -2200,7 +2225,9 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusGlobalNotification(self, request):
-        r"""查询全局告警通知渠道
+        r"""之前TPS的接口，迁移后已经不需要
+
+        查询全局告警通知渠道
 
         :param request: Request instance for DescribePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusGlobalNotificationRequest`
@@ -3179,7 +3206,9 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusGlobalNotification(self, request):
-        r"""修改全局告警通知渠道
+        r"""之前TPS接口，迁移后不需要
+
+        修改全局告警通知渠道
 
         :param request: Request instance for ModifyPrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusGlobalNotificationRequest`

@@ -243,6 +243,26 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMarkEssayAgentJob(
+            self,
+            request: models.DescribeMarkEssayAgentJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMarkEssayAgentJobResponse:
+        """
+        用于作文批改Agent查询任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+
+        默认接口请求并发限制：2次/分钟。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMarkEssayAgentJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMarkEssayAgentJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQuestionMarkAgentJob(
             self,
             request: models.DescribeQuestionMarkAgentJobRequest,
@@ -2010,6 +2030,26 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "SubmitExtractDocAgentJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitExtractDocAgentJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitMarkEssayAgentJob(
+            self,
+            request: models.SubmitMarkEssayAgentJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitMarkEssayAgentJobResponse:
+        """
+        用于作文批改Agent提交任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+
+        默认接口请求并发限制：2次/分钟。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitMarkEssayAgentJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitMarkEssayAgentJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

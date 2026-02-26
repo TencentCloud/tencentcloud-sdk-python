@@ -299,6 +299,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMarkEssayAgentJob(self, request):
+        r"""用于作文批改Agent查询任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+
+        默认接口请求并发限制：2次/分钟。
+
+        :param request: Request instance for DescribeMarkEssayAgentJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.DescribeMarkEssayAgentJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.DescribeMarkEssayAgentJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMarkEssayAgentJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMarkEssayAgentJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuestionMarkAgentJob(self, request):
         r"""用于试题批改Agent查询任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
 
@@ -2382,6 +2407,31 @@ class OcrClient(AbstractClient):
             body = self.call("SubmitExtractDocAgentJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitExtractDocAgentJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitMarkEssayAgentJob(self, request):
+        r"""用于作文批改Agent提交任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+
+        默认接口请求并发限制：2次/分钟。
+
+        :param request: Request instance for SubmitMarkEssayAgentJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SubmitMarkEssayAgentJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SubmitMarkEssayAgentJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitMarkEssayAgentJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitMarkEssayAgentJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -183,6 +183,144 @@ class CheckAnimateImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAigcVideoJobRequest(AbstractModel):
+    r"""DescribeAigcVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+
+示例值：1194931538865782784
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""任务ID。
+
+示例值：1194931538865782784
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcVideoJobResponse(AbstractModel):
+    r"""DescribeAigcVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+示例值：RUN
+        :type Status: str
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+示例值：FailedOperation.DriverFailed
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+示例值：驱动失败
+        :type ErrorMessage: str
+        :param _ResultUrl: 结果视频 URL。有效期 24 小时。
+
+示例值：https://console.cloud.tencent.com/result.mp4
+        :type ResultUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultUrl = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+示例值：RUN
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+示例值：FailedOperation.DriverFailed
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+示例值：驱动失败
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultUrl(self):
+        r"""结果视频 URL。有效期 24 小时。
+
+示例值：https://console.cloud.tencent.com/result.mp4
+        :rtype: str
+        """
+        return self._ResultUrl
+
+    @ResultUrl.setter
+    def ResultUrl(self, ResultUrl):
+        self._ResultUrl = ResultUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultUrl = params.get("ResultUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHumanActorJobRequest(AbstractModel):
     r"""DescribeHumanActorJob请求参数结构体
 
@@ -1988,6 +2126,162 @@ class LogoRect(AbstractModel):
         
 
 
+class SubmitAigcVideoJobRequest(AbstractModel):
+    r"""SubmitAigcVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+        :type Vendor: str
+        :param _Model: <p>模型版本。</p><p>按照【厂商-版本号】</p><p>枚举值：</p><p>● 当ModelName为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当ModelName为Kling时，可选值[v1.6, v2.0, v2.1, v2.5 , v2.6]</p><p>● 当ModelName为SA时，可选值[SA2]</p><p>● 当ModelName为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当ModelName为HY时，默认选择：v1.5</p><p>● 当ModelName为YT时，默认值选择：v2.0</p>
+        :type Model: str
+        :param _ModelParam: <p>模型参数Json-Format字符串</p>
+        :type ModelParam: str
+        :param _Prompt: <p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
+        :type Prompt: str
+        :param _LogoAdd: <p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。<br>示例值：1</p>
+        :type LogoAdd: int
+        :param _LogoParam: <p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        self._Vendor = None
+        self._Model = None
+        self._ModelParam = None
+        self._Prompt = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Vendor(self):
+        r"""<p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Model(self):
+        r"""<p>模型版本。</p><p>按照【厂商-版本号】</p><p>枚举值：</p><p>● 当ModelName为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当ModelName为Kling时，可选值[v1.6, v2.0, v2.1, v2.5 , v2.6]</p><p>● 当ModelName为SA时，可选值[SA2]</p><p>● 当ModelName为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当ModelName为HY时，默认选择：v1.5</p><p>● 当ModelName为YT时，默认值选择：v2.0</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ModelParam(self):
+        r"""<p>模型参数Json-Format字符串</p>
+        :rtype: str
+        """
+        return self._ModelParam
+
+    @ModelParam.setter
+    def ModelParam(self, ModelParam):
+        self._ModelParam = ModelParam
+
+    @property
+    def Prompt(self):
+        r"""<p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def LogoAdd(self):
+        r"""<p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。<br>示例值：1</p>
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        r"""<p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Model = params.get("Model")
+        self._ModelParam = params.get("ModelParam")
+        self._Prompt = params.get("Prompt")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitAigcVideoJobResponse(AbstractModel):
+    r"""SubmitAigcVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID。</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class SubmitHumanActorJobRequest(AbstractModel):
     r"""SubmitHumanActorJob请求参数结构体
 
@@ -3408,7 +3702,7 @@ class SubmitVideoFaceFusionJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoUrl: 视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+        :param _VideoUrl: 视频素材下载地址。用户自定义模板视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
 
 输入视频建议：
 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。
@@ -3449,7 +3743,7 @@ class SubmitVideoFaceFusionJobRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        r"""视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+        r"""视频素材下载地址。用户自定义模板视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
 
 输入视频建议：
 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。

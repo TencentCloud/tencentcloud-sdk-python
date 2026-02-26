@@ -1945,6 +1945,8 @@ ip service consumer credential path header
         :type LimitBy: str
         :param _ExternalRedis: 外部redis配置
         :type ExternalRedis: :class:`tencentcloud.tse.v20201207.models.ExternalRedis`
+        :param _GlobalConfigId: 全局配置中的redis配置
+        :type GlobalConfigId: str
         :param _Policy: 计数器策略 
 local 单机
 redis  默认redis
@@ -1981,6 +1983,7 @@ default 直接返回
         self._Header = None
         self._LimitBy = None
         self._ExternalRedis = None
+        self._GlobalConfigId = None
         self._Policy = None
         self._RateLimitResponse = None
         self._RateLimitResponseUrl = None
@@ -2057,6 +2060,17 @@ ip service consumer credential path header
     @ExternalRedis.setter
     def ExternalRedis(self, ExternalRedis):
         self._ExternalRedis = ExternalRedis
+
+    @property
+    def GlobalConfigId(self):
+        r"""全局配置中的redis配置
+        :rtype: str
+        """
+        return self._GlobalConfigId
+
+    @GlobalConfigId.setter
+    def GlobalConfigId(self, GlobalConfigId):
+        self._GlobalConfigId = GlobalConfigId
 
     @property
     def Policy(self):
@@ -2183,6 +2197,7 @@ default 直接返回
         if params.get("ExternalRedis") is not None:
             self._ExternalRedis = ExternalRedis()
             self._ExternalRedis._deserialize(params.get("ExternalRedis"))
+        self._GlobalConfigId = params.get("GlobalConfigId")
         self._Policy = params.get("Policy")
         if params.get("RateLimitResponse") is not None:
             self._RateLimitResponse = RateLimitResponse()

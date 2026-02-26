@@ -1010,6 +1010,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCcnPolicyBasedRoutingNextHop(self, request):
+        r"""创建云联网策略路由下一跳
+
+        :param request: Request instance for CreateCcnPolicyBasedRoutingNextHop.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnPolicyBasedRoutingNextHopRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCcnPolicyBasedRoutingNextHopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCcnPolicyBasedRoutingNextHop", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCcnPolicyBasedRoutingNextHopResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCcnPolicyBasedRoutingRules(self, request):
+        r"""创建云联网策略路由匹配规则
+
+        :param request: Request instance for CreateCcnPolicyBasedRoutingRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnPolicyBasedRoutingRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCcnPolicyBasedRoutingRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCcnPolicyBasedRoutingRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCcnPolicyBasedRoutingRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCcnRouteTables(self, request):
         r"""本接口（CreateCcnRouteTables）用于给指定的云联网实例新建路由表。
 
@@ -2436,6 +2482,52 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteCcn", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCcnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCcnPolicyBasedRoutingNextHop(self, request):
+        r"""删除云联网策略路由下一跳
+
+        :param request: Request instance for DeleteCcnPolicyBasedRoutingNextHop.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnPolicyBasedRoutingNextHopRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnPolicyBasedRoutingNextHopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCcnPolicyBasedRoutingNextHop", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCcnPolicyBasedRoutingNextHopResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCcnPolicyBasedRoutingRule(self, request):
+        r"""删除云联网策略路由匹配规则
+
+        :param request: Request instance for DeleteCcnPolicyBasedRoutingRule.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnPolicyBasedRoutingRuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnPolicyBasedRoutingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCcnPolicyBasedRoutingRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCcnPolicyBasedRoutingRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3983,6 +4075,52 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeCcnAttachedInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCcnAttachedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCcnPolicyBasedRoutingNextHop(self, request):
+        r"""查询云联网策略路由下一跳
+
+        :param request: Request instance for DescribeCcnPolicyBasedRoutingNextHop.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnPolicyBasedRoutingNextHopRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnPolicyBasedRoutingNextHopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnPolicyBasedRoutingNextHop", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnPolicyBasedRoutingNextHopResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCcnPolicyBasedRoutingRule(self, request):
+        r"""查询云联网策略路由匹配规则
+
+        :param request: Request instance for DescribeCcnPolicyBasedRoutingRule.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnPolicyBasedRoutingRuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnPolicyBasedRoutingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnPolicyBasedRoutingRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnPolicyBasedRoutingRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7734,6 +7872,52 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyCcnAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCcnAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCcnPolicyBasedRoutingNextHopAttribute(self, request):
+        r"""更新云联网策略路由下一跳参数
+
+        :param request: Request instance for ModifyCcnPolicyBasedRoutingNextHopAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnPolicyBasedRoutingNextHopAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnPolicyBasedRoutingNextHopAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCcnPolicyBasedRoutingNextHopAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCcnPolicyBasedRoutingNextHopAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCcnPolicyBasedRoutingRuleAttribute(self, request):
+        r"""更新云联网策略路由匹配规则参数
+
+        :param request: Request instance for ModifyCcnPolicyBasedRoutingRuleAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnPolicyBasedRoutingRuleAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnPolicyBasedRoutingRuleAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCcnPolicyBasedRoutingRuleAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCcnPolicyBasedRoutingRuleAttributeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

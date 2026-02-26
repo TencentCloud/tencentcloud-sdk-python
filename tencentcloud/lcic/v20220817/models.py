@@ -10682,6 +10682,130 @@ class LoginOriginIdResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LoginOriginIdWithRoomRequest(AbstractModel):
+    r"""LoginOriginIdWithRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _OriginId: <p>用户在客户系统的Id，需要在同一应用下唯一。</p>
+        :type OriginId: str
+        :param _RoomId: <p>课堂 ID</p>
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._OriginId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def OriginId(self):
+        r"""<p>用户在客户系统的Id，需要在同一应用下唯一。</p>
+        :rtype: str
+        """
+        return self._OriginId
+
+    @OriginId.setter
+    def OriginId(self, OriginId):
+        self._OriginId = OriginId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂 ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._OriginId = params.get("OriginId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginOriginIdWithRoomResponse(AbstractModel):
+    r"""LoginOriginIdWithRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>用户Id。</p>
+        :type UserId: str
+        :param _Token: <p>登录/注册成功后返回登录态token。有效期7天。</p>
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserId = None
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        r"""<p>用户Id。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Token(self):
+        r"""<p>登录/注册成功后返回登录态token。有效期7天。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
 class LoginUserRequest(AbstractModel):
     r"""LoginUser请求参数结构体
 
@@ -10750,6 +10874,115 @@ class LoginUserResponse(AbstractModel):
     @property
     def Token(self):
         r"""注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
+class LoginUserWithRoomRequest(AbstractModel):
+    r"""LoginUserWithRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>注册获取的用户id。</p>
+        :type UserId: str
+        :param _RoomId: <p>课堂 ID</p>
+        :type RoomId: int
+        """
+        self._UserId = None
+        self._RoomId = None
+
+    @property
+    def UserId(self):
+        r"""<p>注册获取的用户id。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂 ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginUserWithRoomResponse(AbstractModel):
+    r"""LoginUserWithRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>用户Id。</p>
+        :type UserId: str
+        :param _Token: <p>注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。</p>
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserId = None
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        r"""<p>用户Id。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Token(self):
+        r"""<p>注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。</p>
         :rtype: str
         """
         return self._Token

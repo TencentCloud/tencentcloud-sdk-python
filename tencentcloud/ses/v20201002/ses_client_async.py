@@ -314,6 +314,24 @@ class SesClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetAbuseReport(
+            self,
+            request: models.GetAbuseReportRequest,
+            opts: Dict = None,
+    ) -> models.GetAbuseReportResponse:
+        """
+        获取垃圾投诉数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetAbuseReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetAbuseReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetEmailIdentity(
             self,
             request: models.GetEmailIdentityRequest,

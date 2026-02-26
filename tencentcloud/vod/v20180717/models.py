@@ -20041,44 +20041,31 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: 模型名称。取值：
-<li>GEM：Gemini；</li>
-<li>Qwen：千问。</li>
-<li>Hunyuan：混元。</li>
-<li>Vidu：生数。</li>
-<li>Kling：可灵。</li>
+        :param _ModelName: <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。取值：
-<li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
-<li>当 ModelName 是 Qwen，可选值为 0925；</li>
-<li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-<li>当 ModelName 是 Vidu，可选值为 q2；</li>
-<li>当 ModelName 是 Kling，可选值为 2.1；</li>
+        :param _ModelVersion: <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
         :type ModelVersion: str
-        :param _FileInfos: AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
-* GEM 2.5：0～3张图片；
-* GEM 3.0：0～14张图片；
-* Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
+        :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
         :type FileInfos: list of AigcImageTaskInputFileInfo
-        :param _Prompt: 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+        :param _Prompt: <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成图片的提示词。
+        :param _NegativePrompt: <p>要阻止模型生成图片的提示词。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type EnhancePrompt: str
-        :param _OutputConfig: 生图任务的输出媒体文件配置。
+        :param _OutputConfig: <p>生图任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
-        :param _InputRegion: 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        :param _InputRegion: <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :type InputRegion: str
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
         """
         self._SubAppId = None
@@ -20097,7 +20084,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -20108,12 +20095,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称。取值：
-<li>GEM：Gemini；</li>
-<li>Qwen：千问。</li>
-<li>Hunyuan：混元。</li>
-<li>Vidu：生数。</li>
-<li>Kling：可灵。</li>
+        r"""<p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
         :rtype: str
         """
         return self._ModelName
@@ -20124,12 +20106,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。取值：
-<li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
-<li>当 ModelName 是 Qwen，可选值为 0925；</li>
-<li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-<li>当 ModelName 是 Vidu，可选值为 q2；</li>
-<li>当 ModelName 是 Kling，可选值为 2.1；</li>
+        r"""<p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
         :rtype: str
         """
         return self._ModelVersion
@@ -20140,10 +20117,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
-* GEM 2.5：0～3张图片；
-* GEM 3.0：0～14张图片；
-* Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
+        r"""<p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
         :rtype: list of AigcImageTaskInputFileInfo
         """
         return self._FileInfos
@@ -20154,7 +20128,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成图片的提示词。当 FileInfos 为空时，此参数必填。
+        r"""<p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
         :rtype: str
         """
         return self._Prompt
@@ -20165,7 +20139,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成图片的提示词。
+        r"""<p>要阻止模型生成图片的提示词。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -20176,7 +20150,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._EnhancePrompt
@@ -20187,7 +20161,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""生图任务的输出媒体文件配置。
+        r"""<p>生图任务的输出媒体文件配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         """
         return self._OutputConfig
@@ -20198,7 +20172,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def InputRegion(self):
-        r"""输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        r"""<p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :rtype: str
         """
         return self._InputRegion
@@ -20209,7 +20183,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -20220,7 +20194,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -20231,7 +20205,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -20242,7 +20216,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -20290,7 +20264,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20300,7 +20274,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId

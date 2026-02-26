@@ -97,6 +97,52 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGlossary(self, request):
+        r"""创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
+
+        :param request: Request instance for CreateGlossary.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlossary", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlossaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGlossaryEntry(self, request):
+        r"""添加术语条目。
+
+        :param request: Request instance for CreateGlossaryEntry.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryEntryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryEntryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlossaryEntry", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlossaryEntryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateThread(self, request):
         r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -113,6 +159,52 @@ class HunyuanClient(AbstractClient):
         try:
             params = request._serialize()
             return self._call_and_deserialize("CreateThread", params, models.CreateThreadResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlossary(self, request):
+        r"""删除术语库。
+
+        :param request: Request instance for DeleteGlossary.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlossary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlossaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlossaryEntry(self, request):
+        r"""删除术语条目。
+
+        :param request: Request instance for DeleteGlossaryEntry.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryEntryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryEntryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlossaryEntry", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlossaryEntryResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -340,6 +432,52 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListGlossary(self, request):
+        r"""查询术语库。
+
+        :param request: Request instance for ListGlossary.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListGlossary", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListGlossaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListGlossaryEntry(self, request):
+        r"""查询术语条目。
+
+        :param request: Request instance for ListGlossaryEntry.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryEntryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryEntryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListGlossaryEntry", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListGlossaryEntryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuanImageChatJob(self, request):
         r"""混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
         提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
@@ -505,6 +643,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("TextToImageLite", params, headers=headers)
             response = json.loads(body)
             model = models.TextToImageLiteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateGlossaryEntry(self, request):
+        r"""更新术语条目。
+
+        :param request: Request instance for UpdateGlossaryEntry.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.UpdateGlossaryEntryRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.UpdateGlossaryEntryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateGlossaryEntry", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateGlossaryEntryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

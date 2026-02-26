@@ -5488,29 +5488,45 @@ class CreateBillDealRequest(AbstractModel):
         :type DealType: str
         :param _ProductType: 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
         :type ProductType: str
-        :param _PackageId: 目标下单产品/套餐Id
+        :param _PackageId: 目标下单产品/套餐Id。
+对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
         :type PackageId: str
-        :param _CreateAndPay: 默认只下单不支付，为ture则下单并支付
+        :param _CreateAndPay: 默认只下单不支付，为ture则下单并支付。
+如果需要下单并支付，请确保账户下有足够的余额，否则会导致下单失败。
         :type CreateAndPay: bool
-        :param _TimeSpan: 购买时长
+        :param _TimeSpan: 购买时长，与TimeUnit字段搭配使用。
         :type TimeSpan: int
-        :param _TimeUnit: 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+        :param _TimeUnit: 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)。
+对于 云开发环境的 新购和续费，目前仅支持 按月购买（即 TimeUnit=m）。
         :type TimeUnit: str
-        :param _ResourceId: 资源唯一标识
+        :param _ResourceId: 资源唯一标识。
+在云开发环境 续费和变配 场景下必传，取值为环境ID。
         :type ResourceId: str
-        :param _Source: 来源可选[qcloud,miniapp]，默认qcloud
+        :param _Source: 来源可选[qcloud,miniapp]，默认qcloud。
+miniapp表示微信云开发，主要适用于[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/billing/price.html)。
+
         :type Source: str
-        :param _Alias: 资源别名
+        :param _Alias: 环境别名，用于新购云开发环境时，给云开发环境起别名。
+仅当 新购云开发环境（DealType=purchase 并且 ProductType=tcb-baas ）时有效。
+
+### 格式要求
+- 可选字符： 小写字母(a~z)、数字、减号(-)
+- 不能以 减号(-) 开头或结尾
+- 不能有连个连续的 减号(-)
+- 长度不超过20位
         :type Alias: str
-        :param _EnvId: 环境id
+        :param _EnvId: 环境id，当购买资源包和大促包时（ProductType取值为tcb-promotion 或 tcb-package）必传，表示资源包在哪个环境下生效。
         :type EnvId: str
-        :param _EnableExcess: 开启超限按量
+        :param _EnableExcess: 开启超限按量。
+开启后，当 套餐内的资源点 和 资源包 都用尽后，会自动按量计费。
+详见 [计费说明](https://cloud.tencent.com/document/product/876/127357)。
         :type EnableExcess: bool
-        :param _ModifyPackageId: 变配目标产品/套餐id
+        :param _ModifyPackageId: 变配目标套餐id，对于云开发环境变配场景下必传。
+对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
         :type ModifyPackageId: str
         :param _Extension: jsonstr附加信息
         :type Extension: str
-        :param _AutoVoucher: 是否自动选择代金券支付
+        :param _AutoVoucher: 是否自动选择代金券支付。
         :type AutoVoucher: bool
         :param _ResourceTypes: 资源类型。
 代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要发货哪些资源。
@@ -5563,7 +5579,8 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def PackageId(self):
-        r"""目标下单产品/套餐Id
+        r"""目标下单产品/套餐Id。
+对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
         :rtype: str
         """
         return self._PackageId
@@ -5574,7 +5591,8 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def CreateAndPay(self):
-        r"""默认只下单不支付，为ture则下单并支付
+        r"""默认只下单不支付，为ture则下单并支付。
+如果需要下单并支付，请确保账户下有足够的余额，否则会导致下单失败。
         :rtype: bool
         """
         return self._CreateAndPay
@@ -5585,7 +5603,7 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买时长
+        r"""购买时长，与TimeUnit字段搭配使用。
         :rtype: int
         """
         return self._TimeSpan
@@ -5596,7 +5614,8 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+        r"""购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)。
+对于 云开发环境的 新购和续费，目前仅支持 按月购买（即 TimeUnit=m）。
         :rtype: str
         """
         return self._TimeUnit
@@ -5607,7 +5626,8 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源唯一标识
+        r"""资源唯一标识。
+在云开发环境 续费和变配 场景下必传，取值为环境ID。
         :rtype: str
         """
         return self._ResourceId
@@ -5618,7 +5638,9 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""来源可选[qcloud,miniapp]，默认qcloud
+        r"""来源可选[qcloud,miniapp]，默认qcloud。
+miniapp表示微信云开发，主要适用于[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/billing/price.html)。
+
         :rtype: str
         """
         return self._Source
@@ -5629,7 +5651,14 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def Alias(self):
-        r"""资源别名
+        r"""环境别名，用于新购云开发环境时，给云开发环境起别名。
+仅当 新购云开发环境（DealType=purchase 并且 ProductType=tcb-baas ）时有效。
+
+### 格式要求
+- 可选字符： 小写字母(a~z)、数字、减号(-)
+- 不能以 减号(-) 开头或结尾
+- 不能有连个连续的 减号(-)
+- 长度不超过20位
         :rtype: str
         """
         return self._Alias
@@ -5640,7 +5669,7 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境id
+        r"""环境id，当购买资源包和大促包时（ProductType取值为tcb-promotion 或 tcb-package）必传，表示资源包在哪个环境下生效。
         :rtype: str
         """
         return self._EnvId
@@ -5651,7 +5680,9 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def EnableExcess(self):
-        r"""开启超限按量
+        r"""开启超限按量。
+开启后，当 套餐内的资源点 和 资源包 都用尽后，会自动按量计费。
+详见 [计费说明](https://cloud.tencent.com/document/product/876/127357)。
         :rtype: bool
         """
         return self._EnableExcess
@@ -5662,7 +5693,8 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def ModifyPackageId(self):
-        r"""变配目标产品/套餐id
+        r"""变配目标套餐id，对于云开发环境变配场景下必传。
+对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
         :rtype: str
         """
         return self._ModifyPackageId
@@ -5684,7 +5716,7 @@ class CreateBillDealRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券支付
+        r"""是否自动选择代金券支付。
         :rtype: bool
         """
         return self._AutoVoucher
@@ -6970,6 +7002,199 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEnvRequest(AbstractModel):
+    r"""CreateEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: 环境别名。
+
+### 格式要求
+- 可选字符： 小写字母(a~z)、数字、减号(-)
+- 不能以 减号(-) 开头或结尾
+- 不能有连个连续的 减号(-)
+- 长度不超过20位
+示例值：cloud
+        :type Alias: str
+        :param _PackageId: 云开发环境套餐Id。
+对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName。
+        :type PackageId: str
+        :param _Resources: 资源类型。代表新购环境时需要发货哪些资源。
+可取值以及含义：
+- flexdb : 表示文档型数据库
+- storage : 表示云存储
+- function : 表示云函数
+
+**该字段不可为空**
+        :type Resources: list of str
+        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24。
+默认值为1，即1个月。
+        :type Period: int
+        :param _AutoVoucher: 是否自动选择代金券支付。
+        :type AutoVoucher: bool
+        :param _Tags: 环境标签。
+可取值通过接口 [tag:DescribeTags](https://cloud.tencent.com/document/product/651/35316) 可获取到。
+不传或为空则默认不打任何标签。
+        :type Tags: list of Tag
+        """
+        self._Alias = None
+        self._PackageId = None
+        self._Resources = None
+        self._Period = None
+        self._AutoVoucher = None
+        self._Tags = None
+
+    @property
+    def Alias(self):
+        r"""环境别名。
+
+### 格式要求
+- 可选字符： 小写字母(a~z)、数字、减号(-)
+- 不能以 减号(-) 开头或结尾
+- 不能有连个连续的 减号(-)
+- 长度不超过20位
+示例值：cloud
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def PackageId(self):
+        r"""云开发环境套餐Id。
+对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName。
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def Resources(self):
+        r"""资源类型。代表新购环境时需要发货哪些资源。
+可取值以及含义：
+- flexdb : 表示文档型数据库
+- storage : 表示云存储
+- function : 表示云函数
+
+**该字段不可为空**
+        :rtype: list of str
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Period(self):
+        r"""购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24。
+默认值为1，即1个月。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券支付。
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def Tags(self):
+        r"""环境标签。
+可取值通过接口 [tag:DescribeTags](https://cloud.tencent.com/document/product/651/35316) 可获取到。
+不传或为空则默认不打任何标签。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
+        self._PackageId = params.get("PackageId")
+        self._Resources = params.get("Resources")
+        self._Period = params.get("Period")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnvResponse(AbstractModel):
+    r"""CreateEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 自动生成的环境ID
+        :type EnvId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvId = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        r"""自动生成的环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateHostingDomainRequest(AbstractModel):
     r"""CreateHostingDomain请求参数结构体
 
@@ -7126,7 +7351,7 @@ class CreateMySQLRequest(AbstractModel):
         r"""
         :param _EnvId: 云开发环境ID
         :type EnvId: str
-        :param _DbInstanceType: Db类型 1. FLEXDB 2.MYSQL
+        :param _DbInstanceType: Db类型: MYSQL
         :type DbInstanceType: str
         :param _MysqlVersion: mysql版本
         :type MysqlVersion: str
@@ -7157,7 +7382,7 @@ class CreateMySQLRequest(AbstractModel):
 
     @property
     def DbInstanceType(self):
-        r"""Db类型 1. FLEXDB 2.MYSQL
+        r"""Db类型: MYSQL
         :rtype: str
         """
         return self._DbInstanceType
@@ -13696,7 +13921,7 @@ class DescribeCreateMySQLResult(AbstractModel):
         :param _FailReason: 失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
-        :param _FreezeStatus: 是否冻结
+        :param _FreezeStatus: 是否已被冻结（只在 Status=success时有效）
         :type FreezeStatus: bool
         """
         self._Status = None
@@ -13728,7 +13953,7 @@ class DescribeCreateMySQLResult(AbstractModel):
 
     @property
     def FreezeStatus(self):
-        r"""是否冻结
+        r"""是否已被冻结（只在 Status=success时有效）
         :rtype: bool
         """
         return self._FreezeStatus
@@ -14067,6 +14292,8 @@ class DescribeCurveDataResponse(AbstractModel):
         :type Time: list of int
         :param _NewValues: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
         :type NewValues: list of float
+        :param _Statistics: 聚合方式
+        :type Statistics: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14077,6 +14304,7 @@ class DescribeCurveDataResponse(AbstractModel):
         self._Values = None
         self._Time = None
         self._NewValues = None
+        self._Statistics = None
         self._RequestId = None
 
     @property
@@ -14157,6 +14385,17 @@ class DescribeCurveDataResponse(AbstractModel):
         self._NewValues = NewValues
 
     @property
+    def Statistics(self):
+        r"""聚合方式
+        :rtype: str
+        """
+        return self._Statistics
+
+    @Statistics.setter
+    def Statistics(self, Statistics):
+        self._Statistics = Statistics
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14176,6 +14415,7 @@ class DescribeCurveDataResponse(AbstractModel):
         self._Values = params.get("Values")
         self._Time = params.get("Time")
         self._NewValues = params.get("NewValues")
+        self._Statistics = params.get("Statistics")
         self._RequestId = params.get("RequestId")
 
 
@@ -22596,6 +22836,102 @@ class ModifyDatabaseACLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyEnvPlanRequest(AbstractModel):
+    r"""ModifyEnvPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 所需变更套餐的环境ID
+        :type EnvId: str
+        :param _PackageId: 目标套餐Id。
+对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName
+        :type PackageId: str
+        :param _AutoVoucher: 是否自动选择代金券支付。
+        :type AutoVoucher: bool
+        """
+        self._EnvId = None
+        self._PackageId = None
+        self._AutoVoucher = None
+
+    @property
+    def EnvId(self):
+        r"""所需变更套餐的环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PackageId(self):
+        r"""目标套餐Id。
+对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券支付。
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._PackageId = params.get("PackageId")
+        self._AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnvPlanResponse(AbstractModel):
+    r"""ModifyEnvPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyEnvRequest(AbstractModel):
     r"""ModifyEnv请求参数结构体
 
@@ -24151,6 +24487,102 @@ class ReinstateEnvRequest(AbstractModel):
 
 class ReinstateEnvResponse(AbstractModel):
     r"""ReinstateEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RenewEnvRequest(AbstractModel):
+    r"""RenewEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Period: 续费周期，单位：月。
+默认值为 1，即续费1个月。
+        :type Period: int
+        :param _AutoVoucher: 是否自动选择代金券支付。
+        :type AutoVoucher: bool
+        """
+        self._EnvId = None
+        self._Period = None
+        self._AutoVoucher = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Period(self):
+        r"""续费周期，单位：月。
+默认值为 1，即续费1个月。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券支付。
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Period = params.get("Period")
+        self._AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewEnvResponse(AbstractModel):
+    r"""RenewEnv返回参数结构体
 
     """
 

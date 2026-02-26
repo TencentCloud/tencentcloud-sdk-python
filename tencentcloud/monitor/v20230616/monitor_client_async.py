@@ -43,6 +43,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteNoticeContentTmpls(
+            self,
+            request: models.DeleteNoticeContentTmplsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteNoticeContentTmplsResponse:
+        """
+        删除通知内容模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteNoticeContentTmpls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteNoticeContentTmplsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarmNotifyHistories(
             self,
             request: models.DescribeAlarmNotifyHistoriesRequest,
@@ -56,6 +74,42 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeAlarmNotifyHistories"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAlarmNotifyHistoriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNoticeContentTmpl(
+            self,
+            request: models.DescribeNoticeContentTmplRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNoticeContentTmplResponse:
+        """
+        根据查询条件获取自定义通知内容模板，若所有查询条件空，则获取账号下所有模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNoticeContentTmpl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNoticeContentTmplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNoticeContentTmpl(
+            self,
+            request: models.ModifyNoticeContentTmplRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNoticeContentTmplResponse:
+        """
+        修改通知内容模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNoticeContentTmpl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNoticeContentTmplResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

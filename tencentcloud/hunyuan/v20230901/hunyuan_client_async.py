@@ -91,6 +91,42 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateGlossary(
+            self,
+            request: models.CreateGlossaryRequest,
+            opts: Dict = None,
+    ) -> models.CreateGlossaryResponse:
+        """
+        创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGlossary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGlossaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateGlossaryEntry(
+            self,
+            request: models.CreateGlossaryEntryRequest,
+            opts: Dict = None,
+    ) -> models.CreateGlossaryEntryResponse:
+        """
+        添加术语条目。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGlossaryEntry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGlossaryEntryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateThread(
             self,
             request: models.CreateThreadRequest,
@@ -109,6 +145,42 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "CreateThread"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateThreadResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGlossary(
+            self,
+            request: models.DeleteGlossaryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGlossaryResponse:
+        """
+        删除术语库。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGlossary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGlossaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGlossaryEntry(
+            self,
+            request: models.DeleteGlossaryEntryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGlossaryEntryResponse:
+        """
+        删除术语条目。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGlossaryEntry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGlossaryEntryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -324,6 +396,42 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListGlossary(
+            self,
+            request: models.ListGlossaryRequest,
+            opts: Dict = None,
+    ) -> models.ListGlossaryResponse:
+        """
+        查询术语库。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListGlossary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListGlossaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListGlossaryEntry(
+            self,
+            request: models.ListGlossaryEntryRequest,
+            opts: Dict = None,
+    ) -> models.ListGlossaryEntryResponse:
+        """
+        查询术语条目。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListGlossaryEntry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListGlossaryEntryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuanImageChatJob(
             self,
             request: models.QueryHunyuanImageChatJobRequest,
@@ -463,6 +571,24 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "TextToImageLite"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TextToImageLiteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateGlossaryEntry(
+            self,
+            request: models.UpdateGlossaryEntryRequest,
+            opts: Dict = None,
+    ) -> models.UpdateGlossaryEntryResponse:
+        """
+        更新术语条目。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateGlossaryEntry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateGlossaryEntryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

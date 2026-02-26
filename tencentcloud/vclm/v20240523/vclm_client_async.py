@@ -43,6 +43,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcVideoJob(
+            self,
+            request: models.DescribeAigcVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcVideoJobResponse:
+        """
+        查询生视频任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHumanActorJob(
             self,
             request: models.DescribeHumanActorJobRequest,
@@ -219,6 +237,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "DescribeVideoVoiceJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoVoiceJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitAigcVideoJob(
+            self,
+            request: models.SubmitAigcVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitAigcVideoJobResponse:
+        """
+        提交生视频任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitAigcVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitAigcVideoJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

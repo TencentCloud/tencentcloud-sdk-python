@@ -809,6 +809,42 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCcnPolicyBasedRoutingNextHop(
+            self,
+            request: models.CreateCcnPolicyBasedRoutingNextHopRequest,
+            opts: Dict = None,
+    ) -> models.CreateCcnPolicyBasedRoutingNextHopResponse:
+        """
+        创建云联网策略路由下一跳
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCcnPolicyBasedRoutingNextHop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCcnPolicyBasedRoutingNextHopResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCcnPolicyBasedRoutingRules(
+            self,
+            request: models.CreateCcnPolicyBasedRoutingRulesRequest,
+            opts: Dict = None,
+    ) -> models.CreateCcnPolicyBasedRoutingRulesResponse:
+        """
+        创建云联网策略路由匹配规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCcnPolicyBasedRoutingRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCcnPolicyBasedRoutingRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCcnRouteTables(
             self,
             request: models.CreateCcnRouteTablesRequest,
@@ -1944,6 +1980,42 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DeleteCcn"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCcnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCcnPolicyBasedRoutingNextHop(
+            self,
+            request: models.DeleteCcnPolicyBasedRoutingNextHopRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCcnPolicyBasedRoutingNextHopResponse:
+        """
+        删除云联网策略路由下一跳
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCcnPolicyBasedRoutingNextHop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCcnPolicyBasedRoutingNextHopResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCcnPolicyBasedRoutingRule(
+            self,
+            request: models.DeleteCcnPolicyBasedRoutingRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCcnPolicyBasedRoutingRuleResponse:
+        """
+        删除云联网策略路由匹配规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCcnPolicyBasedRoutingRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCcnPolicyBasedRoutingRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3161,6 +3233,42 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DescribeCcnAttachedInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCcnAttachedInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCcnPolicyBasedRoutingNextHop(
+            self,
+            request: models.DescribeCcnPolicyBasedRoutingNextHopRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnPolicyBasedRoutingNextHopResponse:
+        """
+        查询云联网策略路由下一跳
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnPolicyBasedRoutingNextHop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnPolicyBasedRoutingNextHopResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCcnPolicyBasedRoutingRule(
+            self,
+            request: models.DescribeCcnPolicyBasedRoutingRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCcnPolicyBasedRoutingRuleResponse:
+        """
+        查询云联网策略路由匹配规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCcnPolicyBasedRoutingRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCcnPolicyBasedRoutingRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6117,6 +6225,42 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "ModifyCcnAttribute"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCcnAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCcnPolicyBasedRoutingNextHopAttribute(
+            self,
+            request: models.ModifyCcnPolicyBasedRoutingNextHopAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCcnPolicyBasedRoutingNextHopAttributeResponse:
+        """
+        更新云联网策略路由下一跳参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCcnPolicyBasedRoutingNextHopAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCcnPolicyBasedRoutingNextHopAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCcnPolicyBasedRoutingRuleAttribute(
+            self,
+            request: models.ModifyCcnPolicyBasedRoutingRuleAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCcnPolicyBasedRoutingRuleAttributeResponse:
+        """
+        更新云联网策略路由匹配规则参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCcnPolicyBasedRoutingRuleAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCcnPolicyBasedRoutingRuleAttributeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

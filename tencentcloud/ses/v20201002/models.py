@@ -18,6 +18,222 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbuseReport(AbstractModel):
+    r"""垃圾投诉数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverTime: 发送时间
+        :type DeliverTime: str
+        :param _OriginalMailFrom: 发信地址
+        :type OriginalMailFrom: str
+        :param _OriginalRcptTo: 收信地址
+        :type OriginalRcptTo: str
+        :param _FromDomain: 发信域名
+        :type FromDomain: str
+        :param _ComplainTime: 投诉时间
+        :type ComplainTime: str
+        :param _Mta: 收信域名
+        :type Mta: str
+        :param _SourceIp: 来源ip
+        :type SourceIp: str
+        :param _InsertTime: 数据时间
+        :type InsertTime: str
+        :param _TemplateId: 模板id
+        :type TemplateId: str
+        :param _BulkId: bulkId
+        :type BulkId: str
+        :param _MessageId: 邮件Message-Id
+        :type MessageId: str
+        :param _AbuseTime: 投诉时间
+        :type AbuseTime: str
+        :param _Subject: 邮件主题
+        :type Subject: str
+        """
+        self._DeliverTime = None
+        self._OriginalMailFrom = None
+        self._OriginalRcptTo = None
+        self._FromDomain = None
+        self._ComplainTime = None
+        self._Mta = None
+        self._SourceIp = None
+        self._InsertTime = None
+        self._TemplateId = None
+        self._BulkId = None
+        self._MessageId = None
+        self._AbuseTime = None
+        self._Subject = None
+
+    @property
+    def DeliverTime(self):
+        r"""发送时间
+        :rtype: str
+        """
+        return self._DeliverTime
+
+    @DeliverTime.setter
+    def DeliverTime(self, DeliverTime):
+        self._DeliverTime = DeliverTime
+
+    @property
+    def OriginalMailFrom(self):
+        r"""发信地址
+        :rtype: str
+        """
+        return self._OriginalMailFrom
+
+    @OriginalMailFrom.setter
+    def OriginalMailFrom(self, OriginalMailFrom):
+        self._OriginalMailFrom = OriginalMailFrom
+
+    @property
+    def OriginalRcptTo(self):
+        r"""收信地址
+        :rtype: str
+        """
+        return self._OriginalRcptTo
+
+    @OriginalRcptTo.setter
+    def OriginalRcptTo(self, OriginalRcptTo):
+        self._OriginalRcptTo = OriginalRcptTo
+
+    @property
+    def FromDomain(self):
+        r"""发信域名
+        :rtype: str
+        """
+        return self._FromDomain
+
+    @FromDomain.setter
+    def FromDomain(self, FromDomain):
+        self._FromDomain = FromDomain
+
+    @property
+    def ComplainTime(self):
+        r"""投诉时间
+        :rtype: str
+        """
+        return self._ComplainTime
+
+    @ComplainTime.setter
+    def ComplainTime(self, ComplainTime):
+        self._ComplainTime = ComplainTime
+
+    @property
+    def Mta(self):
+        r"""收信域名
+        :rtype: str
+        """
+        return self._Mta
+
+    @Mta.setter
+    def Mta(self, Mta):
+        self._Mta = Mta
+
+    @property
+    def SourceIp(self):
+        r"""来源ip
+        :rtype: str
+        """
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def InsertTime(self):
+        r"""数据时间
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def TemplateId(self):
+        r"""模板id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def BulkId(self):
+        r"""bulkId
+        :rtype: str
+        """
+        return self._BulkId
+
+    @BulkId.setter
+    def BulkId(self, BulkId):
+        self._BulkId = BulkId
+
+    @property
+    def MessageId(self):
+        r"""邮件Message-Id
+        :rtype: str
+        """
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def AbuseTime(self):
+        r"""投诉时间
+        :rtype: str
+        """
+        return self._AbuseTime
+
+    @AbuseTime.setter
+    def AbuseTime(self, AbuseTime):
+        self._AbuseTime = AbuseTime
+
+    @property
+    def Subject(self):
+        r"""邮件主题
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+
+    def _deserialize(self, params):
+        self._DeliverTime = params.get("DeliverTime")
+        self._OriginalMailFrom = params.get("OriginalMailFrom")
+        self._OriginalRcptTo = params.get("OriginalRcptTo")
+        self._FromDomain = params.get("FromDomain")
+        self._ComplainTime = params.get("ComplainTime")
+        self._Mta = params.get("Mta")
+        self._SourceIp = params.get("SourceIp")
+        self._InsertTime = params.get("InsertTime")
+        self._TemplateId = params.get("TemplateId")
+        self._BulkId = params.get("BulkId")
+        self._MessageId = params.get("MessageId")
+        self._AbuseTime = params.get("AbuseTime")
+        self._Subject = params.get("Subject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddressUnsubscribeConfigData(AbstractModel):
     r"""地址级退订配置
 
@@ -2374,6 +2590,225 @@ class EmailSender(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetAbuseReportRequest(AbstractModel):
+    r"""GetAbuseReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 限制数量（默认为1000）
+        :type Limit: int
+        :param _FromDomain: 发信域名
+        :type FromDomain: str
+        :param _FromAddress: 发信地址
+        :type FromAddress: str
+        :param _Mta: 收信域名
+        :type Mta: str
+        :param _ToAddress: 收信地址
+        :type ToAddress: str
+        :param _TemplateId: 模版id
+        :type TemplateId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._FromDomain = None
+        self._FromAddress = None
+        self._Mta = None
+        self._ToAddress = None
+        self._TemplateId = None
+
+    @property
+    def StartTime(self):
+        r"""起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""限制数量（默认为1000）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FromDomain(self):
+        r"""发信域名
+        :rtype: str
+        """
+        return self._FromDomain
+
+    @FromDomain.setter
+    def FromDomain(self, FromDomain):
+        self._FromDomain = FromDomain
+
+    @property
+    def FromAddress(self):
+        r"""发信地址
+        :rtype: str
+        """
+        return self._FromAddress
+
+    @FromAddress.setter
+    def FromAddress(self, FromAddress):
+        self._FromAddress = FromAddress
+
+    @property
+    def Mta(self):
+        r"""收信域名
+        :rtype: str
+        """
+        return self._Mta
+
+    @Mta.setter
+    def Mta(self, Mta):
+        self._Mta = Mta
+
+    @property
+    def ToAddress(self):
+        r"""收信地址
+        :rtype: str
+        """
+        return self._ToAddress
+
+    @ToAddress.setter
+    def ToAddress(self, ToAddress):
+        self._ToAddress = ToAddress
+
+    @property
+    def TemplateId(self):
+        r"""模版id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FromDomain = params.get("FromDomain")
+        self._FromAddress = params.get("FromAddress")
+        self._Mta = params.get("Mta")
+        self._ToAddress = params.get("ToAddress")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAbuseReportResponse(AbstractModel):
+    r"""GetAbuseReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 打开日志数据
+        :type Data: list of AbuseReport
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""打开日志数据
+        :rtype: list of AbuseReport
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AbuseReport()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetEmailIdentityRequest(AbstractModel):

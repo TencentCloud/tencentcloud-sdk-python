@@ -225,7 +225,7 @@ class FaceInfo(AbstractModel):
         r"""
         :param _ImageUrls: 用户图 URL 列表
         :type ImageUrls: list of str
-        :param _TemplateFaceRect: 模版图人脸坐标。
+        :param _TemplateFaceRect: 模板图人脸坐标。
         :type TemplateFaceRect: :class:`tencentcloud.aiart.v20221229.models.Rect`
         """
         self._ImageUrls = None
@@ -244,7 +244,7 @@ class FaceInfo(AbstractModel):
 
     @property
     def TemplateFaceRect(self):
-        r"""模版图人脸坐标。
+        r"""模板图人脸坐标。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.Rect`
         """
         return self._TemplateFaceRect

@@ -7692,17 +7692,17 @@ class LifecyclePolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 生命周期管理策略创建的时间
+        :param _CreateTime: <p>生命周期管理策略创建的时间</p>
         :type CreateTime: str
-        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :param _LifecyclePolicyID: <p>生命周期管理策略ID</p>
         :type LifecyclePolicyID: str
-        :param _LifecyclePolicyName: 生命周期管理策略名称
+        :param _LifecyclePolicyName: <p>生命周期管理策略名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LifecyclePolicyName: str
-        :param _LifecycleRules: 生命周期管理策略关联的管理规则列表
+        :param _LifecycleRules: <p>生命周期管理策略关联的管理规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LifecycleRules: list of LifecycleRule
-        :param _Paths: 生命周期管理策略关联目录的绝对路径列表
+        :param _Paths: <p>生命周期管理策略关联目录的绝对路径列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Paths: list of PathInfo
         """
@@ -7714,7 +7714,7 @@ class LifecyclePolicy(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""生命周期管理策略创建的时间
+        r"""<p>生命周期管理策略创建的时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7725,7 +7725,7 @@ class LifecyclePolicy(AbstractModel):
 
     @property
     def LifecyclePolicyID(self):
-        r"""生命周期管理策略ID
+        r"""<p>生命周期管理策略ID</p>
         :rtype: str
         """
         return self._LifecyclePolicyID
@@ -7736,7 +7736,7 @@ class LifecyclePolicy(AbstractModel):
 
     @property
     def LifecyclePolicyName(self):
-        r"""生命周期管理策略名称
+        r"""<p>生命周期管理策略名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7748,7 +7748,7 @@ class LifecyclePolicy(AbstractModel):
 
     @property
     def LifecycleRules(self):
-        r"""生命周期管理策略关联的管理规则列表
+        r"""<p>生命周期管理策略关联的管理规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LifecycleRule
         """
@@ -7760,7 +7760,7 @@ class LifecyclePolicy(AbstractModel):
 
     @property
     def Paths(self):
-        r"""生命周期管理策略关联目录的绝对路径列表
+        r"""<p>生命周期管理策略关联目录的绝对路径列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathInfo
         """

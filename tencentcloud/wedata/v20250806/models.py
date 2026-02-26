@@ -7376,6 +7376,20 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         :type ExecutionTTLMinute: int
         :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
         :type WaitExecutionTotalTTLMinute: int
+        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :type DependencyTriggerPolicy: str
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -7406,6 +7420,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._MaxRetryNumber = None
         self._ExecutionTTLMinute = None
         self._WaitExecutionTotalTTLMinute = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def CycleType(self):
@@ -7763,6 +7778,29 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
         self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -7819,6 +7857,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._MaxRetryNumber = params.get("MaxRetryNumber")
         self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8333,6 +8372,20 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
         :type ParamTaskInList: list of InTaskParameter
         :param _TaskOutputRegistryList: 产出登记
         :type TaskOutputRegistryList: list of TaskDataRegistry
+        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :type DependencyTriggerPolicy: str
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -8344,6 +8397,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
         self._ParamTaskOutList = None
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def UpstreamDependencyConfigList(self):
@@ -8455,6 +8509,29 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
     def TaskOutputRegistryList(self, TaskOutputRegistryList):
         self._TaskOutputRegistryList = TaskOutputRegistryList
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         if params.get("UpstreamDependencyConfigList") is not None:
@@ -8487,6 +8564,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
                 obj = TaskDataRegistry()
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31853,9 +31931,9 @@ class ListTriggerWorkflowRunsRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _Filters: 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+        :param _Filters: 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
         :type Filters: list of Filter
-        :param _OrderFields: 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+        :param _OrderFields: 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
         :type OrderFields: list of OrderField
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -31881,7 +31959,7 @@ class ListTriggerWorkflowRunsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+        r"""过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
         :rtype: list of Filter
         """
         return self._Filters
@@ -31892,7 +31970,7 @@ class ListTriggerWorkflowRunsRequest(AbstractModel):
 
     @property
     def OrderFields(self):
-        r"""排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+        r"""排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
         :rtype: list of OrderField
         """
         return self._OrderFields
@@ -49304,6 +49382,15 @@ class TaskDataRegistry(AbstractModel):
         :param _TableGuid: 表唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGuid: str
+        :param _CatalogName: Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _QualifiedName: Catalog(如有).数据库(如有).表名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualifiedName: str
         """
         self._DatasourceId = None
         self._DatabaseName = None
@@ -49313,6 +49400,9 @@ class TaskDataRegistry(AbstractModel):
         self._TablePhysicalId = None
         self._DbGuid = None
         self._TableGuid = None
+        self._CatalogName = None
+        self._DatasourceName = None
+        self._QualifiedName = None
 
     @property
     def DatasourceId(self):
@@ -49414,6 +49504,42 @@ class TaskDataRegistry(AbstractModel):
     def TableGuid(self, TableGuid):
         self._TableGuid = TableGuid
 
+    @property
+    def CatalogName(self):
+        r"""Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def QualifiedName(self):
+        r"""Catalog(如有).数据库(如有).表名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QualifiedName
+
+    @QualifiedName.setter
+    def QualifiedName(self, QualifiedName):
+        self._QualifiedName = QualifiedName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -49424,6 +49550,9 @@ class TaskDataRegistry(AbstractModel):
         self._TablePhysicalId = params.get("TablePhysicalId")
         self._DbGuid = params.get("DbGuid")
         self._TableGuid = params.get("TableGuid")
+        self._CatalogName = params.get("CatalogName")
+        self._DatasourceName = params.get("DatasourceName")
+        self._QualifiedName = params.get("QualifiedName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52086,6 +52215,21 @@ CRONTAB_CYCLE: crontab表达式类型
         :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitExecutionTotalTTLMinute: int
+        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyTriggerPolicy: str
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -52119,6 +52263,7 @@ CRONTAB_CYCLE: crontab表达式类型
         self._MaxRetryNumber = None
         self._ExecutionTTLMinute = None
         self._WaitExecutionTotalTTLMinute = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def CycleType(self):
@@ -52543,6 +52688,30 @@ CRONTAB_CYCLE: crontab表达式类型
     def WaitExecutionTotalTTLMinute(self, WaitExecutionTotalTTLMinute):
         self._WaitExecutionTotalTTLMinute = WaitExecutionTotalTTLMinute
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -52612,6 +52781,7 @@ CRONTAB_CYCLE: crontab表达式类型
         self._MaxRetryNumber = params.get("MaxRetryNumber")
         self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53932,6 +54102,9 @@ class TriggerTaskBrief(AbstractModel):
         :param _ExecutionStartTime: 运行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
+        :param _DependencyTriggerPolicy: 依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyTriggerPolicy: str
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -53947,6 +54120,7 @@ class TriggerTaskBrief(AbstractModel):
         self._TaskTypeId = None
         self._ExecutionState = None
         self._ExecutionStartTime = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def ProjectId(self):
@@ -54116,6 +54290,18 @@ class TriggerTaskBrief(AbstractModel):
     def ExecutionStartTime(self, ExecutionStartTime):
         self._ExecutionStartTime = ExecutionStartTime
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -54132,6 +54318,7 @@ class TriggerTaskBrief(AbstractModel):
         self._TaskTypeId = params.get("TaskTypeId")
         self._ExecutionState = params.get("ExecutionState")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54913,6 +55100,9 @@ class TriggerTaskRunBrief(AbstractModel):
         :param _CreateTime: 创建时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _ScheduleTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTime: str
         :param _UpdateTime: 更新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
@@ -55030,6 +55220,9 @@ class TriggerTaskRunBrief(AbstractModel):
         :param _ExecutionResult: 任务执行结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionResult: str
+        :param _DependencyTriggerPolicy: 依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyTriggerPolicy: str
         """
         self._ExecutionId = None
         self._ExecutionState = None
@@ -55047,6 +55240,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._CreaterUin = None
         self._JobId = None
         self._CreateTime = None
+        self._ScheduleTime = None
         self._UpdateTime = None
         self._DependenceFinishedTime = None
         self._QueueStartTime = None
@@ -55086,6 +55280,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._SupportRerun = None
         self._WorkflowExecutionState = None
         self._ExecutionResult = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def ExecutionId(self):
@@ -55278,6 +55473,18 @@ class TriggerTaskRunBrief(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def ScheduleTime(self):
+        r"""计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTime
+
+    @ScheduleTime.setter
+    def ScheduleTime(self, ScheduleTime):
+        self._ScheduleTime = ScheduleTime
 
     @property
     def UpdateTime(self):
@@ -55747,6 +55954,18 @@ class TriggerTaskRunBrief(AbstractModel):
     def ExecutionResult(self, ExecutionResult):
         self._ExecutionResult = ExecutionResult
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""依赖策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         self._ExecutionId = params.get("ExecutionId")
@@ -55765,6 +55984,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._CreaterUin = params.get("CreaterUin")
         self._JobId = params.get("JobId")
         self._CreateTime = params.get("CreateTime")
+        self._ScheduleTime = params.get("ScheduleTime")
         self._UpdateTime = params.get("UpdateTime")
         self._DependenceFinishedTime = params.get("DependenceFinishedTime")
         self._QueueStartTime = params.get("QueueStartTime")
@@ -55804,6 +56024,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._SupportRerun = params.get("SupportRerun")
         self._WorkflowExecutionState = params.get("WorkflowExecutionState")
         self._ExecutionResult = params.get("ExecutionResult")
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55851,6 +56072,21 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
         :param _TaskOutputRegistryList: 产出登记
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOutputRegistryList: list of TaskDataRegistry
+        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyTriggerPolicy: str
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -55862,6 +56098,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
         self._ParamTaskOutList = None
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def UpstreamDependencyConfigList(self):
@@ -55983,6 +56220,30 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
     def TaskOutputRegistryList(self, TaskOutputRegistryList):
         self._TaskOutputRegistryList = TaskOutputRegistryList
 
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         if params.get("UpstreamDependencyConfigList") is not None:
@@ -56015,6 +56276,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
                 obj = TaskDataRegistry()
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57071,6 +57333,9 @@ class TriggerWorkflowRunBrief(AbstractModel):
         :param _CreateTime: 工作流触发时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _ScheduleTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTime: str
         :param _ExecutionStartTime: 执行开始时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
@@ -57149,6 +57414,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._TriggerId = None
         self._TriggerType = None
         self._CreateTime = None
+        self._ScheduleTime = None
         self._ExecutionStartTime = None
         self._ExecutionEndTime = None
         self._ExecutionCostTime = None
@@ -57268,6 +57534,18 @@ class TriggerWorkflowRunBrief(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def ScheduleTime(self):
+        r"""计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTime
+
+    @ScheduleTime.setter
+    def ScheduleTime(self, ScheduleTime):
+        self._ScheduleTime = ScheduleTime
 
     @property
     def ExecutionStartTime(self):
@@ -57555,6 +57833,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._TriggerId = params.get("TriggerId")
         self._TriggerType = params.get("TriggerType")
         self._CreateTime = params.get("CreateTime")
+        self._ScheduleTime = params.get("ScheduleTime")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
         self._ExecutionEndTime = params.get("ExecutionEndTime")
         self._ExecutionCostTime = params.get("ExecutionCostTime")

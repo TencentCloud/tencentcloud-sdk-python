@@ -1513,6 +1513,249 @@ class Content(AbstractModel):
         
 
 
+class CreateGlossaryEntryRequest(AbstractModel):
+    r"""CreateGlossaryEntry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库 ID
+        :type GlossaryId: str
+        :param _Entries: 术语条目列表，单次请求限制100个
+        :type Entries: list of GlossaryEntryCreateItem
+        """
+        self._GlossaryId = None
+        self._Entries = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def Entries(self):
+        r"""术语条目列表，单次请求限制100个
+        :rtype: list of GlossaryEntryCreateItem
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntryCreateItem()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlossaryEntryResponse(AbstractModel):
+    r"""CreateGlossaryEntry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 成功创建的术语条目
+        :type Entries: list of GlossaryEntry
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Entries = None
+        self._RequestId = None
+
+    @property
+    def Entries(self):
+        r"""成功创建的术语条目
+        :rtype: list of GlossaryEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGlossaryRequest(AbstractModel):
+    r"""CreateGlossary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 术语库名称，限制50个字符
+        :type Name: str
+        :param _Source: 源语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+        :type Source: str
+        :param _Target: 目标语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+        :type Target: str
+        :param _Description: 术语库描述，限制255个字符
+        :type Description: str
+        """
+        self._Name = None
+        self._Source = None
+        self._Target = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""术语库名称，限制50个字符
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Source(self):
+        r"""源语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""目标语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Description(self):
+        r"""术语库描述，限制255个字符
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlossaryResponse(AbstractModel):
+    r"""CreateGlossary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 术语库名称
+        :type Name: str
+        :param _GlossaryId: 术语库唯一 ID
+        :type GlossaryId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._GlossaryId = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        r"""术语库名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def GlossaryId(self):
+        r"""术语库唯一 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._GlossaryId = params.get("GlossaryId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateThreadRequest(AbstractModel):
     r"""CreateThread请求参数结构体
 
@@ -1608,6 +1851,154 @@ class CreateThreadResponse(AbstractModel):
         if params.get("ToolResources") is not None:
             self._ToolResources = ThreadToolResources()
             self._ToolResources._deserialize(params.get("ToolResources"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGlossaryEntryRequest(AbstractModel):
+    r"""DeleteGlossaryEntry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库 ID
+        :type GlossaryId: str
+        :param _Entries: 需要更新的术语条目列表，单次请求限制100个
+        :type Entries: list of GlossaryEntryDeleteItem
+        """
+        self._GlossaryId = None
+        self._Entries = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def Entries(self):
+        r"""需要更新的术语条目列表，单次请求限制100个
+        :rtype: list of GlossaryEntryDeleteItem
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntryDeleteItem()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlossaryEntryResponse(AbstractModel):
+    r"""DeleteGlossaryEntry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGlossaryRequest(AbstractModel):
+    r"""DeleteGlossary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库 ID
+        :type GlossaryId: str
+        """
+        self._GlossaryId = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlossaryResponse(AbstractModel):
+    r"""DeleteGlossary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3265,6 +3656,333 @@ class GetTokenCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Glossary(AbstractModel):
+    r"""术语库
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库唯一 ID
+        :type GlossaryId: str
+        :param _Name: 术语库名称
+        :type Name: str
+        :param _Description: 术语库描述
+        :type Description: str
+        :param _Source: 源语言代码
+        :type Source: str
+        :param _Target: 目标语言代码
+        :type Target: str
+        """
+        self._GlossaryId = None
+        self._Name = None
+        self._Description = None
+        self._Source = None
+        self._Target = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库唯一 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def Name(self):
+        r"""术语库名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""术语库描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Source(self):
+        r"""源语言代码
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""目标语言代码
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlossaryEntry(AbstractModel):
+    r"""术语条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceTerm: 源语言术语，限制1000字符
+
+        :type SourceTerm: str
+        :param _TargetTerm: 目标语言术语，限制1000字符
+
+        :type TargetTerm: str
+        :param _EntryId: 术语条目 ID
+        :type EntryId: str
+        """
+        self._SourceTerm = None
+        self._TargetTerm = None
+        self._EntryId = None
+
+    @property
+    def SourceTerm(self):
+        r"""源语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._SourceTerm
+
+    @SourceTerm.setter
+    def SourceTerm(self, SourceTerm):
+        self._SourceTerm = SourceTerm
+
+    @property
+    def TargetTerm(self):
+        r"""目标语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._TargetTerm
+
+    @TargetTerm.setter
+    def TargetTerm(self, TargetTerm):
+        self._TargetTerm = TargetTerm
+
+    @property
+    def EntryId(self):
+        r"""术语条目 ID
+        :rtype: str
+        """
+        return self._EntryId
+
+    @EntryId.setter
+    def EntryId(self, EntryId):
+        self._EntryId = EntryId
+
+
+    def _deserialize(self, params):
+        self._SourceTerm = params.get("SourceTerm")
+        self._TargetTerm = params.get("TargetTerm")
+        self._EntryId = params.get("EntryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlossaryEntryCreateItem(AbstractModel):
+    r"""术语条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceTerm: 源语言术语，限制1000字符
+
+        :type SourceTerm: str
+        :param _TargetTerm: 目标语言术语，限制1000字符
+
+        :type TargetTerm: str
+        """
+        self._SourceTerm = None
+        self._TargetTerm = None
+
+    @property
+    def SourceTerm(self):
+        r"""源语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._SourceTerm
+
+    @SourceTerm.setter
+    def SourceTerm(self, SourceTerm):
+        self._SourceTerm = SourceTerm
+
+    @property
+    def TargetTerm(self):
+        r"""目标语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._TargetTerm
+
+    @TargetTerm.setter
+    def TargetTerm(self, TargetTerm):
+        self._TargetTerm = TargetTerm
+
+
+    def _deserialize(self, params):
+        self._SourceTerm = params.get("SourceTerm")
+        self._TargetTerm = params.get("TargetTerm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlossaryEntryDeleteItem(AbstractModel):
+    r"""术语条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntryId: 术语条目 ID
+        :type EntryId: str
+        """
+        self._EntryId = None
+
+    @property
+    def EntryId(self):
+        r"""术语条目 ID
+        :rtype: str
+        """
+        return self._EntryId
+
+    @EntryId.setter
+    def EntryId(self, EntryId):
+        self._EntryId = EntryId
+
+
+    def _deserialize(self, params):
+        self._EntryId = params.get("EntryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlossaryEntryUpdateItem(AbstractModel):
+    r"""术语条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntryId: 术语条目 ID
+        :type EntryId: str
+        :param _SourceTerm: 源语言术语，限制1000字符
+
+        :type SourceTerm: str
+        :param _TargetTerm: 目标语言术语，限制1000字符
+
+        :type TargetTerm: str
+        """
+        self._EntryId = None
+        self._SourceTerm = None
+        self._TargetTerm = None
+
+    @property
+    def EntryId(self):
+        r"""术语条目 ID
+        :rtype: str
+        """
+        return self._EntryId
+
+    @EntryId.setter
+    def EntryId(self, EntryId):
+        self._EntryId = EntryId
+
+    @property
+    def SourceTerm(self):
+        r"""源语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._SourceTerm
+
+    @SourceTerm.setter
+    def SourceTerm(self, SourceTerm):
+        self._SourceTerm = SourceTerm
+
+    @property
+    def TargetTerm(self):
+        r"""目标语言术语，限制1000字符
+
+        :rtype: str
+        """
+        return self._TargetTerm
+
+    @TargetTerm.setter
+    def TargetTerm(self, TargetTerm):
+        self._TargetTerm = TargetTerm
+
+
+    def _deserialize(self, params):
+        self._EntryId = params.get("EntryId")
+        self._SourceTerm = params.get("SourceTerm")
+        self._TargetTerm = params.get("TargetTerm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GroupChatCompletionsRequest(AbstractModel):
     r"""GroupChatCompletions请求参数结构体
 
@@ -4253,6 +4971,309 @@ class Knowledge(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListGlossaryEntryRequest(AbstractModel):
+    r"""ListGlossaryEntry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库 ID
+        :type GlossaryId: str
+        :param _Page: 页码，默认 1
+        :type Page: int
+        :param _PageSize: 每页数量，默认 10，最大200
+        :type PageSize: int
+        """
+        self._GlossaryId = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def Page(self):
+        r"""页码，默认 1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量，默认 10，最大200
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGlossaryEntryResponse(AbstractModel):
+    r"""ListGlossaryEntry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 术语条目列表
+        :type Entries: list of GlossaryEntry
+        :param _Total: 条目总数量
+        :type Total: int
+        :param _Page: 当前页码
+        :type Page: int
+        :param _PageSize: 每页数量
+        :type PageSize: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Entries = None
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._RequestId = None
+
+    @property
+    def Entries(self):
+        r"""术语条目列表
+        :rtype: list of GlossaryEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+    @property
+    def Total(self):
+        r"""条目总数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
+
+
+class ListGlossaryRequest(AbstractModel):
+    r"""ListGlossary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 页码，默认 1
+        :type Page: int
+        :param _PageSize: 每页数量，默认 10，最大 100
+        :type PageSize: int
+        """
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Page(self):
+        r"""页码，默认 1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量，默认 10，最大 100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGlossaryResponse(AbstractModel):
+    r"""ListGlossary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Glossaries: 术语库列表
+        :type Glossaries: list of Glossary
+        :param _Total: 术语库总数量
+        :type Total: int
+        :param _Page: 当前页码
+        :type Page: int
+        :param _PageSize: 每页数量
+        :type PageSize: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Glossaries = None
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._RequestId = None
+
+    @property
+    def Glossaries(self):
+        r"""术语库列表
+        :rtype: list of Glossary
+        """
+        return self._Glossaries
+
+    @Glossaries.setter
+    def Glossaries(self, Glossaries):
+        self._Glossaries = Glossaries
+
+    @property
+    def Total(self):
+        r"""术语库总数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Glossaries") is not None:
+            self._Glossaries = []
+            for item in params.get("Glossaries"):
+                obj = Glossary()
+                obj._deserialize(item)
+                self._Glossaries.append(obj)
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
 
 
 class LogoParam(AbstractModel):
@@ -7855,6 +8876,110 @@ class TranslationMessage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateGlossaryEntryRequest(AbstractModel):
+    r"""UpdateGlossaryEntry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlossaryId: 术语库 ID
+        :type GlossaryId: str
+        :param _Entries: 需要更新的术语条目列表，单次请求限制100个
+        :type Entries: list of GlossaryEntryUpdateItem
+        """
+        self._GlossaryId = None
+        self._Entries = None
+
+    @property
+    def GlossaryId(self):
+        r"""术语库 ID
+        :rtype: str
+        """
+        return self._GlossaryId
+
+    @GlossaryId.setter
+    def GlossaryId(self, GlossaryId):
+        self._GlossaryId = GlossaryId
+
+    @property
+    def Entries(self):
+        r"""需要更新的术语条目列表，单次请求限制100个
+        :rtype: list of GlossaryEntryUpdateItem
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        self._GlossaryId = params.get("GlossaryId")
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntryUpdateItem()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGlossaryEntryResponse(AbstractModel):
+    r"""UpdateGlossaryEntry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 成功更新的术语条目
+        :type Entries: list of GlossaryEntry
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Entries = None
+        self._RequestId = None
+
+    @property
+    def Entries(self):
+        r"""成功更新的术语条目
+        :rtype: list of GlossaryEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = GlossaryEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Usage(AbstractModel):

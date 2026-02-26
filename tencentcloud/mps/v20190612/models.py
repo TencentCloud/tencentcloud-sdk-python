@@ -12410,61 +12410,29 @@ class AigcVideoExtraParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resolution: 生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
-
-不同模型支持的分辨率选项:
-1. Kling 720P(默认), 1080P。
-2. Hailuo 768P(默认), 1080P。
-3. Vidu 720P(默认)，1080P。
-4. GV 720P(默认),1080P。
-5. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
-
-注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+        :param _Resolution: <p>生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 </p><p>不同模型支持的分辨率选项:</p><ol><li>Kling 720P(默认), 1080P。</li><li>Hailuo 768P(默认), 1080P。</li><li>Vidu 720P(默认)，1080P。</li><li>GV 720P(默认),1080P。</li><li>OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。</li></ol><p>注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。</p>
         :type Resolution: str
-        :param _AspectRatio: 指定所生成视频的宽高比。 
-
-不同模型对于此参数的支持：
-1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
-2. Hailuo 暂不支持。
-3. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
-4. GV 16:9(默认值)、9:16。
-5. OS 仅文生视频支持, 16:9(默认), 9:16。
-
-注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+        :param _AspectRatio: <p>指定所生成视频的宽高比。 </p><p>不同模型对于此参数的支持：</p><ol><li>Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。</li><li>Hailuo 暂不支持。</li><li>Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。</li><li>GV 16:9(默认值)、9:16。</li><li>OS 仅文生视频支持, 16:9(默认), 9:16。</li></ol><p>注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。</p>
         :type AspectRatio: str
-        :param _LogoAdd: 是否添加图标水印。
-1. Hailuo 支持此参数。
-2. Kling 支持此参数。
-3. Vidu 支持此参数。
+        :param _LogoAdd: <p>是否添加图标水印。</p><ol><li>Hailuo 支持此参数。</li><li>Kling 支持此参数。</li><li>Vidu 支持此参数。</li></ol>
         :type LogoAdd: int
-        :param _EnableAudio: 为视频生成音频。接受的值包括 true 或 false。 
-
-支持此参数的模型：
-1. GV，默认true。
-2. OS，默认true。
+        :param _EnableAudio: <p>为视频生成音频。接受的值包括 true 或 false。 </p><p>支持此参数的模型：</p><ol><li>GV，默认true。</li><li>OS，默认true。</li></ol>
         :type EnableAudio: bool
-        :param _OffPeak: 错峰模型，目前仅支持Vidu模型。
-错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+        :param _OffPeak: <p>错峰模型，目前仅支持Vidu模型。<br>错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。</p>
         :type OffPeak: bool
+        :param _EnableBgm: <p>是否为生成的视频添加背景音乐。默认：false，可选值 true 、false。<br>注意：部分模型的版本支持。</p>
+        :type EnableBgm: bool
         """
         self._Resolution = None
         self._AspectRatio = None
         self._LogoAdd = None
         self._EnableAudio = None
         self._OffPeak = None
+        self._EnableBgm = None
 
     @property
     def Resolution(self):
-        r"""生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
-
-不同模型支持的分辨率选项:
-1. Kling 720P(默认), 1080P。
-2. Hailuo 768P(默认), 1080P。
-3. Vidu 720P(默认)，1080P。
-4. GV 720P(默认),1080P。
-5. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
-
-注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+        r"""<p>生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 </p><p>不同模型支持的分辨率选项:</p><ol><li>Kling 720P(默认), 1080P。</li><li>Hailuo 768P(默认), 1080P。</li><li>Vidu 720P(默认)，1080P。</li><li>GV 720P(默认),1080P。</li><li>OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。</li></ol><p>注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。</p>
         :rtype: str
         """
         return self._Resolution
@@ -12475,16 +12443,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""指定所生成视频的宽高比。 
-
-不同模型对于此参数的支持：
-1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
-2. Hailuo 暂不支持。
-3. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
-4. GV 16:9(默认值)、9:16。
-5. OS 仅文生视频支持, 16:9(默认), 9:16。
-
-注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+        r"""<p>指定所生成视频的宽高比。 </p><p>不同模型对于此参数的支持：</p><ol><li>Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。</li><li>Hailuo 暂不支持。</li><li>Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。</li><li>GV 16:9(默认值)、9:16。</li><li>OS 仅文生视频支持, 16:9(默认), 9:16。</li></ol><p>注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -12495,10 +12454,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def LogoAdd(self):
-        r"""是否添加图标水印。
-1. Hailuo 支持此参数。
-2. Kling 支持此参数。
-3. Vidu 支持此参数。
+        r"""<p>是否添加图标水印。</p><ol><li>Hailuo 支持此参数。</li><li>Kling 支持此参数。</li><li>Vidu 支持此参数。</li></ol>
         :rtype: int
         """
         return self._LogoAdd
@@ -12509,11 +12465,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def EnableAudio(self):
-        r"""为视频生成音频。接受的值包括 true 或 false。 
-
-支持此参数的模型：
-1. GV，默认true。
-2. OS，默认true。
+        r"""<p>为视频生成音频。接受的值包括 true 或 false。 </p><p>支持此参数的模型：</p><ol><li>GV，默认true。</li><li>OS，默认true。</li></ol>
         :rtype: bool
         """
         return self._EnableAudio
@@ -12524,8 +12476,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def OffPeak(self):
-        r"""错峰模型，目前仅支持Vidu模型。
-错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+        r"""<p>错峰模型，目前仅支持Vidu模型。<br>错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。</p>
         :rtype: bool
         """
         return self._OffPeak
@@ -12534,6 +12485,17 @@ class AigcVideoExtraParam(AbstractModel):
     def OffPeak(self, OffPeak):
         self._OffPeak = OffPeak
 
+    @property
+    def EnableBgm(self):
+        r"""<p>是否为生成的视频添加背景音乐。默认：false，可选值 true 、false。<br>注意：部分模型的版本支持。</p>
+        :rtype: bool
+        """
+        return self._EnableBgm
+
+    @EnableBgm.setter
+    def EnableBgm(self, EnableBgm):
+        self._EnableBgm = EnableBgm
+
 
     def _deserialize(self, params):
         self._Resolution = params.get("Resolution")
@@ -12541,6 +12503,7 @@ class AigcVideoExtraParam(AbstractModel):
         self._LogoAdd = params.get("LogoAdd")
         self._EnableAudio = params.get("EnableAudio")
         self._OffPeak = params.get("OffPeak")
+        self._EnableBgm = params.get("EnableBgm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12596,6 +12559,78 @@ class AigcVideoReferenceImageInfo(AbstractModel):
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
         self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoReferenceVideoInfo(AbstractModel):
+    r"""用于AIGC视频生成的参考视频素材。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: 参考视频url。需要外网可访问。
+可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声
+通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频
+参考视频为待编辑视频时，不能定义视频首尾帧。
+        :type VideoUrl: str
+        :param _ReferType: 通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频。
+        :type ReferType: str
+        :param _KeepOriginalSound: 通过KeepOriginalSound参数选择是否保留视频原声，yes为保留，no为不保留；当前参数对特征参考视频（feature）也生效。
+        :type KeepOriginalSound: str
+        """
+        self._VideoUrl = None
+        self._ReferType = None
+        self._KeepOriginalSound = None
+
+    @property
+    def VideoUrl(self):
+        r"""参考视频url。需要外网可访问。
+可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声
+通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频
+参考视频为待编辑视频时，不能定义视频首尾帧。
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def ReferType(self):
+        r"""通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频。
+        :rtype: str
+        """
+        return self._ReferType
+
+    @ReferType.setter
+    def ReferType(self, ReferType):
+        self._ReferType = ReferType
+
+    @property
+    def KeepOriginalSound(self):
+        r"""通过KeepOriginalSound参数选择是否保留视频原声，yes为保留，no为不保留；当前参数对特征参考视频（feature）也生效。
+        :rtype: str
+        """
+        return self._KeepOriginalSound
+
+    @KeepOriginalSound.setter
+    def KeepOriginalSound(self, KeepOriginalSound):
+        self._KeepOriginalSound = KeepOriginalSound
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        self._ReferType = params.get("ReferType")
+        self._KeepOriginalSound = params.get("KeepOriginalSound")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19406,82 +19441,35 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称。
-当前支持的模型列表:
-Hunyuan,
-Hailuo，
-Kling，
-Vidu，
-OS，
-GV。
+        :param _ModelName: <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
         :type ModelName: str
-        :param _ModelVersion: 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-1. Hailuo， 可选[02、2.3]。
-2. Kling，可选[2.0、2.1、2.5、O1、2.6]。
-3. Vidu,可选[q2、q2-pro、q2-turbo]。
-4. GV, 可选[3.1]。
-5. OS，可选[2.0]。
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
         :type ModelVersion: str
-        :param _SceneType: 指定场景生视频。
-注意：仅部分模型支持指定场景。
-1. Kling支持动作控制，motion_control。
-2. Mingmou支持横转竖，land2port。
-3. Vidu支持特效模板，template_effect。
+        :param _SceneType: <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
         :type SceneType: str
-        :param _Prompt: 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+        :param _Prompt: <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
         :type Prompt: str
-        :param _NegativePrompt: 用于描述您想要阻止模型生成的内容。
-注意：部分模型支持。
-例如：
-顶部照明、明亮的色彩
-人物、动物
-多辆汽车、风。
+        :param _NegativePrompt: <p>用于描述您想要阻止模型生成的内容。<br>注意：部分模型支持。<br>例如：<br>顶部照明、明亮的色彩<br>人物、动物<br>多辆汽车、风。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :param _EnhancePrompt: <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
         :type EnhancePrompt: bool
-        :param _ImageUrl: 用于指导视频生成的图片 URL。该URL需外网可访问。
-注意：
-1. 推荐图片大小不超过10M，不同模型大小限制不相同。
-2. 支持的图片格式：jpeg、png。
-3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+        :param _ImageUrl: <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同。</li><li>支持的图片格式：jpeg、png。</li><li>使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。</li></ol>
         :type ImageUrl: str
-        :param _LastImageUrl: 模型将以此参数传入的图片作为尾帧画面来生成视频。
-支持此参数的模型：
-1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
-3. Vidu, q2-pro, q2-turbo 支持首尾帧。
-
-注意：
-1. 推荐图片大小不超过10M，各模型限制不同。
-2. 支持的图片格式：jpeg、png。
+        :param _LastImageUrl: <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。</li><li>Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。</li><li>Vidu, q2-pro, q2-turbo 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type LastImageUrl: str
-        :param _ImageInfos: 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
-
-支持多图输入的模型：
-1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
-2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
-
-注意：
-1. 图片大小不超过10M。
-2. 支持的图片格式：jpeg、png。
+        :param _ImageInfos: <p>最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。</li><li>Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type ImageInfos: list of AigcVideoReferenceImageInfo
-        :param _Duration: 生成视频的时长。
-注意：
-1. Kling支持 5、10秒。默认: 5秒。
-2. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
-3. Vidu支持1-10秒。
-4. GV支持 8秒。 默认：8秒。
-5. OS支持4、8、12秒。 默认：8秒。
+        :param _VideoInfos: <p>目前仅Kling O1版本支持参考视频信息传入。<br>可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</p>
+        :type VideoInfos: list of AigcVideoReferenceVideoInfo
+        :param _Duration: <p>生成视频的时长。<br>注意：</p><ol><li>Kling支持 5、10秒。默认: 5秒。</li><li>Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。</li><li>Vidu支持1-10秒。</li><li>GV支持 8秒。 默认：8秒。</li><li>OS支持4、8、12秒。 默认：8秒。</li></ol>
         :type Duration: int
-        :param _ExtraParameters: 用于传入要求的额外参数。
+        :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
-        :param _StoreCosParam: 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _AdditionalParameters: 用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。
-示例：
-{\"camera_control\":{\"type\":\"simple\"}}
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
         :type AdditionalParameters: str
-        :param _Operator: 接口操作者名称。
+        :param _Operator: <p>接口操作者名称。</p>
         :type Operator: str
         """
         self._ModelName = None
@@ -19493,6 +19481,7 @@ GV。
         self._ImageUrl = None
         self._LastImageUrl = None
         self._ImageInfos = None
+        self._VideoInfos = None
         self._Duration = None
         self._ExtraParameters = None
         self._StoreCosParam = None
@@ -19501,14 +19490,7 @@ GV。
 
     @property
     def ModelName(self):
-        r"""模型名称。
-当前支持的模型列表:
-Hunyuan,
-Hailuo，
-Kling，
-Vidu，
-OS，
-GV。
+        r"""<p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
         :rtype: str
         """
         return self._ModelName
@@ -19519,12 +19501,7 @@ GV。
 
     @property
     def ModelVersion(self):
-        r"""指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-1. Hailuo， 可选[02、2.3]。
-2. Kling，可选[2.0、2.1、2.5、O1、2.6]。
-3. Vidu,可选[q2、q2-pro、q2-turbo]。
-4. GV, 可选[3.1]。
-5. OS，可选[2.0]。
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -19535,11 +19512,7 @@ GV。
 
     @property
     def SceneType(self):
-        r"""指定场景生视频。
-注意：仅部分模型支持指定场景。
-1. Kling支持动作控制，motion_control。
-2. Mingmou支持横转竖，land2port。
-3. Vidu支持特效模板，template_effect。
+        r"""<p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
         :rtype: str
         """
         return self._SceneType
@@ -19550,7 +19523,7 @@ GV。
 
     @property
     def Prompt(self):
-        r"""生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+        r"""<p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
         :rtype: str
         """
         return self._Prompt
@@ -19561,12 +19534,7 @@ GV。
 
     @property
     def NegativePrompt(self):
-        r"""用于描述您想要阻止模型生成的内容。
-注意：部分模型支持。
-例如：
-顶部照明、明亮的色彩
-人物、动物
-多辆汽车、风。
+        r"""<p>用于描述您想要阻止模型生成的内容。<br>注意：部分模型支持。<br>例如：<br>顶部照明、明亮的色彩<br>人物、动物<br>多辆汽车、风。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -19577,7 +19545,7 @@ GV。
 
     @property
     def EnhancePrompt(self):
-        r"""默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        r"""<p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -19588,11 +19556,7 @@ GV。
 
     @property
     def ImageUrl(self):
-        r"""用于指导视频生成的图片 URL。该URL需外网可访问。
-注意：
-1. 推荐图片大小不超过10M，不同模型大小限制不相同。
-2. 支持的图片格式：jpeg、png。
-3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+        r"""<p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同。</li><li>支持的图片格式：jpeg、png。</li><li>使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。</li></ol>
         :rtype: str
         """
         return self._ImageUrl
@@ -19603,15 +19567,7 @@ GV。
 
     @property
     def LastImageUrl(self):
-        r"""模型将以此参数传入的图片作为尾帧画面来生成视频。
-支持此参数的模型：
-1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
-3. Vidu, q2-pro, q2-turbo 支持首尾帧。
-
-注意：
-1. 推荐图片大小不超过10M，各模型限制不同。
-2. 支持的图片格式：jpeg、png。
+        r"""<p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。</li><li>Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。</li><li>Vidu, q2-pro, q2-turbo 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :rtype: str
         """
         return self._LastImageUrl
@@ -19622,15 +19578,7 @@ GV。
 
     @property
     def ImageInfos(self):
-        r"""最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
-
-支持多图输入的模型：
-1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
-2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
-
-注意：
-1. 图片大小不超过10M。
-2. 支持的图片格式：jpeg、png。
+        r"""<p>最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。</li><li>Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :rtype: list of AigcVideoReferenceImageInfo
         """
         return self._ImageInfos
@@ -19640,14 +19588,19 @@ GV。
         self._ImageInfos = ImageInfos
 
     @property
+    def VideoInfos(self):
+        r"""<p>目前仅Kling O1版本支持参考视频信息传入。<br>可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</p>
+        :rtype: list of AigcVideoReferenceVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
     def Duration(self):
-        r"""生成视频的时长。
-注意：
-1. Kling支持 5、10秒。默认: 5秒。
-2. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
-3. Vidu支持1-10秒。
-4. GV支持 8秒。 默认：8秒。
-5. OS支持4、8、12秒。 默认：8秒。
+        r"""<p>生成视频的时长。<br>注意：</p><ol><li>Kling支持 5、10秒。默认: 5秒。</li><li>Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。</li><li>Vidu支持1-10秒。</li><li>GV支持 8秒。 默认：8秒。</li><li>OS支持4、8、12秒。 默认：8秒。</li></ol>
         :rtype: int
         """
         return self._Duration
@@ -19658,7 +19611,7 @@ GV。
 
     @property
     def ExtraParameters(self):
-        r"""用于传入要求的额外参数。
+        r"""<p>用于传入要求的额外参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
         """
         return self._ExtraParameters
@@ -19669,7 +19622,7 @@ GV。
 
     @property
     def StoreCosParam(self):
-        r"""文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        r"""<p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -19680,9 +19633,7 @@ GV。
 
     @property
     def AdditionalParameters(self):
-        r"""用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。
-示例：
-{\"camera_control\":{\"type\":\"simple\"}}
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -19693,7 +19644,7 @@ GV。
 
     @property
     def Operator(self):
-        r"""接口操作者名称。
+        r"""<p>接口操作者名称。</p>
         :rtype: str
         """
         return self._Operator
@@ -19718,6 +19669,12 @@ GV。
                 obj = AigcVideoReferenceImageInfo()
                 obj._deserialize(item)
                 self._ImageInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcVideoReferenceVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
         self._Duration = params.get("Duration")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcVideoExtraParam()
@@ -19744,8 +19701,7 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务创建成功后，返回的任务ID。
-调用查询接口，轮询获取任务进度及生成结果。
+        :param _TaskId: <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19755,8 +19711,7 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务创建成功后，返回的任务ID。
-调用查询接口，轮询获取任务进度及生成结果。
+        r"""<p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
         :rtype: str
         """
         return self._TaskId
