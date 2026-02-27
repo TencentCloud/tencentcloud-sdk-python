@@ -2822,34 +2822,36 @@ class SandboxTool(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ToolId: 沙箱工具唯一标识符
+        :param _ToolId: <p>沙箱工具唯一标识符</p>
         :type ToolId: str
-        :param _ToolName: 沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一
+        :param _ToolName: <p>沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一</p>
         :type ToolName: str
-        :param _ToolType: 沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）
+        :param _ToolType: <p>沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）</p>
         :type ToolType: str
-        :param _Status: 沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）
+        :param _Status: <p>沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）</p>
         :type Status: str
-        :param _Description: 沙箱工具描述信息，最大长度 200 字符
+        :param _Description: <p>沙箱工具描述信息，最大长度 200 字符</p>
         :type Description: str
-        :param _DefaultTimeoutSeconds: 默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时
+        :param _DefaultTimeoutSeconds: <p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
         :type DefaultTimeoutSeconds: int
-        :param _NetworkConfiguration: 网络配置
+        :param _NetworkConfiguration: <p>网络配置</p>
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
-        :param _Tags: 标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定
+        :param _Tags: <p>标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定</p>
         :type Tags: list of Tag
-        :param _CreateTime: 沙箱工具创建时间，格式：ISO8601
+        :param _CreateTime: <p>沙箱工具创建时间，格式：ISO8601</p>
         :type CreateTime: str
-        :param _UpdateTime: 沙箱工具更新时间，格式：ISO8601
+        :param _UpdateTime: <p>沙箱工具更新时间，格式：ISO8601</p>
         :type UpdateTime: str
-        :param _RoleArn: 沙箱工具绑定角色ARN
+        :param _RoleArn: <p>沙箱工具绑定角色ARN</p>
         :type RoleArn: str
-        :param _StorageMounts: 沙箱工具中实例存储挂载配置
+        :param _StorageMounts: <p>沙箱工具中实例存储挂载配置</p>
         :type StorageMounts: list of StorageMount
-        :param _CustomConfiguration: 沙箱工具自定义配置
+        :param _CustomConfiguration: <p>沙箱工具自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
-        :param _LogConfiguration: 沙箱工具日志推送相关配置
+        :param _LogConfiguration: <p>沙箱工具日志推送相关配置</p>
         :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
+        :param _StatusReason: <p>用于说明沙箱工具处于该状态的原因</p>
+        :type StatusReason: str
         """
         self._ToolId = None
         self._ToolName = None
@@ -2865,10 +2867,11 @@ class SandboxTool(AbstractModel):
         self._StorageMounts = None
         self._CustomConfiguration = None
         self._LogConfiguration = None
+        self._StatusReason = None
 
     @property
     def ToolId(self):
-        r"""沙箱工具唯一标识符
+        r"""<p>沙箱工具唯一标识符</p>
         :rtype: str
         """
         return self._ToolId
@@ -2879,7 +2882,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一
+        r"""<p>沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一</p>
         :rtype: str
         """
         return self._ToolName
@@ -2890,7 +2893,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def ToolType(self):
-        r"""沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）
+        r"""<p>沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）</p>
         :rtype: str
         """
         return self._ToolType
@@ -2901,7 +2904,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def Status(self):
-        r"""沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）
+        r"""<p>沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）</p>
         :rtype: str
         """
         return self._Status
@@ -2912,7 +2915,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def Description(self):
-        r"""沙箱工具描述信息，最大长度 200 字符
+        r"""<p>沙箱工具描述信息，最大长度 200 字符</p>
         :rtype: str
         """
         return self._Description
@@ -2923,7 +2926,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def DefaultTimeoutSeconds(self):
-        r"""默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时
+        r"""<p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
         :rtype: int
         """
         return self._DefaultTimeoutSeconds
@@ -2934,7 +2937,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def NetworkConfiguration(self):
-        r"""网络配置
+        r"""<p>网络配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
         """
         return self._NetworkConfiguration
@@ -2945,7 +2948,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定
+        r"""<p>标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2956,7 +2959,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""沙箱工具创建时间，格式：ISO8601
+        r"""<p>沙箱工具创建时间，格式：ISO8601</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2967,7 +2970,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""沙箱工具更新时间，格式：ISO8601
+        r"""<p>沙箱工具更新时间，格式：ISO8601</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -2978,7 +2981,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""沙箱工具绑定角色ARN
+        r"""<p>沙箱工具绑定角色ARN</p>
         :rtype: str
         """
         return self._RoleArn
@@ -2989,7 +2992,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def StorageMounts(self):
-        r"""沙箱工具中实例存储挂载配置
+        r"""<p>沙箱工具中实例存储挂载配置</p>
         :rtype: list of StorageMount
         """
         return self._StorageMounts
@@ -3000,7 +3003,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        r"""沙箱工具自定义配置
+        r"""<p>沙箱工具自定义配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         """
         return self._CustomConfiguration
@@ -3011,7 +3014,7 @@ class SandboxTool(AbstractModel):
 
     @property
     def LogConfiguration(self):
-        r"""沙箱工具日志推送相关配置
+        r"""<p>沙箱工具日志推送相关配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         """
         return self._LogConfiguration
@@ -3019,6 +3022,17 @@ class SandboxTool(AbstractModel):
     @LogConfiguration.setter
     def LogConfiguration(self, LogConfiguration):
         self._LogConfiguration = LogConfiguration
+
+    @property
+    def StatusReason(self):
+        r"""<p>用于说明沙箱工具处于该状态的原因</p>
+        :rtype: str
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
 
 
     def _deserialize(self, params):
@@ -3052,6 +3066,7 @@ class SandboxTool(AbstractModel):
         if params.get("LogConfiguration") is not None:
             self._LogConfiguration = LogConfiguration()
             self._LogConfiguration._deserialize(params.get("LogConfiguration"))
+        self._StatusReason = params.get("StatusReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

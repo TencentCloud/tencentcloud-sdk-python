@@ -6301,7 +6301,7 @@ class AnalyseRegionDetail(AbstractModel):
 
 
 class AnalyseTimeDetail(AbstractModel):
-    r"""成本分返回值复杂类型
+    r"""成本分析返回值复杂类型
 
     """
 

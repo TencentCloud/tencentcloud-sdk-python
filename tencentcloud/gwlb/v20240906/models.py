@@ -339,10 +339,6 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Tags: list of TagInfo
         :param _ForwardingMode: <p>流量分发方式</p><ul><li>STATELESS：无状态</li><li>STATEFUL： 有状态</li></ul>
         :type ForwardingMode: str
-        :param _TcpIdleConnectTimeout: <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-        :type TcpIdleConnectTimeout: int
-        :param _OthersIdleConnectTimeout: <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-        :type OthersIdleConnectTimeout: int
         :param _RescheduleUnbindRs: <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
         :type RescheduleUnbindRs: bool
         :param _RescheduleUnbindRsStartTime: <p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
@@ -362,8 +358,6 @@ class CreateTargetGroupRequest(AbstractModel):
         self._AllDeadToAlive = None
         self._Tags = None
         self._ForwardingMode = None
-        self._TcpIdleConnectTimeout = None
-        self._OthersIdleConnectTimeout = None
         self._RescheduleUnbindRs = None
         self._RescheduleUnbindRsStartTime = None
         self._RescheduleUnhealthy = None
@@ -480,28 +474,6 @@ class CreateTargetGroupRequest(AbstractModel):
         self._ForwardingMode = ForwardingMode
 
     @property
-    def TcpIdleConnectTimeout(self):
-        r"""<p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-        :rtype: int
-        """
-        return self._TcpIdleConnectTimeout
-
-    @TcpIdleConnectTimeout.setter
-    def TcpIdleConnectTimeout(self, TcpIdleConnectTimeout):
-        self._TcpIdleConnectTimeout = TcpIdleConnectTimeout
-
-    @property
-    def OthersIdleConnectTimeout(self):
-        r"""<p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-        :rtype: int
-        """
-        return self._OthersIdleConnectTimeout
-
-    @OthersIdleConnectTimeout.setter
-    def OthersIdleConnectTimeout(self, OthersIdleConnectTimeout):
-        self._OthersIdleConnectTimeout = OthersIdleConnectTimeout
-
-    @property
     def RescheduleUnbindRs(self):
         r"""<p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
         :rtype: bool
@@ -569,8 +541,6 @@ class CreateTargetGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._ForwardingMode = params.get("ForwardingMode")
-        self._TcpIdleConnectTimeout = params.get("TcpIdleConnectTimeout")
-        self._OthersIdleConnectTimeout = params.get("OthersIdleConnectTimeout")
         self._RescheduleUnbindRs = params.get("RescheduleUnbindRs")
         self._RescheduleUnbindRsStartTime = params.get("RescheduleUnbindRsStartTime")
         self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
@@ -2458,10 +2428,6 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         :param _AllDeadToAlive: <p>是否支持全死全活。</p>
         :type AllDeadToAlive: bool
-        :param _TcpIdleConnectTimeout: <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-        :type TcpIdleConnectTimeout: int
-        :param _OthersIdleConnectTimeout: <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-        :type OthersIdleConnectTimeout: int
         :param _RescheduleUnbindRs: <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
         :type RescheduleUnbindRs: bool
         :param _RescheduleUnbindRsStartTime: <p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
@@ -2475,8 +2441,6 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         self._TargetGroupName = None
         self._HealthCheck = None
         self._AllDeadToAlive = None
-        self._TcpIdleConnectTimeout = None
-        self._OthersIdleConnectTimeout = None
         self._RescheduleUnbindRs = None
         self._RescheduleUnbindRsStartTime = None
         self._RescheduleUnhealthy = None
@@ -2525,28 +2489,6 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     @AllDeadToAlive.setter
     def AllDeadToAlive(self, AllDeadToAlive):
         self._AllDeadToAlive = AllDeadToAlive
-
-    @property
-    def TcpIdleConnectTimeout(self):
-        r"""<p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-        :rtype: int
-        """
-        return self._TcpIdleConnectTimeout
-
-    @TcpIdleConnectTimeout.setter
-    def TcpIdleConnectTimeout(self, TcpIdleConnectTimeout):
-        self._TcpIdleConnectTimeout = TcpIdleConnectTimeout
-
-    @property
-    def OthersIdleConnectTimeout(self):
-        r"""<p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-        :rtype: int
-        """
-        return self._OthersIdleConnectTimeout
-
-    @OthersIdleConnectTimeout.setter
-    def OthersIdleConnectTimeout(self, OthersIdleConnectTimeout):
-        self._OthersIdleConnectTimeout = OthersIdleConnectTimeout
 
     @property
     def RescheduleUnbindRs(self):
@@ -2600,8 +2542,6 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
             self._HealthCheck = TargetGroupHealthCheck()
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._AllDeadToAlive = params.get("AllDeadToAlive")
-        self._TcpIdleConnectTimeout = params.get("TcpIdleConnectTimeout")
-        self._OthersIdleConnectTimeout = params.get("OthersIdleConnectTimeout")
         self._RescheduleUnbindRs = params.get("RescheduleUnbindRs")
         self._RescheduleUnbindRsStartTime = params.get("RescheduleUnbindRsStartTime")
         self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")

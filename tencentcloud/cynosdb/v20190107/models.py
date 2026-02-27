@@ -37094,21 +37094,30 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 网络组id(cynosdbmysql-grp-前缀开头)或集群id
+        :param _InstanceId: 网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
         :type InstanceId: str
         :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :type SecurityGroupIds: list of str
         :param _Zone: 可用区
         :type Zone: str
+        :param _UniqVpcId: 实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+        :type UniqVpcId: str
+        :param _Vip: 实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :type Vip: str
+        :param _Vport: 实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :type Vport: int
         """
         self._InstanceId = None
         self._SecurityGroupIds = None
         self._Zone = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._Vport = None
 
     @property
     def InstanceId(self):
-        r"""网络组id(cynosdbmysql-grp-前缀开头)或集群id
+        r"""网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
         :rtype: str
         """
         return self._InstanceId
@@ -37140,11 +37149,47 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def UniqVpcId(self):
+        r"""实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        r"""实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zone = params.get("Zone")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

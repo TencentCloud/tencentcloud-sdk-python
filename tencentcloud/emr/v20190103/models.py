@@ -8909,6 +8909,210 @@ class DescribeDAGInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEMREventListRequest(AbstractModel):
+    r"""DescribeEMREventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 查询事件的开始时间
+        :type StartTime: int
+        :param _EndTime: 查询事件的结束时间
+        :type EndTime: int
+        :param _Host: 事件触发的IP
+        :type Host: str
+        :param _Role: 事件受影响服务角色
+        :type Role: str
+        :param _Name: 事件名称
+        :type Name: str
+        :param _Offset: 事件列表的偏移量
+        :type Offset: int
+        :param _Limit: 事件列表的Limit
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Host = None
+        self._Role = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""查询事件的开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询事件的结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Host(self):
+        r"""事件触发的IP
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Role(self):
+        r"""事件受影响服务角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Name(self):
+        r"""事件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        r"""事件列表的偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""事件列表的Limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Host = params.get("Host")
+        self._Role = params.get("Role")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEMREventListResponse(AbstractModel):
+    r"""DescribeEMREventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventList: 事件详情列表
+        :type EventList: list of EMREventListItem
+        :param _TotalNum: 符合的事件总量
+        :type TotalNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventList = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def EventList(self):
+        r"""事件详情列表
+        :rtype: list of EMREventListItem
+        """
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def TotalNum(self):
+        r"""符合的事件总量
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventList") is not None:
+            self._EventList = []
+            for item in params.get("EventList"):
+                obj = EMREventListItem()
+                obj._deserialize(item)
+                self._EventList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEmrApplicationStaticsRequest(AbstractModel):
     r"""DescribeEmrApplicationStatics请求参数结构体
 
@@ -16403,6 +16607,102 @@ class DynamicPodSpec(AbstractModel):
         self._LimitCpu = params.get("LimitCpu")
         self._RequestMemory = params.get("RequestMemory")
         self._LimitMemory = params.get("LimitMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EMREventListItem(AbstractModel):
+    r"""事件详情列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 事件受影响ip
+        :type Host: str
+        :param _Role: 事件受影响的服务角色
+        :type Role: str
+        :param _Name: 事件名称
+        :type Name: str
+        :param _Detail: 事件告警详情
+        :type Detail: str
+        :param _CreateTime: 事件发生时间
+        :type CreateTime: str
+        """
+        self._Host = None
+        self._Role = None
+        self._Name = None
+        self._Detail = None
+        self._CreateTime = None
+
+    @property
+    def Host(self):
+        r"""事件受影响ip
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Role(self):
+        r"""事件受影响的服务角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Name(self):
+        r"""事件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Detail(self):
+        r"""事件告警详情
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def CreateTime(self):
+        r"""事件发生时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Role = params.get("Role")
+        self._Name = params.get("Name")
+        self._Detail = params.get("Detail")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

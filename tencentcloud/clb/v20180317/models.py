@@ -18,6 +18,90 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssociateCustomizedConfigRequest(AbstractModel):
+    r"""AssociateCustomizedConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UconfigId: 配置ID
+        :type UconfigId: str
+        :param _BindList: 关联的server或location
+        :type BindList: list of BindItem
+        """
+        self._UconfigId = None
+        self._BindList = None
+
+    @property
+    def UconfigId(self):
+        r"""配置ID
+        :rtype: str
+        """
+        return self._UconfigId
+
+    @UconfigId.setter
+    def UconfigId(self, UconfigId):
+        self._UconfigId = UconfigId
+
+    @property
+    def BindList(self):
+        r"""关联的server或location
+        :rtype: list of BindItem
+        """
+        return self._BindList
+
+    @BindList.setter
+    def BindList(self, BindList):
+        self._BindList = BindList
+
+
+    def _deserialize(self, params):
+        self._UconfigId = params.get("UconfigId")
+        if params.get("BindList") is not None:
+            self._BindList = []
+            for item in params.get("BindList"):
+                obj = BindItem()
+                obj._deserialize(item)
+                self._BindList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateCustomizedConfigResponse(AbstractModel):
+    r"""AssociateCustomizedConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssociateTargetGroupsRequest(AbstractModel):
     r"""AssociateTargetGroups请求参数结构体
 
@@ -1409,6 +1493,87 @@ class BindDetailItem(AbstractModel):
         self._Vport = params.get("Vport")
         self._Url = params.get("Url")
         self._UconfigId = params.get("UconfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindItem(AbstractModel):
+    r"""配置绑定关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 配置绑定的CLB ID
+        :type LoadBalancerId: str
+        :param _ListenerId: 配置绑定的监听器ID
+        :type ListenerId: str
+        :param _Domain: 配置绑定的域名
+        :type Domain: str
+        :param _LocationId: 配置绑定的规则
+        :type LocationId: str
+        """
+        self._LoadBalancerId = None
+        self._ListenerId = None
+        self._Domain = None
+        self._LocationId = None
+
+    @property
+    def LoadBalancerId(self):
+        r"""配置绑定的CLB ID
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        r"""配置绑定的监听器ID
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Domain(self):
+        r"""配置绑定的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LocationId(self):
+        r"""配置绑定的规则
+        :rtype: str
+        """
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
+        self._Domain = params.get("Domain")
+        self._LocationId = params.get("LocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10959,6 +11124,90 @@ class DescribeTaskStatusResponse(AbstractModel):
         self._Status = params.get("Status")
         self._LoadBalancerIds = params.get("LoadBalancerIds")
         self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DisassociateCustomizedConfigRequest(AbstractModel):
+    r"""DisassociateCustomizedConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UconfigId: 配置ID
+        :type UconfigId: str
+        :param _BindList: 解绑的列表
+        :type BindList: list of BindItem
+        """
+        self._UconfigId = None
+        self._BindList = None
+
+    @property
+    def UconfigId(self):
+        r"""配置ID
+        :rtype: str
+        """
+        return self._UconfigId
+
+    @UconfigId.setter
+    def UconfigId(self, UconfigId):
+        self._UconfigId = UconfigId
+
+    @property
+    def BindList(self):
+        r"""解绑的列表
+        :rtype: list of BindItem
+        """
+        return self._BindList
+
+    @BindList.setter
+    def BindList(self, BindList):
+        self._BindList = BindList
+
+
+    def _deserialize(self, params):
+        self._UconfigId = params.get("UconfigId")
+        if params.get("BindList") is not None:
+            self._BindList = []
+            for item in params.get("BindList"):
+                obj = BindItem()
+                obj._deserialize(item)
+                self._BindList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateCustomizedConfigResponse(AbstractModel):
+    r"""DisassociateCustomizedConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

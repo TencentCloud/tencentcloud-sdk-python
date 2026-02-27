@@ -535,6 +535,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEMREventList(self, request):
+        r"""查询EMR事件监控数据
+
+        :param request: Request instance for DescribeEMREventList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEMREventListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeEMREventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEMREventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEMREventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEmrApplicationStatics(self, request):
         r"""yarn application 统计接口查询
 

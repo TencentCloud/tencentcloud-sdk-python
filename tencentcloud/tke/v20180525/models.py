@@ -5862,7 +5862,7 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type IsExtranet: bool
         :param _Domain: 设置域名
         :type Domain: str
-        :param _SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
+        :param _SecurityGroup: 使用的安全组（开启内外网访问且不使用已有clb时可传，内网访问需要先找clb侧加白使用）。获取方式：https://cloud.tencent.com/document/api/215/15808
         :type SecurityGroup: str
         :param _ExtensiveParameters: 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
 各个参数意义：
@@ -5929,7 +5929,7 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
 
     @property
     def SecurityGroup(self):
-        r"""使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
+        r"""使用的安全组（开启内外网访问且不使用已有clb时可传，内网访问需要先找clb侧加白使用）。获取方式：https://cloud.tencent.com/document/api/215/15808
         :rtype: str
         """
         return self._SecurityGroup
@@ -15636,6 +15636,8 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         :type SecurityGroup: str
         :param _ClusterIntranetSubnetId: 内网访问所属子网
         :type ClusterIntranetSubnetId: str
+        :param _IntranetSecurityGroup: 内网安全组
+        :type IntranetSecurityGroup: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15648,6 +15650,7 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._ClusterIntranetDomain = None
         self._SecurityGroup = None
         self._ClusterIntranetSubnetId = None
+        self._IntranetSecurityGroup = None
         self._RequestId = None
 
     @property
@@ -15751,6 +15754,17 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._ClusterIntranetSubnetId = ClusterIntranetSubnetId
 
     @property
+    def IntranetSecurityGroup(self):
+        r"""内网安全组
+        :rtype: str
+        """
+        return self._IntranetSecurityGroup
+
+    @IntranetSecurityGroup.setter
+    def IntranetSecurityGroup(self, IntranetSecurityGroup):
+        self._IntranetSecurityGroup = IntranetSecurityGroup
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15772,6 +15786,7 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._ClusterIntranetDomain = params.get("ClusterIntranetDomain")
         self._SecurityGroup = params.get("SecurityGroup")
         self._ClusterIntranetSubnetId = params.get("ClusterIntranetSubnetId")
+        self._IntranetSecurityGroup = params.get("IntranetSecurityGroup")
         self._RequestId = params.get("RequestId")
 
 

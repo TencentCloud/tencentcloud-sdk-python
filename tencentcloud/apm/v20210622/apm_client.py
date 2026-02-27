@@ -279,6 +279,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmSQLInjectionDetail(self, request):
+        r"""查询SQL注入详情信息
+
+        :param request: Request instance for DescribeApmSQLInjectionDetail.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmSQLInjectionDetailRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmSQLInjectionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmSQLInjectionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmSQLInjectionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmSampleConfig(self, request):
         r"""查询采样配置接口
 

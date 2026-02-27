@@ -223,6 +223,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApmSQLInjectionDetail(
+            self,
+            request: models.DescribeApmSQLInjectionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApmSQLInjectionDetailResponse:
+        """
+        查询SQL注入详情信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApmSQLInjectionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApmSQLInjectionDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApmSampleConfig(
             self,
             request: models.DescribeApmSampleConfigRequest,

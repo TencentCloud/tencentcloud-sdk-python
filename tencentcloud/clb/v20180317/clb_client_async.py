@@ -25,6 +25,24 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
     _service = 'clb'
 
+    async def AssociateCustomizedConfig(
+            self,
+            request: models.AssociateCustomizedConfigRequest,
+            opts: Dict = None,
+    ) -> models.AssociateCustomizedConfigResponse:
+        """
+        关联配置到server或location，根据配置类型关联到server或location。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateCustomizedConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateCustomizedConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssociateTargetGroups(
             self,
             request: models.AssociateTargetGroupsRequest,
@@ -1078,6 +1096,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DescribeTaskStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisassociateCustomizedConfig(
+            self,
+            request: models.DisassociateCustomizedConfigRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateCustomizedConfigResponse:
+        """
+        去关联个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateCustomizedConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateCustomizedConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

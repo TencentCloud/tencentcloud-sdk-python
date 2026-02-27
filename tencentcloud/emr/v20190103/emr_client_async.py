@@ -424,6 +424,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEMREventList(
+            self,
+            request: models.DescribeEMREventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEMREventListResponse:
+        """
+        查询EMR事件监控数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEMREventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEMREventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEmrApplicationStatics(
             self,
             request: models.DescribeEmrApplicationStaticsRequest,

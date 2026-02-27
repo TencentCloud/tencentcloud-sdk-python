@@ -23319,12 +23319,15 @@ class SubAccountInfo(AbstractModel):
         :type LinuxUid: int
         :param _LinuxGid: 子账号在Linux下的GID
         :type LinuxGid: int
+        :param _LinuxUserName: 子账号在Linux下的用户名
+        :type LinuxUserName: str
         """
         self._Uin = None
         self._SubUin = None
         self._SubUinName = None
         self._LinuxUid = None
         self._LinuxGid = None
+        self._LinuxUserName = None
 
     @property
     def Uin(self):
@@ -23381,6 +23384,17 @@ class SubAccountInfo(AbstractModel):
     def LinuxGid(self, LinuxGid):
         self._LinuxGid = LinuxGid
 
+    @property
+    def LinuxUserName(self):
+        r"""子账号在Linux下的用户名
+        :rtype: str
+        """
+        return self._LinuxUserName
+
+    @LinuxUserName.setter
+    def LinuxUserName(self, LinuxUserName):
+        self._LinuxUserName = LinuxUserName
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -23388,6 +23402,7 @@ class SubAccountInfo(AbstractModel):
         self._SubUinName = params.get("SubUinName")
         self._LinuxUid = params.get("LinuxUid")
         self._LinuxGid = params.get("LinuxGid")
+        self._LinuxUserName = params.get("LinuxUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
